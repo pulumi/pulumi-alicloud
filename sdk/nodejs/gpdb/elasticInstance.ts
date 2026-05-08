@@ -265,91 +265,91 @@ export interface ElasticInstanceState {
     /**
      * ADB PG instance connection string.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
      */
-    dbInstanceCategory?: pulumi.Input<string>;
+    dbInstanceCategory?: pulumi.Input<string | undefined>;
     /**
      * The description of ADB PG instance. It is a string of 2 to 256 characters.
      */
-    dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
      */
-    encryptionType?: pulumi.Input<string>;
+    encryptionType?: pulumi.Input<string | undefined>;
     /**
      * Database engine: `gpdb`.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * Database version. Valid value is `6.0`.
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * The network type of ADB PG instance. Only `VPC` supported now.
      */
-    instanceNetworkType?: pulumi.Input<string>;
+    instanceNetworkType?: pulumi.Input<string | undefined>;
     /**
      * The specification of segment nodes. 
      * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
      * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      */
-    instanceSpec?: pulumi.Input<string>;
+    instanceSpec?: pulumi.Input<string | undefined>;
     /**
      * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.  
      * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
-    paymentDuration?: pulumi.Input<number>;
+    paymentDuration?: pulumi.Input<number | undefined>;
     /**
      * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.  
      * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
-    paymentDurationUnit?: pulumi.Input<string>;
+    paymentDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.196.0) The connection port of the instance.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
      */
-    segNodeNum?: pulumi.Input<number>;
+    segNodeNum?: pulumi.Input<number | undefined>;
     /**
      * The disk type of segment nodes. Valid values: `cloudEssd`, `cloudEfficiency`.
      */
-    segStorageType?: pulumi.Input<string>;
+    segStorageType?: pulumi.Input<string | undefined>;
     /**
      * Instance status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
      */
-    storageSize?: pulumi.Input<number>;
+    storageSize?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The virtual switch ID to launch ADB PG instances in one VPC.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -359,19 +359,19 @@ export interface ElasticInstanceArgs {
     /**
      * The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
      */
-    dbInstanceCategory?: pulumi.Input<string>;
+    dbInstanceCategory?: pulumi.Input<string | undefined>;
     /**
      * The description of ADB PG instance. It is a string of 2 to 256 characters.
      */
-    dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the encryption key. **Note:** If the `encryptionType` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
      */
-    encryptionType?: pulumi.Input<string>;
+    encryptionType?: pulumi.Input<string | undefined>;
     /**
      * Database engine: `gpdb`.
      */
@@ -383,7 +383,7 @@ export interface ElasticInstanceArgs {
     /**
      * The network type of ADB PG instance. Only `VPC` supported now.
      */
-    instanceNetworkType?: pulumi.Input<string>;
+    instanceNetworkType?: pulumi.Input<string | undefined>;
     /**
      * The specification of segment nodes. 
      * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
@@ -394,20 +394,20 @@ export interface ElasticInstanceArgs {
      * The subscription period. Valid values: [1~12]. It is valid when paymentType is `Subscription`.  
      * **NOTE:** Will not take effect after modifying `paymentDuration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
-    paymentDuration?: pulumi.Input<number>;
+    paymentDuration?: pulumi.Input<number | undefined>;
     /**
      * The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when paymentType is `Subscription`.  
      * **NOTE:** Will not take effect after modifying `paymentDurationUnit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
      */
-    paymentDurationUnit?: pulumi.Input<string>;
+    paymentDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
      */
@@ -423,7 +423,7 @@ export interface ElasticInstanceArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The virtual switch ID to launch ADB PG instances in one VPC.
      */
@@ -431,5 +431,5 @@ export interface ElasticInstanceArgs {
     /**
      * The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

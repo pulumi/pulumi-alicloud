@@ -108,17 +108,17 @@ export interface GetWafDomainsOutputArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Waf Domain IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The query conditions. You can filter domain names by name. Fuzzy match is supported `QueryArgs={"DomainName":"Accelerated domain name"}`.
      */
-    queryArgs?: pulumi.Input<string>;
+    queryArgs?: pulumi.Input<string | undefined>;
 }

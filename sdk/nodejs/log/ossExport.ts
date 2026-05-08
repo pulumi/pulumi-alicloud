@@ -309,104 +309,104 @@ export interface OssExportState {
     /**
      * The name of the oss bucket.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * How often is it delivered every interval.
      */
-    bufferInterval?: pulumi.Input<number>;
+    bufferInterval?: pulumi.Input<number | undefined>;
     /**
      * Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
      */
-    bufferSize?: pulumi.Input<number>;
+    bufferSize?: pulumi.Input<number | undefined>;
     /**
      * OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
      */
-    compressType?: pulumi.Input<string>;
+    compressType?: pulumi.Input<string | undefined>;
     /**
      * Configure columns when `contentType` is `parquet` or `orc`.
      */
-    configColumns?: pulumi.Input<pulumi.Input<inputs.log.OssExportConfigColumn>[]>;
+    configColumns?: pulumi.Input<pulumi.Input<inputs.log.OssExportConfigColumn>[] | undefined>;
     /**
      * Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
      * **According to the different format, please select the following parameters**
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * Field configuration in csv content_type.
      */
-    csvConfigColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    csvConfigColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Separator configuration in csv content_type.
      */
-    csvConfigDelimiter?: pulumi.Input<string>;
+    csvConfigDelimiter?: pulumi.Input<string | undefined>;
     /**
      * escape in csv content_type.
      */
-    csvConfigEscape?: pulumi.Input<string>;
+    csvConfigEscape?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to write the field name to the CSV file, the default value is `false`.
      */
-    csvConfigHeader?: pulumi.Input<boolean>;
+    csvConfigHeader?: pulumi.Input<boolean | undefined>;
     /**
      * lineFeed in csv content_type.
      */
-    csvConfigLinefeed?: pulumi.Input<string>;
+    csvConfigLinefeed?: pulumi.Input<string | undefined>;
     /**
      * Invalid field content in csv content_type.
      */
-    csvConfigNull?: pulumi.Input<string>;
+    csvConfigNull?: pulumi.Input<string | undefined>;
     /**
      * Escape character in csv content_type.
      */
-    csvConfigQuote?: pulumi.Input<string>;
+    csvConfigQuote?: pulumi.Input<string | undefined>;
     /**
      * The display name for oss export.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
      */
-    exportName?: pulumi.Input<string>;
+    exportName?: pulumi.Input<string | undefined>;
     /**
      * The log from when to export to oss.
      */
-    fromTime?: pulumi.Input<number>;
+    fromTime?: pulumi.Input<number | undefined>;
     /**
      * Whether to deliver the label when `contentType` = `json`.
      */
-    jsonEnableTag?: pulumi.Input<boolean>;
+    jsonEnableTag?: pulumi.Input<boolean | undefined>;
     /**
      * Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `logReadRoleArn` is not set, `roleArn` is used to read logstore.
      */
-    logReadRoleArn?: pulumi.Input<string>;
+    logReadRoleArn?: pulumi.Input<string | undefined>;
     /**
      * The name of the log logstore.
      */
-    logstoreName?: pulumi.Input<string>;
+    logstoreName?: pulumi.Input<string | undefined>;
     /**
      * The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
      */
-    pathFormat?: pulumi.Input<string>;
+    pathFormat?: pulumi.Input<string | undefined>;
     /**
      * The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * The name of the log project. It is the only in one Alicloud account.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * Used to write to oss bucket, the OSS Bucket owner creates the role mark which has the oss bucket write policy, such as `acs:ram::13234:role/logrole`.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * The suffix for the objects in which the shipped data is stored.
      */
-    suffix?: pulumi.Input<string>;
+    suffix?: pulumi.Input<string | undefined>;
     /**
      * This time zone that is used to format the time, `+0800` e.g.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -428,11 +428,11 @@ export interface OssExportArgs {
     /**
      * OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
      */
-    compressType?: pulumi.Input<string>;
+    compressType?: pulumi.Input<string | undefined>;
     /**
      * Configure columns when `contentType` is `parquet` or `orc`.
      */
-    configColumns?: pulumi.Input<pulumi.Input<inputs.log.OssExportConfigColumn>[]>;
+    configColumns?: pulumi.Input<pulumi.Input<inputs.log.OssExportConfigColumn>[] | undefined>;
     /**
      * Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
      * **According to the different format, please select the following parameters**
@@ -441,35 +441,35 @@ export interface OssExportArgs {
     /**
      * Field configuration in csv content_type.
      */
-    csvConfigColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    csvConfigColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Separator configuration in csv content_type.
      */
-    csvConfigDelimiter?: pulumi.Input<string>;
+    csvConfigDelimiter?: pulumi.Input<string | undefined>;
     /**
      * escape in csv content_type.
      */
-    csvConfigEscape?: pulumi.Input<string>;
+    csvConfigEscape?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to write the field name to the CSV file, the default value is `false`.
      */
-    csvConfigHeader?: pulumi.Input<boolean>;
+    csvConfigHeader?: pulumi.Input<boolean | undefined>;
     /**
      * lineFeed in csv content_type.
      */
-    csvConfigLinefeed?: pulumi.Input<string>;
+    csvConfigLinefeed?: pulumi.Input<string | undefined>;
     /**
      * Invalid field content in csv content_type.
      */
-    csvConfigNull?: pulumi.Input<string>;
+    csvConfigNull?: pulumi.Input<string | undefined>;
     /**
      * Escape character in csv content_type.
      */
-    csvConfigQuote?: pulumi.Input<string>;
+    csvConfigQuote?: pulumi.Input<string | undefined>;
     /**
      * The display name for oss export.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
      */
@@ -477,15 +477,15 @@ export interface OssExportArgs {
     /**
      * The log from when to export to oss.
      */
-    fromTime?: pulumi.Input<number>;
+    fromTime?: pulumi.Input<number | undefined>;
     /**
      * Whether to deliver the label when `contentType` = `json`.
      */
-    jsonEnableTag?: pulumi.Input<boolean>;
+    jsonEnableTag?: pulumi.Input<boolean | undefined>;
     /**
      * Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `logReadRoleArn` is not set, `roleArn` is used to read logstore.
      */
-    logReadRoleArn?: pulumi.Input<string>;
+    logReadRoleArn?: pulumi.Input<string | undefined>;
     /**
      * The name of the log logstore.
      */
@@ -497,7 +497,7 @@ export interface OssExportArgs {
     /**
      * The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * The name of the log project. It is the only in one Alicloud account.
      */
@@ -505,11 +505,11 @@ export interface OssExportArgs {
     /**
      * Used to write to oss bucket, the OSS Bucket owner creates the role mark which has the oss bucket write policy, such as `acs:ram::13234:role/logrole`.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * The suffix for the objects in which the shipped data is stored.
      */
-    suffix?: pulumi.Input<string>;
+    suffix?: pulumi.Input<string | undefined>;
     /**
      * This time zone that is used to format the time, `+0800` e.g.
      */

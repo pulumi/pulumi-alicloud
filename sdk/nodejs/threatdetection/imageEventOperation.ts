@@ -168,35 +168,35 @@ export interface ImageEventOperationState {
     /**
      * The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
      */
-    conditions?: pulumi.Input<string>;
+    conditions?: pulumi.Input<string | undefined>;
     /**
      * The keyword of the alert item.
      */
-    eventKey?: pulumi.Input<string>;
+    eventKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert item.
      */
-    eventName?: pulumi.Input<string>;
+    eventName?: pulumi.Input<string | undefined>;
     /**
      * The alert type.
      */
-    eventType?: pulumi.Input<string>;
+    eventType?: pulumi.Input<string | undefined>;
     /**
      * The remarks.
      */
-    note?: pulumi.Input<string>;
+    note?: pulumi.Input<string | undefined>;
     /**
      * The operation code.
      */
-    operationCode?: pulumi.Input<string>;
+    operationCode?: pulumi.Input<string | undefined>;
     /**
      * The application scope of the rule.
      */
-    scenarios?: pulumi.Input<string>;
+    scenarios?: pulumi.Input<string | undefined>;
     /**
      * The source of the whitelist. Valid values:
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -210,11 +210,11 @@ export interface ImageEventOperationArgs {
     /**
      * The keyword of the alert item.
      */
-    eventKey?: pulumi.Input<string>;
+    eventKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert item.
      */
-    eventName?: pulumi.Input<string>;
+    eventName?: pulumi.Input<string | undefined>;
     /**
      * The alert type.
      */
@@ -222,7 +222,7 @@ export interface ImageEventOperationArgs {
     /**
      * The remarks.
      */
-    note?: pulumi.Input<string>;
+    note?: pulumi.Input<string | undefined>;
     /**
      * The operation code.
      */
@@ -230,9 +230,9 @@ export interface ImageEventOperationArgs {
     /**
      * The application scope of the rule.
      */
-    scenarios?: pulumi.Input<string>;
+    scenarios?: pulumi.Input<string | undefined>;
     /**
      * The source of the whitelist. Valid values:
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }

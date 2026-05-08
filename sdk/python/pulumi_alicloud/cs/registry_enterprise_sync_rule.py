@@ -25,13 +25,13 @@ class RegistryEnterpriseSyncRuleArgs:
                  target_instance_id: pulumi.Input[_builtins.str],
                  target_namespace_name: pulumi.Input[_builtins.str],
                  target_region_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_trigger: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_trigger: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseSyncRule resource.
 
@@ -153,43 +153,43 @@ class RegistryEnterpriseSyncRuleArgs:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="repoName")
-    def repo_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image repository name of the source instance.
         """
         return pulumi.get(self, "repo_name")
 
     @repo_name.setter
-    def repo_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_name", value)
 
     @_builtins.property
     @pulumi.getter(name="syncRuleName")
-    def sync_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the sync rule.
         """
         return pulumi.get(self, "sync_rule_name")
 
     @sync_rule_name.setter
-    def sync_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="syncScope")
-    def sync_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The synchronization scope. Valid values:
         - `REPO`: Encrypts or decrypts data.
@@ -199,12 +199,12 @@ class RegistryEnterpriseSyncRuleArgs:
         return pulumi.get(self, "sync_scope")
 
     @sync_scope.setter
-    def sync_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="syncTrigger")
-    def sync_trigger(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_trigger(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
         - `INITIATIVE`: Manually triggers the synchronization rule.
@@ -213,55 +213,55 @@ class RegistryEnterpriseSyncRuleArgs:
         return pulumi.get(self, "sync_trigger")
 
     @sync_trigger.setter
-    def sync_trigger(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_trigger(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_trigger", value)
 
     @_builtins.property
     @pulumi.getter(name="targetRepoName")
-    def target_repo_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_repo_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image repository name of the destination instance.
         """
         return pulumi.get(self, "target_repo_name")
 
     @target_repo_name.setter
-    def target_repo_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_repo_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_repo_name", value)
 
     @_builtins.property
     @pulumi.getter(name="targetUserId")
-    def target_user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UID of the account to which the target instance belongs.
         """
         return pulumi.get(self, "target_user_id")
 
     @target_user_id.setter
-    def target_user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_user_id", value)
 
 
 @pulumi.input_type
 class _RegistryEnterpriseSyncRuleState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_sync_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_trigger: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_sync_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_trigger: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseSyncRule resources.
 
@@ -334,129 +334,129 @@ class _RegistryEnterpriseSyncRuleState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.240.0) The time when the synchronization rule was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Container Registry source instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `name` has been deprecated from provider version 1.240.0. New field `sync_rule_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceName")
-    def namespace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace name of the source instance.
         """
         return pulumi.get(self, "namespace_name")
 
     @namespace_name.setter
-    def namespace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_name", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.240.0) The region ID of the source instance.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoName")
-    def repo_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image repository name of the source instance.
         """
         return pulumi.get(self, "repo_name")
 
     @repo_name.setter
-    def repo_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_name", value)
 
     @_builtins.property
     @pulumi.getter(name="repoSyncRuleId")
-    def repo_sync_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_sync_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.240.0) The ID of the synchronization rule.
         """
         return pulumi.get(self, "repo_sync_rule_id")
 
     @repo_sync_rule_id.setter
-    def repo_sync_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_sync_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_sync_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
     @_utilities.deprecated("""Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.""")
-    def rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Deprecated since v1.240.0) Field `rule_id` has been deprecated from provider version 1.240.0. New field `repo_sync_rule_id` instead.
         """
         return pulumi.get(self, "rule_id")
 
     @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="syncDirection")
-    def sync_direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The synchronization direction.
         """
         return pulumi.get(self, "sync_direction")
 
     @sync_direction.setter
-    def sync_direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_direction", value)
 
     @_builtins.property
     @pulumi.getter(name="syncRuleName")
-    def sync_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the sync rule.
         """
         return pulumi.get(self, "sync_rule_name")
 
     @sync_rule_name.setter
-    def sync_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="syncScope")
-    def sync_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The synchronization scope. Valid values:
         - `REPO`: Encrypts or decrypts data.
@@ -466,12 +466,12 @@ class _RegistryEnterpriseSyncRuleState:
         return pulumi.get(self, "sync_scope")
 
     @sync_scope.setter
-    def sync_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="syncTrigger")
-    def sync_trigger(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_trigger(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
         - `INITIATIVE`: Manually triggers the synchronization rule.
@@ -480,79 +480,79 @@ class _RegistryEnterpriseSyncRuleState:
         return pulumi.get(self, "sync_trigger")
 
     @sync_trigger.setter
-    def sync_trigger(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_trigger(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_trigger", value)
 
     @_builtins.property
     @pulumi.getter(name="tagFilter")
-    def tag_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The regular expression used to filter image tags.
         """
         return pulumi.get(self, "tag_filter")
 
     @tag_filter.setter
-    def tag_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="targetInstanceId")
-    def target_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the destination instance.
         """
         return pulumi.get(self, "target_instance_id")
 
     @target_instance_id.setter
-    def target_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetNamespaceName")
-    def target_namespace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_namespace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace name of the destination instance.
         """
         return pulumi.get(self, "target_namespace_name")
 
     @target_namespace_name.setter
-    def target_namespace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_namespace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_namespace_name", value)
 
     @_builtins.property
     @pulumi.getter(name="targetRegionId")
-    def target_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the destination instance.
         """
         return pulumi.get(self, "target_region_id")
 
     @target_region_id.setter
-    def target_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetRepoName")
-    def target_repo_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_repo_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image repository name of the destination instance.
         """
         return pulumi.get(self, "target_repo_name")
 
     @target_repo_name.setter
-    def target_repo_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_repo_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_repo_name", value)
 
     @_builtins.property
     @pulumi.getter(name="targetUserId")
-    def target_user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UID of the account to which the target instance belongs.
         """
         return pulumi.get(self, "target_user_id")
 
     @target_user_id.setter
-    def target_user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_user_id", value)
 
 
@@ -562,19 +562,19 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_trigger: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_trigger: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Container Registry Sync Rule resource.
@@ -788,19 +788,19 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_trigger: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_trigger: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -850,24 +850,24 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_sync_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_direction: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_trigger: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_filter: Optional[pulumi.Input[_builtins.str]] = None,
-            target_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            target_namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-            target_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            target_repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-            target_user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RegistryEnterpriseSyncRule':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_sync_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_direction: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_trigger: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            target_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            target_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            target_user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegistryEnterpriseSyncRule':
         """
         Get an existing RegistryEnterpriseSyncRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

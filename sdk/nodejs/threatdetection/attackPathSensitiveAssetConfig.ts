@@ -109,7 +109,7 @@ export interface AttackPathSensitiveAssetConfigState {
     /**
      * The attack path sensitive asset configuration list. See `attackPathAssetList` below.
      */
-    attackPathAssetLists?: pulumi.Input<pulumi.Input<inputs.threatdetection.AttackPathSensitiveAssetConfigAttackPathAssetList>[]>;
+    attackPathAssetLists?: pulumi.Input<pulumi.Input<inputs.threatdetection.AttackPathSensitiveAssetConfigAttackPathAssetList>[] | undefined>;
 }
 
 /**

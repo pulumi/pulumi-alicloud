@@ -119,19 +119,19 @@ export interface CiphertextState {
     /**
      * The ciphertext of the data key encrypted with the primary CMK version.
      */
-    ciphertextBlob?: pulumi.Input<string>;
+    ciphertextBlob?: pulumi.Input<string | undefined>;
     /**
      * The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
-    encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The globally unique ID of the CMK.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * The plaintext to be encrypted which must be encoded in Base64.
      */
-    plaintext?: pulumi.Input<string>;
+    plaintext?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -141,7 +141,7 @@ export interface CiphertextArgs {
     /**
      * The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
-    encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The globally unique ID of the CMK.
      */

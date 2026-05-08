@@ -22,8 +22,8 @@ __all__ = ['BackendServerArgs', 'BackendServer']
 class BackendServerArgs:
     def __init__(__self__, *,
                  load_balancer_id: pulumi.Input[_builtins.str],
-                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None):
+                 backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BackendServer resource.
 
@@ -51,35 +51,35 @@ class BackendServerArgs:
 
     @_builtins.property
     @pulumi.getter(name="backendServers")
-    def backend_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]]:
+    def backend_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]]:
         """
         A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
         """
         return pulumi.get(self, "backend_servers")
 
     @backend_servers.setter
-    def backend_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]]):
+    def backend_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]]):
         pulumi.set(self, "backend_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_protection_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         """
         return pulumi.get(self, "delete_protection_validation")
 
     @delete_protection_validation.setter
-    def delete_protection_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_protection_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_protection_validation", value)
 
 
 @pulumi.input_type
 class _BackendServerState:
     def __init__(__self__, *,
-                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackendServer resources.
 
@@ -96,38 +96,38 @@ class _BackendServerState:
 
     @_builtins.property
     @pulumi.getter(name="backendServers")
-    def backend_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]]:
+    def backend_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]]:
         """
         A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
         """
         return pulumi.get(self, "backend_servers")
 
     @backend_servers.setter
-    def backend_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]]):
+    def backend_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]]):
         pulumi.set(self, "backend_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_protection_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         """
         return pulumi.get(self, "delete_protection_validation")
 
     @delete_protection_validation.setter
-    def delete_protection_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_protection_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_protection_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the load balancer.
         """
         return pulumi.get(self, "load_balancer_id")
 
     @load_balancer_id.setter
-    def load_balancer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_id", value)
 
 
@@ -137,9 +137,9 @@ class BackendServer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict']]]]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict']]]]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.
@@ -196,9 +196,9 @@ class BackendServer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict']]]]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict']]]]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -223,9 +223,9 @@ class BackendServer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict']]]]] = None,
-            delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-            load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'BackendServer':
+            backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackendServerBackendServerArgs', 'BackendServerBackendServerArgsDict']]]]] = None,
+            delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'BackendServer':
         """
         Get an existing BackendServer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

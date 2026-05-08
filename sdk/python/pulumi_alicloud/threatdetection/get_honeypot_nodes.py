@@ -198,13 +198,13 @@ def get_honeypot_nodes(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'))
-def get_honeypot_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                              name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              node_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              node_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                              page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_honeypot_nodes_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                              name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              node_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              node_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                              page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHoneypotNodesResult]:
     """
     This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)

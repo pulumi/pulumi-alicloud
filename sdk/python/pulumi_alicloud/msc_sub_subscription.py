@@ -20,13 +20,13 @@ __all__ = ['MscSubSubscriptionArgs', 'MscSubSubscription']
 class MscSubSubscriptionArgs:
     def __init__(__self__, *,
                  item_name: pulumi.Input[_builtins.str],
-                 contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 email_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 pmsg_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 sms_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 tts_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 webhook_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 webhook_status: Optional[pulumi.Input[_builtins.int]] = None):
+                 contact_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 email_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 pmsg_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 sms_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 tts_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 webhook_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 webhook_status: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a MscSubSubscription resource.
 
@@ -72,7 +72,7 @@ class MscSubSubscriptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="contactIds")
-    def contact_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contact_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ids of subscribed contacts.
         **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
@@ -82,95 +82,95 @@ class MscSubSubscriptionArgs:
         return pulumi.get(self, "contact_ids")
 
     @contact_ids.setter
-    def contact_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contact_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contact_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="emailStatus")
-    def email_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def email_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
         return pulumi.get(self, "email_status")
 
     @email_status.setter
-    def email_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def email_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "email_status", value)
 
     @_builtins.property
     @pulumi.getter(name="pmsgStatus")
-    def pmsg_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pmsg_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
         return pulumi.get(self, "pmsg_status")
 
     @pmsg_status.setter
-    def pmsg_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pmsg_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pmsg_status", value)
 
     @_builtins.property
     @pulumi.getter(name="smsStatus")
-    def sms_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sms_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
         return pulumi.get(self, "sms_status")
 
     @sms_status.setter
-    def sms_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sms_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sms_status", value)
 
     @_builtins.property
     @pulumi.getter(name="ttsStatus")
-    def tts_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tts_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
         return pulumi.get(self, "tts_status")
 
     @tts_status.setter
-    def tts_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tts_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tts_status", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookIds")
-    def webhook_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def webhook_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ids of subscribed webhooks.
         """
         return pulumi.get(self, "webhook_ids")
 
     @webhook_ids.setter
-    def webhook_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def webhook_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "webhook_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookStatus")
-    def webhook_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def webhook_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
         return pulumi.get(self, "webhook_status")
 
     @webhook_status.setter
-    def webhook_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def webhook_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "webhook_status", value)
 
 
 @pulumi.input_type
 class _MscSubSubscriptionState:
     def __init__(__self__, *,
-                 channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 item_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pmsg_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 sms_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 tts_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 webhook_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 webhook_status: Optional[pulumi.Input[_builtins.int]] = None):
+                 channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 item_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pmsg_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 sms_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 tts_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 webhook_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 webhook_status: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering MscSubSubscription resources.
 
@@ -211,19 +211,19 @@ class _MscSubSubscriptionState:
 
     @_builtins.property
     @pulumi.getter
-    def channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The channel the Subscription.
         """
         return pulumi.get(self, "channel")
 
     @channel.setter
-    def channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "channel", value)
 
     @_builtins.property
     @pulumi.getter(name="contactIds")
-    def contact_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contact_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ids of subscribed contacts.
         **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
@@ -233,103 +233,103 @@ class _MscSubSubscriptionState:
         return pulumi.get(self, "contact_ids")
 
     @contact_ids.setter
-    def contact_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contact_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contact_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Subscription.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="emailStatus")
-    def email_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def email_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
         return pulumi.get(self, "email_status")
 
     @email_status.setter
-    def email_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def email_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "email_status", value)
 
     @_builtins.property
     @pulumi.getter(name="itemName")
-    def item_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def item_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Subscription. **NOTE:**  You should use the `get_msc_sub_subscriptions` to query the available subscription item name.
         """
         return pulumi.get(self, "item_name")
 
     @item_name.setter
-    def item_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def item_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "item_name", value)
 
     @_builtins.property
     @pulumi.getter(name="pmsgStatus")
-    def pmsg_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pmsg_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
         return pulumi.get(self, "pmsg_status")
 
     @pmsg_status.setter
-    def pmsg_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pmsg_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pmsg_status", value)
 
     @_builtins.property
     @pulumi.getter(name="smsStatus")
-    def sms_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sms_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
         return pulumi.get(self, "sms_status")
 
     @sms_status.setter
-    def sms_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sms_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sms_status", value)
 
     @_builtins.property
     @pulumi.getter(name="ttsStatus")
-    def tts_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tts_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
         return pulumi.get(self, "tts_status")
 
     @tts_status.setter
-    def tts_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tts_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tts_status", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookIds")
-    def webhook_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def webhook_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ids of subscribed webhooks.
         """
         return pulumi.get(self, "webhook_ids")
 
     @webhook_ids.setter
-    def webhook_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def webhook_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "webhook_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookStatus")
-    def webhook_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def webhook_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
         return pulumi.get(self, "webhook_status")
 
     @webhook_status.setter
-    def webhook_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def webhook_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "webhook_status", value)
 
 
@@ -339,14 +339,14 @@ class MscSubSubscription(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 email_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 item_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pmsg_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 sms_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 tts_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 webhook_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 webhook_status: Optional[pulumi.Input[_builtins.int]] = None,
+                 contact_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 email_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 item_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pmsg_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 sms_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 tts_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 webhook_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 webhook_status: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Msc Sub Subscription resource.
@@ -449,14 +449,14 @@ class MscSubSubscription(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 email_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 item_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pmsg_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 sms_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 tts_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 webhook_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 webhook_status: Optional[pulumi.Input[_builtins.int]] = None,
+                 contact_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 email_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 item_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pmsg_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 sms_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 tts_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 webhook_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 webhook_status: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -488,16 +488,16 @@ class MscSubSubscription(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            channel: Optional[pulumi.Input[_builtins.str]] = None,
-            contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            email_status: Optional[pulumi.Input[_builtins.int]] = None,
-            item_name: Optional[pulumi.Input[_builtins.str]] = None,
-            pmsg_status: Optional[pulumi.Input[_builtins.int]] = None,
-            sms_status: Optional[pulumi.Input[_builtins.int]] = None,
-            tts_status: Optional[pulumi.Input[_builtins.int]] = None,
-            webhook_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            webhook_status: Optional[pulumi.Input[_builtins.int]] = None) -> 'MscSubSubscription':
+            channel: pulumi.Input[Optional[_builtins.str]] = None,
+            contact_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            email_status: pulumi.Input[Optional[_builtins.int]] = None,
+            item_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pmsg_status: pulumi.Input[Optional[_builtins.int]] = None,
+            sms_status: pulumi.Input[Optional[_builtins.int]] = None,
+            tts_status: pulumi.Input[Optional[_builtins.int]] = None,
+            webhook_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            webhook_status: pulumi.Input[Optional[_builtins.int]] = None) -> 'MscSubSubscription':
         """
         Get an existing MscSubSubscription resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

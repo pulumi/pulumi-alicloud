@@ -54,7 +54,7 @@ class DhcpOptionsSetAssociateVpcArgsDict(TypedDict):
     """
     The ID of the VPC network that is associated with the DHCP options set.
     """
-    associate_status: NotRequired[pulumi.Input[_builtins.str]]
+    associate_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The status of the VPC associated with the DHCP option set.
     """
@@ -63,7 +63,7 @@ class DhcpOptionsSetAssociateVpcArgsDict(TypedDict):
 class DhcpOptionsSetAssociateVpcArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[_builtins.str],
-                 associate_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 associate_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC network that is associated with the DHCP options set.
         :param pulumi.Input[_builtins.str] associate_status: The status of the VPC associated with the DHCP option set.
@@ -86,23 +86,23 @@ class DhcpOptionsSetAssociateVpcArgs:
 
     @_builtins.property
     @pulumi.getter(name="associateStatus")
-    def associate_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def associate_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the VPC associated with the DHCP option set.
         """
         return pulumi.get(self, "associate_status")
 
     @associate_status.setter
-    def associate_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def associate_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "associate_status", value)
 
 
 class NatGatewayAccessModeArgsDict(TypedDict):
-    mode_value: NotRequired[pulumi.Input[_builtins.str]]
+    mode_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mode of Access. Valid values:
     """
-    tunnel_type: NotRequired[pulumi.Input[_builtins.str]]
+    tunnel_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
     """
@@ -110,8 +110,8 @@ class NatGatewayAccessModeArgsDict(TypedDict):
 @pulumi.input_type
 class NatGatewayAccessModeArgs:
     def __init__(__self__, *,
-                 mode_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 mode_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mode_value: The mode of Access. Valid values:
         :param pulumi.Input[_builtins.str] tunnel_type: The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
@@ -123,26 +123,26 @@ class NatGatewayAccessModeArgs:
 
     @_builtins.property
     @pulumi.getter(name="modeValue")
-    def mode_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode of Access. Valid values:
         """
         return pulumi.get(self, "mode_value")
 
     @mode_value.setter
-    def mode_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode_value", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelType")
-    def tunnel_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tunnel_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
         """
         return pulumi.get(self, "tunnel_type")
 
     @tunnel_type.setter
-    def tunnel_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tunnel_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tunnel_type", value)
 
 
@@ -194,44 +194,44 @@ class NetworkAclAttachmentResourceArgs:
 
 
 class NetworkAclEgressAclEntryArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the outbound rule.
     The description must be 1 to 256 characters in length and cannot start with http:// or https.
     """
-    destination_cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
+    destination_cidr_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The destination CIDR block, or the prefix list instance ID.
     """
-    entry_type: NotRequired[pulumi.Input[_builtins.str]]
+    entry_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The route entry type. Value
     custom custom rule
     system system rules
     service Cloud service rules
     """
-    ip_version: NotRequired[pulumi.Input[_builtins.str]]
+    ip_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
     """
-    network_acl_entry_name: NotRequired[pulumi.Input[_builtins.str]]
+    network_acl_entry_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the outbound rule entry.
     The name must be 1 to 128 characters in length and cannot start with http:// or https.
     """
-    policy: NotRequired[pulumi.Input[_builtins.str]]
+    policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The action to be performed on network traffic that matches the rule. Valid values:
     - accept
     - drop
     """
-    port: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The destination port range of the outbound rule.
     When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
     When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
     """
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protocol type. Value:
     - icmp: Network Control Message Protocol.
@@ -244,14 +244,14 @@ class NetworkAclEgressAclEntryArgsDict(TypedDict):
 @pulumi.input_type
 class NetworkAclEgressAclEntryArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_acl_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_acl_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the outbound rule.
                The description must be 1 to 256 characters in length and cannot start with http:// or https.
@@ -295,7 +295,7 @@ class NetworkAclEgressAclEntryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the outbound rule.
         The description must be 1 to 256 characters in length and cannot start with http:// or https.
@@ -303,24 +303,24 @@ class NetworkAclEgressAclEntryArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationCidrIp")
-    def destination_cidr_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination CIDR block, or the prefix list instance ID.
         """
         return pulumi.get(self, "destination_cidr_ip")
 
     @destination_cidr_ip.setter
-    def destination_cidr_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_cidr_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_cidr_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="entryType")
-    def entry_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The route entry type. Value
         custom custom rule
@@ -330,24 +330,24 @@ class NetworkAclEgressAclEntryArgs:
         return pulumi.get(self, "entry_type")
 
     @entry_type.setter
-    def entry_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAclEntryName")
-    def network_acl_entry_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_acl_entry_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the outbound rule entry.
         The name must be 1 to 128 characters in length and cannot start with http:// or https.
@@ -355,12 +355,12 @@ class NetworkAclEgressAclEntryArgs:
         return pulumi.get(self, "network_acl_entry_name")
 
     @network_acl_entry_name.setter
-    def network_acl_entry_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_acl_entry_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_acl_entry_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action to be performed on network traffic that matches the rule. Valid values:
         - accept
@@ -369,12 +369,12 @@ class NetworkAclEgressAclEntryArgs:
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination port range of the outbound rule.
         When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
@@ -383,12 +383,12 @@ class NetworkAclEgressAclEntryArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type. Value:
         - icmp: Network Control Message Protocol.
@@ -400,36 +400,36 @@ class NetworkAclEgressAclEntryArgs:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
 
 class NetworkAclEntriesEgressArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the egress entry.
     """
-    destination_cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
+    destination_cidr_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The destination ip of the egress entry.
     """
-    entry_type: NotRequired[pulumi.Input[_builtins.str]]
+    entry_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the egress entry.
     """
-    policy: NotRequired[pulumi.Input[_builtins.str]]
+    policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The policy of the egress entry. It must be `accept` or `drop`.
     """
-    port: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The port of the egress entry.
     """
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protocol of the egress entry.
     """
@@ -437,13 +437,13 @@ class NetworkAclEntriesEgressArgsDict(TypedDict):
 @pulumi.input_type
 class NetworkAclEntriesEgressArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the egress entry.
         :param pulumi.Input[_builtins.str] destination_cidr_ip: The destination ip of the egress entry.
@@ -470,115 +470,115 @@ class NetworkAclEntriesEgressArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the egress entry.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationCidrIp")
-    def destination_cidr_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination ip of the egress entry.
         """
         return pulumi.get(self, "destination_cidr_ip")
 
     @destination_cidr_ip.setter
-    def destination_cidr_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_cidr_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_cidr_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="entryType")
-    def entry_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
         """
         return pulumi.get(self, "entry_type")
 
     @entry_type.setter
-    def entry_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the egress entry.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy of the egress entry. It must be `accept` or `drop`.
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port of the egress entry.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol of the egress entry.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
 
 class NetworkAclEntriesIngressArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the ingress entry.
     """
-    entry_type: NotRequired[pulumi.Input[_builtins.str]]
+    entry_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the ingress entry.
     """
-    policy: NotRequired[pulumi.Input[_builtins.str]]
+    policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The policy of the ingress entry. It must be `accept` or `drop`.
     """
-    port: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The port of the ingress entry.
     """
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protocol of the ingress entry.
     """
-    source_cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
+    source_cidr_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The source ip of the ingress entry.
     """
@@ -586,13 +586,13 @@ class NetworkAclEntriesIngressArgsDict(TypedDict):
 @pulumi.input_type
 class NetworkAclEntriesIngressArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the ingress entry.
         :param pulumi.Input[_builtins.str] entry_type: The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
@@ -619,121 +619,121 @@ class NetworkAclEntriesIngressArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the ingress entry.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="entryType")
-    def entry_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
         """
         return pulumi.get(self, "entry_type")
 
     @entry_type.setter
-    def entry_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the ingress entry.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy of the ingress entry. It must be `accept` or `drop`.
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port of the ingress entry.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol of the ingress entry.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceCidrIp")
-    def source_cidr_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source ip of the ingress entry.
         """
         return pulumi.get(self, "source_cidr_ip")
 
     @source_cidr_ip.setter
-    def source_cidr_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_cidr_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_cidr_ip", value)
 
 
 class NetworkAclIngressAclEntryArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the inbound rule.
     The description must be 1 to 256 characters in length and cannot start with http:// or https.
     """
-    entry_type: NotRequired[pulumi.Input[_builtins.str]]
+    entry_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The route entry type. Value
     """
-    ip_version: NotRequired[pulumi.Input[_builtins.str]]
+    ip_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
     """
-    network_acl_entry_name: NotRequired[pulumi.Input[_builtins.str]]
+    network_acl_entry_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the inbound rule entry.
     The name must be 1 to 128 characters in length and cannot start with http:// or https.
     """
-    policy: NotRequired[pulumi.Input[_builtins.str]]
+    policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The action to be performed on network traffic that matches the rule. Valid values:
     - accept
     - drop
     """
-    port: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The source port range of the inbound rule.
     When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
     When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
     """
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protocol type. Value:
     - icmp: Network Control Message Protocol.
@@ -742,7 +742,7 @@ class NetworkAclIngressAclEntryArgsDict(TypedDict):
     - udp: User Datagram Protocol.
     - all: Supports all protocols.
     """
-    source_cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
+    source_cidr_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The source CIDR block, or the prefix list instance ID.
     """
@@ -750,14 +750,14 @@ class NetworkAclIngressAclEntryArgsDict(TypedDict):
 @pulumi.input_type
 class NetworkAclIngressAclEntryArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_acl_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_acl_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: Description of the inbound rule.
                The description must be 1 to 256 characters in length and cannot start with http:// or https.
@@ -798,7 +798,7 @@ class NetworkAclIngressAclEntryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the inbound rule.
         The description must be 1 to 256 characters in length and cannot start with http:// or https.
@@ -806,36 +806,36 @@ class NetworkAclIngressAclEntryArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="entryType")
-    def entry_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The route entry type. Value
         """
         return pulumi.get(self, "entry_type")
 
     @entry_type.setter
-    def entry_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP protocol version of the route entry. Valid values: "Ipv4" and "ipv6'
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAclEntryName")
-    def network_acl_entry_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_acl_entry_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the inbound rule entry.
         The name must be 1 to 128 characters in length and cannot start with http:// or https.
@@ -843,12 +843,12 @@ class NetworkAclIngressAclEntryArgs:
         return pulumi.get(self, "network_acl_entry_name")
 
     @network_acl_entry_name.setter
-    def network_acl_entry_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_acl_entry_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_acl_entry_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action to be performed on network traffic that matches the rule. Valid values:
         - accept
@@ -857,12 +857,12 @@ class NetworkAclIngressAclEntryArgs:
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source port range of the inbound rule.
         When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.
@@ -871,12 +871,12 @@ class NetworkAclIngressAclEntryArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type. Value:
         - icmp: Network Control Message Protocol.
@@ -888,19 +888,19 @@ class NetworkAclIngressAclEntryArgs:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceCidrIp")
-    def source_cidr_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source CIDR block, or the prefix list instance ID.
         """
         return pulumi.get(self, "source_cidr_ip")
 
     @source_cidr_ip.setter
-    def source_cidr_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_cidr_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_cidr_ip", value)
 
 
@@ -913,7 +913,7 @@ class NetworkAclResourceArgsDict(TypedDict):
     """
     The type of the associated resource.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The state of the network ACL.
     """
@@ -923,7 +923,7 @@ class NetworkAclResourceArgs:
     def __init__(__self__, *,
                  resource_id: pulumi.Input[_builtins.str],
                  resource_type: pulumi.Input[_builtins.str],
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_id: The ID of the associated resource.
         :param pulumi.Input[_builtins.str] resource_type: The type of the associated resource.
@@ -960,25 +960,25 @@ class NetworkAclResourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the network ACL.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 class NetworkIpv6CidrBlockArgsDict(TypedDict):
-    ipv6_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    ipv6_cidr_block: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IPv6 CIDR block of the default VPC.
 
     > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
     """
-    ipv6_isp: NotRequired[pulumi.Input[_builtins.str]]
+    ipv6_isp: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IPv6 address segment type of the VPC. Value:
     - `BGP` (default): Alibaba Cloud BGP IPv6.
@@ -992,8 +992,8 @@ class NetworkIpv6CidrBlockArgsDict(TypedDict):
 @pulumi.input_type
 class NetworkIpv6CidrBlockArgs:
     def __init__(__self__, *,
-                 ipv6_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None):
+                 ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_isp: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ipv6_cidr_block: The IPv6 CIDR block of the default VPC.
                
@@ -1013,7 +1013,7 @@ class NetworkIpv6CidrBlockArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipv6CidrBlock")
-    def ipv6_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 CIDR block of the default VPC.
 
@@ -1022,12 +1022,12 @@ class NetworkIpv6CidrBlockArgs:
         return pulumi.get(self, "ipv6_cidr_block")
 
     @ipv6_cidr_block.setter
-    def ipv6_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Isp")
-    def ipv6_isp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 address segment type of the VPC. Value:
         - `BGP` (default): Alibaba Cloud BGP IPv6.
@@ -1040,16 +1040,16 @@ class NetworkIpv6CidrBlockArgs:
         return pulumi.get(self, "ipv6_isp")
 
     @ipv6_isp.setter
-    def ipv6_isp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_isp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_isp", value)
 
 
 class PrefixListEntryArgsDict(TypedDict):
-    cidr: NotRequired[pulumi.Input[_builtins.str]]
+    cidr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CIDR address block of the prefix list.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
     """
@@ -1057,8 +1057,8 @@ class PrefixListEntryArgsDict(TypedDict):
 @pulumi.input_type
 class PrefixListEntryArgs:
     def __init__(__self__, *,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cidr: The CIDR address block of the prefix list.
         :param pulumi.Input[_builtins.str] description: The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
@@ -1070,59 +1070,59 @@ class PrefixListEntryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR address block of the prefix list.
         """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
-    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class PrefixListPrefixListAssociationArgsDict(TypedDict):
-    owner_id: NotRequired[pulumi.Input[_builtins.str]]
+    owner_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the Alibaba Cloud account (primary account) to which the prefix list belongs.
     """
-    prefix_list_id: NotRequired[pulumi.Input[_builtins.str]]
+    prefix_list_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the query Prefix List.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Reason when the association fails.
     """
-    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The region ID of the prefix list to be queried.
     """
-    resource_id: NotRequired[pulumi.Input[_builtins.str]]
+    resource_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the associated resource.
     """
-    resource_type: NotRequired[pulumi.Input[_builtins.str]]
+    resource_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The associated resource type. Value:-**vpcRouteTable**: The VPC route table.-**trRouteTable**: the routing table of the forwarding router.
     """
-    resource_uid: NotRequired[pulumi.Input[_builtins.str]]
+    resource_uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the Alibaba Cloud account (primary account) to which the resource bound to the prefix list belongs.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Resource attribute fields that represent the status of the resource.
     """
@@ -1130,14 +1130,14 @@ class PrefixListPrefixListAssociationArgsDict(TypedDict):
 @pulumi.input_type
 class PrefixListPrefixListAssociationArgs:
     def __init__(__self__, *,
-                 owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_list_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_list_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] owner_id: The ID of the Alibaba Cloud account (primary account) to which the prefix list belongs.
         :param pulumi.Input[_builtins.str] prefix_list_id: The ID of the query Prefix List.
@@ -1167,122 +1167,122 @@ class PrefixListPrefixListAssociationArgs:
 
     @_builtins.property
     @pulumi.getter(name="ownerId")
-    def owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud account (primary account) to which the prefix list belongs.
         """
         return pulumi.get(self, "owner_id")
 
     @owner_id.setter
-    def owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixListId")
-    def prefix_list_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix_list_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the query Prefix List.
         """
         return pulumi.get(self, "prefix_list_id")
 
     @prefix_list_id.setter
-    def prefix_list_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix_list_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix_list_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reason when the association fails.
         """
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the prefix list to be queried.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the associated resource.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The associated resource type. Value:-**vpcRouteTable**: The VPC route table.-**trRouteTable**: the routing table of the forwarding router.
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceUid")
-    def resource_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud account (primary account) to which the resource bound to the prefix list belongs.
         """
         return pulumi.get(self, "resource_uid")
 
     @resource_uid.setter
-    def resource_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_uid", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attribute fields that represent the status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 class TrafficMirrorFilterEgressRuleArgsDict(TypedDict):
     action: pulumi.Input[_builtins.str]
     protocol: pulumi.Input[_builtins.str]
-    destination_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-    destination_port_range: NotRequired[pulumi.Input[_builtins.str]]
-    priority: NotRequired[pulumi.Input[_builtins.int]]
-    source_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-    source_port_range: NotRequired[pulumi.Input[_builtins.str]]
-    traffic_mirror_filter_rule_status: NotRequired[pulumi.Input[_builtins.str]]
+    destination_cidr_block: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    destination_port_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    priority: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    source_cidr_block: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    source_port_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    traffic_mirror_filter_rule_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class TrafficMirrorFilterEgressRuleArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[_builtins.str],
                  protocol: pulumi.Input[_builtins.str],
-                 destination_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_mirror_filter_rule_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_mirror_filter_rule_status: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "protocol", protocol)
         if destination_cidr_block is not None:
@@ -1318,80 +1318,80 @@ class TrafficMirrorFilterEgressRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="destinationCidrBlock")
-    def destination_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "destination_cidr_block")
 
     @destination_cidr_block.setter
-    def destination_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationPortRange")
-    def destination_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "destination_port_range")
 
     @destination_port_range.setter
-    def destination_port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_port_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceCidrBlock")
-    def source_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source_cidr_block")
 
     @source_cidr_block.setter
-    def source_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcePortRange")
-    def source_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source_port_range")
 
     @source_port_range.setter
-    def source_port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_port_range", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMirrorFilterRuleStatus")
-    def traffic_mirror_filter_rule_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_mirror_filter_rule_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "traffic_mirror_filter_rule_status")
 
     @traffic_mirror_filter_rule_status.setter
-    def traffic_mirror_filter_rule_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_mirror_filter_rule_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_mirror_filter_rule_status", value)
 
 
 class TrafficMirrorFilterIngressRuleArgsDict(TypedDict):
     action: pulumi.Input[_builtins.str]
     protocol: pulumi.Input[_builtins.str]
-    destination_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-    destination_port_range: NotRequired[pulumi.Input[_builtins.str]]
-    priority: NotRequired[pulumi.Input[_builtins.int]]
-    source_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
-    source_port_range: NotRequired[pulumi.Input[_builtins.str]]
-    traffic_mirror_filter_rule_status: NotRequired[pulumi.Input[_builtins.str]]
+    destination_cidr_block: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    destination_port_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    priority: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    source_cidr_block: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    source_port_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    traffic_mirror_filter_rule_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class TrafficMirrorFilterIngressRuleArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[_builtins.str],
                  protocol: pulumi.Input[_builtins.str],
-                 destination_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_mirror_filter_rule_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_mirror_filter_rule_status: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "protocol", protocol)
         if destination_cidr_block is not None:
@@ -1427,81 +1427,81 @@ class TrafficMirrorFilterIngressRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="destinationCidrBlock")
-    def destination_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "destination_cidr_block")
 
     @destination_cidr_block.setter
-    def destination_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationPortRange")
-    def destination_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "destination_port_range")
 
     @destination_port_range.setter
-    def destination_port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_port_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceCidrBlock")
-    def source_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source_cidr_block")
 
     @source_cidr_block.setter
-    def source_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcePortRange")
-    def source_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source_port_range")
 
     @source_port_range.setter
-    def source_port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_port_range", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMirrorFilterRuleStatus")
-    def traffic_mirror_filter_rule_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_mirror_filter_rule_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "traffic_mirror_filter_rule_status")
 
     @traffic_mirror_filter_rule_status.setter
-    def traffic_mirror_filter_rule_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_mirror_filter_rule_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_mirror_filter_rule_status", value)
 
 
 class VPCRouteEntryNextHopArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.int]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Whether the route is available.
     """
-    next_hop_region_id: NotRequired[pulumi.Input[_builtins.str]]
+    next_hop_region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The region of the next instance.
     """
-    next_hop_related_info: NotRequired[pulumi.Input['VPCRouteEntryNextHopNextHopRelatedInfoArgsDict']]
+    next_hop_related_info: NotRequired[pulumi.Input[Optional['VPCRouteEntryNextHopNextHopRelatedInfoArgs']]]
     """
     Next hop information.
     """
-    nexthop_id: NotRequired[pulumi.Input[_builtins.str]]
+    nexthop_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ID of next hop
     """
-    nexthop_type: NotRequired[pulumi.Input[_builtins.str]]
+    nexthop_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     type of next hop
     """
-    weight: NotRequired[pulumi.Input[_builtins.int]]
+    weight: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The weight of the route entry.
     """
@@ -1509,12 +1509,12 @@ class VPCRouteEntryNextHopArgsDict(TypedDict):
 @pulumi.input_type
 class VPCRouteEntryNextHopArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 next_hop_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_related_info: Optional[pulumi.Input['VPCRouteEntryNextHopNextHopRelatedInfoArgs']] = None,
-                 nexthop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 next_hop_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_related_info: pulumi.Input[Optional['VPCRouteEntryNextHopNextHopRelatedInfoArgs']] = None,
+                 nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nexthop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] enabled: Whether the route is available.
         :param pulumi.Input[_builtins.str] next_hop_region_id: The region of the next instance.
@@ -1538,87 +1538,87 @@ class VPCRouteEntryNextHopArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether the route is available.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopRegionId")
-    def next_hop_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the next instance.
         """
         return pulumi.get(self, "next_hop_region_id")
 
     @next_hop_region_id.setter
-    def next_hop_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopRelatedInfo")
-    def next_hop_related_info(self) -> Optional[pulumi.Input['VPCRouteEntryNextHopNextHopRelatedInfoArgs']]:
+    def next_hop_related_info(self) -> pulumi.Input[Optional['VPCRouteEntryNextHopNextHopRelatedInfoArgs']]:
         """
         Next hop information.
         """
         return pulumi.get(self, "next_hop_related_info")
 
     @next_hop_related_info.setter
-    def next_hop_related_info(self, value: Optional[pulumi.Input['VPCRouteEntryNextHopNextHopRelatedInfoArgs']]):
+    def next_hop_related_info(self, value: pulumi.Input[Optional['VPCRouteEntryNextHopNextHopRelatedInfoArgs']]):
         pulumi.set(self, "next_hop_related_info", value)
 
     @_builtins.property
     @pulumi.getter(name="nexthopId")
-    def nexthop_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nexthop_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of next hop
         """
         return pulumi.get(self, "nexthop_id")
 
     @nexthop_id.setter
-    def nexthop_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nexthop_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nexthop_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nexthopType")
-    def nexthop_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nexthop_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         type of next hop
         """
         return pulumi.get(self, "nexthop_type")
 
     @nexthop_type.setter
-    def nexthop_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nexthop_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nexthop_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight of the route entry.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
 class VPCRouteEntryNextHopNextHopRelatedInfoArgsDict(TypedDict):
-    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     InstanceId
     """
-    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     InstanceType
     """
-    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The region of the instance associated with the next hop.
     """
@@ -1626,9 +1626,9 @@ class VPCRouteEntryNextHopNextHopRelatedInfoArgsDict(TypedDict):
 @pulumi.input_type
 class VPCRouteEntryNextHopNextHopRelatedInfoArgs:
     def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] instance_id: InstanceId
         :param pulumi.Input[_builtins.str] instance_type: InstanceType
@@ -1643,38 +1643,38 @@ class VPCRouteEntryNextHopNextHopRelatedInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         InstanceId
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         InstanceType
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the instance associated with the next hop.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
 
@@ -1683,11 +1683,11 @@ class VPCRouteEntryRoutePublishTargetArgsDict(TypedDict):
     """
     Route publish target type
     """
-    publish_status: NotRequired[pulumi.Input[_builtins.str]]
+    publish_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Route Publish Status
     """
-    target_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    target_instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Route publish target instance id.
     """
@@ -1696,8 +1696,8 @@ class VPCRouteEntryRoutePublishTargetArgsDict(TypedDict):
 class VPCRouteEntryRoutePublishTargetArgs:
     def __init__(__self__, *,
                  target_type: pulumi.Input[_builtins.str],
-                 publish_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_instance_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 publish_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_instance_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] target_type: Route publish target type
         :param pulumi.Input[_builtins.str] publish_status: Route Publish Status
@@ -1723,26 +1723,26 @@ class VPCRouteEntryRoutePublishTargetArgs:
 
     @_builtins.property
     @pulumi.getter(name="publishStatus")
-    def publish_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def publish_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Route Publish Status
         """
         return pulumi.get(self, "publish_status")
 
     @publish_status.setter
-    def publish_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def publish_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "publish_status", value)
 
     @_builtins.property
     @pulumi.getter(name="targetInstanceId")
-    def target_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Route publish target instance id.
         """
         return pulumi.get(self, "target_instance_id")
 
     @target_instance_id.setter
-    def target_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_instance_id", value)
 
 

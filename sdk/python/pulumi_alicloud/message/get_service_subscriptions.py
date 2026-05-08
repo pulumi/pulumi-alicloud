@@ -198,13 +198,13 @@ def get_service_subscriptions(ids: Optional[Sequence[_builtins.str]] = None,
         subscription_name=pulumi.get(__ret__, 'subscription_name'),
         subscriptions=pulumi.get(__ret__, 'subscriptions'),
         topic_name=pulumi.get(__ret__, 'topic_name'))
-def get_service_subscriptions_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                     name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                     page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                     subscription_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     topic_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_service_subscriptions_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                     name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                     page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                     subscription_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceSubscriptionsResult]:
     """
     This data source provides the Message Notification Service Subscriptions of the current Alibaba Cloud user.

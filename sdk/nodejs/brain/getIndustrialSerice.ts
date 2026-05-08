@@ -95,5 +95,5 @@ export interface GetIndustrialSericeOutputArgs {
      *
      * > **NOTE:** Setting `enable = "On"` to open the Brain Industrial service. The service can not closed once it is opened.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
 }

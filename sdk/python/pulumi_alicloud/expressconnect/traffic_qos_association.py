@@ -20,8 +20,8 @@ __all__ = ['TrafficQosAssociationArgs', 'TrafficQosAssociation']
 class TrafficQosAssociationArgs:
     def __init__(__self__, *,
                  qos_id: pulumi.Input[_builtins.str],
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TrafficQosAssociation resource.
 
@@ -49,36 +49,36 @@ class TrafficQosAssociationArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the associated instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the associated instance. Value: **physical connection** physical connection.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
 
 @pulumi.input_type
 class _TrafficQosAssociationState:
     def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrafficQosAssociation resources.
 
@@ -98,50 +98,50 @@ class _TrafficQosAssociationState:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the associated instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the associated instance. Value: **physical connection** physical connection.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="qosId")
-    def qos_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The QoS policy ID.
         """
         return pulumi.get(self, "qos_id")
 
     @qos_id.setter
-    def qos_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the associated instance. Value:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -151,9 +151,9 @@ class TrafficQosAssociation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Express Connect Traffic Qos Association resource. Express Connect QoS associated resources.
@@ -262,9 +262,9 @@ class TrafficQosAssociation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -290,10 +290,10 @@ class TrafficQosAssociation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            qos_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'TrafficQosAssociation':
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'TrafficQosAssociation':
         """
         Get an existing TrafficQosAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

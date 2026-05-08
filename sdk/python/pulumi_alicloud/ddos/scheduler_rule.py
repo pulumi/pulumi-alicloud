@@ -24,8 +24,8 @@ class SchedulerRuleArgs:
                  rule_name: pulumi.Input[_builtins.str],
                  rule_type: pulumi.Input[_builtins.int],
                  rules: pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]],
-                 param: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 param: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SchedulerRule resource.
 
@@ -87,38 +87,38 @@ class SchedulerRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def param(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def param(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
         """
         return pulumi.get(self, "param")
 
     @param.setter
-    def param(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def param(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "param", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
 
 @pulumi.input_type
 class _SchedulerRuleState:
     def __init__(__self__, *,
-                 cname: Optional[pulumi.Input[_builtins.str]] = None,
-                 param: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]] = None):
+                 cname: pulumi.Input[Optional[_builtins.str]] = None,
+                 param: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering SchedulerRule resources.
 
@@ -147,55 +147,55 @@ class _SchedulerRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def cname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cname is the traffic scheduler corresponding to rules.
         """
         return pulumi.get(self, "cname")
 
     @cname.setter
-    def cname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cname", value)
 
     @_builtins.property
     @pulumi.getter
-    def param(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def param(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
         """
         return pulumi.get(self, "param")
 
     @param.setter
-    def param(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def param(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "param", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the rule.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleType")
-    def rule_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rule_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rule type. Valid values:
         `2`: tiered protection.
@@ -205,19 +205,19 @@ class _SchedulerRuleState:
         return pulumi.get(self, "rule_type")
 
     @rule_type.setter
-    def rule_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rule_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rule_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]]:
         """
         The information about the scheduling rules. See `rules` below.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SchedulerRuleRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
 
@@ -227,11 +227,11 @@ class SchedulerRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 param: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SchedulerRuleRuleArgs', 'SchedulerRuleRuleArgsDict']]]]] = None,
+                 param: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SchedulerRuleRuleArgs', 'SchedulerRuleRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createschedulerrule).
@@ -363,11 +363,11 @@ class SchedulerRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 param: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SchedulerRuleRuleArgs', 'SchedulerRuleRuleArgsDict']]]]] = None,
+                 param: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SchedulerRuleRuleArgs', 'SchedulerRuleRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -399,12 +399,12 @@ class SchedulerRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cname: Optional[pulumi.Input[_builtins.str]] = None,
-            param: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_type: Optional[pulumi.Input[_builtins.int]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SchedulerRuleRuleArgs', 'SchedulerRuleRuleArgsDict']]]]] = None) -> 'SchedulerRule':
+            cname: pulumi.Input[Optional[_builtins.str]] = None,
+            param: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_type: pulumi.Input[Optional[_builtins.int]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SchedulerRuleRuleArgs', 'SchedulerRuleRuleArgsDict']]]]] = None) -> 'SchedulerRule':
         """
         Get an existing SchedulerRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

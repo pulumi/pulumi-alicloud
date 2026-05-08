@@ -330,67 +330,67 @@ export interface ClusterState {
     /**
      * The application configurations of EMR cluster. See `applicationConfigs` below.
      */
-    applicationConfigs?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterApplicationConfig>[]>;
+    applicationConfigs?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterApplicationConfig>[] | undefined>;
     /**
      * The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
      */
-    applications?: pulumi.Input<pulumi.Input<string>[]>;
+    applications?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrapScripts` below.
      */
-    bootstrapScripts?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterBootstrapScript>[]>;
+    bootstrapScripts?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterBootstrapScript>[] | undefined>;
     /**
      * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
      */
-    clusterType?: pulumi.Input<string>;
+    clusterType?: pulumi.Input<string | undefined>;
     /**
      * The deletion protection of EMR cluster.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The deploy mode of EMR cluster. Supported value: NORMAL or HA.
      */
-    deployMode?: pulumi.Input<string>;
+    deployMode?: pulumi.Input<string | undefined>;
     /**
      * The log collect strategy of EMR cluster.
      */
-    logCollectStrategy?: pulumi.Input<string>;
+    logCollectStrategy?: pulumi.Input<string | undefined>;
     /**
      * The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
      */
-    nodeAttributes?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeAttribute>[]>;
+    nodeAttributes?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeAttribute>[] | undefined>;
     /**
      * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below. **NOTE:** Since version 1.227.0, the type of `nodeGroups` changed from Set to List.
      */
-    nodeGroups?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroup>[]>;
+    nodeGroups?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroup>[] | undefined>;
     /**
      * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `paymentType` can be modified.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
      */
-    releaseVersion?: pulumi.Input<string>;
+    releaseVersion?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the emr-cluster belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
      */
-    securityMode?: pulumi.Input<string>;
+    securityMode?: pulumi.Input<string | undefined>;
     /**
      * The detail configuration of subscription payment type. See `subscriptionConfig` below.
      */
-    subscriptionConfig?: pulumi.Input<inputs.emrv2.ClusterSubscriptionConfig>;
+    subscriptionConfig?: pulumi.Input<inputs.emrv2.ClusterSubscriptionConfig | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -400,7 +400,7 @@ export interface ClusterArgs {
     /**
      * The application configurations of EMR cluster. See `applicationConfigs` below.
      */
-    applicationConfigs?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterApplicationConfig>[]>;
+    applicationConfigs?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterApplicationConfig>[] | undefined>;
     /**
      * The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
      */
@@ -408,7 +408,7 @@ export interface ClusterArgs {
     /**
      * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrapScripts` below.
      */
-    bootstrapScripts?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterBootstrapScript>[]>;
+    bootstrapScripts?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterBootstrapScript>[] | undefined>;
     /**
      * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
      */
@@ -420,15 +420,15 @@ export interface ClusterArgs {
     /**
      * The deletion protection of EMR cluster.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The deploy mode of EMR cluster. Supported value: NORMAL or HA.
      */
-    deployMode?: pulumi.Input<string>;
+    deployMode?: pulumi.Input<string | undefined>;
     /**
      * The log collect strategy of EMR cluster.
      */
-    logCollectStrategy?: pulumi.Input<string>;
+    logCollectStrategy?: pulumi.Input<string | undefined>;
     /**
      * The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
      */
@@ -440,7 +440,7 @@ export interface ClusterArgs {
     /**
      * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `paymentType` can be modified.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
      */
@@ -448,17 +448,17 @@ export interface ClusterArgs {
     /**
      * The Id of resource group which the emr-cluster belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
      */
-    securityMode?: pulumi.Input<string>;
+    securityMode?: pulumi.Input<string | undefined>;
     /**
      * The detail configuration of subscription payment type. See `subscriptionConfig` below.
      */
-    subscriptionConfig?: pulumi.Input<inputs.emrv2.ClusterSubscriptionConfig>;
+    subscriptionConfig?: pulumi.Input<inputs.emrv2.ClusterSubscriptionConfig | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

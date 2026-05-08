@@ -19,12 +19,12 @@ __all__ = ['QueueArgs', 'Queue']
 @pulumi.input_type
 class QueueArgs:
     def __init__(__self__, *,
-                 delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 polling_wait_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Queue resource.
 
@@ -50,86 +50,86 @@ class QueueArgs:
 
     @_builtins.property
     @pulumi.getter(name="delaySeconds")
-    def delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
         """
         return pulumi.get(self, "delay_seconds")
 
     @delay_seconds.setter
-    def delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumMessageSize")
-    def maximum_message_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_message_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This indicates the maximum length, in bytes, of any message body sent to the queue. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         """
         return pulumi.get(self, "maximum_message_size")
 
     @maximum_message_size.setter
-    def maximum_message_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_message_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_message_size", value)
 
     @_builtins.property
     @pulumi.getter(name="messageRetentionPeriod")
-    def message_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def message_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue. Valid value range: 60-604800 seconds, i.e., 1 minutes to 7 days. Default value to 345600.
         """
         return pulumi.get(self, "message_retention_period")
 
     @message_retention_period.setter
-    def message_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def message_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "message_retention_period", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters .
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="pollingWaitSeconds")
-    def polling_wait_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def polling_wait_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out. Valid value range: 0-30 seconds. Default value to 0.
         """
         return pulumi.get(self, "polling_wait_seconds")
 
     @polling_wait_seconds.setter
-    def polling_wait_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def polling_wait_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "polling_wait_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="visibilityTimeout")
-    def visibility_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def visibility_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The VisibilityTimeout attribute of the queue. A dequeued messages will change from active (visible) status to inactive (invisible) status, and this attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period. Valid value range: 1-43200 seconds, i.e., 1 seconds to 12 hours. Default value to 30.
         """
         return pulumi.get(self, "visibility_timeout")
 
     @visibility_timeout.setter
-    def visibility_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def visibility_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "visibility_timeout", value)
 
 
 @pulumi.input_type
 class _QueueState:
     def __init__(__self__, *,
-                 delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 polling_wait_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Queue resources.
 
@@ -155,74 +155,74 @@ class _QueueState:
 
     @_builtins.property
     @pulumi.getter(name="delaySeconds")
-    def delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
         """
         return pulumi.get(self, "delay_seconds")
 
     @delay_seconds.setter
-    def delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumMessageSize")
-    def maximum_message_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_message_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This indicates the maximum length, in bytes, of any message body sent to the queue. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         """
         return pulumi.get(self, "maximum_message_size")
 
     @maximum_message_size.setter
-    def maximum_message_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_message_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_message_size", value)
 
     @_builtins.property
     @pulumi.getter(name="messageRetentionPeriod")
-    def message_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def message_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue. Valid value range: 60-604800 seconds, i.e., 1 minutes to 7 days. Default value to 345600.
         """
         return pulumi.get(self, "message_retention_period")
 
     @message_retention_period.setter
-    def message_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def message_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "message_retention_period", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters .
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="pollingWaitSeconds")
-    def polling_wait_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def polling_wait_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out. Valid value range: 0-30 seconds. Default value to 0.
         """
         return pulumi.get(self, "polling_wait_seconds")
 
     @polling_wait_seconds.setter
-    def polling_wait_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def polling_wait_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "polling_wait_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="visibilityTimeout")
-    def visibility_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def visibility_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The VisibilityTimeout attribute of the queue. A dequeued messages will change from active (visible) status to inactive (invisible) status, and this attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period. Valid value range: 1-43200 seconds, i.e., 1 seconds to 12 hours. Default value to 30.
         """
         return pulumi.get(self, "visibility_timeout")
 
     @visibility_timeout.setter
-    def visibility_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def visibility_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "visibility_timeout", value)
 
 
@@ -232,12 +232,12 @@ class Queue(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 polling_wait_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a MNS queue resource.
@@ -339,12 +339,12 @@ class Queue(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 polling_wait_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -370,12 +370,12 @@ class Queue(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-            message_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            polling_wait_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None) -> 'Queue':
+            delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+            message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> 'Queue':
         """
         Get an existing Queue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -212,14 +212,14 @@ def get_app_groups(enable_details: Optional[_builtins.bool] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         type=pulumi.get(__ret__, 'type'))
-def get_app_groups_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                          ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                          instance_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          resource_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_app_groups_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                          ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                          instance_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppGroupsResult]:
     """
     This data source provides the Open Search App Groups of the current Alibaba Cloud user.

@@ -199,73 +199,73 @@ export interface VpcEndpointServiceState {
     /**
      * The IP address version.
      */
-    addressIpVersion?: pulumi.Input<string>;
+    addressIpVersion?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
      */
-    autoAcceptConnection?: pulumi.Input<boolean>;
+    autoAcceptConnection?: pulumi.Input<boolean | undefined>;
     /**
      * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
      */
-    connectBandwidth?: pulumi.Input<number>;
+    connectBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The time when the endpoint service was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The payer of the endpoint service. Valid values:
      * - `Endpoint`: the service consumer.
      * - `EndpointService`: the service provider.
      */
-    payer?: pulumi.Input<string>;
+    payer?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region to which the endpoint service belongs.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The service state of the endpoint service.
      */
-    serviceBusinessStatus?: pulumi.Input<string>;
+    serviceBusinessStatus?: pulumi.Input<string | undefined>;
     /**
      * The description of the endpoint service.
      */
-    serviceDescription?: pulumi.Input<string>;
+    serviceDescription?: pulumi.Input<string | undefined>;
     /**
      * The domain name of the endpoint service.
      */
-    serviceDomain?: pulumi.Input<string>;
+    serviceDomain?: pulumi.Input<string | undefined>;
     /**
      * The service resource type. Value:
      */
-    serviceResourceType?: pulumi.Input<string>;
+    serviceResourceType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable IPv6 for the endpoint service. Valid values:
      */
-    serviceSupportIpv6?: pulumi.Input<boolean>;
+    serviceSupportIpv6?: pulumi.Input<boolean | undefined>;
     /**
      * The state of the endpoint service.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The list of tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the endpoint service.
      */
-    vpcEndpointServiceName?: pulumi.Input<string>;
+    vpcEndpointServiceName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
      */
-    zoneAffinityEnabled?: pulumi.Input<boolean>;
+    zoneAffinityEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -275,47 +275,47 @@ export interface VpcEndpointServiceArgs {
     /**
      * The IP address version.
      */
-    addressIpVersion?: pulumi.Input<string>;
+    addressIpVersion?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
      */
-    autoAcceptConnection?: pulumi.Input<boolean>;
+    autoAcceptConnection?: pulumi.Input<boolean | undefined>;
     /**
      * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
      */
-    connectBandwidth?: pulumi.Input<number>;
+    connectBandwidth?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The payer of the endpoint service. Valid values:
      * - `Endpoint`: the service consumer.
      * - `EndpointService`: the service provider.
      */
-    payer?: pulumi.Input<string>;
+    payer?: pulumi.Input<string | undefined>;
     /**
      * The resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The description of the endpoint service.
      */
-    serviceDescription?: pulumi.Input<string>;
+    serviceDescription?: pulumi.Input<string | undefined>;
     /**
      * The service resource type. Value:
      */
-    serviceResourceType?: pulumi.Input<string>;
+    serviceResourceType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable IPv6 for the endpoint service. Valid values:
      */
-    serviceSupportIpv6?: pulumi.Input<boolean>;
+    serviceSupportIpv6?: pulumi.Input<boolean | undefined>;
     /**
      * The list of tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
      */
-    zoneAffinityEnabled?: pulumi.Input<boolean>;
+    zoneAffinityEnabled?: pulumi.Input<boolean | undefined>;
 }

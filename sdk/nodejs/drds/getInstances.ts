@@ -121,16 +121,16 @@ export interface GetInstancesOutputArgs {
     /**
      * A regex string to filter results by instance description.
      */
-    descriptionRegex?: pulumi.Input<string>;
+    descriptionRegex?: pulumi.Input<string | undefined>;
     /**
      * A list of DRDS instance IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by instance description. It is deprecated since v1.91.0 and will be removed in a future release, please use 'description_regex' instead.
      *
      * @deprecated Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.
      */
-    nameRegex?: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

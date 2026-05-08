@@ -20,9 +20,9 @@ __all__ = ['RegistryEnterpriseNamespaceArgs', 'RegistryEnterpriseNamespace']
 class RegistryEnterpriseNamespaceArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
-                 auto_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseNamespace resource.
 
@@ -55,19 +55,19 @@ class RegistryEnterpriseNamespaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoCreate")
-    def auto_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_create")
 
     @auto_create.setter
-    def auto_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_create", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultVisibility")
-    def default_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default type of the repository that is automatically created. Valid values:
         - `PUBLIC`: A public repository.
@@ -76,29 +76,29 @@ class RegistryEnterpriseNamespaceArgs:
         return pulumi.get(self, "default_visibility")
 
     @default_visibility.setter
-    def default_visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_visibility", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _RegistryEnterpriseNamespaceState:
     def __init__(__self__, *,
-                 auto_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseNamespace resources.
 
@@ -120,19 +120,19 @@ class _RegistryEnterpriseNamespaceState:
 
     @_builtins.property
     @pulumi.getter(name="autoCreate")
-    def auto_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_create")
 
     @auto_create.setter
-    def auto_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_create", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultVisibility")
-    def default_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default type of the repository that is automatically created. Valid values:
         - `PUBLIC`: A public repository.
@@ -141,31 +141,31 @@ class _RegistryEnterpriseNamespaceState:
         return pulumi.get(self, "default_visibility")
 
     @default_visibility.setter
-    def default_visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_visibility", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Container Registry Enterprise Edition instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -175,10 +175,10 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Container Registry Enterprise Edition Namespace resource.
@@ -310,10 +310,10 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -339,10 +339,10 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_create: Optional[pulumi.Input[_builtins.bool]] = None,
-            default_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'RegistryEnterpriseNamespace':
+            auto_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            default_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegistryEnterpriseNamespace':
         """
         Get an existing RegistryEnterpriseNamespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

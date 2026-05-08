@@ -139,36 +139,36 @@ export class KeyPair extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KeyPair resources.
  */
 export interface KeyPairState {
-    createTime?: pulumi.Input<string>;
-    fingerPrint?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
+    fingerPrint?: pulumi.Input<string | undefined>;
     /**
      * The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
      */
-    keyFile?: pulumi.Input<string>;
+    keyFile?: pulumi.Input<string | undefined>;
     /**
      * The key pair's name. It is the only in one Alicloud account.
      *
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The key pair name's prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
      */
-    keyNamePrefix?: pulumi.Input<string>;
-    keyPairName?: pulumi.Input<string>;
+    keyNamePrefix?: pulumi.Input<string | undefined>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the key pair belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -178,29 +178,29 @@ export interface KeyPairArgs {
     /**
      * The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
      */
-    keyFile?: pulumi.Input<string>;
+    keyFile?: pulumi.Input<string | undefined>;
     /**
      * The key pair's name. It is the only in one Alicloud account.
      *
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The key pair name's prefix. It is conflict with `keyName`. If it is specified, terraform will using it to build the only key name.
      */
-    keyNamePrefix?: pulumi.Input<string>;
-    keyPairName?: pulumi.Input<string>;
+    keyNamePrefix?: pulumi.Input<string | undefined>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the key pair belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * > **NOTE:** If `keyName` and `keyNamePrefix` are not set, terraform will produce a specified ID to replace.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

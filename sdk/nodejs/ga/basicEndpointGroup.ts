@@ -181,35 +181,35 @@ export interface BasicEndpointGroupState {
     /**
      * The ID of the basic GA instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
      */
-    basicEndpointGroupName?: pulumi.Input<string>;
+    basicEndpointGroupName?: pulumi.Input<string | undefined>;
     /**
      * The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The address of the endpoint.
      */
-    endpointAddress?: pulumi.Input<string>;
+    endpointAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region where you want to create the endpoint group.
      */
-    endpointGroupRegion?: pulumi.Input<string>;
+    endpointGroupRegion?: pulumi.Input<string | undefined>;
     /**
      * The sub address of the endpoint.
      */
-    endpointSubAddress?: pulumi.Input<string>;
+    endpointSubAddress?: pulumi.Input<string | undefined>;
     /**
      * The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * The status of the Basic Endpoint Group.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -223,15 +223,15 @@ export interface BasicEndpointGroupArgs {
     /**
      * The name of the endpoint group. The `basicEndpointGroupName` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
      */
-    basicEndpointGroupName?: pulumi.Input<string>;
+    basicEndpointGroupName?: pulumi.Input<string | undefined>;
     /**
      * The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The address of the endpoint.
      */
-    endpointAddress?: pulumi.Input<string>;
+    endpointAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region where you want to create the endpoint group.
      */
@@ -239,9 +239,9 @@ export interface BasicEndpointGroupArgs {
     /**
      * The sub address of the endpoint.
      */
-    endpointSubAddress?: pulumi.Input<string>;
+    endpointSubAddress?: pulumi.Input<string | undefined>;
     /**
      * The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
 }

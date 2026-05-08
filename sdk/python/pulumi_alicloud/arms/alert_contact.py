@@ -19,11 +19,11 @@ __all__ = ['AlertContactArgs', 'AlertContact']
 @pulumi.input_type
 class AlertContactArgs:
     def __init__(__self__, *,
-                 alert_contact_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ding_robot_webhook_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_noc: Optional[pulumi.Input[_builtins.bool]] = None):
+                 alert_contact_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ding_robot_webhook_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_noc: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AlertContact resource.
 
@@ -46,73 +46,73 @@ class AlertContactArgs:
 
     @_builtins.property
     @pulumi.getter(name="alertContactName")
-    def alert_contact_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_contact_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the alert contact.
         """
         return pulumi.get(self, "alert_contact_name")
 
     @alert_contact_name.setter
-    def alert_contact_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_contact_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_contact_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dingRobotWebhookUrl")
-    def ding_robot_webhook_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ding_robot_webhook_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         """
         return pulumi.get(self, "ding_robot_webhook_url")
 
     @ding_robot_webhook_url.setter
-    def ding_robot_webhook_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ding_robot_webhook_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ding_robot_webhook_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="phoneNum")
-    def phone_num(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def phone_num(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         """
         return pulumi.get(self, "phone_num")
 
     @phone_num.setter
-    def phone_num(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def phone_num(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "phone_num", value)
 
     @_builtins.property
     @pulumi.getter(name="systemNoc")
-    def system_noc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def system_noc(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
         """
         return pulumi.get(self, "system_noc")
 
     @system_noc.setter
-    def system_noc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def system_noc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "system_noc", value)
 
 
 @pulumi.input_type
 class _AlertContactState:
     def __init__(__self__, *,
-                 alert_contact_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ding_robot_webhook_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_noc: Optional[pulumi.Input[_builtins.bool]] = None):
+                 alert_contact_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ding_robot_webhook_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_noc: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AlertContact resources.
 
@@ -135,62 +135,62 @@ class _AlertContactState:
 
     @_builtins.property
     @pulumi.getter(name="alertContactName")
-    def alert_contact_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_contact_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the alert contact.
         """
         return pulumi.get(self, "alert_contact_name")
 
     @alert_contact_name.setter
-    def alert_contact_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_contact_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_contact_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dingRobotWebhookUrl")
-    def ding_robot_webhook_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ding_robot_webhook_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         """
         return pulumi.get(self, "ding_robot_webhook_url")
 
     @ding_robot_webhook_url.setter
-    def ding_robot_webhook_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ding_robot_webhook_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ding_robot_webhook_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="phoneNum")
-    def phone_num(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def phone_num(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
         """
         return pulumi.get(self, "phone_num")
 
     @phone_num.setter
-    def phone_num(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def phone_num(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "phone_num", value)
 
     @_builtins.property
     @pulumi.getter(name="systemNoc")
-    def system_noc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def system_noc(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
         """
         return pulumi.get(self, "system_noc")
 
     @system_noc.setter
-    def system_noc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def system_noc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "system_noc", value)
 
 
@@ -200,11 +200,11 @@ class AlertContact(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_contact_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ding_robot_webhook_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_noc: Optional[pulumi.Input[_builtins.bool]] = None,
+                 alert_contact_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ding_robot_webhook_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_noc: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Alert Contact resource.
@@ -301,11 +301,11 @@ class AlertContact(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_contact_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ding_robot_webhook_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_noc: Optional[pulumi.Input[_builtins.bool]] = None,
+                 alert_contact_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ding_robot_webhook_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_noc: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -330,11 +330,11 @@ class AlertContact(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_contact_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ding_robot_webhook_url: Optional[pulumi.Input[_builtins.str]] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            phone_num: Optional[pulumi.Input[_builtins.str]] = None,
-            system_noc: Optional[pulumi.Input[_builtins.bool]] = None) -> 'AlertContact':
+            alert_contact_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ding_robot_webhook_url: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            phone_num: pulumi.Input[Optional[_builtins.str]] = None,
+            system_noc: pulumi.Input[Optional[_builtins.bool]] = None) -> 'AlertContact':
         """
         Get an existing AlertContact resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

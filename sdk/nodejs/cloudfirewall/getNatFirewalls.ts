@@ -302,49 +302,49 @@ export interface GetNatFirewallsOutputArgs {
     /**
      * A list of Nat Firewall IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Lang
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * Member Account ID
      */
-    memberUid?: pulumi.Input<number>;
+    memberUid?: pulumi.Input<number | undefined>;
     /**
      * NAT gateway ID
      */
-    natGatewayId?: pulumi.Input<string>;
+    natGatewayId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Page No
      */
-    pageNumber?: pulumi.Input<number>;
+    pageNumber?: pulumi.Input<number | undefined>;
     /**
      * Page Size
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * NAT firewall ID
      */
-    proxyId?: pulumi.Input<string>;
+    proxyId?: pulumi.Input<string | undefined>;
     /**
      * NAT firewall name
      */
-    proxyName?: pulumi.Input<string>;
+    proxyName?: pulumi.Input<string | undefined>;
     /**
      * Region
      */
-    regionNo?: pulumi.Input<string>;
+    regionNo?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC instance.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

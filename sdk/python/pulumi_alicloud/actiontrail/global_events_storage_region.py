@@ -19,7 +19,7 @@ __all__ = ['GlobalEventsStorageRegionArgs', 'GlobalEventsStorageRegion']
 @pulumi.input_type
 class GlobalEventsStorageRegionArgs:
     def __init__(__self__, *,
-                 storage_region: Optional[pulumi.Input[_builtins.str]] = None):
+                 storage_region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlobalEventsStorageRegion resource.
 
@@ -30,21 +30,21 @@ class GlobalEventsStorageRegionArgs:
 
     @_builtins.property
     @pulumi.getter(name="storageRegion")
-    def storage_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Global Events Storage Region.
         """
         return pulumi.get(self, "storage_region")
 
     @storage_region.setter
-    def storage_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_region", value)
 
 
 @pulumi.input_type
 class _GlobalEventsStorageRegionState:
     def __init__(__self__, *,
-                 storage_region: Optional[pulumi.Input[_builtins.str]] = None):
+                 storage_region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalEventsStorageRegion resources.
 
@@ -55,14 +55,14 @@ class _GlobalEventsStorageRegionState:
 
     @_builtins.property
     @pulumi.getter(name="storageRegion")
-    def storage_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Global Events Storage Region.
         """
         return pulumi.get(self, "storage_region")
 
     @storage_region.setter
-    def storage_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_region", value)
 
 
@@ -72,7 +72,7 @@ class GlobalEventsStorageRegion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 storage_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Global events storage region resource.
@@ -145,7 +145,7 @@ class GlobalEventsStorageRegion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 storage_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -166,7 +166,7 @@ class GlobalEventsStorageRegion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            storage_region: Optional[pulumi.Input[_builtins.str]] = None) -> 'GlobalEventsStorageRegion':
+            storage_region: pulumi.Input[Optional[_builtins.str]] = None) -> 'GlobalEventsStorageRegion':
         """
         Get an existing GlobalEventsStorageRegion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

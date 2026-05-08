@@ -147,31 +147,31 @@ export interface SecurityPolicyState {
     /**
      * The supported cipher suites, which are determined by the TLS protocol version.The specified cipher suites must be supported by at least one TLS protocol version that you select.
      */
-    ciphers?: pulumi.Input<pulumi.Input<string>[]>;
+    ciphers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
-    securityPolicyName?: pulumi.Input<string>;
+    securityPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
      */
-    tlsVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    tlsVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -185,11 +185,11 @@ export interface SecurityPolicyArgs {
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
@@ -197,7 +197,7 @@ export interface SecurityPolicyArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
      */

@@ -153,35 +153,35 @@ export interface GroupState {
     /**
      * The base path of the api gateway group. Defaults to `/`.
      */
-    basePath?: pulumi.Input<string>;
+    basePath?: pulumi.Input<string | undefined>;
     /**
      * The description of the api gateway group. Defaults to null.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The id of the api gateway.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the api gateway group. Defaults to null.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
      */
-    subDomain?: pulumi.Input<string>;
+    subDomain?: pulumi.Input<string | undefined>;
     /**
      * user_log_config defines the config of user log of the group. See `userLogConfig` below.
      */
-    userLogConfig?: pulumi.Input<inputs.apigateway.GroupUserLogConfig>;
+    userLogConfig?: pulumi.Input<inputs.apigateway.GroupUserLogConfig | undefined>;
     /**
      * (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
      */
-    vpcDomain?: pulumi.Input<string>;
+    vpcDomain?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable `vpcDomain`. Defaults to `false`.
      */
-    vpcIntranetEnable?: pulumi.Input<boolean>;
+    vpcIntranetEnable?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -191,25 +191,25 @@ export interface GroupArgs {
     /**
      * The base path of the api gateway group. Defaults to `/`.
      */
-    basePath?: pulumi.Input<string>;
+    basePath?: pulumi.Input<string | undefined>;
     /**
      * The description of the api gateway group. Defaults to null.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The id of the api gateway.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the api gateway group. Defaults to null.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * user_log_config defines the config of user log of the group. See `userLogConfig` below.
      */
-    userLogConfig?: pulumi.Input<inputs.apigateway.GroupUserLogConfig>;
+    userLogConfig?: pulumi.Input<inputs.apigateway.GroupUserLogConfig | undefined>;
     /**
      * Whether to enable `vpcDomain`. Defaults to `false`.
      */
-    vpcIntranetEnable?: pulumi.Input<boolean>;
+    vpcIntranetEnable?: pulumi.Input<boolean | undefined>;
 }

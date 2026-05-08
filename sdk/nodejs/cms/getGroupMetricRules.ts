@@ -154,41 +154,41 @@ export interface GetGroupMetricRulesOutputArgs {
     /**
      * The dimensions that specify the resources to be associated with the alert rule.
      */
-    dimensions?: pulumi.Input<string>;
+    dimensions?: pulumi.Input<string | undefined>;
     /**
      * EnableState.
      */
-    enableState?: pulumi.Input<boolean>;
+    enableState?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the application group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert rule.
      */
-    groupMetricRuleName?: pulumi.Input<string>;
+    groupMetricRuleName?: pulumi.Input<string | undefined>;
     /**
      * A list of Group Metric Rule IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the metric.
      */
-    metricName?: pulumi.Input<string>;
+    metricName?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Group Metric Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The namespace of the service.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of Group Metric Rule.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

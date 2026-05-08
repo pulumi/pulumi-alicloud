@@ -22,8 +22,8 @@ class ScheduledPreloadExecutionArgs:
                  interval: pulumi.Input[_builtins.int],
                  scheduled_preload_job_id: pulumi.Input[_builtins.str],
                  slice_len: pulumi.Input[_builtins.int],
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ScheduledPreloadExecution resource.
 
@@ -79,39 +79,39 @@ class ScheduledPreloadExecutionArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of the prefetch plan.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of the prefetch plan.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type
 class _ScheduledPreloadExecutionState:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheduled_preload_execution_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_preload_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slice_len: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheduled_preload_execution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_preload_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slice_len: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ScheduledPreloadExecution resources.
 
@@ -140,86 +140,86 @@ class _ScheduledPreloadExecutionState:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of the prefetch plan.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time interval between each batch execution. Unit: seconds.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledPreloadExecutionId")
-    def scheduled_preload_execution_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_preload_execution_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the prefetch plan.
         """
         return pulumi.get(self, "scheduled_preload_execution_id")
 
     @scheduled_preload_execution_id.setter
-    def scheduled_preload_execution_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_preload_execution_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_preload_execution_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledPreloadJobId")
-    def scheduled_preload_job_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_preload_job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the prefetch task.
         """
         return pulumi.get(self, "scheduled_preload_job_id")
 
     @scheduled_preload_job_id.setter
-    def scheduled_preload_job_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_preload_job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_preload_job_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sliceLen")
-    def slice_len(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def slice_len(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of URLs prefetched in each batch.
         """
         return pulumi.get(self, "slice_len")
 
     @slice_len.setter
-    def slice_len(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def slice_len(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "slice_len", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of the prefetch plan.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the prefetch plan, including the following statuses.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -229,11 +229,11 @@ class ScheduledPreloadExecution(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheduled_preload_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slice_len: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheduled_preload_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slice_len: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Scheduled Preload Execution resource.
@@ -354,11 +354,11 @@ class ScheduledPreloadExecution(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheduled_preload_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slice_len: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheduled_preload_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slice_len: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -391,13 +391,13 @@ class ScheduledPreloadExecution(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            interval: Optional[pulumi.Input[_builtins.int]] = None,
-            scheduled_preload_execution_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduled_preload_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-            slice_len: Optional[pulumi.Input[_builtins.int]] = None,
-            start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ScheduledPreloadExecution':
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            interval: pulumi.Input[Optional[_builtins.int]] = None,
+            scheduled_preload_execution_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_preload_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            slice_len: pulumi.Input[Optional[_builtins.int]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ScheduledPreloadExecution':
         """
         Get an existing ScheduledPreloadExecution resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -124,19 +124,19 @@ export interface ListState {
     /**
      * The description of the custom list.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The items in the custom list, which are displayed as an array.
      */
-    items?: pulumi.Input<pulumi.Input<string>[]>;
+    items?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of the custom list.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The name of the custom list.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -146,17 +146,17 @@ export interface ListArgs {
     /**
      * The description of the custom list.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The items in the custom list, which are displayed as an array.
      */
-    items?: pulumi.Input<pulumi.Input<string>[]>;
+    items?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of the custom list.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The name of the custom list.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

@@ -26,13 +26,13 @@ class NatFirewallArgs:
                  proxy_name: pulumi.Input[_builtins.str],
                  region_no: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
-                 firewall_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 strict_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 vswitch_auto: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 firewall_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 strict_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 vswitch_auto: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NatFirewall resource.
 
@@ -131,104 +131,104 @@ class NatFirewallArgs:
 
     @_builtins.property
     @pulumi.getter(name="firewallSwitch")
-    def firewall_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Safety protection switch. Value:-**open**: open-**close**: close.
         """
         return pulumi.get(self, "firewall_switch")
 
     @firewall_switch.setter
-    def firewall_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_switch", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Lang.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="strictMode")
-    def strict_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def strict_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether strict mode is enabled 1-Enable strict mode 0-Disable strict mode.
         """
         return pulumi.get(self, "strict_mode")
 
     @strict_mode.setter
-    def strict_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def strict_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "strict_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchAuto")
-    def vswitch_auto(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_auto(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to use switch automatic mode. Value: **true**: Use automatic mode: **false**: Use manual mode.
         """
         return pulumi.get(self, "vswitch_auto")
 
     @vswitch_auto.setter
-    def vswitch_auto(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_auto(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_auto", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchCidr")
-    def vswitch_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network segment of the virtual switch. Required for Switch automatic mode.
         """
         return pulumi.get(self, "vswitch_cidr")
 
     @vswitch_cidr.setter
-    def vswitch_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The switch ID. Required for switch manual mode.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 @pulumi.input_type
 class _NatFirewallState:
     def __init__(__self__, *,
-                 firewall_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_route_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input['NatFirewallNatRouteEntryListArgs']]]] = None,
-                 proxy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 strict_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_auto: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 firewall_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_route_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input['NatFirewallNatRouteEntryListArgs']]]] = None,
+                 proxy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 strict_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_auto: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NatFirewall resources.
 
@@ -272,146 +272,146 @@ class _NatFirewallState:
 
     @_builtins.property
     @pulumi.getter(name="firewallSwitch")
-    def firewall_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Safety protection switch. Value:-**open**: open-**close**: close.
         """
         return pulumi.get(self, "firewall_switch")
 
     @firewall_switch.setter
-    def firewall_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_switch", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Lang.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="natGatewayId")
-    def nat_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         NAT gateway ID.
         """
         return pulumi.get(self, "nat_gateway_id")
 
     @nat_gateway_id.setter
-    def nat_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="natRouteEntryLists")
-    def nat_route_entry_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NatFirewallNatRouteEntryListArgs']]]]:
+    def nat_route_entry_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NatFirewallNatRouteEntryListArgs']]]]:
         """
         The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
         """
         return pulumi.get(self, "nat_route_entry_lists")
 
     @nat_route_entry_lists.setter
-    def nat_route_entry_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NatFirewallNatRouteEntryListArgs']]]]):
+    def nat_route_entry_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NatFirewallNatRouteEntryListArgs']]]]):
         pulumi.set(self, "nat_route_entry_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyName")
-    def proxy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         NAT firewall name.
         """
         return pulumi.get(self, "proxy_name")
 
     @proxy_name.setter
-    def proxy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="regionNo")
-    def region_no(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_no(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region.
         """
         return pulumi.get(self, "region_no")
 
     @region_no.setter
-    def region_no(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_no(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_no", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="strictMode")
-    def strict_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def strict_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether strict mode is enabled 1-Enable strict mode 0-Disable strict mode.
         """
         return pulumi.get(self, "strict_mode")
 
     @strict_mode.setter
-    def strict_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def strict_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "strict_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC instance.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchAuto")
-    def vswitch_auto(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_auto(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to use switch automatic mode. Value: **true**: Use automatic mode: **false**: Use manual mode.
         """
         return pulumi.get(self, "vswitch_auto")
 
     @vswitch_auto.setter
-    def vswitch_auto(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_auto(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_auto", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchCidr")
-    def vswitch_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network segment of the virtual switch. Required for Switch automatic mode.
         """
         return pulumi.get(self, "vswitch_cidr")
 
     @vswitch_cidr.setter
-    def vswitch_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The switch ID. Required for switch manual mode.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -421,18 +421,18 @@ class NatFirewall(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 firewall_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_route_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]]] = None,
-                 proxy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 strict_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_auto: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 firewall_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_route_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]]] = None,
+                 proxy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 strict_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_auto: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Nat Firewall resource.
@@ -624,18 +624,18 @@ class NatFirewall(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 firewall_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_route_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]]] = None,
-                 proxy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 strict_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_auto: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 firewall_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_route_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]]] = None,
+                 proxy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 strict_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_auto: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -677,18 +677,18 @@ class NatFirewall(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            firewall_switch: Optional[pulumi.Input[_builtins.str]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_route_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]]] = None,
-            proxy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            region_no: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            strict_mode: Optional[pulumi.Input[_builtins.int]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_auto: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'NatFirewall':
+            firewall_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_route_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]]] = None,
+            proxy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_no: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            strict_mode: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_auto: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'NatFirewall':
         """
         Get an existing NatFirewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

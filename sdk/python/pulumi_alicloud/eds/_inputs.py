@@ -24,11 +24,11 @@ __all__ = [
 ]
 
 class CustomPropertyPropertyValueArgsDict(TypedDict):
-    property_value: NotRequired[pulumi.Input[_builtins.str]]
+    property_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of an attribute.
     """
-    property_value_id: NotRequired[pulumi.Input[_builtins.str]]
+    property_value_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of an attribute id.
     """
@@ -36,8 +36,8 @@ class CustomPropertyPropertyValueArgsDict(TypedDict):
 @pulumi.input_type
 class CustomPropertyPropertyValueArgs:
     def __init__(__self__, *,
-                 property_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 property_value_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 property_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 property_value_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] property_value: The value of an attribute.
         :param pulumi.Input[_builtins.str] property_value_id: The value of an attribute id.
@@ -49,35 +49,35 @@ class CustomPropertyPropertyValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="propertyValue")
-    def property_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def property_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of an attribute.
         """
         return pulumi.get(self, "property_value")
 
     @property_value.setter
-    def property_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def property_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "property_value", value)
 
     @_builtins.property
     @pulumi.getter(name="propertyValueId")
-    def property_value_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def property_value_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of an attribute id.
         """
         return pulumi.get(self, "property_value_id")
 
     @property_value_id.setter
-    def property_value_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def property_value_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "property_value_id", value)
 
 
 class EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict(TypedDict):
-    cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
+    cidr_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cidrip of authorize access rule.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of authorize access rule.
     """
@@ -85,8 +85,8 @@ class EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict(TypedDict):
 @pulumi.input_type
 class EcdPolicyGroupAuthorizeAccessPolicyRuleArgs:
     def __init__(__self__, *,
-                 cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cidr_ip: The cidrip of authorize access rule.
         :param pulumi.Input[_builtins.str] description: The description of authorize access rule.
@@ -98,55 +98,55 @@ class EcdPolicyGroupAuthorizeAccessPolicyRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="cidrIp")
-    def cidr_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cidrip of authorize access rule.
         """
         return pulumi.get(self, "cidr_ip")
 
     @cidr_ip.setter
-    def cidr_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of authorize access rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict(TypedDict):
-    cidr_ip: NotRequired[pulumi.Input[_builtins.str]]
+    cidr_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cidrip of security rules.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of security rules.
     """
-    ip_protocol: NotRequired[pulumi.Input[_builtins.str]]
+    ip_protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ip protocol of security rules.
     """
-    policy: NotRequired[pulumi.Input[_builtins.str]]
+    policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The policy of security rules.
     """
-    port_range: NotRequired[pulumi.Input[_builtins.str]]
+    port_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The port range of security rules.
     """
-    priority: NotRequired[pulumi.Input[_builtins.str]]
+    priority: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The priority of security rules.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of security rules.
     """
@@ -154,13 +154,13 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict(TypedDict):
 @pulumi.input_type
 class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs:
     def __init__(__self__, *,
-                 cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cidr_ip: The cidrip of security rules.
         :param pulumi.Input[_builtins.str] description: The description of security rules.
@@ -187,86 +187,86 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="cidrIp")
-    def cidr_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cidrip of security rules.
         """
         return pulumi.get(self, "cidr_ip")
 
     @cidr_ip.setter
-    def cidr_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of security rules.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ip protocol of security rules.
         """
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
-    def ip_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy of security rules.
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="portRange")
-    def port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port range of security rules.
         """
         return pulumi.get(self, "port_range")
 
     @port_range.setter
-    def port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The priority of security rules.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of security rules.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 

@@ -111,15 +111,15 @@ export interface AlertResourceState {
     /**
      * The lang of alert center resource when type is user.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The project of alert resource when type is project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of alert resources, must be user or project, 'user' for init aliyuncloud account's alert center resource, including project named sls-alert-{uid}-{region} and some dashboards; 'project' for init project's alert resource, including logstore named internal-alert-history and alert dashboard.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -129,11 +129,11 @@ export interface AlertResourceArgs {
     /**
      * The lang of alert center resource when type is user.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The project of alert resource when type is project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of alert resources, must be user or project, 'user' for init aliyuncloud account's alert center resource, including project named sls-alert-{uid}-{region} and some dashboards; 'project' for init project's alert resource, including logstore named internal-alert-history and alert dashboard.
      */

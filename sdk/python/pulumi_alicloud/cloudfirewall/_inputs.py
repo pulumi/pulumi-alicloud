@@ -48,11 +48,11 @@ __all__ = [
 ]
 
 class AddressBookEcsTagArgsDict(TypedDict):
-    tag_key: NotRequired[pulumi.Input[_builtins.str]]
+    tag_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The key of ECS tag that to be matched.
     """
-    tag_value: NotRequired[pulumi.Input[_builtins.str]]
+    tag_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of ECS tag that to be matched.
     """
@@ -60,8 +60,8 @@ class AddressBookEcsTagArgsDict(TypedDict):
 @pulumi.input_type
 class AddressBookEcsTagArgs:
     def __init__(__self__, *,
-                 tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] tag_key: The key of ECS tag that to be matched.
         :param pulumi.Input[_builtins.str] tag_value: The value of ECS tag that to be matched.
@@ -73,26 +73,26 @@ class AddressBookEcsTagArgs:
 
     @_builtins.property
     @pulumi.getter(name="tagKey")
-    def tag_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of ECS tag that to be matched.
         """
         return pulumi.get(self, "tag_key")
 
     @tag_key.setter
-    def tag_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_key", value)
 
     @_builtins.property
     @pulumi.getter(name="tagValue")
-    def tag_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of ECS tag that to be matched.
         """
         return pulumi.get(self, "tag_value")
 
     @tag_value.setter
-    def tag_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_value", value)
 
 
@@ -101,67 +101,67 @@ class FirewallVpcFirewallCenLocalVpcArgsDict(TypedDict):
     """
     The ID of the VPC instance that created the VPC firewall.
     """
-    attachment_id: NotRequired[pulumi.Input[_builtins.str]]
+    attachment_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection ID of the network instance.
     """
-    attachment_name: NotRequired[pulumi.Input[_builtins.str]]
+    attachment_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection name of the network instance.
     """
-    defend_cidr_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    defend_cidr_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of network segments protected by the VPC firewall.
     """
-    eni_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcEniListArgsDict']]]]
+    eni_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcEniListArgs']]]]]
     """
     List of elastic network cards.
     """
-    manual_vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    manual_vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the vSwitch specified when the routing mode is manual mode.
     """
-    network_instance_name: NotRequired[pulumi.Input[_builtins.str]]
+    network_instance_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the network instance.
     """
-    network_instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    network_instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the network instance. Value: **VPC * *.
     """
-    owner_id: NotRequired[pulumi.Input[_builtins.str]]
+    owner_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The UID of the Alibaba Cloud account to which the VPC belongs.
     """
-    region_no: NotRequired[pulumi.Input[_builtins.str]]
+    region_no: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The region ID of the VPC.
     """
-    route_mode: NotRequired[pulumi.Input[_builtins.str]]
+    route_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Routing mode,. Value:-auto: indicates automatic mode.-manual: indicates manual mode.
     """
-    support_manual_mode: NotRequired[pulumi.Input[_builtins.str]]
+    support_manual_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
     """
-    transit_router_id: NotRequired[pulumi.Input[_builtins.str]]
+    transit_router_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the CEN-TR instance.
     """
-    transit_router_type: NotRequired[pulumi.Input[_builtins.str]]
+    transit_router_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
     """
-    vpc_cidr_table_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgsDict']]]]
+    vpc_cidr_table_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs']]]]]
     """
     The VPC network segment list.
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the VPC instance.
     """
-    vpc_name: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The instance name of the VPC.
     """
@@ -170,22 +170,22 @@ class FirewallVpcFirewallCenLocalVpcArgsDict(TypedDict):
 class FirewallVpcFirewallCenLocalVpcArgs:
     def __init__(__self__, *,
                  network_instance_id: pulumi.Input[_builtins.str],
-                 attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 defend_cidr_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 eni_lists: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcEniListArgs']]]] = None,
-                 manual_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_manual_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_cidr_table_lists: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs']]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 defend_cidr_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 eni_lists: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcEniListArgs']]]] = None,
+                 manual_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_manual_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_cidr_table_lists: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs']]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] network_instance_id: The ID of the VPC instance that created the VPC firewall.
         :param pulumi.Input[_builtins.str] attachment_id: The connection ID of the network instance.
@@ -253,203 +253,203 @@ class FirewallVpcFirewallCenLocalVpcArgs:
 
     @_builtins.property
     @pulumi.getter(name="attachmentId")
-    def attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def attachment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection ID of the network instance.
         """
         return pulumi.get(self, "attachment_id")
 
     @attachment_id.setter
-    def attachment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def attachment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attachment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="attachmentName")
-    def attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection name of the network instance.
         """
         return pulumi.get(self, "attachment_name")
 
     @attachment_name.setter
-    def attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="defendCidrLists")
-    def defend_cidr_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def defend_cidr_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of network segments protected by the VPC firewall.
         """
         return pulumi.get(self, "defend_cidr_lists")
 
     @defend_cidr_lists.setter
-    def defend_cidr_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def defend_cidr_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "defend_cidr_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="eniLists")
-    def eni_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcEniListArgs']]]]:
+    def eni_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcEniListArgs']]]]:
         """
         List of elastic network cards.
         """
         return pulumi.get(self, "eni_lists")
 
     @eni_lists.setter
-    def eni_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcEniListArgs']]]]):
+    def eni_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcEniListArgs']]]]):
         pulumi.set(self, "eni_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="manualVswitchId")
-    def manual_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def manual_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch specified when the routing mode is manual mode.
         """
         return pulumi.get(self, "manual_vswitch_id")
 
     @manual_vswitch_id.setter
-    def manual_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def manual_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "manual_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInstanceName")
-    def network_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the network instance.
         """
         return pulumi.get(self, "network_instance_name")
 
     @network_instance_name.setter
-    def network_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInstanceType")
-    def network_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the network instance. Value: **VPC * *.
         """
         return pulumi.get(self, "network_instance_type")
 
     @network_instance_type.setter
-    def network_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerId")
-    def owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UID of the Alibaba Cloud account to which the VPC belongs.
         """
         return pulumi.get(self, "owner_id")
 
     @owner_id.setter
-    def owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionNo")
-    def region_no(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_no(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the VPC.
         """
         return pulumi.get(self, "region_no")
 
     @region_no.setter
-    def region_no(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_no(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_no", value)
 
     @_builtins.property
     @pulumi.getter(name="routeMode")
-    def route_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Routing mode,. Value:-auto: indicates automatic mode.-manual: indicates manual mode.
         """
         return pulumi.get(self, "route_mode")
 
     @route_mode.setter
-    def route_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="supportManualMode")
-    def support_manual_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def support_manual_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
         """
         return pulumi.get(self, "support_manual_mode")
 
     @support_manual_mode.setter
-    def support_manual_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def support_manual_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "support_manual_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CEN-TR instance.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterType")
-    def transit_router_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
         """
         return pulumi.get(self, "transit_router_type")
 
     @transit_router_type.setter
-    def transit_router_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_type", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcCidrTableLists")
-    def vpc_cidr_table_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs']]]]:
+    def vpc_cidr_table_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs']]]]:
         """
         The VPC network segment list.
         """
         return pulumi.get(self, "vpc_cidr_table_lists")
 
     @vpc_cidr_table_lists.setter
-    def vpc_cidr_table_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs']]]]):
+    def vpc_cidr_table_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs']]]]):
         pulumi.set(self, "vpc_cidr_table_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC instance.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcName")
-    def vpc_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance name of the VPC.
         """
         return pulumi.get(self, "vpc_name")
 
     @vpc_name.setter
-    def vpc_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_name", value)
 
 
 class FirewallVpcFirewallCenLocalVpcEniListArgsDict(TypedDict):
-    eni_id: NotRequired[pulumi.Input[_builtins.str]]
+    eni_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the instance of the ENI in the VPC.
     """
-    eni_private_ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    eni_private_ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The private IP address of the ENI in the VPC.
     """
@@ -457,8 +457,8 @@ class FirewallVpcFirewallCenLocalVpcEniListArgsDict(TypedDict):
 @pulumi.input_type
 class FirewallVpcFirewallCenLocalVpcEniListArgs:
     def __init__(__self__, *,
-                 eni_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 eni_private_ip_address: Optional[pulumi.Input[_builtins.str]] = None):
+                 eni_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 eni_private_ip_address: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] eni_id: The ID of the instance of the ENI in the VPC.
         :param pulumi.Input[_builtins.str] eni_private_ip_address: The private IP address of the ENI in the VPC.
@@ -470,35 +470,35 @@ class FirewallVpcFirewallCenLocalVpcEniListArgs:
 
     @_builtins.property
     @pulumi.getter(name="eniId")
-    def eni_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eni_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance of the ENI in the VPC.
         """
         return pulumi.get(self, "eni_id")
 
     @eni_id.setter
-    def eni_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eni_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eni_id", value)
 
     @_builtins.property
     @pulumi.getter(name="eniPrivateIpAddress")
-    def eni_private_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eni_private_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private IP address of the ENI in the VPC.
         """
         return pulumi.get(self, "eni_private_ip_address")
 
     @eni_private_ip_address.setter
-    def eni_private_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eni_private_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eni_private_ip_address", value)
 
 
 class FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgsDict(TypedDict):
-    route_entry_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgsDict']]]]
+    route_entry_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs']]]]]
     """
     The list of route entries in the VPC.
     """
-    route_table_id: NotRequired[pulumi.Input[_builtins.str]]
+    route_table_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the route table of the VPC.
     """
@@ -506,8 +506,8 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgsDict(TypedDict):
 @pulumi.input_type
 class FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs:
     def __init__(__self__, *,
-                 route_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs']]]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 route_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs']]]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs']]] route_entry_lists: The list of route entries in the VPC.
         :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table of the VPC.
@@ -519,35 +519,35 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs:
 
     @_builtins.property
     @pulumi.getter(name="routeEntryLists")
-    def route_entry_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs']]]]:
+    def route_entry_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs']]]]:
         """
         The list of route entries in the VPC.
         """
         return pulumi.get(self, "route_entry_lists")
 
     @route_entry_lists.setter
-    def route_entry_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs']]]]):
+    def route_entry_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs']]]]):
         pulumi.set(self, "route_entry_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the route table of the VPC.
         """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
-    def route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_table_id", value)
 
 
 class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgsDict(TypedDict):
-    destination_cidr: NotRequired[pulumi.Input[_builtins.str]]
+    destination_cidr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The target network segment of the VPC.
     """
-    next_hop_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    next_hop_instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the next hop instance in the VPC.
     """
@@ -555,8 +555,8 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgsDict(Typed
 @pulumi.input_type
 class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs:
     def __init__(__self__, *,
-                 destination_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_instance_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 destination_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_instance_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] destination_cidr: The target network segment of the VPC.
         :param pulumi.Input[_builtins.str] next_hop_instance_id: The ID of the next hop instance in the VPC.
@@ -568,26 +568,26 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs:
 
     @_builtins.property
     @pulumi.getter(name="destinationCidr")
-    def destination_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target network segment of the VPC.
         """
         return pulumi.get(self, "destination_cidr")
 
     @destination_cidr.setter
-    def destination_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopInstanceId")
-    def next_hop_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the next hop instance in the VPC.
         """
         return pulumi.get(self, "next_hop_instance_id")
 
     @next_hop_instance_id.setter
-    def next_hop_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_instance_id", value)
 
 
@@ -604,19 +604,19 @@ class FirewallVpcFirewallLocalVpcArgsDict(TypedDict):
     """
     The ID of the local VPC instance.
     """
-    eni_id: NotRequired[pulumi.Input[_builtins.str]]
+    eni_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the instance of the ENI in the peer VPC.
     """
-    eni_private_ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    eni_private_ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The private IP address of the elastic network card in the peer VPC.
     """
-    router_interface_id: NotRequired[pulumi.Input[_builtins.str]]
+    router_interface_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the router interface in the peer VPC.
     """
-    vpc_name: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The instance name of the peer VPC.
     """
@@ -627,10 +627,10 @@ class FirewallVpcFirewallLocalVpcArgs:
                  local_vpc_cidr_table_lists: pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs']]],
                  region_no: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
-                 eni_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 eni_private_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 eni_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 eni_private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs']]] local_vpc_cidr_table_lists: The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
         :param pulumi.Input[_builtins.str] region_no: The region ID of the local VPC.
@@ -690,50 +690,50 @@ class FirewallVpcFirewallLocalVpcArgs:
 
     @_builtins.property
     @pulumi.getter(name="eniId")
-    def eni_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eni_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance of the ENI in the peer VPC.
         """
         return pulumi.get(self, "eni_id")
 
     @eni_id.setter
-    def eni_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eni_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eni_id", value)
 
     @_builtins.property
     @pulumi.getter(name="eniPrivateIpAddress")
-    def eni_private_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eni_private_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private IP address of the elastic network card in the peer VPC.
         """
         return pulumi.get(self, "eni_private_ip_address")
 
     @eni_private_ip_address.setter
-    def eni_private_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eni_private_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eni_private_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="routerInterfaceId")
-    def router_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_interface_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the router interface in the peer VPC.
         """
         return pulumi.get(self, "router_interface_id")
 
     @router_interface_id.setter
-    def router_interface_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_interface_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_interface_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcName")
-    def vpc_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance name of the peer VPC.
         """
         return pulumi.get(self, "vpc_name")
 
     @vpc_name.setter
-    def vpc_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_name", value)
 
 
@@ -844,19 +844,19 @@ class FirewallVpcFirewallPeerVpcArgsDict(TypedDict):
     """
     The ID of the peer VPC instance.
     """
-    eni_id: NotRequired[pulumi.Input[_builtins.str]]
+    eni_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the instance of the ENI in the peer VPC.
     """
-    eni_private_ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    eni_private_ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The private IP address of the elastic network card in the peer VPC.
     """
-    router_interface_id: NotRequired[pulumi.Input[_builtins.str]]
+    router_interface_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the router interface in the peer VPC.
     """
-    vpc_name: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The instance name of the peer VPC.
     """
@@ -867,10 +867,10 @@ class FirewallVpcFirewallPeerVpcArgs:
                  peer_vpc_cidr_table_lists: pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs']]],
                  region_no: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
-                 eni_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 eni_private_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 eni_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 eni_private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs']]] peer_vpc_cidr_table_lists: The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
         :param pulumi.Input[_builtins.str] region_no: The region ID of the peer VPC.
@@ -930,50 +930,50 @@ class FirewallVpcFirewallPeerVpcArgs:
 
     @_builtins.property
     @pulumi.getter(name="eniId")
-    def eni_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eni_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance of the ENI in the peer VPC.
         """
         return pulumi.get(self, "eni_id")
 
     @eni_id.setter
-    def eni_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eni_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eni_id", value)
 
     @_builtins.property
     @pulumi.getter(name="eniPrivateIpAddress")
-    def eni_private_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eni_private_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private IP address of the elastic network card in the peer VPC.
         """
         return pulumi.get(self, "eni_private_ip_address")
 
     @eni_private_ip_address.setter
-    def eni_private_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eni_private_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eni_private_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="routerInterfaceId")
-    def router_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_interface_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the router interface in the peer VPC.
         """
         return pulumi.get(self, "router_interface_id")
 
     @router_interface_id.setter
-    def router_interface_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_interface_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_interface_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcName")
-    def vpc_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance name of the peer VPC.
         """
         return pulumi.get(self, "vpc_name")
 
     @vpc_name.setter
-    def vpc_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_name", value)
 
 
@@ -1157,27 +1157,27 @@ class NatFirewallNatRouteEntryListArgs:
 
 
 class UserAlarmConfigAlarmConfigArgsDict(TypedDict):
-    alarm_hour: NotRequired[pulumi.Input[_builtins.str]]
+    alarm_hour: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time of the day when the alarm is triggered. The range is `0 ~ 24`.
     """
-    alarm_notify: NotRequired[pulumi.Input[_builtins.str]]
+    alarm_notify: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
     """
-    alarm_period: NotRequired[pulumi.Input[_builtins.str]]
+    alarm_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alarm period. Possible values are: `0` (8:00 ~ 20:00), `1` 24 hours.
     """
-    alarm_type: NotRequired[pulumi.Input[_builtins.str]]
+    alarm_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
     """
-    alarm_value: NotRequired[pulumi.Input[_builtins.str]]
+    alarm_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alarm notification message.
     """
-    alarm_week_day: NotRequired[pulumi.Input[_builtins.str]]
+    alarm_week_day: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The day of the week when the alarm is triggered. The range is `1 ~ 7`.
     """
@@ -1185,12 +1185,12 @@ class UserAlarmConfigAlarmConfigArgsDict(TypedDict):
 @pulumi.input_type
 class UserAlarmConfigAlarmConfigArgs:
     def __init__(__self__, *,
-                 alarm_hour: Optional[pulumi.Input[_builtins.str]] = None,
-                 alarm_notify: Optional[pulumi.Input[_builtins.str]] = None,
-                 alarm_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 alarm_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 alarm_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 alarm_week_day: Optional[pulumi.Input[_builtins.str]] = None):
+                 alarm_hour: pulumi.Input[Optional[_builtins.str]] = None,
+                 alarm_notify: pulumi.Input[Optional[_builtins.str]] = None,
+                 alarm_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 alarm_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 alarm_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 alarm_week_day: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] alarm_hour: The time of the day when the alarm is triggered. The range is `0 ~ 24`.
         :param pulumi.Input[_builtins.str] alarm_notify: The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
@@ -1214,91 +1214,91 @@ class UserAlarmConfigAlarmConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="alarmHour")
-    def alarm_hour(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alarm_hour(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time of the day when the alarm is triggered. The range is `0 ~ 24`.
         """
         return pulumi.get(self, "alarm_hour")
 
     @alarm_hour.setter
-    def alarm_hour(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alarm_hour(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alarm_hour", value)
 
     @_builtins.property
     @pulumi.getter(name="alarmNotify")
-    def alarm_notify(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alarm_notify(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alarm notification type. Possible values are: `0`(sms/email), `1`(sms), `2`(email), `3`(none)
         """
         return pulumi.get(self, "alarm_notify")
 
     @alarm_notify.setter
-    def alarm_notify(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alarm_notify(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alarm_notify", value)
 
     @_builtins.property
     @pulumi.getter(name="alarmPeriod")
-    def alarm_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alarm_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alarm period. Possible values are: `0` (8:00 ~ 20:00), `1` 24 hours.
         """
         return pulumi.get(self, "alarm_period")
 
     @alarm_period.setter
-    def alarm_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alarm_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alarm_period", value)
 
     @_builtins.property
     @pulumi.getter(name="alarmType")
-    def alarm_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alarm_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alarm type. Possible values are: `weeklyReport`, `trafficPreAlert`, `outgoingRiskAll`, `ipsMiddlethreat`, `bandwidth`, `ipsHighthreat`, `outgoingRiskNonWhite`, `ipsIgnoreResolved` etc.
         """
         return pulumi.get(self, "alarm_type")
 
     @alarm_type.setter
-    def alarm_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alarm_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alarm_type", value)
 
     @_builtins.property
     @pulumi.getter(name="alarmValue")
-    def alarm_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alarm_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alarm notification message.
         """
         return pulumi.get(self, "alarm_value")
 
     @alarm_value.setter
-    def alarm_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alarm_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alarm_value", value)
 
     @_builtins.property
     @pulumi.getter(name="alarmWeekDay")
-    def alarm_week_day(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alarm_week_day(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The day of the week when the alarm is triggered. The range is `1 ~ 7`.
         """
         return pulumi.get(self, "alarm_week_day")
 
     @alarm_week_day.setter
-    def alarm_week_day(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alarm_week_day(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alarm_week_day", value)
 
 
 class UserAlarmConfigContactConfigArgsDict(TypedDict):
-    email: NotRequired[pulumi.Input[_builtins.str]]
+    email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The email address of the contact.
     """
-    mobile_phone: NotRequired[pulumi.Input[_builtins.str]]
+    mobile_phone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mobile phone number of the contact.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the contact.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The status of the contact configuration. Possible values are: `0` disable, `1` enable.
     """
@@ -1306,10 +1306,10 @@ class UserAlarmConfigContactConfigArgsDict(TypedDict):
 @pulumi.input_type
 class UserAlarmConfigContactConfigArgs:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 mobile_phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 mobile_phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] email: The email address of the contact.
         :param pulumi.Input[_builtins.str] mobile_phone: The mobile phone number of the contact.
@@ -1327,59 +1327,59 @@ class UserAlarmConfigContactConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address of the contact.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="mobilePhone")
-    def mobile_phone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mobile_phone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mobile phone number of the contact.
         """
         return pulumi.get(self, "mobile_phone")
 
     @mobile_phone.setter
-    def mobile_phone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mobile_phone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mobile_phone", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the contact.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the contact configuration. Possible values are: `0` disable, `1` enable.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 class UserAlarmConfigNotifyConfigArgsDict(TypedDict):
-    notify_type: NotRequired[pulumi.Input[_builtins.str]]
+    notify_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The notification type. Possible values are `sms`, `mail`.
     """
-    notify_value: NotRequired[pulumi.Input[_builtins.str]]
+    notify_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The notification value. Depending on the value of `notify_type`, it can be a mobile phone number or an email address.
     """
@@ -1387,8 +1387,8 @@ class UserAlarmConfigNotifyConfigArgsDict(TypedDict):
 @pulumi.input_type
 class UserAlarmConfigNotifyConfigArgs:
     def __init__(__self__, *,
-                 notify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 notify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] notify_type: The notification type. Possible values are `sms`, `mail`.
         :param pulumi.Input[_builtins.str] notify_value: The notification value. Depending on the value of `notify_type`, it can be a mobile phone number or an email address.
@@ -1400,26 +1400,26 @@ class UserAlarmConfigNotifyConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="notifyType")
-    def notify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The notification type. Possible values are `sms`, `mail`.
         """
         return pulumi.get(self, "notify_type")
 
     @notify_type.setter
-    def notify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_type", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyValue")
-    def notify_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The notification value. Depending on the value of `notify_type`, it can be a mobile phone number or an email address.
         """
         return pulumi.get(self, "notify_value")
 
     @notify_value.setter
-    def notify_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_value", value)
 
 

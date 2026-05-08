@@ -148,10 +148,10 @@ def get_control_policy_attachments(language: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         policy_type=pulumi.get(__ret__, 'policy_type'),
         target_id=pulumi.get(__ret__, 'target_id'))
-def get_control_policy_attachments_output(language: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          policy_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          target_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_control_policy_attachments_output(language: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          policy_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          target_id: pulumi.Input[Optional[_builtins.str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetControlPolicyAttachmentsResult]:
     """
     This data source provides the Resource Manager Control Policy Attachments of the current Alibaba Cloud user.

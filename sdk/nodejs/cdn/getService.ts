@@ -112,7 +112,7 @@ export interface GetServiceOutputArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
     /**
      * The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
      * It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internetChargeType`.
@@ -120,5 +120,5 @@ export interface GetServiceOutputArgs {
      *
      * > **NOTE:** Setting `enable = "On"` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
 }

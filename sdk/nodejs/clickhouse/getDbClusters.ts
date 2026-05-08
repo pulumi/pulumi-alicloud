@@ -138,21 +138,21 @@ export interface GetDbClustersOutputArgs {
     /**
      * The DBCluster description.
      */
-    dbClusterDescription?: pulumi.Input<string>;
+    dbClusterDescription?: pulumi.Input<string | undefined>;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of DBCluster IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

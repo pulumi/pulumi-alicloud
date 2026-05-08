@@ -142,15 +142,15 @@ export interface GetPublicIpAddressPoolCidrBlocksOutputArgs {
     /**
      * The CIDR block.
      */
-    cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * A list of Vpc Public Ip Address Pool Cidr Block IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Vpc Public IP address pool.
      */
@@ -158,5 +158,5 @@ export interface GetPublicIpAddressPoolCidrBlocksOutputArgs {
     /**
      * The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

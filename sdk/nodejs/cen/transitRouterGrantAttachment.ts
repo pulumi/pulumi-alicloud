@@ -150,15 +150,15 @@ export interface TransitRouterGrantAttachmentState {
     /**
      * CEN instance ID
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the account of the CEN instance.
      */
-    cenOwnerId?: pulumi.Input<string>;
+    cenOwnerId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the network instance.
      * - `VPC`: VPC instance.
@@ -166,11 +166,11 @@ export interface TransitRouterGrantAttachmentState {
      * - `CCN`: CCN instance.
      * - `VPN`:IPsec connection.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
      */
-    orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,5 +200,5 @@ export interface TransitRouterGrantAttachmentArgs {
     /**
      * Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
      */
-    orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string | undefined>;
 }

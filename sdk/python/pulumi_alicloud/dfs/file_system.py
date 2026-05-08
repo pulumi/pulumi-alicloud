@@ -23,14 +23,14 @@ class FileSystemArgs:
                  protocol_type: pulumi.Input[_builtins.str],
                  space_capacity: pulumi.Input[_builtins.int],
                  storage_type: pulumi.Input[_builtins.str],
-                 data_redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 provisioned_throughput_in_mi_bps: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 throughput_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_throughput_in_mi_bps: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 throughput_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FileSystem resource.
 
@@ -120,7 +120,7 @@ class FileSystemArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataRedundancyType")
-    def data_redundancy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_redundancy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Redundancy mode of the file system. Value:
         - LRS (default): Local redundancy.
@@ -129,111 +129,111 @@ class FileSystemArgs:
         return pulumi.get(self, "data_redundancy_type")
 
     @data_redundancy_type.setter
-    def data_redundancy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_redundancy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_redundancy_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedClusterId")
-    def dedicated_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dedicated cluster id, which is used to support scenarios such as group cloud migration.
         """
         return pulumi.get(self, "dedicated_cluster_id")
 
     @dedicated_cluster_id.setter
-    def dedicated_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the file system resource. No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="partitionNumber")
-    def partition_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def partition_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Save set sequence number, the user selects the content of the specified sequence number in the Save set.
         """
         return pulumi.get(self, "partition_number")
 
     @partition_number.setter
-    def partition_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def partition_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "partition_number", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedThroughputInMiBps")
-    def provisioned_throughput_in_mi_bps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_throughput_in_mi_bps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
         """
         return pulumi.get(self, "provisioned_throughput_in_mi_bps")
 
     @provisioned_throughput_in_mi_bps.setter
-    def provisioned_throughput_in_mi_bps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_throughput_in_mi_bps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput_in_mi_bps", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSetName")
-    def storage_set_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_set_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Save set identity, used to select a user-specified save set.
         """
         return pulumi.get(self, "storage_set_name")
 
     @storage_set_name.setter
-    def storage_set_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_set_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_set_name", value)
 
     @_builtins.property
     @pulumi.getter(name="throughputMode")
-    def throughput_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def throughput_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
         """
         return pulumi.get(self, "throughput_mode")
 
     @throughput_mode.setter
-    def throughput_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def throughput_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "throughput_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone Id, which is used to create file system resources to the specified zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _FileSystemState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_throughput_in_mi_bps: Optional[pulumi.Input[_builtins.int]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 space_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 throughput_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_throughput_in_mi_bps: pulumi.Input[Optional[_builtins.int]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 space_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 throughput_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FileSystem resources.
 
@@ -285,19 +285,19 @@ class _FileSystemState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the file system instance.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataRedundancyType")
-    def data_redundancy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_redundancy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Redundancy mode of the file system. Value:
         - LRS (default): Local redundancy.
@@ -306,151 +306,151 @@ class _FileSystemState:
         return pulumi.get(self, "data_redundancy_type")
 
     @data_redundancy_type.setter
-    def data_redundancy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_redundancy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_redundancy_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedClusterId")
-    def dedicated_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dedicated cluster id, which is used to support scenarios such as group cloud migration.
         """
         return pulumi.get(self, "dedicated_cluster_id")
 
     @dedicated_cluster_id.setter
-    def dedicated_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the file system resource. No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSystemName")
-    def file_system_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         """
         return pulumi.get(self, "file_system_name")
 
     @file_system_name.setter
-    def file_system_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_name", value)
 
     @_builtins.property
     @pulumi.getter(name="partitionNumber")
-    def partition_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def partition_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Save set sequence number, the user selects the content of the specified sequence number in the Save set.
         """
         return pulumi.get(self, "partition_number")
 
     @partition_number.setter
-    def partition_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def partition_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "partition_number", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolType")
-    def protocol_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type. Value: `HDFS`, `PANGU`.
         """
         return pulumi.get(self, "protocol_type")
 
     @protocol_type.setter
-    def protocol_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol_type", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedThroughputInMiBps")
-    def provisioned_throughput_in_mi_bps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_throughput_in_mi_bps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
         """
         return pulumi.get(self, "provisioned_throughput_in_mi_bps")
 
     @provisioned_throughput_in_mi_bps.setter
-    def provisioned_throughput_in_mi_bps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_throughput_in_mi_bps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput_in_mi_bps", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.242.0) The region ID of the File System.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="spaceCapacity")
-    def space_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def space_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
         """
         return pulumi.get(self, "space_capacity")
 
     @space_capacity.setter
-    def space_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def space_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "space_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSetName")
-    def storage_set_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_set_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Save set identity, used to select a user-specified save set.
         """
         return pulumi.get(self, "storage_set_name")
 
     @storage_set_name.setter
-    def storage_set_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_set_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_set_name", value)
 
     @_builtins.property
     @pulumi.getter(name="storageType")
-    def storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
         """
         return pulumi.get(self, "storage_type")
 
     @storage_type.setter
-    def storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_type", value)
 
     @_builtins.property
     @pulumi.getter(name="throughputMode")
-    def throughput_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def throughput_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
         """
         return pulumi.get(self, "throughput_mode")
 
     @throughput_mode.setter
-    def throughput_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def throughput_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "throughput_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone Id, which is used to create file system resources to the specified zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -460,18 +460,18 @@ class FileSystem(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_throughput_in_mi_bps: Optional[pulumi.Input[_builtins.int]] = None,
-                 space_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 throughput_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_throughput_in_mi_bps: pulumi.Input[Optional[_builtins.int]] = None,
+                 space_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 throughput_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Apsara File Storage for HDFS (DFS) File System resource.
@@ -593,18 +593,18 @@ class FileSystem(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_throughput_in_mi_bps: Optional[pulumi.Input[_builtins.int]] = None,
-                 space_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 throughput_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_throughput_in_mi_bps: pulumi.Input[Optional[_builtins.int]] = None,
+                 space_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 throughput_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -646,20 +646,20 @@ class FileSystem(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
-            dedicated_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            file_system_name: Optional[pulumi.Input[_builtins.str]] = None,
-            partition_number: Optional[pulumi.Input[_builtins.int]] = None,
-            protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioned_throughput_in_mi_bps: Optional[pulumi.Input[_builtins.int]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            space_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            storage_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-            throughput_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'FileSystem':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_system_name: pulumi.Input[Optional[_builtins.str]] = None,
+            partition_number: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_throughput_in_mi_bps: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            space_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            storage_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            throughput_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'FileSystem':
         """
         Get an existing FileSystem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

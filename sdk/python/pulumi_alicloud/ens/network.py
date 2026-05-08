@@ -21,8 +21,8 @@ class NetworkArgs:
     def __init__(__self__, *,
                  cidr_block: pulumi.Input[_builtins.str],
                  ens_region_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Network resource.
 
@@ -64,38 +64,38 @@ class NetworkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description information.Rules:It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`. Example value: this is my first network.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="networkName")
-    def network_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the network instanceThe naming rules are as follows: 1. Length is 2~128 English or Chinese characters; 2. It must start with a large or small letter or Chinese, not with `http://` and `https://`; 3. Can contain numbers, colons (:), underscores (_), or dashes (-).
         """
         return pulumi.get(self, "network_name")
 
     @network_name.setter
-    def network_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_name", value)
 
 
 @pulumi.input_type
 class _NetworkState:
     def __init__(__self__, *,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Network resources.
 
@@ -121,74 +121,74 @@ class _NetworkState:
 
     @_builtins.property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network segment of the network. You can use the following network segments or a subset of them as the network segment: `10.0.0.0/8` (default), `172.16.0.0/12`, `192.168.0.0/16`.
         """
         return pulumi.get(self, "cidr_block")
 
     @cidr_block.setter
-    def cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time, timestamp (MS).
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description information.Rules:It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`. Example value: this is my first network.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ensRegionId")
-    def ens_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ens_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ens node IDExample value: cn-beijing-telecom.
         """
         return pulumi.get(self, "ens_region_id")
 
     @ens_region_id.setter
-    def ens_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ens_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ens_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkName")
-    def network_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the network instanceThe naming rules are as follows: 1. Length is 2~128 English or Chinese characters; 2. It must start with a large or small letter or Chinese, not with `http://` and `https://`; 3. Can contain numbers, colons (:), underscores (_), or dashes (-).
         """
         return pulumi.get(self, "network_name")
 
     @network_name.setter
-    def network_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the network instance. Pending: Configuring, Available: Available.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -198,10 +198,10 @@ class Network(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ENS Network resource.
@@ -305,10 +305,10 @@ class Network(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -338,12 +338,12 @@ class Network(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            network_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Network':
+            cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

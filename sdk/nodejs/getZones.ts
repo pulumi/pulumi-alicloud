@@ -172,11 +172,11 @@ export interface GetZonesOutputArgs {
     /**
      * Filter the results by a specific disk category. Can be either `cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`.
      */
-    availableDiskCategory?: pulumi.Input<string>;
+    availableDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by a specific instance type.
      */
-    availableInstanceType?: pulumi.Input<string>;
+    availableInstanceType?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by a specific resource type.
      * Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
@@ -184,39 +184,39 @@ export interface GetZonesOutputArgs {
      * > **NOTE:** From version 1.134.0, the `availableResourceCreation` value "Rds" has been deprecated.
      * If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
      */
-    availableResourceCreation?: pulumi.Input<string>;
+    availableResourceCreation?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
      *
      * > **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloudEfficiency` or `cloudSsd`.
      */
-    availableSlbAddressIpVersion?: pulumi.Input<string>;
+    availableSlbAddressIpVersion?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
      */
-    availableSlbAddressType?: pulumi.Input<string>;
+    availableSlbAddressType?: pulumi.Input<string | undefined>;
     /**
      * Default to false and only output `id` in the `zones` block. Set it to true can output more details.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the results by a specific ECS instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
      */
-    multi?: pulumi.Input<boolean>;
+    multi?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the results by a specific network type. Valid values: `Classic` and `Vpc`.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
 }

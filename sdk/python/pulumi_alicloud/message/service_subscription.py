@@ -25,11 +25,11 @@ class ServiceSubscriptionArgs:
                  push_type: pulumi.Input[_builtins.str],
                  subscription_name: pulumi.Input[_builtins.str],
                  topic_name: pulumi.Input[_builtins.str],
-                 dlq_policy: Optional[pulumi.Input['ServiceSubscriptionDlqPolicyArgs']] = None,
-                 filter_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sts_role_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 dlq_policy: pulumi.Input[Optional['ServiceSubscriptionDlqPolicyArgs']] = None,
+                 filter_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_content_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sts_role_arn: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceSubscription resource.
 
@@ -120,43 +120,43 @@ class ServiceSubscriptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="dlqPolicy")
-    def dlq_policy(self) -> Optional[pulumi.Input['ServiceSubscriptionDlqPolicyArgs']]:
+    def dlq_policy(self) -> pulumi.Input[Optional['ServiceSubscriptionDlqPolicyArgs']]:
         """
         The dead-letter queue policy. See `dlq_policy` below.
         """
         return pulumi.get(self, "dlq_policy")
 
     @dlq_policy.setter
-    def dlq_policy(self, value: Optional[pulumi.Input['ServiceSubscriptionDlqPolicyArgs']]):
+    def dlq_policy(self, value: pulumi.Input[Optional['ServiceSubscriptionDlqPolicyArgs']]):
         pulumi.set(self, "dlq_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="filterTag")
-    def filter_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
         """
         return pulumi.get(self, "filter_tag")
 
     @filter_tag.setter
-    def filter_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyContentFormat")
-    def notify_content_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_content_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
         """
         return pulumi.get(self, "notify_content_format")
 
     @notify_content_format.setter
-    def notify_content_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_content_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_content_format", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyStrategy")
-    def notify_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
         - `BACKOFF_RETRY`: retries with a fixed backoff interval.
@@ -165,35 +165,35 @@ class ServiceSubscriptionArgs:
         return pulumi.get(self, "notify_strategy")
 
     @notify_strategy.setter
-    def notify_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="stsRoleArn")
-    def sts_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sts_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The STS RoleArn.
         """
         return pulumi.get(self, "sts_role_arn")
 
     @sts_role_arn.setter
-    def sts_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sts_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sts_role_arn", value)
 
 
 @pulumi.input_type
 class _ServiceSubscriptionState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 dlq_policy: Optional[pulumi.Input['ServiceSubscriptionDlqPolicyArgs']] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sts_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 dlq_policy: pulumi.Input[Optional['ServiceSubscriptionDlqPolicyArgs']] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_content_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sts_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceSubscription resources.
 
@@ -238,31 +238,31 @@ class _ServiceSubscriptionState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.244.0) The time when the subscription was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dlqPolicy")
-    def dlq_policy(self) -> Optional[pulumi.Input['ServiceSubscriptionDlqPolicyArgs']]:
+    def dlq_policy(self) -> pulumi.Input[Optional['ServiceSubscriptionDlqPolicyArgs']]:
         """
         The dead-letter queue policy. See `dlq_policy` below.
         """
         return pulumi.get(self, "dlq_policy")
 
     @dlq_policy.setter
-    def dlq_policy(self, value: Optional[pulumi.Input['ServiceSubscriptionDlqPolicyArgs']]):
+    def dlq_policy(self, value: pulumi.Input[Optional['ServiceSubscriptionDlqPolicyArgs']]):
         pulumi.set(self, "dlq_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint has three format. Available values format:
         - `HTTP Format`: An HTTP URL that starts with http:// or https://.
@@ -274,36 +274,36 @@ class _ServiceSubscriptionState:
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="filterTag")
-    def filter_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
         """
         return pulumi.get(self, "filter_tag")
 
     @filter_tag.setter
-    def filter_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyContentFormat")
-    def notify_content_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_content_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
         """
         return pulumi.get(self, "notify_content_format")
 
     @notify_content_format.setter
-    def notify_content_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_content_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_content_format", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyStrategy")
-    def notify_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
         - `BACKOFF_RETRY`: retries with a fixed backoff interval.
@@ -312,55 +312,55 @@ class _ServiceSubscriptionState:
         return pulumi.get(self, "notify_strategy")
 
     @notify_strategy.setter
-    def notify_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="pushType")
-    def push_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def push_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
         """
         return pulumi.get(self, "push_type")
 
     @push_type.setter
-    def push_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def push_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "push_type", value)
 
     @_builtins.property
     @pulumi.getter(name="stsRoleArn")
-    def sts_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sts_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The STS RoleArn.
         """
         return pulumi.get(self, "sts_role_arn")
 
     @sts_role_arn.setter
-    def sts_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sts_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sts_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionName")
-    def subscription_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         """
         return pulumi.get(self, "subscription_name")
 
     @subscription_name.setter
-    def subscription_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_name", value)
 
     @_builtins.property
     @pulumi.getter(name="topicName")
-    def topic_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         """
         return pulumi.get(self, "topic_name")
 
     @topic_name.setter
-    def topic_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic_name", value)
 
 
@@ -370,15 +370,15 @@ class ServiceSubscription(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dlq_policy: Optional[pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sts_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 dlq_policy: pulumi.Input[Optional[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_content_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sts_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Message Service Subscription resource.
@@ -508,15 +508,15 @@ class ServiceSubscription(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dlq_policy: Optional[pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sts_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 dlq_policy: pulumi.Input[Optional[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_content_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sts_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -554,16 +554,16 @@ class ServiceSubscription(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            dlq_policy: Optional[pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']]] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            filter_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
-            notify_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            push_type: Optional[pulumi.Input[_builtins.str]] = None,
-            sts_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            subscription_name: Optional[pulumi.Input[_builtins.str]] = None,
-            topic_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceSubscription':
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            dlq_policy: pulumi.Input[Optional[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            filter_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_content_format: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            push_type: pulumi.Input[Optional[_builtins.str]] = None,
+            sts_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_name: pulumi.Input[Optional[_builtins.str]] = None,
+            topic_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceSubscription':
         """
         Get an existing ServiceSubscription resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

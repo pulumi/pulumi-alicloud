@@ -125,15 +125,15 @@ export interface AssetSelectionConfigState {
     /**
      * The first ID of the resource
      */
-    businessType?: pulumi.Input<string>;
+    businessType?: pulumi.Input<string | undefined>;
     /**
      * The operating system type.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * Target object type.
      */
-    targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -147,7 +147,7 @@ export interface AssetSelectionConfigArgs {
     /**
      * The operating system type.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * Target object type.
      */

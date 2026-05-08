@@ -172,25 +172,25 @@ export interface TrafficQosQueueState {
      * - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
      * - When the QoS queue type is `Default`, this field is "-".
      */
-    bandwidthPercent?: pulumi.Input<string>;
+    bandwidthPercent?: pulumi.Input<string | undefined>;
     /**
      * The ID of the QoS policy.
      */
-    qosId?: pulumi.Input<string>;
+    qosId?: pulumi.Input<string | undefined>;
     /**
      * The description of the QoS queue.
      * The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
      */
-    queueDescription?: pulumi.Input<string>;
+    queueDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the QoS queue.
      */
-    queueId?: pulumi.Input<string>;
+    queueId?: pulumi.Input<string | undefined>;
     /**
      * The name of the QoS queue.
      * The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
      */
-    queueName?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string | undefined>;
     /**
      * QoS queue type, value:
      * - `High`: High priority queue.
@@ -199,11 +199,11 @@ export interface TrafficQosQueueState {
      *
      * > **NOTE:**  Default priority queue cannot be created.
      */
-    queueType?: pulumi.Input<string>;
+    queueType?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -216,7 +216,7 @@ export interface TrafficQosQueueArgs {
      * - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
      * - When the QoS queue type is `Default`, this field is "-".
      */
-    bandwidthPercent?: pulumi.Input<string>;
+    bandwidthPercent?: pulumi.Input<string | undefined>;
     /**
      * The ID of the QoS policy.
      */
@@ -225,12 +225,12 @@ export interface TrafficQosQueueArgs {
      * The description of the QoS queue.
      * The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
      */
-    queueDescription?: pulumi.Input<string>;
+    queueDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the QoS queue.
      * The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
      */
-    queueName?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string | undefined>;
     /**
      * QoS queue type, value:
      * - `High`: High priority queue.

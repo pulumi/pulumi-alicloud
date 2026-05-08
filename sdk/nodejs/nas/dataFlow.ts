@@ -218,44 +218,44 @@ export interface DataFlowState {
     /**
      * The ID of the Data flow.
      */
-    dataFlowId?: pulumi.Input<string>;
+    dataFlowId?: pulumi.Input<string | undefined>;
     /**
      * The Description of the data flow. Restrictions:
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the file system.
      */
-    fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Fileset.
      */
-    fsetId?: pulumi.Input<string>;
+    fsetId?: pulumi.Input<string | undefined>;
     /**
      * The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
      * - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
      * - `SSL`: Protects access through SSL certificates.
      */
-    sourceSecurityType?: pulumi.Input<string>;
+    sourceSecurityType?: pulumi.Input<string | undefined>;
     /**
      * The access path of the source store. Format: `<storage type>://<path>`. Among them:
      * - storage type: currently only OSS is supported.
      * - path: the bucket name of OSS.
      * - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
      */
-    sourceStorage?: pulumi.Input<string>;
+    sourceStorage?: pulumi.Input<string | undefined>;
     /**
      * The status of the Data flow. Valid values: `Running`, `Stopped`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
      */
-    throughput?: pulumi.Input<number>;
+    throughput?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -265,11 +265,11 @@ export interface DataFlowArgs {
     /**
      * The Description of the data flow. Restrictions:
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the file system.
      */
@@ -283,7 +283,7 @@ export interface DataFlowArgs {
      * - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
      * - `SSL`: Protects access through SSL certificates.
      */
-    sourceSecurityType?: pulumi.Input<string>;
+    sourceSecurityType?: pulumi.Input<string | undefined>;
     /**
      * The access path of the source store. Format: `<storage type>://<path>`. Among them:
      * - storage type: currently only OSS is supported.
@@ -294,7 +294,7 @@ export interface DataFlowArgs {
     /**
      * The status of the Data flow. Valid values: `Running`, `Stopped`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
      */

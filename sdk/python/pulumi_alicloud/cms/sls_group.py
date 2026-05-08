@@ -23,7 +23,7 @@ class SlsGroupArgs:
     def __init__(__self__, *,
                  sls_group_configs: pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]],
                  sls_group_name: pulumi.Input[_builtins.str],
-                 sls_group_description: Optional[pulumi.Input[_builtins.str]] = None):
+                 sls_group_description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SlsGroup resource.
 
@@ -62,23 +62,23 @@ class SlsGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="slsGroupDescription")
-    def sls_group_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_group_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Description of the Sls Group.
         """
         return pulumi.get(self, "sls_group_description")
 
     @sls_group_description.setter
-    def sls_group_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_group_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_group_description", value)
 
 
 @pulumi.input_type
 class _SlsGroupState:
     def __init__(__self__, *,
-                 sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]]] = None,
-                 sls_group_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_group_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 sls_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]]] = None,
+                 sls_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_group_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SlsGroup resources.
 
@@ -95,38 +95,38 @@ class _SlsGroupState:
 
     @_builtins.property
     @pulumi.getter(name="slsGroupConfigs")
-    def sls_group_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]]]:
+    def sls_group_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]]]:
         """
         The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         """
         return pulumi.get(self, "sls_group_configs")
 
     @sls_group_configs.setter
-    def sls_group_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]]]):
+    def sls_group_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]]]):
         pulumi.set(self, "sls_group_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="slsGroupDescription")
-    def sls_group_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_group_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Description of the Sls Group.
         """
         return pulumi.get(self, "sls_group_description")
 
     @sls_group_description.setter
-    def sls_group_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_group_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_group_description", value)
 
     @_builtins.property
     @pulumi.getter(name="slsGroupName")
-    def sls_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
         """
         return pulumi.get(self, "sls_group_name")
 
     @sls_group_name.setter
-    def sls_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_group_name", value)
 
 
@@ -136,9 +136,9 @@ class SlsGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlsGroupSlsGroupConfigArgs', 'SlsGroupSlsGroupConfigArgsDict']]]]] = None,
-                 sls_group_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sls_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SlsGroupSlsGroupConfigArgs', 'SlsGroupSlsGroupConfigArgsDict']]]]] = None,
+                 sls_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Sls Group resource.
@@ -283,9 +283,9 @@ class SlsGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlsGroupSlsGroupConfigArgs', 'SlsGroupSlsGroupConfigArgsDict']]]]] = None,
-                 sls_group_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sls_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SlsGroupSlsGroupConfigArgs', 'SlsGroupSlsGroupConfigArgsDict']]]]] = None,
+                 sls_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -312,9 +312,9 @@ class SlsGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlsGroupSlsGroupConfigArgs', 'SlsGroupSlsGroupConfigArgsDict']]]]] = None,
-            sls_group_description: Optional[pulumi.Input[_builtins.str]] = None,
-            sls_group_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'SlsGroup':
+            sls_group_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SlsGroupSlsGroupConfigArgs', 'SlsGroupSlsGroupConfigArgsDict']]]]] = None,
+            sls_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'SlsGroup':
         """
         Get an existing SlsGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

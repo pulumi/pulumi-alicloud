@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *     ensRegionId: "tr-Istanbul-1",
  *     vpcId: _default.id,
  *     vswitchId: defaultVswitch.id,
- *     dbClusterNodesConfigs: Object.entries(dbClusterNodesConfigs).reduce((__obj, [node, config]) => ({ ...__obj, [node]: JSON.stringify(Object.entries(config).filter(([k, v]) => v != null).reduce((__obj, [k, v]) => ({ ...__obj, [k]: v }), {})) }), {}),
+ *     dbClusterNodesConfigs: Object.entries(dbClusterNodesConfigs).sort().reduce((__obj, [node, config]) => ({ ...__obj, [node]: JSON.stringify(Object.entries(config).sort().filter(([k, v]) => v != null).reduce((__obj, [k, v]) => ({ ...__obj, [k]: v }), {})) }), {}),
  * });
  * const defaultZonalAccount = new alicloud.polardb.ZonalAccount("default", {
  *     dbClusterId: defaultZonalDbCluster.id,
@@ -158,23 +158,23 @@ export interface ZonalAccountState {
     /**
      * Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      */
-    accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string | undefined>;
     /**
      * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster in which account belongs.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -184,7 +184,7 @@ export interface ZonalAccountArgs {
     /**
      * Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      */
-    accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string | undefined>;
     /**
      * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
      */
@@ -192,11 +192,11 @@ export interface ZonalAccountArgs {
     /**
      * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster in which account belongs.
      */

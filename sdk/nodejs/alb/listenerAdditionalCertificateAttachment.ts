@@ -95,7 +95,7 @@ import * as utilities from "../utilities";
  *             input: [
  *                 name,
  *                 defaultInteger.result,
- *                 range.value,
+ *                 String(range.value),
  *             ],
  *         }).then(invoke => invoke.result),
  *         cert: `-----BEGIN CERTIFICATE-----
@@ -283,19 +283,19 @@ export interface ListenerAdditionalCertificateAttachmentState {
     /**
      * The Certificate ID.
      */
-    certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * The type of the certificate.
      */
-    certificateType?: pulumi.Input<string>;
+    certificateType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ALB listener.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * The status of the certificate.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

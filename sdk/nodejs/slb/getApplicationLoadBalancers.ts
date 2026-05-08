@@ -287,80 +287,80 @@ export interface GetApplicationLoadBalancersOutputArgs {
     /**
      * Service address of the SLBs.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The address ip version. Valid values `ipv4` and `ipv6`.
      */
-    addressIpVersion?: pulumi.Input<string>;
+    addressIpVersion?: pulumi.Input<string | undefined>;
     /**
      * The address type of the SLB. Valid values `internet` and `intranet`.
      */
-    addressType?: pulumi.Input<string>;
-    enableDetails?: pulumi.Input<boolean>;
+    addressType?: pulumi.Input<string | undefined>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of SLBs IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The name of the SLB.
      */
-    loadBalancerName?: pulumi.Input<string>;
+    loadBalancerName?: pulumi.Input<string | undefined>;
     /**
      * The master zone id of the SLB.
      */
-    masterZoneId?: pulumi.Input<string>;
+    masterZoneId?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by SLB name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * Network type of the SLBs. Valid values: `vpc` and `classic`.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which SLB belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The server ID.
      */
-    serverId?: pulumi.Input<string>;
+    serverId?: pulumi.Input<string | undefined>;
     /**
      * The server intranet address.
      */
-    serverIntranetAddress?: pulumi.Input<string>;
+    serverIntranetAddress?: pulumi.Input<string | undefined>;
     /**
      * The slave zone id of the SLB.
      */
-    slaveZoneId?: pulumi.Input<string>;
+    slaveZoneId?: pulumi.Input<string | undefined>;
     /**
      * SLB current status. Possible values: `inactive`, `active` and `locked`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ID of the VPC linked to the SLBs.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * ID of the vSwitch linked to the SLBs.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

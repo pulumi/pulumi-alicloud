@@ -97,36 +97,36 @@ export class CopyImage extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CopyImage resources.
  */
 export interface CopyImageState {
-    deleteAutoSnapshot?: pulumi.Input<boolean>;
-    description?: pulumi.Input<string>;
-    encrypted?: pulumi.Input<boolean>;
-    force?: pulumi.Input<boolean>;
-    imageName?: pulumi.Input<string>;
-    kmsKeyId?: pulumi.Input<string>;
+    deleteAutoSnapshot?: pulumi.Input<boolean | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    encrypted?: pulumi.Input<boolean | undefined>;
+    force?: pulumi.Input<boolean | undefined>;
+    imageName?: pulumi.Input<string | undefined>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
      */
-    name?: pulumi.Input<string>;
-    sourceImageId?: pulumi.Input<string>;
-    sourceRegionId?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    name?: pulumi.Input<string | undefined>;
+    sourceImageId?: pulumi.Input<string | undefined>;
+    sourceRegionId?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
  * The set of arguments for constructing a CopyImage resource.
  */
 export interface CopyImageArgs {
-    deleteAutoSnapshot?: pulumi.Input<boolean>;
-    description?: pulumi.Input<string>;
-    encrypted?: pulumi.Input<boolean>;
-    force?: pulumi.Input<boolean>;
-    imageName?: pulumi.Input<string>;
-    kmsKeyId?: pulumi.Input<string>;
+    deleteAutoSnapshot?: pulumi.Input<boolean | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    encrypted?: pulumi.Input<boolean | undefined>;
+    force?: pulumi.Input<boolean | undefined>;
+    imageName?: pulumi.Input<string | undefined>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     sourceImageId: pulumi.Input<string>;
     sourceRegionId: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

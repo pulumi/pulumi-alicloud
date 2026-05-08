@@ -188,31 +188,31 @@ export interface SiteOriginClientCertificateState {
     /**
      * The certificate content.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The time when the certificate was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The private key of the certificate.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Site ID.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The certificate ID on ESA.
      */
-    siteOriginClientCertificateId?: pulumi.Input<string>;
+    siteOriginClientCertificateId?: pulumi.Input<string | undefined>;
     /**
      * The certificate name.
      */
-    siteOriginClientCertificateName?: pulumi.Input<string>;
+    siteOriginClientCertificateName?: pulumi.Input<string | undefined>;
     /**
      * The status of the certificate.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -234,5 +234,5 @@ export interface SiteOriginClientCertificateArgs {
     /**
      * The certificate name.
      */
-    siteOriginClientCertificateName?: pulumi.Input<string>;
+    siteOriginClientCertificateName?: pulumi.Input<string | undefined>;
 }

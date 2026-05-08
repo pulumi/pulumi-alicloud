@@ -24,14 +24,14 @@ class InstanceArgs:
                  instance_type: pulumi.Input[_builtins.str],
                  security_group_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -108,118 +108,118 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVars")
-    def environment_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]]:
+    def environment_vars(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]]:
         """
         Setting environment variables in eais instance on Initialization See `environment_var` below.
         """
         return pulumi.get(self, "environment_vars")
 
     @environment_vars.setter
-    def environment_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]]):
+    def environment_vars(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]]):
         pulumi.set(self, "environment_vars", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'force' is deprecated and will be removed in a future release.""")
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to force the deletion when the instance status does not meet the deletion conditions.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EAIS instance image.
         """
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the instance
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -269,159 +269,159 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVars")
-    def environment_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]]:
+    def environment_vars(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]]:
         """
         Setting environment variables in eais instance on Initialization See `environment_var` below.
         """
         return pulumi.get(self, "environment_vars")
 
     @environment_vars.setter
-    def environment_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]]):
+    def environment_vars(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]]):
         pulumi.set(self, "environment_vars", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'force' is deprecated and will be removed in a future release.""")
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to force the deletion when the instance status does not meet the deletion conditions.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EAIS instance image.
         """
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the instance
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EAIS instance type
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region ID
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security group ID
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Switch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -431,17 +431,17 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a EAIS Instance resource.
@@ -592,17 +592,17 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -641,19 +641,19 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            category: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]]] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            image: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            image: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

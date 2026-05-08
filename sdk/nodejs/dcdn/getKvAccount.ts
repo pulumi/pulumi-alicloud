@@ -82,5 +82,5 @@ export interface GetKvAccountOutputArgs {
     /**
      * The status of the KV feature for your account. Valid values: `online`, `offline`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

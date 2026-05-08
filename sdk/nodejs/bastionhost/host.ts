@@ -205,50 +205,50 @@ export interface HostState {
     /**
      * Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
      */
-    activeAddressType?: pulumi.Input<string>;
+    activeAddressType?: pulumi.Input<string | undefined>;
     /**
      * Specify a host of notes, supports up to 500 characters.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The host ID.
      */
-    hostId?: pulumi.Input<string>;
+    hostId?: pulumi.Input<string | undefined>;
     /**
      * Specify the new create a host name of the supports up to 128 characters.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
      */
-    hostPrivateAddress?: pulumi.Input<string>;
+    hostPrivateAddress?: pulumi.Input<string | undefined>;
     /**
      * Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
      */
-    hostPublicAddress?: pulumi.Input<string>;
+    hostPublicAddress?: pulumi.Input<string | undefined>;
     /**
      * Specify the new create a host where the Bastion host ID of.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The instance region id.
      */
-    instanceRegionId?: pulumi.Input<string>;
+    instanceRegionId?: pulumi.Input<string | undefined>;
     /**
      * Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
      */
-    osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string | undefined>;
     /**
      * Specify the new create a host of source. Valid values: 
      * * `Local`: localhost
      * * `Ecs`:ECS instance
      * * `Rds`:RDS exclusive cluster host.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
      */
-    sourceInstanceId?: pulumi.Input<string>;
+    sourceInstanceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -262,7 +262,7 @@ export interface HostArgs {
     /**
      * Specify a host of notes, supports up to 500 characters.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Specify the new create a host name of the supports up to 128 characters.
      */
@@ -270,11 +270,11 @@ export interface HostArgs {
     /**
      * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `activeAddressType` parameter is set to `Private`.
      */
-    hostPrivateAddress?: pulumi.Input<string>;
+    hostPrivateAddress?: pulumi.Input<string | undefined>;
     /**
      * Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
      */
-    hostPublicAddress?: pulumi.Input<string>;
+    hostPublicAddress?: pulumi.Input<string | undefined>;
     /**
      * Specify the new create a host where the Bastion host ID of.
      */
@@ -282,7 +282,7 @@ export interface HostArgs {
     /**
      * The instance region id.
      */
-    instanceRegionId?: pulumi.Input<string>;
+    instanceRegionId?: pulumi.Input<string | undefined>;
     /**
      * Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
      */
@@ -297,5 +297,5 @@ export interface HostArgs {
     /**
      * Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
      */
-    sourceInstanceId?: pulumi.Input<string>;
+    sourceInstanceId?: pulumi.Input<string | undefined>;
 }

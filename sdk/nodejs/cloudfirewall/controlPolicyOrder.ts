@@ -134,16 +134,16 @@ export interface ControlPolicyOrderState {
     /**
      * The unique ID of the access control policy.
      */
-    aclUuid?: pulumi.Input<string>;
+    aclUuid?: pulumi.Input<string | undefined>;
     /**
      * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
      * > **NOTE:** From version 1.227.1, `order` must be set.
      */
-    order?: pulumi.Input<number>;
+    order?: pulumi.Input<number | undefined>;
 }
 
 /**

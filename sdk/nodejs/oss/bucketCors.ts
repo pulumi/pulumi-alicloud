@@ -136,15 +136,15 @@ export interface BucketCorsState {
     /**
      * The name of the Bucket.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `corsRule` below.
      */
-    corsRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketCorsCorsRule>[]>;
+    corsRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketCorsCorsRule>[] | undefined>;
     /**
      * Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
      */
-    responseVary?: pulumi.Input<boolean>;
+    responseVary?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -162,5 +162,5 @@ export interface BucketCorsArgs {
     /**
      * Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
      */
-    responseVary?: pulumi.Input<boolean>;
+    responseVary?: pulumi.Input<boolean | undefined>;
 }

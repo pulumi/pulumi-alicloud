@@ -21,7 +21,7 @@ class AssociatedRuleArgs:
     def __init__(__self__, *,
                  associated_setting_name: pulumi.Input[_builtins.str],
                  status: pulumi.Input[_builtins.str],
-                 tag_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 tag_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AssociatedRule resource.
 
@@ -60,23 +60,23 @@ class AssociatedRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="tagKeys")
-    def tag_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tag_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of tag keys for the associated resource tag rule.
         """
         return pulumi.get(self, "tag_keys")
 
     @tag_keys.setter
-    def tag_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tag_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tag_keys", value)
 
 
 @pulumi.input_type
 class _AssociatedRuleState:
     def __init__(__self__, *,
-                 associated_setting_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 associated_setting_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AssociatedRule resources.
 
@@ -93,38 +93,38 @@ class _AssociatedRuleState:
 
     @_builtins.property
     @pulumi.getter(name="associatedSettingName")
-    def associated_setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def associated_setting_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The setting name of the associated resource tag rule. For specific values, see the Rule Setting Name column in [Resources that Support Associated Resource Tag Settings](https://www.alibabacloud.com/help/en/resource-management/tag/user-guide/associated-resource-label-settings)
         """
         return pulumi.get(self, "associated_setting_name")
 
     @associated_setting_name.setter
-    def associated_setting_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def associated_setting_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "associated_setting_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable the associated resource tag rule. Valid values: `Enable`, `Disable`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="tagKeys")
-    def tag_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tag_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of tag keys for the associated resource tag rule.
         """
         return pulumi.get(self, "tag_keys")
 
     @tag_keys.setter
-    def tag_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tag_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tag_keys", value)
 
 
@@ -134,9 +134,9 @@ class AssociatedRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 associated_setting_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 associated_setting_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a TAG Associated Rule resource.
@@ -237,9 +237,9 @@ class AssociatedRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 associated_setting_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 associated_setting_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -266,9 +266,9 @@ class AssociatedRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            associated_setting_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AssociatedRule':
+            associated_setting_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AssociatedRule':
         """
         Get an existing AssociatedRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

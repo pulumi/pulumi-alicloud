@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Cen
         ///         NameRegex = "^preserved-NODELETING",
         ///     });
         /// 
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Min = 1,
         ///         Max = 2999,
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Cen
         ///         NameRegex = "^preserved-NODELETING",
         ///     });
         /// 
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Min = 1,
         ///         Max = 2999,
@@ -228,7 +228,7 @@ namespace Pulumi.AliCloud.Cen
         ///         NameRegex = "^preserved-NODELETING",
         ///     });
         /// 
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Min = 1,
         ///         Max = 2999,

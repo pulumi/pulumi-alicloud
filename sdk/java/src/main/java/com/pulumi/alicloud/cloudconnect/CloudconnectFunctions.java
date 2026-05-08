@@ -35,8 +35,8 @@ public final class CloudconnectFunctions {
      * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.cloudconnect.Network;
      * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -89,8 +89,8 @@ public final class CloudconnectFunctions {
      * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.cloudconnect.Network;
      * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -143,8 +143,8 @@ public final class CloudconnectFunctions {
      * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.cloudconnect.Network;
      * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -197,8 +197,8 @@ public final class CloudconnectFunctions {
      * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.cloudconnect.Network;
      * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -251,8 +251,8 @@ public final class CloudconnectFunctions {
      * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.cloudconnect.Network;
      * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -305,8 +305,8 @@ public final class CloudconnectFunctions {
      * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.cloudconnect.Network;
      * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -359,8 +359,8 @@ public final class CloudconnectFunctions {
      * import com.pulumi.alicloud.cloudconnect.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.cloudconnect.Network;
      * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

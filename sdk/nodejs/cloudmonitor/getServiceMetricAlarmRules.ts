@@ -232,29 +232,29 @@ export interface GetServiceMetricAlarmRulesOutputArgs {
     /**
      * The monitoring dimensions of the specified resource.
      */
-    dimensions?: pulumi.Input<string>;
+    dimensions?: pulumi.Input<string | undefined>;
     /**
      * A list of Metric Alarm Rule IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the metric.
      */
-    metricName?: pulumi.Input<string>;
+    metricName?: pulumi.Input<string | undefined>;
     /**
      * The namespace of the cloud service.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert rule.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
      */
-    status?: pulumi.Input<boolean>;
+    status?: pulumi.Input<boolean | undefined>;
 }

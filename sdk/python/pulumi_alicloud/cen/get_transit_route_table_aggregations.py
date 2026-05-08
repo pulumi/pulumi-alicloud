@@ -193,12 +193,12 @@ def get_transit_route_table_aggregations(ids: Optional[Sequence[_builtins.str]] 
         transit_route_table_aggregation_cidr=pulumi.get(__ret__, 'transit_route_table_aggregation_cidr'),
         transit_route_table_aggregations=pulumi.get(__ret__, 'transit_route_table_aggregations'),
         transit_route_table_id=pulumi.get(__ret__, 'transit_route_table_id'))
-def get_transit_route_table_aggregations_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                transit_route_table_aggregation_cidr: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                transit_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_transit_route_table_aggregations_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                transit_route_table_aggregation_cidr: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                transit_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouteTableAggregationsResult]:
     """
     This data source provides the Cen Transit Route Table Aggregations of the current Alibaba Cloud user.

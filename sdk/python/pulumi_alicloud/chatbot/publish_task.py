@@ -20,8 +20,8 @@ __all__ = ['PublishTaskArgs', 'PublishTask']
 class PublishTaskArgs:
     def __init__(__self__, *,
                  biz_type: pulumi.Input[_builtins.str],
-                 agent_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 agent_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PublishTask resource.
 
@@ -49,38 +49,38 @@ class PublishTaskArgs:
 
     @_builtins.property
     @pulumi.getter(name="agentKey")
-    def agent_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
         """
         return pulumi.get(self, "agent_key")
 
     @agent_key.setter
-    def agent_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_key", value)
 
     @_builtins.property
     @pulumi.getter(name="dataIdLists")
-    def data_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def data_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
         """
         return pulumi.get(self, "data_id_lists")
 
     @data_id_lists.setter
-    def data_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def data_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_id_lists", value)
 
 
 @pulumi.input_type
 class _PublishTaskState:
     def __init__(__self__, *,
-                 agent_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 modify_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 agent_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublishTask resources.
 
@@ -106,74 +106,74 @@ class _PublishTaskState:
 
     @_builtins.property
     @pulumi.getter(name="agentKey")
-    def agent_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
         """
         return pulumi.get(self, "agent_key")
 
     @agent_key.setter
-    def agent_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_key", value)
 
     @_builtins.property
     @pulumi.getter(name="bizType")
-    def biz_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biz_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the publishing unit. Please use the CreateInstancePublishTask API to publish the robot.
         """
         return pulumi.get(self, "biz_type")
 
     @biz_type.setter
-    def biz_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biz_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biz_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UTC time of task creation
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataIdLists")
-    def data_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def data_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
         """
         return pulumi.get(self, "data_id_lists")
 
     @data_id_lists.setter
-    def data_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def data_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_id_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyTime")
-    def modify_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UTC time for task modification
         """
         return pulumi.get(self, "modify_time")
 
     @modify_time.setter
-    def modify_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the task.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -183,9 +183,9 @@ class PublishTask(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 agent_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Chatbot Publish Task resource.
@@ -278,9 +278,9 @@ class PublishTask(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 agent_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -308,12 +308,12 @@ class PublishTask(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            agent_key: Optional[pulumi.Input[_builtins.str]] = None,
-            biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            modify_time: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'PublishTask':
+            agent_key: pulumi.Input[Optional[_builtins.str]] = None,
+            biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'PublishTask':
         """
         Get an existing PublishTask resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

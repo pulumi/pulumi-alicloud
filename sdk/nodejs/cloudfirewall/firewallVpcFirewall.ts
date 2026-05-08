@@ -190,43 +190,43 @@ export interface FirewallVpcFirewallState {
     /**
      * Bandwidth specifications for high-speed channels. Unit: Mbps.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The communication type of the VPC firewall.
      */
-    connectType?: pulumi.Input<string>;
+    connectType?: pulumi.Input<string | undefined>;
     /**
      * The language type of the requested and received messages. Valid values:
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The details of the local VPC. See `localVpc` below.
      */
-    localVpc?: pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallLocalVpc>;
+    localVpc?: pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallLocalVpc | undefined>;
     /**
      * The UID of the Alibaba Cloud member account.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * The details of the peer VPC. See `peerVpc` below.
      */
-    peerVpc?: pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallPeerVpc>;
+    peerVpc?: pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallPeerVpc | undefined>;
     /**
      * The region is open.
      */
-    regionStatus?: pulumi.Input<string>;
+    regionStatus?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC firewall instance.
      */
-    vpcFirewallId?: pulumi.Input<string>;
+    vpcFirewallId?: pulumi.Input<string | undefined>;
     /**
      * The name of the VPC firewall instance.
      */
-    vpcFirewallName?: pulumi.Input<string>;
+    vpcFirewallName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -236,7 +236,7 @@ export interface FirewallVpcFirewallArgs {
     /**
      * The language type of the requested and received messages. Valid values:
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The details of the local VPC. See `localVpc` below.
      */
@@ -244,7 +244,7 @@ export interface FirewallVpcFirewallArgs {
     /**
      * The UID of the Alibaba Cloud member account.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * The details of the peer VPC. See `peerVpc` below.
      */

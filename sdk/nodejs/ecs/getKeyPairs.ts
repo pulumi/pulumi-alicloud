@@ -140,25 +140,25 @@ export interface GetKeyPairsOutputArgs {
     /**
      * A finger print used to retrieve specified key pair.
      */
-    fingerPrint?: pulumi.Input<string>;
+    fingerPrint?: pulumi.Input<string | undefined>;
     /**
      * A list of key pair IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to apply to the resulting key pairs.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the key pair belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

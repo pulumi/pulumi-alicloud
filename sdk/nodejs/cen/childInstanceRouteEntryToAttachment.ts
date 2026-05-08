@@ -199,31 +199,31 @@ export interface ChildInstanceRouteEntryToAttachmentState {
     /**
      * The ID of the CEN instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
-    childInstanceRouteTableId?: pulumi.Input<string>;
+    childInstanceRouteTableId?: pulumi.Input<string | undefined>;
     /**
      * DestinationCidrBlock
      */
-    destinationCidrBlock?: pulumi.Input<string>;
+    destinationCidrBlock?: pulumi.Input<string | undefined>;
     /**
      * Whether to perform pre-check on this request, including permission and instance status verification.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * ServiceType
      */
-    serviceType?: pulumi.Input<string>;
+    serviceType?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * TransitRouterAttachmentId
      */
-    transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -245,7 +245,7 @@ export interface ChildInstanceRouteEntryToAttachmentArgs {
     /**
      * Whether to perform pre-check on this request, including permission and instance status verification.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * TransitRouterAttachmentId
      */

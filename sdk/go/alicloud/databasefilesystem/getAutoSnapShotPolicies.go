@@ -26,20 +26,22 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := databasefilesystem.GetAutoSnapShotPolicies(ctx, &databasefilesystem.GetAutoSnapShotPoliciesArgs{
-// Ids: interface{}{
-// defaultAlicloudDbfsAutoSnapShotPolicy.Id,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudDbfsAutoSnapShotPolicyExampleId", _default.AutoSnapShotPolicies[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := databasefilesystem.GetAutoSnapShotPolicies(ctx, &databasefilesystem.GetAutoSnapShotPoliciesArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudDbfsAutoSnapShotPolicy.Id,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudDbfsAutoSnapShotPolicyExampleId", _default.AutoSnapShotPolicies[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAutoSnapShotPolicies(ctx *pulumi.Context, args *GetAutoSnapShotPoliciesArgs, opts ...pulumi.InvokeOption) (*GetAutoSnapShotPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

@@ -153,10 +153,10 @@ def get_dynamic_tag_groups(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'),
         tag_key=pulumi.get(__ret__, 'tag_key'))
-def get_dynamic_tag_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                  output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  tag_key: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_dynamic_tag_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                  output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  tag_key: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDynamicTagGroupsResult]:
     """
     This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.

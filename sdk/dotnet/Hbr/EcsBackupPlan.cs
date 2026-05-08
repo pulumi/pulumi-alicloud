@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AliCloud.Index.GetZones.Invoke(new()
+    ///     var example = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
     ///     });
@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Hbr
     ///         VswitchId = exampleSwitch.Id,
     ///     });
     /// 
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,

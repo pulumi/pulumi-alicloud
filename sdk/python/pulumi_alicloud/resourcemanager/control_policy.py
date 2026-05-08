@@ -22,8 +22,8 @@ class ControlPolicyArgs:
                  control_policy_name: pulumi.Input[_builtins.str],
                  effect_scope: pulumi.Input[_builtins.str],
                  policy_document: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ControlPolicy resource.
 
@@ -95,7 +95,7 @@ class ControlPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new description of the access control policy.
         The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\\_), and hyphens (-) and must start with a letter.
@@ -103,12 +103,12 @@ class ControlPolicyArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags.
         You can specify a maximum of 20 tags.
@@ -116,19 +116,19 @@ class ControlPolicyArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ControlPolicyState:
     def __init__(__self__, *,
-                 control_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effect_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 control_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effect_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ControlPolicy resources.
 
@@ -163,7 +163,7 @@ class _ControlPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="controlPolicyName")
-    def control_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def control_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new name of the access control policy.
         The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
@@ -171,24 +171,24 @@ class _ControlPolicyState:
         return pulumi.get(self, "control_policy_name")
 
     @control_policy_name.setter
-    def control_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def control_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the access control policy was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new description of the access control policy.
         The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\\_), and hyphens (-) and must start with a letter.
@@ -196,12 +196,12 @@ class _ControlPolicyState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectScope")
-    def effect_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective scope of the access control policy. Valid values:
 
@@ -211,12 +211,12 @@ class _ControlPolicyState:
         return pulumi.get(self, "effect_scope")
 
     @effect_scope.setter
-    def effect_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="policyDocument")
-    def policy_document(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_document(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new document of the access control policy.
         The document can be a maximum of 4,096 characters in length.
@@ -226,12 +226,12 @@ class _ControlPolicyState:
         return pulumi.get(self, "policy_document")
 
     @policy_document.setter
-    def policy_document(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_document(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_document", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags.
         You can specify a maximum of 20 tags.
@@ -239,7 +239,7 @@ class _ControlPolicyState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -249,11 +249,11 @@ class ControlPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 control_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effect_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 control_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effect_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Control Policy resource.
@@ -397,11 +397,11 @@ class ControlPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 control_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effect_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 control_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effect_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -433,12 +433,12 @@ class ControlPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            control_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effect_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ControlPolicy':
+            control_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effect_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ControlPolicy':
         """
         Get an existing ControlPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -145,23 +145,23 @@ export interface VpdGrantRuleState {
     /**
      * The Creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ER instance under the cross-account tenant.
      */
-    erId?: pulumi.Input<string>;
+    erId?: pulumi.Input<string | undefined>;
     /**
      * Cross-account authorized tenant ID.
      */
-    grantTenantId?: pulumi.Input<string>;
+    grantTenantId?: pulumi.Input<string | undefined>;
     /**
      * Instance ID of VPD.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The Region ID.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
 }
 
 /**

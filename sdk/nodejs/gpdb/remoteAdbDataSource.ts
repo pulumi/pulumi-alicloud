@@ -252,47 +252,47 @@ export interface RemoteAdbDataSourceState {
     /**
      * Data Source Name
      */
-    dataSourceName?: pulumi.Input<string>;
+    dataSourceName?: pulumi.Input<string | undefined>;
     /**
      * The database of the local instance which connection data.
      */
-    localDatabase?: pulumi.Input<string>;
+    localDatabase?: pulumi.Input<string | undefined>;
     /**
      * The instanceId of the local instance which connection data.
      */
-    localDbInstanceId?: pulumi.Input<string>;
+    localDbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The Management user name of the local instance.
      */
-    managerUserName?: pulumi.Input<string>;
+    managerUserName?: pulumi.Input<string | undefined>;
     /**
      * Password of the Manager user of the local instance
      */
-    managerUserPassword?: pulumi.Input<string>;
+    managerUserPassword?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
-    remoteAdbDataSourceId?: pulumi.Input<number>;
+    remoteAdbDataSourceId?: pulumi.Input<number | undefined>;
     /**
      * The database of the remote instance which provide data.
      */
-    remoteDatabase?: pulumi.Input<string>;
+    remoteDatabase?: pulumi.Input<string | undefined>;
     /**
      * The instanceId of the remote instance which provide data.
      */
-    remoteDbInstanceId?: pulumi.Input<string>;
+    remoteDbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The user name used to connect to the remote instance
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
     /**
      * The user password used to connect to the remote instance
      */
-    userPassword?: pulumi.Input<string>;
+    userPassword?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -302,7 +302,7 @@ export interface RemoteAdbDataSourceArgs {
     /**
      * Data Source Name
      */
-    dataSourceName?: pulumi.Input<string>;
+    dataSourceName?: pulumi.Input<string | undefined>;
     /**
      * The database of the local instance which connection data.
      */

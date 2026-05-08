@@ -23,8 +23,8 @@ class DBAuditInstanceArgs:
                  period: pulumi.Input[_builtins.int],
                  plan_code: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DBAuditInstance resource.
 
@@ -96,38 +96,38 @@ class DBAuditInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _DBAuditInstanceState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 plan_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 plan_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DBAuditInstance resources.
 
@@ -154,19 +154,19 @@ class _DBAuditInstanceState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the instance. This name can have a string of 1 to 63 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -174,55 +174,55 @@ class _DBAuditInstanceState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="planCode")
-    def plan_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
         """
         return pulumi.get(self, "plan_code")
 
     @plan_code.setter
-    def plan_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_code", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         vSwtich ID configured to audit
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -232,12 +232,12 @@ class DBAuditInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 plan_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 plan_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Cloud DBaudit instance resource ("Yundun_dbaudit" is the short term of this product).
@@ -362,12 +362,12 @@ class DBAuditInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 plan_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 plan_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -401,12 +401,12 @@ class DBAuditInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            plan_code: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DBAuditInstance':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            plan_code: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DBAuditInstance':
         """
         Get an existing DBAuditInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

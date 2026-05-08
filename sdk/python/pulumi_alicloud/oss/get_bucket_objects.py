@@ -138,10 +138,10 @@ def get_bucket_objects(bucket_name: Optional[_builtins.str] = None,
         key_regex=pulumi.get(__ret__, 'key_regex'),
         objects=pulumi.get(__ret__, 'objects'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_bucket_objects_output(bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                              key_prefix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              key_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_bucket_objects_output(bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                              key_prefix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              key_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBucketObjectsResult]:
     """
     This data source provides the objects of an OSS bucket.

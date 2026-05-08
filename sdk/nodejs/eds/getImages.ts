@@ -213,29 +213,29 @@ export interface GetImagesOutputArgs {
     /**
      * The desktop type of the image.
      */
-    desktopInstanceType?: pulumi.Input<string>;
+    desktopInstanceType?: pulumi.Input<string | undefined>;
     /**
      * A list of Image IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
      */
-    imageType?: pulumi.Input<string>;
+    imageType?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Image name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The operating system type of the image. Valid values: `Windows` and `Linux`.
      */
-    osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

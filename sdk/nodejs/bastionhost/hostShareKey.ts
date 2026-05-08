@@ -178,27 +178,27 @@ export interface HostShareKeyState {
     /**
      * The first ID of the resource.
      */
-    hostShareKeyId?: pulumi.Input<string>;
+    hostShareKeyId?: pulumi.Input<string | undefined>;
     /**
      * The name of the host shared key to be added. The name can be a maximum of 128 characters in length.
      */
-    hostShareKeyName?: pulumi.Input<string>;
+    hostShareKeyName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Bastion instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The password of the private key. The value is a Base64-encoded string.
      */
-    passPhrase?: pulumi.Input<string>;
+    passPhrase?: pulumi.Input<string | undefined>;
     /**
      * The private key. The value is a Base64-encoded string.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The fingerprint of the private key.
      */
-    privateKeyFingerPrint?: pulumi.Input<string>;
+    privateKeyFingerPrint?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -216,7 +216,7 @@ export interface HostShareKeyArgs {
     /**
      * The password of the private key. The value is a Base64-encoded string.
      */
-    passPhrase?: pulumi.Input<string>;
+    passPhrase?: pulumi.Input<string | undefined>;
     /**
      * The private key. The value is a Base64-encoded string.
      */

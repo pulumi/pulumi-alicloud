@@ -21,10 +21,10 @@ class TransitRouteTableAggregationArgs:
     def __init__(__self__, *,
                  transit_route_table_aggregation_cidr: pulumi.Input[_builtins.str],
                  transit_route_table_id: pulumi.Input[_builtins.str],
-                 transit_route_table_aggregation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_scope_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 transit_route_table_aggregation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_scope_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TransitRouteTableAggregation resource.
 
@@ -88,7 +88,7 @@ class TransitRouteTableAggregationArgs:
 
     @_builtins.property
     @pulumi.getter(name="transitRouteTableAggregationDescription")
-    def transit_route_table_aggregation_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_route_table_aggregation_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of propagation ranges of the aggregation route.
 
@@ -97,12 +97,12 @@ class TransitRouteTableAggregationArgs:
         return pulumi.get(self, "transit_route_table_aggregation_description")
 
     @transit_route_table_aggregation_description.setter
-    def transit_route_table_aggregation_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_route_table_aggregation_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_route_table_aggregation_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouteTableAggregationName")
-    def transit_route_table_aggregation_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_route_table_aggregation_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the aggregate route.
         The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
@@ -110,12 +110,12 @@ class TransitRouteTableAggregationArgs:
         return pulumi.get(self, "transit_route_table_aggregation_name")
 
     @transit_route_table_aggregation_name.setter
-    def transit_route_table_aggregation_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_route_table_aggregation_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_route_table_aggregation_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouteTableAggregationScope")
-    def transit_route_table_aggregation_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_route_table_aggregation_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scope of networks that you want to advertise the aggregate route.
         The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
@@ -123,32 +123,32 @@ class TransitRouteTableAggregationArgs:
         return pulumi.get(self, "transit_route_table_aggregation_scope")
 
     @transit_route_table_aggregation_scope.setter
-    def transit_route_table_aggregation_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_route_table_aggregation_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_route_table_aggregation_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouteTableAggregationScopeLists")
-    def transit_route_table_aggregation_scope_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def transit_route_table_aggregation_scope_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Aggregation Route Scopes
         """
         return pulumi.get(self, "transit_route_table_aggregation_scope_lists")
 
     @transit_route_table_aggregation_scope_lists.setter
-    def transit_route_table_aggregation_scope_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def transit_route_table_aggregation_scope_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "transit_route_table_aggregation_scope_lists", value)
 
 
 @pulumi.input_type
 class _TransitRouteTableAggregationState:
     def __init__(__self__, *,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_scope_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 transit_route_table_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_scope_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 transit_route_table_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouteTableAggregation resources.
 
@@ -187,19 +187,19 @@ class _TransitRouteTableAggregationState:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouteTableAggregationCidr")
-    def transit_route_table_aggregation_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_route_table_aggregation_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination CIDR block of the aggregate route.
 
@@ -212,12 +212,12 @@ class _TransitRouteTableAggregationState:
         return pulumi.get(self, "transit_route_table_aggregation_cidr")
 
     @transit_route_table_aggregation_cidr.setter
-    def transit_route_table_aggregation_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_route_table_aggregation_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_route_table_aggregation_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouteTableAggregationDescription")
-    def transit_route_table_aggregation_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_route_table_aggregation_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of propagation ranges of the aggregation route.
 
@@ -226,12 +226,12 @@ class _TransitRouteTableAggregationState:
         return pulumi.get(self, "transit_route_table_aggregation_description")
 
     @transit_route_table_aggregation_description.setter
-    def transit_route_table_aggregation_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_route_table_aggregation_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_route_table_aggregation_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouteTableAggregationName")
-    def transit_route_table_aggregation_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_route_table_aggregation_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the aggregate route.
         The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
@@ -239,12 +239,12 @@ class _TransitRouteTableAggregationState:
         return pulumi.get(self, "transit_route_table_aggregation_name")
 
     @transit_route_table_aggregation_name.setter
-    def transit_route_table_aggregation_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_route_table_aggregation_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_route_table_aggregation_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouteTableAggregationScope")
-    def transit_route_table_aggregation_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_route_table_aggregation_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scope of networks that you want to advertise the aggregate route.
         The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
@@ -252,31 +252,31 @@ class _TransitRouteTableAggregationState:
         return pulumi.get(self, "transit_route_table_aggregation_scope")
 
     @transit_route_table_aggregation_scope.setter
-    def transit_route_table_aggregation_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_route_table_aggregation_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_route_table_aggregation_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouteTableAggregationScopeLists")
-    def transit_route_table_aggregation_scope_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def transit_route_table_aggregation_scope_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Aggregation Route Scopes
         """
         return pulumi.get(self, "transit_route_table_aggregation_scope_lists")
 
     @transit_route_table_aggregation_scope_lists.setter
-    def transit_route_table_aggregation_scope_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def transit_route_table_aggregation_scope_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "transit_route_table_aggregation_scope_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouteTableId")
-    def transit_route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of route table IDs of the Enterprise Edition transit router.
         """
         return pulumi.get(self, "transit_route_table_id")
 
     @transit_route_table_id.setter
-    def transit_route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_route_table_id", value)
 
 
@@ -286,12 +286,12 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 transit_route_table_aggregation_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_scope_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 transit_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 transit_route_table_aggregation_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_scope_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 transit_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Route Table Aggregation resource.
@@ -415,12 +415,12 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 transit_route_table_aggregation_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_route_table_aggregation_scope_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 transit_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 transit_route_table_aggregation_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_route_table_aggregation_scope_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 transit_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -451,13 +451,13 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_route_table_aggregation_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_route_table_aggregation_description: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_route_table_aggregation_name: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_route_table_aggregation_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_route_table_aggregation_scope_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            transit_route_table_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitRouteTableAggregation':
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_route_table_aggregation_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_route_table_aggregation_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_route_table_aggregation_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_route_table_aggregation_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_route_table_aggregation_scope_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            transit_route_table_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitRouteTableAggregation':
         """
         Get an existing TransitRouteTableAggregation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -166,10 +166,10 @@ def get_user_provisioning_events(directory_id: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         user_provisioning_id=pulumi.get(__ret__, 'user_provisioning_id'))
-def get_user_provisioning_events_output(directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                        ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        user_provisioning_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_provisioning_events_output(directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                        ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        user_provisioning_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserProvisioningEventsResult]:
     """
     This data source provides Cloud Sso User Provisioning Event available to the user.[What is User Provisioning Event](https://next.api.alibabacloud.com/document/cloudsso/2021-05-15/GetUserProvisioningEvent)

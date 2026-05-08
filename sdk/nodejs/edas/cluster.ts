@@ -141,23 +141,23 @@ export interface ClusterState {
     /**
      * The name of the cluster that you want to create.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
      */
-    clusterType?: pulumi.Input<number>;
+    clusterType?: pulumi.Input<number | undefined>;
     /**
      * The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
      */
-    logicalRegionId?: pulumi.Input<string>;
+    logicalRegionId?: pulumi.Input<string | undefined>;
     /**
      * The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
      */
-    networkMode?: pulumi.Input<number>;
+    networkMode?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Virtual Private Cloud (VPC) for the cluster.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -175,7 +175,7 @@ export interface ClusterArgs {
     /**
      * The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
      */
-    logicalRegionId?: pulumi.Input<string>;
+    logicalRegionId?: pulumi.Input<string | undefined>;
     /**
      * The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
      */
@@ -183,5 +183,5 @@ export interface ClusterArgs {
     /**
      * The ID of the Virtual Private Cloud (VPC) for the cluster.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

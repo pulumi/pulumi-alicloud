@@ -126,17 +126,17 @@ export interface GetDeliveryChannelsOutputArgs {
     /**
      * A list of Config Delivery Channel IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by delivery channel name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
 }

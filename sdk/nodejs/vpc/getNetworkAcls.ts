@@ -140,33 +140,33 @@ export interface GetNetworkAclsOutputArgs {
     /**
      * A list of Network Acl ID.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Network Acl name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The name of the network ACL.
      */
-    networkAclName?: pulumi.Input<string>;
+    networkAclName?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the associated resource.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the associated resource. Valid values `VSwitch`. `resourceType` and `resourceId` need to be specified at the same time to take effect.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The state of the network ACL. Valid values: `Available` and `Modifying`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the associated VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

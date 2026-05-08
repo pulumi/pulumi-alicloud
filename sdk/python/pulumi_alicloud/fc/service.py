@@ -21,17 +21,17 @@ __all__ = ['ServiceArgs', 'Service']
 @pulumi.input_type
 class ServiceArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_config: Optional[pulumi.Input['ServiceLogConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_config: Optional[pulumi.Input['ServiceNasConfigArgs']] = None,
-                 publish: Optional[pulumi.Input[_builtins.bool]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tracing_config: Optional[pulumi.Input['ServiceTracingConfigArgs']] = None,
-                 vpc_config: Optional[pulumi.Input['ServiceVpcConfigArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_config: pulumi.Input[Optional['ServiceLogConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_config: pulumi.Input[Optional['ServiceNasConfigArgs']] = None,
+                 publish: pulumi.Input[Optional[_builtins.bool]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tracing_config: pulumi.Input[Optional['ServiceTracingConfigArgs']] = None,
+                 vpc_config: pulumi.Input[Optional['ServiceVpcConfigArgs']] = None):
         """
         The set of arguments for constructing a Service resource.
 
@@ -72,154 +72,154 @@ class ServiceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Function Compute Service description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="internetAccess")
-    def internet_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def internet_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow the Service to access Internet. Default to "true".
         """
         return pulumi.get(self, "internet_access")
 
     @internet_access.setter
-    def internet_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def internet_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "internet_access", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['ServiceLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['ServiceLogConfigArgs']]:
         """
         Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.). See `log_config` below.
         """
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['ServiceLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['ServiceLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Function Compute Service name. It is the only in one Alicloud account and is conflict with `name_prefix`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Setting a prefix to get a only name. It is conflict with `name`.
         """
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
-    def name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="nasConfig")
-    def nas_config(self) -> Optional[pulumi.Input['ServiceNasConfigArgs']]:
+    def nas_config(self) -> pulumi.Input[Optional['ServiceNasConfigArgs']]:
         """
         Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. See `nas_config` below.
         """
         return pulumi.get(self, "nas_config")
 
     @nas_config.setter
-    def nas_config(self, value: Optional[pulumi.Input['ServiceNasConfigArgs']]):
+    def nas_config(self, value: pulumi.Input[Optional['ServiceNasConfigArgs']]):
         pulumi.set(self, "nas_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def publish(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def publish(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
         """
         return pulumi.get(self, "publish")
 
     @publish.setter
-    def publish(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def publish(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "publish", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map for tagging resources.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tracingConfig")
-    def tracing_config(self) -> Optional[pulumi.Input['ServiceTracingConfigArgs']]:
+    def tracing_config(self) -> pulumi.Input[Optional['ServiceTracingConfigArgs']]:
         """
         Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.). See `tracing_config` below.
         """
         return pulumi.get(self, "tracing_config")
 
     @tracing_config.setter
-    def tracing_config(self, value: Optional[pulumi.Input['ServiceTracingConfigArgs']]):
+    def tracing_config(self, value: pulumi.Input[Optional['ServiceTracingConfigArgs']]):
         pulumi.set(self, "tracing_config", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcConfig")
-    def vpc_config(self) -> Optional[pulumi.Input['ServiceVpcConfigArgs']]:
+    def vpc_config(self) -> pulumi.Input[Optional['ServiceVpcConfigArgs']]:
         """
         Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.). See `vpc_config` below.
         """
         return pulumi.get(self, "vpc_config")
 
     @vpc_config.setter
-    def vpc_config(self, value: Optional[pulumi.Input['ServiceVpcConfigArgs']]):
+    def vpc_config(self, value: pulumi.Input[Optional['ServiceVpcConfigArgs']]):
         pulumi.set(self, "vpc_config", value)
 
 
 @pulumi.input_type
 class _ServiceState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_modified: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_config: Optional[pulumi.Input['ServiceLogConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_config: Optional[pulumi.Input['ServiceNasConfigArgs']] = None,
-                 publish: Optional[pulumi.Input[_builtins.bool]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tracing_config: Optional[pulumi.Input['ServiceTracingConfigArgs']] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_config: Optional[pulumi.Input['ServiceVpcConfigArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_config: pulumi.Input[Optional['ServiceLogConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_config: pulumi.Input[Optional['ServiceNasConfigArgs']] = None,
+                 publish: pulumi.Input[Optional[_builtins.bool]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tracing_config: pulumi.Input[Optional['ServiceTracingConfigArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_config: pulumi.Input[Optional['ServiceVpcConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Service resources.
 
@@ -269,170 +269,170 @@ class _ServiceState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Function Compute Service description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="internetAccess")
-    def internet_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def internet_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow the Service to access Internet. Default to "true".
         """
         return pulumi.get(self, "internet_access")
 
     @internet_access.setter
-    def internet_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def internet_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "internet_access", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date this resource was last modified.
         """
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
-    def last_modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['ServiceLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['ServiceLogConfigArgs']]:
         """
         Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `log_config` requires the following: (**NOTE:** If both `project` and `logstore` are empty, log_config is considered to be empty or unset.). See `log_config` below.
         """
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['ServiceLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['ServiceLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Function Compute Service name. It is the only in one Alicloud account and is conflict with `name_prefix`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Setting a prefix to get a only name. It is conflict with `name`.
         """
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
-    def name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="nasConfig")
-    def nas_config(self) -> Optional[pulumi.Input['ServiceNasConfigArgs']]:
+    def nas_config(self) -> pulumi.Input[Optional['ServiceNasConfigArgs']]:
         """
         Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. See `nas_config` below.
         """
         return pulumi.get(self, "nas_config")
 
     @nas_config.setter
-    def nas_config(self, value: Optional[pulumi.Input['ServiceNasConfigArgs']]):
+    def nas_config(self, value: pulumi.Input[Optional['ServiceNasConfigArgs']]):
         pulumi.set(self, "nas_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def publish(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def publish(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to publish creation/change as new Function Compute Service Version. Defaults to `false`.
         """
         return pulumi.get(self, "publish")
 
     @publish.setter
-    def publish(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def publish(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "publish", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RAM role arn attached to the Function Compute Service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Function Compute Service ID.
         """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map for tagging resources.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tracingConfig")
-    def tracing_config(self) -> Optional[pulumi.Input['ServiceTracingConfigArgs']]:
+    def tracing_config(self) -> pulumi.Input[Optional['ServiceTracingConfigArgs']]:
         """
         Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.). See `tracing_config` below.
         """
         return pulumi.get(self, "tracing_config")
 
     @tracing_config.setter
-    def tracing_config(self, value: Optional[pulumi.Input['ServiceTracingConfigArgs']]):
+    def tracing_config(self, value: pulumi.Input[Optional['ServiceTracingConfigArgs']]):
         pulumi.set(self, "tracing_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The latest published version of your Function Compute Service.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcConfig")
-    def vpc_config(self) -> Optional[pulumi.Input['ServiceVpcConfigArgs']]:
+    def vpc_config(self) -> pulumi.Input[Optional['ServiceVpcConfigArgs']]:
         """
         Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.). See `vpc_config` below.
         """
         return pulumi.get(self, "vpc_config")
 
     @vpc_config.setter
-    def vpc_config(self, value: Optional[pulumi.Input['ServiceVpcConfigArgs']]):
+    def vpc_config(self, value: pulumi.Input[Optional['ServiceVpcConfigArgs']]):
         pulumi.set(self, "vpc_config", value)
 
 
@@ -442,17 +442,17 @@ class Service(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_config: Optional[pulumi.Input[Union['ServiceLogConfigArgs', 'ServiceLogConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_config: Optional[pulumi.Input[Union['ServiceNasConfigArgs', 'ServiceNasConfigArgsDict']]] = None,
-                 publish: Optional[pulumi.Input[_builtins.bool]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tracing_config: Optional[pulumi.Input[Union['ServiceTracingConfigArgs', 'ServiceTracingConfigArgsDict']]] = None,
-                 vpc_config: Optional[pulumi.Input[Union['ServiceVpcConfigArgs', 'ServiceVpcConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_config: pulumi.Input[Optional[Union['ServiceLogConfigArgs', 'ServiceLogConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_config: pulumi.Input[Optional[Union['ServiceNasConfigArgs', 'ServiceNasConfigArgsDict']]] = None,
+                 publish: pulumi.Input[Optional[_builtins.bool]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tracing_config: pulumi.Input[Optional[Union['ServiceTracingConfigArgs', 'ServiceTracingConfigArgsDict']]] = None,
+                 vpc_config: pulumi.Input[Optional[Union['ServiceVpcConfigArgs', 'ServiceVpcConfigArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Alicloud Function Compute Service resource. The resource is the base of launching Function and Trigger configuration.
@@ -549,17 +549,17 @@ class Service(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_config: Optional[pulumi.Input[Union['ServiceLogConfigArgs', 'ServiceLogConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_config: Optional[pulumi.Input[Union['ServiceNasConfigArgs', 'ServiceNasConfigArgsDict']]] = None,
-                 publish: Optional[pulumi.Input[_builtins.bool]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tracing_config: Optional[pulumi.Input[Union['ServiceTracingConfigArgs', 'ServiceTracingConfigArgsDict']]] = None,
-                 vpc_config: Optional[pulumi.Input[Union['ServiceVpcConfigArgs', 'ServiceVpcConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_config: pulumi.Input[Optional[Union['ServiceLogConfigArgs', 'ServiceLogConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_config: pulumi.Input[Optional[Union['ServiceNasConfigArgs', 'ServiceNasConfigArgsDict']]] = None,
+                 publish: pulumi.Input[Optional[_builtins.bool]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tracing_config: pulumi.Input[Optional[Union['ServiceTracingConfigArgs', 'ServiceTracingConfigArgsDict']]] = None,
+                 vpc_config: pulumi.Input[Optional[Union['ServiceVpcConfigArgs', 'ServiceVpcConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -593,20 +593,20 @@ class Service(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            last_modified: Optional[pulumi.Input[_builtins.str]] = None,
-            log_config: Optional[pulumi.Input[Union['ServiceLogConfigArgs', 'ServiceLogConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            nas_config: Optional[pulumi.Input[Union['ServiceNasConfigArgs', 'ServiceNasConfigArgsDict']]] = None,
-            publish: Optional[pulumi.Input[_builtins.bool]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            tracing_config: Optional[pulumi.Input[Union['ServiceTracingConfigArgs', 'ServiceTracingConfigArgsDict']]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_config: Optional[pulumi.Input[Union['ServiceVpcConfigArgs', 'ServiceVpcConfigArgsDict']]] = None) -> 'Service':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            log_config: pulumi.Input[Optional[Union['ServiceLogConfigArgs', 'ServiceLogConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            nas_config: pulumi.Input[Optional[Union['ServiceNasConfigArgs', 'ServiceNasConfigArgsDict']]] = None,
+            publish: pulumi.Input[Optional[_builtins.bool]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tracing_config: pulumi.Input[Optional[Union['ServiceTracingConfigArgs', 'ServiceTracingConfigArgsDict']]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_config: pulumi.Input[Optional[Union['ServiceVpcConfigArgs', 'ServiceVpcConfigArgsDict']]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

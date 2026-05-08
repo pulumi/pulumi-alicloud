@@ -19,9 +19,9 @@ __all__ = ['TopicArgs', 'Topic']
 @pulumi.input_type
 class TopicArgs:
     def __init__(__self__, *,
-                 logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Topic resource.
 
@@ -38,47 +38,47 @@ class TopicArgs:
 
     @_builtins.property
     @pulumi.getter(name="loggingEnabled")
-    def logging_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logging_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is logging enabled? true or false. Default value to false.
         """
         return pulumi.get(self, "logging_enabled")
 
     @logging_enabled.setter
-    def logging_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logging_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logging_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumMessageSize")
-    def maximum_message_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_message_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         """
         return pulumi.get(self, "maximum_message_size")
 
     @maximum_message_size.setter
-    def maximum_message_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_message_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_message_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _TopicState:
     def __init__(__self__, *,
-                 logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
 
@@ -95,38 +95,38 @@ class _TopicState:
 
     @_builtins.property
     @pulumi.getter(name="loggingEnabled")
-    def logging_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logging_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is logging enabled? true or false. Default value to false.
         """
         return pulumi.get(self, "logging_enabled")
 
     @logging_enabled.setter
-    def logging_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logging_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logging_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumMessageSize")
-    def maximum_message_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_message_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         """
         return pulumi.get(self, "maximum_message_size")
 
     @maximum_message_size.setter
-    def maximum_message_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_message_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_message_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -136,9 +136,9 @@ class Topic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a MNS topic resource.
@@ -231,9 +231,9 @@ class Topic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -256,9 +256,9 @@ class Topic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Topic':
+            logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

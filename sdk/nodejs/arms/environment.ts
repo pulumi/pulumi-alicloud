@@ -38,11 +38,11 @@ import * as utilities from "../utilities";
  *     vpcId: vpc.id,
  *     vswitchName: name,
  *     zoneId: enhanced.then(enhanced => enhanced.zones?.[0]?.zoneId),
- *     cidrBlock: vpc.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
- *         input: cidrBlock,
+ *     cidrBlock: std.cidrsubnetOutput({
+ *         input: vpc.cidrBlock,
  *         newbits: 8,
  *         netnum: 8,
- *     })).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  * });
  * const defaultSnapshotPolicy = new alicloud.ecs.SnapshotPolicy("default", {
  *     name: name,
@@ -58,13 +58,13 @@ import * as utilities from "../utilities";
  *         "23",
  *     ],
  * });
- * const _default = vswitch.zoneId.apply(zoneId => alicloud.ecs.getInstanceTypesOutput({
- *     availabilityZone: zoneId,
+ * const _default = alicloud.ecs.getInstanceTypesOutput({
+ *     availabilityZone: vswitch.zoneId,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
  *     kubernetesNodeRole: "Worker",
  *     instanceTypeFamily: "ecs.sn1ne",
- * }));
+ * });
  * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
  *     name: `terraform-example-${defaultInteger.result}`,
  *     clusterSpec: "ack.pro.small",
@@ -234,49 +234,49 @@ export interface EnvironmentState {
     /**
      * The locale. The default is Chinese zh | en.
      */
-    aliyunLang?: pulumi.Input<string>;
+    aliyunLang?: pulumi.Input<string | undefined>;
     /**
      * The id or vpcId of the bound container instance.
      */
-    bindResourceId?: pulumi.Input<string>;
+    bindResourceId?: pulumi.Input<string | undefined>;
     /**
      * List of abandoned indicators.
      */
-    dropMetrics?: pulumi.Input<string>;
+    dropMetrics?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource.
      */
-    environmentId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    environmentName?: pulumi.Input<string>;
+    environmentName?: pulumi.Input<string | undefined>;
     /**
      * Subtype of environment:
      * - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
      * - Type of ECS: currently supports ECS.
      * - Type of Cloud: currently supports Cloud.
      */
-    environmentSubType?: pulumi.Input<string>;
+    environmentSubType?: pulumi.Input<string | undefined>;
     /**
      * Type of environment.
      */
-    environmentType?: pulumi.Input<string>;
+    environmentType?: pulumi.Input<string | undefined>;
     /**
      * Hosting type:
      * - none: unmanaged. The default value of the ACK cluster.
      * - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
      * - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
      */
-    managedType?: pulumi.Input<string>;
+    managedType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -286,19 +286,19 @@ export interface EnvironmentArgs {
     /**
      * The locale. The default is Chinese zh | en.
      */
-    aliyunLang?: pulumi.Input<string>;
+    aliyunLang?: pulumi.Input<string | undefined>;
     /**
      * The id or vpcId of the bound container instance.
      */
-    bindResourceId?: pulumi.Input<string>;
+    bindResourceId?: pulumi.Input<string | undefined>;
     /**
      * List of abandoned indicators.
      */
-    dropMetrics?: pulumi.Input<string>;
+    dropMetrics?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    environmentName?: pulumi.Input<string>;
+    environmentName?: pulumi.Input<string | undefined>;
     /**
      * Subtype of environment:
      * - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
@@ -316,13 +316,13 @@ export interface EnvironmentArgs {
      * - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
      * - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
      */
-    managedType?: pulumi.Input<string>;
+    managedType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

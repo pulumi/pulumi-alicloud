@@ -23,7 +23,7 @@ class CooWebCcRuleArgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[_builtins.str],
                  rule_detail: pulumi.Input['CooWebCcRuleRuleDetailArgs'],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CooWebCcRule resource.
 
@@ -66,23 +66,23 @@ class CooWebCcRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _CooWebCcRuleState:
     def __init__(__self__, *,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_detail: Optional[pulumi.Input['CooWebCcRuleRuleDetailArgs']] = None):
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_detail: pulumi.Input[Optional['CooWebCcRuleRuleDetailArgs']] = None):
         """
         Input properties used for looking up and filtering CooWebCcRule resources.
 
@@ -101,7 +101,7 @@ class _CooWebCcRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name of the website service.  
 
@@ -110,31 +110,31 @@ class _CooWebCcRuleState:
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleDetail")
-    def rule_detail(self) -> Optional[pulumi.Input['CooWebCcRuleRuleDetailArgs']]:
+    def rule_detail(self) -> pulumi.Input[Optional['CooWebCcRuleRuleDetailArgs']]:
         """
         Rule details.   See `rule_detail` below.
         """
         return pulumi.get(self, "rule_detail")
 
     @rule_detail.setter
-    def rule_detail(self, value: Optional[pulumi.Input['CooWebCcRuleRuleDetailArgs']]):
+    def rule_detail(self, value: pulumi.Input[Optional['CooWebCcRuleRuleDetailArgs']]):
         pulumi.set(self, "rule_detail", value)
 
 
@@ -144,9 +144,9 @@ class CooWebCcRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_detail: Optional[pulumi.Input[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict']]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_detail: pulumi.Input[Optional[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict']]] = None,
                  __props__=None):
         """
         Provides a DdosCoo Web Cc Rule resource.
@@ -357,9 +357,9 @@ class CooWebCcRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_detail: Optional[pulumi.Input[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict']]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_detail: pulumi.Input[Optional[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,9 +386,9 @@ class CooWebCcRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_detail: Optional[pulumi.Input[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict']]] = None) -> 'CooWebCcRule':
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_detail: pulumi.Input[Optional[Union['CooWebCcRuleRuleDetailArgs', 'CooWebCcRuleRuleDetailArgsDict']]] = None) -> 'CooWebCcRule':
         """
         Get an existing CooWebCcRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

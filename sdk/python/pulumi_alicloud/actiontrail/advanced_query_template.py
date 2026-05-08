@@ -21,7 +21,7 @@ class AdvancedQueryTemplateArgs:
     def __init__(__self__, *,
                  simple_query: pulumi.Input[_builtins.bool],
                  template_sql: pulumi.Input[_builtins.str],
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AdvancedQueryTemplate resource.
 
@@ -60,23 +60,23 @@ class AdvancedQueryTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="templateName")
-    def template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "template_name")
 
     @template_name.setter
-    def template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_name", value)
 
 
 @pulumi.input_type
 class _AdvancedQueryTemplateState:
     def __init__(__self__, *,
-                 simple_query: Optional[pulumi.Input[_builtins.bool]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_sql: Optional[pulumi.Input[_builtins.str]] = None):
+                 simple_query: pulumi.Input[Optional[_builtins.bool]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_sql: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AdvancedQueryTemplate resources.
 
@@ -93,38 +93,38 @@ class _AdvancedQueryTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="simpleQuery")
-    def simple_query(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def simple_query(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Distinguish whether the current template is a simple query
         """
         return pulumi.get(self, "simple_query")
 
     @simple_query.setter
-    def simple_query(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def simple_query(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "simple_query", value)
 
     @_builtins.property
     @pulumi.getter(name="templateName")
-    def template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "template_name")
 
     @template_name.setter
-    def template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_name", value)
 
     @_builtins.property
     @pulumi.getter(name="templateSql")
-    def template_sql(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_sql(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SQL content saved on behalf of the current template
         """
         return pulumi.get(self, "template_sql")
 
     @template_sql.setter
-    def template_sql(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_sql(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_sql", value)
 
 
@@ -134,9 +134,9 @@ class AdvancedQueryTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 simple_query: Optional[pulumi.Input[_builtins.bool]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_sql: Optional[pulumi.Input[_builtins.str]] = None,
+                 simple_query: pulumi.Input[Optional[_builtins.bool]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_sql: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Actiontrail Advanced Query Template resource.
@@ -241,9 +241,9 @@ class AdvancedQueryTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 simple_query: Optional[pulumi.Input[_builtins.bool]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_sql: Optional[pulumi.Input[_builtins.str]] = None,
+                 simple_query: pulumi.Input[Optional[_builtins.bool]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_sql: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -270,9 +270,9 @@ class AdvancedQueryTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            simple_query: Optional[pulumi.Input[_builtins.bool]] = None,
-            template_name: Optional[pulumi.Input[_builtins.str]] = None,
-            template_sql: Optional[pulumi.Input[_builtins.str]] = None) -> 'AdvancedQueryTemplate':
+            simple_query: pulumi.Input[Optional[_builtins.bool]] = None,
+            template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            template_sql: pulumi.Input[Optional[_builtins.str]] = None) -> 'AdvancedQueryTemplate':
         """
         Get an existing AdvancedQueryTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

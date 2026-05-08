@@ -285,7 +285,7 @@ export interface MilvusInstanceState {
     /**
      * Whether to enable automatic backup
      */
-    autoBackup?: pulumi.Input<boolean>;
+    autoBackup?: pulumi.Input<boolean | undefined>;
     /**
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
@@ -293,53 +293,53 @@ export interface MilvusInstanceState {
      * 2.5: proxy ,mix_coordinator,data,query,index
      * 2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
      */
-    components?: pulumi.Input<pulumi.Input<inputs.MilvusInstanceComponent>[]>;
+    components?: pulumi.Input<pulumi.Input<inputs.MilvusInstanceComponent>[] | undefined>;
     /**
      * User-defined configuration
      */
-    configuration?: pulumi.Input<string>;
+    configuration?: pulumi.Input<string | undefined>;
     /**
      * Instance creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * DB administrator password, which can be used to log in to attu.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    dbAdminPassword?: pulumi.Input<string>;
+    dbAdminPassword?: pulumi.Input<string | undefined>;
     /**
      * Milvus kernel version. Supported versions: 2.4, 2.5, 2.6.
      */
-    dbVersion?: pulumi.Input<string>;
+    dbVersion?: pulumi.Input<string | undefined>;
     /**
      * Whether to use kms encryption. After enabling, you need to configure KmsKeyId. The default is false.
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable multiple copies of data
      */
-    ha?: pulumi.Input<boolean>;
+    ha?: pulumi.Input<boolean | undefined>;
     /**
      * Instance name. The length is limited to 1-64 characters and can only contain Chinese, letters, numbers,-,_
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Kms Key encryption id, need to be encrypted set to true.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * Availability Zone mode. The default Single.
      * - Single: Single zone.
      * - Two: Dual Availability Zones.
      */
-    multiZoneMode?: pulumi.Input<string>;
+    multiZoneMode?: pulumi.Input<string | undefined>;
     /**
      * Instance Payment Duration
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    paymentDuration?: pulumi.Input<number>;
+    paymentDuration?: pulumi.Input<number | undefined>;
     /**
      * Paid unit , Enumeration value:
      * - Month: Month
@@ -347,41 +347,41 @@ export interface MilvusInstanceState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    paymentDurationUnit?: pulumi.Input<string>;
+    paymentDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * Payment Type ,Enumeration value:
      * - PayAsYouGo: Pay by volume
      * - Subscription: Package year package month
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * regionId. For example: cn-hangzhou
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Resource Group ID
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Instance status. Value range:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * User Defined Label
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VPC network ID. vpc-xxx.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * Switch list, configure the switch and zone. See `vswitchIds` below.
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<inputs.MilvusInstanceVswitchId>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<inputs.MilvusInstanceVswitchId>[] | undefined>;
     /**
      * The zone id. When multi-zone is enabled, it represents the primary zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -391,7 +391,7 @@ export interface MilvusInstanceArgs {
     /**
      * Whether to enable automatic backup
      */
-    autoBackup?: pulumi.Input<boolean>;
+    autoBackup?: pulumi.Input<boolean | undefined>;
     /**
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
@@ -399,17 +399,17 @@ export interface MilvusInstanceArgs {
      * 2.5: proxy ,mix_coordinator,data,query,index
      * 2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
      */
-    components?: pulumi.Input<pulumi.Input<inputs.MilvusInstanceComponent>[]>;
+    components?: pulumi.Input<pulumi.Input<inputs.MilvusInstanceComponent>[] | undefined>;
     /**
      * User-defined configuration
      */
-    configuration?: pulumi.Input<string>;
+    configuration?: pulumi.Input<string | undefined>;
     /**
      * DB administrator password, which can be used to log in to attu.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    dbAdminPassword?: pulumi.Input<string>;
+    dbAdminPassword?: pulumi.Input<string | undefined>;
     /**
      * Milvus kernel version. Supported versions: 2.4, 2.5, 2.6.
      */
@@ -417,11 +417,11 @@ export interface MilvusInstanceArgs {
     /**
      * Whether to use kms encryption. After enabling, you need to configure KmsKeyId. The default is false.
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable multiple copies of data
      */
-    ha?: pulumi.Input<boolean>;
+    ha?: pulumi.Input<boolean | undefined>;
     /**
      * Instance name. The length is limited to 1-64 characters and can only contain Chinese, letters, numbers,-,_
      */
@@ -429,19 +429,19 @@ export interface MilvusInstanceArgs {
     /**
      * Kms Key encryption id, need to be encrypted set to true.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * Availability Zone mode. The default Single.
      * - Single: Single zone.
      * - Two: Dual Availability Zones.
      */
-    multiZoneMode?: pulumi.Input<string>;
+    multiZoneMode?: pulumi.Input<string | undefined>;
     /**
      * Instance Payment Duration
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    paymentDuration?: pulumi.Input<number>;
+    paymentDuration?: pulumi.Input<number | undefined>;
     /**
      * Paid unit , Enumeration value:
      * - Month: Month
@@ -449,7 +449,7 @@ export interface MilvusInstanceArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    paymentDurationUnit?: pulumi.Input<string>;
+    paymentDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * Payment Type ,Enumeration value:
      * - PayAsYouGo: Pay by volume
@@ -459,11 +459,11 @@ export interface MilvusInstanceArgs {
     /**
      * Resource Group ID
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * User Defined Label
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VPC network ID. vpc-xxx.
      */
@@ -471,9 +471,9 @@ export interface MilvusInstanceArgs {
     /**
      * Switch list, configure the switch and zone. See `vswitchIds` below.
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<inputs.MilvusInstanceVswitchId>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<inputs.MilvusInstanceVswitchId>[] | undefined>;
     /**
      * The zone id. When multi-zone is enabled, it represents the primary zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -34,8 +34,8 @@ public final class BssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bss.BssFunctions;
      * import com.pulumi.alicloud.bss.inputs.GetOpenApiPricingModulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -80,8 +80,8 @@ public final class BssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bss.BssFunctions;
      * import com.pulumi.alicloud.bss.inputs.GetOpenApiPricingModulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -126,8 +126,8 @@ public final class BssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bss.BssFunctions;
      * import com.pulumi.alicloud.bss.inputs.GetOpenApiPricingModulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -172,8 +172,8 @@ public final class BssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bss.BssFunctions;
      * import com.pulumi.alicloud.bss.inputs.GetOpenApiPricingModulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -218,8 +218,8 @@ public final class BssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.bss.BssFunctions;
      * import com.pulumi.alicloud.bss.inputs.GetOpenApiPricingModulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

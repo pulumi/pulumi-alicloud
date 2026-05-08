@@ -424,33 +424,33 @@ export interface LaunchTemplateState {
     /**
      * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
      */
-    autoReleaseTime?: pulumi.Input<string>;
-    autoRenew?: pulumi.Input<boolean>;
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoReleaseTime?: pulumi.Input<string | undefined>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The list of data disks created with instance.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.LaunchTemplateDataDisk>[]>;
-    defaultVersionNumber?: pulumi.Input<number>;
-    deploymentSetId?: pulumi.Input<string>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.LaunchTemplateDataDisk>[] | undefined>;
+    defaultVersionNumber?: pulumi.Input<number | undefined>;
+    deploymentSetId?: pulumi.Input<string | undefined>;
     /**
      * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
      */
-    description?: pulumi.Input<string>;
-    enableVmOsConfig?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
+    enableVmOsConfig?: pulumi.Input<boolean | undefined>;
     /**
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
-    hostName?: pulumi.Input<string>;
-    httpEndpoint?: pulumi.Input<string>;
-    httpPutResponseHopLimit?: pulumi.Input<number>;
-    httpTokens?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
+    httpEndpoint?: pulumi.Input<string | undefined>;
+    httpPutResponseHopLimit?: pulumi.Input<number | undefined>;
+    httpTokens?: pulumi.Input<string | undefined>;
     /**
      * Image ID.
      */
-    imageId?: pulumi.Input<string>;
-    imageOptions?: pulumi.Input<inputs.ecs.LaunchTemplateImageOptions>;
-    imageOwnerAlias?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
+    imageOptions?: pulumi.Input<inputs.ecs.LaunchTemplateImageOptions | undefined>;
+    imageOwnerAlias?: pulumi.Input<string | undefined>;
     /**
      * Billing methods. Optional values:
      * - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
@@ -458,86 +458,86 @@ export interface LaunchTemplateState {
      *
      * Default value: PostPaid.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
      */
-    internetMaxBandwidthIn?: pulumi.Input<number>;
+    internetMaxBandwidthIn?: pulumi.Input<number | undefined>;
     /**
      * Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
      */
-    internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * Whether it is an I/O-optimized instance or not. Optional values:
      * - none
      * - optimized
      */
-    ioOptimized?: pulumi.Input<string>;
+    ioOptimized?: pulumi.Input<string | undefined>;
     /**
      * The name of the key pair.
      * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      */
-    keyPairName?: pulumi.Input<string>;
-    latestVersionNumber?: pulumi.Input<number>;
-    launchTemplateName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
+    latestVersionNumber?: pulumi.Input<number | undefined>;
+    launchTemplateName?: pulumi.Input<string | undefined>;
     /**
      * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of network interfaces created with instance.
      */
-    networkInterfaces?: pulumi.Input<inputs.ecs.LaunchTemplateNetworkInterfaces>;
+    networkInterfaces?: pulumi.Input<inputs.ecs.LaunchTemplateNetworkInterfaces | undefined>;
     /**
      * Network type of the instance. Value options: `classic` | `vpc`.
      */
-    networkType?: pulumi.Input<string>;
-    passwordInherit?: pulumi.Input<boolean>;
-    period?: pulumi.Input<number>;
-    periodUnit?: pulumi.Input<string>;
-    privateIpAddress?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
+    passwordInherit?: pulumi.Input<boolean | undefined>;
+    period?: pulumi.Input<number | undefined>;
+    periodUnit?: pulumi.Input<string | undefined>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
      */
-    ramRoleName?: pulumi.Input<string>;
-    resourceGroupId?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
      */
-    securityEnhancementStrategy?: pulumi.Input<string>;
+    securityEnhancementStrategy?: pulumi.Input<string | undefined>;
     /**
      * The security group ID.
      */
-    securityGroupId?: pulumi.Input<string>;
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    spotDuration?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    spotDuration?: pulumi.Input<string | undefined>;
     /**
      * Sets the maximum hourly instance price. Supports up to three decimal places.
      */
-    spotPriceLimit?: pulumi.Input<number>;
+    spotPriceLimit?: pulumi.Input<number | undefined>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
      * - NoSpot: Normal Pay-As-You-Go instance.
      * - SpotWithPriceLimit: Sets the maximum price for a spot instance.
      * - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
      */
-    spotStrategy?: pulumi.Input<string>;
-    systemDisk?: pulumi.Input<inputs.ecs.LaunchTemplateSystemDisk>;
+    spotStrategy?: pulumi.Input<string | undefined>;
+    systemDisk?: pulumi.Input<inputs.ecs.LaunchTemplateSystemDisk | undefined>;
     /**
      * The category of the system disk. System disk type. Optional values:
      * - cloud: Basic cloud disk.
@@ -548,51 +548,51 @@ export interface LaunchTemplateState {
      *
      * @deprecated Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskCategory?: pulumi.Input<string>;
+    systemDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * System disk description. It cannot begin with http:// or https://.
      *
      * @deprecated Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskDescription?: pulumi.Input<string>;
+    systemDiskDescription?: pulumi.Input<string | undefined>;
     /**
      * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      *
      * @deprecated Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskName?: pulumi.Input<string>;
+    systemDiskName?: pulumi.Input<string | undefined>;
     /**
      * Size of the system disk, measured in GB. Value range: [20, 500].
      *
      * @deprecated Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    templateResourceGroupId?: pulumi.Input<string>;
-    templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    updateDefaultVersionNumber?: pulumi.Input<boolean>;
-    userData?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    templateResourceGroupId?: pulumi.Input<string | undefined>;
+    templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    updateDefaultVersionNumber?: pulumi.Input<boolean | undefined>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
      *
      * @deprecated Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
      */
-    userdata?: pulumi.Input<string>;
-    versionDescription?: pulumi.Input<string>;
-    vpcId?: pulumi.Input<string>;
+    userdata?: pulumi.Input<string | undefined>;
+    versionDescription?: pulumi.Input<string | undefined>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the instance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -602,33 +602,33 @@ export interface LaunchTemplateArgs {
     /**
      * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
      */
-    autoReleaseTime?: pulumi.Input<string>;
-    autoRenew?: pulumi.Input<boolean>;
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoReleaseTime?: pulumi.Input<string | undefined>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The list of data disks created with instance.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.LaunchTemplateDataDisk>[]>;
-    defaultVersionNumber?: pulumi.Input<number>;
-    deploymentSetId?: pulumi.Input<string>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.LaunchTemplateDataDisk>[] | undefined>;
+    defaultVersionNumber?: pulumi.Input<number | undefined>;
+    deploymentSetId?: pulumi.Input<string | undefined>;
     /**
      * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
      */
-    description?: pulumi.Input<string>;
-    enableVmOsConfig?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
+    enableVmOsConfig?: pulumi.Input<boolean | undefined>;
     /**
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
-    hostName?: pulumi.Input<string>;
-    httpEndpoint?: pulumi.Input<string>;
-    httpPutResponseHopLimit?: pulumi.Input<number>;
-    httpTokens?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
+    httpEndpoint?: pulumi.Input<string | undefined>;
+    httpPutResponseHopLimit?: pulumi.Input<number | undefined>;
+    httpTokens?: pulumi.Input<string | undefined>;
     /**
      * Image ID.
      */
-    imageId?: pulumi.Input<string>;
-    imageOptions?: pulumi.Input<inputs.ecs.LaunchTemplateImageOptions>;
-    imageOwnerAlias?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
+    imageOptions?: pulumi.Input<inputs.ecs.LaunchTemplateImageOptions | undefined>;
+    imageOwnerAlias?: pulumi.Input<string | undefined>;
     /**
      * Billing methods. Optional values:
      * - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
@@ -636,85 +636,85 @@ export interface LaunchTemplateArgs {
      *
      * Default value: PostPaid.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
      */
-    internetMaxBandwidthIn?: pulumi.Input<number>;
+    internetMaxBandwidthIn?: pulumi.Input<number | undefined>;
     /**
      * Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
      */
-    internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * Whether it is an I/O-optimized instance or not. Optional values:
      * - none
      * - optimized
      */
-    ioOptimized?: pulumi.Input<string>;
+    ioOptimized?: pulumi.Input<string | undefined>;
     /**
      * The name of the key pair.
      * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      */
-    keyPairName?: pulumi.Input<string>;
-    launchTemplateName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
+    launchTemplateName?: pulumi.Input<string | undefined>;
     /**
      * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of network interfaces created with instance.
      */
-    networkInterfaces?: pulumi.Input<inputs.ecs.LaunchTemplateNetworkInterfaces>;
+    networkInterfaces?: pulumi.Input<inputs.ecs.LaunchTemplateNetworkInterfaces | undefined>;
     /**
      * Network type of the instance. Value options: `classic` | `vpc`.
      */
-    networkType?: pulumi.Input<string>;
-    passwordInherit?: pulumi.Input<boolean>;
-    period?: pulumi.Input<number>;
-    periodUnit?: pulumi.Input<string>;
-    privateIpAddress?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
+    passwordInherit?: pulumi.Input<boolean | undefined>;
+    period?: pulumi.Input<number | undefined>;
+    periodUnit?: pulumi.Input<string | undefined>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
      */
-    ramRoleName?: pulumi.Input<string>;
-    resourceGroupId?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
      */
-    securityEnhancementStrategy?: pulumi.Input<string>;
+    securityEnhancementStrategy?: pulumi.Input<string | undefined>;
     /**
      * The security group ID.
      */
-    securityGroupId?: pulumi.Input<string>;
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    spotDuration?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    spotDuration?: pulumi.Input<string | undefined>;
     /**
      * Sets the maximum hourly instance price. Supports up to three decimal places.
      */
-    spotPriceLimit?: pulumi.Input<number>;
+    spotPriceLimit?: pulumi.Input<number | undefined>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
      * - NoSpot: Normal Pay-As-You-Go instance.
      * - SpotWithPriceLimit: Sets the maximum price for a spot instance.
      * - SpotAsPriceGo: The system automatically calculates the price. The maximum value is the Pay-As-You-Go price.
      */
-    spotStrategy?: pulumi.Input<string>;
-    systemDisk?: pulumi.Input<inputs.ecs.LaunchTemplateSystemDisk>;
+    spotStrategy?: pulumi.Input<string | undefined>;
+    systemDisk?: pulumi.Input<inputs.ecs.LaunchTemplateSystemDisk | undefined>;
     /**
      * The category of the system disk. System disk type. Optional values:
      * - cloud: Basic cloud disk.
@@ -725,49 +725,49 @@ export interface LaunchTemplateArgs {
      *
      * @deprecated Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskCategory?: pulumi.Input<string>;
+    systemDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * System disk description. It cannot begin with http:// or https://.
      *
      * @deprecated Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskDescription?: pulumi.Input<string>;
+    systemDiskDescription?: pulumi.Input<string | undefined>;
     /**
      * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      *
      * @deprecated Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskName?: pulumi.Input<string>;
+    systemDiskName?: pulumi.Input<string | undefined>;
     /**
      * Size of the system disk, measured in GB. Value range: [20, 500].
      *
      * @deprecated Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    templateResourceGroupId?: pulumi.Input<string>;
-    templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    updateDefaultVersionNumber?: pulumi.Input<boolean>;
-    userData?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    templateResourceGroupId?: pulumi.Input<string | undefined>;
+    templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    updateDefaultVersionNumber?: pulumi.Input<boolean | undefined>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
      *
      * @deprecated Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
      */
-    userdata?: pulumi.Input<string>;
-    versionDescription?: pulumi.Input<string>;
-    vpcId?: pulumi.Input<string>;
+    userdata?: pulumi.Input<string | undefined>;
+    versionDescription?: pulumi.Input<string | undefined>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the instance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

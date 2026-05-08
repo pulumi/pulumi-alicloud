@@ -21,7 +21,7 @@ class GatewayRouteTableAttachmentArgs:
     def __init__(__self__, *,
                  ipv4_gateway_id: pulumi.Input[_builtins.str],
                  route_table_id: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GatewayRouteTableAttachment resource.
 
@@ -60,25 +60,25 @@ class GatewayRouteTableAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to only precheck this request. Default value: `false`.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
 
 @pulumi.input_type
 class _GatewayRouteTableAttachmentState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv4_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv4_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewayRouteTableAttachment resources.
 
@@ -107,55 +107,55 @@ class _GatewayRouteTableAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to only precheck this request. Default value: `false`.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4GatewayId")
-    def ipv4_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv4_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IPv4 Gateway instance.
         """
         return pulumi.get(self, "ipv4_gateway_id")
 
     @ipv4_gateway_id.setter
-    def ipv4_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv4_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv4_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Gateway route table to be bound.
         """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
-    def route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_table_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the IPv4 Gateway instance. Value:
         - **Creating**: The function is being created.
@@ -168,7 +168,7 @@ class _GatewayRouteTableAttachmentState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -178,9 +178,9 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv4_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv4_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPC Gateway Route Table Attachment resource.
@@ -295,9 +295,9 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv4_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv4_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -326,11 +326,11 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            ipv4_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'GatewayRouteTableAttachment':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            ipv4_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'GatewayRouteTableAttachment':
         """
         Get an existing GatewayRouteTableAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

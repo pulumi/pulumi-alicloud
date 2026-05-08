@@ -26,20 +26,20 @@ class RdsDbProxyArgs:
                  instance_network_type: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 db_proxy_connect_string_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_proxy_connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_endpoint_read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_features: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_ssl_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_specific_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only_instance_distribution_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only_instance_max_delay_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 read_only_instance_weights: Optional[pulumi.Input[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 switch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 db_proxy_connect_string_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_proxy_connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_endpoint_read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_features: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_specific_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only_instance_distribution_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only_instance_max_delay_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 read_only_instance_weights: pulumi.Input[Optional[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RdsDbProxy resource.
 
@@ -190,31 +190,31 @@ class RdsDbProxyArgs:
 
     @_builtins.property
     @pulumi.getter(name="dbProxyConnectStringPort")
-    def db_proxy_connect_string_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def db_proxy_connect_string_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port number that is associated with the proxy endpoint.
         """
         return pulumi.get(self, "db_proxy_connect_string_port")
 
     @db_proxy_connect_string_port.setter
-    def db_proxy_connect_string_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def db_proxy_connect_string_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "db_proxy_connect_string_port", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyConnectionPrefix")
-    def db_proxy_connection_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_connection_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new prefix of the proxy endpoint. Enter a prefix.
         """
         return pulumi.get(self, "db_proxy_connection_prefix")
 
     @db_proxy_connection_prefix.setter
-    def db_proxy_connection_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_connection_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_connection_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyEndpointReadWriteMode")
-    def db_proxy_endpoint_read_write_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_endpoint_read_write_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The read and write attributes of the proxy terminal. Valid values:
         - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
@@ -225,12 +225,12 @@ class RdsDbProxyArgs:
         return pulumi.get(self, "db_proxy_endpoint_read_write_mode")
 
     @db_proxy_endpoint_read_write_mode.setter
-    def db_proxy_endpoint_read_write_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_endpoint_read_write_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_endpoint_read_write_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyFeatures")
-    def db_proxy_features(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_features(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The features that you want to enable for the proxy endpoint. If you specify more than one feature, separate the features with semicolons (;). Format: Feature 1:Status;Feature 2:Status;.... Do not add a semicolon (;) at the end of the last value. Valid feature values:
         - ReadWriteSpliting: read/write splitting.
@@ -245,12 +245,12 @@ class RdsDbProxyArgs:
         return pulumi.get(self, "db_proxy_features")
 
     @db_proxy_features.setter
-    def db_proxy_features(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_features(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_features", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyInstanceType")
-    def db_proxy_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database proxy type. Valid values:
         - common: universal proxy.
@@ -259,12 +259,12 @@ class RdsDbProxyArgs:
         return pulumi.get(self, "db_proxy_instance_type")
 
     @db_proxy_instance_type.setter
-    def db_proxy_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxySslEnabled")
-    def db_proxy_ssl_enabled(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_ssl_enabled(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SSL configuration setting that you want to apply on the instance. Valid values:
         - Close: disables SSL encryption.
@@ -274,24 +274,24 @@ class RdsDbProxyArgs:
         return pulumi.get(self, "db_proxy_ssl_enabled")
 
     @db_proxy_ssl_enabled.setter
-    def db_proxy_ssl_enabled(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_ssl_enabled(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_ssl_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveSpecificTime")
-    def effective_specific_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_specific_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time at which you want to apply the new database proxy settings. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         """
         return pulumi.get(self, "effective_specific_time")
 
     @effective_specific_time.setter
-    def effective_specific_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_specific_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_specific_time", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When modifying the number of proxy instances,The time when you want to apply the new database proxy settings.Valid values:
         - Immediate: ApsaraDB RDS immediately applies the new settings.
@@ -303,12 +303,12 @@ class RdsDbProxyArgs:
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnlyInstanceDistributionType")
-    def read_only_instance_distribution_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def read_only_instance_distribution_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy that is used to allocate read weights. Valid values:
         - Standard: ApsaraDB RDS automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
@@ -319,12 +319,12 @@ class RdsDbProxyArgs:
         return pulumi.get(self, "read_only_instance_distribution_type")
 
     @read_only_instance_distribution_type.setter
-    def read_only_instance_distribution_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def read_only_instance_distribution_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "read_only_instance_distribution_type", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnlyInstanceMaxDelayTime")
-    def read_only_instance_max_delay_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def read_only_instance_max_delay_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
 
@@ -333,48 +333,48 @@ class RdsDbProxyArgs:
         return pulumi.get(self, "read_only_instance_max_delay_time")
 
     @read_only_instance_max_delay_time.setter
-    def read_only_instance_max_delay_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def read_only_instance_max_delay_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "read_only_instance_max_delay_time", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnlyInstanceWeights")
-    def read_only_instance_weights(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]]:
+    def read_only_instance_weights(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]]:
         """
         A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
         """
         return pulumi.get(self, "read_only_instance_weights")
 
     @read_only_instance_weights.setter
-    def read_only_instance_weights(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]]):
+    def read_only_instance_weights(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]]):
         pulumi.set(self, "read_only_instance_weights", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="switchTime")
-    def switch_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def switch_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time at which you want to upgrade the database proxy version of the instance. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         """
         return pulumi.get(self, "switch_time")
 
     @switch_time.setter
-    def switch_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def switch_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "switch_time", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeTime")
-    def upgrade_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upgrade_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when you want to upgrade the database proxy version of the instance. Valid values:
         - MaintainTime: ApsaraDB RDS performs the upgrade during the maintenance window that you specified. This is the default value. For more information, see Modify the maintenance window.
@@ -384,37 +384,37 @@ class RdsDbProxyArgs:
         return pulumi.get(self, "upgrade_time")
 
     @upgrade_time.setter
-    def upgrade_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upgrade_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upgrade_time", value)
 
 
 @pulumi.input_type
 class _RdsDbProxyState:
     def __init__(__self__, *,
-                 db_proxy_connect_string_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_proxy_connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_endpoint_aliases: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_endpoint_read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_features: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_instance_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_proxy_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_ssl_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_specific_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only_instance_distribution_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only_instance_max_delay_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 read_only_instance_weights: Optional[pulumi.Input[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_expired_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 switch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 db_proxy_connect_string_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_proxy_connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_endpoint_aliases: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_endpoint_read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_features: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_instance_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_proxy_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_specific_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only_instance_distribution_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only_instance_max_delay_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 read_only_instance_weights: pulumi.Input[Optional[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RdsDbProxy resources.
 
@@ -525,67 +525,67 @@ class _RdsDbProxyState:
 
     @_builtins.property
     @pulumi.getter(name="dbProxyConnectStringPort")
-    def db_proxy_connect_string_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def db_proxy_connect_string_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port number that is associated with the proxy endpoint.
         """
         return pulumi.get(self, "db_proxy_connect_string_port")
 
     @db_proxy_connect_string_port.setter
-    def db_proxy_connect_string_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def db_proxy_connect_string_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "db_proxy_connect_string_port", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyConnectionPrefix")
-    def db_proxy_connection_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_connection_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new prefix of the proxy endpoint. Enter a prefix.
         """
         return pulumi.get(self, "db_proxy_connection_prefix")
 
     @db_proxy_connection_prefix.setter
-    def db_proxy_connection_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_connection_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_connection_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyConnectionString")
-    def db_proxy_connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Connection instance string.
         """
         return pulumi.get(self, "db_proxy_connection_string")
 
     @db_proxy_connection_string.setter
-    def db_proxy_connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyEndpointAliases")
-    def db_proxy_endpoint_aliases(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_endpoint_aliases(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Remarks of agent terminal.
         """
         return pulumi.get(self, "db_proxy_endpoint_aliases")
 
     @db_proxy_endpoint_aliases.setter
-    def db_proxy_endpoint_aliases(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_endpoint_aliases(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_endpoint_aliases", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyEndpointId")
-    def db_proxy_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Proxy connection address ID.
         """
         return pulumi.get(self, "db_proxy_endpoint_id")
 
     @db_proxy_endpoint_id.setter
-    def db_proxy_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyEndpointReadWriteMode")
-    def db_proxy_endpoint_read_write_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_endpoint_read_write_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The read and write attributes of the proxy terminal. Valid values:
         - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
@@ -596,12 +596,12 @@ class _RdsDbProxyState:
         return pulumi.get(self, "db_proxy_endpoint_read_write_mode")
 
     @db_proxy_endpoint_read_write_mode.setter
-    def db_proxy_endpoint_read_write_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_endpoint_read_write_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_endpoint_read_write_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyFeatures")
-    def db_proxy_features(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_features(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The features that you want to enable for the proxy endpoint. If you specify more than one feature, separate the features with semicolons (;). Format: Feature 1:Status;Feature 2:Status;.... Do not add a semicolon (;) at the end of the last value. Valid feature values:
         - ReadWriteSpliting: read/write splitting.
@@ -616,24 +616,24 @@ class _RdsDbProxyState:
         return pulumi.get(self, "db_proxy_features")
 
     @db_proxy_features.setter
-    def db_proxy_features(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_features(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_features", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyInstanceNum")
-    def db_proxy_instance_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def db_proxy_instance_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of proxy instances that are enabled. Valid values: 1 to 60.
         """
         return pulumi.get(self, "db_proxy_instance_num")
 
     @db_proxy_instance_num.setter
-    def db_proxy_instance_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def db_proxy_instance_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "db_proxy_instance_num", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyInstanceType")
-    def db_proxy_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database proxy type. Valid values:
         - common: universal proxy.
@@ -642,12 +642,12 @@ class _RdsDbProxyState:
         return pulumi.get(self, "db_proxy_instance_type")
 
     @db_proxy_instance_type.setter
-    def db_proxy_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxySslEnabled")
-    def db_proxy_ssl_enabled(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_ssl_enabled(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SSL configuration setting that you want to apply on the instance. Valid values:
         - Close: disables SSL encryption.
@@ -657,24 +657,24 @@ class _RdsDbProxyState:
         return pulumi.get(self, "db_proxy_ssl_enabled")
 
     @db_proxy_ssl_enabled.setter
-    def db_proxy_ssl_enabled(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_ssl_enabled(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_ssl_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveSpecificTime")
-    def effective_specific_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_specific_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time at which you want to apply the new database proxy settings. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         """
         return pulumi.get(self, "effective_specific_time")
 
     @effective_specific_time.setter
-    def effective_specific_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_specific_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_specific_time", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When modifying the number of proxy instances,The time when you want to apply the new database proxy settings.Valid values:
         - Immediate: ApsaraDB RDS immediately applies the new settings.
@@ -686,48 +686,48 @@ class _RdsDbProxyState:
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of instance that can run database.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceNetworkType")
-    def instance_network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the instance. Set the value to VPC.
         """
         return pulumi.get(self, "instance_network_type")
 
     @instance_network_type.setter
-    def instance_network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="netType")
-    def net_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network type of proxy connection address.
         """
         return pulumi.get(self, "net_type")
 
     @net_type.setter
-    def net_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_type", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnlyInstanceDistributionType")
-    def read_only_instance_distribution_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def read_only_instance_distribution_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy that is used to allocate read weights. Valid values:
         - Standard: ApsaraDB RDS automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
@@ -738,12 +738,12 @@ class _RdsDbProxyState:
         return pulumi.get(self, "read_only_instance_distribution_type")
 
     @read_only_instance_distribution_type.setter
-    def read_only_instance_distribution_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def read_only_instance_distribution_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "read_only_instance_distribution_type", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnlyInstanceMaxDelayTime")
-    def read_only_instance_max_delay_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def read_only_instance_max_delay_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
 
@@ -752,60 +752,60 @@ class _RdsDbProxyState:
         return pulumi.get(self, "read_only_instance_max_delay_time")
 
     @read_only_instance_max_delay_time.setter
-    def read_only_instance_max_delay_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def read_only_instance_max_delay_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "read_only_instance_max_delay_time", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnlyInstanceWeights")
-    def read_only_instance_weights(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]]:
+    def read_only_instance_weights(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]]:
         """
         A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `read_only_instance_weight` below.
         """
         return pulumi.get(self, "read_only_instance_weights")
 
     @read_only_instance_weights.setter
-    def read_only_instance_weights(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]]):
+    def read_only_instance_weights(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RdsDbProxyReadOnlyInstanceWeightArgs']]]]):
         pulumi.set(self, "read_only_instance_weights", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sslExpiredTime")
-    def ssl_expired_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_expired_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the certificate expires.
         """
         return pulumi.get(self, "ssl_expired_time")
 
     @ssl_expired_time.setter
-    def ssl_expired_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_expired_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_expired_time", value)
 
     @_builtins.property
     @pulumi.getter(name="switchTime")
-    def switch_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def switch_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time at which you want to upgrade the database proxy version of the instance. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         """
         return pulumi.get(self, "switch_time")
 
     @switch_time.setter
-    def switch_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def switch_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "switch_time", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeTime")
-    def upgrade_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upgrade_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when you want to upgrade the database proxy version of the instance. Valid values:
         - MaintainTime: ApsaraDB RDS performs the upgrade during the maintenance window that you specified. This is the default value. For more information, see Modify the maintenance window.
@@ -815,31 +815,31 @@ class _RdsDbProxyState:
         return pulumi.get(self, "upgrade_time")
 
     @upgrade_time.setter
-    def upgrade_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upgrade_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upgrade_time", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual private cloud (VPC) to which the instance belongs.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch that is associated with the specified VPC.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -849,25 +849,25 @@ class RdsDbProxy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_proxy_connect_string_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_proxy_connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_endpoint_read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_features: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_instance_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_proxy_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_ssl_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_specific_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only_instance_distribution_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only_instance_max_delay_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 read_only_instance_weights: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsDbProxyReadOnlyInstanceWeightArgs', 'RdsDbProxyReadOnlyInstanceWeightArgsDict']]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 switch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_proxy_connect_string_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_proxy_connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_endpoint_read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_features: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_instance_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_proxy_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_specific_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only_instance_distribution_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only_instance_max_delay_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 read_only_instance_weights: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RdsDbProxyReadOnlyInstanceWeightArgs', 'RdsDbProxyReadOnlyInstanceWeightArgsDict']]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Information about RDS database exclusive agent and its usage, see [What is RDS DB Proxy](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-modifydbproxy).
@@ -1107,25 +1107,25 @@ class RdsDbProxy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_proxy_connect_string_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_proxy_connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_endpoint_read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_features: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_instance_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_proxy_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_ssl_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_specific_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only_instance_distribution_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only_instance_max_delay_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 read_only_instance_weights: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsDbProxyReadOnlyInstanceWeightArgs', 'RdsDbProxyReadOnlyInstanceWeightArgsDict']]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 switch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_proxy_connect_string_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_proxy_connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_endpoint_read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_features: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_instance_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_proxy_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_specific_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only_instance_distribution_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only_instance_max_delay_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 read_only_instance_weights: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RdsDbProxyReadOnlyInstanceWeightArgs', 'RdsDbProxyReadOnlyInstanceWeightArgsDict']]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1179,30 +1179,30 @@ class RdsDbProxy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            db_proxy_connect_string_port: Optional[pulumi.Input[_builtins.int]] = None,
-            db_proxy_connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            db_proxy_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-            db_proxy_endpoint_aliases: Optional[pulumi.Input[_builtins.str]] = None,
-            db_proxy_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_proxy_endpoint_read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            db_proxy_features: Optional[pulumi.Input[_builtins.str]] = None,
-            db_proxy_instance_num: Optional[pulumi.Input[_builtins.int]] = None,
-            db_proxy_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            db_proxy_ssl_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_specific_time: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-            net_type: Optional[pulumi.Input[_builtins.str]] = None,
-            read_only_instance_distribution_type: Optional[pulumi.Input[_builtins.str]] = None,
-            read_only_instance_max_delay_time: Optional[pulumi.Input[_builtins.int]] = None,
-            read_only_instance_weights: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsDbProxyReadOnlyInstanceWeightArgs', 'RdsDbProxyReadOnlyInstanceWeightArgsDict']]]]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_expired_time: Optional[pulumi.Input[_builtins.str]] = None,
-            switch_time: Optional[pulumi.Input[_builtins.str]] = None,
-            upgrade_time: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RdsDbProxy':
+            db_proxy_connect_string_port: pulumi.Input[Optional[_builtins.int]] = None,
+            db_proxy_connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_endpoint_aliases: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_endpoint_read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_features: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_instance_num: pulumi.Input[Optional[_builtins.int]] = None,
+            db_proxy_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_specific_time: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            net_type: pulumi.Input[Optional[_builtins.str]] = None,
+            read_only_instance_distribution_type: pulumi.Input[Optional[_builtins.str]] = None,
+            read_only_instance_max_delay_time: pulumi.Input[Optional[_builtins.int]] = None,
+            read_only_instance_weights: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RdsDbProxyReadOnlyInstanceWeightArgs', 'RdsDbProxyReadOnlyInstanceWeightArgsDict']]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+            switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RdsDbProxy':
         """
         Get an existing RdsDbProxy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

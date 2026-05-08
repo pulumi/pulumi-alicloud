@@ -24,15 +24,15 @@ class SynchronizationInstanceArgs:
                  payment_type: pulumi.Input[_builtins.str],
                  source_endpoint_engine_name: pulumi.Input[_builtins.str],
                  source_endpoint_region: pulumi.Input[_builtins.str],
-                 auto_pay: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 quantity: Optional[pulumi.Input[_builtins.int]] = None,
-                 sync_architecture: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_pay: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 quantity: pulumi.Input[Optional[_builtins.int]] = None,
+                 sync_architecture: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SynchronizationInstance resource.
 
@@ -137,131 +137,131 @@ class SynchronizationInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to automatically renew when it expires. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoStart")
-    def auto_start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_start")
 
     @auto_start.setter
-    def auto_start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_start", value)
 
     @_builtins.property
     @pulumi.getter(name="computeUnit")
-    def compute_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def compute_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         """
         return pulumi.get(self, "compute_unit")
 
     @compute_unit.setter
-    def compute_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def compute_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "compute_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseCount")
-    def database_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def database_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
         """
         return pulumi.get(self, "database_count")
 
     @database_count.setter
-    def database_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def database_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "database_count", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         """
         return pulumi.get(self, "instance_class")
 
     @instance_class.setter
-    def instance_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_class", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDuration")
-    def payment_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def payment_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration of prepaid instance purchase. this parameter is required When `payment_type` equals `Subscription`.
         """
         return pulumi.get(self, "payment_duration")
 
     @payment_duration.setter
-    def payment_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def payment_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "payment_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDurationUnit")
-    def payment_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
         """
         return pulumi.get(self, "payment_duration_unit")
 
     @payment_duration_unit.setter
-    def payment_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter
-    def quantity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def quantity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of instances purchased.
         """
         return pulumi.get(self, "quantity")
 
     @quantity.setter
-    def quantity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def quantity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "quantity", value)
 
     @_builtins.property
     @pulumi.getter(name="syncArchitecture")
-    def sync_architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sync architecture. Valid values: `oneway`, `bidirectional`.
         """
         return pulumi.get(self, "sync_architecture")
 
     @sync_architecture.setter
-    def sync_architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_architecture", value)
 
 
 @pulumi.input_type
 class _SynchronizationInstanceState:
     def __init__(__self__, *,
-                 auto_pay: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 quantity: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_architecture: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_pay: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 quantity: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_architecture: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SynchronizationInstance resources.
 
@@ -314,182 +314,182 @@ class _SynchronizationInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to automatically renew when it expires. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoStart")
-    def auto_start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_start")
 
     @auto_start.setter
-    def auto_start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_start", value)
 
     @_builtins.property
     @pulumi.getter(name="computeUnit")
-    def compute_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def compute_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         """
         return pulumi.get(self, "compute_unit")
 
     @compute_unit.setter
-    def compute_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def compute_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "compute_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseCount")
-    def database_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def database_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
         """
         return pulumi.get(self, "database_count")
 
     @database_count.setter
-    def database_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def database_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "database_count", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointEngineName")
-    def destination_endpoint_engine_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_engine_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
         """
         return pulumi.get(self, "destination_endpoint_engine_name")
 
     @destination_endpoint_engine_name.setter
-    def destination_endpoint_engine_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_engine_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_engine_name", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointRegion")
-    def destination_endpoint_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
         """
         return pulumi.get(self, "destination_endpoint_region")
 
     @destination_endpoint_region.setter
-    def destination_endpoint_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_region", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         """
         return pulumi.get(self, "instance_class")
 
     @instance_class.setter
-    def instance_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_class", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDuration")
-    def payment_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def payment_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration of prepaid instance purchase. this parameter is required When `payment_type` equals `Subscription`.
         """
         return pulumi.get(self, "payment_duration")
 
     @payment_duration.setter
-    def payment_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def payment_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "payment_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDurationUnit")
-    def payment_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
         """
         return pulumi.get(self, "payment_duration_unit")
 
     @payment_duration_unit.setter
-    def payment_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def quantity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def quantity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of instances purchased.
         """
         return pulumi.get(self, "quantity")
 
     @quantity.setter
-    def quantity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def quantity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "quantity", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointEngineName")
-    def source_endpoint_engine_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_engine_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
         """
         return pulumi.get(self, "source_endpoint_engine_name")
 
     @source_endpoint_engine_name.setter
-    def source_endpoint_engine_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_engine_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_engine_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointRegion")
-    def source_endpoint_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of source instance.
         """
         return pulumi.get(self, "source_endpoint_region")
 
     @source_endpoint_region.setter
-    def source_endpoint_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_region", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="syncArchitecture")
-    def sync_architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sync architecture. Valid values: `oneway`, `bidirectional`.
         """
         return pulumi.get(self, "sync_architecture")
 
     @sync_architecture.setter
-    def sync_architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_architecture", value)
 
 
@@ -499,20 +499,20 @@ class SynchronizationInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 quantity: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_architecture: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 quantity: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_architecture: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DTS Synchronization Instance resource.
@@ -626,20 +626,20 @@ class SynchronizationInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 quantity: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_architecture: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 quantity: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_architecture: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -684,21 +684,21 @@ class SynchronizationInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_pay: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_start: Optional[pulumi.Input[_builtins.str]] = None,
-            compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-            database_count: Optional[pulumi.Input[_builtins.int]] = None,
-            destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            quantity: Optional[pulumi.Input[_builtins.int]] = None,
-            source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_architecture: Optional[pulumi.Input[_builtins.str]] = None) -> 'SynchronizationInstance':
+            auto_pay: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_start: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+            database_count: pulumi.Input[Optional[_builtins.int]] = None,
+            destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            quantity: pulumi.Input[Optional[_builtins.int]] = None,
+            source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_architecture: pulumi.Input[Optional[_builtins.str]] = None) -> 'SynchronizationInstance':
         """
         Get an existing SynchronizationInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *         "172.16.2.0/24",
  *         "172.16.1.0/24",
  *     ],
- *     vpcOwnerId: current.then(current => current.id),
+ *     vpcOwnerId: output(current.then(current => current.id)).apply(x =>Number(x)),
  *     associationRegionId: "cn-hangzhou",
  *     vpcId: default8qAtD6.id,
  * });
@@ -163,36 +163,36 @@ export interface RouterVpcAssociationState {
     /**
      * The list of allowed route prefixes.
      */
-    allowedPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the association between the ECR and the VPC.
      */
-    associationId?: pulumi.Input<string>;
+    associationId?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource to be associated.
      */
-    associationRegionId?: pulumi.Input<string>;
+    associationRegionId?: pulumi.Input<string | undefined>;
     /**
      * The time when the association was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ECR ID.
      */
-    ecrId?: pulumi.Input<string>;
+    ecrId?: pulumi.Input<string | undefined>;
     /**
      * The deployment state of the associated resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The VPC ID.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Alibaba Cloud account that owns the VPC.
      * > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      */
-    vpcOwnerId?: pulumi.Input<number>;
+    vpcOwnerId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -202,7 +202,7 @@ export interface RouterVpcAssociationArgs {
     /**
      * The list of allowed route prefixes.
      */
-    allowedPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The region ID of the resource to be associated.
      */
@@ -219,5 +219,5 @@ export interface RouterVpcAssociationArgs {
      * The ID of the Alibaba Cloud account that owns the VPC.
      * > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpcOwnerId` is required.
      */
-    vpcOwnerId?: pulumi.Input<number>;
+    vpcOwnerId?: pulumi.Input<number | undefined>;
 }

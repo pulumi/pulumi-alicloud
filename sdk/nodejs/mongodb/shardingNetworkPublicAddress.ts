@@ -160,15 +160,15 @@ export interface ShardingNetworkPublicAddressState {
     /**
      * The ID of the instance.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The endpoint of the instance.
      */
-    networkAddresses?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingNetworkPublicAddressNetworkAddress>[]>;
+    networkAddresses?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingNetworkPublicAddressNetworkAddress>[] | undefined>;
     /**
      * The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
      */
-    nodeId?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string | undefined>;
 }
 
 /**

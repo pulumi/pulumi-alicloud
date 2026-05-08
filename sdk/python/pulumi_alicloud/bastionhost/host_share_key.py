@@ -22,7 +22,7 @@ class HostShareKeyArgs:
                  host_share_key_name: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
                  private_key: pulumi.Input[_builtins.str],
-                 pass_phrase: Optional[pulumi.Input[_builtins.str]] = None):
+                 pass_phrase: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostShareKey resource.
 
@@ -75,26 +75,26 @@ class HostShareKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="passPhrase")
-    def pass_phrase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pass_phrase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the private key. The value is a Base64-encoded string.
         """
         return pulumi.get(self, "pass_phrase")
 
     @pass_phrase.setter
-    def pass_phrase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pass_phrase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pass_phrase", value)
 
 
 @pulumi.input_type
 class _HostShareKeyState:
     def __init__(__self__, *,
-                 host_share_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_share_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pass_phrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_finger_print: Optional[pulumi.Input[_builtins.str]] = None):
+                 host_share_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_share_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pass_phrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_finger_print: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostShareKey resources.
 
@@ -120,74 +120,74 @@ class _HostShareKeyState:
 
     @_builtins.property
     @pulumi.getter(name="hostShareKeyId")
-    def host_share_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_share_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource.
         """
         return pulumi.get(self, "host_share_key_id")
 
     @host_share_key_id.setter
-    def host_share_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_share_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_share_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hostShareKeyName")
-    def host_share_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_share_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the host shared key to be added. The name can be a maximum of 128 characters in length.
         """
         return pulumi.get(self, "host_share_key_name")
 
     @host_share_key_name.setter
-    def host_share_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_share_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_share_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Bastion instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="passPhrase")
-    def pass_phrase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pass_phrase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the private key. The value is a Base64-encoded string.
         """
         return pulumi.get(self, "pass_phrase")
 
     @pass_phrase.setter
-    def pass_phrase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pass_phrase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pass_phrase", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key. The value is a Base64-encoded string.
         """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKeyFingerPrint")
-    def private_key_finger_print(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key_finger_print(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fingerprint of the private key.
         """
         return pulumi.get(self, "private_key_finger_print")
 
     @private_key_finger_print.setter
-    def private_key_finger_print(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key_finger_print(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key_finger_print", value)
 
 
@@ -197,10 +197,10 @@ class HostShareKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 host_share_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pass_phrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 host_share_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pass_phrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Bastion Host Share Key resource.
@@ -215,6 +215,7 @@ class HostShareKey(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
@@ -228,13 +229,13 @@ class HostShareKey(pulumi.CustomResource):
         default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
             vpc_id=default_get_networks.ids[0],
             zone_id=default_get_zones.zones[0].id)
-        default_security_group = []
+        default_security_group: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}", vpc_id=default_get_networks.ids[0]))
 
         len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-        default_instance = []
+        default_instance: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_instance.append(alicloud.bastionhost.Instance(f"default-{range['value']}",
@@ -299,6 +300,7 @@ class HostShareKey(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
@@ -312,13 +314,13 @@ class HostShareKey(pulumi.CustomResource):
         default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
             vpc_id=default_get_networks.ids[0],
             zone_id=default_get_zones.zones[0].id)
-        default_security_group = []
+        default_security_group: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}", vpc_id=default_get_networks.ids[0]))
 
         len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-        default_instance = []
+        default_instance: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_instance.append(alicloud.bastionhost.Instance(f"default-{range['value']}",
@@ -372,10 +374,10 @@ class HostShareKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 host_share_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pass_phrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 host_share_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pass_phrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -409,12 +411,12 @@ class HostShareKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            host_share_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            host_share_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            pass_phrase: Optional[pulumi.Input[_builtins.str]] = None,
-            private_key: Optional[pulumi.Input[_builtins.str]] = None,
-            private_key_finger_print: Optional[pulumi.Input[_builtins.str]] = None) -> 'HostShareKey':
+            host_share_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_share_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pass_phrase: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key_finger_print: pulumi.Input[Optional[_builtins.str]] = None) -> 'HostShareKey':
         """
         Get an existing HostShareKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

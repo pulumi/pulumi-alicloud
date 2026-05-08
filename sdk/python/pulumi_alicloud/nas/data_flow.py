@@ -23,10 +23,10 @@ class DataFlowArgs:
                  fset_id: pulumi.Input[_builtins.str],
                  source_storage: pulumi.Input[_builtins.str],
                  throughput: pulumi.Input[_builtins.int],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_security_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_security_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataFlow resource.
 
@@ -110,31 +110,31 @@ class DataFlowArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Description of the data flow. Restrictions:
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The dry run.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSecurityType")
-    def source_security_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_security_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
         - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
@@ -143,34 +143,34 @@ class DataFlowArgs:
         return pulumi.get(self, "source_security_type")
 
     @source_security_type.setter
-    def source_security_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_security_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_security_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Data flow. Valid values: `Running`, `Stopped`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _DataFlowState:
     def __init__(__self__, *,
-                 data_flow_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 fset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_security_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 throughput: Optional[pulumi.Input[_builtins.int]] = None):
+                 data_flow_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_security_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 throughput: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DataFlow resources.
 
@@ -210,67 +210,67 @@ class _DataFlowState:
 
     @_builtins.property
     @pulumi.getter(name="dataFlowId")
-    def data_flow_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_flow_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Data flow.
         """
         return pulumi.get(self, "data_flow_id")
 
     @data_flow_id.setter
-    def data_flow_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_flow_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_flow_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Description of the data flow. Restrictions:
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The dry run.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the file system.
         """
         return pulumi.get(self, "file_system_id")
 
     @file_system_id.setter
-    def file_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_id", value)
 
     @_builtins.property
     @pulumi.getter(name="fsetId")
-    def fset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Fileset.
         """
         return pulumi.get(self, "fset_id")
 
     @fset_id.setter
-    def fset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fset_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSecurityType")
-    def source_security_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_security_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
         - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
@@ -279,12 +279,12 @@ class _DataFlowState:
         return pulumi.get(self, "source_security_type")
 
     @source_security_type.setter
-    def source_security_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_security_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_security_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceStorage")
-    def source_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access path of the source store. Format: `<storage type>://<path>`. Among them:
         - storage type: currently only OSS is supported.
@@ -294,31 +294,31 @@ class _DataFlowState:
         return pulumi.get(self, "source_storage")
 
     @source_storage.setter
-    def source_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_storage", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Data flow. Valid values: `Running`, `Stopped`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
         """
         return pulumi.get(self, "throughput")
 
     @throughput.setter
-    def throughput(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throughput", value)
 
 
@@ -328,14 +328,14 @@ class DataFlow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 fset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_security_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 throughput: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_security_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 throughput: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a File Storage (NAS) Data Flow resource.
@@ -524,14 +524,14 @@ class DataFlow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 fset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_security_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 throughput: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_security_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 throughput: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -568,15 +568,15 @@ class DataFlow(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_flow_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-            fset_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_security_type: Optional[pulumi.Input[_builtins.str]] = None,
-            source_storage: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            throughput: Optional[pulumi.Input[_builtins.int]] = None) -> 'DataFlow':
+            data_flow_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            fset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_security_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            throughput: pulumi.Input[Optional[_builtins.int]] = None) -> 'DataFlow':
         """
         Get an existing DataFlow resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

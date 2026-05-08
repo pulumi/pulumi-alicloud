@@ -22,7 +22,7 @@ class DataSourceSharedRuleArgs:
                  data_source_id: pulumi.Input[_builtins.int],
                  env_type: pulumi.Input[_builtins.str],
                  target_project_id: pulumi.Input[_builtins.int],
-                 shared_user: Optional[pulumi.Input[_builtins.str]] = None):
+                 shared_user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataSourceSharedRule resource.
 
@@ -75,26 +75,26 @@ class DataSourceSharedRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="sharedUser")
-    def shared_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target user of the data source permission policy, which is null to share to the project.
         """
         return pulumi.get(self, "shared_user")
 
     @shared_user.setter
-    def shared_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_user", value)
 
 
 @pulumi.input_type
 class _DataSourceSharedRuleState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_source_shared_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_project_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_source_shared_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_project_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DataSourceSharedRule resources.
 
@@ -120,74 +120,74 @@ class _DataSourceSharedRuleState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The creation time of the data source sharing rule.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
-    def data_source_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_source_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the data source, that is, the unique identifier of the data source.
         """
         return pulumi.get(self, "data_source_id")
 
     @data_source_id.setter
-    def data_source_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_source_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceSharedRuleId")
-    def data_source_shared_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_shared_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source sharing rule ID, that is, the unique identifier of the data source sharing rule.
         """
         return pulumi.get(self, "data_source_shared_rule_id")
 
     @data_source_shared_rule_id.setter
-    def data_source_shared_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_shared_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_shared_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="envType")
-    def env_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment type of the data source shared to the target project, such as Dev (Development Environment) and Prod (production environment).
         """
         return pulumi.get(self, "env_type")
 
     @env_type.setter
-    def env_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedUser")
-    def shared_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target user of the data source permission policy, which is null to share to the project.
         """
         return pulumi.get(self, "shared_user")
 
     @shared_user.setter
-    def shared_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_user", value)
 
     @_builtins.property
     @pulumi.getter(name="targetProjectId")
-    def target_project_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_project_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the project to which the data source is shared.
         """
         return pulumi.get(self, "target_project_id")
 
     @target_project_id.setter
-    def target_project_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_project_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_project_id", value)
 
 
@@ -197,10 +197,10 @@ class DataSourceSharedRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 env_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_project_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 env_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_project_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Data Works Data Source Shared Rule resource.
@@ -261,10 +261,10 @@ class DataSourceSharedRule(pulumi.CustomResource):
                     "key1": "value1",
                 },
             }),
-            project_id=default_qe_rfv_u.id,
+            project_id=default_qe_rfv_u.id.apply(lambda x: int(x)),
             connection_properties_mode="UrlMode")
         default_data_source_shared_rule = alicloud.dataworks.DataSourceSharedRule("default",
-            target_project_id=defaultasjs_h5.id,
+            target_project_id=defaultasjs_h5.id.apply(lambda x: int(x)),
             data_source_id=defaultvzu0w_g.data_source_id,
             env_type="Prod")
         ```
@@ -352,10 +352,10 @@ class DataSourceSharedRule(pulumi.CustomResource):
                     "key1": "value1",
                 },
             }),
-            project_id=default_qe_rfv_u.id,
+            project_id=default_qe_rfv_u.id.apply(lambda x: int(x)),
             connection_properties_mode="UrlMode")
         default_data_source_shared_rule = alicloud.dataworks.DataSourceSharedRule("default",
-            target_project_id=defaultasjs_h5.id,
+            target_project_id=defaultasjs_h5.id.apply(lambda x: int(x)),
             data_source_id=defaultvzu0w_g.data_source_id,
             env_type="Prod")
         ```
@@ -386,10 +386,10 @@ class DataSourceSharedRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 env_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_project_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 env_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_project_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -421,12 +421,12 @@ class DataSourceSharedRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            data_source_id: Optional[pulumi.Input[_builtins.int]] = None,
-            data_source_shared_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            env_type: Optional[pulumi.Input[_builtins.str]] = None,
-            shared_user: Optional[pulumi.Input[_builtins.str]] = None,
-            target_project_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'DataSourceSharedRule':
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.int]] = None,
+            data_source_shared_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            env_type: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_user: pulumi.Input[Optional[_builtins.str]] = None,
+            target_project_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'DataSourceSharedRule':
         """
         Get an existing DataSourceSharedRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -23,8 +23,8 @@ class SlbAttachmentArgs:
                  slb_id: pulumi.Input[_builtins.str],
                  slb_ip: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 vserver_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 vserver_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SlbAttachment resource.
 
@@ -94,40 +94,40 @@ class SlbAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="listenerPort")
-    def listener_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def listener_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The listening port for the bound SLB instance.
         """
         return pulumi.get(self, "listener_port")
 
     @listener_port.setter
-    def listener_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def listener_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "listener_port", value)
 
     @_builtins.property
     @pulumi.getter(name="vserverGroupId")
-    def vserver_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vserver_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual server (VServer) group associated with the intranet SLB instance.
         """
         return pulumi.get(self, "vserver_group_id")
 
     @vserver_group_id.setter
-    def vserver_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vserver_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vserver_group_id", value)
 
 
 @pulumi.input_type
 class _SlbAttachmentState:
     def __init__(__self__, *,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vserver_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vserver_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SlbAttachment resources.
 
@@ -159,98 +159,98 @@ class _SlbAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the application to which you want to bind an SLB instance.
         """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerPort")
-    def listener_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def listener_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The listening port for the bound SLB instance.
         """
         return pulumi.get(self, "listener_port")
 
     @listener_port.setter
-    def listener_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def listener_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "listener_port", value)
 
     @_builtins.property
     @pulumi.getter(name="slbId")
-    def slb_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the SLB instance that is going to be bound.
         """
         return pulumi.get(self, "slb_id")
 
     @slb_id.setter
-    def slb_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_id", value)
 
     @_builtins.property
     @pulumi.getter(name="slbIp")
-    def slb_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address that is allocated to the bound SLB instance.
         """
         return pulumi.get(self, "slb_ip")
 
     @slb_ip.setter
-    def slb_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="slbStatus")
-    def slb_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
         """
         return pulumi.get(self, "slb_status")
 
     @slb_status.setter
-    def slb_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the bound SLB instance.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="vserverGroupId")
-    def vserver_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vserver_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual server (VServer) group associated with the intranet SLB instance.
         """
         return pulumi.get(self, "vserver_group_id")
 
     @vserver_group_id.setter
-    def vserver_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vserver_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vserver_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC related vswitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -260,12 +260,12 @@ class SlbAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vserver_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vserver_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Binds SLB to an EDAS application.
@@ -290,7 +290,7 @@ class SlbAttachment(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_get_zones.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
@@ -377,7 +377,7 @@ class SlbAttachment(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_get_zones.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
@@ -441,12 +441,12 @@ class SlbAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vserver_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vserver_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -482,14 +482,14 @@ class SlbAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-            slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-            slb_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            slb_status: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            vserver_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SlbAttachment':
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+            slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+            slb_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            slb_status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vserver_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'SlbAttachment':
         """
         Get an existing SlbAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

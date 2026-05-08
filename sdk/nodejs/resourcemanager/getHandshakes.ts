@@ -110,17 +110,17 @@ export interface GetHandshakesOutputArgs {
     /**
      * Default to `false`. Set it to true can output more details.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Resource Manager Handshake IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

@@ -23,41 +23,41 @@ class SubscriptionJobArgs:
                  source_endpoint_engine_name: pulumi.Input[_builtins.str],
                  source_endpoint_instance_type: pulumi.Input[_builtins.str],
                  source_endpoint_region: pulumi.Input[_builtins.str],
-                 checkpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay_notice: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delay_phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay_rule_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_notice: Optional[pulumi.Input[_builtins.bool]] = None,
-                 error_phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserve: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_data_type_ddl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subscription_data_type_dml: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subscription_instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_instance_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_instance_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 synchronization_direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay_notice: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delay_phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay_rule_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_notice: pulumi.Input[Optional[_builtins.bool]] = None,
+                 error_phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserve: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_data_type_ddl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subscription_data_type_dml: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subscription_instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_instance_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_instance_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 synchronization_direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SubscriptionJob resource.
 
@@ -226,467 +226,467 @@ class SubscriptionJobArgs:
 
     @_builtins.property
     @pulumi.getter
-    def checkpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checkpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subscription start time in Unix timestamp format.
         """
         return pulumi.get(self, "checkpoint")
 
     @checkpoint.setter
-    def checkpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checkpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checkpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="computeUnit")
-    def compute_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def compute_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         """
         return pulumi.get(self, "compute_unit")
 
     @compute_unit.setter
-    def compute_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def compute_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "compute_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseCount")
-    def database_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def database_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
         """
         return pulumi.get(self, "database_count")
 
     @database_count.setter
-    def database_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def database_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "database_count", value)
 
     @_builtins.property
     @pulumi.getter(name="dbList")
-    def db_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subscription object, in the format of JSON strings. For detailed definitions, please refer to the description of migration, synchronization or subscription objects [document](https://help.aliyun.com/document_detail/209545.html).
         """
         return pulumi.get(self, "db_list")
 
     @db_list.setter
-    def db_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_list", value)
 
     @_builtins.property
     @pulumi.getter(name="delayNotice")
-    def delay_notice(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delay_notice(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This parameter decides whether to monitor the delay status. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "delay_notice")
 
     @delay_notice.setter
-    def delay_notice(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delay_notice(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delay_notice", value)
 
     @_builtins.property
     @pulumi.getter(name="delayPhone")
-    def delay_phone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delay_phone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         """
         return pulumi.get(self, "delay_phone")
 
     @delay_phone.setter
-    def delay_phone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delay_phone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delay_phone", value)
 
     @_builtins.property
     @pulumi.getter(name="delayRuleTime")
-    def delay_rule_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delay_rule_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         """
         return pulumi.get(self, "delay_rule_time")
 
     @delay_rule_time.setter
-    def delay_rule_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delay_rule_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delay_rule_time", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointEngineName")
-    def destination_endpoint_engine_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_engine_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`.
         """
         return pulumi.get(self, "destination_endpoint_engine_name")
 
     @destination_endpoint_engine_name.setter
-    def destination_endpoint_engine_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_engine_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_engine_name", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationRegion")
-    def destination_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination region. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
         """
         return pulumi.get(self, "destination_region")
 
     @destination_region.setter
-    def destination_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_region", value)
 
     @_builtins.property
     @pulumi.getter(name="dtsInstanceId")
-    def dts_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dts_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of subscription instance.
         """
         return pulumi.get(self, "dts_instance_id")
 
     @dts_instance_id.setter
-    def dts_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dts_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dts_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dtsJobName")
-    def dts_job_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dts_job_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of subscription task.
         """
         return pulumi.get(self, "dts_job_name")
 
     @dts_job_name.setter
-    def dts_job_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dts_job_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dts_job_name", value)
 
     @_builtins.property
     @pulumi.getter(name="errorNotice")
-    def error_notice(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def error_notice(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This parameter decides whether to monitor abnormal status. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "error_notice")
 
     @error_notice.setter
-    def error_notice(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def error_notice(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "error_notice", value)
 
     @_builtins.property
     @pulumi.getter(name="errorPhone")
-    def error_phone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_phone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mobile phone number of the contact for abnormal alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         """
         return pulumi.get(self, "error_phone")
 
     @error_phone.setter
-    def error_phone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_phone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_phone", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
         """
         return pulumi.get(self, "instance_class")
 
     @instance_class.setter
-    def instance_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_class", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDuration")
-    def payment_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def payment_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
         """
         return pulumi.get(self, "payment_duration")
 
     @payment_duration.setter
-    def payment_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def payment_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "payment_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDurationUnit")
-    def payment_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
         """
         return pulumi.get(self, "payment_duration_unit")
 
     @payment_duration_unit.setter
-    def payment_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter
-    def reserve(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserve(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter description of the [Reserve parameter](https://help.aliyun.com/document_detail/176470.html).
         """
         return pulumi.get(self, "reserve")
 
     @reserve.setter
-    def reserve(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserve(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserve", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointDatabaseName")
-    def source_endpoint_database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         To subscribe to the name of the database.
         """
         return pulumi.get(self, "source_endpoint_database_name")
 
     @source_endpoint_database_name.setter
-    def source_endpoint_database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_database_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointInstanceId")
-    def source_endpoint_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
         """
         return pulumi.get(self, "source_endpoint_instance_id")
 
     @source_endpoint_instance_id.setter
-    def source_endpoint_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointIp")
-    def source_endpoint_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP of source endpoint.
         """
         return pulumi.get(self, "source_endpoint_ip")
 
     @source_endpoint_ip.setter
-    def source_endpoint_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointOracleSid")
-    def source_endpoint_oracle_sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_oracle_sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SID of Oracle Database. When the source database is self-built Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
         """
         return pulumi.get(self, "source_endpoint_oracle_sid")
 
     @source_endpoint_oracle_sid.setter
-    def source_endpoint_oracle_sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_oracle_sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_oracle_sid", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointOwnerId")
-    def source_endpoint_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud account ID to which the source instance belongs. This parameter is only available when configuring data subscriptions across Alibaba Cloud accounts and must be passed in.
         """
         return pulumi.get(self, "source_endpoint_owner_id")
 
     @source_endpoint_owner_id.setter
-    def source_endpoint_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointPassword")
-    def source_endpoint_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of source database instance account.
         """
         return pulumi.get(self, "source_endpoint_password")
 
     @source_endpoint_password.setter
-    def source_endpoint_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_password", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointPort")
-    def source_endpoint_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port of source database.
         """
         return pulumi.get(self, "source_endpoint_port")
 
     @source_endpoint_port.setter
-    def source_endpoint_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_port", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointRole")
-    def source_endpoint_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
         """
         return pulumi.get(self, "source_endpoint_role")
 
     @source_endpoint_role.setter
-    def source_endpoint_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_role", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")
-    def source_endpoint_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of source database instance account.
         """
         return pulumi.get(self, "source_endpoint_user_name")
 
     @source_endpoint_user_name.setter
-    def source_endpoint_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionDataTypeDdl")
-    def subscription_data_type_ddl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def subscription_data_type_ddl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "subscription_data_type_ddl")
 
     @subscription_data_type_ddl.setter
-    def subscription_data_type_ddl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def subscription_data_type_ddl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "subscription_data_type_ddl", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionDataTypeDml")
-    def subscription_data_type_dml(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def subscription_data_type_dml(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to subscribe the DML type of data. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "subscription_data_type_dml")
 
     @subscription_data_type_dml.setter
-    def subscription_data_type_dml(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def subscription_data_type_dml(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "subscription_data_type_dml", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionInstanceNetworkType")
-    def subscription_instance_network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_instance_network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subscription task type of network value: classic: classic Network. Virtual Private Cloud (vpc): a vpc. Valid values: `classic`, `vpc`.
         """
         return pulumi.get(self, "subscription_instance_network_type")
 
     @subscription_instance_network_type.setter
-    def subscription_instance_network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_instance_network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_instance_network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionInstanceVpcId")
-    def subscription_instance_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_instance_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of subscription vpc instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
         """
         return pulumi.get(self, "subscription_instance_vpc_id")
 
     @subscription_instance_vpc_id.setter
-    def subscription_instance_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_instance_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_instance_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionInstanceVswitchId")
-    def subscription_instance_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_instance_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
         """
         return pulumi.get(self, "subscription_instance_vswitch_id")
 
     @subscription_instance_vswitch_id.setter
-    def subscription_instance_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_instance_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_instance_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="syncArchitecture")
-    def sync_architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sync architecture. Valid values: `bidirectional`, `oneway`.
         """
         return pulumi.get(self, "sync_architecture")
 
     @sync_architecture.setter
-    def sync_architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_architecture", value)
 
     @_builtins.property
     @pulumi.getter(name="synchronizationDirection")
-    def synchronization_direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def synchronization_direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
         """
         return pulumi.get(self, "synchronization_direction")
 
     @synchronization_direction.setter
-    def synchronization_direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def synchronization_direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "synchronization_direction", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _SubscriptionJobState:
     def __init__(__self__, *,
-                 checkpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay_notice: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delay_phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay_rule_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_notice: Optional[pulumi.Input[_builtins.bool]] = None,
-                 error_phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserve: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_data_type_ddl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subscription_data_type_dml: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subscription_instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_instance_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_instance_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 synchronization_direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay_notice: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delay_phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay_rule_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_notice: pulumi.Input[Optional[_builtins.bool]] = None,
+                 error_phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserve: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_data_type_ddl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subscription_data_type_dml: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subscription_instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_instance_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_instance_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 synchronization_direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SubscriptionJob resources.
 
@@ -811,470 +811,470 @@ class _SubscriptionJobState:
 
     @_builtins.property
     @pulumi.getter
-    def checkpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checkpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subscription start time in Unix timestamp format.
         """
         return pulumi.get(self, "checkpoint")
 
     @checkpoint.setter
-    def checkpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checkpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checkpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="computeUnit")
-    def compute_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def compute_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         """
         return pulumi.get(self, "compute_unit")
 
     @compute_unit.setter
-    def compute_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def compute_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "compute_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseCount")
-    def database_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def database_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
         """
         return pulumi.get(self, "database_count")
 
     @database_count.setter
-    def database_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def database_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "database_count", value)
 
     @_builtins.property
     @pulumi.getter(name="dbList")
-    def db_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subscription object, in the format of JSON strings. For detailed definitions, please refer to the description of migration, synchronization or subscription objects [document](https://help.aliyun.com/document_detail/209545.html).
         """
         return pulumi.get(self, "db_list")
 
     @db_list.setter
-    def db_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_list", value)
 
     @_builtins.property
     @pulumi.getter(name="delayNotice")
-    def delay_notice(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delay_notice(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This parameter decides whether to monitor the delay status. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "delay_notice")
 
     @delay_notice.setter
-    def delay_notice(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delay_notice(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delay_notice", value)
 
     @_builtins.property
     @pulumi.getter(name="delayPhone")
-    def delay_phone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delay_phone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         """
         return pulumi.get(self, "delay_phone")
 
     @delay_phone.setter
-    def delay_phone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delay_phone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delay_phone", value)
 
     @_builtins.property
     @pulumi.getter(name="delayRuleTime")
-    def delay_rule_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delay_rule_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
         """
         return pulumi.get(self, "delay_rule_time")
 
     @delay_rule_time.setter
-    def delay_rule_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delay_rule_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delay_rule_time", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointEngineName")
-    def destination_endpoint_engine_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_engine_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`.
         """
         return pulumi.get(self, "destination_endpoint_engine_name")
 
     @destination_endpoint_engine_name.setter
-    def destination_endpoint_engine_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_engine_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_engine_name", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationRegion")
-    def destination_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination region. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
         """
         return pulumi.get(self, "destination_region")
 
     @destination_region.setter
-    def destination_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_region", value)
 
     @_builtins.property
     @pulumi.getter(name="dtsInstanceId")
-    def dts_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dts_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of subscription instance.
         """
         return pulumi.get(self, "dts_instance_id")
 
     @dts_instance_id.setter
-    def dts_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dts_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dts_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dtsJobName")
-    def dts_job_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dts_job_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of subscription task.
         """
         return pulumi.get(self, "dts_job_name")
 
     @dts_job_name.setter
-    def dts_job_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dts_job_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dts_job_name", value)
 
     @_builtins.property
     @pulumi.getter(name="errorNotice")
-    def error_notice(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def error_notice(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This parameter decides whether to monitor abnormal status. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "error_notice")
 
     @error_notice.setter
-    def error_notice(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def error_notice(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "error_notice", value)
 
     @_builtins.property
     @pulumi.getter(name="errorPhone")
-    def error_phone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_phone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mobile phone number of the contact for abnormal alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         """
         return pulumi.get(self, "error_phone")
 
     @error_phone.setter
-    def error_phone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_phone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_phone", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
         """
         return pulumi.get(self, "instance_class")
 
     @instance_class.setter
-    def instance_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_class", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDuration")
-    def payment_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def payment_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
         """
         return pulumi.get(self, "payment_duration")
 
     @payment_duration.setter
-    def payment_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def payment_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "payment_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDurationUnit")
-    def payment_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
         """
         return pulumi.get(self, "payment_duration_unit")
 
     @payment_duration_unit.setter
-    def payment_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def reserve(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserve(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter description of the [Reserve parameter](https://help.aliyun.com/document_detail/176470.html).
         """
         return pulumi.get(self, "reserve")
 
     @reserve.setter
-    def reserve(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserve(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserve", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointDatabaseName")
-    def source_endpoint_database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         To subscribe to the name of the database.
         """
         return pulumi.get(self, "source_endpoint_database_name")
 
     @source_endpoint_database_name.setter
-    def source_endpoint_database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_database_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointEngineName")
-    def source_endpoint_engine_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_engine_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
         """
         return pulumi.get(self, "source_endpoint_engine_name")
 
     @source_endpoint_engine_name.setter
-    def source_endpoint_engine_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_engine_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_engine_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointInstanceId")
-    def source_endpoint_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
         """
         return pulumi.get(self, "source_endpoint_instance_id")
 
     @source_endpoint_instance_id.setter
-    def source_endpoint_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointInstanceType")
-    def source_endpoint_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
         """
         return pulumi.get(self, "source_endpoint_instance_type")
 
     @source_endpoint_instance_type.setter
-    def source_endpoint_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointIp")
-    def source_endpoint_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP of source endpoint.
         """
         return pulumi.get(self, "source_endpoint_ip")
 
     @source_endpoint_ip.setter
-    def source_endpoint_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointOracleSid")
-    def source_endpoint_oracle_sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_oracle_sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SID of Oracle Database. When the source database is self-built Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
         """
         return pulumi.get(self, "source_endpoint_oracle_sid")
 
     @source_endpoint_oracle_sid.setter
-    def source_endpoint_oracle_sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_oracle_sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_oracle_sid", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointOwnerId")
-    def source_endpoint_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud account ID to which the source instance belongs. This parameter is only available when configuring data subscriptions across Alibaba Cloud accounts and must be passed in.
         """
         return pulumi.get(self, "source_endpoint_owner_id")
 
     @source_endpoint_owner_id.setter
-    def source_endpoint_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointPassword")
-    def source_endpoint_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of source database instance account.
         """
         return pulumi.get(self, "source_endpoint_password")
 
     @source_endpoint_password.setter
-    def source_endpoint_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_password", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointPort")
-    def source_endpoint_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port of source database.
         """
         return pulumi.get(self, "source_endpoint_port")
 
     @source_endpoint_port.setter
-    def source_endpoint_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_port", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointRegion")
-    def source_endpoint_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of source database.
         """
         return pulumi.get(self, "source_endpoint_region")
 
     @source_endpoint_region.setter
-    def source_endpoint_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_region", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointRole")
-    def source_endpoint_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
         """
         return pulumi.get(self, "source_endpoint_role")
 
     @source_endpoint_role.setter
-    def source_endpoint_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_role", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")
-    def source_endpoint_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of source database instance account.
         """
         return pulumi.get(self, "source_endpoint_user_name")
 
     @source_endpoint_user_name.setter
-    def source_endpoint_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionDataTypeDdl")
-    def subscription_data_type_ddl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def subscription_data_type_ddl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "subscription_data_type_ddl")
 
     @subscription_data_type_ddl.setter
-    def subscription_data_type_ddl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def subscription_data_type_ddl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "subscription_data_type_ddl", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionDataTypeDml")
-    def subscription_data_type_dml(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def subscription_data_type_dml(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to subscribe the DML type of data. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "subscription_data_type_dml")
 
     @subscription_data_type_dml.setter
-    def subscription_data_type_dml(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def subscription_data_type_dml(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "subscription_data_type_dml", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionInstanceNetworkType")
-    def subscription_instance_network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_instance_network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subscription task type of network value: classic: classic Network. Virtual Private Cloud (vpc): a vpc. Valid values: `classic`, `vpc`.
         """
         return pulumi.get(self, "subscription_instance_network_type")
 
     @subscription_instance_network_type.setter
-    def subscription_instance_network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_instance_network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_instance_network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionInstanceVpcId")
-    def subscription_instance_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_instance_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of subscription vpc instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
         """
         return pulumi.get(self, "subscription_instance_vpc_id")
 
     @subscription_instance_vpc_id.setter
-    def subscription_instance_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_instance_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_instance_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionInstanceVswitchId")
-    def subscription_instance_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_instance_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
         """
         return pulumi.get(self, "subscription_instance_vswitch_id")
 
     @subscription_instance_vswitch_id.setter
-    def subscription_instance_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_instance_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_instance_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="syncArchitecture")
-    def sync_architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sync architecture. Valid values: `bidirectional`, `oneway`.
         """
         return pulumi.get(self, "sync_architecture")
 
     @sync_architecture.setter
-    def sync_architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_architecture", value)
 
     @_builtins.property
     @pulumi.getter(name="synchronizationDirection")
-    def synchronization_direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def synchronization_direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
         """
         return pulumi.get(self, "synchronization_direction")
 
     @synchronization_direction.setter
-    def synchronization_direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def synchronization_direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "synchronization_direction", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -1284,45 +1284,45 @@ class SubscriptionJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 checkpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay_notice: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delay_phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay_rule_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_notice: Optional[pulumi.Input[_builtins.bool]] = None,
-                 error_phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserve: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_data_type_ddl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subscription_data_type_dml: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subscription_instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_instance_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_instance_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 synchronization_direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay_notice: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delay_phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay_rule_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_notice: pulumi.Input[Optional[_builtins.bool]] = None,
+                 error_phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserve: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_data_type_ddl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subscription_data_type_dml: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subscription_instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_instance_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_instance_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 synchronization_direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a DTS Subscription Job resource.
@@ -1371,7 +1371,7 @@ class SubscriptionJob(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name=name,
             vswitch_id=example_switch.id,
@@ -1522,7 +1522,7 @@ class SubscriptionJob(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name=name,
             vswitch_id=example_switch.id,
@@ -1593,45 +1593,45 @@ class SubscriptionJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 checkpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay_notice: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delay_phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay_rule_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_notice: Optional[pulumi.Input[_builtins.bool]] = None,
-                 error_phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserve: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_data_type_ddl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subscription_data_type_dml: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subscription_instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_instance_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_instance_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 synchronization_direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay_notice: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delay_phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay_rule_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_notice: pulumi.Input[Optional[_builtins.bool]] = None,
+                 error_phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserve: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_data_type_ddl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subscription_data_type_dml: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subscription_instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_instance_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_instance_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 synchronization_direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1698,45 +1698,45 @@ class SubscriptionJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            checkpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-            database_count: Optional[pulumi.Input[_builtins.int]] = None,
-            db_list: Optional[pulumi.Input[_builtins.str]] = None,
-            delay_notice: Optional[pulumi.Input[_builtins.bool]] = None,
-            delay_phone: Optional[pulumi.Input[_builtins.str]] = None,
-            delay_rule_time: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_region: Optional[pulumi.Input[_builtins.str]] = None,
-            dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dts_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-            error_notice: Optional[pulumi.Input[_builtins.bool]] = None,
-            error_phone: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            reserve: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_role: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            subscription_data_type_ddl: Optional[pulumi.Input[_builtins.bool]] = None,
-            subscription_data_type_dml: Optional[pulumi.Input[_builtins.bool]] = None,
-            subscription_instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-            subscription_instance_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            subscription_instance_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_architecture: Optional[pulumi.Input[_builtins.str]] = None,
-            synchronization_direction: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'SubscriptionJob':
+            checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+            database_count: pulumi.Input[Optional[_builtins.int]] = None,
+            db_list: pulumi.Input[Optional[_builtins.str]] = None,
+            delay_notice: pulumi.Input[Optional[_builtins.bool]] = None,
+            delay_phone: pulumi.Input[Optional[_builtins.str]] = None,
+            delay_rule_time: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_region: pulumi.Input[Optional[_builtins.str]] = None,
+            dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+            error_notice: pulumi.Input[Optional[_builtins.bool]] = None,
+            error_phone: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            reserve: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_data_type_ddl: pulumi.Input[Optional[_builtins.bool]] = None,
+            subscription_data_type_dml: pulumi.Input[Optional[_builtins.bool]] = None,
+            subscription_instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_instance_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_instance_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_architecture: pulumi.Input[Optional[_builtins.str]] = None,
+            synchronization_direction: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'SubscriptionJob':
         """
         Get an existing SubscriptionJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

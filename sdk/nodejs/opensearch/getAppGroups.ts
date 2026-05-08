@@ -159,30 +159,30 @@ export interface GetAppGroupsOutputArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of App Group IDs. Its element value is same as App Group Name.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Instance ID.
      */
-    instanceId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by App Group name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The Resource Group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Application type. Valid Values: `standard`, `enhanced`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

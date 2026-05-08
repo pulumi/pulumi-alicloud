@@ -59,11 +59,11 @@ namespace Pulumi.AliCloud.Cen
     ///     {
     ///         NetworkInterfaceName = name,
     ///         VswitchId = exampleSwitch.Id,
-    ///         PrimaryIpAddress = exampleSwitch.CidrBlock.Apply(cidrBlock =&gt; Std.Index.Cidrhost.Invoke(new()
+    ///         PrimaryIpAddress = Std.Cidrhost.Invoke(new()
     ///         {
-    ///             Input = cidrBlock,
+    ///             Input = exampleSwitch.CidrBlock,
     ///             Host = 100,
-    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         SecurityGroupIds = new[]
     ///         {
     ///             exampleSecurityGroup.Id,

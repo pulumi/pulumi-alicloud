@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     planSubscribeType: "enterpriseplan",
  * });
  * const defaultWafRuleset = new alicloud.esa.WafRuleset("default", {
- *     siteId: _default.then(_default => _default.sites?.[0]?.siteId),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.siteId)).apply(x =>String(x)),
  *     phase: "http_custom",
  *     siteVersion: 0,
  * });
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *         name: "111",
  *     },
  *     siteVersion: 0,
- *     siteId: _default.then(_default => _default.sites?.[0]?.siteId),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.siteId)).apply(x =>String(x)),
  * });
  * ```
  *
@@ -170,35 +170,35 @@ export interface WafRuleState {
     /**
      * The specific configuration of the WAF rule. See `config` below.
      */
-    config?: pulumi.Input<inputs.esa.WafRuleConfig>;
+    config?: pulumi.Input<inputs.esa.WafRuleConfig | undefined>;
     /**
      * The phase in which the WAF processes this rule.
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
      */
-    rulesetId?: pulumi.Input<number>;
+    rulesetId?: pulumi.Input<number | undefined>;
     /**
      * Shared configuration attributes used across multiple rules. See `shared` below.
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    shared?: pulumi.Input<inputs.esa.WafRuleShared>;
+    shared?: pulumi.Input<inputs.esa.WafRuleShared | undefined>;
     /**
      * The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      *
      * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
     /**
      * The unique identifier of the WAF rule.
      */
-    wafRuleId?: pulumi.Input<number>;
+    wafRuleId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -208,7 +208,7 @@ export interface WafRuleArgs {
     /**
      * The specific configuration of the WAF rule. See `config` below.
      */
-    config?: pulumi.Input<inputs.esa.WafRuleConfig>;
+    config?: pulumi.Input<inputs.esa.WafRuleConfig | undefined>;
     /**
      * The phase in which the WAF processes this rule.
      */
@@ -216,13 +216,13 @@ export interface WafRuleArgs {
     /**
      * The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
      */
-    rulesetId?: pulumi.Input<number>;
+    rulesetId?: pulumi.Input<number | undefined>;
     /**
      * Shared configuration attributes used across multiple rules. See `shared` below.
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    shared?: pulumi.Input<inputs.esa.WafRuleShared>;
+    shared?: pulumi.Input<inputs.esa.WafRuleShared | undefined>;
     /**
      * The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
@@ -232,5 +232,5 @@ export interface WafRuleArgs {
      *
      * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
 }

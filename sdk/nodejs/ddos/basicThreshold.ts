@@ -193,31 +193,31 @@ export interface BasicThresholdState {
     /**
      * Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
      */
-    bps?: pulumi.Input<number>;
+    bps?: pulumi.Input<number | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the Instance. Valid values: `ecs`,`slb`,`eip`.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the public IP address asset.
      */
-    internetIp?: pulumi.Input<string>;
+    internetIp?: pulumi.Input<string | undefined>;
     /**
      * Maximum flow cleaning threshold. Unit: Mbps.
      */
-    maxBps?: pulumi.Input<number>;
+    maxBps?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of messages cleaning threshold. Unit: pps.
      */
-    maxPps?: pulumi.Input<number>;
+    maxPps?: pulumi.Input<number | undefined>;
     /**
      * The current message number cleaning threshold. Unit: pps.
      */
-    pps?: pulumi.Input<number>;
+    pps?: pulumi.Input<number | undefined>;
 }
 
 /**

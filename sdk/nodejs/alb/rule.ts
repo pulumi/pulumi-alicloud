@@ -259,35 +259,35 @@ export interface RuleState {
      * - `Request`: The forwarding rule is applied to the client requests received by ALB.
      * - `Response`: The forwarding rule is applied to the responses returned by backend servers.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to precheck this request.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the listener to which the forwarding rule belongs.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The actions of the forwarding rules. See `ruleActions` below.
      */
-    ruleActions?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleAction>[]>;
+    ruleActions?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleAction>[] | undefined>;
     /**
      * The conditions of the forwarding rule. See `ruleConditions` below.
      */
-    ruleConditions?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleCondition>[]>;
+    ruleConditions?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleCondition>[] | undefined>;
     /**
      * The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -299,11 +299,11 @@ export interface RuleArgs {
      * - `Request`: The forwarding rule is applied to the client requests received by ALB.
      * - `Response`: The forwarding rule is applied to the responses returned by backend servers.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to precheck this request.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the listener to which the forwarding rule belongs.
      */

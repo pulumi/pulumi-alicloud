@@ -138,22 +138,22 @@ export interface GetAscriptsOutputArgs {
     /**
      * Script name.
      */
-    ascriptName?: pulumi.Input<string>;
-    enableDetails?: pulumi.Input<boolean>;
+    ascriptName?: pulumi.Input<string | undefined>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of AScript IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Listener ID of script attribution
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Group Metric Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

@@ -115,11 +115,11 @@ export interface MscSubWebhookState {
     /**
      * The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
      */
-    serverUrl?: pulumi.Input<string>;
+    serverUrl?: pulumi.Input<string | undefined>;
     /**
      * The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
      */
-    webhookName?: pulumi.Input<string>;
+    webhookName?: pulumi.Input<string | undefined>;
 }
 
 /**

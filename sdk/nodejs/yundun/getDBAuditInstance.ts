@@ -57,8 +57,8 @@ export function getDBAuditInstanceOutput(args?: GetDBAuditInstanceOutputArgs, op
  * A collection of arguments for invoking getDBAuditInstance.
  */
 export interface GetDBAuditInstanceOutputArgs {
-    descriptionRegex?: pulumi.Input<string>;
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    outputFile?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    descriptionRegex?: pulumi.Input<string | undefined>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    outputFile?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

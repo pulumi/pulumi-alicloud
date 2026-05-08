@@ -125,17 +125,17 @@ export interface GetBgpNetworksOutputArgs {
     /**
      * A list of Bgp Network IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the router to which the route table belongs.
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
     /**
      * The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

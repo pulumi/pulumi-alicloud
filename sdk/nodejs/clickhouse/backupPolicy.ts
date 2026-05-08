@@ -166,23 +166,23 @@ export interface BackupPolicyState {
     /**
      * Data backup days. Valid values: `7` to `730`.
      */
-    backupRetentionPeriod?: pulumi.Input<number>;
+    backupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The id of the DBCluster.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * DBCluster Backup period. A list of DBCluster Backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
      */
-    preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * DBCluster backup time, in the format of `HH:mmZ-HH:mmZ`. Time setting interval is one hour. China time is 8 hours behind it.
      */
-    preferredBackupTime?: pulumi.Input<string>;
+    preferredBackupTime?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -192,7 +192,7 @@ export interface BackupPolicyArgs {
     /**
      * Data backup days. Valid values: `7` to `730`.
      */
-    backupRetentionPeriod?: pulumi.Input<number>;
+    backupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The id of the DBCluster.
      */

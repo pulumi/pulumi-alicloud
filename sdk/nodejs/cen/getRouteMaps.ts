@@ -156,25 +156,25 @@ export interface GetRouteMapsOutputArgs {
     /**
      * The ID of the region to which the CEN instance belongs.
      */
-    cenRegionId?: pulumi.Input<string>;
+    cenRegionId?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter CEN route map by description.
      */
-    descriptionRegex?: pulumi.Input<string>;
+    descriptionRegex?: pulumi.Input<string | undefined>;
     /**
      * A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the route map, including `Creating`, `Active` and `Deleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
      */
-    transmitDirection?: pulumi.Input<string>;
+    transmitDirection?: pulumi.Input<string | undefined>;
 }

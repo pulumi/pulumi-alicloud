@@ -58,9 +58,9 @@ class FaceConfigArgs:
 @pulumi.input_type
 class _FaceConfigState:
     def __init__(__self__, *,
-                 biz_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 gmt_modified: Optional[pulumi.Input[_builtins.str]] = None):
+                 biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 gmt_modified: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FaceConfig resources.
 
@@ -77,38 +77,38 @@ class _FaceConfigState:
 
     @_builtins.property
     @pulumi.getter(name="bizName")
-    def biz_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biz_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scene name.
         """
         return pulumi.get(self, "biz_name")
 
     @biz_name.setter
-    def biz_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biz_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biz_name", value)
 
     @_builtins.property
     @pulumi.getter(name="bizType")
-    def biz_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biz_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
         """
         return pulumi.get(self, "biz_type")
 
     @biz_type.setter
-    def biz_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biz_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biz_type", value)
 
     @_builtins.property
     @pulumi.getter(name="gmtModified")
-    def gmt_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gmt_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last Modified Date.
         """
         return pulumi.get(self, "gmt_modified")
 
     @gmt_modified.setter
-    def gmt_modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gmt_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gmt_modified", value)
 
 
@@ -118,8 +118,8 @@ class FaceConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biz_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 biz_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 biz_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloudauth Face Config resource.
@@ -235,8 +235,8 @@ class FaceConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biz_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 biz_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 biz_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -263,9 +263,9 @@ class FaceConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            biz_name: Optional[pulumi.Input[_builtins.str]] = None,
-            biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-            gmt_modified: Optional[pulumi.Input[_builtins.str]] = None) -> 'FaceConfig':
+            biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+            biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_modified: pulumi.Input[Optional[_builtins.str]] = None) -> 'FaceConfig':
         """
         Get an existing FaceConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

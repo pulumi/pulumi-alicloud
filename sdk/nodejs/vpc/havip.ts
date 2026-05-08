@@ -206,67 +206,67 @@ export interface HAVipState {
     /**
      * The elastic IP address (EIP) associated with the HAVIP.
      */
-    associatedEipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    associatedEipAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of the instance with which the HAVIP is associated. Valid values:
      * - `EcsInstance`: an ECS instance.
      * - `NetworkInterface`: an ENI.
      */
-    associatedInstanceType?: pulumi.Input<string>;
+    associatedInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance with which the HAVIP is associated.
      */
-    associatedInstances?: pulumi.Input<pulumi.Input<string>[]>;
+    associatedInstances?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The time when the HAVIP was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the HaVip instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the HAVIP.
      */
-    haVipId?: pulumi.Input<string>;
+    haVipId?: pulumi.Input<string | undefined>;
     /**
      * The name of the HAVIP.
      */
-    haVipName?: pulumi.Input<string>;
+    haVipName?: pulumi.Input<string | undefined>;
     /**
      * The name of the HaVip instance.
      *
      * @deprecated Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      */
-    havipName?: pulumi.Input<string>;
+    havipName?: pulumi.Input<string | undefined>;
     /**
      * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the active instance that is associated with the HAVIP.
      */
-    masterInstanceId?: pulumi.Input<string>;
+    masterInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the HAVIP belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.120.0) The status of the HaVip instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The list of tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the VPC to which the HAVIP belongs.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vswitchId of the HaVip, the field can't be changed.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -276,29 +276,29 @@ export interface HAVipArgs {
     /**
      * The description of the HaVip instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the HAVIP.
      */
-    haVipName?: pulumi.Input<string>;
+    haVipName?: pulumi.Input<string | undefined>;
     /**
      * The name of the HaVip instance.
      *
      * @deprecated Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      */
-    havipName?: pulumi.Input<string>;
+    havipName?: pulumi.Input<string | undefined>;
     /**
      * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the HAVIP belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The list of tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The vswitchId of the HaVip, the field can't be changed.
      */

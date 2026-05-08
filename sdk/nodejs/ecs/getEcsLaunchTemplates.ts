@@ -318,29 +318,29 @@ export interface GetEcsLaunchTemplatesOutputArgs {
     /**
      * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Launch Template IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the launch template.
      */
-    launchTemplateName?: pulumi.Input<string>;
+    launchTemplateName?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Launch Template name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Resource Group.
      */
-    templateResourceGroupId?: pulumi.Input<string>;
+    templateResourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tags of the launch template.
      */
-    templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -22,8 +22,8 @@ class AlertRobotArgs:
                  alert_robot_name: pulumi.Input[_builtins.str],
                  robot_addr: pulumi.Input[_builtins.str],
                  robot_type: pulumi.Input[_builtins.str],
-                 daily_noc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 daily_noc_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 daily_noc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 daily_noc_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AlertRobot resource.
 
@@ -79,37 +79,37 @@ class AlertRobotArgs:
 
     @_builtins.property
     @pulumi.getter(name="dailyNoc")
-    def daily_noc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def daily_noc(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the alert robot receives daily notifications. Valid values: `true`: receives daily notifications. `false`: does not receive daily notifications, default to `false`.
         """
         return pulumi.get(self, "daily_noc")
 
     @daily_noc.setter
-    def daily_noc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def daily_noc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "daily_noc", value)
 
     @_builtins.property
     @pulumi.getter(name="dailyNocTime")
-    def daily_noc_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def daily_noc_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time of the daily notification.
         """
         return pulumi.get(self, "daily_noc_time")
 
     @daily_noc_time.setter
-    def daily_noc_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def daily_noc_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "daily_noc_time", value)
 
 
 @pulumi.input_type
 class _AlertRobotState:
     def __init__(__self__, *,
-                 alert_robot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 daily_noc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 daily_noc_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 robot_addr: Optional[pulumi.Input[_builtins.str]] = None,
-                 robot_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 alert_robot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 daily_noc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 daily_noc_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 robot_addr: pulumi.Input[Optional[_builtins.str]] = None,
+                 robot_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AlertRobot resources.
 
@@ -132,62 +132,62 @@ class _AlertRobotState:
 
     @_builtins.property
     @pulumi.getter(name="alertRobotName")
-    def alert_robot_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_robot_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "alert_robot_name")
 
     @alert_robot_name.setter
-    def alert_robot_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_robot_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_robot_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dailyNoc")
-    def daily_noc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def daily_noc(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the alert robot receives daily notifications. Valid values: `true`: receives daily notifications. `false`: does not receive daily notifications, default to `false`.
         """
         return pulumi.get(self, "daily_noc")
 
     @daily_noc.setter
-    def daily_noc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def daily_noc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "daily_noc", value)
 
     @_builtins.property
     @pulumi.getter(name="dailyNocTime")
-    def daily_noc_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def daily_noc_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time of the daily notification.
         """
         return pulumi.get(self, "daily_noc_time")
 
     @daily_noc_time.setter
-    def daily_noc_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def daily_noc_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "daily_noc_time", value)
 
     @_builtins.property
     @pulumi.getter(name="robotAddr")
-    def robot_addr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def robot_addr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The webhook url of the robot.
         """
         return pulumi.get(self, "robot_addr")
 
     @robot_addr.setter
-    def robot_addr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def robot_addr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "robot_addr", value)
 
     @_builtins.property
     @pulumi.getter(name="robotType")
-    def robot_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def robot_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the robot, Valid values: `wechat`, `dingding`, `feishu`.
         """
         return pulumi.get(self, "robot_type")
 
     @robot_type.setter
-    def robot_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def robot_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "robot_type", value)
 
 
@@ -197,11 +197,11 @@ class AlertRobot(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_robot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 daily_noc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 daily_noc_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 robot_addr: Optional[pulumi.Input[_builtins.str]] = None,
-                 robot_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 alert_robot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 daily_noc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 daily_noc_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 robot_addr: pulumi.Input[Optional[_builtins.str]] = None,
+                 robot_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Alert Robot resource.
@@ -324,11 +324,11 @@ class AlertRobot(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_robot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 daily_noc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 daily_noc_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 robot_addr: Optional[pulumi.Input[_builtins.str]] = None,
-                 robot_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 alert_robot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 daily_noc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 daily_noc_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 robot_addr: pulumi.Input[Optional[_builtins.str]] = None,
+                 robot_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -359,11 +359,11 @@ class AlertRobot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_robot_name: Optional[pulumi.Input[_builtins.str]] = None,
-            daily_noc: Optional[pulumi.Input[_builtins.bool]] = None,
-            daily_noc_time: Optional[pulumi.Input[_builtins.str]] = None,
-            robot_addr: Optional[pulumi.Input[_builtins.str]] = None,
-            robot_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'AlertRobot':
+            alert_robot_name: pulumi.Input[Optional[_builtins.str]] = None,
+            daily_noc: pulumi.Input[Optional[_builtins.bool]] = None,
+            daily_noc_time: pulumi.Input[Optional[_builtins.str]] = None,
+            robot_addr: pulumi.Input[Optional[_builtins.str]] = None,
+            robot_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AlertRobot':
         """
         Get an existing AlertRobot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

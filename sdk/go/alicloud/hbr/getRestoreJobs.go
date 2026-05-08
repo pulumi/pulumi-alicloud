@@ -28,29 +28,31 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
-// NameRegex: pulumi.StringRef("plan-name"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// _, err = hbr.GetRestoreJobs(ctx, &hbr.GetRestoreJobsArgs{
-// RestoreType: "ECS_FILE",
-// VaultIds: interface{}{
-// _default.Plans[0].VaultId,
-// },
-// TargetInstanceIds: interface{}{
-// _default.Plans[0].InstanceId,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
+//				NameRegex: pulumi.StringRef("plan-name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.GetRestoreJobs(ctx, &hbr.GetRestoreJobsArgs{
+//				RestoreType: "ECS_FILE",
+//				VaultIds: pulumi.StringArray{
+//					_default.Plans[0].VaultId,
+//				},
+//				TargetInstanceIds: pulumi.StringArray{
+//					_default.Plans[0].InstanceId,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetRestoreJobs(ctx *pulumi.Context, args *GetRestoreJobsArgs, opts ...pulumi.InvokeOption) (*GetRestoreJobsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

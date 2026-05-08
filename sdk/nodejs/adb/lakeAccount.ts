@@ -213,35 +213,35 @@ export interface LakeAccountState {
     /**
      * The description of the account.
      */
-    accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the account.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * AccountPassword.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * List of permissions granted. See `accountPrivileges` below.
      */
-    accountPrivileges?: pulumi.Input<pulumi.Input<inputs.adb.LakeAccountAccountPrivilege>[]>;
+    accountPrivileges?: pulumi.Input<pulumi.Input<inputs.adb.LakeAccountAccountPrivilege>[] | undefined>;
     /**
      * The type of the account.
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * The DBCluster ID.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * List of Alibaba Cloud RAM user IDs to bind.
      */
-    ramUserLists?: pulumi.Input<pulumi.Input<string>[]>;
+    ramUserLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -251,7 +251,7 @@ export interface LakeAccountArgs {
     /**
      * The description of the account.
      */
-    accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the account.
      */
@@ -263,11 +263,11 @@ export interface LakeAccountArgs {
     /**
      * List of permissions granted. See `accountPrivileges` below.
      */
-    accountPrivileges?: pulumi.Input<pulumi.Input<inputs.adb.LakeAccountAccountPrivilege>[]>;
+    accountPrivileges?: pulumi.Input<pulumi.Input<inputs.adb.LakeAccountAccountPrivilege>[] | undefined>;
     /**
      * The type of the account.
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * The DBCluster ID.
      */
@@ -275,5 +275,5 @@ export interface LakeAccountArgs {
     /**
      * List of Alibaba Cloud RAM user IDs to bind.
      */
-    ramUserLists?: pulumi.Input<pulumi.Input<string>[]>;
+    ramUserLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

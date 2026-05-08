@@ -57,8 +57,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetExpressSyncsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -106,8 +106,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetExpressSyncsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -155,8 +155,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetExpressSyncsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -204,8 +204,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetExpressSyncsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -253,8 +253,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetExpressSyncsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -302,8 +302,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetExpressSyncsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -351,8 +351,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetExpressSyncsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -400,8 +400,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayBlockVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -454,8 +454,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayBlockVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -508,8 +508,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayBlockVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -562,8 +562,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayBlockVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -616,8 +616,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayBlockVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -670,8 +670,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayCacheDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -727,8 +727,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayCacheDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -784,8 +784,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayCacheDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -841,8 +841,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayCacheDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -898,8 +898,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayCacheDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -955,8 +955,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayFileSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1009,8 +1009,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayFileSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1063,8 +1063,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayFileSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1117,8 +1117,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayFileSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1171,8 +1171,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewayFileSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1234,8 +1234,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUserArgs;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaySmbUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1320,8 +1320,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUserArgs;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaySmbUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1406,8 +1406,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUserArgs;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaySmbUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1492,8 +1492,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUserArgs;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaySmbUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1578,8 +1578,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.alicloud.cloudstoragegateway.GatewaySmbUserArgs;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaySmbUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1657,8 +1657,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1709,8 +1709,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1761,8 +1761,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1813,8 +1813,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1865,8 +1865,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1915,8 +1915,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1959,8 +1959,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2003,8 +2003,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2047,8 +2047,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2091,8 +2091,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2135,8 +2135,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2179,8 +2179,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2223,8 +2223,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2268,8 +2268,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2313,8 +2313,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2358,8 +2358,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2403,8 +2403,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2448,8 +2448,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2493,8 +2493,8 @@ public final class CloudstoragegatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
      * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

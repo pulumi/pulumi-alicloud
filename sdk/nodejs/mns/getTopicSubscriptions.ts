@@ -108,11 +108,11 @@ export interface GetTopicSubscriptionsOutputArgs {
     /**
      * A string to filter resulting subscriptions of the topic by their name prefixs.
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      */

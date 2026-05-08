@@ -137,27 +137,27 @@ export interface AclState {
      *
      * @deprecated Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
      */
-    aclEntries?: pulumi.Input<pulumi.Input<inputs.alb.AclAclEntry>[]>;
+    aclEntries?: pulumi.Input<pulumi.Input<inputs.alb.AclAclEntry>[] | undefined>;
     /**
      * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
      */
-    aclName?: pulumi.Input<string>;
+    aclName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to precheck the API request.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -170,21 +170,21 @@ export interface AclArgs {
      *
      * @deprecated Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
      */
-    aclEntries?: pulumi.Input<pulumi.Input<inputs.alb.AclAclEntry>[]>;
+    aclEntries?: pulumi.Input<pulumi.Input<inputs.alb.AclAclEntry>[] | undefined>;
     /**
      * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
      */
-    aclName?: pulumi.Input<string>;
+    aclName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to precheck the API request.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

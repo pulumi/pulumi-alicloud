@@ -193,13 +193,13 @@ def get_router_interfaces(filters: Optional[Sequence[Union['GetRouterInterfacesF
         output_file=pulumi.get(__ret__, 'output_file'),
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'))
-def get_router_interfaces_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetRouterInterfacesFilterArgs', 'GetRouterInterfacesFilterArgsDict']]]]] = None,
-                                 ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                 include_reservation_data: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                 page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_router_interfaces_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetRouterInterfacesFilterArgs', 'GetRouterInterfacesFilterArgsDict']]]]] = None,
+                                 ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                 include_reservation_data: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                 page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouterInterfacesResult]:
     """
     This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)

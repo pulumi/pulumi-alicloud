@@ -165,23 +165,23 @@ export interface AclAttachmentState {
     /**
      * The ID of an ACL.
      */
-    aclId?: pulumi.Input<string>;
+    aclId?: pulumi.Input<string | undefined>;
     /**
      * The type of the ACL. Valid values:
      */
-    aclType?: pulumi.Input<string>;
+    aclType?: pulumi.Input<string | undefined>;
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the listener.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Acl Attachment.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -199,7 +199,7 @@ export interface AclAttachmentArgs {
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the listener.
      */

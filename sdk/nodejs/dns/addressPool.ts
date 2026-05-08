@@ -178,23 +178,23 @@ export interface AddressPoolState {
     /**
      * The name of the address pool.
      */
-    addressPoolName?: pulumi.Input<string>;
+    addressPoolName?: pulumi.Input<string | undefined>;
     /**
      * The address lists of the Address Pool. See `address` below for details.
      */
-    addresses?: pulumi.Input<pulumi.Input<inputs.dns.AddressPoolAddress>[]>;
+    addresses?: pulumi.Input<pulumi.Input<inputs.dns.AddressPoolAddress>[] | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
      */
-    lbaStrategy?: pulumi.Input<string>;
+    lbaStrategy?: pulumi.Input<string | undefined>;
     /**
      * The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**

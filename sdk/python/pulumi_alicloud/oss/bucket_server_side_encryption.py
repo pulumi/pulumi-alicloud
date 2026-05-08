@@ -21,8 +21,8 @@ class BucketServerSideEncryptionArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  sse_algorithm: pulumi.Input[_builtins.str],
-                 kms_data_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_master_key_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_data_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_master_key_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketServerSideEncryption resource.
 
@@ -64,36 +64,36 @@ class BucketServerSideEncryptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsDataEncryption")
-    def kms_data_encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_data_encryption(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The algorithm used to encrypt objects. If this element is not specified, objects are encrypted by using AES256. This element is valid only when the value of SSEAlgorithm is set to KMS.
         """
         return pulumi.get(self, "kms_data_encryption")
 
     @kms_data_encryption.setter
-    def kms_data_encryption(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_data_encryption(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_data_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsMasterKeyId")
-    def kms_master_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_master_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CMK ID that must be specified when SSEAlgorithm is set to KMS and a specified CMK is used for encryption. In other cases, this element must be set to null.
         """
         return pulumi.get(self, "kms_master_key_id")
 
     @kms_master_key_id.setter
-    def kms_master_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_master_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_master_key_id", value)
 
 
 @pulumi.input_type
 class _BucketServerSideEncryptionState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_data_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_master_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sse_algorithm: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_data_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_master_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketServerSideEncryption resources.
 
@@ -113,50 +113,50 @@ class _BucketServerSideEncryptionState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsDataEncryption")
-    def kms_data_encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_data_encryption(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The algorithm used to encrypt objects. If this element is not specified, objects are encrypted by using AES256. This element is valid only when the value of SSEAlgorithm is set to KMS.
         """
         return pulumi.get(self, "kms_data_encryption")
 
     @kms_data_encryption.setter
-    def kms_data_encryption(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_data_encryption(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_data_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsMasterKeyId")
-    def kms_master_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_master_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CMK ID that must be specified when SSEAlgorithm is set to KMS and a specified CMK is used for encryption. In other cases, this element must be set to null.
         """
         return pulumi.get(self, "kms_master_key_id")
 
     @kms_master_key_id.setter
-    def kms_master_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_master_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_master_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sseAlgorithm")
-    def sse_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sse_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The server-side encryption method. Valid Values: KMS, AES256.
         """
         return pulumi.get(self, "sse_algorithm")
 
     @sse_algorithm.setter
-    def sse_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sse_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sse_algorithm", value)
 
 
@@ -166,10 +166,10 @@ class BucketServerSideEncryption(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_data_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_master_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sse_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_data_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_master_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a OSS Bucket Server Side Encryption resource. Server-side encryption rules of the bucket.
@@ -303,10 +303,10 @@ class BucketServerSideEncryption(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_data_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_master_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sse_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_data_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_master_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -334,10 +334,10 @@ class BucketServerSideEncryption(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_data_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_master_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sse_algorithm: Optional[pulumi.Input[_builtins.str]] = None) -> 'BucketServerSideEncryption':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_data_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_master_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sse_algorithm: pulumi.Input[Optional[_builtins.str]] = None) -> 'BucketServerSideEncryption':
         """
         Get an existing BucketServerSideEncryption resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

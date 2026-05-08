@@ -128,15 +128,15 @@ export interface GetDdosCooPortsOutputArgs {
     /**
      * The forwarding port.
      */
-    frontendPort?: pulumi.Input<string>;
+    frontendPort?: pulumi.Input<string | undefined>;
     /**
      * The forwarding protocol. Valid values `tcp` and `udp`.
      */
-    frontendProtocol?: pulumi.Input<string>;
+    frontendProtocol?: pulumi.Input<string | undefined>;
     /**
      * A list of Port IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The DdosCoo instance ID.
      */
@@ -144,5 +144,5 @@ export interface GetDdosCooPortsOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

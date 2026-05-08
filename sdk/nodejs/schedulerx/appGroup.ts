@@ -227,67 +227,67 @@ export interface AppGroupState {
     /**
      * Application Name
      */
-    appName?: pulumi.Input<string>;
+    appName?: pulumi.Input<string | undefined>;
     /**
      * Application type.
      * - 1, general application.
      * - 2, k8s application.
      */
-    appType?: pulumi.Input<number>;
+    appType?: pulumi.Input<number | undefined>;
     /**
      * Application Version, 1: Basic Edition, 2: Professional Edition
      */
-    appVersion?: pulumi.Input<string>;
+    appVersion?: pulumi.Input<string | undefined>;
     /**
      * Whether to delete the task in the application Group. The values are as follows:
      */
-    deleteJobs?: pulumi.Input<boolean>;
+    deleteJobs?: pulumi.Input<boolean | undefined>;
     /**
      * Application Description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable the log.
      * - true: On
      * - false: Close
      */
-    enableLog?: pulumi.Input<boolean>;
+    enableLog?: pulumi.Input<boolean | undefined>;
     /**
      * Application ID
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
      */
-    maxConcurrency?: pulumi.Input<number>;
+    maxConcurrency?: pulumi.Input<number | undefined>;
     /**
      * Application Grouping Configurable Maximum Number of Tasks
      */
-    maxJobs?: pulumi.Input<number>;
+    maxJobs?: pulumi.Input<number | undefined>;
     /**
      * Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
      */
-    monitorConfigJson?: pulumi.Input<string>;
+    monitorConfigJson?: pulumi.Input<string | undefined>;
     /**
      * Alarm contact JSON format.
      */
-    monitorContactsJson?: pulumi.Input<string>;
+    monitorContactsJson?: pulumi.Input<string | undefined>;
     /**
      * The namespace ID, which is obtained on the namespace page of the console.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The namespace name.
      */
-    namespaceName?: pulumi.Input<string>;
+    namespaceName?: pulumi.Input<string | undefined>;
     /**
      * Not supported for the time being, no need to fill in.
      */
-    namespaceSource?: pulumi.Input<string>;
+    namespaceSource?: pulumi.Input<string | undefined>;
     /**
      * Whether to schedule a busy machine.
      */
-    scheduleBusyWorkers?: pulumi.Input<boolean>;
+    scheduleBusyWorkers?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -303,25 +303,25 @@ export interface AppGroupArgs {
      * - 1, general application.
      * - 2, k8s application.
      */
-    appType?: pulumi.Input<number>;
+    appType?: pulumi.Input<number | undefined>;
     /**
      * Application Version, 1: Basic Edition, 2: Professional Edition
      */
-    appVersion?: pulumi.Input<string>;
+    appVersion?: pulumi.Input<string | undefined>;
     /**
      * Whether to delete the task in the application Group. The values are as follows:
      */
-    deleteJobs?: pulumi.Input<boolean>;
+    deleteJobs?: pulumi.Input<boolean | undefined>;
     /**
      * Application Description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable the log.
      * - true: On
      * - false: Close
      */
-    enableLog?: pulumi.Input<boolean>;
+    enableLog?: pulumi.Input<boolean | undefined>;
     /**
      * Application ID
      */
@@ -329,19 +329,19 @@ export interface AppGroupArgs {
     /**
      * The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
      */
-    maxConcurrency?: pulumi.Input<number>;
+    maxConcurrency?: pulumi.Input<number | undefined>;
     /**
      * Application Grouping Configurable Maximum Number of Tasks
      */
-    maxJobs?: pulumi.Input<number>;
+    maxJobs?: pulumi.Input<number | undefined>;
     /**
      * Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
      */
-    monitorConfigJson?: pulumi.Input<string>;
+    monitorConfigJson?: pulumi.Input<string | undefined>;
     /**
      * Alarm contact JSON format.
      */
-    monitorContactsJson?: pulumi.Input<string>;
+    monitorContactsJson?: pulumi.Input<string | undefined>;
     /**
      * The namespace ID, which is obtained on the namespace page of the console.
      */
@@ -353,9 +353,9 @@ export interface AppGroupArgs {
     /**
      * Not supported for the time being, no need to fill in.
      */
-    namespaceSource?: pulumi.Input<string>;
+    namespaceSource?: pulumi.Input<string | undefined>;
     /**
      * Whether to schedule a busy machine.
      */
-    scheduleBusyWorkers?: pulumi.Input<boolean>;
+    scheduleBusyWorkers?: pulumi.Input<boolean | undefined>;
 }

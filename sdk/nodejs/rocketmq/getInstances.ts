@@ -151,25 +151,25 @@ export interface GetInstancesOutputArgs {
     /**
      * Default to `false`. Set it to true can output more details.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of instance IDs to filter results.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by the instance name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
     /**
      * A map of tags assigned to the Ons instance.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

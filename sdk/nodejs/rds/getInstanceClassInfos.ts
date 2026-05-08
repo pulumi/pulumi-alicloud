@@ -146,11 +146,11 @@ export interface GetInstanceClassInfosOutputArgs {
     /**
      * The ID of the primary instance.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * A list of Rds available resource. Each element contains the following attributes:
      */
-    infos?: pulumi.Input<pulumi.Input<inputs.rds.GetInstanceClassInfosInfoArgs>[]>;
+    infos?: pulumi.Input<pulumi.Input<inputs.rds.GetInstanceClassInfosInfoArgs>[] | undefined>;
     /**
      * FThe type of order that you want to query. Valid values:
      * * **BUY**: specifies the query orders that are used to purchase instances.
@@ -164,5 +164,5 @@ export interface GetInstanceClassInfosOutputArgs {
      *
      * > **NOTE**: If you use the CommodityCode parameter to query the instance types that are available to read-only instances, you must specify the DBInstanceId parameter.
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

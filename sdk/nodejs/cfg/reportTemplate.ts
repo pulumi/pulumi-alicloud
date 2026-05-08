@@ -168,27 +168,27 @@ export interface ReportTemplateState {
     /**
      * Report Format
      */
-    reportFileFormats?: pulumi.Input<string>;
+    reportFileFormats?: pulumi.Input<string | undefined>;
     /**
      * Report Aggregation Granularity
      */
-    reportGranularity?: pulumi.Input<string>;
+    reportGranularity?: pulumi.Input<string | undefined>;
     /**
      * This property does not have a description in the spec, please add it before generating code.
      */
-    reportLanguage?: pulumi.Input<string>;
+    reportLanguage?: pulumi.Input<string | undefined>;
     /**
      * Report range, yes and logic between multiple sets of k-v pairs. See `reportScope` below.
      */
-    reportScopes?: pulumi.Input<pulumi.Input<inputs.cfg.ReportTemplateReportScope>[]>;
+    reportScopes?: pulumi.Input<pulumi.Input<inputs.cfg.ReportTemplateReportScope>[] | undefined>;
     /**
      * Report Template Description
      */
-    reportTemplateDescription?: pulumi.Input<string>;
+    reportTemplateDescription?: pulumi.Input<string | undefined>;
     /**
      * Report Template Name
      */
-    reportTemplateName?: pulumi.Input<string>;
+    reportTemplateName?: pulumi.Input<string | undefined>;
     /**
      * Report subscription frequency. If this field is not empty, it is a Cron expression in Quartz format triggered by the subscription notification.
      *
@@ -206,7 +206,7 @@ export interface ReportTemplateState {
      *
      * > **NOTE:**  It can only be triggered according to the cron expression time as much as possible. The cron expression limits the same template to trigger at most one notification per day.
      */
-    subscriptionFrequency?: pulumi.Input<string>;
+    subscriptionFrequency?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -216,23 +216,23 @@ export interface ReportTemplateArgs {
     /**
      * Report Format
      */
-    reportFileFormats?: pulumi.Input<string>;
+    reportFileFormats?: pulumi.Input<string | undefined>;
     /**
      * Report Aggregation Granularity
      */
-    reportGranularity?: pulumi.Input<string>;
+    reportGranularity?: pulumi.Input<string | undefined>;
     /**
      * This property does not have a description in the spec, please add it before generating code.
      */
-    reportLanguage?: pulumi.Input<string>;
+    reportLanguage?: pulumi.Input<string | undefined>;
     /**
      * Report range, yes and logic between multiple sets of k-v pairs. See `reportScope` below.
      */
-    reportScopes?: pulumi.Input<pulumi.Input<inputs.cfg.ReportTemplateReportScope>[]>;
+    reportScopes?: pulumi.Input<pulumi.Input<inputs.cfg.ReportTemplateReportScope>[] | undefined>;
     /**
      * Report Template Description
      */
-    reportTemplateDescription?: pulumi.Input<string>;
+    reportTemplateDescription?: pulumi.Input<string | undefined>;
     /**
      * Report Template Name
      */
@@ -254,5 +254,5 @@ export interface ReportTemplateArgs {
      *
      * > **NOTE:**  It can only be triggered according to the cron expression time as much as possible. The cron expression limits the same template to trigger at most one notification per day.
      */
-    subscriptionFrequency?: pulumi.Input<string>;
+    subscriptionFrequency?: pulumi.Input<string | undefined>;
 }

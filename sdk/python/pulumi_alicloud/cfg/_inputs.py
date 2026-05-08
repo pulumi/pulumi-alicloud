@@ -40,7 +40,7 @@ class AggregateCompliancePackConfigRuleArgsDict(TypedDict):
     """
     The Managed Rule Identifier.
     """
-    config_rule_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgsDict']]]]
+    config_rule_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]]]
     """
     A list of parameter rules. See `config_rule_parameters` below.
     """
@@ -49,7 +49,7 @@ class AggregateCompliancePackConfigRuleArgsDict(TypedDict):
 class AggregateCompliancePackConfigRuleArgs:
     def __init__(__self__, *,
                  managed_rule_identifier: pulumi.Input[_builtins.str],
-                 config_rule_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]] = None):
+                 config_rule_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] managed_rule_identifier: The Managed Rule Identifier.
         :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]] config_rule_parameters: A list of parameter rules. See `config_rule_parameters` below.
@@ -72,23 +72,23 @@ class AggregateCompliancePackConfigRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="configRuleParameters")
-    def config_rule_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]]:
+    def config_rule_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]]:
         """
         A list of parameter rules. See `config_rule_parameters` below.
         """
         return pulumi.get(self, "config_rule_parameters")
 
     @config_rule_parameters.setter
-    def config_rule_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]]):
+    def config_rule_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]]):
         pulumi.set(self, "config_rule_parameters", value)
 
 
 class AggregateCompliancePackConfigRuleConfigRuleParameterArgsDict(TypedDict):
-    parameter_name: NotRequired[pulumi.Input[_builtins.str]]
+    parameter_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Parameter Name.
     """
-    parameter_value: NotRequired[pulumi.Input[_builtins.str]]
+    parameter_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Parameter Value.
     """
@@ -96,8 +96,8 @@ class AggregateCompliancePackConfigRuleConfigRuleParameterArgsDict(TypedDict):
 @pulumi.input_type
 class AggregateCompliancePackConfigRuleConfigRuleParameterArgs:
     def __init__(__self__, *,
-                 parameter_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 parameter_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] parameter_name: The Parameter Name.
         :param pulumi.Input[_builtins.str] parameter_value: The Parameter Value.
@@ -109,31 +109,31 @@ class AggregateCompliancePackConfigRuleConfigRuleParameterArgs:
 
     @_builtins.property
     @pulumi.getter(name="parameterName")
-    def parameter_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Parameter Name.
         """
         return pulumi.get(self, "parameter_name")
 
     @parameter_name.setter
-    def parameter_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_name", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Parameter Value.
         """
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
-    def parameter_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_value", value)
 
 
 class AggregateCompliancePackConfigRuleIdArgsDict(TypedDict):
-    config_rule_id: NotRequired[pulumi.Input[_builtins.str]]
+    config_rule_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The rule ID of Aggregate Config Rule.
     """
@@ -141,7 +141,7 @@ class AggregateCompliancePackConfigRuleIdArgsDict(TypedDict):
 @pulumi.input_type
 class AggregateCompliancePackConfigRuleIdArgs:
     def __init__(__self__, *,
-                 config_rule_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 config_rule_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] config_rule_id: The rule ID of Aggregate Config Rule.
         """
@@ -150,27 +150,27 @@ class AggregateCompliancePackConfigRuleIdArgs:
 
     @_builtins.property
     @pulumi.getter(name="configRuleId")
-    def config_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule ID of Aggregate Config Rule.
         """
         return pulumi.get(self, "config_rule_id")
 
     @config_rule_id.setter
-    def config_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_rule_id", value)
 
 
 class AggregatorAggregatorAccountArgsDict(TypedDict):
-    account_id: NotRequired[pulumi.Input[_builtins.str]]
+    account_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The member ID.
     """
-    account_name: NotRequired[pulumi.Input[_builtins.str]]
+    account_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The member name.
     """
-    account_type: NotRequired[pulumi.Input[_builtins.str]]
+    account_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The affiliation of the member. Valid values: `ResourceDirectory`.
     """
@@ -178,9 +178,9 @@ class AggregatorAggregatorAccountArgsDict(TypedDict):
 @pulumi.input_type
 class AggregatorAggregatorAccountArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] account_id: The member ID.
         :param pulumi.Input[_builtins.str] account_name: The member name.
@@ -195,38 +195,38 @@ class AggregatorAggregatorAccountArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The member ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The member name.
         """
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
-    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The affiliation of the member. Valid values: `ResourceDirectory`.
         """
         return pulumi.get(self, "account_type")
 
     @account_type.setter
-    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_type", value)
 
 
@@ -235,7 +235,7 @@ class CompliancePackConfigRuleArgsDict(TypedDict):
     """
     The Managed Rule Identifier.
     """
-    config_rule_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgsDict']]]]
+    config_rule_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]]]
     """
     A list of Config Rule Parameters. See `config_rule_parameters` below.
     """
@@ -244,7 +244,7 @@ class CompliancePackConfigRuleArgsDict(TypedDict):
 class CompliancePackConfigRuleArgs:
     def __init__(__self__, *,
                  managed_rule_identifier: pulumi.Input[_builtins.str],
-                 config_rule_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]] = None):
+                 config_rule_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] managed_rule_identifier: The Managed Rule Identifier.
         :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]] config_rule_parameters: A list of Config Rule Parameters. See `config_rule_parameters` below.
@@ -267,23 +267,23 @@ class CompliancePackConfigRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="configRuleParameters")
-    def config_rule_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]]:
+    def config_rule_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]]:
         """
         A list of Config Rule Parameters. See `config_rule_parameters` below.
         """
         return pulumi.get(self, "config_rule_parameters")
 
     @config_rule_parameters.setter
-    def config_rule_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]]):
+    def config_rule_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]]):
         pulumi.set(self, "config_rule_parameters", value)
 
 
 class CompliancePackConfigRuleConfigRuleParameterArgsDict(TypedDict):
-    parameter_name: NotRequired[pulumi.Input[_builtins.str]]
+    parameter_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The parameter name.
     """
-    parameter_value: NotRequired[pulumi.Input[_builtins.str]]
+    parameter_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The parameter value.
     """
@@ -291,8 +291,8 @@ class CompliancePackConfigRuleConfigRuleParameterArgsDict(TypedDict):
 @pulumi.input_type
 class CompliancePackConfigRuleConfigRuleParameterArgs:
     def __init__(__self__, *,
-                 parameter_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 parameter_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] parameter_name: The parameter name.
         :param pulumi.Input[_builtins.str] parameter_value: The parameter value.
@@ -304,31 +304,31 @@ class CompliancePackConfigRuleConfigRuleParameterArgs:
 
     @_builtins.property
     @pulumi.getter(name="parameterName")
-    def parameter_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parameter name.
         """
         return pulumi.get(self, "parameter_name")
 
     @parameter_name.setter
-    def parameter_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_name", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parameter value.
         """
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
-    def parameter_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_value", value)
 
 
 class CompliancePackConfigRuleIdArgsDict(TypedDict):
-    config_rule_id: NotRequired[pulumi.Input[_builtins.str]]
+    config_rule_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The rule ID of Config Rule.
     """
@@ -336,7 +336,7 @@ class CompliancePackConfigRuleIdArgsDict(TypedDict):
 @pulumi.input_type
 class CompliancePackConfigRuleIdArgs:
     def __init__(__self__, *,
-                 config_rule_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 config_rule_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] config_rule_id: The rule ID of Config Rule.
         """
@@ -345,30 +345,30 @@ class CompliancePackConfigRuleIdArgs:
 
     @_builtins.property
     @pulumi.getter(name="configRuleId")
-    def config_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule ID of Config Rule.
         """
         return pulumi.get(self, "config_rule_id")
 
     @config_rule_id.setter
-    def config_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_rule_id", value)
 
 
 class ReportTemplateReportScopeArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key for reporting scope, currently supported:
     - AggregatorId
     - CompliancePackId
     - RuleId
     """
-    match_type: NotRequired[pulumi.Input[_builtins.str]]
+    match_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The matching logic. Currently, only In is supported.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
     """
@@ -376,9 +376,9 @@ class ReportTemplateReportScopeArgsDict(TypedDict):
 @pulumi.input_type
 class ReportTemplateReportScopeArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Key for reporting scope, currently supported:
                - AggregatorId
@@ -396,7 +396,7 @@ class ReportTemplateReportScopeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key for reporting scope, currently supported:
         - AggregatorId
@@ -406,40 +406,40 @@ class ReportTemplateReportScopeArgs:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="matchType")
-    def match_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The matching logic. Currently, only In is supported.
         """
         return pulumi.get(self, "match_type")
 
     @match_type.setter
-    def match_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class RuleComplianceArgsDict(TypedDict):
-    compliance_type: NotRequired[pulumi.Input[_builtins.str]]
+    compliance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
     """
-    count: NotRequired[pulumi.Input[_builtins.int]]
+    count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The count of compliance.
     """
@@ -447,8 +447,8 @@ class RuleComplianceArgsDict(TypedDict):
 @pulumi.input_type
 class RuleComplianceArgs:
     def __init__(__self__, *,
-                 compliance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 count: Optional[pulumi.Input[_builtins.int]] = None):
+                 compliance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] compliance_type: The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
         :param pulumi.Input[_builtins.int] count: The count of compliance.
@@ -460,26 +460,26 @@ class RuleComplianceArgs:
 
     @_builtins.property
     @pulumi.getter(name="complianceType")
-    def compliance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compliance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
         """
         return pulumi.get(self, "compliance_type")
 
     @compliance_type.setter
-    def compliance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compliance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compliance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of compliance.
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "count", value)
 
 

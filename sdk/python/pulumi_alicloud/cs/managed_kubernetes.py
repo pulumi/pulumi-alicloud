@@ -21,52 +21,52 @@ __all__ = ['ManagedKubernetesArgs', 'ManagedKubernetes']
 @pulumi.input_type
 class ManagedKubernetesArgs:
     def __init__(__self__, *,
-                 addons: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]] = None,
-                 api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 audit_log_config: Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']] = None,
-                 auto_mode: Optional[pulumi.Input['ManagedKubernetesAutoModeArgs']] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_log_components: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 control_plane_log_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_log_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_san: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_rrsa: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_provider_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_stack: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enterprise_security_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window: Optional[pulumi.Input['ManagedKubernetesMaintenanceWindowArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_nat_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 operation_policy: Optional[pulumi.Input['ManagedKubernetesOperationPolicyArgs']] = None,
-                 pod_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_set_certificate_authority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slb_internet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_policy: Optional[pulumi.Input['ManagedKubernetesUpgradePolicyArgs']] = None,
-                 user_ca: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 addons: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]] = None,
+                 api_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 audit_log_config: pulumi.Input[Optional['ManagedKubernetesAuditLogConfigArgs']] = None,
+                 auto_mode: pulumi.Input[Optional['ManagedKubernetesAutoModeArgs']] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_log_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 control_plane_log_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_log_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_san: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_options: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_rrsa: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_provider_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_stack: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window: pulumi.Input[Optional['ManagedKubernetesMaintenanceWindowArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_nat_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 operation_policy: pulumi.Input[Optional['ManagedKubernetesOperationPolicyArgs']] = None,
+                 pod_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_set_certificate_authority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slb_internet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_policy: pulumi.Input[Optional['ManagedKubernetesUpgradePolicyArgs']] = None,
+                 user_ca: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 worker_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ManagedKubernetes resource.
 
@@ -261,82 +261,82 @@ class ManagedKubernetesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]]:
+    def addons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]]:
         """
         The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         """
         return pulumi.get(self, "addons")
 
     @addons.setter
-    def addons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]]):
+    def addons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]]):
         pulumi.set(self, "addons", value)
 
     @_builtins.property
     @pulumi.getter(name="apiAudiences")
-    def api_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def api_audiences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         """
         return pulumi.get(self, "api_audiences")
 
     @api_audiences.setter
-    def api_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def api_audiences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "api_audiences", value)
 
     @_builtins.property
     @pulumi.getter(name="auditLogConfig")
-    def audit_log_config(self) -> Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']]:
+    def audit_log_config(self) -> pulumi.Input[Optional['ManagedKubernetesAuditLogConfigArgs']]:
         """
         Audit log configuration. See `audit_log_config` below.
         """
         return pulumi.get(self, "audit_log_config")
 
     @audit_log_config.setter
-    def audit_log_config(self, value: Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']]):
+    def audit_log_config(self, value: pulumi.Input[Optional['ManagedKubernetesAuditLogConfigArgs']]):
         pulumi.set(self, "audit_log_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autoMode")
-    def auto_mode(self) -> Optional[pulumi.Input['ManagedKubernetesAutoModeArgs']]:
+    def auto_mode(self) -> pulumi.Input[Optional['ManagedKubernetesAutoModeArgs']]:
         """
         Auto mode cluster configuration. See `auto_mode` below.
         """
         return pulumi.get(self, "auto_mode")
 
     @auto_mode.setter
-    def auto_mode(self, value: Optional[pulumi.Input['ManagedKubernetesAutoModeArgs']]):
+    def auto_mode(self, value: pulumi.Input[Optional['ManagedKubernetesAutoModeArgs']]):
         pulumi.set(self, "auto_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
     @_utilities.deprecated("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
-    def client_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         """
         return pulumi.get(self, "client_cert")
 
     @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
     @_utilities.deprecated("""Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterCaCert")
     @_utilities.deprecated("""Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""")
-    def cluster_ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 
@@ -345,24 +345,24 @@ class ManagedKubernetesArgs:
         return pulumi.get(self, "cluster_ca_cert")
 
     @cluster_ca_cert.setter
-    def cluster_ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterDomain")
-    def cluster_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         """
         return pulumi.get(self, "cluster_domain")
 
     @cluster_domain.setter
-    def cluster_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterSpec")
-    def cluster_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster specifications of kubernetes cluster,which can be empty. Valid values:
         * ack.standard : Basic managed clusters.
@@ -371,48 +371,48 @@ class ManagedKubernetesArgs:
         return pulumi.get(self, "cluster_spec")
 
     @cluster_spec.setter
-    def cluster_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneLogComponents")
-    def control_plane_log_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def control_plane_log_components(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
         """
         return pulumi.get(self, "control_plane_log_components")
 
     @control_plane_log_components.setter
-    def control_plane_log_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def control_plane_log_components(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "control_plane_log_components", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneLogProject")
-    def control_plane_log_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def control_plane_log_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
         """
         return pulumi.get(self, "control_plane_log_project")
 
     @control_plane_log_project.setter
-    def control_plane_log_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def control_plane_log_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_plane_log_project", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneLogTtl")
-    def control_plane_log_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def control_plane_log_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         """
         return pulumi.get(self, "control_plane_log_ttl")
 
     @control_plane_log_ttl.setter
-    def control_plane_log_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def control_plane_log_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_plane_log_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="customSan")
-    def custom_san(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_san(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 
@@ -421,36 +421,36 @@ class ManagedKubernetesArgs:
         return pulumi.get(self, "custom_san")
 
     @custom_san.setter
-    def custom_san(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_san(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_san", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteOptions")
-    def delete_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]]:
+    def delete_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]]:
         """
         Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         """
         return pulumi.get(self, "delete_options")
 
     @delete_options.setter
-    def delete_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]]):
+    def delete_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]]):
         pulumi.set(self, "delete_options", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable cluster deletion protection.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="disableEncryption")
-    def disable_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
 
@@ -459,24 +459,24 @@ class ManagedKubernetesArgs:
         return pulumi.get(self, "disable_encryption")
 
     @disable_encryption.setter
-    def disable_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="enableRrsa")
-    def enable_rrsa(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_rrsa(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         """
         return pulumi.get(self, "enable_rrsa")
 
     @enable_rrsa.setter
-    def enable_rrsa(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_rrsa(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_rrsa", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionProviderKey")
-    def encryption_provider_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_provider_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
 
@@ -485,145 +485,145 @@ class ManagedKubernetesArgs:
         return pulumi.get(self, "encryption_provider_key")
 
     @encryption_provider_key.setter
-    def encryption_provider_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_provider_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_provider_key", value)
 
     @_builtins.property
     @pulumi.getter(name="ipStack")
-    def ip_stack(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_stack(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address family that the cluster network uses. Valid values:
         """
         return pulumi.get(self, "ip_stack")
 
     @ip_stack.setter
-    def ip_stack(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_stack(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_stack", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnterpriseSecurityGroup")
-    def is_enterprise_security_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enterprise_security_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         """
         return pulumi.get(self, "is_enterprise_security_group")
 
     @is_enterprise_security_group.setter
-    def is_enterprise_security_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enterprise_security_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enterprise_security_group", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerSpec")
     @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""")
-    def load_balancer_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         """
         return pulumi.get(self, "load_balancer_spec")
 
     @load_balancer_spec.setter
-    def load_balancer_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional[pulumi.Input['ManagedKubernetesMaintenanceWindowArgs']]:
+    def maintenance_window(self) -> pulumi.Input[Optional['ManagedKubernetesMaintenanceWindowArgs']]:
         """
         The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
         """
         return pulumi.get(self, "maintenance_window")
 
     @maintenance_window.setter
-    def maintenance_window(self, value: Optional[pulumi.Input['ManagedKubernetesMaintenanceWindowArgs']]):
+    def maintenance_window(self, value: pulumi.Input[Optional['ManagedKubernetesMaintenanceWindowArgs']]):
         pulumi.set(self, "maintenance_window", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kubernetes cluster's name. It is unique in one Alicloud account.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will use it to build the only cluster name. Default to "Terraform-Creation".
         """
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
-    def name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="newNatGateway")
-    def new_nat_gateway(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def new_nat_gateway(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
         """
         return pulumi.get(self, "new_nat_gateway")
 
     @new_nat_gateway.setter
-    def new_nat_gateway(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def new_nat_gateway(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "new_nat_gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCidrMask")
-    def node_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         """
         return pulumi.get(self, "node_cidr_mask")
 
     @node_cidr_mask.setter
-    def node_cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="operationPolicy")
-    def operation_policy(self) -> Optional[pulumi.Input['ManagedKubernetesOperationPolicyArgs']]:
+    def operation_policy(self) -> pulumi.Input[Optional['ManagedKubernetesOperationPolicyArgs']]:
         """
         The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
         """
         return pulumi.get(self, "operation_policy")
 
     @operation_policy.setter
-    def operation_policy(self, value: Optional[pulumi.Input['ManagedKubernetesOperationPolicyArgs']]):
+    def operation_policy(self, value: pulumi.Input[Optional['ManagedKubernetesOperationPolicyArgs']]):
         pulumi.set(self, "operation_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="podCidr")
-    def pod_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pod_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Flannel Specific] The CIDR block for the pod network when using Flannel.
         """
         return pulumi.get(self, "pod_cidr")
 
     @pod_cidr.setter
-    def pod_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pod_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pod_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="podVswitchIds")
-    def pod_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def pod_vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         """
         return pulumi.get(self, "pod_vswitch_ids")
 
     @pod_vswitch_ids.setter
-    def pod_vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def pod_vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pod_vswitch_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The profile of cluster. Valid values:
         * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
@@ -634,48 +634,48 @@ class ManagedKubernetesArgs:
         return pulumi.get(self, "profile")
 
     @profile.setter
-    def profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyMode")
-    def proxy_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         """
         return pulumi.get(self, "proxy_mode")
 
     @proxy_mode.setter
-    def proxy_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="retainResources")
-    def retain_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def retain_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         """
         return pulumi.get(self, "retain_resources")
 
     @retain_resources.setter
-    def retain_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def retain_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "retain_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 
@@ -687,72 +687,72 @@ class ManagedKubernetesArgs:
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountIssuer")
-    def service_account_issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         """
         return pulumi.get(self, "service_account_issuer")
 
     @service_account_issuer.setter
-    def service_account_issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_issuer", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceCidr")
-    def service_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         """
         return pulumi.get(self, "service_cidr")
 
     @service_cidr.setter
-    def service_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="skipSetCertificateAuthority")
-    def skip_set_certificate_authority(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_set_certificate_authority(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
         """
         return pulumi.get(self, "skip_set_certificate_authority")
 
     @skip_set_certificate_authority.setter
-    def skip_set_certificate_authority(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_set_certificate_authority(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_set_certificate_authority", value)
 
     @_builtins.property
     @pulumi.getter(name="slbInternetEnabled")
-    def slb_internet_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def slb_internet_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         """
         return pulumi.get(self, "slb_internet_enabled")
 
     @slb_internet_enabled.setter
-    def slb_internet_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def slb_internet_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "slb_internet_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster timezone, works for control plane and Worker nodes.
 
@@ -764,12 +764,12 @@ class ManagedKubernetesArgs:
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradePolicy")
-    def upgrade_policy(self) -> Optional[pulumi.Input['ManagedKubernetesUpgradePolicyArgs']]:
+    def upgrade_policy(self) -> pulumi.Input[Optional['ManagedKubernetesUpgradePolicyArgs']]:
         """
         Configuration block for cluster upgrade operations. See `upgrade_policy` below.
 
@@ -780,36 +780,36 @@ class ManagedKubernetesArgs:
         return pulumi.get(self, "upgrade_policy")
 
     @upgrade_policy.setter
-    def upgrade_policy(self, value: Optional[pulumi.Input['ManagedKubernetesUpgradePolicyArgs']]):
+    def upgrade_policy(self, value: pulumi.Input[Optional['ManagedKubernetesUpgradePolicyArgs']]):
         pulumi.set(self, "upgrade_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="userCa")
-    def user_ca(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_ca(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         """
         return pulumi.get(self, "user_ca")
 
     @user_ca.setter
-    def user_ca(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_ca(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_ca", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The vSwitches of the control plane.
 
@@ -822,93 +822,93 @@ class ManagedKubernetesArgs:
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="workerVswitchIds")
     @_utilities.deprecated("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches""")
-    def worker_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def worker_vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
         """
         return pulumi.get(self, "worker_vswitch_ids")
 
     @worker_vswitch_ids.setter
-    def worker_vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def worker_vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "worker_vswitch_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneIds")
-    def zone_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def zone_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
         """
         return pulumi.get(self, "zone_ids")
 
     @zone_ids.setter
-    def zone_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def zone_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "zone_ids", value)
 
 
 @pulumi.input_type
 class _ManagedKubernetesState:
     def __init__(__self__, *,
-                 addons: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]] = None,
-                 api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 audit_log_config: Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']] = None,
-                 auto_mode: Optional[pulumi.Input['ManagedKubernetesAutoModeArgs']] = None,
-                 certificate_authority: Optional[pulumi.Input['ManagedKubernetesCertificateAuthorityArgs']] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 connections: Optional[pulumi.Input['ManagedKubernetesConnectionsArgs']] = None,
-                 control_plane_log_components: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 control_plane_log_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_log_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_san: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_rrsa: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_provider_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_stack: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enterprise_security_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window: Optional[pulumi.Input['ManagedKubernetesMaintenanceWindowArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_nat_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 operation_policy: Optional[pulumi.Input['ManagedKubernetesOperationPolicyArgs']] = None,
-                 pod_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rrsa_metadata: Optional[pulumi.Input['ManagedKubernetesRrsaMetadataArgs']] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_set_certificate_authority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_internet: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_internet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slb_intranet: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_policy: Optional[pulumi.Input['ManagedKubernetesUpgradePolicyArgs']] = None,
-                 user_ca: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 worker_ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 addons: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]] = None,
+                 api_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 audit_log_config: pulumi.Input[Optional['ManagedKubernetesAuditLogConfigArgs']] = None,
+                 auto_mode: pulumi.Input[Optional['ManagedKubernetesAutoModeArgs']] = None,
+                 certificate_authority: pulumi.Input[Optional['ManagedKubernetesCertificateAuthorityArgs']] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 connections: pulumi.Input[Optional['ManagedKubernetesConnectionsArgs']] = None,
+                 control_plane_log_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 control_plane_log_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_log_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_san: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_options: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_rrsa: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_provider_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_stack: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window: pulumi.Input[Optional['ManagedKubernetesMaintenanceWindowArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_nat_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 operation_policy: pulumi.Input[Optional['ManagedKubernetesOperationPolicyArgs']] = None,
+                 pod_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rrsa_metadata: pulumi.Input[Optional['ManagedKubernetesRrsaMetadataArgs']] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_set_certificate_authority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_internet: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_internet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slb_intranet: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_policy: pulumi.Input[Optional['ManagedKubernetesUpgradePolicyArgs']] = None,
+                 user_ca: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 worker_ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ManagedKubernetes resources.
 
@@ -1133,95 +1133,95 @@ class _ManagedKubernetesState:
 
     @_builtins.property
     @pulumi.getter
-    def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]]:
+    def addons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]]:
         """
         The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
         """
         return pulumi.get(self, "addons")
 
     @addons.setter
-    def addons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]]):
+    def addons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]]]):
         pulumi.set(self, "addons", value)
 
     @_builtins.property
     @pulumi.getter(name="apiAudiences")
-    def api_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def api_audiences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         """
         return pulumi.get(self, "api_audiences")
 
     @api_audiences.setter
-    def api_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def api_audiences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "api_audiences", value)
 
     @_builtins.property
     @pulumi.getter(name="auditLogConfig")
-    def audit_log_config(self) -> Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']]:
+    def audit_log_config(self) -> pulumi.Input[Optional['ManagedKubernetesAuditLogConfigArgs']]:
         """
         Audit log configuration. See `audit_log_config` below.
         """
         return pulumi.get(self, "audit_log_config")
 
     @audit_log_config.setter
-    def audit_log_config(self, value: Optional[pulumi.Input['ManagedKubernetesAuditLogConfigArgs']]):
+    def audit_log_config(self, value: pulumi.Input[Optional['ManagedKubernetesAuditLogConfigArgs']]):
         pulumi.set(self, "audit_log_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autoMode")
-    def auto_mode(self) -> Optional[pulumi.Input['ManagedKubernetesAutoModeArgs']]:
+    def auto_mode(self) -> pulumi.Input[Optional['ManagedKubernetesAutoModeArgs']]:
         """
         Auto mode cluster configuration. See `auto_mode` below.
         """
         return pulumi.get(self, "auto_mode")
 
     @auto_mode.setter
-    def auto_mode(self, value: Optional[pulumi.Input['ManagedKubernetesAutoModeArgs']]):
+    def auto_mode(self, value: pulumi.Input[Optional['ManagedKubernetesAutoModeArgs']]):
         pulumi.set(self, "auto_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateAuthority")
     @_utilities.deprecated("""Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
-    def certificate_authority(self) -> Optional[pulumi.Input['ManagedKubernetesCertificateAuthorityArgs']]:
+    def certificate_authority(self) -> pulumi.Input[Optional['ManagedKubernetesCertificateAuthorityArgs']]:
         """
         (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `cs_get_cluster_credential` to replace it.
         """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
-    def certificate_authority(self, value: Optional[pulumi.Input['ManagedKubernetesCertificateAuthorityArgs']]):
+    def certificate_authority(self, value: pulumi.Input[Optional['ManagedKubernetesCertificateAuthorityArgs']]):
         pulumi.set(self, "certificate_authority", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
     @_utilities.deprecated("""Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.""")
-    def client_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         """
         return pulumi.get(self, "client_cert")
 
     @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
     @_utilities.deprecated("""Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.""")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterCaCert")
     @_utilities.deprecated("""Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.""")
-    def cluster_ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
 
@@ -1230,24 +1230,24 @@ class _ManagedKubernetesState:
         return pulumi.get(self, "cluster_ca_cert")
 
     @cluster_ca_cert.setter
-    def cluster_ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterDomain")
-    def cluster_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         """
         return pulumi.get(self, "cluster_domain")
 
     @cluster_domain.setter
-    def cluster_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterSpec")
-    def cluster_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster specifications of kubernetes cluster,which can be empty. Valid values:
         * ack.standard : Basic managed clusters.
@@ -1256,60 +1256,60 @@ class _ManagedKubernetesState:
         return pulumi.get(self, "cluster_spec")
 
     @cluster_spec.setter
-    def cluster_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def connections(self) -> Optional[pulumi.Input['ManagedKubernetesConnectionsArgs']]:
+    def connections(self) -> pulumi.Input[Optional['ManagedKubernetesConnectionsArgs']]:
         """
         Map of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
     @connections.setter
-    def connections(self, value: Optional[pulumi.Input['ManagedKubernetesConnectionsArgs']]):
+    def connections(self, value: pulumi.Input[Optional['ManagedKubernetesConnectionsArgs']]):
         pulumi.set(self, "connections", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneLogComponents")
-    def control_plane_log_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def control_plane_log_components(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
         """
         return pulumi.get(self, "control_plane_log_components")
 
     @control_plane_log_components.setter
-    def control_plane_log_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def control_plane_log_components(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "control_plane_log_components", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneLogProject")
-    def control_plane_log_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def control_plane_log_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
         """
         return pulumi.get(self, "control_plane_log_project")
 
     @control_plane_log_project.setter
-    def control_plane_log_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def control_plane_log_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_plane_log_project", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneLogTtl")
-    def control_plane_log_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def control_plane_log_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
         """
         return pulumi.get(self, "control_plane_log_ttl")
 
     @control_plane_log_ttl.setter
-    def control_plane_log_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def control_plane_log_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_plane_log_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="customSan")
-    def custom_san(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_san(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 
@@ -1318,36 +1318,36 @@ class _ManagedKubernetesState:
         return pulumi.get(self, "custom_san")
 
     @custom_san.setter
-    def custom_san(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_san(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_san", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteOptions")
-    def delete_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]]:
+    def delete_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]]:
         """
         Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         """
         return pulumi.get(self, "delete_options")
 
     @delete_options.setter
-    def delete_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]]):
+    def delete_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]]):
         pulumi.set(self, "delete_options", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable cluster deletion protection.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="disableEncryption")
-    def disable_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
 
@@ -1356,24 +1356,24 @@ class _ManagedKubernetesState:
         return pulumi.get(self, "disable_encryption")
 
     @disable_encryption.setter
-    def disable_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="enableRrsa")
-    def enable_rrsa(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_rrsa(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         """
         return pulumi.get(self, "enable_rrsa")
 
     @enable_rrsa.setter
-    def enable_rrsa(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_rrsa(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_rrsa", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionProviderKey")
-    def encryption_provider_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_provider_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
 
@@ -1382,157 +1382,157 @@ class _ManagedKubernetesState:
         return pulumi.get(self, "encryption_provider_key")
 
     @encryption_provider_key.setter
-    def encryption_provider_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_provider_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_provider_key", value)
 
     @_builtins.property
     @pulumi.getter(name="ipStack")
-    def ip_stack(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_stack(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address family that the cluster network uses. Valid values:
         """
         return pulumi.get(self, "ip_stack")
 
     @ip_stack.setter
-    def ip_stack(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_stack(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_stack", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnterpriseSecurityGroup")
-    def is_enterprise_security_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enterprise_security_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         """
         return pulumi.get(self, "is_enterprise_security_group")
 
     @is_enterprise_security_group.setter
-    def is_enterprise_security_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enterprise_security_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enterprise_security_group", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerSpec")
     @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU""")
-    def load_balancer_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         """
         return pulumi.get(self, "load_balancer_spec")
 
     @load_balancer_spec.setter
-    def load_balancer_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional[pulumi.Input['ManagedKubernetesMaintenanceWindowArgs']]:
+    def maintenance_window(self) -> pulumi.Input[Optional['ManagedKubernetesMaintenanceWindowArgs']]:
         """
         The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
         """
         return pulumi.get(self, "maintenance_window")
 
     @maintenance_window.setter
-    def maintenance_window(self, value: Optional[pulumi.Input['ManagedKubernetesMaintenanceWindowArgs']]):
+    def maintenance_window(self, value: pulumi.Input[Optional['ManagedKubernetesMaintenanceWindowArgs']]):
         pulumi.set(self, "maintenance_window", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kubernetes cluster's name. It is unique in one Alicloud account.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will use it to build the only cluster name. Default to "Terraform-Creation".
         """
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
-    def name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="natGatewayId")
-    def nat_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of nat gateway used to launch kubernetes cluster.
         """
         return pulumi.get(self, "nat_gateway_id")
 
     @nat_gateway_id.setter
-    def nat_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="newNatGateway")
-    def new_nat_gateway(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def new_nat_gateway(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
         """
         return pulumi.get(self, "new_nat_gateway")
 
     @new_nat_gateway.setter
-    def new_nat_gateway(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def new_nat_gateway(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "new_nat_gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCidrMask")
-    def node_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         """
         return pulumi.get(self, "node_cidr_mask")
 
     @node_cidr_mask.setter
-    def node_cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="operationPolicy")
-    def operation_policy(self) -> Optional[pulumi.Input['ManagedKubernetesOperationPolicyArgs']]:
+    def operation_policy(self) -> pulumi.Input[Optional['ManagedKubernetesOperationPolicyArgs']]:
         """
         The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
         """
         return pulumi.get(self, "operation_policy")
 
     @operation_policy.setter
-    def operation_policy(self, value: Optional[pulumi.Input['ManagedKubernetesOperationPolicyArgs']]):
+    def operation_policy(self, value: pulumi.Input[Optional['ManagedKubernetesOperationPolicyArgs']]):
         pulumi.set(self, "operation_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="podCidr")
-    def pod_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pod_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Flannel Specific] The CIDR block for the pod network when using Flannel.
         """
         return pulumi.get(self, "pod_cidr")
 
     @pod_cidr.setter
-    def pod_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pod_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pod_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="podVswitchIds")
-    def pod_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def pod_vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
         """
         return pulumi.get(self, "pod_vswitch_ids")
 
     @pod_vswitch_ids.setter
-    def pod_vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def pod_vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pod_vswitch_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The profile of cluster. Valid values:
         * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
@@ -1543,60 +1543,60 @@ class _ManagedKubernetesState:
         return pulumi.get(self, "profile")
 
     @profile.setter
-    def profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyMode")
-    def proxy_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         """
         return pulumi.get(self, "proxy_mode")
 
     @proxy_mode.setter
-    def proxy_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="retainResources")
-    def retain_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def retain_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         """
         return pulumi.get(self, "retain_resources")
 
     @retain_resources.setter
-    def retain_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def retain_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "retain_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="rrsaMetadata")
-    def rrsa_metadata(self) -> Optional[pulumi.Input['ManagedKubernetesRrsaMetadataArgs']]:
+    def rrsa_metadata(self) -> pulumi.Input[Optional['ManagedKubernetesRrsaMetadataArgs']]:
         """
         (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
         """
         return pulumi.get(self, "rrsa_metadata")
 
     @rrsa_metadata.setter
-    def rrsa_metadata(self, value: Optional[pulumi.Input['ManagedKubernetesRrsaMetadataArgs']]):
+    def rrsa_metadata(self, value: pulumi.Input[Optional['ManagedKubernetesRrsaMetadataArgs']]):
         pulumi.set(self, "rrsa_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 
@@ -1608,108 +1608,108 @@ class _ManagedKubernetesState:
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountIssuer")
-    def service_account_issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         """
         return pulumi.get(self, "service_account_issuer")
 
     @service_account_issuer.setter
-    def service_account_issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_issuer", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceCidr")
-    def service_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         """
         return pulumi.get(self, "service_cidr")
 
     @service_cidr.setter
-    def service_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="skipSetCertificateAuthority")
-    def skip_set_certificate_authority(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_set_certificate_authority(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
         """
         return pulumi.get(self, "skip_set_certificate_authority")
 
     @skip_set_certificate_authority.setter
-    def skip_set_certificate_authority(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_set_certificate_authority(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_set_certificate_authority", value)
 
     @_builtins.property
     @pulumi.getter(name="slbId")
-    def slb_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of APIServer load balancer.
         """
         return pulumi.get(self, "slb_id")
 
     @slb_id.setter
-    def slb_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_id", value)
 
     @_builtins.property
     @pulumi.getter(name="slbInternet")
-    def slb_internet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_internet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public ip of load balancer.
         """
         return pulumi.get(self, "slb_internet")
 
     @slb_internet.setter
-    def slb_internet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_internet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_internet", value)
 
     @_builtins.property
     @pulumi.getter(name="slbInternetEnabled")
-    def slb_internet_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def slb_internet_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         """
         return pulumi.get(self, "slb_internet_enabled")
 
     @slb_internet_enabled.setter
-    def slb_internet_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def slb_internet_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "slb_internet_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="slbIntranet")
-    def slb_intranet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_intranet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of private load balancer where the current cluster master node is located.
         """
         return pulumi.get(self, "slb_intranet")
 
     @slb_intranet.setter
-    def slb_intranet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_intranet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_intranet", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster timezone, works for control plane and Worker nodes.
 
@@ -1721,12 +1721,12 @@ class _ManagedKubernetesState:
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradePolicy")
-    def upgrade_policy(self) -> Optional[pulumi.Input['ManagedKubernetesUpgradePolicyArgs']]:
+    def upgrade_policy(self) -> pulumi.Input[Optional['ManagedKubernetesUpgradePolicyArgs']]:
         """
         Configuration block for cluster upgrade operations. See `upgrade_policy` below.
 
@@ -1737,48 +1737,48 @@ class _ManagedKubernetesState:
         return pulumi.get(self, "upgrade_policy")
 
     @upgrade_policy.setter
-    def upgrade_policy(self, value: Optional[pulumi.Input['ManagedKubernetesUpgradePolicyArgs']]):
+    def upgrade_policy(self, value: pulumi.Input[Optional['ManagedKubernetesUpgradePolicyArgs']]):
         pulumi.set(self, "upgrade_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="userCa")
-    def user_ca(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_ca(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         """
         return pulumi.get(self, "user_ca")
 
     @user_ca.setter
-    def user_ca(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_ca(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_ca", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of VPC where the current cluster is located.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The vSwitches of the control plane.
 
@@ -1791,44 +1791,44 @@ class _ManagedKubernetesState:
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="workerRamRoleName")
-    def worker_ram_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def worker_ram_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RamRole Name attached to worker node.
         """
         return pulumi.get(self, "worker_ram_role_name")
 
     @worker_ram_role_name.setter
-    def worker_ram_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def worker_ram_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "worker_ram_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="workerVswitchIds")
     @_utilities.deprecated("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches""")
-    def worker_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def worker_vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
         """
         return pulumi.get(self, "worker_vswitch_ids")
 
     @worker_vswitch_ids.setter
-    def worker_vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def worker_vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "worker_vswitch_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneIds")
-    def zone_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def zone_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
         """
         return pulumi.get(self, "zone_ids")
 
     @zone_ids.setter
-    def zone_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def zone_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "zone_ids", value)
 
 
@@ -1838,52 +1838,52 @@ class ManagedKubernetes(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
-                 api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 audit_log_config: Optional[pulumi.Input[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']]] = None,
-                 auto_mode: Optional[pulumi.Input[Union['ManagedKubernetesAutoModeArgs', 'ManagedKubernetesAutoModeArgsDict']]] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_log_components: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 control_plane_log_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_log_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_san: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesDeleteOptionArgs', 'ManagedKubernetesDeleteOptionArgsDict']]]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_rrsa: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_provider_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_stack: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enterprise_security_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window: Optional[pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_nat_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 operation_policy: Optional[pulumi.Input[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']]] = None,
-                 pod_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_set_certificate_authority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slb_internet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_policy: Optional[pulumi.Input[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict']]] = None,
-                 user_ca: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
+                 api_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 audit_log_config: pulumi.Input[Optional[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']]] = None,
+                 auto_mode: pulumi.Input[Optional[Union['ManagedKubernetesAutoModeArgs', 'ManagedKubernetesAutoModeArgsDict']]] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_log_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 control_plane_log_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_log_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_san: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedKubernetesDeleteOptionArgs', 'ManagedKubernetesDeleteOptionArgsDict']]]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_rrsa: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_provider_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_stack: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window: pulumi.Input[Optional[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_nat_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 operation_policy: pulumi.Input[Optional[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']]] = None,
+                 pod_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_set_certificate_authority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slb_internet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_policy: pulumi.Input[Optional[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict']]] = None,
+                 user_ca: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 worker_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         This resource will help you to manage a ManagedKubernetes Cluster in Alibaba Cloud Kubernetes Service.
@@ -1924,6 +1924,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import json
         import pulumi_alicloud as alicloud
         import pulumi_std as std
@@ -1973,11 +1974,11 @@ class ManagedKubernetes(pulumi.CustomResource):
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
         default = alicloud.kms.get_keys(filters="[{\\"Key\\":\\"KeyState\\",\\"Values\\":[\\"Enabled\\"]},{\\"Key\\":\\"KeySpec\\",\\"Values\\":[\\"Aliyun_AES_256\\"]},{\\"Key\\":\\"KeyUsage\\",\\"Values\\":[\\"ENCRYPT/DECRYPT\\"]},{\\"Key\\":\\"CreatorType\\",\\"Values\\":[\\"User\\"]}]")
         # If there is not specifying vpc_id, the module will launch a new vpc
-        vpc = []
+        vpc: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
             vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}", cidr_block=vpc_cidr))
         # According to the vswitch cidr blocks to launch several vswitches
-        vswitches = []
+        vswitches: list[Any] = []
         for range in [{"value": i} for i in range(0, 0 if len(vswitch_ids) > 0 else len(vswitch_cidrs))]:
             vswitches.append(alicloud.vpc.Switch(f"vswitches-{range['value']}",
                 vpc_id=std.join_output(separator="",
@@ -1985,7 +1986,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                 cidr_block=vswitch_cidrs[range["value"]],
                 zone_id=enhanced.zones[range["value"]].zone_id))
         # According to the vswitch cidr blocks to launch several vswitches
-        terway_vswitches = []
+        terway_vswitches: list[Any] = []
         for range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
             terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{range['value']}",
                 vpc_id=std.join_output(separator="",
@@ -2322,6 +2323,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import json
         import pulumi_alicloud as alicloud
         import pulumi_std as std
@@ -2371,11 +2373,11 @@ class ManagedKubernetes(pulumi.CustomResource):
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
         default = alicloud.kms.get_keys(filters="[{\\"Key\\":\\"KeyState\\",\\"Values\\":[\\"Enabled\\"]},{\\"Key\\":\\"KeySpec\\",\\"Values\\":[\\"Aliyun_AES_256\\"]},{\\"Key\\":\\"KeyUsage\\",\\"Values\\":[\\"ENCRYPT/DECRYPT\\"]},{\\"Key\\":\\"CreatorType\\",\\"Values\\":[\\"User\\"]}]")
         # If there is not specifying vpc_id, the module will launch a new vpc
-        vpc = []
+        vpc: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
             vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}", cidr_block=vpc_cidr))
         # According to the vswitch cidr blocks to launch several vswitches
-        vswitches = []
+        vswitches: list[Any] = []
         for range in [{"value": i} for i in range(0, 0 if len(vswitch_ids) > 0 else len(vswitch_cidrs))]:
             vswitches.append(alicloud.vpc.Switch(f"vswitches-{range['value']}",
                 vpc_id=std.join_output(separator="",
@@ -2383,7 +2385,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                 cidr_block=vswitch_cidrs[range["value"]],
                 zone_id=enhanced.zones[range["value"]].zone_id))
         # According to the vswitch cidr blocks to launch several vswitches
-        terway_vswitches = []
+        terway_vswitches: list[Any] = []
         for range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
             terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{range['value']}",
                 vpc_id=std.join_output(separator="",
@@ -2607,52 +2609,52 @@ class ManagedKubernetes(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
-                 api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 audit_log_config: Optional[pulumi.Input[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']]] = None,
-                 auto_mode: Optional[pulumi.Input[Union['ManagedKubernetesAutoModeArgs', 'ManagedKubernetesAutoModeArgsDict']]] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_log_components: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 control_plane_log_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_log_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_san: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesDeleteOptionArgs', 'ManagedKubernetesDeleteOptionArgsDict']]]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_rrsa: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_provider_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_stack: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enterprise_security_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window: Optional[pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_nat_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 operation_policy: Optional[pulumi.Input[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']]] = None,
-                 pod_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_set_certificate_authority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slb_internet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_policy: Optional[pulumi.Input[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict']]] = None,
-                 user_ca: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
+                 api_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 audit_log_config: pulumi.Input[Optional[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']]] = None,
+                 auto_mode: pulumi.Input[Optional[Union['ManagedKubernetesAutoModeArgs', 'ManagedKubernetesAutoModeArgsDict']]] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_log_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 control_plane_log_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_log_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_san: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedKubernetesDeleteOptionArgs', 'ManagedKubernetesDeleteOptionArgsDict']]]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_rrsa: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_provider_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_stack: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window: pulumi.Input[Optional[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_nat_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 operation_policy: pulumi.Input[Optional[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']]] = None,
+                 pod_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_set_certificate_authority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slb_internet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_policy: pulumi.Input[Optional[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict']]] = None,
+                 user_ca: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 worker_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2727,61 +2729,61 @@ class ManagedKubernetes(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
-            api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            audit_log_config: Optional[pulumi.Input[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']]] = None,
-            auto_mode: Optional[pulumi.Input[Union['ManagedKubernetesAutoModeArgs', 'ManagedKubernetesAutoModeArgsDict']]] = None,
-            certificate_authority: Optional[pulumi.Input[Union['ManagedKubernetesCertificateAuthorityArgs', 'ManagedKubernetesCertificateAuthorityArgsDict']]] = None,
-            client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            client_key: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            connections: Optional[pulumi.Input[Union['ManagedKubernetesConnectionsArgs', 'ManagedKubernetesConnectionsArgsDict']]] = None,
-            control_plane_log_components: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            control_plane_log_project: Optional[pulumi.Input[_builtins.str]] = None,
-            control_plane_log_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_san: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManagedKubernetesDeleteOptionArgs', 'ManagedKubernetesDeleteOptionArgsDict']]]]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            disable_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_rrsa: Optional[pulumi.Input[_builtins.bool]] = None,
-            encryption_provider_key: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_stack: Optional[pulumi.Input[_builtins.str]] = None,
-            is_enterprise_security_group: Optional[pulumi.Input[_builtins.bool]] = None,
-            load_balancer_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance_window: Optional[pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            new_nat_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-            node_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-            operation_policy: Optional[pulumi.Input[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']]] = None,
-            pod_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            profile: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            rrsa_metadata: Optional[pulumi.Input[Union['ManagedKubernetesRrsaMetadataArgs', 'ManagedKubernetesRrsaMetadataArgsDict']]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account_issuer: Optional[pulumi.Input[_builtins.str]] = None,
-            service_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_set_certificate_authority: Optional[pulumi.Input[_builtins.bool]] = None,
-            slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-            slb_internet: Optional[pulumi.Input[_builtins.str]] = None,
-            slb_internet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            slb_intranet: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            timezone: Optional[pulumi.Input[_builtins.str]] = None,
-            upgrade_policy: Optional[pulumi.Input[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict']]] = None,
-            user_ca: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            worker_ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ManagedKubernetes':
+            addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedKubernetesAddonArgs', 'ManagedKubernetesAddonArgsDict']]]]] = None,
+            api_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            audit_log_config: pulumi.Input[Optional[Union['ManagedKubernetesAuditLogConfigArgs', 'ManagedKubernetesAuditLogConfigArgsDict']]] = None,
+            auto_mode: pulumi.Input[Optional[Union['ManagedKubernetesAutoModeArgs', 'ManagedKubernetesAutoModeArgsDict']]] = None,
+            certificate_authority: pulumi.Input[Optional[Union['ManagedKubernetesCertificateAuthorityArgs', 'ManagedKubernetesCertificateAuthorityArgsDict']]] = None,
+            client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            client_key: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            connections: pulumi.Input[Optional[Union['ManagedKubernetesConnectionsArgs', 'ManagedKubernetesConnectionsArgsDict']]] = None,
+            control_plane_log_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            control_plane_log_project: pulumi.Input[Optional[_builtins.str]] = None,
+            control_plane_log_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_san: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagedKubernetesDeleteOptionArgs', 'ManagedKubernetesDeleteOptionArgsDict']]]]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_rrsa: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_provider_key: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_stack: pulumi.Input[Optional[_builtins.str]] = None,
+            is_enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
+            load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_window: pulumi.Input[Optional[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            new_nat_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+            node_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            operation_policy: pulumi.Input[Optional[Union['ManagedKubernetesOperationPolicyArgs', 'ManagedKubernetesOperationPolicyArgsDict']]] = None,
+            pod_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            pod_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            profile: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            retain_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rrsa_metadata: pulumi.Input[Optional[Union['ManagedKubernetesRrsaMetadataArgs', 'ManagedKubernetesRrsaMetadataArgsDict']]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_issuer: pulumi.Input[Optional[_builtins.str]] = None,
+            service_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_set_certificate_authority: pulumi.Input[Optional[_builtins.bool]] = None,
+            slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+            slb_internet: pulumi.Input[Optional[_builtins.str]] = None,
+            slb_internet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            slb_intranet: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_policy: pulumi.Input[Optional[Union['ManagedKubernetesUpgradePolicyArgs', 'ManagedKubernetesUpgradePolicyArgsDict']]] = None,
+            user_ca: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            worker_ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            worker_vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ManagedKubernetes':
         """
         Get an existing ManagedKubernetes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

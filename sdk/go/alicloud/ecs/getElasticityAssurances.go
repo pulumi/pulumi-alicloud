@@ -26,20 +26,22 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := ecs.GetElasticityAssurances(ctx, &ecs.GetElasticityAssurancesArgs{
-// Ids: interface{}{
-// defaultAlicloudEcsElasticityAssurance.Id,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudEcsElasticityAssuranceExampleId", _default.Assurances[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := ecs.GetElasticityAssurances(ctx, &ecs.GetElasticityAssurancesArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudEcsElasticityAssurance.Id,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudEcsElasticityAssuranceExampleId", _default.Assurances[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetElasticityAssurances(ctx *pulumi.Context, args *GetElasticityAssurancesArgs, opts ...pulumi.InvokeOption) (*GetElasticityAssurancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

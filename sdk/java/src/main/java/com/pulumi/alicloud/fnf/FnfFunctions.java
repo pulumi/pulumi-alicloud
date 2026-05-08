@@ -42,8 +42,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -90,8 +90,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -138,8 +138,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -186,8 +186,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -234,8 +234,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetExecutionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -282,8 +282,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetFlowsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -328,8 +328,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetFlowsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -374,8 +374,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetFlowsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -420,8 +420,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetFlowsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -466,8 +466,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetFlowsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -512,8 +512,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetFlowsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -558,8 +558,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetFlowsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -604,8 +604,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetSchedulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -651,8 +651,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetSchedulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -698,8 +698,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetSchedulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -745,8 +745,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetSchedulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -792,8 +792,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetSchedulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -839,8 +839,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -883,8 +883,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -927,8 +927,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -971,8 +971,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1015,8 +1015,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1059,8 +1059,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1103,8 +1103,8 @@ public final class FnfFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fnf.FnfFunctions;
      * import com.pulumi.alicloud.fnf.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

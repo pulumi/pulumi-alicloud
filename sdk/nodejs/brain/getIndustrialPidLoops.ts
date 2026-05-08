@@ -143,23 +143,23 @@ export function getIndustrialPidLoopsOutput(args: GetIndustrialPidLoopsOutputArg
  * A collection of arguments for invoking getIndustrialPidLoops.
  */
 export interface GetIndustrialPidLoopsOutputArgs {
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Pid Loop IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Pid Loop name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The name of Pid Loop.
      */
-    pidLoopName?: pulumi.Input<string>;
+    pidLoopName?: pulumi.Input<string | undefined>;
     /**
      * The pid project id.
      */
@@ -167,5 +167,5 @@ export interface GetIndustrialPidLoopsOutputArgs {
     /**
      * The status of Pid Loop.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

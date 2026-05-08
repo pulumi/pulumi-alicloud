@@ -194,31 +194,31 @@ export interface EcsDiskAttachmentState {
     /**
      * Whether to mount as a system disk. Default to: `false`.
      */
-    bootable?: pulumi.Input<boolean>;
+    bootable?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the disk is released together with the instance. Default to: `false`.
      */
-    deleteWithInstance?: pulumi.Input<boolean>;
+    deleteWithInstance?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the cloud disk device.
      */
-    device?: pulumi.Input<string>;
+    device?: pulumi.Input<string | undefined>;
     /**
      * ID of the Disk to be attached.
      */
-    diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string | undefined>;
     /**
      * ID of the Instance to attach to.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of key pair
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * When mounting the system disk, setting the user name and password of the instance is only effective for the administrator and root user names, and other user names are not effective.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -228,11 +228,11 @@ export interface EcsDiskAttachmentArgs {
     /**
      * Whether to mount as a system disk. Default to: `false`.
      */
-    bootable?: pulumi.Input<boolean>;
+    bootable?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the disk is released together with the instance. Default to: `false`.
      */
-    deleteWithInstance?: pulumi.Input<boolean>;
+    deleteWithInstance?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the Disk to be attached.
      */
@@ -244,9 +244,9 @@ export interface EcsDiskAttachmentArgs {
     /**
      * The name of key pair
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * When mounting the system disk, setting the user name and password of the instance is only effective for the administrator and root user names, and other user names are not effective.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
 }

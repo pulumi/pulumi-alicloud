@@ -137,7 +137,7 @@ export interface GetExchangesOutputArgs {
     /**
      * A list of Exchange IDs. Its element value is same as Exchange Name.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the instance.
      */
@@ -145,11 +145,11 @@ export interface GetExchangesOutputArgs {
     /**
      * A regex string to filter results by Exchange name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The name of virtual host where an exchange resides.
      */

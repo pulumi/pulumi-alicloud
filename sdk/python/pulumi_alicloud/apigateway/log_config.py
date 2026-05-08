@@ -73,9 +73,9 @@ class LogConfigArgs:
 @pulumi.input_type
 class _LogConfigState:
     def __init__(__self__, *,
-                 log_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_log_store: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_project: Optional[pulumi.Input[_builtins.str]] = None):
+                 log_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_log_store: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogConfig resources.
 
@@ -92,38 +92,38 @@ class _LogConfigState:
 
     @_builtins.property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type the of log. Valid values: `PROVIDER`.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_type", value)
 
     @_builtins.property
     @pulumi.getter(name="slsLogStore")
-    def sls_log_store(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_log_store(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Log Store.
         """
         return pulumi.get(self, "sls_log_store")
 
     @sls_log_store.setter
-    def sls_log_store(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_log_store(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_log_store", value)
 
     @_builtins.property
     @pulumi.getter(name="slsProject")
-    def sls_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Project.
         """
         return pulumi.get(self, "sls_project")
 
     @sls_project.setter
-    def sls_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_project", value)
 
 
@@ -133,9 +133,9 @@ class LogConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 log_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_log_store: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 log_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_log_store: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Api Gateway Log Config resource.
@@ -264,9 +264,9 @@ class LogConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 log_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_log_store: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 log_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_log_store: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -295,9 +295,9 @@ class LogConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            log_type: Optional[pulumi.Input[_builtins.str]] = None,
-            sls_log_store: Optional[pulumi.Input[_builtins.str]] = None,
-            sls_project: Optional[pulumi.Input[_builtins.str]] = None) -> 'LogConfig':
+            log_type: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_log_store: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_project: pulumi.Input[Optional[_builtins.str]] = None) -> 'LogConfig':
         """
         Get an existing LogConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -54,8 +54,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.hbr.HanaInstanceArgs;
  * import com.pulumi.alicloud.hbr.HanaBackupClient;
  * import com.pulumi.alicloud.hbr.HanaBackupClientArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *         final var exampleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(example.zones()[0].id())
  *             .cpuCoreCount(1)
- *             .memorySize(2)
+ *             .memorySize(2.0)
  *             .build());
  * 
  *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()

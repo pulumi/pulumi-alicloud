@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceStorage: output(defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *     instanceChargeType: "Postpaid",
  *     instanceName: name,
  *     vswitchId: defaultSwitch.id,
@@ -238,51 +238,51 @@ export interface DbInstanceEndpointState {
     /**
      * The internal endpoint.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the internal endpoint.
      */
-    connectionStringPrefix?: pulumi.Input<string>;
+    connectionStringPrefix?: pulumi.Input<string | undefined>;
     /**
      * The user-defined description of the endpoint.
      */
-    dbInstanceEndpointDescription?: pulumi.Input<string>;
+    dbInstanceEndpointDescription?: pulumi.Input<string | undefined>;
     /**
      * The Endpoint ID of the instance.
      */
-    dbInstanceEndpointId?: pulumi.Input<string>;
+    dbInstanceEndpointId?: pulumi.Input<string | undefined>;
     /**
      * The type of the endpoint.
      */
-    dbInstanceEndpointType?: pulumi.Input<string>;
+    dbInstanceEndpointType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the IP address.
      */
-    ipType?: pulumi.Input<string>;
+    ipType?: pulumi.Input<string | undefined>;
     /**
      * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `nodeItems` below.
      */
-    nodeItems?: pulumi.Input<pulumi.Input<inputs.rds.DbInstanceEndpointNodeItem>[]>;
+    nodeItems?: pulumi.Input<pulumi.Input<inputs.rds.DbInstanceEndpointNodeItem>[] | undefined>;
     /**
      * The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the internal endpoint.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The virtual private cloud (VPC) ID of the internal endpoint.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vSwitch ID of the internal endpoint.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -296,7 +296,7 @@ export interface DbInstanceEndpointArgs {
     /**
      * The user-defined description of the endpoint.
      */
-    dbInstanceEndpointDescription?: pulumi.Input<string>;
+    dbInstanceEndpointDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */

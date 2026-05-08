@@ -185,19 +185,19 @@ export interface GatewayLoggingState {
     /**
      * The ID of the Gateway.
      */
-    gatewayId?: pulumi.Input<string>;
+    gatewayId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Log Store.
      */
-    slsLogstore?: pulumi.Input<string>;
+    slsLogstore?: pulumi.Input<string | undefined>;
     /**
      * The name of the Project.
      */
-    slsProject?: pulumi.Input<string>;
+    slsProject?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Enabled`, `Disable`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -219,5 +219,5 @@ export interface GatewayLoggingArgs {
     /**
      * The status of the resource. Valid values: `Enabled`, `Disable`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

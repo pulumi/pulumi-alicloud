@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultUW8inp = new alicloud.dataworks.DiJob("defaultUW8inp", {
  *     description: "xxxx",
- *     projectId: defaulteNv8bu.id,
+ *     projectId: defaulteNv8bu.id.apply(x =>Number(x)),
  *     jobName: "xxx",
  *     migrationType: "api_xxx",
  *     sourceDataSourceType: "xxx",
@@ -250,42 +250,42 @@ export class DiAlarmRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DiAlarmRule resources.
  */
 export interface DiAlarmRuleState {
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Resource attribute field representing resource level ID
      */
-    diAlarmRuleId?: pulumi.Input<number>;
+    diAlarmRuleId?: pulumi.Input<number | undefined>;
     /**
      * Data Integration alarm rule name
      */
-    diAlarmRuleName?: pulumi.Input<string>;
+    diAlarmRuleName?: pulumi.Input<string | undefined>;
     /**
      * Task ID: the ID of the task associated with the alert rule.
      */
-    diJobId?: pulumi.Input<number>;
-    enabled?: pulumi.Input<boolean>;
+    diJobId?: pulumi.Input<number | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Alarm indicator type. Optional enumerated values:
      * - Heartbeat (task status alarm)
      * - FailoverCount(failover times alarm)
      * - Delay (task Delay alarm)
      */
-    metricType?: pulumi.Input<string>;
+    metricType?: pulumi.Input<string | undefined>;
     /**
      * Alarm notification settings See `notificationSettings` below.
      */
-    notificationSettings?: pulumi.Input<inputs.dataworks.DiAlarmRuleNotificationSettings>;
+    notificationSettings?: pulumi.Input<inputs.dataworks.DiAlarmRuleNotificationSettings | undefined>;
     /**
      * Alarm trigger condition list, supporting multiple conditions See `triggerConditions` below.
      */
-    triggerConditions?: pulumi.Input<pulumi.Input<inputs.dataworks.DiAlarmRuleTriggerCondition>[]>;
+    triggerConditions?: pulumi.Input<pulumi.Input<inputs.dataworks.DiAlarmRuleTriggerCondition>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DiAlarmRule resource.
  */
 export interface DiAlarmRuleArgs {
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Data Integration alarm rule name
      */
@@ -294,7 +294,7 @@ export interface DiAlarmRuleArgs {
      * Task ID: the ID of the task associated with the alert rule.
      */
     diJobId: pulumi.Input<number>;
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Alarm indicator type. Optional enumerated values:
      * - Heartbeat (task status alarm)

@@ -52,8 +52,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetCustomDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -95,8 +95,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetCustomDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -138,8 +138,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetCustomDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -181,8 +181,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetCustomDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -224,8 +224,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetCustomDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -267,8 +267,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetCustomDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -310,8 +310,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetCustomDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -351,8 +351,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetFunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -393,8 +393,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetFunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -435,8 +435,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetFunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -477,8 +477,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetFunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -519,8 +519,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetFunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -565,8 +565,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -609,8 +609,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -653,8 +653,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -697,8 +697,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -741,8 +741,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -785,8 +785,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -829,8 +829,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -869,8 +869,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -910,8 +910,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -951,8 +951,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -992,8 +992,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1033,8 +1033,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1074,8 +1074,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1115,8 +1115,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1156,8 +1156,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetTriggersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1199,8 +1199,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetTriggersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1242,8 +1242,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetTriggersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1285,8 +1285,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetTriggersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1328,8 +1328,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetTriggersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1373,8 +1373,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1418,8 +1418,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1463,8 +1463,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1508,8 +1508,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1553,8 +1553,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1598,8 +1598,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1643,8 +1643,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1695,8 +1695,8 @@ public final class FcFunctions {
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetV3TriggersArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1782,8 +1782,8 @@ public final class FcFunctions {
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetV3TriggersArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1869,8 +1869,8 @@ public final class FcFunctions {
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetV3TriggersArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1956,8 +1956,8 @@ public final class FcFunctions {
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetV3TriggersArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2043,8 +2043,8 @@ public final class FcFunctions {
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetV3TriggersArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2123,8 +2123,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2165,8 +2165,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2207,8 +2207,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2249,8 +2249,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2291,8 +2291,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2333,8 +2333,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2375,8 +2375,8 @@ public final class FcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.fc.FcFunctions;
      * import com.pulumi.alicloud.fc.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

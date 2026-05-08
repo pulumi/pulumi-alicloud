@@ -23,19 +23,19 @@ class WafRuleArgs:
     def __init__(__self__, *,
                  policy_id: pulumi.Input[_builtins.str],
                  rule_name: pulumi.Input[_builtins.str],
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 cc_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 cn_region_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['WafRuleConditionArgs']]]] = None,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 other_region_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_limit: Optional[pulumi.Input['WafRuleRateLimitArgs']] = None,
-                 regular_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 regular_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 remote_addrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 scenes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 waf_group_ids: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 cc_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_region_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConditionArgs']]]] = None,
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 other_region_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_limit: pulumi.Input[Optional['WafRuleRateLimitArgs']] = None,
+                 regular_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 regular_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 remote_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 scenes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 waf_group_ids: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WafRule resource.
 
@@ -110,181 +110,181 @@ class WafRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="ccStatus")
-    def cc_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cc_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
         """
         return pulumi.get(self, "cc_status")
 
     @cc_status.setter
-    def cc_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cc_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cc_status", value)
 
     @_builtins.property
     @pulumi.getter(name="cnRegionList")
-    def cn_region_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cn_region_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The blocked regions in the Chinese mainland, separated by commas (,).
         """
         return pulumi.get(self, "cn_region_list")
 
     @cn_region_list.setter
-    def cn_region_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cn_region_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cn_region_list", value)
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WafRuleConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConditionArgs']]]]:
         """
         Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
         """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WafRuleConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `rule` (takes effect for the current rule) and `service` (takes effect globally).
         """
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter(name="otherRegionList")
-    def other_region_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def other_region_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Blocked regions outside the Chinese mainland, separated by commas (,).
         """
         return pulumi.get(self, "other_region_list")
 
     @other_region_list.setter
-    def other_region_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def other_region_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "other_region_list", value)
 
     @_builtins.property
     @pulumi.getter(name="rateLimit")
-    def rate_limit(self) -> Optional[pulumi.Input['WafRuleRateLimitArgs']]:
+    def rate_limit(self) -> pulumi.Input[Optional['WafRuleRateLimitArgs']]:
         """
         The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
         """
         return pulumi.get(self, "rate_limit")
 
     @rate_limit.setter
-    def rate_limit(self, value: Optional[pulumi.Input['WafRuleRateLimitArgs']]):
+    def rate_limit(self, value: pulumi.Input[Optional['WafRuleRateLimitArgs']]):
         pulumi.set(self, "rate_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="regularRules")
-    def regular_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def regular_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The regular expression.e, when waf_group appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
         """
         return pulumi.get(self, "regular_rules")
 
     @regular_rules.setter
-    def regular_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def regular_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "regular_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="regularTypes")
-    def regular_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def regular_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Regular rule type, when waf_group appears in tags, this value can be filled in, optional values:["sqli", "xss", "code_exec", "crlf", "lfileii", "rfileii", "webshell", "vvip", "other"]
         """
         return pulumi.get(self, "regular_types")
 
     @regular_types.setter
-    def regular_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def regular_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "regular_types", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteAddrs")
-    def remote_addrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def remote_addrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Filter by IP address.
         """
         return pulumi.get(self, "remote_addrs")
 
     @remote_addrs.setter
-    def remote_addrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def remote_addrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "remote_addrs", value)
 
     @_builtins.property
     @pulumi.getter
-    def scenes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scenes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The types of the protection policies.
         """
         return pulumi.get(self, "scenes")
 
     @scenes.setter
-    def scenes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scenes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scenes", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the waf rule. Valid values: `on` and `off`. Default value: on.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="wafGroupIds")
-    def waf_group_ids(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def waf_group_ids(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
         """
         return pulumi.get(self, "waf_group_ids")
 
     @waf_group_ids.setter
-    def waf_group_ids(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def waf_group_ids(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "waf_group_ids", value)
 
 
 @pulumi.input_type
 class _WafRuleState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 cc_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 cn_region_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['WafRuleConditionArgs']]]] = None,
-                 defense_scene: Optional[pulumi.Input[_builtins.str]] = None,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 gmt_modified: Optional[pulumi.Input[_builtins.str]] = None,
-                 other_region_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_limit: Optional[pulumi.Input['WafRuleRateLimitArgs']] = None,
-                 regular_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 regular_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 remote_addrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scenes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 waf_group_ids: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 cc_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_region_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConditionArgs']]]] = None,
+                 defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 other_region_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_limit: pulumi.Input[Optional['WafRuleRateLimitArgs']] = None,
+                 regular_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 regular_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 remote_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 waf_group_ids: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WafRule resources.
 
@@ -343,206 +343,206 @@ class _WafRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="ccStatus")
-    def cc_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cc_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
         """
         return pulumi.get(self, "cc_status")
 
     @cc_status.setter
-    def cc_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cc_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cc_status", value)
 
     @_builtins.property
     @pulumi.getter(name="cnRegionList")
-    def cn_region_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cn_region_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The blocked regions in the Chinese mainland, separated by commas (,).
         """
         return pulumi.get(self, "cn_region_list")
 
     @cn_region_list.setter
-    def cn_region_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cn_region_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cn_region_list", value)
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WafRuleConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConditionArgs']]]]:
         """
         Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
         """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WafRuleConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="defenseScene")
-    def defense_scene(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def defense_scene(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
         """
         return pulumi.get(self, "defense_scene")
 
     @defense_scene.setter
-    def defense_scene(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def defense_scene(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "defense_scene", value)
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `rule` (takes effect for the current rule) and `service` (takes effect globally).
         """
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter(name="gmtModified")
-    def gmt_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gmt_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Revised the time. The date format is based on ISO8601 notation and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
         """
         return pulumi.get(self, "gmt_modified")
 
     @gmt_modified.setter
-    def gmt_modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gmt_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gmt_modified", value)
 
     @_builtins.property
     @pulumi.getter(name="otherRegionList")
-    def other_region_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def other_region_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Blocked regions outside the Chinese mainland, separated by commas (,).
         """
         return pulumi.get(self, "other_region_list")
 
     @other_region_list.setter
-    def other_region_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def other_region_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "other_region_list", value)
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protection policy ID.
         """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
-    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rateLimit")
-    def rate_limit(self) -> Optional[pulumi.Input['WafRuleRateLimitArgs']]:
+    def rate_limit(self) -> pulumi.Input[Optional['WafRuleRateLimitArgs']]:
         """
         The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
         """
         return pulumi.get(self, "rate_limit")
 
     @rate_limit.setter
-    def rate_limit(self, value: Optional[pulumi.Input['WafRuleRateLimitArgs']]):
+    def rate_limit(self, value: pulumi.Input[Optional['WafRuleRateLimitArgs']]):
         pulumi.set(self, "rate_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="regularRules")
-    def regular_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def regular_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The regular expression.e, when waf_group appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
         """
         return pulumi.get(self, "regular_rules")
 
     @regular_rules.setter
-    def regular_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def regular_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "regular_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="regularTypes")
-    def regular_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def regular_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Regular rule type, when waf_group appears in tags, this value can be filled in, optional values:["sqli", "xss", "code_exec", "crlf", "lfileii", "rfileii", "webshell", "vvip", "other"]
         """
         return pulumi.get(self, "regular_types")
 
     @regular_types.setter
-    def regular_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def regular_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "regular_types", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteAddrs")
-    def remote_addrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def remote_addrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Filter by IP address.
         """
         return pulumi.get(self, "remote_addrs")
 
     @remote_addrs.setter
-    def remote_addrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def remote_addrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "remote_addrs", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def scenes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scenes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The types of the protection policies.
         """
         return pulumi.get(self, "scenes")
 
     @scenes.setter
-    def scenes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scenes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scenes", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the waf rule. Valid values: `on` and `off`. Default value: on.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="wafGroupIds")
-    def waf_group_ids(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def waf_group_ids(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `waf_group`.
         """
         return pulumi.get(self, "waf_group_ids")
 
     @waf_group_ids.setter
-    def waf_group_ids(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def waf_group_ids(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "waf_group_ids", value)
 
 
@@ -552,21 +552,21 @@ class WafRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 cc_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 cn_region_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WafRuleConditionArgs', 'WafRuleConditionArgsDict']]]]] = None,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 other_region_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_limit: Optional[pulumi.Input[Union['WafRuleRateLimitArgs', 'WafRuleRateLimitArgsDict']]] = None,
-                 regular_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 regular_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 remote_addrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scenes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 waf_group_ids: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 cc_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_region_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WafRuleConditionArgs', 'WafRuleConditionArgsDict']]]]] = None,
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 other_region_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_limit: pulumi.Input[Optional[Union['WafRuleRateLimitArgs', 'WafRuleRateLimitArgsDict']]] = None,
+                 regular_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 regular_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 remote_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 waf_group_ids: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Dcdn Waf Rule resource.
@@ -745,21 +745,21 @@ class WafRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 cc_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 cn_region_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WafRuleConditionArgs', 'WafRuleConditionArgsDict']]]]] = None,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 other_region_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_limit: Optional[pulumi.Input[Union['WafRuleRateLimitArgs', 'WafRuleRateLimitArgsDict']]] = None,
-                 regular_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 regular_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 remote_addrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scenes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 waf_group_ids: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 cc_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_region_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WafRuleConditionArgs', 'WafRuleConditionArgsDict']]]]] = None,
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 other_region_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_limit: pulumi.Input[Optional[Union['WafRuleRateLimitArgs', 'WafRuleRateLimitArgsDict']]] = None,
+                 regular_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 regular_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 remote_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 waf_group_ids: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -800,23 +800,23 @@ class WafRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            cc_status: Optional[pulumi.Input[_builtins.str]] = None,
-            cn_region_list: Optional[pulumi.Input[_builtins.str]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WafRuleConditionArgs', 'WafRuleConditionArgsDict']]]]] = None,
-            defense_scene: Optional[pulumi.Input[_builtins.str]] = None,
-            effect: Optional[pulumi.Input[_builtins.str]] = None,
-            gmt_modified: Optional[pulumi.Input[_builtins.str]] = None,
-            other_region_list: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rate_limit: Optional[pulumi.Input[Union['WafRuleRateLimitArgs', 'WafRuleRateLimitArgsDict']]] = None,
-            regular_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            regular_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            remote_addrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            scenes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            waf_group_ids: Optional[pulumi.Input[_builtins.str]] = None) -> 'WafRule':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            cc_status: pulumi.Input[Optional[_builtins.str]] = None,
+            cn_region_list: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WafRuleConditionArgs', 'WafRuleConditionArgsDict']]]]] = None,
+            defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+            effect: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            other_region_list: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rate_limit: pulumi.Input[Optional[Union['WafRuleRateLimitArgs', 'WafRuleRateLimitArgsDict']]] = None,
+            regular_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            regular_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            remote_addrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scenes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            waf_group_ids: pulumi.Input[Optional[_builtins.str]] = None) -> 'WafRule':
         """
         Get an existing WafRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

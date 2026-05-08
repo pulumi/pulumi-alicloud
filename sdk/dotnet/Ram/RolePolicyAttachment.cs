@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Ram
     ///         Description = "this is a role test.",
     ///     });
     /// 
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,

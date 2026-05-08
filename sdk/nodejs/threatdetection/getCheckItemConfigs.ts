@@ -121,25 +121,25 @@ export interface GetCheckItemConfigsOutputArgs {
     /**
      * A list of Check Item Config IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The language of the content within the request and response. Default value: **zh**. Valid value:*   **zh**: Chinese*   **en**: English
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Current page number.
      */
-    pageNumber?: pulumi.Input<number>;
+    pageNumber?: pulumi.Input<number | undefined>;
     /**
      * Number of records per page.
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * List of task sources.
      */
-    taskSources?: pulumi.Input<pulumi.Input<string>[]>;
+    taskSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

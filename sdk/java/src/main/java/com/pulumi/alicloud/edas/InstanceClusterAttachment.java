@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.edas.ClusterArgs;
  * import com.pulumi.alicloud.edas.InstanceClusterAttachment;
  * import com.pulumi.alicloud.edas.InstanceClusterAttachmentArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(defaultGetZones.zones()[0].id())
  *             .cpuCoreCount(1)
- *             .memorySize(2)
+ *             .memorySize(2.0)
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()

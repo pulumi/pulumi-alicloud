@@ -23,19 +23,19 @@ class AiInstanceArgs:
     def __init__(__self__, *,
                  app_name: pulumi.Input[_builtins.str],
                  app_type: pulumi.Input[_builtins.str],
-                 auth_config_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AiInstanceAuthConfigListArgs']]]] = None,
-                 ca_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 initialize_with_existing_data: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_network_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_config_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AiInstanceStorageConfigListArgs']]]] = None):
+                 auth_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input['AiInstanceAuthConfigListArgs']]]] = None,
+                 ca_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 initialize_with_existing_data: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_network_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input['AiInstanceStorageConfigListArgs']]]] = None):
         """
         The set of arguments for constructing a AiInstance resource.
 
@@ -119,19 +119,19 @@ class AiInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="authConfigLists")
-    def auth_config_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiInstanceAuthConfigListArgs']]]]:
+    def auth_config_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiInstanceAuthConfigListArgs']]]]:
         """
         Authentication information list. See `auth_config_list` below.
         """
         return pulumi.get(self, "auth_config_lists")
 
     @auth_config_lists.setter
-    def auth_config_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiInstanceAuthConfigListArgs']]]]):
+    def auth_config_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiInstanceAuthConfigListArgs']]]]):
         pulumi.set(self, "auth_config_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="caType")
-    def ca_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the certificate. Currently, only `custom` is supported. A custom certificate is used.
 
@@ -140,12 +140,12 @@ class AiInstanceArgs:
         return pulumi.get(self, "ca_type")
 
     @ca_type.setter
-    def ca_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardPassword")
-    def dashboard_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Supabase Dashboard password.
         The password must be 8 to 32 characters in length and contain three or more characters: uppercase letters, lowercase letters, numbers, and underscores (_).
@@ -153,12 +153,12 @@ class AiInstanceArgs:
         return pulumi.get(self, "dashboard_password")
 
     @dashboard_password.setter
-    def dashboard_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_password", value)
 
     @_builtins.property
     @pulumi.getter(name="databasePassword")
-    def database_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RDS Database access password.
         The password must be 8 to 32 characters in length and contain three or more characters: uppercase letters, lowercase letters, numbers, and underscores (_).
@@ -166,12 +166,12 @@ class AiInstanceArgs:
         return pulumi.get(self, "database_password")
 
     @database_password.setter
-    def database_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_password", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceName")
-    def db_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the RDS PostgreSQL database instance accessed by the AI application.
         supports only **newly purchased empty RDS PostgreSQL instances**. The major version is `17`, and the minor version is **20250630 or later**.>
@@ -179,48 +179,48 @@ class AiInstanceArgs:
         return pulumi.get(self, "db_instance_name")
 
     @db_instance_name.setter
-    def db_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="initializeWithExistingData")
-    def initialize_with_existing_data(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def initialize_with_existing_data(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to recover from existing PG data. Valid values:
         """
         return pulumi.get(self, "initialize_with_existing_data")
 
     @initialize_with_existing_data.setter
-    def initialize_with_existing_data(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def initialize_with_existing_data(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "initialize_with_existing_data", value)
 
     @_builtins.property
     @pulumi.getter(name="publicEndpointEnabled")
-    def public_endpoint_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_endpoint_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the public network connection address. Valid values:
         """
         return pulumi.get(self, "public_endpoint_enabled")
 
     @public_endpoint_enabled.setter
-    def public_endpoint_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_endpoint_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_endpoint_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="publicNetworkAccessEnabled")
-    def public_network_access_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_network_access_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the public network NAT gateway. Valid values:
         """
         return pulumi.get(self, "public_network_access_enabled")
 
     @public_network_access_enabled.setter
-    def public_network_access_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_network_access_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_network_access_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCert")
-    def server_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customize the certificate content.
 
@@ -229,12 +229,12 @@ class AiInstanceArgs:
         return pulumi.get(self, "server_cert")
 
     @server_cert.setter
-    def server_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="serverKey")
-    def server_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate private key.
 
@@ -243,64 +243,64 @@ class AiInstanceArgs:
         return pulumi.get(self, "server_key")
 
     @server_key.setter
-    def server_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_key", value)
 
     @_builtins.property
     @pulumi.getter(name="sslEnabled")
-    def ssl_enabled(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ssl_enabled(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Enable or disable SSL. Valid values:
         """
         return pulumi.get(self, "ssl_enabled")
 
     @ssl_enabled.setter
-    def ssl_enabled(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ssl_enabled(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ssl_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the instance. Valid values: `Running`, `Stopped`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageConfigLists")
-    def storage_config_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiInstanceStorageConfigListArgs']]]]:
+    def storage_config_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiInstanceStorageConfigListArgs']]]]:
         """
         A list of storage configurations. See `storage_config_list` below.
         """
         return pulumi.get(self, "storage_config_lists")
 
     @storage_config_lists.setter
-    def storage_config_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiInstanceStorageConfigListArgs']]]]):
+    def storage_config_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiInstanceStorageConfigListArgs']]]]):
         pulumi.set(self, "storage_config_lists", value)
 
 
 @pulumi.input_type
 class _AiInstanceState:
     def __init__(__self__, *,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_config_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AiInstanceAuthConfigListArgs']]]] = None,
-                 ca_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 initialize_with_existing_data: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_network_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_config_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AiInstanceStorageConfigListArgs']]]] = None):
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input['AiInstanceAuthConfigListArgs']]]] = None,
+                 ca_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 initialize_with_existing_data: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_network_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input['AiInstanceStorageConfigListArgs']]]] = None):
         """
         Input properties used for looking up and filtering AiInstance resources.
 
@@ -362,43 +362,43 @@ class _AiInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="appName")
-    def app_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the new AI application.
         """
         return pulumi.get(self, "app_name")
 
     @app_name.setter
-    def app_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_name", value)
 
     @_builtins.property
     @pulumi.getter(name="appType")
-    def app_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application type. Currently, only `supabase` is supported.
         """
         return pulumi.get(self, "app_type")
 
     @app_type.setter
-    def app_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_type", value)
 
     @_builtins.property
     @pulumi.getter(name="authConfigLists")
-    def auth_config_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiInstanceAuthConfigListArgs']]]]:
+    def auth_config_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiInstanceAuthConfigListArgs']]]]:
         """
         Authentication information list. See `auth_config_list` below.
         """
         return pulumi.get(self, "auth_config_lists")
 
     @auth_config_lists.setter
-    def auth_config_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiInstanceAuthConfigListArgs']]]]):
+    def auth_config_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiInstanceAuthConfigListArgs']]]]):
         pulumi.set(self, "auth_config_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="caType")
-    def ca_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the certificate. Currently, only `custom` is supported. A custom certificate is used.
 
@@ -407,12 +407,12 @@ class _AiInstanceState:
         return pulumi.get(self, "ca_type")
 
     @ca_type.setter
-    def ca_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardPassword")
-    def dashboard_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Supabase Dashboard password.
         The password must be 8 to 32 characters in length and contain three or more characters: uppercase letters, lowercase letters, numbers, and underscores (_).
@@ -420,12 +420,12 @@ class _AiInstanceState:
         return pulumi.get(self, "dashboard_password")
 
     @dashboard_password.setter
-    def dashboard_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_password", value)
 
     @_builtins.property
     @pulumi.getter(name="databasePassword")
-    def database_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RDS Database access password.
         The password must be 8 to 32 characters in length and contain three or more characters: uppercase letters, lowercase letters, numbers, and underscores (_).
@@ -433,12 +433,12 @@ class _AiInstanceState:
         return pulumi.get(self, "database_password")
 
     @database_password.setter
-    def database_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_password", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceName")
-    def db_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the RDS PostgreSQL database instance accessed by the AI application.
         supports only **newly purchased empty RDS PostgreSQL instances**. The major version is `17`, and the minor version is **20250630 or later**.>
@@ -446,48 +446,48 @@ class _AiInstanceState:
         return pulumi.get(self, "db_instance_name")
 
     @db_instance_name.setter
-    def db_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="initializeWithExistingData")
-    def initialize_with_existing_data(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def initialize_with_existing_data(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to recover from existing PG data. Valid values:
         """
         return pulumi.get(self, "initialize_with_existing_data")
 
     @initialize_with_existing_data.setter
-    def initialize_with_existing_data(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def initialize_with_existing_data(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "initialize_with_existing_data", value)
 
     @_builtins.property
     @pulumi.getter(name="publicEndpointEnabled")
-    def public_endpoint_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_endpoint_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the public network connection address. Valid values:
         """
         return pulumi.get(self, "public_endpoint_enabled")
 
     @public_endpoint_enabled.setter
-    def public_endpoint_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_endpoint_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_endpoint_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="publicNetworkAccessEnabled")
-    def public_network_access_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_network_access_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the public network NAT gateway. Valid values:
         """
         return pulumi.get(self, "public_network_access_enabled")
 
     @public_network_access_enabled.setter
-    def public_network_access_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_network_access_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_network_access_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCert")
-    def server_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customize the certificate content.
 
@@ -496,12 +496,12 @@ class _AiInstanceState:
         return pulumi.get(self, "server_cert")
 
     @server_cert.setter
-    def server_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="serverKey")
-    def server_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate private key.
 
@@ -510,43 +510,43 @@ class _AiInstanceState:
         return pulumi.get(self, "server_key")
 
     @server_key.setter
-    def server_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_key", value)
 
     @_builtins.property
     @pulumi.getter(name="sslEnabled")
-    def ssl_enabled(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ssl_enabled(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Enable or disable SSL. Valid values:
         """
         return pulumi.get(self, "ssl_enabled")
 
     @ssl_enabled.setter
-    def ssl_enabled(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ssl_enabled(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ssl_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the instance. Valid values: `Running`, `Stopped`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageConfigLists")
-    def storage_config_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiInstanceStorageConfigListArgs']]]]:
+    def storage_config_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiInstanceStorageConfigListArgs']]]]:
         """
         A list of storage configurations. See `storage_config_list` below.
         """
         return pulumi.get(self, "storage_config_lists")
 
     @storage_config_lists.setter
-    def storage_config_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiInstanceStorageConfigListArgs']]]]):
+    def storage_config_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiInstanceStorageConfigListArgs']]]]):
         pulumi.set(self, "storage_config_lists", value)
 
 
@@ -556,21 +556,21 @@ class AiInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict']]]]] = None,
-                 ca_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 initialize_with_existing_data: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_network_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict']]]]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict']]]]] = None,
+                 ca_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 initialize_with_existing_data: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_network_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Rds Ai Instance resource.
@@ -710,21 +710,21 @@ class AiInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict']]]]] = None,
-                 ca_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 initialize_with_existing_data: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_network_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict']]]]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict']]]]] = None,
+                 ca_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 initialize_with_existing_data: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_network_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -765,21 +765,21 @@ class AiInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_name: Optional[pulumi.Input[_builtins.str]] = None,
-            app_type: Optional[pulumi.Input[_builtins.str]] = None,
-            auth_config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict']]]]] = None,
-            ca_type: Optional[pulumi.Input[_builtins.str]] = None,
-            dashboard_password: Optional[pulumi.Input[_builtins.str]] = None,
-            database_password: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            initialize_with_existing_data: Optional[pulumi.Input[_builtins.bool]] = None,
-            public_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            public_network_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            server_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            server_key: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict']]]]] = None) -> 'AiInstance':
+            app_name: pulumi.Input[Optional[_builtins.str]] = None,
+            app_type: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceAuthConfigListArgs', 'AiInstanceAuthConfigListArgsDict']]]]] = None,
+            ca_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard_password: pulumi.Input[Optional[_builtins.str]] = None,
+            database_password: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            initialize_with_existing_data: pulumi.Input[Optional[_builtins.bool]] = None,
+            public_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            public_network_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            server_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            server_key: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiInstanceStorageConfigListArgs', 'AiInstanceStorageConfigListArgsDict']]]]] = None) -> 'AiInstance':
         """
         Get an existing AiInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

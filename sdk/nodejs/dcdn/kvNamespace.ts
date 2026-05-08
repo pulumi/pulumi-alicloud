@@ -123,15 +123,15 @@ export interface KvNamespaceState {
     /**
      * Namespace description information
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Namespace name. The name can contain letters, digits, hyphens (-), and underscores (_).
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

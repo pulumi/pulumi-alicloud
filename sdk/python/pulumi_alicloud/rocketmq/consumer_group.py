@@ -24,9 +24,9 @@ class ConsumerGroupArgs:
                  consume_retry_policy: pulumi.Input['ConsumerGroupConsumeRetryPolicyArgs'],
                  consumer_group_id: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 delivery_order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_receive_tps: Optional[pulumi.Input[_builtins.int]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None):
+                 delivery_order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_receive_tps: pulumi.Input[Optional[_builtins.int]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConsumerGroup resource.
 
@@ -85,53 +85,53 @@ class ConsumerGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="deliveryOrderType")
-    def delivery_order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delivery order.
         """
         return pulumi.get(self, "delivery_order_type")
 
     @delivery_order_type.setter
-    def delivery_order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_order_type", value)
 
     @_builtins.property
     @pulumi.getter(name="maxReceiveTps")
-    def max_receive_tps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_receive_tps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum received message tps.
         """
         return pulumi.get(self, "max_receive_tps")
 
     @max_receive_tps.setter
-    def max_receive_tps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_receive_tps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_receive_tps", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom remarks.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
 
 @pulumi.input_type
 class _ConsumerGroupState:
     def __init__(__self__, *,
-                 consume_retry_policy: Optional[pulumi.Input['ConsumerGroupConsumeRetryPolicyArgs']] = None,
-                 consumer_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_receive_tps: Optional[pulumi.Input[_builtins.int]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 consume_retry_policy: pulumi.Input[Optional['ConsumerGroupConsumeRetryPolicyArgs']] = None,
+                 consumer_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_receive_tps: pulumi.Input[Optional[_builtins.int]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConsumerGroup resources.
 
@@ -166,110 +166,110 @@ class _ConsumerGroupState:
 
     @_builtins.property
     @pulumi.getter(name="consumeRetryPolicy")
-    def consume_retry_policy(self) -> Optional[pulumi.Input['ConsumerGroupConsumeRetryPolicyArgs']]:
+    def consume_retry_policy(self) -> pulumi.Input[Optional['ConsumerGroupConsumeRetryPolicyArgs']]:
         """
         Consumption retry strategy. See `consume_retry_policy` below.
         """
         return pulumi.get(self, "consume_retry_policy")
 
     @consume_retry_policy.setter
-    def consume_retry_policy(self, value: Optional[pulumi.Input['ConsumerGroupConsumeRetryPolicyArgs']]):
+    def consume_retry_policy(self, value: pulumi.Input[Optional['ConsumerGroupConsumeRetryPolicyArgs']]):
         pulumi.set(self, "consume_retry_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerGroupId")
-    def consumer_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consumer_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource.
         """
         return pulumi.get(self, "consumer_group_id")
 
     @consumer_group_id.setter
-    def consumer_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consumer_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consumer_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryOrderType")
-    def delivery_order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delivery order.
         """
         return pulumi.get(self, "delivery_order_type")
 
     @delivery_order_type.setter
-    def delivery_order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_order_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance ID.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maxReceiveTps")
-    def max_receive_tps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_receive_tps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum received message tps.
         """
         return pulumi.get(self, "max_receive_tps")
 
     @max_receive_tps.setter
-    def max_receive_tps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_receive_tps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_receive_tps", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.247.0) The ID of the region in which the instance resides.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom remarks.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -279,12 +279,12 @@ class ConsumerGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consume_retry_policy: Optional[pulumi.Input[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']]] = None,
-                 consumer_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_receive_tps: Optional[pulumi.Input[_builtins.int]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
+                 consume_retry_policy: pulumi.Input[Optional[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']]] = None,
+                 consumer_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_receive_tps: pulumi.Input[Optional[_builtins.int]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RocketMQ Consumer Group resource.
@@ -494,12 +494,12 @@ class ConsumerGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consume_retry_policy: Optional[pulumi.Input[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']]] = None,
-                 consumer_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_receive_tps: Optional[pulumi.Input[_builtins.int]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
+                 consume_retry_policy: pulumi.Input[Optional[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']]] = None,
+                 consumer_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_receive_tps: pulumi.Input[Optional[_builtins.int]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -534,15 +534,15 @@ class ConsumerGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            consume_retry_policy: Optional[pulumi.Input[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']]] = None,
-            consumer_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_order_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            max_receive_tps: Optional[pulumi.Input[_builtins.int]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConsumerGroup':
+            consume_retry_policy: pulumi.Input[Optional[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']]] = None,
+            consumer_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_order_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            max_receive_tps: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConsumerGroup':
         """
         Get an existing ConsumerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

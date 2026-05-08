@@ -139,15 +139,15 @@ export interface LogConfigState {
     /**
      * The type the of log. Valid values: `PROVIDER`.
      */
-    logType?: pulumi.Input<string>;
+    logType?: pulumi.Input<string | undefined>;
     /**
      * The name of the Log Store.
      */
-    slsLogStore?: pulumi.Input<string>;
+    slsLogStore?: pulumi.Input<string | undefined>;
     /**
      * The name of the Project.
      */
-    slsProject?: pulumi.Input<string>;
+    slsProject?: pulumi.Input<string | undefined>;
 }
 
 /**

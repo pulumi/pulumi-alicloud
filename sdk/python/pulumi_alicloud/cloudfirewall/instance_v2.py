@@ -23,13 +23,13 @@ class InstanceV2Args:
                  product_code: pulumi.Input[_builtins.str],
                  product_type: pulumi.Input[_builtins.str],
                  spec: pulumi.Input[_builtins.str],
-                 cfw_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdl: Optional[pulumi.Input[_builtins.bool]] = None):
+                 cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdl: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a InstanceV2 resource.
 
@@ -119,55 +119,55 @@ class InstanceV2Args:
 
     @_builtins.property
     @pulumi.getter(name="cfwLog")
-    def cfw_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cfw_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use log audit. Valid values:
         """
         return pulumi.get(self, "cfw_log")
 
     @cfw_log.setter
-    def cfw_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cfw_log(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cfw_log", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The prepaid period. **NOTE:** If `payment_type` is set to `Subscription`, `period` is required.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalDuration")
-    def renewal_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renewal_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal duration. **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         """
         return pulumi.get(self, "renewal_duration")
 
     @renewal_duration.setter
-    def renewal_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renewal_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renewal_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalDurationUnit")
-    def renewal_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the auto-renewal period. Valid values:
         - `M`: Month.
@@ -176,12 +176,12 @@ class InstanceV2Args:
         return pulumi.get(self, "renewal_duration_unit")
 
     @renewal_duration_unit.setter
-    def renewal_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to renew an instance automatically or not.
         - `AutoRenewal`: Auto renewal.
@@ -191,41 +191,41 @@ class InstanceV2Args:
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def sdl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sdl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Data leakage protection status. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "sdl")
 
     @sdl.setter
-    def sdl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sdl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sdl", value)
 
 
 @pulumi.input_type
 class _InstanceV2State:
     def __init__(__self__, *,
-                 cfw_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceV2 resources.
 
@@ -286,127 +286,127 @@ class _InstanceV2State:
 
     @_builtins.property
     @pulumi.getter(name="cfwLog")
-    def cfw_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cfw_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use log audit. Valid values:
         """
         return pulumi.get(self, "cfw_log")
 
     @cfw_log.setter
-    def cfw_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cfw_log(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cfw_log", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The prepaid period. **NOTE:** If `payment_type` is set to `Subscription`, `period` is required.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="productCode")
-    def product_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The product code. Valid values: `cfw`.
         """
         return pulumi.get(self, "product_code")
 
     @product_code.setter
-    def product_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_code", value)
 
     @_builtins.property
     @pulumi.getter(name="productType")
-    def product_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The product type. Valid values: `cfw_elasticity_public_cn`, `cfw_elasticity_public_intl`, `cfw_sub_public_cn`, `cfw_sub_public_intl`.
         """
         return pulumi.get(self, "product_type")
 
     @product_type.setter
-    def product_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_type", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseTime")
-    def release_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The release time.
         """
         return pulumi.get(self, "release_time")
 
     @release_time.setter
-    def release_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release_time", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalDuration")
-    def renewal_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renewal_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal duration. **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         """
         return pulumi.get(self, "renewal_duration")
 
     @renewal_duration.setter
-    def renewal_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renewal_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renewal_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalDurationUnit")
-    def renewal_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the auto-renewal period. Valid values:
         - `M`: Month.
@@ -415,12 +415,12 @@ class _InstanceV2State:
         return pulumi.get(self, "renewal_duration_unit")
 
     @renewal_duration_unit.setter
-    def renewal_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to renew an instance automatically or not.
         - `AutoRenewal`: Auto renewal.
@@ -430,55 +430,55 @@ class _InstanceV2State:
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def sdl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sdl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Data leakage protection status. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "sdl")
 
     @sdl.setter
-    def sdl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sdl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sdl", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`.
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of Cloud Firewall Instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="userStatus")
-    def user_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user status of Cloud Firewall Instance.
         """
         return pulumi.get(self, "user_status")
 
     @user_status.setter
-    def user_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_status", value)
 
 
@@ -488,17 +488,17 @@ class InstanceV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cfw_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
+                 cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Instance V2 resource.
@@ -610,17 +610,17 @@ class InstanceV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cfw_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
+                 cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -664,22 +664,22 @@ class InstanceV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cfw_log: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            product_code: Optional[pulumi.Input[_builtins.str]] = None,
-            product_type: Optional[pulumi.Input[_builtins.str]] = None,
-            release_time: Optional[pulumi.Input[_builtins.str]] = None,
-            renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-            sdl: Optional[pulumi.Input[_builtins.bool]] = None,
-            spec: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            user_status: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceV2':
+            cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            product_code: pulumi.Input[Optional[_builtins.str]] = None,
+            product_type: pulumi.Input[Optional[_builtins.str]] = None,
+            release_time: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            sdl: pulumi.Input[Optional[_builtins.bool]] = None,
+            spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            user_status: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceV2':
         """
         Get an existing InstanceV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

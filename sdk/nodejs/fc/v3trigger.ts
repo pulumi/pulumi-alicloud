@@ -264,59 +264,59 @@ export interface V3TriggerState {
     /**
      * Creation time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the trigger
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Function Name
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.234.0) HTTP trigger information
      */
-    httpTrigger?: pulumi.Input<inputs.fc.V3TriggerHttpTrigger>;
+    httpTrigger?: pulumi.Input<inputs.fc.V3TriggerHttpTrigger | undefined>;
     /**
      * The role required by the event source (such as OSS) to call the function.
      */
-    invocationRole?: pulumi.Input<string>;
+    invocationRole?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.234.0) The last modified time of the trigger
      */
-    lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string | undefined>;
     /**
      * The version or alias of the function
      */
-    qualifier?: pulumi.Input<string>;
+    qualifier?: pulumi.Input<string | undefined>;
     /**
      * Trigger Event source ARN
      */
-    sourceArn?: pulumi.Input<string>;
+    sourceArn?: pulumi.Input<string | undefined>;
     /**
      * The state of the trigger
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.234.0) Resource identity of the function
      */
-    targetArn?: pulumi.Input<string>;
+    targetArn?: pulumi.Input<string | undefined>;
     /**
      * Trigger configuration. The configuration varies for different types of triggers.
      */
-    triggerConfig?: pulumi.Input<string>;
+    triggerConfig?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.234.0) Trigger ID
      */
-    triggerId?: pulumi.Input<string>;
+    triggerId?: pulumi.Input<string | undefined>;
     /**
      * Trigger Name
      */
-    triggerName?: pulumi.Input<string>;
+    triggerName?: pulumi.Input<string | undefined>;
     /**
      * The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
      */
-    triggerType?: pulumi.Input<string>;
+    triggerType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -326,7 +326,7 @@ export interface V3TriggerArgs {
     /**
      * Description of the trigger
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Function Name
      */
@@ -334,7 +334,7 @@ export interface V3TriggerArgs {
     /**
      * The role required by the event source (such as OSS) to call the function.
      */
-    invocationRole?: pulumi.Input<string>;
+    invocationRole?: pulumi.Input<string | undefined>;
     /**
      * The version or alias of the function
      */
@@ -342,15 +342,15 @@ export interface V3TriggerArgs {
     /**
      * Trigger Event source ARN
      */
-    sourceArn?: pulumi.Input<string>;
+    sourceArn?: pulumi.Input<string | undefined>;
     /**
      * Trigger configuration. The configuration varies for different types of triggers.
      */
-    triggerConfig?: pulumi.Input<string>;
+    triggerConfig?: pulumi.Input<string | undefined>;
     /**
      * Trigger Name
      */
-    triggerName?: pulumi.Input<string>;
+    triggerName?: pulumi.Input<string | undefined>;
     /**
      * The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
      */

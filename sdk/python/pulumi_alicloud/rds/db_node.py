@@ -73,12 +73,12 @@ class DbNodeArgs:
 @pulumi.input_type
 class _DbNodeState:
     def __init__(__self__, *,
-                 class_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 class_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbNode resources.
 
@@ -104,74 +104,74 @@ class _DbNodeState:
 
     @_builtins.property
     @pulumi.getter(name="classCode")
-    def class_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def class_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification information of the node.
         """
         return pulumi.get(self, "class_code")
 
     @class_code.setter
-    def class_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def class_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "class_code", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of instance that can run database.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the node.
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeRegionId")
-    def node_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the node.
         """
         return pulumi.get(self, "node_region_id")
 
     @node_region_id.setter
-    def node_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeRole")
-    def node_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of node.
         """
         return pulumi.get(self, "node_role")
 
     @node_role.setter
-    def node_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_role", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the node.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -181,9 +181,9 @@ class DbNode(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 class_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 class_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provide RDS cluster instance to increase node resources, see [What is RDS DB Node](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdbnodes).
@@ -226,7 +226,7 @@ class DbNode(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name=name,
             vswitch_id=default_switch.id,
@@ -305,7 +305,7 @@ class DbNode(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name=name,
             vswitch_id=default_switch.id,
@@ -346,9 +346,9 @@ class DbNode(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 class_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 class_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -380,12 +380,12 @@ class DbNode(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            class_code: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            node_id: Optional[pulumi.Input[_builtins.str]] = None,
-            node_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            node_role: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DbNode':
+            class_code: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_role: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DbNode':
         """
         Get an existing DbNode resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

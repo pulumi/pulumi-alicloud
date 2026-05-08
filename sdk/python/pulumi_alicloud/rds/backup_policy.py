@@ -20,31 +20,31 @@ __all__ = ['BackupPolicyArgs', 'BackupPolicy']
 class BackupPolicyArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
-                 archive_backup_keep_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 archive_backup_keep_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 archive_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 compress_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_backup_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_increment_data_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 high_space_usage_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_log_retention_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 local_log_retention_space: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_backup_local_retention_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 released_keep_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period: Optional[pulumi.Input[_builtins.int]] = None):
+                 archive_backup_keep_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 archive_backup_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 archive_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 compress_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_increment_data_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 high_space_usage_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_log_retention_space: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_backup_local_retention_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 preferred_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 released_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
 
@@ -180,43 +180,43 @@ class BackupPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="archiveBackupKeepCount")
-    def archive_backup_keep_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def archive_backup_keep_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
         """
         return pulumi.get(self, "archive_backup_keep_count")
 
     @archive_backup_keep_count.setter
-    def archive_backup_keep_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def archive_backup_keep_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "archive_backup_keep_count", value)
 
     @_builtins.property
     @pulumi.getter(name="archiveBackupKeepPolicy")
-    def archive_backup_keep_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def archive_backup_keep_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         """
         return pulumi.get(self, "archive_backup_keep_policy")
 
     @archive_backup_keep_policy.setter
-    def archive_backup_keep_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def archive_backup_keep_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "archive_backup_keep_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="archiveBackupRetentionPeriod")
-    def archive_backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def archive_backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
         """
         return pulumi.get(self, "archive_backup_retention_period")
 
     @archive_backup_retention_period.setter
-    def archive_backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def archive_backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "archive_backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupInterval")
-    def backup_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The frequency at which you want to perform a snapshot backup on the instance. Valid values:
         - -1: No backup frequencies are specified.
@@ -231,12 +231,12 @@ class BackupPolicyArgs:
         return pulumi.get(self, "backup_interval")
 
     @backup_interval.setter
-    def backup_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="backupMethod")
-    def backup_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup method of the instance. Valid values:
         - Physical: physical backup
@@ -248,25 +248,25 @@ class BackupPolicyArgs:
         return pulumi.get(self, "backup_method")
 
     @backup_method.setter
-    def backup_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_method", value)
 
     @_builtins.property
     @pulumi.getter(name="backupPeriods")
     @_utilities.deprecated("""Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""")
-    def backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         """
         return pulumi.get(self, "backup_periods")
 
     @backup_periods.setter
-    def backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backup_periods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backup_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="backupPriority")
-    def backup_priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether the backup settings of a secondary instance are configured. Valid values:
         - 1: secondary instance preferred
@@ -276,37 +276,37 @@ class BackupPolicyArgs:
         return pulumi.get(self, "backup_priority")
 
     @backup_priority.setter
-    def backup_priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_priority", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         """
         return pulumi.get(self, "backup_retention_period")
 
     @backup_retention_period.setter
-    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupTime")
     @_utilities.deprecated("""Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""")
-    def backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         """
         return pulumi.get(self, "backup_time")
 
     @backup_time.setter
-    def backup_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
         > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
@@ -314,36 +314,36 @@ class BackupPolicyArgs:
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="compressType")
-    def compress_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compress_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The compress type of instance policy. Valid values are `1`, `4`, `8`.
         """
         return pulumi.get(self, "compress_type")
 
     @compress_type.setter
-    def compress_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compress_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compress_type", value)
 
     @_builtins.property
     @pulumi.getter(name="enableBackupLog")
-    def enable_backup_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_backup_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
         """
         return pulumi.get(self, "enable_backup_log")
 
     @enable_backup_log.setter
-    def enable_backup_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_backup_log(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_backup_log", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIncrementDataBackup")
-    def enable_increment_data_backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_increment_data_backup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable incremental backup. Valid values:
         - false (default): disables the feature.
@@ -353,73 +353,73 @@ class BackupPolicyArgs:
         return pulumi.get(self, "enable_increment_data_backup")
 
     @enable_increment_data_backup.setter
-    def enable_increment_data_backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_increment_data_backup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_increment_data_backup", value)
 
     @_builtins.property
     @pulumi.getter(name="highSpaceUsageProtection")
-    def high_space_usage_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def high_space_usage_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         """
         return pulumi.get(self, "high_space_usage_protection")
 
     @high_space_usage_protection.setter
-    def high_space_usage_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def high_space_usage_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "high_space_usage_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="localLogRetentionHours")
-    def local_log_retention_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def local_log_retention_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         """
         return pulumi.get(self, "local_log_retention_hours")
 
     @local_log_retention_hours.setter
-    def local_log_retention_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def local_log_retention_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "local_log_retention_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="localLogRetentionSpace")
-    def local_log_retention_space(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def local_log_retention_space(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
         """
         return pulumi.get(self, "local_log_retention_space")
 
     @local_log_retention_space.setter
-    def local_log_retention_space(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def local_log_retention_space(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "local_log_retention_space", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackup")
     @_utilities.deprecated("""Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""")
-    def log_backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_backup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         """
         return pulumi.get(self, "log_backup")
 
     @log_backup.setter
-    def log_backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_backup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_backup", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupFrequency")
-    def log_backup_frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_backup_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
         """
         return pulumi.get(self, "log_backup_frequency")
 
     @log_backup_frequency.setter
-    def log_backup_frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_backup_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_backup_frequency", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupLocalRetentionNumber")
-    def log_backup_local_retention_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_backup_local_retention_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of binary log files that you want to retain on the instance. Default value: 60. Valid values: 6 to 100.
         ->**NOTE:** This parameter takes effect only when you set the BackupPolicyMode parameter to LogBackupPolicy. If the instance runs MySQL, you can set this parameter to -1. The value -1 specifies that an unlimited number of binary log files can be retained on the instance.
@@ -427,61 +427,61 @@ class BackupPolicyArgs:
         return pulumi.get(self, "log_backup_local_retention_number")
 
     @log_backup_local_retention_number.setter
-    def log_backup_local_retention_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_backup_local_retention_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_backup_local_retention_number", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupRetentionPeriod")
-    def log_backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
         """
         return pulumi.get(self, "log_backup_retention_period")
 
     @log_backup_retention_period.setter
-    def log_backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="logRetentionPeriod")
     @_utilities.deprecated("""Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""")
-    def log_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         """
         return pulumi.get(self, "log_retention_period")
 
     @log_retention_period.setter
-    def log_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredBackupPeriods")
-    def preferred_backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def preferred_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         """
         return pulumi.get(self, "preferred_backup_periods")
 
     @preferred_backup_periods.setter
-    def preferred_backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def preferred_backup_periods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preferred_backup_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredBackupTime")
-    def preferred_backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_backup_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
         return pulumi.get(self, "preferred_backup_time")
 
     @preferred_backup_time.setter
-    def preferred_backup_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_backup_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_backup_time", value)
 
     @_builtins.property
     @pulumi.getter(name="releasedKeepPolicy")
-    def released_keep_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def released_keep_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
         * **None**: No archived backup files are retained.
@@ -491,52 +491,52 @@ class BackupPolicyArgs:
         return pulumi.get(self, "released_keep_policy")
 
     @released_keep_policy.setter
-    def released_keep_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def released_keep_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "released_keep_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionPeriod")
     @_utilities.deprecated("""Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""")
-    def retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
-    def retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_period", value)
 
 
 @pulumi.input_type
 class _BackupPolicyState:
     def __init__(__self__, *,
-                 archive_backup_keep_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 archive_backup_keep_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 archive_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 compress_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_backup_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_increment_data_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 high_space_usage_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_log_retention_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 local_log_retention_space: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_backup_local_retention_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 released_keep_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period: Optional[pulumi.Input[_builtins.int]] = None):
+                 archive_backup_keep_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 archive_backup_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 archive_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 compress_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_increment_data_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 high_space_usage_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_log_retention_space: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_backup_local_retention_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 preferred_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 released_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
 
@@ -661,43 +661,43 @@ class _BackupPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="archiveBackupKeepCount")
-    def archive_backup_keep_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def archive_backup_keep_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
         """
         return pulumi.get(self, "archive_backup_keep_count")
 
     @archive_backup_keep_count.setter
-    def archive_backup_keep_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def archive_backup_keep_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "archive_backup_keep_count", value)
 
     @_builtins.property
     @pulumi.getter(name="archiveBackupKeepPolicy")
-    def archive_backup_keep_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def archive_backup_keep_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `ByWeek`, `KeepAll`.
         """
         return pulumi.get(self, "archive_backup_keep_policy")
 
     @archive_backup_keep_policy.setter
-    def archive_backup_keep_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def archive_backup_keep_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "archive_backup_keep_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="archiveBackupRetentionPeriod")
-    def archive_backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def archive_backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
         """
         return pulumi.get(self, "archive_backup_retention_period")
 
     @archive_backup_retention_period.setter
-    def archive_backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def archive_backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "archive_backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupInterval")
-    def backup_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The frequency at which you want to perform a snapshot backup on the instance. Valid values:
         - -1: No backup frequencies are specified.
@@ -712,12 +712,12 @@ class _BackupPolicyState:
         return pulumi.get(self, "backup_interval")
 
     @backup_interval.setter
-    def backup_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="backupMethod")
-    def backup_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup method of the instance. Valid values:
         - Physical: physical backup
@@ -729,25 +729,25 @@ class _BackupPolicyState:
         return pulumi.get(self, "backup_method")
 
     @backup_method.setter
-    def backup_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_method", value)
 
     @_builtins.property
     @pulumi.getter(name="backupPeriods")
     @_utilities.deprecated("""Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""")
-    def backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         """
         return pulumi.get(self, "backup_periods")
 
     @backup_periods.setter
-    def backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backup_periods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backup_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="backupPriority")
-    def backup_priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether the backup settings of a secondary instance are configured. Valid values:
         - 1: secondary instance preferred
@@ -757,37 +757,37 @@ class _BackupPolicyState:
         return pulumi.get(self, "backup_priority")
 
     @backup_priority.setter
-    def backup_priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_priority", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         """
         return pulumi.get(self, "backup_retention_period")
 
     @backup_retention_period.setter
-    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupTime")
     @_utilities.deprecated("""Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""")
-    def backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         """
         return pulumi.get(self, "backup_time")
 
     @backup_time.setter
-    def backup_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
         > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
@@ -795,36 +795,36 @@ class _BackupPolicyState:
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="compressType")
-    def compress_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compress_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The compress type of instance policy. Valid values are `1`, `4`, `8`.
         """
         return pulumi.get(self, "compress_type")
 
     @compress_type.setter
-    def compress_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compress_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compress_type", value)
 
     @_builtins.property
     @pulumi.getter(name="enableBackupLog")
-    def enable_backup_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_backup_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
         """
         return pulumi.get(self, "enable_backup_log")
 
     @enable_backup_log.setter
-    def enable_backup_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_backup_log(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_backup_log", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIncrementDataBackup")
-    def enable_increment_data_backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_increment_data_backup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable incremental backup. Valid values:
         - false (default): disables the feature.
@@ -834,85 +834,85 @@ class _BackupPolicyState:
         return pulumi.get(self, "enable_increment_data_backup")
 
     @enable_increment_data_backup.setter
-    def enable_increment_data_backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_increment_data_backup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_increment_data_backup", value)
 
     @_builtins.property
     @pulumi.getter(name="highSpaceUsageProtection")
-    def high_space_usage_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def high_space_usage_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         """
         return pulumi.get(self, "high_space_usage_protection")
 
     @high_space_usage_protection.setter
-    def high_space_usage_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def high_space_usage_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "high_space_usage_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of instance that can run database.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="localLogRetentionHours")
-    def local_log_retention_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def local_log_retention_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         """
         return pulumi.get(self, "local_log_retention_hours")
 
     @local_log_retention_hours.setter
-    def local_log_retention_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def local_log_retention_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "local_log_retention_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="localLogRetentionSpace")
-    def local_log_retention_space(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def local_log_retention_space(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
         """
         return pulumi.get(self, "local_log_retention_space")
 
     @local_log_retention_space.setter
-    def local_log_retention_space(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def local_log_retention_space(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "local_log_retention_space", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackup")
     @_utilities.deprecated("""Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""")
-    def log_backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_backup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         """
         return pulumi.get(self, "log_backup")
 
     @log_backup.setter
-    def log_backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_backup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_backup", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupFrequency")
-    def log_backup_frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_backup_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
         """
         return pulumi.get(self, "log_backup_frequency")
 
     @log_backup_frequency.setter
-    def log_backup_frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_backup_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_backup_frequency", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupLocalRetentionNumber")
-    def log_backup_local_retention_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_backup_local_retention_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of binary log files that you want to retain on the instance. Default value: 60. Valid values: 6 to 100.
         ->**NOTE:** This parameter takes effect only when you set the BackupPolicyMode parameter to LogBackupPolicy. If the instance runs MySQL, you can set this parameter to -1. The value -1 specifies that an unlimited number of binary log files can be retained on the instance.
@@ -920,61 +920,61 @@ class _BackupPolicyState:
         return pulumi.get(self, "log_backup_local_retention_number")
 
     @log_backup_local_retention_number.setter
-    def log_backup_local_retention_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_backup_local_retention_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_backup_local_retention_number", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupRetentionPeriod")
-    def log_backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
         """
         return pulumi.get(self, "log_backup_retention_period")
 
     @log_backup_retention_period.setter
-    def log_backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="logRetentionPeriod")
     @_utilities.deprecated("""Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""")
-    def log_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         """
         return pulumi.get(self, "log_retention_period")
 
     @log_retention_period.setter
-    def log_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredBackupPeriods")
-    def preferred_backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def preferred_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         """
         return pulumi.get(self, "preferred_backup_periods")
 
     @preferred_backup_periods.setter
-    def preferred_backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def preferred_backup_periods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preferred_backup_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredBackupTime")
-    def preferred_backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_backup_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
         return pulumi.get(self, "preferred_backup_time")
 
     @preferred_backup_time.setter
-    def preferred_backup_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_backup_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_backup_time", value)
 
     @_builtins.property
     @pulumi.getter(name="releasedKeepPolicy")
-    def released_keep_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def released_keep_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
         * **None**: No archived backup files are retained.
@@ -984,20 +984,20 @@ class _BackupPolicyState:
         return pulumi.get(self, "released_keep_policy")
 
     @released_keep_policy.setter
-    def released_keep_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def released_keep_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "released_keep_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionPeriod")
     @_utilities.deprecated("""Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""")
-    def retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
-    def retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_period", value)
 
 
@@ -1007,32 +1007,32 @@ class BackupPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 archive_backup_keep_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 archive_backup_keep_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 archive_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 compress_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_backup_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_increment_data_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 high_space_usage_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_log_retention_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 local_log_retention_space: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_backup_local_retention_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 released_keep_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period: Optional[pulumi.Input[_builtins.int]] = None,
+                 archive_backup_keep_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 archive_backup_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 archive_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 compress_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_increment_data_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 high_space_usage_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_log_retention_space: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_backup_local_retention_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 preferred_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 released_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides an RDS instance backup policy resource and used to configure instance backup policy, see [What is DB Backup Policy](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-modifybackuppolicy).
@@ -1204,32 +1204,32 @@ class BackupPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 archive_backup_keep_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 archive_backup_keep_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 archive_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 compress_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_backup_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_increment_data_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 high_space_usage_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_log_retention_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 local_log_retention_space: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_backup_local_retention_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 released_keep_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period: Optional[pulumi.Input[_builtins.int]] = None,
+                 archive_backup_keep_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 archive_backup_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 archive_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 compress_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_increment_data_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 high_space_usage_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_log_retention_space: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_backup_local_retention_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 preferred_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 released_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1277,32 +1277,32 @@ class BackupPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            archive_backup_keep_count: Optional[pulumi.Input[_builtins.int]] = None,
-            archive_backup_keep_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            archive_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_method: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            backup_priority: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-            category: Optional[pulumi.Input[_builtins.str]] = None,
-            compress_type: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_backup_log: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_increment_data_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-            high_space_usage_protection: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            local_log_retention_hours: Optional[pulumi.Input[_builtins.int]] = None,
-            local_log_retention_space: Optional[pulumi.Input[_builtins.int]] = None,
-            log_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-            log_backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-            log_backup_local_retention_number: Optional[pulumi.Input[_builtins.int]] = None,
-            log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            log_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-            released_keep_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            retention_period: Optional[pulumi.Input[_builtins.int]] = None) -> 'BackupPolicy':
+            archive_backup_keep_count: pulumi.Input[Optional[_builtins.int]] = None,
+            archive_backup_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            archive_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backup_priority: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            compress_type: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_increment_data_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+            high_space_usage_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            local_log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
+            local_log_retention_space: pulumi.Input[Optional[_builtins.int]] = None,
+            log_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            log_backup_local_retention_number: pulumi.Input[Optional[_builtins.int]] = None,
+            log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            log_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            preferred_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+            released_keep_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_period: pulumi.Input[Optional[_builtins.int]] = None) -> 'BackupPolicy':
         """
         Get an existing BackupPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

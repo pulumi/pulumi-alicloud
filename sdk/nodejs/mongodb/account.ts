@@ -181,27 +181,27 @@ export interface AccountState {
      * - Start with Chinese and English letters.
      * - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
      */
-    accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string | undefined>;
     /**
      * Account Name
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Account Password
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * The account Comment Information type. Value:
      */
-    characterType?: pulumi.Input<string>;
+    characterType?: pulumi.Input<string | undefined>;
     /**
      * Instance Id
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Account Status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -214,7 +214,7 @@ export interface AccountArgs {
      * - Start with Chinese and English letters.
      * - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
      */
-    accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string | undefined>;
     /**
      * Account Name
      */
@@ -226,7 +226,7 @@ export interface AccountArgs {
     /**
      * The account Comment Information type. Value:
      */
-    characterType?: pulumi.Input<string>;
+    characterType?: pulumi.Input<string | undefined>;
     /**
      * Instance Id
      */

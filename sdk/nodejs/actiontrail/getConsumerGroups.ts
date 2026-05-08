@@ -118,11 +118,11 @@ export interface GetConsumerGroupsOutputArgs {
     /**
      * A regex string to filter results by the consumer group id.
      */
-    consumerIdRegex?: pulumi.Input<string>;
+    consumerIdRegex?: pulumi.Input<string | undefined>;
     /**
      * A list of ALIKAFKA Consumer Groups IDs, It is formatted to `<instance_id>:<consumer_id>`.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the ALIKAFKA Instance that owns the consumer groups.
      */
@@ -130,5 +130,5 @@ export interface GetConsumerGroupsOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

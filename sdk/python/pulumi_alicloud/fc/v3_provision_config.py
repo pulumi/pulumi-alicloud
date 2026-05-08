@@ -22,12 +22,12 @@ __all__ = ['V3ProvisionConfigArgs', 'V3ProvisionConfig']
 class V3ProvisionConfigArgs:
     def __init__(__self__, *,
                  function_name: pulumi.Input[_builtins.str],
-                 always_allocate_cpu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 always_allocate_gpu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_actions: Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigScheduledActionArgs']]]] = None,
-                 target: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_tracking_policies: Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigTargetTrackingPolicyArgs']]]] = None):
+                 always_allocate_cpu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 always_allocate_gpu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_actions: pulumi.Input[Optional[Sequence[pulumi.Input['V3ProvisionConfigScheduledActionArgs']]]] = None,
+                 target: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_tracking_policies: pulumi.Input[Optional[Sequence[pulumi.Input['V3ProvisionConfigTargetTrackingPolicyArgs']]]] = None):
         """
         The set of arguments for constructing a V3ProvisionConfig resource.
 
@@ -67,90 +67,90 @@ class V3ProvisionConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="alwaysAllocateCpu")
-    def always_allocate_cpu(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def always_allocate_cpu(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the CPU is always allocated. The default value is true.
         """
         return pulumi.get(self, "always_allocate_cpu")
 
     @always_allocate_cpu.setter
-    def always_allocate_cpu(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def always_allocate_cpu(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "always_allocate_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="alwaysAllocateGpu")
-    def always_allocate_gpu(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def always_allocate_gpu(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to always assign GPU to function instance
         """
         return pulumi.get(self, "always_allocate_gpu")
 
     @always_allocate_gpu.setter
-    def always_allocate_gpu(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def always_allocate_gpu(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "always_allocate_gpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def qualifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qualifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The function alias or LATEST.
         """
         return pulumi.get(self, "qualifier")
 
     @qualifier.setter
-    def qualifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qualifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qualifier", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledActions")
-    def scheduled_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigScheduledActionArgs']]]]:
+    def scheduled_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V3ProvisionConfigScheduledActionArgs']]]]:
         """
         Timing policy configuration See `scheduled_actions` below.
         """
         return pulumi.get(self, "scheduled_actions")
 
     @scheduled_actions.setter
-    def scheduled_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigScheduledActionArgs']]]]):
+    def scheduled_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V3ProvisionConfigScheduledActionArgs']]]]):
         pulumi.set(self, "scheduled_actions", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of reserved target resources. The value range is [0,10000].
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter(name="targetTrackingPolicies")
-    def target_tracking_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigTargetTrackingPolicyArgs']]]]:
+    def target_tracking_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V3ProvisionConfigTargetTrackingPolicyArgs']]]]:
         """
         Metric tracking scaling policy configuration See `target_tracking_policies` below.
         """
         return pulumi.get(self, "target_tracking_policies")
 
     @target_tracking_policies.setter
-    def target_tracking_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigTargetTrackingPolicyArgs']]]]):
+    def target_tracking_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V3ProvisionConfigTargetTrackingPolicyArgs']]]]):
         pulumi.set(self, "target_tracking_policies", value)
 
 
 @pulumi.input_type
 class _V3ProvisionConfigState:
     def __init__(__self__, *,
-                 always_allocate_cpu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 always_allocate_gpu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 current: Optional[pulumi.Input[_builtins.int]] = None,
-                 current_error: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_actions: Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigScheduledActionArgs']]]] = None,
-                 target: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_tracking_policies: Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigTargetTrackingPolicyArgs']]]] = None):
+                 always_allocate_cpu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 always_allocate_gpu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 current: pulumi.Input[Optional[_builtins.int]] = None,
+                 current_error: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_actions: pulumi.Input[Optional[Sequence[pulumi.Input['V3ProvisionConfigScheduledActionArgs']]]] = None,
+                 target: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_tracking_policies: pulumi.Input[Optional[Sequence[pulumi.Input['V3ProvisionConfigTargetTrackingPolicyArgs']]]] = None):
         """
         Input properties used for looking up and filtering V3ProvisionConfig resources.
 
@@ -188,122 +188,122 @@ class _V3ProvisionConfigState:
 
     @_builtins.property
     @pulumi.getter(name="alwaysAllocateCpu")
-    def always_allocate_cpu(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def always_allocate_cpu(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the CPU is always allocated. The default value is true.
         """
         return pulumi.get(self, "always_allocate_cpu")
 
     @always_allocate_cpu.setter
-    def always_allocate_cpu(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def always_allocate_cpu(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "always_allocate_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="alwaysAllocateGpu")
-    def always_allocate_gpu(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def always_allocate_gpu(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to always assign GPU to function instance
         """
         return pulumi.get(self, "always_allocate_gpu")
 
     @always_allocate_gpu.setter
-    def always_allocate_gpu(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def always_allocate_gpu(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "always_allocate_gpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def current(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def current(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.234.0) Number of actual resources
         """
         return pulumi.get(self, "current")
 
     @current.setter
-    def current(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def current(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "current", value)
 
     @_builtins.property
     @pulumi.getter(name="currentError")
-    def current_error(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def current_error(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.234.0) Error message when a Reserved Instance creation fails
         """
         return pulumi.get(self, "current_error")
 
     @current_error.setter
-    def current_error(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def current_error(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "current_error", value)
 
     @_builtins.property
     @pulumi.getter(name="functionArn")
-    def function_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.234.0) Resource Description of the function
         """
         return pulumi.get(self, "function_arn")
 
     @function_arn.setter
-    def function_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
         """
         return pulumi.get(self, "function_name")
 
     @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def qualifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qualifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The function alias or LATEST.
         """
         return pulumi.get(self, "qualifier")
 
     @qualifier.setter
-    def qualifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qualifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qualifier", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledActions")
-    def scheduled_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigScheduledActionArgs']]]]:
+    def scheduled_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V3ProvisionConfigScheduledActionArgs']]]]:
         """
         Timing policy configuration See `scheduled_actions` below.
         """
         return pulumi.get(self, "scheduled_actions")
 
     @scheduled_actions.setter
-    def scheduled_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigScheduledActionArgs']]]]):
+    def scheduled_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V3ProvisionConfigScheduledActionArgs']]]]):
         pulumi.set(self, "scheduled_actions", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of reserved target resources. The value range is [0,10000].
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter(name="targetTrackingPolicies")
-    def target_tracking_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigTargetTrackingPolicyArgs']]]]:
+    def target_tracking_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V3ProvisionConfigTargetTrackingPolicyArgs']]]]:
         """
         Metric tracking scaling policy configuration See `target_tracking_policies` below.
         """
         return pulumi.get(self, "target_tracking_policies")
 
     @target_tracking_policies.setter
-    def target_tracking_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigTargetTrackingPolicyArgs']]]]):
+    def target_tracking_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V3ProvisionConfigTargetTrackingPolicyArgs']]]]):
         pulumi.set(self, "target_tracking_policies", value)
 
 
@@ -313,13 +313,13 @@ class V3ProvisionConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 always_allocate_cpu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 always_allocate_gpu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict']]]]] = None,
-                 target: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_tracking_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict']]]]] = None,
+                 always_allocate_cpu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 always_allocate_gpu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict']]]]] = None,
+                 target: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_tracking_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a FCV3 Provision Config resource.
@@ -386,11 +386,11 @@ class V3ProvisionConfig(pulumi.CustomResource):
                     "end_time": "2035-10-10T10:10:10Z",
                     "min_capacity": 0,
                     "max_capacity": 1,
-                    "metric_target": 1,
+                    "metric_target": float(1),
                     "metric_type": "ProvisionedConcurrencyUtilization",
                 },
                 {
-                    "metric_target": 1,
+                    "metric_target": float(1),
                     "metric_type": "ProvisionedConcurrencyUtilization",
                     "name": "t2",
                     "start_time": "2030-10-10T10:10:10Z",
@@ -406,7 +406,7 @@ class V3ProvisionConfig(pulumi.CustomResource):
                     "end_time": "2035-10-10T10:10:10",
                     "min_capacity": 0,
                     "max_capacity": 1,
-                    "metric_target": 1,
+                    "metric_target": float(1),
                 },
             ],
             scheduled_actions=[
@@ -531,11 +531,11 @@ class V3ProvisionConfig(pulumi.CustomResource):
                     "end_time": "2035-10-10T10:10:10Z",
                     "min_capacity": 0,
                     "max_capacity": 1,
-                    "metric_target": 1,
+                    "metric_target": float(1),
                     "metric_type": "ProvisionedConcurrencyUtilization",
                 },
                 {
-                    "metric_target": 1,
+                    "metric_target": float(1),
                     "metric_type": "ProvisionedConcurrencyUtilization",
                     "name": "t2",
                     "start_time": "2030-10-10T10:10:10Z",
@@ -551,7 +551,7 @@ class V3ProvisionConfig(pulumi.CustomResource):
                     "end_time": "2035-10-10T10:10:10",
                     "min_capacity": 0,
                     "max_capacity": 1,
-                    "metric_target": 1,
+                    "metric_target": float(1),
                 },
             ],
             scheduled_actions=[
@@ -610,13 +610,13 @@ class V3ProvisionConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 always_allocate_cpu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 always_allocate_gpu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict']]]]] = None,
-                 target: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_tracking_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict']]]]] = None,
+                 always_allocate_cpu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 always_allocate_gpu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict']]]]] = None,
+                 target: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_tracking_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -648,16 +648,16 @@ class V3ProvisionConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            always_allocate_cpu: Optional[pulumi.Input[_builtins.bool]] = None,
-            always_allocate_gpu: Optional[pulumi.Input[_builtins.bool]] = None,
-            current: Optional[pulumi.Input[_builtins.int]] = None,
-            current_error: Optional[pulumi.Input[_builtins.str]] = None,
-            function_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            function_name: Optional[pulumi.Input[_builtins.str]] = None,
-            qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduled_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict']]]]] = None,
-            target: Optional[pulumi.Input[_builtins.int]] = None,
-            target_tracking_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict']]]]] = None) -> 'V3ProvisionConfig':
+            always_allocate_cpu: pulumi.Input[Optional[_builtins.bool]] = None,
+            always_allocate_gpu: pulumi.Input[Optional[_builtins.bool]] = None,
+            current: pulumi.Input[Optional[_builtins.int]] = None,
+            current_error: pulumi.Input[Optional[_builtins.str]] = None,
+            function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict']]]]] = None,
+            target: pulumi.Input[Optional[_builtins.int]] = None,
+            target_tracking_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['V3ProvisionConfigTargetTrackingPolicyArgs', 'V3ProvisionConfigTargetTrackingPolicyArgsDict']]]]] = None) -> 'V3ProvisionConfig':
         """
         Get an existing V3ProvisionConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

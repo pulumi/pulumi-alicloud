@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *     engineVersion: "8.0",
  *     dbInstanceStorageType: "cloud_essd",
  *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceStorage: output(defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *     vswitchId: vswitchId,
  *     instanceName: name,
  * });
@@ -411,155 +411,155 @@ export interface BackupPlanState {
     /**
      * The ID of the backup gateway. This parameter is required when the `sourceEndpointInstanceType` is `Agent`.
      */
-    backupGatewayId?: pulumi.Input<string>;
+    backupGatewayId?: pulumi.Input<string | undefined>;
     /**
      * The backup log interval seconds.
      */
-    backupLogIntervalSeconds?: pulumi.Input<number>;
+    backupLogIntervalSeconds?: pulumi.Input<number | undefined>;
     /**
      * Backup method. Valid values: `duplication`, `logical`, `physical`.
      */
-    backupMethod?: pulumi.Input<string>;
+    backupMethod?: pulumi.Input<string | undefined>;
     /**
      * The backup object.
      */
-    backupObjects?: pulumi.Input<string>;
+    backupObjects?: pulumi.Input<string | undefined>;
     /**
      * Full backup cycle, Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. supports the selection of multiple fetch values, separated by English commas (,).
      */
-    backupPeriod?: pulumi.Input<string>;
+    backupPeriod?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    backupPlanName?: pulumi.Input<string>;
+    backupPlanName?: pulumi.Input<string | undefined>;
     /**
      * The backup rate limit.
      */
-    backupRateLimit?: pulumi.Input<string>;
+    backupRateLimit?: pulumi.Input<string | undefined>;
     /**
      * The retention time of backup data. Valid values: 0 to 1825. Default value: 730 days.
      */
-    backupRetentionPeriod?: pulumi.Input<number>;
+    backupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The backup speed limit.
      */
-    backupSpeedLimit?: pulumi.Input<string>;
+    backupSpeedLimit?: pulumi.Input<string | undefined>;
     /**
      * The start time of full Backup. The format is `<I> HH:mm</I>` Z(UTC time).
      */
-    backupStartTime?: pulumi.Input<string>;
+    backupStartTime?: pulumi.Input<string | undefined>;
     /**
      * Built-in storage type, Valid values: `system`.
      */
-    backupStorageType?: pulumi.Input<string>;
+    backupStorageType?: pulumi.Input<string | undefined>;
     /**
      * The backup strategy type. Valid values: `simple`, `manual`.
      */
-    backupStrategyType?: pulumi.Input<string>;
+    backupStrategyType?: pulumi.Input<string | undefined>;
     /**
      * The UID that is backed up across Alibaba cloud accounts.
      */
-    crossAliyunId?: pulumi.Input<string>;
+    crossAliyunId?: pulumi.Input<string | undefined>;
     /**
      * The name of the RAM role that is backed up across Alibaba cloud accounts.
      */
-    crossRoleName?: pulumi.Input<string>;
+    crossRoleName?: pulumi.Input<string | undefined>;
     /**
      * The database region.
      */
-    databaseRegion?: pulumi.Input<string>;
+    databaseRegion?: pulumi.Input<string | undefined>;
     /**
      * Database type. Valid values: `DRDS`, `FIle`, `MSSQL`, `MariaDB`, `MongoDB`, `MySQL`, `Oracle`, `PPAS`, `PostgreSQL`, `Redis`.
      */
-    databaseType?: pulumi.Input<string>;
+    databaseType?: pulumi.Input<string | undefined>;
     /**
      * The storage time for conversion to archive cold standby is 365 days by default.
      */
-    duplicationArchivePeriod?: pulumi.Input<number>;
+    duplicationArchivePeriod?: pulumi.Input<number | undefined>;
     /**
      * The storage time is converted to low-frequency access. The default time is 180 days.
      */
-    duplicationInfrequentAccessPeriod?: pulumi.Input<number>;
+    duplicationInfrequentAccessPeriod?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable incremental log Backup.
      */
-    enableBackupLog?: pulumi.Input<boolean>;
+    enableBackupLog?: pulumi.Input<boolean | undefined>;
     /**
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`.
      */
-    instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string | undefined>;
     /**
      * The instance type. Valid values: `RDS`, `PolarDB`, `DDS`, `Kvstore`, `Other`.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The OSS Bucket name. The system automatically generates a new name by default.
      */
-    ossBucketName?: pulumi.Input<string>;
+    ossBucketName?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Specify that the prepaid instance is of the package year or monthly type. Valid values: `Month`, `Year`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the database. This parameter is required when the `databaseType` is `PostgreSQL` or `MongoDB`.
      */
-    sourceEndpointDatabaseName?: pulumi.Input<string>;
+    sourceEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the database instance. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, or `Express`.
      */
-    sourceEndpointInstanceId?: pulumi.Input<string>;
+    sourceEndpointInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The location of the database. Valid values: `RDS`, `ECS`, `Express`, `Agent`, `DDS`, `Other`.
      */
-    sourceEndpointInstanceType?: pulumi.Input<string>;
+    sourceEndpointInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The source endpoint ip.
      */
-    sourceEndpointIp?: pulumi.Input<string>;
+    sourceEndpointIp?: pulumi.Input<string | undefined>;
     /**
      * Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
      */
-    sourceEndpointOracleSid?: pulumi.Input<string>;
+    sourceEndpointOracleSid?: pulumi.Input<string | undefined>;
     /**
      * The source endpoint password.  This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
      */
-    sourceEndpointPassword?: pulumi.Input<string>;
+    sourceEndpointPassword?: pulumi.Input<string | undefined>;
     /**
      * The source endpoint port.
      */
-    sourceEndpointPort?: pulumi.Input<number>;
+    sourceEndpointPort?: pulumi.Input<number | undefined>;
     /**
      * The region of the database. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
      */
-    sourceEndpointRegion?: pulumi.Input<string>;
+    sourceEndpointRegion?: pulumi.Input<string | undefined>;
     /**
      * Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
      */
-    sourceEndpointSid?: pulumi.Input<string>;
+    sourceEndpointSid?: pulumi.Input<string | undefined>;
     /**
      * The source endpoint username. This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
      */
-    sourceEndpointUserName?: pulumi.Input<string>;
+    sourceEndpointUserName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `pause`, `running`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The storage region.
      */
-    storageRegion?: pulumi.Input<string>;
+    storageRegion?: pulumi.Input<string | undefined>;
     /**
      * Specify purchase duration. When the parameter `period` is `Year`, the `usedTime` value is 1 to 9. When the parameter `period` is `Month`, the `usedTime` value is 1 to 11.
      */
-    usedTime?: pulumi.Input<number>;
+    usedTime?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -569,11 +569,11 @@ export interface BackupPlanArgs {
     /**
      * The ID of the backup gateway. This parameter is required when the `sourceEndpointInstanceType` is `Agent`.
      */
-    backupGatewayId?: pulumi.Input<string>;
+    backupGatewayId?: pulumi.Input<string | undefined>;
     /**
      * The backup log interval seconds.
      */
-    backupLogIntervalSeconds?: pulumi.Input<number>;
+    backupLogIntervalSeconds?: pulumi.Input<number | undefined>;
     /**
      * Backup method. Valid values: `duplication`, `logical`, `physical`.
      */
@@ -581,11 +581,11 @@ export interface BackupPlanArgs {
     /**
      * The backup object.
      */
-    backupObjects?: pulumi.Input<string>;
+    backupObjects?: pulumi.Input<string | undefined>;
     /**
      * Full backup cycle, Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. supports the selection of multiple fetch values, separated by English commas (,).
      */
-    backupPeriod?: pulumi.Input<string>;
+    backupPeriod?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
@@ -593,39 +593,39 @@ export interface BackupPlanArgs {
     /**
      * The backup rate limit.
      */
-    backupRateLimit?: pulumi.Input<string>;
+    backupRateLimit?: pulumi.Input<string | undefined>;
     /**
      * The retention time of backup data. Valid values: 0 to 1825. Default value: 730 days.
      */
-    backupRetentionPeriod?: pulumi.Input<number>;
+    backupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The backup speed limit.
      */
-    backupSpeedLimit?: pulumi.Input<string>;
+    backupSpeedLimit?: pulumi.Input<string | undefined>;
     /**
      * The start time of full Backup. The format is `<I> HH:mm</I>` Z(UTC time).
      */
-    backupStartTime?: pulumi.Input<string>;
+    backupStartTime?: pulumi.Input<string | undefined>;
     /**
      * Built-in storage type, Valid values: `system`.
      */
-    backupStorageType?: pulumi.Input<string>;
+    backupStorageType?: pulumi.Input<string | undefined>;
     /**
      * The backup strategy type. Valid values: `simple`, `manual`.
      */
-    backupStrategyType?: pulumi.Input<string>;
+    backupStrategyType?: pulumi.Input<string | undefined>;
     /**
      * The UID that is backed up across Alibaba cloud accounts.
      */
-    crossAliyunId?: pulumi.Input<string>;
+    crossAliyunId?: pulumi.Input<string | undefined>;
     /**
      * The name of the RAM role that is backed up across Alibaba cloud accounts.
      */
-    crossRoleName?: pulumi.Input<string>;
+    crossRoleName?: pulumi.Input<string | undefined>;
     /**
      * The database region.
      */
-    databaseRegion?: pulumi.Input<string>;
+    databaseRegion?: pulumi.Input<string | undefined>;
     /**
      * Database type. Valid values: `DRDS`, `FIle`, `MSSQL`, `MariaDB`, `MongoDB`, `MySQL`, `Oracle`, `PPAS`, `PostgreSQL`, `Redis`.
      */
@@ -633,15 +633,15 @@ export interface BackupPlanArgs {
     /**
      * The storage time for conversion to archive cold standby is 365 days by default.
      */
-    duplicationArchivePeriod?: pulumi.Input<number>;
+    duplicationArchivePeriod?: pulumi.Input<number | undefined>;
     /**
      * The storage time is converted to low-frequency access. The default time is 180 days.
      */
-    duplicationInfrequentAccessPeriod?: pulumi.Input<number>;
+    duplicationInfrequentAccessPeriod?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable incremental log Backup.
      */
-    enableBackupLog?: pulumi.Input<boolean>;
+    enableBackupLog?: pulumi.Input<boolean | undefined>;
     /**
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`.
      */
@@ -649,31 +649,31 @@ export interface BackupPlanArgs {
     /**
      * The instance type. Valid values: `RDS`, `PolarDB`, `DDS`, `Kvstore`, `Other`.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The OSS Bucket name. The system automatically generates a new name by default.
      */
-    ossBucketName?: pulumi.Input<string>;
+    ossBucketName?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Specify that the prepaid instance is of the package year or monthly type. Valid values: `Month`, `Year`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the database. This parameter is required when the `databaseType` is `PostgreSQL` or `MongoDB`.
      */
-    sourceEndpointDatabaseName?: pulumi.Input<string>;
+    sourceEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the database instance. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, or `Express`.
      */
-    sourceEndpointInstanceId?: pulumi.Input<string>;
+    sourceEndpointInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The location of the database. Valid values: `RDS`, `ECS`, `Express`, `Agent`, `DDS`, `Other`.
      */
@@ -681,41 +681,41 @@ export interface BackupPlanArgs {
     /**
      * The source endpoint ip.
      */
-    sourceEndpointIp?: pulumi.Input<string>;
+    sourceEndpointIp?: pulumi.Input<string | undefined>;
     /**
      * Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
      */
-    sourceEndpointOracleSid?: pulumi.Input<string>;
+    sourceEndpointOracleSid?: pulumi.Input<string | undefined>;
     /**
      * The source endpoint password.  This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
      */
-    sourceEndpointPassword?: pulumi.Input<string>;
+    sourceEndpointPassword?: pulumi.Input<string | undefined>;
     /**
      * The source endpoint port.
      */
-    sourceEndpointPort?: pulumi.Input<number>;
+    sourceEndpointPort?: pulumi.Input<number | undefined>;
     /**
      * The region of the database. This parameter is required when the `sourceEndpointInstanceType` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
      */
-    sourceEndpointRegion?: pulumi.Input<string>;
+    sourceEndpointRegion?: pulumi.Input<string | undefined>;
     /**
      * Oracle SID name. This parameter is required when the `databaseType` is `Oracle`.
      */
-    sourceEndpointSid?: pulumi.Input<string>;
+    sourceEndpointSid?: pulumi.Input<string | undefined>;
     /**
      * The source endpoint username. This parameter is not required when the `databaseType` is `Redis`, or when the `sourceEndpointInstanceType` is `Agent` and the `databaseType` is `MSSQL`. This parameter is required in other scenarios.
      */
-    sourceEndpointUserName?: pulumi.Input<string>;
+    sourceEndpointUserName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `pause`, `running`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The storage region.
      */
-    storageRegion?: pulumi.Input<string>;
+    storageRegion?: pulumi.Input<string | undefined>;
     /**
      * Specify purchase duration. When the parameter `period` is `Year`, the `usedTime` value is 1 to 9. When the parameter `period` is `Month`, the `usedTime` value is 1 to 11.
      */
-    usedTime?: pulumi.Input<number>;
+    usedTime?: pulumi.Input<number | undefined>;
 }

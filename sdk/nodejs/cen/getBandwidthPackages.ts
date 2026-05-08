@@ -133,25 +133,25 @@ export interface GetBandwidthPackagesOutputArgs {
     /**
      * Limit search to a list of specific CEN Bandwidth Package IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
      */
-    includeReservationData?: pulumi.Input<boolean>;
+    includeReservationData?: pulumi.Input<boolean | undefined>;
     /**
      * ID of a CEN instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter CEN Bandwidth Package by name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

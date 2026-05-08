@@ -20,8 +20,8 @@ __all__ = ['FolderArgs', 'Folder']
 class FolderArgs:
     def __init__(__self__, *,
                  folder_path: pulumi.Input[_builtins.str],
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None):
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_identifier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Folder resource.
 
@@ -48,33 +48,33 @@ class FolderArgs:
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectIdentifier")
-    def project_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "project_identifier")
 
     @project_identifier.setter
-    def project_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_identifier", value)
 
 
 @pulumi.input_type
 class _FolderState:
     def __init__(__self__, *,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None):
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_identifier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Folder resources.
 
@@ -92,44 +92,44 @@ class _FolderState:
 
     @_builtins.property
     @pulumi.getter(name="folderId")
-    def folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "folder_id")
 
     @folder_id.setter
-    def folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder_id", value)
 
     @_builtins.property
     @pulumi.getter(name="folderPath")
-    def folder_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
         """
         return pulumi.get(self, "folder_path")
 
     @folder_path.setter
-    def folder_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder_path", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectIdentifier")
-    def project_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "project_identifier")
 
     @project_identifier.setter
-    def project_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_identifier", value)
 
 
@@ -139,9 +139,9 @@ class Folder(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 folder_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 folder_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Data Works Folder resource.
@@ -231,9 +231,9 @@ class Folder(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 folder_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 folder_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -259,10 +259,10 @@ class Folder(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-            folder_path: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_identifier: Optional[pulumi.Input[_builtins.str]] = None) -> 'Folder':
+            folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            folder_path: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_identifier: pulumi.Input[Optional[_builtins.str]] = None) -> 'Folder':
         """
         Get an existing Folder resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

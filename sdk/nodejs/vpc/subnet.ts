@@ -116,23 +116,23 @@ export interface SubnetState {
     /**
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
-    availabilityZone?: pulumi.Input<string>;
-    cidrBlock?: pulumi.Input<string>;
-    createTime?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    enableIpv6?: pulumi.Input<boolean>;
-    ipv6CidrBlock?: pulumi.Input<string>;
-    ipv6CidrBlockMask?: pulumi.Input<number>;
-    isDefault?: pulumi.Input<boolean>;
+    availabilityZone?: pulumi.Input<string | undefined>;
+    cidrBlock?: pulumi.Input<string | undefined>;
+    createTime?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    enableIpv6?: pulumi.Input<boolean | undefined>;
+    ipv6CidrBlock?: pulumi.Input<string | undefined>;
+    ipv6CidrBlockMask?: pulumi.Input<number | undefined>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
-    name?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    vpcId?: pulumi.Input<string>;
-    vswitchName?: pulumi.Input<string>;
-    zoneId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    vpcId?: pulumi.Input<string | undefined>;
+    vswitchName?: pulumi.Input<string | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -142,18 +142,18 @@ export interface SubnetArgs {
     /**
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
-    availabilityZone?: pulumi.Input<string>;
-    cidrBlock?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    enableIpv6?: pulumi.Input<boolean>;
-    ipv6CidrBlockMask?: pulumi.Input<number>;
-    isDefault?: pulumi.Input<boolean>;
+    availabilityZone?: pulumi.Input<string | undefined>;
+    cidrBlock?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    enableIpv6?: pulumi.Input<boolean | undefined>;
+    ipv6CidrBlockMask?: pulumi.Input<number | undefined>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
-    name?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    vpcId?: pulumi.Input<string>;
-    vswitchName?: pulumi.Input<string>;
-    zoneId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    vpcId?: pulumi.Input<string | undefined>;
+    vswitchName?: pulumi.Input<string | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

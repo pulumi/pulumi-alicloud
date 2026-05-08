@@ -181,28 +181,28 @@ export interface PoolState {
      * - weight: Weighted. Each address can be assigned a different weight, allowing DNS responses to return addresses according to their weight ratios.
      * - source_nearest: Source proximity. This intelligent resolution feature allows GTM to return different addresses based on the geographic location of the DNS query source, enabling users to access the nearest available endpoint.
      */
-    addressLbStrategy?: pulumi.Input<string>;
+    addressLbStrategy?: pulumi.Input<string | undefined>;
     /**
      * The name of the address pool. Fuzzy search is supported for the entered address pool name.
      */
-    addressPoolName?: pulumi.Input<string>;
+    addressPoolName?: pulumi.Input<string | undefined>;
     /**
      * Address pool type:
      * - IPv4: Indicates that the service address to be resolved is an IPv4 address.
      * - IPv6: Indicates that the service address to be resolved is an IPv6 address.
      * - domain: Indicates that the service address to be resolved is a domain name.
      */
-    addressPoolType?: pulumi.Input<string>;
+    addressPoolType?: pulumi.Input<string | undefined>;
     /**
      * Creation time of the address pool.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Enable status of the address pool:
      * - enable: Enabled. The address pool participates in DNS resolution when its health check is normal.
      * - disable: Disabled. The address pool does not participate in DNS resolution regardless of its health check status.
      */
-    enableStatus?: pulumi.Input<string>;
+    enableStatus?: pulumi.Input<string | undefined>;
     /**
      * Conditions for determining the health status of the address pool:  
      * - any_ok: At least one address in the address pool is available.
@@ -211,17 +211,17 @@ export interface PoolState {
      * - p70_ok: At least 70% of the addresses in the address pool are available.
      * - all_ok: All addresses in the address pool are available.
      */
-    healthJudgement?: pulumi.Input<string>;
+    healthJudgement?: pulumi.Input<string | undefined>;
     /**
      * A remark for the address pool to help users distinguish its usage scenario.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
      * - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
      * - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
      */
-    sequenceLbStrategyMode?: pulumi.Input<string>;
+    sequenceLbStrategyMode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -235,7 +235,7 @@ export interface PoolArgs {
      * - weight: Weighted. Each address can be assigned a different weight, allowing DNS responses to return addresses according to their weight ratios.
      * - source_nearest: Source proximity. This intelligent resolution feature allows GTM to return different addresses based on the geographic location of the DNS query source, enabling users to access the nearest available endpoint.
      */
-    addressLbStrategy?: pulumi.Input<string>;
+    addressLbStrategy?: pulumi.Input<string | undefined>;
     /**
      * The name of the address pool. Fuzzy search is supported for the entered address pool name.
      */
@@ -265,11 +265,11 @@ export interface PoolArgs {
     /**
      * A remark for the address pool to help users distinguish its usage scenario.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
      * - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
      * - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
      */
-    sequenceLbStrategyMode?: pulumi.Input<string>;
+    sequenceLbStrategyMode?: pulumi.Input<string | undefined>;
 }

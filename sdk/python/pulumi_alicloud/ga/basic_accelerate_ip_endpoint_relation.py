@@ -73,10 +73,10 @@ class BasicAccelerateIpEndpointRelationArgs:
 @pulumi.input_type
 class _BasicAccelerateIpEndpointRelationState:
     def __init__(__self__, *,
-                 accelerate_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerate_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BasicAccelerateIpEndpointRelation resources.
 
@@ -96,50 +96,50 @@ class _BasicAccelerateIpEndpointRelationState:
 
     @_builtins.property
     @pulumi.getter(name="accelerateIpId")
-    def accelerate_ip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerate_ip_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Basic Accelerate IP.
         """
         return pulumi.get(self, "accelerate_ip_id")
 
     @accelerate_ip_id.setter
-    def accelerate_ip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerate_ip_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerate_ip_id", value)
 
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
-    def accelerator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Basic GA instance.
         """
         return pulumi.get(self, "accelerator_id")
 
     @accelerator_id.setter
-    def accelerator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_id", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointId")
-    def endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Basic Endpoint.
         """
         return pulumi.get(self, "endpoint_id")
 
     @endpoint_id.setter
-    def endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Basic Accelerate Ip Endpoint Relation.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -149,9 +149,9 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerate_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerate_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation resource.
@@ -344,9 +344,9 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerate_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerate_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -376,10 +376,10 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerate_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-            accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'BasicAccelerateIpEndpointRelation':
+            accelerate_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'BasicAccelerateIpEndpointRelation':
         """
         Get an existing BasicAccelerateIpEndpointRelation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

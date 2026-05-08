@@ -27,16 +27,16 @@ class ClusterArgs:
                  node_attributes: pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]],
                  node_groups: pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]],
                  release_version: pulumi.Input[_builtins.str],
-                 application_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]] = None,
-                 bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deploy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_collect_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_config: Optional[pulumi.Input['ClusterSubscriptionConfigArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 application_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]] = None,
+                 bootstrap_scripts: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deploy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_collect_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_config: pulumi.Input[Optional['ClusterSubscriptionConfigArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -158,144 +158,144 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationConfigs")
-    def application_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]]:
+    def application_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]]:
         """
         The application configurations of EMR cluster. See `application_configs` below.
         """
         return pulumi.get(self, "application_configs")
 
     @application_configs.setter
-    def application_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]]):
+    def application_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]]):
         pulumi.set(self, "application_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="bootstrapScripts")
-    def bootstrap_scripts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]]:
+    def bootstrap_scripts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]]:
         """
         The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         """
         return pulumi.get(self, "bootstrap_scripts")
 
     @bootstrap_scripts.setter
-    def bootstrap_scripts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]]):
+    def bootstrap_scripts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]]):
         pulumi.set(self, "bootstrap_scripts", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The deletion protection of EMR cluster.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="deployMode")
-    def deploy_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deploy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         """
         return pulumi.get(self, "deploy_mode")
 
     @deploy_mode.setter
-    def deploy_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deploy_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deploy_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="logCollectStrategy")
-    def log_collect_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_collect_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The log collect strategy of EMR cluster.
         """
         return pulumi.get(self, "log_collect_strategy")
 
     @log_collect_strategy.setter
-    def log_collect_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_collect_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_collect_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of resource group which the emr-cluster belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityMode")
-    def security_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
         """
         return pulumi.get(self, "security_mode")
 
     @security_mode.setter
-    def security_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionConfig")
-    def subscription_config(self) -> Optional[pulumi.Input['ClusterSubscriptionConfigArgs']]:
+    def subscription_config(self) -> pulumi.Input[Optional['ClusterSubscriptionConfigArgs']]:
         """
         The detail configuration of subscription payment type. See `subscription_config` below.
         """
         return pulumi.get(self, "subscription_config")
 
     @subscription_config.setter
-    def subscription_config(self, value: Optional[pulumi.Input['ClusterSubscriptionConfigArgs']]):
+    def subscription_config(self, value: pulumi.Input[Optional['ClusterSubscriptionConfigArgs']]):
         pulumi.set(self, "subscription_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 application_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]] = None,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deploy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_collect_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]]] = None,
-                 node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_config: Optional[pulumi.Input['ClusterSubscriptionConfigArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 application_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]] = None,
+                 applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bootstrap_scripts: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deploy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_collect_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]]] = None,
+                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_config: pulumi.Input[Optional['ClusterSubscriptionConfigArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -351,194 +351,194 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="applicationConfigs")
-    def application_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]]:
+    def application_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]]:
         """
         The application configurations of EMR cluster. See `application_configs` below.
         """
         return pulumi.get(self, "application_configs")
 
     @application_configs.setter
-    def application_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]]):
+    def application_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]]):
         pulumi.set(self, "application_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def applications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
         """
         return pulumi.get(self, "applications")
 
     @applications.setter
-    def applications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def applications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "applications", value)
 
     @_builtins.property
     @pulumi.getter(name="bootstrapScripts")
-    def bootstrap_scripts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]]:
+    def bootstrap_scripts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]]:
         """
         The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         """
         return pulumi.get(self, "bootstrap_scripts")
 
     @bootstrap_scripts.setter
-    def bootstrap_scripts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]]):
+    def bootstrap_scripts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]]):
         pulumi.set(self, "bootstrap_scripts", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         """
         return pulumi.get(self, "cluster_type")
 
     @cluster_type.setter
-    def cluster_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_type", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The deletion protection of EMR cluster.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="deployMode")
-    def deploy_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deploy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         """
         return pulumi.get(self, "deploy_mode")
 
     @deploy_mode.setter
-    def deploy_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deploy_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deploy_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="logCollectStrategy")
-    def log_collect_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_collect_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The log collect strategy of EMR cluster.
         """
         return pulumi.get(self, "log_collect_strategy")
 
     @log_collect_strategy.setter
-    def log_collect_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_collect_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_collect_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeAttributes")
-    def node_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]]]:
+    def node_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]]]:
         """
         The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
         """
         return pulumi.get(self, "node_attributes")
 
     @node_attributes.setter
-    def node_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]]]):
+    def node_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]]]):
         pulumi.set(self, "node_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroups")
-    def node_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]]:
+    def node_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]]:
         """
         Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
         """
         return pulumi.get(self, "node_groups")
 
     @node_groups.setter
-    def node_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]]):
+    def node_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]]):
         pulumi.set(self, "node_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseVersion")
-    def release_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
         """
         return pulumi.get(self, "release_version")
 
     @release_version.setter
-    def release_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release_version", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of resource group which the emr-cluster belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityMode")
-    def security_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
         """
         return pulumi.get(self, "security_mode")
 
     @security_mode.setter
-    def security_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionConfig")
-    def subscription_config(self) -> Optional[pulumi.Input['ClusterSubscriptionConfigArgs']]:
+    def subscription_config(self) -> pulumi.Input[Optional['ClusterSubscriptionConfigArgs']]:
         """
         The detail configuration of subscription payment type. See `subscription_config` below.
         """
         return pulumi.get(self, "subscription_config")
 
     @subscription_config.setter
-    def subscription_config(self, value: Optional[pulumi.Input['ClusterSubscriptionConfigArgs']]):
+    def subscription_config(self, value: pulumi.Input[Optional['ClusterSubscriptionConfigArgs']]):
         pulumi.set(self, "subscription_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -548,22 +548,22 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]]] = None,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deploy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_collect_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
-                 node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_config: Optional[pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]]] = None,
+                 applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bootstrap_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deploy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_collect_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
+                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_config: pulumi.Input[Optional[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a EMR cluster resource. This resource is based on EMR's new version OpenAPI.
@@ -893,22 +893,22 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]]] = None,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deploy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_collect_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
-                 node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_config: Optional[pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]]] = None,
+                 applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bootstrap_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deploy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_collect_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
+                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_config: pulumi.Input[Optional[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -956,22 +956,22 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]]] = None,
-            applications: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
-            cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            deploy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            log_collect_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
-            node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            release_version: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            subscription_config: Optional[pulumi.Input[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Cluster':
+            application_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterApplicationConfigArgs', 'ClusterApplicationConfigArgsDict']]]]] = None,
+            applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            bootstrap_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            deploy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            log_collect_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            node_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
+            node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            release_version: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_config: pulumi.Input[Optional[Union['ClusterSubscriptionConfigArgs', 'ClusterSubscriptionConfigArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

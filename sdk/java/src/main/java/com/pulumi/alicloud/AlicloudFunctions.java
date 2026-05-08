@@ -49,8 +49,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -87,8 +87,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -125,8 +125,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -163,8 +163,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -201,8 +201,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -239,8 +239,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -277,8 +277,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -317,8 +317,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -357,8 +357,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -397,8 +397,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -437,8 +437,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -477,8 +477,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -517,8 +517,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -557,8 +557,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -598,8 +598,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetFileCrc64ChecksumArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -641,8 +641,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetFileCrc64ChecksumArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -684,8 +684,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetFileCrc64ChecksumArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -727,8 +727,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetFileCrc64ChecksumArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -770,8 +770,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetFileCrc64ChecksumArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -815,8 +815,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.alicloud.MscSubContractArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubContactVerificationMessageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -835,10 +835,10 @@ public final class AlicloudFunctions {
      *             .mobile("153xxxxx906")
      *             .build());
      * 
-     *         final var default = defaultMscSubContract.id().applyValue(_id -> AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
-     *             .contactId(_id)
+     *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *             .contactId(defaultMscSubContract.id())
      *             .type(1)
-     *             .build()));
+     *             .build());
      * 
      *     }}{@code
      * }}{@code
@@ -867,8 +867,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.alicloud.MscSubContractArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubContactVerificationMessageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -887,10 +887,10 @@ public final class AlicloudFunctions {
      *             .mobile("153xxxxx906")
      *             .build());
      * 
-     *         final var default = defaultMscSubContract.id().applyValue(_id -> AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
-     *             .contactId(_id)
+     *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *             .contactId(defaultMscSubContract.id())
      *             .type(1)
-     *             .build()));
+     *             .build());
      * 
      *     }}{@code
      * }}{@code
@@ -919,8 +919,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.alicloud.MscSubContractArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubContactVerificationMessageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -939,10 +939,10 @@ public final class AlicloudFunctions {
      *             .mobile("153xxxxx906")
      *             .build());
      * 
-     *         final var default = defaultMscSubContract.id().applyValue(_id -> AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
-     *             .contactId(_id)
+     *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *             .contactId(defaultMscSubContract.id())
      *             .type(1)
-     *             .build()));
+     *             .build());
      * 
      *     }}{@code
      * }}{@code
@@ -971,8 +971,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.alicloud.MscSubContractArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubContactVerificationMessageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -991,10 +991,10 @@ public final class AlicloudFunctions {
      *             .mobile("153xxxxx906")
      *             .build());
      * 
-     *         final var default = defaultMscSubContract.id().applyValue(_id -> AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
-     *             .contactId(_id)
+     *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *             .contactId(defaultMscSubContract.id())
      *             .type(1)
-     *             .build()));
+     *             .build());
      * 
      *     }}{@code
      * }}{@code
@@ -1023,8 +1023,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.alicloud.MscSubContractArgs;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubContactVerificationMessageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1043,10 +1043,10 @@ public final class AlicloudFunctions {
      *             .mobile("153xxxxx906")
      *             .build());
      * 
-     *         final var default = defaultMscSubContract.id().applyValue(_id -> AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
-     *             .contactId(_id)
+     *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *             .contactId(defaultMscSubContract.id())
      *             .type(1)
-     *             .build()));
+     *             .build());
      * 
      *     }}{@code
      * }}{@code
@@ -1075,8 +1075,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1124,8 +1124,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1173,8 +1173,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1222,8 +1222,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1271,8 +1271,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1320,8 +1320,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1369,8 +1369,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubContactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1418,8 +1418,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubSubscriptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1462,8 +1462,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubSubscriptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1506,8 +1506,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubSubscriptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1550,8 +1550,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubSubscriptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1594,8 +1594,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubSubscriptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1638,8 +1638,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubSubscriptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1682,8 +1682,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubSubscriptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1726,8 +1726,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1776,8 +1776,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1826,8 +1826,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1876,8 +1876,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1926,8 +1926,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1976,8 +1976,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2026,8 +2026,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetMscSubWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2072,8 +2072,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2113,8 +2113,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2154,8 +2154,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2195,8 +2195,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2236,8 +2236,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2277,8 +2277,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2318,8 +2318,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2361,8 +2361,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2405,8 +2405,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2449,8 +2449,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2493,8 +2493,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2537,8 +2537,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2581,8 +2581,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2625,8 +2625,8 @@ public final class AlicloudFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.AlicloudFunctions;
      * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

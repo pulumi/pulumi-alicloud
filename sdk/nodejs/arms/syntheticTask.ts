@@ -353,51 +353,51 @@ export interface SyntheticTaskState {
     /**
      * Assertion List. See `availableAssertions` below.
      */
-    availableAssertions?: pulumi.Input<pulumi.Input<inputs.arms.SyntheticTaskAvailableAssertion>[]>;
+    availableAssertions?: pulumi.Input<pulumi.Input<inputs.arms.SyntheticTaskAvailableAssertion>[] | undefined>;
     /**
      * Common settings. See `commonSetting` below.
      */
-    commonSetting?: pulumi.Input<inputs.arms.SyntheticTaskCommonSetting>;
+    commonSetting?: pulumi.Input<inputs.arms.SyntheticTaskCommonSetting | undefined>;
     /**
      * Custom Cycle. See `customPeriod` below.
      */
-    customPeriod?: pulumi.Input<inputs.arms.SyntheticTaskCustomPeriod>;
+    customPeriod?: pulumi.Input<inputs.arms.SyntheticTaskCustomPeriod | undefined>;
     /**
      * Frequency.
      */
-    frequency?: pulumi.Input<string>;
+    frequency?: pulumi.Input<string | undefined>;
     /**
      * Classification of selected monitors.
      */
-    monitorCategory?: pulumi.Input<number>;
+    monitorCategory?: pulumi.Input<number | undefined>;
     /**
      * Monitoring configuration. See `monitorConf` below.
      */
-    monitorConf?: pulumi.Input<inputs.arms.SyntheticTaskMonitorConf>;
+    monitorConf?: pulumi.Input<inputs.arms.SyntheticTaskMonitorConf | undefined>;
     /**
      * List of selected monitors. See `monitors` below.
      */
-    monitors?: pulumi.Input<pulumi.Input<inputs.arms.SyntheticTaskMonitor>[]>;
+    monitors?: pulumi.Input<pulumi.Input<inputs.arms.SyntheticTaskMonitor>[] | undefined>;
     /**
      * Describes which resource group the resource belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * task status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The name of synthetic task.
      */
-    syntheticTaskName?: pulumi.Input<string>;
+    syntheticTaskName?: pulumi.Input<string | undefined>;
     /**
      * The list of tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of synthetic task.
      */
-    taskType?: pulumi.Input<number>;
+    taskType?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -407,15 +407,15 @@ export interface SyntheticTaskArgs {
     /**
      * Assertion List. See `availableAssertions` below.
      */
-    availableAssertions?: pulumi.Input<pulumi.Input<inputs.arms.SyntheticTaskAvailableAssertion>[]>;
+    availableAssertions?: pulumi.Input<pulumi.Input<inputs.arms.SyntheticTaskAvailableAssertion>[] | undefined>;
     /**
      * Common settings. See `commonSetting` below.
      */
-    commonSetting?: pulumi.Input<inputs.arms.SyntheticTaskCommonSetting>;
+    commonSetting?: pulumi.Input<inputs.arms.SyntheticTaskCommonSetting | undefined>;
     /**
      * Custom Cycle. See `customPeriod` below.
      */
-    customPeriod?: pulumi.Input<inputs.arms.SyntheticTaskCustomPeriod>;
+    customPeriod?: pulumi.Input<inputs.arms.SyntheticTaskCustomPeriod | undefined>;
     /**
      * Frequency.
      */
@@ -435,11 +435,11 @@ export interface SyntheticTaskArgs {
     /**
      * Describes which resource group the resource belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * task status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The name of synthetic task.
      */
@@ -447,7 +447,7 @@ export interface SyntheticTaskArgs {
     /**
      * The list of tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of synthetic task.
      */

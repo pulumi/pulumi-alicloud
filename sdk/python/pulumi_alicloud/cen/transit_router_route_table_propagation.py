@@ -21,7 +21,7 @@ class TransitRouterRouteTablePropagationArgs:
     def __init__(__self__, *,
                  transit_router_attachment_id: pulumi.Input[_builtins.str],
                  transit_router_route_table_id: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a TransitRouterRouteTablePropagation resource.
 
@@ -62,7 +62,7 @@ class TransitRouterRouteTablePropagationArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The dry run.
 
@@ -71,17 +71,17 @@ class TransitRouterRouteTablePropagationArgs:
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
 
 @pulumi.input_type
 class _TransitRouterRouteTablePropagationState:
     def __init__(__self__, *,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterRouteTablePropagation resources.
 
@@ -103,7 +103,7 @@ class _TransitRouterRouteTablePropagationState:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The dry run.
 
@@ -112,43 +112,43 @@ class _TransitRouterRouteTablePropagationState:
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The associating status of the network.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentId")
-    def transit_router_attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID the transit router attachment.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
     @transit_router_attachment_id.setter
-    def transit_router_attachment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteTableId")
-    def transit_router_route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the transit router route table.
         """
         return pulumi.get(self, "transit_router_route_table_id")
 
     @transit_router_route_table_id.setter
-    def transit_router_route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_route_table_id", value)
 
 
@@ -158,9 +158,9 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CEN transit router route table propagation resource.[What is Cen Transit Router Route Table Propagation](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-enabletransitrouterroutetablepropagation)
@@ -335,9 +335,9 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -365,10 +365,10 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitRouterRouteTablePropagation':
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitRouterRouteTablePropagation':
         """
         Get an existing TransitRouterRouteTablePropagation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

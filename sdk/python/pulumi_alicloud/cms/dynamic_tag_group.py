@@ -24,8 +24,8 @@ class DynamicTagGroupArgs:
                  contact_group_lists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  match_expresses: pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]],
                  tag_key: pulumi.Input[_builtins.str],
-                 match_express_filter_relation: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 match_express_filter_relation: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DynamicTagGroup resource.
 
@@ -81,38 +81,38 @@ class DynamicTagGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="matchExpressFilterRelation")
-    def match_express_filter_relation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_express_filter_relation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
         """
         return pulumi.get(self, "match_express_filter_relation")
 
     @match_express_filter_relation.setter
-    def match_express_filter_relation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_express_filter_relation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_express_filter_relation", value)
 
     @_builtins.property
     @pulumi.getter(name="templateIdLists")
-    def template_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def template_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of the alert templates.
         """
         return pulumi.get(self, "template_id_lists")
 
     @template_id_lists.setter
-    def template_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def template_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "template_id_lists", value)
 
 
 @pulumi.input_type
 class _DynamicTagGroupState:
     def __init__(__self__, *,
-                 contact_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 match_express_filter_relation: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 contact_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 match_express_filter_relation: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DynamicTagGroup resources.
 
@@ -138,74 +138,74 @@ class _DynamicTagGroupState:
 
     @_builtins.property
     @pulumi.getter(name="contactGroupLists")
-    def contact_group_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contact_group_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
         """
         return pulumi.get(self, "contact_group_lists")
 
     @contact_group_lists.setter
-    def contact_group_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contact_group_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contact_group_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="matchExpressFilterRelation")
-    def match_express_filter_relation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_express_filter_relation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
         """
         return pulumi.get(self, "match_express_filter_relation")
 
     @match_express_filter_relation.setter
-    def match_express_filter_relation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_express_filter_relation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_express_filter_relation", value)
 
     @_builtins.property
     @pulumi.getter(name="matchExpresses")
-    def match_expresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]]]:
+    def match_expresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]]]:
         """
         The conditional expressions used to create an application group based on the tag. See `match_express` below.
         """
         return pulumi.get(self, "match_expresses")
 
     @match_expresses.setter
-    def match_expresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]]]):
+    def match_expresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DynamicTagGroupMatchExpressArgs']]]]):
         pulumi.set(self, "match_expresses", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Dynamic Tag Group.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="tagKey")
-    def tag_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag keys of the cloud resources.
         """
         return pulumi.get(self, "tag_key")
 
     @tag_key.setter
-    def tag_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_key", value)
 
     @_builtins.property
     @pulumi.getter(name="templateIdLists")
-    def template_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def template_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of the alert templates.
         """
         return pulumi.get(self, "template_id_lists")
 
     @template_id_lists.setter
-    def template_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def template_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "template_id_lists", value)
 
 
@@ -215,11 +215,11 @@ class DynamicTagGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 match_express_filter_relation: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DynamicTagGroupMatchExpressArgs', 'DynamicTagGroupMatchExpressArgsDict']]]]] = None,
-                 tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 contact_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 match_express_filter_relation: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamicTagGroupMatchExpressArgs', 'DynamicTagGroupMatchExpressArgsDict']]]]] = None,
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Dynamic Tag Group resource.
@@ -330,11 +330,11 @@ class DynamicTagGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 match_express_filter_relation: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DynamicTagGroupMatchExpressArgs', 'DynamicTagGroupMatchExpressArgsDict']]]]] = None,
-                 tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 contact_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 match_express_filter_relation: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamicTagGroupMatchExpressArgs', 'DynamicTagGroupMatchExpressArgsDict']]]]] = None,
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -366,12 +366,12 @@ class DynamicTagGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            contact_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            match_express_filter_relation: Optional[pulumi.Input[_builtins.str]] = None,
-            match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DynamicTagGroupMatchExpressArgs', 'DynamicTagGroupMatchExpressArgsDict']]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-            template_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DynamicTagGroup':
+            contact_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            match_express_filter_relation: pulumi.Input[Optional[_builtins.str]] = None,
+            match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DynamicTagGroupMatchExpressArgs', 'DynamicTagGroupMatchExpressArgsDict']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+            template_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DynamicTagGroup':
         """
         Get an existing DynamicTagGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -230,83 +230,83 @@ export interface EcdPolicyGroupState {
     /**
      * The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
      */
-    authorizeAccessPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeAccessPolicyRule>[]>;
+    authorizeAccessPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeAccessPolicyRule>[] | undefined>;
     /**
      * The policy rule. See `authorizeSecurityPolicyRules` below.
      */
-    authorizeSecurityPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule>[]>;
+    authorizeSecurityPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule>[] | undefined>;
     /**
      * Whether to enable local camera redirection. Valid values: `on`, `off`.
      */
-    cameraRedirect?: pulumi.Input<string>;
+    cameraRedirect?: pulumi.Input<string | undefined>;
     /**
      * The clipboard policy. Valid values: `off`, `read`, `readwrite`.
      */
-    clipboard?: pulumi.Input<string>;
+    clipboard?: pulumi.Input<string | undefined>;
     /**
      * The list of domain.
      */
-    domainList?: pulumi.Input<string>;
+    domainList?: pulumi.Input<string | undefined>;
     /**
      * The access of html5. Valid values: `off`, `on`.
      */
-    htmlAccess?: pulumi.Input<string>;
+    htmlAccess?: pulumi.Input<string | undefined>;
     /**
      * The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
      */
-    htmlFileTransfer?: pulumi.Input<string>;
+    htmlFileTransfer?: pulumi.Input<string | undefined>;
     /**
      * Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
      */
-    localDrive?: pulumi.Input<string>;
+    localDrive?: pulumi.Input<string | undefined>;
     /**
      * The name of policy group.
      */
-    policyGroupName?: pulumi.Input<string>;
+    policyGroupName?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
      */
-    recording?: pulumi.Input<string>;
+    recording?: pulumi.Input<string | undefined>;
     /**
      * The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
      */
-    recordingEndTime?: pulumi.Input<string>;
+    recordingEndTime?: pulumi.Input<string | undefined>;
     /**
      * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
      */
-    recordingExpires?: pulumi.Input<number>;
+    recordingExpires?: pulumi.Input<number | undefined>;
     /**
      * The fps of recording. Valid values: `2`, `5`, `10`, `15`.
      */
-    recordingFps?: pulumi.Input<number>;
+    recordingFps?: pulumi.Input<number | undefined>;
     /**
      * The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
      */
-    recordingStartTime?: pulumi.Input<string>;
+    recordingStartTime?: pulumi.Input<string | undefined>;
     /**
      * The status of policy.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The usb redirect policy. Valid values: `off`, `on`.
      */
-    usbRedirect?: pulumi.Input<string>;
+    usbRedirect?: pulumi.Input<string | undefined>;
     /**
      * The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
      */
-    visualQuality?: pulumi.Input<string>;
+    visualQuality?: pulumi.Input<string | undefined>;
     /**
      * The watermark policy. Valid values: `off`, `on`.
      */
-    watermark?: pulumi.Input<string>;
+    watermark?: pulumi.Input<string | undefined>;
     /**
      * The watermark transparency. Valid values: `DARK`, `LIGHT`, `MIDDLE`.
      */
-    watermarkTransparency?: pulumi.Input<string>;
+    watermarkTransparency?: pulumi.Input<string | undefined>;
     /**
      * The type of watemark. Valid values: `EndUserId`, `HostName`.
      */
-    watermarkType?: pulumi.Input<string>;
+    watermarkType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -316,77 +316,77 @@ export interface EcdPolicyGroupArgs {
     /**
      * The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
      */
-    authorizeAccessPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeAccessPolicyRule>[]>;
+    authorizeAccessPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeAccessPolicyRule>[] | undefined>;
     /**
      * The policy rule. See `authorizeSecurityPolicyRules` below.
      */
-    authorizeSecurityPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule>[]>;
+    authorizeSecurityPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule>[] | undefined>;
     /**
      * Whether to enable local camera redirection. Valid values: `on`, `off`.
      */
-    cameraRedirect?: pulumi.Input<string>;
+    cameraRedirect?: pulumi.Input<string | undefined>;
     /**
      * The clipboard policy. Valid values: `off`, `read`, `readwrite`.
      */
-    clipboard?: pulumi.Input<string>;
+    clipboard?: pulumi.Input<string | undefined>;
     /**
      * The list of domain.
      */
-    domainList?: pulumi.Input<string>;
+    domainList?: pulumi.Input<string | undefined>;
     /**
      * The access of html5. Valid values: `off`, `on`.
      */
-    htmlAccess?: pulumi.Input<string>;
+    htmlAccess?: pulumi.Input<string | undefined>;
     /**
      * The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
      */
-    htmlFileTransfer?: pulumi.Input<string>;
+    htmlFileTransfer?: pulumi.Input<string | undefined>;
     /**
      * Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
      */
-    localDrive?: pulumi.Input<string>;
+    localDrive?: pulumi.Input<string | undefined>;
     /**
      * The name of policy group.
      */
-    policyGroupName?: pulumi.Input<string>;
+    policyGroupName?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
      */
-    recording?: pulumi.Input<string>;
+    recording?: pulumi.Input<string | undefined>;
     /**
      * The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
      */
-    recordingEndTime?: pulumi.Input<string>;
+    recordingEndTime?: pulumi.Input<string | undefined>;
     /**
      * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
      */
-    recordingExpires?: pulumi.Input<number>;
+    recordingExpires?: pulumi.Input<number | undefined>;
     /**
      * The fps of recording. Valid values: `2`, `5`, `10`, `15`.
      */
-    recordingFps?: pulumi.Input<number>;
+    recordingFps?: pulumi.Input<number | undefined>;
     /**
      * The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
      */
-    recordingStartTime?: pulumi.Input<string>;
+    recordingStartTime?: pulumi.Input<string | undefined>;
     /**
      * The usb redirect policy. Valid values: `off`, `on`.
      */
-    usbRedirect?: pulumi.Input<string>;
+    usbRedirect?: pulumi.Input<string | undefined>;
     /**
      * The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
      */
-    visualQuality?: pulumi.Input<string>;
+    visualQuality?: pulumi.Input<string | undefined>;
     /**
      * The watermark policy. Valid values: `off`, `on`.
      */
-    watermark?: pulumi.Input<string>;
+    watermark?: pulumi.Input<string | undefined>;
     /**
      * The watermark transparency. Valid values: `DARK`, `LIGHT`, `MIDDLE`.
      */
-    watermarkTransparency?: pulumi.Input<string>;
+    watermarkTransparency?: pulumi.Input<string | undefined>;
     /**
      * The type of watemark. Valid values: `EndUserId`, `HostName`.
      */
-    watermarkType?: pulumi.Input<string>;
+    watermarkType?: pulumi.Input<string | undefined>;
 }

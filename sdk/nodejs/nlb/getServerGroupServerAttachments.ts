@@ -122,21 +122,21 @@ export interface GetServerGroupServerAttachmentsOutputArgs {
     /**
      * A list of Server Group Server Attachment IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the server group.
      */
-    serverGroupId?: pulumi.Input<string>;
+    serverGroupId?: pulumi.Input<string | undefined>;
     /**
      * The IDs of the servers. You can specify at most 40 server IDs in each call.
      */
-    serverIds?: pulumi.Input<pulumi.Input<string>[]>;
+    serverIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IP addresses of the servers. You can specify at most 40 server IP addresses in each call.
      */
-    serverIps?: pulumi.Input<pulumi.Input<string>[]>;
+    serverIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

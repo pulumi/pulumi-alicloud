@@ -204,15 +204,15 @@ export interface ExpressSyncShareAttachmentState {
     /**
      * The ID of the ExpressSync.
      */
-    expressSyncId?: pulumi.Input<string>;
+    expressSyncId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Gateway.
      */
-    gatewayId?: pulumi.Input<string>;
+    gatewayId?: pulumi.Input<string | undefined>;
     /**
      * The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
      */
-    shareName?: pulumi.Input<string>;
+    shareName?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -130,17 +130,17 @@ export interface GlobalSecurityIpGroupState {
      * - The name must start with a letter and end with a letter or digit.
      * - The name must be 2 to 120 characters in length.
      */
-    globalIpGroupName?: pulumi.Input<string>;
+    globalIpGroupName?: pulumi.Input<string | undefined>;
     /**
      * The IP address in the whitelist template.
      *
      * > **NOTE:**   Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
      */
-    globalIpList?: pulumi.Input<string>;
+    globalIpList?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the IP whitelist template.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
 }
 
 /**

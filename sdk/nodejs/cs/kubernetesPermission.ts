@@ -175,11 +175,11 @@ export interface KubernetesPermissionState {
     /**
      * A list of user permission. See `permissions` below.
      */
-    permissions?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesPermissionPermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesPermissionPermission>[] | undefined>;
     /**
      * The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -189,7 +189,7 @@ export interface KubernetesPermissionArgs {
     /**
      * A list of user permission. See `permissions` below.
      */
-    permissions?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesPermissionPermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesPermissionPermission>[] | undefined>;
     /**
      * The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `isRamRole` to `true` during authorization.
      */

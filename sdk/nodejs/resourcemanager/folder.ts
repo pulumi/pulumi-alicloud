@@ -125,19 +125,19 @@ export interface FolderState {
     /**
      * (Available since v1.259.0) The time when the folder was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the folder.
      */
-    folderName?: pulumi.Input<string>;
+    folderName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent folder.
      */
-    parentFolderId?: pulumi.Input<string>;
+    parentFolderId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -151,9 +151,9 @@ export interface FolderArgs {
     /**
      * The ID of the parent folder.
      */
-    parentFolderId?: pulumi.Input<string>;
+    parentFolderId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

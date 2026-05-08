@@ -45,8 +45,8 @@ public final class SelectdbFunctions {
      * import com.pulumi.alicloud.selectdb.DbClusterArgs;
      * import com.pulumi.alicloud.selectdb.SelectdbFunctions;
      * import com.pulumi.alicloud.selectdb.inputs.GetDbClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -133,8 +133,8 @@ public final class SelectdbFunctions {
      * import com.pulumi.alicloud.selectdb.DbClusterArgs;
      * import com.pulumi.alicloud.selectdb.SelectdbFunctions;
      * import com.pulumi.alicloud.selectdb.inputs.GetDbClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -221,8 +221,8 @@ public final class SelectdbFunctions {
      * import com.pulumi.alicloud.selectdb.DbClusterArgs;
      * import com.pulumi.alicloud.selectdb.SelectdbFunctions;
      * import com.pulumi.alicloud.selectdb.inputs.GetDbClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -309,8 +309,8 @@ public final class SelectdbFunctions {
      * import com.pulumi.alicloud.selectdb.DbClusterArgs;
      * import com.pulumi.alicloud.selectdb.SelectdbFunctions;
      * import com.pulumi.alicloud.selectdb.inputs.GetDbClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -397,8 +397,8 @@ public final class SelectdbFunctions {
      * import com.pulumi.alicloud.selectdb.DbClusterArgs;
      * import com.pulumi.alicloud.selectdb.SelectdbFunctions;
      * import com.pulumi.alicloud.selectdb.inputs.GetDbClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -485,8 +485,8 @@ public final class SelectdbFunctions {
      * import com.pulumi.alicloud.selectdb.DbClusterArgs;
      * import com.pulumi.alicloud.selectdb.SelectdbFunctions;
      * import com.pulumi.alicloud.selectdb.inputs.GetDbClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -573,8 +573,8 @@ public final class SelectdbFunctions {
      * import com.pulumi.alicloud.selectdb.DbClusterArgs;
      * import com.pulumi.alicloud.selectdb.SelectdbFunctions;
      * import com.pulumi.alicloud.selectdb.inputs.GetDbClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -659,8 +659,8 @@ public final class SelectdbFunctions {
      * import com.pulumi.alicloud.selectdb.DbInstanceArgs;
      * import com.pulumi.alicloud.selectdb.SelectdbFunctions;
      * import com.pulumi.alicloud.selectdb.inputs.GetDbInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -737,8 +737,8 @@ public final class SelectdbFunctions {
      * import com.pulumi.alicloud.selectdb.DbInstanceArgs;
      * import com.pulumi.alicloud.selectdb.SelectdbFunctions;
      * import com.pulumi.alicloud.selectdb.inputs.GetDbInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -815,8 +815,8 @@ public final class SelectdbFunctions {
      * import com.pulumi.alicloud.selectdb.DbInstanceArgs;
      * import com.pulumi.alicloud.selectdb.SelectdbFunctions;
      * import com.pulumi.alicloud.selectdb.inputs.GetDbInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -893,8 +893,8 @@ public final class SelectdbFunctions {
      * import com.pulumi.alicloud.selectdb.DbInstanceArgs;
      * import com.pulumi.alicloud.selectdb.SelectdbFunctions;
      * import com.pulumi.alicloud.selectdb.inputs.GetDbInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -971,8 +971,8 @@ public final class SelectdbFunctions {
      * import com.pulumi.alicloud.selectdb.DbInstanceArgs;
      * import com.pulumi.alicloud.selectdb.SelectdbFunctions;
      * import com.pulumi.alicloud.selectdb.inputs.GetDbInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1049,8 +1049,8 @@ public final class SelectdbFunctions {
      * import com.pulumi.alicloud.selectdb.DbInstanceArgs;
      * import com.pulumi.alicloud.selectdb.SelectdbFunctions;
      * import com.pulumi.alicloud.selectdb.inputs.GetDbInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1127,8 +1127,8 @@ public final class SelectdbFunctions {
      * import com.pulumi.alicloud.selectdb.DbInstanceArgs;
      * import com.pulumi.alicloud.selectdb.SelectdbFunctions;
      * import com.pulumi.alicloud.selectdb.inputs.GetDbInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

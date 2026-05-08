@@ -347,19 +347,19 @@ export interface HadoopDataSourceState {
     /**
      * Creation time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Data Source Description
      */
-    dataSourceDescription?: pulumi.Input<string>;
+    dataSourceDescription?: pulumi.Input<string | undefined>;
     /**
      * The data source ID.
      */
-    dataSourceId?: pulumi.Input<number>;
+    dataSourceId?: pulumi.Input<number | undefined>;
     /**
      * Data Source Name
      */
-    dataSourceName?: pulumi.Input<string>;
+    dataSourceName?: pulumi.Input<string | undefined>;
     /**
      * The type of the data source. Valid values:
      *
@@ -369,49 +369,49 @@ export interface HadoopDataSourceState {
      * *   hdfs
      * - hive
      */
-    dataSourceType?: pulumi.Input<string>;
+    dataSourceType?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Emr instance.
      */
-    emrInstanceId?: pulumi.Input<string>;
+    emrInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The string that specifies the content of the Hadoop core-site.xml file.
      */
-    hadoopCoreConf?: pulumi.Input<string>;
+    hadoopCoreConf?: pulumi.Input<string | undefined>;
     /**
      * The type of the external service. Valid values:
      * - emr: E-MapReduce (EMR) Hadoop cluster.
      * - selfCreate: self-managed Hadoop cluster.
      */
-    hadoopCreateType?: pulumi.Input<string>;
+    hadoopCreateType?: pulumi.Input<string | undefined>;
     /**
      * The IP address and hostname of the Hadoop cluster (data source) in the /etc/hosts file.
      */
-    hadoopHostsAddress?: pulumi.Input<string>;
+    hadoopHostsAddress?: pulumi.Input<string | undefined>;
     /**
      * The string that specifies the content of the Hadoop hdfs-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
      */
-    hdfsConf?: pulumi.Input<string>;
+    hdfsConf?: pulumi.Input<string | undefined>;
     /**
      * The string that specifies the content of the Hadoop hive-site.xml file. This parameter must be specified when DataSourceType is set to Hive.
      */
-    hiveConf?: pulumi.Input<string>;
+    hiveConf?: pulumi.Input<string | undefined>;
     /**
      * The content of the Hadoop mapred-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
      */
-    mapReduceConf?: pulumi.Input<string>;
+    mapReduceConf?: pulumi.Input<string | undefined>;
     /**
      * Data Source Status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The string that specifies the content of the Hadoop yarn-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
      */
-    yarnConf?: pulumi.Input<string>;
+    yarnConf?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -421,11 +421,11 @@ export interface HadoopDataSourceArgs {
     /**
      * Data Source Description
      */
-    dataSourceDescription?: pulumi.Input<string>;
+    dataSourceDescription?: pulumi.Input<string | undefined>;
     /**
      * Data Source Name
      */
-    dataSourceName?: pulumi.Input<string>;
+    dataSourceName?: pulumi.Input<string | undefined>;
     /**
      * The type of the data source. Valid values:
      *
@@ -435,7 +435,7 @@ export interface HadoopDataSourceArgs {
      * *   hdfs
      * - hive
      */
-    dataSourceType?: pulumi.Input<string>;
+    dataSourceType?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */
@@ -443,35 +443,35 @@ export interface HadoopDataSourceArgs {
     /**
      * The ID of the Emr instance.
      */
-    emrInstanceId?: pulumi.Input<string>;
+    emrInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The string that specifies the content of the Hadoop core-site.xml file.
      */
-    hadoopCoreConf?: pulumi.Input<string>;
+    hadoopCoreConf?: pulumi.Input<string | undefined>;
     /**
      * The type of the external service. Valid values:
      * - emr: E-MapReduce (EMR) Hadoop cluster.
      * - selfCreate: self-managed Hadoop cluster.
      */
-    hadoopCreateType?: pulumi.Input<string>;
+    hadoopCreateType?: pulumi.Input<string | undefined>;
     /**
      * The IP address and hostname of the Hadoop cluster (data source) in the /etc/hosts file.
      */
-    hadoopHostsAddress?: pulumi.Input<string>;
+    hadoopHostsAddress?: pulumi.Input<string | undefined>;
     /**
      * The string that specifies the content of the Hadoop hdfs-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
      */
-    hdfsConf?: pulumi.Input<string>;
+    hdfsConf?: pulumi.Input<string | undefined>;
     /**
      * The string that specifies the content of the Hadoop hive-site.xml file. This parameter must be specified when DataSourceType is set to Hive.
      */
-    hiveConf?: pulumi.Input<string>;
+    hiveConf?: pulumi.Input<string | undefined>;
     /**
      * The content of the Hadoop mapred-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
      */
-    mapReduceConf?: pulumi.Input<string>;
+    mapReduceConf?: pulumi.Input<string | undefined>;
     /**
      * The string that specifies the content of the Hadoop yarn-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
      */
-    yarnConf?: pulumi.Input<string>;
+    yarnConf?: pulumi.Input<string | undefined>;
 }

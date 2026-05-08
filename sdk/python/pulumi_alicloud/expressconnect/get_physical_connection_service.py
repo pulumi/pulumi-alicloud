@@ -102,7 +102,7 @@ def get_physical_connection_service(enable: Optional[_builtins.str] = None,
         enable=pulumi.get(__ret__, 'enable'),
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
-def get_physical_connection_service_output(enable: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_physical_connection_service_output(enable: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPhysicalConnectionServiceResult]:
     """
     Using this data source can enable outbound traffic for an Express Connect circuit automatically. If the service has been opened, it will return opened.

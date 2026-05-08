@@ -141,21 +141,21 @@ export interface GetServiceSubscriptionsOutputArgs {
     /**
      * A list of Subscription IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Subscription name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The name of the subscription.
      */
-    subscriptionName?: pulumi.Input<string>;
+    subscriptionName?: pulumi.Input<string | undefined>;
     /**
      * The name of the topic.
      */

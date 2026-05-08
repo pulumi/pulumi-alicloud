@@ -43,9 +43,9 @@ class ReplicaGroupDrillArgs:
 @pulumi.input_type
 class _ReplicaGroupDrillState:
     def __init__(__self__, *,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_group_drill_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_group_drill_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReplicaGroupDrill resources.
 
@@ -62,38 +62,38 @@ class _ReplicaGroupDrillState:
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the replication group. You can use the describediskreplicaggroups interface to query the asynchronous replication group list to obtain the value of the replication group ID input parameter.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaGroupDrillId")
-    def replica_group_drill_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replica_group_drill_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource.
         """
         return pulumi.get(self, "replica_group_drill_id")
 
     @replica_group_drill_id.setter
-    def replica_group_drill_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replica_group_drill_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replica_group_drill_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Walkthrough status. _failed: Execution failed._failed: Cleanup failed.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -103,7 +103,7 @@ class ReplicaGroupDrill(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a EBS Replica Group Drill resource.
@@ -196,7 +196,7 @@ class ReplicaGroupDrill(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -221,9 +221,9 @@ class ReplicaGroupDrill(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            replica_group_drill_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ReplicaGroupDrill':
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_group_drill_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ReplicaGroupDrill':
         """
         Get an existing ReplicaGroupDrill resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

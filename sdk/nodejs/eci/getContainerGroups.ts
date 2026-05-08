@@ -160,43 +160,43 @@ export interface GetContainerGroupsOutputArgs {
     /**
      * The name of ContainerGroup.
      */
-    containerGroupName?: pulumi.Input<string>;
+    containerGroupName?: pulumi.Input<string | undefined>;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Container Group IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The maximum number of resources returned in the response. Default value is `20`. Maximum value: `20`. The number of returned results is no greater than the specified number.
      */
-    limit?: pulumi.Input<number>;
+    limit?: pulumi.Input<number | undefined>;
     /**
      * A regex string to filter results by Container Group name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status list. For more information, see the description of ContainerGroup arrays.
      */
-    status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    status?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
      */
-    vswitchId?: pulumi.Input<string>;
-    withEvent?: pulumi.Input<boolean>;
+    vswitchId?: pulumi.Input<string | undefined>;
+    withEvent?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

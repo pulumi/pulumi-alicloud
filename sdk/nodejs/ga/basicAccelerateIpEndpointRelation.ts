@@ -183,19 +183,19 @@ export interface BasicAccelerateIpEndpointRelationState {
     /**
      * The ID of the Basic Accelerate IP.
      */
-    accelerateIpId?: pulumi.Input<string>;
+    accelerateIpId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Basic GA instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Basic Endpoint.
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Basic Accelerate Ip Endpoint Relation.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

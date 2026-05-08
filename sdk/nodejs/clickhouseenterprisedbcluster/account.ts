@@ -179,32 +179,32 @@ export interface AccountState {
     /**
      * The name of the database account.
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
     /**
      * The type of the database account. Valid values:
      * - `NormalAccount`: Normal account number.
      * - `SuperAccount`: The privileged account.
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * The cluster ID.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Note information.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Authorization information. See `dmlAuthSetting` below.
      */
-    dmlAuthSetting?: pulumi.Input<inputs.clickhouseenterprisedbcluster.AccountDmlAuthSetting>;
+    dmlAuthSetting?: pulumi.Input<inputs.clickhouseenterprisedbcluster.AccountDmlAuthSetting | undefined>;
     /**
      * Database account password. Set the following rules.
      * - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
      * - Oh-! @#$%^& *()_+-= is a special character.
      * - Length is 8~32 characters.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -228,11 +228,11 @@ export interface AccountArgs {
     /**
      * Note information.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Authorization information. See `dmlAuthSetting` below.
      */
-    dmlAuthSetting?: pulumi.Input<inputs.clickhouseenterprisedbcluster.AccountDmlAuthSetting>;
+    dmlAuthSetting?: pulumi.Input<inputs.clickhouseenterprisedbcluster.AccountDmlAuthSetting | undefined>;
     /**
      * Database account password. Set the following rules.
      * - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.

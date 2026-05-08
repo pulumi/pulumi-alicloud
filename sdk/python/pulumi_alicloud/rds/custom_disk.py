@@ -22,17 +22,17 @@ class CustomDiskArgs:
                  disk_category: pulumi.Input[_builtins.str],
                  size: pulumi.Input[_builtins.int],
                  zone_id: pulumi.Input[_builtins.str],
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomDisk resource.
 
@@ -128,31 +128,31 @@ class CustomDiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to pay automatically. Value range:
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
         Default value: empty.
@@ -160,12 +160,12 @@ class CustomDiskArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskName")
-    def disk_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
         Default value: empty.
@@ -173,36 +173,36 @@ class CustomDiskArgs:
         return pulumi.get(self, "disk_name")
 
     @disk_name.setter
-    def disk_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to pre-check the instance creation operation. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When creating an ESSD cloud disk, set the performance level of the disk. Value range:
         - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
@@ -215,36 +215,36 @@ class CustomDiskArgs:
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Reserved parameters, no need to fill in.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reserved parameters, no need to fill in.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The snapshot used to create the cloud disk. Snapshots made on or before July 15, 2013 cannot be used to create cloud disks. The 'SnapshotId' parameter and the 'Size' parameter have the following limitations:
         - If the snapshot capacity corresponding to the 'SnapshotId' parameter is greater than the set 'Size' parameter value, the actual size of the cloud disk created is the size of the specified snapshot.
@@ -254,12 +254,12 @@ class CustomDiskArgs:
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method of expanding the disk. Value range:
         offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
@@ -268,31 +268,31 @@ class CustomDiskArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _CustomDiskState:
     def __init__(__self__, *,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomDisk resources.
 
@@ -367,43 +367,43 @@ class _CustomDiskState:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to pay automatically. Value range:
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
         Default value: empty.
@@ -411,24 +411,24 @@ class _CustomDiskState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskCategory")
-    def disk_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the data disk. Value range:
         """
         return pulumi.get(self, "disk_category")
 
     @disk_category.setter
-    def disk_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_category", value)
 
     @_builtins.property
     @pulumi.getter(name="diskName")
-    def disk_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
         Default value: empty.
@@ -436,36 +436,36 @@ class _CustomDiskState:
         return pulumi.get(self, "disk_name")
 
     @disk_name.setter
-    def disk_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to pre-check the instance creation operation. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When creating an ESSD cloud disk, set the performance level of the disk. Value range:
         - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
@@ -478,72 +478,72 @@ class _CustomDiskState:
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Reserved parameters, no need to fill in.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reserved parameters, no need to fill in.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID. You can view the region ID through the DescribeRegions interface.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the disk belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Capacity size. Unit: GiB. You must pass in a parameter value for this parameter. Value range:
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The snapshot used to create the cloud disk. Snapshots made on or before July 15, 2013 cannot be used to create cloud disks. The 'SnapshotId' parameter and the 'Size' parameter have the following limitations:
         - If the snapshot capacity corresponding to the 'SnapshotId' parameter is greater than the set 'Size' parameter value, the actual size of the cloud disk created is the size of the specified snapshot.
@@ -553,24 +553,24 @@ class _CustomDiskState:
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Disk status. Value Description:_use: In use.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method of expanding the disk. Value range:
         offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
@@ -579,19 +579,19 @@ class _CustomDiskState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -601,20 +601,20 @@ class CustomDisk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RDS Custom Disk resource.
@@ -765,20 +765,20 @@ class CustomDisk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -822,24 +822,24 @@ class CustomDisk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'CustomDisk':
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomDisk':
         """
         Get an existing CustomDisk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

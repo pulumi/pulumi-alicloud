@@ -21,24 +21,24 @@ __all__ = ['ImageArgs', 'Image']
 @pulumi.input_type
 class ImageArgs:
     def __init__(__self__, *,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_auto_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detection_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]] = None,
-                 features: Optional[pulumi.Input['ImageFeaturesArgs']] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_family: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detection_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]] = None,
+                 features: pulumi.Input[Optional['ImageFeaturesArgs']] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_family: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Image resource.
 
@@ -125,19 +125,19 @@ class ImageArgs:
 
     @_builtins.property
     @pulumi.getter
-    def architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\\_64`, `arm64`. Default value: `x86\\_64`.
         """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
-    def architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "architecture", value)
 
     @_builtins.property
     @pulumi.getter(name="bootMode")
-    def boot_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def boot_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new boot mode of the image. Valid values:
 
@@ -154,36 +154,36 @@ class ImageArgs:
         return pulumi.get(self, "boot_mode")
 
     @boot_mode.setter
-    def boot_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def boot_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "boot_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteAutoSnapshot")
-    def delete_auto_snapshot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_auto_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
         """
         return pulumi.get(self, "delete_auto_snapshot")
 
     @delete_auto_snapshot.setter
-    def delete_auto_snapshot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_auto_snapshot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_auto_snapshot", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="detectionStrategy")
-    def detection_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detection_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
 
@@ -192,36 +192,36 @@ class ImageArgs:
         return pulumi.get(self, "detection_strategy")
 
     @detection_strategy.setter
-    def detection_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detection_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detection_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="diskDeviceMappings")
-    def disk_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]]:
+    def disk_device_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]]:
         """
         Snapshot information for the image See `disk_device_mapping` below.
         """
         return pulumi.get(self, "disk_device_mappings")
 
     @disk_device_mappings.setter
-    def disk_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]]):
+    def disk_device_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]]):
         pulumi.set(self, "disk_device_mappings", value)
 
     @_builtins.property
     @pulumi.getter
-    def features(self) -> Optional[pulumi.Input['ImageFeaturesArgs']]:
+    def features(self) -> pulumi.Input[Optional['ImageFeaturesArgs']]:
         """
         Features See `features` below.
         """
         return pulumi.get(self, "features")
 
     @features.setter
-    def features(self, value: Optional[pulumi.Input['ImageFeaturesArgs']]):
+    def features(self, value: pulumi.Input[Optional['ImageFeaturesArgs']]):
         pulumi.set(self, "features", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to perform forced deletion. Value range:
         - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
@@ -232,36 +232,36 @@ class ImageArgs:
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="imageFamily")
-    def image_family(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_family(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\\_), and hyphens (-). By default, this parameter is empty.
         """
         return pulumi.get(self, "image_family")
 
     @image_family.setter
-    def image_family(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_family(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_family", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
         """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="imageVersion")
-    def image_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image version.
 
@@ -270,61 +270,61 @@ class ImageArgs:
         return pulumi.get(self, "image_version")
 
     @image_version.setter
-    def image_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_version", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="licenseType")
-    def license_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
         """
         return pulumi.get(self, "license_type")
 
     @license_type.setter
-    def license_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license_type", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.227.0. New field 'image_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
 
@@ -333,24 +333,24 @@ class ImageArgs:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the snapshot that you want to use to create the custom image.
         """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag
 
@@ -359,33 +359,33 @@ class ImageArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ImageState:
     def __init__(__self__, *,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_auto_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detection_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]] = None,
-                 features: Optional[pulumi.Input['ImageFeaturesArgs']] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_family: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detection_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]] = None,
+                 features: pulumi.Input[Optional['ImageFeaturesArgs']] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_family: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Image resources.
 
@@ -478,19 +478,19 @@ class _ImageState:
 
     @_builtins.property
     @pulumi.getter
-    def architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\\_64`, `arm64`. Default value: `x86\\_64`.
         """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
-    def architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "architecture", value)
 
     @_builtins.property
     @pulumi.getter(name="bootMode")
-    def boot_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def boot_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new boot mode of the image. Valid values:
 
@@ -507,48 +507,48 @@ class _ImageState:
         return pulumi.get(self, "boot_mode")
 
     @boot_mode.setter
-    def boot_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def boot_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "boot_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The create time
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteAutoSnapshot")
-    def delete_auto_snapshot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_auto_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
         """
         return pulumi.get(self, "delete_auto_snapshot")
 
     @delete_auto_snapshot.setter
-    def delete_auto_snapshot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_auto_snapshot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_auto_snapshot", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="detectionStrategy")
-    def detection_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detection_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
 
@@ -557,36 +557,36 @@ class _ImageState:
         return pulumi.get(self, "detection_strategy")
 
     @detection_strategy.setter
-    def detection_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detection_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detection_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="diskDeviceMappings")
-    def disk_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]]:
+    def disk_device_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]]:
         """
         Snapshot information for the image See `disk_device_mapping` below.
         """
         return pulumi.get(self, "disk_device_mappings")
 
     @disk_device_mappings.setter
-    def disk_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]]):
+    def disk_device_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageDiskDeviceMappingArgs']]]]):
         pulumi.set(self, "disk_device_mappings", value)
 
     @_builtins.property
     @pulumi.getter
-    def features(self) -> Optional[pulumi.Input['ImageFeaturesArgs']]:
+    def features(self) -> pulumi.Input[Optional['ImageFeaturesArgs']]:
         """
         Features See `features` below.
         """
         return pulumi.get(self, "features")
 
     @features.setter
-    def features(self, value: Optional[pulumi.Input['ImageFeaturesArgs']]):
+    def features(self, value: pulumi.Input[Optional['ImageFeaturesArgs']]):
         pulumi.set(self, "features", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to perform forced deletion. Value range:
         - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
@@ -597,36 +597,36 @@ class _ImageState:
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="imageFamily")
-    def image_family(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_family(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\\_), and hyphens (-). By default, this parameter is empty.
         """
         return pulumi.get(self, "image_family")
 
     @image_family.setter
-    def image_family(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_family(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_family", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
         """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="imageVersion")
-    def image_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image version.
 
@@ -635,61 +635,61 @@ class _ImageState:
         return pulumi.get(self, "image_version")
 
     @image_version.setter
-    def image_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_version", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="licenseType")
-    def license_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
         """
         return pulumi.get(self, "license_type")
 
     @license_type.setter
-    def license_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license_type", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.227.0. New field 'image_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
 
@@ -698,36 +698,36 @@ class _ImageState:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the snapshot that you want to use to create the custom image.
         """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the image. By default, if you do not specify this parameter, only images in the Available state are returned.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag
 
@@ -736,7 +736,7 @@ class _ImageState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -746,24 +746,24 @@ class Image(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_auto_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detection_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageDiskDeviceMappingArgs', 'ImageDiskDeviceMappingArgsDict']]]]] = None,
-                 features: Optional[pulumi.Input[Union['ImageFeaturesArgs', 'ImageFeaturesArgsDict']]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_family: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detection_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageDiskDeviceMappingArgs', 'ImageDiskDeviceMappingArgsDict']]]]] = None,
+                 features: pulumi.Input[Optional[Union['ImageFeaturesArgs', 'ImageFeaturesArgsDict']]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_family: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a ECS Image resource.
@@ -971,24 +971,24 @@ class Image(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_auto_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detection_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageDiskDeviceMappingArgs', 'ImageDiskDeviceMappingArgsDict']]]]] = None,
-                 features: Optional[pulumi.Input[Union['ImageFeaturesArgs', 'ImageFeaturesArgsDict']]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_family: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detection_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageDiskDeviceMappingArgs', 'ImageDiskDeviceMappingArgsDict']]]]] = None,
+                 features: pulumi.Input[Optional[Union['ImageFeaturesArgs', 'ImageFeaturesArgsDict']]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_family: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1028,26 +1028,26 @@ class Image(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            architecture: Optional[pulumi.Input[_builtins.str]] = None,
-            boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_auto_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            detection_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageDiskDeviceMappingArgs', 'ImageDiskDeviceMappingArgsDict']]]]] = None,
-            features: Optional[pulumi.Input[Union['ImageFeaturesArgs', 'ImageFeaturesArgsDict']]] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            image_family: Optional[pulumi.Input[_builtins.str]] = None,
-            image_name: Optional[pulumi.Input[_builtins.str]] = None,
-            image_version: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            license_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            platform: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Image':
+            architecture: pulumi.Input[Optional[_builtins.str]] = None,
+            boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_auto_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            detection_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageDiskDeviceMappingArgs', 'ImageDiskDeviceMappingArgsDict']]]]] = None,
+            features: pulumi.Input[Optional[Union['ImageFeaturesArgs', 'ImageFeaturesArgsDict']]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_family: pulumi.Input[Optional[_builtins.str]] = None,
+            image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            image_version: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            license_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            platform: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

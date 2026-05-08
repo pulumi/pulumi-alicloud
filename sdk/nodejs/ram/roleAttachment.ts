@@ -172,11 +172,11 @@ export interface RoleAttachmentState {
     /**
      * The list of ECS instance's IDs.
      */
-    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
      */
-    roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string | undefined>;
 }
 
 /**

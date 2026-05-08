@@ -21,11 +21,11 @@ class LayerVersionArgs:
     def __init__(__self__, *,
                  compatible_runtimes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  layer_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_object_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zip_file: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_object_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zip_file: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LayerVersion resource.
 
@@ -78,55 +78,55 @@ class LayerVersionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the layer version.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketName")
-    def oss_bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OSS bucket that stores the ZIP package of the function code.
         """
         return pulumi.get(self, "oss_bucket_name")
 
     @oss_bucket_name.setter
-    def oss_bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ossObjectName")
-    def oss_object_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_object_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OSS object (ZIP package) that contains the function code.
         """
         return pulumi.get(self, "oss_object_name")
 
     @oss_object_name.setter
-    def oss_object_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_object_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_object_name", value)
 
     @_builtins.property
     @pulumi.getter(name="skipDestroy")
-    def skip_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
         """
         return pulumi.get(self, "skip_destroy")
 
     @skip_destroy.setter
-    def skip_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="zipFile")
-    def zip_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zip_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ZIP package of the function code that is encoded in the Base64 format.
 
@@ -135,24 +135,24 @@ class LayerVersionArgs:
         return pulumi.get(self, "zip_file")
 
     @zip_file.setter
-    def zip_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zip_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zip_file", value)
 
 
 @pulumi.input_type
 class _LayerVersionState:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_check_sum: Optional[pulumi.Input[_builtins.str]] = None,
-                 compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 layer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_object_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 zip_file: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_check_sum: pulumi.Input[Optional[_builtins.str]] = None,
+                 compatible_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 layer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_object_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 zip_file: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LayerVersion resources.
 
@@ -195,127 +195,127 @@ class _LayerVersionState:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access mode of Layer Version.
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The arn of Layer Version.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter(name="codeCheckSum")
-    def code_check_sum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_check_sum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The checksum of the layer code package.
         """
         return pulumi.get(self, "code_check_sum")
 
     @code_check_sum.setter
-    def code_check_sum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_check_sum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_check_sum", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibleRuntimes")
-    def compatible_runtimes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def compatible_runtimes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of runtime environments that are supported by the layer. Valid values: `nodejs14`, `nodejs12`, `nodejs10`, `nodejs8`, `nodejs6`, `python3.9`, `python3`, `python2.7`, `java11`, `java8`, `php7.2`, `go1`,`dotnetcore2.1`, `custom`.
         """
         return pulumi.get(self, "compatible_runtimes")
 
     @compatible_runtimes.setter
-    def compatible_runtimes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def compatible_runtimes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "compatible_runtimes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the layer version.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="layerName")
-    def layer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def layer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the layer.
         """
         return pulumi.get(self, "layer_name")
 
     @layer_name.setter
-    def layer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def layer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "layer_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketName")
-    def oss_bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OSS bucket that stores the ZIP package of the function code.
         """
         return pulumi.get(self, "oss_bucket_name")
 
     @oss_bucket_name.setter
-    def oss_bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ossObjectName")
-    def oss_object_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_object_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OSS object (ZIP package) that contains the function code.
         """
         return pulumi.get(self, "oss_object_name")
 
     @oss_object_name.setter
-    def oss_object_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_object_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_object_name", value)
 
     @_builtins.property
     @pulumi.getter(name="skipDestroy")
-    def skip_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
         """
         return pulumi.get(self, "skip_destroy")
 
     @skip_destroy.setter
-    def skip_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of Layer Version.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
     @_builtins.property
     @pulumi.getter(name="zipFile")
-    def zip_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zip_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ZIP package of the function code that is encoded in the Base64 format.
 
@@ -324,7 +324,7 @@ class _LayerVersionState:
         return pulumi.get(self, "zip_file")
 
     @zip_file.setter
-    def zip_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zip_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zip_file", value)
 
 
@@ -334,13 +334,13 @@ class LayerVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 layer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_object_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zip_file: Optional[pulumi.Input[_builtins.str]] = None,
+                 compatible_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 layer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_object_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zip_file: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Function Compute Layer Version resource.
@@ -477,13 +477,13 @@ class LayerVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 layer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_object_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zip_file: Optional[pulumi.Input[_builtins.str]] = None,
+                 compatible_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 layer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_object_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zip_file: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -518,17 +518,17 @@ class LayerVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl: Optional[pulumi.Input[_builtins.str]] = None,
-            arn: Optional[pulumi.Input[_builtins.str]] = None,
-            code_check_sum: Optional[pulumi.Input[_builtins.str]] = None,
-            compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            layer_name: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_object_name: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None,
-            zip_file: Optional[pulumi.Input[_builtins.str]] = None) -> 'LayerVersion':
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            code_check_sum: pulumi.Input[Optional[_builtins.str]] = None,
+            compatible_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            layer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_object_name: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            zip_file: pulumi.Input[Optional[_builtins.str]] = None) -> 'LayerVersion':
         """
         Get an existing LayerVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -160,26 +160,26 @@ export interface ServerGroupState {
     /**
      * Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `deleteProtectionValidation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
      */
-    deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Server Load Balancer (SLB) instance.
      */
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
     /**
      * The name of the vServer group. Default value: `tf-server-group`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of backend servers to be added. See `servers` below.
      * > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      *
      * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      */
-    servers?: pulumi.Input<pulumi.Input<inputs.slb.ServerGroupServer>[]>;
+    servers?: pulumi.Input<pulumi.Input<inputs.slb.ServerGroupServer>[] | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -189,7 +189,7 @@ export interface ServerGroupArgs {
     /**
      * Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `deleteProtectionValidation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
      */
-    deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Server Load Balancer (SLB) instance.
      */
@@ -197,16 +197,16 @@ export interface ServerGroupArgs {
     /**
      * The name of the vServer group. Default value: `tf-server-group`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of backend servers to be added. See `servers` below.
      * > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      *
      * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      */
-    servers?: pulumi.Input<pulumi.Input<inputs.slb.ServerGroupServer>[]>;
+    servers?: pulumi.Input<pulumi.Input<inputs.slb.ServerGroupServer>[] | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

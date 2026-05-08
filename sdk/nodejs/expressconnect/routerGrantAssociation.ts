@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     ecrId: ecrId,
  *     instanceRegionId: region,
  *     instanceId: vpcId,
- *     ecrOwnerAliUid: ecrOwnerUid,
+ *     ecrOwnerAliUid: Number(ecrOwnerUid),
  *     instanceType: "VPC",
  * });
  * ```
@@ -156,29 +156,29 @@ export interface RouterGrantAssociationState {
     /**
      * The ID of the associated Leased Line Gateway instance.
      */
-    ecrId?: pulumi.Input<string>;
+    ecrId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Alibaba Cloud account (primary account) to which the leased line gateway instance is authorized.
      */
-    ecrOwnerAliUid?: pulumi.Input<number>;
+    ecrOwnerAliUid?: pulumi.Input<number | undefined>;
     /**
      * The ID of the network instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region where the authorized network instance is located.
      */
-    instanceRegionId?: pulumi.Input<string>;
+    instanceRegionId?: pulumi.Input<string | undefined>;
     /**
      * The type of the network instance. Value:
      * - `VBR`: the VBR instance.
      * - `VPC`: VPC instance.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

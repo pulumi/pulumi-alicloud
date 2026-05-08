@@ -179,15 +179,15 @@ export interface RamRoleAttachmentState {
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The additional policy. When you attach an instance RAM role to instances, you can specify an additional policy to further limit the permissions of the role.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance RAM role.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -201,7 +201,7 @@ export interface RamRoleAttachmentArgs {
     /**
      * The additional policy. When you attach an instance RAM role to instances, you can specify an additional policy to further limit the permissions of the role.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance RAM role.
      */

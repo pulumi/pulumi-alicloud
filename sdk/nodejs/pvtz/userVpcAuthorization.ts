@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const authorizedUserId = config.getNumber("authorizedUserId") || 123456789;
  * const example = new alicloud.pvtz.UserVpcAuthorization("example", {
- *     authorizedUserId: authorizedUserId,
+ *     authorizedUserId: String(authorizedUserId),
  *     authChannel: "RESOURCE_DIRECTORY",
  * });
  * ```
@@ -113,15 +113,15 @@ export interface UserVpcAuthorizationState {
     /**
      * The auth channel. Valid values: `RESOURCE_DIRECTORY`.
      */
-    authChannel?: pulumi.Input<string>;
+    authChannel?: pulumi.Input<string | undefined>;
     /**
      * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
      */
-    authType?: pulumi.Input<string>;
+    authType?: pulumi.Input<string | undefined>;
     /**
      * The primary account ID of the user who authorizes the resource.
      */
-    authorizedUserId?: pulumi.Input<string>;
+    authorizedUserId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -131,11 +131,11 @@ export interface UserVpcAuthorizationArgs {
     /**
      * The auth channel. Valid values: `RESOURCE_DIRECTORY`.
      */
-    authChannel?: pulumi.Input<string>;
+    authChannel?: pulumi.Input<string | undefined>;
     /**
      * The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
      */
-    authType?: pulumi.Input<string>;
+    authType?: pulumi.Input<string | undefined>;
     /**
      * The primary account ID of the user who authorizes the resource.
      */

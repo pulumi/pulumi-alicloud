@@ -159,36 +159,36 @@ export interface AddressBookState {
     /**
      * The list of addresses.
      */
-    addressLists?: pulumi.Input<pulumi.Input<string>[]>;
+    addressLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
      */
-    autoAddTagEcs?: pulumi.Input<number>;
+    autoAddTagEcs?: pulumi.Input<number | undefined>;
     /**
      * The description of the Address Book.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A list of ECS tags. See `ecsTags` below.
      */
-    ecsTags?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.AddressBookEcsTag>[]>;
+    ecsTags?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.AddressBookEcsTag>[] | undefined>;
     /**
      * The name of the Address Book.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
      * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
      */
-    groupType?: pulumi.Input<string>;
+    groupType?: pulumi.Input<string | undefined>;
     /**
      * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
      */
-    tagRelation?: pulumi.Input<string>;
+    tagRelation?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -198,11 +198,11 @@ export interface AddressBookArgs {
     /**
      * The list of addresses.
      */
-    addressLists?: pulumi.Input<pulumi.Input<string>[]>;
+    addressLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
      */
-    autoAddTagEcs?: pulumi.Input<number>;
+    autoAddTagEcs?: pulumi.Input<number | undefined>;
     /**
      * The description of the Address Book.
      */
@@ -210,7 +210,7 @@ export interface AddressBookArgs {
     /**
      * A list of ECS tags. See `ecsTags` below.
      */
-    ecsTags?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.AddressBookEcsTag>[]>;
+    ecsTags?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.AddressBookEcsTag>[] | undefined>;
     /**
      * The name of the Address Book.
      */
@@ -223,9 +223,9 @@ export interface AddressBookArgs {
     /**
      * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
      */
-    tagRelation?: pulumi.Input<string>;
+    tagRelation?: pulumi.Input<string | undefined>;
 }

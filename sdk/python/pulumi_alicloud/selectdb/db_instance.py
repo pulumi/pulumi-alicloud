@@ -28,14 +28,14 @@ class DbInstanceArgs:
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 admin_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]] = None,
-                 enable_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 engine_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 period_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 upgraded_engine_minor_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]] = None,
+                 enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 period_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 upgraded_engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbInstance resource.
 
@@ -170,79 +170,79 @@ class DbInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminPass")
-    def admin_pass(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admin_pass(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for DBInstance using admin account.
         """
         return pulumi.get(self, "admin_pass")
 
     @admin_pass.setter
-    def admin_pass(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admin_pass(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admin_pass", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredSecurityIpLists")
-    def desired_security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]]:
+    def desired_security_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]]:
         """
         The modified IP address whitelists. See `desired_security_ip_lists` below.
         """
         return pulumi.get(self, "desired_security_ip_lists")
 
     @desired_security_ip_lists.setter
-    def desired_security_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]]):
+    def desired_security_ip_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]]):
         pulumi.set(self, "desired_security_ip_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePublicNetwork")
-    def enable_public_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_public_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If DBInstance need to open public network, set it to `true`.
         """
         return pulumi.get(self, "enable_public_network")
 
     @enable_public_network.setter
-    def enable_public_network(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_public_network(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_public_network", value)
 
     @_builtins.property
     @pulumi.getter(name="engineMinorVersion")
-    def engine_minor_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_minor_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
         """
         return pulumi.get(self, "engine_minor_version")
 
     @engine_minor_version.setter
-    def engine_minor_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_minor_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_minor_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodTime")
-    def period_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
         """
         return pulumi.get(self, "period_time")
 
     @period_time.setter
-    def period_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -251,60 +251,60 @@ class DbInstanceArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradedEngineMinorVersion")
     @_utilities.deprecated("""Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.""")
-    def upgraded_engine_minor_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upgraded_engine_minor_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
         """
         return pulumi.get(self, "upgraded_engine_minor_version")
 
     @upgraded_engine_minor_version.setter
-    def upgraded_engine_minor_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upgraded_engine_minor_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upgraded_engine_minor_version", value)
 
 
 @pulumi.input_type
 class _DbInstanceState:
     def __init__(__self__, *,
-                 admin_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 cache_size_postpaid: Optional[pulumi.Input[_builtins.int]] = None,
-                 cache_size_prepaid: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_count_postpaid: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_count_prepaid: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_postpaid: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_prepaid: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]] = None,
-                 enable_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 gmt_created: Optional[pulumi.Input[_builtins.str]] = None,
-                 gmt_expired: Optional[pulumi.Input[_builtins.str]] = None,
-                 gmt_modified: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_net_infos: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceInstanceNetInfoArgs']]]] = None,
-                 lock_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 lock_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory_postpaid: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_prepaid: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 period_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceSecurityIpListArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 upgraded_engine_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 cache_size_postpaid: pulumi.Input[Optional[_builtins.int]] = None,
+                 cache_size_prepaid: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_count_postpaid: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_count_prepaid: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_postpaid: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_prepaid: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]] = None,
+                 enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 gmt_created: pulumi.Input[Optional[_builtins.str]] = None,
+                 gmt_expired: pulumi.Input[Optional[_builtins.str]] = None,
+                 gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_net_infos: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceInstanceNetInfoArgs']]]] = None,
+                 lock_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 lock_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory_postpaid: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_prepaid: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 period_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceSecurityIpListArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 upgraded_engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbInstance resources.
 
@@ -419,355 +419,355 @@ class _DbInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="adminPass")
-    def admin_pass(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admin_pass(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for DBInstance using admin account.
         """
         return pulumi.get(self, "admin_pass")
 
     @admin_pass.setter
-    def admin_pass(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admin_pass(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admin_pass", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheSize")
-    def cache_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cache_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The cache size in DBInstance on creating default cluster. The number should be divided by 100.
         """
         return pulumi.get(self, "cache_size")
 
     @cache_size.setter
-    def cache_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cache_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cache_size", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheSizePostpaid")
-    def cache_size_postpaid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cache_size_postpaid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The sum of cache size for every `PayAsYouGo` clusters in DBInstance.
         """
         return pulumi.get(self, "cache_size_postpaid")
 
     @cache_size_postpaid.setter
-    def cache_size_postpaid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cache_size_postpaid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cache_size_postpaid", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheSizePrepaid")
-    def cache_size_prepaid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cache_size_prepaid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The sum of cache size for every `Subscription` clusters in DBInstance.
         """
         return pulumi.get(self, "cache_size_prepaid")
 
     @cache_size_prepaid.setter
-    def cache_size_prepaid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cache_size_prepaid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cache_size_prepaid", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterCountPostpaid")
-    def cluster_count_postpaid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cluster_count_postpaid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The sum of cluster counts for `PayAsYouGo` clusters in DBInstance.
         """
         return pulumi.get(self, "cluster_count_postpaid")
 
     @cluster_count_postpaid.setter
-    def cluster_count_postpaid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cluster_count_postpaid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cluster_count_postpaid", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterCountPrepaid")
-    def cluster_count_prepaid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cluster_count_prepaid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The sum of cluster counts for `Subscription` clusters in DBInstance.
         """
         return pulumi.get(self, "cluster_count_prepaid")
 
     @cluster_count_prepaid.setter
-    def cluster_count_prepaid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cluster_count_prepaid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cluster_count_prepaid", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuPostpaid")
-    def cpu_postpaid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_postpaid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The sum of cpu resource amount for every `PayAsYouGo` clusters in DBInstance.
         """
         return pulumi.get(self, "cpu_postpaid")
 
     @cpu_postpaid.setter
-    def cpu_postpaid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_postpaid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_postpaid", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuPrepaid")
-    def cpu_prepaid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_prepaid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The sum of cpu resource amount for every `Subscription` clusters in DBInstance.
         """
         return pulumi.get(self, "cpu_prepaid")
 
     @cpu_prepaid.setter
-    def cpu_prepaid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_prepaid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_prepaid", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceClass")
-    def db_instance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         """
         return pulumi.get(self, "db_instance_class")
 
     @db_instance_class.setter
-    def db_instance_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_class", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceDescription")
-    def db_instance_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DBInstance description.
         """
         return pulumi.get(self, "db_instance_description")
 
     @db_instance_description.setter
-    def db_instance_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_description", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredSecurityIpLists")
-    def desired_security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]]:
+    def desired_security_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]]:
         """
         The modified IP address whitelists. See `desired_security_ip_lists` below.
         """
         return pulumi.get(self, "desired_security_ip_lists")
 
     @desired_security_ip_lists.setter
-    def desired_security_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]]):
+    def desired_security_ip_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]]):
         pulumi.set(self, "desired_security_ip_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePublicNetwork")
-    def enable_public_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_public_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If DBInstance need to open public network, set it to `true`.
         """
         return pulumi.get(self, "enable_public_network")
 
     @enable_public_network.setter
-    def enable_public_network(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_public_network(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_public_network", value)
 
     @_builtins.property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The engine of DBInstance. Always `selectdb`.
         """
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter(name="engineMinorVersion")
-    def engine_minor_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_minor_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
         """
         return pulumi.get(self, "engine_minor_version")
 
     @engine_minor_version.setter
-    def engine_minor_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_minor_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_minor_version", value)
 
     @_builtins.property
     @pulumi.getter(name="gmtCreated")
-    def gmt_created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gmt_created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when DBInstance is created.
         """
         return pulumi.get(self, "gmt_created")
 
     @gmt_created.setter
-    def gmt_created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gmt_created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gmt_created", value)
 
     @_builtins.property
     @pulumi.getter(name="gmtExpired")
-    def gmt_expired(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gmt_expired(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when DBInstance will be expired. Available on `Subscription` DBInstance.
         """
         return pulumi.get(self, "gmt_expired")
 
     @gmt_expired.setter
-    def gmt_expired(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gmt_expired(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gmt_expired", value)
 
     @_builtins.property
     @pulumi.getter(name="gmtModified")
-    def gmt_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gmt_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when DBInstance is modified.
         """
         return pulumi.get(self, "gmt_modified")
 
     @gmt_modified.setter
-    def gmt_modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gmt_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gmt_modified", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceNetInfos")
-    def instance_net_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceInstanceNetInfoArgs']]]]:
+    def instance_net_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceInstanceNetInfoArgs']]]]:
         """
         The net infos for instances.
         """
         return pulumi.get(self, "instance_net_infos")
 
     @instance_net_infos.setter
-    def instance_net_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceInstanceNetInfoArgs']]]]):
+    def instance_net_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceInstanceNetInfoArgs']]]]):
         pulumi.set(self, "instance_net_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="lockMode")
-    def lock_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lock_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lock mode of the instance. Set the value to lock, which specifies that the instance is locked when it automatically expires or has an overdue payment.
         """
         return pulumi.get(self, "lock_mode")
 
     @lock_mode.setter
-    def lock_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lock_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lock_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="lockReason")
-    def lock_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lock_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason why the instance is locked.
         """
         return pulumi.get(self, "lock_reason")
 
     @lock_reason.setter
-    def lock_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lock_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lock_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryPostpaid")
-    def memory_postpaid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_postpaid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The sum of memory resource amount offor every `PayAsYouGo` clusters in DBInstance.
         """
         return pulumi.get(self, "memory_postpaid")
 
     @memory_postpaid.setter
-    def memory_postpaid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_postpaid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_postpaid", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryPrepaid")
-    def memory_prepaid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_prepaid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The sum of memory resource amount offor every `Subscription` clusters in DBInstance.
         """
         return pulumi.get(self, "memory_prepaid")
 
     @memory_prepaid.setter
-    def memory_prepaid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_prepaid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_prepaid", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodTime")
-    def period_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
         """
         return pulumi.get(self, "period_time")
 
     @period_time.setter
-    def period_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_time", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the instance.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpLists")
-    def security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceSecurityIpListArgs']]]]:
+    def security_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceSecurityIpListArgs']]]]:
         """
         The details about each IP address whitelist returned.
         """
         return pulumi.get(self, "security_ip_lists")
 
     @security_ip_lists.setter
-    def security_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceSecurityIpListArgs']]]]):
+    def security_ip_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceSecurityIpListArgs']]]]):
         pulumi.set(self, "security_ip_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="subDomain")
-    def sub_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sub domain of DBInstance.
         """
         return pulumi.get(self, "sub_domain")
 
     @sub_domain.setter
-    def sub_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -776,56 +776,56 @@ class _DbInstanceState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradedEngineMinorVersion")
     @_utilities.deprecated("""Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.""")
-    def upgraded_engine_minor_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upgraded_engine_minor_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `upgraded_engine_minor_version` has been deprecated from provider version 1.248.0. New field `engine_minor_version` instead.
         """
         return pulumi.get(self, "upgraded_engine_minor_version")
 
     @upgraded_engine_minor_version.setter
-    def upgraded_engine_minor_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upgraded_engine_minor_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upgraded_engine_minor_version", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC for DBInstance.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of vswitch for DBInstance.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of zone for DBInstance.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -835,21 +835,21 @@ class DbInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]]] = None,
-                 enable_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 engine_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 period_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 upgraded_engine_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]]] = None,
+                 enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 period_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 upgraded_engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a SelectDB DBInstance resource.
@@ -982,21 +982,21 @@ class DbInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]]] = None,
-                 enable_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 engine_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 period_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 upgraded_engine_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]]] = None,
+                 enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 period_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 upgraded_engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1066,40 +1066,40 @@ class DbInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_pass: Optional[pulumi.Input[_builtins.str]] = None,
-            cache_size: Optional[pulumi.Input[_builtins.int]] = None,
-            cache_size_postpaid: Optional[pulumi.Input[_builtins.int]] = None,
-            cache_size_prepaid: Optional[pulumi.Input[_builtins.int]] = None,
-            cluster_count_postpaid: Optional[pulumi.Input[_builtins.int]] = None,
-            cluster_count_prepaid: Optional[pulumi.Input[_builtins.int]] = None,
-            cpu_postpaid: Optional[pulumi.Input[_builtins.int]] = None,
-            cpu_prepaid: Optional[pulumi.Input[_builtins.int]] = None,
-            db_instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]]] = None,
-            enable_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-            engine: Optional[pulumi.Input[_builtins.str]] = None,
-            engine_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-            gmt_created: Optional[pulumi.Input[_builtins.str]] = None,
-            gmt_expired: Optional[pulumi.Input[_builtins.str]] = None,
-            gmt_modified: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_net_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceInstanceNetInfoArgs', 'DbInstanceInstanceNetInfoArgsDict']]]]] = None,
-            lock_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            lock_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            memory_postpaid: Optional[pulumi.Input[_builtins.int]] = None,
-            memory_prepaid: Optional[pulumi.Input[_builtins.int]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.str]] = None,
-            period_time: Optional[pulumi.Input[_builtins.int]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceSecurityIpListArgs', 'DbInstanceSecurityIpListArgsDict']]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            sub_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            upgraded_engine_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DbInstance':
+            admin_pass: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+            cache_size_postpaid: pulumi.Input[Optional[_builtins.int]] = None,
+            cache_size_prepaid: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_count_postpaid: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_count_prepaid: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_postpaid: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_prepaid: pulumi.Input[Optional[_builtins.int]] = None,
+            db_instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceDesiredSecurityIpListArgs', 'DbInstanceDesiredSecurityIpListArgsDict']]]]] = None,
+            enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_created: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_expired: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_net_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceInstanceNetInfoArgs', 'DbInstanceInstanceNetInfoArgsDict']]]]] = None,
+            lock_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            lock_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            memory_postpaid: pulumi.Input[Optional[_builtins.int]] = None,
+            memory_prepaid: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            period_time: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceSecurityIpListArgs', 'DbInstanceSecurityIpListArgsDict']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            upgraded_engine_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DbInstance':
         """
         Get an existing DbInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

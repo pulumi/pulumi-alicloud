@@ -172,47 +172,47 @@ export interface V3LayerVersionState {
     /**
      * The access permission of the layer, 1: public, 0: private, default is private
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * Layer code configuration See `code` below.
      */
-    code?: pulumi.Input<inputs.fc.V3LayerVersionCode>;
+    code?: pulumi.Input<inputs.fc.V3LayerVersionCode | undefined>;
     /**
      * (Available since v1.234.0) The code package size of the layer, in bytes.
      */
-    codeSize?: pulumi.Input<string>;
+    codeSize?: pulumi.Input<string | undefined>;
     /**
      * List of runtime environments supported by the layer
      */
-    compatibleRuntimes?: pulumi.Input<pulumi.Input<string>[]>;
+    compatibleRuntimes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the version
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the layer
      */
-    layerName?: pulumi.Input<string>;
+    layerName?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
      */
-    layerVersionArn?: pulumi.Input<string>;
+    layerVersionArn?: pulumi.Input<string | undefined>;
     /**
      * Layer License Agreement
      */
-    license?: pulumi.Input<string>;
+    license?: pulumi.Input<string | undefined>;
     /**
      * Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
      */
-    public?: pulumi.Input<string>;
+    public?: pulumi.Input<string | undefined>;
     /**
      * The version of the layer
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -222,19 +222,19 @@ export interface V3LayerVersionArgs {
     /**
      * The access permission of the layer, 1: public, 0: private, default is private
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * Layer code configuration See `code` below.
      */
-    code?: pulumi.Input<inputs.fc.V3LayerVersionCode>;
+    code?: pulumi.Input<inputs.fc.V3LayerVersionCode | undefined>;
     /**
      * List of runtime environments supported by the layer
      */
-    compatibleRuntimes?: pulumi.Input<pulumi.Input<string>[]>;
+    compatibleRuntimes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the version
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the layer
      */
@@ -242,9 +242,9 @@ export interface V3LayerVersionArgs {
     /**
      * Layer License Agreement
      */
-    license?: pulumi.Input<string>;
+    license?: pulumi.Input<string | undefined>;
     /**
      * Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
      */
-    public?: pulumi.Input<string>;
+    public?: pulumi.Input<string | undefined>;
 }

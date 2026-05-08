@@ -129,11 +129,11 @@ export interface NetworkAclAttachmentState {
     /**
      * The id of the network acl, the field can't be changed.
      */
-    networkAclId?: pulumi.Input<string>;
+    networkAclId?: pulumi.Input<string | undefined>;
     /**
      * List of the resources associated with the network acl. The details see Block Resources.
      */
-    resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclAttachmentResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclAttachmentResource>[] | undefined>;
 }
 
 /**

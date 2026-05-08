@@ -292,19 +292,19 @@ export interface ClusterState {
     /**
      * The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
      */
-    aclEntryLists?: pulumi.Input<pulumi.Input<string>[]>;
+    aclEntryLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Available since v1.205.0) The application version.
      */
-    appVersion?: pulumi.Input<string>;
+    appVersion?: pulumi.Input<string | undefined>;
     /**
      * The alias of MSE Cluster.
      */
-    clusterAliasName?: pulumi.Input<string>;
+    clusterAliasName?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.162.0) The cluster id of Cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
      * - Professional Edition
@@ -326,79 +326,79 @@ export interface ClusterState {
      * - Serverless Edition
      * - `MSE_SC_SERVERLESS`: Available since v1.232.0
      */
-    clusterSpecification?: pulumi.Input<string>;
+    clusterSpecification?: pulumi.Input<string | undefined>;
     /**
      * The type of MSE Cluster.
      */
-    clusterType?: pulumi.Input<string>;
+    clusterType?: pulumi.Input<string | undefined>;
     /**
      * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
      */
-    clusterVersion?: pulumi.Input<string>;
+    clusterVersion?: pulumi.Input<string | undefined>;
     /**
      * The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mseVersion is `mseDev`,please use `singleEni`.
      */
-    connectionType?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string | undefined>;
     /**
      * The type of Disk.
      */
-    diskType?: pulumi.Input<string>;
+    diskType?: pulumi.Input<string | undefined>;
     /**
      * The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
      */
-    instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number | undefined>;
     /**
      * The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
      */
-    mseVersion?: pulumi.Input<string>;
+    mseVersion?: pulumi.Input<string | undefined>;
     /**
      * The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
      */
-    netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string | undefined>;
     /**
      * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The specification of private network SLB.
      */
-    privateSlbSpecification?: pulumi.Input<string>;
+    privateSlbSpecification?: pulumi.Input<string | undefined>;
     /**
      * The public network bandwidth.
      */
-    pubNetworkFlow?: pulumi.Input<string>;
+    pubNetworkFlow?: pulumi.Input<string | undefined>;
     /**
      * The specification of public network SLB. Serverless Instance could ignore this parameter.
      */
-    pubSlbSpecification?: pulumi.Input<string>;
+    pubSlbSpecification?: pulumi.Input<string | undefined>;
     /**
      * The extended request parameters in the JSON format.
      */
-    requestPars?: pulumi.Input<string>;
+    requestPars?: pulumi.Input<string | undefined>;
     /**
      * The resource group of the resource.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of MSE Cluster.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
      */
-    versionCode?: pulumi.Input<string>;
+    versionCode?: pulumi.Input<string | undefined>;
     /**
      * The id of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The id of VSwitch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -408,11 +408,11 @@ export interface ClusterArgs {
     /**
      * The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
      */
-    aclEntryLists?: pulumi.Input<pulumi.Input<string>[]>;
+    aclEntryLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The alias of MSE Cluster.
      */
-    clusterAliasName?: pulumi.Input<string>;
+    clusterAliasName?: pulumi.Input<string | undefined>;
     /**
      * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
      * - Professional Edition
@@ -446,11 +446,11 @@ export interface ClusterArgs {
     /**
      * The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mseVersion is `mseDev`,please use `singleEni`.
      */
-    connectionType?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string | undefined>;
     /**
      * The type of Disk.
      */
-    diskType?: pulumi.Input<string>;
+    diskType?: pulumi.Input<string | undefined>;
     /**
      * The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
      */
@@ -458,7 +458,7 @@ export interface ClusterArgs {
     /**
      * The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
      */
-    mseVersion?: pulumi.Input<string>;
+    mseVersion?: pulumi.Input<string | undefined>;
     /**
      * The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
      */
@@ -466,11 +466,11 @@ export interface ClusterArgs {
     /**
      * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The specification of private network SLB.
      */
-    privateSlbSpecification?: pulumi.Input<string>;
+    privateSlbSpecification?: pulumi.Input<string | undefined>;
     /**
      * The public network bandwidth.
      */
@@ -478,29 +478,29 @@ export interface ClusterArgs {
     /**
      * The specification of public network SLB. Serverless Instance could ignore this parameter.
      */
-    pubSlbSpecification?: pulumi.Input<string>;
+    pubSlbSpecification?: pulumi.Input<string | undefined>;
     /**
      * The extended request parameters in the JSON format.
      */
-    requestPars?: pulumi.Input<string>;
+    requestPars?: pulumi.Input<string | undefined>;
     /**
      * The resource group of the resource.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
      */
-    versionCode?: pulumi.Input<string>;
+    versionCode?: pulumi.Input<string | undefined>;
     /**
      * The id of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The id of VSwitch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

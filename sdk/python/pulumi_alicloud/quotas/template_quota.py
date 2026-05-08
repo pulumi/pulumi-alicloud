@@ -24,12 +24,12 @@ class TemplateQuotaArgs:
                  desire_value: pulumi.Input[_builtins.float],
                  product_code: pulumi.Input[_builtins.str],
                  quota_action_code: pulumi.Input[_builtins.str],
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 notice_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 quota_category: Optional[pulumi.Input[_builtins.str]] = None):
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 quota_category: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TemplateQuota resource.
 
@@ -104,31 +104,31 @@ class TemplateQuotaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]]:
         """
         The Quota Dimensions. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UTC time when the quota takes effect.
         """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="envLanguage")
-    def env_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the quota alert notification. Value:
         - zh: Chinese.
@@ -137,24 +137,24 @@ class TemplateQuotaArgs:
         return pulumi.get(self, "env_language")
 
     @env_language.setter
-    def env_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_language", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UTC time when the quota expires.
         """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="noticeType")
-    def notice_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def notice_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to notify the result of quota promotion application. Value:
         - 0: No.
@@ -163,12 +163,12 @@ class TemplateQuotaArgs:
         return pulumi.get(self, "notice_type")
 
     @notice_type.setter
-    def notice_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def notice_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "notice_type", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaCategory")
-    def quota_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of quota. Value:
         - CommonQuota : Generic quota.
@@ -178,22 +178,22 @@ class TemplateQuotaArgs:
         return pulumi.get(self, "quota_category")
 
     @quota_category.setter
-    def quota_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_category", value)
 
 
 @pulumi.input_type
 class _TemplateQuotaState:
     def __init__(__self__, *,
-                 desire_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 notice_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_action_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_category: Optional[pulumi.Input[_builtins.str]] = None):
+                 desire_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_category: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TemplateQuota resources.
 
@@ -235,43 +235,43 @@ class _TemplateQuotaState:
 
     @_builtins.property
     @pulumi.getter(name="desireValue")
-    def desire_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def desire_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Quota application value.
         """
         return pulumi.get(self, "desire_value")
 
     @desire_value.setter
-    def desire_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def desire_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "desire_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]]:
         """
         The Quota Dimensions. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UTC time when the quota takes effect.
         """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="envLanguage")
-    def env_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the quota alert notification. Value:
         - zh: Chinese.
@@ -280,24 +280,24 @@ class _TemplateQuotaState:
         return pulumi.get(self, "env_language")
 
     @env_language.setter
-    def env_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_language", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UTC time when the quota expires.
         """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="noticeType")
-    def notice_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def notice_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to notify the result of quota promotion application. Value:
         - 0: No.
@@ -306,36 +306,36 @@ class _TemplateQuotaState:
         return pulumi.get(self, "notice_type")
 
     @notice_type.setter
-    def notice_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def notice_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "notice_type", value)
 
     @_builtins.property
     @pulumi.getter(name="productCode")
-    def product_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The abbreviation of the cloud service name.
         """
         return pulumi.get(self, "product_code")
 
     @product_code.setter
-    def product_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_code", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaActionCode")
-    def quota_action_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_action_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The quota ID.
         """
         return pulumi.get(self, "quota_action_code")
 
     @quota_action_code.setter
-    def quota_action_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_action_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_action_code", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaCategory")
-    def quota_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of quota. Value:
         - CommonQuota : Generic quota.
@@ -345,7 +345,7 @@ class _TemplateQuotaState:
         return pulumi.get(self, "quota_category")
 
     @quota_category.setter
-    def quota_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_category", value)
 
 
@@ -355,15 +355,15 @@ class TemplateQuota(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 desire_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 notice_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_action_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_category: Optional[pulumi.Input[_builtins.str]] = None,
+                 desire_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_category: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Quotas Template Quota resource.
@@ -392,7 +392,7 @@ class TemplateQuota(pulumi.CustomResource):
                 "key": "regionId",
                 "value": "cn-hangzhou",
             }],
-            desire_value=1001,
+            desire_value=float(1001),
             env_language="zh",
             quota_category="CommonQuota")
         ```
@@ -460,7 +460,7 @@ class TemplateQuota(pulumi.CustomResource):
                 "key": "regionId",
                 "value": "cn-hangzhou",
             }],
-            desire_value=1001,
+            desire_value=float(1001),
             env_language="zh",
             quota_category="CommonQuota")
         ```
@@ -491,15 +491,15 @@ class TemplateQuota(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 desire_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 notice_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_action_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_category: Optional[pulumi.Input[_builtins.str]] = None,
+                 desire_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_category: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -534,15 +534,15 @@ class TemplateQuota(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            desire_value: Optional[pulumi.Input[_builtins.float]] = None,
-            dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]]] = None,
-            effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-            env_language: Optional[pulumi.Input[_builtins.str]] = None,
-            expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-            notice_type: Optional[pulumi.Input[_builtins.int]] = None,
-            product_code: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_action_code: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_category: Optional[pulumi.Input[_builtins.str]] = None) -> 'TemplateQuota':
+            desire_value: pulumi.Input[Optional[_builtins.float]] = None,
+            dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            env_language: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+            product_code: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_category: pulumi.Input[Optional[_builtins.str]] = None) -> 'TemplateQuota':
         """
         Get an existing TemplateQuota resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -210,35 +210,35 @@ export interface MonitorConfigState {
     /**
      * The ID of the address pool.
      */
-    addrPoolId?: pulumi.Input<string>;
+    addrPoolId?: pulumi.Input<string | undefined>;
     /**
      * The number of consecutive times of failed health check attempts. Valid values: `1`, `2`, `3`.
      */
-    evaluationCount?: pulumi.Input<number>;
+    evaluationCount?: pulumi.Input<number | undefined>;
     /**
      * The health check interval. Unit: seconds. Valid values: `60`.
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * The Monitoring node. See `ispCityNode` below for details.
      */
-    ispCityNodes?: pulumi.Input<pulumi.Input<inputs.dns.MonitorConfigIspCityNode>[]>;
+    ispCityNodes?: pulumi.Input<pulumi.Input<inputs.dns.MonitorConfigIspCityNode>[] | undefined>;
     /**
      * The lang.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
      */
-    monitorExtendInfo?: pulumi.Input<string>;
+    monitorExtendInfo?: pulumi.Input<string | undefined>;
     /**
      * The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
      */
-    protocolType?: pulumi.Input<string>;
+    protocolType?: pulumi.Input<string | undefined>;
     /**
      * The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -264,7 +264,7 @@ export interface MonitorConfigArgs {
     /**
      * The lang.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
      */

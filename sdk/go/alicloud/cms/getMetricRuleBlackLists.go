@@ -26,22 +26,24 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := cms.GetMetricRuleBlackLists(ctx, &cms.GetMetricRuleBlackListsArgs{
-// Ids: interface{}{
-// defaultAlicloudCmsMetricRuleBlackLists.Id,
-// },
-// Category: pulumi.StringRef("ecs"),
-// Namespace: pulumi.StringRef("acs_ecs_dashboard"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudCmsRuleBlackListExampleId", pulumi.Any(lists[0].Id))
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cms.GetMetricRuleBlackLists(ctx, &cms.GetMetricRuleBlackListsArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudCmsMetricRuleBlackLists.Id,
+//				},
+//				Category:  pulumi.StringRef("ecs"),
+//				Namespace: pulumi.StringRef("acs_ecs_dashboard"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudCmsRuleBlackListExampleId", pulumi.Any(lists[0].Id))
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetMetricRuleBlackLists(ctx *pulumi.Context, args *GetMetricRuleBlackListsArgs, opts ...pulumi.InvokeOption) (*GetMetricRuleBlackListsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

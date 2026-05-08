@@ -21,10 +21,10 @@ class EventSourceArgs:
     def __init__(__self__, *,
                  event_bus_name: pulumi.Input[_builtins.str],
                  event_source_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_source_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 external_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_external_source: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_source_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 external_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EventSource resource.
 
@@ -85,19 +85,19 @@ class EventSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the event source.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="externalSourceConfig")
-    def external_source_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def external_source_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The configuration of the external data source.
         When `external_source_type` is `RabbitMQ`, The following attributes are supported:
@@ -117,43 +117,43 @@ class EventSourceArgs:
         return pulumi.get(self, "external_source_config")
 
     @external_source_config.setter
-    def external_source_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def external_source_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "external_source_config", value)
 
     @_builtins.property
     @pulumi.getter(name="externalSourceType")
-    def external_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
         """
         return pulumi.get(self, "external_source_type")
 
     @external_source_type.setter
-    def external_source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedExternalSource")
-    def linked_external_source(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def linked_external_source(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to connect to an external data source. Default value: `false`.
         """
         return pulumi.get(self, "linked_external_source")
 
     @linked_external_source.setter
-    def linked_external_source(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def linked_external_source(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "linked_external_source", value)
 
 
 @pulumi.input_type
 class _EventSourceState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_bus_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_source_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 external_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_external_source: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_source_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 external_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering EventSource resources.
 
@@ -192,43 +192,43 @@ class _EventSourceState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the event source.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="eventBusName")
-    def event_bus_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_bus_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the event bus to which the event source is attached.
         """
         return pulumi.get(self, "event_bus_name")
 
     @event_bus_name.setter
-    def event_bus_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_bus_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_bus_name", value)
 
     @_builtins.property
     @pulumi.getter(name="eventSourceName")
-    def event_source_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_source_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the event source.
         """
         return pulumi.get(self, "event_source_name")
 
     @event_source_name.setter
-    def event_source_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_source_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_source_name", value)
 
     @_builtins.property
     @pulumi.getter(name="externalSourceConfig")
-    def external_source_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def external_source_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The configuration of the external data source.
         When `external_source_type` is `RabbitMQ`, The following attributes are supported:
@@ -248,31 +248,31 @@ class _EventSourceState:
         return pulumi.get(self, "external_source_config")
 
     @external_source_config.setter
-    def external_source_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def external_source_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "external_source_config", value)
 
     @_builtins.property
     @pulumi.getter(name="externalSourceType")
-    def external_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
         """
         return pulumi.get(self, "external_source_type")
 
     @external_source_type.setter
-    def external_source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedExternalSource")
-    def linked_external_source(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def linked_external_source(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to connect to an external data source. Default value: `false`.
         """
         return pulumi.get(self, "linked_external_source")
 
     @linked_external_source.setter
-    def linked_external_source(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def linked_external_source(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "linked_external_source", value)
 
 
@@ -282,12 +282,12 @@ class EventSource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_bus_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_source_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 external_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_external_source: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_source_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 external_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Event Bridge Event Source resource.
@@ -434,12 +434,12 @@ class EventSource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_bus_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_source_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 external_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_external_source: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_source_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 external_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -469,12 +469,12 @@ class EventSource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            event_bus_name: Optional[pulumi.Input[_builtins.str]] = None,
-            event_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-            external_source_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            external_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            linked_external_source: Optional[pulumi.Input[_builtins.bool]] = None) -> 'EventSource':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
+            event_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            external_source_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            external_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None) -> 'EventSource':
         """
         Get an existing EventSource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

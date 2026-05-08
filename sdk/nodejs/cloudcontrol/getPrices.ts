@@ -120,11 +120,11 @@ export interface GetPricesOutputArgs {
     /**
      * This property represent the detailed configuration of the Resource which you are going to get price.  Give same content as DesireAttributes of the 'Resource' Resource when start Create operation. 'PaymentType' is necessary when in DesireAttributes.  Here is a probably example when you get the price of SLB LoadBalancer:```json{"LoadBalancerName": "cc-test","Bandwidth": 6,"PaymentType": "PayAsYouGo","AddressType": "internet","LoadBalancerSpec": "slb.s3.small","InternetChargeType": "paybybandwidth"} See `DesireAttributes` below.
      */
-    desireAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    desireAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The product Code represents the product to be operated. Currently supported products and resources can be queried at the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
      */

@@ -192,55 +192,55 @@ export interface HoneypotProbeState {
     /**
      * ARP spoofing detection.**true**: Enable **false**: Disabled
      */
-    arp?: pulumi.Input<boolean>;
+    arp?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the management node.
      */
-    controlNodeId?: pulumi.Input<string>;
+    controlNodeId?: pulumi.Input<string | undefined>;
     /**
      * Probe display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Configure the service.See the following `Block HoneypotBindList`.
      */
-    honeypotBindLists?: pulumi.Input<pulumi.Input<inputs.threatdetection.HoneypotProbeHoneypotBindList>[]>;
+    honeypotBindLists?: pulumi.Input<pulumi.Input<inputs.threatdetection.HoneypotProbeHoneypotBindList>[] | undefined>;
     /**
      * The first ID of the resource
      */
-    honeypotProbeId?: pulumi.Input<string>;
+    honeypotProbeId?: pulumi.Input<string | undefined>;
     /**
      * Ping scan detection. Value: **true**: Enable **false**: Disabled
      */
-    ping?: pulumi.Input<boolean>;
+    ping?: pulumi.Input<boolean | undefined>;
     /**
      * Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
      */
-    probeType?: pulumi.Input<string>;
+    probeType?: pulumi.Input<string | undefined>;
     /**
      * The version of the probe.
      */
-    probeVersion?: pulumi.Input<string>;
+    probeVersion?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the proxy.
      */
-    proxyIp?: pulumi.Input<string>;
+    proxyIp?: pulumi.Input<string | undefined>;
     /**
      * Listen to the IP address list.
      */
-    serviceIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -250,7 +250,7 @@ export interface HoneypotProbeArgs {
     /**
      * ARP spoofing detection.**true**: Enable **false**: Disabled
      */
-    arp?: pulumi.Input<boolean>;
+    arp?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the management node.
      */
@@ -262,11 +262,11 @@ export interface HoneypotProbeArgs {
     /**
      * Configure the service.See the following `Block HoneypotBindList`.
      */
-    honeypotBindLists?: pulumi.Input<pulumi.Input<inputs.threatdetection.HoneypotProbeHoneypotBindList>[]>;
+    honeypotBindLists?: pulumi.Input<pulumi.Input<inputs.threatdetection.HoneypotProbeHoneypotBindList>[] | undefined>;
     /**
      * Ping scan detection. Value: **true**: Enable **false**: Disabled
      */
-    ping?: pulumi.Input<boolean>;
+    ping?: pulumi.Input<boolean | undefined>;
     /**
      * Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
      */
@@ -274,21 +274,21 @@ export interface HoneypotProbeArgs {
     /**
      * The version of the probe.
      */
-    probeVersion?: pulumi.Input<string>;
+    probeVersion?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the proxy.
      */
-    proxyIp?: pulumi.Input<string>;
+    proxyIp?: pulumi.Input<string | undefined>;
     /**
      * Listen to the IP address list.
      */
-    serviceIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

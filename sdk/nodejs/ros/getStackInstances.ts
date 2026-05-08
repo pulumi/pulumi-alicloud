@@ -179,15 +179,15 @@ export interface GetStackInstancesOutputArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Stack Instance IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The name of the stack group.
      */
@@ -195,11 +195,11 @@ export interface GetStackInstancesOutputArgs {
     /**
      * The account to which the stack instance belongs.
      */
-    stackInstanceAccountId?: pulumi.Input<string>;
+    stackInstanceAccountId?: pulumi.Input<string | undefined>;
     /**
      * The region of the stack instance.
      */
-    stackInstanceRegionId?: pulumi.Input<string>;
+    stackInstanceRegionId?: pulumi.Input<string | undefined>;
     /**
      * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
      * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
@@ -208,5 +208,5 @@ export interface GetStackInstancesOutputArgs {
      * * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
      * * The create or update operation is not complete.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

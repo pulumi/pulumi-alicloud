@@ -131,21 +131,21 @@ export interface IpamIpamPoolCidrState {
     /**
      * The CIDR address segment to be preset.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * The ID of the IPAM pool instance.
      */
-    ipamPoolId?: pulumi.Input<string>;
+    ipamPoolId?: pulumi.Input<string | undefined>;
     /**
      * Preset Cidr for an address pool by using a mask, supporting sub-pools and public top pools
      *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
-    netmaskLength?: pulumi.Input<number>;
+    netmaskLength?: pulumi.Input<number | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -155,7 +155,7 @@ export interface IpamIpamPoolCidrArgs {
     /**
      * The CIDR address segment to be preset.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * The ID of the IPAM pool instance.
      */
@@ -165,5 +165,5 @@ export interface IpamIpamPoolCidrArgs {
      *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
-    netmaskLength?: pulumi.Input<number>;
+    netmaskLength?: pulumi.Input<number | undefined>;
 }

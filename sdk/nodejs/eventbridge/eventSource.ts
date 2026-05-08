@@ -166,15 +166,15 @@ export interface EventSourceState {
     /**
      * The description of the event source.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the event bus to which the event source is attached.
      */
-    eventBusName?: pulumi.Input<string>;
+    eventBusName?: pulumi.Input<string | undefined>;
     /**
      * The name of the event source.
      */
-    eventSourceName?: pulumi.Input<string>;
+    eventSourceName?: pulumi.Input<string | undefined>;
     /**
      * The configuration of the external data source.
      * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
@@ -191,15 +191,15 @@ export interface EventSourceState {
      * When `externalSourceType` is `MNS`, The following attributes are supported:
      * `QueueName` - The queue name of MNS.
      */
-    externalSourceConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    externalSourceConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
      */
-    externalSourceType?: pulumi.Input<string>;
+    externalSourceType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to connect to an external data source. Default value: `false`.
      */
-    linkedExternalSource?: pulumi.Input<boolean>;
+    linkedExternalSource?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -209,7 +209,7 @@ export interface EventSourceArgs {
     /**
      * The description of the event source.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the event bus to which the event source is attached.
      */
@@ -234,13 +234,13 @@ export interface EventSourceArgs {
      * When `externalSourceType` is `MNS`, The following attributes are supported:
      * `QueueName` - The queue name of MNS.
      */
-    externalSourceConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    externalSourceConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
      */
-    externalSourceType?: pulumi.Input<string>;
+    externalSourceType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to connect to an external data source. Default value: `false`.
      */
-    linkedExternalSource?: pulumi.Input<boolean>;
+    linkedExternalSource?: pulumi.Input<boolean | undefined>;
 }

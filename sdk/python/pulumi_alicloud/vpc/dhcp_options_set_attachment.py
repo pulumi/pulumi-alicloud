@@ -21,7 +21,7 @@ class DhcpOptionsSetAttachmentArgs:
     def __init__(__self__, *,
                  dhcp_options_set_id: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DhcpOptionsSetAttachment resource.
 
@@ -60,24 +60,24 @@ class DhcpOptionsSetAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to precheck this request only. Default values: `false`. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
 
 @pulumi.input_type
 class _DhcpOptionsSetAttachmentState:
     def __init__(__self__, *,
-                 dhcp_options_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dhcp_options_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DhcpOptionsSetAttachment resources.
 
@@ -97,50 +97,50 @@ class _DhcpOptionsSetAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="dhcpOptionsSetId")
-    def dhcp_options_set_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dhcp_options_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the DHCP options set.
         """
         return pulumi.get(self, "dhcp_options_set_id")
 
     @dhcp_options_set_id.setter
-    def dhcp_options_set_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dhcp_options_set_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dhcp_options_set_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to precheck this request only. Default values: `false`. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC network that is to be associated with the DHCP options set..
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -150,9 +150,9 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dhcp_options_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dhcp_options_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPC Dhcp Options Set Attachment resource.
@@ -267,9 +267,9 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dhcp_options_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dhcp_options_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -297,10 +297,10 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dhcp_options_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DhcpOptionsSetAttachment':
+            dhcp_options_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DhcpOptionsSetAttachment':
         """
         Get an existing DhcpOptionsSetAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

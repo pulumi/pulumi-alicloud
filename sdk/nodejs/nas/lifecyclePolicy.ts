@@ -144,23 +144,23 @@ export interface LifecyclePolicyState {
     /**
      * The ID of the file system.
      */
-    fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string | undefined>;
     /**
      * The name of the lifecycle management policy.
      */
-    lifecyclePolicyName?: pulumi.Input<string>;
+    lifecyclePolicyName?: pulumi.Input<string | undefined>;
     /**
      * The rules in the lifecycle management policy. Valid values: `DEFAULT_ATIME_14`, `DEFAULT_ATIME_30`, `DEFAULT_ATIME_60`, `DEFAULT_ATIME_90`.
      */
-    lifecycleRuleName?: pulumi.Input<string>;
+    lifecycleRuleName?: pulumi.Input<string | undefined>;
     /**
      * The absolute path of the directory for which the lifecycle management policy is configured. Set a maximum of `10` path. The path value must be prefixed by a forward slash (/) and must be an existing path in the mount target.
      */
-    paths?: pulumi.Input<pulumi.Input<string>[]>;
+    paths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The storage type of the data that is dumped to the IA storage medium. Valid values: `InfrequentAccess`.
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
 }
 
 /**

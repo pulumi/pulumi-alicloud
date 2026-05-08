@@ -119,15 +119,15 @@ export interface AssociatedRuleState {
     /**
      * The setting name of the associated resource tag rule. For specific values, see the Rule Setting Name column in [Resources that Support Associated Resource Tag Settings](https://www.alibabacloud.com/help/en/resource-management/tag/user-guide/associated-resource-label-settings)
      */
-    associatedSettingName?: pulumi.Input<string>;
+    associatedSettingName?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable the associated resource tag rule. Valid values: `Enable`, `Disable`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * List of tag keys for the associated resource tag rule.
      */
-    tagKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    tagKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -145,5 +145,5 @@ export interface AssociatedRuleArgs {
     /**
      * List of tag keys for the associated resource tag rule.
      */
-    tagKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    tagKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

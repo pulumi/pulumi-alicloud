@@ -147,10 +147,10 @@ def get_transit_router_multicast_domain_members(ids: Optional[Sequence[_builtins
         network_interface_id=pulumi.get(__ret__, 'network_interface_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         transit_router_multicast_domain_id=pulumi.get(__ret__, 'transit_router_multicast_domain_id'))
-def get_transit_router_multicast_domain_members_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                       network_interface_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_transit_router_multicast_domain_members_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                       network_interface_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterMulticastDomainMembersResult]:
     """
     This data source provides Cen Transit Router Multicast Domain Member available to the user. [What is Transit Router Multicast Domain Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)

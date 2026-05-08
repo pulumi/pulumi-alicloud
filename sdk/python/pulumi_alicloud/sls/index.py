@@ -23,12 +23,12 @@ class IndexArgs:
     def __init__(__self__, *,
                  logstore_name: pulumi.Input[_builtins.str],
                  project_name: pulumi.Input[_builtins.str],
-                 keys: Optional[pulumi.Input[_builtins.str]] = None,
-                 line: Optional[pulumi.Input['IndexLineArgs']] = None,
-                 log_reduce: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_reduce_black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_reduce_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_text_len: Optional[pulumi.Input[_builtins.int]] = None):
+                 keys: pulumi.Input[Optional[_builtins.str]] = None,
+                 line: pulumi.Input[Optional['IndexLineArgs']] = None,
+                 log_reduce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_reduce_black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_reduce_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_text_len: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Index resource.
 
@@ -82,88 +82,88 @@ class IndexArgs:
 
     @_builtins.property
     @pulumi.getter
-    def keys(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keys(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field index
         """
         return pulumi.get(self, "keys")
 
     @keys.setter
-    def keys(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keys(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def line(self) -> Optional[pulumi.Input['IndexLineArgs']]:
+    def line(self) -> pulumi.Input[Optional['IndexLineArgs']]:
         """
         Full-text index See `line` below.
         """
         return pulumi.get(self, "line")
 
     @line.setter
-    def line(self, value: Optional[pulumi.Input['IndexLineArgs']]):
+    def line(self, value: pulumi.Input[Optional['IndexLineArgs']]):
         pulumi.set(self, "line", value)
 
     @_builtins.property
     @pulumi.getter(name="logReduce")
-    def log_reduce(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_reduce(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether log clustering is enabled
         """
         return pulumi.get(self, "log_reduce")
 
     @log_reduce.setter
-    def log_reduce(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_reduce(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_reduce", value)
 
     @_builtins.property
     @pulumi.getter(name="logReduceBlackLists")
-    def log_reduce_black_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def log_reduce_black_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
         """
         return pulumi.get(self, "log_reduce_black_lists")
 
     @log_reduce_black_lists.setter
-    def log_reduce_black_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def log_reduce_black_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "log_reduce_black_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="logReduceWhiteLists")
-    def log_reduce_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def log_reduce_white_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
         """
         return pulumi.get(self, "log_reduce_white_lists")
 
     @log_reduce_white_lists.setter
-    def log_reduce_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def log_reduce_white_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "log_reduce_white_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="maxTextLen")
-    def max_text_len(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_text_len(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum length of statistical field
         """
         return pulumi.get(self, "max_text_len")
 
     @max_text_len.setter
-    def max_text_len(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_text_len(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_text_len", value)
 
 
 @pulumi.input_type
 class _IndexState:
     def __init__(__self__, *,
-                 keys: Optional[pulumi.Input[_builtins.str]] = None,
-                 line: Optional[pulumi.Input['IndexLineArgs']] = None,
-                 log_reduce: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_reduce_black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_reduce_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_text_len: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 keys: pulumi.Input[Optional[_builtins.str]] = None,
+                 line: pulumi.Input[Optional['IndexLineArgs']] = None,
+                 log_reduce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_reduce_black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_reduce_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_text_len: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Index resources.
 
@@ -195,98 +195,98 @@ class _IndexState:
 
     @_builtins.property
     @pulumi.getter
-    def keys(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keys(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field index
         """
         return pulumi.get(self, "keys")
 
     @keys.setter
-    def keys(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keys(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def line(self) -> Optional[pulumi.Input['IndexLineArgs']]:
+    def line(self) -> pulumi.Input[Optional['IndexLineArgs']]:
         """
         Full-text index See `line` below.
         """
         return pulumi.get(self, "line")
 
     @line.setter
-    def line(self, value: Optional[pulumi.Input['IndexLineArgs']]):
+    def line(self, value: pulumi.Input[Optional['IndexLineArgs']]):
         pulumi.set(self, "line", value)
 
     @_builtins.property
     @pulumi.getter(name="logReduce")
-    def log_reduce(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_reduce(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether log clustering is enabled
         """
         return pulumi.get(self, "log_reduce")
 
     @log_reduce.setter
-    def log_reduce(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_reduce(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_reduce", value)
 
     @_builtins.property
     @pulumi.getter(name="logReduceBlackLists")
-    def log_reduce_black_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def log_reduce_black_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
         """
         return pulumi.get(self, "log_reduce_black_lists")
 
     @log_reduce_black_lists.setter
-    def log_reduce_black_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def log_reduce_black_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "log_reduce_black_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="logReduceWhiteLists")
-    def log_reduce_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def log_reduce_white_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
         """
         return pulumi.get(self, "log_reduce_white_lists")
 
     @log_reduce_white_lists.setter
-    def log_reduce_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def log_reduce_white_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "log_reduce_white_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="logstoreName")
-    def logstore_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logstore_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Logstore name
         """
         return pulumi.get(self, "logstore_name")
 
     @logstore_name.setter
-    def logstore_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logstore_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logstore_name", value)
 
     @_builtins.property
     @pulumi.getter(name="maxTextLen")
-    def max_text_len(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_text_len(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum length of statistical field
         """
         return pulumi.get(self, "max_text_len")
 
     @max_text_len.setter
-    def max_text_len(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_text_len(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_text_len", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project name
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
 
@@ -296,14 +296,14 @@ class Index(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 keys: Optional[pulumi.Input[_builtins.str]] = None,
-                 line: Optional[pulumi.Input[Union['IndexLineArgs', 'IndexLineArgsDict']]] = None,
-                 log_reduce: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_reduce_black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_reduce_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_text_len: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 keys: pulumi.Input[Optional[_builtins.str]] = None,
+                 line: pulumi.Input[Optional[Union['IndexLineArgs', 'IndexLineArgsDict']]] = None,
+                 log_reduce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_reduce_black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_reduce_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_text_len: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Log Service (SLS) Index resource.
@@ -511,14 +511,14 @@ class Index(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 keys: Optional[pulumi.Input[_builtins.str]] = None,
-                 line: Optional[pulumi.Input[Union['IndexLineArgs', 'IndexLineArgsDict']]] = None,
-                 log_reduce: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_reduce_black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_reduce_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_text_len: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 keys: pulumi.Input[Optional[_builtins.str]] = None,
+                 line: pulumi.Input[Optional[Union['IndexLineArgs', 'IndexLineArgsDict']]] = None,
+                 log_reduce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_reduce_black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_reduce_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_text_len: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -550,14 +550,14 @@ class Index(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            keys: Optional[pulumi.Input[_builtins.str]] = None,
-            line: Optional[pulumi.Input[Union['IndexLineArgs', 'IndexLineArgsDict']]] = None,
-            log_reduce: Optional[pulumi.Input[_builtins.bool]] = None,
-            log_reduce_black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            log_reduce_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-            max_text_len: Optional[pulumi.Input[_builtins.int]] = None,
-            project_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Index':
+            keys: pulumi.Input[Optional[_builtins.str]] = None,
+            line: pulumi.Input[Optional[Union['IndexLineArgs', 'IndexLineArgsDict']]] = None,
+            log_reduce: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_reduce_black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            log_reduce_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+            max_text_len: pulumi.Input[Optional[_builtins.int]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Index':
         """
         Get an existing Index resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

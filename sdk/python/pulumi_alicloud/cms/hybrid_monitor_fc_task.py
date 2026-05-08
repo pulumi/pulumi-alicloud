@@ -21,7 +21,7 @@ class HybridMonitorFcTaskArgs:
     def __init__(__self__, *,
                  namespace: pulumi.Input[_builtins.str],
                  yarm_config: pulumi.Input[_builtins.str],
-                 target_user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 target_user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a HybridMonitorFcTask resource.
 
@@ -60,24 +60,24 @@ class HybridMonitorFcTaskArgs:
 
     @_builtins.property
     @pulumi.getter(name="targetUserId")
-    def target_user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
         """
         return pulumi.get(self, "target_user_id")
 
     @target_user_id.setter
-    def target_user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_user_id", value)
 
 
 @pulumi.input_type
 class _HybridMonitorFcTaskState:
     def __init__(__self__, *,
-                 hybrid_monitor_fc_task_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 yarm_config: Optional[pulumi.Input[_builtins.str]] = None):
+                 hybrid_monitor_fc_task_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 yarm_config: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HybridMonitorFcTask resources.
 
@@ -97,50 +97,50 @@ class _HybridMonitorFcTaskState:
 
     @_builtins.property
     @pulumi.getter(name="hybridMonitorFcTaskId")
-    def hybrid_monitor_fc_task_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hybrid_monitor_fc_task_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the monitoring task.
         """
         return pulumi.get(self, "hybrid_monitor_fc_task_id")
 
     @hybrid_monitor_fc_task_id.setter
-    def hybrid_monitor_fc_task_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hybrid_monitor_fc_task_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hybrid_monitor_fc_task_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The index warehouse where the host belongs.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="targetUserId")
-    def target_user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
         """
         return pulumi.get(self, "target_user_id")
 
     @target_user_id.setter
-    def target_user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="yarmConfig")
-    def yarm_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def yarm_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
         """
         return pulumi.get(self, "yarm_config")
 
     @yarm_config.setter
-    def yarm_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def yarm_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yarm_config", value)
 
 
@@ -150,9 +150,9 @@ class HybridMonitorFcTask(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 yarm_config: Optional[pulumi.Input[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 yarm_config: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Hybrid Monitor Fc Task resource.
@@ -299,9 +299,9 @@ class HybridMonitorFcTask(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 yarm_config: Optional[pulumi.Input[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 yarm_config: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -329,10 +329,10 @@ class HybridMonitorFcTask(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            hybrid_monitor_fc_task_id: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            target_user_id: Optional[pulumi.Input[_builtins.str]] = None,
-            yarm_config: Optional[pulumi.Input[_builtins.str]] = None) -> 'HybridMonitorFcTask':
+            hybrid_monitor_fc_task_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            target_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            yarm_config: pulumi.Input[Optional[_builtins.str]] = None) -> 'HybridMonitorFcTask':
         """
         Get an existing HybridMonitorFcTask resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -140,15 +140,15 @@ export interface DeployGroupState {
     /**
      * The ID of the application that you want to deploy.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance group that you want to create.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
      */
-    groupType?: pulumi.Input<number>;
+    groupType?: pulumi.Input<number | undefined>;
 }
 
 /**

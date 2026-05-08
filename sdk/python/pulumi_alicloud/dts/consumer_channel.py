@@ -88,11 +88,11 @@ class ConsumerChannelArgs:
 @pulumi.input_type
 class _ConsumerChannelState:
     def __init__(__self__, *,
-                 consumer_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_group_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_group_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 consumer_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_group_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_group_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConsumerChannel resources.
 
@@ -115,62 +115,62 @@ class _ConsumerChannelState:
 
     @_builtins.property
     @pulumi.getter(name="consumerGroupId")
-    def consumer_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consumer_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the consumer group.
         """
         return pulumi.get(self, "consumer_group_id")
 
     @consumer_group_id.setter
-    def consumer_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consumer_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consumer_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerGroupName")
-    def consumer_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consumer_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the consumer group.
         """
         return pulumi.get(self, "consumer_group_name")
 
     @consumer_group_name.setter
-    def consumer_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consumer_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consumer_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerGroupPassword")
-    def consumer_group_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consumer_group_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the consumer group account. The length of the `consumer_group_password` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
         """
         return pulumi.get(self, "consumer_group_password")
 
     @consumer_group_password.setter
-    def consumer_group_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consumer_group_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consumer_group_password", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerGroupUserName")
-    def consumer_group_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consumer_group_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
         """
         return pulumi.get(self, "consumer_group_user_name")
 
     @consumer_group_user_name.setter
-    def consumer_group_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consumer_group_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consumer_group_user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dtsInstanceId")
-    def dts_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dts_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the subscription instance.
         """
         return pulumi.get(self, "dts_instance_id")
 
     @dts_instance_id.setter
-    def dts_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dts_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dts_instance_id", value)
 
 
@@ -180,10 +180,10 @@ class ConsumerChannel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consumer_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_group_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_group_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 consumer_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_group_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_group_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DTS Consumer Channel resource.
@@ -231,7 +231,7 @@ class ConsumerChannel(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name=name,
             vswitch_id=example_switch.id,
@@ -346,7 +346,7 @@ class ConsumerChannel(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name=name,
             vswitch_id=example_switch.id,
@@ -417,10 +417,10 @@ class ConsumerChannel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consumer_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_group_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_group_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 consumer_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_group_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_group_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -453,11 +453,11 @@ class ConsumerChannel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            consumer_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            consumer_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            consumer_group_password: Optional[pulumi.Input[_builtins.str]] = None,
-            consumer_group_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConsumerChannel':
+            consumer_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_group_password: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_group_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConsumerChannel':
         """
         Get an existing ConsumerChannel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -193,13 +193,13 @@ def get_ecs_snapshot_groups(ids: Optional[Sequence[_builtins.str]] = None,
         snapshot_group_name=pulumi.get(__ret__, 'snapshot_group_name'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_ecs_snapshot_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                   instance_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   snapshot_group_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_ecs_snapshot_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                   instance_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   snapshot_group_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEcsSnapshotGroupsResult]:
     """
     This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.

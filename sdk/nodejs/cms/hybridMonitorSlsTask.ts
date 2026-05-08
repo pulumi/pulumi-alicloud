@@ -228,31 +228,31 @@ export interface HybridMonitorSlsTaskState {
     /**
      * The label of the monitoring task. See `attachLabels` below.
      */
-    attachLabels?: pulumi.Input<pulumi.Input<inputs.cms.HybridMonitorSlsTaskAttachLabel>[]>;
+    attachLabels?: pulumi.Input<pulumi.Input<inputs.cms.HybridMonitorSlsTaskAttachLabel>[] | undefined>;
     /**
      * The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
      */
-    collectInterval?: pulumi.Input<number>;
+    collectInterval?: pulumi.Input<number | undefined>;
     /**
      * The type of the collection target, enter the name of the Logstore group.
      */
-    collectTargetType?: pulumi.Input<string>;
+    collectTargetType?: pulumi.Input<string | undefined>;
     /**
      * The description of the metric import task.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the namespace.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The configurations of the logs that are imported from Log Service. See `slsProcessConfig` below.
      */
-    slsProcessConfig?: pulumi.Input<inputs.cms.HybridMonitorSlsTaskSlsProcessConfig>;
+    slsProcessConfig?: pulumi.Input<inputs.cms.HybridMonitorSlsTaskSlsProcessConfig | undefined>;
     /**
      * The name of the metric import task, enter the name of the metric for logs imported from Log Service.
      */
-    taskName?: pulumi.Input<string>;
+    taskName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -262,11 +262,11 @@ export interface HybridMonitorSlsTaskArgs {
     /**
      * The label of the monitoring task. See `attachLabels` below.
      */
-    attachLabels?: pulumi.Input<pulumi.Input<inputs.cms.HybridMonitorSlsTaskAttachLabel>[]>;
+    attachLabels?: pulumi.Input<pulumi.Input<inputs.cms.HybridMonitorSlsTaskAttachLabel>[] | undefined>;
     /**
      * The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
      */
-    collectInterval?: pulumi.Input<number>;
+    collectInterval?: pulumi.Input<number | undefined>;
     /**
      * The type of the collection target, enter the name of the Logstore group.
      */
@@ -274,7 +274,7 @@ export interface HybridMonitorSlsTaskArgs {
     /**
      * The description of the metric import task.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the namespace.
      */

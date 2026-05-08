@@ -105,17 +105,17 @@ export interface DomainGroupState {
     /**
      * The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
      */
-    domainGroupName?: pulumi.Input<string>;
+    domainGroupName?: pulumi.Input<string | undefined>;
     /**
      * The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
      *
      * @deprecated Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * User language.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -125,15 +125,15 @@ export interface DomainGroupArgs {
     /**
      * The Name of the domain group. The `domainGroupName` is required when the value of the `groupName`  is Empty.
      */
-    domainGroupName?: pulumi.Input<string>;
+    domainGroupName?: pulumi.Input<string | undefined>;
     /**
      * The Name of the domain group. The `groupName` has been deprecated from provider version 1.97.0. Please use `domainGroupName` instead.
      *
      * @deprecated Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * User language.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
 }

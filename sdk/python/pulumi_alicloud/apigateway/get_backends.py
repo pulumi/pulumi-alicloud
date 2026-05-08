@@ -159,11 +159,11 @@ def get_backends(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'))
-def get_backends_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                        name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                        page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_backends_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                        name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                        page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackendsResult]:
     """
     This data source provides the Api Gateway Backends of the current Alibaba Cloud user.

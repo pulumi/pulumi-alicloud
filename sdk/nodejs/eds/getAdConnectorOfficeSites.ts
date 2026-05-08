@@ -123,15 +123,15 @@ export interface GetAdConnectorOfficeSitesOutputArgs {
     /**
      * A list of Ad Connector Office Site IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Ad Connector Office Site name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The workspace status. Valid values:
      * - `REGISTERING`: The workspace is being registered.
@@ -144,5 +144,5 @@ export interface GetAdConnectorOfficeSitesOutputArgs {
      * - `CONFIGTRUSTING`: The trust relationship is being configured.
      * - `CONFIGTRUSTFAILED`: The trust relationship fails to be configured.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

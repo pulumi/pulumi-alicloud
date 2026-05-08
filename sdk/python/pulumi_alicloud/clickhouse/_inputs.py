@@ -22,15 +22,15 @@ __all__ = [
 ]
 
 class DbClusterDbClusterAccessWhiteListArgsDict(TypedDict):
-    db_cluster_ip_array_attribute: NotRequired[pulumi.Input[_builtins.str]]
+    db_cluster_ip_array_attribute: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field `db_cluster_ip_array_attribute` has been removed from provider.
     """
-    db_cluster_ip_array_name: NotRequired[pulumi.Input[_builtins.str]]
+    db_cluster_ip_array_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whitelist group name.
     """
-    security_ip_list: NotRequired[pulumi.Input[_builtins.str]]
+    security_ip_list: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address list under the whitelist group.
     """
@@ -38,9 +38,9 @@ class DbClusterDbClusterAccessWhiteListArgsDict(TypedDict):
 @pulumi.input_type
 class DbClusterDbClusterAccessWhiteListArgs:
     def __init__(__self__, *,
-                 db_cluster_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_list: Optional[pulumi.Input[_builtins.str]] = None):
+                 db_cluster_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_list: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] db_cluster_ip_array_attribute: Field `db_cluster_ip_array_attribute` has been removed from provider.
         :param pulumi.Input[_builtins.str] db_cluster_ip_array_name: Whitelist group name.
@@ -55,38 +55,38 @@ class DbClusterDbClusterAccessWhiteListArgs:
 
     @_builtins.property
     @pulumi.getter(name="dbClusterIpArrayAttribute")
-    def db_cluster_ip_array_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_ip_array_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `db_cluster_ip_array_attribute` has been removed from provider.
         """
         return pulumi.get(self, "db_cluster_ip_array_attribute")
 
     @db_cluster_ip_array_attribute.setter
-    def db_cluster_ip_array_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_ip_array_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_ip_array_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterIpArrayName")
-    def db_cluster_ip_array_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_ip_array_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whitelist group name.
         """
         return pulumi.get(self, "db_cluster_ip_array_name")
 
     @db_cluster_ip_array_name.setter
-    def db_cluster_ip_array_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_ip_array_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_ip_array_name", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpList")
-    def security_ip_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_ip_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address list under the whitelist group.
         """
         return pulumi.get(self, "security_ip_list")
 
     @security_ip_list.setter
-    def security_ip_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_ip_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_ip_list", value)
 
 
@@ -95,7 +95,7 @@ class DbClusterMultiZoneVswitchListArgsDict(TypedDict):
     """
     The ID of the vswitch.
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The zone ID of the vswitch.
     """
@@ -104,7 +104,7 @@ class DbClusterMultiZoneVswitchListArgsDict(TypedDict):
 class DbClusterMultiZoneVswitchListArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[_builtins.str],
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the vswitch.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the vswitch.
@@ -127,14 +127,14 @@ class DbClusterMultiZoneVswitchListArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the vswitch.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 

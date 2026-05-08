@@ -38,7 +38,7 @@ class AliasArgs:
 @pulumi.input_type
 class _AliasState:
     def __init__(__self__, *,
-                 account_alias: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_alias: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Alias resources.
         """
@@ -47,11 +47,11 @@ class _AliasState:
 
     @_builtins.property
     @pulumi.getter(name="accountAlias")
-    def account_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_alias")
 
     @account_alias.setter
-    def account_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_alias", value)
 
 
@@ -61,7 +61,7 @@ class Alias(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_alias: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_alias: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a Alias resource with the given unique name, props, and options.
@@ -93,7 +93,7 @@ class Alias(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_alias: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_alias: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -116,7 +116,7 @@ class Alias(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_alias: Optional[pulumi.Input[_builtins.str]] = None) -> 'Alias':
+            account_alias: pulumi.Input[Optional[_builtins.str]] = None) -> 'Alias':
         """
         Get an existing Alias resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

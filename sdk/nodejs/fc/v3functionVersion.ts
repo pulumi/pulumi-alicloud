@@ -145,23 +145,23 @@ export interface V3FunctionVersionState {
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the function version
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Function Name
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.234.0) Update time
      */
-    lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string | undefined>;
     /**
      * Function Version
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -171,7 +171,7 @@ export interface V3FunctionVersionArgs {
     /**
      * Description of the function version
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Function Name
      */

@@ -37,8 +37,8 @@ public final class Wafv3Functions {
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
      * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.wafv3.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -93,8 +93,8 @@ public final class Wafv3Functions {
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
      * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.wafv3.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -149,8 +149,8 @@ public final class Wafv3Functions {
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
      * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.wafv3.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -205,8 +205,8 @@ public final class Wafv3Functions {
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
      * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.wafv3.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -261,8 +261,8 @@ public final class Wafv3Functions {
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
      * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.wafv3.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -314,8 +314,8 @@ public final class Wafv3Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
      * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -356,8 +356,8 @@ public final class Wafv3Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
      * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -398,8 +398,8 @@ public final class Wafv3Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
      * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -440,8 +440,8 @@ public final class Wafv3Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
      * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -482,8 +482,8 @@ public final class Wafv3Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
      * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -524,8 +524,8 @@ public final class Wafv3Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
      * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -566,8 +566,8 @@ public final class Wafv3Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.wafv3.Wafv3Functions;
      * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

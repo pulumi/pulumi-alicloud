@@ -22,15 +22,15 @@ class CapacityReservationArgs:
                  instance_amount: pulumi.Input[_builtins.int],
                  instance_type: pulumi.Input[_builtins.str],
                  zone_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 capacity_reservation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 capacity_reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CapacityReservation resource.
 
@@ -107,133 +107,133 @@ class CapacityReservationArgs:
 
     @_builtins.property
     @pulumi.getter(name="capacityReservationName")
-    def capacity_reservation_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def capacity_reservation_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Capacity reservation service name.
         """
         return pulumi.get(self, "capacity_reservation_name")
 
     @capacity_reservation_name.setter
-    def capacity_reservation_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def capacity_reservation_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "capacity_reservation_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         description of the capacity reservation instance.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to pre-check the API request. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="endTimeType")
-    def end_time_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
         """
         return pulumi.get(self, "end_time_type")
 
     @end_time_type.setter
-    def end_time_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time_type", value)
 
     @_builtins.property
     @pulumi.getter(name="matchCriteria")
-    def match_criteria(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_criteria(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         """
         return pulumi.get(self, "match_criteria")
 
     @match_criteria.setter
-    def match_criteria(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_criteria(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_criteria", value)
 
     @_builtins.property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         platform of the capacity reservation, value range `windows`, `linux`.
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group id.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _CapacityReservationState:
     def __init__(__self__, *,
-                 capacity_reservation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 time_slot: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 capacity_reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 time_slot: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CapacityReservation resources.
 
@@ -292,206 +292,206 @@ class _CapacityReservationState:
 
     @_builtins.property
     @pulumi.getter(name="capacityReservationName")
-    def capacity_reservation_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def capacity_reservation_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Capacity reservation service name.
         """
         return pulumi.get(self, "capacity_reservation_name")
 
     @capacity_reservation_name.setter
-    def capacity_reservation_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def capacity_reservation_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "capacity_reservation_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         description of the capacity reservation instance.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to pre-check the API request. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="endTimeType")
-    def end_time_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
         """
         return pulumi.get(self, "end_time_type")
 
     @end_time_type.setter
-    def end_time_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceAmount")
-    def instance_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The total number of instances that need to be reserved within the capacity reservation.
         """
         return pulumi.get(self, "instance_amount")
 
     @instance_amount.setter
-    def instance_amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_amount", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance type. Currently, you can only set the capacity reservation service for one instance type.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="matchCriteria")
-    def match_criteria(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_criteria(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         """
         return pulumi.get(self, "match_criteria")
 
     @match_criteria.setter
-    def match_criteria(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_criteria(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_criteria", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         platform of the capacity reservation, value range `windows`, `linux`.
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group id.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         time of the capacity reservation which become active.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTimeType")
-    def start_time_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
         """
         return pulumi.get(self, "start_time_type")
 
     @start_time_type.setter
-    def start_time_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the capacity reservation.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="timeSlot")
-    def time_slot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_slot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This parameter is under test and is not yet open for use.
         """
         return pulumi.get(self, "time_slot")
 
     @time_slot.setter
-    def time_slot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_slot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_slot", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneIds")
-    def zone_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def zone_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         """
         return pulumi.get(self, "zone_ids")
 
     @zone_ids.setter
-    def zone_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def zone_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "zone_ids", value)
 
 
@@ -501,18 +501,18 @@ class CapacityReservation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capacity_reservation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 capacity_reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Ecs Capacity Reservation resource.
@@ -640,18 +640,18 @@ class CapacityReservation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capacity_reservation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 capacity_reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -694,23 +694,23 @@ class CapacityReservation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            capacity_reservation_name: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            end_time_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_amount: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            match_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            platform: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            start_time_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            time_slot: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'CapacityReservation':
+            capacity_reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_amount: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            match_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            platform: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            time_slot: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'CapacityReservation':
         """
         Get an existing CapacityReservation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

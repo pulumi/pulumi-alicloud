@@ -20,12 +20,12 @@ __all__ = ['GroupArgs', 'Group']
 class GroupArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Group resource.
 
@@ -71,67 +71,67 @@ class GroupArgs:
     @_builtins.property
     @pulumi.getter(name="groupId")
     @_utilities.deprecated("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Replaced by `group_name` after version 1.98.0.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupType")
-    def group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
         """
         return pulumi.get(self, "group_type")
 
     @group_type.setter
-    def group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_type", value)
 
     @_builtins.property
     @pulumi.getter(name="readEnable")
-    def read_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
         """
         return pulumi.get(self, "read_enable")
 
     @read_enable.setter
-    def read_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This attribute is a concise description of group. The length cannot exceed 256.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -140,20 +140,20 @@ class GroupArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _GroupState:
     def __init__(__self__, *,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Group resources.
 
@@ -188,79 +188,79 @@ class _GroupState:
     @_builtins.property
     @pulumi.getter(name="groupId")
     @_utilities.deprecated("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Replaced by `group_name` after version 1.98.0.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupType")
-    def group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
         """
         return pulumi.get(self, "group_type")
 
     @group_type.setter
-    def group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the ONS Instance that owns the groups.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="readEnable")
-    def read_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
         """
         return pulumi.get(self, "read_enable")
 
     @read_enable.setter
-    def read_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This attribute is a concise description of group. The length cannot exceed 256.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -269,7 +269,7 @@ class _GroupState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -279,13 +279,13 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides an ONS group resource.
@@ -408,13 +408,13 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -443,13 +443,13 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            group_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            read_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Group':
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            read_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -346,7 +346,7 @@ export interface ListenerState {
     /**
      * Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
      */
-    alpnEnabled?: pulumi.Input<boolean>;
+    alpnEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ALPN policy. Valid values:
      * - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
@@ -358,78 +358,78 @@ export interface ListenerState {
      *
      * > **NOTE:**  Effective only for TCPSSL listener.
      */
-    alpnPolicy?: pulumi.Input<string>;
+    alpnPolicy?: pulumi.Input<string | undefined>;
     /**
      * The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
      *
      * > **NOTE:**  Only one CA certificate is supported.
      */
-    caCertificateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    caCertificateIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies whether to enable mutual authentication. Valid values:
      */
-    caEnabled?: pulumi.Input<boolean>;
+    caEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
      *
      * > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
      */
-    certificateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    certificateIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
      */
-    cps?: pulumi.Input<number>;
+    cps?: pulumi.Input<number | undefined>;
     /**
      * The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
      *
      * > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
      */
-    endPort?: pulumi.Input<number>;
+    endPort?: pulumi.Input<number | undefined>;
     /**
      * The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
      */
-    idleTimeout?: pulumi.Input<number>;
+    idleTimeout?: pulumi.Input<number | undefined>;
     /**
      * Enter a name for the listener.
      * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
      */
-    listenerDescription?: pulumi.Input<string>;
+    listenerDescription?: pulumi.Input<string | undefined>;
     /**
      * The listener port. Valid values: `0` to `65535`.
      * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
      */
-    listenerPort?: pulumi.Input<number>;
+    listenerPort?: pulumi.Input<number | undefined>;
     /**
      * The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
      */
-    listenerProtocol?: pulumi.Input<string>;
+    listenerProtocol?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Network Load Balancer (NLB) instance.
      */
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
     /**
      * The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
      *
      * > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
      */
-    mss?: pulumi.Input<number>;
+    mss?: pulumi.Input<number | undefined>;
     /**
      * The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
      */
-    proxyProtocolConfig?: pulumi.Input<inputs.nlb.ListenerProxyProtocolConfig>;
+    proxyProtocolConfig?: pulumi.Input<inputs.nlb.ListenerProxyProtocolConfig | undefined>;
     /**
      * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
      */
-    proxyProtocolEnabled?: pulumi.Input<boolean>;
+    proxyProtocolEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the region where the Network Load Balancer (NLB) instance is deployed.
      * You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable fine-grained monitoring. Valid values:
      */
-    secSensorEnabled?: pulumi.Input<boolean>;
+    secSensorEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The security policy ID. System security policies and custom security policies are supported.
      *
@@ -437,25 +437,25 @@ export interface ListenerState {
      *
      * > **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the server group.
      */
-    serverGroupId?: pulumi.Input<string>;
+    serverGroupId?: pulumi.Input<string | undefined>;
     /**
      * The first port in the listener port range. Valid values: `0` to `65535`.
      *
      * > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
      */
-    startPort?: pulumi.Input<number>;
+    startPort?: pulumi.Input<number | undefined>;
     /**
      * The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -465,7 +465,7 @@ export interface ListenerArgs {
     /**
      * Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
      */
-    alpnEnabled?: pulumi.Input<boolean>;
+    alpnEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ALPN policy. Valid values:
      * - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
@@ -477,42 +477,42 @@ export interface ListenerArgs {
      *
      * > **NOTE:**  Effective only for TCPSSL listener.
      */
-    alpnPolicy?: pulumi.Input<string>;
+    alpnPolicy?: pulumi.Input<string | undefined>;
     /**
      * The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
      *
      * > **NOTE:**  Only one CA certificate is supported.
      */
-    caCertificateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    caCertificateIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies whether to enable mutual authentication. Valid values:
      */
-    caEnabled?: pulumi.Input<boolean>;
+    caEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
      *
      * > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
      */
-    certificateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    certificateIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
      */
-    cps?: pulumi.Input<number>;
+    cps?: pulumi.Input<number | undefined>;
     /**
      * The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
      *
      * > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
      */
-    endPort?: pulumi.Input<number>;
+    endPort?: pulumi.Input<number | undefined>;
     /**
      * The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
      */
-    idleTimeout?: pulumi.Input<number>;
+    idleTimeout?: pulumi.Input<number | undefined>;
     /**
      * Enter a name for the listener.
      * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
      */
-    listenerDescription?: pulumi.Input<string>;
+    listenerDescription?: pulumi.Input<string | undefined>;
     /**
      * The listener port. Valid values: `0` to `65535`.
      * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
@@ -531,19 +531,19 @@ export interface ListenerArgs {
      *
      * > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
      */
-    mss?: pulumi.Input<number>;
+    mss?: pulumi.Input<number | undefined>;
     /**
      * The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
      */
-    proxyProtocolConfig?: pulumi.Input<inputs.nlb.ListenerProxyProtocolConfig>;
+    proxyProtocolConfig?: pulumi.Input<inputs.nlb.ListenerProxyProtocolConfig | undefined>;
     /**
      * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
      */
-    proxyProtocolEnabled?: pulumi.Input<boolean>;
+    proxyProtocolEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable fine-grained monitoring. Valid values:
      */
-    secSensorEnabled?: pulumi.Input<boolean>;
+    secSensorEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The security policy ID. System security policies and custom security policies are supported.
      *
@@ -551,7 +551,7 @@ export interface ListenerArgs {
      *
      * > **NOTE:**  This parameter takes effect only for listeners that use SSL over TCP.
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the server group.
      */
@@ -561,13 +561,13 @@ export interface ListenerArgs {
      *
      * > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
      */
-    startPort?: pulumi.Input<number>;
+    startPort?: pulumi.Input<number | undefined>;
     /**
      * The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -23,7 +23,7 @@ class MessageContactArgs:
                  message_contact_name: pulumi.Input[_builtins.str],
                  message_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  title: pulumi.Input[_builtins.str],
-                 phone_number: Optional[pulumi.Input[_builtins.str]] = None):
+                 phone_number: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MessageContact resource.
 
@@ -114,7 +114,7 @@ class MessageContactArgs:
 
     @_builtins.property
     @pulumi.getter(name="phoneNumber")
-    def phone_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def phone_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mobile phone number of the contact.
 
@@ -127,20 +127,20 @@ class MessageContactArgs:
         return pulumi.get(self, "phone_number")
 
     @phone_number.setter
-    def phone_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def phone_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "phone_number", value)
 
 
 @pulumi.input_type
 class _MessageContactState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_contact_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 phone_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_contact_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 phone_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MessageContact resources.
 
@@ -184,19 +184,19 @@ class _MessageContactState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the contact was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="emailAddress")
-    def email_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address of the contact.
         After you specify an email address, you need to call SendEmailVerificationForMessageContact to send verification information to the email address. After the verification is passed, the email address takes effect.
@@ -204,12 +204,12 @@ class _MessageContactState:
         return pulumi.get(self, "email_address")
 
     @email_address.setter
-    def email_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email_address", value)
 
     @_builtins.property
     @pulumi.getter(name="messageContactName")
-    def message_contact_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message_contact_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the contact.
         The name must be unique in your resource directory.
@@ -218,24 +218,24 @@ class _MessageContactState:
         return pulumi.get(self, "message_contact_name")
 
     @message_contact_name.setter
-    def message_contact_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message_contact_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message_contact_name", value)
 
     @_builtins.property
     @pulumi.getter(name="messageTypes")
-    def message_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def message_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The types of messages received by the contact.
         """
         return pulumi.get(self, "message_types")
 
     @message_types.setter
-    def message_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def message_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "message_types", value)
 
     @_builtins.property
     @pulumi.getter(name="phoneNumber")
-    def phone_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def phone_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mobile phone number of the contact.
 
@@ -248,24 +248,24 @@ class _MessageContactState:
         return pulumi.get(self, "phone_number")
 
     @phone_number.setter
-    def phone_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def phone_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "phone_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the contact.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The job title of the contact.Valid values:
         - FinanceDirector
@@ -278,7 +278,7 @@ class _MessageContactState:
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
@@ -288,11 +288,11 @@ class MessageContact(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_contact_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 phone_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
+                 email_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_contact_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 phone_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Message Contact resource.
@@ -418,11 +418,11 @@ class MessageContact(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_contact_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 phone_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
+                 email_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_contact_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 phone_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -457,13 +457,13 @@ class MessageContact(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            email_address: Optional[pulumi.Input[_builtins.str]] = None,
-            message_contact_name: Optional[pulumi.Input[_builtins.str]] = None,
-            message_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            phone_number: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            title: Optional[pulumi.Input[_builtins.str]] = None) -> 'MessageContact':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            email_address: pulumi.Input[Optional[_builtins.str]] = None,
+            message_contact_name: pulumi.Input[Optional[_builtins.str]] = None,
+            message_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            phone_number: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None) -> 'MessageContact':
         """
         Get an existing MessageContact resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -112,15 +112,15 @@ export interface ReplicaPairDrillState {
     /**
      * Copy the ID of the pair. You can call DescribeDiskReplicaPairs to query the list of asynchronous replication pairs to obtain the replication pair ID.
      */
-    pairId?: pulumi.Input<string>;
+    pairId?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource.
      */
-    replicaPairDrillId?: pulumi.Input<string>;
+    replicaPairDrillId?: pulumi.Input<string | undefined>;
     /**
      * Walkthrough status. _failed: Execution failed._failed: Cleanup failed.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

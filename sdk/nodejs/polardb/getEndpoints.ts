@@ -157,5 +157,5 @@ export interface GetEndpointsOutputArgs {
     /**
      * endpoint of the cluster.
      */
-    dbEndpointId?: pulumi.Input<string>;
+    dbEndpointId?: pulumi.Input<string | undefined>;
 }

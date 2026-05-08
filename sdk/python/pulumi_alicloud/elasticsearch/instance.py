@@ -23,54 +23,54 @@ class InstanceArgs:
     def __init__(__self__, *,
                  version: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_node_configuration: Optional[pulumi.Input['InstanceClientNodeConfigurationArgs']] = None,
-                 client_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_node_configuration: Optional[pulumi.Input['InstanceDataNodeConfigurationArgs']] = None,
-                 data_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_node_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_kibana_private_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_kibana_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kibana_configuration: Optional[pulumi.Input['InstanceKibanaConfigurationArgs']] = None,
-                 kibana_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 kibana_private_security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 master_configuration: Optional[pulumi.Input['InstanceMasterConfigurationArgs']] = None,
-                 master_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_action_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 warm_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 warm_node_configuration: Optional[pulumi.Input['InstanceWarmNodeConfigurationArgs']] = None,
-                 warm_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 warm_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 warm_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 warm_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_node_configuration: pulumi.Input[Optional['InstanceClientNodeConfigurationArgs']] = None,
+                 client_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_node_configuration: pulumi.Input[Optional['InstanceDataNodeConfigurationArgs']] = None,
+                 data_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_node_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_kibana_private_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_kibana_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kibana_configuration: pulumi.Input[Optional['InstanceKibanaConfigurationArgs']] = None,
+                 kibana_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 kibana_private_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kibana_private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kibana_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_configuration: pulumi.Input[Optional['InstanceMasterConfigurationArgs']] = None,
+                 master_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 setting_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 warm_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 warm_node_configuration: pulumi.Input[Optional['InstanceWarmNodeConfigurationArgs']] = None,
+                 warm_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 warm_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 warm_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 warm_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -353,159 +353,159 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenewDuration")
-    def auto_renew_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of auto-renewal periods.
         """
         return pulumi.get(self, "auto_renew_duration")
 
     @auto_renew_duration.setter
-    def auto_renew_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="clientNodeAmount")
     @_utilities.deprecated("""Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.""")
-    def client_node_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def client_node_amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Elasticsearch cluster's client node quantity, between 2 and 25.
         """
         return pulumi.get(self, "client_node_amount")
 
     @client_node_amount.setter
-    def client_node_amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def client_node_amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "client_node_amount", value)
 
     @_builtins.property
     @pulumi.getter(name="clientNodeConfiguration")
-    def client_node_configuration(self) -> Optional[pulumi.Input['InstanceClientNodeConfigurationArgs']]:
+    def client_node_configuration(self) -> pulumi.Input[Optional['InstanceClientNodeConfigurationArgs']]:
         """
         Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `client_node_configuration` below.
         """
         return pulumi.get(self, "client_node_configuration")
 
     @client_node_configuration.setter
-    def client_node_configuration(self, value: Optional[pulumi.Input['InstanceClientNodeConfigurationArgs']]):
+    def client_node_configuration(self, value: pulumi.Input[Optional['InstanceClientNodeConfigurationArgs']]):
         pulumi.set(self, "client_node_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="clientNodeSpec")
     @_utilities.deprecated("""Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.""")
-    def client_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_node_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client node spec. If specified, client node will be created.
         """
         return pulumi.get(self, "client_node_spec")
 
     @client_node_spec.setter
-    def client_node_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_node_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_node_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="dataNodeAmount")
     @_utilities.deprecated("""Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.""")
-    def data_node_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_node_amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Elasticsearch cluster's data node quantity, between 2 and 50.
         """
         return pulumi.get(self, "data_node_amount")
 
     @data_node_amount.setter
-    def data_node_amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_node_amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_node_amount", value)
 
     @_builtins.property
     @pulumi.getter(name="dataNodeConfiguration")
-    def data_node_configuration(self) -> Optional[pulumi.Input['InstanceDataNodeConfigurationArgs']]:
+    def data_node_configuration(self) -> pulumi.Input[Optional['InstanceDataNodeConfigurationArgs']]:
         """
         Elasticsearch data node information. See `data_node_configuration` below.
         """
         return pulumi.get(self, "data_node_configuration")
 
     @data_node_configuration.setter
-    def data_node_configuration(self, value: Optional[pulumi.Input['InstanceDataNodeConfigurationArgs']]):
+    def data_node_configuration(self, value: pulumi.Input[Optional['InstanceDataNodeConfigurationArgs']]):
         pulumi.set(self, "data_node_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskEncrypted")
     @_utilities.deprecated("""Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead.""")
-    def data_node_disk_encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def data_node_disk_encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         """
         return pulumi.get(self, "data_node_disk_encrypted")
 
     @data_node_disk_encrypted.setter
-    def data_node_disk_encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def data_node_disk_encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "data_node_disk_encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskPerformanceLevel")
     @_utilities.deprecated("""Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead.""")
-    def data_node_disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_node_disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         """
         return pulumi.get(self, "data_node_disk_performance_level")
 
     @data_node_disk_performance_level.setter
-    def data_node_disk_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_node_disk_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_node_disk_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskSize")
     @_utilities.deprecated("""Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead.""")
-    def data_node_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_node_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The single data node storage space.
         """
         return pulumi.get(self, "data_node_disk_size")
 
     @data_node_disk_size.setter
-    def data_node_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_node_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_node_disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskType")
     @_utilities.deprecated("""Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead.""")
-    def data_node_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_node_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         """
         return pulumi.get(self, "data_node_disk_type")
 
     @data_node_disk_type.setter
-    def data_node_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_node_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_node_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dataNodeSpec")
     @_utilities.deprecated("""Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.""")
-    def data_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_node_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data node specifications of the Elasticsearch instance.
         """
         return pulumi.get(self, "data_node_spec")
 
     @data_node_spec.setter
-    def data_node_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_node_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_node_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableKibanaPrivateNetwork")
-    def enable_kibana_private_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_kibana_private_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether private network access to Kibana is enabled. Valid values:  
         - true: Enabled
@@ -514,12 +514,12 @@ class InstanceArgs:
         return pulumi.get(self, "enable_kibana_private_network")
 
     @enable_kibana_private_network.setter
-    def enable_kibana_private_network(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_kibana_private_network(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_kibana_private_network", value)
 
     @_builtins.property
     @pulumi.getter(name="enableKibanaPublicNetwork")
-    def enable_kibana_public_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_kibana_public_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable public access to Kibana. Valid values:  
         - true: Enables public access.
@@ -528,12 +528,12 @@ class InstanceArgs:
         return pulumi.get(self, "enable_kibana_public_network")
 
     @enable_kibana_public_network.setter
-    def enable_kibana_public_network(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_kibana_public_network(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_kibana_public_network", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePublic")
-    def enable_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable a public endpoint for the instance. Valid values:
         - true: Enables the public endpoint.
@@ -542,12 +542,12 @@ class InstanceArgs:
         return pulumi.get(self, "enable_public")
 
     @enable_public.setter
-    def enable_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_public", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to force a restart:
         - true: Yes
@@ -558,12 +558,12 @@ class InstanceArgs:
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceCategory")
-    def instance_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Edition type:  
         - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
@@ -572,148 +572,148 @@ class InstanceArgs:
         return pulumi.get(self, "instance_category")
 
     @instance_category.setter
-    def instance_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_category", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.""")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kibanaConfiguration")
-    def kibana_configuration(self) -> Optional[pulumi.Input['InstanceKibanaConfigurationArgs']]:
+    def kibana_configuration(self) -> pulumi.Input[Optional['InstanceKibanaConfigurationArgs']]:
         """
         The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
         """
         return pulumi.get(self, "kibana_configuration")
 
     @kibana_configuration.setter
-    def kibana_configuration(self, value: Optional[pulumi.Input['InstanceKibanaConfigurationArgs']]):
+    def kibana_configuration(self, value: pulumi.Input[Optional['InstanceKibanaConfigurationArgs']]):
         pulumi.set(self, "kibana_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="kibanaNodeSpec")
     @_utilities.deprecated("""Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.""")
-    def kibana_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kibana_node_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         """
         return pulumi.get(self, "kibana_node_spec")
 
     @kibana_node_spec.setter
-    def kibana_node_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kibana_node_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kibana_node_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="kibanaPrivateSecurityGroupId")
-    def kibana_private_security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kibana_private_security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         List of security groups.
         """
         return pulumi.get(self, "kibana_private_security_group_id")
 
     @kibana_private_security_group_id.setter
-    def kibana_private_security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kibana_private_security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kibana_private_security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="kibanaPrivateWhitelists")
-    def kibana_private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def kibana_private_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         """
         return pulumi.get(self, "kibana_private_whitelists")
 
     @kibana_private_whitelists.setter
-    def kibana_private_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def kibana_private_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kibana_private_whitelists", value)
 
     @_builtins.property
     @pulumi.getter(name="kibanaWhitelists")
-    def kibana_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def kibana_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         """
         return pulumi.get(self, "kibana_whitelists")
 
     @kibana_whitelists.setter
-    def kibana_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def kibana_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kibana_whitelists", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
-    def kms_encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
     @pulumi.getter(name="masterConfiguration")
-    def master_configuration(self) -> Optional[pulumi.Input['InstanceMasterConfigurationArgs']]:
+    def master_configuration(self) -> pulumi.Input[Optional['InstanceMasterConfigurationArgs']]:
         """
         Configuration information for Elasticsearch dedicated master nodes. See `master_configuration` below.
         """
         return pulumi.get(self, "master_configuration")
 
     @master_configuration.setter
-    def master_configuration(self, value: Optional[pulumi.Input['InstanceMasterConfigurationArgs']]):
+    def master_configuration(self, value: pulumi.Input[Optional['InstanceMasterConfigurationArgs']]):
         pulumi.set(self, "master_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="masterNodeDiskType")
     @_utilities.deprecated("""Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead.""")
-    def master_node_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_node_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         """
         return pulumi.get(self, "master_node_disk_type")
 
     @master_node_disk_type.setter
-    def master_node_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_node_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_node_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="masterNodeSpec")
     @_utilities.deprecated("""Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.""")
-    def master_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_node_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dedicated master node spec. If specified, dedicated master node will be created.
         """
         return pulumi.get(self, "master_node_spec")
 
     @master_node_spec.setter
-    def master_node_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_node_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_node_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="orderActionType")
-    def order_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_action_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configuration change type. Valid values:
         - upgrade (default): Upgrade configuration
@@ -724,24 +724,24 @@ class InstanceArgs:
         return pulumi.get(self, "order_action_type")
 
     @order_action_type.setter
-    def order_action_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_action_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_action_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the instance. Supported values:
         - `PayAsYouGo`: Pay-as-you-go
@@ -750,60 +750,60 @@ class InstanceArgs:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="privateWhitelists")
-    def private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def private_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         """
         return pulumi.get(self, "private_whitelists")
 
     @private_whitelists.setter
-    def private_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def private_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "private_whitelists", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access protocol. Supported protocols: HTTP and HTTPS.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="publicWhitelists")
-    def public_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def public_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         """
         return pulumi.get(self, "public_whitelists")
 
     @public_whitelists.setter
-    def public_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def public_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "public_whitelists", value)
 
     @_builtins.property
     @pulumi.getter(name="renewStatus")
-    def renew_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renew_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The renewal status. Valid values:
         - AutoRenewal: Auto-renewal.
@@ -813,12 +813,12 @@ class InstanceArgs:
         return pulumi.get(self, "renew_status")
 
     @renew_status.setter
-    def renew_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renew_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renew_status", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalDurationUnit")
-    def renewal_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the auto-renewal period. Valid values:  
         - M: Month.
@@ -829,48 +829,48 @@ class InstanceArgs:
         return pulumi.get(self, "renewal_duration_unit")
 
     @renewal_duration_unit.setter
-    def renewal_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="settingConfig")
-    def setting_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def setting_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         YML configuration file settings for the instance.
         """
         return pulumi.get(self, "setting_config")
 
     @setting_config.setter
-    def setting_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def setting_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "setting_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Instance tag group.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updateStrategy")
-    def update_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
         - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
@@ -882,89 +882,89 @@ class InstanceArgs:
         return pulumi.get(self, "update_strategy")
 
     @update_strategy.setter
-    def update_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="warmNodeAmount")
     @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.""")
-    def warm_node_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def warm_node_amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Elasticsearch cluster's warm node quantity, between 3 and 50.
         """
         return pulumi.get(self, "warm_node_amount")
 
     @warm_node_amount.setter
-    def warm_node_amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def warm_node_amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "warm_node_amount", value)
 
     @_builtins.property
     @pulumi.getter(name="warmNodeConfiguration")
-    def warm_node_configuration(self) -> Optional[pulumi.Input['InstanceWarmNodeConfigurationArgs']]:
+    def warm_node_configuration(self) -> pulumi.Input[Optional['InstanceWarmNodeConfigurationArgs']]:
         """
         Cold data node configuration for the Elasticsearch cluster. See `warm_node_configuration` below.
         """
         return pulumi.get(self, "warm_node_configuration")
 
     @warm_node_configuration.setter
-    def warm_node_configuration(self, value: Optional[pulumi.Input['InstanceWarmNodeConfigurationArgs']]):
+    def warm_node_configuration(self, value: pulumi.Input[Optional['InstanceWarmNodeConfigurationArgs']]):
         pulumi.set(self, "warm_node_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="warmNodeDiskEncrypted")
     @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead.""")
-    def warm_node_disk_encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def warm_node_disk_encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
         """
         return pulumi.get(self, "warm_node_disk_encrypted")
 
     @warm_node_disk_encrypted.setter
-    def warm_node_disk_encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def warm_node_disk_encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "warm_node_disk_encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="warmNodeDiskSize")
     @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead.""")
-    def warm_node_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def warm_node_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The single warm node storage space, should between 500 and 20480
         """
         return pulumi.get(self, "warm_node_disk_size")
 
     @warm_node_disk_size.setter
-    def warm_node_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def warm_node_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "warm_node_disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="warmNodeDiskType")
     @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead.""")
-    def warm_node_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warm_node_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The warm node disk type. Supported values:  cloud_efficiency.
         """
         return pulumi.get(self, "warm_node_disk_type")
 
     @warm_node_disk_type.setter
-    def warm_node_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warm_node_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warm_node_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="warmNodeSpec")
     @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.""")
-    def warm_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warm_node_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The warm node specifications of the Elasticsearch instance.
         """
         return pulumi.get(self, "warm_node_spec")
 
     @warm_node_spec.setter
-    def warm_node_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warm_node_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warm_node_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneCount")
-    def zone_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zone_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
 
@@ -973,73 +973,73 @@ class InstanceArgs:
         return pulumi.get(self, "zone_count")
 
     @zone_count.setter
-    def zone_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zone_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zone_count", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 arch_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_node_configuration: Optional[pulumi.Input['InstanceClientNodeConfigurationArgs']] = None,
-                 client_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_node_configuration: Optional[pulumi.Input['InstanceDataNodeConfigurationArgs']] = None,
-                 data_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_node_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_kibana_private_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_kibana_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kibana_configuration: Optional[pulumi.Input['InstanceKibanaConfigurationArgs']] = None,
-                 kibana_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 kibana_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 kibana_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 kibana_private_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 kibana_private_security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 master_configuration: Optional[pulumi.Input['InstanceMasterConfigurationArgs']] = None,
-                 master_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_action_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 warm_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 warm_node_configuration: Optional[pulumi.Input['InstanceWarmNodeConfigurationArgs']] = None,
-                 warm_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 warm_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 warm_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 warm_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 arch_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_node_configuration: pulumi.Input[Optional['InstanceClientNodeConfigurationArgs']] = None,
+                 client_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_node_configuration: pulumi.Input[Optional['InstanceDataNodeConfigurationArgs']] = None,
+                 data_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_node_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_kibana_private_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_kibana_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kibana_configuration: pulumi.Input[Optional['InstanceKibanaConfigurationArgs']] = None,
+                 kibana_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 kibana_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 kibana_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 kibana_private_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 kibana_private_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kibana_private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kibana_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_configuration: pulumi.Input[Optional['InstanceMasterConfigurationArgs']] = None,
+                 master_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 public_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 setting_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 warm_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 warm_node_configuration: pulumi.Input[Optional['InstanceWarmNodeConfigurationArgs']] = None,
+                 warm_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 warm_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 warm_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 warm_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -1320,195 +1320,195 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="archType")
-    def arch_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arch_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment mode or architecture type:.
         """
         return pulumi.get(self, "arch_type")
 
     @arch_type.setter
-    def arch_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arch_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arch_type", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewDuration")
-    def auto_renew_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of auto-renewal periods.
         """
         return pulumi.get(self, "auto_renew_duration")
 
     @auto_renew_duration.setter
-    def auto_renew_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="clientNodeAmount")
     @_utilities.deprecated("""Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.""")
-    def client_node_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def client_node_amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Elasticsearch cluster's client node quantity, between 2 and 25.
         """
         return pulumi.get(self, "client_node_amount")
 
     @client_node_amount.setter
-    def client_node_amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def client_node_amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "client_node_amount", value)
 
     @_builtins.property
     @pulumi.getter(name="clientNodeConfiguration")
-    def client_node_configuration(self) -> Optional[pulumi.Input['InstanceClientNodeConfigurationArgs']]:
+    def client_node_configuration(self) -> pulumi.Input[Optional['InstanceClientNodeConfigurationArgs']]:
         """
         Configuration of dedicated coordinating nodes in the Elasticsearch cluster.   See `client_node_configuration` below.
         """
         return pulumi.get(self, "client_node_configuration")
 
     @client_node_configuration.setter
-    def client_node_configuration(self, value: Optional[pulumi.Input['InstanceClientNodeConfigurationArgs']]):
+    def client_node_configuration(self, value: pulumi.Input[Optional['InstanceClientNodeConfigurationArgs']]):
         pulumi.set(self, "client_node_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="clientNodeSpec")
     @_utilities.deprecated("""Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.""")
-    def client_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_node_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client node spec. If specified, client node will be created.
         """
         return pulumi.get(self, "client_node_spec")
 
     @client_node_spec.setter
-    def client_node_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_node_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_node_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the instance was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataNodeAmount")
     @_utilities.deprecated("""Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.""")
-    def data_node_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_node_amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Elasticsearch cluster's data node quantity, between 2 and 50.
         """
         return pulumi.get(self, "data_node_amount")
 
     @data_node_amount.setter
-    def data_node_amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_node_amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_node_amount", value)
 
     @_builtins.property
     @pulumi.getter(name="dataNodeConfiguration")
-    def data_node_configuration(self) -> Optional[pulumi.Input['InstanceDataNodeConfigurationArgs']]:
+    def data_node_configuration(self) -> pulumi.Input[Optional['InstanceDataNodeConfigurationArgs']]:
         """
         Elasticsearch data node information. See `data_node_configuration` below.
         """
         return pulumi.get(self, "data_node_configuration")
 
     @data_node_configuration.setter
-    def data_node_configuration(self, value: Optional[pulumi.Input['InstanceDataNodeConfigurationArgs']]):
+    def data_node_configuration(self, value: pulumi.Input[Optional['InstanceDataNodeConfigurationArgs']]):
         pulumi.set(self, "data_node_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskEncrypted")
     @_utilities.deprecated("""Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead.""")
-    def data_node_disk_encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def data_node_disk_encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         """
         return pulumi.get(self, "data_node_disk_encrypted")
 
     @data_node_disk_encrypted.setter
-    def data_node_disk_encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def data_node_disk_encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "data_node_disk_encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskPerformanceLevel")
     @_utilities.deprecated("""Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead.""")
-    def data_node_disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_node_disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         """
         return pulumi.get(self, "data_node_disk_performance_level")
 
     @data_node_disk_performance_level.setter
-    def data_node_disk_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_node_disk_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_node_disk_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskSize")
     @_utilities.deprecated("""Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead.""")
-    def data_node_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_node_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The single data node storage space.
         """
         return pulumi.get(self, "data_node_disk_size")
 
     @data_node_disk_size.setter
-    def data_node_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_node_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_node_disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskType")
     @_utilities.deprecated("""Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead.""")
-    def data_node_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_node_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         """
         return pulumi.get(self, "data_node_disk_type")
 
     @data_node_disk_type.setter
-    def data_node_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_node_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_node_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dataNodeSpec")
     @_utilities.deprecated("""Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.""")
-    def data_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_node_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data node specifications of the Elasticsearch instance.
         """
         return pulumi.get(self, "data_node_spec")
 
     @data_node_spec.setter
-    def data_node_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_node_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_node_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The internal network address of the instance.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="enableKibanaPrivateNetwork")
-    def enable_kibana_private_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_kibana_private_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether private network access to Kibana is enabled. Valid values:  
         - true: Enabled
@@ -1517,12 +1517,12 @@ class _InstanceState:
         return pulumi.get(self, "enable_kibana_private_network")
 
     @enable_kibana_private_network.setter
-    def enable_kibana_private_network(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_kibana_private_network(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_kibana_private_network", value)
 
     @_builtins.property
     @pulumi.getter(name="enableKibanaPublicNetwork")
-    def enable_kibana_public_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_kibana_public_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable public access to Kibana. Valid values:  
         - true: Enables public access.
@@ -1531,12 +1531,12 @@ class _InstanceState:
         return pulumi.get(self, "enable_kibana_public_network")
 
     @enable_kibana_public_network.setter
-    def enable_kibana_public_network(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_kibana_public_network(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_kibana_public_network", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePublic")
-    def enable_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable a public endpoint for the instance. Valid values:
         - true: Enables the public endpoint.
@@ -1545,12 +1545,12 @@ class _InstanceState:
         return pulumi.get(self, "enable_public")
 
     @enable_public.setter
-    def enable_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_public", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to force a restart:
         - true: Yes
@@ -1561,12 +1561,12 @@ class _InstanceState:
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceCategory")
-    def instance_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Edition type:  
         - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
@@ -1575,184 +1575,184 @@ class _InstanceState:
         return pulumi.get(self, "instance_category")
 
     @instance_category.setter
-    def instance_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_category", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.""")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kibanaConfiguration")
-    def kibana_configuration(self) -> Optional[pulumi.Input['InstanceKibanaConfigurationArgs']]:
+    def kibana_configuration(self) -> pulumi.Input[Optional['InstanceKibanaConfigurationArgs']]:
         """
         The configuration of Elasticsearch Kibana nodes. See `kibana_configuration` below.
         """
         return pulumi.get(self, "kibana_configuration")
 
     @kibana_configuration.setter
-    def kibana_configuration(self, value: Optional[pulumi.Input['InstanceKibanaConfigurationArgs']]):
+    def kibana_configuration(self, value: pulumi.Input[Optional['InstanceKibanaConfigurationArgs']]):
         pulumi.set(self, "kibana_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="kibanaDomain")
-    def kibana_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kibana_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kibana endpoint.
         """
         return pulumi.get(self, "kibana_domain")
 
     @kibana_domain.setter
-    def kibana_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kibana_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kibana_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="kibanaNodeSpec")
     @_utilities.deprecated("""Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.""")
-    def kibana_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kibana_node_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
         """
         return pulumi.get(self, "kibana_node_spec")
 
     @kibana_node_spec.setter
-    def kibana_node_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kibana_node_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kibana_node_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="kibanaPort")
-    def kibana_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def kibana_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The access port for Kibana.
         """
         return pulumi.get(self, "kibana_port")
 
     @kibana_port.setter
-    def kibana_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def kibana_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "kibana_port", value)
 
     @_builtins.property
     @pulumi.getter(name="kibanaPrivateDomain")
-    def kibana_private_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kibana_private_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private endpoint of Kibana.
         """
         return pulumi.get(self, "kibana_private_domain")
 
     @kibana_private_domain.setter
-    def kibana_private_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kibana_private_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kibana_private_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="kibanaPrivateSecurityGroupId")
-    def kibana_private_security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kibana_private_security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         List of security groups.
         """
         return pulumi.get(self, "kibana_private_security_group_id")
 
     @kibana_private_security_group_id.setter
-    def kibana_private_security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kibana_private_security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kibana_private_security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="kibanaPrivateWhitelists")
-    def kibana_private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def kibana_private_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         """
         return pulumi.get(self, "kibana_private_whitelists")
 
     @kibana_private_whitelists.setter
-    def kibana_private_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def kibana_private_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kibana_private_whitelists", value)
 
     @_builtins.property
     @pulumi.getter(name="kibanaWhitelists")
-    def kibana_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def kibana_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         """
         return pulumi.get(self, "kibana_whitelists")
 
     @kibana_whitelists.setter
-    def kibana_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def kibana_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kibana_whitelists", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
-    def kms_encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
     @pulumi.getter(name="masterConfiguration")
-    def master_configuration(self) -> Optional[pulumi.Input['InstanceMasterConfigurationArgs']]:
+    def master_configuration(self) -> pulumi.Input[Optional['InstanceMasterConfigurationArgs']]:
         """
         Configuration information for Elasticsearch dedicated master nodes. See `master_configuration` below.
         """
         return pulumi.get(self, "master_configuration")
 
     @master_configuration.setter
-    def master_configuration(self, value: Optional[pulumi.Input['InstanceMasterConfigurationArgs']]):
+    def master_configuration(self, value: pulumi.Input[Optional['InstanceMasterConfigurationArgs']]):
         pulumi.set(self, "master_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="masterNodeDiskType")
     @_utilities.deprecated("""Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead.""")
-    def master_node_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_node_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         """
         return pulumi.get(self, "master_node_disk_type")
 
     @master_node_disk_type.setter
-    def master_node_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_node_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_node_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="masterNodeSpec")
     @_utilities.deprecated("""Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.""")
-    def master_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_node_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dedicated master node spec. If specified, dedicated master node will be created.
         """
         return pulumi.get(self, "master_node_spec")
 
     @master_node_spec.setter
-    def master_node_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_node_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_node_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="orderActionType")
-    def order_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_action_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configuration change type. Valid values:
         - upgrade (default): Upgrade configuration
@@ -1763,24 +1763,24 @@ class _InstanceState:
         return pulumi.get(self, "order_action_type")
 
     @order_action_type.setter
-    def order_action_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_action_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_action_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access password for the instance. It must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=).
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the instance. Supported values:
         - `PayAsYouGo`: Pay-as-you-go
@@ -1789,96 +1789,96 @@ class _InstanceState:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance connection port.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="privateWhitelists")
-    def private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def private_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of IP addresses in the whitelist. This parameter is available when whiteIpGroup is empty and modifies the default group's whitelist.
         """
         return pulumi.get(self, "private_whitelists")
 
     @private_whitelists.setter
-    def private_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def private_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "private_whitelists", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access protocol. Supported protocols: HTTP and HTTPS.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="publicDomain")
-    def public_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public endpoint of the instance.
         """
         return pulumi.get(self, "public_domain")
 
     @public_domain.setter
-    def public_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="publicPort")
-    def public_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def public_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The public access port of the instance.
         """
         return pulumi.get(self, "public_port")
 
     @public_port.setter
-    def public_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def public_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "public_port", value)
 
     @_builtins.property
     @pulumi.getter(name="publicWhitelists")
-    def public_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def public_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IP address whitelist. This parameter is available when whiteIpGroup is empty and is used to modify the default group's whitelist.
         """
         return pulumi.get(self, "public_whitelists")
 
     @public_whitelists.setter
-    def public_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def public_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "public_whitelists", value)
 
     @_builtins.property
     @pulumi.getter(name="renewStatus")
-    def renew_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renew_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The renewal status. Valid values:
         - AutoRenewal: Auto-renewal.
@@ -1888,12 +1888,12 @@ class _InstanceState:
         return pulumi.get(self, "renew_status")
 
     @renew_status.setter
-    def renew_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renew_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renew_status", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalDurationUnit")
-    def renewal_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the auto-renewal period. Valid values:  
         - M: Month.
@@ -1904,60 +1904,60 @@ class _InstanceState:
         return pulumi.get(self, "renewal_duration_unit")
 
     @renewal_duration_unit.setter
-    def renewal_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="settingConfig")
-    def setting_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def setting_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         YML configuration file settings for the instance.
         """
         return pulumi.get(self, "setting_config")
 
     @setting_config.setter
-    def setting_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def setting_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "setting_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Instance tag group.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updateStrategy")
-    def update_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Elasticsearch update strategy (for example, index updates, cluster upgrades, or service deployments). Valid values:
         - blue_green: Blue-green deployment, which enables seamless switching by running two identical environments (blue and green) in parallel.
@@ -1969,12 +1969,12 @@ class _InstanceState:
         return pulumi.get(self, "update_strategy")
 
     @update_strategy.setter
-    def update_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance version. Valid values:
         - 8.5.1_with_X-Pack
@@ -1991,101 +1991,101 @@ class _InstanceState:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of VSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="warmNodeAmount")
     @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.""")
-    def warm_node_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def warm_node_amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Elasticsearch cluster's warm node quantity, between 3 and 50.
         """
         return pulumi.get(self, "warm_node_amount")
 
     @warm_node_amount.setter
-    def warm_node_amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def warm_node_amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "warm_node_amount", value)
 
     @_builtins.property
     @pulumi.getter(name="warmNodeConfiguration")
-    def warm_node_configuration(self) -> Optional[pulumi.Input['InstanceWarmNodeConfigurationArgs']]:
+    def warm_node_configuration(self) -> pulumi.Input[Optional['InstanceWarmNodeConfigurationArgs']]:
         """
         Cold data node configuration for the Elasticsearch cluster. See `warm_node_configuration` below.
         """
         return pulumi.get(self, "warm_node_configuration")
 
     @warm_node_configuration.setter
-    def warm_node_configuration(self, value: Optional[pulumi.Input['InstanceWarmNodeConfigurationArgs']]):
+    def warm_node_configuration(self, value: pulumi.Input[Optional['InstanceWarmNodeConfigurationArgs']]):
         pulumi.set(self, "warm_node_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="warmNodeDiskEncrypted")
     @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead.""")
-    def warm_node_disk_encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def warm_node_disk_encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
         """
         return pulumi.get(self, "warm_node_disk_encrypted")
 
     @warm_node_disk_encrypted.setter
-    def warm_node_disk_encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def warm_node_disk_encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "warm_node_disk_encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="warmNodeDiskSize")
     @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead.""")
-    def warm_node_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def warm_node_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The single warm node storage space, should between 500 and 20480
         """
         return pulumi.get(self, "warm_node_disk_size")
 
     @warm_node_disk_size.setter
-    def warm_node_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def warm_node_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "warm_node_disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="warmNodeDiskType")
     @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead.""")
-    def warm_node_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warm_node_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The warm node disk type. Supported values:  cloud_efficiency.
         """
         return pulumi.get(self, "warm_node_disk_type")
 
     @warm_node_disk_type.setter
-    def warm_node_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warm_node_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warm_node_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="warmNodeSpec")
     @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.""")
-    def warm_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warm_node_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The warm node specifications of the Elasticsearch instance.
         """
         return pulumi.get(self, "warm_node_spec")
 
     @warm_node_spec.setter
-    def warm_node_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warm_node_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warm_node_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneCount")
-    def zone_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zone_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
 
@@ -2094,7 +2094,7 @@ class _InstanceState:
         return pulumi.get(self, "zone_count")
 
     @zone_count.setter
-    def zone_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zone_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zone_count", value)
 
 
@@ -2104,56 +2104,56 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_node_configuration: Optional[pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']]] = None,
-                 client_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_node_configuration: Optional[pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']]] = None,
-                 data_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_node_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_kibana_private_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_kibana_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kibana_configuration: Optional[pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']]] = None,
-                 kibana_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 kibana_private_security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 master_configuration: Optional[pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']]] = None,
-                 master_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_action_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 warm_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 warm_node_configuration: Optional[pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']]] = None,
-                 warm_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 warm_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 warm_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 warm_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_node_configuration: pulumi.Input[Optional[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']]] = None,
+                 client_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_node_configuration: pulumi.Input[Optional[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']]] = None,
+                 data_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_node_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_kibana_private_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_kibana_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kibana_configuration: pulumi.Input[Optional[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']]] = None,
+                 kibana_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 kibana_private_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kibana_private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kibana_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_configuration: pulumi.Input[Optional[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']]] = None,
+                 master_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 setting_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 warm_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 warm_node_configuration: pulumi.Input[Optional[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']]] = None,
+                 warm_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 warm_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 warm_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 warm_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_count: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Elasticsearch Instance resource.
@@ -2385,56 +2385,56 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_node_configuration: Optional[pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']]] = None,
-                 client_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_node_configuration: Optional[pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']]] = None,
-                 data_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_node_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_kibana_private_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_kibana_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kibana_configuration: Optional[pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']]] = None,
-                 kibana_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 kibana_private_security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 master_configuration: Optional[pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']]] = None,
-                 master_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_action_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 warm_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 warm_node_configuration: Optional[pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']]] = None,
-                 warm_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 warm_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 warm_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 warm_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_node_configuration: pulumi.Input[Optional[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']]] = None,
+                 client_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_node_configuration: pulumi.Input[Optional[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']]] = None,
+                 data_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_node_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_kibana_private_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_kibana_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kibana_configuration: pulumi.Input[Optional[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']]] = None,
+                 kibana_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 kibana_private_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kibana_private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kibana_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_configuration: pulumi.Input[Optional[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']]] = None,
+                 master_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 setting_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 warm_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 warm_node_configuration: pulumi.Input[Optional[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']]] = None,
+                 warm_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 warm_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 warm_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 warm_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_count: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2520,66 +2520,66 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            arch_type: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            client_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-            client_node_configuration: Optional[pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']]] = None,
-            client_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-            data_node_configuration: Optional[pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']]] = None,
-            data_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-            data_node_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-            data_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            data_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-            data_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_kibana_private_network: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_kibana_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_category: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            kibana_configuration: Optional[pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']]] = None,
-            kibana_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            kibana_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            kibana_port: Optional[pulumi.Input[_builtins.int]] = None,
-            kibana_private_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            kibana_private_security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            master_configuration: Optional[pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']]] = None,
-            master_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-            master_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            order_action_type: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            public_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            public_port: Optional[pulumi.Input[_builtins.int]] = None,
-            public_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-            renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            warm_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
-            warm_node_configuration: Optional[pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']]] = None,
-            warm_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-            warm_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            warm_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-            warm_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_count: Optional[pulumi.Input[_builtins.int]] = None) -> 'Instance':
+            arch_type: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            client_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+            client_node_configuration: pulumi.Input[Optional[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']]] = None,
+            client_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+            data_node_configuration: pulumi.Input[Optional[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']]] = None,
+            data_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+            data_node_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            data_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            data_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            data_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_kibana_private_network: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_kibana_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kibana_configuration: pulumi.Input[Optional[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']]] = None,
+            kibana_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            kibana_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            kibana_port: pulumi.Input[Optional[_builtins.int]] = None,
+            kibana_private_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            kibana_private_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kibana_private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            kibana_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            master_configuration: pulumi.Input[Optional[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']]] = None,
+            master_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            master_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            order_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            private_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            public_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            public_port: pulumi.Input[Optional[_builtins.int]] = None,
+            public_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            setting_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            warm_node_amount: pulumi.Input[Optional[_builtins.int]] = None,
+            warm_node_configuration: pulumi.Input[Optional[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']]] = None,
+            warm_node_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+            warm_node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            warm_node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            warm_node_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_count: pulumi.Input[Optional[_builtins.int]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

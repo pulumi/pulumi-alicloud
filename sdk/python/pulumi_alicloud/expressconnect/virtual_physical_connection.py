@@ -24,11 +24,11 @@ class VirtualPhysicalConnectionArgs:
                  spec: pulumi.Input[_builtins.str],
                  vlan_id: pulumi.Input[_builtins.int],
                  vpconn_ali_uid: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expect_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_physical_connection_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expect_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_physical_connection_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VirtualPhysicalConnection resource.
 
@@ -125,95 +125,95 @@ class VirtualPhysicalConnectionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the physical connection.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to precheck the API request. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="expectSpec")
-    def expect_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expect_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The estimated bandwidth value of the shared line. Valid values: `50M`, `100M`, `200M`, `300M`, `400M`, `500M`, `1G`, `2G`, `5G`, `8G`, and `10G`. **Note**: By default, the values of 2G, 5G, 8G, and 10G are unavailable. If you want to specify these values, contact your customer manager. Unit: **M** indicates Mbps, **G** indicates Gbps.
         """
         return pulumi.get(self, "expect_spec")
 
     @expect_spec.setter
-    def expect_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expect_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expect_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group id.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualPhysicalConnectionName")
-    def virtual_physical_connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_physical_connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the physical connection.
         """
         return pulumi.get(self, "virtual_physical_connection_name")
 
     @virtual_physical_connection_name.setter
-    def virtual_physical_connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_physical_connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_physical_connection_name", value)
 
 
 @pulumi.input_type
 class _VirtualPhysicalConnectionState:
     def __init__(__self__, *,
-                 access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ad_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 business_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 circuit_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 expect_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 line_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 loa_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_physical_connection_ali_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 redundant_physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_physical_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_physical_connection_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpconn_ali_uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ad_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 business_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 expect_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 line_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 loa_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_physical_connection_ali_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 redundant_physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_physical_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_physical_connection_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpconn_ali_uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VirtualPhysicalConnection resources.
 
@@ -304,163 +304,163 @@ class _VirtualPhysicalConnectionState:
 
     @_builtins.property
     @pulumi.getter(name="accessPointId")
-    def access_point_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_point_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the access point of the physical connection.
         """
         return pulumi.get(self, "access_point_id")
 
     @access_point_id.setter
-    def access_point_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_point_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_point_id", value)
 
     @_builtins.property
     @pulumi.getter(name="adLocation")
-    def ad_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ad_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The physical location where the physical connection access device is located.
         """
         return pulumi.get(self, "ad_location")
 
     @ad_location.setter
-    def ad_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ad_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ad_location", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bandwidth of the physical connection. Unit: Mbps.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="businessStatus")
-    def business_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def business_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The commercial status of the physical line. Value:-**Normal**: activated.-**Financialized**: Arrears locked.-**SecurityLocked**: locked for security reasons.
         """
         return pulumi.get(self, "business_status")
 
     @business_status.setter
-    def business_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def business_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "business_status", value)
 
     @_builtins.property
     @pulumi.getter(name="circuitCode")
-    def circuit_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def circuit_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The circuit code provided by the operator for the physical connection.
         """
         return pulumi.get(self, "circuit_code")
 
     @circuit_code.setter
-    def circuit_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def circuit_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "circuit_code", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the physical connection.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to precheck the API request. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledTime")
-    def enabled_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enabled_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The opening time of the physical connection.
         """
         return pulumi.get(self, "enabled_time")
 
     @enabled_time.setter
-    def enabled_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enabled_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enabled_time", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expiration time of the shared line.Time is expressed according to ISO8601 standard and UTC time is used. The format is: YYYY-MM-DDThh:mm:ssZ.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="expectSpec")
-    def expect_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expect_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The estimated bandwidth value of the shared line. Valid values: `50M`, `100M`, `200M`, `300M`, `400M`, `500M`, `1G`, `2G`, `5G`, `8G`, and `10G`. **Note**: By default, the values of 2G, 5G, 8G, and 10G are unavailable. If you want to specify these values, contact your customer manager. Unit: **M** indicates Mbps, **G** indicates Gbps.
         """
         return pulumi.get(self, "expect_spec")
 
     @expect_spec.setter
-    def expect_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expect_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expect_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="lineOperator")
-    def line_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def line_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Operators that provide access to physical lines. Value:-**CT**: China Telecom.-**CU**: China Unicom.-**CM**: China Mobile.-**CO**: China Other.-**Equinix**:Equinix.-**Other**: Other abroad.
         """
         return pulumi.get(self, "line_operator")
 
     @line_operator.setter
-    def line_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def line_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "line_operator", value)
 
     @_builtins.property
     @pulumi.getter(name="loaStatus")
-    def loa_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loa_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of LOA. Value:-**Applying**:LOA application.-**Accept**:LOA application passed.-**Available**:LOA is Available.-**Rejected**:LOA application Rejected.-**Completing**: The dedicated line is under construction.-**Complete**: The construction of the dedicated line is completed.-**Deleted**:LOA has been Deleted.
         """
         return pulumi.get(self, "loa_status")
 
     @loa_status.setter
-    def loa_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loa_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loa_status", value)
 
     @_builtins.property
     @pulumi.getter(name="orderMode")
-    def order_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment method of shared dedicated line. Value:
         - **PayByPhysicalConnectionOwner**: indicates that the owner of the physical line associated with the shared line pays.
@@ -469,163 +469,163 @@ class _VirtualPhysicalConnectionState:
         return pulumi.get(self, "order_mode")
 
     @order_mode.setter
-    def order_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="parentPhysicalConnectionAliUid")
-    def parent_physical_connection_ali_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_physical_connection_ali_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud account (primary account) to which the physical connection belongs.
         """
         return pulumi.get(self, "parent_physical_connection_ali_uid")
 
     @parent_physical_connection_ali_uid.setter
-    def parent_physical_connection_ali_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_physical_connection_ali_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_physical_connection_ali_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="parentPhysicalConnectionId")
-    def parent_physical_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_physical_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance of the physical connection.
         """
         return pulumi.get(self, "parent_physical_connection_id")
 
     @parent_physical_connection_id.setter
-    def parent_physical_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_physical_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_physical_connection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="peerLocation")
-    def peer_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location of the local data center.
         """
         return pulumi.get(self, "peer_location")
 
     @peer_location.setter
-    def peer_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_location", value)
 
     @_builtins.property
     @pulumi.getter(name="portNumber")
-    def port_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port number of the physical connection device.
         """
         return pulumi.get(self, "port_number")
 
     @port_number.setter
-    def port_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_number", value)
 
     @_builtins.property
     @pulumi.getter(name="portType")
-    def port_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Physical connection port type. Value:-**100Base-T**: 100 megabytes port.-**1000Base-T**: Gigabit port.-**1000Base-LX**: Gigabit single mode optical port (10km).-**10GBase-T**: 10 Gigabit port.-**10GBase-LR**: 10 Gigabit single mode optical port (10km).-**40GBase-LR**: 40 megabytes single-mode optical port.-**100GBase-LR**: 100,000 megabytes single-mode optical port.
         """
         return pulumi.get(self, "port_type")
 
     @port_type.setter
-    def port_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_type", value)
 
     @_builtins.property
     @pulumi.getter(name="redundantPhysicalConnectionId")
-    def redundant_physical_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redundant_physical_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the redundant physical connection.
         """
         return pulumi.get(self, "redundant_physical_connection_id")
 
     @redundant_physical_connection_id.setter
-    def redundant_physical_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redundant_physical_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redundant_physical_connection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group id.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bandwidth value of the shared line. Valid values: `50M`, `100M`, `200M`, `300M`, `400M`, `500M`, `1G`, `2G`, `5G`, `8G`, and `10G`. **Note**: By default, the values of 2G, 5G, 8G, and 10G are unavailable. If you want to specify these values, contact your customer manager. Unit: **M** indicates Mbps, **G** indicates Gbps.
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualPhysicalConnectionName")
-    def virtual_physical_connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_physical_connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the physical connection.
         """
         return pulumi.get(self, "virtual_physical_connection_name")
 
     @virtual_physical_connection_name.setter
-    def virtual_physical_connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_physical_connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_physical_connection_name", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualPhysicalConnectionStatus")
-    def virtual_physical_connection_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_physical_connection_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The business status of the shared line. Value:-**Confirmed**: The shared line has been Confirmed to receive.-**UnConfirmed**: The shared line has not been confirmed to be received.-**Deleted**: The shared line has been Deleted.
         """
         return pulumi.get(self, "virtual_physical_connection_status")
 
     @virtual_physical_connection_status.setter
-    def virtual_physical_connection_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_physical_connection_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_physical_connection_status", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The VLAN ID of the shared leased line. Valid values: `0` to `2999`.
         """
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
-    def vlan_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpconnAliUid")
-    def vpconn_ali_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpconn_ali_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
         """
         return pulumi.get(self, "vpconn_ali_uid")
 
     @vpconn_ali_uid.setter
-    def vpconn_ali_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpconn_ali_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpconn_ali_uid", value)
 
 
@@ -635,16 +635,16 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expect_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_physical_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpconn_ali_uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expect_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_physical_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpconn_ali_uid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Express Connect Virtual Physical Connection resource.
@@ -677,7 +677,7 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
             order_mode="PayByPhysicalConnectionOwner",
             parent_physical_connection_id=example.ids[0],
             spec="50M",
-            vlan_id=vlan_id["id"],
+            vlan_id=int(vlan_id["id"]),
             vpconn_ali_uid=default.id)
         ```
 
@@ -744,7 +744,7 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
             order_mode="PayByPhysicalConnectionOwner",
             parent_physical_connection_id=example.ids[0],
             spec="50M",
-            vlan_id=vlan_id["id"],
+            vlan_id=int(vlan_id["id"]),
             vpconn_ali_uid=default.id)
         ```
 
@@ -774,16 +774,16 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expect_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_physical_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpconn_ali_uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expect_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_physical_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpconn_ali_uid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -840,33 +840,33 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ad_location: Optional[pulumi.Input[_builtins.str]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-            business_status: Optional[pulumi.Input[_builtins.str]] = None,
-            circuit_code: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled_time: Optional[pulumi.Input[_builtins.str]] = None,
-            end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            expect_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            line_operator: Optional[pulumi.Input[_builtins.str]] = None,
-            loa_status: Optional[pulumi.Input[_builtins.str]] = None,
-            order_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_physical_connection_ali_uid: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_location: Optional[pulumi.Input[_builtins.str]] = None,
-            port_number: Optional[pulumi.Input[_builtins.str]] = None,
-            port_type: Optional[pulumi.Input[_builtins.str]] = None,
-            redundant_physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            spec: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            virtual_physical_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-            virtual_physical_connection_status: Optional[pulumi.Input[_builtins.str]] = None,
-            vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-            vpconn_ali_uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'VirtualPhysicalConnection':
+            access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ad_location: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            business_status: pulumi.Input[Optional[_builtins.str]] = None,
+            circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled_time: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            expect_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            line_operator: pulumi.Input[Optional[_builtins.str]] = None,
+            loa_status: pulumi.Input[Optional[_builtins.str]] = None,
+            order_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_physical_connection_ali_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_location: pulumi.Input[Optional[_builtins.str]] = None,
+            port_number: pulumi.Input[Optional[_builtins.str]] = None,
+            port_type: pulumi.Input[Optional[_builtins.str]] = None,
+            redundant_physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_physical_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_physical_connection_status: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
+            vpconn_ali_uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'VirtualPhysicalConnection':
         """
         Get an existing VirtualPhysicalConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

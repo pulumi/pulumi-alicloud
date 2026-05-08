@@ -240,17 +240,17 @@ def get_anycast_eip_addresses(anycast_eip_address_name: Optional[_builtins.str] 
         payment_type=pulumi.get(__ret__, 'payment_type'),
         service_location=pulumi.get(__ret__, 'service_location'),
         status=pulumi.get(__ret__, 'status'))
-def get_anycast_eip_addresses_output(anycast_eip_address_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     bind_instance_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                     business_status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                     internet_charge_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     ip_address: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     payment_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     service_location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_anycast_eip_addresses_output(anycast_eip_address_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     bind_instance_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                     business_status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                     internet_charge_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     ip_address: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     payment_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     service_location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAnycastEipAddressesResult]:
     """
     This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.

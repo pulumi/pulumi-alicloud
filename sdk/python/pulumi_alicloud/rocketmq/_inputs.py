@@ -36,15 +36,15 @@ __all__ = [
 ]
 
 class ConsumerGroupConsumeRetryPolicyArgsDict(TypedDict):
-    dead_letter_target_topic: NotRequired[pulumi.Input[_builtins.str]]
+    dead_letter_target_topic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
     """
-    max_retry_times: NotRequired[pulumi.Input[_builtins.int]]
+    max_retry_times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of retries.
     """
-    retry_policy: NotRequired[pulumi.Input[_builtins.str]]
+    retry_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Consume retry policy.
     """
@@ -52,9 +52,9 @@ class ConsumerGroupConsumeRetryPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class ConsumerGroupConsumeRetryPolicyArgs:
     def __init__(__self__, *,
-                 dead_letter_target_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_retry_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 dead_letter_target_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_retry_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] dead_letter_target_topic: The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
         :param pulumi.Input[_builtins.int] max_retry_times: Maximum number of retries.
@@ -69,47 +69,47 @@ class ConsumerGroupConsumeRetryPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="deadLetterTargetTopic")
-    def dead_letter_target_topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dead_letter_target_topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
         """
         return pulumi.get(self, "dead_letter_target_topic")
 
     @dead_letter_target_topic.setter
-    def dead_letter_target_topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dead_letter_target_topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dead_letter_target_topic", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRetryTimes")
-    def max_retry_times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_retry_times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of retries.
         """
         return pulumi.get(self, "max_retry_times")
 
     @max_retry_times.setter
-    def max_retry_times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_retry_times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_retry_times", value)
 
     @_builtins.property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retry_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Consume retry policy.
         """
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retry_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retry_policy", value)
 
 
 class RocketMQInstanceAclInfoArgsDict(TypedDict):
-    acl_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    acl_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The authentication type of the instance. Valid values:
     """
-    default_vpc_auth_free: NotRequired[pulumi.Input[_builtins.bool]]
+    default_vpc_auth_free: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates whether the authentication-free in VPCs feature is enabled. Indicates whether the authentication-free in VPCs feature is enabled. Valid values:
     """
@@ -117,8 +117,8 @@ class RocketMQInstanceAclInfoArgsDict(TypedDict):
 @pulumi.input_type
 class RocketMQInstanceAclInfoArgs:
     def __init__(__self__, *,
-                 acl_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_vpc_auth_free: Optional[pulumi.Input[_builtins.bool]] = None):
+                 acl_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_vpc_auth_free: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acl_types: The authentication type of the instance. Valid values:
         :param pulumi.Input[_builtins.bool] default_vpc_auth_free: Indicates whether the authentication-free in VPCs feature is enabled. Indicates whether the authentication-free in VPCs feature is enabled. Valid values:
@@ -130,26 +130,26 @@ class RocketMQInstanceAclInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="aclTypes")
-    def acl_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def acl_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The authentication type of the instance. Valid values:
         """
         return pulumi.get(self, "acl_types")
 
     @acl_types.setter
-    def acl_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def acl_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "acl_types", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultVpcAuthFree")
-    def default_vpc_auth_free(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_vpc_auth_free(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the authentication-free in VPCs feature is enabled. Indicates whether the authentication-free in VPCs feature is enabled. Valid values:
         """
         return pulumi.get(self, "default_vpc_auth_free")
 
     @default_vpc_auth_free.setter
-    def default_vpc_auth_free(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_vpc_auth_free(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_vpc_auth_free", value)
 
 
@@ -162,7 +162,7 @@ class RocketMQInstanceNetworkInfoArgsDict(TypedDict):
     """
     Proprietary network information. See `vpc_info` below.
     """
-    endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoEndpointArgsDict']]]]
+    endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoEndpointArgs']]]]]
     """
     Access point list.
     """
@@ -172,7 +172,7 @@ class RocketMQInstanceNetworkInfoArgs:
     def __init__(__self__, *,
                  internet_info: pulumi.Input['RocketMQInstanceNetworkInfoInternetInfoArgs'],
                  vpc_info: pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoArgs'],
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoEndpointArgs']]]] = None):
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoEndpointArgs']]]] = None):
         """
         :param pulumi.Input['RocketMQInstanceNetworkInfoInternetInfoArgs'] internet_info: instance internet info. See `internet_info` below.
         :param pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoArgs'] vpc_info: Proprietary network information. See `vpc_info` below.
@@ -209,27 +209,27 @@ class RocketMQInstanceNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoEndpointArgs']]]]:
+    def endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoEndpointArgs']]]]:
         """
         Access point list.
         """
         return pulumi.get(self, "endpoints")
 
     @endpoints.setter
-    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoEndpointArgs']]]]):
+    def endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoEndpointArgs']]]]):
         pulumi.set(self, "endpoints", value)
 
 
 class RocketMQInstanceNetworkInfoEndpointArgsDict(TypedDict):
-    endpoint_type: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Access point type.
     """
-    endpoint_url: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Access point address.
     """
-    ip_white_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ip_white_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     White list of access addresses.
     """
@@ -237,9 +237,9 @@ class RocketMQInstanceNetworkInfoEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class RocketMQInstanceNetworkInfoEndpointArgs:
     def __init__(__self__, *,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] endpoint_type: Access point type.
         :param pulumi.Input[_builtins.str] endpoint_url: Access point address.
@@ -254,38 +254,38 @@ class RocketMQInstanceNetworkInfoEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access point type.
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointUrl")
-    def endpoint_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access point address.
         """
         return pulumi.get(self, "endpoint_url")
 
     @endpoint_url.setter
-    def endpoint_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_url", value)
 
     @_builtins.property
     @pulumi.getter(name="ipWhiteLists")
-    def ip_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_white_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         White list of access addresses.
         """
         return pulumi.get(self, "ip_white_lists")
 
     @ip_white_lists.setter
-    def ip_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_white_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_white_lists", value)
 
 
@@ -302,11 +302,11 @@ class RocketMQInstanceNetworkInfoInternetInfoArgsDict(TypedDict):
     - enable: Enable public network access
     - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
     """
-    flow_out_bandwidth: NotRequired[pulumi.Input[_builtins.int]]
+    flow_out_bandwidth: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
     """
-    ip_whitelists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ip_whitelists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
     """
@@ -316,8 +316,8 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
     def __init__(__self__, *,
                  flow_out_type: pulumi.Input[_builtins.str],
                  internet_spec: pulumi.Input[_builtins.str],
-                 flow_out_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 flow_out_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] flow_out_type: Public network billing type.  Parameter values are as follows:
                - payByBandwidth: Fixed bandwidth billing. This parameter must be set to the value when public network access is enabled.
@@ -368,27 +368,27 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="flowOutBandwidth")
-    def flow_out_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def flow_out_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
         """
         return pulumi.get(self, "flow_out_bandwidth")
 
     @flow_out_bandwidth.setter
-    def flow_out_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def flow_out_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "flow_out_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="ipWhitelists")
     @_utilities.deprecated("""Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead.""")
-    def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
         """
         return pulumi.get(self, "ip_whitelists")
 
     @ip_whitelists.setter
-    def ip_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_whitelists", value)
 
 
@@ -397,15 +397,15 @@ class RocketMQInstanceNetworkInfoVpcInfoArgsDict(TypedDict):
     """
     Proprietary Network.
     """
-    security_group_ids: NotRequired[pulumi.Input[_builtins.str]]
+    security_group_ids: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Security group id.
     """
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VPC switch id.
     """
-    vswitches: NotRequired[pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgsDict']]]]
+    vswitches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgs']]]]]
     """
     Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
     """
@@ -414,9 +414,9 @@ class RocketMQInstanceNetworkInfoVpcInfoArgsDict(TypedDict):
 class RocketMQInstanceNetworkInfoVpcInfoArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[_builtins.str],
-                 security_group_ids: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitches: Optional[pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgs']]]] = None):
+                 security_group_ids: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitches: pulumi.Input[Optional[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] vpc_id: Proprietary Network.
         :param pulumi.Input[_builtins.str] security_group_ids: Security group id.
@@ -448,44 +448,44 @@ class RocketMQInstanceNetworkInfoVpcInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security group id.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     @_utilities.deprecated("""Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead.""")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC switch id.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def vswitches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgs']]]]:
+    def vswitches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgs']]]]:
         """
         Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
         """
         return pulumi.get(self, "vswitches")
 
     @vswitches.setter
-    def vswitches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgs']]]]):
+    def vswitches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgs']]]]):
         pulumi.set(self, "vswitches", value)
 
 
 class RocketMQInstanceNetworkInfoVpcInfoVswitchArgsDict(TypedDict):
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VPC switch id.
     """
@@ -493,7 +493,7 @@ class RocketMQInstanceNetworkInfoVpcInfoVswitchArgsDict(TypedDict):
 @pulumi.input_type
 class RocketMQInstanceNetworkInfoVpcInfoVswitchArgs:
     def __init__(__self__, *,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] vswitch_id: VPC switch id.
         """
@@ -502,14 +502,14 @@ class RocketMQInstanceNetworkInfoVpcInfoVswitchArgs:
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC switch id.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -518,31 +518,31 @@ class RocketMQInstanceProductInfoArgsDict(TypedDict):
     """
     Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
     """
-    auto_scaling: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_scaling: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     is open auto scaling.
     """
-    message_retention_time: NotRequired[pulumi.Input[_builtins.int]]
+    message_retention_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
     """
-    send_receive_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    send_receive_ratio: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     message send receive ratio.  Value range: [0.05, 0.5].
     """
-    storage_encryption: NotRequired[pulumi.Input[_builtins.bool]]
+    storage_encryption: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
     """
-    storage_secret_key: NotRequired[pulumi.Input[_builtins.str]]
+    storage_secret_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The key for encryption at rest.
     """
-    support_auto_scaling: NotRequired[pulumi.Input[_builtins.bool]]
+    support_auto_scaling: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     is support auto scaling.
     """
-    trace_on: NotRequired[pulumi.Input[_builtins.bool]]
+    trace_on: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable the message trace function. Valid values: `true`, `false`.
     """
@@ -551,13 +551,13 @@ class RocketMQInstanceProductInfoArgsDict(TypedDict):
 class RocketMQInstanceProductInfoArgs:
     def __init__(__self__, *,
                  msg_process_spec: pulumi.Input[_builtins.str],
-                 auto_scaling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 message_retention_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 send_receive_ratio: Optional[pulumi.Input[_builtins.float]] = None,
-                 storage_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 storage_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_auto_scaling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 trace_on: Optional[pulumi.Input[_builtins.bool]] = None):
+                 auto_scaling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 message_retention_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 send_receive_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 storage_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 storage_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_auto_scaling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 trace_on: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] msg_process_spec: Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
         :param pulumi.Input[_builtins.bool] auto_scaling: is open auto scaling.
@@ -598,99 +598,99 @@ class RocketMQInstanceProductInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoScaling")
-    def auto_scaling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_scaling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         is open auto scaling.
         """
         return pulumi.get(self, "auto_scaling")
 
     @auto_scaling.setter
-    def auto_scaling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_scaling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_scaling", value)
 
     @_builtins.property
     @pulumi.getter(name="messageRetentionTime")
-    def message_retention_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def message_retention_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
         """
         return pulumi.get(self, "message_retention_time")
 
     @message_retention_time.setter
-    def message_retention_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def message_retention_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "message_retention_time", value)
 
     @_builtins.property
     @pulumi.getter(name="sendReceiveRatio")
-    def send_receive_ratio(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def send_receive_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         message send receive ratio.  Value range: [0.05, 0.5].
         """
         return pulumi.get(self, "send_receive_ratio")
 
     @send_receive_ratio.setter
-    def send_receive_ratio(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def send_receive_ratio(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "send_receive_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="storageEncryption")
-    def storage_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def storage_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "storage_encryption")
 
     @storage_encryption.setter
-    def storage_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def storage_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "storage_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSecretKey")
-    def storage_secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key for encryption at rest.
         """
         return pulumi.get(self, "storage_secret_key")
 
     @storage_secret_key.setter
-    def storage_secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_secret_key", value)
 
     @_builtins.property
     @pulumi.getter(name="supportAutoScaling")
-    def support_auto_scaling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def support_auto_scaling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         is support auto scaling.
         """
         return pulumi.get(self, "support_auto_scaling")
 
     @support_auto_scaling.setter
-    def support_auto_scaling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def support_auto_scaling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "support_auto_scaling", value)
 
     @_builtins.property
     @pulumi.getter(name="traceOn")
-    def trace_on(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def trace_on(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the message trace function. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "trace_on")
 
     @trace_on.setter
-    def trace_on(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def trace_on(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "trace_on", value)
 
 
 class RocketMQInstanceSoftwareArgsDict(TypedDict):
-    maintain_time: NotRequired[pulumi.Input[_builtins.str]]
+    maintain_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Upgrade time period.
     """
-    software_version: NotRequired[pulumi.Input[_builtins.str]]
+    software_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Software version.
     """
-    upgrade_method: NotRequired[pulumi.Input[_builtins.str]]
+    upgrade_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Upgrade method.
     """
@@ -698,9 +698,9 @@ class RocketMQInstanceSoftwareArgsDict(TypedDict):
 @pulumi.input_type
 class RocketMQInstanceSoftwareArgs:
     def __init__(__self__, *,
-                 maintain_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 software_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_method: Optional[pulumi.Input[_builtins.str]] = None):
+                 maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 software_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_method: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] maintain_time: Upgrade time period.
         :param pulumi.Input[_builtins.str] software_version: Software version.
@@ -715,38 +715,38 @@ class RocketMQInstanceSoftwareArgs:
 
     @_builtins.property
     @pulumi.getter(name="maintainTime")
-    def maintain_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Upgrade time period.
         """
         return pulumi.get(self, "maintain_time")
 
     @maintain_time.setter
-    def maintain_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_time", value)
 
     @_builtins.property
     @pulumi.getter(name="softwareVersion")
-    def software_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def software_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Software version.
         """
         return pulumi.get(self, "software_version")
 
     @software_version.setter
-    def software_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def software_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "software_version", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeMethod")
-    def upgrade_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upgrade_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Upgrade method.
         """
         return pulumi.get(self, "upgrade_method")
 
     @upgrade_method.setter
-    def upgrade_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upgrade_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upgrade_method", value)
 
 

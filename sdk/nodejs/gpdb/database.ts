@@ -173,31 +173,31 @@ export interface DatabaseState {
     /**
      * Character set, default value is UTF8
      */
-    characterSetName?: pulumi.Input<string>;
+    characterSetName?: pulumi.Input<string | undefined>;
     /**
      * Database locale parameters, specifying string comparison/collation
      */
-    collate?: pulumi.Input<string>;
+    collate?: pulumi.Input<string | undefined>;
     /**
      * Database locale parameters, specifying character classification/case conversion rules
      */
-    ctype?: pulumi.Input<string>;
+    ctype?: pulumi.Input<string | undefined>;
     /**
      * Database Name
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
     /**
      * Instance ID
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Database Description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Data Sheet owner
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -207,15 +207,15 @@ export interface DatabaseArgs {
     /**
      * Character set, default value is UTF8
      */
-    characterSetName?: pulumi.Input<string>;
+    characterSetName?: pulumi.Input<string | undefined>;
     /**
      * Database locale parameters, specifying string comparison/collation
      */
-    collate?: pulumi.Input<string>;
+    collate?: pulumi.Input<string | undefined>;
     /**
      * Database locale parameters, specifying character classification/case conversion rules
      */
-    ctype?: pulumi.Input<string>;
+    ctype?: pulumi.Input<string | undefined>;
     /**
      * Database Name
      */
@@ -227,7 +227,7 @@ export interface DatabaseArgs {
     /**
      * Database Description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Data Sheet owner
      */

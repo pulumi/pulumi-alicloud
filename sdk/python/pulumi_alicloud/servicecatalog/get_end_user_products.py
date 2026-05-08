@@ -179,13 +179,13 @@ def get_end_user_products(ids: Optional[Sequence[_builtins.str]] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         sort_by=pulumi.get(__ret__, 'sort_by'),
         sort_order=pulumi.get(__ret__, 'sort_order'))
-def get_end_user_products_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                 name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                 page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                 sort_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 sort_order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_end_user_products_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                 name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                 page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                 sort_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 sort_order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEndUserProductsResult]:
     """
     This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)

@@ -162,83 +162,83 @@ export class Snapshot extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Snapshot resources.
  */
 export interface SnapshotState {
-    category?: pulumi.Input<string>;
-    createTime?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The source disk ID.
      */
-    diskId?: pulumi.Input<string>;
-    force?: pulumi.Input<boolean>;
+    diskId?: pulumi.Input<string | undefined>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      */
-    instantAccess?: pulumi.Input<boolean>;
+    instantAccess?: pulumi.Input<boolean | undefined>;
     /**
      * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      */
-    instantAccessRetentionDays?: pulumi.Input<number>;
+    instantAccessRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      */
-    name?: pulumi.Input<string>;
-    regionId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
-    retentionDays?: pulumi.Input<number>;
-    snapshotName?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
+    retentionDays?: pulumi.Input<number | undefined>;
+    snapshotName?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Snapshot resource.
  */
 export interface SnapshotArgs {
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The source disk ID.
      */
     diskId: pulumi.Input<string>;
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      */
-    instantAccess?: pulumi.Input<boolean>;
+    instantAccess?: pulumi.Input<boolean | undefined>;
     /**
      * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      */
-    instantAccessRetentionDays?: pulumi.Input<number>;
+    instantAccessRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
-    retentionDays?: pulumi.Input<number>;
-    snapshotName?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
+    retentionDays?: pulumi.Input<number | undefined>;
+    snapshotName?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

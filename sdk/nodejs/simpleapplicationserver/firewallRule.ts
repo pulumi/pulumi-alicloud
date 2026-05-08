@@ -145,23 +145,23 @@ export interface FirewallRuleState {
     /**
      * The ID of the firewall rule.
      */
-    firewallRuleId?: pulumi.Input<string>;
+    firewallRuleId?: pulumi.Input<string | undefined>;
     /**
      * Alibaba Cloud simple application server instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The port range. Valid values of port numbers: `1` to `65535`. Specify a port range in the format of `<start port number>/<end port number>`. Example: `1024/1055`, which indicates the port range of `1024` through `1055`.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * The remarks of the firewall rule.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
      */
-    ruleProtocol?: pulumi.Input<string>;
+    ruleProtocol?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,7 +179,7 @@ export interface FirewallRuleArgs {
     /**
      * The remarks of the firewall rule.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
      */

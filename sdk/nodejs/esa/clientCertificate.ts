@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     siteName: "gositecdn.cn",
  * });
  * const defaultClientCertificate = new alicloud.esa.ClientCertificate("default", {
- *     siteId: _default.then(_default => _default.sites?.[0]?.id),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.id)).apply(x =>String(x)),
  *     pkeyType: "RSA",
  *     validityDays: "365",
  * });
@@ -151,37 +151,37 @@ export interface ClientCertificateState {
     /**
      * ClientCertificate Id
      */
-    clientCertId?: pulumi.Input<string>;
+    clientCertId?: pulumi.Input<string | undefined>;
     /**
      * The time when the certificate was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Certificate signing request content.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    csr?: pulumi.Input<string>;
+    csr?: pulumi.Input<string | undefined>;
     /**
      * The private key algorithm type.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    pkeyType?: pulumi.Input<string>;
+    pkeyType?: pulumi.Input<string | undefined>;
     /**
      * Site Id
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The certificate status. Valid values: `revoked`, `active`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Certificate validity period.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    validityDays?: pulumi.Input<string>;
+    validityDays?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -193,13 +193,13 @@ export interface ClientCertificateArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    csr?: pulumi.Input<string>;
+    csr?: pulumi.Input<string | undefined>;
     /**
      * The private key algorithm type.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    pkeyType?: pulumi.Input<string>;
+    pkeyType?: pulumi.Input<string | undefined>;
     /**
      * Site Id
      */
@@ -207,7 +207,7 @@ export interface ClientCertificateArgs {
     /**
      * The certificate status. Valid values: `revoked`, `active`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Certificate validity period.
      *

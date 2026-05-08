@@ -146,21 +146,21 @@ export interface GetBgpPeersOutputArgs {
     /**
      * The ID of the BGP group to which the BGP peer that you want to query belongs.
      */
-    bgpGroupId?: pulumi.Input<string>;
+    bgpGroupId?: pulumi.Input<string | undefined>;
     /**
      * A list of Bgp Peer IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
     /**
      * The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

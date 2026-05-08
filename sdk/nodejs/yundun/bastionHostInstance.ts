@@ -135,46 +135,46 @@ export class BastionHostInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BastionHostInstance resources.
  */
 export interface BastionHostInstanceState {
-    adAuthServers?: pulumi.Input<pulumi.Input<inputs.yundun.BastionHostInstanceAdAuthServer>[]>;
-    bandwidth?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    enablePublicAccess?: pulumi.Input<boolean>;
-    ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.yundun.BastionHostInstanceLdapAuthServer>[]>;
-    licenseCode?: pulumi.Input<string>;
-    period?: pulumi.Input<number>;
-    planCode?: pulumi.Input<string>;
-    publicWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
-    renewPeriod?: pulumi.Input<number>;
-    renewalPeriodUnit?: pulumi.Input<string>;
-    renewalStatus?: pulumi.Input<string>;
-    resourceGroupId?: pulumi.Input<string>;
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    slaveVswitchId?: pulumi.Input<string>;
-    storage?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    vswitchId?: pulumi.Input<string>;
+    adAuthServers?: pulumi.Input<pulumi.Input<inputs.yundun.BastionHostInstanceAdAuthServer>[] | undefined>;
+    bandwidth?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    enablePublicAccess?: pulumi.Input<boolean | undefined>;
+    ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.yundun.BastionHostInstanceLdapAuthServer>[] | undefined>;
+    licenseCode?: pulumi.Input<string | undefined>;
+    period?: pulumi.Input<number | undefined>;
+    planCode?: pulumi.Input<string | undefined>;
+    publicWhiteLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    renewPeriod?: pulumi.Input<number | undefined>;
+    renewalPeriodUnit?: pulumi.Input<string | undefined>;
+    renewalStatus?: pulumi.Input<string | undefined>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    slaveVswitchId?: pulumi.Input<string | undefined>;
+    storage?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a BastionHostInstance resource.
  */
 export interface BastionHostInstanceArgs {
-    adAuthServers?: pulumi.Input<pulumi.Input<inputs.yundun.BastionHostInstanceAdAuthServer>[]>;
+    adAuthServers?: pulumi.Input<pulumi.Input<inputs.yundun.BastionHostInstanceAdAuthServer>[] | undefined>;
     bandwidth: pulumi.Input<string>;
     description: pulumi.Input<string>;
-    enablePublicAccess?: pulumi.Input<boolean>;
-    ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.yundun.BastionHostInstanceLdapAuthServer>[]>;
+    enablePublicAccess?: pulumi.Input<boolean | undefined>;
+    ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.yundun.BastionHostInstanceLdapAuthServer>[] | undefined>;
     licenseCode: pulumi.Input<string>;
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     planCode: pulumi.Input<string>;
-    publicWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
-    renewPeriod?: pulumi.Input<number>;
-    renewalPeriodUnit?: pulumi.Input<string>;
-    renewalStatus?: pulumi.Input<string>;
-    resourceGroupId?: pulumi.Input<string>;
+    publicWhiteLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    renewPeriod?: pulumi.Input<number | undefined>;
+    renewalPeriodUnit?: pulumi.Input<string | undefined>;
+    renewalStatus?: pulumi.Input<string | undefined>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
-    slaveVswitchId?: pulumi.Input<string>;
+    slaveVswitchId?: pulumi.Input<string | undefined>;
     storage: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     vswitchId: pulumi.Input<string>;
 }

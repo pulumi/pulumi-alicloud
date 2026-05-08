@@ -145,21 +145,21 @@ export interface GetParameterGroupsOutputArgs {
     /**
      * The type of the database engine. Only `MySQL` is supported.
      */
-    dbType?: pulumi.Input<string>;
+    dbType?: pulumi.Input<string | undefined>;
     /**
      * The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
      */
-    dbVersion?: pulumi.Input<string>;
+    dbVersion?: pulumi.Input<string | undefined>;
     /**
      * A list of Parameter Group IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Parameter Group name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

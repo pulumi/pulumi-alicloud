@@ -43,8 +43,8 @@ class PrivateSrvNetworkAddressArgs:
 @pulumi.input_type
 class _PrivateSrvNetworkAddressState:
     def __init__(__self__, *,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_srv_connection_string_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_srv_connection_string_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrivateSrvNetworkAddress resources.
 
@@ -58,26 +58,26 @@ class _PrivateSrvNetworkAddressState:
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="privateSrvConnectionStringUri")
-    def private_srv_connection_string_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_srv_connection_string_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private network SRV highly available connection address
         """
         return pulumi.get(self, "private_srv_connection_string_uri")
 
     @private_srv_connection_string_uri.setter
-    def private_srv_connection_string_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_srv_connection_string_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_srv_connection_string_uri", value)
 
 
@@ -87,7 +87,7 @@ class PrivateSrvNetworkAddress(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Mongodb Private Srv Network Address resource.
@@ -230,7 +230,7 @@ class PrivateSrvNetworkAddress(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -254,8 +254,8 @@ class PrivateSrvNetworkAddress(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            private_srv_connection_string_uri: Optional[pulumi.Input[_builtins.str]] = None) -> 'PrivateSrvNetworkAddress':
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            private_srv_connection_string_uri: pulumi.Input[Optional[_builtins.str]] = None) -> 'PrivateSrvNetworkAddress':
         """
         Get an existing PrivateSrvNetworkAddress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -22,14 +22,14 @@ __all__ = ['ServiceQueueArgs', 'ServiceQueue']
 class ServiceQueueArgs:
     def __init__(__self__, *,
                  queue_name: pulumi.Input[_builtins.str],
-                 delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 dlq_policy: Optional[pulumi.Input['ServiceQueueDlqPolicyArgs']] = None,
-                 logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 polling_wait_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 dlq_policy: pulumi.Input[Optional['ServiceQueueDlqPolicyArgs']] = None,
+                 logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ServiceQueue resource.
 
@@ -75,114 +75,114 @@ class ServiceQueueArgs:
 
     @_builtins.property
     @pulumi.getter(name="delaySeconds")
-    def delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         """
         return pulumi.get(self, "delay_seconds")
 
     @delay_seconds.setter
-    def delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="dlqPolicy")
-    def dlq_policy(self) -> Optional[pulumi.Input['ServiceQueueDlqPolicyArgs']]:
+    def dlq_policy(self) -> pulumi.Input[Optional['ServiceQueueDlqPolicyArgs']]:
         """
         The dead-letter queue policy. See `dlq_policy` below.
         """
         return pulumi.get(self, "dlq_policy")
 
     @dlq_policy.setter
-    def dlq_policy(self, value: Optional[pulumi.Input['ServiceQueueDlqPolicyArgs']]):
+    def dlq_policy(self, value: pulumi.Input[Optional['ServiceQueueDlqPolicyArgs']]):
         pulumi.set(self, "dlq_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingEnabled")
-    def logging_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logging_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "logging_enabled")
 
     @logging_enabled.setter
-    def logging_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logging_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logging_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumMessageSize")
-    def maximum_message_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_message_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         """
         return pulumi.get(self, "maximum_message_size")
 
     @maximum_message_size.setter
-    def maximum_message_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_message_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_message_size", value)
 
     @_builtins.property
     @pulumi.getter(name="messageRetentionPeriod")
-    def message_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def message_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         """
         return pulumi.get(self, "message_retention_period")
 
     @message_retention_period.setter
-    def message_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def message_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "message_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="pollingWaitSeconds")
-    def polling_wait_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def polling_wait_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         """
         return pulumi.get(self, "polling_wait_seconds")
 
     @polling_wait_seconds.setter
-    def polling_wait_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def polling_wait_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "polling_wait_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="visibilityTimeout")
-    def visibility_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def visibility_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         """
         return pulumi.get(self, "visibility_timeout")
 
     @visibility_timeout.setter
-    def visibility_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def visibility_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "visibility_timeout", value)
 
 
 @pulumi.input_type
 class _ServiceQueueState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 dlq_policy: Optional[pulumi.Input['ServiceQueueDlqPolicyArgs']] = None,
-                 logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 polling_wait_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 dlq_policy: pulumi.Input[Optional['ServiceQueueDlqPolicyArgs']] = None,
+                 logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ServiceQueue resources.
 
@@ -220,122 +220,122 @@ class _ServiceQueueState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.223.2) The time when the queue was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="delaySeconds")
-    def delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         """
         return pulumi.get(self, "delay_seconds")
 
     @delay_seconds.setter
-    def delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="dlqPolicy")
-    def dlq_policy(self) -> Optional[pulumi.Input['ServiceQueueDlqPolicyArgs']]:
+    def dlq_policy(self) -> pulumi.Input[Optional['ServiceQueueDlqPolicyArgs']]:
         """
         The dead-letter queue policy. See `dlq_policy` below.
         """
         return pulumi.get(self, "dlq_policy")
 
     @dlq_policy.setter
-    def dlq_policy(self, value: Optional[pulumi.Input['ServiceQueueDlqPolicyArgs']]):
+    def dlq_policy(self, value: pulumi.Input[Optional['ServiceQueueDlqPolicyArgs']]):
         pulumi.set(self, "dlq_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingEnabled")
-    def logging_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logging_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "logging_enabled")
 
     @logging_enabled.setter
-    def logging_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logging_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logging_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumMessageSize")
-    def maximum_message_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_message_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         """
         return pulumi.get(self, "maximum_message_size")
 
     @maximum_message_size.setter
-    def maximum_message_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_message_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_message_size", value)
 
     @_builtins.property
     @pulumi.getter(name="messageRetentionPeriod")
-    def message_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def message_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         """
         return pulumi.get(self, "message_retention_period")
 
     @message_retention_period.setter
-    def message_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def message_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "message_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="pollingWaitSeconds")
-    def polling_wait_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def polling_wait_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         """
         return pulumi.get(self, "polling_wait_seconds")
 
     @polling_wait_seconds.setter
-    def polling_wait_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def polling_wait_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "polling_wait_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="queueName")
-    def queue_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the queue.
         """
         return pulumi.get(self, "queue_name")
 
     @queue_name.setter
-    def queue_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="visibilityTimeout")
-    def visibility_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def visibility_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         """
         return pulumi.get(self, "visibility_timeout")
 
     @visibility_timeout.setter
-    def visibility_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def visibility_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "visibility_timeout", value)
 
 
@@ -345,15 +345,15 @@ class ServiceQueue(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 dlq_policy: Optional[pulumi.Input[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
-                 logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 polling_wait_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 dlq_policy: pulumi.Input[Optional[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
+                 logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Message Service Queue resource.
@@ -466,15 +466,15 @@ class ServiceQueue(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 dlq_policy: Optional[pulumi.Input[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
-                 logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 polling_wait_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 dlq_policy: pulumi.Input[Optional[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
+                 logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -506,16 +506,16 @@ class ServiceQueue(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            dlq_policy: Optional[pulumi.Input[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
-            logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            maximum_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-            message_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            polling_wait_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            visibility_timeout: Optional[pulumi.Input[_builtins.int]] = None) -> 'ServiceQueue':
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            dlq_policy: pulumi.Input[Optional[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
+            logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+            message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> 'ServiceQueue':
         """
         Get an existing ServiceQueue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -28,17 +28,17 @@ class BastionHostInstanceArgs:
                  security_group_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  storage: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]] = None,
-                 enable_public_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 ad_auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]] = None,
+                 enable_public_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ldap_auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 public_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slave_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a BastionHostInstance resource.
         """
@@ -137,125 +137,125 @@ class BastionHostInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="adAuthServers")
-    def ad_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]:
+    def ad_auth_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]:
         return pulumi.get(self, "ad_auth_servers")
 
     @ad_auth_servers.setter
-    def ad_auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]):
+    def ad_auth_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]):
         pulumi.set(self, "ad_auth_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePublicAccess")
-    def enable_public_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_public_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable_public_access")
 
     @enable_public_access.setter
-    def enable_public_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_public_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_public_access", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapAuthServers")
-    def ldap_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]]:
+    def ldap_auth_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]]:
         return pulumi.get(self, "ldap_auth_servers")
 
     @ldap_auth_servers.setter
-    def ldap_auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]]):
+    def ldap_auth_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]]):
         pulumi.set(self, "ldap_auth_servers", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="publicWhiteLists")
-    def public_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def public_white_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "public_white_lists")
 
     @public_white_lists.setter
-    def public_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def public_white_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "public_white_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
-    def renewal_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "renewal_period_unit")
 
     @renewal_period_unit.setter
-    def renewal_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="slaveVswitchId")
-    def slave_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slave_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "slave_vswitch_id")
 
     @slave_vswitch_id.setter
-    def slave_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slave_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slave_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _BastionHostInstanceState:
     def __init__(__self__, *,
-                 ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_public_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]] = None,
-                 license_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 plan_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ad_auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_public_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ldap_auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]] = None,
+                 license_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 plan_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slave_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BastionHostInstance resources.
         """
@@ -298,164 +298,164 @@ class _BastionHostInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="adAuthServers")
-    def ad_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]:
+    def ad_auth_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]:
         return pulumi.get(self, "ad_auth_servers")
 
     @ad_auth_servers.setter
-    def ad_auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]):
+    def ad_auth_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceAdAuthServerArgs']]]]):
         pulumi.set(self, "ad_auth_servers", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePublicAccess")
-    def enable_public_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_public_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable_public_access")
 
     @enable_public_access.setter
-    def enable_public_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_public_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_public_access", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapAuthServers")
-    def ldap_auth_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]]:
+    def ldap_auth_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]]:
         return pulumi.get(self, "ldap_auth_servers")
 
     @ldap_auth_servers.setter
-    def ldap_auth_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]]):
+    def ldap_auth_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BastionHostInstanceLdapAuthServerArgs']]]]):
         pulumi.set(self, "ldap_auth_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="licenseCode")
-    def license_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "license_code")
 
     @license_code.setter
-    def license_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="planCode")
-    def plan_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "plan_code")
 
     @plan_code.setter
-    def plan_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_code", value)
 
     @_builtins.property
     @pulumi.getter(name="publicWhiteLists")
-    def public_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def public_white_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "public_white_lists")
 
     @public_white_lists.setter
-    def public_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def public_white_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "public_white_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
-    def renewal_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "renewal_period_unit")
 
     @renewal_period_unit.setter
-    def renewal_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="slaveVswitchId")
-    def slave_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slave_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "slave_vswitch_id")
 
     @slave_vswitch_id.setter
-    def slave_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slave_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slave_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage")
 
     @storage.setter
-    def storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -465,24 +465,24 @@ class BastionHostInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BastionHostInstanceAdAuthServerArgs', 'BastionHostInstanceAdAuthServerArgsDict']]]]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_public_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BastionHostInstanceLdapAuthServerArgs', 'BastionHostInstanceLdapAuthServerArgsDict']]]]] = None,
-                 license_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 plan_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ad_auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BastionHostInstanceAdAuthServerArgs', 'BastionHostInstanceAdAuthServerArgsDict']]]]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_public_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ldap_auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BastionHostInstanceLdapAuthServerArgs', 'BastionHostInstanceLdapAuthServerArgsDict']]]]] = None,
+                 license_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 plan_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slave_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a BastionHostInstance resource with the given unique name, props, and options.
@@ -514,24 +514,24 @@ class BastionHostInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BastionHostInstanceAdAuthServerArgs', 'BastionHostInstanceAdAuthServerArgsDict']]]]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_public_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BastionHostInstanceLdapAuthServerArgs', 'BastionHostInstanceLdapAuthServerArgsDict']]]]] = None,
-                 license_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 plan_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ad_auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BastionHostInstanceAdAuthServerArgs', 'BastionHostInstanceAdAuthServerArgsDict']]]]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_public_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ldap_auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BastionHostInstanceLdapAuthServerArgs', 'BastionHostInstanceLdapAuthServerArgsDict']]]]] = None,
+                 license_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 plan_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slave_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -583,24 +583,24 @@ class BastionHostInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ad_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BastionHostInstanceAdAuthServerArgs', 'BastionHostInstanceAdAuthServerArgsDict']]]]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_public_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            ldap_auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BastionHostInstanceLdapAuthServerArgs', 'BastionHostInstanceLdapAuthServerArgsDict']]]]] = None,
-            license_code: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            plan_code: Optional[pulumi.Input[_builtins.str]] = None,
-            public_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            storage: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'BastionHostInstance':
+            ad_auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BastionHostInstanceAdAuthServerArgs', 'BastionHostInstanceAdAuthServerArgsDict']]]]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_public_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            ldap_auth_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BastionHostInstanceLdapAuthServerArgs', 'BastionHostInstanceLdapAuthServerArgsDict']]]]] = None,
+            license_code: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            plan_code: pulumi.Input[Optional[_builtins.str]] = None,
+            public_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            slave_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'BastionHostInstance':
         """
         Get an existing BastionHostInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

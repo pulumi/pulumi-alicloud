@@ -87,17 +87,17 @@ import (
 // if err != nil {
 // return err
 // }
-// var tmp0 float64
+// var defaultSecurityGroup []*ecs.SecurityGroup
+// for index := 0; index < int(len(defaultGetSecurityGroups.Ids).ApplyT(func(length int) (int, error) {
+// var tmp0 int
 // if length > 0 {
 // tmp0 = 0
 // } else {
 // tmp0 = 1
 // }
-// var defaultSecurityGroup []*ecs.SecurityGroup
-// for index := 0; index < float64(len(defaultGetSecurityGroups.Ids).ApplyT(func(length int) (float64, error) {
 // return tmp0, nil
 //
-//	}).(pulumi.Float64Output)); index++ {
+//	}).(pulumi.IntOutput)); index++ {
 //	    key0 := index
 //	    _ := index
 //
@@ -116,17 +116,17 @@ import (
 // if err != nil {
 // return err
 // }
-// var tmp1 float64
+// var defaultEcsDeploymentSet []*ecs.EcsDeploymentSet
+// for index := 0; index < int(len(defaultGetEcsDeploymentSets.Ids).ApplyT(func(length int) (int, error) {
+// var tmp1 int
 // if length > 0 {
 // tmp1 = 0
 // } else {
 // tmp1 = 1
 // }
-// var defaultEcsDeploymentSet []*ecs.EcsDeploymentSet
-// for index := 0; index < float64(len(defaultGetEcsDeploymentSets.Ids).ApplyT(func(length int) (float64, error) {
 // return tmp1, nil
 //
-//	}).(pulumi.Float64Output)); index++ {
+//	}).(pulumi.IntOutput)); index++ {
 //	    key0 := index
 //	    _ := index
 //
@@ -148,17 +148,17 @@ import (
 // if err != nil {
 // return err
 // }
-// var tmp2 float64
+// var defaultKeyPair []*ecs.KeyPair
+// for index := 0; index < int(len(defaultGetKeyPairs.Ids).ApplyT(func(length int) (int, error) {
+// var tmp2 int
 // if length > 0 {
 // tmp2 = 0
 // } else {
 // tmp2 = 1
 // }
-// var defaultKeyPair []*ecs.KeyPair
-// for index := 0; index < float64(len(defaultGetKeyPairs.Ids).ApplyT(func(length int) (float64, error) {
 // return tmp2, nil
 //
-//	}).(pulumi.Float64Output)); index++ {
+//	}).(pulumi.IntOutput)); index++ {
 //	    key0 := index
 //	    _ := index
 //
@@ -177,17 +177,17 @@ import (
 // if err != nil {
 // return err
 // }
-// var tmp3 float64
+// var defaultDedicatedHostGroup []*cddc.DedicatedHostGroup
+// for index := 0; index < int(len(defaultGetDedicatedHostGroups.Ids).ApplyT(func(length int) (int, error) {
+// var tmp3 int
 // if length > 0 {
 // tmp3 = 0
 // } else {
 // tmp3 = 1
 // }
-// var defaultDedicatedHostGroup []*cddc.DedicatedHostGroup
-// for index := 0; index < float64(len(defaultGetDedicatedHostGroups.Ids).ApplyT(func(length int) (float64, error) {
 // return tmp3, nil
 //
-//	}).(pulumi.Float64Output)); index++ {
+//	}).(pulumi.IntOutput)); index++ {
 //	    key0 := index
 //	    _ := index
 //
@@ -207,6 +207,7 @@ import (
 // }
 // defaultDedicatedHostGroup = append(defaultDedicatedHostGroup, __res)
 // }
+// alicloudSecurityGroupId := len(defaultGetSecurityGroups.Ids).ApplyT(func(length int) (*interface{}, error) {
 // var tmp4 *interface{}
 // if length > 0 {
 // tmp4 = defaultGetSecurityGroups.Ids[0]
@@ -220,9 +221,9 @@ import (
 // },
 // }, nil).Result[0]
 // }
-// alicloudSecurityGroupId := len(defaultGetSecurityGroups.Ids).ApplyT(func(length int) (*interface{}, error) {
 // return &tmp4, nil
 // }).(pulumi.Interface{}PtrOutput)
+// alicloudEcsDeploymentSetId := len(defaultGetEcsDeploymentSets.Ids).ApplyT(func(length int) (*interface{}, error) {
 // var tmp5 *interface{}
 // if length > 0 {
 // tmp5 = defaultGetEcsDeploymentSets.Sets[0].DeploymentSetId
@@ -236,9 +237,9 @@ import (
 // },
 // }, nil).Result[0]
 // }
-// alicloudEcsDeploymentSetId := len(defaultGetEcsDeploymentSets.Ids).ApplyT(func(length int) (*interface{}, error) {
 // return &tmp5, nil
 // }).(pulumi.Interface{}PtrOutput)
+// _ = len(defaultGetKeyPairs.Ids).ApplyT(func(length int) (*interface{}, error) {
 // var tmp6 *interface{}
 // if length > 0 {
 // tmp6 = defaultGetKeyPairs.Ids[0]
@@ -252,9 +253,9 @@ import (
 // },
 // }, nil).Result[0]
 // }
-// _ = len(defaultGetKeyPairs.Ids).ApplyT(func(length int) (*interface{}, error) {
 // return &tmp6, nil
 // }).(pulumi.Interface{}PtrOutput)
+// dedicatedHostGroupId := len(defaultGetDedicatedHostGroups.Ids).ApplyT(func(length int) (*interface{}, error) {
 // var tmp7 *interface{}
 // if length > 0 {
 // tmp7 = defaultGetDedicatedHostGroups.Ids[0]
@@ -268,7 +269,6 @@ import (
 // },
 // }, nil).Result[0]
 // }
-// dedicatedHostGroupId := len(defaultGetDedicatedHostGroups.Ids).ApplyT(func(length int) (*interface{}, error) {
 // return &tmp7, nil
 // }).(pulumi.Interface{}PtrOutput)
 // _, err = cddc.NewDedicatedPropreHost(ctx, "default", &cddc.DedicatedPropreHostArgs{

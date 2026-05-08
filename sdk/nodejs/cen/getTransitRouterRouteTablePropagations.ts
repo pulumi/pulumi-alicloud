@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *     peeringSubnetMask: "255.255.255.252",
  *     physicalConnectionId: _default.then(_default => _default.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
- *     vlanId: defaultInteger.id,
+ *     vlanId: Number(defaultInteger.id),
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
@@ -166,7 +166,7 @@ export interface GetTransitRouterRouteTablePropagationsResult {
  *     peeringSubnetMask: "255.255.255.252",
  *     physicalConnectionId: _default.then(_default => _default.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
- *     vlanId: defaultInteger.id,
+ *     vlanId: Number(defaultInteger.id),
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
@@ -212,19 +212,19 @@ export interface GetTransitRouterRouteTablePropagationsOutputArgs {
     /**
      * A list of Transit Router Route Table Propagation IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network instance connection.
      */
-    transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the route table of the Enterprise Edition transit router.
      */

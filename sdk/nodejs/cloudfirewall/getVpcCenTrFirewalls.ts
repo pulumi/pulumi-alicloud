@@ -394,49 +394,49 @@ export interface GetVpcCenTrFirewallsOutputArgs {
     /**
      * The ID of the CEN instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The page number of the pagination query. The default value is 1.
      */
-    currentPage?: pulumi.Input<number>;
+    currentPage?: pulumi.Input<number | undefined>;
     /**
      * Firewall ID
      */
-    firewallId?: pulumi.Input<string>;
+    firewallId?: pulumi.Input<string | undefined>;
     /**
      * The name of Cloud Firewall.
      */
-    firewallName?: pulumi.Input<string>;
+    firewallName?: pulumi.Input<string | undefined>;
     /**
      * The status of the VPC boundary firewall. Value:-**opened**: opened-**closed**: closed-**notconfigured**: indicates that the VPC boundary firewall has not been configured yet.-**configured**: indicates that the VPC boundary firewall has been configured.-**creating**: indicates that a VPC boundary firewall is being created.-**opening**: indicates that the VPC border firewall is being enabled.-**deleting**: indicates that the VPC boundary firewall is being deleted.> If this parameter is not set, the VPC boundary firewall in all states is queried.
      */
-    firewallSwitchStatus?: pulumi.Input<string>;
+    firewallSwitchStatus?: pulumi.Input<string | undefined>;
     /**
      * A list of Vpc Cen Tr Firewall IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Current page number.
      */
-    pageNumber?: pulumi.Input<number>;
+    pageNumber?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of pieces of data per page that are displayed during a paged query. The default value is 10.
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The region ID of the transit router instance.
      */
-    regionNo?: pulumi.Input<string>;
+    regionNo?: pulumi.Input<string | undefined>;
     /**
      * The routing pattern. Value: managed: indicates automatic mode
      */
-    routeMode?: pulumi.Input<string>;
+    routeMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the transit router instance.
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
 }

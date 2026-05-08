@@ -21,10 +21,10 @@ class RouterTrAssociationArgs:
     def __init__(__self__, *,
                  association_region_id: pulumi.Input[_builtins.str],
                  ecr_id: pulumi.Input[_builtins.str],
-                 allowed_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_owner_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_owner_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a RouterTrAssociation resource.
 
@@ -72,65 +72,65 @@ class RouterTrAssociationArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedPrefixes")
-    def allowed_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of allowed route prefixes.
         """
         return pulumi.get(self, "allowed_prefixes")
 
     @allowed_prefixes.setter
-    def allowed_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CEN instance.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the forwarding router instance.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterOwnerId")
-    def transit_router_owner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def transit_router_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Alibaba Cloud account to which the forwarding router belongs.
         """
         return pulumi.get(self, "transit_router_owner_id")
 
     @transit_router_owner_id.setter
-    def transit_router_owner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def transit_router_owner_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "transit_router_owner_id", value)
 
 
 @pulumi.input_type
 class _RouterTrAssociationState:
     def __init__(__self__, *,
-                 allowed_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 association_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 association_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_owner_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 association_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_owner_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RouterTrAssociation resources.
 
@@ -165,110 +165,110 @@ class _RouterTrAssociationState:
 
     @_builtins.property
     @pulumi.getter(name="allowedPrefixes")
-    def allowed_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of allowed route prefixes.
         """
         return pulumi.get(self, "allowed_prefixes")
 
     @allowed_prefixes.setter
-    def allowed_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="associationId")
-    def association_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def association_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource.
         """
         return pulumi.get(self, "association_id")
 
     @association_id.setter
-    def association_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def association_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "association_id", value)
 
     @_builtins.property
     @pulumi.getter(name="associationRegionId")
-    def association_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def association_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region to which the VPC or TR belongs.
         """
         return pulumi.get(self, "association_region_id")
 
     @association_region_id.setter
-    def association_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def association_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "association_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CEN instance.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ecrId")
-    def ecr_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecr_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the leased line gateway instance.
         """
         return pulumi.get(self, "ecr_id")
 
     @ecr_id.setter
-    def ecr_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecr_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecr_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the forwarding router instance.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterOwnerId")
-    def transit_router_owner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def transit_router_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Alibaba Cloud account to which the forwarding router belongs.
         """
         return pulumi.get(self, "transit_router_owner_id")
 
     @transit_router_owner_id.setter
-    def transit_router_owner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def transit_router_owner_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "transit_router_owner_id", value)
 
 
@@ -278,12 +278,12 @@ class RouterTrAssociation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 association_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Express Connect Router Express Connect Router Tr Association resource. Leased line gateway and TR binding relationship object.
@@ -319,14 +319,14 @@ class RouterTrAssociation(pulumi.CustomResource):
         asn = config.get("asn")
         if asn is None:
             asn = "4200001003"
-        defaultp_x0_kl_c = alicloud.expressconnect.RouterExpressConnectRouter("defaultpX0KlC", alibaba_side_asn=asn)
+        defaultp_x0_kl_c = alicloud.expressconnect.RouterExpressConnectRouter("defaultpX0KlC", alibaba_side_asn=int(asn))
         default418_dc9 = alicloud.cen.Instance("default418DC9", cen_instance_name=name)
         default_r_ycjsc = alicloud.cen.TransitRouter("defaultRYcjsc", cen_id=default418_dc9.id)
         current = alicloud.get_account()
         default = alicloud.expressconnect.RouterTrAssociation("default",
             ecr_id=defaultp_x0_kl_c.id,
             cen_id=default418_dc9.id,
-            transit_router_owner_id=current.id,
+            transit_router_owner_id=output(current.id).apply(lambda x: int(x)),
             allowed_prefixes=[
                 alowprefix1,
                 allowprefix3,
@@ -396,14 +396,14 @@ class RouterTrAssociation(pulumi.CustomResource):
         asn = config.get("asn")
         if asn is None:
             asn = "4200001003"
-        defaultp_x0_kl_c = alicloud.expressconnect.RouterExpressConnectRouter("defaultpX0KlC", alibaba_side_asn=asn)
+        defaultp_x0_kl_c = alicloud.expressconnect.RouterExpressConnectRouter("defaultpX0KlC", alibaba_side_asn=int(asn))
         default418_dc9 = alicloud.cen.Instance("default418DC9", cen_instance_name=name)
         default_r_ycjsc = alicloud.cen.TransitRouter("defaultRYcjsc", cen_id=default418_dc9.id)
         current = alicloud.get_account()
         default = alicloud.expressconnect.RouterTrAssociation("default",
             ecr_id=defaultp_x0_kl_c.id,
             cen_id=default418_dc9.id,
-            transit_router_owner_id=current.id,
+            transit_router_owner_id=output(current.id).apply(lambda x: int(x)),
             allowed_prefixes=[
                 alowprefix1,
                 allowprefix3,
@@ -439,12 +439,12 @@ class RouterTrAssociation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 association_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -477,15 +477,15 @@ class RouterTrAssociation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allowed_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            association_id: Optional[pulumi.Input[_builtins.str]] = None,
-            association_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_owner_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'RouterTrAssociation':
+            allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            association_id: pulumi.Input[Optional[_builtins.str]] = None,
+            association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_owner_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'RouterTrAssociation':
         """
         Get an existing RouterTrAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

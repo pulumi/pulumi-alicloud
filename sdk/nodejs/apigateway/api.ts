@@ -241,67 +241,67 @@ export interface ApiState {
     /**
      * The ID of the api of api gateway.
      */
-    apiId?: pulumi.Input<string>;
+    apiId?: pulumi.Input<string | undefined>;
     /**
      * The authorization Type including APP and ANONYMOUS. Defaults to null.
      */
-    authType?: pulumi.Input<string>;
+    authType?: pulumi.Input<string | undefined>;
     /**
      * constant_parameters defines the constant parameters of the api. See `constantParameters` below.
      */
-    constantParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConstantParameter>[]>;
+    constantParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConstantParameter>[] | undefined>;
     /**
      * The description of the api. Defaults to null.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * fc_service_config defines the config when serviceType selected 'FunctionCompute'. See `fcServiceConfig` below.
      */
-    fcServiceConfig?: pulumi.Input<inputs.apigateway.ApiFcServiceConfig>;
+    fcServiceConfig?: pulumi.Input<inputs.apigateway.ApiFcServiceConfig | undefined>;
     /**
      * Whether to prevent API replay attack. Default value: `false`.
      */
-    forceNonceCheck?: pulumi.Input<boolean>;
+    forceNonceCheck?: pulumi.Input<boolean | undefined>;
     /**
      * The api gateway that the api belongs to. Defaults to null.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * http_service_config defines the config when serviceType selected 'HTTP'. See `httpServiceConfig` below.
      */
-    httpServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpServiceConfig>;
+    httpServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpServiceConfig | undefined>;
     /**
      * http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'. See `httpVpcServiceConfig` below.
      */
-    httpVpcServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpVpcServiceConfig>;
+    httpVpcServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpVpcServiceConfig | undefined>;
     /**
      * http_service_config defines the config when serviceType selected 'MOCK'. See `mockServiceConfig` below.
      */
-    mockServiceConfig?: pulumi.Input<inputs.apigateway.ApiMockServiceConfig>;
+    mockServiceConfig?: pulumi.Input<inputs.apigateway.ApiMockServiceConfig | undefined>;
     /**
      * The name of the api gateway api. Defaults to null.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Request_config defines how users can send requests to your API. See `requestConfig` below.
      */
-    requestConfig?: pulumi.Input<inputs.apigateway.ApiRequestConfig>;
+    requestConfig?: pulumi.Input<inputs.apigateway.ApiRequestConfig | undefined>;
     /**
      * request_parameters defines the request parameters of the api. See `requestParameters` below.
      */
-    requestParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiRequestParameter>[]>;
+    requestParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiRequestParameter>[] | undefined>;
     /**
      * The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
      */
-    serviceType?: pulumi.Input<string>;
+    serviceType?: pulumi.Input<string | undefined>;
     /**
      * Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
      */
-    stageNames?: pulumi.Input<pulumi.Input<string>[]>;
+    stageNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * system_parameters defines the system parameters of the api. See `systemParameters` below.
      */
-    systemParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiSystemParameter>[]>;
+    systemParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiSystemParameter>[] | undefined>;
 }
 
 /**
@@ -315,7 +315,7 @@ export interface ApiArgs {
     /**
      * constant_parameters defines the constant parameters of the api. See `constantParameters` below.
      */
-    constantParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConstantParameter>[]>;
+    constantParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConstantParameter>[] | undefined>;
     /**
      * The description of the api. Defaults to null.
      */
@@ -323,11 +323,11 @@ export interface ApiArgs {
     /**
      * fc_service_config defines the config when serviceType selected 'FunctionCompute'. See `fcServiceConfig` below.
      */
-    fcServiceConfig?: pulumi.Input<inputs.apigateway.ApiFcServiceConfig>;
+    fcServiceConfig?: pulumi.Input<inputs.apigateway.ApiFcServiceConfig | undefined>;
     /**
      * Whether to prevent API replay attack. Default value: `false`.
      */
-    forceNonceCheck?: pulumi.Input<boolean>;
+    forceNonceCheck?: pulumi.Input<boolean | undefined>;
     /**
      * The api gateway that the api belongs to. Defaults to null.
      */
@@ -335,19 +335,19 @@ export interface ApiArgs {
     /**
      * http_service_config defines the config when serviceType selected 'HTTP'. See `httpServiceConfig` below.
      */
-    httpServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpServiceConfig>;
+    httpServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpServiceConfig | undefined>;
     /**
      * http_vpc_service_config defines the config when serviceType selected 'HTTP-VPC'. See `httpVpcServiceConfig` below.
      */
-    httpVpcServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpVpcServiceConfig>;
+    httpVpcServiceConfig?: pulumi.Input<inputs.apigateway.ApiHttpVpcServiceConfig | undefined>;
     /**
      * http_service_config defines the config when serviceType selected 'MOCK'. See `mockServiceConfig` below.
      */
-    mockServiceConfig?: pulumi.Input<inputs.apigateway.ApiMockServiceConfig>;
+    mockServiceConfig?: pulumi.Input<inputs.apigateway.ApiMockServiceConfig | undefined>;
     /**
      * The name of the api gateway api. Defaults to null.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Request_config defines how users can send requests to your API. See `requestConfig` below.
      */
@@ -355,7 +355,7 @@ export interface ApiArgs {
     /**
      * request_parameters defines the request parameters of the api. See `requestParameters` below.
      */
-    requestParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiRequestParameter>[]>;
+    requestParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiRequestParameter>[] | undefined>;
     /**
      * The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
      */
@@ -363,9 +363,9 @@ export interface ApiArgs {
     /**
      * Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
      */
-    stageNames?: pulumi.Input<pulumi.Input<string>[]>;
+    stageNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * system_parameters defines the system parameters of the api. See `systemParameters` below.
      */
-    systemParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiSystemParameter>[]>;
+    systemParameters?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiSystemParameter>[] | undefined>;
 }

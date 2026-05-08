@@ -148,10 +148,10 @@ def get_stores(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         project=pulumi.get(__ret__, 'project'),
         stores=pulumi.get(__ret__, 'stores'))
-def get_stores_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                      name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_stores_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                      name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      project: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStoresResult]:
     """
     This data source provides the Log Stores of the current Alibaba Cloud user.

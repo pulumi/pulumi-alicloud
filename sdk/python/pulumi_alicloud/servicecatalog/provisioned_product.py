@@ -25,10 +25,10 @@ class ProvisionedProductArgs:
                  product_version_id: pulumi.Input[_builtins.str],
                  provisioned_product_name: pulumi.Input[_builtins.str],
                  stack_region_id: pulumi.Input[_builtins.str],
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]] = None,
-                 portfolio_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]] = None,
+                 portfolio_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ProvisionedProduct resource.
 
@@ -104,78 +104,78 @@ class ProvisionedProductArgs:
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]]:
         """
         Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="portfolioId")
-    def portfolio_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def portfolio_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
         """
         return pulumi.get(self, "portfolio_id")
 
     @portfolio_id.setter
-    def portfolio_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def portfolio_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "portfolio_id", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedProductId")
-    def provisioned_product_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioned_product_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "provisioned_product_id")
 
     @provisioned_product_id.setter
-    def provisioned_product_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioned_product_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioned_product_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ProvisionedProductState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_provisioning_task_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_successful_provisioning_task_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_task_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 outputs: Optional[pulumi.Input[Sequence[pulumi.Input['ProvisionedProductOutputArgs']]]] = None,
-                 owner_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]] = None,
-                 portfolio_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_version_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_version_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_product_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_product_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_product_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_provisioning_task_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_successful_provisioning_task_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_task_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 outputs: pulumi.Input[Optional[Sequence[pulumi.Input['ProvisionedProductOutputArgs']]]] = None,
+                 owner_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]] = None,
+                 portfolio_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_version_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_product_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_product_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_product_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ProvisionedProduct resources.
 
@@ -249,266 +249,266 @@ class _ProvisionedProductState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the product instance
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lastProvisioningTaskId")
-    def last_provisioning_task_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_provisioning_task_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the last instance operation task
         """
         return pulumi.get(self, "last_provisioning_task_id")
 
     @last_provisioning_task_id.setter
-    def last_provisioning_task_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_provisioning_task_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_provisioning_task_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lastSuccessfulProvisioningTaskId")
-    def last_successful_provisioning_task_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_successful_provisioning_task_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the last successful instance operation task
         """
         return pulumi.get(self, "last_successful_provisioning_task_id")
 
     @last_successful_provisioning_task_id.setter
-    def last_successful_provisioning_task_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_successful_provisioning_task_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_successful_provisioning_task_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lastTaskId")
-    def last_task_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_task_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the last task
         """
         return pulumi.get(self, "last_task_id")
 
     @last_task_id.setter
-    def last_task_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_task_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_task_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def outputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProvisionedProductOutputArgs']]]]:
+    def outputs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProvisionedProductOutputArgs']]]]:
         """
         The output value of the template.
         """
         return pulumi.get(self, "outputs")
 
     @outputs.setter
-    def outputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProvisionedProductOutputArgs']]]]):
+    def outputs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProvisionedProductOutputArgs']]]]):
         pulumi.set(self, "outputs", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerPrincipalId")
-    def owner_principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner_principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RAM entity ID of the owner
         """
         return pulumi.get(self, "owner_principal_id")
 
     @owner_principal_id.setter
-    def owner_principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner_principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner_principal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerPrincipalType")
-    def owner_principal_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner_principal_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RAM entity type of the owner
         """
         return pulumi.get(self, "owner_principal_type")
 
     @owner_principal_type.setter
-    def owner_principal_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner_principal_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner_principal_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]]:
         """
         Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProvisionedProductParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="portfolioId")
-    def portfolio_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def portfolio_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
         """
         return pulumi.get(self, "portfolio_id")
 
     @portfolio_id.setter
-    def portfolio_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def portfolio_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "portfolio_id", value)
 
     @_builtins.property
     @pulumi.getter(name="productId")
-    def product_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Product ID.
         """
         return pulumi.get(self, "product_id")
 
     @product_id.setter
-    def product_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_id", value)
 
     @_builtins.property
     @pulumi.getter(name="productName")
-    def product_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the product
         """
         return pulumi.get(self, "product_name")
 
     @product_name.setter
-    def product_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_name", value)
 
     @_builtins.property
     @pulumi.getter(name="productVersionId")
-    def product_version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_version_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Product version ID.
         """
         return pulumi.get(self, "product_version_id")
 
     @product_version_id.setter
-    def product_version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_version_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_version_id", value)
 
     @_builtins.property
     @pulumi.getter(name="productVersionName")
-    def product_version_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_version_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the product version
         """
         return pulumi.get(self, "product_version_name")
 
     @product_version_name.setter
-    def product_version_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_version_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_version_name", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedProductArn")
-    def provisioned_product_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioned_product_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the product instance
         """
         return pulumi.get(self, "provisioned_product_arn")
 
     @provisioned_product_arn.setter
-    def provisioned_product_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioned_product_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioned_product_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedProductId")
-    def provisioned_product_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioned_product_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "provisioned_product_id")
 
     @provisioned_product_id.setter
-    def provisioned_product_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioned_product_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioned_product_id", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedProductName")
-    def provisioned_product_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioned_product_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance.The length is 1~128 characters.
         """
         return pulumi.get(self, "provisioned_product_name")
 
     @provisioned_product_name.setter
-    def provisioned_product_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioned_product_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioned_product_name", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedProductType")
-    def provisioned_product_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioned_product_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
         """
         return pulumi.get(self, "provisioned_product_type")
 
     @provisioned_product_type.setter
-    def provisioned_product_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioned_product_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioned_product_type", value)
 
     @_builtins.property
     @pulumi.getter(name="stackId")
-    def stack_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ROS stack
         """
         return pulumi.get(self, "stack_id")
 
     @stack_id.setter
-    def stack_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stackRegionId")
-    def stack_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
         """
         return pulumi.get(self, "stack_region_id")
 
     @stack_region_id.setter
-    def stack_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="statusMessage")
-    def status_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status message of the product instance
         """
         return pulumi.get(self, "status_message")
 
     @status_message.setter
-    def status_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status_message", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -518,14 +518,14 @@ class ProvisionedProduct(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict']]]]] = None,
-                 portfolio_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_version_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_product_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict']]]]] = None,
+                 portfolio_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_product_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Service Catalog Provisioned Product resource.
@@ -649,14 +649,14 @@ class ProvisionedProduct(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict']]]]] = None,
-                 portfolio_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_version_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_product_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict']]]]] = None,
+                 portfolio_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_product_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -706,28 +706,28 @@ class ProvisionedProduct(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            last_provisioning_task_id: Optional[pulumi.Input[_builtins.str]] = None,
-            last_successful_provisioning_task_id: Optional[pulumi.Input[_builtins.str]] = None,
-            last_task_id: Optional[pulumi.Input[_builtins.str]] = None,
-            outputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductOutputArgs', 'ProvisionedProductOutputArgsDict']]]]] = None,
-            owner_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-            owner_principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict']]]]] = None,
-            portfolio_id: Optional[pulumi.Input[_builtins.str]] = None,
-            product_id: Optional[pulumi.Input[_builtins.str]] = None,
-            product_name: Optional[pulumi.Input[_builtins.str]] = None,
-            product_version_id: Optional[pulumi.Input[_builtins.str]] = None,
-            product_version_name: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioned_product_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioned_product_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioned_product_name: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioned_product_type: Optional[pulumi.Input[_builtins.str]] = None,
-            stack_id: Optional[pulumi.Input[_builtins.str]] = None,
-            stack_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            status_message: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ProvisionedProduct':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            last_provisioning_task_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_successful_provisioning_task_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_task_id: pulumi.Input[Optional[_builtins.str]] = None,
+            outputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProvisionedProductOutputArgs', 'ProvisionedProductOutputArgsDict']]]]] = None,
+            owner_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProvisionedProductParameterArgs', 'ProvisionedProductParameterArgsDict']]]]] = None,
+            portfolio_id: pulumi.Input[Optional[_builtins.str]] = None,
+            product_id: pulumi.Input[Optional[_builtins.str]] = None,
+            product_name: pulumi.Input[Optional[_builtins.str]] = None,
+            product_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            product_version_name: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_product_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_product_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_product_name: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_product_type: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            status_message: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ProvisionedProduct':
         """
         Get an existing ProvisionedProduct resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

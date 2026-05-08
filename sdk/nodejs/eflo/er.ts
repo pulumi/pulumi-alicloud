@@ -150,35 +150,35 @@ export interface ErState {
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Lingjun HUB name
      */
-    erName?: pulumi.Input<string>;
+    erName?: pulumi.Input<string | undefined>;
     /**
      * Primary zone
      */
-    masterZoneId?: pulumi.Input<string>;
+    masterZoneId?: pulumi.Input<string | undefined>;
     /**
      * region information
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group instance.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Label List
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -188,7 +188,7 @@ export interface ErArgs {
     /**
      * Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Lingjun HUB name
      */
@@ -200,9 +200,9 @@ export interface ErArgs {
     /**
      * The ID of the resource group instance.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Label List
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

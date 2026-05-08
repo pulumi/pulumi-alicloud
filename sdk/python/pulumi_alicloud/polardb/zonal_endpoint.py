@@ -21,15 +21,15 @@ class ZonalEndpointArgs:
     def __init__(__self__, *,
                  db_cluster_id: pulumi.Input[_builtins.str],
                  db_cluster_nodes_ids: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]],
-                 auto_add_new_nodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_add_new_nodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZonalEndpoint resource.
 
@@ -92,131 +92,131 @@ class ZonalEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoAddNewNodes")
-    def auto_add_new_nodes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_add_new_nodes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Enable`.
         """
         return pulumi.get(self, "auto_add_new_nodes")
 
     @auto_add_new_nodes.setter
-    def auto_add_new_nodes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_add_new_nodes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_add_new_nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="dbEndpointDescription")
-    def db_endpoint_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_endpoint_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the endpoint.
         """
         return pulumi.get(self, "db_endpoint_description")
 
     @db_endpoint_description.setter
-    def db_endpoint_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_endpoint_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_endpoint_description", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointConfig")
-    def endpoint_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def endpoint_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         """
         return pulumi.get(self, "endpoint_config")
 
     @endpoint_config.setter
-    def endpoint_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def endpoint_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "endpoint_config", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the endpoint. Valid values are `Custom`, `Cluster`, `Primary`, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter(name="netType")
-    def net_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the endpoint address.
         """
         return pulumi.get(self, "net_type")
 
     @net_type.setter
-    def net_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nodesKeys")
-    def nodes_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of backend nodes for the endpoint, with the attribute values derived from the map key of db_cluster_nodes_ids.
         """
         return pulumi.get(self, "nodes_keys")
 
     @nodes_keys.setter
-    def nodes_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="readWriteMode")
-    def read_write_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def read_write_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
         """
         return pulumi.get(self, "read_write_mode")
 
     @read_write_mode.setter
-    def read_write_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def read_write_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "read_write_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of ENS VPC where to use the DB.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of ENS virtual switch where to use the DB.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 @pulumi.input_type
 class _ZonalEndpointState:
     def __init__(__self__, *,
-                 auto_add_new_nodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_nodes_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 db_endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 nodes_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_add_new_nodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_nodes_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 db_endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 nodes_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZonalEndpoint resources.
 
@@ -269,182 +269,182 @@ class _ZonalEndpointState:
 
     @_builtins.property
     @pulumi.getter(name="autoAddNewNodes")
-    def auto_add_new_nodes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_add_new_nodes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Enable`.
         """
         return pulumi.get(self, "auto_add_new_nodes")
 
     @auto_add_new_nodes.setter
-    def auto_add_new_nodes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_add_new_nodes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_add_new_nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionPrefix")
-    def connection_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
         """
         return pulumi.get(self, "connection_prefix")
 
     @connection_prefix.setter
-    def connection_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterId")
-    def db_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of cluster that can run database.
         """
         return pulumi.get(self, "db_cluster_id")
 
     @db_cluster_id.setter
-    def db_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterNodesIds")
-    def db_cluster_nodes_ids(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def db_cluster_nodes_ids(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         referenced from the db_cluster_nodes_ids attribute of alicloud_polardb_zonal_db_cluster..
         """
         return pulumi.get(self, "db_cluster_nodes_ids")
 
     @db_cluster_nodes_ids.setter
-    def db_cluster_nodes_ids(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def db_cluster_nodes_ids(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "db_cluster_nodes_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="dbEndpointDescription")
-    def db_endpoint_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_endpoint_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the endpoint.
         """
         return pulumi.get(self, "db_endpoint_description")
 
     @db_endpoint_description.setter
-    def db_endpoint_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_endpoint_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_endpoint_description", value)
 
     @_builtins.property
     @pulumi.getter(name="dbEndpointId")
-    def db_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cluster endpoint.
         """
         return pulumi.get(self, "db_endpoint_id")
 
     @db_endpoint_id.setter
-    def db_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointConfig")
-    def endpoint_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def endpoint_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         """
         return pulumi.get(self, "endpoint_config")
 
     @endpoint_config.setter
-    def endpoint_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def endpoint_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "endpoint_config", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the endpoint. Valid values are `Custom`, `Cluster`, `Primary`, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter(name="netType")
-    def net_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the endpoint address.
         """
         return pulumi.get(self, "net_type")
 
     @net_type.setter
-    def net_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Node id list for endpoint configuration.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="nodesKeys")
-    def nodes_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of backend nodes for the endpoint, with the attribute values derived from the map key of db_cluster_nodes_ids.
         """
         return pulumi.get(self, "nodes_keys")
 
     @nodes_keys.setter
-    def nodes_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes_keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Port of the specified endpoint. Valid values: 3000 to 5999.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="readWriteMode")
-    def read_write_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def read_write_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
         """
         return pulumi.get(self, "read_write_mode")
 
     @read_write_mode.setter
-    def read_write_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def read_write_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "read_write_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of ENS VPC where to use the DB.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of ENS virtual switch where to use the DB.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -454,17 +454,17 @@ class ZonalEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_add_new_nodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_nodes_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 db_endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_add_new_nodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_nodes_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 db_endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a PolarDB Zonal endpoint resource to manage custom endpoint of PolarDB cluster.
@@ -514,7 +514,7 @@ class ZonalEndpoint(pulumi.CustomResource):
             ens_region_id="tr-Istanbul-1",
             vpc_id=default.id,
             vswitch_id=default_vswitch.id,
-            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in config.items() if v != None}) for node, config in db_cluster_nodes_configs.items()})
+            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in sorted(config.items()) if v != None}) for node, config in sorted(db_cluster_nodes_configs.items())})
         default_zonal_endpoint = alicloud.polardb.ZonalEndpoint("default",
             db_cluster_id=default_zonal_db_cluster.id,
             db_cluster_nodes_ids=default_zonal_db_cluster.db_cluster_nodes_ids,
@@ -605,7 +605,7 @@ class ZonalEndpoint(pulumi.CustomResource):
             ens_region_id="tr-Istanbul-1",
             vpc_id=default.id,
             vswitch_id=default_vswitch.id,
-            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in config.items() if v != None}) for node, config in db_cluster_nodes_configs.items()})
+            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in sorted(config.items()) if v != None}) for node, config in sorted(db_cluster_nodes_configs.items())})
         default_zonal_endpoint = alicloud.polardb.ZonalEndpoint("default",
             db_cluster_id=default_zonal_db_cluster.id,
             db_cluster_nodes_ids=default_zonal_db_cluster.db_cluster_nodes_ids,
@@ -643,17 +643,17 @@ class ZonalEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_add_new_nodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_nodes_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 db_endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_add_new_nodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_nodes_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 db_endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -692,21 +692,21 @@ class ZonalEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_add_new_nodes: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_nodes_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            db_endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-            db_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-            net_type: Optional[pulumi.Input[_builtins.str]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            nodes_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            port: Optional[pulumi.Input[_builtins.str]] = None,
-            read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZonalEndpoint':
+            auto_add_new_nodes: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_nodes_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            db_endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            net_type: pulumi.Input[Optional[_builtins.str]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            nodes_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZonalEndpoint':
         """
         Get an existing ZonalEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -27,8 +27,8 @@ class CycleTaskArgs:
                  target_start_time: pulumi.Input[_builtins.int],
                  task_name: pulumi.Input[_builtins.str],
                  task_type: pulumi.Input[_builtins.str],
-                 param: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 param: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CycleTask resource.
 
@@ -166,42 +166,42 @@ class CycleTaskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def param(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def param(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Extended information field.
         """
         return pulumi.get(self, "param")
 
     @param.setter
-    def param(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def param(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "param", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Added the source of the task.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
 class _CycleTaskState:
     def __init__(__self__, *,
-                 enable: Optional[pulumi.Input[_builtins.int]] = None,
-                 first_date_str: Optional[pulumi.Input[_builtins.int]] = None,
-                 interval_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 param: Optional[pulumi.Input[_builtins.str]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable: pulumi.Input[Optional[_builtins.int]] = None,
+                 first_date_str: pulumi.Input[Optional[_builtins.int]] = None,
+                 interval_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 param: pulumi.Input[Optional[_builtins.str]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CycleTask resources.
 
@@ -245,103 +245,103 @@ class _CycleTaskState:
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to enable. Value:
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="firstDateStr")
-    def first_date_str(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def first_date_str(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         First execution time.
         """
         return pulumi.get(self, "first_date_str")
 
     @first_date_str.setter
-    def first_date_str(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def first_date_str(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "first_date_str", value)
 
     @_builtins.property
     @pulumi.getter(name="intervalPeriod")
-    def interval_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def interval_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Interval period.
         """
         return pulumi.get(self, "interval_period")
 
     @interval_period.setter
-    def interval_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def interval_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "interval_period", value)
 
     @_builtins.property
     @pulumi.getter
-    def param(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def param(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Extended information field.
         """
         return pulumi.get(self, "param")
 
     @param.setter
-    def param(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def param(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "param", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unit of scan cycle, value:
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Added the source of the task.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="targetEndTime")
-    def target_end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Task end time (hours).
         """
         return pulumi.get(self, "target_end_time")
 
     @target_end_time.setter
-    def target_end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="targetStartTime")
-    def target_start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Task start time (hours).
         """
         return pulumi.get(self, "target_start_time")
 
     @target_start_time.setter
-    def target_start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="taskName")
-    def task_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def task_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The task name.
         - **VIRUS_VUL_SCHEDULE_SCAN**: scans for viruses.
@@ -351,12 +351,12 @@ class _CycleTaskState:
         return pulumi.get(self, "task_name")
 
     @task_name.setter
-    def task_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def task_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "task_name", value)
 
     @_builtins.property
     @pulumi.getter(name="taskType")
-    def task_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def task_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The task type.
         - **VIRUS_VUL_SCHEDULE_SCAN**: scans for viruses.
@@ -366,7 +366,7 @@ class _CycleTaskState:
         return pulumi.get(self, "task_type")
 
     @task_type.setter
-    def task_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def task_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "task_type", value)
 
 
@@ -376,16 +376,16 @@ class CycleTask(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable: Optional[pulumi.Input[_builtins.int]] = None,
-                 first_date_str: Optional[pulumi.Input[_builtins.int]] = None,
-                 interval_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 param: Optional[pulumi.Input[_builtins.str]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.int]] = None,
+                 first_date_str: pulumi.Input[Optional[_builtins.int]] = None,
+                 interval_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 param: pulumi.Input[Optional[_builtins.str]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Cycle Task resource.
@@ -415,7 +415,7 @@ class CycleTask(pulumi.CustomResource):
             target_start_time=0,
             source="console_batch",
             task_name="VIRUS_VUL_SCHEDULE_SCAN",
-            first_date_str=1650556800000,
+            first_date_str=int(1650556800000),
             period_unit="day",
             interval_period=7,
             param=json.dumps({
@@ -499,7 +499,7 @@ class CycleTask(pulumi.CustomResource):
             target_start_time=0,
             source="console_batch",
             task_name="VIRUS_VUL_SCHEDULE_SCAN",
-            first_date_str=1650556800000,
+            first_date_str=int(1650556800000),
             period_unit="day",
             interval_period=7,
             param=json.dumps({
@@ -545,16 +545,16 @@ class CycleTask(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable: Optional[pulumi.Input[_builtins.int]] = None,
-                 first_date_str: Optional[pulumi.Input[_builtins.int]] = None,
-                 interval_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 param: Optional[pulumi.Input[_builtins.str]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.int]] = None,
+                 first_date_str: pulumi.Input[Optional[_builtins.int]] = None,
+                 interval_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 param: pulumi.Input[Optional[_builtins.str]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -600,16 +600,16 @@ class CycleTask(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enable: Optional[pulumi.Input[_builtins.int]] = None,
-            first_date_str: Optional[pulumi.Input[_builtins.int]] = None,
-            interval_period: Optional[pulumi.Input[_builtins.int]] = None,
-            param: Optional[pulumi.Input[_builtins.str]] = None,
-            period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None,
-            target_end_time: Optional[pulumi.Input[_builtins.int]] = None,
-            target_start_time: Optional[pulumi.Input[_builtins.int]] = None,
-            task_name: Optional[pulumi.Input[_builtins.str]] = None,
-            task_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'CycleTask':
+            enable: pulumi.Input[Optional[_builtins.int]] = None,
+            first_date_str: pulumi.Input[Optional[_builtins.int]] = None,
+            interval_period: pulumi.Input[Optional[_builtins.int]] = None,
+            param: pulumi.Input[Optional[_builtins.str]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            target_end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            target_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            task_name: pulumi.Input[Optional[_builtins.str]] = None,
+            task_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'CycleTask':
         """
         Get an existing CycleTask resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

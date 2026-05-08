@@ -158,30 +158,30 @@ export interface SchedulerRuleState {
     /**
      * The cname is the traffic scheduler corresponding to rules.
      */
-    cname?: pulumi.Input<string>;
+    cname?: pulumi.Input<string | undefined>;
     /**
      * The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
      */
-    param?: pulumi.Input<string>;
+    param?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the rule.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The rule type. Valid values:
      * `2`: tiered protection.
      * `3`: globalization acceleration.
      * `6`: Cloud product interaction.
      */
-    ruleType?: pulumi.Input<number>;
+    ruleType?: pulumi.Input<number | undefined>;
     /**
      * The information about the scheduling rules. See `rules` below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.ddos.SchedulerRuleRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.ddos.SchedulerRuleRule>[] | undefined>;
 }
 
 /**
@@ -191,11 +191,11 @@ export interface SchedulerRuleArgs {
     /**
      * The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
      */
-    param?: pulumi.Input<string>;
+    param?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the rule.
      */

@@ -21,9 +21,9 @@ __all__ = ['BaselineArgs', 'Baseline']
 @pulumi.input_type
 class BaselineArgs:
     def __init__(__self__, *,
-                 baseline_items: Optional[pulumi.Input[Sequence[pulumi.Input['BaselineBaselineItemArgs']]]] = None,
-                 baseline_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 baseline_items: pulumi.Input[Optional[Sequence[pulumi.Input['BaselineBaselineItemArgs']]]] = None,
+                 baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Baseline resource.
 
@@ -42,7 +42,7 @@ class BaselineArgs:
 
     @_builtins.property
     @pulumi.getter(name="baselineItems")
-    def baseline_items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BaselineBaselineItemArgs']]]]:
+    def baseline_items(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BaselineBaselineItemArgs']]]]:
         """
         List of baseline items.
 
@@ -51,40 +51,40 @@ class BaselineArgs:
         return pulumi.get(self, "baseline_items")
 
     @baseline_items.setter
-    def baseline_items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BaselineBaselineItemArgs']]]]):
+    def baseline_items(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BaselineBaselineItemArgs']]]]):
         pulumi.set(self, "baseline_items", value)
 
     @_builtins.property
     @pulumi.getter(name="baselineName")
-    def baseline_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def baseline_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Baseline Name.
         """
         return pulumi.get(self, "baseline_name")
 
     @baseline_name.setter
-    def baseline_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def baseline_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "baseline_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Baseline Description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _BaselineState:
     def __init__(__self__, *,
-                 baseline_items: Optional[pulumi.Input[Sequence[pulumi.Input['BaselineBaselineItemArgs']]]] = None,
-                 baseline_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 baseline_items: pulumi.Input[Optional[Sequence[pulumi.Input['BaselineBaselineItemArgs']]]] = None,
+                 baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Baseline resources.
 
@@ -103,7 +103,7 @@ class _BaselineState:
 
     @_builtins.property
     @pulumi.getter(name="baselineItems")
-    def baseline_items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BaselineBaselineItemArgs']]]]:
+    def baseline_items(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BaselineBaselineItemArgs']]]]:
         """
         List of baseline items.
 
@@ -112,31 +112,31 @@ class _BaselineState:
         return pulumi.get(self, "baseline_items")
 
     @baseline_items.setter
-    def baseline_items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BaselineBaselineItemArgs']]]]):
+    def baseline_items(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BaselineBaselineItemArgs']]]]):
         pulumi.set(self, "baseline_items", value)
 
     @_builtins.property
     @pulumi.getter(name="baselineName")
-    def baseline_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def baseline_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Baseline Name.
         """
         return pulumi.get(self, "baseline_name")
 
     @baseline_name.setter
-    def baseline_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def baseline_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "baseline_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Baseline Description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -146,9 +146,9 @@ class Baseline(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 baseline_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict']]]]] = None,
-                 baseline_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 baseline_items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict']]]]] = None,
+                 baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Governance Baseline resource.
@@ -323,9 +323,9 @@ class Baseline(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 baseline_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict']]]]] = None,
-                 baseline_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 baseline_items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict']]]]] = None,
+                 baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -348,9 +348,9 @@ class Baseline(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            baseline_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict']]]]] = None,
-            baseline_name: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None) -> 'Baseline':
+            baseline_items: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BaselineBaselineItemArgs', 'BaselineBaselineItemArgsDict']]]]] = None,
+            baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None) -> 'Baseline':
         """
         Get an existing Baseline resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

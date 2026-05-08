@@ -221,7 +221,7 @@ export interface GetIndexsOutputArgs {
     /**
      * A list of Index IDs. The value is formulated as `<project_name>:<logstore_name>`.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Logstore name
      */
@@ -229,7 +229,7 @@ export interface GetIndexsOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Project name
      */

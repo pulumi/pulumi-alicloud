@@ -144,23 +144,23 @@ export interface VscMountPointState {
     /**
      * Mount point alias prefix, which is used as the prefix for generating VSC mount point aliases.
      */
-    aliasPrefix?: pulumi.Input<string>;
+    aliasPrefix?: pulumi.Input<string | undefined>;
     /**
      * The description of the Mount point.  The length is 0 to 100 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the HDFS file system resource associated with the VSC mount point.
      */
-    fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string | undefined>;
     /**
      * The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
      */
-    instances?: pulumi.Input<pulumi.Input<inputs.dfs.VscMountPointInstance>[]>;
+    instances?: pulumi.Input<pulumi.Input<inputs.dfs.VscMountPointInstance>[] | undefined>;
     /**
      * VSC mount point ID, which is the unique identifier of the vsc mount point and is used to access the associated HDFS file system.
      */
-    mountPointId?: pulumi.Input<string>;
+    mountPointId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -170,11 +170,11 @@ export interface VscMountPointArgs {
     /**
      * Mount point alias prefix, which is used as the prefix for generating VSC mount point aliases.
      */
-    aliasPrefix?: pulumi.Input<string>;
+    aliasPrefix?: pulumi.Input<string | undefined>;
     /**
      * The description of the Mount point.  The length is 0 to 100 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the HDFS file system resource associated with the VSC mount point.
      */

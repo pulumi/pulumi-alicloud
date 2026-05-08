@@ -62,8 +62,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -121,8 +121,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -180,8 +180,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -239,8 +239,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -298,8 +298,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -357,8 +357,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -416,8 +416,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetAddressBooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -473,8 +473,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -517,8 +517,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -561,8 +561,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -605,8 +605,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -649,8 +649,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -691,8 +691,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstanceMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -734,8 +734,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstanceMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -777,8 +777,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstanceMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -820,8 +820,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstanceMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -863,8 +863,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstanceMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -906,8 +906,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstanceMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -949,8 +949,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstanceMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -994,8 +994,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1038,8 +1038,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1082,8 +1082,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1126,8 +1126,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1170,8 +1170,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1214,8 +1214,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1258,8 +1258,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1314,8 +1314,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.inputs.NatFirewallNatRouteEntryListArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1438,8 +1438,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.inputs.NatFirewallNatRouteEntryListArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1562,8 +1562,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.inputs.NatFirewallNatRouteEntryListArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1686,8 +1686,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.inputs.NatFirewallNatRouteEntryListArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1810,8 +1810,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.inputs.NatFirewallNatRouteEntryListArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1934,8 +1934,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.inputs.NatFirewallNatRouteEntryListArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2058,8 +2058,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.inputs.NatFirewallNatRouteEntryListArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2169,8 +2169,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.CloudFirewallTlsInspectCaCertificate;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2217,8 +2217,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.CloudFirewallTlsInspectCaCertificate;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2265,8 +2265,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.CloudFirewallTlsInspectCaCertificate;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2313,8 +2313,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.CloudFirewallTlsInspectCaCertificate;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2361,8 +2361,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.CloudFirewallTlsInspectCaCertificate;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2409,8 +2409,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.CloudFirewallTlsInspectCaCertificate;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2457,8 +2457,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.CloudFirewallTlsInspectCaCertificate;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2517,8 +2517,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2685,8 +2685,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2853,8 +2853,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3021,8 +3021,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3189,8 +3189,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3357,8 +3357,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3525,8 +3525,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3680,8 +3680,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallCensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3727,8 +3727,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallCensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3774,8 +3774,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallCensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3821,8 +3821,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallCensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3868,8 +3868,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallCensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3915,8 +3915,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallCensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3962,8 +3962,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallCensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4011,8 +4011,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4059,8 +4059,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4107,8 +4107,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4155,8 +4155,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4203,8 +4203,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallControlPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4249,8 +4249,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4295,8 +4295,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4341,8 +4341,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4387,8 +4387,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4433,8 +4433,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4479,8 +4479,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4525,8 +4525,8 @@ public final class CloudfirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
      * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -679,7 +679,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			kms, err := kms.NewKey(ctx, "kms", &kms.KeyArgs{
+//			kms2, err := kms.NewKey(ctx, "kms", &kms.KeyArgs{
 //				Description:         pulumi.String("terraform-example"),
 //				PendingWindowInDays: pulumi.Int(7),
 //				Status:              pulumi.String("Enabled"),
@@ -691,7 +691,7 @@ import (
 //				Bucket: pulumi.Sprintf("terraform-example-kms-%v", _default.Result),
 //				ServerSideEncryptionRule: &oss.BucketServerSideEncryptionRuleArgs{
 //					SseAlgorithm:   pulumi.String("KMS"),
-//					KmsMasterKeyId: kms.ID(),
+//					KmsMasterKeyId: kms2.ID(),
 //				},
 //			})
 //			if err != nil {

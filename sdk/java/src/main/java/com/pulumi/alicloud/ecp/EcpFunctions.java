@@ -42,8 +42,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -86,8 +86,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -130,8 +130,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -174,8 +174,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -218,8 +218,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -262,8 +262,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -306,8 +306,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -360,8 +360,8 @@ public final class EcpFunctions {
      * import com.pulumi.alicloud.ecp.KeyPairArgs;
      * import com.pulumi.alicloud.ecp.Instance;
      * import com.pulumi.alicloud.ecp.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -454,8 +454,8 @@ public final class EcpFunctions {
      * import com.pulumi.alicloud.ecp.KeyPairArgs;
      * import com.pulumi.alicloud.ecp.Instance;
      * import com.pulumi.alicloud.ecp.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -548,8 +548,8 @@ public final class EcpFunctions {
      * import com.pulumi.alicloud.ecp.KeyPairArgs;
      * import com.pulumi.alicloud.ecp.Instance;
      * import com.pulumi.alicloud.ecp.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -642,8 +642,8 @@ public final class EcpFunctions {
      * import com.pulumi.alicloud.ecp.KeyPairArgs;
      * import com.pulumi.alicloud.ecp.Instance;
      * import com.pulumi.alicloud.ecp.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -736,8 +736,8 @@ public final class EcpFunctions {
      * import com.pulumi.alicloud.ecp.KeyPairArgs;
      * import com.pulumi.alicloud.ecp.Instance;
      * import com.pulumi.alicloud.ecp.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -830,8 +830,8 @@ public final class EcpFunctions {
      * import com.pulumi.alicloud.ecp.KeyPairArgs;
      * import com.pulumi.alicloud.ecp.Instance;
      * import com.pulumi.alicloud.ecp.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -924,8 +924,8 @@ public final class EcpFunctions {
      * import com.pulumi.alicloud.ecp.KeyPairArgs;
      * import com.pulumi.alicloud.ecp.Instance;
      * import com.pulumi.alicloud.ecp.InstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1008,8 +1008,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1057,8 +1057,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1106,8 +1106,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1155,8 +1155,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1204,8 +1204,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1253,8 +1253,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1302,8 +1302,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetKeyPairsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1351,8 +1351,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1395,8 +1395,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1439,8 +1439,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1483,8 +1483,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1527,8 +1527,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1571,8 +1571,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1615,8 +1615,8 @@ public final class EcpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ecp.EcpFunctions;
      * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

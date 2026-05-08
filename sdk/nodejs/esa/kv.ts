@@ -148,31 +148,31 @@ export interface KvState {
     /**
      * The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://www.alibabacloud.com/help/en/doc-detail/2850486.html).
      */
-    expiration?: pulumi.Input<number>;
+    expiration?: pulumi.Input<number | undefined>;
     /**
      * The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
      */
-    expirationTtl?: pulumi.Input<number>;
+    expirationTtl?: pulumi.Input<number | undefined>;
     /**
      * The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
      */
-    isbase?: pulumi.Input<boolean>;
+    isbase?: pulumi.Input<boolean | undefined>;
     /**
      * kv
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The name specified when calling [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -182,15 +182,15 @@ export interface KvArgs {
     /**
      * The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://www.alibabacloud.com/help/en/doc-detail/2850486.html).
      */
-    expiration?: pulumi.Input<number>;
+    expiration?: pulumi.Input<number | undefined>;
     /**
      * The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
      */
-    expirationTtl?: pulumi.Input<number>;
+    expirationTtl?: pulumi.Input<number | undefined>;
     /**
      * The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
      */
-    isbase?: pulumi.Input<boolean>;
+    isbase?: pulumi.Input<boolean | undefined>;
     /**
      * kv
      */
@@ -202,9 +202,9 @@ export interface KvArgs {
     /**
      * The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\).
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }

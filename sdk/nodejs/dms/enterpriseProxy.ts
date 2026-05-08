@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  *     engineVersion: "8.0",
  *     dbInstanceStorageType: "cloud_essd",
  *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceStorage: output(defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *     vswitchId: defaultSwitch.id,
  *     instanceName: name,
  *     securityIps: [
@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  *     accountType: "Normal",
  * });
  * const defaultEnterpriseInstance = new alicloud.dms.EnterpriseInstance("default", {
- *     tid: defaultGetUserTenants.then(defaultGetUserTenants => defaultGetUserTenants.ids?.[0]),
+ *     tid: output(defaultGetUserTenants.then(defaultGetUserTenants => defaultGetUserTenants.ids?.[0])).apply(x =>Number(x)),
  *     instanceType: "mysql",
  *     instanceSource: "RDS",
  *     networkType: "VPC",
@@ -91,7 +91,7 @@ import * as utilities from "../utilities";
  *     databaseUser: defaultAccount.accountName,
  *     databasePassword: defaultAccount.accountPassword,
  *     instanceName: name,
- *     dbaUid: current.then(current => current.id),
+ *     dbaUid: output(current.then(current => current.id)).apply(x =>Number(x)),
  *     safeRule: "自由操作",
  *     queryTimeout: 60,
  *     exportTimeout: 600,
@@ -207,19 +207,19 @@ export interface EnterpriseProxyState {
     /**
      * The ID of the database instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The password of the database account.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The ID of the tenant.
      */
-    tid?: pulumi.Input<string>;
+    tid?: pulumi.Input<string | undefined>;
     /**
      * The username of the database account.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -237,7 +237,7 @@ export interface EnterpriseProxyArgs {
     /**
      * The ID of the tenant.
      */
-    tid?: pulumi.Input<string>;
+    tid?: pulumi.Input<string | undefined>;
     /**
      * The username of the database account.
      */

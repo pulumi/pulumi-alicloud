@@ -88,14 +88,14 @@ class CustomRoutingEndpointGroupDestinationArgs:
 @pulumi.input_type
 class _CustomRoutingEndpointGroupDestinationState:
     def __init__(__self__, *,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_routing_endpoint_group_destination_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 to_port: Optional[pulumi.Input[_builtins.int]] = None):
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_routing_endpoint_group_destination_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 to_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering CustomRoutingEndpointGroupDestination resources.
 
@@ -127,98 +127,98 @@ class _CustomRoutingEndpointGroupDestinationState:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
-    def accelerator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the GA instance.
         """
         return pulumi.get(self, "accelerator_id")
 
     @accelerator_id.setter
-    def accelerator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_id", value)
 
     @_builtins.property
     @pulumi.getter(name="customRoutingEndpointGroupDestinationId")
-    def custom_routing_endpoint_group_destination_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_routing_endpoint_group_destination_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Custom Routing Endpoint Group Destination.
         """
         return pulumi.get(self, "custom_routing_endpoint_group_destination_id")
 
     @custom_routing_endpoint_group_destination_id.setter
-    def custom_routing_endpoint_group_destination_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_routing_endpoint_group_destination_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_routing_endpoint_group_destination_id", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointGroupId")
-    def endpoint_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the endpoint group.
         """
         return pulumi.get(self, "endpoint_group_id")
 
     @endpoint_group_id.setter
-    def endpoint_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="fromPort")
-    def from_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def from_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
         """
         return pulumi.get(self, "from_port")
 
     @from_port.setter
-    def from_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def from_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "from_port", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the listener.
         """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
-    def listener_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
         """
         return pulumi.get(self, "protocols")
 
     @protocols.setter
-    def protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "protocols", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Custom Routing Endpoint Group Destination.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="toPort")
-    def to_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def to_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
         """
         return pulumi.get(self, "to_port")
 
     @to_port.setter
-    def to_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def to_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "to_port", value)
 
 
@@ -228,10 +228,10 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 to_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 to_port: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Custom Routing Endpoint Group Destination resource.
@@ -389,10 +389,10 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 to_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 to_port: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -428,14 +428,14 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_routing_endpoint_group_destination_id: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            from_port: Optional[pulumi.Input[_builtins.int]] = None,
-            listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-            protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            to_port: Optional[pulumi.Input[_builtins.int]] = None) -> 'CustomRoutingEndpointGroupDestination':
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_routing_endpoint_group_destination_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            from_port: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            to_port: pulumi.Input[Optional[_builtins.int]] = None) -> 'CustomRoutingEndpointGroupDestination':
         """
         Get an existing CustomRoutingEndpointGroupDestination resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

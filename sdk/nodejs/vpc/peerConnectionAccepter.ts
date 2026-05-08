@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.vpc.PeerConnection("default", {
  *     peerConnectionName: name,
  *     vpcId: local.id,
- *     acceptingAliUid: accepting.then(accepting => accepting.id),
+ *     acceptingAliUid: output(accepting.then(accepting => accepting.id)).apply(x =>Number(x)),
  *     acceptingRegionId: acceptingRegion,
  *     acceptingVpcId: acceptingNetwork.id,
  *     description: name,
@@ -209,67 +209,67 @@ export interface PeerConnectionAccepterState {
     /**
      * The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.-to-peer connection to the VPC account.-account VPC peer-to-peer connection.
      */
-    acceptingOwnerUid?: pulumi.Input<number>;
+    acceptingOwnerUid?: pulumi.Input<number | undefined>;
     /**
      * The region ID of the recipient of the VPC peering connection to be created.-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
      */
-    acceptingRegionId?: pulumi.Input<string>;
+    acceptingRegionId?: pulumi.Input<string | undefined>;
     /**
      * The VPC ID of the receiving end of the VPC peer connection.
      */
-    acceptingVpcId?: pulumi.Input<string>;
+    acceptingVpcId?: pulumi.Input<string | undefined>;
     /**
      * The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The new description of the VPC peering connection.
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to forcefully delete the VPC peering connection. Valid values:
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the VPC peering connection whose name or description you want to modify.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Link Type
      */
-    linkType?: pulumi.Input<string>;
+    linkType?: pulumi.Input<string | undefined>;
     /**
      * The new name of the VPC peering connection.
      * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      */
-    peerConnectionAccepterName?: pulumi.Input<string>;
+    peerConnectionAccepterName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region where you want to query VPC peering connections.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the new resource group.
      *
      * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The VPC ID of the initiator of the VPC peering connection.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -279,20 +279,20 @@ export interface PeerConnectionAccepterArgs {
     /**
      * The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The new description of the VPC peering connection.
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to forcefully delete the VPC peering connection. Valid values:
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the VPC peering connection whose name or description you want to modify.
      */
@@ -300,16 +300,16 @@ export interface PeerConnectionAccepterArgs {
     /**
      * Link Type
      */
-    linkType?: pulumi.Input<string>;
+    linkType?: pulumi.Input<string | undefined>;
     /**
      * The new name of the VPC peering connection.
      * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      */
-    peerConnectionAccepterName?: pulumi.Input<string>;
+    peerConnectionAccepterName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the new resource group.
      *
      * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
 }

@@ -21,11 +21,11 @@ class JdbcDataSourceArgs:
     def __init__(__self__, *,
                  db_instance_id: pulumi.Input[_builtins.str],
                  jdbc_user_name: pulumi.Input[_builtins.str],
-                 data_source_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdbc_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdbc_password: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_source_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdbc_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdbc_password: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a JdbcDataSource resource.
 
@@ -76,78 +76,78 @@ class JdbcDataSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataSourceDescription")
-    def data_source_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Description
         """
         return pulumi.get(self, "data_source_description")
 
     @data_source_description.setter
-    def data_source_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_description", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceName")
-    def data_source_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Name
         """
         return pulumi.get(self, "data_source_name")
 
     @data_source_name.setter
-    def data_source_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceType")
-    def data_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Type
         """
         return pulumi.get(self, "data_source_type")
 
     @data_source_type.setter
-    def data_source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="jdbcConnectionString")
-    def jdbc_connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jdbc_connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JDBC connection string.
         """
         return pulumi.get(self, "jdbc_connection_string")
 
     @jdbc_connection_string.setter
-    def jdbc_connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jdbc_connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jdbc_connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="jdbcPassword")
-    def jdbc_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jdbc_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the database account.
         """
         return pulumi.get(self, "jdbc_password")
 
     @jdbc_password.setter
-    def jdbc_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jdbc_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jdbc_password", value)
 
 
 @pulumi.input_type
 class _JdbcDataSourceState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdbc_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdbc_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdbc_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdbc_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdbc_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdbc_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering JdbcDataSource resources.
 
@@ -185,122 +185,122 @@ class _JdbcDataSourceState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceDescription")
-    def data_source_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Description
         """
         return pulumi.get(self, "data_source_description")
 
     @data_source_description.setter
-    def data_source_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_description", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
-    def data_source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source ID.
         """
         return pulumi.get(self, "data_source_id")
 
     @data_source_id.setter
-    def data_source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceName")
-    def data_source_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Name
         """
         return pulumi.get(self, "data_source_name")
 
     @data_source_name.setter
-    def data_source_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceType")
-    def data_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Type
         """
         return pulumi.get(self, "data_source_type")
 
     @data_source_type.setter
-    def data_source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="jdbcConnectionString")
-    def jdbc_connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jdbc_connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JDBC connection string.
         """
         return pulumi.get(self, "jdbc_connection_string")
 
     @jdbc_connection_string.setter
-    def jdbc_connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jdbc_connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jdbc_connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="jdbcPassword")
-    def jdbc_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jdbc_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the database account.
         """
         return pulumi.get(self, "jdbc_password")
 
     @jdbc_password.setter
-    def jdbc_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jdbc_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jdbc_password", value)
 
     @_builtins.property
     @pulumi.getter(name="jdbcUserName")
-    def jdbc_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jdbc_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database account.
         """
         return pulumi.get(self, "jdbc_user_name")
 
     @jdbc_user_name.setter
-    def jdbc_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jdbc_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jdbc_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -310,13 +310,13 @@ class JdbcDataSource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_source_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdbc_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdbc_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdbc_user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdbc_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdbc_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdbc_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a AnalyticDB for PostgreSQL (GPDB) Jdbc Data Source resource.
@@ -493,13 +493,13 @@ class JdbcDataSource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_source_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdbc_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdbc_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdbc_user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdbc_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdbc_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdbc_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -533,16 +533,16 @@ class JdbcDataSource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_description: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            jdbc_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-            jdbc_password: Optional[pulumi.Input[_builtins.str]] = None,
-            jdbc_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'JdbcDataSource':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_description: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            jdbc_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            jdbc_password: pulumi.Input[Optional[_builtins.str]] = None,
+            jdbc_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'JdbcDataSource':
         """
         Get an existing JdbcDataSource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

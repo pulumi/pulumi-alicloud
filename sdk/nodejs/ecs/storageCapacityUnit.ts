@@ -140,33 +140,33 @@ export interface StorageCapacityUnitState {
     /**
      * The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * The description of the Storage Capacity Unit. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The validity period of the Storage Capacity Unit. Default value: `1`.
      * * When PeriodUnit is set to Month, Valid values: `1`, `2`, `3`, `6`.
      * * When PeriodUnit is set to Year, Valid values: `1`, `3`, `5`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The unit of the validity period of the Storage Capacity Unit. Default value: `Month`. Valid values: `Month`, `Year`.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The time when the Storage Capacity Unit takes effect. It cannot be earlier than or more than six months later than the time when the Storage Capacity Unit is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. **NOTE:** This parameter is empty by default. The Storage Capacity Unit immediately takes effect after it is created.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * The status of Storage Capacity Unit.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The name of the Storage Capacity Unit.
      */
-    storageCapacityUnitName?: pulumi.Input<string>;
+    storageCapacityUnitName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -180,23 +180,23 @@ export interface StorageCapacityUnitArgs {
     /**
      * The description of the Storage Capacity Unit. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The validity period of the Storage Capacity Unit. Default value: `1`.
      * * When PeriodUnit is set to Month, Valid values: `1`, `2`, `3`, `6`.
      * * When PeriodUnit is set to Year, Valid values: `1`, `3`, `5`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The unit of the validity period of the Storage Capacity Unit. Default value: `Month`. Valid values: `Month`, `Year`.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The time when the Storage Capacity Unit takes effect. It cannot be earlier than or more than six months later than the time when the Storage Capacity Unit is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. **NOTE:** This parameter is empty by default. The Storage Capacity Unit immediately takes effect after it is created.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the Storage Capacity Unit.
      */
-    storageCapacityUnitName?: pulumi.Input<string>;
+    storageCapacityUnitName?: pulumi.Input<string | undefined>;
 }

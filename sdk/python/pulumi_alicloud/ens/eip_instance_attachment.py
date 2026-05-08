@@ -21,8 +21,8 @@ class EipInstanceAttachmentArgs:
     def __init__(__self__, *,
                  allocation_id: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby: Optional[pulumi.Input[_builtins.bool]] = None):
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EipInstanceAttachment resource.
 
@@ -70,7 +70,7 @@ class EipInstanceAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the EIP instance. Value:
         - `Nat`:NAT gateway.
@@ -81,12 +81,12 @@ class EipInstanceAttachmentArgs:
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def standby(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def standby(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the EIP is a backup EIP. Value:
         - true: Spare.
@@ -95,18 +95,18 @@ class EipInstanceAttachmentArgs:
         return pulumi.get(self, "standby")
 
     @standby.setter
-    def standby(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def standby(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "standby", value)
 
 
 @pulumi.input_type
 class _EipInstanceAttachmentState:
     def __init__(__self__, *,
-                 allocation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 allocation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EipInstanceAttachment resources.
 
@@ -135,31 +135,31 @@ class _EipInstanceAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="allocationId")
-    def allocation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allocation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "allocation_id")
 
     @allocation_id.setter
-    def allocation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allocation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allocation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance ID
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the EIP instance. Value:
         - `Nat`:NAT gateway.
@@ -170,12 +170,12 @@ class _EipInstanceAttachmentState:
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def standby(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def standby(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the EIP is a backup EIP. Value:
         - true: Spare.
@@ -184,19 +184,19 @@ class _EipInstanceAttachmentState:
         return pulumi.get(self, "standby")
 
     @standby.setter
-    def standby(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def standby(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "standby", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the EIP.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -206,10 +206,10 @@ class EipInstanceAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby: Optional[pulumi.Input[_builtins.bool]] = None,
+                 allocation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Ens Eip Instance Attachment resource.
@@ -379,10 +379,10 @@ class EipInstanceAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby: Optional[pulumi.Input[_builtins.bool]] = None,
+                 allocation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -411,11 +411,11 @@ class EipInstanceAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allocation_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            standby: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'EipInstanceAttachment':
+            allocation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            standby: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'EipInstanceAttachment':
         """
         Get an existing EipInstanceAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

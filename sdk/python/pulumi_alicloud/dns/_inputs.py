@@ -36,7 +36,7 @@ class AccessStrategyDefaultAddrPoolArgsDict(TypedDict):
     """
     The ID of the address pool in the primary address pool group.
     """
-    lba_weight: NotRequired[pulumi.Input[_builtins.int]]
+    lba_weight: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The weight of the address pool in the primary address pool group.
     """
@@ -45,7 +45,7 @@ class AccessStrategyDefaultAddrPoolArgsDict(TypedDict):
 class AccessStrategyDefaultAddrPoolArgs:
     def __init__(__self__, *,
                  addr_pool_id: pulumi.Input[_builtins.str],
-                 lba_weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 lba_weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] addr_pool_id: The ID of the address pool in the primary address pool group.
         :param pulumi.Input[_builtins.int] lba_weight: The weight of the address pool in the primary address pool group.
@@ -68,23 +68,23 @@ class AccessStrategyDefaultAddrPoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="lbaWeight")
-    def lba_weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lba_weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight of the address pool in the primary address pool group.
         """
         return pulumi.get(self, "lba_weight")
 
     @lba_weight.setter
-    def lba_weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lba_weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lba_weight", value)
 
 
 class AccessStrategyFailoverAddrPoolArgsDict(TypedDict):
-    addr_pool_id: NotRequired[pulumi.Input[_builtins.str]]
+    addr_pool_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the address pool in the secondary address pool group.
     """
-    lba_weight: NotRequired[pulumi.Input[_builtins.int]]
+    lba_weight: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The weight of the address pool in the secondary address pool group.
     """
@@ -92,8 +92,8 @@ class AccessStrategyFailoverAddrPoolArgsDict(TypedDict):
 @pulumi.input_type
 class AccessStrategyFailoverAddrPoolArgs:
     def __init__(__self__, *,
-                 addr_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 lba_weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 addr_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 lba_weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] addr_pool_id: The ID of the address pool in the secondary address pool group.
         :param pulumi.Input[_builtins.int] lba_weight: The weight of the address pool in the secondary address pool group.
@@ -105,31 +105,31 @@ class AccessStrategyFailoverAddrPoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="addrPoolId")
-    def addr_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def addr_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the address pool in the secondary address pool group.
         """
         return pulumi.get(self, "addr_pool_id")
 
     @addr_pool_id.setter
-    def addr_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def addr_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "addr_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lbaWeight")
-    def lba_weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lba_weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight of the address pool in the secondary address pool group.
         """
         return pulumi.get(self, "lba_weight")
 
     @lba_weight.setter
-    def lba_weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lba_weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lba_weight", value)
 
 
 class AccessStrategyLineArgsDict(TypedDict):
-    line_code: NotRequired[pulumi.Input[_builtins.str]]
+    line_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The line code of the source region.
     """
@@ -137,7 +137,7 @@ class AccessStrategyLineArgsDict(TypedDict):
 @pulumi.input_type
 class AccessStrategyLineArgs:
     def __init__(__self__, *,
-                 line_code: Optional[pulumi.Input[_builtins.str]] = None):
+                 line_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] line_code: The line code of the source region.
         """
@@ -146,14 +146,14 @@ class AccessStrategyLineArgs:
 
     @_builtins.property
     @pulumi.getter(name="lineCode")
-    def line_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def line_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The line code of the source region.
         """
         return pulumi.get(self, "line_code")
 
     @line_code.setter
-    def line_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def line_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "line_code", value)
 
 
@@ -172,11 +172,11 @@ class AddressPoolAddressArgsDict(TypedDict):
     """
     The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
     """
-    lba_weight: NotRequired[pulumi.Input[_builtins.int]]
+    lba_weight: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
     """
-    remark: NotRequired[pulumi.Input[_builtins.str]]
+    remark: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the address.
     """
@@ -187,8 +187,8 @@ class AddressPoolAddressArgs:
                  address: pulumi.Input[_builtins.str],
                  attribute_info: pulumi.Input[_builtins.str],
                  mode: pulumi.Input[_builtins.str],
-                 lba_weight: Optional[pulumi.Input[_builtins.int]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None):
+                 lba_weight: pulumi.Input[Optional[_builtins.int]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The address that you want to add to the address pool.
         :param pulumi.Input[_builtins.str] attribute_info: The source region of the address. expressed as a JSON string. The structure is as follows:
@@ -246,26 +246,26 @@ class AddressPoolAddressArgs:
 
     @_builtins.property
     @pulumi.getter(name="lbaWeight")
-    def lba_weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lba_weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
         """
         return pulumi.get(self, "lba_weight")
 
     @lba_weight.setter
-    def lba_weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lba_weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lba_weight", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the address.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
 
@@ -317,15 +317,15 @@ class CustomLineIpSegmentListArgs:
 
 
 class GtmInstanceAlertConfigArgsDict(TypedDict):
-    dingtalk_notice: NotRequired[pulumi.Input[_builtins.bool]]
+    dingtalk_notice: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to configure DingTalk notifications. Valid values: `true`, `false`.
     """
-    email_notice: NotRequired[pulumi.Input[_builtins.bool]]
+    email_notice: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to configure mail notification. Valid values: `true`, `false`.
     """
-    notice_type: NotRequired[pulumi.Input[_builtins.str]]
+    notice_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Alarm Event Type.
     - `ADDR_ALERT`: Address not available.
@@ -335,7 +335,7 @@ class GtmInstanceAlertConfigArgsDict(TypedDict):
     - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
     - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
     """
-    sms_notice: NotRequired[pulumi.Input[_builtins.bool]]
+    sms_notice: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to configure SMS notification. Valid values: `true`, `false`.
     """
@@ -343,10 +343,10 @@ class GtmInstanceAlertConfigArgsDict(TypedDict):
 @pulumi.input_type
 class GtmInstanceAlertConfigArgs:
     def __init__(__self__, *,
-                 dingtalk_notice: Optional[pulumi.Input[_builtins.bool]] = None,
-                 email_notice: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notice_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sms_notice: Optional[pulumi.Input[_builtins.bool]] = None):
+                 dingtalk_notice: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email_notice: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notice_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sms_notice: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] dingtalk_notice: Whether to configure DingTalk notifications. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.bool] email_notice: Whether to configure mail notification. Valid values: `true`, `false`.
@@ -370,31 +370,31 @@ class GtmInstanceAlertConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dingtalkNotice")
-    def dingtalk_notice(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dingtalk_notice(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to configure DingTalk notifications. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "dingtalk_notice")
 
     @dingtalk_notice.setter
-    def dingtalk_notice(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dingtalk_notice(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dingtalk_notice", value)
 
     @_builtins.property
     @pulumi.getter(name="emailNotice")
-    def email_notice(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def email_notice(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to configure mail notification. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "email_notice")
 
     @email_notice.setter
-    def email_notice(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def email_notice(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "email_notice", value)
 
     @_builtins.property
     @pulumi.getter(name="noticeType")
-    def notice_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notice_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alarm Event Type.
         - `ADDR_ALERT`: Address not available.
@@ -407,19 +407,19 @@ class GtmInstanceAlertConfigArgs:
         return pulumi.get(self, "notice_type")
 
     @notice_type.setter
-    def notice_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notice_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notice_type", value)
 
     @_builtins.property
     @pulumi.getter(name="smsNotice")
-    def sms_notice(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sms_notice(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to configure SMS notification. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "sms_notice")
 
     @sms_notice.setter
-    def sms_notice(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sms_notice(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sms_notice", value)
 
 

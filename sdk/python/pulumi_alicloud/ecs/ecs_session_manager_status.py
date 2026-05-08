@@ -58,8 +58,8 @@ class EcsSessionManagerStatusArgs:
 @pulumi.input_type
 class _EcsSessionManagerStatusState:
     def __init__(__self__, *,
-                 session_manager_status_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 session_manager_status_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsSessionManagerStatus resources.
 
@@ -73,26 +73,26 @@ class _EcsSessionManagerStatusState:
 
     @_builtins.property
     @pulumi.getter(name="sessionManagerStatusName")
-    def session_manager_status_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_manager_status_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
         """
         return pulumi.get(self, "session_manager_status_name")
 
     @session_manager_status_name.setter
-    def session_manager_status_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_manager_status_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_manager_status_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -102,8 +102,8 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 session_manager_status_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 session_manager_status_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Session Manager Status resource.
@@ -193,8 +193,8 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 session_manager_status_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 session_manager_status_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -220,8 +220,8 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            session_manager_status_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'EcsSessionManagerStatus':
+            session_manager_status_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'EcsSessionManagerStatus':
         """
         Get an existing EcsSessionManagerStatus resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -19,31 +19,31 @@ __all__ = ['EipAddressArgs', 'EipAddress']
 @pulumi.input_type
 class EipAddressArgs:
     def __init__(__self__, *,
-                 activity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 allocation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 high_definition_monitor_log_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_store: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 netmode: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_address_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 activity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 allocation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 high_definition_monitor_log_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_store: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 netmode: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_address_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_protection_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EipAddress resource.
 
@@ -184,19 +184,19 @@ class EipAddressArgs:
 
     @_builtins.property
     @pulumi.getter(name="activityId")
-    def activity_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def activity_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The promotion code. This parameter is not required.
         """
         return pulumi.get(self, "activity_id")
 
     @activity_id.setter
-    def activity_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def activity_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "activity_id", value)
 
     @_builtins.property
     @pulumi.getter(name="addressName")
-    def address_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The EIP name.
 
@@ -207,36 +207,36 @@ class EipAddressArgs:
         return pulumi.get(self, "address_name")
 
     @address_name.setter
-    def address_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_name", value)
 
     @_builtins.property
     @pulumi.getter(name="allocationId")
-    def allocation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allocation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the EIP instance.
         """
         return pulumi.get(self, "allocation_id")
 
     @allocation_id.setter
-    def allocation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allocation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allocation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable automatic payment. Valid values:
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum bandwidth of the specified EIP. Unit: Mbit/s.
         - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
@@ -248,24 +248,24 @@ class EipAddressArgs:
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable deletion protection. Valid values:
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the EIP.
 
@@ -276,12 +276,12 @@ class EipAddressArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="highDefinitionMonitorLogStatus")
-    def high_definition_monitor_log_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def high_definition_monitor_log_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of fine-grained monitoring. Valid values:
         - `ON`
@@ -290,25 +290,25 @@ class EipAddressArgs:
         return pulumi.get(self, "high_definition_monitor_log_status")
 
     @high_definition_monitor_log_status.setter
-    def high_definition_monitor_log_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def high_definition_monitor_log_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "high_definition_monitor_log_status", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The metering method of the EIP. Valid values:
         - `PayByBandwidth` (default): pay-by-bandwidth.
@@ -321,24 +321,24 @@ class EipAddressArgs:
         return pulumi.get(self, "internet_charge_type")
 
     @internet_charge_type.setter
-    def internet_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the EIP. Supports a maximum of 50 EIPs.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def isp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The line type. Valid values:
         - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
@@ -359,36 +359,36 @@ class EipAddressArgs:
         return pulumi.get(self, "isp")
 
     @isp.setter
-    def isp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isp", value)
 
     @_builtins.property
     @pulumi.getter(name="logProject")
-    def log_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Simple Log Service (SLS) project.
         """
         return pulumi.get(self, "log_project")
 
     @log_project.setter
-    def log_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_project", value)
 
     @_builtins.property
     @pulumi.getter(name="logStore")
-    def log_store(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_store(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Logstore.
         """
         return pulumi.get(self, "log_store")
 
     @log_store.setter
-    def log_store(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_store(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_store", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The association mode. Valid values:
         - `NAT` (default): NAT mode
@@ -398,37 +398,37 @@ class EipAddressArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def netmode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def netmode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type. By default, this value is set to `public`, which specifies the public network type.
         """
         return pulumi.get(self, "netmode")
 
     @netmode.setter
-    def netmode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def netmode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "netmode", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the EIP. Valid values:
         - `Subscription`: subscription
@@ -439,24 +439,24 @@ class EipAddressArgs:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing cycle of the subscription EIP. Valid values:
         - `Month` (default)
@@ -467,24 +467,24 @@ class EipAddressArgs:
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpAddressPoolId")
-    def public_ip_address_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip_address_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IP address pool. The EIP is allocated from the IP address pool. By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in [Manage EIP quotas](https://www.alibabacloud.com/help/en/doc-detail/108213.html).
         """
         return pulumi.get(self, "public_ip_address_pool_id")
 
     @public_ip_address_pool_id.setter
-    def public_ip_address_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip_address_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip_address_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which you want to move the resource.
 
@@ -493,12 +493,12 @@ class EipAddressArgs:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityProtectionTypes")
-    def security_protection_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_protection_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Security protection level.
         - When the return is empty, the basic DDoS protection is specified.
@@ -507,24 +507,24 @@ class EipAddressArgs:
         return pulumi.get(self, "security_protection_types")
 
     @security_protection_types.setter
-    def security_protection_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_protection_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_protection_types", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
 
@@ -533,40 +533,40 @@ class EipAddressArgs:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
 class _EipAddressState:
     def __init__(__self__, *,
-                 activity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 allocation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 high_definition_monitor_log_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_store: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 netmode: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_address_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 activity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 allocation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 high_definition_monitor_log_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_store: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 netmode: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_address_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_protection_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EipAddress resources.
 
@@ -713,19 +713,19 @@ class _EipAddressState:
 
     @_builtins.property
     @pulumi.getter(name="activityId")
-    def activity_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def activity_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The promotion code. This parameter is not required.
         """
         return pulumi.get(self, "activity_id")
 
     @activity_id.setter
-    def activity_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def activity_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "activity_id", value)
 
     @_builtins.property
     @pulumi.getter(name="addressName")
-    def address_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The EIP name.
 
@@ -736,36 +736,36 @@ class _EipAddressState:
         return pulumi.get(self, "address_name")
 
     @address_name.setter
-    def address_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_name", value)
 
     @_builtins.property
     @pulumi.getter(name="allocationId")
-    def allocation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allocation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the EIP instance.
         """
         return pulumi.get(self, "allocation_id")
 
     @allocation_id.setter
-    def allocation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allocation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allocation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable automatic payment. Valid values:
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum bandwidth of the specified EIP. Unit: Mbit/s.
         - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
@@ -777,36 +777,36 @@ class _EipAddressState:
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the EIP was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable deletion protection. Valid values:
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the EIP.
 
@@ -817,12 +817,12 @@ class _EipAddressState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="highDefinitionMonitorLogStatus")
-    def high_definition_monitor_log_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def high_definition_monitor_log_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of fine-grained monitoring. Valid values:
         - `ON`
@@ -831,25 +831,25 @@ class _EipAddressState:
         return pulumi.get(self, "high_definition_monitor_log_status")
 
     @high_definition_monitor_log_status.setter
-    def high_definition_monitor_log_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def high_definition_monitor_log_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "high_definition_monitor_log_status", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The metering method of the EIP. Valid values:
         - `PayByBandwidth` (default): pay-by-bandwidth.
@@ -862,24 +862,24 @@ class _EipAddressState:
         return pulumi.get(self, "internet_charge_type")
 
     @internet_charge_type.setter
-    def internet_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the EIP. Supports a maximum of 50 EIPs.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def isp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The line type. Valid values:
         - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
@@ -900,36 +900,36 @@ class _EipAddressState:
         return pulumi.get(self, "isp")
 
     @isp.setter
-    def isp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isp", value)
 
     @_builtins.property
     @pulumi.getter(name="logProject")
-    def log_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Simple Log Service (SLS) project.
         """
         return pulumi.get(self, "log_project")
 
     @log_project.setter
-    def log_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_project", value)
 
     @_builtins.property
     @pulumi.getter(name="logStore")
-    def log_store(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_store(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Logstore.
         """
         return pulumi.get(self, "log_store")
 
     @log_store.setter
-    def log_store(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_store(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_store", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The association mode. Valid values:
         - `NAT` (default): NAT mode
@@ -939,37 +939,37 @@ class _EipAddressState:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def netmode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def netmode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type. By default, this value is set to `public`, which specifies the public network type.
         """
         return pulumi.get(self, "netmode")
 
     @netmode.setter
-    def netmode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def netmode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "netmode", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the EIP. Valid values:
         - `Subscription`: subscription
@@ -980,24 +980,24 @@ class _EipAddressState:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing cycle of the subscription EIP. Valid values:
         - `Month` (default)
@@ -1008,24 +1008,24 @@ class _EipAddressState:
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpAddressPoolId")
-    def public_ip_address_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip_address_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IP address pool. The EIP is allocated from the IP address pool. By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in [Manage EIP quotas](https://www.alibabacloud.com/help/en/doc-detail/108213.html).
         """
         return pulumi.get(self, "public_ip_address_pool_id")
 
     @public_ip_address_pool_id.setter
-    def public_ip_address_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip_address_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip_address_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which you want to move the resource.
 
@@ -1034,12 +1034,12 @@ class _EipAddressState:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityProtectionTypes")
-    def security_protection_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_protection_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Security protection level.
         - When the return is empty, the basic DDoS protection is specified.
@@ -1048,36 +1048,36 @@ class _EipAddressState:
         return pulumi.get(self, "security_protection_types")
 
     @security_protection_types.setter
-    def security_protection_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_protection_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_protection_types", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the EIP.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
 
@@ -1086,7 +1086,7 @@ class _EipAddressState:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -1096,31 +1096,31 @@ class EipAddress(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 allocation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 high_definition_monitor_log_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_store: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 netmode: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_address_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 activity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 allocation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 high_definition_monitor_log_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_store: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 netmode: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_address_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_protection_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a EIP Address resource.
@@ -1325,31 +1325,31 @@ class EipAddress(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 allocation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 high_definition_monitor_log_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_store: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 netmode: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_address_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 activity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 allocation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 high_definition_monitor_log_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_store: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 netmode: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_address_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_protection_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1396,33 +1396,33 @@ class EipAddress(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            activity_id: Optional[pulumi.Input[_builtins.str]] = None,
-            address_name: Optional[pulumi.Input[_builtins.str]] = None,
-            allocation_id: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            high_definition_monitor_log_status: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            isp: Optional[pulumi.Input[_builtins.str]] = None,
-            log_project: Optional[pulumi.Input[_builtins.str]] = None,
-            log_store: Optional[pulumi.Input[_builtins.str]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            netmode: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip_address_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'EipAddress':
+            activity_id: pulumi.Input[Optional[_builtins.str]] = None,
+            address_name: pulumi.Input[Optional[_builtins.str]] = None,
+            allocation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            high_definition_monitor_log_status: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            isp: pulumi.Input[Optional[_builtins.str]] = None,
+            log_project: pulumi.Input[Optional[_builtins.str]] = None,
+            log_store: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            netmode: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip_address_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_protection_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'EipAddress':
         """
         Get an existing EipAddress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

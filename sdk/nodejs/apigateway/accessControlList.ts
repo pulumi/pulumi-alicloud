@@ -129,18 +129,18 @@ export interface AccessControlListState {
     /**
      * Access control list name.
      */
-    accessControlListName?: pulumi.Input<string>;
+    accessControlListName?: pulumi.Input<string | undefined>;
     /**
      * Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `aclEntrys` below.
      * **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
      *
      * @deprecated Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
      */
-    aclEntrys?: pulumi.Input<pulumi.Input<inputs.apigateway.AccessControlListAclEntry>[]>;
+    aclEntrys?: pulumi.Input<pulumi.Input<inputs.apigateway.AccessControlListAclEntry>[] | undefined>;
     /**
      * The IP version. Valid values: ipv4 and ipv6.
      */
-    addressIpVersion?: pulumi.Input<string>;
+    addressIpVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,9 +157,9 @@ export interface AccessControlListArgs {
      *
      * @deprecated Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
      */
-    aclEntrys?: pulumi.Input<pulumi.Input<inputs.apigateway.AccessControlListAclEntry>[]>;
+    aclEntrys?: pulumi.Input<pulumi.Input<inputs.apigateway.AccessControlListAclEntry>[] | undefined>;
     /**
      * The IP version. Valid values: ipv4 and ipv6.
      */
-    addressIpVersion?: pulumi.Input<string>;
+    addressIpVersion?: pulumi.Input<string | undefined>;
 }

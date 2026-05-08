@@ -26,8 +26,8 @@ class DbClusterArgs:
                  db_cluster_description: pulumi.Input[_builtins.str],
                  db_instance_id: pulumi.Input[_builtins.str],
                  payment_type: pulumi.Input[_builtins.str],
-                 desired_params: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDesiredParamArgs']]]] = None,
-                 desired_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 desired_params: pulumi.Input[Optional[Sequence[pulumi.Input['DbClusterDesiredParamArgs']]]] = None,
+                 desired_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbCluster resource.
 
@@ -111,50 +111,50 @@ class DbClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="desiredParams")
-    def desired_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDesiredParamArgs']]]]:
+    def desired_params(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DbClusterDesiredParamArgs']]]]:
         """
         The modified parameter in DBCluster. See `desired_params` below.
         """
         return pulumi.get(self, "desired_params")
 
     @desired_params.setter
-    def desired_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDesiredParamArgs']]]]):
+    def desired_params(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DbClusterDesiredParamArgs']]]]):
         pulumi.set(self, "desired_params", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredStatus")
-    def desired_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired status for the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
         """
         return pulumi.get(self, "desired_status")
 
     @desired_status.setter
-    def desired_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_status", value)
 
 
 @pulumi.input_type
 class _DbClusterState:
     def __init__(__self__, *,
-                 cache_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_params: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDesiredParamArgs']]]] = None,
-                 desired_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 param_change_logs: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterParamChangeLogArgs']]]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_params: pulumi.Input[Optional[Sequence[pulumi.Input['DbClusterDesiredParamArgs']]]] = None,
+                 desired_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 param_change_logs: pulumi.Input[Optional[Sequence[pulumi.Input['DbClusterParamChangeLogArgs']]]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbCluster resources.
 
@@ -216,218 +216,218 @@ class _DbClusterState:
 
     @_builtins.property
     @pulumi.getter(name="cacheSize")
-    def cache_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cache_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The desired cache size on creating cluster. The number should be divided by 100.
         """
         return pulumi.get(self, "cache_size")
 
     @cache_size.setter
-    def cache_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cache_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cache_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The cpu resource amount of DBCluster. Depends on `db_cluster_class`.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when DBCluster is created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterClass")
-    def db_cluster_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DBCluster class. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         """
         return pulumi.get(self, "db_cluster_class")
 
     @db_cluster_class.setter
-    def db_cluster_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_class", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterDescription")
-    def db_cluster_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DBCluster description.
         """
         return pulumi.get(self, "db_cluster_description")
 
     @db_cluster_description.setter
-    def db_cluster_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_description", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterId")
-    def db_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the cluster.
         """
         return pulumi.get(self, "db_cluster_id")
 
     @db_cluster_id.setter
-    def db_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The InstanceId of DBInstance for DBCluster. Every DBCluster requires one DBInstance to rely on.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredParams")
-    def desired_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDesiredParamArgs']]]]:
+    def desired_params(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DbClusterDesiredParamArgs']]]]:
         """
         The modified parameter in DBCluster. See `desired_params` below.
         """
         return pulumi.get(self, "desired_params")
 
     @desired_params.setter
-    def desired_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDesiredParamArgs']]]]):
+    def desired_params(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DbClusterDesiredParamArgs']]]]):
         pulumi.set(self, "desired_params", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredStatus")
-    def desired_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired status for the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
         """
         return pulumi.get(self, "desired_status")
 
     @desired_status.setter
-    def desired_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The engine of DBCluster. Always `selectdb`.
         """
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of DBCluster.
         """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The memory resource amount of DBCluster. Depends on `db_cluster_class`.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter(name="paramChangeLogs")
-    def param_change_logs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterParamChangeLogArgs']]]]:
+    def param_change_logs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DbClusterParamChangeLogArgs']]]]:
         """
         The details about parameter changelogs in DBCluster returned.
         """
         return pulumi.get(self, "param_change_logs")
 
     @param_change_logs.setter
-    def param_change_logs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterParamChangeLogArgs']]]]):
+    def param_change_logs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DbClusterParamChangeLogArgs']]]]):
         pulumi.set(self, "param_change_logs", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of region for the cluster.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC for the cluster.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of zone for the cluster.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -437,13 +437,13 @@ class DbCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cache_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_cluster_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_params: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict']]]]] = None,
-                 desired_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict']]]]] = None,
+                 desired_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a SelectDB DBCluster resource.
@@ -578,13 +578,13 @@ class DbCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cache_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_cluster_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_params: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict']]]]] = None,
-                 desired_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict']]]]] = None,
+                 desired_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -632,24 +632,24 @@ class DbCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cache_size: Optional[pulumi.Input[_builtins.int]] = None,
-            cpu: Optional[pulumi.Input[_builtins.int]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_class: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_description: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_params: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict']]]]] = None,
-            desired_status: Optional[pulumi.Input[_builtins.str]] = None,
-            engine: Optional[pulumi.Input[_builtins.str]] = None,
-            engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-            memory: Optional[pulumi.Input[_builtins.int]] = None,
-            param_change_logs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbClusterParamChangeLogArgs', 'DbClusterParamChangeLogArgsDict']]]]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DbCluster':
+            cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterDesiredParamArgs', 'DbClusterDesiredParamArgsDict']]]]] = None,
+            desired_status: pulumi.Input[Optional[_builtins.str]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            memory: pulumi.Input[Optional[_builtins.int]] = None,
+            param_change_logs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbClusterParamChangeLogArgs', 'DbClusterParamChangeLogArgsDict']]]]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DbCluster':
         """
         Get an existing DbCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

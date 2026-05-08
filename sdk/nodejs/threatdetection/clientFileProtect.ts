@@ -163,35 +163,35 @@ export interface ClientFileProtectState {
     /**
      * 0 no alert 1 info 2 suspicious 3 critical.
      */
-    alertLevel?: pulumi.Input<number>;
+    alertLevel?: pulumi.Input<number | undefined>;
     /**
      * file operation.
      */
-    fileOps?: pulumi.Input<pulumi.Input<string>[]>;
+    fileOps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * file path.
      */
-    filePaths?: pulumi.Input<pulumi.Input<string>[]>;
+    filePaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * process path.
      */
-    procPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    procPaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * rule action, pass or alert.
      */
-    ruleAction?: pulumi.Input<string>;
+    ruleAction?: pulumi.Input<string | undefined>;
     /**
      * ruleName.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * rule status 0 is disable 1 is enable.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
     /**
      * switch id.
      */
-    switchId?: pulumi.Input<string>;
+    switchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -201,7 +201,7 @@ export interface ClientFileProtectArgs {
     /**
      * 0 no alert 1 info 2 suspicious 3 critical.
      */
-    alertLevel?: pulumi.Input<number>;
+    alertLevel?: pulumi.Input<number | undefined>;
     /**
      * file operation.
      */
@@ -225,9 +225,9 @@ export interface ClientFileProtectArgs {
     /**
      * rule status 0 is disable 1 is enable.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
     /**
      * switch id.
      */
-    switchId?: pulumi.Input<string>;
+    switchId?: pulumi.Input<string | undefined>;
 }

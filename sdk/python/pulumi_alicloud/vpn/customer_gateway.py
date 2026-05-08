@@ -20,11 +20,11 @@ __all__ = ['CustomerGatewayArgs', 'CustomerGateway']
 class CustomerGatewayArgs:
     def __init__(__self__, *,
                  ip_address: pulumi.Input[_builtins.str],
-                 asn: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 asn: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CustomerGateway resource.
 
@@ -66,56 +66,56 @@ class CustomerGatewayArgs:
 
     @_builtins.property
     @pulumi.getter
-    def asn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def asn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Asn.
         """
         return pulumi.get(self, "asn")
 
     @asn.setter
-    def asn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def asn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "asn", value)
 
     @_builtins.property
     @pulumi.getter(name="customerGatewayName")
-    def customer_gateway_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_gateway_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the customer gateway.
         """
         return pulumi.get(self, "customer_gateway_name")
 
     @customer_gateway_name.setter
-    def customer_gateway_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_gateway_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_gateway_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the customer gateway.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         tag.
 
@@ -124,20 +124,20 @@ class CustomerGatewayArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _CustomerGatewayState:
     def __init__(__self__, *,
-                 asn: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 customer_gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 asn: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 customer_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CustomerGateway resources.
 
@@ -171,80 +171,80 @@ class _CustomerGatewayState:
 
     @_builtins.property
     @pulumi.getter
-    def asn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def asn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Asn.
         """
         return pulumi.get(self, "asn")
 
     @asn.setter
-    def asn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def asn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "asn", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when the customer gateway was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customerGatewayName")
-    def customer_gateway_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_gateway_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the customer gateway.
         """
         return pulumi.get(self, "customer_gateway_name")
 
     @customer_gateway_name.setter
-    def customer_gateway_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_gateway_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_gateway_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the customer gateway.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the customer gateway.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         tag.
 
@@ -253,7 +253,7 @@ class _CustomerGatewayState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -263,12 +263,12 @@ class CustomerGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 asn: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 asn: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a VPN customer gateway resource.
@@ -380,12 +380,12 @@ class CustomerGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 asn: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 asn: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -414,13 +414,13 @@ class CustomerGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            asn: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            customer_gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'CustomerGateway':
+            asn: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            customer_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'CustomerGateway':
         """
         Get an existing CustomerGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -234,49 +234,49 @@ export interface ScheduledScalingRuleState {
      *
      * > **NOTE:** The parameter value must be at least 15 minutes.
      */
-    durationMinutes?: pulumi.Input<number>;
+    durationMinutes?: pulumi.Input<number | undefined>;
     /**
      * Enables or disables the scheduled task policy. Valid values:
      */
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
     /**
      * The time when the scheduled policy starts to execute.
      */
-    firstScheduledTime?: pulumi.Input<number>;
+    firstScheduledTime?: pulumi.Input<number | undefined>;
     /**
      * The instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * When `scheduleType` is `repeat`, the parameter is required. Valid values:
      * -`Daily`: Daily scheduled task.
      * -`Weekly`: Weekly scheduled task.
      */
-    repeatType?: pulumi.Input<string>;
+    repeatType?: pulumi.Input<string | undefined>;
     /**
      * The scheduled elastic reserved production specification (unit: MB/s).
      */
-    reservedPubFlow?: pulumi.Input<number>;
+    reservedPubFlow?: pulumi.Input<number | undefined>;
     /**
      * The scheduled elastic reserved consumption specification (unit: MB/s).
      */
-    reservedSubFlow?: pulumi.Input<number>;
+    reservedSubFlow?: pulumi.Input<number | undefined>;
     /**
      * The name of the scheduled policy rule.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The schedule type. Valid values:
      */
-    scheduleType?: pulumi.Input<string>;
+    scheduleType?: pulumi.Input<string | undefined>;
     /**
      * The time zone (Coordinated Universal Time).
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
      * The weekly types. Supports execution on multiple days. When `repeatType` is set to `Weekly`, you need to input this parameter. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
      */
-    weeklyTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    weeklyTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -292,7 +292,7 @@ export interface ScheduledScalingRuleArgs {
     /**
      * Enables or disables the scheduled task policy. Valid values:
      */
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
     /**
      * The time when the scheduled policy starts to execute.
      */
@@ -306,7 +306,7 @@ export interface ScheduledScalingRuleArgs {
      * -`Daily`: Daily scheduled task.
      * -`Weekly`: Weekly scheduled task.
      */
-    repeatType?: pulumi.Input<string>;
+    repeatType?: pulumi.Input<string | undefined>;
     /**
      * The scheduled elastic reserved production specification (unit: MB/s).
      */
@@ -330,5 +330,5 @@ export interface ScheduledScalingRuleArgs {
     /**
      * The weekly types. Supports execution on multiple days. When `repeatType` is set to `Weekly`, you need to input this parameter. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
      */
-    weeklyTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    weeklyTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -21,7 +21,7 @@ class RoutineRelatedRecordArgs:
     def __init__(__self__, *,
                  record_name: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RoutineRelatedRecord resource.
 
@@ -60,24 +60,24 @@ class RoutineRelatedRecordArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The routine name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _RoutineRelatedRecordState:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 record_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RoutineRelatedRecord resources.
 
@@ -97,50 +97,50 @@ class _RoutineRelatedRecordState:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The routine name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="recordId")
-    def record_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def record_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The record ID.
         """
         return pulumi.get(self, "record_id")
 
     @record_id.setter
-    def record_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def record_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "record_id", value)
 
     @_builtins.property
     @pulumi.getter(name="recordName")
-    def record_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def record_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The record name.
         """
         return pulumi.get(self, "record_name")
 
     @record_name.setter
-    def record_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def record_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "record_name", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The website ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
 
@@ -150,9 +150,9 @@ class RoutineRelatedRecord(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Routine Related Record resource.
@@ -261,9 +261,9 @@ class RoutineRelatedRecord(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -291,10 +291,10 @@ class RoutineRelatedRecord(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            record_id: Optional[pulumi.Input[_builtins.int]] = None,
-            record_name: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RoutineRelatedRecord':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            record_id: pulumi.Input[Optional[_builtins.int]] = None,
+            record_name: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RoutineRelatedRecord':
         """
         Get an existing RoutineRelatedRecord resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

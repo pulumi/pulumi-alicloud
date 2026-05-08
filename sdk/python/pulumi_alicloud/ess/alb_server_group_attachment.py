@@ -23,7 +23,7 @@ class AlbServerGroupAttachmentArgs:
                  port: pulumi.Input[_builtins.int],
                  scaling_group_id: pulumi.Input[_builtins.str],
                  weight: pulumi.Input[_builtins.int],
-                 force_attach: Optional[pulumi.Input[_builtins.bool]] = None):
+                 force_attach: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AlbServerGroupAttachment resource.
 
@@ -91,7 +91,7 @@ class AlbServerGroupAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="forceAttach")
-    def force_attach(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_attach(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If instances of scaling group are attached/removed from slb backend server when attach/detach alb
         server group from scaling group. Default to false.
@@ -99,18 +99,18 @@ class AlbServerGroupAttachmentArgs:
         return pulumi.get(self, "force_attach")
 
     @force_attach.setter
-    def force_attach(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_attach(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_attach", value)
 
 
 @pulumi.input_type
 class _AlbServerGroupAttachmentState:
     def __init__(__self__, *,
-                 alb_server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_attach: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 alb_server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_attach: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AlbServerGroupAttachment resources.
 
@@ -134,19 +134,19 @@ class _AlbServerGroupAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="albServerGroupId")
-    def alb_server_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alb_server_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of Alb Server Group.
         """
         return pulumi.get(self, "alb_server_group_id")
 
     @alb_server_group_id.setter
-    def alb_server_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alb_server_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alb_server_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="forceAttach")
-    def force_attach(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_attach(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If instances of scaling group are attached/removed from slb backend server when attach/detach alb
         server group from scaling group. Default to false.
@@ -154,43 +154,43 @@ class _AlbServerGroupAttachmentState:
         return pulumi.get(self, "force_attach")
 
     @force_attach.setter
-    def force_attach(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_attach(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_attach", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port will be used for Alb Server Group backend server.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the scaling group.
         """
         return pulumi.get(self, "scaling_group_id")
 
     @scaling_group_id.setter
-    def scaling_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight of an ECS instance attached to the Alb Server Group.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
@@ -200,11 +200,11 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alb_server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_attach: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 alb_server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_attach: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Attaches/Detaches alb server group to a specified scaling group.
@@ -238,7 +238,7 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=4)
+            memory_size=float(4))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -345,7 +345,7 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=4)
+            memory_size=float(4))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -420,11 +420,11 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alb_server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_attach: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 alb_server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_attach: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -457,11 +457,11 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alb_server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            force_attach: Optional[pulumi.Input[_builtins.bool]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            weight: Optional[pulumi.Input[_builtins.int]] = None) -> 'AlbServerGroupAttachment':
+            alb_server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            force_attach: pulumi.Input[Optional[_builtins.bool]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> 'AlbServerGroupAttachment':
         """
         Get an existing AlbServerGroupAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

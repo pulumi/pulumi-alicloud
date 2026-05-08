@@ -44,8 +44,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetAlertResourceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -91,8 +91,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetAlertResourceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -138,8 +138,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetAlertResourceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -185,8 +185,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetAlertResourceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -232,8 +232,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetAlertResourceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -277,8 +277,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -322,8 +322,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -367,8 +367,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -412,8 +412,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -457,8 +457,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -502,8 +502,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -547,8 +547,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -592,8 +592,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -636,8 +636,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -680,8 +680,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -724,8 +724,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -768,8 +768,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -812,8 +812,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -856,8 +856,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -900,8 +900,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetStoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -946,8 +946,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetStoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -992,8 +992,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetStoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1038,8 +1038,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetStoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1084,8 +1084,8 @@ public final class LogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.log.LogFunctions;
      * import com.pulumi.alicloud.log.inputs.GetStoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

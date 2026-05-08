@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Oos
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Oos
     ///         },
     ///     });
     /// 
-    ///     var defaultGetRegions = AliCloud.Index.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Apig
     ///             VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         },
     ///         PaymentType = "PayAsYouGo",
-    ///         GatewayName = Std.Index.Format.Invoke(new()
+    ///         GatewayName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s2",
     ///             Args = new[]

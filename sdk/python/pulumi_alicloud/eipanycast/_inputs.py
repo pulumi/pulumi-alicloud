@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 class AnycastEipAddressAttachmentPopLocationArgsDict(TypedDict):
-    pop_location: NotRequired[pulumi.Input[_builtins.str]]
+    pop_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
     """
@@ -28,7 +28,7 @@ class AnycastEipAddressAttachmentPopLocationArgsDict(TypedDict):
 @pulumi.input_type
 class AnycastEipAddressAttachmentPopLocationArgs:
     def __init__(__self__, *,
-                 pop_location: Optional[pulumi.Input[_builtins.str]] = None):
+                 pop_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] pop_location: The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
         """
@@ -37,14 +37,14 @@ class AnycastEipAddressAttachmentPopLocationArgs:
 
     @_builtins.property
     @pulumi.getter(name="popLocation")
-    def pop_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pop_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
         """
         return pulumi.get(self, "pop_location")
 
     @pop_location.setter
-    def pop_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pop_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pop_location", value)
 
 

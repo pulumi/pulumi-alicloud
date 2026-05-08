@@ -208,31 +208,31 @@ export interface SolutionInstanceState {
     /**
      * Solution Instance Creation Time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Solution Instance Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Solution Instance Creation Parameters. See `parameters` below.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.ebs.SolutionInstanceParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.ebs.SolutionInstanceParameter>[] | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Solution ID.
      */
-    solutionId?: pulumi.Input<string>;
+    solutionId?: pulumi.Input<string | undefined>;
     /**
      * Solution Instance Name.
      */
-    solutionInstanceName?: pulumi.Input<string>;
+    solutionInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -242,15 +242,15 @@ export interface SolutionInstanceArgs {
     /**
      * Solution Instance Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Solution Instance Creation Parameters. See `parameters` below.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.ebs.SolutionInstanceParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.ebs.SolutionInstanceParameter>[] | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Solution ID.
      */
@@ -258,5 +258,5 @@ export interface SolutionInstanceArgs {
     /**
      * Solution Instance Name.
      */
-    solutionInstanceName?: pulumi.Input<string>;
+    solutionInstanceName?: pulumi.Input<string | undefined>;
 }

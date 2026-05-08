@@ -23,7 +23,7 @@ class RealTimeLogDeliveryArgs:
                  logstore: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  sls_region: pulumi.Input[_builtins.str],
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RealTimeLogDelivery resource.
 
@@ -98,7 +98,7 @@ class RealTimeLogDeliveryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attribute fields that represent the status of the resource.
 
@@ -109,18 +109,18 @@ class RealTimeLogDeliveryArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _RealTimeLogDeliveryState:
     def __init__(__self__, *,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RealTimeLogDelivery resources.
 
@@ -149,19 +149,19 @@ class _RealTimeLogDeliveryState:
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def logstore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logstore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
 
@@ -170,36 +170,36 @@ class _RealTimeLogDeliveryState:
         return pulumi.get(self, "logstore")
 
     @logstore.setter
-    def logstore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logstore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logstore", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="slsRegion")
-    def sls_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
         """
         return pulumi.get(self, "sls_region")
 
     @sls_region.setter
-    def sls_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_region", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attribute fields that represent the status of the resource.
 
@@ -210,7 +210,7 @@ class _RealTimeLogDeliveryState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -220,11 +220,11 @@ class RealTimeLogDelivery(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CDN Real Time Log Delivery resource.
@@ -383,11 +383,11 @@ class RealTimeLogDelivery(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -420,11 +420,11 @@ class RealTimeLogDelivery(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            logstore: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            sls_region: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'RealTimeLogDelivery':
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            logstore: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_region: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'RealTimeLogDelivery':
         """
         Get an existing RealTimeLogDelivery resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

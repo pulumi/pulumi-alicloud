@@ -98,9 +98,9 @@ export interface GetZonesOutputArgs {
     /**
      * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Gpdb instances.
      */
-    multi?: pulumi.Input<boolean>;
+    multi?: pulumi.Input<boolean | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

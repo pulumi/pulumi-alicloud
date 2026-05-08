@@ -20,9 +20,9 @@ __all__ = ['WorkspaceRunArgs', 'WorkspaceRun']
 class WorkspaceRunArgs:
     def __init__(__self__, *,
                  experiment_id: pulumi.Input[_builtins.str],
-                 run_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 run_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceRun resource.
 
@@ -53,49 +53,49 @@ class WorkspaceRunArgs:
 
     @_builtins.property
     @pulumi.getter(name="runName")
-    def run_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "run_name")
 
     @run_name.setter
-    def run_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceId")
-    def source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Attribute Resource field representing the source task ID
         """
         return pulumi.get(self, "source_id")
 
     @source_id.setter
-    def source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attribute fields representing the source type
         """
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
 
 @pulumi.input_type
 class _WorkspaceRunState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceRun resources.
 
@@ -118,62 +118,62 @@ class _WorkspaceRunState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="experimentId")
-    def experiment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def experiment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attribute field of the experiment ID to which Run belongs
         """
         return pulumi.get(self, "experiment_id")
 
     @experiment_id.setter
-    def experiment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def experiment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "experiment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="runName")
-    def run_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "run_name")
 
     @run_name.setter
-    def run_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceId")
-    def source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Attribute Resource field representing the source task ID
         """
         return pulumi.get(self, "source_id")
 
     @source_id.setter
-    def source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attribute fields representing the source type
         """
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
 
@@ -183,10 +183,10 @@ class WorkspaceRun(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a PAI Workspace Run resource.
@@ -314,10 +314,10 @@ class WorkspaceRun(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -344,11 +344,11 @@ class WorkspaceRun(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            run_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkspaceRun':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            run_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceRun':
         """
         Get an existing WorkspaceRun resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

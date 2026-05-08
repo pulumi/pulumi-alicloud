@@ -24,7 +24,7 @@ class DataSourceArgs:
                  data_source_name: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.int],
                  type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataSource resource.
 
@@ -105,32 +105,32 @@ class DataSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the data source
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _DataSourceState:
     def __init__(__self__, *,
-                 connection_properties: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_properties_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 modify_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 qualified_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_properties: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_properties_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 modify_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 qualified_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataSource resources.
 
@@ -174,146 +174,146 @@ class _DataSourceState:
 
     @_builtins.property
     @pulumi.getter(name="connectionProperties")
-    def connection_properties(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_properties(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data source connection configuration information, including the connection address, access identity, and environment information. The data source environment EnvType information is a member property of this object, including DEV (Development Environment) and PROD (production environment). The value of EnvType is not case-sensitive.
         """
         return pulumi.get(self, "connection_properties")
 
     @connection_properties.setter
-    def connection_properties(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_properties(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_properties", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionPropertiesMode")
-    def connection_properties_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_properties_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration mode of the data source. Different types of data sources have different configuration modes. For example, MySQL data sources support UrlMode and InstanceMode.
         """
         return pulumi.get(self, "connection_properties_mode")
 
     @connection_properties_mode.setter
-    def connection_properties_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_properties_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_properties_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="createUser")
-    def create_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creator of the data source
         """
         return pulumi.get(self, "create_user")
 
     @create_user.setter
-    def create_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_user", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
-    def data_source_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_source_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "data_source_id")
 
     @data_source_id.setter
-    def data_source_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_source_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceName")
-    def data_source_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source name. The name of a data source in a specific environment (development environment or production environment) is unique in a project.
         """
         return pulumi.get(self, "data_source_name")
 
     @data_source_name.setter
-    def data_source_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the data source
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyTime")
-    def modify_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def modify_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Modification time
         """
         return pulumi.get(self, "modify_time")
 
     @modify_time.setter
-    def modify_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def modify_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "modify_time", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyUser")
-    def modify_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Modifier of the data source
         """
         return pulumi.get(self, "modify_user")
 
     @modify_user.setter
-    def modify_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_user", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the project to which the data source belongs.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="qualifiedName")
-    def qualified_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qualified_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Business Unique Key of Data Source
         """
         return pulumi.get(self, "qualified_name")
 
     @qualified_name.setter
-    def qualified_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qualified_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qualified_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of data source. For a list of data source types, see the values listed in the API documentation.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -323,12 +323,12 @@ class DataSource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_properties: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_properties_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_properties: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_properties_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Data Works Data Source resource.
@@ -384,7 +384,7 @@ class DataSource(pulumi.CustomResource):
                 },
             }),
             connection_properties_mode="UrlMode",
-            project_id=defaultkguw4_r.id,
+            project_id=defaultkguw4_r.id.apply(lambda x: int(x)),
             description=name)
         ```
 
@@ -468,7 +468,7 @@ class DataSource(pulumi.CustomResource):
                 },
             }),
             connection_properties_mode="UrlMode",
-            project_id=defaultkguw4_r.id,
+            project_id=defaultkguw4_r.id.apply(lambda x: int(x)),
             description=name)
         ```
 
@@ -498,12 +498,12 @@ class DataSource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_properties: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_properties_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_properties: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_properties_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -547,18 +547,18 @@ class DataSource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_properties: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_properties_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            create_user: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_id: Optional[pulumi.Input[_builtins.int]] = None,
-            data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_time: Optional[pulumi.Input[_builtins.int]] = None,
-            modify_user: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.int]] = None,
-            qualified_name: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'DataSource':
+            connection_properties: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_properties_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            create_user: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.int]] = None,
+            data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_time: pulumi.Input[Optional[_builtins.int]] = None,
+            modify_user: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.int]] = None,
+            qualified_name: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'DataSource':
         """
         Get an existing DataSource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

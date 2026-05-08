@@ -152,23 +152,23 @@ export interface AuditCallbackState {
     /**
      * The AuditCallback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
      */
-    auditCallbackName?: pulumi.Input<string>;
+    auditCallbackName?: pulumi.Input<string | undefined>;
     /**
      * List of audit results supported by message notification. Value: block: confirmed violation, review: Suspected violation, review: normal.
      */
-    callbackSuggestions?: pulumi.Input<pulumi.Input<string>[]>;
+    callbackSuggestions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of Callback types. Value: machineScan: Machine audit result notification, selfAudit: self-service audit notification.
      */
-    callbackTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    callbackTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The encryption algorithm is used to verify that the callback request is sent by the content security service to your business service. The value is SHA256:SHA256 encryption algorithm and SM3: SM3 encryption algorithm.
      */
-    cryptType?: pulumi.Input<string>;
+    cryptType?: pulumi.Input<string | undefined>;
     /**
      * The detection result will be called back to the url.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**

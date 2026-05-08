@@ -21,14 +21,14 @@ class BgpGroupArgs:
     def __init__(__self__, *,
                  peer_asn: pulumi.Input[_builtins.int],
                  router_id: pulumi.Input[_builtins.str],
-                 auth_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 bgp_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 clear_auth_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_fake_asn: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 route_limit: Optional[pulumi.Input[_builtins.int]] = None):
+                 auth_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 bgp_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 clear_auth_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_fake_asn: pulumi.Input[Optional[_builtins.bool]] = None,
+                 local_asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 route_limit: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a BgpGroup resource.
 
@@ -92,55 +92,55 @@ class BgpGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="authKey")
-    def auth_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The authentication key of the BGP group.
         """
         return pulumi.get(self, "auth_key")
 
     @auth_key.setter
-    def auth_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_key", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpGroupName")
-    def bgp_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bgp_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "bgp_group_name")
 
     @bgp_group_name.setter
-    def bgp_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bgp_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bgp_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clearAuthKey")
-    def clear_auth_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def clear_auth_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to clear the secret key. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "clear_auth_key")
 
     @clear_auth_key.setter
-    def clear_auth_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def clear_auth_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "clear_auth_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP version. Valid values:
         - `IPv4`: This is the default value.
@@ -149,12 +149,12 @@ class BgpGroupArgs:
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="isFakeAsn")
-    def is_fake_asn(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_fake_asn(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use a fake AS number. Valid values: `true`, `false`.
 
@@ -163,49 +163,49 @@ class BgpGroupArgs:
         return pulumi.get(self, "is_fake_asn")
 
     @is_fake_asn.setter
-    def is_fake_asn(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_fake_asn(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_fake_asn", value)
 
     @_builtins.property
     @pulumi.getter(name="localAsn")
-    def local_asn(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def local_asn(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The custom ASN on the Alibaba Cloud side. Valid values:
         """
         return pulumi.get(self, "local_asn")
 
     @local_asn.setter
-    def local_asn(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def local_asn(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "local_asn", value)
 
     @_builtins.property
     @pulumi.getter(name="routeLimit")
-    def route_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def route_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of routes supported by a BGP peer. Default value: 110.
         """
         return pulumi.get(self, "route_limit")
 
     @route_limit.setter
-    def route_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def route_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "route_limit", value)
 
 
 @pulumi.input_type
 class _BgpGroupState:
     def __init__(__self__, *,
-                 auth_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 bgp_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 clear_auth_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_fake_asn: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 bgp_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 clear_auth_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_fake_asn: pulumi.Input[Optional[_builtins.bool]] = None,
+                 local_asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpGroup resources.
 
@@ -253,55 +253,55 @@ class _BgpGroupState:
 
     @_builtins.property
     @pulumi.getter(name="authKey")
-    def auth_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The authentication key of the BGP group.
         """
         return pulumi.get(self, "auth_key")
 
     @auth_key.setter
-    def auth_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_key", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpGroupName")
-    def bgp_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bgp_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "bgp_group_name")
 
     @bgp_group_name.setter
-    def bgp_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bgp_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bgp_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clearAuthKey")
-    def clear_auth_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def clear_auth_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to clear the secret key. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "clear_auth_key")
 
     @clear_auth_key.setter
-    def clear_auth_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def clear_auth_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "clear_auth_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP version. Valid values:
         - `IPv4`: This is the default value.
@@ -310,12 +310,12 @@ class _BgpGroupState:
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="isFakeAsn")
-    def is_fake_asn(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_fake_asn(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use a fake AS number. Valid values: `true`, `false`.
 
@@ -324,79 +324,79 @@ class _BgpGroupState:
         return pulumi.get(self, "is_fake_asn")
 
     @is_fake_asn.setter
-    def is_fake_asn(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_fake_asn(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_fake_asn", value)
 
     @_builtins.property
     @pulumi.getter(name="localAsn")
-    def local_asn(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def local_asn(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The custom ASN on the Alibaba Cloud side. Valid values:
         """
         return pulumi.get(self, "local_asn")
 
     @local_asn.setter
-    def local_asn(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def local_asn(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "local_asn", value)
 
     @_builtins.property
     @pulumi.getter(name="peerAsn")
-    def peer_asn(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def peer_asn(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ASN of the gateway device in the data center.
         """
         return pulumi.get(self, "peer_asn")
 
     @peer_asn.setter
-    def peer_asn(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def peer_asn(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "peer_asn", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Region ID of the BGP group.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routeLimit")
-    def route_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def route_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of routes supported by a BGP peer. Default value: 110.
         """
         return pulumi.get(self, "route_limit")
 
     @route_limit.setter
-    def route_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def route_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "route_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual border router (VBR) that is associated with the BGP group.
         """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
-    def router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -406,16 +406,16 @@ class BgpGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 bgp_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 clear_auth_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_fake_asn: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 route_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 bgp_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 clear_auth_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_fake_asn: pulumi.Input[Optional[_builtins.bool]] = None,
+                 local_asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 route_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Express Connect Bgp Group resource.
@@ -447,7 +447,7 @@ class BgpGroup(pulumi.CustomResource):
             peering_subnet_mask="255.255.255.252",
             physical_connection_id=example.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id["id"],
+            vlan_id=int(vlan_id["id"]),
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
@@ -524,7 +524,7 @@ class BgpGroup(pulumi.CustomResource):
             peering_subnet_mask="255.255.255.252",
             physical_connection_id=example.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id["id"],
+            vlan_id=int(vlan_id["id"]),
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
@@ -563,16 +563,16 @@ class BgpGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 bgp_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 clear_auth_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_fake_asn: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_asn: Optional[pulumi.Input[_builtins.int]] = None,
-                 route_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 bgp_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 clear_auth_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_fake_asn: pulumi.Input[Optional[_builtins.bool]] = None,
+                 local_asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_asn: pulumi.Input[Optional[_builtins.int]] = None,
+                 route_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -608,18 +608,18 @@ class BgpGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_key: Optional[pulumi.Input[_builtins.str]] = None,
-            bgp_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            clear_auth_key: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-            is_fake_asn: Optional[pulumi.Input[_builtins.bool]] = None,
-            local_asn: Optional[pulumi.Input[_builtins.int]] = None,
-            peer_asn: Optional[pulumi.Input[_builtins.int]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            route_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'BgpGroup':
+            auth_key: pulumi.Input[Optional[_builtins.str]] = None,
+            bgp_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            clear_auth_key: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            is_fake_asn: pulumi.Input[Optional[_builtins.bool]] = None,
+            local_asn: pulumi.Input[Optional[_builtins.int]] = None,
+            peer_asn: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'BgpGroup':
         """
         Get an existing BgpGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

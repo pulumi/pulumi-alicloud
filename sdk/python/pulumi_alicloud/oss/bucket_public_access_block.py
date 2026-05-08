@@ -58,8 +58,8 @@ class BucketPublicAccessBlockArgs:
 @pulumi.input_type
 class _BucketPublicAccessBlockState:
     def __init__(__self__, *,
-                 block_public_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None):
+                 block_public_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketPublicAccessBlock resources.
 
@@ -73,26 +73,26 @@ class _BucketPublicAccessBlockState:
 
     @_builtins.property
     @pulumi.getter(name="blockPublicAccess")
-    def block_public_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def block_public_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether AlibabaCloud OSS should block public bucket policies and ACL for this bucket.
         """
         return pulumi.get(self, "block_public_access")
 
     @block_public_access.setter
-    def block_public_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def block_public_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "block_public_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
 
@@ -102,8 +102,8 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 block_public_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
+                 block_public_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a OSS Bucket Public Access Block resource. Blocking public access at the bucket-level.
@@ -215,8 +215,8 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 block_public_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
+                 block_public_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -242,8 +242,8 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            block_public_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None) -> 'BucketPublicAccessBlock':
+            block_public_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None) -> 'BucketPublicAccessBlock':
         """
         Get an existing BucketPublicAccessBlock resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

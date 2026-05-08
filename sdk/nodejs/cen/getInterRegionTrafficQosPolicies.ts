@@ -174,31 +174,31 @@ export interface GetInterRegionTrafficQosPoliciesOutputArgs {
     /**
      * A list of Inter Region Traffic Qos Policy IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Inter Region Traffic Qos Policy name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the traffic scheduling policy. Valid Value: `Creating`, `Active`, `Modifying`, `Deleting`, `Deleted`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The description of the QoS policy.
      */
-    trafficQosPolicyDescription?: pulumi.Input<string>;
+    trafficQosPolicyDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the QoS policy.
      */
-    trafficQosPolicyId?: pulumi.Input<string>;
+    trafficQosPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The name of the QoS policy.
      */
-    trafficQosPolicyName?: pulumi.Input<string>;
+    trafficQosPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the inter-region connection.
      */

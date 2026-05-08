@@ -103,13 +103,13 @@ class RouteEntryArgs:
 @pulumi.input_type
 class _RouteEntryState:
     def __init__(__self__, *,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish_vpc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_dest: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_entry_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_dest: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_entry_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RouteEntry resources.
 
@@ -138,86 +138,86 @@ class _RouteEntryState:
 
     @_builtins.property
     @pulumi.getter(name="nextHop")
-    def next_hop(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The next hop of the destination route.
         """
         return pulumi.get(self, "next_hop")
 
     @next_hop.setter
-    def next_hop(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop", value)
 
     @_builtins.property
     @pulumi.getter(name="publishVpc")
-    def publish_vpc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def publish_vpc(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to issue the destination route to the VPC.
         """
         return pulumi.get(self, "publish_vpc")
 
     @publish_vpc.setter
-    def publish_vpc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def publish_vpc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "publish_vpc", value)
 
     @_builtins.property
     @pulumi.getter(name="routeDest")
-    def route_dest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_dest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination network segment of the destination route.
         """
         return pulumi.get(self, "route_dest")
 
     @route_dest.setter
-    def route_dest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_dest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_dest", value)
 
     @_builtins.property
     @pulumi.getter(name="routeEntryType")
-    def route_entry_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_entry_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.161.0) The type of the vpn route entry.
         """
         return pulumi.get(self, "route_entry_type")
 
     @route_entry_type.setter
-    def route_entry_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_entry_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_entry_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.161.0) The status of the vpn route entry.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnGatewayId")
-    def vpn_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the vpn gateway.
         """
         return pulumi.get(self, "vpn_gateway_id")
 
     @vpn_gateway_id.setter
-    def vpn_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The value should be 0 or 100.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
@@ -227,11 +227,11 @@ class RouteEntry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish_vpc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_dest: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_dest: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a VPN Route Entry resource.
@@ -498,11 +498,11 @@ class RouteEntry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish_vpc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_dest: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_dest: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -539,13 +539,13 @@ class RouteEntry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-            publish_vpc: Optional[pulumi.Input[_builtins.bool]] = None,
-            route_dest: Optional[pulumi.Input[_builtins.str]] = None,
-            route_entry_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            weight: Optional[pulumi.Input[_builtins.int]] = None) -> 'RouteEntry':
+            next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+            publish_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
+            route_dest: pulumi.Input[Optional[_builtins.str]] = None,
+            route_entry_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> 'RouteEntry':
         """
         Get an existing RouteEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

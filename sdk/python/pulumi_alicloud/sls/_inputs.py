@@ -74,91 +74,91 @@ __all__ = [
 ]
 
 class AlertConfigurationArgsDict(TypedDict):
-    annotations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationAnnotationArgsDict']]]]
+    annotations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationAnnotationArgs']]]]]
     """
     Template Annotations.
     """
-    auto_annotation: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_annotation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to turn on automatic labeling. true (default): The automatic annotation function is enabled, and the system automatically adds information such as__county__to the alarm. For more information, see Automatic Labeling. false: Turn off the automatic annotation function.
     """
-    condition_configuration: NotRequired[pulumi.Input['AlertConfigurationConditionConfigurationArgsDict']]
+    condition_configuration: NotRequired[pulumi.Input[Optional['AlertConfigurationConditionConfigurationArgs']]]
     """
     Alarm trigger condition. See `condition_configuration` below.
     """
-    dashboard: NotRequired[pulumi.Input[_builtins.str]]
+    dashboard: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The instrument cluster associated with the alarm. It is recommended to set to internal-alert-analysis.
     """
-    group_configuration: NotRequired[pulumi.Input['AlertConfigurationGroupConfigurationArgsDict']]
+    group_configuration: NotRequired[pulumi.Input[Optional['AlertConfigurationGroupConfigurationArgs']]]
     """
     Group evaluation configuration. See `group_configuration` below.
     """
-    join_configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationJoinConfigurationArgsDict']]]]
+    join_configurations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationJoinConfigurationArgs']]]]]
     """
     Set operation configuration. See `join_configurations` below.
     """
-    labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationLabelArgsDict']]]]
+    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationLabelArgs']]]]]
     """
     Label. See `labels` below.
     """
-    mute_until: NotRequired[pulumi.Input[_builtins.int]]
+    mute_until: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Second-level timestamp representing the temporary shutdown deadline.
     """
-    no_data_fire: NotRequired[pulumi.Input[_builtins.bool]]
+    no_data_fire: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether no data triggers an alarm. true: If the number of times the query and analysis results (if there are multiple results, the result after the collection operation) is no data exceeds the continuous trigger threshold, an alarm is generated. false (default): Turn off the no data alarm function.
     """
-    no_data_severity: NotRequired[pulumi.Input[_builtins.int]]
+    no_data_severity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Alarm severity when no data triggers an alarm.
     """
-    policy_configuration: NotRequired[pulumi.Input['AlertConfigurationPolicyConfigurationArgsDict']]
+    policy_configuration: NotRequired[pulumi.Input[Optional['AlertConfigurationPolicyConfigurationArgs']]]
     """
     Alert policy configuration. See `policy_configuration` below.
     """
-    query_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationQueryListArgsDict']]]]
+    query_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationQueryListArgs']]]]]
     """
     Query the statistical list. See `query_list` below.
     """
-    send_resolved: NotRequired[pulumi.Input[_builtins.bool]]
+    send_resolved: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to send a recovery notification. true: A recovery alarm is triggered when the alarm is restored. false (default): Turn off the alarm recovery notification function.
     """
-    severity_configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationSeverityConfigurationArgsDict']]]]
+    severity_configurations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationSeverityConfigurationArgs']]]]]
     """
     Trigger condition, set at least one trigger condition. See `severity_configurations` below.
     """
-    sink_alerthub: NotRequired[pulumi.Input['AlertConfigurationSinkAlerthubArgsDict']]
+    sink_alerthub: NotRequired[pulumi.Input[Optional['AlertConfigurationSinkAlerthubArgs']]]
     """
     Configuration of Alerts Sent to Alerthub. See `sink_alerthub` below.
     """
-    sink_cms: NotRequired[pulumi.Input['AlertConfigurationSinkCmsArgsDict']]
+    sink_cms: NotRequired[pulumi.Input[Optional['AlertConfigurationSinkCmsArgs']]]
     """
     Configure alerts sent to CloudMonitor. See `sink_cms` below.
     """
-    sink_event_store: NotRequired[pulumi.Input['AlertConfigurationSinkEventStoreArgsDict']]
+    sink_event_store: NotRequired[pulumi.Input[Optional['AlertConfigurationSinkEventStoreArgs']]]
     """
     Configuration of sending alarms to EventStore. See `sink_event_store` below.
     """
-    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Customize the category of alarm monitoring rules.
     """
-    template_configuration: NotRequired[pulumi.Input['AlertConfigurationTemplateConfigurationArgsDict']]
+    template_configuration: NotRequired[pulumi.Input[Optional['AlertConfigurationTemplateConfigurationArgs']]]
     """
     Alarm rule template configuration. See `template_configuration` below.
     """
-    threshold: NotRequired[pulumi.Input[_builtins.int]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Set the continuous trigger threshold. When the cumulative number of triggers reaches this value, an alarm is generated. The statistics are not counted when the trigger condition is not met.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Template Type.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Template Version.
     """
@@ -166,28 +166,28 @@ class AlertConfigurationArgsDict(TypedDict):
 @pulumi.input_type
 class AlertConfigurationArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationAnnotationArgs']]]] = None,
-                 auto_annotation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 condition_configuration: Optional[pulumi.Input['AlertConfigurationConditionConfigurationArgs']] = None,
-                 dashboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_configuration: Optional[pulumi.Input['AlertConfigurationGroupConfigurationArgs']] = None,
-                 join_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationJoinConfigurationArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationLabelArgs']]]] = None,
-                 mute_until: Optional[pulumi.Input[_builtins.int]] = None,
-                 no_data_fire: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_data_severity: Optional[pulumi.Input[_builtins.int]] = None,
-                 policy_configuration: Optional[pulumi.Input['AlertConfigurationPolicyConfigurationArgs']] = None,
-                 query_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationQueryListArgs']]]] = None,
-                 send_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
-                 severity_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationSeverityConfigurationArgs']]]] = None,
-                 sink_alerthub: Optional[pulumi.Input['AlertConfigurationSinkAlerthubArgs']] = None,
-                 sink_cms: Optional[pulumi.Input['AlertConfigurationSinkCmsArgs']] = None,
-                 sink_event_store: Optional[pulumi.Input['AlertConfigurationSinkEventStoreArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_configuration: Optional[pulumi.Input['AlertConfigurationTemplateConfigurationArgs']] = None,
-                 threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationAnnotationArgs']]]] = None,
+                 auto_annotation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 condition_configuration: pulumi.Input[Optional['AlertConfigurationConditionConfigurationArgs']] = None,
+                 dashboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_configuration: pulumi.Input[Optional['AlertConfigurationGroupConfigurationArgs']] = None,
+                 join_configurations: pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationJoinConfigurationArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationLabelArgs']]]] = None,
+                 mute_until: pulumi.Input[Optional[_builtins.int]] = None,
+                 no_data_fire: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_data_severity: pulumi.Input[Optional[_builtins.int]] = None,
+                 policy_configuration: pulumi.Input[Optional['AlertConfigurationPolicyConfigurationArgs']] = None,
+                 query_lists: pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationQueryListArgs']]]] = None,
+                 send_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
+                 severity_configurations: pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationSeverityConfigurationArgs']]]] = None,
+                 sink_alerthub: pulumi.Input[Optional['AlertConfigurationSinkAlerthubArgs']] = None,
+                 sink_cms: pulumi.Input[Optional['AlertConfigurationSinkCmsArgs']] = None,
+                 sink_event_store: pulumi.Input[Optional['AlertConfigurationSinkEventStoreArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_configuration: pulumi.Input[Optional['AlertConfigurationTemplateConfigurationArgs']] = None,
+                 threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AlertConfigurationAnnotationArgs']]] annotations: Template Annotations.
         :param pulumi.Input[_builtins.bool] auto_annotation: Whether to turn on automatic labeling. true (default): The automatic annotation function is enabled, and the system automatically adds information such as__county__to the alarm. For more information, see Automatic Labeling. false: Turn off the automatic annotation function.
@@ -259,275 +259,275 @@ class AlertConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationAnnotationArgs']]]]:
+    def annotations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationAnnotationArgs']]]]:
         """
         Template Annotations.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationAnnotationArgs']]]]):
+    def annotations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationAnnotationArgs']]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="autoAnnotation")
-    def auto_annotation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_annotation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to turn on automatic labeling. true (default): The automatic annotation function is enabled, and the system automatically adds information such as__county__to the alarm. For more information, see Automatic Labeling. false: Turn off the automatic annotation function.
         """
         return pulumi.get(self, "auto_annotation")
 
     @auto_annotation.setter
-    def auto_annotation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_annotation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_annotation", value)
 
     @_builtins.property
     @pulumi.getter(name="conditionConfiguration")
-    def condition_configuration(self) -> Optional[pulumi.Input['AlertConfigurationConditionConfigurationArgs']]:
+    def condition_configuration(self) -> pulumi.Input[Optional['AlertConfigurationConditionConfigurationArgs']]:
         """
         Alarm trigger condition. See `condition_configuration` below.
         """
         return pulumi.get(self, "condition_configuration")
 
     @condition_configuration.setter
-    def condition_configuration(self, value: Optional[pulumi.Input['AlertConfigurationConditionConfigurationArgs']]):
+    def condition_configuration(self, value: pulumi.Input[Optional['AlertConfigurationConditionConfigurationArgs']]):
         pulumi.set(self, "condition_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def dashboard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instrument cluster associated with the alarm. It is recommended to set to internal-alert-analysis.
         """
         return pulumi.get(self, "dashboard")
 
     @dashboard.setter
-    def dashboard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard", value)
 
     @_builtins.property
     @pulumi.getter(name="groupConfiguration")
-    def group_configuration(self) -> Optional[pulumi.Input['AlertConfigurationGroupConfigurationArgs']]:
+    def group_configuration(self) -> pulumi.Input[Optional['AlertConfigurationGroupConfigurationArgs']]:
         """
         Group evaluation configuration. See `group_configuration` below.
         """
         return pulumi.get(self, "group_configuration")
 
     @group_configuration.setter
-    def group_configuration(self, value: Optional[pulumi.Input['AlertConfigurationGroupConfigurationArgs']]):
+    def group_configuration(self, value: pulumi.Input[Optional['AlertConfigurationGroupConfigurationArgs']]):
         pulumi.set(self, "group_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="joinConfigurations")
-    def join_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationJoinConfigurationArgs']]]]:
+    def join_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationJoinConfigurationArgs']]]]:
         """
         Set operation configuration. See `join_configurations` below.
         """
         return pulumi.get(self, "join_configurations")
 
     @join_configurations.setter
-    def join_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationJoinConfigurationArgs']]]]):
+    def join_configurations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationJoinConfigurationArgs']]]]):
         pulumi.set(self, "join_configurations", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationLabelArgs']]]]:
         """
         Label. See `labels` below.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="muteUntil")
-    def mute_until(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mute_until(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Second-level timestamp representing the temporary shutdown deadline.
         """
         return pulumi.get(self, "mute_until")
 
     @mute_until.setter
-    def mute_until(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mute_until(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mute_until", value)
 
     @_builtins.property
     @pulumi.getter(name="noDataFire")
-    def no_data_fire(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_data_fire(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether no data triggers an alarm. true: If the number of times the query and analysis results (if there are multiple results, the result after the collection operation) is no data exceeds the continuous trigger threshold, an alarm is generated. false (default): Turn off the no data alarm function.
         """
         return pulumi.get(self, "no_data_fire")
 
     @no_data_fire.setter
-    def no_data_fire(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_data_fire(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_data_fire", value)
 
     @_builtins.property
     @pulumi.getter(name="noDataSeverity")
-    def no_data_severity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def no_data_severity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Alarm severity when no data triggers an alarm.
         """
         return pulumi.get(self, "no_data_severity")
 
     @no_data_severity.setter
-    def no_data_severity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def no_data_severity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "no_data_severity", value)
 
     @_builtins.property
     @pulumi.getter(name="policyConfiguration")
-    def policy_configuration(self) -> Optional[pulumi.Input['AlertConfigurationPolicyConfigurationArgs']]:
+    def policy_configuration(self) -> pulumi.Input[Optional['AlertConfigurationPolicyConfigurationArgs']]:
         """
         Alert policy configuration. See `policy_configuration` below.
         """
         return pulumi.get(self, "policy_configuration")
 
     @policy_configuration.setter
-    def policy_configuration(self, value: Optional[pulumi.Input['AlertConfigurationPolicyConfigurationArgs']]):
+    def policy_configuration(self, value: pulumi.Input[Optional['AlertConfigurationPolicyConfigurationArgs']]):
         pulumi.set(self, "policy_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="queryLists")
-    def query_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationQueryListArgs']]]]:
+    def query_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationQueryListArgs']]]]:
         """
         Query the statistical list. See `query_list` below.
         """
         return pulumi.get(self, "query_lists")
 
     @query_lists.setter
-    def query_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationQueryListArgs']]]]):
+    def query_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationQueryListArgs']]]]):
         pulumi.set(self, "query_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="sendResolved")
-    def send_resolved(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_resolved(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to send a recovery notification. true: A recovery alarm is triggered when the alarm is restored. false (default): Turn off the alarm recovery notification function.
         """
         return pulumi.get(self, "send_resolved")
 
     @send_resolved.setter
-    def send_resolved(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_resolved(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_resolved", value)
 
     @_builtins.property
     @pulumi.getter(name="severityConfigurations")
-    def severity_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationSeverityConfigurationArgs']]]]:
+    def severity_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationSeverityConfigurationArgs']]]]:
         """
         Trigger condition, set at least one trigger condition. See `severity_configurations` below.
         """
         return pulumi.get(self, "severity_configurations")
 
     @severity_configurations.setter
-    def severity_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertConfigurationSeverityConfigurationArgs']]]]):
+    def severity_configurations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationSeverityConfigurationArgs']]]]):
         pulumi.set(self, "severity_configurations", value)
 
     @_builtins.property
     @pulumi.getter(name="sinkAlerthub")
-    def sink_alerthub(self) -> Optional[pulumi.Input['AlertConfigurationSinkAlerthubArgs']]:
+    def sink_alerthub(self) -> pulumi.Input[Optional['AlertConfigurationSinkAlerthubArgs']]:
         """
         Configuration of Alerts Sent to Alerthub. See `sink_alerthub` below.
         """
         return pulumi.get(self, "sink_alerthub")
 
     @sink_alerthub.setter
-    def sink_alerthub(self, value: Optional[pulumi.Input['AlertConfigurationSinkAlerthubArgs']]):
+    def sink_alerthub(self, value: pulumi.Input[Optional['AlertConfigurationSinkAlerthubArgs']]):
         pulumi.set(self, "sink_alerthub", value)
 
     @_builtins.property
     @pulumi.getter(name="sinkCms")
-    def sink_cms(self) -> Optional[pulumi.Input['AlertConfigurationSinkCmsArgs']]:
+    def sink_cms(self) -> pulumi.Input[Optional['AlertConfigurationSinkCmsArgs']]:
         """
         Configure alerts sent to CloudMonitor. See `sink_cms` below.
         """
         return pulumi.get(self, "sink_cms")
 
     @sink_cms.setter
-    def sink_cms(self, value: Optional[pulumi.Input['AlertConfigurationSinkCmsArgs']]):
+    def sink_cms(self, value: pulumi.Input[Optional['AlertConfigurationSinkCmsArgs']]):
         pulumi.set(self, "sink_cms", value)
 
     @_builtins.property
     @pulumi.getter(name="sinkEventStore")
-    def sink_event_store(self) -> Optional[pulumi.Input['AlertConfigurationSinkEventStoreArgs']]:
+    def sink_event_store(self) -> pulumi.Input[Optional['AlertConfigurationSinkEventStoreArgs']]:
         """
         Configuration of sending alarms to EventStore. See `sink_event_store` below.
         """
         return pulumi.get(self, "sink_event_store")
 
     @sink_event_store.setter
-    def sink_event_store(self, value: Optional[pulumi.Input['AlertConfigurationSinkEventStoreArgs']]):
+    def sink_event_store(self, value: pulumi.Input[Optional['AlertConfigurationSinkEventStoreArgs']]):
         pulumi.set(self, "sink_event_store", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Customize the category of alarm monitoring rules.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="templateConfiguration")
-    def template_configuration(self) -> Optional[pulumi.Input['AlertConfigurationTemplateConfigurationArgs']]:
+    def template_configuration(self) -> pulumi.Input[Optional['AlertConfigurationTemplateConfigurationArgs']]:
         """
         Alarm rule template configuration. See `template_configuration` below.
         """
         return pulumi.get(self, "template_configuration")
 
     @template_configuration.setter
-    def template_configuration(self, value: Optional[pulumi.Input['AlertConfigurationTemplateConfigurationArgs']]):
+    def template_configuration(self, value: pulumi.Input[Optional['AlertConfigurationTemplateConfigurationArgs']]):
         pulumi.set(self, "template_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the continuous trigger threshold. When the cumulative number of triggers reaches this value, an alarm is generated. The statistics are not counted when the trigger condition is not met.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template Type.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template Version.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class AlertConfigurationAnnotationArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field name.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field value.
     """
@@ -535,8 +535,8 @@ class AlertConfigurationAnnotationArgsDict(TypedDict):
 @pulumi.input_type
 class AlertConfigurationAnnotationArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Field name.
         :param pulumi.Input[_builtins.str] value: Field value.
@@ -548,35 +548,35 @@ class AlertConfigurationAnnotationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field name.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class AlertConfigurationConditionConfigurationArgsDict(TypedDict):
-    condition: NotRequired[pulumi.Input[_builtins.str]]
+    condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
     """
-    count_condition: NotRequired[pulumi.Input[_builtins.str]]
+    count_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
     """
@@ -584,8 +584,8 @@ class AlertConfigurationConditionConfigurationArgsDict(TypedDict):
 @pulumi.input_type
 class AlertConfigurationConditionConfigurationArgs:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 count_condition: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 count_condition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] condition: Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
         :param pulumi.Input[_builtins.str] count_condition: The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
@@ -597,41 +597,41 @@ class AlertConfigurationConditionConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
         """
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="countCondition")
-    def count_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def count_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
         """
         return pulumi.get(self, "count_condition")
 
     @count_condition.setter
-    def count_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def count_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "count_condition", value)
 
 
 class AlertConfigurationGroupConfigurationArgsDict(TypedDict):
-    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The field used for grouping evaluation. When type is set to custom, fields must be set.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AlertConfigurationGroupConfigurationArgs:
     def __init__(__self__, *,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fields: The field used for grouping evaluation. When type is set to custom, fields must be set.
         """
@@ -642,38 +642,38 @@ class AlertConfigurationGroupConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The field used for grouping evaluation. When type is set to custom, fields must be set.
         """
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "fields", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class AlertConfigurationJoinConfigurationArgsDict(TypedDict):
-    condition: NotRequired[pulumi.Input[_builtins.str]]
+    condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AlertConfigurationJoinConfigurationArgs:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] condition: Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
         """
@@ -684,32 +684,32 @@ class AlertConfigurationJoinConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
         """
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class AlertConfigurationLabelArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field name.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field value.
     """
@@ -717,8 +717,8 @@ class AlertConfigurationLabelArgsDict(TypedDict):
 @pulumi.input_type
 class AlertConfigurationLabelArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Field name.
         :param pulumi.Input[_builtins.str] value: Field value.
@@ -730,39 +730,39 @@ class AlertConfigurationLabelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field name.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class AlertConfigurationPolicyConfigurationArgsDict(TypedDict):
-    action_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    action_policy_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
     """
-    alert_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    alert_policy_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
     """
-    repeat_interval: NotRequired[pulumi.Input[_builtins.str]]
+    repeat_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Repeat the waiting time. For example, 5m, 1H, etc.
     """
@@ -770,9 +770,9 @@ class AlertConfigurationPolicyConfigurationArgsDict(TypedDict):
 @pulumi.input_type
 class AlertConfigurationPolicyConfigurationArgs:
     def __init__(__self__, *,
-                 action_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_interval: Optional[pulumi.Input[_builtins.str]] = None):
+                 action_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_interval: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] action_policy_id: The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
         :param pulumi.Input[_builtins.str] alert_policy_id: Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
@@ -787,91 +787,91 @@ class AlertConfigurationPolicyConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="actionPolicyId")
-    def action_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
         """
         return pulumi.get(self, "action_policy_id")
 
     @action_policy_id.setter
-    def action_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="alertPolicyId")
-    def alert_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
         """
         return pulumi.get(self, "alert_policy_id")
 
     @alert_policy_id.setter
-    def alert_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatInterval")
-    def repeat_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repeat_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repeat the waiting time. For example, 5m, 1H, etc.
         """
         return pulumi.get(self, "repeat_interval")
 
     @repeat_interval.setter
-    def repeat_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repeat_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repeat_interval", value)
 
 
 class AlertConfigurationQueryListArgsDict(TypedDict):
-    chart_title: NotRequired[pulumi.Input[_builtins.str]]
+    chart_title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Chart Name.
     """
-    dashboard_id: NotRequired[pulumi.Input[_builtins.str]]
+    dashboard_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Dashboard ID.
     """
-    end: NotRequired[pulumi.Input[_builtins.str]]
+    end: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     End time. When storeType is set to log or metric, end must be set.
     """
-    power_sql_mode: NotRequired[pulumi.Input[_builtins.str]]
+    power_sql_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
     """
-    project: NotRequired[pulumi.Input[_builtins.str]]
+    project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Project Name.
     """
-    query: NotRequired[pulumi.Input[_builtins.str]]
+    query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
     """
-    region: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Region of the target Project.
     """
-    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    role_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Roles used to write alarm data to the event Library.
     """
-    start: NotRequired[pulumi.Input[_builtins.str]]
+    start: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Start time. When storeType is set to log or metric, start must be set.
     """
-    store: NotRequired[pulumi.Input[_builtins.str]]
+    store: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
     """
-    store_type: NotRequired[pulumi.Input[_builtins.str]]
+    store_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
     """
-    time_span_type: NotRequired[pulumi.Input[_builtins.str]]
+    time_span_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time Type.
     """
-    ui: NotRequired[pulumi.Input[_builtins.str]]
+    ui: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use of specific scene alarm front end.
     """
@@ -879,19 +879,19 @@ class AlertConfigurationQueryListArgsDict(TypedDict):
 @pulumi.input_type
 class AlertConfigurationQueryListArgs:
     def __init__(__self__, *,
-                 chart_title: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 end: Optional[pulumi.Input[_builtins.str]] = None,
-                 power_sql_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 query: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 start: Optional[pulumi.Input[_builtins.str]] = None,
-                 store: Optional[pulumi.Input[_builtins.str]] = None,
-                 store_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_span_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ui: Optional[pulumi.Input[_builtins.str]] = None):
+                 chart_title: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 end: pulumi.Input[Optional[_builtins.str]] = None,
+                 power_sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 query: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 start: pulumi.Input[Optional[_builtins.str]] = None,
+                 store: pulumi.Input[Optional[_builtins.str]] = None,
+                 store_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_span_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ui: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] chart_title: Chart Name.
         :param pulumi.Input[_builtins.str] dashboard_id: Dashboard ID.
@@ -936,167 +936,167 @@ class AlertConfigurationQueryListArgs:
 
     @_builtins.property
     @pulumi.getter(name="chartTitle")
-    def chart_title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chart_title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Chart Name.
         """
         return pulumi.get(self, "chart_title")
 
     @chart_title.setter
-    def chart_title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chart_title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chart_title", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardId")
-    def dashboard_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dashboard ID.
         """
         return pulumi.get(self, "dashboard_id")
 
     @dashboard_id.setter
-    def dashboard_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def end(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         End time. When storeType is set to log or metric, end must be set.
         """
         return pulumi.get(self, "end")
 
     @end.setter
-    def end(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end", value)
 
     @_builtins.property
     @pulumi.getter(name="powerSqlMode")
-    def power_sql_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def power_sql_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
         """
         return pulumi.get(self, "power_sql_mode")
 
     @power_sql_mode.setter
-    def power_sql_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def power_sql_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "power_sql_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project Name.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def query(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
         """
         return pulumi.get(self, "query")
 
     @query.setter
-    def query(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region of the target Project.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Roles used to write alarm data to the event Library.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Start time. When storeType is set to log or metric, start must be set.
         """
         return pulumi.get(self, "start")
 
     @start.setter
-    def start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start", value)
 
     @_builtins.property
     @pulumi.getter
-    def store(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def store(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
         """
         return pulumi.get(self, "store")
 
     @store.setter
-    def store(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def store(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "store", value)
 
     @_builtins.property
     @pulumi.getter(name="storeType")
-    def store_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def store_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
         """
         return pulumi.get(self, "store_type")
 
     @store_type.setter
-    def store_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def store_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "store_type", value)
 
     @_builtins.property
     @pulumi.getter(name="timeSpanType")
-    def time_span_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_span_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time Type.
         """
         return pulumi.get(self, "time_span_type")
 
     @time_span_type.setter
-    def time_span_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_span_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_span_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def ui(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ui(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use of specific scene alarm front end.
         """
         return pulumi.get(self, "ui")
 
     @ui.setter
-    def ui(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ui(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ui", value)
 
 
 class AlertConfigurationSeverityConfigurationArgsDict(TypedDict):
-    eval_condition: NotRequired[pulumi.Input['AlertConfigurationSeverityConfigurationEvalConditionArgsDict']]
+    eval_condition: NotRequired[pulumi.Input[Optional['AlertConfigurationSeverityConfigurationEvalConditionArgs']]]
     """
     Trigger condition. See `eval_condition` below.
     """
-    severity: NotRequired[pulumi.Input[_builtins.int]]
+    severity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Alarm severity.
     """
@@ -1104,8 +1104,8 @@ class AlertConfigurationSeverityConfigurationArgsDict(TypedDict):
 @pulumi.input_type
 class AlertConfigurationSeverityConfigurationArgs:
     def __init__(__self__, *,
-                 eval_condition: Optional[pulumi.Input['AlertConfigurationSeverityConfigurationEvalConditionArgs']] = None,
-                 severity: Optional[pulumi.Input[_builtins.int]] = None):
+                 eval_condition: pulumi.Input[Optional['AlertConfigurationSeverityConfigurationEvalConditionArgs']] = None,
+                 severity: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['AlertConfigurationSeverityConfigurationEvalConditionArgs'] eval_condition: Trigger condition. See `eval_condition` below.
         :param pulumi.Input[_builtins.int] severity: Alarm severity.
@@ -1117,35 +1117,35 @@ class AlertConfigurationSeverityConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="evalCondition")
-    def eval_condition(self) -> Optional[pulumi.Input['AlertConfigurationSeverityConfigurationEvalConditionArgs']]:
+    def eval_condition(self) -> pulumi.Input[Optional['AlertConfigurationSeverityConfigurationEvalConditionArgs']]:
         """
         Trigger condition. See `eval_condition` below.
         """
         return pulumi.get(self, "eval_condition")
 
     @eval_condition.setter
-    def eval_condition(self, value: Optional[pulumi.Input['AlertConfigurationSeverityConfigurationEvalConditionArgs']]):
+    def eval_condition(self, value: pulumi.Input[Optional['AlertConfigurationSeverityConfigurationEvalConditionArgs']]):
         pulumi.set(self, "eval_condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Alarm severity.
         """
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "severity", value)
 
 
 class AlertConfigurationSeverityConfigurationEvalConditionArgsDict(TypedDict):
-    condition: NotRequired[pulumi.Input[_builtins.str]]
+    condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
     """
-    count_condition: NotRequired[pulumi.Input[_builtins.str]]
+    count_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
     """
@@ -1153,8 +1153,8 @@ class AlertConfigurationSeverityConfigurationEvalConditionArgsDict(TypedDict):
 @pulumi.input_type
 class AlertConfigurationSeverityConfigurationEvalConditionArgs:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 count_condition: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 count_condition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] condition: Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
         :param pulumi.Input[_builtins.str] count_condition: The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
@@ -1166,31 +1166,31 @@ class AlertConfigurationSeverityConfigurationEvalConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
         """
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="countCondition")
-    def count_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def count_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
         """
         return pulumi.get(self, "count_condition")
 
     @count_condition.setter
-    def count_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def count_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "count_condition", value)
 
 
 class AlertConfigurationSinkAlerthubArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Open.
     """
@@ -1198,7 +1198,7 @@ class AlertConfigurationSinkAlerthubArgsDict(TypedDict):
 @pulumi.input_type
 class AlertConfigurationSinkAlerthubArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Open.
         """
@@ -1207,19 +1207,19 @@ class AlertConfigurationSinkAlerthubArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Open.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
 class AlertConfigurationSinkCmsArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Open.
     """
@@ -1227,7 +1227,7 @@ class AlertConfigurationSinkCmsArgsDict(TypedDict):
 @pulumi.input_type
 class AlertConfigurationSinkCmsArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Open.
         """
@@ -1236,35 +1236,35 @@ class AlertConfigurationSinkCmsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Open.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
 class AlertConfigurationSinkEventStoreArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Open.
     """
-    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SLS service endpoint.
     """
-    event_store: NotRequired[pulumi.Input[_builtins.str]]
+    event_store: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Event Library Name.
     """
-    project: NotRequired[pulumi.Input[_builtins.str]]
+    project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Project Name.
     """
-    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    role_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Roles used to write alarm data to the event Library.
     """
@@ -1272,11 +1272,11 @@ class AlertConfigurationSinkEventStoreArgsDict(TypedDict):
 @pulumi.input_type
 class AlertConfigurationSinkEventStoreArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_store: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_store: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Open.
         :param pulumi.Input[_builtins.str] endpoint: SLS service endpoint.
@@ -1297,84 +1297,84 @@ class AlertConfigurationSinkEventStoreArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Open.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SLS service endpoint.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="eventStore")
-    def event_store(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_store(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Event Library Name.
         """
         return pulumi.get(self, "event_store")
 
     @event_store.setter
-    def event_store(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_store(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_store", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project Name.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Roles used to write alarm data to the event Library.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
 
 class AlertConfigurationTemplateConfigurationArgsDict(TypedDict):
-    annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    annotations: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Template Annotations.
     """
-    lang: NotRequired[pulumi.Input[_builtins.str]]
+    lang: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Template Language.
     """
-    template_id: NotRequired[pulumi.Input[_builtins.str]]
+    template_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Template ID.
     """
-    tokens: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    tokens: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Template Variables.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Template Version.
     """
@@ -1382,12 +1382,12 @@ class AlertConfigurationTemplateConfigurationArgsDict(TypedDict):
 @pulumi.input_type
 class AlertConfigurationTemplateConfigurationArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tokens: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tokens: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Template Annotations.
         :param pulumi.Input[_builtins.str] lang: Template Language.
@@ -1410,96 +1410,96 @@ class AlertConfigurationTemplateConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Template Annotations.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template Language.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="templateId")
-    def template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template ID.
         """
         return pulumi.get(self, "template_id")
 
     @template_id.setter
-    def template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tokens(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tokens(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Template Variables.
         """
         return pulumi.get(self, "tokens")
 
     @tokens.setter
-    def tokens(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tokens(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tokens", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template Version.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class AlertScheduleArgsDict(TypedDict):
-    cron_expression: NotRequired[pulumi.Input[_builtins.str]]
+    cron_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cron expression, the minimum accuracy is minutes, 24 hours. For example, 0 0/1 * * * means that the check is conducted every 1 hour from 00:00. When type is set to Cron, cronExpression must be set.
     """
-    delay: NotRequired[pulumi.Input[_builtins.int]]
+    delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Timed task execution delay (unit: s).
     """
-    interval: NotRequired[pulumi.Input[_builtins.str]]
+    interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fixed interval for scheduling.
     """
-    run_immdiately: NotRequired[pulumi.Input[_builtins.bool]]
+    run_immdiately: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Dispatch immediately.
     """
-    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    time_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time zone where the Cron expression is located. The default value is null, indicating the eighth zone in the east.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows: Fixedate: checks query and analysis results at regular intervals. Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
     """
@@ -1507,12 +1507,12 @@ class AlertScheduleArgsDict(TypedDict):
 @pulumi.input_type
 class AlertScheduleArgs:
     def __init__(__self__, *,
-                 cron_expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_immdiately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 cron_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_immdiately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cron_expression: Cron expression, the minimum accuracy is minutes, 24 hours. For example, 0 0/1 * * * means that the check is conducted every 1 hour from 00:00. When type is set to Cron, cronExpression must be set.
         :param pulumi.Input[_builtins.int] delay: Timed task execution delay (unit: s).
@@ -1536,91 +1536,91 @@ class AlertScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="cronExpression")
-    def cron_expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cron expression, the minimum accuracy is minutes, 24 hours. For example, 0 0/1 * * * means that the check is conducted every 1 hour from 00:00. When type is set to Cron, cronExpression must be set.
         """
         return pulumi.get(self, "cron_expression")
 
     @cron_expression.setter
-    def cron_expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_expression", value)
 
     @_builtins.property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timed task execution delay (unit: s).
         """
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delay", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fixed interval for scheduling.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter(name="runImmdiately")
-    def run_immdiately(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_immdiately(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Dispatch immediately.
         """
         return pulumi.get(self, "run_immdiately")
 
     @run_immdiately.setter
-    def run_immdiately(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_immdiately(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_immdiately", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time zone where the Cron expression is located. The default value is null, indicating the eighth zone in the east.
         """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows: Fixedate: checks query and analysis results at regular intervals. Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class CollectionPolicyCentralizeConfigArgsDict(TypedDict):
-    dest_logstore: NotRequired[pulumi.Input[_builtins.str]]
+    dest_logstore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
     """
-    dest_project: NotRequired[pulumi.Input[_builtins.str]]
+    dest_project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Destination project for centralized forwarding. Its region must match destRegion.
     """
-    dest_region: NotRequired[pulumi.Input[_builtins.str]]
+    dest_region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Destination region for centralized forwarding.
     """
-    dest_ttl: NotRequired[pulumi.Input[_builtins.int]]
+    dest_ttl: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
     """
@@ -1628,10 +1628,10 @@ class CollectionPolicyCentralizeConfigArgsDict(TypedDict):
 @pulumi.input_type
 class CollectionPolicyCentralizeConfigArgs:
     def __init__(__self__, *,
-                 dest_logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_ttl: Optional[pulumi.Input[_builtins.int]] = None):
+                 dest_logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_ttl: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] dest_logstore: Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
         :param pulumi.Input[_builtins.str] dest_project: Destination project for centralized forwarding. Its region must match destRegion.
@@ -1649,59 +1649,59 @@ class CollectionPolicyCentralizeConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="destLogstore")
-    def dest_logstore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_logstore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Destination Logstore for centralized forwarding. Its region must match destRegion and it must belong to destProject.
         """
         return pulumi.get(self, "dest_logstore")
 
     @dest_logstore.setter
-    def dest_logstore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_logstore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_logstore", value)
 
     @_builtins.property
     @pulumi.getter(name="destProject")
-    def dest_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Destination project for centralized forwarding. Its region must match destRegion.
         """
         return pulumi.get(self, "dest_project")
 
     @dest_project.setter
-    def dest_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_project", value)
 
     @_builtins.property
     @pulumi.getter(name="destRegion")
-    def dest_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Destination region for centralized forwarding.
         """
         return pulumi.get(self, "dest_region")
 
     @dest_region.setter
-    def dest_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_region", value)
 
     @_builtins.property
     @pulumi.getter(name="destTtl")
-    def dest_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dest_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Retention period (in days) for the destination Logstore in centralized forwarding. This setting takes effect only when the destination Logstore is created for the first time.
         """
         return pulumi.get(self, "dest_ttl")
 
     @dest_ttl.setter
-    def dest_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dest_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dest_ttl", value)
 
 
 class CollectionPolicyDataConfigArgsDict(TypedDict):
-    data_project: NotRequired[pulumi.Input[_builtins.str]]
+    data_project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This setting is valid only when the log type is a global log type—for example, when productCode is sls.
     """
-    data_region: NotRequired[pulumi.Input[_builtins.str]]
+    data_region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
     """
@@ -1709,8 +1709,8 @@ class CollectionPolicyDataConfigArgsDict(TypedDict):
 @pulumi.input_type
 class CollectionPolicyDataConfigArgs:
     def __init__(__self__, *,
-                 data_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_region: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] data_project: This setting is valid only when the log type is a global log type—for example, when productCode is sls.
         :param pulumi.Input[_builtins.str] data_region: This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
@@ -1722,26 +1722,26 @@ class CollectionPolicyDataConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataProject")
-    def data_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This setting is valid only when the log type is a global log type—for example, when productCode is sls.
         """
         return pulumi.get(self, "data_project")
 
     @data_project.setter
-    def data_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_project", value)
 
     @_builtins.property
     @pulumi.getter(name="dataRegion")
-    def data_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration.
         """
         return pulumi.get(self, "data_region")
 
     @data_region.setter
-    def data_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_region", value)
 
 
@@ -1750,15 +1750,15 @@ class CollectionPolicyPolicyConfigArgsDict(TypedDict):
     """
     Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
     """
-    instance_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    instance_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
     """
-    regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    regions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
     """
-    resource_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    resource_tags: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Resource tags. This parameter is valid only when resourceMode is set to attributeMode.  
     If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
@@ -1769,9 +1769,9 @@ class CollectionPolicyPolicyConfigArgsDict(TypedDict):
 class CollectionPolicyPolicyConfigArgs:
     def __init__(__self__, *,
                  resource_mode: pulumi.Input[_builtins.str],
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_mode: Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
@@ -1802,31 +1802,31 @@ class CollectionPolicyPolicyConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
         """
         return pulumi.get(self, "instance_ids")
 
     @instance_ids.setter
-    def instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
         """
         return pulumi.get(self, "regions")
 
     @regions.setter
-    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "regions", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceTags")
-    def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def resource_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource tags. This parameter is valid only when resourceMode is set to attributeMode.  
         If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
@@ -1835,16 +1835,16 @@ class CollectionPolicyPolicyConfigArgs:
         return pulumi.get(self, "resource_tags")
 
     @resource_tags.setter
-    def resource_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def resource_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_tags", value)
 
 
 class CollectionPolicyResourceDirectoryArgsDict(TypedDict):
-    account_group_type: NotRequired[pulumi.Input[_builtins.str]]
+    account_group_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Supports the all (select all) mode and custom mode under this Resource Directory.
     """
-    members: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    members: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of member accounts when the Resource Directory is configured in custom mode.
     """
@@ -1852,8 +1852,8 @@ class CollectionPolicyResourceDirectoryArgsDict(TypedDict):
 @pulumi.input_type
 class CollectionPolicyResourceDirectoryArgs:
     def __init__(__self__, *,
-                 account_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 account_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] account_group_type: Supports the all (select all) mode and custom mode under this Resource Directory.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: The list of member accounts when the Resource Directory is configured in custom mode.
@@ -1865,26 +1865,26 @@ class CollectionPolicyResourceDirectoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountGroupType")
-    def account_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Supports the all (select all) mode and custom mode under this Resource Directory.
         """
         return pulumi.get(self, "account_group_type")
 
     @account_group_type.setter
-    def account_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_group_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of member accounts when the Resource Directory is configured in custom mode.
         """
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
 
@@ -1917,7 +1917,7 @@ class EtlConfigurationArgsDict(TypedDict):
     """
     End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
     """
-    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    parameters: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Advanced parameter configuration.
     """
@@ -1932,7 +1932,7 @@ class EtlConfigurationArgs:
                  script: pulumi.Input[_builtins.str],
                  sinks: pulumi.Input[Sequence[pulumi.Input['EtlConfigurationSinkArgs']]],
                  to_time: pulumi.Input[_builtins.int],
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.int] from_time: The start timestamp of the processing time (accurate to the second). Enter 0 to start consuming from the first log received in the source Logstore.
         :param pulumi.Input[_builtins.str] lang: The syntax type used for data transformation.
@@ -2039,14 +2039,14 @@ class EtlConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Advanced parameter configuration.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
 
@@ -2186,11 +2186,11 @@ class IndexLineArgsDict(TypedDict):
     """
     Delimiter
     """
-    exclude_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of excluded fields
     """
-    include_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    include_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Include field list
     """
@@ -2201,8 +2201,8 @@ class IndexLineArgs:
                  case_sensitive: pulumi.Input[_builtins.bool],
                  chn: pulumi.Input[_builtins.bool],
                  tokens: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 exclude_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 exclude_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] case_sensitive: Is case sensitive
         :param pulumi.Input[_builtins.bool] chn: Does it include Chinese
@@ -2256,39 +2256,39 @@ class IndexLineArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludeKeys")
-    def exclude_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of excluded fields
         """
         return pulumi.get(self, "exclude_keys")
 
     @exclude_keys.setter
-    def exclude_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="includeKeys")
-    def include_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def include_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Include field list
         """
         return pulumi.get(self, "include_keys")
 
     @include_keys.setter
-    def include_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def include_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "include_keys", value)
 
 
 class LogtailConfigOutputDetailArgsDict(TypedDict):
-    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The endpoint of the log project.
     """
-    logstore_name: NotRequired[pulumi.Input[_builtins.str]]
+    logstore_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the output target logstore.
     """
-    region: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Region
     """
@@ -2296,9 +2296,9 @@ class LogtailConfigOutputDetailArgsDict(TypedDict):
 @pulumi.input_type
 class LogtailConfigOutputDetailArgs:
     def __init__(__self__, *,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] endpoint: The endpoint of the log project.
         :param pulumi.Input[_builtins.str] logstore_name: The name of the output target logstore.
@@ -2313,47 +2313,47 @@ class LogtailConfigOutputDetailArgs:
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint of the log project.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="logstoreName")
-    def logstore_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logstore_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the output target logstore.
         """
         return pulumi.get(self, "logstore_name")
 
     @logstore_name.setter
-    def logstore_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logstore_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logstore_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 class MachineGroupGroupAttributeArgsDict(TypedDict):
-    external_name: NotRequired[pulumi.Input[_builtins.str]]
+    external_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The identifier of the external management system on which the machine group depends. This parameter is empty by default.
     """
-    group_topic: NotRequired[pulumi.Input[_builtins.str]]
+    group_topic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The log topic of the machine group.
     """
@@ -2361,8 +2361,8 @@ class MachineGroupGroupAttributeArgsDict(TypedDict):
 @pulumi.input_type
 class MachineGroupGroupAttributeArgs:
     def __init__(__self__, *,
-                 external_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_topic: Optional[pulumi.Input[_builtins.str]] = None):
+                 external_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_topic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] external_name: The identifier of the external management system on which the machine group depends. This parameter is empty by default.
         :param pulumi.Input[_builtins.str] group_topic: The log topic of the machine group.
@@ -2374,26 +2374,26 @@ class MachineGroupGroupAttributeArgs:
 
     @_builtins.property
     @pulumi.getter(name="externalName")
-    def external_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the external management system on which the machine group depends. This parameter is empty by default.
         """
         return pulumi.get(self, "external_name")
 
     @external_name.setter
-    def external_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupTopic")
-    def group_topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The log topic of the machine group.
         """
         return pulumi.get(self, "group_topic")
 
     @group_topic.setter
-    def group_topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_topic", value)
 
 
@@ -2568,23 +2568,23 @@ class OssExportSinkConfigurationSinkArgsDict(TypedDict):
     """
     The time zone. Example value: +0800
     """
-    delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
     """
-    path_format: NotRequired[pulumi.Input[_builtins.str]]
+    path_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The directory is dynamically generated according to the time. The default value is% Y/%m/%d/%H/%M. The corresponding generated directory is, for example, 2017/01/23/12/00. Note that the partition format cannot start and end. Example values:%Y/%m/%d
     """
-    path_format_type: NotRequired[pulumi.Input[_builtins.str]]
+    path_format_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The partition format type. only support time
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The prefix of the OSS object.
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The suffix of the OSS object.
     """
@@ -2601,11 +2601,11 @@ class OssExportSinkConfigurationSinkArgs:
                  endpoint: pulumi.Input[_builtins.str],
                  role_arn: pulumi.Input[_builtins.str],
                  time_zone: pulumi.Input[_builtins.str],
-                 delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 path_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_format_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 path_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_format_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: The OSS bucket.
         :param pulumi.Input[_builtins.str] buffer_interval: The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
@@ -2812,87 +2812,87 @@ class OssExportSinkConfigurationSinkArgs:
 
     @_builtins.property
     @pulumi.getter(name="delaySeconds")
-    def delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
         """
         return pulumi.get(self, "delay_seconds")
 
     @delay_seconds.setter
-    def delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="pathFormat")
-    def path_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The directory is dynamically generated according to the time. The default value is% Y/%m/%d/%H/%M. The corresponding generated directory is, for example, 2017/01/23/12/00. Note that the partition format cannot start and end. Example values:%Y/%m/%d
         """
         return pulumi.get(self, "path_format")
 
     @path_format.setter
-    def path_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_format", value)
 
     @_builtins.property
     @pulumi.getter(name="pathFormatType")
-    def path_format_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path_format_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The partition format type. only support time
         """
         return pulumi.get(self, "path_format_type")
 
     @path_format_type.setter
-    def path_format_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path_format_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_format_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix of the OSS object.
         """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The suffix of the OSS object.
         """
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class ScheduledSqlScheduleArgsDict(TypedDict):
-    cron_expression: NotRequired[pulumi.Input[_builtins.str]]
+    cron_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
     """
-    delay: NotRequired[pulumi.Input[_builtins.int]]
+    delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Delay duration.
     """
-    interval: NotRequired[pulumi.Input[_builtins.str]]
+    interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time interval, such as 5m or 1h.
     """
-    run_immediately: NotRequired[pulumi.Input[_builtins.bool]]
+    run_immediately: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to run the OSS import job immediately after it is created.
     """
-    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    time_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time zone.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
     FixedRate: Checks query and analysis results at fixed intervals.
@@ -2905,12 +2905,12 @@ class ScheduledSqlScheduleArgsDict(TypedDict):
 @pulumi.input_type
 class ScheduledSqlScheduleArgs:
     def __init__(__self__, *,
-                 cron_expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 cron_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cron_expression: Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
         :param pulumi.Input[_builtins.int] delay: Delay duration.
@@ -2939,67 +2939,67 @@ class ScheduledSqlScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="cronExpression")
-    def cron_expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cron expression with a minimum precision of minutes in 24-hour format. For example, 0 0/1 * * * means checking once every hour starting from 00:00. When type is set to Cron, cronExpression must be specified.
         """
         return pulumi.get(self, "cron_expression")
 
     @cron_expression.setter
-    def cron_expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_expression", value)
 
     @_builtins.property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Delay duration.
         """
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delay", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time interval, such as 5m or 1h.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter(name="runImmediately")
-    def run_immediately(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_immediately(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to run the OSS import job immediately after it is created.
         """
         return pulumi.get(self, "run_immediately")
 
     @run_immediately.setter
-    def run_immediately(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_immediately(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_immediately", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time zone.
         """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
         FixedRate: Checks query and analysis results at fixed intervals.
@@ -3011,76 +3011,76 @@ class ScheduledSqlScheduleArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class ScheduledSqlScheduledSqlConfigurationArgsDict(TypedDict):
-    data_format: NotRequired[pulumi.Input[_builtins.str]]
+    data_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Write mode.
     """
-    dest_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    dest_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The destination endpoint.
     """
-    dest_logstore: NotRequired[pulumi.Input[_builtins.str]]
+    dest_logstore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The destination Logstore.
     """
-    dest_project: NotRequired[pulumi.Input[_builtins.str]]
+    dest_project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The destination project.
     """
-    dest_role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    dest_role_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Destination write role ARN.
     """
-    from_time: NotRequired[pulumi.Input[_builtins.int]]
+    from_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The start time of the schedule.
     """
-    from_time_expr: NotRequired[pulumi.Input[_builtins.str]]
+    from_time_expr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SQL time window - start.
     """
-    max_retries: NotRequired[pulumi.Input[_builtins.int]]
+    max_retries: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of retries.
     """
-    max_run_time_in_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    max_run_time_in_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     SQL timeout.
     """
-    parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    parameters: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Parameter configuration.
     """
-    resource_pool: NotRequired[pulumi.Input[_builtins.str]]
+    resource_pool: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Resource pool.
     """
-    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    role_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Source read role ARN.
     """
-    script: NotRequired[pulumi.Input[_builtins.str]]
+    script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SQL statement.
     """
-    source_logstore: NotRequired[pulumi.Input[_builtins.str]]
+    source_logstore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The source Logstore.
     """
-    sql_type: NotRequired[pulumi.Input[_builtins.str]]
+    sql_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SQL type.
     """
-    to_time: NotRequired[pulumi.Input[_builtins.int]]
+    to_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Scheduled end time.
     """
-    to_time_expr: NotRequired[pulumi.Input[_builtins.str]]
+    to_time_expr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     End of the SQL time window.
     """
@@ -3088,23 +3088,23 @@ class ScheduledSqlScheduledSqlConfigurationArgsDict(TypedDict):
 @pulumi.input_type
 class ScheduledSqlScheduledSqlConfigurationArgs:
     def __init__(__self__, *,
-                 data_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 from_time_expr: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_run_time_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resource_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 to_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 to_time_expr: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 from_time_expr: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_run_time_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 resource_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 to_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 to_time_expr: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] data_format: Write mode.
         :param pulumi.Input[_builtins.str] dest_endpoint: The destination endpoint.
@@ -3161,206 +3161,206 @@ class ScheduledSqlScheduledSqlConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataFormat")
-    def data_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Write mode.
         """
         return pulumi.get(self, "data_format")
 
     @data_format.setter
-    def data_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_format", value)
 
     @_builtins.property
     @pulumi.getter(name="destEndpoint")
-    def dest_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination endpoint.
         """
         return pulumi.get(self, "dest_endpoint")
 
     @dest_endpoint.setter
-    def dest_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="destLogstore")
-    def dest_logstore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_logstore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination Logstore.
         """
         return pulumi.get(self, "dest_logstore")
 
     @dest_logstore.setter
-    def dest_logstore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_logstore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_logstore", value)
 
     @_builtins.property
     @pulumi.getter(name="destProject")
-    def dest_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination project.
         """
         return pulumi.get(self, "dest_project")
 
     @dest_project.setter
-    def dest_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_project", value)
 
     @_builtins.property
     @pulumi.getter(name="destRoleArn")
-    def dest_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Destination write role ARN.
         """
         return pulumi.get(self, "dest_role_arn")
 
     @dest_role_arn.setter
-    def dest_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="fromTime")
-    def from_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def from_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The start time of the schedule.
         """
         return pulumi.get(self, "from_time")
 
     @from_time.setter
-    def from_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def from_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "from_time", value)
 
     @_builtins.property
     @pulumi.getter(name="fromTimeExpr")
-    def from_time_expr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def from_time_expr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SQL time window - start.
         """
         return pulumi.get(self, "from_time_expr")
 
     @from_time_expr.setter
-    def from_time_expr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def from_time_expr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "from_time_expr", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRetries")
-    def max_retries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_retries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of retries.
         """
         return pulumi.get(self, "max_retries")
 
     @max_retries.setter
-    def max_retries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_retries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_retries", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRunTimeInSeconds")
-    def max_run_time_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_run_time_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         SQL timeout.
         """
         return pulumi.get(self, "max_run_time_in_seconds")
 
     @max_run_time_in_seconds.setter
-    def max_run_time_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_run_time_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_run_time_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Parameter configuration.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePool")
-    def resource_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource pool.
         """
         return pulumi.get(self, "resource_pool")
 
     @resource_pool.setter
-    def resource_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source read role ARN.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SQL statement.
         """
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceLogstore")
-    def source_logstore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_logstore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source Logstore.
         """
         return pulumi.get(self, "source_logstore")
 
     @source_logstore.setter
-    def source_logstore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_logstore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_logstore", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlType")
-    def sql_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SQL type.
         """
         return pulumi.get(self, "sql_type")
 
     @sql_type.setter
-    def sql_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_type", value)
 
     @_builtins.property
     @pulumi.getter(name="toTime")
-    def to_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def to_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Scheduled end time.
         """
         return pulumi.get(self, "to_time")
 
     @to_time.setter
-    def to_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def to_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "to_time", value)
 
     @_builtins.property
     @pulumi.getter(name="toTimeExpr")
-    def to_time_expr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def to_time_expr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         End of the SQL time window.
         """
         return pulumi.get(self, "to_time_expr")
 
     @to_time_expr.setter
-    def to_time_expr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def to_time_expr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "to_time_expr", value)
 
 

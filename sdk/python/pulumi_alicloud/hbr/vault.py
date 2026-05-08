@@ -20,14 +20,14 @@ __all__ = ['VaultArgs', 'Vault']
 class VaultArgs:
     def __init__(__self__, *,
                  vault_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vault_storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 worm_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vault_storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 worm_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Vault resource.
 
@@ -77,19 +77,19 @@ class VaultArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of Vault. Defaults to an empty string.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptType")
-    def encrypt_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypt_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
@@ -98,60 +98,60 @@ class VaultArgs:
         return pulumi.get(self, "encrypt_type")
 
     @encrypt_type.setter
-    def encrypt_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypt_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypt_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
         """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultStorageClass")
-    def vault_storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage class of Vault. Valid values: `STANDARD`.
         """
         return pulumi.get(self, "vault_storage_class")
 
     @vault_storage_class.setter
-    def vault_storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_storage_class", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultType")
-    def vault_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of Vault. Valid values:
         - `STANDARD`: Standard backup vault.
@@ -160,37 +160,37 @@ class VaultArgs:
         return pulumi.get(self, "vault_type")
 
     @vault_type.setter
-    def vault_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_type", value)
 
     @_builtins.property
     @pulumi.getter(name="wormEnabled")
-    def worm_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def worm_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "worm_enabled")
 
     @worm_enabled.setter
-    def worm_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def worm_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "worm_enabled", value)
 
 
 @pulumi.input_type
 class _VaultState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vault_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 worm_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vault_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 worm_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Vault resources.
 
@@ -238,31 +238,31 @@ class _VaultState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.243.0) The time when the backup vault was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of Vault. Defaults to an empty string.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptType")
-    def encrypt_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypt_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
         - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
@@ -271,96 +271,96 @@ class _VaultState:
         return pulumi.get(self, "encrypt_type")
 
     @encrypt_type.setter
-    def encrypt_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypt_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypt_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
         """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.243.0) The ID of the region in which the backup vault resides.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Vault.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultName")
-    def vault_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of Vault.
         """
         return pulumi.get(self, "vault_name")
 
     @vault_name.setter
-    def vault_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultStorageClass")
-    def vault_storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage class of Vault. Valid values: `STANDARD`.
         """
         return pulumi.get(self, "vault_storage_class")
 
     @vault_storage_class.setter
-    def vault_storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_storage_class", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultType")
-    def vault_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of Vault. Valid values:
         - `STANDARD`: Standard backup vault.
@@ -369,19 +369,19 @@ class _VaultState:
         return pulumi.get(self, "vault_type")
 
     @vault_type.setter
-    def vault_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_type", value)
 
     @_builtins.property
     @pulumi.getter(name="wormEnabled")
-    def worm_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def worm_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "worm_enabled")
 
     @worm_enabled.setter
-    def worm_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def worm_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "worm_enabled", value)
 
 
@@ -391,15 +391,15 @@ class Vault(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vault_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 worm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vault_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 worm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Hybrid Backup Recovery (HBR) Vault resource.
@@ -508,15 +508,15 @@ class Vault(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vault_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 worm_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vault_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 worm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -550,18 +550,18 @@ class Vault(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            encrypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vault_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vault_storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-            vault_type: Optional[pulumi.Input[_builtins.str]] = None,
-            worm_enabled: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Vault':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vault_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_type: pulumi.Input[Optional[_builtins.str]] = None,
+            worm_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Vault':
         """
         Get an existing Vault resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

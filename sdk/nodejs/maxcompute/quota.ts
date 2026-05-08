@@ -193,7 +193,7 @@ export interface QuotaState {
      * Valid values: odps_intl/odpsplus_intl/odps/odpsplus
      * - *NOTE:** --odps_intl: International Station standard post-payment -- odpsplus_intl: International Station standard pre-payment -- odps: China Station standard post-payment -- odpsplus: China Station standard pre-payment
      */
-    commodityCode?: pulumi.Input<string>;
+    commodityCode?: pulumi.Input<string | undefined>;
     /**
      * Define quota rules when creating quotas, for example:{"CU":50,"ordTime":"1:Month","autoRenew":false}.
      * CU (minimum quota resource size is 50)
@@ -201,26 +201,26 @@ export interface QuotaState {
      * autoRenew (whether to enable automatic renewal)
      * If PaymentType is PayAsYouGo, you do not need to fill in
      */
-    commodityData?: pulumi.Input<string>;
+    commodityData?: pulumi.Input<string | undefined>;
     /**
      * Quota partial nickname, supports English letters and numbers, up to 24 characters
      *
      * > **NOTE:** If PaymentType is PayAsYouGo, you do not need to fill it in
      */
-    partNickName?: pulumi.Input<string>;
+    partNickName?: pulumi.Input<string | undefined>;
     /**
      * Payment type. Valid values: Subscription/PayAsYouGo
      *
      * > **NOTE:** -- PayAsYouGo only needs to be opened once per region
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Secondary Quota list
      *
      * > **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
      * See `subQuotaInfoList` below.
      */
-    subQuotaInfoLists?: pulumi.Input<pulumi.Input<inputs.maxcompute.QuotaSubQuotaInfoList>[]>;
+    subQuotaInfoLists?: pulumi.Input<pulumi.Input<inputs.maxcompute.QuotaSubQuotaInfoList>[] | undefined>;
 }
 
 /**
@@ -239,13 +239,13 @@ export interface QuotaArgs {
      * autoRenew (whether to enable automatic renewal)
      * If PaymentType is PayAsYouGo, you do not need to fill in
      */
-    commodityData?: pulumi.Input<string>;
+    commodityData?: pulumi.Input<string | undefined>;
     /**
      * Quota partial nickname, supports English letters and numbers, up to 24 characters
      *
      * > **NOTE:** If PaymentType is PayAsYouGo, you do not need to fill it in
      */
-    partNickName?: pulumi.Input<string>;
+    partNickName?: pulumi.Input<string | undefined>;
     /**
      * Payment type. Valid values: Subscription/PayAsYouGo
      *
@@ -258,5 +258,5 @@ export interface QuotaArgs {
      * > **NOTE:** -- Add: If the configuration contains a second-level Quota that does not exist, a second-level Quota is added. -- Delete: If the configuration does not contain the existing secondary Quota, it will be deleted. -- Modify: If the configuration is inconsistent with the existing secondary Quota configuration parameters, the secondary Quota configuration will be updated. -- The default secondary Quota must be configured and cannot be deleted.
      * See `subQuotaInfoList` below.
      */
-    subQuotaInfoLists?: pulumi.Input<pulumi.Input<inputs.maxcompute.QuotaSubQuotaInfoList>[]>;
+    subQuotaInfoLists?: pulumi.Input<pulumi.Input<inputs.maxcompute.QuotaSubQuotaInfoList>[] | undefined>;
 }

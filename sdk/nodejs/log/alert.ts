@@ -530,129 +530,129 @@ export interface AlertState {
     /**
      * Alert description.
      */
-    alertDescription?: pulumi.Input<string>;
+    alertDescription?: pulumi.Input<string | undefined>;
     /**
      * Alert displayname.
      */
-    alertDisplayname?: pulumi.Input<string>;
+    alertDisplayname?: pulumi.Input<string | undefined>;
     /**
      * Name of logstore for configuring alarm service.
      */
-    alertName?: pulumi.Input<string>;
+    alertName?: pulumi.Input<string | undefined>;
     /**
      * Annotations for new alert.
      */
-    annotations?: pulumi.Input<pulumi.Input<inputs.log.AlertAnnotation>[]>;
+    annotations?: pulumi.Input<pulumi.Input<inputs.log.AlertAnnotation>[] | undefined>;
     /**
      * whether to add automatic annotation, default is false.
      */
-    autoAnnotation?: pulumi.Input<boolean>;
+    autoAnnotation?: pulumi.Input<boolean | undefined>;
     /**
      * Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
      *
      * @deprecated Deprecated from 1.161.0+, use evalCondition in severity_configurations
      */
-    condition?: pulumi.Input<string>;
+    condition?: pulumi.Input<string | undefined>;
     /**
      * The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
      *
      * @deprecated Deprecated from 1.161.0+, use dashboardId in query_list
      */
-    dashboard?: pulumi.Input<string>;
+    dashboard?: pulumi.Input<string | undefined>;
     /**
      * Group configuration for new alert.
      */
-    groupConfiguration?: pulumi.Input<inputs.log.AlertGroupConfiguration>;
+    groupConfiguration?: pulumi.Input<inputs.log.AlertGroupConfiguration | undefined>;
     /**
      * Join configuration for different queries.
      */
-    joinConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertJoinConfiguration>[]>;
+    joinConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertJoinConfiguration>[] | undefined>;
     /**
      * Labels for new alert.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.log.AlertLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.log.AlertLabel>[] | undefined>;
     /**
      * Timestamp, notifications before closing again.
      */
-    muteUntil?: pulumi.Input<number>;
+    muteUntil?: pulumi.Input<number | undefined>;
     /**
      * Switch for whether new alert fires when no data happens, default is false.
      */
-    noDataFire?: pulumi.Input<boolean>;
+    noDataFire?: pulumi.Input<boolean | undefined>;
     /**
      * when no data happens, the severity of new alert.
      */
-    noDataSeverity?: pulumi.Input<number>;
+    noDataSeverity?: pulumi.Input<number | undefined>;
     /**
      * Alarm information notification list, Deprecated from 1.161.0+.
      *
      * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
      */
-    notificationLists?: pulumi.Input<pulumi.Input<inputs.log.AlertNotificationList>[]>;
+    notificationLists?: pulumi.Input<pulumi.Input<inputs.log.AlertNotificationList>[] | undefined>;
     /**
      * Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
      *
      * @deprecated Deprecated from 1.161.0+, use threshold
      */
-    notifyThreshold?: pulumi.Input<number>;
+    notifyThreshold?: pulumi.Input<number | undefined>;
     /**
      * Policy configuration for new alert.
      */
-    policyConfiguration?: pulumi.Input<inputs.log.AlertPolicyConfiguration>;
+    policyConfiguration?: pulumi.Input<inputs.log.AlertPolicyConfiguration | undefined>;
     /**
      * The project name.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * Multiple conditions for configured alarm query.
      */
-    queryLists?: pulumi.Input<pulumi.Input<inputs.log.AlertQueryList>[]>;
+    queryLists?: pulumi.Input<pulumi.Input<inputs.log.AlertQueryList>[] | undefined>;
     /**
      * schedule for alert.
      */
-    schedule?: pulumi.Input<inputs.log.AlertSchedule>;
+    schedule?: pulumi.Input<inputs.log.AlertSchedule | undefined>;
     /**
      * Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
      *
      * @deprecated Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
      */
-    scheduleInterval?: pulumi.Input<string>;
+    scheduleInterval?: pulumi.Input<string | undefined>;
     /**
      * Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
      *
      * @deprecated Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
      */
-    scheduleType?: pulumi.Input<string>;
+    scheduleType?: pulumi.Input<string | undefined>;
     /**
      * when new alert is resolved, whether to notify, default is false.
      */
-    sendResolved?: pulumi.Input<boolean>;
+    sendResolved?: pulumi.Input<boolean | undefined>;
     /**
      * Severity configuration for new alert.
      */
-    severityConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertSeverityConfiguration>[]>;
+    severityConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertSeverityConfiguration>[] | undefined>;
     /**
      * Template configuration for alert, when `type` is `tpl`.
      */
-    templateConfiguration?: pulumi.Input<inputs.log.AlertTemplateConfiguration>;
+    templateConfiguration?: pulumi.Input<inputs.log.AlertTemplateConfiguration | undefined>;
     /**
      * Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
      */
-    threshold?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number | undefined>;
     /**
      * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
      *
      * @deprecated Deprecated from 1.161.0+, use repeatInterval in policy_configuration
      */
-    throttling?: pulumi.Input<string>;
+    throttling?: pulumi.Input<string | undefined>;
     /**
      * The type of new alert, `default` for custom alert, `tpl` for template alert.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The version of alert, new alert is 2.0.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -662,7 +662,7 @@ export interface AlertArgs {
     /**
      * Alert description.
      */
-    alertDescription?: pulumi.Input<string>;
+    alertDescription?: pulumi.Input<string | undefined>;
     /**
      * Alert displayname.
      */
@@ -674,63 +674,63 @@ export interface AlertArgs {
     /**
      * Annotations for new alert.
      */
-    annotations?: pulumi.Input<pulumi.Input<inputs.log.AlertAnnotation>[]>;
+    annotations?: pulumi.Input<pulumi.Input<inputs.log.AlertAnnotation>[] | undefined>;
     /**
      * whether to add automatic annotation, default is false.
      */
-    autoAnnotation?: pulumi.Input<boolean>;
+    autoAnnotation?: pulumi.Input<boolean | undefined>;
     /**
      * Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
      *
      * @deprecated Deprecated from 1.161.0+, use evalCondition in severity_configurations
      */
-    condition?: pulumi.Input<string>;
+    condition?: pulumi.Input<string | undefined>;
     /**
      * The name of the dashboard associated with the alarm. The name of the instrument cluster associated with the alarm. If there is no such instrument cluster, terraform will help you create an empty instrument cluster, Deprecated from 1.161.0+.
      *
      * @deprecated Deprecated from 1.161.0+, use dashboardId in query_list
      */
-    dashboard?: pulumi.Input<string>;
+    dashboard?: pulumi.Input<string | undefined>;
     /**
      * Group configuration for new alert.
      */
-    groupConfiguration?: pulumi.Input<inputs.log.AlertGroupConfiguration>;
+    groupConfiguration?: pulumi.Input<inputs.log.AlertGroupConfiguration | undefined>;
     /**
      * Join configuration for different queries.
      */
-    joinConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertJoinConfiguration>[]>;
+    joinConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertJoinConfiguration>[] | undefined>;
     /**
      * Labels for new alert.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.log.AlertLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.log.AlertLabel>[] | undefined>;
     /**
      * Timestamp, notifications before closing again.
      */
-    muteUntil?: pulumi.Input<number>;
+    muteUntil?: pulumi.Input<number | undefined>;
     /**
      * Switch for whether new alert fires when no data happens, default is false.
      */
-    noDataFire?: pulumi.Input<boolean>;
+    noDataFire?: pulumi.Input<boolean | undefined>;
     /**
      * when no data happens, the severity of new alert.
      */
-    noDataSeverity?: pulumi.Input<number>;
+    noDataSeverity?: pulumi.Input<number | undefined>;
     /**
      * Alarm information notification list, Deprecated from 1.161.0+.
      *
      * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
      */
-    notificationLists?: pulumi.Input<pulumi.Input<inputs.log.AlertNotificationList>[]>;
+    notificationLists?: pulumi.Input<pulumi.Input<inputs.log.AlertNotificationList>[] | undefined>;
     /**
      * Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
      *
      * @deprecated Deprecated from 1.161.0+, use threshold
      */
-    notifyThreshold?: pulumi.Input<number>;
+    notifyThreshold?: pulumi.Input<number | undefined>;
     /**
      * Policy configuration for new alert.
      */
-    policyConfiguration?: pulumi.Input<inputs.log.AlertPolicyConfiguration>;
+    policyConfiguration?: pulumi.Input<inputs.log.AlertPolicyConfiguration | undefined>;
     /**
      * The project name.
      */
@@ -738,51 +738,51 @@ export interface AlertArgs {
     /**
      * Multiple conditions for configured alarm query.
      */
-    queryLists?: pulumi.Input<pulumi.Input<inputs.log.AlertQueryList>[]>;
+    queryLists?: pulumi.Input<pulumi.Input<inputs.log.AlertQueryList>[] | undefined>;
     /**
      * schedule for alert.
      */
-    schedule?: pulumi.Input<inputs.log.AlertSchedule>;
+    schedule?: pulumi.Input<inputs.log.AlertSchedule | undefined>;
     /**
      * Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
      *
      * @deprecated Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
      */
-    scheduleInterval?: pulumi.Input<string>;
+    scheduleInterval?: pulumi.Input<string | undefined>;
     /**
      * Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
      *
      * @deprecated Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.
      */
-    scheduleType?: pulumi.Input<string>;
+    scheduleType?: pulumi.Input<string | undefined>;
     /**
      * when new alert is resolved, whether to notify, default is false.
      */
-    sendResolved?: pulumi.Input<boolean>;
+    sendResolved?: pulumi.Input<boolean | undefined>;
     /**
      * Severity configuration for new alert.
      */
-    severityConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertSeverityConfiguration>[]>;
+    severityConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertSeverityConfiguration>[] | undefined>;
     /**
      * Template configuration for alert, when `type` is `tpl`.
      */
-    templateConfiguration?: pulumi.Input<inputs.log.AlertTemplateConfiguration>;
+    templateConfiguration?: pulumi.Input<inputs.log.AlertTemplateConfiguration | undefined>;
     /**
      * Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
      */
-    threshold?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number | undefined>;
     /**
      * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
      *
      * @deprecated Deprecated from 1.161.0+, use repeatInterval in policy_configuration
      */
-    throttling?: pulumi.Input<string>;
+    throttling?: pulumi.Input<string | undefined>;
     /**
      * The type of new alert, `default` for custom alert, `tpl` for template alert.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The version of alert, new alert is 2.0.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

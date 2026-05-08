@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *     orderMode: "PayByPhysicalConnectionOwner",
  *     parentPhysicalConnectionId: example.then(example => example.ids?.[0]),
  *     spec: "50M",
- *     vlanId: vlanId.id,
+ *     vlanId: Number(vlanId.id),
  *     vpconnAliUid: _default.then(_default => _default.id),
  * });
  * ```
@@ -287,113 +287,113 @@ export interface VirtualPhysicalConnectionState {
     /**
      * The ID of the access point of the physical connection.
      */
-    accessPointId?: pulumi.Input<string>;
+    accessPointId?: pulumi.Input<string | undefined>;
     /**
      * The physical location where the physical connection access device is located.
      */
-    adLocation?: pulumi.Input<string>;
+    adLocation?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth of the physical connection. Unit: Mbps.
      */
-    bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string | undefined>;
     /**
      * The commercial status of the physical line. Value:-**Normal**: activated.-**Financialized**: Arrears locked.-**SecurityLocked**: locked for security reasons.
      */
-    businessStatus?: pulumi.Input<string>;
+    businessStatus?: pulumi.Input<string | undefined>;
     /**
      * The circuit code provided by the operator for the physical connection.
      */
-    circuitCode?: pulumi.Input<string>;
+    circuitCode?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the physical connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to precheck the API request. Valid values: `true` and `false`.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The opening time of the physical connection.
      */
-    enabledTime?: pulumi.Input<string>;
+    enabledTime?: pulumi.Input<string | undefined>;
     /**
      * The expiration time of the shared line.Time is expressed according to ISO8601 standard and UTC time is used. The format is: YYYY-MM-DDThh:mm:ssZ.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The estimated bandwidth value of the shared line. Valid values: `50M`, `100M`, `200M`, `300M`, `400M`, `500M`, `1G`, `2G`, `5G`, `8G`, and `10G`. **Note**: By default, the values of 2G, 5G, 8G, and 10G are unavailable. If you want to specify these values, contact your customer manager. Unit: **M** indicates Mbps, **G** indicates Gbps.
      */
-    expectSpec?: pulumi.Input<string>;
+    expectSpec?: pulumi.Input<string | undefined>;
     /**
      * Operators that provide access to physical lines. Value:-**CT**: China Telecom.-**CU**: China Unicom.-**CM**: China Mobile.-**CO**: China Other.-**Equinix**:Equinix.-**Other**: Other abroad.
      */
-    lineOperator?: pulumi.Input<string>;
+    lineOperator?: pulumi.Input<string | undefined>;
     /**
      * The state of LOA. Value:-**Applying**:LOA application.-**Accept**:LOA application passed.-**Available**:LOA is Available.-**Rejected**:LOA application Rejected.-**Completing**: The dedicated line is under construction.-**Complete**: The construction of the dedicated line is completed.-**Deleted**:LOA has been Deleted.
      */
-    loaStatus?: pulumi.Input<string>;
+    loaStatus?: pulumi.Input<string | undefined>;
     /**
      * The payment method of shared dedicated line. Value:
      * - **PayByPhysicalConnectionOwner**: indicates that the owner of the physical line associated with the shared line pays.
      * - **PayByVirtualPhysicalConnectionOwner**: indicates that the owner of the shared line pays.
      */
-    orderMode?: pulumi.Input<string>;
+    orderMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Alibaba Cloud account (primary account) to which the physical connection belongs.
      */
-    parentPhysicalConnectionAliUid?: pulumi.Input<string>;
+    parentPhysicalConnectionAliUid?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance of the physical connection.
      */
-    parentPhysicalConnectionId?: pulumi.Input<string>;
+    parentPhysicalConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The geographic location of the local data center.
      */
-    peerLocation?: pulumi.Input<string>;
+    peerLocation?: pulumi.Input<string | undefined>;
     /**
      * The port number of the physical connection device.
      */
-    portNumber?: pulumi.Input<string>;
+    portNumber?: pulumi.Input<string | undefined>;
     /**
      * Physical connection port type. Value:-**100Base-T**: 100 megabytes port.-**1000Base-T**: Gigabit port.-**1000Base-LX**: Gigabit single mode optical port (10km).-**10GBase-T**: 10 Gigabit port.-**10GBase-LR**: 10 Gigabit single mode optical port (10km).-**40GBase-LR**: 40 megabytes single-mode optical port.-**100GBase-LR**: 100,000 megabytes single-mode optical port.
      */
-    portType?: pulumi.Input<string>;
+    portType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the redundant physical connection.
      */
-    redundantPhysicalConnectionId?: pulumi.Input<string>;
+    redundantPhysicalConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The resource group id.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth value of the shared line. Valid values: `50M`, `100M`, `200M`, `300M`, `400M`, `500M`, `1G`, `2G`, `5G`, `8G`, and `10G`. **Note**: By default, the values of 2G, 5G, 8G, and 10G are unavailable. If you want to specify these values, contact your customer manager. Unit: **M** indicates Mbps, **G** indicates Gbps.
      */
-    spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The name of the physical connection.
      */
-    virtualPhysicalConnectionName?: pulumi.Input<string>;
+    virtualPhysicalConnectionName?: pulumi.Input<string | undefined>;
     /**
      * The business status of the shared line. Value:-**Confirmed**: The shared line has been Confirmed to receive.-**UnConfirmed**: The shared line has not been confirmed to be received.-**Deleted**: The shared line has been Deleted.
      */
-    virtualPhysicalConnectionStatus?: pulumi.Input<string>;
+    virtualPhysicalConnectionStatus?: pulumi.Input<string | undefined>;
     /**
      * The VLAN ID of the shared leased line. Valid values: `0` to `2999`.
      */
-    vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
      */
-    vpconnAliUid?: pulumi.Input<string>;
+    vpconnAliUid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -403,15 +403,15 @@ export interface VirtualPhysicalConnectionArgs {
     /**
      * The description of the physical connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to precheck the API request. Valid values: `true` and `false`.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The estimated bandwidth value of the shared line. Valid values: `50M`, `100M`, `200M`, `300M`, `400M`, `500M`, `1G`, `2G`, `5G`, `8G`, and `10G`. **Note**: By default, the values of 2G, 5G, 8G, and 10G are unavailable. If you want to specify these values, contact your customer manager. Unit: **M** indicates Mbps, **G** indicates Gbps.
      */
-    expectSpec?: pulumi.Input<string>;
+    expectSpec?: pulumi.Input<string | undefined>;
     /**
      * The payment method of shared dedicated line. Value:
      * - **PayByPhysicalConnectionOwner**: indicates that the owner of the physical line associated with the shared line pays.
@@ -425,7 +425,7 @@ export interface VirtualPhysicalConnectionArgs {
     /**
      * The resource group id.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth value of the shared line. Valid values: `50M`, `100M`, `200M`, `300M`, `400M`, `500M`, `1G`, `2G`, `5G`, `8G`, and `10G`. **Note**: By default, the values of 2G, 5G, 8G, and 10G are unavailable. If you want to specify these values, contact your customer manager. Unit: **M** indicates Mbps, **G** indicates Gbps.
      */
@@ -433,7 +433,7 @@ export interface VirtualPhysicalConnectionArgs {
     /**
      * The name of the physical connection.
      */
-    virtualPhysicalConnectionName?: pulumi.Input<string>;
+    virtualPhysicalConnectionName?: pulumi.Input<string | undefined>;
     /**
      * The VLAN ID of the shared leased line. Valid values: `0` to `2999`.
      */

@@ -24,15 +24,15 @@ class OtsBackupPlanArgs:
                  backup_type: pulumi.Input[_builtins.str],
                  ots_backup_plan_name: pulumi.Input[_builtins.str],
                  retention: pulumi.Input[_builtins.str],
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots_details: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots_details: pulumi.Input[Optional[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OtsBackupPlan resource.
 
@@ -113,92 +113,92 @@ class OtsBackupPlanArgs:
 
     @_builtins.property
     @pulumi.getter(name="crossAccountRoleName")
-    def cross_account_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_account_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role name created in the original account RAM backup by the cross account managed by the current account.
         """
         return pulumi.get(self, "cross_account_role_name")
 
     @cross_account_role_name.setter
-    def cross_account_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_account_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_account_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountType")
-    def cross_account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         """
         return pulumi.get(self, "cross_account_type")
 
     @cross_account_type.setter
-    def cross_account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountUserId")
-    def cross_account_user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cross_account_user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The original account ID of the cross account backup managed by the current account.
         """
         return pulumi.get(self, "cross_account_user_id")
 
     @cross_account_user_id.setter
-    def cross_account_user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cross_account_user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cross_account_user_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="otsDetails")
-    def ots_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]]:
+    def ots_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]]:
         """
         The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "ots_details")
 
     @ots_details.setter
-    def ots_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]]):
+    def ots_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]]):
         pulumi.set(self, "ots_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]]:
         """
         The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""")
-    def schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         - `startTime` Backup start time, UNIX time seconds.
@@ -206,37 +206,37 @@ class OtsBackupPlanArgs:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultId")
-    def vault_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of backup vault.
         """
         return pulumi.get(self, "vault_id")
 
     @vault_id.setter
-    def vault_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_id", value)
 
 
 @pulumi.input_type
 class _OtsBackupPlanState:
     def __init__(__self__, *,
-                 backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots_backup_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots_details: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]] = None,
-                 retention: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots_details: pulumi.Input[Optional[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]] = None,
+                 retention: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OtsBackupPlan resources.
 
@@ -284,128 +284,128 @@ class _OtsBackupPlanState:
 
     @_builtins.property
     @pulumi.getter(name="backupType")
-    def backup_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup type. Valid values: `COMPLETE`.
         """
         return pulumi.get(self, "backup_type")
 
     @backup_type.setter
-    def backup_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_type", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountRoleName")
-    def cross_account_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_account_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role name created in the original account RAM backup by the cross account managed by the current account.
         """
         return pulumi.get(self, "cross_account_role_name")
 
     @cross_account_role_name.setter
-    def cross_account_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_account_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_account_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountType")
-    def cross_account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         """
         return pulumi.get(self, "cross_account_type")
 
     @cross_account_type.setter
-    def cross_account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountUserId")
-    def cross_account_user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cross_account_user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The original account ID of the cross account backup managed by the current account.
         """
         return pulumi.get(self, "cross_account_user_id")
 
     @cross_account_user_id.setter
-    def cross_account_user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cross_account_user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cross_account_user_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="otsBackupPlanName")
-    def ots_backup_plan_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ots_backup_plan_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         """
         return pulumi.get(self, "ots_backup_plan_name")
 
     @ots_backup_plan_name.setter
-    def ots_backup_plan_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ots_backup_plan_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ots_backup_plan_name", value)
 
     @_builtins.property
     @pulumi.getter(name="otsDetails")
-    def ots_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]]:
+    def ots_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]]:
         """
         The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "ots_details")
 
     @ots_details.setter
-    def ots_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]]):
+    def ots_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]]]):
         pulumi.set(self, "ots_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retention(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup retention days, the minimum is 1.
         """
         return pulumi.get(self, "retention")
 
     @retention.setter
-    def retention(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retention(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retention", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]]:
         """
         The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""")
-    def schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         - `startTime` Backup start time, UNIX time seconds.
@@ -413,19 +413,19 @@ class _OtsBackupPlanState:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultId")
-    def vault_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of backup vault.
         """
         return pulumi.get(self, "vault_id")
 
     @vault_id.setter
-    def vault_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_id", value)
 
 
@@ -435,18 +435,18 @@ class OtsBackupPlan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots_backup_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanOtsDetailArgs', 'OtsBackupPlanOtsDetailArgsDict']]]]] = None,
-                 retention: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanRuleArgs', 'OtsBackupPlanRuleArgsDict']]]]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OtsBackupPlanOtsDetailArgs', 'OtsBackupPlanOtsDetailArgsDict']]]]] = None,
+                 retention: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OtsBackupPlanRuleArgs', 'OtsBackupPlanRuleArgsDict']]]]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a HBR Ots Backup Plan resource.
@@ -518,7 +518,7 @@ class OtsBackupPlan(pulumi.CustomResource):
             retention="1",
             instance_name=default_instance.name,
             cross_account_type="SELF_ACCOUNT",
-            cross_account_user_id=default.id,
+            cross_account_user_id=output(default.id).apply(lambda x: int(x)),
             cross_account_role_name=default_role.id,
             ots_details=[{
                 "table_names": [default_table.table_name],
@@ -635,7 +635,7 @@ class OtsBackupPlan(pulumi.CustomResource):
             retention="1",
             instance_name=default_instance.name,
             cross_account_type="SELF_ACCOUNT",
-            cross_account_user_id=default.id,
+            cross_account_user_id=output(default.id).apply(lambda x: int(x)),
             cross_account_role_name=default_role.id,
             ots_details=[{
                 "table_names": [default_table.table_name],
@@ -675,18 +675,18 @@ class OtsBackupPlan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots_backup_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanOtsDetailArgs', 'OtsBackupPlanOtsDetailArgsDict']]]]] = None,
-                 retention: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanRuleArgs', 'OtsBackupPlanRuleArgsDict']]]]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OtsBackupPlanOtsDetailArgs', 'OtsBackupPlanOtsDetailArgsDict']]]]] = None,
+                 retention: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OtsBackupPlanRuleArgs', 'OtsBackupPlanRuleArgsDict']]]]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -724,18 +724,18 @@ class OtsBackupPlan(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ots_backup_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ots_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanOtsDetailArgs', 'OtsBackupPlanOtsDetailArgsDict']]]]] = None,
-            retention: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanRuleArgs', 'OtsBackupPlanRuleArgsDict']]]]] = None,
-            schedule: Optional[pulumi.Input[_builtins.str]] = None,
-            vault_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OtsBackupPlan':
+            backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ots_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ots_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OtsBackupPlanOtsDetailArgs', 'OtsBackupPlanOtsDetailArgsDict']]]]] = None,
+            retention: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OtsBackupPlanRuleArgs', 'OtsBackupPlanRuleArgsDict']]]]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OtsBackupPlan':
         """
         Get an existing OtsBackupPlan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

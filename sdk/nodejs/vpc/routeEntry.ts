@@ -200,19 +200,19 @@ export interface RouteEntryState {
     /**
      * The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination CIDR block of the custom route entry.
      */
-    destinationCidrblock?: pulumi.Input<string>;
+    destinationCidrblock?: pulumi.Input<string | undefined>;
     /**
      * The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of Next Hop.
      */
-    nexthopId?: pulumi.Input<string>;
+    nexthopId?: pulumi.Input<string | undefined>;
     /**
      * The type of Next Hop. Valid values:
      * - `Instance`: An Elastic Compute Service (ECS) instance.
@@ -228,17 +228,17 @@ export interface RouteEntryState {
      * - `GatewayEndpoint`: A gateway endpoint.
      * - `Ecr`: A Express Connect Router (ECR).
      */
-    nexthopType?: pulumi.Input<string>;
+    nexthopType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Route Table.
      */
-    routeTableId?: pulumi.Input<string>;
+    routeTableId?: pulumi.Input<string | undefined>;
     /**
      * This argument has been deprecated. Please use other arguments to launch a custom route entry.
      *
      * @deprecated Attribute routerId has been deprecated and suggest removing it from your template.
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -248,19 +248,19 @@ export interface RouteEntryArgs {
     /**
      * The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination CIDR block of the custom route entry.
      */
-    destinationCidrblock?: pulumi.Input<string>;
+    destinationCidrblock?: pulumi.Input<string | undefined>;
     /**
      * The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of Next Hop.
      */
-    nexthopId?: pulumi.Input<string>;
+    nexthopId?: pulumi.Input<string | undefined>;
     /**
      * The type of Next Hop. Valid values:
      * - `Instance`: An Elastic Compute Service (ECS) instance.
@@ -276,7 +276,7 @@ export interface RouteEntryArgs {
      * - `GatewayEndpoint`: A gateway endpoint.
      * - `Ecr`: A Express Connect Router (ECR).
      */
-    nexthopType?: pulumi.Input<string>;
+    nexthopType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Route Table.
      */

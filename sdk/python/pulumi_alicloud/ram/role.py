@@ -19,17 +19,17 @@ __all__ = ['RoleArgs', 'Role']
 @pulumi.input_type
 class RoleArgs:
     def __init__(__self__, *,
-                 assume_role_policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 document: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 assume_role_policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 document: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Role resource.
 
@@ -85,159 +85,159 @@ class RoleArgs:
 
     @_builtins.property
     @pulumi.getter(name="assumeRolePolicyDocument")
-    def assume_role_policy_document(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assume_role_policy_document(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
         """
         return pulumi.get(self, "assume_role_policy_document")
 
     @assume_role_policy_document.setter
-    def assume_role_policy_document(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assume_role_policy_document(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assume_role_policy_document", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the RAM role.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead.""")
-    def document(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def document(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
         """
         return pulumi.get(self, "document")
 
     @document.setter
-    def document(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def document(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "document", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to force delete the Role. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSessionDuration")
-    def max_session_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_session_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
         """
         return pulumi.get(self, "max_session_duration")
 
     @max_session_duration.setter
-    def max_session_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_session_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_session_duration", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="ramUsers")
     @_utilities.deprecated("""Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead.""")
-    def ram_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ram_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
         """
         return pulumi.get(self, "ram_users")
 
     @ram_users.setter
-    def ram_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ram_users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ram_users", value)
 
     @_builtins.property
     @pulumi.getter(name="roleName")
-    def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the RAM role.
         """
         return pulumi.get(self, "role_name")
 
     @role_name.setter
-    def role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_name", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead.""")
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
         """
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "services", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of tags for the role.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead.""")
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
 class _RoleState:
     def __init__(__self__, *,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 assume_role_policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 document: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 assume_role_policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 document: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Role resources.
 
@@ -302,175 +302,175 @@ class _RoleState:
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of the RAM role.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter(name="assumeRolePolicyDocument")
-    def assume_role_policy_document(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assume_role_policy_document(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
         """
         return pulumi.get(self, "assume_role_policy_document")
 
     @assume_role_policy_document.setter
-    def assume_role_policy_document(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assume_role_policy_document(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assume_role_policy_document", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.252.0) The time when the RAM role was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the RAM role.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead.""")
-    def document(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def document(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
         """
         return pulumi.get(self, "document")
 
     @document.setter
-    def document(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def document(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "document", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to force delete the Role. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSessionDuration")
-    def max_session_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_session_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
         """
         return pulumi.get(self, "max_session_duration")
 
     @max_session_duration.setter
-    def max_session_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_session_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_session_duration", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="ramUsers")
     @_utilities.deprecated("""Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead.""")
-    def ram_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ram_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
         """
         return pulumi.get(self, "ram_users")
 
     @ram_users.setter
-    def ram_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ram_users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ram_users", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the RAM role.
         """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleName")
-    def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the RAM role.
         """
         return pulumi.get(self, "role_name")
 
     @role_name.setter
-    def role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_name", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead.""")
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
         """
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "services", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of tags for the role.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead.""")
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -480,17 +480,17 @@ class Role(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assume_role_policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 document: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 assume_role_policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 document: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RAM Role resource.
@@ -633,17 +633,17 @@ class Role(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assume_role_policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 document: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 assume_role_policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 document: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -677,20 +677,20 @@ class Role(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            arn: Optional[pulumi.Input[_builtins.str]] = None,
-            assume_role_policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            document: Optional[pulumi.Input[_builtins.str]] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            max_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            ram_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            role_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'Role':
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            assume_role_policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            document: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ram_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'Role':
         """
         Get an existing Role resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

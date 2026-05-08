@@ -113,11 +113,11 @@ export interface DelegatedAdministratorState {
     /**
      * The Alibaba Cloud account ID of the member in the resource directory.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the trusted service.
      */
-    servicePrincipal?: pulumi.Input<string>;
+    servicePrincipal?: pulumi.Input<string | undefined>;
 }
 
 /**

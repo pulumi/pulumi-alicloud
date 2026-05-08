@@ -96,7 +96,7 @@ export interface GetAckServiceOutputArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
     /**
      * Types of services opened. Valid values: `propayasgo`: Container service ack Pro managed version, `edgepayasgo`: Edge container service, `gspayasgo`: Gene computing services.
      *

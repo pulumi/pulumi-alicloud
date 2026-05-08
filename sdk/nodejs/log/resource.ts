@@ -150,23 +150,23 @@ export interface ResourceState {
     /**
      * The meta store's description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ext info of meta store.
      */
-    extInfo?: pulumi.Input<string>;
+    extInfo?: pulumi.Input<string | undefined>;
     /**
      * The meta store's name, can be used as table name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The meta store's schema info, which is json string format, used to define table's fields.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The meta store's type, userdefine e.g.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -176,15 +176,15 @@ export interface ResourceArgs {
     /**
      * The meta store's description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ext info of meta store.
      */
-    extInfo?: pulumi.Input<string>;
+    extInfo?: pulumi.Input<string | undefined>;
     /**
      * The meta store's name, can be used as table name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The meta store's schema info, which is json string format, used to define table's fields.
      */

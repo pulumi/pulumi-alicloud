@@ -58,8 +58,8 @@ class KeyPairArgs:
 @pulumi.input_type
 class _KeyPairState:
     def __init__(__self__, *,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key_body: Optional[pulumi.Input[_builtins.str]] = None):
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key_body: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyPair resources.
 
@@ -73,26 +73,26 @@ class _KeyPairState:
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Key Name.
         """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKeyBody")
-    def public_key_body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_key_body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public key body.
         """
         return pulumi.get(self, "public_key_body")
 
     @public_key_body.setter
-    def public_key_body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_key_body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_key_body", value)
 
 
@@ -102,8 +102,8 @@ class KeyPair(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key_body: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key_body: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Elastic Cloud Phone (ECP) Key Pair resource.
@@ -193,8 +193,8 @@ class KeyPair(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key_body: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key_body: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -220,8 +220,8 @@ class KeyPair(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-            public_key_body: Optional[pulumi.Input[_builtins.str]] = None) -> 'KeyPair':
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key_body: pulumi.Input[Optional[_builtins.str]] = None) -> 'KeyPair':
         """
         Get an existing KeyPair resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

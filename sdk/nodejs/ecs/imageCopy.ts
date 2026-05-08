@@ -205,78 +205,78 @@ export class ImageCopy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ImageCopy resources.
  */
 export interface ImageCopyState {
-    deleteAutoSnapshot?: pulumi.Input<boolean>;
+    deleteAutoSnapshot?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to encrypt the image.
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to force delete the custom image, Default is `false`. 
      * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
      * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * Key ID used to encrypt the image.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The source image ID.
      */
-    sourceImageId?: pulumi.Input<string>;
+    sourceImageId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
      */
-    sourceRegionId?: pulumi.Input<string>;
+    sourceRegionId?: pulumi.Input<string | undefined>;
     /**
      * The tag value of an image. The value of N ranges from 1 to 20.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ImageCopy resource.
  */
 export interface ImageCopyArgs {
-    deleteAutoSnapshot?: pulumi.Input<boolean>;
+    deleteAutoSnapshot?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to encrypt the image.
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to force delete the custom image, Default is `false`. 
      * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
      * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * Key ID used to encrypt the image.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The source image ID.
      */
@@ -288,5 +288,5 @@ export interface ImageCopyArgs {
     /**
      * The tag value of an image. The value of N ranges from 1 to 20.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

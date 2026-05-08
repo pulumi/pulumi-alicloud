@@ -160,27 +160,27 @@ export interface GetDomainsOutputArgs {
     /**
      * The search method. Valid values:
      */
-    domainSearchType?: pulumi.Input<string>;
+    domainSearchType?: pulumi.Input<string | undefined>;
     /**
      * A list of Domain IDs. Its element value is same as Domain Name.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Domain name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the domain name. The value of this parameter is used as a condition to filter domain names.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
      * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

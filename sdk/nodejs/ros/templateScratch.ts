@@ -160,39 +160,39 @@ export interface TemplateScratchState {
     /**
      * The Description of the Template Scratch.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The execution mode. Valid Values: `Async` or `Sync`.
      */
-    executionMode?: pulumi.Input<string>;
+    executionMode?: pulumi.Input<string | undefined>;
     /**
      * Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
      */
-    logicalIdStrategy?: pulumi.Input<string>;
+    logicalIdStrategy?: pulumi.Input<string | undefined>;
     /**
      * Priority parameter. See the following `Block preferenceParameters`.
      */
-    preferenceParameters?: pulumi.Input<pulumi.Input<inputs.ros.TemplateScratchPreferenceParameter>[]>;
+    preferenceParameters?: pulumi.Input<pulumi.Input<inputs.ros.TemplateScratchPreferenceParameter>[] | undefined>;
     /**
      * Source resource grouping. See the following `Block sourceResourceGroup`.
      */
-    sourceResourceGroup?: pulumi.Input<inputs.ros.TemplateScratchSourceResourceGroup>;
+    sourceResourceGroup?: pulumi.Input<inputs.ros.TemplateScratchSourceResourceGroup | undefined>;
     /**
      * Source resource. See the following `Block sourceResources`.
      */
-    sourceResources?: pulumi.Input<pulumi.Input<inputs.ros.TemplateScratchSourceResource>[]>;
+    sourceResources?: pulumi.Input<pulumi.Input<inputs.ros.TemplateScratchSourceResource>[] | undefined>;
     /**
      * Source tag. See the following `Block sourceTag`.
      */
-    sourceTag?: pulumi.Input<inputs.ros.TemplateScratchSourceTag>;
+    sourceTag?: pulumi.Input<inputs.ros.TemplateScratchSourceTag | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
      */
-    templateScratchType?: pulumi.Input<string>;
+    templateScratchType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -202,31 +202,31 @@ export interface TemplateScratchArgs {
     /**
      * The Description of the Template Scratch.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The execution mode. Valid Values: `Async` or `Sync`.
      */
-    executionMode?: pulumi.Input<string>;
+    executionMode?: pulumi.Input<string | undefined>;
     /**
      * Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
      */
-    logicalIdStrategy?: pulumi.Input<string>;
+    logicalIdStrategy?: pulumi.Input<string | undefined>;
     /**
      * Priority parameter. See the following `Block preferenceParameters`.
      */
-    preferenceParameters?: pulumi.Input<pulumi.Input<inputs.ros.TemplateScratchPreferenceParameter>[]>;
+    preferenceParameters?: pulumi.Input<pulumi.Input<inputs.ros.TemplateScratchPreferenceParameter>[] | undefined>;
     /**
      * Source resource grouping. See the following `Block sourceResourceGroup`.
      */
-    sourceResourceGroup?: pulumi.Input<inputs.ros.TemplateScratchSourceResourceGroup>;
+    sourceResourceGroup?: pulumi.Input<inputs.ros.TemplateScratchSourceResourceGroup | undefined>;
     /**
      * Source resource. See the following `Block sourceResources`.
      */
-    sourceResources?: pulumi.Input<pulumi.Input<inputs.ros.TemplateScratchSourceResource>[]>;
+    sourceResources?: pulumi.Input<pulumi.Input<inputs.ros.TemplateScratchSourceResource>[] | undefined>;
     /**
      * Source tag. See the following `Block sourceTag`.
      */
-    sourceTag?: pulumi.Input<inputs.ros.TemplateScratchSourceTag>;
+    sourceTag?: pulumi.Input<inputs.ros.TemplateScratchSourceTag | undefined>;
     /**
      * The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
      */

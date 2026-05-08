@@ -22,10 +22,10 @@ class AppArgs:
                  app_name: pulumi.Input[_builtins.str],
                  product_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoded_icon: Optional[pulumi.Input[_builtins.str]] = None,
-                 industry_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoded_icon: pulumi.Input[Optional[_builtins.str]] = None,
+                 industry_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a App resource.
 
@@ -87,63 +87,63 @@ class AppArgs:
 
     @_builtins.property
     @pulumi.getter(name="bundleId")
-    def bundle_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bundle_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
         """
         return pulumi.get(self, "bundle_id")
 
     @bundle_id.setter
-    def bundle_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bundle_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bundle_id", value)
 
     @_builtins.property
     @pulumi.getter(name="encodedIcon")
-    def encoded_icon(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoded_icon(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base64 string of picture.
         """
         return pulumi.get(self, "encoded_icon")
 
     @encoded_icon.setter
-    def encoded_icon(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoded_icon(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoded_icon", value)
 
     @_builtins.property
     @pulumi.getter(name="industryId")
-    def industry_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def industry_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
         """
         return pulumi.get(self, "industry_id")
 
     @industry_id.setter
-    def industry_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def industry_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "industry_id", value)
 
     @_builtins.property
     @pulumi.getter(name="packageName")
-    def package_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
         """
         return pulumi.get(self, "package_name")
 
     @package_name.setter
-    def package_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_name", value)
 
 
 @pulumi.input_type
 class _AppState:
     def __init__(__self__, *,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoded_icon: Optional[pulumi.Input[_builtins.str]] = None,
-                 industry_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoded_icon: pulumi.Input[Optional[_builtins.str]] = None,
+                 industry_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering App resources.
 
@@ -172,86 +172,86 @@ class _AppState:
 
     @_builtins.property
     @pulumi.getter(name="appName")
-    def app_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AppName.
         """
         return pulumi.get(self, "app_name")
 
     @app_name.setter
-    def app_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_name", value)
 
     @_builtins.property
     @pulumi.getter(name="bundleId")
-    def bundle_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bundle_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The app id of iOS. **NOTE:** Either `bundle_id` or `package_name` must be set.
         """
         return pulumi.get(self, "bundle_id")
 
     @bundle_id.setter
-    def bundle_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bundle_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bundle_id", value)
 
     @_builtins.property
     @pulumi.getter(name="encodedIcon")
-    def encoded_icon(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoded_icon(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base64 string of picture.
         """
         return pulumi.get(self, "encoded_icon")
 
     @encoded_icon.setter
-    def encoded_icon(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoded_icon(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoded_icon", value)
 
     @_builtins.property
     @pulumi.getter(name="industryId")
-    def industry_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def industry_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
         """
         return pulumi.get(self, "industry_id")
 
     @industry_id.setter
-    def industry_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def industry_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "industry_id", value)
 
     @_builtins.property
     @pulumi.getter(name="packageName")
-    def package_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
         """
         return pulumi.get(self, "package_name")
 
     @package_name.setter
-    def package_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_name", value)
 
     @_builtins.property
     @pulumi.getter(name="productId")
-    def product_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Product.
         """
         return pulumi.get(self, "product_id")
 
     @product_id.setter
-    def product_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Product. Valid values: `Android` and `iOS`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -261,13 +261,13 @@ class App(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoded_icon: Optional[pulumi.Input[_builtins.str]] = None,
-                 industry_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoded_icon: pulumi.Input[Optional[_builtins.str]] = None,
+                 industry_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a MHUB App resource.
@@ -380,13 +380,13 @@ class App(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoded_icon: Optional[pulumi.Input[_builtins.str]] = None,
-                 industry_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoded_icon: pulumi.Input[Optional[_builtins.str]] = None,
+                 industry_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -419,13 +419,13 @@ class App(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_name: Optional[pulumi.Input[_builtins.str]] = None,
-            bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-            encoded_icon: Optional[pulumi.Input[_builtins.str]] = None,
-            industry_id: Optional[pulumi.Input[_builtins.str]] = None,
-            package_name: Optional[pulumi.Input[_builtins.str]] = None,
-            product_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'App':
+            app_name: pulumi.Input[Optional[_builtins.str]] = None,
+            bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+            encoded_icon: pulumi.Input[Optional[_builtins.str]] = None,
+            industry_id: pulumi.Input[Optional[_builtins.str]] = None,
+            package_name: pulumi.Input[Optional[_builtins.str]] = None,
+            product_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'App':
         """
         Get an existing App resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

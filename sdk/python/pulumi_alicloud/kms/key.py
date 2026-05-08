@@ -19,23 +19,23 @@ __all__ = ['KeyArgs', 'Key']
 @pulumi.input_type
 class KeyArgs:
     def __init__(__self__, *,
-                 automatic_rotation: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dkms_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 pending_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 protection_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 automatic_rotation: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dkms_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 pending_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 protection_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Key resource.
 
@@ -111,81 +111,81 @@ class KeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="automaticRotation")
-    def automatic_rotation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def automatic_rotation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
         """
         return pulumi.get(self, "automatic_rotation")
 
     @automatic_rotation.setter
-    def automatic_rotation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def automatic_rotation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "automatic_rotation", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionDescription")
-    def deletion_protection_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_protection_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
         """
         return pulumi.get(self, "deletion_protection_description")
 
     @deletion_protection_description.setter
-    def deletion_protection_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_protection_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_protection_description", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionWindowInDays")
     @_utilities.deprecated("""Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""")
-    def deletion_window_in_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deletion_window_in_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         """
         return pulumi.get(self, "deletion_window_in_days")
 
     @deletion_window_in_days.setter
-    def deletion_window_in_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deletion_window_in_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deletion_window_in_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the key.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dkmsInstanceId")
-    def dkms_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dkms_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the KMS instance.
         """
         return pulumi.get(self, "dkms_instance_id")
 
     @dkms_instance_id.setter
-    def dkms_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dkms_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dkms_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
     @_utilities.deprecated("""Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.""")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
 
@@ -198,37 +198,37 @@ class KeyArgs:
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="keySpec")
-    def key_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
         """
         return pulumi.get(self, "key_spec")
 
     @key_spec.setter
-    def key_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="keyState")
     @_utilities.deprecated("""Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.""")
-    def key_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         """
         return pulumi.get(self, "key_state")
 
     @key_state.setter
-    def key_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_state", value)
 
     @_builtins.property
     @pulumi.getter(name="keyUsage")
-    def key_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The usage of the key. Default value: `ENCRYPT/DECRYPT`. Valid values:
         - `ENCRYPT/DECRYPT`: Encrypts or decrypts data.
@@ -237,122 +237,122 @@ class KeyArgs:
         return pulumi.get(self, "key_usage")
 
     @key_usage.setter
-    def key_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_usage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_usage", value)
 
     @_builtins.property
     @pulumi.getter
-    def origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
         """
         return pulumi.get(self, "origin")
 
     @origin.setter
-    def origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "origin", value)
 
     @_builtins.property
     @pulumi.getter(name="pendingWindowInDays")
-    def pending_window_in_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pending_window_in_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         """
         return pulumi.get(self, "pending_window_in_days")
 
     @pending_window_in_days.setter
-    def pending_window_in_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pending_window_in_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pending_window_in_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="protectionLevel")
-    def protection_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protection_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
         """
         return pulumi.get(self, "protection_level")
 
     @protection_level.setter
-    def protection_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protection_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protection_level", value)
 
     @_builtins.property
     @pulumi.getter(name="rotationInterval")
-    def rotation_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rotation_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
         """
         return pulumi.get(self, "rotation_interval")
 
     @rotation_interval.setter
-    def rotation_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rotation_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rotation_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _KeyState:
     def __init__(__self__, *,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 automatic_rotation: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dkms_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_rotation_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 material_expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_rotation_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 pending_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_key_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 protection_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 automatic_rotation: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dkms_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_rotation_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 material_expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_rotation_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 pending_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_key_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 protection_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Key resources.
 
@@ -452,129 +452,129 @@ class _KeyState:
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the key.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter(name="automaticRotation")
-    def automatic_rotation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def automatic_rotation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
         """
         return pulumi.get(self, "automatic_rotation")
 
     @automatic_rotation.setter
-    def automatic_rotation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def automatic_rotation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "automatic_rotation", value)
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the CMK was created.
         """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
-    def creation_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creator of the CMK.
         """
         return pulumi.get(self, "creator")
 
     @creator.setter
-    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteDate")
-    def delete_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the CMK is scheduled for deletion.
         """
         return pulumi.get(self, "delete_date")
 
     @delete_date.setter
-    def delete_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_date", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionDescription")
-    def deletion_protection_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_protection_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of deletion protection. **NOTE:** `deletion_protection_description` takes effect only if `deletion_protection` is set to `Enabled`.
         """
         return pulumi.get(self, "deletion_protection_description")
 
     @deletion_protection_description.setter
-    def deletion_protection_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_protection_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_protection_description", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionWindowInDays")
     @_utilities.deprecated("""Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""")
-    def deletion_window_in_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deletion_window_in_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         """
         return pulumi.get(self, "deletion_window_in_days")
 
     @deletion_window_in_days.setter
-    def deletion_window_in_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deletion_window_in_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deletion_window_in_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the key.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dkmsInstanceId")
-    def dkms_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dkms_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the KMS instance.
         """
         return pulumi.get(self, "dkms_instance_id")
 
     @dkms_instance_id.setter
-    def dkms_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dkms_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dkms_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
     @_utilities.deprecated("""Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.""")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
 
@@ -587,37 +587,37 @@ class _KeyState:
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="keySpec")
-    def key_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
         """
         return pulumi.get(self, "key_spec")
 
     @key_spec.setter
-    def key_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="keyState")
     @_utilities.deprecated("""Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.""")
-    def key_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         """
         return pulumi.get(self, "key_state")
 
     @key_state.setter
-    def key_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_state", value)
 
     @_builtins.property
     @pulumi.getter(name="keyUsage")
-    def key_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The usage of the key. Default value: `ENCRYPT/DECRYPT`. Valid values:
         - `ENCRYPT/DECRYPT`: Encrypts or decrypts data.
@@ -626,139 +626,139 @@ class _KeyState:
         return pulumi.get(self, "key_usage")
 
     @key_usage.setter
-    def key_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_usage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_usage", value)
 
     @_builtins.property
     @pulumi.getter(name="lastRotationDate")
-    def last_rotation_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_rotation_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the last rotation was performed.
         """
         return pulumi.get(self, "last_rotation_date")
 
     @last_rotation_date.setter
-    def last_rotation_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_rotation_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_rotation_date", value)
 
     @_builtins.property
     @pulumi.getter(name="materialExpireTime")
-    def material_expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def material_expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the key material expires.
         """
         return pulumi.get(self, "material_expire_time")
 
     @material_expire_time.setter
-    def material_expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def material_expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "material_expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="nextRotationDate")
-    def next_rotation_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_rotation_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the next rotation will be performed.
         """
         return pulumi.get(self, "next_rotation_date")
 
     @next_rotation_date.setter
-    def next_rotation_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_rotation_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_rotation_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
         """
         return pulumi.get(self, "origin")
 
     @origin.setter
-    def origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "origin", value)
 
     @_builtins.property
     @pulumi.getter(name="pendingWindowInDays")
-    def pending_window_in_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pending_window_in_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         """
         return pulumi.get(self, "pending_window_in_days")
 
     @pending_window_in_days.setter
-    def pending_window_in_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pending_window_in_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pending_window_in_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKeyVersion")
-    def primary_key_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_key_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the current primary key version of the symmetric CMK.
         """
         return pulumi.get(self, "primary_key_version")
 
     @primary_key_version.setter
-    def primary_key_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_key_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_key_version", value)
 
     @_builtins.property
     @pulumi.getter(name="protectionLevel")
-    def protection_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protection_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
         """
         return pulumi.get(self, "protection_level")
 
     @protection_level.setter
-    def protection_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protection_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protection_level", value)
 
     @_builtins.property
     @pulumi.getter(name="rotationInterval")
-    def rotation_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rotation_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
         """
         return pulumi.get(self, "rotation_interval")
 
     @rotation_interval.setter
-    def rotation_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rotation_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rotation_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -768,23 +768,23 @@ class Key(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automatic_rotation: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dkms_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 pending_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 protection_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 automatic_rotation: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dkms_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 pending_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 protection_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a KMS Key resource.
@@ -899,23 +899,23 @@ class Key(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automatic_rotation: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dkms_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 pending_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 protection_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 automatic_rotation: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dkms_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 pending_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 protection_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -960,31 +960,31 @@ class Key(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            arn: Optional[pulumi.Input[_builtins.str]] = None,
-            automatic_rotation: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-            creator: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_date: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection_description: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dkms_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            key_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            key_state: Optional[pulumi.Input[_builtins.str]] = None,
-            key_usage: Optional[pulumi.Input[_builtins.str]] = None,
-            last_rotation_date: Optional[pulumi.Input[_builtins.str]] = None,
-            material_expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-            next_rotation_date: Optional[pulumi.Input[_builtins.str]] = None,
-            origin: Optional[pulumi.Input[_builtins.str]] = None,
-            pending_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-            policy: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_key_version: Optional[pulumi.Input[_builtins.str]] = None,
-            protection_level: Optional[pulumi.Input[_builtins.str]] = None,
-            rotation_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Key':
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            automatic_rotation: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_date: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection_description: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dkms_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            key_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            key_state: pulumi.Input[Optional[_builtins.str]] = None,
+            key_usage: pulumi.Input[Optional[_builtins.str]] = None,
+            last_rotation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            material_expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            next_rotation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            origin: pulumi.Input[Optional[_builtins.str]] = None,
+            pending_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_key_version: pulumi.Input[Optional[_builtins.str]] = None,
+            protection_level: pulumi.Input[Optional[_builtins.str]] = None,
+            rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Key':
         """
         Get an existing Key resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -103,11 +103,11 @@ class PolicyAttachmentArgs:
 @pulumi.input_type
 class _PolicyAttachmentState:
     def __init__(__self__, *,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyAttachment resources.
 
@@ -130,62 +130,62 @@ class _PolicyAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="policyName")
-    def policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
-    def policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyType")
-    def policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the policy. Valid values: `Custom`, `System`.
         """
         return pulumi.get(self, "policy_type")
 
     @policy_type.setter
-    def policy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_type", value)
 
     @_builtins.property
     @pulumi.getter(name="principalName")
-    def principal_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the object to which you want to attach the policy.
         """
         return pulumi.get(self, "principal_name")
 
     @principal_name.setter
-    def principal_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_name", value)
 
     @_builtins.property
     @pulumi.getter(name="principalType")
-    def principal_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
         """
         return pulumi.get(self, "principal_type")
 
     @principal_type.setter
-    def principal_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
 
@@ -195,11 +195,11 @@ class PolicyAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Policy Attachment resource to attaches a policy to an object. After you attach a policy to an object, the object has the operation permissions on the current resource group or the resources under the current account.
@@ -346,11 +346,11 @@ class PolicyAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -385,11 +385,11 @@ class PolicyAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-            principal_name: Optional[pulumi.Input[_builtins.str]] = None,
-            principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'PolicyAttachment':
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'PolicyAttachment':
         """
         Get an existing PolicyAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

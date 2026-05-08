@@ -147,23 +147,23 @@ export interface ApiDestinationState {
     /**
      * The name of the API destination.
      */
-    apiDestinationName?: pulumi.Input<string>;
+    apiDestinationName?: pulumi.Input<string | undefined>;
     /**
      * The name of the connection.
      */
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the Api Destination.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The description of the API destination.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The parameters that are configured for the API destination. See `httpApiParameters` below.
      */
-    httpApiParameters?: pulumi.Input<inputs.eventbridge.ApiDestinationHttpApiParameters>;
+    httpApiParameters?: pulumi.Input<inputs.eventbridge.ApiDestinationHttpApiParameters | undefined>;
 }
 
 /**
@@ -181,7 +181,7 @@ export interface ApiDestinationArgs {
     /**
      * The description of the API destination.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The parameters that are configured for the API destination. See `httpApiParameters` below.
      */

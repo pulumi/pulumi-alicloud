@@ -26,14 +26,14 @@ class WorkspaceDatasetArgs:
                  property: pulumi.Input[_builtins.str],
                  uri: pulumi.Input[_builtins.str],
                  workspace_id: pulumi.Input[_builtins.str],
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceDatasetLabelArgs']]]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceDatasetLabelArgs']]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceDataset resource.
 
@@ -188,7 +188,7 @@ class WorkspaceDatasetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def accessibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accessibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workspace visibility. The following values are supported:
         - PRIVATE (default): indicates that the workspace is visible to itself and the administrator.
@@ -197,12 +197,12 @@ class WorkspaceDatasetArgs:
         return pulumi.get(self, "accessibility")
 
     @accessibility.setter
-    def accessibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accessibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accessibility", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dataset type. The default value is COMMON. The following values are supported:
         - COMMON: COMMON.
@@ -214,36 +214,36 @@ class WorkspaceDatasetArgs:
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom descriptions of datasets to distinguish between different datasets.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceDatasetLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceDatasetLabelArgs']]]]:
         """
         Labels added to the dataset See `labels` below.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceDatasetLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceDatasetLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extended field, which is of the JsonString type.
 
@@ -252,12 +252,12 @@ class WorkspaceDatasetArgs:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceId")
-    def source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source ID.
         - When the SourceType is USER, SourceId can be customized.
@@ -267,12 +267,12 @@ class WorkspaceDatasetArgs:
         return pulumi.get(self, "source_id")
 
     @source_id.setter
-    def source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source type. The default value is USER. The following values are supported:
         - PAI-PUBLIC-DATASET:PAI public dataset.
@@ -282,39 +282,39 @@ class WorkspaceDatasetArgs:
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dataset owner.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
 @pulumi.input_type
 class _WorkspaceDatasetState:
     def __init__(__self__, *,
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceDatasetLabelArgs']]]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 property: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceDatasetLabelArgs']]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 property: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceDataset resources.
 
@@ -398,7 +398,7 @@ class _WorkspaceDatasetState:
 
     @_builtins.property
     @pulumi.getter
-    def accessibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accessibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workspace visibility. The following values are supported:
         - PRIVATE (default): indicates that the workspace is visible to itself and the administrator.
@@ -407,24 +407,24 @@ class _WorkspaceDatasetState:
         return pulumi.get(self, "accessibility")
 
     @accessibility.setter
-    def accessibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accessibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accessibility", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceType")
-    def data_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source type. The following values are supported:
         - OSS: Alibaba Cloud Object Storage (OSS).
@@ -433,12 +433,12 @@ class _WorkspaceDatasetState:
         return pulumi.get(self, "data_source_type")
 
     @data_source_type.setter
-    def data_source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dataset type. The default value is COMMON. The following values are supported:
         - COMMON: COMMON.
@@ -450,12 +450,12 @@ class _WorkspaceDatasetState:
         return pulumi.get(self, "data_type")
 
     @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_type", value)
 
     @_builtins.property
     @pulumi.getter(name="datasetName")
-    def dataset_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the dataset. The naming rules are as follows:
         - Start with a lowercase letter, uppercase letter, number, or Chinese.
@@ -465,36 +465,36 @@ class _WorkspaceDatasetState:
         return pulumi.get(self, "dataset_name")
 
     @dataset_name.setter
-    def dataset_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom descriptions of datasets to distinguish between different datasets.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceDatasetLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceDatasetLabelArgs']]]]:
         """
         Labels added to the dataset See `labels` below.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceDatasetLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceDatasetLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extended field, which is of the JsonString type.
 
@@ -503,12 +503,12 @@ class _WorkspaceDatasetState:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def property(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def property(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The properties of the dataset. The following values are supported:
         - FILE: FILE.
@@ -517,12 +517,12 @@ class _WorkspaceDatasetState:
         return pulumi.get(self, "property")
 
     @property.setter
-    def property(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def property(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "property", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceId")
-    def source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source ID.
         - When the SourceType is USER, SourceId can be customized.
@@ -532,12 +532,12 @@ class _WorkspaceDatasetState:
         return pulumi.get(self, "source_id")
 
     @source_id.setter
-    def source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source type. The default value is USER. The following values are supported:
         - PAI-PUBLIC-DATASET:PAI public dataset.
@@ -547,12 +547,12 @@ class _WorkspaceDatasetState:
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Uri configuration sample is as follows:
         - The data source type is OSS:'oss:// bucket.endpoint/object'
@@ -569,24 +569,24 @@ class _WorkspaceDatasetState:
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dataset owner.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the workspace where the dataset is located. For details about how to obtain the workspace ID, see ListWorkspaces.
 
@@ -595,7 +595,7 @@ class _WorkspaceDatasetState:
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -605,19 +605,19 @@ class WorkspaceDataset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict']]]]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 property: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict']]]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 property: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a PAI Workspace Dataset resource.
@@ -796,19 +796,19 @@ class WorkspaceDataset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict']]]]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 property: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict']]]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 property: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -852,20 +852,20 @@ class WorkspaceDataset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            data_type: Optional[pulumi.Input[_builtins.str]] = None,
-            dataset_name: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict']]]]] = None,
-            options: Optional[pulumi.Input[_builtins.str]] = None,
-            property: Optional[pulumi.Input[_builtins.str]] = None,
-            source_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            uri: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkspaceDataset':
+            accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            data_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetLabelArgs', 'WorkspaceDatasetLabelArgsDict']]]]] = None,
+            options: pulumi.Input[Optional[_builtins.str]] = None,
+            property: pulumi.Input[Optional[_builtins.str]] = None,
+            source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceDataset':
         """
         Get an existing WorkspaceDataset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

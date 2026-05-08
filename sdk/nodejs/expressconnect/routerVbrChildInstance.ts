@@ -171,37 +171,37 @@ export interface RouterVbrChildInstanceState {
     /**
      * The ID of the leased line gateway subinstance.
      */
-    childInstanceId?: pulumi.Input<string>;
+    childInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
      *
      * > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
      */
-    childInstanceOwnerId?: pulumi.Input<string>;
+    childInstanceOwnerId?: pulumi.Input<string | undefined>;
     /**
      * Region of the leased line gateway sub-instance
      */
-    childInstanceRegionId?: pulumi.Input<string>;
+    childInstanceRegionId?: pulumi.Input<string | undefined>;
     /**
      * The type of the network instance. Value: `VBR`: VBR instance.
      */
-    childInstanceType?: pulumi.Input<string>;
+    childInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Resource attribute fields that represent descriptive information
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * ID of the representative leased line gateway instance.
      */
-    ecrId?: pulumi.Input<string>;
+    ecrId?: pulumi.Input<string | undefined>;
     /**
      * Binding relationship status of leased line gateway subinstances.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -217,7 +217,7 @@ export interface RouterVbrChildInstanceArgs {
      *
      * > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
      */
-    childInstanceOwnerId?: pulumi.Input<string>;
+    childInstanceOwnerId?: pulumi.Input<string | undefined>;
     /**
      * Region of the leased line gateway sub-instance
      */
@@ -229,7 +229,7 @@ export interface RouterVbrChildInstanceArgs {
     /**
      * Resource attribute fields that represent descriptive information
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * ID of the representative leased line gateway instance.
      */

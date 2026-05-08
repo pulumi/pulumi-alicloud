@@ -129,17 +129,17 @@ export interface GetHanaInstancesOutputArgs {
     /**
      * A list of Hana Instance IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Hana Instance name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The status of the SAP HANA instance. Valid values:
      * - `INITIALIZING`: The instance is being initialized.
@@ -147,9 +147,9 @@ export interface GetHanaInstancesOutputArgs {
      * - `INVALID_HANA_NODE`: The instance is invalid.
      * - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The id of the vault.
      */
-    vaultId?: pulumi.Input<string>;
+    vaultId?: pulumi.Input<string | undefined>;
 }

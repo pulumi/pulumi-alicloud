@@ -132,21 +132,21 @@ export interface MscSubContractState {
     /**
      * The User's Contact Name. **Note:** The name must be 2 to 12 characters in length.
      */
-    contactName?: pulumi.Input<string>;
+    contactName?: pulumi.Input<string | undefined>;
     /**
      * The User's Contact Email Address.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The User's Telephone.
      */
-    mobile?: pulumi.Input<string>;
+    mobile?: pulumi.Input<string | undefined>;
     /**
      * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
      *
      * > **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
      */
-    position?: pulumi.Input<string>;
+    position?: pulumi.Input<string | undefined>;
 }
 
 /**

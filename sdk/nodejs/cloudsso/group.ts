@@ -139,19 +139,19 @@ export interface GroupState {
     /**
      * The Description of the group. The description can be up to `1024` characters long.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Directory.
      */
-    directoryId?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string | undefined>;
     /**
      * The GroupId of the group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -161,7 +161,7 @@ export interface GroupArgs {
     /**
      * The Description of the group. The description can be up to `1024` characters long.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Directory.
      */

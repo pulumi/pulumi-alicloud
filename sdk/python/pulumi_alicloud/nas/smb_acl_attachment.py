@@ -22,11 +22,11 @@ class SmbAclAttachmentArgs:
                  file_system_id: pulumi.Input[_builtins.str],
                  keytab: pulumi.Input[_builtins.str],
                  keytab_md5: pulumi.Input[_builtins.str],
-                 enable_anonymous_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypt_data: Optional[pulumi.Input[_builtins.bool]] = None,
-                 home_dir_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 reject_unencrypted_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 super_admin_sid: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_anonymous_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypt_data: pulumi.Input[Optional[_builtins.bool]] = None,
+                 home_dir_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 reject_unencrypted_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 super_admin_sid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SmbAclAttachment resource.
 
@@ -105,7 +105,7 @@ class SmbAclAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableAnonymousAccess")
-    def enable_anonymous_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_anonymous_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to allow anonymous access. Valid values:
         true: The file system allows anonymous access.
@@ -114,12 +114,12 @@ class SmbAclAttachmentArgs:
         return pulumi.get(self, "enable_anonymous_access")
 
     @enable_anonymous_access.setter
-    def enable_anonymous_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_anonymous_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_anonymous_access", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptData")
-    def encrypt_data(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypt_data(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable encryption in transit. Valid values:
         true: enables encryption in transit.
@@ -128,12 +128,12 @@ class SmbAclAttachmentArgs:
         return pulumi.get(self, "encrypt_data")
 
     @encrypt_data.setter
-    def encrypt_data(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypt_data(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypt_data", value)
 
     @_builtins.property
     @pulumi.getter(name="homeDirPath")
-    def home_dir_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def home_dir_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The home directory of each user. Each user-specific home directory must meet the following requirements:    
         Each segment starts with a forward slash (/) or a backslash (\\).
@@ -145,12 +145,12 @@ class SmbAclAttachmentArgs:
         return pulumi.get(self, "home_dir_path")
 
     @home_dir_path.setter
-    def home_dir_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def home_dir_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "home_dir_path", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectUnencryptedAccess")
-    def reject_unencrypted_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reject_unencrypted_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to deny access from non-encrypted clients. Valid values:
         true: The file system denies access from non-encrypted clients.
@@ -159,12 +159,12 @@ class SmbAclAttachmentArgs:
         return pulumi.get(self, "reject_unencrypted_access")
 
     @reject_unencrypted_access.setter
-    def reject_unencrypted_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reject_unencrypted_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_unencrypted_access", value)
 
     @_builtins.property
     @pulumi.getter(name="superAdminSid")
-    def super_admin_sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def super_admin_sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a super admin. The ID must meet the following requirements:
         The ID starts with S and does not contain letters except S.
@@ -174,23 +174,23 @@ class SmbAclAttachmentArgs:
         return pulumi.get(self, "super_admin_sid")
 
     @super_admin_sid.setter
-    def super_admin_sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def super_admin_sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "super_admin_sid", value)
 
 
 @pulumi.input_type
 class _SmbAclAttachmentState:
     def __init__(__self__, *,
-                 auth_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_anonymous_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_data: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 home_dir_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 keytab: Optional[pulumi.Input[_builtins.str]] = None,
-                 keytab_md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 reject_unencrypted_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 super_admin_sid: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_anonymous_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_data: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 home_dir_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 keytab: pulumi.Input[Optional[_builtins.str]] = None,
+                 keytab_md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 reject_unencrypted_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 super_admin_sid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SmbAclAttachment resources.
 
@@ -244,19 +244,19 @@ class _SmbAclAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="authMethod")
-    def auth_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that is used to authenticate network identities.
         """
         return pulumi.get(self, "auth_method")
 
     @auth_method.setter
-    def auth_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_method", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAnonymousAccess")
-    def enable_anonymous_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_anonymous_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to allow anonymous access. Valid values:
         true: The file system allows anonymous access.
@@ -265,12 +265,12 @@ class _SmbAclAttachmentState:
         return pulumi.get(self, "enable_anonymous_access")
 
     @enable_anonymous_access.setter
-    def enable_anonymous_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_anonymous_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_anonymous_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable the ACL feature.
         true: enables the ACL feature.
@@ -279,12 +279,12 @@ class _SmbAclAttachmentState:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptData")
-    def encrypt_data(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypt_data(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable encryption in transit. Valid values:
         true: enables encryption in transit.
@@ -293,24 +293,24 @@ class _SmbAclAttachmentState:
         return pulumi.get(self, "encrypt_data")
 
     @encrypt_data.setter
-    def encrypt_data(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypt_data(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypt_data", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the file system.
         """
         return pulumi.get(self, "file_system_id")
 
     @file_system_id.setter
-    def file_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_id", value)
 
     @_builtins.property
     @pulumi.getter(name="homeDirPath")
-    def home_dir_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def home_dir_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The home directory of each user. Each user-specific home directory must meet the following requirements:    
         Each segment starts with a forward slash (/) or a backslash (\\).
@@ -322,36 +322,36 @@ class _SmbAclAttachmentState:
         return pulumi.get(self, "home_dir_path")
 
     @home_dir_path.setter
-    def home_dir_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def home_dir_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "home_dir_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def keytab(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keytab(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string that is generated after the system encodes the keytab file by using Base64.
         """
         return pulumi.get(self, "keytab")
 
     @keytab.setter
-    def keytab(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keytab(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keytab", value)
 
     @_builtins.property
     @pulumi.getter(name="keytabMd5")
-    def keytab_md5(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keytab_md5(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RThe string that is generated after the system encodes the keytab file by using MD5.
         """
         return pulumi.get(self, "keytab_md5")
 
     @keytab_md5.setter
-    def keytab_md5(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keytab_md5(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keytab_md5", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectUnencryptedAccess")
-    def reject_unencrypted_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reject_unencrypted_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to deny access from non-encrypted clients. Valid values:
         true: The file system denies access from non-encrypted clients.
@@ -360,12 +360,12 @@ class _SmbAclAttachmentState:
         return pulumi.get(self, "reject_unencrypted_access")
 
     @reject_unencrypted_access.setter
-    def reject_unencrypted_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reject_unencrypted_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_unencrypted_access", value)
 
     @_builtins.property
     @pulumi.getter(name="superAdminSid")
-    def super_admin_sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def super_admin_sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a super admin. The ID must meet the following requirements:
         The ID starts with S and does not contain letters except S.
@@ -375,7 +375,7 @@ class _SmbAclAttachmentState:
         return pulumi.get(self, "super_admin_sid")
 
     @super_admin_sid.setter
-    def super_admin_sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def super_admin_sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "super_admin_sid", value)
 
 
@@ -385,14 +385,14 @@ class SmbAclAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_anonymous_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypt_data: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 home_dir_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 keytab: Optional[pulumi.Input[_builtins.str]] = None,
-                 keytab_md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 reject_unencrypted_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 super_admin_sid: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_anonymous_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypt_data: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 home_dir_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 keytab: pulumi.Input[Optional[_builtins.str]] = None,
+                 keytab_md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 reject_unencrypted_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 super_admin_sid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Nas Smb Acl resource.
@@ -502,14 +502,14 @@ class SmbAclAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_anonymous_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypt_data: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 home_dir_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 keytab: Optional[pulumi.Input[_builtins.str]] = None,
-                 keytab_md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 reject_unencrypted_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 super_admin_sid: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_anonymous_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypt_data: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 home_dir_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 keytab: pulumi.Input[Optional[_builtins.str]] = None,
+                 keytab_md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 reject_unencrypted_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 super_admin_sid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -545,16 +545,16 @@ class SmbAclAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_method: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_anonymous_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled: Optional[pulumi.Input[_builtins.str]] = None,
-            encrypt_data: Optional[pulumi.Input[_builtins.bool]] = None,
-            file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-            home_dir_path: Optional[pulumi.Input[_builtins.str]] = None,
-            keytab: Optional[pulumi.Input[_builtins.str]] = None,
-            keytab_md5: Optional[pulumi.Input[_builtins.str]] = None,
-            reject_unencrypted_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            super_admin_sid: Optional[pulumi.Input[_builtins.str]] = None) -> 'SmbAclAttachment':
+            auth_method: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_anonymous_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypt_data: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            home_dir_path: pulumi.Input[Optional[_builtins.str]] = None,
+            keytab: pulumi.Input[Optional[_builtins.str]] = None,
+            keytab_md5: pulumi.Input[Optional[_builtins.str]] = None,
+            reject_unencrypted_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            super_admin_sid: pulumi.Input[Optional[_builtins.str]] = None) -> 'SmbAclAttachment':
         """
         Get an existing SmbAclAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

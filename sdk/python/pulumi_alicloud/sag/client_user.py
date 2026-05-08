@@ -22,11 +22,11 @@ class ClientUserArgs:
                  bandwidth: pulumi.Input[_builtins.int],
                  sag_id: pulumi.Input[_builtins.str],
                  user_mail: pulumi.Input[_builtins.str],
-                 client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientUser resource.
 
@@ -91,76 +91,76 @@ class ClientUserArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientIp")
-    def client_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
         """
         return pulumi.get(self, "client_ip")
 
     @client_ip.setter
-    def client_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the KMS Encryption.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
-    def kms_encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The context of the KMS Encryption.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
 @pulumi.input_type
 class _ClientUserState:
     def __init__(__self__, *,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 sag_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_mail: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 sag_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_mail: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClientUser resources.
 
@@ -192,98 +192,98 @@ class _ClientUserState:
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="clientIp")
-    def client_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
         """
         return pulumi.get(self, "client_ip")
 
     @client_ip.setter
-    def client_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the KMS Encryption.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
-    def kms_encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The context of the KMS Encryption.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="sagId")
-    def sag_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sag_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the SAG instance created for the SAG APP.
         """
         return pulumi.get(self, "sag_id")
 
     @sag_id.setter
-    def sag_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sag_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sag_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userMail")
-    def user_mail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_mail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
         """
         return pulumi.get(self, "user_mail")
 
     @user_mail.setter
-    def user_mail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_mail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_mail", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
@@ -293,14 +293,14 @@ class ClientUser(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 sag_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_mail: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 sag_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_mail: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Sag ClientUser resource. This topic describes how to manage accounts as an administrator. After you configure the network, you can create multiple accounts and distribute them to end users so that clients can access Alibaba Cloud.
@@ -422,14 +422,14 @@ class ClientUser(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 sag_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_mail: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 sag_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_mail: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -465,14 +465,14 @@ class ClientUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            sag_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_mail: Optional[pulumi.Input[_builtins.str]] = None,
-            user_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClientUser':
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            sag_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_mail: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ClientUser':
         """
         Get an existing ClientUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

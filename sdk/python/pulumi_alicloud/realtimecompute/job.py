@@ -23,12 +23,12 @@ class JobArgs:
     def __init__(__self__, *,
                  namespace: pulumi.Input[_builtins.str],
                  resource_id: pulumi.Input[_builtins.str],
-                 deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_variables: Optional[pulumi.Input[Sequence[pulumi.Input['JobLocalVariableArgs']]]] = None,
-                 resource_queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_strategy: Optional[pulumi.Input['JobRestoreStrategyArgs']] = None,
-                 status: Optional[pulumi.Input['JobStatusArgs']] = None,
-                 stop_strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_variables: pulumi.Input[Optional[Sequence[pulumi.Input['JobLocalVariableArgs']]]] = None,
+                 resource_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_strategy: pulumi.Input[Optional['JobRestoreStrategyArgs']] = None,
+                 status: pulumi.Input[Optional['JobStatusArgs']] = None,
+                 stop_strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Job resource.
 
@@ -86,31 +86,31 @@ class JobArgs:
 
     @_builtins.property
     @pulumi.getter(name="deploymentId")
-    def deployment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         deploymentId
         """
         return pulumi.get(self, "deployment_id")
 
     @deployment_id.setter
-    def deployment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="localVariables")
-    def local_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobLocalVariableArgs']]]]:
+    def local_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobLocalVariableArgs']]]]:
         """
         Local variables See `local_variables` below.
         """
         return pulumi.get(self, "local_variables")
 
     @local_variables.setter
-    def local_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobLocalVariableArgs']]]]):
+    def local_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobLocalVariableArgs']]]]):
         pulumi.set(self, "local_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceQueueName")
-    def resource_queue_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_queue_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Queue for Job Run
 
@@ -119,36 +119,36 @@ class JobArgs:
         return pulumi.get(self, "resource_queue_name")
 
     @resource_queue_name.setter
-    def resource_queue_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_queue_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_queue_name", value)
 
     @_builtins.property
     @pulumi.getter(name="restoreStrategy")
-    def restore_strategy(self) -> Optional[pulumi.Input['JobRestoreStrategyArgs']]:
+    def restore_strategy(self) -> pulumi.Input[Optional['JobRestoreStrategyArgs']]:
         """
         Restore strategy See `restore_strategy` below.
         """
         return pulumi.get(self, "restore_strategy")
 
     @restore_strategy.setter
-    def restore_strategy(self, value: Optional[pulumi.Input['JobRestoreStrategyArgs']]):
+    def restore_strategy(self, value: pulumi.Input[Optional['JobRestoreStrategyArgs']]):
         pulumi.set(self, "restore_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['JobStatusArgs']]:
+    def status(self) -> pulumi.Input[Optional['JobStatusArgs']]:
         """
         job status See `status` below.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['JobStatusArgs']]):
+    def status(self, value: pulumi.Input[Optional['JobStatusArgs']]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="stopStrategy")
-    def stop_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stop_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job Stop Policy
 
@@ -157,22 +157,22 @@ class JobArgs:
         return pulumi.get(self, "stop_strategy")
 
     @stop_strategy.setter
-    def stop_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stop_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stop_strategy", value)
 
 
 @pulumi.input_type
 class _JobState:
     def __init__(__self__, *,
-                 deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_variables: Optional[pulumi.Input[Sequence[pulumi.Input['JobLocalVariableArgs']]]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_strategy: Optional[pulumi.Input['JobRestoreStrategyArgs']] = None,
-                 status: Optional[pulumi.Input['JobStatusArgs']] = None,
-                 stop_strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_variables: pulumi.Input[Optional[Sequence[pulumi.Input['JobLocalVariableArgs']]]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_strategy: pulumi.Input[Optional['JobRestoreStrategyArgs']] = None,
+                 status: pulumi.Input[Optional['JobStatusArgs']] = None,
+                 stop_strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
 
@@ -211,67 +211,67 @@ class _JobState:
 
     @_builtins.property
     @pulumi.getter(name="deploymentId")
-    def deployment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         deploymentId
         """
         return pulumi.get(self, "deployment_id")
 
     @deployment_id.setter
-    def deployment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "job_id")
 
     @job_id.setter
-    def job_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_id", value)
 
     @_builtins.property
     @pulumi.getter(name="localVariables")
-    def local_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobLocalVariableArgs']]]]:
+    def local_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobLocalVariableArgs']]]]:
         """
         Local variables See `local_variables` below.
         """
         return pulumi.get(self, "local_variables")
 
     @local_variables.setter
-    def local_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobLocalVariableArgs']]]]):
+    def local_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobLocalVariableArgs']]]]):
         pulumi.set(self, "local_variables", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         namespace
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         workspace
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceQueueName")
-    def resource_queue_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_queue_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Queue for Job Run
 
@@ -280,36 +280,36 @@ class _JobState:
         return pulumi.get(self, "resource_queue_name")
 
     @resource_queue_name.setter
-    def resource_queue_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_queue_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_queue_name", value)
 
     @_builtins.property
     @pulumi.getter(name="restoreStrategy")
-    def restore_strategy(self) -> Optional[pulumi.Input['JobRestoreStrategyArgs']]:
+    def restore_strategy(self) -> pulumi.Input[Optional['JobRestoreStrategyArgs']]:
         """
         Restore strategy See `restore_strategy` below.
         """
         return pulumi.get(self, "restore_strategy")
 
     @restore_strategy.setter
-    def restore_strategy(self, value: Optional[pulumi.Input['JobRestoreStrategyArgs']]):
+    def restore_strategy(self, value: pulumi.Input[Optional['JobRestoreStrategyArgs']]):
         pulumi.set(self, "restore_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['JobStatusArgs']]:
+    def status(self) -> pulumi.Input[Optional['JobStatusArgs']]:
         """
         job status See `status` below.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['JobStatusArgs']]):
+    def status(self, value: pulumi.Input[Optional['JobStatusArgs']]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="stopStrategy")
-    def stop_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stop_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job Stop Policy
 
@@ -318,7 +318,7 @@ class _JobState:
         return pulumi.get(self, "stop_strategy")
 
     @stop_strategy.setter
-    def stop_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stop_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stop_strategy", value)
 
 
@@ -328,14 +328,14 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict']]]]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_strategy: Optional[pulumi.Input[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict']]] = None,
-                 status: Optional[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]] = None,
-                 stop_strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict']]]]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_strategy: pulumi.Input[Optional[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict']]] = None,
+                 status: pulumi.Input[Optional[Union['JobStatusArgs', 'JobStatusArgsDict']]] = None,
+                 stop_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Realtime Compute Job resource.
@@ -405,7 +405,7 @@ class Job(pulumi.CustomResource):
             }],
             restore_strategy={
                 "kind": "NONE",
-                "job_start_time_in_ms": 1763694521254,
+                "job_start_time_in_ms": int(1763694521254),
             },
             namespace=default_vvp_instance.vvp_instance_name.apply(lambda vvp_instance_name: f"{vvp_instance_name}-default"),
             stop_strategy="NONE",
@@ -517,7 +517,7 @@ class Job(pulumi.CustomResource):
             }],
             restore_strategy={
                 "kind": "NONE",
-                "job_start_time_in_ms": 1763694521254,
+                "job_start_time_in_ms": int(1763694521254),
             },
             namespace=default_vvp_instance.vvp_instance_name.apply(lambda vvp_instance_name: f"{vvp_instance_name}-default"),
             stop_strategy="NONE",
@@ -555,14 +555,14 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict']]]]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_strategy: Optional[pulumi.Input[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict']]] = None,
-                 status: Optional[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]] = None,
-                 stop_strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict']]]]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_strategy: pulumi.Input[Optional[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict']]] = None,
+                 status: pulumi.Input[Optional[Union['JobStatusArgs', 'JobStatusArgsDict']]] = None,
+                 stop_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -595,15 +595,15 @@ class Job(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            job_id: Optional[pulumi.Input[_builtins.str]] = None,
-            local_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict']]]]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-            restore_strategy: Optional[pulumi.Input[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict']]] = None,
-            status: Optional[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]] = None,
-            stop_strategy: Optional[pulumi.Input[_builtins.str]] = None) -> 'Job':
+            deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            local_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLocalVariableArgs', 'JobLocalVariableArgsDict']]]]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            restore_strategy: pulumi.Input[Optional[Union['JobRestoreStrategyArgs', 'JobRestoreStrategyArgsDict']]] = None,
+            status: pulumi.Input[Optional[Union['JobStatusArgs', 'JobStatusArgsDict']]] = None,
+            stop_strategy: pulumi.Input[Optional[_builtins.str]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

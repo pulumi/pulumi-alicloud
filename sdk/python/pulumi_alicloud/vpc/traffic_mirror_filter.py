@@ -21,13 +21,13 @@ __all__ = ['TrafficMirrorFilterArgs', 'TrafficMirrorFilter']
 @pulumi.input_type
 class TrafficMirrorFilterArgs:
     def __init__(__self__, *,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]] = None,
-                 ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 traffic_mirror_filter_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_mirror_filter_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_rules: pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]] = None,
+                 ingress_rules: pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 traffic_mirror_filter_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_mirror_filter_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TrafficMirrorFilter resource.
 
@@ -58,7 +58,7 @@ class TrafficMirrorFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request. Value:
         - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
@@ -67,93 +67,93 @@ class TrafficMirrorFilterArgs:
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="egressRules")
-    def egress_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]]:
+    def egress_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]]:
         """
         Information about the outbound rule. See the following `Block EgressRules`.
         """
         return pulumi.get(self, "egress_rules")
 
     @egress_rules.setter
-    def egress_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]]):
+    def egress_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]]):
         pulumi.set(self, "egress_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressRules")
-    def ingress_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]]:
+    def ingress_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]]:
         """
         Inward direction rule information. See the following `Block IngressRules`.
         """
         return pulumi.get(self, "ingress_rules")
 
     @ingress_rules.setter
-    def ingress_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]]):
+    def ingress_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]]):
         pulumi.set(self, "ingress_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the VPC belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags of this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMirrorFilterDescription")
-    def traffic_mirror_filter_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_mirror_filter_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the TrafficMirrorFilter.
         """
         return pulumi.get(self, "traffic_mirror_filter_description")
 
     @traffic_mirror_filter_description.setter
-    def traffic_mirror_filter_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_mirror_filter_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_mirror_filter_description", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMirrorFilterName")
-    def traffic_mirror_filter_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_mirror_filter_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the TrafficMirrorFilter.
         """
         return pulumi.get(self, "traffic_mirror_filter_name")
 
     @traffic_mirror_filter_name.setter
-    def traffic_mirror_filter_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_mirror_filter_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_mirror_filter_name", value)
 
 
 @pulumi.input_type
 class _TrafficMirrorFilterState:
     def __init__(__self__, *,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]] = None,
-                 ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 traffic_mirror_filter_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_mirror_filter_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_rules: pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]] = None,
+                 ingress_rules: pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 traffic_mirror_filter_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_mirror_filter_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrafficMirrorFilter resources.
 
@@ -187,7 +187,7 @@ class _TrafficMirrorFilterState:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request. Value:
         - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
@@ -196,91 +196,91 @@ class _TrafficMirrorFilterState:
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="egressRules")
-    def egress_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]]:
+    def egress_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]]:
         """
         Information about the outbound rule. See the following `Block EgressRules`.
         """
         return pulumi.get(self, "egress_rules")
 
     @egress_rules.setter
-    def egress_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]]):
+    def egress_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]]):
         pulumi.set(self, "egress_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressRules")
-    def ingress_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]]:
+    def ingress_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]]:
         """
         Inward direction rule information. See the following `Block IngressRules`.
         """
         return pulumi.get(self, "ingress_rules")
 
     @ingress_rules.setter
-    def ingress_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]]):
+    def ingress_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]]):
         pulumi.set(self, "ingress_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the VPC belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags of this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMirrorFilterDescription")
-    def traffic_mirror_filter_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_mirror_filter_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the TrafficMirrorFilter.
         """
         return pulumi.get(self, "traffic_mirror_filter_description")
 
     @traffic_mirror_filter_description.setter
-    def traffic_mirror_filter_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_mirror_filter_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_mirror_filter_description", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMirrorFilterName")
-    def traffic_mirror_filter_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_mirror_filter_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the TrafficMirrorFilter.
         """
         return pulumi.get(self, "traffic_mirror_filter_name")
 
     @traffic_mirror_filter_name.setter
-    def traffic_mirror_filter_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_mirror_filter_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_mirror_filter_name", value)
 
 
@@ -290,13 +290,13 @@ class TrafficMirrorFilter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]]] = None,
-                 ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 traffic_mirror_filter_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_mirror_filter_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]]] = None,
+                 ingress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 traffic_mirror_filter_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_mirror_filter_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPC Traffic Mirror Filter resource. Traffic mirror filter criteria.
@@ -451,13 +451,13 @@ class TrafficMirrorFilter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]]] = None,
-                 ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 traffic_mirror_filter_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_mirror_filter_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]]] = None,
+                 ingress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 traffic_mirror_filter_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_mirror_filter_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -485,14 +485,14 @@ class TrafficMirrorFilter(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]]] = None,
-            ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            traffic_mirror_filter_description: Optional[pulumi.Input[_builtins.str]] = None,
-            traffic_mirror_filter_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'TrafficMirrorFilter':
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            egress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRuleArgsDict']]]]] = None,
+            ingress_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMirrorFilterIngressRuleArgs', 'TrafficMirrorFilterIngressRuleArgsDict']]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            traffic_mirror_filter_description: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_mirror_filter_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'TrafficMirrorFilter':
         """
         Get an existing TrafficMirrorFilter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

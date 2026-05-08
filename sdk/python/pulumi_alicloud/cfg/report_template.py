@@ -22,12 +22,12 @@ __all__ = ['ReportTemplateArgs', 'ReportTemplate']
 class ReportTemplateArgs:
     def __init__(__self__, *,
                  report_template_name: pulumi.Input[_builtins.str],
-                 report_file_formats: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_granularity: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ReportTemplateReportScopeArgs']]]] = None,
-                 report_template_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_frequency: Optional[pulumi.Input[_builtins.str]] = None):
+                 report_file_formats: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_granularity: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['ReportTemplateReportScopeArgs']]]] = None,
+                 report_template_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_frequency: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReportTemplate resource.
 
@@ -81,67 +81,67 @@ class ReportTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="reportFileFormats")
-    def report_file_formats(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def report_file_formats(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Report Format
         """
         return pulumi.get(self, "report_file_formats")
 
     @report_file_formats.setter
-    def report_file_formats(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def report_file_formats(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "report_file_formats", value)
 
     @_builtins.property
     @pulumi.getter(name="reportGranularity")
-    def report_granularity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def report_granularity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Report Aggregation Granularity
         """
         return pulumi.get(self, "report_granularity")
 
     @report_granularity.setter
-    def report_granularity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def report_granularity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "report_granularity", value)
 
     @_builtins.property
     @pulumi.getter(name="reportLanguage")
-    def report_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def report_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This property does not have a description in the spec, please add it before generating code.
         """
         return pulumi.get(self, "report_language")
 
     @report_language.setter
-    def report_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def report_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "report_language", value)
 
     @_builtins.property
     @pulumi.getter(name="reportScopes")
-    def report_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReportTemplateReportScopeArgs']]]]:
+    def report_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportTemplateReportScopeArgs']]]]:
         """
         Report range, yes and logic between multiple sets of k-v pairs. See `report_scope` below.
         """
         return pulumi.get(self, "report_scopes")
 
     @report_scopes.setter
-    def report_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReportTemplateReportScopeArgs']]]]):
+    def report_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportTemplateReportScopeArgs']]]]):
         pulumi.set(self, "report_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="reportTemplateDescription")
-    def report_template_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def report_template_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Report Template Description
         """
         return pulumi.get(self, "report_template_description")
 
     @report_template_description.setter
-    def report_template_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def report_template_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "report_template_description", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionFrequency")
-    def subscription_frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Report subscription frequency. If this field is not empty, it is a Cron expression in Quartz format triggered by the subscription notification.
 
@@ -162,20 +162,20 @@ class ReportTemplateArgs:
         return pulumi.get(self, "subscription_frequency")
 
     @subscription_frequency.setter
-    def subscription_frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_frequency", value)
 
 
 @pulumi.input_type
 class _ReportTemplateState:
     def __init__(__self__, *,
-                 report_file_formats: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_granularity: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ReportTemplateReportScopeArgs']]]] = None,
-                 report_template_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_frequency: Optional[pulumi.Input[_builtins.str]] = None):
+                 report_file_formats: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_granularity: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['ReportTemplateReportScopeArgs']]]] = None,
+                 report_template_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_frequency: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReportTemplate resources.
 
@@ -218,79 +218,79 @@ class _ReportTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="reportFileFormats")
-    def report_file_formats(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def report_file_formats(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Report Format
         """
         return pulumi.get(self, "report_file_formats")
 
     @report_file_formats.setter
-    def report_file_formats(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def report_file_formats(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "report_file_formats", value)
 
     @_builtins.property
     @pulumi.getter(name="reportGranularity")
-    def report_granularity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def report_granularity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Report Aggregation Granularity
         """
         return pulumi.get(self, "report_granularity")
 
     @report_granularity.setter
-    def report_granularity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def report_granularity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "report_granularity", value)
 
     @_builtins.property
     @pulumi.getter(name="reportLanguage")
-    def report_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def report_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This property does not have a description in the spec, please add it before generating code.
         """
         return pulumi.get(self, "report_language")
 
     @report_language.setter
-    def report_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def report_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "report_language", value)
 
     @_builtins.property
     @pulumi.getter(name="reportScopes")
-    def report_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReportTemplateReportScopeArgs']]]]:
+    def report_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReportTemplateReportScopeArgs']]]]:
         """
         Report range, yes and logic between multiple sets of k-v pairs. See `report_scope` below.
         """
         return pulumi.get(self, "report_scopes")
 
     @report_scopes.setter
-    def report_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReportTemplateReportScopeArgs']]]]):
+    def report_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReportTemplateReportScopeArgs']]]]):
         pulumi.set(self, "report_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="reportTemplateDescription")
-    def report_template_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def report_template_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Report Template Description
         """
         return pulumi.get(self, "report_template_description")
 
     @report_template_description.setter
-    def report_template_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def report_template_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "report_template_description", value)
 
     @_builtins.property
     @pulumi.getter(name="reportTemplateName")
-    def report_template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def report_template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Report Template Name
         """
         return pulumi.get(self, "report_template_name")
 
     @report_template_name.setter
-    def report_template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def report_template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "report_template_name", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionFrequency")
-    def subscription_frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Report subscription frequency. If this field is not empty, it is a Cron expression in Quartz format triggered by the subscription notification.
 
@@ -311,7 +311,7 @@ class _ReportTemplateState:
         return pulumi.get(self, "subscription_frequency")
 
     @subscription_frequency.setter
-    def subscription_frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_frequency", value)
 
 
@@ -321,13 +321,13 @@ class ReportTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 report_file_formats: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_granularity: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict']]]]] = None,
-                 report_template_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_frequency: Optional[pulumi.Input[_builtins.str]] = None,
+                 report_file_formats: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_granularity: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict']]]]] = None,
+                 report_template_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Config (Config) Report Template resource.
@@ -466,13 +466,13 @@ class ReportTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 report_file_formats: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_granularity: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict']]]]] = None,
-                 report_template_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_frequency: Optional[pulumi.Input[_builtins.str]] = None,
+                 report_file_formats: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_granularity: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict']]]]] = None,
+                 report_template_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -503,13 +503,13 @@ class ReportTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            report_file_formats: Optional[pulumi.Input[_builtins.str]] = None,
-            report_granularity: Optional[pulumi.Input[_builtins.str]] = None,
-            report_language: Optional[pulumi.Input[_builtins.str]] = None,
-            report_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict']]]]] = None,
-            report_template_description: Optional[pulumi.Input[_builtins.str]] = None,
-            report_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-            subscription_frequency: Optional[pulumi.Input[_builtins.str]] = None) -> 'ReportTemplate':
+            report_file_formats: pulumi.Input[Optional[_builtins.str]] = None,
+            report_granularity: pulumi.Input[Optional[_builtins.str]] = None,
+            report_language: pulumi.Input[Optional[_builtins.str]] = None,
+            report_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReportTemplateReportScopeArgs', 'ReportTemplateReportScopeArgsDict']]]]] = None,
+            report_template_description: pulumi.Input[Optional[_builtins.str]] = None,
+            report_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_frequency: pulumi.Input[Optional[_builtins.str]] = None) -> 'ReportTemplate':
         """
         Get an existing ReportTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

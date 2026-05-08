@@ -89,7 +89,7 @@ export interface GlobalEventsStorageRegionState {
     /**
      * Global Events Storage Region.
      */
-    storageRegion?: pulumi.Input<string>;
+    storageRegion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -99,5 +99,5 @@ export interface GlobalEventsStorageRegionArgs {
     /**
      * Global Events Storage Region.
      */
-    storageRegion?: pulumi.Input<string>;
+    storageRegion?: pulumi.Input<string | undefined>;
 }

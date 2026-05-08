@@ -26,20 +26,22 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := threatdetection.GetHoneypotNodes(ctx, &threatdetection.GetHoneypotNodesArgs{
-// Ids: interface{}{
-// defaultAlicloudThreatDetectionHoneypotNode.Id,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudThreatDetectionHoneypotNodeExampleId", _default.Nodes[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := threatdetection.GetHoneypotNodes(ctx, &threatdetection.GetHoneypotNodesArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudThreatDetectionHoneypotNode.Id,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudThreatDetectionHoneypotNodeExampleId", _default.Nodes[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetHoneypotNodes(ctx *pulumi.Context, args *GetHoneypotNodesArgs, opts ...pulumi.InvokeOption) (*GetHoneypotNodesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

@@ -128,11 +128,11 @@ export interface GetRdsBackupsOutputArgs {
     /**
      * BackupMode. Valid values: `Automated` and `Manual`.
      */
-    backupMode?: pulumi.Input<string>;
+    backupMode?: pulumi.Input<string | undefined>;
     /**
      * Backup task status. Valid values: `Automated` and `Manual`.
      */
-    backupStatus?: pulumi.Input<string>;
+    backupStatus?: pulumi.Input<string | undefined>;
     /**
      * The db instance id.
      */
@@ -140,17 +140,17 @@ export interface GetRdsBackupsOutputArgs {
     /**
      * The end time.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * A list of Backup IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The start time.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }

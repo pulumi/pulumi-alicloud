@@ -103,7 +103,7 @@ export interface IpamServiceState {
     /**
      * Whether the IPAM service has been activated.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**

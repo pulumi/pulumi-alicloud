@@ -199,57 +199,57 @@ export interface GetTemplatesOutputArgs {
     /**
      * The category of template.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The creator of the template.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * The template whose creation time is less than or equal to the specified time. The format is: YYYY-MM-DDThh:mm::ssZ.
      */
-    createdDate?: pulumi.Input<string>;
+    createdDate?: pulumi.Input<string | undefined>;
     /**
      * Create a template whose time is greater than or equal to the specified time. The format is: YYYY-MM-DDThh:mm:ssZ.
      */
-    createdDateAfter?: pulumi.Input<string>;
+    createdDateAfter?: pulumi.Input<string | undefined>;
     /**
      * Is it triggered successfully.
      */
-    hasTrigger?: pulumi.Input<boolean>;
+    hasTrigger?: pulumi.Input<boolean | undefined>;
     /**
      * A list of OOS Template ids. Each element in the list is same as template_name.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter the results by the template_name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The sharing type of the template. Valid values: `Private`, `Public`.
      */
-    shareType?: pulumi.Input<string>;
+    shareType?: pulumi.Input<string | undefined>;
     /**
      * Sort field. Valid values: `TotalExecutionCount`, `Popularity`, `TemplateName` and `CreatedDate`. Default to `TotalExecutionCount`.
      */
-    sortField?: pulumi.Input<string>;
+    sortField?: pulumi.Input<string | undefined>;
     /**
      * Sort order. Valid values: `Ascending`, `Descending`. Default to `Descending`
      */
-    sortOrder?: pulumi.Input<string>;
+    sortOrder?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The format of the template. Valid values: `JSON`, `YAML`.
      */
-    templateFormat?: pulumi.Input<string>;
+    templateFormat?: pulumi.Input<string | undefined>;
     /**
      * The type of OOS Template.
      */
-    templateType?: pulumi.Input<string>;
+    templateType?: pulumi.Input<string | undefined>;
 }

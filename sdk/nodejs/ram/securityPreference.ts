@@ -214,44 +214,44 @@ export interface SecurityPreferenceState {
      * - true (default): Allowed.
      * - false: not allowed.
      */
-    allowUserToChangePassword?: pulumi.Input<boolean>;
+    allowUserToChangePassword?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to allow RAM users to log on using a passkey. Value:
      * - true (default): Allowed.
      * - false: not allowed.
      */
-    allowUserToLoginWithPasskey?: pulumi.Input<boolean>;
+    allowUserToLoginWithPasskey?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to allow RAM users to manage their own access keys. Value:
      * - true: Allow.
      * - false (default): Not allowed.
      */
-    allowUserToManageAccessKeys?: pulumi.Input<boolean>;
+    allowUserToManageAccessKeys?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to allow RAM users to manage multi-factor authentication devices. Value:
      * - true (default): Allowed.
      * - false: not allowed.
      */
-    allowUserToManageMfaDevices?: pulumi.Input<boolean>;
+    allowUserToManageMfaDevices?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
      * - true (default): Allowed.
      * - false: not allowed.
      */
-    allowUserToManagePersonalDingTalk?: pulumi.Input<boolean>;
+    allowUserToManagePersonalDingTalk?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
      * - true: Allow.
      * - false (default): Not allowed.
      */
-    enableSaveMfaTicket?: pulumi.Input<boolean>;
+    enableSaveMfaTicket?: pulumi.Input<boolean | undefined>;
     /**
      * Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead. 
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      *
      * @deprecated This property has been deprecated as it is no longer supported by Aliyun.
      */
-    enforceMfaForLogin?: pulumi.Input<boolean>;
+    enforceMfaForLogin?: pulumi.Input<boolean | undefined>;
     /**
      * The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
      * - If the mask is specified, RAM users can only log on from the specified IP address.
@@ -261,34 +261,34 @@ export interface SecurityPreferenceState {
      *
      * Configure a maximum of 40 logon masks, with a total length of 512 characters.
      */
-    loginNetworkMasks?: pulumi.Input<string>;
+    loginNetworkMasks?: pulumi.Input<string | undefined>;
     /**
      * The validity period of the logon session of RAM users.
      * Valid values: 1 to 24. Unit: hours.
      * Default value: 6.
      */
-    loginSessionDuration?: pulumi.Input<number>;
+    loginSessionDuration?: pulumi.Input<number | undefined>;
     /**
      * The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
      */
-    maxIdleDaysForAccessKeys?: pulumi.Input<number>;
+    maxIdleDaysForAccessKeys?: pulumi.Input<number | undefined>;
     /**
      * The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
      */
-    maxIdleDaysForUsers?: pulumi.Input<number>;
+    maxIdleDaysForUsers?: pulumi.Input<number | undefined>;
     /**
      * MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
      * - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
      * - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
      * - adaptive: Used only during abnormal login.
      */
-    mfaOperationForLogin?: pulumi.Input<string>;
+    mfaOperationForLogin?: pulumi.Input<string | undefined>;
     /**
      * Whether MFA is verified twice during abnormal logon. Value:
      * - autonomous (default): Skip, do not force binding.
      * - enforceVerify: Force binding validation.
      */
-    operationForRiskLogin?: pulumi.Input<string>;
+    operationForRiskLogin?: pulumi.Input<string | undefined>;
     /**
      * Means of multi-factor authentication. Value:
      * - sms: secure phone.
@@ -296,7 +296,7 @@ export interface SecurityPreferenceState {
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    verificationTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    verificationTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -308,44 +308,44 @@ export interface SecurityPreferenceArgs {
      * - true (default): Allowed.
      * - false: not allowed.
      */
-    allowUserToChangePassword?: pulumi.Input<boolean>;
+    allowUserToChangePassword?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to allow RAM users to log on using a passkey. Value:
      * - true (default): Allowed.
      * - false: not allowed.
      */
-    allowUserToLoginWithPasskey?: pulumi.Input<boolean>;
+    allowUserToLoginWithPasskey?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to allow RAM users to manage their own access keys. Value:
      * - true: Allow.
      * - false (default): Not allowed.
      */
-    allowUserToManageAccessKeys?: pulumi.Input<boolean>;
+    allowUserToManageAccessKeys?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to allow RAM users to manage multi-factor authentication devices. Value:
      * - true (default): Allowed.
      * - false: not allowed.
      */
-    allowUserToManageMfaDevices?: pulumi.Input<boolean>;
+    allowUserToManageMfaDevices?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
      * - true (default): Allowed.
      * - false: not allowed.
      */
-    allowUserToManagePersonalDingTalk?: pulumi.Input<boolean>;
+    allowUserToManagePersonalDingTalk?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
      * - true: Allow.
      * - false (default): Not allowed.
      */
-    enableSaveMfaTicket?: pulumi.Input<boolean>;
+    enableSaveMfaTicket?: pulumi.Input<boolean | undefined>;
     /**
      * Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead. 
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      *
      * @deprecated This property has been deprecated as it is no longer supported by Aliyun.
      */
-    enforceMfaForLogin?: pulumi.Input<boolean>;
+    enforceMfaForLogin?: pulumi.Input<boolean | undefined>;
     /**
      * The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
      * - If the mask is specified, RAM users can only log on from the specified IP address.
@@ -355,34 +355,34 @@ export interface SecurityPreferenceArgs {
      *
      * Configure a maximum of 40 logon masks, with a total length of 512 characters.
      */
-    loginNetworkMasks?: pulumi.Input<string>;
+    loginNetworkMasks?: pulumi.Input<string | undefined>;
     /**
      * The validity period of the logon session of RAM users.
      * Valid values: 1 to 24. Unit: hours.
      * Default value: 6.
      */
-    loginSessionDuration?: pulumi.Input<number>;
+    loginSessionDuration?: pulumi.Input<number | undefined>;
     /**
      * The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
      */
-    maxIdleDaysForAccessKeys?: pulumi.Input<number>;
+    maxIdleDaysForAccessKeys?: pulumi.Input<number | undefined>;
     /**
      * The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
      */
-    maxIdleDaysForUsers?: pulumi.Input<number>;
+    maxIdleDaysForUsers?: pulumi.Input<number | undefined>;
     /**
      * MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
      * - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
      * - independent (default): depends on the independent configuration of each RAM user. The original value of EnforceMFAForLogin is false.
      * - adaptive: Used only during abnormal login.
      */
-    mfaOperationForLogin?: pulumi.Input<string>;
+    mfaOperationForLogin?: pulumi.Input<string | undefined>;
     /**
      * Whether MFA is verified twice during abnormal logon. Value:
      * - autonomous (default): Skip, do not force binding.
      * - enforceVerify: Force binding validation.
      */
-    operationForRiskLogin?: pulumi.Input<string>;
+    operationForRiskLogin?: pulumi.Input<string | undefined>;
     /**
      * Means of multi-factor authentication. Value:
      * - sms: secure phone.
@@ -390,5 +390,5 @@ export interface SecurityPreferenceArgs {
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    verificationTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    verificationTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

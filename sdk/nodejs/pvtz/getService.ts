@@ -95,5 +95,5 @@ export interface GetServiceOutputArgs {
      *
      * > **NOTE:** Setting `enable = "On"` to open the Private Zone service that means you have read and agreed the [Private Zone Terms of Service](https://www.alibabacloud.com/help/en/legal/latest/alibaba-cloud-international-website-product-terms-of-service-v-3-8-0). The service can not closed once it is opened.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
 }

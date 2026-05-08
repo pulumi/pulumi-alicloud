@@ -184,45 +184,45 @@ export interface CustomResponseCodeRuleState {
     /**
      * The ID of the configuration.
      */
-    configId?: pulumi.Input<string>;
+    configId?: pulumi.Input<string | undefined>;
     /**
      * Response page.
      */
-    pageId?: pulumi.Input<string>;
+    pageId?: pulumi.Input<string | undefined>;
     /**
      * The response code.
      */
-    returnCode?: pulumi.Input<string>;
+    returnCode?: pulumi.Input<string | undefined>;
     /**
      * The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configurations. Use cases:
      *
      * - Match all incoming requests: Set the value to true.
      * - Set the value to a custom expression, for example, (http.host eq "video.example.com"): Match the specified request.
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configurations. Valid values:
      *
      * - on
      * - off
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * The rule name.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The order in which the rule is executed. A smaller value gives priority to the rule.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -243,22 +243,22 @@ export interface CustomResponseCodeRuleArgs {
      * - Match all incoming requests: Set the value to true.
      * - Set the value to a custom expression, for example, (http.host eq "video.example.com"): Match the specified request.
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configurations. Valid values:
      *
      * - on
      * - off
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * The rule name.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The order in which the rule is executed. A smaller value gives priority to the rule.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
@@ -266,5 +266,5 @@ export interface CustomResponseCodeRuleArgs {
     /**
      * The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
 }

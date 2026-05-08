@@ -23,23 +23,23 @@ class ServerGroupArgs:
     def __init__(__self__, *,
                  health_check_config: pulumi.Input['ServerGroupHealthCheckConfigArgs'],
                  server_group_name: pulumi.Input[_builtins.str],
-                 connection_drain_config: Optional[pulumi.Input['ServerGroupConnectionDrainConfigArgs']] = None,
-                 cross_zone_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 slow_start_config: Optional[pulumi.Input['ServerGroupSlowStartConfigArgs']] = None,
-                 sticky_session_config: Optional[pulumi.Input['ServerGroupStickySessionConfigArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 uch_config: Optional[pulumi.Input['ServerGroupUchConfigArgs']] = None,
-                 upstream_keepalive_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_drain_config: pulumi.Input[Optional['ServerGroupConnectionDrainConfigArgs']] = None,
+                 cross_zone_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 slow_start_config: pulumi.Input[Optional['ServerGroupSlowStartConfigArgs']] = None,
+                 sticky_session_config: pulumi.Input[Optional['ServerGroupStickySessionConfigArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 uch_config: pulumi.Input[Optional['ServerGroupUchConfigArgs']] = None,
+                 upstream_keepalive_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
 
@@ -152,31 +152,31 @@ class ServerGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionDrainConfig")
-    def connection_drain_config(self) -> Optional[pulumi.Input['ServerGroupConnectionDrainConfigArgs']]:
+    def connection_drain_config(self) -> pulumi.Input[Optional['ServerGroupConnectionDrainConfigArgs']]:
         """
         Elegant interrupt configuration. See `connection_drain_config` below.
         """
         return pulumi.get(self, "connection_drain_config")
 
     @connection_drain_config.setter
-    def connection_drain_config(self, value: Optional[pulumi.Input['ServerGroupConnectionDrainConfigArgs']]):
+    def connection_drain_config(self, value: pulumi.Input[Optional['ServerGroupConnectionDrainConfigArgs']]):
         pulumi.set(self, "connection_drain_config", value)
 
     @_builtins.property
     @pulumi.getter(name="crossZoneEnabled")
-    def cross_zone_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cross_zone_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
         """
         return pulumi.get(self, "cross_zone_enabled")
 
     @cross_zone_enabled.setter
-    def cross_zone_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cross_zone_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cross_zone_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request. Value:
         true: Send a check request,
@@ -185,12 +185,12 @@ class ServerGroupArgs:
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckTemplateId")
-    def health_check_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which you want to transfer the cloud resource.
 
@@ -199,24 +199,24 @@ class ServerGroupArgs:
         return pulumi.get(self, "health_check_template_id")
 
     @health_check_template_id.setter
-    def health_check_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Enabled")
-    def ipv6_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ipv6_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Ipv6
         """
         return pulumi.get(self, "ipv6_enabled")
 
     @ipv6_enabled.setter
-    def ipv6_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ipv6_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipv6_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backend protocol. Valid values:
 
@@ -231,24 +231,24 @@ class ServerGroupArgs:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Elegant interrupt configuration.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheduler(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduler(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scheduling algorithm. Valid values:
 
@@ -263,12 +263,12 @@ class ServerGroupArgs:
         return pulumi.get(self, "scheduler")
 
     @scheduler.setter
-    def scheduler(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduler(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduler", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroupType")
-    def server_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of server group. Valid values:
 
@@ -279,96 +279,96 @@ class ServerGroupArgs:
         return pulumi.get(self, "server_group_type")
 
     @server_group_type.setter
-    def server_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_group_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
+    def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
         """
         List of servers. See `servers` below.
         """
         return pulumi.get(self, "servers")
 
     @servers.setter
-    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]):
+    def servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServerGroupServerArgs']]]]):
         pulumi.set(self, "servers", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="slowStartConfig")
-    def slow_start_config(self) -> Optional[pulumi.Input['ServerGroupSlowStartConfigArgs']]:
+    def slow_start_config(self) -> pulumi.Input[Optional['ServerGroupSlowStartConfigArgs']]:
         """
         Slow start configuration. See `slow_start_config` below.
         """
         return pulumi.get(self, "slow_start_config")
 
     @slow_start_config.setter
-    def slow_start_config(self, value: Optional[pulumi.Input['ServerGroupSlowStartConfigArgs']]):
+    def slow_start_config(self, value: pulumi.Input[Optional['ServerGroupSlowStartConfigArgs']]):
         pulumi.set(self, "slow_start_config", value)
 
     @_builtins.property
     @pulumi.getter(name="stickySessionConfig")
-    def sticky_session_config(self) -> Optional[pulumi.Input['ServerGroupStickySessionConfigArgs']]:
+    def sticky_session_config(self) -> pulumi.Input[Optional['ServerGroupStickySessionConfigArgs']]:
         """
         The configuration of health checks See `sticky_session_config` below.
         """
         return pulumi.get(self, "sticky_session_config")
 
     @sticky_session_config.setter
-    def sticky_session_config(self, value: Optional[pulumi.Input['ServerGroupStickySessionConfigArgs']]):
+    def sticky_session_config(self, value: pulumi.Input[Optional['ServerGroupStickySessionConfigArgs']]):
         pulumi.set(self, "sticky_session_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="uchConfig")
-    def uch_config(self) -> Optional[pulumi.Input['ServerGroupUchConfigArgs']]:
+    def uch_config(self) -> pulumi.Input[Optional['ServerGroupUchConfigArgs']]:
         """
         Url consistency hash parameter configuration See `uch_config` below.
         """
         return pulumi.get(self, "uch_config")
 
     @uch_config.setter
-    def uch_config(self, value: Optional[pulumi.Input['ServerGroupUchConfigArgs']]):
+    def uch_config(self, value: pulumi.Input[Optional['ServerGroupUchConfigArgs']]):
         pulumi.set(self, "uch_config", value)
 
     @_builtins.property
     @pulumi.getter(name="upstreamKeepaliveEnabled")
-    def upstream_keepalive_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upstream_keepalive_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable persistent TCP connections.
         """
         return pulumi.get(self, "upstream_keepalive_enabled")
 
     @upstream_keepalive_enabled.setter
-    def upstream_keepalive_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upstream_keepalive_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upstream_keepalive_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
 
@@ -377,34 +377,34 @@ class ServerGroupArgs:
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
 @pulumi.input_type
 class _ServerGroupState:
     def __init__(__self__, *,
-                 connection_drain_config: Optional[pulumi.Input['ServerGroupConnectionDrainConfigArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_zone_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check_config: Optional[pulumi.Input['ServerGroupHealthCheckConfigArgs']] = None,
-                 health_check_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 slow_start_config: Optional[pulumi.Input['ServerGroupSlowStartConfigArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session_config: Optional[pulumi.Input['ServerGroupStickySessionConfigArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 uch_config: Optional[pulumi.Input['ServerGroupUchConfigArgs']] = None,
-                 upstream_keepalive_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_drain_config: pulumi.Input[Optional['ServerGroupConnectionDrainConfigArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_zone_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check_config: pulumi.Input[Optional['ServerGroupHealthCheckConfigArgs']] = None,
+                 health_check_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 slow_start_config: pulumi.Input[Optional['ServerGroupSlowStartConfigArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session_config: pulumi.Input[Optional['ServerGroupStickySessionConfigArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 uch_config: pulumi.Input[Optional['ServerGroupUchConfigArgs']] = None,
+                 upstream_keepalive_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerGroup resources.
 
@@ -501,43 +501,43 @@ class _ServerGroupState:
 
     @_builtins.property
     @pulumi.getter(name="connectionDrainConfig")
-    def connection_drain_config(self) -> Optional[pulumi.Input['ServerGroupConnectionDrainConfigArgs']]:
+    def connection_drain_config(self) -> pulumi.Input[Optional['ServerGroupConnectionDrainConfigArgs']]:
         """
         Elegant interrupt configuration. See `connection_drain_config` below.
         """
         return pulumi.get(self, "connection_drain_config")
 
     @connection_drain_config.setter
-    def connection_drain_config(self, value: Optional[pulumi.Input['ServerGroupConnectionDrainConfigArgs']]):
+    def connection_drain_config(self, value: pulumi.Input[Optional['ServerGroupConnectionDrainConfigArgs']]):
         pulumi.set(self, "connection_drain_config", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="crossZoneEnabled")
-    def cross_zone_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cross_zone_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
         """
         return pulumi.get(self, "cross_zone_enabled")
 
     @cross_zone_enabled.setter
-    def cross_zone_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cross_zone_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cross_zone_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request. Value:
         true: Send a check request,
@@ -546,24 +546,24 @@ class _ServerGroupState:
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckConfig")
-    def health_check_config(self) -> Optional[pulumi.Input['ServerGroupHealthCheckConfigArgs']]:
+    def health_check_config(self) -> pulumi.Input[Optional['ServerGroupHealthCheckConfigArgs']]:
         """
         The configuration of health checks See `health_check_config` below.
         """
         return pulumi.get(self, "health_check_config")
 
     @health_check_config.setter
-    def health_check_config(self, value: Optional[pulumi.Input['ServerGroupHealthCheckConfigArgs']]):
+    def health_check_config(self, value: pulumi.Input[Optional['ServerGroupHealthCheckConfigArgs']]):
         pulumi.set(self, "health_check_config", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckTemplateId")
-    def health_check_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which you want to transfer the cloud resource.
 
@@ -572,24 +572,24 @@ class _ServerGroupState:
         return pulumi.get(self, "health_check_template_id")
 
     @health_check_template_id.setter
-    def health_check_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Enabled")
-    def ipv6_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ipv6_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Ipv6
         """
         return pulumi.get(self, "ipv6_enabled")
 
     @ipv6_enabled.setter
-    def ipv6_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ipv6_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipv6_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backend protocol. Valid values:
 
@@ -604,24 +604,24 @@ class _ServerGroupState:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Elegant interrupt configuration.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheduler(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduler(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scheduling algorithm. Valid values:
 
@@ -636,24 +636,24 @@ class _ServerGroupState:
         return pulumi.get(self, "scheduler")
 
     @scheduler.setter
-    def scheduler(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduler(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduler", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroupName")
-    def server_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "server_group_name")
 
     @server_group_name.setter
-    def server_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroupType")
-    def server_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of server group. Valid values:
 
@@ -664,108 +664,108 @@ class _ServerGroupState:
         return pulumi.get(self, "server_group_type")
 
     @server_group_type.setter
-    def server_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_group_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
+    def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
         """
         List of servers. See `servers` below.
         """
         return pulumi.get(self, "servers")
 
     @servers.setter
-    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]):
+    def servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServerGroupServerArgs']]]]):
         pulumi.set(self, "servers", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="slowStartConfig")
-    def slow_start_config(self) -> Optional[pulumi.Input['ServerGroupSlowStartConfigArgs']]:
+    def slow_start_config(self) -> pulumi.Input[Optional['ServerGroupSlowStartConfigArgs']]:
         """
         Slow start configuration. See `slow_start_config` below.
         """
         return pulumi.get(self, "slow_start_config")
 
     @slow_start_config.setter
-    def slow_start_config(self, value: Optional[pulumi.Input['ServerGroupSlowStartConfigArgs']]):
+    def slow_start_config(self, value: pulumi.Input[Optional['ServerGroupSlowStartConfigArgs']]):
         pulumi.set(self, "slow_start_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="stickySessionConfig")
-    def sticky_session_config(self) -> Optional[pulumi.Input['ServerGroupStickySessionConfigArgs']]:
+    def sticky_session_config(self) -> pulumi.Input[Optional['ServerGroupStickySessionConfigArgs']]:
         """
         The configuration of health checks See `sticky_session_config` below.
         """
         return pulumi.get(self, "sticky_session_config")
 
     @sticky_session_config.setter
-    def sticky_session_config(self, value: Optional[pulumi.Input['ServerGroupStickySessionConfigArgs']]):
+    def sticky_session_config(self, value: pulumi.Input[Optional['ServerGroupStickySessionConfigArgs']]):
         pulumi.set(self, "sticky_session_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="uchConfig")
-    def uch_config(self) -> Optional[pulumi.Input['ServerGroupUchConfigArgs']]:
+    def uch_config(self) -> pulumi.Input[Optional['ServerGroupUchConfigArgs']]:
         """
         Url consistency hash parameter configuration See `uch_config` below.
         """
         return pulumi.get(self, "uch_config")
 
     @uch_config.setter
-    def uch_config(self, value: Optional[pulumi.Input['ServerGroupUchConfigArgs']]):
+    def uch_config(self, value: pulumi.Input[Optional['ServerGroupUchConfigArgs']]):
         pulumi.set(self, "uch_config", value)
 
     @_builtins.property
     @pulumi.getter(name="upstreamKeepaliveEnabled")
-    def upstream_keepalive_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upstream_keepalive_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable persistent TCP connections.
         """
         return pulumi.get(self, "upstream_keepalive_enabled")
 
     @upstream_keepalive_enabled.setter
-    def upstream_keepalive_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upstream_keepalive_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upstream_keepalive_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
 
@@ -774,7 +774,7 @@ class _ServerGroupState:
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -784,25 +784,25 @@ class ServerGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_drain_config: Optional[pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']]] = None,
-                 cross_zone_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check_config: Optional[pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
-                 health_check_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 slow_start_config: Optional[pulumi.Input[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict']]] = None,
-                 sticky_session_config: Optional[pulumi.Input[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 uch_config: Optional[pulumi.Input[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict']]] = None,
-                 upstream_keepalive_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']]] = None,
+                 cross_zone_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
+                 health_check_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 slow_start_config: pulumi.Input[Optional[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict']]] = None,
+                 sticky_session_config: pulumi.Input[Optional[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 uch_config: pulumi.Input[Optional[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict']]] = None,
+                 upstream_keepalive_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Application Load Balancer (ALB) Server Group resource.
@@ -827,7 +827,7 @@ class ServerGroup(pulumi.CustomResource):
         example_get_zones = alicloud.get_zones(available_resource_creation="Instance")
         example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_get_zones.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         example_network = alicloud.vpc.Network("example",
@@ -978,7 +978,7 @@ class ServerGroup(pulumi.CustomResource):
         example_get_zones = alicloud.get_zones(available_resource_creation="Instance")
         example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_get_zones.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         example_network = alicloud.vpc.Network("example",
@@ -1067,25 +1067,25 @@ class ServerGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_drain_config: Optional[pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']]] = None,
-                 cross_zone_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check_config: Optional[pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
-                 health_check_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 slow_start_config: Optional[pulumi.Input[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict']]] = None,
-                 sticky_session_config: Optional[pulumi.Input[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 uch_config: Optional[pulumi.Input[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict']]] = None,
-                 upstream_keepalive_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']]] = None,
+                 cross_zone_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
+                 health_check_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 slow_start_config: pulumi.Input[Optional[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict']]] = None,
+                 sticky_session_config: pulumi.Input[Optional[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 uch_config: pulumi.Input[Optional[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict']]] = None,
+                 upstream_keepalive_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1130,27 +1130,27 @@ class ServerGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_drain_config: Optional[pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_zone_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            health_check_config: Optional[pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
-            health_check_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-            server_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            server_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-            servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            slow_start_config: Optional[pulumi.Input[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            sticky_session_config: Optional[pulumi.Input[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            uch_config: Optional[pulumi.Input[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict']]] = None,
-            upstream_keepalive_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServerGroup':
+            connection_drain_config: pulumi.Input[Optional[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_zone_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            health_check_config: pulumi.Input[Optional[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
+            health_check_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            slow_start_config: pulumi.Input[Optional[Union['ServerGroupSlowStartConfigArgs', 'ServerGroupSlowStartConfigArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sticky_session_config: pulumi.Input[Optional[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            uch_config: pulumi.Input[Optional[Union['ServerGroupUchConfigArgs', 'ServerGroupUchConfigArgsDict']]] = None,
+            upstream_keepalive_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServerGroup':
         """
         Get an existing ServerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -132,26 +132,26 @@ export interface GetSecurityPoliciesOutputArgs {
     /**
      * A list of Security Policy IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Security Policy name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The names of the TLS security policies.
      */
-    securityPolicyNames?: pulumi.Input<pulumi.Input<string>[]>;
+    securityPolicyNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the resource. Valid values: `Available`, `Configuring`.
      */
-    status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    status?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

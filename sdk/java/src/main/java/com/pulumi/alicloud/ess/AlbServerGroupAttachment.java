@@ -61,8 +61,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
  * import com.pulumi.alicloud.ess.AlbServerGroupAttachment;
  * import com.pulumi.alicloud.ess.AlbServerGroupAttachmentArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .cpuCoreCount(2)
- *             .memorySize(4)
+ *             .memorySize(4.0)
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()

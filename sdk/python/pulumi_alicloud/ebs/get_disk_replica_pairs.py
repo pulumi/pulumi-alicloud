@@ -142,10 +142,10 @@ def get_disk_replica_pairs(ids: Optional[Sequence[_builtins.str]] = None,
         pairs=pulumi.get(__ret__, 'pairs'),
         replica_group_id=pulumi.get(__ret__, 'replica_group_id'),
         site=pulumi.get(__ret__, 'site'))
-def get_disk_replica_pairs_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                  output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  replica_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  site: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_disk_replica_pairs_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                  output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  replica_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  site: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDiskReplicaPairsResult]:
     """
     This data source provides Ebs Disk Replica Pair available to the user.

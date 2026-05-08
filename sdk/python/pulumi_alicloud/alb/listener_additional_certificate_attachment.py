@@ -58,10 +58,10 @@ class ListenerAdditionalCertificateAttachmentArgs:
 @pulumi.input_type
 class _ListenerAdditionalCertificateAttachmentState:
     def __init__(__self__, *,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ListenerAdditionalCertificateAttachment resources.
 
@@ -81,50 +81,50 @@ class _ListenerAdditionalCertificateAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Certificate ID.
         """
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
-    def certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateType")
-    def certificate_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the certificate.
         """
         return pulumi.get(self, "certificate_type")
 
     @certificate_type.setter
-    def certificate_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_type", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ALB listener.
         """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
-    def listener_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the certificate.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -134,8 +134,8 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Application Load Balancer (ALB) Listener Additional Certificate Attachment resource.
@@ -150,6 +150,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -163,7 +164,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=default_network.id,
@@ -212,7 +213,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         default_integer = random.Integer("default",
             min=10000,
             max=99999)
-        default_service_certificate = []
+        default_service_certificate: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_service_certificate.append(alicloud.cas.ServiceCertificate(f"default-{range['value']}",
                 certificate_name=std.join(separator="-",
@@ -336,6 +337,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -349,7 +351,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=default_network.id,
@@ -398,7 +400,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         default_integer = random.Integer("default",
             min=10000,
             max=99999)
-        default_service_certificate = []
+        default_service_certificate: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_service_certificate.append(alicloud.cas.ServiceCertificate(f"default-{range['value']}",
                 certificate_name=std.join(separator="-",
@@ -513,8 +515,8 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -542,10 +544,10 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate_type: Optional[pulumi.Input[_builtins.str]] = None,
-            listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ListenerAdditionalCertificateAttachment':
+            certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_type: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ListenerAdditionalCertificateAttachment':
         """
         Get an existing ListenerAdditionalCertificateAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

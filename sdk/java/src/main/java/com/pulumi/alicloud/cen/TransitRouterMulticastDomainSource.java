@@ -58,8 +58,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainAssociationArgs;
  * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainSource;
  * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainSourceArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -142,10 +142,10 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultMaster.id())
  *             .securityGroupIds(defaultSecurityGroup.id())
  *             .description("Basic test")
- *             .primaryIpAddress(defaultMaster.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrhost(CidrhostArgs.builder()
- *                 .input(_cidrBlock)
+ *             .primaryIpAddress(StdFunctions.cidrhost(CidrhostArgs.builder()
+ *                 .input(defaultMaster.cidrBlock())
  *                 .host(100)
- *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
  *                 Map.entry("For", "Test")

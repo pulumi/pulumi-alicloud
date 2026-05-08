@@ -221,23 +221,23 @@ export interface GetSnatEntriesOutputArgs {
     /**
      * A list of Snat Entries IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by the resource name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The name of snat entry.
      */
-    snatEntryName?: pulumi.Input<string>;
+    snatEntryName?: pulumi.Input<string | undefined>;
     /**
      * The public IP of the Snat Entry.
      */
-    snatIp?: pulumi.Input<string>;
+    snatIp?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Snat table.
      */
@@ -245,13 +245,13 @@ export interface GetSnatEntriesOutputArgs {
     /**
      * The source CIDR block of the Snat Entry.
      */
-    sourceCidr?: pulumi.Input<string>;
+    sourceCidr?: pulumi.Input<string | undefined>;
     /**
      * The source vswitch ID.
      */
-    sourceVswitchId?: pulumi.Input<string>;
+    sourceVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

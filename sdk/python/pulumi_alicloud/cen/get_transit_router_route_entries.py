@@ -198,14 +198,14 @@ def get_transit_router_route_entries(ids: Optional[Sequence[_builtins.str]] = No
         transit_router_route_entry_names=pulumi.get(__ret__, 'transit_router_route_entry_names'),
         transit_router_route_entry_status=pulumi.get(__ret__, 'transit_router_route_entry_status'),
         transit_router_route_table_id=pulumi.get(__ret__, 'transit_router_route_table_id'))
-def get_transit_router_route_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                            name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            transit_router_route_entry_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                            transit_router_route_entry_names: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                            transit_router_route_entry_status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_transit_router_route_entries_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                            name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            transit_router_route_entry_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                            transit_router_route_entry_names: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                            transit_router_route_entry_status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterRouteEntriesResult]:
     """
     This data source provides CEN Transit Router Route Entries available to the user.[What is Cen Transit Router Route Entries](https://help.aliyun.com/document_detail/260941.html)

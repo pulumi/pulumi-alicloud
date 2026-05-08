@@ -19,7 +19,7 @@ __all__ = ['AiTrafficAnalysisStatusArgs', 'AiTrafficAnalysisStatus']
 @pulumi.input_type
 class AiTrafficAnalysisStatusArgs:
     def __init__(__self__, *,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiTrafficAnalysisStatus resource.
 
@@ -30,21 +30,21 @@ class AiTrafficAnalysisStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _AiTrafficAnalysisStatusState:
     def __init__(__self__, *,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiTrafficAnalysisStatus resources.
 
@@ -55,14 +55,14 @@ class _AiTrafficAnalysisStatusState:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -72,7 +72,7 @@ class AiTrafficAnalysisStatus(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Ai Traffic Analysis Status resource.
@@ -177,7 +177,7 @@ class AiTrafficAnalysisStatus(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -198,7 +198,7 @@ class AiTrafficAnalysisStatus(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiTrafficAnalysisStatus':
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiTrafficAnalysisStatus':
         """
         Get an existing AiTrafficAnalysisStatus resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

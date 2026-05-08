@@ -182,15 +182,15 @@ export interface RouteEntryState {
      *
      * ->**NOTE:** The "alicloud.cen.InstanceAttachment" resource should depend on the related "alicloud.vpc.Switch" resource.
      */
-    cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * The ID of the CEN.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The route table of the attached VBR or VPC.
      */
-    routeTableId?: pulumi.Input<string>;
+    routeTableId?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -36,8 +36,8 @@ public final class EhpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
      * import com.pulumi.alicloud.ehpc.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -86,8 +86,8 @@ public final class EhpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
      * import com.pulumi.alicloud.ehpc.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -136,8 +136,8 @@ public final class EhpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
      * import com.pulumi.alicloud.ehpc.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -186,8 +186,8 @@ public final class EhpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
      * import com.pulumi.alicloud.ehpc.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -236,8 +236,8 @@ public final class EhpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
      * import com.pulumi.alicloud.ehpc.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -286,8 +286,8 @@ public final class EhpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
      * import com.pulumi.alicloud.ehpc.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -336,8 +336,8 @@ public final class EhpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
      * import com.pulumi.alicloud.ehpc.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -388,8 +388,8 @@ public final class EhpcFunctions {
      * import com.pulumi.alicloud.ehpc.JobTemplateArgs;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
      * import com.pulumi.alicloud.ehpc.inputs.GetJobTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -440,8 +440,8 @@ public final class EhpcFunctions {
      * import com.pulumi.alicloud.ehpc.JobTemplateArgs;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
      * import com.pulumi.alicloud.ehpc.inputs.GetJobTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -492,8 +492,8 @@ public final class EhpcFunctions {
      * import com.pulumi.alicloud.ehpc.JobTemplateArgs;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
      * import com.pulumi.alicloud.ehpc.inputs.GetJobTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -544,8 +544,8 @@ public final class EhpcFunctions {
      * import com.pulumi.alicloud.ehpc.JobTemplateArgs;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
      * import com.pulumi.alicloud.ehpc.inputs.GetJobTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -596,8 +596,8 @@ public final class EhpcFunctions {
      * import com.pulumi.alicloud.ehpc.JobTemplateArgs;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
      * import com.pulumi.alicloud.ehpc.inputs.GetJobTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -648,8 +648,8 @@ public final class EhpcFunctions {
      * import com.pulumi.alicloud.ehpc.JobTemplateArgs;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
      * import com.pulumi.alicloud.ehpc.inputs.GetJobTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -700,8 +700,8 @@ public final class EhpcFunctions {
      * import com.pulumi.alicloud.ehpc.JobTemplateArgs;
      * import com.pulumi.alicloud.ehpc.EhpcFunctions;
      * import com.pulumi.alicloud.ehpc.inputs.GetJobTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -22,18 +22,18 @@ __all__ = ['ServiceMeshArgs', 'ServiceMesh']
 class ServiceMeshArgs:
     def __init__(__self__, *,
                  network: pulumi.Input['ServiceMeshNetworkArgs'],
-                 cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cluster_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 customized_prometheus: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_configuration: Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer: Optional[pulumi.Input['ServiceMeshLoadBalancerArgs']] = None,
-                 mesh_config: Optional[pulumi.Input['ServiceMeshMeshConfigArgs']] = None,
-                 prometheus_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_mesh_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 customized_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_configuration: pulumi.Input[Optional['ServiceMeshExtraConfigurationArgs']] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer: pulumi.Input[Optional['ServiceMeshLoadBalancerArgs']] = None,
+                 mesh_config: pulumi.Input[Optional['ServiceMeshMeshConfigArgs']] = None,
+                 prometheus_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_mesh_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceMesh resource.
 
@@ -99,31 +99,31 @@ class ServiceMeshArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterIds")
-    def cluster_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cluster_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of clusters.
         """
         return pulumi.get(self, "cluster_ids")
 
     @cluster_ids.setter
-    def cluster_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cluster_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cluster_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterSpec")
-    def cluster_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster specification
         """
         return pulumi.get(self, "cluster_spec")
 
     @cluster_spec.setter
-    def cluster_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="customizedPrometheus")
-    def customized_prometheus(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def customized_prometheus(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to customize Prometheus. Value:
         -'true': custom Prometheus.
@@ -134,36 +134,36 @@ class ServiceMeshArgs:
         return pulumi.get(self, "customized_prometheus")
 
     @customized_prometheus.setter
-    def customized_prometheus(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def customized_prometheus(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "customized_prometheus", value)
 
     @_builtins.property
     @pulumi.getter
-    def edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Grid instance version type (for example: the standard, the Pro version, etc.)
         """
         return pulumi.get(self, "edition")
 
     @edition.setter
-    def edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition", value)
 
     @_builtins.property
     @pulumi.getter(name="extraConfiguration")
-    def extra_configuration(self) -> Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']]:
+    def extra_configuration(self) -> pulumi.Input[Optional['ServiceMeshExtraConfigurationArgs']]:
         """
         Data plane KubeAPI access capability See `extra_configuration` below.
         """
         return pulumi.get(self, "extra_configuration")
 
     @extra_configuration.setter
-    def extra_configuration(self, value: Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']]):
+    def extra_configuration(self, value: pulumi.Input[Optional['ServiceMeshExtraConfigurationArgs']]):
         pulumi.set(self, "extra_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to forcibly delete the ASM instance. Value:
         -'true': force deletion of ASM instance
@@ -174,101 +174,101 @@ class ServiceMeshArgs:
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancer")
-    def load_balancer(self) -> Optional[pulumi.Input['ServiceMeshLoadBalancerArgs']]:
+    def load_balancer(self) -> pulumi.Input[Optional['ServiceMeshLoadBalancerArgs']]:
         """
         Load balancing information See `load_balancer` below.
         """
         return pulumi.get(self, "load_balancer")
 
     @load_balancer.setter
-    def load_balancer(self, value: Optional[pulumi.Input['ServiceMeshLoadBalancerArgs']]):
+    def load_balancer(self, value: pulumi.Input[Optional['ServiceMeshLoadBalancerArgs']]):
         pulumi.set(self, "load_balancer", value)
 
     @_builtins.property
     @pulumi.getter(name="meshConfig")
-    def mesh_config(self) -> Optional[pulumi.Input['ServiceMeshMeshConfigArgs']]:
+    def mesh_config(self) -> pulumi.Input[Optional['ServiceMeshMeshConfigArgs']]:
         """
         Service grid configuration information See `mesh_config` below.
         """
         return pulumi.get(self, "mesh_config")
 
     @mesh_config.setter
-    def mesh_config(self, value: Optional[pulumi.Input['ServiceMeshMeshConfigArgs']]):
+    def mesh_config(self, value: pulumi.Input[Optional['ServiceMeshMeshConfigArgs']]):
         pulumi.set(self, "mesh_config", value)
 
     @_builtins.property
     @pulumi.getter(name="prometheusUrl")
-    def prometheus_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prometheus_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Prometheus service address (in non-custom cases, use the ARMS address format).
         """
         return pulumi.get(self, "prometheus_url")
 
     @prometheus_url.setter
-    def prometheus_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prometheus_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prometheus_url", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceMeshName")
-    def service_mesh_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_mesh_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ServiceMeshName
         """
         return pulumi.get(self, "service_mesh_name")
 
     @service_mesh_name.setter
-    def service_mesh_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_mesh_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_mesh_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service grid version number
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
 class _ServiceMeshState:
     def __init__(__self__, *,
-                 cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cluster_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 customized_prometheus: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_configuration: Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kubeconfig: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer: Optional[pulumi.Input['ServiceMeshLoadBalancerArgs']] = None,
-                 mesh_config: Optional[pulumi.Input['ServiceMeshMeshConfigArgs']] = None,
-                 network: Optional[pulumi.Input['ServiceMeshNetworkArgs']] = None,
-                 prometheus_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_mesh_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 customized_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_configuration: pulumi.Input[Optional['ServiceMeshExtraConfigurationArgs']] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer: pulumi.Input[Optional['ServiceMeshLoadBalancerArgs']] = None,
+                 mesh_config: pulumi.Input[Optional['ServiceMeshMeshConfigArgs']] = None,
+                 network: pulumi.Input[Optional['ServiceMeshNetworkArgs']] = None,
+                 prometheus_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_mesh_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceMesh resources.
 
@@ -332,43 +332,43 @@ class _ServiceMeshState:
 
     @_builtins.property
     @pulumi.getter(name="clusterIds")
-    def cluster_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cluster_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of clusters.
         """
         return pulumi.get(self, "cluster_ids")
 
     @cluster_ids.setter
-    def cluster_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cluster_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cluster_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterSpec")
-    def cluster_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster specification
         """
         return pulumi.get(self, "cluster_spec")
 
     @cluster_spec.setter
-    def cluster_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service grid creation time
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customizedPrometheus")
-    def customized_prometheus(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def customized_prometheus(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to customize Prometheus. Value:
         -'true': custom Prometheus.
@@ -379,36 +379,36 @@ class _ServiceMeshState:
         return pulumi.get(self, "customized_prometheus")
 
     @customized_prometheus.setter
-    def customized_prometheus(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def customized_prometheus(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "customized_prometheus", value)
 
     @_builtins.property
     @pulumi.getter
-    def edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Grid instance version type (for example: the standard, the Pro version, etc.)
         """
         return pulumi.get(self, "edition")
 
     @edition.setter
-    def edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition", value)
 
     @_builtins.property
     @pulumi.getter(name="extraConfiguration")
-    def extra_configuration(self) -> Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']]:
+    def extra_configuration(self) -> pulumi.Input[Optional['ServiceMeshExtraConfigurationArgs']]:
         """
         Data plane KubeAPI access capability See `extra_configuration` below.
         """
         return pulumi.get(self, "extra_configuration")
 
     @extra_configuration.setter
-    def extra_configuration(self, value: Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']]):
+    def extra_configuration(self, value: pulumi.Input[Optional['ServiceMeshExtraConfigurationArgs']]):
         pulumi.set(self, "extra_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to forcibly delete the ASM instance. Value:
         -'true': force deletion of ASM instance
@@ -419,115 +419,115 @@ class _ServiceMeshState:
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter
-    def kubeconfig(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubeconfig(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kubeconfig configuration content
         """
         return pulumi.get(self, "kubeconfig")
 
     @kubeconfig.setter
-    def kubeconfig(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubeconfig(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubeconfig", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancer")
-    def load_balancer(self) -> Optional[pulumi.Input['ServiceMeshLoadBalancerArgs']]:
+    def load_balancer(self) -> pulumi.Input[Optional['ServiceMeshLoadBalancerArgs']]:
         """
         Load balancing information See `load_balancer` below.
         """
         return pulumi.get(self, "load_balancer")
 
     @load_balancer.setter
-    def load_balancer(self, value: Optional[pulumi.Input['ServiceMeshLoadBalancerArgs']]):
+    def load_balancer(self, value: pulumi.Input[Optional['ServiceMeshLoadBalancerArgs']]):
         pulumi.set(self, "load_balancer", value)
 
     @_builtins.property
     @pulumi.getter(name="meshConfig")
-    def mesh_config(self) -> Optional[pulumi.Input['ServiceMeshMeshConfigArgs']]:
+    def mesh_config(self) -> pulumi.Input[Optional['ServiceMeshMeshConfigArgs']]:
         """
         Service grid configuration information See `mesh_config` below.
         """
         return pulumi.get(self, "mesh_config")
 
     @mesh_config.setter
-    def mesh_config(self, value: Optional[pulumi.Input['ServiceMeshMeshConfigArgs']]):
+    def mesh_config(self, value: pulumi.Input[Optional['ServiceMeshMeshConfigArgs']]):
         pulumi.set(self, "mesh_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input['ServiceMeshNetworkArgs']]:
+    def network(self) -> pulumi.Input[Optional['ServiceMeshNetworkArgs']]:
         """
         Service grid network configuration information See `network` below.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input['ServiceMeshNetworkArgs']]):
+    def network(self, value: pulumi.Input[Optional['ServiceMeshNetworkArgs']]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="prometheusUrl")
-    def prometheus_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prometheus_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Prometheus service address (in non-custom cases, use the ARMS address format).
         """
         return pulumi.get(self, "prometheus_url")
 
     @prometheus_url.setter
-    def prometheus_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prometheus_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prometheus_url", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceMeshName")
-    def service_mesh_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_mesh_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ServiceMeshName
         """
         return pulumi.get(self, "service_mesh_name")
 
     @service_mesh_name.setter
-    def service_mesh_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_mesh_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_mesh_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service grid version number
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -537,19 +537,19 @@ class ServiceMesh(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cluster_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 customized_prometheus: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_configuration: Optional[pulumi.Input[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer: Optional[pulumi.Input[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']]] = None,
-                 mesh_config: Optional[pulumi.Input[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']]] = None,
-                 network: Optional[pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']]] = None,
-                 prometheus_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_mesh_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 customized_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_configuration: pulumi.Input[Optional[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer: pulumi.Input[Optional[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']]] = None,
+                 mesh_config: pulumi.Input[Optional[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']]] = None,
+                 network: pulumi.Input[Optional[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']]] = None,
+                 prometheus_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_mesh_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Service Mesh Service Mesh resource.
@@ -628,19 +628,19 @@ class ServiceMesh(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cluster_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 customized_prometheus: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_configuration: Optional[pulumi.Input[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer: Optional[pulumi.Input[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']]] = None,
-                 mesh_config: Optional[pulumi.Input[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']]] = None,
-                 network: Optional[pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']]] = None,
-                 prometheus_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_mesh_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 customized_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_configuration: pulumi.Input[Optional[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer: pulumi.Input[Optional[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']]] = None,
+                 mesh_config: pulumi.Input[Optional[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']]] = None,
+                 network: pulumi.Input[Optional[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']]] = None,
+                 prometheus_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_mesh_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -678,22 +678,22 @@ class ServiceMesh(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cluster_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            customized_prometheus: Optional[pulumi.Input[_builtins.bool]] = None,
-            edition: Optional[pulumi.Input[_builtins.str]] = None,
-            extra_configuration: Optional[pulumi.Input[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']]] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            kubeconfig: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer: Optional[pulumi.Input[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']]] = None,
-            mesh_config: Optional[pulumi.Input[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']]] = None,
-            network: Optional[pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']]] = None,
-            prometheus_url: Optional[pulumi.Input[_builtins.str]] = None,
-            service_mesh_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceMesh':
+            cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            customized_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
+            edition: pulumi.Input[Optional[_builtins.str]] = None,
+            extra_configuration: pulumi.Input[Optional[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer: pulumi.Input[Optional[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']]] = None,
+            mesh_config: pulumi.Input[Optional[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']]] = None,
+            network: pulumi.Input[Optional[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']]] = None,
+            prometheus_url: pulumi.Input[Optional[_builtins.str]] = None,
+            service_mesh_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceMesh':
         """
         Get an existing ServiceMesh resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

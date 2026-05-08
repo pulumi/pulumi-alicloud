@@ -122,17 +122,17 @@ export interface GlobalSecurityIpGroupState {
     /**
      * The name of the IP whitelist template.
      */
-    globalIgName?: pulumi.Input<string>;
+    globalIgName?: pulumi.Input<string | undefined>;
     /**
      * The IP address in the whitelist template.
      *
      * > **NOTE:** Separate multiple IP addresses with commas (,). You can create up to 1000 IP addresses or CIDR blocks for all IP address whitelists.
      */
-    globalSecurityIpList?: pulumi.Input<string>;
+    globalSecurityIpList?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
 }
 
 /**

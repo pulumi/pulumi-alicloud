@@ -229,57 +229,57 @@ export interface DataCenterState {
     /**
      * Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when payType = Subscription.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Cassandra cluster id of dataCenter-2 belongs to.
      */
-    clusterId?: pulumi.Input<string>;
-    dataCenterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
+    dataCenterId?: pulumi.Input<string | undefined>;
     /**
      * Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
-    dataCenterName?: pulumi.Input<string>;
+    dataCenterName?: pulumi.Input<string | undefined>;
     /**
      * User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:
      * - Custom storage space; value range: [160, 2000].
      * - 80-GB increments.
      */
-    diskSize?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number | undefined>;
     /**
      * The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      */
-    diskType?: pulumi.Input<string>;
-    enablePublic?: pulumi.Input<boolean>;
+    diskType?: pulumi.Input<string | undefined>;
+    enablePublic?: pulumi.Input<boolean | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The node count of Cassandra dataCenter-2, default to 2.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
      */
-    payType?: pulumi.Input<string>;
-    period?: pulumi.Input<number>;
-    periodUnit?: pulumi.Input<string>;
-    publicPoints?: pulumi.Input<pulumi.Input<string>[]>;
-    status?: pulumi.Input<string>;
+    payType?: pulumi.Input<string | undefined>;
+    period?: pulumi.Input<number | undefined>;
+    periodUnit?: pulumi.Input<string | undefined>;
+    publicPoints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
      *
      * > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be "" or consistent.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -289,11 +289,11 @@ export interface DataCenterArgs {
     /**
      * Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when payType = Subscription.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Cassandra cluster id of dataCenter-2 belongs to.
      */
@@ -301,18 +301,18 @@ export interface DataCenterArgs {
     /**
      * Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
-    dataCenterName?: pulumi.Input<string>;
+    dataCenterName?: pulumi.Input<string | undefined>;
     /**
      * User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:
      * - Custom storage space; value range: [160, 2000].
      * - 80-GB increments.
      */
-    diskSize?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number | undefined>;
     /**
      * The disk type of Cassandra dataCenter-2. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      */
-    diskType?: pulumi.Input<string>;
-    enablePublic?: pulumi.Input<boolean>;
+    diskType?: pulumi.Input<string | undefined>;
+    enablePublic?: pulumi.Input<boolean | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
      */
@@ -325,8 +325,8 @@ export interface DataCenterArgs {
      * The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
      */
     payType: pulumi.Input<string>;
-    period?: pulumi.Input<number>;
-    periodUnit?: pulumi.Input<string>;
+    period?: pulumi.Input<number | undefined>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
      *
@@ -336,5 +336,5 @@ export interface DataCenterArgs {
     /**
      * The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be "" or consistent.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

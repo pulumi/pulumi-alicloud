@@ -152,15 +152,15 @@ export interface NetworkAclEntriesState {
     /**
      * List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
      */
-    egresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesEgress>[]>;
+    egresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesEgress>[] | undefined>;
     /**
      * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
      */
-    ingresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesIngress>[]>;
+    ingresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesIngress>[] | undefined>;
     /**
      * The id of the network acl, the field can't be changed.
      */
-    networkAclId?: pulumi.Input<string>;
+    networkAclId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -170,11 +170,11 @@ export interface NetworkAclEntriesArgs {
     /**
      * List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
      */
-    egresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesEgress>[]>;
+    egresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesEgress>[] | undefined>;
     /**
      * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
      */
-    ingresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesIngress>[]>;
+    ingresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesIngress>[] | undefined>;
     /**
      * The id of the network acl, the field can't be changed.
      */

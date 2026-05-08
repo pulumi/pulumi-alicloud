@@ -24,7 +24,7 @@ class RouteServiceArgs:
                  host: pulumi.Input[_builtins.str],
                  host_region_id: pulumi.Input[_builtins.str],
                  host_vpc_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouteService resource.
 
@@ -109,27 +109,27 @@ class RouteServiceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the cloud service.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _RouteServiceState:
     def __init__(__self__, *,
-                 access_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouteService resources.
 
@@ -160,67 +160,67 @@ class _RouteServiceState:
 
     @_builtins.property
     @pulumi.getter(name="accessRegionId")
-    def access_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the network instances that access the cloud services.
         """
         return pulumi.get(self, "access_region_id")
 
     @access_region_id.setter
-    def access_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CEN instance.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the cloud service.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name or IP address of the cloud service.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="hostRegionId")
-    def host_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the cloud service.
         """
         return pulumi.get(self, "host_region_id")
 
     @host_region_id.setter
-    def host_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hostVpcId")
-    def host_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC associated with the cloud service.
 
@@ -229,19 +229,19 @@ class _RouteServiceState:
         return pulumi.get(self, "host_vpc_id")
 
     @host_vpc_id.setter
-    def host_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the cloud service.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -251,12 +251,12 @@ class RouteService(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CEN Route Service resource. The virtual border routers (VBRs) and Cloud Connect Network (CCN) instances attached to Cloud Enterprise Network (CEN) instances can access the cloud services deployed in VPCs through the CEN instances.
@@ -386,12 +386,12 @@ class RouteService(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -428,13 +428,13 @@ class RouteService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            host_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            host_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'RouteService':
+            access_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            host_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'RouteService':
         """
         Get an existing RouteService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -142,21 +142,21 @@ export interface GetAccessRulesOutputArgs {
     /**
      * A list of rule IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Filter results by a specific RWAccess.
      */
-    rwAccess?: pulumi.Input<string>;
+    rwAccess?: pulumi.Input<string | undefined>;
     /**
      * Filter results by a specific SourceCidrIp.
      */
-    sourceCidrIp?: pulumi.Input<string>;
+    sourceCidrIp?: pulumi.Input<string | undefined>;
     /**
      * Filter results by a specific UserAccess.
      */
-    userAccess?: pulumi.Input<string>;
+    userAccess?: pulumi.Input<string | undefined>;
 }

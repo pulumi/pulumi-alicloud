@@ -165,7 +165,7 @@ export interface MachineGroupState {
     /**
      * Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `groupAttribute` below.
      */
-    groupAttribute?: pulumi.Input<inputs.sls.MachineGroupGroupAttribute>;
+    groupAttribute?: pulumi.Input<inputs.sls.MachineGroupGroupAttribute | undefined>;
     /**
      * The name of the machine group. The name must meet the following requirements:
      *
@@ -174,28 +174,28 @@ export interface MachineGroupState {
      * - It must start and end with a lowercase letter or a digit.
      * - It must be 3 to 128 characters in length.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The type of the machine group. Set the value to an empty string.
      */
-    groupType?: pulumi.Input<string>;
+    groupType?: pulumi.Input<string | undefined>;
     /**
      * The identifier type of the machine group. Valid values:
      *
      * - ip: The machine group uses IP addresses as identifiers.
      * - userdefined: The machine group uses custom identifiers.
      */
-    machineIdentifyType?: pulumi.Input<string>;
+    machineIdentifyType?: pulumi.Input<string | undefined>;
     /**
      * The identification information of the machine group.
      * - If machineidentifiytype is configured to ip, enter the ip address of the server.
      * - If machineidentifiytype is configured to userdefined, enter a custom identifier here.
      */
-    machineLists?: pulumi.Input<pulumi.Input<string>[]>;
+    machineLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the project.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -205,7 +205,7 @@ export interface MachineGroupArgs {
     /**
      * Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `groupAttribute` below.
      */
-    groupAttribute?: pulumi.Input<inputs.sls.MachineGroupGroupAttribute>;
+    groupAttribute?: pulumi.Input<inputs.sls.MachineGroupGroupAttribute | undefined>;
     /**
      * The name of the machine group. The name must meet the following requirements:
      *
@@ -218,7 +218,7 @@ export interface MachineGroupArgs {
     /**
      * The type of the machine group. Set the value to an empty string.
      */
-    groupType?: pulumi.Input<string>;
+    groupType?: pulumi.Input<string | undefined>;
     /**
      * The identifier type of the machine group. Valid values:
      *

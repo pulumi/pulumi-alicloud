@@ -24,7 +24,7 @@ class UserArgs:
                  auth_admin_user: pulumi.Input[_builtins.bool],
                  nick_name: pulumi.Input[_builtins.str],
                  user_type: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
 
@@ -105,26 +105,26 @@ class UserArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alibaba Cloud account ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
 
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_user: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auth_admin_user: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_user: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auth_admin_user: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
 
@@ -150,74 +150,74 @@ class _UserState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alibaba Cloud account ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An Alibaba Cloud account, Alibaba Cloud name.
         """
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="adminUser")
-    def admin_user(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_user(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether it is the administrator. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "admin_user")
 
     @admin_user.setter
-    def admin_user(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_user(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_user", value)
 
     @_builtins.property
     @pulumi.getter(name="authAdminUser")
-    def auth_admin_user(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auth_admin_user(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is a permissions administrator. Valid values: `false`, `true`.
         """
         return pulumi.get(self, "auth_admin_user")
 
     @auth_admin_user.setter
-    def auth_admin_user(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auth_admin_user(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auth_admin_user", value)
 
     @_builtins.property
     @pulumi.getter(name="nickName")
-    def nick_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nick_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The nickname of the user.
         """
         return pulumi.get(self, "nick_name")
 
     @nick_name.setter
-    def nick_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nick_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nick_name", value)
 
     @_builtins.property
     @pulumi.getter(name="userType")
-    def user_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
         """
         return pulumi.get(self, "user_type")
 
     @user_type.setter
-    def user_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_type", value)
 
 
@@ -227,12 +227,12 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_user: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auth_admin_user: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_user: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auth_admin_user: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Quick BI User resource.
@@ -332,12 +332,12 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_user: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auth_admin_user: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_user: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auth_admin_user: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -373,12 +373,12 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            admin_user: Optional[pulumi.Input[_builtins.bool]] = None,
-            auth_admin_user: Optional[pulumi.Input[_builtins.bool]] = None,
-            nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-            user_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'User':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            admin_user: pulumi.Input[Optional[_builtins.bool]] = None,
+            auth_admin_user: pulumi.Input[Optional[_builtins.bool]] = None,
+            nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

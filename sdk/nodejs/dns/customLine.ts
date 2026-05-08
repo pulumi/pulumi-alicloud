@@ -131,19 +131,19 @@ export interface CustomLineState {
     /**
      * The name of the Custom Line.
      */
-    customLineName?: pulumi.Input<string>;
+    customLineName?: pulumi.Input<string | undefined>;
     /**
      * The Domain name.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * The IP segment list. See `ipSegmentList` below for details.
      */
-    ipSegmentLists?: pulumi.Input<pulumi.Input<inputs.dns.CustomLineIpSegmentList>[]>;
+    ipSegmentLists?: pulumi.Input<pulumi.Input<inputs.dns.CustomLineIpSegmentList>[] | undefined>;
     /**
      * The lang.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -165,5 +165,5 @@ export interface CustomLineArgs {
     /**
      * The lang.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
 }

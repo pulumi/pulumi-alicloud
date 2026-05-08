@@ -107,11 +107,11 @@ export interface KeyVersionState {
      *
      * > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * The id of the Alikms key version.
      */
-    keyVersionId?: pulumi.Input<string>;
+    keyVersionId?: pulumi.Input<string | undefined>;
 }
 
 /**

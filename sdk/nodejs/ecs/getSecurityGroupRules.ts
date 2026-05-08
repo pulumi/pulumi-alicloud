@@ -168,7 +168,7 @@ export interface GetSecurityGroupRulesOutputArgs {
     /**
      * Authorization direction. Valid values are: `ingress` or `egress`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security group that owns the rules.
      */
@@ -176,17 +176,17 @@ export interface GetSecurityGroupRulesOutputArgs {
     /**
      * The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
      */
-    ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string | undefined>;
     /**
      * Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
      */
-    nicType?: pulumi.Input<string>;
+    nicType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
 }

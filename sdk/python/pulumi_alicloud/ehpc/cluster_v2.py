@@ -23,17 +23,17 @@ class ClusterV2Args:
     def __init__(__self__, *,
                  cluster_credentials: pulumi.Input['ClusterV2ClusterCredentialsArgs'],
                  shared_storages: pulumi.Input[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]],
-                 addons: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2AddonArgs']]]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 manager: Optional[pulumi.Input['ClusterV2ManagerArgs']] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 addons: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AddonArgs']]]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 manager: pulumi.Input[Optional['ClusterV2ManagerArgs']] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClusterV2 resource.
 
@@ -114,19 +114,19 @@ class ClusterV2Args:
 
     @_builtins.property
     @pulumi.getter
-    def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2AddonArgs']]]]:
+    def addons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AddonArgs']]]]:
         """
         The cluster custom service component configuration. Only one component is supported. See `addons` below.
         """
         return pulumi.get(self, "addons")
 
     @addons.setter
-    def addons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2AddonArgs']]]]):
+    def addons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AddonArgs']]]]):
         pulumi.set(self, "addons", value)
 
     @_builtins.property
     @pulumi.getter(name="clientVersion")
-    def client_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable auto scale-out for the cluster. Valid values:
 
@@ -136,12 +136,12 @@ class ClusterV2Args:
         return pulumi.get(self, "client_version")
 
     @client_version.setter
-    def client_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_version", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterCategory")
-    def cluster_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster type. Valid values:
 
@@ -151,12 +151,12 @@ class ClusterV2Args:
         return pulumi.get(self, "cluster_category")
 
     @cluster_category.setter
-    def cluster_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_category", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterMode")
-    def cluster_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment mode of the cluster. Valid values:
 
@@ -167,36 +167,36 @@ class ClusterV2Args:
         return pulumi.get(self, "cluster_mode")
 
     @cluster_mode.setter
-    def cluster_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The post-processing script of the cluster.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterVpcId")
-    def cluster_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual private cloud (VPC) in which the cluster resides.
         """
         return pulumi.get(self, "cluster_vpc_id")
 
     @cluster_vpc_id.setter
-    def cluster_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterVswitchId")
-    def cluster_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
         You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
@@ -204,36 +204,36 @@ class ClusterV2Args:
         return pulumi.get(self, "cluster_vswitch_id")
 
     @cluster_vswitch_id.setter
-    def cluster_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The idle duration of the compute nodes allowed by the cluster.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def manager(self) -> Optional[pulumi.Input['ClusterV2ManagerArgs']]:
+    def manager(self) -> pulumi.Input[Optional['ClusterV2ManagerArgs']]:
         """
         The configurations of the cluster management node. See `manager` below.
         """
         return pulumi.get(self, "manager")
 
     @manager.setter
-    def manager(self, value: Optional[pulumi.Input['ClusterV2ManagerArgs']]):
+    def manager(self, value: pulumi.Input[Optional['ClusterV2ManagerArgs']]):
         pulumi.set(self, "manager", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the cluster belongs.
         You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
@@ -241,39 +241,39 @@ class ClusterV2Args:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
 
 @pulumi.input_type
 class _ClusterV2State:
     def __init__(__self__, *,
-                 addons: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2AddonArgs']]]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_credentials: Optional[pulumi.Input['ClusterV2ClusterCredentialsArgs']] = None,
-                 cluster_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 manager: Optional[pulumi.Input['ClusterV2ManagerArgs']] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_storages: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]]] = None):
+                 addons: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AddonArgs']]]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_credentials: pulumi.Input[Optional['ClusterV2ClusterCredentialsArgs']] = None,
+                 cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 manager: pulumi.Input[Optional['ClusterV2ManagerArgs']] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]]] = None):
         """
         Input properties used for looking up and filtering ClusterV2 resources.
 
@@ -335,19 +335,19 @@ class _ClusterV2State:
 
     @_builtins.property
     @pulumi.getter
-    def addons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2AddonArgs']]]]:
+    def addons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AddonArgs']]]]:
         """
         The cluster custom service component configuration. Only one component is supported. See `addons` below.
         """
         return pulumi.get(self, "addons")
 
     @addons.setter
-    def addons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2AddonArgs']]]]):
+    def addons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2AddonArgs']]]]):
         pulumi.set(self, "addons", value)
 
     @_builtins.property
     @pulumi.getter(name="clientVersion")
-    def client_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable auto scale-out for the cluster. Valid values:
 
@@ -357,12 +357,12 @@ class _ClusterV2State:
         return pulumi.get(self, "client_version")
 
     @client_version.setter
-    def client_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_version", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterCategory")
-    def cluster_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster type. Valid values:
 
@@ -372,24 +372,24 @@ class _ClusterV2State:
         return pulumi.get(self, "cluster_category")
 
     @cluster_category.setter
-    def cluster_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_category", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterCredentials")
-    def cluster_credentials(self) -> Optional[pulumi.Input['ClusterV2ClusterCredentialsArgs']]:
+    def cluster_credentials(self) -> pulumi.Input[Optional['ClusterV2ClusterCredentialsArgs']]:
         """
         Security credentials for the cluster. See `cluster_credentials` below.
         """
         return pulumi.get(self, "cluster_credentials")
 
     @cluster_credentials.setter
-    def cluster_credentials(self, value: Optional[pulumi.Input['ClusterV2ClusterCredentialsArgs']]):
+    def cluster_credentials(self, value: pulumi.Input[Optional['ClusterV2ClusterCredentialsArgs']]):
         pulumi.set(self, "cluster_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterMode")
-    def cluster_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment mode of the cluster. Valid values:
 
@@ -400,36 +400,36 @@ class _ClusterV2State:
         return pulumi.get(self, "cluster_mode")
 
     @cluster_mode.setter
-    def cluster_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The post-processing script of the cluster.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterVpcId")
-    def cluster_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual private cloud (VPC) in which the cluster resides.
         """
         return pulumi.get(self, "cluster_vpc_id")
 
     @cluster_vpc_id.setter
-    def cluster_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterVswitchId")
-    def cluster_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
         You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
@@ -437,48 +437,48 @@ class _ClusterV2State:
         return pulumi.get(self, "cluster_vswitch_id")
 
     @cluster_vswitch_id.setter
-    def cluster_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the cluster was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The idle duration of the compute nodes allowed by the cluster.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def manager(self) -> Optional[pulumi.Input['ClusterV2ManagerArgs']]:
+    def manager(self) -> pulumi.Input[Optional['ClusterV2ManagerArgs']]:
         """
         The configurations of the cluster management node. See `manager` below.
         """
         return pulumi.get(self, "manager")
 
     @manager.setter
-    def manager(self, value: Optional[pulumi.Input['ClusterV2ManagerArgs']]):
+    def manager(self, value: pulumi.Input[Optional['ClusterV2ManagerArgs']]):
         pulumi.set(self, "manager", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the cluster belongs.
         You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
@@ -486,31 +486,31 @@ class _ClusterV2State:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedStorages")
-    def shared_storages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]]]:
+    def shared_storages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]]]:
         """
         List of cluster shared storage configurations. See `shared_storages` below.
         """
         return pulumi.get(self, "shared_storages")
 
     @shared_storages.setter
-    def shared_storages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]]]):
+    def shared_storages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2SharedStorageArgs']]]]):
         pulumi.set(self, "shared_storages", value)
 
 
@@ -520,19 +520,19 @@ class ClusterV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_credentials: Optional[pulumi.Input[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']]] = None,
-                 cluster_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 manager: Optional[pulumi.Input[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_storages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]]] = None,
+                 addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_credentials: pulumi.Input[Optional[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']]] = None,
+                 cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 manager: pulumi.Input[Optional[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Ehpc Cluster V2 resource.
@@ -857,19 +857,19 @@ class ClusterV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_credentials: Optional[pulumi.Input[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']]] = None,
-                 cluster_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 manager: Optional[pulumi.Input[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_storages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]]] = None,
+                 addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_credentials: pulumi.Input[Optional[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']]] = None,
+                 cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 manager: pulumi.Input[Optional[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -909,20 +909,20 @@ class ClusterV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]]] = None,
-            client_version: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_category: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_credentials: Optional[pulumi.Input[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']]] = None,
-            cluster_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            manager: Optional[pulumi.Input[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            shared_storages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]]] = None) -> 'ClusterV2':
+            addons: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AddonArgs', 'ClusterV2AddonArgsDict']]]]] = None,
+            client_version: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_credentials: pulumi.Input[Optional[Union['ClusterV2ClusterCredentialsArgs', 'ClusterV2ClusterCredentialsArgsDict']]] = None,
+            cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            manager: pulumi.Input[Optional[Union['ClusterV2ManagerArgs', 'ClusterV2ManagerArgsDict']]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2SharedStorageArgs', 'ClusterV2SharedStorageArgsDict']]]]] = None) -> 'ClusterV2':
         """
         Get an existing ClusterV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

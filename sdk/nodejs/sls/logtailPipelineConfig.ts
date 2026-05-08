@@ -203,39 +203,39 @@ export interface LogtailPipelineConfigState {
     /**
      * This property does not have a description in the spec, please add it before generating code. See `aggregators` below.
      */
-    aggregators?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    aggregators?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * The name of the resource
      */
-    configName?: pulumi.Input<string>;
+    configName?: pulumi.Input<string | undefined>;
     /**
      * This property does not have a description in the spec, please add it before generating code. See `flushers` below.
      */
-    flushers?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    flushers?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * This property does not have a description in the spec, please add it before generating code.
      */
-    globals?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    globals?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The creation time of the resource See `inputs` below.
      */
-    inputs?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    inputs?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * This property does not have a description in the spec, please add it before generating code.
      */
-    logSample?: pulumi.Input<string>;
+    logSample?: pulumi.Input<string | undefined>;
     /**
      * This property does not have a description in the spec, please add it before generating code. See `processors` below.
      */
-    processors?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    processors?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * The first ID of the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * This property does not have a description in the spec, please add it before generating code.
      */
-    task?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    task?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -245,7 +245,7 @@ export interface LogtailPipelineConfigArgs {
     /**
      * This property does not have a description in the spec, please add it before generating code. See `aggregators` below.
      */
-    aggregators?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    aggregators?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * The name of the resource
      */
@@ -257,7 +257,7 @@ export interface LogtailPipelineConfigArgs {
     /**
      * This property does not have a description in the spec, please add it before generating code.
      */
-    globals?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    globals?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The creation time of the resource See `inputs` below.
      */
@@ -265,11 +265,11 @@ export interface LogtailPipelineConfigArgs {
     /**
      * This property does not have a description in the spec, please add it before generating code.
      */
-    logSample?: pulumi.Input<string>;
+    logSample?: pulumi.Input<string | undefined>;
     /**
      * This property does not have a description in the spec, please add it before generating code. See `processors` below.
      */
-    processors?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    processors?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * The first ID of the resource
      */
@@ -277,5 +277,5 @@ export interface LogtailPipelineConfigArgs {
     /**
      * This property does not have a description in the spec, please add it before generating code.
      */
-    task?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    task?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

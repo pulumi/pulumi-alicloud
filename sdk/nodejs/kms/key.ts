@@ -257,45 +257,45 @@ export interface KeyState {
     /**
      * The ARN of the key.
      */
-    arn?: pulumi.Input<string>;
+    arn?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
      */
-    automaticRotation?: pulumi.Input<string>;
+    automaticRotation?: pulumi.Input<string | undefined>;
     /**
      * The time when the CMK was created.
      */
-    creationDate?: pulumi.Input<string>;
+    creationDate?: pulumi.Input<string | undefined>;
     /**
      * The creator of the CMK.
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * The time at which the CMK is scheduled for deletion.
      */
-    deleteDate?: pulumi.Input<string>;
+    deleteDate?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
      */
-    deletionProtection?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<string | undefined>;
     /**
      * The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
      */
-    deletionProtectionDescription?: pulumi.Input<string>;
+    deletionProtectionDescription?: pulumi.Input<string | undefined>;
     /**
      * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      *
      * @deprecated Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      */
-    deletionWindowInDays?: pulumi.Input<number>;
+    deletionWindowInDays?: pulumi.Input<number | undefined>;
     /**
      * The description of the key.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the KMS instance.
      */
-    dkmsInstanceId?: pulumi.Input<string>;
+    dkmsInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      *
@@ -307,67 +307,67 @@ export interface KeyState {
      *
      * @deprecated Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
      */
-    keySpec?: pulumi.Input<string>;
+    keySpec?: pulumi.Input<string | undefined>;
     /**
      * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      *
      * @deprecated Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      */
-    keyState?: pulumi.Input<string>;
+    keyState?: pulumi.Input<string | undefined>;
     /**
      * The usage of the key. Default value: `ENCRYPT/DECRYPT`. Valid values:
      * - `ENCRYPT/DECRYPT`: Encrypts or decrypts data.
      * - `SIGN/VERIFY`: Generates or verifies a digital signature.
      */
-    keyUsage?: pulumi.Input<string>;
+    keyUsage?: pulumi.Input<string | undefined>;
     /**
      * The time when the last rotation was performed.
      */
-    lastRotationDate?: pulumi.Input<string>;
+    lastRotationDate?: pulumi.Input<string | undefined>;
     /**
      * The time when the key material expires.
      */
-    materialExpireTime?: pulumi.Input<string>;
+    materialExpireTime?: pulumi.Input<string | undefined>;
     /**
      * The time when the next rotation will be performed.
      */
-    nextRotationDate?: pulumi.Input<string>;
+    nextRotationDate?: pulumi.Input<string | undefined>;
     /**
      * The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
      */
-    origin?: pulumi.Input<string>;
+    origin?: pulumi.Input<string | undefined>;
     /**
      * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
      */
-    pendingWindowInDays?: pulumi.Input<number>;
+    pendingWindowInDays?: pulumi.Input<number | undefined>;
     /**
      * The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the current primary key version of the symmetric CMK.
      */
-    primaryKeyVersion?: pulumi.Input<string>;
+    primaryKeyVersion?: pulumi.Input<string | undefined>;
     /**
      * The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
      */
-    protectionLevel?: pulumi.Input<string>;
+    protectionLevel?: pulumi.Input<string | undefined>;
     /**
      * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
      */
-    rotationInterval?: pulumi.Input<string>;
+    rotationInterval?: pulumi.Input<string | undefined>;
     /**
      * The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -377,29 +377,29 @@ export interface KeyArgs {
     /**
      * Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
      */
-    automaticRotation?: pulumi.Input<string>;
+    automaticRotation?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable deletion protection. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
      */
-    deletionProtection?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<string | undefined>;
     /**
      * The description of deletion protection. **NOTE:** `deletionProtectionDescription` takes effect only if `deletionProtection` is set to `Enabled`.
      */
-    deletionProtectionDescription?: pulumi.Input<string>;
+    deletionProtectionDescription?: pulumi.Input<string | undefined>;
     /**
      * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      *
      * @deprecated Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      */
-    deletionWindowInDays?: pulumi.Input<number>;
+    deletionWindowInDays?: pulumi.Input<number | undefined>;
     /**
      * The description of the key.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the KMS instance.
      */
-    dkmsInstanceId?: pulumi.Input<string>;
+    dkmsInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      *
@@ -411,49 +411,49 @@ export interface KeyArgs {
      *
      * @deprecated Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
      */
-    keySpec?: pulumi.Input<string>;
+    keySpec?: pulumi.Input<string | undefined>;
     /**
      * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      *
      * @deprecated Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      */
-    keyState?: pulumi.Input<string>;
+    keyState?: pulumi.Input<string | undefined>;
     /**
      * The usage of the key. Default value: `ENCRYPT/DECRYPT`. Valid values:
      * - `ENCRYPT/DECRYPT`: Encrypts or decrypts data.
      * - `SIGN/VERIFY`: Generates or verifies a digital signature.
      */
-    keyUsage?: pulumi.Input<string>;
+    keyUsage?: pulumi.Input<string | undefined>;
     /**
      * The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
      */
-    origin?: pulumi.Input<string>;
+    origin?: pulumi.Input<string | undefined>;
     /**
      * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`. **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
      */
-    pendingWindowInDays?: pulumi.Input<number>;
+    pendingWindowInDays?: pulumi.Input<number | undefined>;
     /**
      * The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
      */
-    protectionLevel?: pulumi.Input<string>;
+    protectionLevel?: pulumi.Input<string | undefined>;
     /**
      * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automaticRotation` is set to `Enabled`, `rotationInterval` is required.
      */
-    rotationInterval?: pulumi.Input<string>;
+    rotationInterval?: pulumi.Input<string | undefined>;
     /**
      * The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

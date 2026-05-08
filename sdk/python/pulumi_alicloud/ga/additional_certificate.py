@@ -88,10 +88,10 @@ class AdditionalCertificateArgs:
 @pulumi.input_type
 class _AdditionalCertificateState:
     def __init__(__self__, *,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AdditionalCertificate resources.
 
@@ -111,50 +111,50 @@ class _AdditionalCertificateState:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
-    def accelerator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the GA instance.
         """
         return pulumi.get(self, "accelerator_id")
 
     @accelerator_id.setter
-    def accelerator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_id", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
         """
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
-    def certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the listener. **NOTE:** Only HTTPS listeners support this parameter.
         """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
-    def listener_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_id", value)
 
 
@@ -164,10 +164,10 @@ class AdditionalCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Additional Certificate resource.
@@ -182,6 +182,7 @@ class AdditionalCertificate(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -206,7 +207,7 @@ class AdditionalCertificate(pulumi.CustomResource):
         default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
             accelerator_id=default.ids[0],
             bandwidth_package_id=default_bandwidth_package.id)
-        default_service_certificate = []
+        default_service_certificate: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_service_certificate.append(alicloud.cas.ServiceCertificate(f"default-{range['value']}",
                 certificate_name=std.join(separator="-",
@@ -331,6 +332,7 @@ class AdditionalCertificate(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -355,7 +357,7 @@ class AdditionalCertificate(pulumi.CustomResource):
         default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
             accelerator_id=default.ids[0],
             bandwidth_package_id=default_bandwidth_package.id)
-        default_service_certificate = []
+        default_service_certificate: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_service_certificate.append(alicloud.cas.ServiceCertificate(f"default-{range['value']}",
                 certificate_name=std.join(separator="-",
@@ -469,10 +471,10 @@ class AdditionalCertificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -504,10 +506,10 @@ class AdditionalCertificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            listener_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AdditionalCertificate':
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AdditionalCertificate':
         """
         Get an existing AdditionalCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

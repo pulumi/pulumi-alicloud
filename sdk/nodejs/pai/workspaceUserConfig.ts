@@ -128,19 +128,19 @@ export interface WorkspaceUserConfigState {
     /**
      * The category. Valid values: `DataPrivacyConfig`.
      */
-    categoryName?: pulumi.Input<string>;
+    categoryName?: pulumi.Input<string | undefined>;
     /**
      * The key of the configuration.
      */
-    configKey?: pulumi.Input<string>;
+    configKey?: pulumi.Input<string | undefined>;
     /**
      * The value of the configuration.
      */
-    configValue?: pulumi.Input<string>;
+    configValue?: pulumi.Input<string | undefined>;
     /**
      * The scope. Default value: `owner`. Valid values: `owner`, `subUser`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,5 +162,5 @@ export interface WorkspaceUserConfigArgs {
     /**
      * The scope. Default value: `owner`. Valid values: `owner`, `subUser`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
 }

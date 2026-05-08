@@ -20,11 +20,11 @@ __all__ = [
 ]
 
 class InstanceParameterArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
     """
@@ -32,8 +32,8 @@ class InstanceParameterArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceParameterArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         :param pulumi.Input[_builtins.str] value: Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
@@ -52,27 +52,27 @@ class InstanceParameterArgs:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 

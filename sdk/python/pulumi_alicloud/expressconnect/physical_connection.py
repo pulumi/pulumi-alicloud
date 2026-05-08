@@ -21,17 +21,17 @@ class PhysicalConnectionArgs:
     def __init__(__self__, *,
                  access_point_id: pulumi.Input[_builtins.str],
                  line_operator: pulumi.Input[_builtins.str],
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 circuit_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 physical_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 redundant_physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 physical_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 redundant_physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PhysicalConnection resource.
 
@@ -123,55 +123,55 @@ class PhysicalConnectionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum bandwidth of the hosted connection.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="circuitCode")
-    def circuit_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def circuit_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The circuit code of the Express Connect circuit.
         """
         return pulumi.get(self, "circuit_code")
 
     @circuit_code.setter
-    def circuit_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def circuit_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "circuit_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Express Connect circuit.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="peerLocation")
-    def peer_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographical location of the data center.
         """
         return pulumi.get(self, "peer_location")
 
     @peer_location.setter
-    def peer_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_location", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The subscription duration. Valid values:
         - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
@@ -180,24 +180,24 @@ class PhysicalConnectionArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="physicalConnectionName")
-    def physical_connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def physical_connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Express Connect circuit.
         """
         return pulumi.get(self, "physical_connection_name")
 
     @physical_connection_name.setter
-    def physical_connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def physical_connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "physical_connection_name", value)
 
     @_builtins.property
     @pulumi.getter(name="portType")
-    def port_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port type of the Express Connect circuit. Valid values:
         - `100Base-T`: 100 Mbit/s copper Ethernet port.
@@ -212,12 +212,12 @@ class PhysicalConnectionArgs:
         return pulumi.get(self, "port_type")
 
     @port_type.setter
-    def port_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
         > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
@@ -225,63 +225,63 @@ class PhysicalConnectionArgs:
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="redundantPhysicalConnectionId")
-    def redundant_physical_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redundant_physical_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
         """
         return pulumi.get(self, "redundant_physical_connection_id")
 
     @redundant_physical_connection_id.setter
-    def redundant_physical_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redundant_physical_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redundant_physical_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _PhysicalConnectionState:
     def __init__(__self__, *,
-                 access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 circuit_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 line_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 physical_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 redundant_physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 line_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 physical_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 redundant_physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PhysicalConnection resources.
 
@@ -348,55 +348,55 @@ class _PhysicalConnectionState:
 
     @_builtins.property
     @pulumi.getter(name="accessPointId")
-    def access_point_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_point_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access point ID of the Express Connect circuit.
         """
         return pulumi.get(self, "access_point_id")
 
     @access_point_id.setter
-    def access_point_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_point_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_point_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum bandwidth of the hosted connection.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="circuitCode")
-    def circuit_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def circuit_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The circuit code of the Express Connect circuit.
         """
         return pulumi.get(self, "circuit_code")
 
     @circuit_code.setter
-    def circuit_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def circuit_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "circuit_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Express Connect circuit.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="lineOperator")
-    def line_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def line_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connectivity provider of the Express Connect circuit. Valid values:
         - `CT`: China Telecom.
@@ -409,36 +409,36 @@ class _PhysicalConnectionState:
         return pulumi.get(self, "line_operator")
 
     @line_operator.setter
-    def line_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def line_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "line_operator", value)
 
     @_builtins.property
     @pulumi.getter(name="orderId")
-    def order_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the order that is placed. **Note:** `order_id` takes effect only if `status` is set to `Enabled`.
         """
         return pulumi.get(self, "order_id")
 
     @order_id.setter
-    def order_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_id", value)
 
     @_builtins.property
     @pulumi.getter(name="peerLocation")
-    def peer_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographical location of the data center.
         """
         return pulumi.get(self, "peer_location")
 
     @peer_location.setter
-    def peer_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_location", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The subscription duration. Valid values:
         - If `pricing_cycle` is set to `Month`. Valid values: `1` to `9`.
@@ -447,24 +447,24 @@ class _PhysicalConnectionState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="physicalConnectionName")
-    def physical_connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def physical_connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Express Connect circuit.
         """
         return pulumi.get(self, "physical_connection_name")
 
     @physical_connection_name.setter
-    def physical_connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def physical_connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "physical_connection_name", value)
 
     @_builtins.property
     @pulumi.getter(name="portType")
-    def port_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port type of the Express Connect circuit. Valid values:
         - `100Base-T`: 100 Mbit/s copper Ethernet port.
@@ -479,12 +479,12 @@ class _PhysicalConnectionState:
         return pulumi.get(self, "port_type")
 
     @port_type.setter
-    def port_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
         > **NOTE:** `period` and `pricing_cycle` are valid only when `status` is set to `Enabled`.
@@ -492,43 +492,43 @@ class _PhysicalConnectionState:
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="redundantPhysicalConnectionId")
-    def redundant_physical_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redundant_physical_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
         """
         return pulumi.get(self, "redundant_physical_connection_id")
 
     @redundant_physical_connection_id.setter
-    def redundant_physical_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redundant_physical_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redundant_physical_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -538,19 +538,19 @@ class PhysicalConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 circuit_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 line_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 physical_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 redundant_physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 line_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 physical_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 redundant_physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Express Connect Physical Connection resource.
@@ -698,19 +698,19 @@ class PhysicalConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 circuit_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 line_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 physical_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 redundant_physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 line_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 physical_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 redundant_physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -748,20 +748,20 @@ class PhysicalConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-            circuit_code: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            line_operator: Optional[pulumi.Input[_builtins.str]] = None,
-            order_id: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_location: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            physical_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-            port_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            redundant_physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'PhysicalConnection':
+            access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            line_operator: pulumi.Input[Optional[_builtins.str]] = None,
+            order_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_location: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            physical_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            port_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            redundant_physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'PhysicalConnection':
         """
         Get an existing PhysicalConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

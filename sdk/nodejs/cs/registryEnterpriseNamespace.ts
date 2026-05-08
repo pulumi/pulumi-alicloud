@@ -140,21 +140,21 @@ export interface RegistryEnterpriseNamespaceState {
     /**
      * Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
      */
-    autoCreate?: pulumi.Input<boolean>;
+    autoCreate?: pulumi.Input<boolean | undefined>;
     /**
      * The default type of the repository that is automatically created. Valid values:
      * - `PUBLIC`: A public repository.
      * - `PRIVATE`: A private repository.
      */
-    defaultVisibility?: pulumi.Input<string>;
+    defaultVisibility?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Container Registry Enterprise Edition instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -164,13 +164,13 @@ export interface RegistryEnterpriseNamespaceArgs {
     /**
      * Specifies whether to automatically create an image repository in the namespace. Default value: `false`. Valid values: `true`, `false`.
      */
-    autoCreate?: pulumi.Input<boolean>;
+    autoCreate?: pulumi.Input<boolean | undefined>;
     /**
      * The default type of the repository that is automatically created. Valid values:
      * - `PUBLIC`: A public repository.
      * - `PRIVATE`: A private repository.
      */
-    defaultVisibility?: pulumi.Input<string>;
+    defaultVisibility?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Container Registry Enterprise Edition instance.
      */
@@ -178,5 +178,5 @@ export interface RegistryEnterpriseNamespaceArgs {
     /**
      * The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

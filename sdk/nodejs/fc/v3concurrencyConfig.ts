@@ -131,15 +131,15 @@ export interface V3ConcurrencyConfigState {
     /**
      * (Available since v1.234.0) Resource identity of the function
      */
-    functionArn?: pulumi.Input<string>;
+    functionArn?: pulumi.Input<string | undefined>;
     /**
      * Function Name
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
      */
-    reservedConcurrency?: pulumi.Input<number>;
+    reservedConcurrency?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -153,5 +153,5 @@ export interface V3ConcurrencyConfigArgs {
     /**
      * Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
      */
-    reservedConcurrency?: pulumi.Input<number>;
+    reservedConcurrency?: pulumi.Input<number | undefined>;
 }

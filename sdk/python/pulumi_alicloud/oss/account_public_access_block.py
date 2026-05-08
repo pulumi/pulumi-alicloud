@@ -43,7 +43,7 @@ class AccountPublicAccessBlockArgs:
 @pulumi.input_type
 class _AccountPublicAccessBlockState:
     def __init__(__self__, *,
-                 block_public_access: Optional[pulumi.Input[_builtins.bool]] = None):
+                 block_public_access: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AccountPublicAccessBlock resources.
 
@@ -54,14 +54,14 @@ class _AccountPublicAccessBlockState:
 
     @_builtins.property
     @pulumi.getter(name="blockPublicAccess")
-    def block_public_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def block_public_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not AlibabaCloud OSS should block public bucket policies for buckets in this account is enabled.
         """
         return pulumi.get(self, "block_public_access")
 
     @block_public_access.setter
-    def block_public_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def block_public_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "block_public_access", value)
 
 
@@ -71,7 +71,7 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 block_public_access: Optional[pulumi.Input[_builtins.bool]] = None,
+                 block_public_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a OSS Account Public Access Block resource. Blocking public access at the account level.
@@ -164,7 +164,7 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 block_public_access: Optional[pulumi.Input[_builtins.bool]] = None,
+                 block_public_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -187,7 +187,7 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            block_public_access: Optional[pulumi.Input[_builtins.bool]] = None) -> 'AccountPublicAccessBlock':
+            block_public_access: pulumi.Input[Optional[_builtins.bool]] = None) -> 'AccountPublicAccessBlock':
         """
         Get an existing AccountPublicAccessBlock resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

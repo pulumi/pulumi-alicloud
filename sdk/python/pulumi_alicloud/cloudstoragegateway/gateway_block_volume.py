@@ -24,16 +24,16 @@ class GatewayBlockVolumeArgs:
                  oss_bucket_name: pulumi.Input[_builtins.str],
                  oss_endpoint: pulumi.Input[_builtins.str],
                  protocol: pulumi.Input[_builtins.str],
-                 cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 chap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 chap_in_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 chap_in_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 chunk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 is_source_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None):
+                 cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 chap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 chap_in_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 chap_in_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 is_source_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a GatewayBlockVolume resource.
 
@@ -141,145 +141,145 @@ class GatewayBlockVolumeArgs:
 
     @_builtins.property
     @pulumi.getter(name="cacheMode")
-    def cache_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         """
         return pulumi.get(self, "cache_mode")
 
     @cache_mode.setter
-    def cache_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="chapEnabled")
-    def chap_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def chap_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
         """
         return pulumi.get(self, "chap_enabled")
 
     @chap_enabled.setter
-    def chap_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def chap_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "chap_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="chapInPassword")
-    def chap_in_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chap_in_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
         """
         return pulumi.get(self, "chap_in_password")
 
     @chap_in_password.setter
-    def chap_in_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chap_in_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chap_in_password", value)
 
     @_builtins.property
     @pulumi.getter(name="chapInUser")
-    def chap_in_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chap_in_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
         """
         return pulumi.get(self, "chap_in_user")
 
     @chap_in_user.setter
-    def chap_in_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chap_in_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chap_in_user", value)
 
     @_builtins.property
     @pulumi.getter(name="chunkSize")
-    def chunk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def chunk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
         """
         return pulumi.get(self, "chunk_size")
 
     @chunk_size.setter
-    def chunk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def chunk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "chunk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="isSourceDeletion")
-    def is_source_deletion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_source_deletion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to delete the source data. Default value `true`. **NOTE:** When `is_source_deletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
         """
         return pulumi.get(self, "is_source_deletion")
 
     @is_source_deletion.setter
-    def is_source_deletion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_source_deletion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_source_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketSsl")
-    def oss_bucket_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def oss_bucket_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable SSL access your OSS Buckets. Default value: `true`.
         """
         return pulumi.get(self, "oss_bucket_ssl")
 
     @oss_bucket_ssl.setter
-    def oss_bucket_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def oss_bucket_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "oss_bucket_ssl", value)
 
     @_builtins.property
     @pulumi.getter
-    def recovery(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def recovery(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The recovery.
         """
         return pulumi.get(self, "recovery")
 
     @recovery.setter
-    def recovery(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def recovery(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "recovery", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
 
 @pulumi.input_type
 class _GatewayBlockVolumeState:
     def __init__(__self__, *,
-                 cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 chap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 chap_in_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 chap_in_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 chunk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 gateway_block_volume_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_source_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oss_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 chap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 chap_in_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 chap_in_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 gateway_block_volume_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_source_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oss_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewayBlockVolume resources.
 
@@ -338,206 +338,206 @@ class _GatewayBlockVolumeState:
 
     @_builtins.property
     @pulumi.getter(name="cacheMode")
-    def cache_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
         """
         return pulumi.get(self, "cache_mode")
 
     @cache_mode.setter
-    def cache_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="chapEnabled")
-    def chap_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def chap_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
         """
         return pulumi.get(self, "chap_enabled")
 
     @chap_enabled.setter
-    def chap_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def chap_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "chap_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="chapInPassword")
-    def chap_in_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chap_in_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
         """
         return pulumi.get(self, "chap_in_password")
 
     @chap_in_password.setter
-    def chap_in_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chap_in_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chap_in_password", value)
 
     @_builtins.property
     @pulumi.getter(name="chapInUser")
-    def chap_in_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chap_in_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
         """
         return pulumi.get(self, "chap_in_user")
 
     @chap_in_user.setter
-    def chap_in_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chap_in_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chap_in_user", value)
 
     @_builtins.property
     @pulumi.getter(name="chunkSize")
-    def chunk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def chunk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
         """
         return pulumi.get(self, "chunk_size")
 
     @chunk_size.setter
-    def chunk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def chunk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "chunk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayBlockVolumeName")
-    def gateway_block_volume_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_block_volume_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Block volume name. The name must be 1 to 32 characters in length, and can contain lower case letters and digits.
         """
         return pulumi.get(self, "gateway_block_volume_name")
 
     @gateway_block_volume_name.setter
-    def gateway_block_volume_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_block_volume_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_block_volume_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
-    def gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Gateway ID.
         """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
-    def gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="indexId")
-    def index_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the index.
         """
         return pulumi.get(self, "index_id")
 
     @index_id.setter
-    def index_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isSourceDeletion")
-    def is_source_deletion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_source_deletion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to delete the source data. Default value `true`. **NOTE:** When `is_source_deletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
         """
         return pulumi.get(self, "is_source_deletion")
 
     @is_source_deletion.setter
-    def is_source_deletion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_source_deletion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_source_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketName")
-    def oss_bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OSS Bucket.
         """
         return pulumi.get(self, "oss_bucket_name")
 
     @oss_bucket_name.setter
-    def oss_bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketSsl")
-    def oss_bucket_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def oss_bucket_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable SSL access your OSS Buckets. Default value: `true`.
         """
         return pulumi.get(self, "oss_bucket_ssl")
 
     @oss_bucket_ssl.setter
-    def oss_bucket_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def oss_bucket_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "oss_bucket_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="ossEndpoint")
-    def oss_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint of the OSS Bucket.
         """
         return pulumi.get(self, "oss_endpoint")
 
     @oss_endpoint.setter
-    def oss_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Protocol. Valid values: `iSCSI`.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def recovery(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def recovery(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The recovery.
         """
         return pulumi.get(self, "recovery")
 
     @recovery.setter
-    def recovery(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def recovery(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "recovery", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of volume. Valid values:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -547,21 +547,21 @@ class GatewayBlockVolume(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 chap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 chap_in_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 chap_in_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 chunk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 gateway_block_volume_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_source_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oss_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
+                 cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 chap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 chap_in_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 chap_in_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 gateway_block_volume_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_source_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oss_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Cloud Storage Gateway Gateway Block Volume resource.
@@ -770,21 +770,21 @@ class GatewayBlockVolume(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 chap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 chap_in_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 chap_in_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 chunk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 gateway_block_volume_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_source_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oss_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
+                 cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 chap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 chap_in_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 chap_in_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 gateway_block_volume_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_source_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oss_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -831,23 +831,23 @@ class GatewayBlockVolume(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            chap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            chap_in_password: Optional[pulumi.Input[_builtins.str]] = None,
-            chap_in_user: Optional[pulumi.Input[_builtins.str]] = None,
-            chunk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            gateway_block_volume_name: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            index_id: Optional[pulumi.Input[_builtins.str]] = None,
-            is_source_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-            local_path: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_bucket_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-            oss_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'GatewayBlockVolume':
+            cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            chap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            chap_in_password: pulumi.Input[Optional[_builtins.str]] = None,
+            chap_in_user: pulumi.Input[Optional[_builtins.str]] = None,
+            chunk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            gateway_block_volume_name: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            index_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_source_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+            local_path: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            oss_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'GatewayBlockVolume':
         """
         Get an existing GatewayBlockVolume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

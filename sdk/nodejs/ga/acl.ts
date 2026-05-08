@@ -148,31 +148,31 @@ export interface AclState {
      *
      * @deprecated Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.
      */
-    aclEntries?: pulumi.Input<pulumi.Input<inputs.ga.AclAclEntry>[]>;
+    aclEntries?: pulumi.Input<pulumi.Input<inputs.ga.AclAclEntry>[] | undefined>;
     /**
      * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
      */
-    aclName?: pulumi.Input<string>;
+    aclName?: pulumi.Input<string | undefined>;
     /**
      * The IP version. Valid values: `IPv4` and `IPv6`.
      */
-    addressIpVersion?: pulumi.Input<string>;
+    addressIpVersion?: pulumi.Input<string | undefined>;
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -184,11 +184,11 @@ export interface AclArgs {
      *
      * @deprecated Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.
      */
-    aclEntries?: pulumi.Input<pulumi.Input<inputs.ga.AclAclEntry>[]>;
+    aclEntries?: pulumi.Input<pulumi.Input<inputs.ga.AclAclEntry>[] | undefined>;
     /**
      * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
      */
-    aclName?: pulumi.Input<string>;
+    aclName?: pulumi.Input<string | undefined>;
     /**
      * The IP version. Valid values: `IPv4` and `IPv6`.
      */
@@ -196,13 +196,13 @@ export interface AclArgs {
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

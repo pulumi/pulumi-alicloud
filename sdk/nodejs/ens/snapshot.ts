@@ -144,27 +144,27 @@ export interface SnapshotState {
     /**
      * Instance creation timeIt is expressed in accordance with the ISO8601 standard and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.Example value: 2020-08-20 T14:52:28Z.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Snapshot Description Information.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Cloud Disk ID.
      */
-    diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string | undefined>;
     /**
      * The node ID of ENS.
      */
-    ensRegionId?: pulumi.Input<string>;
+    ensRegionId?: pulumi.Input<string | undefined>;
     /**
      * Name of the snapshot instance.
      */
-    snapshotName?: pulumi.Input<string>;
+    snapshotName?: pulumi.Input<string | undefined>;
     /**
      * Snapshot Status. Valid values: creating, available, deleting, error.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -174,7 +174,7 @@ export interface SnapshotArgs {
     /**
      * Snapshot Description Information.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Cloud Disk ID.
      */
@@ -186,5 +186,5 @@ export interface SnapshotArgs {
     /**
      * Name of the snapshot instance.
      */
-    snapshotName?: pulumi.Input<string>;
+    snapshotName?: pulumi.Input<string | undefined>;
 }

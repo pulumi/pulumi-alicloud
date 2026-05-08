@@ -116,8 +116,8 @@ def get_ack_service(enable: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'))
-def get_ack_service_output(enable: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           type: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ack_service_output(enable: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           type: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAckServiceResult]:
     """
     Using this data source can open Container Service (CS) service automatically. If the service has been opened, it will return opened.

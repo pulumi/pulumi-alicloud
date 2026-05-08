@@ -183,42 +183,42 @@ export interface GetRouterInterfacesOutputArgs {
     /**
      * A list of router interface IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string used to filter by router interface name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * ID of the peer router interface.
      */
-    oppositeInterfaceId?: pulumi.Input<string>;
+    oppositeInterfaceId?: pulumi.Input<string | undefined>;
     /**
      * Account ID of the owner of the peer router interface.
      */
-    oppositeInterfaceOwnerId?: pulumi.Input<string>;
+    oppositeInterfaceOwnerId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
      * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * ID of the VRouter located in the local region.
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
     /**
      * Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
      */
-    routerType?: pulumi.Input<string>;
+    routerType?: pulumi.Input<string | undefined>;
     /**
      * Specification of the link, such as `Small.1` (10Mb), `Middle.1` (100Mb), `Large.2` (2Gb), ...etc.
      */
-    specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string | undefined>;
     /**
      * Expected status. Valid values are `Active`, `Inactive` and `Idle`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

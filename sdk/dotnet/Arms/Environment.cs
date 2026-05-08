@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -53,12 +53,12 @@ namespace Pulumi.AliCloud.Arms
     ///         VpcId = vpc.Id,
     ///         VswitchName = name,
     ///         ZoneId = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
-    ///         CidrBlock = vpc.CidrBlock.Apply(cidrBlock =&gt; Std.Index.Cidrsubnet.Invoke(new()
+    ///         CidrBlock = Std.Cidrsubnet.Invoke(new()
     ///         {
-    ///             Input = cidrBlock,
+    ///             Input = vpc.CidrBlock,
     ///             Newbits = 8,
     ///             Netnum = 8,
-    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     ///     var defaultSnapshotPolicy = new AliCloud.Ecs.SnapshotPolicy("default", new()

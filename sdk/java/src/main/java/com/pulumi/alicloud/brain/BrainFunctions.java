@@ -44,8 +44,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidLoopsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -93,8 +93,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidLoopsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -142,8 +142,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidLoopsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -191,8 +191,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidLoopsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -240,8 +240,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidLoopsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -289,8 +289,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidOrganizationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -337,8 +337,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidOrganizationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -385,8 +385,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidOrganizationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -433,8 +433,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidOrganizationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -481,8 +481,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidOrganizationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -529,8 +529,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidOrganizationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -577,8 +577,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidOrganizationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -625,8 +625,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -673,8 +673,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -721,8 +721,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -769,8 +769,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -817,8 +817,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -865,8 +865,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -913,8 +913,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialPidProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -961,8 +961,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialSericeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1007,8 +1007,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialSericeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1053,8 +1053,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialSericeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1099,8 +1099,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialSericeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1145,8 +1145,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialSericeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1191,8 +1191,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialSericeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1237,8 +1237,8 @@ public final class BrainFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.brain.BrainFunctions;
      * import com.pulumi.alicloud.brain.inputs.GetIndustrialSericeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

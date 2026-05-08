@@ -23,14 +23,14 @@ class GatewayArgs:
                  location: pulumi.Input[_builtins.str],
                  storage_bundle_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_network_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 reason_detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_after_expiration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_network_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 reason_detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_after_expiration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
 
@@ -118,117 +118,117 @@ class GatewayArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the gateway.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayClass")
-    def gateway_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
         """
         return pulumi.get(self, "gateway_class")
 
     @gateway_class.setter
-    def gateway_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_class", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `payment_type` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="publicNetworkBandwidth")
-    def public_network_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def public_network_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
         """
         return pulumi.get(self, "public_network_bandwidth")
 
     @public_network_bandwidth.setter
-    def public_network_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def public_network_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "public_network_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="reasonDetail")
-    def reason_detail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason_detail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The detailed reason why you want to delete the gateway.
         """
         return pulumi.get(self, "reason_detail")
 
     @reason_detail.setter
-    def reason_detail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason_detail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason_detail", value)
 
     @_builtins.property
     @pulumi.getter(name="reasonType")
-    def reason_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the reason why you want to delete the gateway.
         """
         return pulumi.get(self, "reason_type")
 
     @reason_type.setter
-    def reason_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason_type", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseAfterExpiration")
-    def release_after_expiration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def release_after_expiration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to release the gateway after the subscription expires. Valid values:
         """
         return pulumi.get(self, "release_after_expiration")
 
     @release_after_expiration.setter
-    def release_after_expiration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def release_after_expiration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "release_after_expiration", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 @pulumi.input_type
 class _GatewayState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_network_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 reason_detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_after_expiration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_network_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 reason_detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_after_expiration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
 
@@ -275,158 +275,158 @@ class _GatewayState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the gateway.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayClass")
-    def gateway_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
         """
         return pulumi.get(self, "gateway_class")
 
     @gateway_class.setter
-    def gateway_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_class", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayName")
-    def gateway_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "gateway_name")
 
     @gateway_name.setter
-    def gateway_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the gateway. Valid values: `Cloud`, `On_Premise`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `payment_type` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="publicNetworkBandwidth")
-    def public_network_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def public_network_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
         """
         return pulumi.get(self, "public_network_bandwidth")
 
     @public_network_bandwidth.setter
-    def public_network_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def public_network_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "public_network_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="reasonDetail")
-    def reason_detail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason_detail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The detailed reason why you want to delete the gateway.
         """
         return pulumi.get(self, "reason_detail")
 
     @reason_detail.setter
-    def reason_detail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason_detail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason_detail", value)
 
     @_builtins.property
     @pulumi.getter(name="reasonType")
-    def reason_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the reason why you want to delete the gateway.
         """
         return pulumi.get(self, "reason_type")
 
     @reason_type.setter
-    def reason_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason_type", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseAfterExpiration")
-    def release_after_expiration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def release_after_expiration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to release the gateway after the subscription expires. Valid values:
         """
         return pulumi.get(self, "release_after_expiration")
 
     @release_after_expiration.setter
-    def release_after_expiration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def release_after_expiration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "release_after_expiration", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Gateway.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageBundleId")
-    def storage_bundle_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_bundle_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the gateway cluster.
         """
         return pulumi.get(self, "storage_bundle_id")
 
     @storage_bundle_id.setter
-    def storage_bundle_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_bundle_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_bundle_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the gateway. Valid values: `File`, `Iscsi`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -436,18 +436,18 @@ class Gateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_network_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 reason_detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_after_expiration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 storage_bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_network_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 reason_detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_after_expiration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 storage_bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Storage Gateway Gateway resource.
@@ -597,18 +597,18 @@ class Gateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_network_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 reason_detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_after_expiration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 storage_bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_network_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 reason_detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_after_expiration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 storage_bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -649,19 +649,19 @@ class Gateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway_class: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            public_network_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            reason_detail: Optional[pulumi.Input[_builtins.str]] = None,
-            reason_type: Optional[pulumi.Input[_builtins.str]] = None,
-            release_after_expiration: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Gateway':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_class: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            public_network_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            reason_detail: pulumi.Input[Optional[_builtins.str]] = None,
+            reason_type: pulumi.Input[Optional[_builtins.str]] = None,
+            release_after_expiration: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Gateway':
         """
         Get an existing Gateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -181,12 +181,12 @@ def get_child_instance_route_entry_to_attachments(cen_id: Optional[_builtins.str
         output_file=pulumi.get(__ret__, 'output_file'),
         service_type=pulumi.get(__ret__, 'service_type'),
         transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'))
-def get_child_instance_route_entry_to_attachments_output(cen_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                         child_instance_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                         ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                         service_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                         transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_child_instance_route_entry_to_attachments_output(cen_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                         child_instance_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                         ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                         service_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                         transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetChildInstanceRouteEntryToAttachmentsResult]:
     """
     This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment)

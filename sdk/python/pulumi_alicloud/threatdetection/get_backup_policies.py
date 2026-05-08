@@ -209,14 +209,14 @@ def get_backup_policies(current_page: Optional[_builtins.int] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         policies=pulumi.get(__ret__, 'policies'),
         status=pulumi.get(__ret__, 'status'))
-def get_backup_policies_output(current_page: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                               ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               machine_remark: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                               status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_backup_policies_output(current_page: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                               ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               machine_remark: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                               status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPoliciesResult]:
     """
     This data source provides the Threat Detection Backup Policies of the current Alibaba Cloud user.

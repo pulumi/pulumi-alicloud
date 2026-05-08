@@ -232,51 +232,51 @@ export interface NatFirewallState {
     /**
      * Safety protection switch. Value:-**open**: open-**close**: close.
      */
-    firewallSwitch?: pulumi.Input<string>;
+    firewallSwitch?: pulumi.Input<string | undefined>;
     /**
      * Lang.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * NAT gateway ID.
      */
-    natGatewayId?: pulumi.Input<string>;
+    natGatewayId?: pulumi.Input<string | undefined>;
     /**
      * The list of routes to be switched by the NAT gateway. See `natRouteEntryList` below.
      */
-    natRouteEntryLists?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.NatFirewallNatRouteEntryList>[]>;
+    natRouteEntryLists?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.NatFirewallNatRouteEntryList>[] | undefined>;
     /**
      * NAT firewall name.
      */
-    proxyName?: pulumi.Input<string>;
+    proxyName?: pulumi.Input<string | undefined>;
     /**
      * Region.
      */
-    regionNo?: pulumi.Input<string>;
+    regionNo?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Whether strict mode is enabled 1-Enable strict mode 0-Disable strict mode.
      */
-    strictMode?: pulumi.Input<number>;
+    strictMode?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VPC instance.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * Whether to use switch automatic mode. Value: **true**: Use automatic mode: **false**: Use manual mode.
      */
-    vswitchAuto?: pulumi.Input<string>;
+    vswitchAuto?: pulumi.Input<string | undefined>;
     /**
      * The network segment of the virtual switch. Required for Switch automatic mode.
      */
-    vswitchCidr?: pulumi.Input<string>;
+    vswitchCidr?: pulumi.Input<string | undefined>;
     /**
      * The switch ID. Required for switch manual mode.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -286,11 +286,11 @@ export interface NatFirewallArgs {
     /**
      * Safety protection switch. Value:-**open**: open-**close**: close.
      */
-    firewallSwitch?: pulumi.Input<string>;
+    firewallSwitch?: pulumi.Input<string | undefined>;
     /**
      * Lang.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * NAT gateway ID.
      */
@@ -310,11 +310,11 @@ export interface NatFirewallArgs {
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Whether strict mode is enabled 1-Enable strict mode 0-Disable strict mode.
      */
-    strictMode?: pulumi.Input<number>;
+    strictMode?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VPC instance.
      */
@@ -322,13 +322,13 @@ export interface NatFirewallArgs {
     /**
      * Whether to use switch automatic mode. Value: **true**: Use automatic mode: **false**: Use manual mode.
      */
-    vswitchAuto?: pulumi.Input<string>;
+    vswitchAuto?: pulumi.Input<string | undefined>;
     /**
      * The network segment of the virtual switch. Required for Switch automatic mode.
      */
-    vswitchCidr?: pulumi.Input<string>;
+    vswitchCidr?: pulumi.Input<string | undefined>;
     /**
      * The switch ID. Required for switch manual mode.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

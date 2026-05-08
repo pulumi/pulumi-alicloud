@@ -147,19 +147,19 @@ export interface UserGroupState {
     /**
      * Specify the New Group of Remark Information. Supports up to 500 Characters.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Specify the New Group of the Bastion Host of Instance Id.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The User Group self ID.
      */
-    userGroupId?: pulumi.Input<string>;
+    userGroupId?: pulumi.Input<string | undefined>;
     /**
      * Specify the New Group Name. Supports up to 128 Characters.
      */
-    userGroupName?: pulumi.Input<string>;
+    userGroupName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -169,7 +169,7 @@ export interface UserGroupArgs {
     /**
      * Specify the New Group of Remark Information. Supports up to 500 Characters.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Specify the New Group of the Bastion Host of Instance Id.
      */

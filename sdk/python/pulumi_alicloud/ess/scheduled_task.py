@@ -19,19 +19,19 @@ __all__ = ['ScheduledTaskArgs', 'ScheduledTask']
 @pulumi.input_type
 class ScheduledTaskArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 recurrence_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 recurrence_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ScheduledTask resource.
 
@@ -90,43 +90,43 @@ class ScheduledTaskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
         """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="launchExpirationTime")
-    def launch_expiration_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def launch_expiration_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
         """
         return pulumi.get(self, "launch_expiration_time")
 
     @launch_expiration_time.setter
-    def launch_expiration_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def launch_expiration_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "launch_expiration_time", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTime")
-    def launch_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
         The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
@@ -136,36 +136,36 @@ class ScheduledTaskArgs:
         return pulumi.get(self, "launch_time")
 
     @launch_time.setter
-    def launch_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maxValue")
-    def max_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         """
         return pulumi.get(self, "max_value")
 
     @max_value.setter
-    def max_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_value", value)
 
     @_builtins.property
     @pulumi.getter(name="minValue")
-    def min_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         """
         return pulumi.get(self, "min_value")
 
     @min_value.setter
-    def min_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_value", value)
 
     @_builtins.property
     @pulumi.getter(name="recurrenceEndTime")
-    def recurrence_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
         The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
@@ -173,12 +173,12 @@ class ScheduledTaskArgs:
         return pulumi.get(self, "recurrence_end_time")
 
     @recurrence_end_time.setter
-    def recurrence_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="recurrenceType")
-    def recurrence_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
         - Daily: The scheduled task is executed once every specified number of days.
@@ -189,12 +189,12 @@ class ScheduledTaskArgs:
         return pulumi.get(self, "recurrence_type")
 
     @recurrence_type.setter
-    def recurrence_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence_type", value)
 
     @_builtins.property
     @pulumi.getter(name="recurrenceValue")
-    def recurrence_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`
         - Daily: You can enter one value. Valid values: 1 to 31.
@@ -205,74 +205,74 @@ class ScheduledTaskArgs:
         return pulumi.get(self, "recurrence_value")
 
     @recurrence_value.setter
-    def recurrence_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence_value", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
         """
         return pulumi.get(self, "scaling_group_id")
 
     @scaling_group_id.setter
-    def scaling_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledAction")
-    def scheduled_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
         """
         return pulumi.get(self, "scheduled_action")
 
     @scheduled_action.setter
-    def scheduled_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_action", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledTaskName")
-    def scheduled_task_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_task_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
         """
         return pulumi.get(self, "scheduled_task_name")
 
     @scheduled_task_name.setter
-    def scheduled_task_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_task_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_task_name", value)
 
     @_builtins.property
     @pulumi.getter(name="taskEnabled")
-    def task_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def task_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to start the scheduled task. Default to true.
         """
         return pulumi.get(self, "task_enabled")
 
     @task_enabled.setter
-    def task_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def task_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "task_enabled", value)
 
 
 @pulumi.input_type
 class _ScheduledTaskState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 recurrence_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 recurrence_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ScheduledTask resources.
 
@@ -331,43 +331,43 @@ class _ScheduledTaskState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
         """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="launchExpirationTime")
-    def launch_expiration_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def launch_expiration_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800, Available since v1.240.0. Default value: 600
         """
         return pulumi.get(self, "launch_expiration_time")
 
     @launch_expiration_time.setter
-    def launch_expiration_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def launch_expiration_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "launch_expiration_time", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTime")
-    def launch_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
         The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
@@ -377,36 +377,36 @@ class _ScheduledTaskState:
         return pulumi.get(self, "launch_time")
 
     @launch_time.setter
-    def launch_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maxValue")
-    def max_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         """
         return pulumi.get(self, "max_value")
 
     @max_value.setter
-    def max_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_value", value)
 
     @_builtins.property
     @pulumi.getter(name="minValue")
-    def min_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         """
         return pulumi.get(self, "min_value")
 
     @min_value.setter
-    def min_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_value", value)
 
     @_builtins.property
     @pulumi.getter(name="recurrenceEndTime")
-    def recurrence_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
         The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
@@ -414,12 +414,12 @@ class _ScheduledTaskState:
         return pulumi.get(self, "recurrence_end_time")
 
     @recurrence_end_time.setter
-    def recurrence_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="recurrenceType")
-    def recurrence_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
         - Daily: The scheduled task is executed once every specified number of days.
@@ -430,12 +430,12 @@ class _ScheduledTaskState:
         return pulumi.get(self, "recurrence_type")
 
     @recurrence_type.setter
-    def recurrence_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence_type", value)
 
     @_builtins.property
     @pulumi.getter(name="recurrenceValue")
-    def recurrence_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`
         - Daily: You can enter one value. Valid values: 1 to 31.
@@ -446,55 +446,55 @@ class _ScheduledTaskState:
         return pulumi.get(self, "recurrence_value")
 
     @recurrence_value.setter
-    def recurrence_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence_value", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
         """
         return pulumi.get(self, "scaling_group_id")
 
     @scaling_group_id.setter
-    def scaling_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledAction")
-    def scheduled_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
         """
         return pulumi.get(self, "scheduled_action")
 
     @scheduled_action.setter
-    def scheduled_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_action", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledTaskName")
-    def scheduled_task_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_task_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
         """
         return pulumi.get(self, "scheduled_task_name")
 
     @scheduled_task_name.setter
-    def scheduled_task_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_task_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_task_name", value)
 
     @_builtins.property
     @pulumi.getter(name="taskEnabled")
-    def task_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def task_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to start the scheduled task. Default to true.
         """
         return pulumi.get(self, "task_enabled")
 
     @task_enabled.setter
-    def task_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def task_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "task_enabled", value)
 
 
@@ -504,19 +504,19 @@ class ScheduledTask(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 recurrence_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 recurrence_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a ESS schedule resource.
@@ -599,19 +599,19 @@ class ScheduledTask(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 recurrence_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 recurrence_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -644,19 +644,19 @@ class ScheduledTask(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            launch_expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-            launch_time: Optional[pulumi.Input[_builtins.str]] = None,
-            max_value: Optional[pulumi.Input[_builtins.int]] = None,
-            min_value: Optional[pulumi.Input[_builtins.int]] = None,
-            recurrence_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            recurrence_type: Optional[pulumi.Input[_builtins.str]] = None,
-            recurrence_value: Optional[pulumi.Input[_builtins.str]] = None,
-            scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduled_action: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduled_task_name: Optional[pulumi.Input[_builtins.str]] = None,
-            task_enabled: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ScheduledTask':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            launch_expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+            launch_time: pulumi.Input[Optional[_builtins.str]] = None,
+            max_value: pulumi.Input[Optional[_builtins.int]] = None,
+            min_value: pulumi.Input[Optional[_builtins.int]] = None,
+            recurrence_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            recurrence_type: pulumi.Input[Optional[_builtins.str]] = None,
+            recurrence_value: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_action: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+            task_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ScheduledTask':
         """
         Get an existing ScheduledTask resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -159,6 +159,7 @@ def get_rules(ids: Optional[Sequence[_builtins.str]] = None,
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_alicloud as alicloud
     import pulumi_std as std
 
@@ -171,7 +172,7 @@ def get_rules(ids: Optional[Sequence[_builtins.str]] = None,
     default_network = alicloud.vpc.Network("default",
         vpc_name=name,
         cidr_block="10.4.0.0/16")
-    default_switch = []
+    default_switch: list[Any] = []
     for range in [{"value": i} for i in range(0, 2)]:
         default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
             vpc_id=default_network.id,
@@ -287,13 +288,13 @@ def get_rules(ids: Optional[Sequence[_builtins.str]] = None,
         rule_ids=pulumi.get(__ret__, 'rule_ids'),
         rules=pulumi.get(__ret__, 'rules'),
         status=pulumi.get(__ret__, 'status'))
-def get_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                     listener_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                     load_balancer_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                     name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     rule_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                     status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_rules_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                     listener_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                     load_balancer_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                     name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     rule_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                     status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRulesResult]:
     """
     This data source provides the Alb Rules of the current Alibaba Cloud user.
@@ -306,6 +307,7 @@ def get_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_alicloud as alicloud
     import pulumi_std as std
 
@@ -318,7 +320,7 @@ def get_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]
     default_network = alicloud.vpc.Network("default",
         vpc_name=name,
         cidr_block="10.4.0.0/16")
-    default_switch = []
+    default_switch: list[Any] = []
     for range in [{"value": i} for i in range(0, 2)]:
         default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
             vpc_id=default_network.id,

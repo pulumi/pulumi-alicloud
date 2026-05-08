@@ -22,8 +22,8 @@ class EndpointAclPolicyArgs:
                  endpoint_type: pulumi.Input[_builtins.str],
                  entry: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 module_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 module_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EndpointAclPolicy resource.
 
@@ -79,37 +79,37 @@ class EndpointAclPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the entry.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="moduleName")
-    def module_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def module_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The module that needs to set the access policy. Valid values: `Registry`.
         """
         return pulumi.get(self, "module_name")
 
     @module_name.setter
-    def module_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def module_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "module_name", value)
 
 
 @pulumi.input_type
 class _EndpointAclPolicyState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 module_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 module_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EndpointAclPolicy resources.
 
@@ -132,62 +132,62 @@ class _EndpointAclPolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the entry.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of endpoint. Valid values: `internet`.
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def entry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP segment that allowed to access.
         """
         return pulumi.get(self, "entry")
 
     @entry.setter
-    def entry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CR Instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="moduleName")
-    def module_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def module_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The module that needs to set the access policy. Valid values: `Registry`.
         """
         return pulumi.get(self, "module_name")
 
     @module_name.setter
-    def module_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def module_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "module_name", value)
 
 
@@ -197,11 +197,11 @@ class EndpointAclPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 module_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 module_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CR Endpoint Acl Policy resource.
@@ -336,11 +336,11 @@ class EndpointAclPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 module_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 module_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -371,11 +371,11 @@ class EndpointAclPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-            entry: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            module_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'EndpointAclPolicy':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            entry: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            module_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'EndpointAclPolicy':
         """
         Get an existing EndpointAclPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

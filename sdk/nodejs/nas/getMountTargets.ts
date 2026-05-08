@@ -182,7 +182,7 @@ export interface GetMountTargetsOutputArgs {
     /**
      * Filter results by a specific AccessGroupName.
      */
-    accessGroupName?: pulumi.Input<string>;
+    accessGroupName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the FileSystem that owns the MountTarget.
      */
@@ -190,37 +190,37 @@ export interface GetMountTargetsOutputArgs {
     /**
      * A list of MountTargetDomain.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field `mountTargetDomain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
      *
      * @deprecated Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
      */
-    mountTargetDomain?: pulumi.Input<string>;
+    mountTargetDomain?: pulumi.Input<string | undefined>;
     /**
      * Filter results by a specific NetworkType.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Filter results by a specific VpcId.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * Filter results by a specific VSwitchId.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

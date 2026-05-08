@@ -133,8 +133,8 @@ def get_plaintext(ciphertext_blob: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         key_id=pulumi.get(__ret__, 'key_id'),
         plaintext=pulumi.get(__ret__, 'plaintext'))
-def get_plaintext_output(ciphertext_blob: Optional[pulumi.Input[_builtins.str]] = None,
-                         encryption_context: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_plaintext_output(ciphertext_blob: pulumi.Input[Optional[_builtins.str]] = None,
+                         encryption_context: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPlaintextResult]:
     """
     Decrypt a given ciphertext with KMS to use the resulting plaintext in resources.

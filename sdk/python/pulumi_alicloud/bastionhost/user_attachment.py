@@ -73,9 +73,9 @@ class UserAttachmentArgs:
 @pulumi.input_type
 class _UserAttachmentState:
     def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserAttachment resources.
 
@@ -92,38 +92,38 @@ class _UserAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the user group to add the user's bastion host ID of.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userGroupId")
-    def user_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the user group to which you want to add the user ID.
         """
         return pulumi.get(self, "user_group_id")
 
     @user_group_id.setter
-    def user_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify that you want to add to the policy attached to the user group ID. This includes response parameters in a Json-formatted string supports up to set up 100 USER ID.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -133,9 +133,9 @@ class UserAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Bastion Host User Attachment resource to add user to one user group.
@@ -284,9 +284,9 @@ class UserAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -315,9 +315,9 @@ class UserAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserAttachment':
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserAttachment':
         """
         Get an existing UserAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

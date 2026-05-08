@@ -129,8 +129,8 @@ public final class CasFunctions {
      * import com.pulumi.alicloud.cas.ServiceCertificateArgs;
      * import com.pulumi.alicloud.cas.CasFunctions;
      * import com.pulumi.alicloud.cas.inputs.GetServiceCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -235,8 +235,8 @@ public final class CasFunctions {
      * import com.pulumi.alicloud.cas.ServiceCertificateArgs;
      * import com.pulumi.alicloud.cas.CasFunctions;
      * import com.pulumi.alicloud.cas.inputs.GetServiceCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -341,8 +341,8 @@ public final class CasFunctions {
      * import com.pulumi.alicloud.cas.ServiceCertificateArgs;
      * import com.pulumi.alicloud.cas.CasFunctions;
      * import com.pulumi.alicloud.cas.inputs.GetServiceCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -447,8 +447,8 @@ public final class CasFunctions {
      * import com.pulumi.alicloud.cas.ServiceCertificateArgs;
      * import com.pulumi.alicloud.cas.CasFunctions;
      * import com.pulumi.alicloud.cas.inputs.GetServiceCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -553,8 +553,8 @@ public final class CasFunctions {
      * import com.pulumi.alicloud.cas.ServiceCertificateArgs;
      * import com.pulumi.alicloud.cas.CasFunctions;
      * import com.pulumi.alicloud.cas.inputs.GetServiceCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -659,8 +659,8 @@ public final class CasFunctions {
      * import com.pulumi.alicloud.cas.ServiceCertificateArgs;
      * import com.pulumi.alicloud.cas.CasFunctions;
      * import com.pulumi.alicloud.cas.inputs.GetServiceCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -765,8 +765,8 @@ public final class CasFunctions {
      * import com.pulumi.alicloud.cas.ServiceCertificateArgs;
      * import com.pulumi.alicloud.cas.CasFunctions;
      * import com.pulumi.alicloud.cas.inputs.GetServiceCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

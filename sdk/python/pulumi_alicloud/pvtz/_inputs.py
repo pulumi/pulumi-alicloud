@@ -40,7 +40,7 @@ class EndpointIpConfigArgsDict(TypedDict):
     """
     The Zone ID.
     """
-    ip: NotRequired[pulumi.Input[_builtins.str]]
+    ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
     """
@@ -51,7 +51,7 @@ class EndpointIpConfigArgs:
                  cidr_block: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cidr_block: The Subnet mask.
         :param pulumi.Input[_builtins.str] vswitch_id: The Vswitch id.
@@ -102,14 +102,14 @@ class EndpointIpConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
 
@@ -212,7 +212,7 @@ class ZoneAttachmentVpcArgsDict(TypedDict):
     """
     The Id of the vpc.
     """
-    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The region of the vpc. If not set, the current region will instead of.
     """
@@ -221,7 +221,7 @@ class ZoneAttachmentVpcArgsDict(TypedDict):
 class ZoneAttachmentVpcArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[_builtins.str],
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] vpc_id: The Id of the vpc.
         :param pulumi.Input[_builtins.str] region_id: The region of the vpc. If not set, the current region will instead of.
@@ -244,23 +244,23 @@ class ZoneAttachmentVpcArgs:
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the vpc. If not set, the current region will instead of.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
 
 class ZoneUserInfoArgsDict(TypedDict):
-    region_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    region_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of the region IDs.
     """
-    user_id: NotRequired[pulumi.Input[_builtins.str]]
+    user_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user ID belonging to the region is used for cross-account synchronization scenarios.
     """
@@ -268,8 +268,8 @@ class ZoneUserInfoArgsDict(TypedDict):
 @pulumi.input_type
 class ZoneUserInfoArgs:
     def __init__(__self__, *,
-                 region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] region_ids: The list of the region IDs.
         :param pulumi.Input[_builtins.str] user_id: The user ID belonging to the region is used for cross-account synchronization scenarios.
@@ -281,26 +281,26 @@ class ZoneUserInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="regionIds")
-    def region_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def region_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of the region IDs.
         """
         return pulumi.get(self, "region_ids")
 
     @region_ids.setter
-    def region_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def region_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "region_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user ID belonging to the region is used for cross-account synchronization scenarios.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 

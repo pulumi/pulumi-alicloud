@@ -115,15 +115,15 @@ export interface NamespaceState {
     /**
      * Namespace description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Namespace name.
      */
-    namespaceName?: pulumi.Input<string>;
+    namespaceName?: pulumi.Input<string | undefined>;
     /**
      * namespace uid
      */
-    namespaceUid?: pulumi.Input<string>;
+    namespaceUid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -133,7 +133,7 @@ export interface NamespaceArgs {
     /**
      * Namespace description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Namespace name.
      */
@@ -141,5 +141,5 @@ export interface NamespaceArgs {
     /**
      * namespace uid
      */
-    namespaceUid?: pulumi.Input<string>;
+    namespaceUid?: pulumi.Input<string | undefined>;
 }

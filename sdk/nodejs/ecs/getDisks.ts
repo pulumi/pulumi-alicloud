@@ -277,64 +277,64 @@ export function getDisksOutput(args?: GetDisksOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getDisks.
  */
 export interface GetDisksOutputArgs {
-    additionalAttributes?: pulumi.Input<pulumi.Input<string>[]>;
-    autoSnapshotPolicyId?: pulumi.Input<string>;
+    additionalAttributes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    autoSnapshotPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Availability zone of the disk.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk), `cloudEssdEntry`.
      */
-    category?: pulumi.Input<string>;
-    deleteAutoSnapshot?: pulumi.Input<boolean>;
-    deleteWithInstance?: pulumi.Input<boolean>;
-    diskName?: pulumi.Input<string>;
-    diskType?: pulumi.Input<string>;
-    dryRun?: pulumi.Input<boolean>;
-    enableAutoSnapshot?: pulumi.Input<boolean>;
-    enableAutomatedSnapshotPolicy?: pulumi.Input<boolean>;
-    enableShared?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string | undefined>;
+    deleteAutoSnapshot?: pulumi.Input<boolean | undefined>;
+    deleteWithInstance?: pulumi.Input<boolean | undefined>;
+    diskName?: pulumi.Input<string | undefined>;
+    diskType?: pulumi.Input<string | undefined>;
+    dryRun?: pulumi.Input<boolean | undefined>;
+    enableAutoSnapshot?: pulumi.Input<boolean | undefined>;
+    enableAutomatedSnapshotPolicy?: pulumi.Input<boolean | undefined>;
+    enableShared?: pulumi.Input<boolean | undefined>;
     /**
      * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
      */
-    encrypted?: pulumi.Input<string>;
+    encrypted?: pulumi.Input<string | undefined>;
     /**
      * A list of disks IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Filter the results by the specified ECS instance ID.
      */
-    instanceId?: pulumi.Input<string>;
-    kmsKeyId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by disk name.
      */
-    nameRegex?: pulumi.Input<string>;
-    operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.GetDisksOperationLockArgs>[]>;
+    nameRegex?: pulumi.Input<string | undefined>;
+    operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.GetDisksOperationLockArgs>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
-    paymentType?: pulumi.Input<string>;
-    portable?: pulumi.Input<boolean>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
+    paymentType?: pulumi.Input<string | undefined>;
+    portable?: pulumi.Input<boolean | undefined>;
     /**
      * The Id of resource group which the disk belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A map of tags assigned to the disks. It must be in the format:
      * ```typescript
@@ -349,12 +349,12 @@ export interface GetDisksOutputArgs {
      * });
      * ```
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Disk type. Possible values: `system` and `data`.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
      */
-    type?: pulumi.Input<string>;
-    zoneId?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -22,7 +22,7 @@ class DbResourceGroupArgs:
                  db_instance_id: pulumi.Input[_builtins.str],
                  resource_group_config: pulumi.Input[_builtins.str],
                  resource_group_name: pulumi.Input[_builtins.str],
-                 role_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 role_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DbResourceGroup resource.
 
@@ -75,24 +75,24 @@ class DbResourceGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="roleLists")
-    def role_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def role_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Role List
         """
         return pulumi.get(self, "role_lists")
 
     @role_lists.setter
-    def role_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def role_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "role_lists", value)
 
 
 @pulumi.input_type
 class _DbResourceGroupState:
     def __init__(__self__, *,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DbResourceGroup resources.
 
@@ -112,50 +112,50 @@ class _DbResourceGroupState:
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID.> You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupConfig")
-    def resource_group_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource group configuration.
         """
         return pulumi.get(self, "resource_group_config")
 
     @resource_group_config.setter
-    def resource_group_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource group name.
         """
         return pulumi.get(self, "resource_group_name")
 
     @resource_group_name.setter
-    def resource_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="roleLists")
-    def role_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def role_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Role List
         """
         return pulumi.get(self, "role_lists")
 
     @role_lists.setter
-    def role_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def role_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "role_lists", value)
 
 
@@ -165,10 +165,10 @@ class DbResourceGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a AnalyticDB for PostgreSQL (GPDB) Db Resource Group resource.
@@ -330,10 +330,10 @@ class DbResourceGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -363,10 +363,10 @@ class DbResourceGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_config: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            role_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DbResourceGroup':
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_config: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            role_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DbResourceGroup':
         """
         Get an existing DbResourceGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -184,47 +184,47 @@ export interface DomainNewState {
     /**
      * Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
      */
-    cdnType?: pulumi.Input<string>;
+    cdnType?: pulumi.Input<string | undefined>;
     /**
      * Certificate configuration See `certificateConfig` below.
      */
-    certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig>;
+    certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig | undefined>;
     /**
      * Health test URL.
      */
-    checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string | undefined>;
     /**
      * The CNAME domain name corresponding to the accelerated domain name.
      */
-    cname?: pulumi.Input<string>;
+    cname?: pulumi.Input<string | undefined>;
     /**
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
      */
-    env?: pulumi.Input<string>;
+    env?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The source address list of the accelerated domain. Defaults to null. See `sources` below.
      */
-    sources?: pulumi.Input<pulumi.Input<inputs.cdn.DomainNewSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.cdn.DomainNewSource>[] | undefined>;
     /**
      * The status of the resource, valid values: `online`, `offline`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -238,11 +238,11 @@ export interface DomainNewArgs {
     /**
      * Certificate configuration See `certificateConfig` below.
      */
-    certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig>;
+    certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig | undefined>;
     /**
      * Health test URL.
      */
-    checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string | undefined>;
     /**
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
@@ -250,15 +250,15 @@ export interface DomainNewArgs {
     /**
      * Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
      */
-    env?: pulumi.Input<string>;
+    env?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The source address list of the accelerated domain. Defaults to null. See `sources` below.
      */
@@ -266,9 +266,9 @@ export interface DomainNewArgs {
     /**
      * The status of the resource, valid values: `online`, `offline`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

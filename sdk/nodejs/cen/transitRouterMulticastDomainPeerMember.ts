@@ -176,26 +176,26 @@ export interface TransitRouterMulticastDomainPeerMemberState {
     /**
      * Specifies whether only to precheck the request.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The IP address of the multicast group to which the multicast member belongs. Value range: **224.0.0.1** to **239.255.255.254**.If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
      */
-    groupIpAddress?: pulumi.Input<string>;
+    groupIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The IDs of the inter-region multicast domains.
      */
-    peerTransitRouterMulticastDomainId?: pulumi.Input<string>;
+    peerTransitRouterMulticastDomainId?: pulumi.Input<string | undefined>;
     /**
      * The status of the multicast resource. Valid values:
      * - Registering: being created
      * - Registered: available
      * - Deregistering: being deleted
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the multicast domain to which the multicast member belongs.
      */
-    transitRouterMulticastDomainId?: pulumi.Input<string>;
+    transitRouterMulticastDomainId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -205,7 +205,7 @@ export interface TransitRouterMulticastDomainPeerMemberArgs {
     /**
      * Specifies whether only to precheck the request.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The IP address of the multicast group to which the multicast member belongs. Value range: **224.0.0.1** to **239.255.255.254**.If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
      */

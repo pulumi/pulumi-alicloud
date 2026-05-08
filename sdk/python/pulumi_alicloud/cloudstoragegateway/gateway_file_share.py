@@ -25,33 +25,33 @@ class GatewayFileShareArgs:
                  oss_bucket_name: pulumi.Input[_builtins.str],
                  oss_endpoint: pulumi.Input[_builtins.str],
                  protocol: pulumi.Input[_builtins.str],
-                 access_based_enumeration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backend_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 browsable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bypass_cache_read: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 direct_io: Optional[pulumi.Input[_builtins.bool]] = None,
-                 download_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 fast_reclaim: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fe_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 ignore_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 in_place: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lag_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 nfs_v4_optimization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oss_bucket_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 partial_sync_paths: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 polling_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 remote_sync: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remote_sync_download: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ro_client_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 ro_user_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 rw_client_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 rw_user_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 squash: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_archive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transfer_acceleration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 windows_acl: Optional[pulumi.Input[_builtins.bool]] = None):
+                 access_based_enumeration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 browsable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bypass_cache_read: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 direct_io: pulumi.Input[Optional[_builtins.bool]] = None,
+                 download_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 fast_reclaim: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fe_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 ignore_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 in_place: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lag_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 nfs_v4_optimization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oss_bucket_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 partial_sync_paths: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 polling_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 remote_sync: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remote_sync_download: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ro_client_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 ro_user_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 rw_client_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 rw_user_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 squash: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_archive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transfer_acceleration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 windows_acl: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GatewayFileShare resource.
 
@@ -224,366 +224,366 @@ class GatewayFileShareArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessBasedEnumeration")
-    def access_based_enumeration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def access_based_enumeration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
         """
         return pulumi.get(self, "access_based_enumeration")
 
     @access_based_enumeration.setter
-    def access_based_enumeration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def access_based_enumeration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "access_based_enumeration", value)
 
     @_builtins.property
     @pulumi.getter(name="backendLimit")
-    def backend_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backend_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Max upload speed of the gateway file share. Unit: `MB/s`, 0 means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
         """
         return pulumi.get(self, "backend_limit")
 
     @backend_limit.setter
-    def backend_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backend_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backend_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def browsable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def browsable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
         """
         return pulumi.get(self, "browsable")
 
     @browsable.setter
-    def browsable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def browsable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "browsable", value)
 
     @_builtins.property
     @pulumi.getter(name="bypassCacheRead")
-    def bypass_cache_read(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bypass_cache_read(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Direct reading OSS of the gateway file share.
         """
         return pulumi.get(self, "bypass_cache_read")
 
     @bypass_cache_read.setter
-    def bypass_cache_read(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bypass_cache_read(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bypass_cache_read", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheMode")
-    def cache_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
         """
         return pulumi.get(self, "cache_mode")
 
     @cache_mode.setter
-    def cache_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="directIo")
-    def direct_io(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def direct_io(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
         """
         return pulumi.get(self, "direct_io")
 
     @direct_io.setter
-    def direct_io(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def direct_io(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "direct_io", value)
 
     @_builtins.property
     @pulumi.getter(name="downloadLimit")
-    def download_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def download_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum download speed of the gateway file share. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
         """
         return pulumi.get(self, "download_limit")
 
     @download_limit.setter
-    def download_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def download_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "download_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="fastReclaim")
-    def fast_reclaim(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fast_reclaim(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
         """
         return pulumi.get(self, "fast_reclaim")
 
     @fast_reclaim.setter
-    def fast_reclaim(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fast_reclaim(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fast_reclaim", value)
 
     @_builtins.property
     @pulumi.getter(name="feLimit")
-    def fe_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fe_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum write speed of the gateway file share. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
         """
         return pulumi.get(self, "fe_limit")
 
     @fe_limit.setter
-    def fe_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fe_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fe_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreDelete")
-    def ignore_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignore_delete` and `remote_sync` cannot be enabled simultaneously. Gateway version >= 1.0.40 above support.
         """
         return pulumi.get(self, "ignore_delete")
 
     @ignore_delete.setter
-    def ignore_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="inPlace")
-    def in_place(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def in_place(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The whether debris optimization of the gateway file share. Default value: `false`.
         """
         return pulumi.get(self, "in_place")
 
     @in_place.setter
-    def in_place(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def in_place(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "in_place", value)
 
     @_builtins.property
     @pulumi.getter(name="lagPeriod")
-    def lag_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lag_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version >= 1.0.40 above support.
         """
         return pulumi.get(self, "lag_period")
 
     @lag_period.setter
-    def lag_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lag_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lag_period", value)
 
     @_builtins.property
     @pulumi.getter(name="nfsV4Optimization")
-    def nfs_v4_optimization(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nfs_v4_optimization(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** If it is enabled, NFS V3 cannot be mounted. The attribute is valid when the attribute `protocol` is `NFS`. Gateway version >= 1.2.0 above support.
         """
         return pulumi.get(self, "nfs_v4_optimization")
 
     @nfs_v4_optimization.setter
-    def nfs_v4_optimization(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nfs_v4_optimization(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nfs_v4_optimization", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketSsl")
-    def oss_bucket_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def oss_bucket_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether they are using SSL connect to OSS Bucket.
         """
         return pulumi.get(self, "oss_bucket_ssl")
 
     @oss_bucket_ssl.setter
-    def oss_bucket_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def oss_bucket_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "oss_bucket_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="partialSyncPaths")
-    def partial_sync_paths(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partial_sync_paths(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         In part mode, the directory path group JSON format.
         """
         return pulumi.get(self, "partial_sync_paths")
 
     @partial_sync_paths.setter
-    def partial_sync_paths(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partial_sync_paths(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partial_sync_paths", value)
 
     @_builtins.property
     @pulumi.getter(name="pathPrefix")
-    def path_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subdirectory path under the object storage (OSS) bucket corresponding to the file share. If it is blank, it means the root directory of the bucket.
         """
         return pulumi.get(self, "path_prefix")
 
     @path_prefix.setter
-    def path_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="pollingInterval")
-    def polling_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def polling_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
         """
         return pulumi.get(self, "polling_interval")
 
     @polling_interval.setter
-    def polling_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def polling_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "polling_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteSync")
-    def remote_sync(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remote_sync(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
         """
         return pulumi.get(self, "remote_sync")
 
     @remote_sync.setter
-    def remote_sync(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remote_sync(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remote_sync", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteSyncDownload")
-    def remote_sync_download(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remote_sync_download(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remote_sync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
         """
         return pulumi.get(self, "remote_sync_download")
 
     @remote_sync_download.setter
-    def remote_sync_download(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remote_sync_download(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remote_sync_download", value)
 
     @_builtins.property
     @pulumi.getter(name="roClientList")
-    def ro_client_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ro_client_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File sharing NFS read-only client list (IP address or IP address range). Use commas (,) to separate multiple clients.
         """
         return pulumi.get(self, "ro_client_list")
 
     @ro_client_list.setter
-    def ro_client_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ro_client_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ro_client_list", value)
 
     @_builtins.property
     @pulumi.getter(name="roUserList")
-    def ro_user_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ro_user_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
         """
         return pulumi.get(self, "ro_user_list")
 
     @ro_user_list.setter
-    def ro_user_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ro_user_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ro_user_list", value)
 
     @_builtins.property
     @pulumi.getter(name="rwClientList")
-    def rw_client_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rw_client_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Read and write the client list. When Protocol NFS is returned when the status is.
         """
         return pulumi.get(self, "rw_client_list")
 
     @rw_client_list.setter
-    def rw_client_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rw_client_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rw_client_list", value)
 
     @_builtins.property
     @pulumi.getter(name="rwUserList")
-    def rw_user_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rw_user_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
         """
         return pulumi.get(self, "rw_user_list")
 
     @rw_user_list.setter
-    def rw_user_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rw_user_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rw_user_list", value)
 
     @_builtins.property
     @pulumi.getter
-    def squash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def squash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NFS protocol user mapping of the gateway file share. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
         """
         return pulumi.get(self, "squash")
 
     @squash.setter
-    def squash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def squash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "squash", value)
 
     @_builtins.property
     @pulumi.getter(name="supportArchive")
-    def support_archive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def support_archive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to support the archive transparent read.
         """
         return pulumi.get(self, "support_archive")
 
     @support_archive.setter
-    def support_archive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def support_archive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "support_archive", value)
 
     @_builtins.property
     @pulumi.getter(name="transferAcceleration")
-    def transfer_acceleration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def transfer_acceleration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version >= 1.3.0 above support.
         """
         return pulumi.get(self, "transfer_acceleration")
 
     @transfer_acceleration.setter
-    def transfer_acceleration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def transfer_acceleration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "transfer_acceleration", value)
 
     @_builtins.property
     @pulumi.getter(name="windowsAcl")
-    def windows_acl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def windows_acl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
         """
         return pulumi.get(self, "windows_acl")
 
     @windows_acl.setter
-    def windows_acl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def windows_acl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "windows_acl", value)
 
 
 @pulumi.input_type
 class _GatewayFileShareState:
     def __init__(__self__, *,
-                 access_based_enumeration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backend_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 browsable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bypass_cache_read: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 direct_io: Optional[pulumi.Input[_builtins.bool]] = None,
-                 download_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 fast_reclaim: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fe_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 gateway_file_share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 in_place: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 lag_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 nfs_v4_optimization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oss_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 partial_sync_paths: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 polling_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_sync: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remote_sync_download: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ro_client_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 ro_user_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 rw_client_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 rw_user_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 squash: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_archive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transfer_acceleration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 windows_acl: Optional[pulumi.Input[_builtins.bool]] = None):
+                 access_based_enumeration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 browsable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bypass_cache_read: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 direct_io: pulumi.Input[Optional[_builtins.bool]] = None,
+                 download_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 fast_reclaim: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fe_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 gateway_file_share_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 in_place: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 lag_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_v4_optimization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oss_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 partial_sync_paths: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 polling_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_sync: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remote_sync_download: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ro_client_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 ro_user_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 rw_client_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 rw_user_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 squash: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_archive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transfer_acceleration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 windows_acl: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GatewayFileShare resources.
 
@@ -693,410 +693,410 @@ class _GatewayFileShareState:
 
     @_builtins.property
     @pulumi.getter(name="accessBasedEnumeration")
-    def access_based_enumeration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def access_based_enumeration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
         """
         return pulumi.get(self, "access_based_enumeration")
 
     @access_based_enumeration.setter
-    def access_based_enumeration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def access_based_enumeration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "access_based_enumeration", value)
 
     @_builtins.property
     @pulumi.getter(name="backendLimit")
-    def backend_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backend_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Max upload speed of the gateway file share. Unit: `MB/s`, 0 means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
         """
         return pulumi.get(self, "backend_limit")
 
     @backend_limit.setter
-    def backend_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backend_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backend_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def browsable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def browsable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
         """
         return pulumi.get(self, "browsable")
 
     @browsable.setter
-    def browsable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def browsable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "browsable", value)
 
     @_builtins.property
     @pulumi.getter(name="bypassCacheRead")
-    def bypass_cache_read(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bypass_cache_read(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Direct reading OSS of the gateway file share.
         """
         return pulumi.get(self, "bypass_cache_read")
 
     @bypass_cache_read.setter
-    def bypass_cache_read(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bypass_cache_read(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bypass_cache_read", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheMode")
-    def cache_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
         """
         return pulumi.get(self, "cache_mode")
 
     @cache_mode.setter
-    def cache_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="directIo")
-    def direct_io(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def direct_io(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
         """
         return pulumi.get(self, "direct_io")
 
     @direct_io.setter
-    def direct_io(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def direct_io(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "direct_io", value)
 
     @_builtins.property
     @pulumi.getter(name="downloadLimit")
-    def download_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def download_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum download speed of the gateway file share. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
         """
         return pulumi.get(self, "download_limit")
 
     @download_limit.setter
-    def download_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def download_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "download_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="fastReclaim")
-    def fast_reclaim(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fast_reclaim(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
         """
         return pulumi.get(self, "fast_reclaim")
 
     @fast_reclaim.setter
-    def fast_reclaim(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fast_reclaim(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fast_reclaim", value)
 
     @_builtins.property
     @pulumi.getter(name="feLimit")
-    def fe_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fe_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum write speed of the gateway file share. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
         """
         return pulumi.get(self, "fe_limit")
 
     @fe_limit.setter
-    def fe_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fe_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fe_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayFileShareName")
-    def gateway_file_share_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_file_share_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
         """
         return pulumi.get(self, "gateway_file_share_name")
 
     @gateway_file_share_name.setter
-    def gateway_file_share_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_file_share_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_file_share_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
-    def gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the gateway.
         """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
-    def gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreDelete")
-    def ignore_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignore_delete` and `remote_sync` cannot be enabled simultaneously. Gateway version >= 1.0.40 above support.
         """
         return pulumi.get(self, "ignore_delete")
 
     @ignore_delete.setter
-    def ignore_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="inPlace")
-    def in_place(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def in_place(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The whether debris optimization of the gateway file share. Default value: `false`.
         """
         return pulumi.get(self, "in_place")
 
     @in_place.setter
-    def in_place(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def in_place(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "in_place", value)
 
     @_builtins.property
     @pulumi.getter(name="indexId")
-    def index_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the file share.
         """
         return pulumi.get(self, "index_id")
 
     @index_id.setter
-    def index_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lagPeriod")
-    def lag_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lag_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version >= 1.0.40 above support.
         """
         return pulumi.get(self, "lag_period")
 
     @lag_period.setter
-    def lag_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lag_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lag_period", value)
 
     @_builtins.property
     @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cache disk inside the device name.
         """
         return pulumi.get(self, "local_path")
 
     @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_path", value)
 
     @_builtins.property
     @pulumi.getter(name="nfsV4Optimization")
-    def nfs_v4_optimization(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nfs_v4_optimization(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** If it is enabled, NFS V3 cannot be mounted. The attribute is valid when the attribute `protocol` is `NFS`. Gateway version >= 1.2.0 above support.
         """
         return pulumi.get(self, "nfs_v4_optimization")
 
     @nfs_v4_optimization.setter
-    def nfs_v4_optimization(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nfs_v4_optimization(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nfs_v4_optimization", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketName")
-    def oss_bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OSS Bucket.
         """
         return pulumi.get(self, "oss_bucket_name")
 
     @oss_bucket_name.setter
-    def oss_bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketSsl")
-    def oss_bucket_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def oss_bucket_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether they are using SSL connect to OSS Bucket.
         """
         return pulumi.get(self, "oss_bucket_ssl")
 
     @oss_bucket_ssl.setter
-    def oss_bucket_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def oss_bucket_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "oss_bucket_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="ossEndpoint")
-    def oss_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The gateway file share corresponds to the Object Storage SERVICE (OSS), Bucket Endpoint. **NOTE:** distinguish between intranet and internet Endpoint. We recommend that if the OSS Bucket and the gateway is in the same Region is use the RDS intranet IP Endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`.
         """
         return pulumi.get(self, "oss_endpoint")
 
     @oss_endpoint.setter
-    def oss_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="partialSyncPaths")
-    def partial_sync_paths(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partial_sync_paths(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         In part mode, the directory path group JSON format.
         """
         return pulumi.get(self, "partial_sync_paths")
 
     @partial_sync_paths.setter
-    def partial_sync_paths(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partial_sync_paths(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partial_sync_paths", value)
 
     @_builtins.property
     @pulumi.getter(name="pathPrefix")
-    def path_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subdirectory path under the object storage (OSS) bucket corresponding to the file share. If it is blank, it means the root directory of the bucket.
         """
         return pulumi.get(self, "path_prefix")
 
     @path_prefix.setter
-    def path_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="pollingInterval")
-    def polling_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def polling_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
         """
         return pulumi.get(self, "polling_interval")
 
     @polling_interval.setter
-    def polling_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def polling_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "polling_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Share types. Valid values: `SMB`, `NFS`.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteSync")
-    def remote_sync(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remote_sync(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
         """
         return pulumi.get(self, "remote_sync")
 
     @remote_sync.setter
-    def remote_sync(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remote_sync(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remote_sync", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteSyncDownload")
-    def remote_sync_download(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remote_sync_download(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remote_sync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
         """
         return pulumi.get(self, "remote_sync_download")
 
     @remote_sync_download.setter
-    def remote_sync_download(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remote_sync_download(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remote_sync_download", value)
 
     @_builtins.property
     @pulumi.getter(name="roClientList")
-    def ro_client_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ro_client_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File sharing NFS read-only client list (IP address or IP address range). Use commas (,) to separate multiple clients.
         """
         return pulumi.get(self, "ro_client_list")
 
     @ro_client_list.setter
-    def ro_client_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ro_client_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ro_client_list", value)
 
     @_builtins.property
     @pulumi.getter(name="roUserList")
-    def ro_user_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ro_user_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
         """
         return pulumi.get(self, "ro_user_list")
 
     @ro_user_list.setter
-    def ro_user_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ro_user_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ro_user_list", value)
 
     @_builtins.property
     @pulumi.getter(name="rwClientList")
-    def rw_client_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rw_client_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Read and write the client list. When Protocol NFS is returned when the status is.
         """
         return pulumi.get(self, "rw_client_list")
 
     @rw_client_list.setter
-    def rw_client_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rw_client_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rw_client_list", value)
 
     @_builtins.property
     @pulumi.getter(name="rwUserList")
-    def rw_user_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rw_user_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
         """
         return pulumi.get(self, "rw_user_list")
 
     @rw_user_list.setter
-    def rw_user_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rw_user_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rw_user_list", value)
 
     @_builtins.property
     @pulumi.getter
-    def squash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def squash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NFS protocol user mapping of the gateway file share. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
         """
         return pulumi.get(self, "squash")
 
     @squash.setter
-    def squash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def squash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "squash", value)
 
     @_builtins.property
     @pulumi.getter(name="supportArchive")
-    def support_archive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def support_archive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to support the archive transparent read.
         """
         return pulumi.get(self, "support_archive")
 
     @support_archive.setter
-    def support_archive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def support_archive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "support_archive", value)
 
     @_builtins.property
     @pulumi.getter(name="transferAcceleration")
-    def transfer_acceleration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def transfer_acceleration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version >= 1.3.0 above support.
         """
         return pulumi.get(self, "transfer_acceleration")
 
     @transfer_acceleration.setter
-    def transfer_acceleration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def transfer_acceleration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "transfer_acceleration", value)
 
     @_builtins.property
     @pulumi.getter(name="windowsAcl")
-    def windows_acl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def windows_acl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
         """
         return pulumi.get(self, "windows_acl")
 
     @windows_acl.setter
-    def windows_acl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def windows_acl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "windows_acl", value)
 
 
@@ -1106,39 +1106,39 @@ class GatewayFileShare(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_based_enumeration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backend_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 browsable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bypass_cache_read: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 direct_io: Optional[pulumi.Input[_builtins.bool]] = None,
-                 download_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 fast_reclaim: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fe_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 gateway_file_share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 in_place: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lag_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 nfs_v4_optimization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oss_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 partial_sync_paths: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 polling_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_sync: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remote_sync_download: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ro_client_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 ro_user_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 rw_client_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 rw_user_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 squash: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_archive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transfer_acceleration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 windows_acl: Optional[pulumi.Input[_builtins.bool]] = None,
+                 access_based_enumeration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 browsable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bypass_cache_read: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 direct_io: pulumi.Input[Optional[_builtins.bool]] = None,
+                 download_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 fast_reclaim: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fe_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 gateway_file_share_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 in_place: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lag_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_v4_optimization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oss_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 partial_sync_paths: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 polling_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_sync: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remote_sync_download: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ro_client_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 ro_user_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 rw_client_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 rw_user_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 squash: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_archive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transfer_acceleration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 windows_acl: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Cloud Storage Gateway Gateway File Share resource.
@@ -1363,39 +1363,39 @@ class GatewayFileShare(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_based_enumeration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backend_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 browsable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bypass_cache_read: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 direct_io: Optional[pulumi.Input[_builtins.bool]] = None,
-                 download_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 fast_reclaim: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fe_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 gateway_file_share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 in_place: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lag_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 local_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 nfs_v4_optimization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oss_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 partial_sync_paths: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 polling_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_sync: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remote_sync_download: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ro_client_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 ro_user_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 rw_client_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 rw_user_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 squash: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_archive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transfer_acceleration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 windows_acl: Optional[pulumi.Input[_builtins.bool]] = None,
+                 access_based_enumeration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 browsable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bypass_cache_read: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 direct_io: pulumi.Input[Optional[_builtins.bool]] = None,
+                 download_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 fast_reclaim: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fe_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 gateway_file_share_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 in_place: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lag_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_v4_optimization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oss_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 partial_sync_paths: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 polling_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_sync: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remote_sync_download: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ro_client_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 ro_user_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 rw_client_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 rw_user_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 squash: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_archive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transfer_acceleration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 windows_acl: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1461,40 +1461,40 @@ class GatewayFileShare(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_based_enumeration: Optional[pulumi.Input[_builtins.bool]] = None,
-            backend_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            browsable: Optional[pulumi.Input[_builtins.bool]] = None,
-            bypass_cache_read: Optional[pulumi.Input[_builtins.bool]] = None,
-            cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            direct_io: Optional[pulumi.Input[_builtins.bool]] = None,
-            download_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            fast_reclaim: Optional[pulumi.Input[_builtins.bool]] = None,
-            fe_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            gateway_file_share_name: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ignore_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            in_place: Optional[pulumi.Input[_builtins.bool]] = None,
-            index_id: Optional[pulumi.Input[_builtins.str]] = None,
-            lag_period: Optional[pulumi.Input[_builtins.int]] = None,
-            local_path: Optional[pulumi.Input[_builtins.str]] = None,
-            nfs_v4_optimization: Optional[pulumi.Input[_builtins.bool]] = None,
-            oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_bucket_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-            oss_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            partial_sync_paths: Optional[pulumi.Input[_builtins.str]] = None,
-            path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            polling_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            remote_sync: Optional[pulumi.Input[_builtins.bool]] = None,
-            remote_sync_download: Optional[pulumi.Input[_builtins.bool]] = None,
-            ro_client_list: Optional[pulumi.Input[_builtins.str]] = None,
-            ro_user_list: Optional[pulumi.Input[_builtins.str]] = None,
-            rw_client_list: Optional[pulumi.Input[_builtins.str]] = None,
-            rw_user_list: Optional[pulumi.Input[_builtins.str]] = None,
-            squash: Optional[pulumi.Input[_builtins.str]] = None,
-            support_archive: Optional[pulumi.Input[_builtins.bool]] = None,
-            transfer_acceleration: Optional[pulumi.Input[_builtins.bool]] = None,
-            windows_acl: Optional[pulumi.Input[_builtins.bool]] = None) -> 'GatewayFileShare':
+            access_based_enumeration: pulumi.Input[Optional[_builtins.bool]] = None,
+            backend_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            browsable: pulumi.Input[Optional[_builtins.bool]] = None,
+            bypass_cache_read: pulumi.Input[Optional[_builtins.bool]] = None,
+            cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            direct_io: pulumi.Input[Optional[_builtins.bool]] = None,
+            download_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            fast_reclaim: pulumi.Input[Optional[_builtins.bool]] = None,
+            fe_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            gateway_file_share_name: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            in_place: pulumi.Input[Optional[_builtins.bool]] = None,
+            index_id: pulumi.Input[Optional[_builtins.str]] = None,
+            lag_period: pulumi.Input[Optional[_builtins.int]] = None,
+            local_path: pulumi.Input[Optional[_builtins.str]] = None,
+            nfs_v4_optimization: pulumi.Input[Optional[_builtins.bool]] = None,
+            oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            oss_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            partial_sync_paths: pulumi.Input[Optional[_builtins.str]] = None,
+            path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            polling_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_sync: pulumi.Input[Optional[_builtins.bool]] = None,
+            remote_sync_download: pulumi.Input[Optional[_builtins.bool]] = None,
+            ro_client_list: pulumi.Input[Optional[_builtins.str]] = None,
+            ro_user_list: pulumi.Input[Optional[_builtins.str]] = None,
+            rw_client_list: pulumi.Input[Optional[_builtins.str]] = None,
+            rw_user_list: pulumi.Input[Optional[_builtins.str]] = None,
+            squash: pulumi.Input[Optional[_builtins.str]] = None,
+            support_archive: pulumi.Input[Optional[_builtins.bool]] = None,
+            transfer_acceleration: pulumi.Input[Optional[_builtins.bool]] = None,
+            windows_acl: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GatewayFileShare':
         """
         Get an existing GatewayFileShare resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

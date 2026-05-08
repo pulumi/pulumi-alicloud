@@ -239,90 +239,90 @@ export interface HttpsBasicConfigurationState {
     /**
      * Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
      */
-    ciphersuite?: pulumi.Input<string>;
+    ciphersuite?: pulumi.Input<string | undefined>;
     /**
      * Cipher suite group. Default is all cipher suites. Possible values:
      * - all: All cipher suites.
      * - strict: Strong cipher suites.
      * - custom: Custom cipher suites.
      */
-    ciphersuiteGroup?: pulumi.Input<string>;
+    ciphersuiteGroup?: pulumi.Input<string | undefined>;
     /**
      * ConfigId of the configuration, which can be obtained by calling the [ListHttpsBasicConfigurations](https://www.alibabacloud.com/help/en/doc-detail/2867470.html) interface.
      */
-    configId?: pulumi.Input<number>;
+    configId?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether HTTP2 is enabled. Default is on. Possible values:
      * - on: Enabled.
      * - off: Disabled.
      */
-    http2?: pulumi.Input<string>;
+    http2?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable HTTP3, which is enabled by default. The value can be:
      * - on: Enabled.
      * - off: Disabled.
      */
-    http3?: pulumi.Input<string>;
+    http3?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable HTTPS. Default is enabled. Possible values:
      * - on: Enable.
      * - off: Disable.
      */
-    https?: pulumi.Input<string>;
+    https?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether OCSP is enabled. Default is off. Possible values:
      * - on: Enabled.
      * - off: Disabled.
      */
-    ocspStapling?: pulumi.Input<string>;
+    ocspStapling?: pulumi.Input<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * -  Match all incoming requests: value set to true
      * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * - on: open.
      * - off: close.
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * Site ID, which can be obtained by calling the ListSites interface.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable TLS1.0. Default is disabled. Possible values:
      * - on: Enable.
      * - off: Disable.
      */
-    tls10?: pulumi.Input<string>;
+    tls10?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable TLS1.1. Default is enabled. Possible values:
      * - on: Enable.
      * - off: Disable.
      */
-    tls11?: pulumi.Input<string>;
+    tls11?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable TLS1.2. Default is enabled. Possible values:
      * - on: Enable.
      * - off: Disable.
      */
-    tls12?: pulumi.Input<string>;
+    tls12?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable TLS1.3. Default is enabled. Possible values:
      * - on: Enable.
      * - off: Disable.
      */
-    tls13?: pulumi.Input<string>;
+    tls13?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -332,58 +332,58 @@ export interface HttpsBasicConfigurationArgs {
     /**
      * Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
      */
-    ciphersuite?: pulumi.Input<string>;
+    ciphersuite?: pulumi.Input<string | undefined>;
     /**
      * Cipher suite group. Default is all cipher suites. Possible values:
      * - all: All cipher suites.
      * - strict: Strong cipher suites.
      * - custom: Custom cipher suites.
      */
-    ciphersuiteGroup?: pulumi.Input<string>;
+    ciphersuiteGroup?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether HTTP2 is enabled. Default is on. Possible values:
      * - on: Enabled.
      * - off: Disabled.
      */
-    http2?: pulumi.Input<string>;
+    http2?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable HTTP3, which is enabled by default. The value can be:
      * - on: Enabled.
      * - off: Disabled.
      */
-    http3?: pulumi.Input<string>;
+    http3?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable HTTPS. Default is enabled. Possible values:
      * - on: Enable.
      * - off: Disable.
      */
-    https?: pulumi.Input<string>;
+    https?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether OCSP is enabled. Default is off. Possible values:
      * - on: Enabled.
      * - off: Disabled.
      */
-    ocspStapling?: pulumi.Input<string>;
+    ocspStapling?: pulumi.Input<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * -  Match all incoming requests: value set to true
      * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * - on: open.
      * - off: close.
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * Site ID, which can be obtained by calling the ListSites interface.
      */
@@ -393,23 +393,23 @@ export interface HttpsBasicConfigurationArgs {
      * - on: Enable.
      * - off: Disable.
      */
-    tls10?: pulumi.Input<string>;
+    tls10?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable TLS1.1. Default is enabled. Possible values:
      * - on: Enable.
      * - off: Disable.
      */
-    tls11?: pulumi.Input<string>;
+    tls11?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable TLS1.2. Default is enabled. Possible values:
      * - on: Enable.
      * - off: Disable.
      */
-    tls12?: pulumi.Input<string>;
+    tls12?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable TLS1.3. Default is enabled. Possible values:
      * - on: Enable.
      * - off: Disable.
      */
-    tls13?: pulumi.Input<string>;
+    tls13?: pulumi.Input<string | undefined>;
 }

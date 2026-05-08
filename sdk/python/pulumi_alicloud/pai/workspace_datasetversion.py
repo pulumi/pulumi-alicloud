@@ -25,13 +25,13 @@ class WorkspaceDatasetversionArgs:
                  dataset_id: pulumi.Input[_builtins.str],
                  property: pulumi.Input[_builtins.str],
                  uri: pulumi.Input[_builtins.str],
-                 data_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceDatasetversionLabelArgs']]]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceDatasetversionLabelArgs']]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceDatasetversion resource.
 
@@ -146,55 +146,55 @@ class WorkspaceDatasetversionArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataCount")
-    def data_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Data count.
         """
         return pulumi.get(self, "data_count")
 
     @data_count.setter
-    def data_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_count", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSize")
-    def data_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Data size.
         """
         return pulumi.get(self, "data_size")
 
     @data_size.setter
-    def data_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of dataset version.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceDatasetversionLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceDatasetversionLabelArgs']]]]:
         """
         The tag of the resource See `labels` below.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceDatasetversionLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceDatasetversionLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extended field, which is of the JsonString type.
 
@@ -203,50 +203,50 @@ class WorkspaceDatasetversionArgs:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceId")
-    def source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source ID.
         """
         return pulumi.get(self, "source_id")
 
     @source_id.setter
-    def source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source type. The default value is USER.
         """
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
 
 @pulumi.input_type
 class _WorkspaceDatasetversionState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceDatasetversionLabelArgs']]]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 property: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceDatasetversionLabelArgs']]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 property: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceDatasetversion resources.
 
@@ -309,43 +309,43 @@ class _WorkspaceDatasetversionState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Update time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataCount")
-    def data_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Data count.
         """
         return pulumi.get(self, "data_count")
 
     @data_count.setter
-    def data_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_count", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSize")
-    def data_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Data size.
         """
         return pulumi.get(self, "data_size")
 
     @data_size.setter
-    def data_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_size", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceType")
-    def data_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source type. The following values are supported:
         - OSS: Alibaba Cloud Object Storage (OSS).
@@ -354,48 +354,48 @@ class _WorkspaceDatasetversionState:
         return pulumi.get(self, "data_source_type")
 
     @data_source_type.setter
-    def data_source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of dataset version.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceDatasetversionLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceDatasetversionLabelArgs']]]]:
         """
         The tag of the resource See `labels` below.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceDatasetversionLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceDatasetversionLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extended field, which is of the JsonString type.
 
@@ -404,12 +404,12 @@ class _WorkspaceDatasetversionState:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def property(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def property(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The properties of the dataset. The following values are supported:
         - FILE: FILE.
@@ -418,36 +418,36 @@ class _WorkspaceDatasetversionState:
         return pulumi.get(self, "property")
 
     @property.setter
-    def property(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def property(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "property", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceId")
-    def source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source ID.
         """
         return pulumi.get(self, "source_id")
 
     @source_id.setter
-    def source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source type. The default value is USER.
         """
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Uri configuration sample is as follows:
         - The data source type is OSS:'oss:// bucket.endpoint/object'
@@ -464,19 +464,19 @@ class _WorkspaceDatasetversionState:
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
     @_builtins.property
     @pulumi.getter(name="versionName")
-    def version_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "version_name")
 
     @version_name.setter
-    def version_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_name", value)
 
 
@@ -486,17 +486,17 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict']]]]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 property: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict']]]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 property: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a PAI Workspace Datasetversion resource.
@@ -691,17 +691,17 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict']]]]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 property: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict']]]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 property: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -742,19 +742,19 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_count: Optional[pulumi.Input[_builtins.int]] = None,
-            data_size: Optional[pulumi.Input[_builtins.int]] = None,
-            data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict']]]]] = None,
-            options: Optional[pulumi.Input[_builtins.str]] = None,
-            property: Optional[pulumi.Input[_builtins.str]] = None,
-            source_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            uri: Optional[pulumi.Input[_builtins.str]] = None,
-            version_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkspaceDatasetversion':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_count: pulumi.Input[Optional[_builtins.int]] = None,
+            data_size: pulumi.Input[Optional[_builtins.int]] = None,
+            data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceDatasetversionLabelArgs', 'WorkspaceDatasetversionLabelArgsDict']]]]] = None,
+            options: pulumi.Input[Optional[_builtins.str]] = None,
+            property: pulumi.Input[Optional[_builtins.str]] = None,
+            source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None,
+            version_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceDatasetversion':
         """
         Get an existing WorkspaceDatasetversion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

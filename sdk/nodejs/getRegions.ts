@@ -104,16 +104,16 @@ export interface GetRegionsOutputArgs {
     /**
      * Set to true to match only the region configured in the provider.
      */
-    current?: pulumi.Input<boolean>;
+    current?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the region to select, such as `eu-central-1`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      *
      * > **NOTE:** You will get an error if you set `current` to true and `name` to a different value from the one you configured in the provider.
      * It is better to either use `name` or `current`, but not both at the same time.
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

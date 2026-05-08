@@ -22,13 +22,13 @@ class QueueArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  queue_name: pulumi.Input[_builtins.str],
                  virtual_host_name: pulumi.Input[_builtins.str],
-                 auto_delete_state: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_expire_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 dead_letter_exchange: Optional[pulumi.Input[_builtins.str]] = None,
-                 dead_letter_routing_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_length: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_ttl: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_delete_state: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_expire_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 dead_letter_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+                 dead_letter_routing_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_length: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_ttl: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Queue resource.
 
@@ -99,102 +99,102 @@ class QueueArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoDeleteState")
-    def auto_delete_state(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_delete_state(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically delete the queue. Valid values:
         """
         return pulumi.get(self, "auto_delete_state")
 
     @auto_delete_state.setter
-    def auto_delete_state(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_delete_state(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_delete_state", value)
 
     @_builtins.property
     @pulumi.getter(name="autoExpireState")
-    def auto_expire_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_expire_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The auto-expiration time for the queue.
         """
         return pulumi.get(self, "auto_expire_state")
 
     @auto_expire_state.setter
-    def auto_expire_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_expire_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_expire_state", value)
 
     @_builtins.property
     @pulumi.getter(name="deadLetterExchange")
-    def dead_letter_exchange(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dead_letter_exchange(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dead-letter exchange.
         """
         return pulumi.get(self, "dead_letter_exchange")
 
     @dead_letter_exchange.setter
-    def dead_letter_exchange(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dead_letter_exchange(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dead_letter_exchange", value)
 
     @_builtins.property
     @pulumi.getter(name="deadLetterRoutingKey")
-    def dead_letter_routing_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dead_letter_routing_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dead-letter routing key.
         """
         return pulumi.get(self, "dead_letter_routing_key")
 
     @dead_letter_routing_key.setter
-    def dead_letter_routing_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dead_letter_routing_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dead_letter_routing_key", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLength")
-    def max_length(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_length(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum number of messages that can be stored in the queue.
         """
         return pulumi.get(self, "max_length")
 
     @max_length.setter
-    def max_length(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_length(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_length", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumPriority")
-    def maximum_priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of the queue.
         """
         return pulumi.get(self, "maximum_priority")
 
     @maximum_priority.setter
-    def maximum_priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_priority", value)
 
     @_builtins.property
     @pulumi.getter(name="messageTtl")
-    def message_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time to live (TTL) of a message in the queue.
         """
         return pulumi.get(self, "message_ttl")
 
     @message_ttl.setter
-    def message_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message_ttl", value)
 
 
 @pulumi.input_type
 class _QueueState:
     def __init__(__self__, *,
-                 auto_delete_state: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_expire_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 dead_letter_exchange: Optional[pulumi.Input[_builtins.str]] = None,
-                 dead_letter_routing_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_length: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_delete_state: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_expire_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 dead_letter_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+                 dead_letter_routing_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_length: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Queue resources.
 
@@ -232,122 +232,122 @@ class _QueueState:
 
     @_builtins.property
     @pulumi.getter(name="autoDeleteState")
-    def auto_delete_state(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_delete_state(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically delete the queue. Valid values:
         """
         return pulumi.get(self, "auto_delete_state")
 
     @auto_delete_state.setter
-    def auto_delete_state(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_delete_state(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_delete_state", value)
 
     @_builtins.property
     @pulumi.getter(name="autoExpireState")
-    def auto_expire_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_expire_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The auto-expiration time for the queue.
         """
         return pulumi.get(self, "auto_expire_state")
 
     @auto_expire_state.setter
-    def auto_expire_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_expire_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_expire_state", value)
 
     @_builtins.property
     @pulumi.getter(name="deadLetterExchange")
-    def dead_letter_exchange(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dead_letter_exchange(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dead-letter exchange.
         """
         return pulumi.get(self, "dead_letter_exchange")
 
     @dead_letter_exchange.setter
-    def dead_letter_exchange(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dead_letter_exchange(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dead_letter_exchange", value)
 
     @_builtins.property
     @pulumi.getter(name="deadLetterRoutingKey")
-    def dead_letter_routing_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dead_letter_routing_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dead-letter routing key.
         """
         return pulumi.get(self, "dead_letter_routing_key")
 
     @dead_letter_routing_key.setter
-    def dead_letter_routing_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dead_letter_routing_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dead_letter_routing_key", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLength")
-    def max_length(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_length(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum number of messages that can be stored in the queue.
         """
         return pulumi.get(self, "max_length")
 
     @max_length.setter
-    def max_length(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_length(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_length", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumPriority")
-    def maximum_priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of the queue.
         """
         return pulumi.get(self, "maximum_priority")
 
     @maximum_priority.setter
-    def maximum_priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_priority", value)
 
     @_builtins.property
     @pulumi.getter(name="messageTtl")
-    def message_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time to live (TTL) of a message in the queue.
         """
         return pulumi.get(self, "message_ttl")
 
     @message_ttl.setter
-    def message_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="queueName")
-    def queue_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the queue to create.
         """
         return pulumi.get(self, "queue_name")
 
     @queue_name.setter
-    def queue_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_name", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualHostName")
-    def virtual_host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
         """
         return pulumi.get(self, "virtual_host_name")
 
     @virtual_host_name.setter
-    def virtual_host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_host_name", value)
 
 
@@ -357,16 +357,16 @@ class Queue(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_delete_state: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_expire_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 dead_letter_exchange: Optional[pulumi.Input[_builtins.str]] = None,
-                 dead_letter_routing_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_length: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_delete_state: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_expire_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 dead_letter_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+                 dead_letter_routing_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_length: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RabbitMQ (AMQP) Queue resource.
@@ -510,16 +510,16 @@ class Queue(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_delete_state: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_expire_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 dead_letter_exchange: Optional[pulumi.Input[_builtins.str]] = None,
-                 dead_letter_routing_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_length: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_delete_state: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_expire_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 dead_letter_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+                 dead_letter_routing_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_length: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -555,16 +555,16 @@ class Queue(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_delete_state: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_expire_state: Optional[pulumi.Input[_builtins.str]] = None,
-            dead_letter_exchange: Optional[pulumi.Input[_builtins.str]] = None,
-            dead_letter_routing_key: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            max_length: Optional[pulumi.Input[_builtins.str]] = None,
-            maximum_priority: Optional[pulumi.Input[_builtins.int]] = None,
-            message_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-            queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-            virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Queue':
+            auto_delete_state: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_expire_state: pulumi.Input[Optional[_builtins.str]] = None,
+            dead_letter_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+            dead_letter_routing_key: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            max_length: pulumi.Input[Optional[_builtins.str]] = None,
+            maximum_priority: pulumi.Input[Optional[_builtins.int]] = None,
+            message_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Queue':
         """
         Get an existing Queue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

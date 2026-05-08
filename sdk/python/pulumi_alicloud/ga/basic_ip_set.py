@@ -21,8 +21,8 @@ class BasicIpSetArgs:
     def __init__(__self__, *,
                  accelerate_region_id: pulumi.Input[_builtins.str],
                  accelerator_id: pulumi.Input[_builtins.str],
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 isp_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 isp_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BasicIpSet resource.
 
@@ -64,37 +64,37 @@ class BasicIpSetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth of the acceleration region. Unit: Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="ispType")
-    def isp_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isp_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The line type of the elastic IP address (EIP) in the acceleration region. Default value: `BGP`. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`.
         """
         return pulumi.get(self, "isp_type")
 
     @isp_type.setter
-    def isp_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isp_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isp_type", value)
 
 
 @pulumi.input_type
 class _BasicIpSetState:
     def __init__(__self__, *,
-                 accelerate_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 isp_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerate_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 isp_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BasicIpSet resources.
 
@@ -117,62 +117,62 @@ class _BasicIpSetState:
 
     @_builtins.property
     @pulumi.getter(name="accelerateRegionId")
-    def accelerate_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerate_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the acceleration region.
         """
         return pulumi.get(self, "accelerate_region_id")
 
     @accelerate_region_id.setter
-    def accelerate_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerate_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerate_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
-    def accelerator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the basic GA instance.
         """
         return pulumi.get(self, "accelerator_id")
 
     @accelerator_id.setter
-    def accelerator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth of the acceleration region. Unit: Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="ispType")
-    def isp_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isp_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The line type of the elastic IP address (EIP) in the acceleration region. Default value: `BGP`. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`.
         """
         return pulumi.get(self, "isp_type")
 
     @isp_type.setter
-    def isp_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isp_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isp_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Basic Ip Set instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -182,10 +182,10 @@ class BasicIpSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerate_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 isp_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerate_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 isp_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Basic Ip Set resource.
@@ -305,10 +305,10 @@ class BasicIpSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerate_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 isp_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerate_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 isp_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -337,11 +337,11 @@ class BasicIpSet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerate_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            isp_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'BasicIpSet':
+            accelerate_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            isp_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'BasicIpSet':
         """
         Get an existing BasicIpSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

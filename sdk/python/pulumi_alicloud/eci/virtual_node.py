@@ -24,13 +24,13 @@ class VirtualNodeArgs:
                  kube_config: pulumi.Input[_builtins.str],
                  security_group_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]] = None,
-                 virtual_node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]] = None,
+                 virtual_node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VirtualNode resource.
 
@@ -101,103 +101,103 @@ class VirtualNodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="eipInstanceId")
-    def eip_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eip_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of eip.
         """
         return pulumi.get(self, "eip_instance_id")
 
     @eip_instance_id.setter
-    def eip_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eip_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eip_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePublicNetwork")
-    def enable_public_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_public_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
         """
         return pulumi.get(self, "enable_public_network")
 
     @enable_public_network.setter
-    def enable_public_network(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_public_network(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_public_network", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]]:
+    def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]]:
         """
         The taint. See `taints` below.
         """
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]]):
+    def taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualNodeName")
-    def virtual_node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
         """
         return pulumi.get(self, "virtual_node_name")
 
     @virtual_node_name.setter
-    def virtual_node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_node_name", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _VirtualNodeState:
     def __init__(__self__, *,
-                 eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kube_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]] = None,
-                 virtual_node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]] = None,
+                 virtual_node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VirtualNode resources.
 
@@ -238,134 +238,134 @@ class _VirtualNodeState:
 
     @_builtins.property
     @pulumi.getter(name="eipInstanceId")
-    def eip_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eip_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of eip.
         """
         return pulumi.get(self, "eip_instance_id")
 
     @eip_instance_id.setter
-    def eip_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eip_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eip_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePublicNetwork")
-    def enable_public_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_public_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
         """
         return pulumi.get(self, "enable_public_network")
 
     @enable_public_network.setter
-    def enable_public_network(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_public_network(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_public_network", value)
 
     @_builtins.property
     @pulumi.getter(name="kubeConfig")
-    def kube_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kube_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kube config for the k8s cluster. It needs to be connected after Base64 encoding.
         """
         return pulumi.get(self, "kube_config")
 
     @kube_config.setter
-    def kube_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kube_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kube_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]]:
+    def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]]:
         """
         The taint. See `taints` below.
         """
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]]):
+    def taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualNodeName")
-    def virtual_node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
         """
         return pulumi.get(self, "virtual_node_name")
 
     @virtual_node_name.setter
-    def virtual_node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_node_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vswitch id.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -375,16 +375,16 @@ class VirtualNode(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kube_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]]] = None,
-                 virtual_node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]]] = None,
+                 virtual_node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECI Virtual Node resource.
@@ -556,16 +556,16 @@ class VirtualNode(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kube_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]]] = None,
-                 virtual_node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]]] = None,
+                 virtual_node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -602,17 +602,17 @@ class VirtualNode(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
-            kube_config: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]]] = None,
-            virtual_node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VirtualNode':
+            eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_public_network: pulumi.Input[Optional[_builtins.bool]] = None,
+            kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VirtualNodeTaintArgs', 'VirtualNodeTaintArgsDict']]]]] = None,
+            virtual_node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VirtualNode':
         """
         Get an existing VirtualNode resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

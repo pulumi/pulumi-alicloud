@@ -21,17 +21,17 @@ __all__ = ['ProjectArgs', 'Project']
 @pulumi.input_type
 class ProjectArgs:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_quota: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_white_list: Optional[pulumi.Input['ProjectIpWhiteListArgs']] = None,
-                 is_logical: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input['ProjectPropertiesArgs']] = None,
-                 security_properties: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 three_tier_model: Optional[pulumi.Input[_builtins.bool]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_quota: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_white_list: pulumi.Input[Optional['ProjectIpWhiteListArgs']] = None,
+                 is_logical: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional['ProjectPropertiesArgs']] = None,
+                 security_properties: pulumi.Input[Optional['ProjectSecurityPropertiesArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 three_tier_model: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Project resource.
 
@@ -74,19 +74,19 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultQuota")
-    def default_quota(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_quota(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to implement computing resource allocation. Valid values: subQuota Nickname
         If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
@@ -94,24 +94,24 @@ class ProjectArgs:
         return pulumi.get(self, "default_quota")
 
     @default_quota.setter
-    def default_quota(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_quota(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_quota", value)
 
     @_builtins.property
     @pulumi.getter(name="ipWhiteList")
-    def ip_white_list(self) -> Optional[pulumi.Input['ProjectIpWhiteListArgs']]:
+    def ip_white_list(self) -> pulumi.Input[Optional['ProjectIpWhiteListArgs']]:
         """
         IP whitelist See `ip_white_list` below.
         """
         return pulumi.get(self, "ip_white_list")
 
     @ip_white_list.setter
-    def ip_white_list(self, value: Optional[pulumi.Input['ProjectIpWhiteListArgs']]):
+    def ip_white_list(self, value: pulumi.Input[Optional['ProjectIpWhiteListArgs']]):
         pulumi.set(self, "ip_white_list", value)
 
     @_builtins.property
     @pulumi.getter(name="isLogical")
-    def is_logical(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def is_logical(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to logically delete. Default value: true. Value: (ture/false),
 
@@ -120,109 +120,109 @@ class ProjectArgs:
         return pulumi.get(self, "is_logical")
 
     @is_logical.setter
-    def is_logical(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def is_logical(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "is_logical", value)
 
     @_builtins.property
     @pulumi.getter(name="productType")
-    def product_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "product_type")
 
     @product_type.setter
-    def product_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_type", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input['ProjectPropertiesArgs']]:
+    def properties(self) -> pulumi.Input[Optional['ProjectPropertiesArgs']]:
         """
         Project base attributes See `properties` below.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input['ProjectPropertiesArgs']]):
+    def properties(self, value: pulumi.Input[Optional['ProjectPropertiesArgs']]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="securityProperties")
-    def security_properties(self) -> Optional[pulumi.Input['ProjectSecurityPropertiesArgs']]:
+    def security_properties(self) -> pulumi.Input[Optional['ProjectSecurityPropertiesArgs']]:
         """
         Security-related attributes See `security_properties` below.
         """
         return pulumi.get(self, "security_properties")
 
     @security_properties.setter
-    def security_properties(self, value: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']]):
+    def security_properties(self, value: pulumi.Input[Optional['ProjectSecurityPropertiesArgs']]):
         pulumi.set(self, "security_properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="threeTierModel")
-    def three_tier_model(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def three_tier_model(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether data storage by schema is supported. Valid values:
         """
         return pulumi.get(self, "three_tier_model")
 
     @three_tier_model.setter
-    def three_tier_model(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def three_tier_model(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "three_tier_model", value)
 
 
 @pulumi.input_type
 class _ProjectState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_quota: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_white_list: Optional[pulumi.Input['ProjectIpWhiteListArgs']] = None,
-                 is_logical: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input['ProjectPropertiesArgs']] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_properties: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 three_tier_model: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_quota: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_white_list: pulumi.Input[Optional['ProjectIpWhiteListArgs']] = None,
+                 is_logical: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional['ProjectPropertiesArgs']] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_properties: pulumi.Input[Optional['ProjectSecurityPropertiesArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 three_tier_model: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Project resources.
 
@@ -277,31 +277,31 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents the creation time of the project
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultQuota")
-    def default_quota(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_quota(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to implement computing resource allocation. Valid values: subQuota Nickname
         If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
@@ -309,24 +309,24 @@ class _ProjectState:
         return pulumi.get(self, "default_quota")
 
     @default_quota.setter
-    def default_quota(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_quota(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_quota", value)
 
     @_builtins.property
     @pulumi.getter(name="ipWhiteList")
-    def ip_white_list(self) -> Optional[pulumi.Input['ProjectIpWhiteListArgs']]:
+    def ip_white_list(self) -> pulumi.Input[Optional['ProjectIpWhiteListArgs']]:
         """
         IP whitelist See `ip_white_list` below.
         """
         return pulumi.get(self, "ip_white_list")
 
     @ip_white_list.setter
-    def ip_white_list(self, value: Optional[pulumi.Input['ProjectIpWhiteListArgs']]):
+    def ip_white_list(self, value: pulumi.Input[Optional['ProjectIpWhiteListArgs']]):
         pulumi.set(self, "ip_white_list", value)
 
     @_builtins.property
     @pulumi.getter(name="isLogical")
-    def is_logical(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def is_logical(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to logically delete. Default value: true. Value: (ture/false),
 
@@ -335,124 +335,124 @@ class _ProjectState:
         return pulumi.get(self, "is_logical")
 
     @is_logical.setter
-    def is_logical(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def is_logical(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "is_logical", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project owner
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="productType")
-    def product_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "product_type")
 
     @product_type.setter
-    def product_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_type", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input['ProjectPropertiesArgs']]:
+    def properties(self) -> pulumi.Input[Optional['ProjectPropertiesArgs']]:
         """
         Project base attributes See `properties` below.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input['ProjectPropertiesArgs']]):
+    def properties(self, value: pulumi.Input[Optional['ProjectPropertiesArgs']]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityProperties")
-    def security_properties(self) -> Optional[pulumi.Input['ProjectSecurityPropertiesArgs']]:
+    def security_properties(self) -> pulumi.Input[Optional['ProjectSecurityPropertiesArgs']]:
         """
         Security-related attributes See `security_properties` below.
         """
         return pulumi.get(self, "security_properties")
 
     @security_properties.setter
-    def security_properties(self, value: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']]):
+    def security_properties(self, value: pulumi.Input[Optional['ProjectSecurityPropertiesArgs']]):
         pulumi.set(self, "security_properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="threeTierModel")
-    def three_tier_model(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def three_tier_model(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether data storage by schema is supported. Valid values:
         """
         return pulumi.get(self, "three_tier_model")
 
     @three_tier_model.setter
-    def three_tier_model(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def three_tier_model(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "three_tier_model", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project type
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -462,17 +462,17 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_quota: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_white_list: Optional[pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']]] = None,
-                 is_logical: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
-                 security_properties: Optional[pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 three_tier_model: Optional[pulumi.Input[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_quota: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_white_list: pulumi.Input[Optional[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']]] = None,
+                 is_logical: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
+                 security_properties: pulumi.Input[Optional[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 three_tier_model: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Max Compute Project resource.
@@ -587,17 +587,17 @@ class Project(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_quota: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_white_list: Optional[pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']]] = None,
-                 is_logical: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
-                 security_properties: Optional[pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 three_tier_model: Optional[pulumi.Input[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_quota: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_white_list: pulumi.Input[Optional[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']]] = None,
+                 is_logical: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
+                 security_properties: pulumi.Input[Optional[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 three_tier_model: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -632,21 +632,21 @@ class Project(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            default_quota: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_white_list: Optional[pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']]] = None,
-            is_logical: Optional[pulumi.Input[_builtins.str]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            product_type: Optional[pulumi.Input[_builtins.str]] = None,
-            project_name: Optional[pulumi.Input[_builtins.str]] = None,
-            properties: Optional[pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_properties: Optional[pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            three_tier_model: Optional[pulumi.Input[_builtins.bool]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Project':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            default_quota: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_white_list: pulumi.Input[Optional[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']]] = None,
+            is_logical: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            product_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_properties: pulumi.Input[Optional[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            three_tier_model: pulumi.Input[Optional[_builtins.bool]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

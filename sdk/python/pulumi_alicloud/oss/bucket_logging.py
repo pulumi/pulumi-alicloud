@@ -21,8 +21,8 @@ class BucketLoggingInitArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  target_bucket: pulumi.Input[_builtins.str],
-                 logging_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 logging_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketLogging resource.
 
@@ -64,36 +64,36 @@ class BucketLoggingInitArgs:
 
     @_builtins.property
     @pulumi.getter(name="loggingRole")
-    def logging_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logging_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authorization role used for bucket logging
         """
         return pulumi.get(self, "logging_role")
 
     @logging_role.setter
-    def logging_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logging_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logging_role", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPrefix")
-    def target_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix of the saved log objects. This element can be left empty.
         """
         return pulumi.get(self, "target_prefix")
 
     @target_prefix.setter
-    def target_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_prefix", value)
 
 
 @pulumi.input_type
 class _BucketLoggingState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketLogging resources.
 
@@ -113,50 +113,50 @@ class _BucketLoggingState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingRole")
-    def logging_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logging_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authorization role used for bucket logging
         """
         return pulumi.get(self, "logging_role")
 
     @logging_role.setter
-    def logging_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logging_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logging_role", value)
 
     @_builtins.property
     @pulumi.getter(name="targetBucket")
-    def target_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bucket that stores access logs.
         """
         return pulumi.get(self, "target_bucket")
 
     @target_bucket.setter
-    def target_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPrefix")
-    def target_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix of the saved log objects. This element can be left empty.
         """
         return pulumi.get(self, "target_prefix")
 
     @target_prefix.setter
-    def target_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_prefix", value)
 
 
@@ -166,10 +166,10 @@ class BucketLogging(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a OSS Bucket Logging resource.
@@ -289,10 +289,10 @@ class BucketLogging(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -320,10 +320,10 @@ class BucketLogging(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            logging_role: Optional[pulumi.Input[_builtins.str]] = None,
-            target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            target_prefix: Optional[pulumi.Input[_builtins.str]] = None) -> 'BucketLogging':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_role: pulumi.Input[Optional[_builtins.str]] = None,
+            target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            target_prefix: pulumi.Input[Optional[_builtins.str]] = None) -> 'BucketLogging':
         """
         Get an existing BucketLogging resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

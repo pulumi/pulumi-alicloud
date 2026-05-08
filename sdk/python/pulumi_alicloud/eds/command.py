@@ -22,8 +22,8 @@ class CommandArgs:
                  command_content: pulumi.Input[_builtins.str],
                  command_type: pulumi.Input[_builtins.str],
                  desktop_id: pulumi.Input[_builtins.str],
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None):
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Command resource.
 
@@ -79,38 +79,38 @@ class CommandArgs:
 
     @_builtins.property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
         """
         return pulumi.get(self, "content_encoding")
 
     @content_encoding.setter
-    def content_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_encoding", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timeout period for script execution the unit is seconds. Default to: `60`.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout", value)
 
 
 @pulumi.input_type
 class _CommandState:
     def __init__(__self__, *,
-                 command_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None):
+                 command_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Command resources.
 
@@ -136,74 +136,74 @@ class _CommandState:
 
     @_builtins.property
     @pulumi.getter(name="commandContent")
-    def command_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Contents of the Script to Base64 Encoded Transmission.
         """
         return pulumi.get(self, "command_content")
 
     @command_content.setter
-    def command_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command_content", value)
 
     @_builtins.property
     @pulumi.getter(name="commandType")
-    def command_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
         """
         return pulumi.get(self, "command_type")
 
     @command_type.setter
-    def command_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command_type", value)
 
     @_builtins.property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
         """
         return pulumi.get(self, "content_encoding")
 
     @content_encoding.setter
-    def content_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="desktopId")
-    def desktop_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desktop_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desktop id of the Desktop.
         """
         return pulumi.get(self, "desktop_id")
 
     @desktop_id.setter
-    def desktop_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desktop_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desktop_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timeout period for script execution the unit is seconds. Default to: `60`.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout", value)
 
 
@@ -213,11 +213,11 @@ class Command(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 command_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
+                 command_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECD Command resource.
@@ -396,11 +396,11 @@ class Command(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 command_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
+                 command_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -432,12 +432,12 @@ class Command(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            command_content: Optional[pulumi.Input[_builtins.str]] = None,
-            command_type: Optional[pulumi.Input[_builtins.str]] = None,
-            content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-            desktop_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            timeout: Optional[pulumi.Input[_builtins.str]] = None) -> 'Command':
+            command_content: pulumi.Input[Optional[_builtins.str]] = None,
+            command_type: pulumi.Input[Optional[_builtins.str]] = None,
+            content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.str]] = None) -> 'Command':
         """
         Get an existing Command resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

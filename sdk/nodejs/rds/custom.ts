@@ -374,37 +374,37 @@ export interface CustomState {
     /**
      * Represents the number of instances created
      */
-    amount?: pulumi.Input<number>;
+    amount?: pulumi.Input<number | undefined>;
     /**
      * Whether to pay automatically. Value range:
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the instance is automatically renewed. Valid values: true/false. The default is false.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Reserved parameters are not supported.
      */
-    createExtraParam?: pulumi.Input<string>;
+    createExtraParam?: pulumi.Input<string | undefined>;
     /**
      * Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
      */
-    createMode?: pulumi.Input<string>;
+    createMode?: pulumi.Input<string | undefined>;
     /**
      * Data disk See `dataDisk` below.
      *
      * ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.rds.CustomDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.rds.CustomDataDisk>[] | undefined>;
     /**
      * The ID of the deployment set.
      */
-    deploymentSetId?: pulumi.Input<string>;
+    deploymentSetId?: pulumi.Input<string | undefined>;
     /**
      * Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Instance configuration type, value range:
      *
@@ -412,81 +412,81 @@ export interface CustomState {
      * - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
      * - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Whether to pre-check the operation of creating an instance. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to forcibly release the running instance. Value: true/false
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to force shutdown. Value range:
      */
-    forceStop?: pulumi.Input<boolean>;
+    forceStop?: pulumi.Input<boolean | undefined>;
     /**
      * The instance host name.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the image used by the instance.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The type of the created RDS Custom dedicated host instance.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Reserved parameters are not supported.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * Reserved parameters are not supported.
      */
-    internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * Reserved parameters are not supported.
      */
-    ioOptimized?: pulumi.Input<string>;
+    ioOptimized?: pulumi.Input<string | undefined>;
     /**
      * The key pair name. Only flyer names are supported.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The account and password of the instance.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Prepaid renewal duration, unit: Month/Year.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The unit of duration of the year-to-month billing method. Value range:
      * - `Year`: Year
      * - `Month` (default): Month
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The region ID. Callable DescribeRegions to get.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Reserved parameters are not supported.
      */
-    securityEnhancementStrategy?: pulumi.Input<string>;
+    securityEnhancementStrategy?: pulumi.Input<string | undefined>;
     /**
      * Security group list
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
      * - `NoSpot`: normal pay-as-you-go instances.
@@ -494,32 +494,32 @@ export interface CustomState {
      *
      * Default value: **NoSpot * *.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
      */
-    supportCase?: pulumi.Input<string>;
+    supportCase?: pulumi.Input<string | undefined>;
     /**
      * System disk specifications. See `systemDisk` below.
      */
-    systemDisk?: pulumi.Input<inputs.rds.CustomSystemDisk>;
+    systemDisk?: pulumi.Input<inputs.rds.CustomSystemDisk | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
      * The network type InstanceNetworkType must be VPC.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID  of the resource
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -529,37 +529,37 @@ export interface CustomArgs {
     /**
      * Represents the number of instances created
      */
-    amount?: pulumi.Input<number>;
+    amount?: pulumi.Input<number | undefined>;
     /**
      * Whether to pay automatically. Value range:
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the instance is automatically renewed. Valid values: true/false. The default is false.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Reserved parameters are not supported.
      */
-    createExtraParam?: pulumi.Input<string>;
+    createExtraParam?: pulumi.Input<string | undefined>;
     /**
      * Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
      */
-    createMode?: pulumi.Input<string>;
+    createMode?: pulumi.Input<string | undefined>;
     /**
      * Data disk See `dataDisk` below.
      *
      * ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.rds.CustomDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.rds.CustomDataDisk>[] | undefined>;
     /**
      * The ID of the deployment set.
      */
-    deploymentSetId?: pulumi.Input<string>;
+    deploymentSetId?: pulumi.Input<string | undefined>;
     /**
      * Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Instance configuration type, value range:
      *
@@ -567,31 +567,31 @@ export interface CustomArgs {
      * - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
      * - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Whether to pre-check the operation of creating an instance. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to forcibly release the running instance. Value: true/false
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to force shutdown. Value range:
      */
-    forceStop?: pulumi.Input<boolean>;
+    forceStop?: pulumi.Input<boolean | undefined>;
     /**
      * The instance host name.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the image used by the instance.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The type of the created RDS Custom dedicated host instance.
      */
@@ -599,45 +599,45 @@ export interface CustomArgs {
     /**
      * Reserved parameters are not supported.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * Reserved parameters are not supported.
      */
-    internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * Reserved parameters are not supported.
      */
-    ioOptimized?: pulumi.Input<string>;
+    ioOptimized?: pulumi.Input<string | undefined>;
     /**
      * The key pair name. Only flyer names are supported.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The account and password of the instance.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Prepaid renewal duration, unit: Month/Year.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The unit of duration of the year-to-month billing method. Value range:
      * - `Year`: Year
      * - `Month` (default): Month
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Reserved parameters are not supported.
      */
-    securityEnhancementStrategy?: pulumi.Input<string>;
+    securityEnhancementStrategy?: pulumi.Input<string | undefined>;
     /**
      * Security group list
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
      * - `NoSpot`: normal pay-as-you-go instances.
@@ -645,23 +645,23 @@ export interface CustomArgs {
      *
      * Default value: **NoSpot * *.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
      */
-    supportCase?: pulumi.Input<string>;
+    supportCase?: pulumi.Input<string | undefined>;
     /**
      * System disk specifications. See `systemDisk` below.
      */
-    systemDisk?: pulumi.Input<inputs.rds.CustomSystemDisk>;
+    systemDisk?: pulumi.Input<inputs.rds.CustomSystemDisk | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
      * The network type InstanceNetworkType must be VPC.
@@ -670,5 +670,5 @@ export interface CustomArgs {
     /**
      * The zone ID  of the resource
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

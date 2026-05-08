@@ -23,7 +23,7 @@ class AccessConfigurationProvisioningArgs:
                  directory_id: pulumi.Input[_builtins.str],
                  target_id: pulumi.Input[_builtins.str],
                  target_type: pulumi.Input[_builtins.str],
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessConfigurationProvisioning resource.
 
@@ -90,25 +90,25 @@ class AccessConfigurationProvisioningArgs:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `Provisioned`, `ReprovisionRequired` and `DeprovisionFailed`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _AccessConfigurationProvisioningState:
     def __init__(__self__, *,
-                 access_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessConfigurationProvisioning resources.
 
@@ -131,62 +131,62 @@ class _AccessConfigurationProvisioningState:
 
     @_builtins.property
     @pulumi.getter(name="accessConfigurationId")
-    def access_configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_configuration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Access configuration ID.
         """
         return pulumi.get(self, "access_configuration_id")
 
     @access_configuration_id.setter
-    def access_configuration_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_configuration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_configuration_id", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
-    def directory_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Directory.
         """
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
-    def directory_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `Provisioned`, `ReprovisionRequired` and `DeprovisionFailed`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="targetId")
-    def target_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the target to create the resource range.
         """
         return pulumi.get(self, "target_id")
 
     @target_id.setter
-    def target_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the resource range target to be accessed. Valid values: `RD-Account`.
         """
         return pulumi.get(self, "target_type")
 
     @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_type", value)
 
 
@@ -196,11 +196,11 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud SSO Access Configuration Provisioning resource.
@@ -215,6 +215,7 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -225,7 +226,7 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
             name = "tf-example"
         default = alicloud.cloudsso.get_directories()
         default_get_resource_directories = alicloud.resourcemanager.get_resource_directories()
-        default_directory = []
+        default_directory: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
@@ -239,13 +240,13 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
             min=10000,
             max=99999)
         default_user = alicloud.cloudsso.User("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_name=f"{name}-{default_integer['result']}")
         default_access_configuration = alicloud.cloudsso.AccessConfiguration("default",
             access_configuration_name=f"{name}-{default_integer['result']}",
-            directory_id=directory_id)
+            directory_id=output(directory_id).apply(lambda x: str(x)))
         default_access_configuration_provisioning = alicloud.cloudsso.AccessConfigurationProvisioning("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             access_configuration_id=default_access_configuration.access_configuration_id,
             target_type="RD-Account",
             target_id=default_get_resource_directories.directories[0].master_account_id)
@@ -289,6 +290,7 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -299,7 +301,7 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
             name = "tf-example"
         default = alicloud.cloudsso.get_directories()
         default_get_resource_directories = alicloud.resourcemanager.get_resource_directories()
-        default_directory = []
+        default_directory: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
@@ -313,13 +315,13 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
             min=10000,
             max=99999)
         default_user = alicloud.cloudsso.User("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_name=f"{name}-{default_integer['result']}")
         default_access_configuration = alicloud.cloudsso.AccessConfiguration("default",
             access_configuration_name=f"{name}-{default_integer['result']}",
-            directory_id=directory_id)
+            directory_id=output(directory_id).apply(lambda x: str(x)))
         default_access_configuration_provisioning = alicloud.cloudsso.AccessConfigurationProvisioning("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             access_configuration_id=default_access_configuration.access_configuration_id,
             target_type="RD-Account",
             target_id=default_get_resource_directories.directories[0].master_account_id)
@@ -351,11 +353,11 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -388,11 +390,11 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-            directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            target_id: Optional[pulumi.Input[_builtins.str]] = None,
-            target_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessConfigurationProvisioning':
+            access_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessConfigurationProvisioning':
         """
         Get an existing AccessConfigurationProvisioning resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

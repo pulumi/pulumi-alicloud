@@ -20,35 +20,35 @@ __all__ = [
 ]
 
 class GatewaySlbListArgsDict(TypedDict):
-    associate_id: NotRequired[pulumi.Input[_builtins.str]]
+    associate_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The associate id.
     """
-    gateway_slb_mode: NotRequired[pulumi.Input[_builtins.str]]
+    gateway_slb_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Mode of the gateway slb.
     """
-    gateway_slb_status: NotRequired[pulumi.Input[_builtins.str]]
+    gateway_slb_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Status of the gateway slb.
     """
-    gmt_create: NotRequired[pulumi.Input[_builtins.str]]
+    gmt_create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The creation time of the gateway slb.
     """
-    slb_id: NotRequired[pulumi.Input[_builtins.str]]
+    slb_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the gateway slb.
     """
-    slb_ip: NotRequired[pulumi.Input[_builtins.str]]
+    slb_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ip of the gateway slb.
     """
-    slb_port: NotRequired[pulumi.Input[_builtins.str]]
+    slb_port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The port of the gateway slb.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the gateway slb.
     """
@@ -56,14 +56,14 @@ class GatewaySlbListArgsDict(TypedDict):
 @pulumi.input_type
 class GatewaySlbListArgs:
     def __init__(__self__, *,
-                 associate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_slb_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_slb_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 gmt_create: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 associate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_slb_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_slb_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 gmt_create: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] associate_id: The associate id.
         :param pulumi.Input[_builtins.str] gateway_slb_mode: The Mode of the gateway slb.
@@ -93,98 +93,98 @@ class GatewaySlbListArgs:
 
     @_builtins.property
     @pulumi.getter(name="associateId")
-    def associate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def associate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The associate id.
         """
         return pulumi.get(self, "associate_id")
 
     @associate_id.setter
-    def associate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def associate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "associate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewaySlbMode")
-    def gateway_slb_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_slb_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Mode of the gateway slb.
         """
         return pulumi.get(self, "gateway_slb_mode")
 
     @gateway_slb_mode.setter
-    def gateway_slb_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_slb_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_slb_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewaySlbStatus")
-    def gateway_slb_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_slb_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Status of the gateway slb.
         """
         return pulumi.get(self, "gateway_slb_status")
 
     @gateway_slb_status.setter
-    def gateway_slb_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_slb_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_slb_status", value)
 
     @_builtins.property
     @pulumi.getter(name="gmtCreate")
-    def gmt_create(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gmt_create(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the gateway slb.
         """
         return pulumi.get(self, "gmt_create")
 
     @gmt_create.setter
-    def gmt_create(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gmt_create(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gmt_create", value)
 
     @_builtins.property
     @pulumi.getter(name="slbId")
-    def slb_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the gateway slb.
         """
         return pulumi.get(self, "slb_id")
 
     @slb_id.setter
-    def slb_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_id", value)
 
     @_builtins.property
     @pulumi.getter(name="slbIp")
-    def slb_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ip of the gateway slb.
         """
         return pulumi.get(self, "slb_ip")
 
     @slb_ip.setter
-    def slb_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="slbPort")
-    def slb_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port of the gateway slb.
         """
         return pulumi.get(self, "slb_port")
 
     @slb_port.setter
-    def slb_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the gateway slb.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 

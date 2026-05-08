@@ -185,27 +185,27 @@ export interface PolicyState {
     /**
      * Network Rules in JSON struct.
      */
-    accessControlRules?: pulumi.Input<string>;
+    accessControlRules?: pulumi.Input<string | undefined>;
     /**
      * Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * KMS instance .
      */
-    kmsInstanceId?: pulumi.Input<string>;
+    kmsInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Allowed permissions (RBAC)Optional values:"RbacPermission/Template/CryptoServiceKeyUser" and "RbacPermission/Template/CryptoServiceSecretUser".
      */
-    permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    permissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Policy Name.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * The resources that the permission policy allows to access.Use "key/${KeyId}" or "key/*"  to specify a key or all keys.Use "secret/${SecretName}" or "secret/*" to specify a secret or all secrets.
      */
-    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    resources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -219,7 +219,7 @@ export interface PolicyArgs {
     /**
      * Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * KMS instance .
      */

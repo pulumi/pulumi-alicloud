@@ -26,24 +26,26 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := cloudfirewall.GetVpcFirewallCens(ctx, &cloudfirewall.GetVpcFirewallCensArgs{
-// Ids: interface{}{
-// defaultAlicloudCloudFirewallVpcFirewallCen.Id,
-// },
-// CenId: pulumi.StringRef("cen-cjok7uyb5w2b27573v"),
-// MemberUid: pulumi.StringRef("1415189284827022"),
-// Status: pulumi.StringRef("closed"),
-// VpcFirewallName: pulumi.StringRef("tf-test"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudCloudFirewallVpcFirewallCenExampleId", _default.Cens[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := cloudfirewall.GetVpcFirewallCens(ctx, &cloudfirewall.GetVpcFirewallCensArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudCloudFirewallVpcFirewallCen.Id,
+//				},
+//				CenId:           pulumi.StringRef("cen-cjok7uyb5w2b27573v"),
+//				MemberUid:       pulumi.StringRef("1415189284827022"),
+//				Status:          pulumi.StringRef("closed"),
+//				VpcFirewallName: pulumi.StringRef("tf-test"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudCloudFirewallVpcFirewallCenExampleId", _default.Cens[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetVpcFirewallCens(ctx *pulumi.Context, args *GetVpcFirewallCensArgs, opts ...pulumi.InvokeOption) (*GetVpcFirewallCensResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

@@ -73,9 +73,9 @@ class InstanceGrantArgs:
 @pulumi.input_type
 class _InstanceGrantState:
     def __init__(__self__, *,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceGrant resources.
 
@@ -92,38 +92,38 @@ class _InstanceGrantState:
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CEN.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cenOwnerId")
-    def cen_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner UID of the  CEN which the child instance granted to.
         """
         return pulumi.get(self, "cen_owner_id")
 
     @cen_owner_id.setter
-    def cen_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="childInstanceId")
-    def child_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def child_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the child instance to grant.
         """
         return pulumi.get(self, "child_instance_id")
 
     @child_instance_id.setter
-    def child_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def child_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "child_instance_id", value)
 
 
@@ -133,9 +133,9 @@ class InstanceGrant(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
@@ -258,9 +258,9 @@ class InstanceGrant(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -289,9 +289,9 @@ class InstanceGrant(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-            child_instance_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceGrant':
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            child_instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceGrant':
         """
         Get an existing InstanceGrant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

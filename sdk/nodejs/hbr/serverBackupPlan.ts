@@ -210,40 +210,40 @@ export interface ServerBackupPlanState {
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      */
-    crossAccountRoleName?: pulumi.Input<string>;
+    crossAccountRoleName?: pulumi.Input<string | undefined>;
     /**
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      */
-    crossAccountType?: pulumi.Input<string>;
+    crossAccountType?: pulumi.Input<string | undefined>;
     /**
      * The original account ID of the cross account backup managed by the current account.
      */
-    crossAccountUserId?: pulumi.Input<number>;
+    crossAccountUserId?: pulumi.Input<number | undefined>;
     /**
      * ECS server backup plan details.
      */
-    details?: pulumi.Input<pulumi.Input<inputs.hbr.ServerBackupPlanDetail>[]>;
+    details?: pulumi.Input<pulumi.Input<inputs.hbr.ServerBackupPlanDetail>[] | undefined>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
-    ecsServerBackupPlanName?: pulumi.Input<string>;
+    ecsServerBackupPlanName?: pulumi.Input<string | undefined>;
     /**
      * The ID of ECS instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Backup retention days, the minimum is 1.
      */
-    retention?: pulumi.Input<number>;
+    retention?: pulumi.Input<number | undefined>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`
      * * `startTime` Backup start time, UNIX time, in seconds.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -253,15 +253,15 @@ export interface ServerBackupPlanArgs {
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      */
-    crossAccountRoleName?: pulumi.Input<string>;
+    crossAccountRoleName?: pulumi.Input<string | undefined>;
     /**
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      */
-    crossAccountType?: pulumi.Input<string>;
+    crossAccountType?: pulumi.Input<string | undefined>;
     /**
      * The original account ID of the cross account backup managed by the current account.
      */
-    crossAccountUserId?: pulumi.Input<number>;
+    crossAccountUserId?: pulumi.Input<number | undefined>;
     /**
      * ECS server backup plan details.
      */
@@ -269,7 +269,7 @@ export interface ServerBackupPlanArgs {
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */

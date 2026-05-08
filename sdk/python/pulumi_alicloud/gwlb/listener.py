@@ -21,9 +21,9 @@ class ListenerArgs:
     def __init__(__self__, *,
                  load_balancer_id: pulumi.Input[_builtins.str],
                  server_group_id: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Listener resource.
 
@@ -70,19 +70,19 @@ class ListenerArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerDescription")
-    def listener_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the listener.
 
@@ -91,32 +91,32 @@ class ListenerArgs:
         return pulumi.get(self, "listener_description")
 
     @listener_description.setter
-    def listener_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_description", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags. You can specify at most 20 tags in each call.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ListenerState:
     def __init__(__self__, *,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Listener resources.
 
@@ -147,19 +147,19 @@ class _ListenerState:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerDescription")
-    def listener_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the listener.
 
@@ -168,67 +168,67 @@ class _ListenerState:
         return pulumi.get(self, "listener_description")
 
     @listener_description.setter
-    def listener_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_description", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GWLB instance ID.
         """
         return pulumi.get(self, "load_balancer_id")
 
     @load_balancer_id.setter
-    def load_balancer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroupId")
-    def server_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The server group ID.
         """
         return pulumi.get(self, "server_group_id")
 
     @server_group_id.setter
-    def server_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the listener.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags. You can specify at most 20 tags in each call.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -238,11 +238,11 @@ class Listener(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a GWLB Listener resource.
@@ -483,11 +483,11 @@ class Listener(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -518,13 +518,13 @@ class Listener(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Listener':
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

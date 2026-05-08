@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Sls
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var alertName = config.Get("alertName") ?? "openapi-terraform-alert";
     ///     var projectName = config.Get("projectName") ?? "terraform-alert-example";
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,

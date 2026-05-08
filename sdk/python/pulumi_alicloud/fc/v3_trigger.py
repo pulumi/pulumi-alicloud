@@ -24,11 +24,11 @@ class V3TriggerArgs:
                  function_name: pulumi.Input[_builtins.str],
                  qualifier: pulumi.Input[_builtins.str],
                  trigger_type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 invocation_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 invocation_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a V3Trigger resource.
 
@@ -93,82 +93,82 @@ class V3TriggerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the trigger
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="invocationRole")
-    def invocation_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def invocation_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role required by the event source (such as OSS) to call the function.
         """
         return pulumi.get(self, "invocation_role")
 
     @invocation_role.setter
-    def invocation_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def invocation_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "invocation_role", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceArn")
-    def source_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Trigger Event source ARN
         """
         return pulumi.get(self, "source_arn")
 
     @source_arn.setter
-    def source_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerConfig")
-    def trigger_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Trigger configuration. The configuration varies for different types of triggers.
         """
         return pulumi.get(self, "trigger_config")
 
     @trigger_config.setter
-    def trigger_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger_config", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerName")
-    def trigger_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Trigger Name
         """
         return pulumi.get(self, "trigger_name")
 
     @trigger_name.setter
-    def trigger_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger_name", value)
 
 
 @pulumi.input_type
 class _V3TriggerState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_trigger: Optional[pulumi.Input['V3TriggerHttpTriggerArgs']] = None,
-                 invocation_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_trigger: pulumi.Input[Optional['V3TriggerHttpTriggerArgs']] = None,
+                 invocation_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V3Trigger resources.
 
@@ -218,170 +218,170 @@ class _V3TriggerState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the trigger
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function Name
         """
         return pulumi.get(self, "function_name")
 
     @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_name", value)
 
     @_builtins.property
     @pulumi.getter(name="httpTrigger")
-    def http_trigger(self) -> Optional[pulumi.Input['V3TriggerHttpTriggerArgs']]:
+    def http_trigger(self) -> pulumi.Input[Optional['V3TriggerHttpTriggerArgs']]:
         """
         (Available since v1.234.0) HTTP trigger information
         """
         return pulumi.get(self, "http_trigger")
 
     @http_trigger.setter
-    def http_trigger(self, value: Optional[pulumi.Input['V3TriggerHttpTriggerArgs']]):
+    def http_trigger(self, value: pulumi.Input[Optional['V3TriggerHttpTriggerArgs']]):
         pulumi.set(self, "http_trigger", value)
 
     @_builtins.property
     @pulumi.getter(name="invocationRole")
-    def invocation_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def invocation_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role required by the event source (such as OSS) to call the function.
         """
         return pulumi.get(self, "invocation_role")
 
     @invocation_role.setter
-    def invocation_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def invocation_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "invocation_role", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.234.0) The last modified time of the trigger
         """
         return pulumi.get(self, "last_modified_time")
 
     @last_modified_time.setter
-    def last_modified_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def qualifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qualifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version or alias of the function
         """
         return pulumi.get(self, "qualifier")
 
     @qualifier.setter
-    def qualifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qualifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qualifier", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceArn")
-    def source_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Trigger Event source ARN
         """
         return pulumi.get(self, "source_arn")
 
     @source_arn.setter
-    def source_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the trigger
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="targetArn")
-    def target_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.234.0) Resource identity of the function
         """
         return pulumi.get(self, "target_arn")
 
     @target_arn.setter
-    def target_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerConfig")
-    def trigger_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Trigger configuration. The configuration varies for different types of triggers.
         """
         return pulumi.get(self, "trigger_config")
 
     @trigger_config.setter
-    def trigger_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger_config", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerId")
-    def trigger_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.234.0) Trigger ID
         """
         return pulumi.get(self, "trigger_id")
 
     @trigger_id.setter
-    def trigger_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger_id", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerName")
-    def trigger_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Trigger Name
         """
         return pulumi.get(self, "trigger_name")
 
     @trigger_name.setter
-    def trigger_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger_name", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerType")
-    def trigger_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
         """
         return pulumi.get(self, "trigger_type")
 
     @trigger_type.setter
-    def trigger_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger_type", value)
 
 
@@ -391,14 +391,14 @@ class V3Trigger(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 invocation_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 invocation_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a FCV3 Trigger resource.
@@ -670,14 +670,14 @@ class V3Trigger(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 invocation_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 invocation_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -717,20 +717,20 @@ class V3Trigger(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            function_name: Optional[pulumi.Input[_builtins.str]] = None,
-            http_trigger: Optional[pulumi.Input[Union['V3TriggerHttpTriggerArgs', 'V3TriggerHttpTriggerArgsDict']]] = None,
-            invocation_role: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-            qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-            source_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            trigger_config: Optional[pulumi.Input[_builtins.str]] = None,
-            trigger_id: Optional[pulumi.Input[_builtins.str]] = None,
-            trigger_name: Optional[pulumi.Input[_builtins.str]] = None,
-            trigger_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'V3Trigger':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            http_trigger: pulumi.Input[Optional[Union['V3TriggerHttpTriggerArgs', 'V3TriggerHttpTriggerArgsDict']]] = None,
+            invocation_role: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+            source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_config: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_id: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_name: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'V3Trigger':
         """
         Get an existing V3Trigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -20,7 +20,7 @@ __all__ = ['EnterpriseSnapshotPolicyAttachmentArgs', 'EnterpriseSnapshotPolicyAt
 class EnterpriseSnapshotPolicyAttachmentArgs:
     def __init__(__self__, *,
                  policy_id: pulumi.Input[_builtins.str],
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnterpriseSnapshotPolicyAttachment resource.
 
@@ -45,22 +45,22 @@ class EnterpriseSnapshotPolicyAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud Disk ID.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_id", value)
 
 
 @pulumi.input_type
 class _EnterpriseSnapshotPolicyAttachmentState:
     def __init__(__self__, *,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseSnapshotPolicyAttachment resources.
 
@@ -74,26 +74,26 @@ class _EnterpriseSnapshotPolicyAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud Disk ID.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the enterprise snapshot policy id.
         """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
-    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
 
 
@@ -103,8 +103,8 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a EBS Enterprise Snapshot Policy Attachment resource. Enterprise-level snapshot policy cloud disk binding relationship.
@@ -240,8 +240,8 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -265,8 +265,8 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnterpriseSnapshotPolicyAttachment':
+            disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnterpriseSnapshotPolicyAttachment':
         """
         Get an existing EnterpriseSnapshotPolicyAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

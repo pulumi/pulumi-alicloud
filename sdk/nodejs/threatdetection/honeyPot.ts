@@ -164,35 +164,35 @@ export interface HoneyPotState {
     /**
      * Honeypot ID.
      */
-    honeypotId?: pulumi.Input<string>;
+    honeypotId?: pulumi.Input<string | undefined>;
     /**
      * The image ID of the honeypot.
      */
-    honeypotImageId?: pulumi.Input<string>;
+    honeypotImageId?: pulumi.Input<string | undefined>;
     /**
      * Honeypot mirror name.
      */
-    honeypotImageName?: pulumi.Input<string>;
+    honeypotImageName?: pulumi.Input<string | undefined>;
     /**
      * Honeypot custom name.
      */
-    honeypotName?: pulumi.Input<string>;
+    honeypotName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the honeypot management node.
      */
-    nodeId?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string | undefined>;
     /**
      * The custom parameter ID of honeypot.
      */
-    presetId?: pulumi.Input<string>;
+    presetId?: pulumi.Input<string | undefined>;
     /**
      * Honeypot status.
      */
-    states?: pulumi.Input<pulumi.Input<string>[]>;
+    states?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

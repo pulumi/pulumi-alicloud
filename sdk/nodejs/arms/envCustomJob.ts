@@ -162,23 +162,23 @@ export interface EnvCustomJobState {
     /**
      * The locale. The default is Chinese zh | en.
      */
-    aliyunLang?: pulumi.Input<string>;
+    aliyunLang?: pulumi.Input<string | undefined>;
     /**
      * Yaml configuration string.
      */
-    configYaml?: pulumi.Input<string>;
+    configYaml?: pulumi.Input<string | undefined>;
     /**
      * Custom job name.
      */
-    envCustomJobName?: pulumi.Input<string>;
+    envCustomJobName?: pulumi.Input<string | undefined>;
     /**
      * Environment id.
      */
-    environmentId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<string | undefined>;
     /**
      * Status: run, stop.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -188,7 +188,7 @@ export interface EnvCustomJobArgs {
     /**
      * The locale. The default is Chinese zh | en.
      */
-    aliyunLang?: pulumi.Input<string>;
+    aliyunLang?: pulumi.Input<string | undefined>;
     /**
      * Yaml configuration string.
      */
@@ -204,5 +204,5 @@ export interface EnvCustomJobArgs {
     /**
      * Status: run, stop.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

@@ -235,12 +235,12 @@ export interface RemediationState {
      * The account Group ID.
      * For more information about how to obtain the account group ID, see ListAggregators.
      */
-    aggregatorId?: pulumi.Input<string>;
+    aggregatorId?: pulumi.Input<string | undefined>;
     /**
      * The rule ID.
      * For more information about how to obtain the rule ID, see [ListAggregateConfigRules].
      */
-    configRuleId?: pulumi.Input<string>;
+    configRuleId?: pulumi.Input<string | undefined>;
     /**
      * Correction of execution mode. Value:
      * - NON_EXECUTION: Not executed.
@@ -248,33 +248,33 @@ export interface RemediationState {
      * - MANUAL_EXECUTION: Execute manually.
      * - NOT_CONFIG: Not set.
      */
-    invokeType?: pulumi.Input<string>;
+    invokeType?: pulumi.Input<string | undefined>;
     /**
      * Multi-account remediation ID
      */
-    remediationId?: pulumi.Input<string>;
+    remediationId?: pulumi.Input<string | undefined>;
     /**
      * Correct the parameters of the settings.
      * For more information about how to obtain the parameters of remediation settings, see the parameter 'Template definition' in ListRemediationTemplates '.
      */
-    remediationOriginParams?: pulumi.Input<string>;
+    remediationOriginParams?: pulumi.Input<string | undefined>;
     /**
      * The source of the template to perform the correction. Value:
      * - ALIYUN (default): Official website template.
      * - CUSTOM: CUSTOM template.
      * - NONE: NONE.
      */
-    remediationSourceType?: pulumi.Input<string>;
+    remediationSourceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the correction template.
      */
-    remediationTemplateId?: pulumi.Input<string>;
+    remediationTemplateId?: pulumi.Input<string | undefined>;
     /**
      * Remediation type. Value:
      * - OOS: Operation and maintenance orchestration (Template correction).
      * - FC: Function Compute (custom correction).
      */
-    remediationType?: pulumi.Input<string>;
+    remediationType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -310,7 +310,7 @@ export interface RemediationArgs {
      * - CUSTOM: CUSTOM template.
      * - NONE: NONE.
      */
-    remediationSourceType?: pulumi.Input<string>;
+    remediationSourceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the correction template.
      */

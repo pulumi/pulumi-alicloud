@@ -215,69 +215,69 @@ export interface EndpointState {
     /**
      * Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
      */
-    autoAddNewNodes?: pulumi.Input<string>;
+    autoAddNewNodes?: pulumi.Input<string | undefined>;
     /**
      * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster that can run database.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * The name of the endpoint.
      */
-    dbEndpointDescription?: pulumi.Input<string>;
+    dbEndpointDescription?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.161.0) The ID of the cluster endpoint.
      */
-    dbEndpointId?: pulumi.Input<string>;
+    dbEndpointId?: pulumi.Input<string | undefined>;
     /**
      * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
      */
-    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * The network type of the endpoint address.
      */
-    netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string | undefined>;
     /**
      * Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Port of the specified endpoint. Valid values: 3000 to 5999.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
      */
-    readWriteMode?: pulumi.Input<string>;
+    readWriteMode?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
      */
-    sslAutoRotate?: pulumi.Input<string>;
+    sslAutoRotate?: pulumi.Input<string | undefined>;
     /**
      * Specifies SSL certificate download link.  
      * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
      * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      */
-    sslCertificateUrl?: pulumi.Input<string>;
+    sslCertificateUrl?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.121.0) The SSL connection string.
      */
-    sslConnectionString?: pulumi.Input<string>;
+    sslConnectionString?: pulumi.Input<string | undefined>;
     /**
      * Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
      */
-    sslEnabled?: pulumi.Input<string>;
+    sslEnabled?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.121.0) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    sslExpireTime?: pulumi.Input<string>;
+    sslExpireTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -287,11 +287,11 @@ export interface EndpointArgs {
     /**
      * Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
      */
-    autoAddNewNodes?: pulumi.Input<string>;
+    autoAddNewNodes?: pulumi.Input<string | undefined>;
     /**
      * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster that can run database.
      */
@@ -299,37 +299,37 @@ export interface EndpointArgs {
     /**
      * The name of the endpoint.
      */
-    dbEndpointDescription?: pulumi.Input<string>;
+    dbEndpointDescription?: pulumi.Input<string | undefined>;
     /**
      * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
      */
-    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of the endpoint. Before v1.121.0, it only can be `Custom`. since v1.121.0, `Custom`, `Cluster`, `Primary` are valid, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * The network type of the endpoint address.
      */
-    netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string | undefined>;
     /**
      * Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Port of the specified endpoint. Valid values: 3000 to 5999.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
      */
-    readWriteMode?: pulumi.Input<string>;
+    readWriteMode?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
      */
-    sslAutoRotate?: pulumi.Input<string>;
+    sslAutoRotate?: pulumi.Input<string | undefined>;
     /**
      * Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
      */
-    sslEnabled?: pulumi.Input<string>;
+    sslEnabled?: pulumi.Input<string | undefined>;
 }

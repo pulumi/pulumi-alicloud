@@ -21,8 +21,8 @@ class RdsInstanceCrossBackupPolicyArgs:
     def __init__(__self__, *,
                  cross_backup_region: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 log_backup_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input[_builtins.int]] = None):
+                 log_backup_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a RdsInstanceCrossBackupPolicy resource.
 
@@ -66,7 +66,7 @@ class RdsInstanceCrossBackupPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="logBackupEnabled")
-    def log_backup_enabled(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_backup_enabled(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the cross-region log backup feature on the instance. Valid values:
         - Enable: Enables the feature.
@@ -75,36 +75,36 @@ class RdsInstanceCrossBackupPolicyArgs:
         return pulumi.get(self, "log_backup_enabled")
 
     @log_backup_enabled.setter
-    def log_backup_enabled(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_backup_enabled(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_backup_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days for which the cross-region backup files of the instance are retained. Valid values: 7 to 1825. Default value: 7.
         """
         return pulumi.get(self, "retention")
 
     @retention.setter
-    def retention(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention", value)
 
 
 @pulumi.input_type
 class _RdsInstanceCrossBackupPolicyState:
     def __init__(__self__, *,
-                 backup_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_enabled_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_backup_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 lock_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_backup_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_backup_enabled_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 retent_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input[_builtins.int]] = None):
+                 backup_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_enabled_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_backup_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 lock_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_backup_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_backup_enabled_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 retent_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RdsInstanceCrossBackupPolicy resources.
 
@@ -154,7 +154,7 @@ class _RdsInstanceCrossBackupPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="backupEnabled")
-    def backup_enabled(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_enabled(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the overall cross-region backup switch on the instance. Valid values:
         - Disabled
@@ -163,72 +163,72 @@ class _RdsInstanceCrossBackupPolicyState:
         return pulumi.get(self, "backup_enabled")
 
     @backup_enabled.setter
-    def backup_enabled(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_enabled(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="backupEnabledTime")
-    def backup_enabled_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_enabled_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when cross-region backup was enabled on the instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         """
         return pulumi.get(self, "backup_enabled_time")
 
     @backup_enabled_time.setter
-    def backup_enabled_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_enabled_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_enabled_time", value)
 
     @_builtins.property
     @pulumi.getter(name="crossBackupRegion")
-    def cross_backup_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_backup_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the destination region where the cross-region backup files of the instance are stored.
         """
         return pulumi.get(self, "cross_backup_region")
 
     @cross_backup_region.setter
-    def cross_backup_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_backup_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_backup_region", value)
 
     @_builtins.property
     @pulumi.getter(name="crossBackupType")
-    def cross_backup_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_backup_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy that is used to save cross-region backups of the instance. Default value: 1. The default value 1 indicates that all cross-region backups are saved.
         """
         return pulumi.get(self, "cross_backup_type")
 
     @cross_backup_type.setter
-    def cross_backup_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_backup_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_backup_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceStatus")
-    def db_instance_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the instance. For more information, see Instance status.
         """
         return pulumi.get(self, "db_instance_status")
 
     @db_instance_status.setter
-    def db_instance_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_status", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lockMode")
-    def lock_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lock_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lock status of the instance. Valid values:
         - Unlock: The instance is not locked.
@@ -240,12 +240,12 @@ class _RdsInstanceCrossBackupPolicyState:
         return pulumi.get(self, "lock_mode")
 
     @lock_mode.setter
-    def lock_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lock_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lock_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupEnabled")
-    def log_backup_enabled(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_backup_enabled(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the cross-region log backup feature on the instance. Valid values:
         - Enable: Enables the feature.
@@ -254,43 +254,43 @@ class _RdsInstanceCrossBackupPolicyState:
         return pulumi.get(self, "log_backup_enabled")
 
     @log_backup_enabled.setter
-    def log_backup_enabled(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_backup_enabled(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_backup_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupEnabledTime")
-    def log_backup_enabled_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_backup_enabled_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when cross-region log backup was enabled on the instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         """
         return pulumi.get(self, "log_backup_enabled_time")
 
     @log_backup_enabled_time.setter
-    def log_backup_enabled_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_backup_enabled_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_backup_enabled_time", value)
 
     @_builtins.property
     @pulumi.getter(name="retentType")
-    def retent_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retent_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy that is used to retain cross-region backups of the instance. Default value: 1. The default value 1 indicate that cross-region backups are retained based on the specified retention period.
         """
         return pulumi.get(self, "retent_type")
 
     @retent_type.setter
-    def retent_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retent_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retent_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days for which the cross-region backup files of the instance are retained. Valid values: 7 to 1825. Default value: 7.
         """
         return pulumi.get(self, "retention")
 
     @retention.setter
-    def retention(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention", value)
 
 
@@ -300,10 +300,10 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cross_backup_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_backup_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input[_builtins.int]] = None,
+                 cross_backup_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_backup_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides an RDS instance emote disaster recovery strategy policy resource and used to configure instance emote disaster recovery strategy policy.
@@ -344,7 +344,7 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             category="HighAvailability",
             instance_name=name,
@@ -420,7 +420,7 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             category="HighAvailability",
             instance_name=name,
@@ -457,10 +457,10 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cross_backup_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_backup_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input[_builtins.int]] = None,
+                 cross_backup_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_backup_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -495,17 +495,17 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_enabled_time: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_backup_region: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_status: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            lock_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            log_backup_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-            log_backup_enabled_time: Optional[pulumi.Input[_builtins.str]] = None,
-            retent_type: Optional[pulumi.Input[_builtins.str]] = None,
-            retention: Optional[pulumi.Input[_builtins.int]] = None) -> 'RdsInstanceCrossBackupPolicy':
+            backup_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_enabled_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_backup_region: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_status: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            lock_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            log_backup_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+            log_backup_enabled_time: pulumi.Input[Optional[_builtins.str]] = None,
+            retent_type: pulumi.Input[Optional[_builtins.str]] = None,
+            retention: pulumi.Input[Optional[_builtins.int]] = None) -> 'RdsInstanceCrossBackupPolicy':
         """
         Get an existing RdsInstanceCrossBackupPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

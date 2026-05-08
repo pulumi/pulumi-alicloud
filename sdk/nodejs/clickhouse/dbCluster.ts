@@ -309,114 +309,114 @@ export interface DbClusterState {
     /**
      * Whether to enable public connection. Value options: `true`, `false`.
      */
-    allocatePublicConnection?: pulumi.Input<boolean>;
+    allocatePublicConnection?: pulumi.Input<boolean | undefined>;
     /**
      * The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `coldStorage` cannot be set to `DISABLE` again.
      */
-    coldStorage?: pulumi.Input<string>;
+    coldStorage?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.196.0) - The connection string of the cluster.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * The db cluster access white list. See `dbClusterAccessWhiteList` below.
      */
-    dbClusterAccessWhiteLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterDbClusterAccessWhiteList>[]>;
+    dbClusterAccessWhiteLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterDbClusterAccessWhiteList>[] | undefined>;
     /**
      * The DBCluster class. According to the category, dbClusterClass has two value ranges:
      * * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
      * * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
      */
-    dbClusterClass?: pulumi.Input<string>;
+    dbClusterClass?: pulumi.Input<string | undefined>;
     /**
      * The DBCluster description.
      */
-    dbClusterDescription?: pulumi.Input<string>;
+    dbClusterDescription?: pulumi.Input<string | undefined>;
     /**
      * The DBCluster network type. Valid values: `vpc`.
      */
-    dbClusterNetworkType?: pulumi.Input<string>;
+    dbClusterNetworkType?: pulumi.Input<string | undefined>;
     /**
      * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`, `25.3`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      */
-    dbClusterVersion?: pulumi.Input<string>;
+    dbClusterVersion?: pulumi.Input<string | undefined>;
     /**
      * The db node group count. The number should between 1 and 48.
      */
-    dbNodeGroupCount?: pulumi.Input<number>;
+    dbNodeGroupCount?: pulumi.Input<number | undefined>;
     /**
      * The db node storage.
      */
-    dbNodeStorage?: pulumi.Input<string>;
+    dbNodeStorage?: pulumi.Input<string | undefined>;
     /**
      * Key management service KMS key ID. It is valid and required when encryptionType is `CloudDisk`.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
      */
-    encryptionType?: pulumi.Input<string>;
+    encryptionType?: pulumi.Input<string | undefined>;
     /**
      * The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
      */
-    maintainTime?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string | undefined>;
     /**
      * The zone IDs and 
      * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
      */
-    multiZoneVswitchLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterMultiZoneVswitchList>[]>;
+    multiZoneVswitchLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterMultiZoneVswitchList>[] | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.196.0) The connection port of the cluster.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocatePublicConnection` is `true`.
      */
-    publicConnectionString?: pulumi.Input<string>;
+    publicConnectionString?: pulumi.Input<string | undefined>;
     /**
      * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * The used time of DBCluster. It is valid and required when paymentType is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
      */
-    usedTime?: pulumi.Input<string>;
+    usedTime?: pulumi.Input<string | undefined>;
     /**
      * The id of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vswitch id of DBCluster.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the instance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -426,7 +426,7 @@ export interface DbClusterArgs {
     /**
      * Whether to enable public connection. Value options: `true`, `false`.
      */
-    allocatePublicConnection?: pulumi.Input<boolean>;
+    allocatePublicConnection?: pulumi.Input<boolean | undefined>;
     /**
      * The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
      */
@@ -434,11 +434,11 @@ export interface DbClusterArgs {
     /**
      * Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `coldStorage` cannot be set to `DISABLE` again.
      */
-    coldStorage?: pulumi.Input<string>;
+    coldStorage?: pulumi.Input<string | undefined>;
     /**
      * The db cluster access white list. See `dbClusterAccessWhiteList` below.
      */
-    dbClusterAccessWhiteLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterDbClusterAccessWhiteList>[]>;
+    dbClusterAccessWhiteLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterDbClusterAccessWhiteList>[] | undefined>;
     /**
      * The DBCluster class. According to the category, dbClusterClass has two value ranges:
      * * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
@@ -448,7 +448,7 @@ export interface DbClusterArgs {
     /**
      * The DBCluster description.
      */
-    dbClusterDescription?: pulumi.Input<string>;
+    dbClusterDescription?: pulumi.Input<string | undefined>;
     /**
      * The DBCluster network type. Valid values: `vpc`.
      */
@@ -468,20 +468,20 @@ export interface DbClusterArgs {
     /**
      * Key management service KMS key ID. It is valid and required when encryptionType is `CloudDisk`.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
      */
-    encryptionType?: pulumi.Input<string>;
+    encryptionType?: pulumi.Input<string | undefined>;
     /**
      * The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
      */
-    maintainTime?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string | undefined>;
     /**
      * The zone IDs and 
      * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
      */
-    multiZoneVswitchLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterMultiZoneVswitchList>[]>;
+    multiZoneVswitchLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterMultiZoneVswitchList>[] | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */
@@ -489,19 +489,19 @@ export interface DbClusterArgs {
     /**
      * Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
      */
@@ -509,17 +509,17 @@ export interface DbClusterArgs {
     /**
      * The used time of DBCluster. It is valid and required when paymentType is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
      */
-    usedTime?: pulumi.Input<string>;
+    usedTime?: pulumi.Input<string | undefined>;
     /**
      * The id of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vswitch id of DBCluster.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the instance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

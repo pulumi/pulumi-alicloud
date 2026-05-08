@@ -22,8 +22,8 @@ __all__ = ['TunnelQuotaTimerArgs', 'TunnelQuotaTimer']
 class TunnelQuotaTimerArgs:
     def __init__(__self__, *,
                  nickname: pulumi.Input[_builtins.str],
-                 quota_timers: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelQuotaTimerQuotaTimerArgs']]]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 quota_timers: pulumi.Input[Optional[Sequence[pulumi.Input['TunnelQuotaTimerQuotaTimerArgs']]]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TunnelQuotaTimer resource.
 
@@ -55,7 +55,7 @@ class TunnelQuotaTimerArgs:
 
     @_builtins.property
     @pulumi.getter(name="quotaTimers")
-    def quota_timers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TunnelQuotaTimerQuotaTimerArgs']]]]:
+    def quota_timers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TunnelQuotaTimerQuotaTimerArgs']]]]:
         """
         Time-Sharing configuration
 
@@ -65,12 +65,12 @@ class TunnelQuotaTimerArgs:
         return pulumi.get(self, "quota_timers")
 
     @quota_timers.setter
-    def quota_timers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelQuotaTimerQuotaTimerArgs']]]]):
+    def quota_timers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TunnelQuotaTimerQuotaTimerArgs']]]]):
         pulumi.set(self, "quota_timers", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time zone, reference: Asia/Shanghai
         In general, the system will automatically generate the time zone according to the region without configuration.
@@ -78,16 +78,16 @@ class TunnelQuotaTimerArgs:
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
 
 @pulumi.input_type
 class _TunnelQuotaTimerState:
     def __init__(__self__, *,
-                 nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_timers: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelQuotaTimerQuotaTimerArgs']]]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_timers: pulumi.Input[Optional[Sequence[pulumi.Input['TunnelQuotaTimerQuotaTimerArgs']]]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TunnelQuotaTimer resources.
 
@@ -108,19 +108,19 @@ class _TunnelQuotaTimerState:
 
     @_builtins.property
     @pulumi.getter
-    def nickname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nickname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The nickname of the exclusive Resource Group (Tunnel Quota) for the level - 1 data transmission service.
         """
         return pulumi.get(self, "nickname")
 
     @nickname.setter
-    def nickname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nickname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nickname", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaTimers")
-    def quota_timers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TunnelQuotaTimerQuotaTimerArgs']]]]:
+    def quota_timers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TunnelQuotaTimerQuotaTimerArgs']]]]:
         """
         Time-Sharing configuration
 
@@ -130,12 +130,12 @@ class _TunnelQuotaTimerState:
         return pulumi.get(self, "quota_timers")
 
     @quota_timers.setter
-    def quota_timers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelQuotaTimerQuotaTimerArgs']]]]):
+    def quota_timers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TunnelQuotaTimerQuotaTimerArgs']]]]):
         pulumi.set(self, "quota_timers", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time zone, reference: Asia/Shanghai
         In general, the system will automatically generate the time zone according to the region without configuration.
@@ -143,7 +143,7 @@ class _TunnelQuotaTimerState:
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
 
@@ -153,9 +153,9 @@ class TunnelQuotaTimer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_timers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict']]]]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_timers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict']]]]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Max Compute Tunnel Quota Timer resource.
@@ -322,9 +322,9 @@ class TunnelQuotaTimer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_timers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict']]]]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_timers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict']]]]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -349,9 +349,9 @@ class TunnelQuotaTimer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            nickname: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_timers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict']]]]] = None,
-            time_zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'TunnelQuotaTimer':
+            nickname: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_timers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelQuotaTimerQuotaTimerArgs', 'TunnelQuotaTimerQuotaTimerArgsDict']]]]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'TunnelQuotaTimer':
         """
         Get an existing TunnelQuotaTimer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

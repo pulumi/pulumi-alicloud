@@ -129,19 +129,19 @@ export interface ReceiversState {
     /**
      * The description of receivers and 1-50 characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The alias of receivers. Must email address and less than 30 characters in length.
      */
-    receiversAlias?: pulumi.Input<string>;
+    receiversAlias?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource. The length that cannot be repeated is 1-30 characters.
      */
-    receiversName?: pulumi.Input<string>;
+    receiversName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. `0` means uploading, `1` means upload completed.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -151,7 +151,7 @@ export interface ReceiversArgs {
     /**
      * The description of receivers and 1-50 characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The alias of receivers. Must email address and less than 30 characters in length.
      */

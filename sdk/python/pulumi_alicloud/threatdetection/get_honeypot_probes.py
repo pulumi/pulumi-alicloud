@@ -207,13 +207,13 @@ def get_honeypot_probes(display_name: Optional[_builtins.str] = None,
         probe_status=pulumi.get(__ret__, 'probe_status'),
         probe_type=pulumi.get(__ret__, 'probe_type'),
         probes=pulumi.get(__ret__, 'probes'))
-def get_honeypot_probes_output(display_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                               ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               probe_status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               probe_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_honeypot_probes_output(display_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                               ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               probe_status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               probe_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHoneypotProbesResult]:
     """
     This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)

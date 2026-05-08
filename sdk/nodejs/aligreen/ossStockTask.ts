@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  *         Type: "suggestion",
  *         Value: "block",
  *     }),
- *     callbackId: defaultJnW8Na.id,
+ *     callbackId: defaultJnW8Na.id.apply(x =>Number(x)),
  *     imageAdFreezeConfig: JSON.stringify({
  *         Type: "suggestion",
  *         Value: "block",
@@ -388,71 +388,71 @@ export interface OssStockTaskState {
     /**
      * Voice auto freeze configuration. Example:{"type":"suggestion","value":"block,review"}. The results are frozen according to the suggestion in the speech detection results.
      */
-    audioAntispamFreezeConfig?: pulumi.Input<string>;
+    audioAntispamFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * Audio detection auto freeze switch. Value: true: automatically freeze, false: not automatically freeze.
      */
-    audioAutoFreezeOpened?: pulumi.Input<boolean>;
+    audioAutoFreezeOpened?: pulumi.Input<boolean | undefined>;
     /**
      * Resource property field representing the maximum size of a single audio. 1~2048MB, the default is 200MB, more than not detected.
      */
-    audioMaxSize?: pulumi.Input<number>;
+    audioMaxSize?: pulumi.Input<number | undefined>;
     /**
      * oss stock scan task detect audio. true: scan audio, false: do not scan audio
      */
-    audioOpened?: pulumi.Input<boolean>;
+    audioOpened?: pulumi.Input<boolean | undefined>;
     /**
      * The upper limit of voice scan in the oss stock scan task. The default value is 1000/Bucket.
      */
-    audioScanLimit?: pulumi.Input<number>;
+    audioScanLimit?: pulumi.Input<number | undefined>;
     /**
      * The audio detection scenarios included in the oss stock scan task. Set the value to antispam.
      */
-    audioScenes?: pulumi.Input<string>;
+    audioScenes?: pulumi.Input<string | undefined>;
     /**
      * Automatic freeze type. Value: acl: modify permissions, copy: Move files
      */
-    autoFreezeType?: pulumi.Input<string>;
+    autoFreezeType?: pulumi.Input<string | undefined>;
     /**
      * Business scenarios used by the oss stock scan task
      */
-    bizType?: pulumi.Input<string>;
+    bizType?: pulumi.Input<string | undefined>;
     /**
      * The bucket configuration list of the oss stock scan task. Example:[{"Bucket":"bucket01","Selected":true,"Prefixes":["img/test_"],"Type":"exclude"}]
      */
-    buckets?: pulumi.Input<string>;
+    buckets?: pulumi.Input<string | undefined>;
     /**
      * The ID of the primary key of the notification message bound to the oss stock scan task.
      */
-    callbackId?: pulumi.Input<number>;
+    callbackId?: pulumi.Input<number | undefined>;
     /**
      * The end time of the file upload time range indicates the scanning of files uploaded before this time point.
      */
-    endDate?: pulumi.Input<string>;
+    endDate?: pulumi.Input<string | undefined>;
     /**
      * Picture automatically freezes the configuration of ad scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
      */
-    imageAdFreezeConfig?: pulumi.Input<string>;
+    imageAdFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * Picture detection auto freeze switch. Value: true: auto freeze, false: not auto freeze.
      */
-    imageAutoFreezeOpened?: pulumi.Input<boolean>;
+    imageAutoFreezeOpened?: pulumi.Input<boolean | undefined>;
     /**
      * Picture automatic freezing live scene configuration. Example:{"type":"suggestion","value":"block,review"}. The result will be frozen according to the suggestion in the picture detection result.
      */
-    imageLiveFreezeConfig?: pulumi.Input<string>;
+    imageLiveFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * oss stock scan task detect images. true: scan images, false: do not scan images
      */
-    imageOpened?: pulumi.Input<boolean>;
+    imageOpened?: pulumi.Input<boolean | undefined>;
     /**
      * Picture automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
      */
-    imagePornFreezeConfig?: pulumi.Input<string>;
+    imagePornFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * The upper limit for scanning images in the oss stock scan task. The default value is 10000 images per Bucket.
      */
-    imageScanLimit?: pulumi.Input<number>;
+    imageScanLimit?: pulumi.Input<number | undefined>;
     /**
      * The image moderation scenario included in the oss stock scan task.Valid values:
      * porn: pornography detection
@@ -460,55 +460,55 @@ export interface OssStockTaskState {
      * ad: ad violation detection
      * live: undesirable scene detection
      */
-    imageScenes?: pulumi.Input<pulumi.Input<string>[]>;
+    imageScenes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The picture automatically freezes the configuration of terrorism scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
      */
-    imageTerrorismFreezeConfig?: pulumi.Input<string>;
+    imageTerrorismFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * Whether the oss stock scan task detects images with file names without suffixes. true: Detect pictures with file names without suffixes, false: Do not detect pictures with file names without suffixes
      */
-    scanImageNoFileType?: pulumi.Input<boolean>;
+    scanImageNoFileType?: pulumi.Input<boolean | undefined>;
     /**
      * The start time of the file upload time range represents the files uploaded after scanning this time point.
      */
-    startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string | undefined>;
     /**
      * The video automatically freezes the configuration of ad scenarios. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
      */
-    videoAdFreezeConfig?: pulumi.Input<string>;
+    videoAdFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * Video detection auto freeze switch. Value: true: automatically freeze, false: not automatically freeze.
      */
-    videoAutoFreezeOpened?: pulumi.Input<boolean>;
+    videoAutoFreezeOpened?: pulumi.Input<boolean | undefined>;
     /**
      * Resource attribute field representing the framing frequency. 1~60 seconds/frame, the default is 1 second/frame
      */
-    videoFrameInterval?: pulumi.Input<number>;
+    videoFrameInterval?: pulumi.Input<number | undefined>;
     /**
      * Video automatic freeze live scene configuration. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
      */
-    videoLiveFreezeConfig?: pulumi.Input<string>;
+    videoLiveFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * A resource attribute field that represents the upper limit of a single video frame cut. 5 to 20000 frames, the default is 200 frames
      */
-    videoMaxFrames?: pulumi.Input<number>;
+    videoMaxFrames?: pulumi.Input<number | undefined>;
     /**
      * Resource property field representing the maximum size of a single video. 1~2048MB, the default is 500MB, more than not detected.
      */
-    videoMaxSize?: pulumi.Input<number>;
+    videoMaxSize?: pulumi.Input<number | undefined>;
     /**
      * oss stock scan task detect video. true: scan video, false: do not scan video
      */
-    videoOpened?: pulumi.Input<boolean>;
+    videoOpened?: pulumi.Input<boolean | undefined>;
     /**
      * Video automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the video detection result.
      */
-    videoPornFreezeConfig?: pulumi.Input<string>;
+    videoPornFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * The upper limit of video scanning in the oss stock scan task. The default value is 1000/Bucket.
      */
-    videoScanLimit?: pulumi.Input<number>;
+    videoScanLimit?: pulumi.Input<number | undefined>;
     /**
      * The video detection scenarios included in the oss stock scan task.
      * porn: pornography detection
@@ -517,15 +517,15 @@ export interface OssStockTaskState {
      * live: undesirable scene detection
      * antispam: Video voice antispam
      */
-    videoScenes?: pulumi.Input<string>;
+    videoScenes?: pulumi.Input<string | undefined>;
     /**
      * The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
      */
-    videoTerrorismFreezeConfig?: pulumi.Input<string>;
+    videoTerrorismFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * Voice auto freeze configuration in video. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
      */
-    videoVoiceAntispamFreezeConfig?: pulumi.Input<string>;
+    videoVoiceAntispamFreezeConfig?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -535,71 +535,71 @@ export interface OssStockTaskArgs {
     /**
      * Voice auto freeze configuration. Example:{"type":"suggestion","value":"block,review"}. The results are frozen according to the suggestion in the speech detection results.
      */
-    audioAntispamFreezeConfig?: pulumi.Input<string>;
+    audioAntispamFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * Audio detection auto freeze switch. Value: true: automatically freeze, false: not automatically freeze.
      */
-    audioAutoFreezeOpened?: pulumi.Input<boolean>;
+    audioAutoFreezeOpened?: pulumi.Input<boolean | undefined>;
     /**
      * Resource property field representing the maximum size of a single audio. 1~2048MB, the default is 200MB, more than not detected.
      */
-    audioMaxSize?: pulumi.Input<number>;
+    audioMaxSize?: pulumi.Input<number | undefined>;
     /**
      * oss stock scan task detect audio. true: scan audio, false: do not scan audio
      */
-    audioOpened?: pulumi.Input<boolean>;
+    audioOpened?: pulumi.Input<boolean | undefined>;
     /**
      * The upper limit of voice scan in the oss stock scan task. The default value is 1000/Bucket.
      */
-    audioScanLimit?: pulumi.Input<number>;
+    audioScanLimit?: pulumi.Input<number | undefined>;
     /**
      * The audio detection scenarios included in the oss stock scan task. Set the value to antispam.
      */
-    audioScenes?: pulumi.Input<string>;
+    audioScenes?: pulumi.Input<string | undefined>;
     /**
      * Automatic freeze type. Value: acl: modify permissions, copy: Move files
      */
-    autoFreezeType?: pulumi.Input<string>;
+    autoFreezeType?: pulumi.Input<string | undefined>;
     /**
      * Business scenarios used by the oss stock scan task
      */
-    bizType?: pulumi.Input<string>;
+    bizType?: pulumi.Input<string | undefined>;
     /**
      * The bucket configuration list of the oss stock scan task. Example:[{"Bucket":"bucket01","Selected":true,"Prefixes":["img/test_"],"Type":"exclude"}]
      */
-    buckets?: pulumi.Input<string>;
+    buckets?: pulumi.Input<string | undefined>;
     /**
      * The ID of the primary key of the notification message bound to the oss stock scan task.
      */
-    callbackId?: pulumi.Input<number>;
+    callbackId?: pulumi.Input<number | undefined>;
     /**
      * The end time of the file upload time range indicates the scanning of files uploaded before this time point.
      */
-    endDate?: pulumi.Input<string>;
+    endDate?: pulumi.Input<string | undefined>;
     /**
      * Picture automatically freezes the configuration of ad scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
      */
-    imageAdFreezeConfig?: pulumi.Input<string>;
+    imageAdFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * Picture detection auto freeze switch. Value: true: auto freeze, false: not auto freeze.
      */
-    imageAutoFreezeOpened?: pulumi.Input<boolean>;
+    imageAutoFreezeOpened?: pulumi.Input<boolean | undefined>;
     /**
      * Picture automatic freezing live scene configuration. Example:{"type":"suggestion","value":"block,review"}. The result will be frozen according to the suggestion in the picture detection result.
      */
-    imageLiveFreezeConfig?: pulumi.Input<string>;
+    imageLiveFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * oss stock scan task detect images. true: scan images, false: do not scan images
      */
-    imageOpened?: pulumi.Input<boolean>;
+    imageOpened?: pulumi.Input<boolean | undefined>;
     /**
      * Picture automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
      */
-    imagePornFreezeConfig?: pulumi.Input<string>;
+    imagePornFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * The upper limit for scanning images in the oss stock scan task. The default value is 10000 images per Bucket.
      */
-    imageScanLimit?: pulumi.Input<number>;
+    imageScanLimit?: pulumi.Input<number | undefined>;
     /**
      * The image moderation scenario included in the oss stock scan task.Valid values:
      * porn: pornography detection
@@ -607,55 +607,55 @@ export interface OssStockTaskArgs {
      * ad: ad violation detection
      * live: undesirable scene detection
      */
-    imageScenes?: pulumi.Input<pulumi.Input<string>[]>;
+    imageScenes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The picture automatically freezes the configuration of terrorism scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
      */
-    imageTerrorismFreezeConfig?: pulumi.Input<string>;
+    imageTerrorismFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * Whether the oss stock scan task detects images with file names without suffixes. true: Detect pictures with file names without suffixes, false: Do not detect pictures with file names without suffixes
      */
-    scanImageNoFileType?: pulumi.Input<boolean>;
+    scanImageNoFileType?: pulumi.Input<boolean | undefined>;
     /**
      * The start time of the file upload time range represents the files uploaded after scanning this time point.
      */
-    startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string | undefined>;
     /**
      * The video automatically freezes the configuration of ad scenarios. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
      */
-    videoAdFreezeConfig?: pulumi.Input<string>;
+    videoAdFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * Video detection auto freeze switch. Value: true: automatically freeze, false: not automatically freeze.
      */
-    videoAutoFreezeOpened?: pulumi.Input<boolean>;
+    videoAutoFreezeOpened?: pulumi.Input<boolean | undefined>;
     /**
      * Resource attribute field representing the framing frequency. 1~60 seconds/frame, the default is 1 second/frame
      */
-    videoFrameInterval?: pulumi.Input<number>;
+    videoFrameInterval?: pulumi.Input<number | undefined>;
     /**
      * Video automatic freeze live scene configuration. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
      */
-    videoLiveFreezeConfig?: pulumi.Input<string>;
+    videoLiveFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * A resource attribute field that represents the upper limit of a single video frame cut. 5 to 20000 frames, the default is 200 frames
      */
-    videoMaxFrames?: pulumi.Input<number>;
+    videoMaxFrames?: pulumi.Input<number | undefined>;
     /**
      * Resource property field representing the maximum size of a single video. 1~2048MB, the default is 500MB, more than not detected.
      */
-    videoMaxSize?: pulumi.Input<number>;
+    videoMaxSize?: pulumi.Input<number | undefined>;
     /**
      * oss stock scan task detect video. true: scan video, false: do not scan video
      */
-    videoOpened?: pulumi.Input<boolean>;
+    videoOpened?: pulumi.Input<boolean | undefined>;
     /**
      * Video automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the video detection result.
      */
-    videoPornFreezeConfig?: pulumi.Input<string>;
+    videoPornFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * The upper limit of video scanning in the oss stock scan task. The default value is 1000/Bucket.
      */
-    videoScanLimit?: pulumi.Input<number>;
+    videoScanLimit?: pulumi.Input<number | undefined>;
     /**
      * The video detection scenarios included in the oss stock scan task.
      * porn: pornography detection
@@ -664,13 +664,13 @@ export interface OssStockTaskArgs {
      * live: undesirable scene detection
      * antispam: Video voice antispam
      */
-    videoScenes?: pulumi.Input<string>;
+    videoScenes?: pulumi.Input<string | undefined>;
     /**
      * The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
      */
-    videoTerrorismFreezeConfig?: pulumi.Input<string>;
+    videoTerrorismFreezeConfig?: pulumi.Input<string | undefined>;
     /**
      * Voice auto freeze configuration in video. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
      */
-    videoVoiceAntispamFreezeConfig?: pulumi.Input<string>;
+    videoVoiceAntispamFreezeConfig?: pulumi.Input<string | undefined>;
 }

@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Nlb
     ///         ServerGroupName = name,
     ///     });
     /// 
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Nlb
     /// IX3OTy5aL4Ue8nBip3bVw+V/9L9xhmXbex6IMwwvrWI4OfMt6ECifQ==
     /// -----END CERTIFICATE-----
     /// ",
-    ///         CertificateName = Std.Index.Join.Invoke(new()
+    ///         CertificateName = Std.Join.Invoke(new()
     ///         {
     ///             Separator = "-",
     ///             Input = new[]
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.Nlb
     /// DUBTxOAvSYfXTtI90EAxEG/bJJyOm5LqoiA=
     /// -----END CERTIFICATE-----
     /// ",
-    ///         CertificateName = Std.Index.Join.Invoke(new()
+    ///         CertificateName = Std.Join.Invoke(new()
     ///         {
     ///             Separator = "-",
     ///             Input = new[]

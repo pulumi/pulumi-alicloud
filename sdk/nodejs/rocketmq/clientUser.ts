@@ -164,35 +164,35 @@ export interface ClientUserState {
     /**
      * The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
      */
-    clientIp?: pulumi.Input<string>;
+    clientIp?: pulumi.Input<string | undefined>;
     /**
      * The password of the KMS Encryption.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * The context of the KMS Encryption.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SAG instance created for the SAG APP.
      */
-    sagId?: pulumi.Input<string>;
+    sagId?: pulumi.Input<string | undefined>;
     /**
      * The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
      */
-    userMail?: pulumi.Input<string>;
+    userMail?: pulumi.Input<string | undefined>;
     /**
      * The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -206,19 +206,19 @@ export interface ClientUserArgs {
     /**
      * The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
      */
-    clientIp?: pulumi.Input<string>;
+    clientIp?: pulumi.Input<string | undefined>;
     /**
      * The password of the KMS Encryption.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * The context of the KMS Encryption.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SAG instance created for the SAG APP.
      */
@@ -230,5 +230,5 @@ export interface ClientUserArgs {
     /**
      * The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }

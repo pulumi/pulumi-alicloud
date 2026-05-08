@@ -87,5 +87,5 @@ export interface GetCharacterSetNamesOutputArgs {
      * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
      */
     engine: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

@@ -153,19 +153,19 @@ export interface TunnelQuotaTimerState {
     /**
      * The nickname of the exclusive Resource Group (Tunnel Quota) for the level - 1 data transmission service.
      */
-    nickname?: pulumi.Input<string>;
+    nickname?: pulumi.Input<string | undefined>;
     /**
      * Time-Sharing configuration
      *
      * > **NOTE:** -- The same reserved Quota resource group supports up to 48 time intervals. The minimum duration of a time interval is 30 minutes. -- After the current data transmission service is configured for time-sharing, if you need to perform a downgrade operation on the data transmission service (package year and month), please reduce the time-sharing concurrency first. -- The effective time of the time-sharing configuration is 0 to 5 minutes, and the billing will be calculated according to the actual effective time. -- Please make sure to set the time range completely from 00:00 to 24:00
      * See `quotaTimer` below.
      */
-    quotaTimers?: pulumi.Input<pulumi.Input<inputs.maxcompute.TunnelQuotaTimerQuotaTimer>[]>;
+    quotaTimers?: pulumi.Input<pulumi.Input<inputs.maxcompute.TunnelQuotaTimerQuotaTimer>[] | undefined>;
     /**
      * Time zone, reference: Asia/Shanghai
      * In general, the system will automatically generate the time zone according to the region without configuration.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -182,10 +182,10 @@ export interface TunnelQuotaTimerArgs {
      * > **NOTE:** -- The same reserved Quota resource group supports up to 48 time intervals. The minimum duration of a time interval is 30 minutes. -- After the current data transmission service is configured for time-sharing, if you need to perform a downgrade operation on the data transmission service (package year and month), please reduce the time-sharing concurrency first. -- The effective time of the time-sharing configuration is 0 to 5 minutes, and the billing will be calculated according to the actual effective time. -- Please make sure to set the time range completely from 00:00 to 24:00
      * See `quotaTimer` below.
      */
-    quotaTimers?: pulumi.Input<pulumi.Input<inputs.maxcompute.TunnelQuotaTimerQuotaTimer>[]>;
+    quotaTimers?: pulumi.Input<pulumi.Input<inputs.maxcompute.TunnelQuotaTimerQuotaTimer>[] | undefined>;
     /**
      * Time zone, reference: Asia/Shanghai
      * In general, the system will automatically generate the time zone according to the region without configuration.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }

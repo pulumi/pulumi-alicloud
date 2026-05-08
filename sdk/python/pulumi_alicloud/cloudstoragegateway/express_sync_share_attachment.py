@@ -73,9 +73,9 @@ class ExpressSyncShareAttachmentArgs:
 @pulumi.input_type
 class _ExpressSyncShareAttachmentState:
     def __init__(__self__, *,
-                 express_sync_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 express_sync_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExpressSyncShareAttachment resources.
 
@@ -92,38 +92,38 @@ class _ExpressSyncShareAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="expressSyncId")
-    def express_sync_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def express_sync_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ExpressSync.
         """
         return pulumi.get(self, "express_sync_id")
 
     @express_sync_id.setter
-    def express_sync_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def express_sync_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "express_sync_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
-    def gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Gateway.
         """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
-    def gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="shareName")
-    def share_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
         """
         return pulumi.get(self, "share_name")
 
     @share_name.setter
-    def share_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share_name", value)
 
 
@@ -133,9 +133,9 @@ class ExpressSyncShareAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 express_sync_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 express_sync_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Storage Gateway Express Sync Share Attachment resource.
@@ -360,9 +360,9 @@ class ExpressSyncShareAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 express_sync_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 express_sync_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -391,9 +391,9 @@ class ExpressSyncShareAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            express_sync_id: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            share_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ExpressSyncShareAttachment':
+            express_sync_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            share_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ExpressSyncShareAttachment':
         """
         Get an existing ExpressSyncShareAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

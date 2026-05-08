@@ -21,7 +21,7 @@ class CustomDiskAttachmentArgs:
     def __init__(__self__, *,
                  disk_id: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 delete_with_instance: Optional[pulumi.Input[_builtins.bool]] = None):
+                 delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a CustomDiskAttachment resource.
 
@@ -66,7 +66,7 @@ class CustomDiskAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="deleteWithInstance")
-    def delete_with_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the disk is released together with the instance when the instance is released. Value range:
         true: Release.
@@ -79,18 +79,18 @@ class CustomDiskAttachmentArgs:
         return pulumi.get(self, "delete_with_instance")
 
     @delete_with_instance.setter
-    def delete_with_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_with_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_with_instance", value)
 
 
 @pulumi.input_type
 class _CustomDiskAttachmentState:
     def __init__(__self__, *,
-                 delete_with_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomDiskAttachment resources.
 
@@ -119,7 +119,7 @@ class _CustomDiskAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="deleteWithInstance")
-    def delete_with_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the disk is released together with the instance when the instance is released. Value range:
         true: Release.
@@ -132,55 +132,55 @@ class _CustomDiskAttachmentState:
         return pulumi.get(self, "delete_with_instance")
 
     @delete_with_instance.setter
-    def delete_with_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_with_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_with_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cloud disk to be mounted. The cloud disk ('DiskId') and the instance ('InstanceId') must be in the same zone.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the target RDS Custom instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the disk.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -190,9 +190,9 @@ class CustomDiskAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_with_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RDS Custom Disk Attachment resource.
@@ -347,9 +347,9 @@ class CustomDiskAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_with_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -378,11 +378,11 @@ class CustomDiskAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delete_with_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-            disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'CustomDiskAttachment':
+            delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+            disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomDiskAttachment':
         """
         Get an existing CustomDiskAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

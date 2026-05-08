@@ -206,7 +206,7 @@ def get_instance_types(charge_type: Optional[_builtins.str] = None,
         version="2.0",
         instance_type="hbase.sn2.large",
         disk_type="cloud_ssd")
-    hbase = alicloud.hbase.Instance("hbase", core_instance_type=default.types[0].id)
+    hbase = alicloud.hbase.Instance("hbase", core_instance_type=output(default.types[0].id).apply(lambda x: str(x)))
     ```
 
 
@@ -245,14 +245,14 @@ def get_instance_types(charge_type: Optional[_builtins.str] = None,
         types=pulumi.get(__ret__, 'types'),
         version=pulumi.get(__ret__, 'version'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_instance_types_output(charge_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              disk_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              engine: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              instance_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              region_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              version: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_types_output(charge_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              disk_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              engine: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              instance_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              region_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceTypesResult]:
     """
     This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
@@ -272,7 +272,7 @@ def get_instance_types_output(charge_type: Optional[pulumi.Input[Optional[_built
         version="2.0",
         instance_type="hbase.sn2.large",
         disk_type="cloud_ssd")
-    hbase = alicloud.hbase.Instance("hbase", core_instance_type=default.types[0].id)
+    hbase = alicloud.hbase.Instance("hbase", core_instance_type=output(default.types[0].id).apply(lambda x: str(x)))
     ```
 
 

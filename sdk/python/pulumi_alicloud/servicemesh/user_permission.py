@@ -22,7 +22,7 @@ __all__ = ['UserPermissionArgs', 'UserPermission']
 class UserPermissionArgs:
     def __init__(__self__, *,
                  sub_account_user_id: pulumi.Input[_builtins.str],
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]] = None):
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]] = None):
         """
         The set of arguments for constructing a UserPermission resource.
 
@@ -47,22 +47,22 @@ class UserPermissionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]]:
+    def permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]]:
         """
         List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]]):
+    def permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]]):
         pulumi.set(self, "permissions", value)
 
 
 @pulumi.input_type
 class _UserPermissionState:
     def __init__(__self__, *,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]] = None,
-                 sub_account_user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]] = None,
+                 sub_account_user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserPermission resources.
 
@@ -76,26 +76,26 @@ class _UserPermissionState:
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]]:
+    def permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]]:
         """
         List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]]):
+    def permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserPermissionPermissionArgs']]]]):
         pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="subAccountUserId")
-    def sub_account_user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_account_user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration of the Load Balancer. See the following `Block load_balancer`.
         """
         return pulumi.get(self, "sub_account_user_id")
 
     @sub_account_user_id.setter
-    def sub_account_user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_account_user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_account_user_id", value)
 
 
@@ -105,8 +105,8 @@ class UserPermission(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionPermissionArgs', 'UserPermissionPermissionArgsDict']]]]] = None,
-                 sub_account_user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPermissionPermissionArgs', 'UserPermissionPermissionArgsDict']]]]] = None,
+                 sub_account_user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Service Mesh UserPermission resource.
@@ -260,8 +260,8 @@ class UserPermission(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionPermissionArgs', 'UserPermissionPermissionArgsDict']]]]] = None,
-                 sub_account_user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPermissionPermissionArgs', 'UserPermissionPermissionArgsDict']]]]] = None,
+                 sub_account_user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -285,8 +285,8 @@ class UserPermission(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionPermissionArgs', 'UserPermissionPermissionArgsDict']]]]] = None,
-            sub_account_user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserPermission':
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPermissionPermissionArgs', 'UserPermissionPermissionArgsDict']]]]] = None,
+            sub_account_user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserPermission':
         """
         Get an existing UserPermission resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

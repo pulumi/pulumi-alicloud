@@ -98,8 +98,8 @@ class LogMetaArgs:
 @pulumi.input_type
 class _LogMetaState:
     def __init__(__self__, *,
-                 log_meta_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 log_meta_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogMeta resources.
 
@@ -133,7 +133,7 @@ class _LogMetaState:
 
     @_builtins.property
     @pulumi.getter(name="logMetaName")
-    def log_meta_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_meta_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the exclusive Logstore where logs are stored. Value:
         - aegis-log-client: client event log
@@ -160,19 +160,19 @@ class _LogMetaState:
         return pulumi.get(self, "log_meta_name")
 
     @log_meta_name.setter
-    def log_meta_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_meta_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_meta_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -182,8 +182,8 @@ class LogMeta(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 log_meta_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 log_meta_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Log Meta resource.
@@ -313,8 +313,8 @@ class LogMeta(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 log_meta_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 log_meta_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -340,8 +340,8 @@ class LogMeta(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            log_meta_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'LogMeta':
+            log_meta_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'LogMeta':
         """
         Get an existing LogMeta resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

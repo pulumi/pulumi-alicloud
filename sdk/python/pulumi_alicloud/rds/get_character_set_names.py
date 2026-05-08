@@ -109,8 +109,8 @@ def get_character_set_names(engine: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_character_set_names_output(engine: Optional[pulumi.Input[_builtins.str]] = None,
-                                   output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_character_set_names_output(engine: pulumi.Input[Optional[_builtins.str]] = None,
+                                   output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCharacterSetNamesResult]:
     """
     This data source is the character set supported by querying RDS instances.

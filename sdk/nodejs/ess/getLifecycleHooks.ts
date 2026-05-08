@@ -120,17 +120,17 @@ export interface GetLifecycleHooksOutputArgs {
     /**
      * A list of lifecycle hook IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter resulting lifecycle hook by name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Scaling group id the lifecycle hooks belong to.
      */
-    scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string | undefined>;
 }

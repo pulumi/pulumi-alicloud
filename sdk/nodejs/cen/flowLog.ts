@@ -200,59 +200,59 @@ export interface FlowLogState {
     /**
      * cen id
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * CreateTime
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the flowlog.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the flowlog.
      */
-    flowLogName?: pulumi.Input<string>;
+    flowLogName?: pulumi.Input<string | undefined>;
     /**
      * The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * Log Format
      */
-    logFormatString?: pulumi.Input<string>;
+    logFormatString?: pulumi.Input<string | undefined>;
     /**
      * The LogStore that stores the flowlog.
      */
-    logStoreName?: pulumi.Input<string>;
+    logStoreName?: pulumi.Input<string | undefined>;
     /**
      * The Project that stores the flowlog.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * region id
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The status of the flow log. Valid values:
      * - `Active`: started.
      * - `InActive`: not started.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Cross-region Connection ID or VBR connection ID.
      *
      * > **NOTE:**  This parameter is required.
      */
-    transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * Transit Router ID
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -266,19 +266,19 @@ export interface FlowLogArgs {
     /**
      * The description of the flowlog.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the flowlog.
      */
-    flowLogName?: pulumi.Input<string>;
+    flowLogName?: pulumi.Input<string | undefined>;
     /**
      * The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * Log Format
      */
-    logFormatString?: pulumi.Input<string>;
+    logFormatString?: pulumi.Input<string | undefined>;
     /**
      * The LogStore that stores the flowlog.
      */
@@ -292,19 +292,19 @@ export interface FlowLogArgs {
      * - `Active`: started.
      * - `InActive`: not started.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Cross-region Connection ID or VBR connection ID.
      *
      * > **NOTE:**  This parameter is required.
      */
-    transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * Transit Router ID
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
 }

@@ -176,19 +176,19 @@ export interface PluginAttachmentState {
     /**
      * The apiId that plugin attaches to.
      */
-    apiId?: pulumi.Input<string>;
+    apiId?: pulumi.Input<string | undefined>;
     /**
      * The group that the api belongs to.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The plugin that attaches to the api.
      */
-    pluginId?: pulumi.Input<string>;
+    pluginId?: pulumi.Input<string | undefined>;
     /**
      * Stage that the plugin attaches to.
      */
-    stageName?: pulumi.Input<string>;
+    stageName?: pulumi.Input<string | undefined>;
 }
 
 /**

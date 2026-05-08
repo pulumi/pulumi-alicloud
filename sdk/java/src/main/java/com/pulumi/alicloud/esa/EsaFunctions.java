@@ -38,8 +38,8 @@ public final class EsaFunctions {
      * import com.pulumi.alicloud.esa.SiteArgs;
      * import com.pulumi.alicloud.esa.EsaFunctions;
      * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -106,8 +106,8 @@ public final class EsaFunctions {
      * import com.pulumi.alicloud.esa.SiteArgs;
      * import com.pulumi.alicloud.esa.EsaFunctions;
      * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -174,8 +174,8 @@ public final class EsaFunctions {
      * import com.pulumi.alicloud.esa.SiteArgs;
      * import com.pulumi.alicloud.esa.EsaFunctions;
      * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -242,8 +242,8 @@ public final class EsaFunctions {
      * import com.pulumi.alicloud.esa.SiteArgs;
      * import com.pulumi.alicloud.esa.EsaFunctions;
      * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -310,8 +310,8 @@ public final class EsaFunctions {
      * import com.pulumi.alicloud.esa.SiteArgs;
      * import com.pulumi.alicloud.esa.EsaFunctions;
      * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -378,8 +378,8 @@ public final class EsaFunctions {
      * import com.pulumi.alicloud.esa.SiteArgs;
      * import com.pulumi.alicloud.esa.EsaFunctions;
      * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -446,8 +446,8 @@ public final class EsaFunctions {
      * import com.pulumi.alicloud.esa.SiteArgs;
      * import com.pulumi.alicloud.esa.EsaFunctions;
      * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -515,8 +515,8 @@ public final class EsaFunctions {
      * import com.pulumi.alicloud.esa.WafRuleset;
      * import com.pulumi.alicloud.esa.WafRulesetArgs;
      * import com.pulumi.alicloud.esa.inputs.GetWafRulesetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -585,8 +585,8 @@ public final class EsaFunctions {
      * import com.pulumi.alicloud.esa.WafRuleset;
      * import com.pulumi.alicloud.esa.WafRulesetArgs;
      * import com.pulumi.alicloud.esa.inputs.GetWafRulesetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -655,8 +655,8 @@ public final class EsaFunctions {
      * import com.pulumi.alicloud.esa.WafRuleset;
      * import com.pulumi.alicloud.esa.WafRulesetArgs;
      * import com.pulumi.alicloud.esa.inputs.GetWafRulesetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -725,8 +725,8 @@ public final class EsaFunctions {
      * import com.pulumi.alicloud.esa.WafRuleset;
      * import com.pulumi.alicloud.esa.WafRulesetArgs;
      * import com.pulumi.alicloud.esa.inputs.GetWafRulesetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -795,8 +795,8 @@ public final class EsaFunctions {
      * import com.pulumi.alicloud.esa.WafRuleset;
      * import com.pulumi.alicloud.esa.WafRulesetArgs;
      * import com.pulumi.alicloud.esa.inputs.GetWafRulesetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

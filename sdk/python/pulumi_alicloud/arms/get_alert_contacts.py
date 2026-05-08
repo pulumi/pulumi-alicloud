@@ -176,12 +176,12 @@ def get_alert_contacts(alert_contact_name: Optional[_builtins.str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         phone_num=pulumi.get(__ret__, 'phone_num'))
-def get_alert_contacts_output(alert_contact_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              email: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                              name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              phone_num: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_alert_contacts_output(alert_contact_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              email: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                              name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              phone_num: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertContactsResult]:
     """
     This data source provides the Arms Alert Contacts of the current Alibaba Cloud user.

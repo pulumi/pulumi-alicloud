@@ -176,12 +176,12 @@ def get_snapshots(file_system_id: Optional[_builtins.str] = None,
         snapshot_name=pulumi.get(__ret__, 'snapshot_name'),
         snapshots=pulumi.get(__ret__, 'snapshots'),
         status=pulumi.get(__ret__, 'status'))
-def get_snapshots_output(file_system_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         snapshot_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_snapshots_output(file_system_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         snapshot_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnapshotsResult]:
     """
     This data source provides the Nas Snapshots of the current Alibaba Cloud user.

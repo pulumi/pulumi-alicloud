@@ -24,11 +24,11 @@ class TrafficMirrorFilterIngressRuleInitArgs:
                  protocol: pulumi.Input[_builtins.str],
                  source_cidr_block: pulumi.Input[_builtins.str],
                  traffic_mirror_filter_id: pulumi.Input[_builtins.str],
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rule_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_port_range: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rule_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port_range: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TrafficMirrorFilterIngressRule resource.
 
@@ -130,31 +130,31 @@ class TrafficMirrorFilterIngressRuleInitArgs:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationPortRange")
-    def destination_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination CIDR block of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
         """
         return pulumi.get(self, "destination_port_range")
 
     @destination_port_range.setter
-    def destination_port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_port_range", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck this request only. Value:
         - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
@@ -163,50 +163,50 @@ class TrafficMirrorFilterIngressRuleInitArgs:
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleAction")
     @_utilities.deprecated("""Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""")
-    def rule_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         """
         return pulumi.get(self, "rule_action")
 
     @rule_action.setter
-    def rule_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_action", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcePortRange")
-    def source_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
         """
         return pulumi.get(self, "source_port_range")
 
     @source_port_range.setter
-    def source_port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_port_range", value)
 
 
 @pulumi.input_type
 class _TrafficMirrorFilterIngressRuleState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_mirror_filter_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_mirror_filter_ingress_rule_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_mirror_filter_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_mirror_filter_ingress_rule_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrafficMirrorFilterIngressRule resources.
 
@@ -257,43 +257,43 @@ class _TrafficMirrorFilterIngressRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationCidrBlock")
-    def destination_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination CIDR block of the inbound traffic.
         """
         return pulumi.get(self, "destination_cidr_block")
 
     @destination_cidr_block.setter
-    def destination_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationPortRange")
-    def destination_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination CIDR block of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
         """
         return pulumi.get(self, "destination_port_range")
 
     @destination_port_range.setter
-    def destination_port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_port_range", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck this request only. Value:
         - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
@@ -302,85 +302,85 @@ class _TrafficMirrorFilterIngressRuleState:
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleAction")
     @_utilities.deprecated("""Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""")
-    def rule_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         """
         return pulumi.get(self, "rule_action")
 
     @rule_action.setter
-    def rule_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_action", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceCidrBlock")
-    def source_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source CIDR block of the inbound traffic.
         """
         return pulumi.get(self, "source_cidr_block")
 
     @source_cidr_block.setter
-    def source_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcePortRange")
-    def source_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
         """
         return pulumi.get(self, "source_port_range")
 
     @source_port_range.setter
-    def source_port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_port_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMirrorFilterId")
-    def traffic_mirror_filter_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_mirror_filter_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the filter.
 
@@ -389,19 +389,19 @@ class _TrafficMirrorFilterIngressRuleState:
         return pulumi.get(self, "traffic_mirror_filter_id")
 
     @traffic_mirror_filter_id.setter
-    def traffic_mirror_filter_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_mirror_filter_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_mirror_filter_id", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMirrorFilterIngressRuleId")
-    def traffic_mirror_filter_ingress_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_mirror_filter_ingress_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the outbound rule.
         """
         return pulumi.get(self, "traffic_mirror_filter_ingress_rule_id")
 
     @traffic_mirror_filter_ingress_rule_id.setter
-    def traffic_mirror_filter_ingress_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_mirror_filter_ingress_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_mirror_filter_ingress_rule_id", value)
 
 
@@ -411,16 +411,16 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_mirror_filter_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_mirror_filter_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPC Traffic Mirror Filter Ingress Rule resource. Traffic mirror entry rule.
@@ -536,16 +536,16 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_mirror_filter_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_mirror_filter_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -587,18 +587,18 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_action: Optional[pulumi.Input[_builtins.str]] = None,
-            source_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            source_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            traffic_mirror_filter_id: Optional[pulumi.Input[_builtins.str]] = None,
-            traffic_mirror_filter_ingress_rule_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TrafficMirrorFilterIngressRule':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_action: pulumi.Input[Optional[_builtins.str]] = None,
+            source_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            source_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_mirror_filter_id: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_mirror_filter_ingress_rule_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TrafficMirrorFilterIngressRule':
         """
         Get an existing TrafficMirrorFilterIngressRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

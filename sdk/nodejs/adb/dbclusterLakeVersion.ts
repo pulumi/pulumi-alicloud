@@ -344,154 +344,154 @@ export interface DBClusterLakeVersionState {
     /**
      * The ID of the backup set that you want to use to restore data.
      */
-    backupSetId?: pulumi.Input<string>;
+    backupSetId?: pulumi.Input<string | undefined>;
     /**
      * The name of the service.
      */
-    commodityCode?: pulumi.Input<string>;
+    commodityCode?: pulumi.Input<string | undefined>;
     /**
      * The computing resources of the cluster.
      */
-    computeResource?: pulumi.Input<string>;
+    computeResource?: pulumi.Input<string | undefined>;
     /**
      * The endpoint of the cluster.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * The createTime of the cluster.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the cluster.
      */
-    dbClusterDescription?: pulumi.Input<string>;
+    dbClusterDescription?: pulumi.Input<string | undefined>;
     /**
      * The version of the cluster. Valid values: `5.0`.
      */
-    dbClusterVersion?: pulumi.Input<string>;
+    dbClusterVersion?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable disk encryption. Valid values: `true`, `false`.
      */
-    diskEncryption?: pulumi.Input<boolean>;
+    diskEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable default allocation of resources to userDefault resource groups.
      */
-    enableDefaultResourceGroup?: pulumi.Input<boolean>;
+    enableDefaultResourceGroup?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
      */
-    enableSsl?: pulumi.Input<boolean>;
+    enableSsl?: pulumi.Input<boolean | undefined>;
     /**
      * The engine of the database.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * The engine version of the database.
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * The time when the cluster expires.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the cluster has expired.
      */
-    expired?: pulumi.Input<boolean>;
+    expired?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
      */
-    kmsId?: pulumi.Input<string>;
+    kmsId?: pulumi.Input<string | undefined>;
     /**
      * The lock mode of the cluster.
      */
-    lockMode?: pulumi.Input<string>;
+    lockMode?: pulumi.Input<string | undefined>;
     /**
      * The reason why the cluster is locked.
      */
-    lockReason?: pulumi.Input<string>;
+    lockReason?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The port that is used to access the cluster.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * The product form of the cluster. Valid values:
      * - `IntegrationForm`: Integrated.
      * - `LegacyForm`: Data Lakehouse Edition.
      */
-    productForm?: pulumi.Input<string>;
+    productForm?: pulumi.Input<string | undefined>;
     /**
      * The edition of the cluster. Valid values:
      * - `BasicVersion`: Basic Edition.
      * - `EnterpriseVersion`: Enterprise Edition.
      * > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
      */
-    productVersion?: pulumi.Input<string>;
+    productVersion?: pulumi.Input<string | undefined>;
     /**
      * The number of reserved resource nodes.
      */
-    reservedNodeCount?: pulumi.Input<number>;
+    reservedNodeCount?: pulumi.Input<number | undefined>;
     /**
      * The specifications of reserved resource nodes.
      */
-    reservedNodeSize?: pulumi.Input<string>;
+    reservedNodeSize?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The point in time to which you want to restore data from the backup set.
      */
-    restoreToTime?: pulumi.Input<string>;
+    restoreToTime?: pulumi.Input<string | undefined>;
     /**
      * The method that you want to use to restore data. Valid values:
      */
-    restoreType?: pulumi.Input<string>;
+    restoreType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the secondary zone.
      */
-    secondaryVswitchId?: pulumi.Input<string>;
+    secondaryVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the secondary vSwitch.
      */
-    secondaryZoneId?: pulumi.Input<string>;
+    secondaryZoneId?: pulumi.Input<string | undefined>;
     /**
      * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
      * - IP addresses, such as 10.23.XX.XX.
      * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
      */
-    securityIps?: pulumi.Input<string>;
+    securityIps?: pulumi.Input<string | undefined>;
     /**
      * The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
      */
-    sourceDbClusterId?: pulumi.Input<string>;
+    sourceDbClusterId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The storage resources of the cluster.
      */
-    storageResource?: pulumi.Input<string>;
+    storageResource?: pulumi.Input<string | undefined>;
     /**
      * The vpc ID of the resource.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the resource.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -501,15 +501,15 @@ export interface DBClusterLakeVersionArgs {
     /**
      * The ID of the backup set that you want to use to restore data.
      */
-    backupSetId?: pulumi.Input<string>;
+    backupSetId?: pulumi.Input<string | undefined>;
     /**
      * The computing resources of the cluster.
      */
-    computeResource?: pulumi.Input<string>;
+    computeResource?: pulumi.Input<string | undefined>;
     /**
      * The description of the cluster.
      */
-    dbClusterDescription?: pulumi.Input<string>;
+    dbClusterDescription?: pulumi.Input<string | undefined>;
     /**
      * The version of the cluster. Valid values: `5.0`.
      */
@@ -517,19 +517,19 @@ export interface DBClusterLakeVersionArgs {
     /**
      * Specifies whether to enable disk encryption. Valid values: `true`, `false`.
      */
-    diskEncryption?: pulumi.Input<boolean>;
+    diskEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable default allocation of resources to userDefault resource groups.
      */
-    enableDefaultResourceGroup?: pulumi.Input<boolean>;
+    enableDefaultResourceGroup?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
      */
-    enableSsl?: pulumi.Input<boolean>;
+    enableSsl?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
      */
-    kmsId?: pulumi.Input<string>;
+    kmsId?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`. From version 1.272.0, `paymentType` can be modified.
      */
@@ -537,62 +537,62 @@ export interface DBClusterLakeVersionArgs {
     /**
      * The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The product form of the cluster. Valid values:
      * - `IntegrationForm`: Integrated.
      * - `LegacyForm`: Data Lakehouse Edition.
      */
-    productForm?: pulumi.Input<string>;
+    productForm?: pulumi.Input<string | undefined>;
     /**
      * The edition of the cluster. Valid values:
      * - `BasicVersion`: Basic Edition.
      * - `EnterpriseVersion`: Enterprise Edition.
      * > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
      */
-    productVersion?: pulumi.Input<string>;
+    productVersion?: pulumi.Input<string | undefined>;
     /**
      * The number of reserved resource nodes.
      */
-    reservedNodeCount?: pulumi.Input<number>;
+    reservedNodeCount?: pulumi.Input<number | undefined>;
     /**
      * The specifications of reserved resource nodes.
      */
-    reservedNodeSize?: pulumi.Input<string>;
+    reservedNodeSize?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The point in time to which you want to restore data from the backup set.
      */
-    restoreToTime?: pulumi.Input<string>;
+    restoreToTime?: pulumi.Input<string | undefined>;
     /**
      * The method that you want to use to restore data. Valid values:
      */
-    restoreType?: pulumi.Input<string>;
+    restoreType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the secondary zone.
      */
-    secondaryVswitchId?: pulumi.Input<string>;
+    secondaryVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the secondary vSwitch.
      */
-    secondaryZoneId?: pulumi.Input<string>;
+    secondaryZoneId?: pulumi.Input<string | undefined>;
     /**
      * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
      * - IP addresses, such as 10.23.XX.XX.
      * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
      */
-    securityIps?: pulumi.Input<string>;
+    securityIps?: pulumi.Input<string | undefined>;
     /**
      * The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
      */
-    sourceDbClusterId?: pulumi.Input<string>;
+    sourceDbClusterId?: pulumi.Input<string | undefined>;
     /**
      * The storage resources of the cluster.
      */
-    storageResource?: pulumi.Input<string>;
+    storageResource?: pulumi.Input<string | undefined>;
     /**
      * The vpc ID of the resource.
      */

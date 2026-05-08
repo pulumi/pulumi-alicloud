@@ -187,9 +187,9 @@ export interface GetKubernetesVersionOutputArgs {
     /**
      * The ACK released kubernetes version.
      */
-    kubernetesVersion?: pulumi.Input<string>;
+    kubernetesVersion?: pulumi.Input<string | undefined>;
     /**
      * The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
      */
-    profile?: pulumi.Input<string>;
+    profile?: pulumi.Input<string | undefined>;
 }

@@ -277,77 +277,77 @@ export interface WaitingRoomState {
     /**
      * Custom Cookie name.
      */
-    cookieName?: pulumi.Input<string>;
+    cookieName?: pulumi.Input<string | undefined>;
     /**
      * User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      */
-    customPageHtml?: pulumi.Input<string>;
+    customPageHtml?: pulumi.Input<string | undefined>;
     /**
      * Waiting room description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disable session renewal. Value:
      */
-    disableSessionRenewalEnable?: pulumi.Input<string>;
+    disableSessionRenewalEnable?: pulumi.Input<string | undefined>;
     /**
      * Host name and path. See `hostNameAndPath` below.
      */
-    hostNameAndPaths?: pulumi.Input<pulumi.Input<inputs.esa.WaitingRoomHostNameAndPath>[]>;
+    hostNameAndPaths?: pulumi.Input<pulumi.Input<inputs.esa.WaitingRoomHostNameAndPath>[] | undefined>;
     /**
      * The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
      */
-    jsonResponseEnable?: pulumi.Input<string>;
+    jsonResponseEnable?: pulumi.Input<string | undefined>;
     /**
      * The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * Number of new users per minute.
      */
-    newUsersPerMinute?: pulumi.Input<string>;
+    newUsersPerMinute?: pulumi.Input<string | undefined>;
     /**
      * All in line. Value:
      */
-    queueAllEnable?: pulumi.Input<string>;
+    queueAllEnable?: pulumi.Input<string | undefined>;
     /**
      * Way of queuing. Value:
      */
-    queuingMethod?: pulumi.Input<string>;
+    queuingMethod?: pulumi.Input<string | undefined>;
     /**
      * Waiting room status code. Value:
      */
-    queuingStatusCode?: pulumi.Input<string>;
+    queuingStatusCode?: pulumi.Input<string | undefined>;
     /**
      * Session duration in minutes.
      */
-    sessionDuration?: pulumi.Input<string>;
+    sessionDuration?: pulumi.Input<string | undefined>;
     /**
      * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Waiting room enabled status. Value:
      * - 'on': Enable waiting room
      * - 'off': Disabled waiting room
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Total number of active users.
      */
-    totalActiveUsers?: pulumi.Input<string>;
+    totalActiveUsers?: pulumi.Input<string | undefined>;
     /**
      * The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) API.
      */
-    waitingRoomId?: pulumi.Input<string>;
+    waitingRoomId?: pulumi.Input<string | undefined>;
     /**
      * The name of the waiting room.
      */
-    waitingRoomName?: pulumi.Input<string>;
+    waitingRoomName?: pulumi.Input<string | undefined>;
     /**
      * Waiting room type, support:
      */
-    waitingRoomType?: pulumi.Input<string>;
+    waitingRoomType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -361,15 +361,15 @@ export interface WaitingRoomArgs {
     /**
      * User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      */
-    customPageHtml?: pulumi.Input<string>;
+    customPageHtml?: pulumi.Input<string | undefined>;
     /**
      * Waiting room description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disable session renewal. Value:
      */
-    disableSessionRenewalEnable?: pulumi.Input<string>;
+    disableSessionRenewalEnable?: pulumi.Input<string | undefined>;
     /**
      * Host name and path. See `hostNameAndPath` below.
      */
@@ -377,11 +377,11 @@ export interface WaitingRoomArgs {
     /**
      * The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
      */
-    jsonResponseEnable?: pulumi.Input<string>;
+    jsonResponseEnable?: pulumi.Input<string | undefined>;
     /**
      * The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * Number of new users per minute.
      */
@@ -389,7 +389,7 @@ export interface WaitingRoomArgs {
     /**
      * All in line. Value:
      */
-    queueAllEnable?: pulumi.Input<string>;
+    queueAllEnable?: pulumi.Input<string | undefined>;
     /**
      * Way of queuing. Value:
      */

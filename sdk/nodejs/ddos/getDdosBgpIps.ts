@@ -132,7 +132,7 @@ export interface GetDdosBgpIpsOutputArgs {
     /**
      * A list of Ip IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the native protection enterprise instance to be operated.
      */
@@ -140,17 +140,17 @@ export interface GetDdosBgpIpsOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The product name. Valid Value:`ECS`, `SLB`, `EIP`, `WAF`.
      */
-    productName?: pulumi.Input<string>;
+    productName?: pulumi.Input<string | undefined>;
     /**
      * The current state of the IP address. Valid Value:
      * - normal: indicates normal (not attacked).
      * - hole_begin: indicates that you are in a black hole state.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

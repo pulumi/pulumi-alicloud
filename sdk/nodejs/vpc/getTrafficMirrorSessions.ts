@@ -230,41 +230,41 @@ export interface GetTrafficMirrorSessionsOutputArgs {
     /**
      * Specifies whether to enable traffic mirror sessions. default to `false`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Traffic Mirror Session IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Traffic Mirror Session name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the filter.
      */
-    trafficMirrorFilterId?: pulumi.Input<string>;
+    trafficMirrorFilterId?: pulumi.Input<string | undefined>;
     /**
      * The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
      */
-    trafficMirrorSessionName?: pulumi.Input<string>;
+    trafficMirrorSessionName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source.
      */
-    trafficMirrorSourceId?: pulumi.Input<string>;
+    trafficMirrorSourceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
      */
-    trafficMirrorTargetId?: pulumi.Input<string>;
+    trafficMirrorTargetId?: pulumi.Input<string | undefined>;
 }

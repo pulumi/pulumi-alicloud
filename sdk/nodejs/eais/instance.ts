@@ -210,57 +210,57 @@ export interface InstanceState {
     /**
      * EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Setting environment variables in eais instance on Initialization See `environmentVar` below.
      */
-    environmentVars?: pulumi.Input<pulumi.Input<inputs.eais.InstanceEnvironmentVar>[]>;
+    environmentVars?: pulumi.Input<pulumi.Input<inputs.eais.InstanceEnvironmentVar>[] | undefined>;
     /**
      * Whether to force the deletion when the instance status does not meet the deletion conditions.
      *
      * @deprecated Field 'force' is deprecated and will be removed in a future release.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * EAIS instance image.
      */
-    image?: pulumi.Input<string>;
+    image?: pulumi.Input<string | undefined>;
     /**
      * Name of the instance
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * EAIS instance type
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Region ID
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Security group ID
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Switch ID.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -270,25 +270,25 @@ export interface InstanceArgs {
     /**
      * EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * Setting environment variables in eais instance on Initialization See `environmentVar` below.
      */
-    environmentVars?: pulumi.Input<pulumi.Input<inputs.eais.InstanceEnvironmentVar>[]>;
+    environmentVars?: pulumi.Input<pulumi.Input<inputs.eais.InstanceEnvironmentVar>[] | undefined>;
     /**
      * Whether to force the deletion when the instance status does not meet the deletion conditions.
      *
      * @deprecated Field 'force' is deprecated and will be removed in a future release.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * EAIS instance image.
      */
-    image?: pulumi.Input<string>;
+    image?: pulumi.Input<string | undefined>;
     /**
      * Name of the instance
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * EAIS instance type
      */
@@ -296,7 +296,7 @@ export interface InstanceArgs {
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Security group ID
      */
@@ -304,11 +304,11 @@ export interface InstanceArgs {
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Switch ID.
      */

@@ -154,11 +154,11 @@ export interface BucketResponseHeaderState {
     /**
      * The name of the bucket
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The container that holds the response header rules. See `rule` below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.oss.BucketResponseHeaderRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.oss.BucketResponseHeaderRule>[] | undefined>;
 }
 
 /**
@@ -172,5 +172,5 @@ export interface BucketResponseHeaderArgs {
     /**
      * The container that holds the response header rules. See `rule` below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.oss.BucketResponseHeaderRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.oss.BucketResponseHeaderRule>[] | undefined>;
 }

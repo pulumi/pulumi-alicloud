@@ -100,7 +100,7 @@ export interface ServiceLinkedRoleState {
     /**
      * The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
      */
-    productName?: pulumi.Input<string>;
+    productName?: pulumi.Input<string | undefined>;
 }
 
 /**

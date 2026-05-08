@@ -130,21 +130,21 @@ export interface GetPrefixListsOutputArgs {
     /**
      * Default to `true`. Set it to `false` can hide the `entrys` to output.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Prefix List IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Prefix List name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The name of the prefix list.
      */
-    prefixListName?: pulumi.Input<string>;
+    prefixListName?: pulumi.Input<string | undefined>;
 }

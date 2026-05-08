@@ -21,7 +21,7 @@ class BgpNetworkArgs:
     def __init__(__self__, *,
                  dst_cidr_block: pulumi.Input[_builtins.str],
                  router_id: pulumi.Input[_builtins.str],
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BgpNetwork resource.
 
@@ -60,24 +60,24 @@ class BgpNetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
 @pulumi.input_type
 class _BgpNetworkState:
     def __init__(__self__, *,
-                 dst_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dst_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpNetwork resources.
 
@@ -97,50 +97,50 @@ class _BgpNetworkState:
 
     @_builtins.property
     @pulumi.getter(name="dstCidrBlock")
-    def dst_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dst_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
         """
         return pulumi.get(self, "dst_cidr_block")
 
     @dst_cidr_block.setter
-    def dst_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dst_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dst_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the virtual border router (VBR) group.
         """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
-    def router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the advertised BGP network.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -150,9 +150,9 @@ class BgpNetwork(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dst_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dst_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Express Connect Bgp Network resource.
@@ -184,7 +184,7 @@ class BgpNetwork(pulumi.CustomResource):
             peering_subnet_mask="255.255.255.252",
             physical_connection_id=default.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=default_integer["id"],
+            vlan_id=int(default_integer["id"]),
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
@@ -246,7 +246,7 @@ class BgpNetwork(pulumi.CustomResource):
             peering_subnet_mask="255.255.255.252",
             physical_connection_id=default.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=default_integer["id"],
+            vlan_id=int(default_integer["id"]),
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
@@ -281,9 +281,9 @@ class BgpNetwork(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dst_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dst_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -311,10 +311,10 @@ class BgpNetwork(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dst_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'BgpNetwork':
+            dst_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'BgpNetwork':
         """
         Get an existing BgpNetwork resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

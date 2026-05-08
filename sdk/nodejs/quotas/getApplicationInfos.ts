@@ -74,13 +74,13 @@ export function getApplicationInfosOutput(args: GetApplicationInfosOutputArgs, o
  * A collection of arguments for invoking getApplicationInfos.
  */
 export interface GetApplicationInfosOutputArgs {
-    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetApplicationInfosDimensionArgs>[]>;
-    enableDetails?: pulumi.Input<boolean>;
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    keyWord?: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetApplicationInfosDimensionArgs>[] | undefined>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    keyWord?: pulumi.Input<string | undefined>;
+    outputFile?: pulumi.Input<string | undefined>;
     productCode: pulumi.Input<string>;
-    quotaActionCode?: pulumi.Input<string>;
-    quotaCategory?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
+    quotaActionCode?: pulumi.Input<string | undefined>;
+    quotaCategory?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
 }

@@ -21,11 +21,11 @@ class KvArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
                  namespace: pulumi.Input[_builtins.str],
-                 expiration: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiration_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 isbase: Optional[pulumi.Input[_builtins.bool]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 expiration: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiration_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 isbase: pulumi.Input[Optional[_builtins.bool]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Kv resource.
 
@@ -76,75 +76,75 @@ class KvArgs:
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://www.alibabacloud.com/help/en/doc-detail/2850486.html).
         """
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationTtl")
-    def expiration_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiration_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
         """
         return pulumi.get(self, "expiration_ttl")
 
     @expiration_ttl.setter
-    def expiration_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiration_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiration_ttl", value)
 
     @_builtins.property
     @pulumi.getter
-    def isbase(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def isbase(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
         """
         return pulumi.get(self, "isbase")
 
     @isbase.setter
-    def isbase(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def isbase(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "isbase", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\\\).
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
 class _KvState:
     def __init__(__self__, *,
-                 expiration: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiration_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 isbase: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 expiration: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiration_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 isbase: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Kv resources.
 
@@ -173,86 +173,86 @@ class _KvState:
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://www.alibabacloud.com/help/en/doc-detail/2850486.html).
         """
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationTtl")
-    def expiration_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiration_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
         """
         return pulumi.get(self, "expiration_ttl")
 
     @expiration_ttl.setter
-    def expiration_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiration_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiration_ttl", value)
 
     @_builtins.property
     @pulumi.getter
-    def isbase(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def isbase(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
         """
         return pulumi.get(self, "isbase")
 
     @isbase.setter
-    def isbase(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def isbase(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "isbase", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         kv
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name specified when calling [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html).
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\\\).
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -262,13 +262,13 @@ class Kv(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 expiration: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiration_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 isbase: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiration_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 isbase: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Kv resource.
@@ -377,13 +377,13 @@ class Kv(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 expiration: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiration_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 isbase: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiration_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 isbase: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -414,13 +414,13 @@ class Kv(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            expiration: Optional[pulumi.Input[_builtins.int]] = None,
-            expiration_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-            isbase: Optional[pulumi.Input[_builtins.bool]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            value: Optional[pulumi.Input[_builtins.str]] = None) -> 'Kv':
+            expiration: pulumi.Input[Optional[_builtins.int]] = None,
+            expiration_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            isbase: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> 'Kv':
         """
         Get an existing Kv resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

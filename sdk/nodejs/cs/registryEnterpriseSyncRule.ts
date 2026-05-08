@@ -288,84 +288,84 @@ export interface RegistryEnterpriseSyncRuleState {
     /**
      * (Available since v1.240.0) The time when the synchronization rule was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Container Registry source instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace name of the source instance.
      */
-    namespaceName?: pulumi.Input<string>;
+    namespaceName?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.240.0) The region ID of the source instance.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The image repository name of the source instance.
      */
-    repoName?: pulumi.Input<string>;
+    repoName?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.240.0) The ID of the synchronization rule.
      */
-    repoSyncRuleId?: pulumi.Input<string>;
+    repoSyncRuleId?: pulumi.Input<string | undefined>;
     /**
      * (Deprecated since v1.240.0) Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
      *
      * @deprecated Field `ruleId` has been deprecated from provider version 1.240.0. New field `repoSyncRuleId` instead.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * The synchronization direction.
      */
-    syncDirection?: pulumi.Input<string>;
+    syncDirection?: pulumi.Input<string | undefined>;
     /**
      * The name of the sync rule.
      */
-    syncRuleName?: pulumi.Input<string>;
+    syncRuleName?: pulumi.Input<string | undefined>;
     /**
      * The synchronization scope. Valid values:
      * - `REPO`: Encrypts or decrypts data.
      * - `NAMESPACE`: Generates or verifies a digital signature.
      * > **NOTE:** From version 1.240.0, `syncScope` can be set.
      */
-    syncScope?: pulumi.Input<string>;
+    syncScope?: pulumi.Input<string | undefined>;
     /**
      * The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
      * - `INITIATIVE`: Manually triggers the synchronization rule.
      * - `PASSIVE`: Automatically triggers the synchronization rule.
      */
-    syncTrigger?: pulumi.Input<string>;
+    syncTrigger?: pulumi.Input<string | undefined>;
     /**
      * The regular expression used to filter image tags.
      */
-    tagFilter?: pulumi.Input<string>;
+    tagFilter?: pulumi.Input<string | undefined>;
     /**
      * The ID of the destination instance.
      */
-    targetInstanceId?: pulumi.Input<string>;
+    targetInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The namespace name of the destination instance.
      */
-    targetNamespaceName?: pulumi.Input<string>;
+    targetNamespaceName?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the destination instance.
      */
-    targetRegionId?: pulumi.Input<string>;
+    targetRegionId?: pulumi.Input<string | undefined>;
     /**
      * The image repository name of the destination instance.
      */
-    targetRepoName?: pulumi.Input<string>;
+    targetRepoName?: pulumi.Input<string | undefined>;
     /**
      * The UID of the account to which the target instance belongs.
      */
-    targetUserId?: pulumi.Input<string>;
+    targetUserId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -381,7 +381,7 @@ export interface RegistryEnterpriseSyncRuleArgs {
      *
      * @deprecated Field `name` has been deprecated from provider version 1.240.0. New field `syncRuleName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace name of the source instance.
      */
@@ -389,24 +389,24 @@ export interface RegistryEnterpriseSyncRuleArgs {
     /**
      * The image repository name of the source instance.
      */
-    repoName?: pulumi.Input<string>;
+    repoName?: pulumi.Input<string | undefined>;
     /**
      * The name of the sync rule.
      */
-    syncRuleName?: pulumi.Input<string>;
+    syncRuleName?: pulumi.Input<string | undefined>;
     /**
      * The synchronization scope. Valid values:
      * - `REPO`: Encrypts or decrypts data.
      * - `NAMESPACE`: Generates or verifies a digital signature.
      * > **NOTE:** From version 1.240.0, `syncScope` can be set.
      */
-    syncScope?: pulumi.Input<string>;
+    syncScope?: pulumi.Input<string | undefined>;
     /**
      * The policy configured to trigger the synchronization rule. Default value: `PASSIVE`. Valid values:
      * - `INITIATIVE`: Manually triggers the synchronization rule.
      * - `PASSIVE`: Automatically triggers the synchronization rule.
      */
-    syncTrigger?: pulumi.Input<string>;
+    syncTrigger?: pulumi.Input<string | undefined>;
     /**
      * The regular expression used to filter image tags.
      */
@@ -426,9 +426,9 @@ export interface RegistryEnterpriseSyncRuleArgs {
     /**
      * The image repository name of the destination instance.
      */
-    targetRepoName?: pulumi.Input<string>;
+    targetRepoName?: pulumi.Input<string | undefined>;
     /**
      * The UID of the account to which the target instance belongs.
      */
-    targetUserId?: pulumi.Input<string>;
+    targetUserId?: pulumi.Input<string | undefined>;
 }

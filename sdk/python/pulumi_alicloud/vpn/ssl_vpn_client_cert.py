@@ -20,7 +20,7 @@ __all__ = ['SslVpnClientCertArgs', 'SslVpnClientCert']
 class SslVpnClientCertArgs:
     def __init__(__self__, *,
                  ssl_vpn_server_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SslVpnClientCert resource.
 
@@ -45,27 +45,27 @@ class SslVpnClientCertArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the client certificate.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _SslVpnClientCertState:
     def __init__(__self__, *,
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_vpn_server_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_vpn_server_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SslVpnClientCert resources.
 
@@ -94,86 +94,86 @@ class _SslVpnClientCertState:
 
     @_builtins.property
     @pulumi.getter(name="caCert")
-    def ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client ca cert.
         """
         return pulumi.get(self, "ca_cert")
 
     @ca_cert.setter
-    def ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client cert.
         """
         return pulumi.get(self, "client_cert")
 
     @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientConfig")
-    def client_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vpn client config.
         """
         return pulumi.get(self, "client_config")
 
     @client_config.setter
-    def client_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_config", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client key.
         """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the client certificate.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="sslVpnServerId")
-    def ssl_vpn_server_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_vpn_server_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the SSL-VPN server.
         """
         return pulumi.get(self, "ssl_vpn_server_id")
 
     @ssl_vpn_server_id.setter
-    def ssl_vpn_server_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_vpn_server_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_vpn_server_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the client certificate.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -183,8 +183,8 @@ class SslVpnClientCert(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_vpn_server_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_vpn_server_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a SSL VPN client cert resource.
@@ -340,8 +340,8 @@ class SslVpnClientCert(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_vpn_server_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_vpn_server_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -372,13 +372,13 @@ class SslVpnClientCert(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            client_config: Optional[pulumi.Input[_builtins.str]] = None,
-            client_key: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_vpn_server_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'SslVpnClientCert':
+            ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            client_config: pulumi.Input[Optional[_builtins.str]] = None,
+            client_key: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_vpn_server_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'SslVpnClientCert':
         """
         Get an existing SslVpnClientCert resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

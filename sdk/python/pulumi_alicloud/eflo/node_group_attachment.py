@@ -24,12 +24,12 @@ class NodeGroupAttachmentArgs:
                  hostname: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupAttachmentDataDiskArgs']]]] = None,
-                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupAttachmentDataDiskArgs']]]] = None,
+                 login_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NodeGroupAttachment resource.
 
@@ -97,89 +97,89 @@ class NodeGroupAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster ID
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupAttachmentDataDiskArgs']]]]:
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupAttachmentDataDiskArgs']]]]:
         """
         The data disk of the cloud disk to be attached to the node. See `data_disk` below.
         """
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
-    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupAttachmentDataDiskArgs']]]]):
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupAttachmentDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
     @pulumi.getter(name="loginPassword")
-    def login_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node login password
         """
         return pulumi.get(self, "login_password")
 
     @login_password.setter
-    def login_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_password", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupId")
-    def node_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node group ID
         """
         return pulumi.get(self, "node_group_id")
 
     @node_group_id.setter
-    def node_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node ID
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined data
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
 
 @pulumi.input_type
 class _NodeGroupAttachmentState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupAttachmentDataDiskArgs']]]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupAttachmentDataDiskArgs']]]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NodeGroupAttachment resources.
 
@@ -214,110 +214,110 @@ class _NodeGroupAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster ID
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupAttachmentDataDiskArgs']]]]:
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupAttachmentDataDiskArgs']]]]:
         """
         The data disk of the cloud disk to be attached to the node. See `data_disk` below.
         """
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
-    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupAttachmentDataDiskArgs']]]]):
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupAttachmentDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node hostname
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="loginPassword")
-    def login_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node login password
         """
         return pulumi.get(self, "login_password")
 
     @login_password.setter
-    def login_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_password", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupId")
-    def node_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node group ID
         """
         return pulumi.get(self, "node_group_id")
 
     @node_group_id.setter
-    def node_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node ID
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined data
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Vpc id
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         vswitch id
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -327,15 +327,15 @@ class NodeGroupAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict']]]]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict']]]]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Eflo Node Group Attachment resource.
@@ -454,15 +454,15 @@ class NodeGroupAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict']]]]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict']]]]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -497,15 +497,15 @@ class NodeGroupAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict']]]]] = None,
-            hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            login_password: Optional[pulumi.Input[_builtins.str]] = None,
-            node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            node_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_data: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'NodeGroupAttachment':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupAttachmentDataDiskArgs', 'NodeGroupAttachmentDataDiskArgsDict']]]]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            login_password: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'NodeGroupAttachment':
         """
         Get an existing NodeGroupAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

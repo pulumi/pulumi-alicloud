@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  *     networkType: "public",
  *     paymentType: "Subscription",
  *     enableIpsec: true,
- *     bandwidth: spec,
+ *     bandwidth: Number(spec),
  * });
  * const vpnGateways = alicloud.vpn.getGatewaysOutput({
  *     ids: [defaultGateway.id],
@@ -231,7 +231,7 @@ export interface GetGatewaysResult {
  *     networkType: "public",
  *     paymentType: "Subscription",
  *     enableIpsec: true,
- *     bandwidth: spec,
+ *     bandwidth: Number(spec),
  * });
  * const vpnGateways = alicloud.vpn.getGatewaysOutput({
  *     ids: [defaultGateway.id],
@@ -263,39 +263,39 @@ export interface GetGatewaysOutputArgs {
     /**
      * Limit search to specific business status - valid value is "Normal", "FinancialLocked".
      */
-    businessStatus?: pulumi.Input<string>;
+    businessStatus?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the IPsec-VPN feature is enabled.
      *
      * @deprecated Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
      */
-    enableIpsec?: pulumi.Input<boolean>;
+    enableIpsec?: pulumi.Input<boolean | undefined>;
     /**
      * IDs of the VPN.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Include ineffective ordering data.
      */
-    includeReservationData?: pulumi.Input<boolean>;
+    includeReservationData?: pulumi.Input<boolean | undefined>;
     /**
      * A regex string of VPN name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * Save the result to the file.
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
      */
-    sslVpn?: pulumi.Input<string>;
+    sslVpn?: pulumi.Input<string | undefined>;
     /**
      * Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Use the VPC ID as the search key.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

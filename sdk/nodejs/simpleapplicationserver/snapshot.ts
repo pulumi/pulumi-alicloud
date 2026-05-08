@@ -140,15 +140,15 @@ export interface SnapshotState {
     /**
      * The ID of the disk.
      */
-    diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string | undefined>;
     /**
      * The name of the snapshot. The name must be `2` to `50` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
      */
-    snapshotName?: pulumi.Input<string>;
+    snapshotName?: pulumi.Input<string | undefined>;
     /**
      * The status of the snapshot. Valid values: `Progressing`, `Accomplished` and `Failed`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

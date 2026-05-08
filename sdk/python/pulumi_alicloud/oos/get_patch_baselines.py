@@ -162,12 +162,12 @@ def get_patch_baselines(enable_details: Optional[_builtins.bool] = None,
         operation_system=pulumi.get(__ret__, 'operation_system'),
         output_file=pulumi.get(__ret__, 'output_file'),
         share_type=pulumi.get(__ret__, 'share_type'))
-def get_patch_baselines_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                               ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               operation_system: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               share_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_patch_baselines_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                               ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               operation_system: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               share_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPatchBaselinesResult]:
     """
     This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.

@@ -19,15 +19,15 @@ __all__ = ['EcsSnapshotGroupArgs', 'EcsSnapshotGroup']
 @pulumi.input_type
 class EcsSnapshotGroupArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exclude_disk_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instant_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instant_access_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exclude_disk_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instant_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instant_access_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EcsSnapshotGroup resource.
 
@@ -62,126 +62,126 @@ class EcsSnapshotGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskIds")
-    def disk_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def disk_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of disk for which to create snapshots. You can specify multiple disk IDs across instances with the same zone.
         """
         return pulumi.get(self, "disk_ids")
 
     @disk_ids.setter
-    def disk_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def disk_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "disk_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeDiskIds")
-    def exclude_disk_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_disk_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of disk N for which you do not need to create snapshots. After this parameter is specified, the created snapshot-consistent group does not contain snapshots of the disk.
         """
         return pulumi.get(self, "exclude_disk_ids")
 
     @exclude_disk_ids.setter
-    def exclude_disk_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_disk_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_disk_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instantAccess")
-    def instant_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def instant_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the instant access feature.
         """
         return pulumi.get(self, "instant_access")
 
     @instant_access.setter
-    def instant_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def instant_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "instant_access", value)
 
     @_builtins.property
     @pulumi.getter(name="instantAccessRetentionDays")
-    def instant_access_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instant_access_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specify the number of days for which the instant access feature is available. Unit: days. Valid values: `1` to `65535`.
         """
         return pulumi.get(self, "instant_access_retention_days")
 
     @instant_access_retention_days.setter
-    def instant_access_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instant_access_retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instant_access_retention_days", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the snapshot consistency group belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotGroupName")
-    def snapshot_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "snapshot_group_name")
 
     @snapshot_group_name.setter
-    def snapshot_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the snapshot group.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _EcsSnapshotGroupState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exclude_disk_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instant_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instant_access_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exclude_disk_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instant_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instant_access_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering EcsSnapshotGroup resources.
 
@@ -219,122 +219,122 @@ class _EcsSnapshotGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskIds")
-    def disk_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def disk_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of disk for which to create snapshots. You can specify multiple disk IDs across instances with the same zone.
         """
         return pulumi.get(self, "disk_ids")
 
     @disk_ids.setter
-    def disk_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def disk_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "disk_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeDiskIds")
-    def exclude_disk_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_disk_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of disk N for which you do not need to create snapshots. After this parameter is specified, the created snapshot-consistent group does not contain snapshots of the disk.
         """
         return pulumi.get(self, "exclude_disk_ids")
 
     @exclude_disk_ids.setter
-    def exclude_disk_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_disk_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_disk_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instantAccess")
-    def instant_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def instant_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the instant access feature.
         """
         return pulumi.get(self, "instant_access")
 
     @instant_access.setter
-    def instant_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def instant_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "instant_access", value)
 
     @_builtins.property
     @pulumi.getter(name="instantAccessRetentionDays")
-    def instant_access_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instant_access_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specify the number of days for which the instant access feature is available. Unit: days. Valid values: `1` to `65535`.
         """
         return pulumi.get(self, "instant_access_retention_days")
 
     @instant_access_retention_days.setter
-    def instant_access_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instant_access_retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instant_access_retention_days", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the snapshot consistency group belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotGroupName")
-    def snapshot_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "snapshot_group_name")
 
     @snapshot_group_name.setter
-    def snapshot_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the snapshot group.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -344,15 +344,15 @@ class EcsSnapshotGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exclude_disk_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instant_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instant_access_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exclude_disk_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instant_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instant_access_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a ECS Snapshot Group resource.
@@ -535,15 +535,15 @@ class EcsSnapshotGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exclude_disk_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instant_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instant_access_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exclude_disk_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instant_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instant_access_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -573,16 +573,16 @@ class EcsSnapshotGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            exclude_disk_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instant_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            instant_access_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            snapshot_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'EcsSnapshotGroup':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            exclude_disk_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instant_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            instant_access_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'EcsSnapshotGroup':
         """
         Get an existing EcsSnapshotGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -158,31 +158,31 @@ export interface ServiceState {
     /**
      * Creation time of the service
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether to enter the development mode.
      */
-    develop?: pulumi.Input<string>;
+    develop?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
      */
-    serviceConfig?: pulumi.Input<string>;
+    serviceConfig?: pulumi.Input<string | undefined>;
     /**
      * Service Current Status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Workspace id
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -192,7 +192,7 @@ export interface ServiceArgs {
     /**
      * Whether to enter the development mode.
      */
-    develop?: pulumi.Input<string>;
+    develop?: pulumi.Input<string | undefined>;
     /**
      * Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
      */
@@ -200,13 +200,13 @@ export interface ServiceArgs {
     /**
      * Service Current Status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Workspace id
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }

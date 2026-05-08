@@ -24,11 +24,11 @@ class HostArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  os_type: pulumi.Input[_builtins.str],
                  source: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_private_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_public_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_instance_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_private_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_public_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_instance_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Host resource.
 
@@ -127,79 +127,79 @@ class HostArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify a host of notes, supports up to 500 characters.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPrivateAddress")
-    def host_private_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_private_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
         """
         return pulumi.get(self, "host_private_address")
 
     @host_private_address.setter
-    def host_private_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_private_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_private_address", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPublicAddress")
-    def host_public_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_public_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
         """
         return pulumi.get(self, "host_public_address")
 
     @host_public_address.setter
-    def host_public_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_public_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_public_address", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceRegionId")
-    def instance_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance region id.
         """
         return pulumi.get(self, "instance_region_id")
 
     @instance_region_id.setter
-    def instance_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceInstanceId")
-    def source_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
         """
         return pulumi.get(self, "source_instance_id")
 
     @source_instance_id.setter
-    def source_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_instance_id", value)
 
 
 @pulumi.input_type
 class _HostState:
     def __init__(__self__, *,
-                 active_address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_private_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_public_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_instance_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 active_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_private_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_public_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_instance_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Host resources.
 
@@ -243,115 +243,115 @@ class _HostState:
 
     @_builtins.property
     @pulumi.getter(name="activeAddressType")
-    def active_address_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def active_address_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
         """
         return pulumi.get(self, "active_address_type")
 
     @active_address_type.setter
-    def active_address_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def active_address_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "active_address_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify a host of notes, supports up to 500 characters.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="hostId")
-    def host_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The host ID.
         """
         return pulumi.get(self, "host_id")
 
     @host_id.setter
-    def host_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the new create a host name of the supports up to 128 characters.
         """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
-    def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPrivateAddress")
-    def host_private_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_private_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
         """
         return pulumi.get(self, "host_private_address")
 
     @host_private_address.setter
-    def host_private_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_private_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_private_address", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPublicAddress")
-    def host_public_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_public_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
         """
         return pulumi.get(self, "host_public_address")
 
     @host_public_address.setter
-    def host_public_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_public_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_public_address", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the new create a host where the Bastion host ID of.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceRegionId")
-    def instance_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance region id.
         """
         return pulumi.get(self, "instance_region_id")
 
     @instance_region_id.setter
-    def instance_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="osType")
-    def os_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
         """
         return pulumi.get(self, "os_type")
 
     @os_type.setter
-    def os_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the new create a host of source. Valid values: 
         * `Local`: localhost
@@ -361,19 +361,19 @@ class _HostState:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceInstanceId")
-    def source_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
         """
         return pulumi.get(self, "source_instance_id")
 
     @source_instance_id.setter
-    def source_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_instance_id", value)
 
 
@@ -383,16 +383,16 @@ class Host(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_private_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_public_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 active_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_private_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_public_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Bastion Host Host resource.
@@ -541,16 +541,16 @@ class Host(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_private_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_public_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 active_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_private_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_public_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -591,17 +591,17 @@ class Host(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active_address_type: Optional[pulumi.Input[_builtins.str]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            host_id: Optional[pulumi.Input[_builtins.str]] = None,
-            host_name: Optional[pulumi.Input[_builtins.str]] = None,
-            host_private_address: Optional[pulumi.Input[_builtins.str]] = None,
-            host_public_address: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            os_type: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None,
-            source_instance_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Host':
+            active_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            host_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            host_private_address: pulumi.Input[Optional[_builtins.str]] = None,
+            host_public_address: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            os_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            source_instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Host':
         """
         Get an existing Host resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

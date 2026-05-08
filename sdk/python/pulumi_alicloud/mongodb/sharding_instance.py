@@ -24,53 +24,53 @@ class ShardingInstanceArgs:
                  engine_version: pulumi.Input[_builtins.str],
                  mongo_lists: pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]],
                  shard_lists: pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]],
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_disk_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]] = None,
-                 db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_backup_log: Optional[pulumi.Input[_builtins.int]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 snapshot_backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tde_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_disk_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_server_lists: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]] = None,
+                 db_instance_release_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_backup_log: pulumi.Input[Optional[_builtins.int]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryptor_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hidden_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tde_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ShardingInstance resource.
 
@@ -274,31 +274,31 @@ class ShardingInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         """
         return pulumi.get(self, "account_password")
 
     @account_password.setter
-    def account_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewDuration")
-    def auto_renew_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period. Unit: months. Valid values: `1` to `12`.
         > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
@@ -306,108 +306,108 @@ class ShardingInstanceArgs:
         return pulumi.get(self, "auto_renew_duration")
 
     @auto_renew_duration.setter
-    def auto_renew_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="backupInterval")
-    def backup_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         """
         return pulumi.get(self, "backup_interval")
 
     @backup_interval.setter
-    def backup_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="backupPeriods")
-    def backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         """
         return pulumi.get(self, "backup_periods")
 
     @backup_periods.setter
-    def backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backup_periods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backup_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of full backups.
         """
         return pulumi.get(self, "backup_retention_period")
 
     @backup_retention_period.setter
-    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
-    def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retention_policy_on_cluster_deletion(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The backup retention policy configured for the instance. Valid values:
         """
         return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
 
     @backup_retention_policy_on_cluster_deletion.setter
-    def backup_retention_policy_on_cluster_deletion(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retention_policy_on_cluster_deletion(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retention_policy_on_cluster_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="backupTime")
-    def backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         """
         return pulumi.get(self, "backup_time")
 
     @backup_time.setter
-    def backup_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_time", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudDiskEncryptionKey")
-    def cloud_disk_encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_disk_encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the encryption key.
         """
         return pulumi.get(self, "cloud_disk_encryption_key")
 
     @cloud_disk_encryption_key.setter
-    def cloud_disk_encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_disk_encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_disk_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="configServerLists")
-    def config_server_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]]:
+    def config_server_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]]:
         """
         The ConfigServer nodes of the instance. See `config_server_list` below.
         """
         return pulumi.get(self, "config_server_lists")
 
     @config_server_lists.setter
-    def config_server_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]]):
+    def config_server_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]]):
         pulumi.set(self, "config_server_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceReleaseProtection")
-    def db_instance_release_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def db_instance_release_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "db_instance_release_protection")
 
     @db_instance_release_protection.setter
-    def db_instance_release_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def db_instance_release_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "db_instance_release_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="enableBackupLog")
-    def enable_backup_log(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def enable_backup_log(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to enable the log backup feature. Valid values:
         - `1 `: The log backup feature is enabled.
@@ -415,180 +415,180 @@ class ShardingInstanceArgs:
         return pulumi.get(self, "enable_backup_log")
 
     @enable_backup_log.setter
-    def enable_backup_log(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def enable_backup_log(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "enable_backup_log", value)
 
     @_builtins.property
     @pulumi.getter
-    def encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
-    def encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the custom key.
         """
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptorName")
-    def encryptor_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryptor_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         """
         return pulumi.get(self, "encryptor_name")
 
     @encryptor_name.setter
-    def encryptor_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryptor_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryptor_name", value)
 
     @_builtins.property
     @pulumi.getter(name="forceEncryption")
-    def force_encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def force_encryption(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to forcibly enable SSL encryption for connections. Valid values:
         """
         return pulumi.get(self, "force_encryption")
 
     @force_encryption.setter
-    def force_encryption(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def force_encryption(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "force_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="globalSecurityGroupLists")
-    def global_security_group_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def global_security_group_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of Global Security Group Ids.
         """
         return pulumi.get(self, "global_security_group_lists")
 
     @global_security_group_lists.setter
-    def global_security_group_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def global_security_group_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "global_security_group_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="hiddenZoneId")
-    def hidden_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hidden_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
         """
         return pulumi.get(self, "hidden_zone_id")
 
     @hidden_zone_id.setter
-    def hidden_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hidden_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hidden_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
-    def kms_encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupRetentionPeriod")
-    def log_backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
         """
         return pulumi.get(self, "log_backup_retention_period")
 
     @log_backup_retention_period.setter
-    def log_backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainEndTime")
-    def maintain_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         """
         return pulumi.get(self, "maintain_end_time")
 
     @maintain_end_time.setter
-    def maintain_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainStartTime")
-    def maintain_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         """
         return pulumi.get(self, "maintain_start_time")
 
     @maintain_start_time.setter
-    def maintain_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of DB instance. It must be 2 to 256 characters in length.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the instance. Valid values:`Classic` or `VPC`.
         """
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="orderType")
-    def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         - `UPGRADE`: The specifications are upgraded.
@@ -598,72 +598,72 @@ class ShardingInstanceArgs:
         return pulumi.get(self, "order_type")
 
     @order_type.setter
-    def order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]]:
         """
         Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolType")
-    def protocol_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
         """
         return pulumi.get(self, "protocol_type")
 
     @protocol_type.setter
-    def protocol_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol_type", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedIops")
-    def provisioned_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The provisioned IOPS. Valid values: `0` to `50000`.
         """
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
-    def provisioned_iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_iops", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Resource Group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="restoreTime")
-    def restore_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restore_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
         > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
@@ -671,60 +671,60 @@ class ShardingInstanceArgs:
         return pulumi.get(self, "restore_time")
 
     @restore_time.setter
-    def restore_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restore_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restore_time", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryZoneId")
-    def secondary_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         """
         return pulumi.get(self, "secondary_zone_id")
 
     @secondary_zone_id.setter
-    def secondary_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Security Group ID of ECS.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpLists")
-    def security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         """
         return pulumi.get(self, "security_ip_lists")
 
     @security_ip_lists.setter
-    def security_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_ip_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_ip_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotBackupType")
-    def snapshot_backup_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_backup_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
         - `Standard`: Standard backup.
@@ -733,24 +733,24 @@ class ShardingInstanceArgs:
         return pulumi.get(self, "snapshot_backup_type")
 
     @snapshot_backup_type.setter
-    def snapshot_backup_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_backup_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_backup_type", value)
 
     @_builtins.property
     @pulumi.getter(name="srcDbInstanceId")
-    def src_db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def src_db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source instance ID.
         """
         return pulumi.get(self, "src_db_instance_id")
 
     @src_db_instance_id.setter
-    def src_db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def src_db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "src_db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sslAction")
-    def ssl_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Actions performed on SSL functions. Valid values:
         - `Open`: turn on SSL encryption.
@@ -761,84 +761,84 @@ class ShardingInstanceArgs:
         return pulumi.get(self, "ssl_action")
 
     @ssl_action.setter
-    def ssl_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_action", value)
 
     @_builtins.property
     @pulumi.getter(name="storageEngine")
-    def storage_engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         """
         return pulumi.get(self, "storage_engine")
 
     @storage_engine.setter
-    def storage_engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="storageType")
-    def storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         """
         return pulumi.get(self, "storage_type")
 
     @storage_type.setter
-    def storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tdeStatus")
-    def tde_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tde_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
         """
         return pulumi.get(self, "tde_status")
 
     @tde_status.setter
-    def tde_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tde_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tde_status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -846,67 +846,67 @@ class ShardingInstanceArgs:
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _ShardingInstanceState:
     def __init__(__self__, *,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_disk_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]] = None,
-                 db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_backup_log: Optional[pulumi.Input[_builtins.int]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]]] = None,
-                 snapshot_backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tde_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceZoneInfoArgs']]]] = None):
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_disk_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_server_lists: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]] = None,
+                 db_instance_release_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_backup_log: pulumi.Input[Optional[_builtins.int]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryptor_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hidden_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 mongo_lists: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shard_lists: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]]] = None,
+                 snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tde_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceZoneInfoArgs']]]] = None):
         """
         Input properties used for looking up and filtering ShardingInstance resources.
 
@@ -1089,31 +1089,31 @@ class _ShardingInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         """
         return pulumi.get(self, "account_password")
 
     @account_password.setter
-    def account_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewDuration")
-    def auto_renew_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period. Unit: months. Valid values: `1` to `12`.
         > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
@@ -1121,108 +1121,108 @@ class _ShardingInstanceState:
         return pulumi.get(self, "auto_renew_duration")
 
     @auto_renew_duration.setter
-    def auto_renew_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="backupInterval")
-    def backup_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         """
         return pulumi.get(self, "backup_interval")
 
     @backup_interval.setter
-    def backup_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="backupPeriods")
-    def backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         """
         return pulumi.get(self, "backup_periods")
 
     @backup_periods.setter
-    def backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backup_periods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backup_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of full backups.
         """
         return pulumi.get(self, "backup_retention_period")
 
     @backup_retention_period.setter
-    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
-    def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retention_policy_on_cluster_deletion(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The backup retention policy configured for the instance. Valid values:
         """
         return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
 
     @backup_retention_policy_on_cluster_deletion.setter
-    def backup_retention_policy_on_cluster_deletion(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retention_policy_on_cluster_deletion(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retention_policy_on_cluster_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="backupTime")
-    def backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         """
         return pulumi.get(self, "backup_time")
 
     @backup_time.setter
-    def backup_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_time", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudDiskEncryptionKey")
-    def cloud_disk_encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_disk_encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the encryption key.
         """
         return pulumi.get(self, "cloud_disk_encryption_key")
 
     @cloud_disk_encryption_key.setter
-    def cloud_disk_encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_disk_encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_disk_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="configServerLists")
-    def config_server_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]]:
+    def config_server_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]]:
         """
         The ConfigServer nodes of the instance. See `config_server_list` below.
         """
         return pulumi.get(self, "config_server_lists")
 
     @config_server_lists.setter
-    def config_server_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]]):
+    def config_server_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]]):
         pulumi.set(self, "config_server_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceReleaseProtection")
-    def db_instance_release_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def db_instance_release_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "db_instance_release_protection")
 
     @db_instance_release_protection.setter
-    def db_instance_release_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def db_instance_release_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "db_instance_release_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="enableBackupLog")
-    def enable_backup_log(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def enable_backup_log(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to enable the log backup feature. Valid values:
         - `1 `: The log backup feature is enabled.
@@ -1230,216 +1230,216 @@ class _ShardingInstanceState:
         return pulumi.get(self, "enable_backup_log")
 
     @enable_backup_log.setter
-    def enable_backup_log(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def enable_backup_log(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "enable_backup_log", value)
 
     @_builtins.property
     @pulumi.getter
-    def encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
-    def encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the custom key.
         """
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptorName")
-    def encryptor_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryptor_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
         """
         return pulumi.get(self, "encryptor_name")
 
     @encryptor_name.setter
-    def encryptor_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryptor_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryptor_name", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
         """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="forceEncryption")
-    def force_encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def force_encryption(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to forcibly enable SSL encryption for connections. Valid values:
         """
         return pulumi.get(self, "force_encryption")
 
     @force_encryption.setter
-    def force_encryption(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def force_encryption(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "force_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="globalSecurityGroupLists")
-    def global_security_group_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def global_security_group_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of Global Security Group Ids.
         """
         return pulumi.get(self, "global_security_group_lists")
 
     @global_security_group_lists.setter
-    def global_security_group_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def global_security_group_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "global_security_group_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="hiddenZoneId")
-    def hidden_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hidden_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
         """
         return pulumi.get(self, "hidden_zone_id")
 
     @hidden_zone_id.setter
-    def hidden_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hidden_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hidden_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="keyIds")
-    def key_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def key_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Available since v1.271.0) A list of instance keys.
         """
         return pulumi.get(self, "key_ids")
 
     @key_ids.setter
-    def key_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def key_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "key_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
-    def kms_encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupRetentionPeriod")
-    def log_backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
         """
         return pulumi.get(self, "log_backup_retention_period")
 
     @log_backup_retention_period.setter
-    def log_backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainEndTime")
-    def maintain_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         """
         return pulumi.get(self, "maintain_end_time")
 
     @maintain_end_time.setter
-    def maintain_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainStartTime")
-    def maintain_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         """
         return pulumi.get(self, "maintain_start_time")
 
     @maintain_start_time.setter
-    def maintain_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="mongoLists")
-    def mongo_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]]]:
+    def mongo_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]]]:
         """
         The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
         """
         return pulumi.get(self, "mongo_lists")
 
     @mongo_lists.setter
-    def mongo_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]]]):
+    def mongo_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceMongoListArgs']]]]):
         pulumi.set(self, "mongo_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of DB instance. It must be 2 to 256 characters in length.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the instance. Valid values:`Classic` or `VPC`.
         """
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="orderType")
-    def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         - `UPGRADE`: The specifications are upgraded.
@@ -1449,72 +1449,72 @@ class _ShardingInstanceState:
         return pulumi.get(self, "order_type")
 
     @order_type.setter
-    def order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]]:
         """
         Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolType")
-    def protocol_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
         """
         return pulumi.get(self, "protocol_type")
 
     @protocol_type.setter
-    def protocol_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol_type", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedIops")
-    def provisioned_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The provisioned IOPS. Valid values: `0` to `50000`.
         """
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
-    def provisioned_iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_iops", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Resource Group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="restoreTime")
-    def restore_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restore_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
         > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
@@ -1522,84 +1522,84 @@ class _ShardingInstanceState:
         return pulumi.get(self, "restore_time")
 
     @restore_time.setter
-    def restore_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restore_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restore_time", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionPeriod")
-    def retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.42.0) Instance data backup retention days.
         """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
-    def retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryZoneId")
-    def secondary_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
         """
         return pulumi.get(self, "secondary_zone_id")
 
     @secondary_zone_id.setter
-    def secondary_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Security Group ID of ECS.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpLists")
-    def security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         """
         return pulumi.get(self, "security_ip_lists")
 
     @security_ip_lists.setter
-    def security_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_ip_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_ip_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="shardLists")
-    def shard_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]]]:
+    def shard_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]]]:
         """
         The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         """
         return pulumi.get(self, "shard_lists")
 
     @shard_lists.setter
-    def shard_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]]]):
+    def shard_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]]]):
         pulumi.set(self, "shard_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotBackupType")
-    def snapshot_backup_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_backup_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
         - `Standard`: Standard backup.
@@ -1608,24 +1608,24 @@ class _ShardingInstanceState:
         return pulumi.get(self, "snapshot_backup_type")
 
     @snapshot_backup_type.setter
-    def snapshot_backup_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_backup_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_backup_type", value)
 
     @_builtins.property
     @pulumi.getter(name="srcDbInstanceId")
-    def src_db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def src_db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source instance ID.
         """
         return pulumi.get(self, "src_db_instance_id")
 
     @src_db_instance_id.setter
-    def src_db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def src_db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "src_db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sslAction")
-    def ssl_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Actions performed on SSL functions. Valid values:
         - `Open`: turn on SSL encryption.
@@ -1636,96 +1636,96 @@ class _ShardingInstanceState:
         return pulumi.get(self, "ssl_action")
 
     @ssl_action.setter
-    def ssl_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_action", value)
 
     @_builtins.property
     @pulumi.getter(name="sslStatus")
-    def ssl_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.259.0) The status of the SSL feature.
         """
         return pulumi.get(self, "ssl_status")
 
     @ssl_status.setter
-    def ssl_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageEngine")
-    def storage_engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         """
         return pulumi.get(self, "storage_engine")
 
     @storage_engine.setter
-    def storage_engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="storageType")
-    def storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
         """
         return pulumi.get(self, "storage_type")
 
     @storage_type.setter
-    def storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tdeStatus")
-    def tde_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tde_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
         """
         return pulumi.get(self, "tde_status")
 
     @tde_status.setter
-    def tde_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tde_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tde_status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -1733,19 +1733,19 @@ class _ShardingInstanceState:
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneInfos")
-    def zone_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceZoneInfoArgs']]]]:
+    def zone_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceZoneInfoArgs']]]]:
         """
         (Available since v1.271.0) The information of nodes in the zone.
         """
         return pulumi.get(self, "zone_infos")
 
     @zone_infos.setter
-    def zone_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceZoneInfoArgs']]]]):
+    def zone_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingInstanceZoneInfoArgs']]]]):
         pulumi.set(self, "zone_infos", value)
 
 
@@ -1755,56 +1755,56 @@ class ShardingInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_disk_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
-                 db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_backup_log: Optional[pulumi.Input[_builtins.int]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceMongoListArgs', 'ShardingInstanceMongoListArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceParameterArgs', 'ShardingInstanceParameterArgsDict']]]]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]]] = None,
-                 snapshot_backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tde_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_disk_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_server_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
+                 db_instance_release_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_backup_log: pulumi.Input[Optional[_builtins.int]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryptor_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hidden_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 mongo_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceMongoListArgs', 'ShardingInstanceMongoListArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceParameterArgs', 'ShardingInstanceParameterArgsDict']]]]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shard_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]]] = None,
+                 snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tde_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a MongoDB Sharding Instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
@@ -2043,56 +2043,56 @@ class ShardingInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_disk_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
-                 db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_backup_log: Optional[pulumi.Input[_builtins.int]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceMongoListArgs', 'ShardingInstanceMongoListArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceParameterArgs', 'ShardingInstanceParameterArgsDict']]]]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]]] = None,
-                 snapshot_backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tde_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_disk_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_server_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
+                 db_instance_release_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_backup_log: pulumi.Input[Optional[_builtins.int]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryptor_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hidden_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 mongo_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceMongoListArgs', 'ShardingInstanceMongoListArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceParameterArgs', 'ShardingInstanceParameterArgsDict']]]]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shard_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]]] = None,
+                 snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tde_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2174,60 +2174,60 @@ class ShardingInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_password: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-            cloud_disk_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-            config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
-            db_instance_release_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_backup_log: Optional[pulumi.Input[_builtins.int]] = None,
-            encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-            encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-            encryptor_name: Optional[pulumi.Input[_builtins.str]] = None,
-            engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-            force_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-            global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            hidden_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            key_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceMongoListArgs', 'ShardingInstanceMongoListArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_type: Optional[pulumi.Input[_builtins.str]] = None,
-            order_type: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceParameterArgs', 'ShardingInstanceParameterArgsDict']]]]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            restore_time: Optional[pulumi.Input[_builtins.str]] = None,
-            retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]]] = None,
-            snapshot_backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-            src_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_action: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_status: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            tde_status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceZoneInfoArgs', 'ShardingInstanceZoneInfoArgsDict']]]]] = None) -> 'ShardingInstance':
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud_disk_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+            config_server_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
+            db_instance_release_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_backup_log: pulumi.Input[Optional[_builtins.int]] = None,
+            encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+            encryptor_name: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            force_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+            global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hidden_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            key_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            mongo_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceMongoListArgs', 'ShardingInstanceMongoListArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            order_type: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceParameterArgs', 'ShardingInstanceParameterArgsDict']]]]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            restore_time: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            shard_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]]] = None,
+            snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+            src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_action: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tde_status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingInstanceZoneInfoArgs', 'ShardingInstanceZoneInfoArgsDict']]]]] = None) -> 'ShardingInstance':
         """
         Get an existing ShardingInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

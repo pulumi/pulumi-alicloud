@@ -127,19 +127,19 @@ export interface BucketDataRedundancyTransitionState {
     /**
      * Storage space name.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Stores the creation time of the redundant transformation task.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Stores the state of the redundant translation task. The values are as follows:  Queueing: in the queue.  Processing: In progress.  Finished: Finished.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Unique identification of the storage redundancy conversion task.
      */
-    taskId?: pulumi.Input<string>;
+    taskId?: pulumi.Input<string | undefined>;
 }
 
 /**

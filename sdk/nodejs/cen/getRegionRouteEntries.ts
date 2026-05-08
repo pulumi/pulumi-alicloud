@@ -95,7 +95,7 @@ export interface GetRegionRouteEntriesOutputArgs {
      * ID of the CEN instance.
      */
     instanceId: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * ID of the region.
      */

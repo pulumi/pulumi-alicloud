@@ -46,8 +46,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -93,8 +93,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -140,8 +140,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -187,8 +187,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -234,8 +234,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -281,8 +281,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -328,8 +328,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -380,8 +380,8 @@ public final class AdbFunctions {
      * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
      * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
      * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -454,8 +454,8 @@ public final class AdbFunctions {
      * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
      * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
      * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -528,8 +528,8 @@ public final class AdbFunctions {
      * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
      * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
      * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -602,8 +602,8 @@ public final class AdbFunctions {
      * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
      * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
      * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -676,8 +676,8 @@ public final class AdbFunctions {
      * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
      * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
      * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -750,8 +750,8 @@ public final class AdbFunctions {
      * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
      * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
      * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -824,8 +824,8 @@ public final class AdbFunctions {
      * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
      * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
      * import com.pulumi.alicloud.adb.inputs.GetDBClusterLakeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -892,8 +892,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetDBClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -937,8 +937,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetDBClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -982,8 +982,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetDBClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1027,8 +1027,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetDBClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1072,8 +1072,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetDBClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1117,8 +1117,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetDBClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1162,8 +1162,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetDBClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1205,8 +1205,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetResourceGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1249,8 +1249,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetResourceGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1293,8 +1293,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetResourceGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1337,8 +1337,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetResourceGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1381,8 +1381,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetResourceGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1425,8 +1425,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1467,8 +1467,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1509,8 +1509,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1551,8 +1551,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1593,8 +1593,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1635,8 +1635,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1677,8 +1677,8 @@ public final class AdbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.adb.AdbFunctions;
      * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

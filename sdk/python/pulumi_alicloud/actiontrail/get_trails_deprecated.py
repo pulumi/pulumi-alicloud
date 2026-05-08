@@ -188,12 +188,12 @@ def get_trails_deprecated(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'),
         trails=pulumi.get(__ret__, 'trails'))
-def get_trails_deprecated_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                 include_organization_trail: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                 include_shadow_trails: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                 name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_trails_deprecated_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                 include_organization_trail: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                 include_shadow_trails: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                 name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTrailsDeprecatedResult]:
     """
     > **DEPRECATED:**  This datasource has been renamed to actiontrail_get_trails from version 1.95.0.

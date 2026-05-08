@@ -25,7 +25,7 @@ class FcTriggerArgs:
                  role_arn: pulumi.Input[_builtins.str],
                  source_arn: pulumi.Input[_builtins.str],
                  trigger_arn: pulumi.Input[_builtins.str],
-                 function_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 function_arn: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FcTrigger resource.
 
@@ -120,27 +120,27 @@ class FcTriggerArgs:
 
     @_builtins.property
     @pulumi.getter(name="functionArn")
-    def function_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The function arn. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`.
         """
         return pulumi.get(self, "function_arn")
 
     @function_arn.setter
-    def function_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_arn", value)
 
 
 @pulumi.input_type
 class _FcTriggerState:
     def __init__(__self__, *,
-                 event_meta_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_meta_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 event_meta_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_meta_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_arn: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FcTrigger resources.
 
@@ -169,86 +169,86 @@ class _FcTriggerState:
 
     @_builtins.property
     @pulumi.getter(name="eventMetaName")
-    def event_meta_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_meta_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Event.
         """
         return pulumi.get(self, "event_meta_name")
 
     @event_meta_name.setter
-    def event_meta_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_meta_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_meta_name", value)
 
     @_builtins.property
     @pulumi.getter(name="eventMetaVersion")
-    def event_meta_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_meta_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the Event.
         """
         return pulumi.get(self, "event_meta_version")
 
     @event_meta_version.setter
-    def event_meta_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_meta_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_meta_version", value)
 
     @_builtins.property
     @pulumi.getter(name="functionArn")
-    def function_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The function arn. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`.
         """
         return pulumi.get(self, "function_arn")
 
     @function_arn.setter
-    def function_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Note information.
         """
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role authorized by RAM. The value formats as `acs:ram::{AccountID}:role/{RoleName}`.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceArn")
-    def source_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
         """
         return pulumi.get(self, "source_arn")
 
     @source_arn.setter
-    def source_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerArn")
-    def trigger_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
         """
         return pulumi.get(self, "trigger_arn")
 
     @trigger_arn.setter
-    def trigger_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger_arn", value)
 
 
@@ -258,13 +258,13 @@ class FcTrigger(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 event_meta_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_meta_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_arn: Optional[pulumi.Input[_builtins.str]] = None,
+                 event_meta_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_meta_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CDN Fc Trigger resource.
@@ -371,13 +371,13 @@ class FcTrigger(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 event_meta_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_meta_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_arn: Optional[pulumi.Input[_builtins.str]] = None,
+                 event_meta_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_meta_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -416,13 +416,13 @@ class FcTrigger(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            event_meta_name: Optional[pulumi.Input[_builtins.str]] = None,
-            event_meta_version: Optional[pulumi.Input[_builtins.str]] = None,
-            function_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            notes: Optional[pulumi.Input[_builtins.str]] = None,
-            role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            source_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            trigger_arn: Optional[pulumi.Input[_builtins.str]] = None) -> 'FcTrigger':
+            event_meta_name: pulumi.Input[Optional[_builtins.str]] = None,
+            event_meta_version: pulumi.Input[Optional[_builtins.str]] = None,
+            function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_arn: pulumi.Input[Optional[_builtins.str]] = None) -> 'FcTrigger':
         """
         Get an existing FcTrigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

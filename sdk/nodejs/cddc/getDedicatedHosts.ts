@@ -230,7 +230,7 @@ export interface GetDedicatedHostsOutputArgs {
     /**
      * Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
      */
-    allocationStatus?: pulumi.Input<string>;
+    allocationStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dedicated cluster.
      */
@@ -238,34 +238,34 @@ export interface GetDedicatedHostsOutputArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * The storage type of the host. Valid values: `dhgLocalSsd` or `dhgCloudSsd`. `dhgLocalSsd`: specifies that the host uses local SSDs. `dhgCloudSsd`: specifies that the host uses enhanced SSDs (ESSDs).
      */
-    hostType?: pulumi.Input<string>;
+    hostType?: pulumi.Input<string | undefined>;
     /**
      * A list of Dedicated Host IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the order.
      */
-    orderId?: pulumi.Input<string>;
+    orderId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The state of the host. Valid values: 
      * * `0:` The host is being created.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

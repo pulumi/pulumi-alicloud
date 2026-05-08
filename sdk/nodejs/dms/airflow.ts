@@ -263,71 +263,71 @@ export interface AirflowState {
     /**
      * AirflowId
      */
-    airflowId?: pulumi.Input<string>;
+    airflowId?: pulumi.Input<string | undefined>;
     /**
      * Name of the Airflow instance
      */
-    airflowName?: pulumi.Input<string>;
+    airflowName?: pulumi.Input<string | undefined>;
     /**
      * Airflow instance specifications
      */
-    appSpec?: pulumi.Input<string>;
+    appSpec?: pulumi.Input<string | undefined>;
     /**
      * Dag scan path
      */
-    dagsDir?: pulumi.Input<string>;
+    dagsDir?: pulumi.Input<string | undefined>;
     /**
      * Description of the airflow instance
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * OSS bucket name
      */
-    ossBucketName?: pulumi.Input<string>;
+    ossBucketName?: pulumi.Input<string | undefined>;
     /**
      * OSS path
      */
-    ossPath?: pulumi.Input<string>;
+    ossPath?: pulumi.Input<string | undefined>;
     /**
      * The path of the plugin scanned by the airflow instance.
      */
-    pluginsDir?: pulumi.Input<string>;
+    pluginsDir?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Path to installable package
      */
-    requirementFile?: pulumi.Input<string>;
+    requirementFile?: pulumi.Input<string | undefined>;
     /**
      * Security group ID
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * Launch script for the airflow container
      */
-    startupFile?: pulumi.Input<string>;
+    startupFile?: pulumi.Input<string | undefined>;
     /**
      * Vpc id
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * Switch ID
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * Worker Node extension
      */
-    workerServerlessReplicas?: pulumi.Input<number>;
+    workerServerlessReplicas?: pulumi.Input<number | undefined>;
     /**
      * DMS workspace ID
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
     /**
      * Zone ID in the region
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -345,7 +345,7 @@ export interface AirflowArgs {
     /**
      * Dag scan path
      */
-    dagsDir?: pulumi.Input<string>;
+    dagsDir?: pulumi.Input<string | undefined>;
     /**
      * Description of the airflow instance
      */
@@ -361,11 +361,11 @@ export interface AirflowArgs {
     /**
      * The path of the plugin scanned by the airflow instance.
      */
-    pluginsDir?: pulumi.Input<string>;
+    pluginsDir?: pulumi.Input<string | undefined>;
     /**
      * Path to installable package
      */
-    requirementFile?: pulumi.Input<string>;
+    requirementFile?: pulumi.Input<string | undefined>;
     /**
      * Security group ID
      */
@@ -373,7 +373,7 @@ export interface AirflowArgs {
     /**
      * Launch script for the airflow container
      */
-    startupFile?: pulumi.Input<string>;
+    startupFile?: pulumi.Input<string | undefined>;
     /**
      * Vpc id
      */

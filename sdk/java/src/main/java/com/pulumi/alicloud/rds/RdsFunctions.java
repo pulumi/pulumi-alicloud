@@ -75,8 +75,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -121,8 +121,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -167,8 +167,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -213,8 +213,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -259,8 +259,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -303,8 +303,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCharacterSetNamesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -347,8 +347,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCharacterSetNamesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -391,8 +391,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCharacterSetNamesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -435,8 +435,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCharacterSetNamesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -479,8 +479,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCharacterSetNamesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -525,8 +525,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetClassDetailsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -572,8 +572,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetClassDetailsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -619,8 +619,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetClassDetailsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -666,8 +666,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetClassDetailsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -713,8 +713,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetClassDetailsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -760,8 +760,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -805,8 +805,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -850,8 +850,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -895,8 +895,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -940,8 +940,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -985,8 +985,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1030,8 +1030,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCollationTimeZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1075,8 +1075,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCrossRegionBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1122,8 +1122,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCrossRegionBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1169,8 +1169,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCrossRegionBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1216,8 +1216,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCrossRegionBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1263,8 +1263,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCrossRegionBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1308,8 +1308,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCrossRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1351,8 +1351,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCrossRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1394,8 +1394,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCrossRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1437,8 +1437,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCrossRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1480,8 +1480,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCrossRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1523,8 +1523,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCrossRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1566,8 +1566,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetCrossRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1609,8 +1609,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1654,8 +1654,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1699,8 +1699,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1744,8 +1744,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1789,8 +1789,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceClassInfosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1834,8 +1834,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1880,8 +1880,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1926,8 +1926,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1972,8 +1972,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2018,8 +2018,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2064,8 +2064,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2110,8 +2110,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2156,8 +2156,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2202,8 +2202,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2248,8 +2248,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2294,8 +2294,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2340,8 +2340,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2386,8 +2386,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2432,8 +2432,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstanceEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2479,8 +2479,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2528,8 +2528,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2577,8 +2577,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2626,8 +2626,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2675,8 +2675,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2724,8 +2724,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2773,8 +2773,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2823,8 +2823,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetModifyParameterLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2869,8 +2869,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetModifyParameterLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2915,8 +2915,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetModifyParameterLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2961,8 +2961,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetModifyParameterLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3007,8 +3007,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetModifyParameterLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3053,8 +3053,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetRdsBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3098,8 +3098,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetRdsBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3143,8 +3143,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetRdsBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3188,8 +3188,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetRdsBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3233,8 +3233,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetRdsBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3299,8 +3299,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetSlotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3344,8 +3344,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetSlotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3389,8 +3389,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetSlotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3434,8 +3434,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetSlotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3479,8 +3479,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetSlotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3522,8 +3522,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3568,8 +3568,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3614,8 +3614,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3660,8 +3660,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3706,8 +3706,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3752,8 +3752,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3798,8 +3798,8 @@ public final class RdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.rds.RdsFunctions;
      * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

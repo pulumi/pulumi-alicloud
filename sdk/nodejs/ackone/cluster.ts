@@ -153,29 +153,29 @@ export interface ClusterState {
     /**
      * (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
      */
-    argocdEnabled?: pulumi.Input<boolean>;
+    argocdEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Cluster name.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * Cluster creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Cluster network information. See `network` below.
      */
-    network?: pulumi.Input<inputs.ackone.ClusterNetwork>;
+    network?: pulumi.Input<inputs.ackone.ClusterNetwork | undefined>;
     /**
      * Cluster attributes. Valid values: 'Default', 'XFlow'.
      *
      * **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
      */
-    profile?: pulumi.Input<string>;
+    profile?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,11 +185,11 @@ export interface ClusterArgs {
     /**
      * (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
      */
-    argocdEnabled?: pulumi.Input<boolean>;
+    argocdEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Cluster name.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * Cluster network information. See `network` below.
      */
@@ -199,5 +199,5 @@ export interface ClusterArgs {
      *
      * **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
      */
-    profile?: pulumi.Input<string>;
+    profile?: pulumi.Input<string | undefined>;
 }

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     status: "ACTIVE",
  * });
  * const defaultEnterpriseAuthorityTemplate = new alicloud.dms.EnterpriseAuthorityTemplate("default", {
- *     tid: _default.then(_default => _default.ids?.[0]),
+ *     tid: output(_default.then(_default => _default.ids?.[0])).apply(x =>Number(x)),
  *     authorityTemplateName: name,
  *     description: name,
  * });
@@ -134,23 +134,23 @@ export interface EnterpriseAuthorityTemplateState {
     /**
      * Permission template ID.
      */
-    authorityTemplateId?: pulumi.Input<number>;
+    authorityTemplateId?: pulumi.Input<number | undefined>;
     /**
      * Permission Template name.
      */
-    authorityTemplateName?: pulumi.Input<string>;
+    authorityTemplateName?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Permission template description information.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Tenant ID.
      */
-    tid?: pulumi.Input<number>;
+    tid?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -164,7 +164,7 @@ export interface EnterpriseAuthorityTemplateArgs {
     /**
      * Permission template description information.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Tenant ID.
      */

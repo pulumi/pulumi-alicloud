@@ -21,7 +21,7 @@ class EnvServiceMonitorArgs:
     def __init__(__self__, *,
                  config_yaml: pulumi.Input[_builtins.str],
                  environment_id: pulumi.Input[_builtins.str],
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None):
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvServiceMonitor resource.
 
@@ -60,26 +60,26 @@ class EnvServiceMonitorArgs:
 
     @_builtins.property
     @pulumi.getter(name="aliyunLang")
-    def aliyun_lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aliyun_lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Language environment, default is Chinese zh | en.
         """
         return pulumi.get(self, "aliyun_lang")
 
     @aliyun_lang.setter
-    def aliyun_lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aliyun_lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aliyun_lang", value)
 
 
 @pulumi.input_type
 class _EnvServiceMonitorState:
     def __init__(__self__, *,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_service_monitor_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_service_monitor_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvServiceMonitor resources.
 
@@ -105,74 +105,74 @@ class _EnvServiceMonitorState:
 
     @_builtins.property
     @pulumi.getter(name="aliyunLang")
-    def aliyun_lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aliyun_lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Language environment, default is Chinese zh | en.
         """
         return pulumi.get(self, "aliyun_lang")
 
     @aliyun_lang.setter
-    def aliyun_lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aliyun_lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aliyun_lang", value)
 
     @_builtins.property
     @pulumi.getter(name="configYaml")
-    def config_yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Yaml configuration string.
         """
         return pulumi.get(self, "config_yaml")
 
     @config_yaml.setter
-    def config_yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_yaml", value)
 
     @_builtins.property
     @pulumi.getter(name="envServiceMonitorName")
-    def env_service_monitor_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_service_monitor_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "env_service_monitor_name")
 
     @env_service_monitor_name.setter
-    def env_service_monitor_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_service_monitor_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_service_monitor_name", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
-    def environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Environment id.
         """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
-    def environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace where the resource is located.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status: run, stop.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -182,9 +182,9 @@ class EnvServiceMonitor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ARMS Env Service Monitor resource. ServiceMonitor for the arms environment.
@@ -220,9 +220,9 @@ class EnvServiceMonitor(pulumi.CustomResource):
             vpc_id=vpc.id,
             vswitch_name=name,
             zone_id=enhanced.zones[0].zone_id,
-            cidr_block=vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=vpc.cidr_block,
                 newbits=8,
-                netnum=8)).apply(lambda invoke: invoke.result))
+                netnum=8).apply(lambda invoke: invoke.result))
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
             name=name,
             repeat_weekdays=[
@@ -236,11 +236,11 @@ class EnvServiceMonitor(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        default = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+        default = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
             cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             kubernetes_node_role="Worker",
-            instance_type_family="ecs.n1"))
+            instance_type_family="ecs.n1")
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=f"terraform-example-{default_integer['result']}",
             cluster_spec="ack.pro.small",
@@ -352,9 +352,9 @@ class EnvServiceMonitor(pulumi.CustomResource):
             vpc_id=vpc.id,
             vswitch_name=name,
             zone_id=enhanced.zones[0].zone_id,
-            cidr_block=vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=vpc.cidr_block,
                 newbits=8,
-                netnum=8)).apply(lambda invoke: invoke.result))
+                netnum=8).apply(lambda invoke: invoke.result))
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
             name=name,
             repeat_weekdays=[
@@ -368,11 +368,11 @@ class EnvServiceMonitor(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        default = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+        default = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
             cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             kubernetes_node_role="Worker",
-            instance_type_family="ecs.n1"))
+            instance_type_family="ecs.n1")
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=f"terraform-example-{default_integer['result']}",
             cluster_spec="ack.pro.small",
@@ -453,9 +453,9 @@ class EnvServiceMonitor(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -485,12 +485,12 @@ class EnvServiceMonitor(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-            config_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-            env_service_monitor_name: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnvServiceMonitor':
+            aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+            config_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+            env_service_monitor_name: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnvServiceMonitor':
         """
         Get an existing EnvServiceMonitor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

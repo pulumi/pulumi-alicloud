@@ -306,55 +306,55 @@ export interface ListenerState {
     /**
      * @deprecated Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
      */
-    aclId?: pulumi.Input<string>;
-    aclIds?: pulumi.Input<pulumi.Input<string>[]>;
-    aclStatus?: pulumi.Input<string>;
-    aclType?: pulumi.Input<string>;
-    backendPort?: pulumi.Input<number>;
-    bandwidth?: pulumi.Input<number>;
-    caCertificateId?: pulumi.Input<string>;
-    cookie?: pulumi.Input<string>;
-    cookieTimeout?: pulumi.Input<number>;
-    deleteProtectionValidation?: pulumi.Input<boolean>;
-    description?: pulumi.Input<string>;
-    enableHttp2?: pulumi.Input<string>;
-    establishedTimeout?: pulumi.Input<number>;
-    forwardPort?: pulumi.Input<number>;
-    frontendPort?: pulumi.Input<number>;
-    gzip?: pulumi.Input<boolean>;
-    healthCheck?: pulumi.Input<string>;
-    healthCheckConnectPort?: pulumi.Input<number>;
-    healthCheckDomain?: pulumi.Input<string>;
-    healthCheckHttpCode?: pulumi.Input<string>;
-    healthCheckInterval?: pulumi.Input<number>;
-    healthCheckMethod?: pulumi.Input<string>;
-    healthCheckTimeout?: pulumi.Input<number>;
-    healthCheckType?: pulumi.Input<string>;
-    healthCheckUri?: pulumi.Input<string>;
-    healthyThreshold?: pulumi.Input<number>;
-    idleTimeout?: pulumi.Input<number>;
-    listenerForward?: pulumi.Input<string>;
-    loadBalancerId?: pulumi.Input<string>;
-    masterSlaveServerGroupId?: pulumi.Input<string>;
-    persistenceTimeout?: pulumi.Input<number>;
-    protocol?: pulumi.Input<string>;
-    proxyProtocolV2Enabled?: pulumi.Input<boolean>;
-    requestTimeout?: pulumi.Input<number>;
-    scheduler?: pulumi.Input<string>;
-    serverCertificateId?: pulumi.Input<string>;
-    serverGroupId?: pulumi.Input<string>;
+    aclId?: pulumi.Input<string | undefined>;
+    aclIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    aclStatus?: pulumi.Input<string | undefined>;
+    aclType?: pulumi.Input<string | undefined>;
+    backendPort?: pulumi.Input<number | undefined>;
+    bandwidth?: pulumi.Input<number | undefined>;
+    caCertificateId?: pulumi.Input<string | undefined>;
+    cookie?: pulumi.Input<string | undefined>;
+    cookieTimeout?: pulumi.Input<number | undefined>;
+    deleteProtectionValidation?: pulumi.Input<boolean | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    enableHttp2?: pulumi.Input<string | undefined>;
+    establishedTimeout?: pulumi.Input<number | undefined>;
+    forwardPort?: pulumi.Input<number | undefined>;
+    frontendPort?: pulumi.Input<number | undefined>;
+    gzip?: pulumi.Input<boolean | undefined>;
+    healthCheck?: pulumi.Input<string | undefined>;
+    healthCheckConnectPort?: pulumi.Input<number | undefined>;
+    healthCheckDomain?: pulumi.Input<string | undefined>;
+    healthCheckHttpCode?: pulumi.Input<string | undefined>;
+    healthCheckInterval?: pulumi.Input<number | undefined>;
+    healthCheckMethod?: pulumi.Input<string | undefined>;
+    healthCheckTimeout?: pulumi.Input<number | undefined>;
+    healthCheckType?: pulumi.Input<string | undefined>;
+    healthCheckUri?: pulumi.Input<string | undefined>;
+    healthyThreshold?: pulumi.Input<number | undefined>;
+    idleTimeout?: pulumi.Input<number | undefined>;
+    listenerForward?: pulumi.Input<string | undefined>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
+    masterSlaveServerGroupId?: pulumi.Input<string | undefined>;
+    persistenceTimeout?: pulumi.Input<number | undefined>;
+    protocol?: pulumi.Input<string | undefined>;
+    proxyProtocolV2Enabled?: pulumi.Input<boolean | undefined>;
+    requestTimeout?: pulumi.Input<number | undefined>;
+    scheduler?: pulumi.Input<string | undefined>;
+    serverCertificateId?: pulumi.Input<string | undefined>;
+    serverGroupId?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
-    sslCertificateId?: pulumi.Input<string>;
-    stickySession?: pulumi.Input<string>;
-    stickySessionType?: pulumi.Input<string>;
-    tlsCipherPolicy?: pulumi.Input<string>;
-    unhealthyThreshold?: pulumi.Input<number>;
+    sslCertificateId?: pulumi.Input<string | undefined>;
+    stickySession?: pulumi.Input<string | undefined>;
+    stickySessionType?: pulumi.Input<string | undefined>;
+    tlsCipherPolicy?: pulumi.Input<string | undefined>;
+    unhealthyThreshold?: pulumi.Input<number | undefined>;
     /**
      * Whether to set additional HTTP Header field "X-Forwarded-For".
      */
-    xForwardedFor?: pulumi.Input<inputs.slb.ListenerXForwardedFor>;
+    xForwardedFor?: pulumi.Input<inputs.slb.ListenerXForwardedFor | undefined>;
 }
 
 /**
@@ -364,53 +364,53 @@ export interface ListenerArgs {
     /**
      * @deprecated Field `aclId` has been deprecated from provider version 1.249.0. New field `aclIds` instead.
      */
-    aclId?: pulumi.Input<string>;
-    aclIds?: pulumi.Input<pulumi.Input<string>[]>;
-    aclStatus?: pulumi.Input<string>;
-    aclType?: pulumi.Input<string>;
-    backendPort?: pulumi.Input<number>;
-    bandwidth?: pulumi.Input<number>;
-    caCertificateId?: pulumi.Input<string>;
-    cookie?: pulumi.Input<string>;
-    cookieTimeout?: pulumi.Input<number>;
-    deleteProtectionValidation?: pulumi.Input<boolean>;
-    description?: pulumi.Input<string>;
-    enableHttp2?: pulumi.Input<string>;
-    establishedTimeout?: pulumi.Input<number>;
-    forwardPort?: pulumi.Input<number>;
+    aclId?: pulumi.Input<string | undefined>;
+    aclIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    aclStatus?: pulumi.Input<string | undefined>;
+    aclType?: pulumi.Input<string | undefined>;
+    backendPort?: pulumi.Input<number | undefined>;
+    bandwidth?: pulumi.Input<number | undefined>;
+    caCertificateId?: pulumi.Input<string | undefined>;
+    cookie?: pulumi.Input<string | undefined>;
+    cookieTimeout?: pulumi.Input<number | undefined>;
+    deleteProtectionValidation?: pulumi.Input<boolean | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    enableHttp2?: pulumi.Input<string | undefined>;
+    establishedTimeout?: pulumi.Input<number | undefined>;
+    forwardPort?: pulumi.Input<number | undefined>;
     frontendPort: pulumi.Input<number>;
-    gzip?: pulumi.Input<boolean>;
-    healthCheck?: pulumi.Input<string>;
-    healthCheckConnectPort?: pulumi.Input<number>;
-    healthCheckDomain?: pulumi.Input<string>;
-    healthCheckHttpCode?: pulumi.Input<string>;
-    healthCheckInterval?: pulumi.Input<number>;
-    healthCheckMethod?: pulumi.Input<string>;
-    healthCheckTimeout?: pulumi.Input<number>;
-    healthCheckType?: pulumi.Input<string>;
-    healthCheckUri?: pulumi.Input<string>;
-    healthyThreshold?: pulumi.Input<number>;
-    idleTimeout?: pulumi.Input<number>;
-    listenerForward?: pulumi.Input<string>;
+    gzip?: pulumi.Input<boolean | undefined>;
+    healthCheck?: pulumi.Input<string | undefined>;
+    healthCheckConnectPort?: pulumi.Input<number | undefined>;
+    healthCheckDomain?: pulumi.Input<string | undefined>;
+    healthCheckHttpCode?: pulumi.Input<string | undefined>;
+    healthCheckInterval?: pulumi.Input<number | undefined>;
+    healthCheckMethod?: pulumi.Input<string | undefined>;
+    healthCheckTimeout?: pulumi.Input<number | undefined>;
+    healthCheckType?: pulumi.Input<string | undefined>;
+    healthCheckUri?: pulumi.Input<string | undefined>;
+    healthyThreshold?: pulumi.Input<number | undefined>;
+    idleTimeout?: pulumi.Input<number | undefined>;
+    listenerForward?: pulumi.Input<string | undefined>;
     loadBalancerId: pulumi.Input<string>;
-    masterSlaveServerGroupId?: pulumi.Input<string>;
-    persistenceTimeout?: pulumi.Input<number>;
+    masterSlaveServerGroupId?: pulumi.Input<string | undefined>;
+    persistenceTimeout?: pulumi.Input<number | undefined>;
     protocol: pulumi.Input<string>;
-    proxyProtocolV2Enabled?: pulumi.Input<boolean>;
-    requestTimeout?: pulumi.Input<number>;
-    scheduler?: pulumi.Input<string>;
-    serverCertificateId?: pulumi.Input<string>;
-    serverGroupId?: pulumi.Input<string>;
+    proxyProtocolV2Enabled?: pulumi.Input<boolean | undefined>;
+    requestTimeout?: pulumi.Input<number | undefined>;
+    scheduler?: pulumi.Input<string | undefined>;
+    serverCertificateId?: pulumi.Input<string | undefined>;
+    serverGroupId?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
-    sslCertificateId?: pulumi.Input<string>;
-    stickySession?: pulumi.Input<string>;
-    stickySessionType?: pulumi.Input<string>;
-    tlsCipherPolicy?: pulumi.Input<string>;
-    unhealthyThreshold?: pulumi.Input<number>;
+    sslCertificateId?: pulumi.Input<string | undefined>;
+    stickySession?: pulumi.Input<string | undefined>;
+    stickySessionType?: pulumi.Input<string | undefined>;
+    tlsCipherPolicy?: pulumi.Input<string | undefined>;
+    unhealthyThreshold?: pulumi.Input<number | undefined>;
     /**
      * Whether to set additional HTTP Header field "X-Forwarded-For".
      */
-    xForwardedFor?: pulumi.Input<inputs.slb.ListenerXForwardedFor>;
+    xForwardedFor?: pulumi.Input<inputs.slb.ListenerXForwardedFor | undefined>;
 }

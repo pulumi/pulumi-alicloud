@@ -143,10 +143,10 @@ def get_endpoint_acl_policies(endpoint_type: Optional[_builtins.str] = None,
         instance_id=pulumi.get(__ret__, 'instance_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         policies=pulumi.get(__ret__, 'policies'))
-def get_endpoint_acl_policies_output(endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                     ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                     instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_endpoint_acl_policies_output(endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                                     ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                     instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEndpointAclPoliciesResult]:
     """
     This data source provides the Cr Endpoint Acl Policies of the current Alibaba Cloud user.

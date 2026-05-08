@@ -21,8 +21,8 @@ class VpcFirewallControlPolicyOrderArgs:
     def __init__(__self__, *,
                  order: pulumi.Input[_builtins.str],
                  vpc_firewall_id: pulumi.Input[_builtins.str],
-                 acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcFirewallControlPolicyOrder resource.
 
@@ -87,7 +87,7 @@ class VpcFirewallControlPolicyOrderArgs:
 
     @_builtins.property
     @pulumi.getter(name="aclUuid")
-    def acl_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier ID of the access control policy.  
         When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
@@ -95,12 +95,12 @@ class VpcFirewallControlPolicyOrderArgs:
         return pulumi.get(self, "acl_uuid")
 
     @acl_uuid.setter
-    def acl_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language type used for requests and responses.  
 
@@ -109,17 +109,17 @@ class VpcFirewallControlPolicyOrderArgs:
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
 
 @pulumi.input_type
 class _VpcFirewallControlPolicyOrderState:
     def __init__(__self__, *,
-                 acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 order: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 order: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcFirewallControlPolicyOrder resources.
 
@@ -152,7 +152,7 @@ class _VpcFirewallControlPolicyOrderState:
 
     @_builtins.property
     @pulumi.getter(name="aclUuid")
-    def acl_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier ID of the access control policy.  
         When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
@@ -160,12 +160,12 @@ class _VpcFirewallControlPolicyOrderState:
         return pulumi.get(self, "acl_uuid")
 
     @acl_uuid.setter
-    def acl_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language type used for requests and responses.  
 
@@ -174,12 +174,12 @@ class _VpcFirewallControlPolicyOrderState:
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new priority of the access control policy after modification.  
 
@@ -188,12 +188,12 @@ class _VpcFirewallControlPolicyOrderState:
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcFirewallId")
-    def vpc_firewall_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_firewall_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.  
 
@@ -208,7 +208,7 @@ class _VpcFirewallControlPolicyOrderState:
         return pulumi.get(self, "vpc_firewall_id")
 
     @vpc_firewall_id.setter
-    def vpc_firewall_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_firewall_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_firewall_id", value)
 
 
@@ -218,10 +218,10 @@ class VpcFirewallControlPolicyOrder(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 order: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 order: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Vpc Firewall Control Policy Order resource.
@@ -350,10 +350,10 @@ class VpcFirewallControlPolicyOrder(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 order: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 order: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -381,10 +381,10 @@ class VpcFirewallControlPolicyOrder(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            order: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VpcFirewallControlPolicyOrder':
+            acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            order: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcFirewallControlPolicyOrder':
         """
         Get an existing VpcFirewallControlPolicyOrder resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

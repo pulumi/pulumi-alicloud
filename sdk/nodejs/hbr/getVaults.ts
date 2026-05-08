@@ -119,23 +119,23 @@ export interface GetVaultsOutputArgs {
     /**
      * A list of Vault IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Vault name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
      * - `STANDARD` - used in OSS, NAS and ECS File backup.
      * - `OTS_BACKUP` -  used in OTS backup.
      */
-    vaultType?: pulumi.Input<string>;
+    vaultType?: pulumi.Input<string | undefined>;
 }

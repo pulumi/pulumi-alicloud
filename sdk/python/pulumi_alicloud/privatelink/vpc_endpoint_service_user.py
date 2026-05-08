@@ -21,8 +21,8 @@ class VpcEndpointServiceUserArgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[_builtins.str],
                  user_id: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_arn: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcEndpointServiceUser resource.
 
@@ -64,36 +64,36 @@ class VpcEndpointServiceUserArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="userArn")
-    def user_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The whitelist in the format of ARN.
         """
         return pulumi.get(self, "user_arn")
 
     @user_arn.setter
-    def user_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_arn", value)
 
 
 @pulumi.input_type
 class _VpcEndpointServiceUserState:
     def __init__(__self__, *,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointServiceUser resources.
 
@@ -113,50 +113,50 @@ class _VpcEndpointServiceUserState:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint service ID.
         """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userArn")
-    def user_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The whitelist in the format of ARN.
         """
         return pulumi.get(self, "user_arn")
 
     @user_arn.setter
-    def user_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -166,10 +166,10 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Private Link Vpc Endpoint Service User resource.
@@ -293,10 +293,10 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -324,10 +324,10 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VpcEndpointServiceUser':
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcEndpointServiceUser':
         """
         Get an existing VpcEndpointServiceUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

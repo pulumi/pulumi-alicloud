@@ -21,7 +21,7 @@ class RamRoleAttachmentArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  ram_role_name: pulumi.Input[_builtins.str],
-                 policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RamRoleAttachment resource.
 
@@ -60,23 +60,23 @@ class RamRoleAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The additional policy. When you attach an instance RAM role to instances, you can specify an additional policy to further limit the permissions of the role.
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
 
 @pulumi.input_type
 class _RamRoleAttachmentState:
     def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RamRoleAttachment resources.
 
@@ -93,38 +93,38 @@ class _RamRoleAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The additional policy. When you attach an instance RAM role to instances, you can specify an additional policy to further limit the permissions of the role.
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="ramRoleName")
-    def ram_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ram_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance RAM role.
         """
         return pulumi.get(self, "ram_role_name")
 
     @ram_role_name.setter
-    def ram_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ram_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ram_role_name", value)
 
 
@@ -134,9 +134,9 @@ class RamRoleAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Ram Role Attachment resource.
@@ -335,9 +335,9 @@ class RamRoleAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -364,9 +364,9 @@ class RamRoleAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            policy: Optional[pulumi.Input[_builtins.str]] = None,
-            ram_role_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'RamRoleAttachment':
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ram_role_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'RamRoleAttachment':
         """
         Get an existing RamRoleAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

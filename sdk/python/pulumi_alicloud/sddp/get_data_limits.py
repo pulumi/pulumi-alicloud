@@ -147,10 +147,10 @@ def get_data_limits(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         parent_id=pulumi.get(__ret__, 'parent_id'),
         resource_type=pulumi.get(__ret__, 'resource_type'))
-def get_data_limits_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                           output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           parent_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           resource_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_data_limits_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                           output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           parent_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           resource_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataLimitsResult]:
     """
     This data source provides the Sddp Data Limits of the current Alibaba Cloud user.

@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     certificate: `-----BEGIN CERTIFICATE-----
  * ****-----END CERTIFICATE-----`,
  *     clientCaCertName: "example",
- *     siteId: _default.then(_default => _default.sites?.[0]?.id),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.id)).apply(x =>String(x)),
  * });
  * ```
  *
@@ -140,27 +140,27 @@ export interface ClientCaCertificateState {
     /**
      * Certificate content.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * ClientCaCertificate Id
      */
-    clientCaCertId?: pulumi.Input<string>;
+    clientCaCertId?: pulumi.Input<string | undefined>;
     /**
      * The certificate name.
      */
-    clientCaCertName?: pulumi.Input<string>;
+    clientCaCertName?: pulumi.Input<string | undefined>;
     /**
      * Creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Site Id
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Certificate status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -174,7 +174,7 @@ export interface ClientCaCertificateArgs {
     /**
      * The certificate name.
      */
-    clientCaCertName?: pulumi.Input<string>;
+    clientCaCertName?: pulumi.Input<string | undefined>;
     /**
      * Site Id
      */

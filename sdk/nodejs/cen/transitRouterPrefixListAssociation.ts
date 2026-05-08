@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *     transitRouterTableId: exampleTransitRouterRouteTable.transitRouterRouteTableId,
  *     nextHop: "BlackHole",
  *     nextHopType: "BlackHole",
- *     ownerUid: _default.then(_default => _default.id),
+ *     ownerUid: output(_default.then(_default => _default.id)).apply(x =>Number(x)),
  * });
  * ```
  *
@@ -167,7 +167,7 @@ export interface TransitRouterPrefixListAssociationState {
     /**
      * The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
      */
-    nextHop?: pulumi.Input<string>;
+    nextHop?: pulumi.Input<string | undefined>;
     /**
      * The type of the next hop. Valid values:
      * - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
@@ -175,27 +175,27 @@ export interface TransitRouterPrefixListAssociationState {
      * - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
      * - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
      */
-    nextHopType?: pulumi.Input<string>;
+    nextHopType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Alibaba Cloud account to which the prefix list belongs.
      */
-    ownerUid?: pulumi.Input<number>;
+    ownerUid?: pulumi.Input<number | undefined>;
     /**
      * The ID of the prefix list.
      */
-    prefixListId?: pulumi.Input<string>;
+    prefixListId?: pulumi.Input<string | undefined>;
     /**
      * The status of the prefix list.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the transit router.
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the route table of the transit router.
      */
-    transitRouterTableId?: pulumi.Input<string>;
+    transitRouterTableId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -213,11 +213,11 @@ export interface TransitRouterPrefixListAssociationArgs {
      * - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
      * - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
      */
-    nextHopType?: pulumi.Input<string>;
+    nextHopType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Alibaba Cloud account to which the prefix list belongs.
      */
-    ownerUid?: pulumi.Input<number>;
+    ownerUid?: pulumi.Input<number | undefined>;
     /**
      * The ID of the prefix list.
      */

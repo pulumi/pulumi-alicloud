@@ -178,41 +178,41 @@ export interface RoutineRouteState {
      * - on: Open
      * - off: off
      */
-    bypass?: pulumi.Input<string>;
+    bypass?: pulumi.Input<string | undefined>;
     /**
      * Config Id
      */
-    configId?: pulumi.Input<number>;
+    configId?: pulumi.Input<number | undefined>;
     /**
      * Spare
      */
-    fallback?: pulumi.Input<string>;
+    fallback?: pulumi.Input<string | undefined>;
     /**
      * Routing switch. Value range:
      * - on: Open
      * - off: off
      */
-    routeEnable?: pulumi.Input<string>;
+    routeEnable?: pulumi.Input<string | undefined>;
     /**
      * The route name.
      */
-    routeName?: pulumi.Input<string>;
+    routeName?: pulumi.Input<string | undefined>;
     /**
      * The edge function Routine name.
      */
-    routineName?: pulumi.Input<string>;
+    routineName?: pulumi.Input<string | undefined>;
     /**
      * The rule content.
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule execution order.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * Site Id
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -224,21 +224,21 @@ export interface RoutineRouteArgs {
      * - on: Open
      * - off: off
      */
-    bypass?: pulumi.Input<string>;
+    bypass?: pulumi.Input<string | undefined>;
     /**
      * Spare
      */
-    fallback?: pulumi.Input<string>;
+    fallback?: pulumi.Input<string | undefined>;
     /**
      * Routing switch. Value range:
      * - on: Open
      * - off: off
      */
-    routeEnable?: pulumi.Input<string>;
+    routeEnable?: pulumi.Input<string | undefined>;
     /**
      * The route name.
      */
-    routeName?: pulumi.Input<string>;
+    routeName?: pulumi.Input<string | undefined>;
     /**
      * The edge function Routine name.
      */
@@ -246,11 +246,11 @@ export interface RoutineRouteArgs {
     /**
      * The rule content.
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule execution order.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * Site Id
      */

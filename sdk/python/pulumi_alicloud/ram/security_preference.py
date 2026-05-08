@@ -19,20 +19,20 @@ __all__ = ['SecurityPreferenceArgs', 'SecurityPreference']
 @pulumi.input_type
 class SecurityPreferenceArgs:
     def __init__(__self__, *,
-                 allow_user_to_change_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_login_with_passkey: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_manage_access_keys: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_manage_mfa_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_manage_personal_ding_talk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_save_mfa_ticket: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enforce_mfa_for_login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 login_network_masks: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_idle_days_for_access_keys: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_idle_days_for_users: Optional[pulumi.Input[_builtins.int]] = None,
-                 mfa_operation_for_login: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_for_risk_login: Optional[pulumi.Input[_builtins.str]] = None,
-                 verification_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allow_user_to_change_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_login_with_passkey: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_manage_access_keys: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_manage_mfa_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_manage_personal_ding_talk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_save_mfa_ticket: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enforce_mfa_for_login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 login_network_masks: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_idle_days_for_access_keys: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_idle_days_for_users: pulumi.Input[Optional[_builtins.int]] = None,
+                 mfa_operation_for_login: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_for_risk_login: pulumi.Input[Optional[_builtins.str]] = None,
+                 verification_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecurityPreference resource.
 
@@ -115,7 +115,7 @@ class SecurityPreferenceArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowUserToChangePassword")
-    def allow_user_to_change_password(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_user_to_change_password(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow RAM users to manage their own passwords. Value:
         - true (default): Allowed.
@@ -124,12 +124,12 @@ class SecurityPreferenceArgs:
         return pulumi.get(self, "allow_user_to_change_password")
 
     @allow_user_to_change_password.setter
-    def allow_user_to_change_password(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_user_to_change_password(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_user_to_change_password", value)
 
     @_builtins.property
     @pulumi.getter(name="allowUserToLoginWithPasskey")
-    def allow_user_to_login_with_passkey(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_user_to_login_with_passkey(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow RAM users to log on using a passkey. Value:
         - true (default): Allowed.
@@ -138,12 +138,12 @@ class SecurityPreferenceArgs:
         return pulumi.get(self, "allow_user_to_login_with_passkey")
 
     @allow_user_to_login_with_passkey.setter
-    def allow_user_to_login_with_passkey(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_user_to_login_with_passkey(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_user_to_login_with_passkey", value)
 
     @_builtins.property
     @pulumi.getter(name="allowUserToManageAccessKeys")
-    def allow_user_to_manage_access_keys(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_user_to_manage_access_keys(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow RAM users to manage their own access keys. Value:
         - true: Allow.
@@ -152,12 +152,12 @@ class SecurityPreferenceArgs:
         return pulumi.get(self, "allow_user_to_manage_access_keys")
 
     @allow_user_to_manage_access_keys.setter
-    def allow_user_to_manage_access_keys(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_user_to_manage_access_keys(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_user_to_manage_access_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="allowUserToManageMfaDevices")
-    def allow_user_to_manage_mfa_devices(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_user_to_manage_mfa_devices(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow RAM users to manage multi-factor authentication devices. Value:
         - true (default): Allowed.
@@ -166,12 +166,12 @@ class SecurityPreferenceArgs:
         return pulumi.get(self, "allow_user_to_manage_mfa_devices")
 
     @allow_user_to_manage_mfa_devices.setter
-    def allow_user_to_manage_mfa_devices(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_user_to_manage_mfa_devices(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_user_to_manage_mfa_devices", value)
 
     @_builtins.property
     @pulumi.getter(name="allowUserToManagePersonalDingTalk")
-    def allow_user_to_manage_personal_ding_talk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_user_to_manage_personal_ding_talk(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
         - true (default): Allowed.
@@ -180,12 +180,12 @@ class SecurityPreferenceArgs:
         return pulumi.get(self, "allow_user_to_manage_personal_ding_talk")
 
     @allow_user_to_manage_personal_ding_talk.setter
-    def allow_user_to_manage_personal_ding_talk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_user_to_manage_personal_ding_talk(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_user_to_manage_personal_ding_talk", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSaveMfaTicket")
-    def enable_save_mfa_ticket(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_save_mfa_ticket(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
         - true: Allow.
@@ -194,13 +194,13 @@ class SecurityPreferenceArgs:
         return pulumi.get(self, "enable_save_mfa_ticket")
 
     @enable_save_mfa_ticket.setter
-    def enable_save_mfa_ticket(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_save_mfa_ticket(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_save_mfa_ticket", value)
 
     @_builtins.property
     @pulumi.getter(name="enforceMfaForLogin")
     @_utilities.deprecated("""This property has been deprecated as it is no longer supported by Aliyun.""")
-    def enforce_mfa_for_login(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce_mfa_for_login(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
         Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
@@ -208,12 +208,12 @@ class SecurityPreferenceArgs:
         return pulumi.get(self, "enforce_mfa_for_login")
 
     @enforce_mfa_for_login.setter
-    def enforce_mfa_for_login(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce_mfa_for_login(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce_mfa_for_login", value)
 
     @_builtins.property
     @pulumi.getter(name="loginNetworkMasks")
-    def login_network_masks(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_network_masks(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
         - If the mask is specified, RAM users can only log on from the specified IP address.
@@ -226,12 +226,12 @@ class SecurityPreferenceArgs:
         return pulumi.get(self, "login_network_masks")
 
     @login_network_masks.setter
-    def login_network_masks(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_network_masks(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_network_masks", value)
 
     @_builtins.property
     @pulumi.getter(name="loginSessionDuration")
-    def login_session_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def login_session_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The validity period of the logon session of RAM users.
         Valid values: 1 to 24. Unit: hours.
@@ -240,36 +240,36 @@ class SecurityPreferenceArgs:
         return pulumi.get(self, "login_session_duration")
 
     @login_session_duration.setter
-    def login_session_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def login_session_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "login_session_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="maxIdleDaysForAccessKeys")
-    def max_idle_days_for_access_keys(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_idle_days_for_access_keys(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
         """
         return pulumi.get(self, "max_idle_days_for_access_keys")
 
     @max_idle_days_for_access_keys.setter
-    def max_idle_days_for_access_keys(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_idle_days_for_access_keys(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_idle_days_for_access_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="maxIdleDaysForUsers")
-    def max_idle_days_for_users(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_idle_days_for_users(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
         """
         return pulumi.get(self, "max_idle_days_for_users")
 
     @max_idle_days_for_users.setter
-    def max_idle_days_for_users(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_idle_days_for_users(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_idle_days_for_users", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaOperationForLogin")
-    def mfa_operation_for_login(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mfa_operation_for_login(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
         - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
@@ -279,12 +279,12 @@ class SecurityPreferenceArgs:
         return pulumi.get(self, "mfa_operation_for_login")
 
     @mfa_operation_for_login.setter
-    def mfa_operation_for_login(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mfa_operation_for_login(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mfa_operation_for_login", value)
 
     @_builtins.property
     @pulumi.getter(name="operationForRiskLogin")
-    def operation_for_risk_login(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation_for_risk_login(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether MFA is verified twice during abnormal logon. Value:
         - autonomous (default): Skip, do not force binding.
@@ -293,12 +293,12 @@ class SecurityPreferenceArgs:
         return pulumi.get(self, "operation_for_risk_login")
 
     @operation_for_risk_login.setter
-    def operation_for_risk_login(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation_for_risk_login(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation_for_risk_login", value)
 
     @_builtins.property
     @pulumi.getter(name="verificationTypes")
-    def verification_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def verification_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Means of multi-factor authentication. Value:
         - sms: secure phone.
@@ -309,27 +309,27 @@ class SecurityPreferenceArgs:
         return pulumi.get(self, "verification_types")
 
     @verification_types.setter
-    def verification_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def verification_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "verification_types", value)
 
 
 @pulumi.input_type
 class _SecurityPreferenceState:
     def __init__(__self__, *,
-                 allow_user_to_change_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_login_with_passkey: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_manage_access_keys: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_manage_mfa_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_manage_personal_ding_talk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_save_mfa_ticket: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enforce_mfa_for_login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 login_network_masks: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_idle_days_for_access_keys: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_idle_days_for_users: Optional[pulumi.Input[_builtins.int]] = None,
-                 mfa_operation_for_login: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_for_risk_login: Optional[pulumi.Input[_builtins.str]] = None,
-                 verification_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allow_user_to_change_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_login_with_passkey: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_manage_access_keys: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_manage_mfa_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_manage_personal_ding_talk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_save_mfa_ticket: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enforce_mfa_for_login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 login_network_masks: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_idle_days_for_access_keys: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_idle_days_for_users: pulumi.Input[Optional[_builtins.int]] = None,
+                 mfa_operation_for_login: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_for_risk_login: pulumi.Input[Optional[_builtins.str]] = None,
+                 verification_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SecurityPreference resources.
 
@@ -412,7 +412,7 @@ class _SecurityPreferenceState:
 
     @_builtins.property
     @pulumi.getter(name="allowUserToChangePassword")
-    def allow_user_to_change_password(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_user_to_change_password(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow RAM users to manage their own passwords. Value:
         - true (default): Allowed.
@@ -421,12 +421,12 @@ class _SecurityPreferenceState:
         return pulumi.get(self, "allow_user_to_change_password")
 
     @allow_user_to_change_password.setter
-    def allow_user_to_change_password(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_user_to_change_password(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_user_to_change_password", value)
 
     @_builtins.property
     @pulumi.getter(name="allowUserToLoginWithPasskey")
-    def allow_user_to_login_with_passkey(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_user_to_login_with_passkey(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow RAM users to log on using a passkey. Value:
         - true (default): Allowed.
@@ -435,12 +435,12 @@ class _SecurityPreferenceState:
         return pulumi.get(self, "allow_user_to_login_with_passkey")
 
     @allow_user_to_login_with_passkey.setter
-    def allow_user_to_login_with_passkey(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_user_to_login_with_passkey(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_user_to_login_with_passkey", value)
 
     @_builtins.property
     @pulumi.getter(name="allowUserToManageAccessKeys")
-    def allow_user_to_manage_access_keys(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_user_to_manage_access_keys(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow RAM users to manage their own access keys. Value:
         - true: Allow.
@@ -449,12 +449,12 @@ class _SecurityPreferenceState:
         return pulumi.get(self, "allow_user_to_manage_access_keys")
 
     @allow_user_to_manage_access_keys.setter
-    def allow_user_to_manage_access_keys(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_user_to_manage_access_keys(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_user_to_manage_access_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="allowUserToManageMfaDevices")
-    def allow_user_to_manage_mfa_devices(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_user_to_manage_mfa_devices(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow RAM users to manage multi-factor authentication devices. Value:
         - true (default): Allowed.
@@ -463,12 +463,12 @@ class _SecurityPreferenceState:
         return pulumi.get(self, "allow_user_to_manage_mfa_devices")
 
     @allow_user_to_manage_mfa_devices.setter
-    def allow_user_to_manage_mfa_devices(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_user_to_manage_mfa_devices(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_user_to_manage_mfa_devices", value)
 
     @_builtins.property
     @pulumi.getter(name="allowUserToManagePersonalDingTalk")
-    def allow_user_to_manage_personal_ding_talk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_user_to_manage_personal_ding_talk(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow RAM users to independently manage the binding and unbinding of personal DingTalk. Value:
         - true (default): Allowed.
@@ -477,12 +477,12 @@ class _SecurityPreferenceState:
         return pulumi.get(self, "allow_user_to_manage_personal_ding_talk")
 
     @allow_user_to_manage_personal_ding_talk.setter
-    def allow_user_to_manage_personal_ding_talk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_user_to_manage_personal_ding_talk(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_user_to_manage_personal_ding_talk", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSaveMfaTicket")
-    def enable_save_mfa_ticket(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_save_mfa_ticket(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
         - true: Allow.
@@ -491,13 +491,13 @@ class _SecurityPreferenceState:
         return pulumi.get(self, "enable_save_mfa_ticket")
 
     @enable_save_mfa_ticket.setter
-    def enable_save_mfa_ticket(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_save_mfa_ticket(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_save_mfa_ticket", value)
 
     @_builtins.property
     @pulumi.getter(name="enforceMfaForLogin")
     @_utilities.deprecated("""This property has been deprecated as it is no longer supported by Aliyun.""")
-    def enforce_mfa_for_login(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce_mfa_for_login(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
         Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
@@ -505,12 +505,12 @@ class _SecurityPreferenceState:
         return pulumi.get(self, "enforce_mfa_for_login")
 
     @enforce_mfa_for_login.setter
-    def enforce_mfa_for_login(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce_mfa_for_login(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce_mfa_for_login", value)
 
     @_builtins.property
     @pulumi.getter(name="loginNetworkMasks")
-    def login_network_masks(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_network_masks(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
         - If the mask is specified, RAM users can only log on from the specified IP address.
@@ -523,12 +523,12 @@ class _SecurityPreferenceState:
         return pulumi.get(self, "login_network_masks")
 
     @login_network_masks.setter
-    def login_network_masks(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_network_masks(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_network_masks", value)
 
     @_builtins.property
     @pulumi.getter(name="loginSessionDuration")
-    def login_session_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def login_session_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The validity period of the logon session of RAM users.
         Valid values: 1 to 24. Unit: hours.
@@ -537,36 +537,36 @@ class _SecurityPreferenceState:
         return pulumi.get(self, "login_session_duration")
 
     @login_session_duration.setter
-    def login_session_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def login_session_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "login_session_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="maxIdleDaysForAccessKeys")
-    def max_idle_days_for_access_keys(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_idle_days_for_access_keys(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum idle time (in days) of an access key for a RAM user. After the access key is not used for this period, it is automatically disabled on the next day. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
         """
         return pulumi.get(self, "max_idle_days_for_access_keys")
 
     @max_idle_days_for_access_keys.setter
-    def max_idle_days_for_access_keys(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_idle_days_for_access_keys(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_idle_days_for_access_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="maxIdleDaysForUsers")
-    def max_idle_days_for_users(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_idle_days_for_users(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum idle time (days) of the RAM user. If the RAM user has the console logon enabled, the console logon will be automatically disabled on the next day after the continuous logon time (excluding SSO logon time) reaches this time. Possible values are `90`, `180`, `365`, `730`. Defaults to `730`.
         """
         return pulumi.get(self, "max_idle_days_for_users")
 
     @max_idle_days_for_users.setter
-    def max_idle_days_for_users(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_idle_days_for_users(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_idle_days_for_users", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaOperationForLogin")
-    def mfa_operation_for_login(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mfa_operation_for_login(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
         - mandatory: mandatory for all RAM users. The original value of EnforceMFAForLogin is true.
@@ -576,12 +576,12 @@ class _SecurityPreferenceState:
         return pulumi.get(self, "mfa_operation_for_login")
 
     @mfa_operation_for_login.setter
-    def mfa_operation_for_login(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mfa_operation_for_login(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mfa_operation_for_login", value)
 
     @_builtins.property
     @pulumi.getter(name="operationForRiskLogin")
-    def operation_for_risk_login(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation_for_risk_login(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether MFA is verified twice during abnormal logon. Value:
         - autonomous (default): Skip, do not force binding.
@@ -590,12 +590,12 @@ class _SecurityPreferenceState:
         return pulumi.get(self, "operation_for_risk_login")
 
     @operation_for_risk_login.setter
-    def operation_for_risk_login(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation_for_risk_login(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation_for_risk_login", value)
 
     @_builtins.property
     @pulumi.getter(name="verificationTypes")
-    def verification_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def verification_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Means of multi-factor authentication. Value:
         - sms: secure phone.
@@ -606,7 +606,7 @@ class _SecurityPreferenceState:
         return pulumi.get(self, "verification_types")
 
     @verification_types.setter
-    def verification_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def verification_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "verification_types", value)
 
 
@@ -616,20 +616,20 @@ class SecurityPreference(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_user_to_change_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_login_with_passkey: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_manage_access_keys: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_manage_mfa_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_manage_personal_ding_talk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_save_mfa_ticket: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enforce_mfa_for_login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 login_network_masks: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_idle_days_for_access_keys: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_idle_days_for_users: Optional[pulumi.Input[_builtins.int]] = None,
-                 mfa_operation_for_login: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_for_risk_login: Optional[pulumi.Input[_builtins.str]] = None,
-                 verification_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_user_to_change_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_login_with_passkey: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_manage_access_keys: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_manage_mfa_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_manage_personal_ding_talk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_save_mfa_ticket: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enforce_mfa_for_login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 login_network_masks: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_idle_days_for_access_keys: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_idle_days_for_users: pulumi.Input[Optional[_builtins.int]] = None,
+                 mfa_operation_for_login: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_for_risk_login: pulumi.Input[Optional[_builtins.str]] = None,
+                 verification_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a RAM Security Preference resource.
@@ -769,20 +769,20 @@ class SecurityPreference(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_user_to_change_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_login_with_passkey: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_manage_access_keys: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_manage_mfa_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_user_to_manage_personal_ding_talk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_save_mfa_ticket: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enforce_mfa_for_login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 login_network_masks: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_idle_days_for_access_keys: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_idle_days_for_users: Optional[pulumi.Input[_builtins.int]] = None,
-                 mfa_operation_for_login: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_for_risk_login: Optional[pulumi.Input[_builtins.str]] = None,
-                 verification_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_user_to_change_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_login_with_passkey: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_manage_access_keys: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_manage_mfa_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_user_to_manage_personal_ding_talk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_save_mfa_ticket: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enforce_mfa_for_login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 login_network_masks: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_idle_days_for_access_keys: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_idle_days_for_users: pulumi.Input[Optional[_builtins.int]] = None,
+                 mfa_operation_for_login: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_for_risk_login: pulumi.Input[Optional[_builtins.str]] = None,
+                 verification_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -816,20 +816,20 @@ class SecurityPreference(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_user_to_change_password: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_user_to_login_with_passkey: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_user_to_manage_access_keys: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_user_to_manage_mfa_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_user_to_manage_personal_ding_talk: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_save_mfa_ticket: Optional[pulumi.Input[_builtins.bool]] = None,
-            enforce_mfa_for_login: Optional[pulumi.Input[_builtins.bool]] = None,
-            login_network_masks: Optional[pulumi.Input[_builtins.str]] = None,
-            login_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            max_idle_days_for_access_keys: Optional[pulumi.Input[_builtins.int]] = None,
-            max_idle_days_for_users: Optional[pulumi.Input[_builtins.int]] = None,
-            mfa_operation_for_login: Optional[pulumi.Input[_builtins.str]] = None,
-            operation_for_risk_login: Optional[pulumi.Input[_builtins.str]] = None,
-            verification_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SecurityPreference':
+            allow_user_to_change_password: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_user_to_login_with_passkey: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_user_to_manage_access_keys: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_user_to_manage_mfa_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_user_to_manage_personal_ding_talk: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_save_mfa_ticket: pulumi.Input[Optional[_builtins.bool]] = None,
+            enforce_mfa_for_login: pulumi.Input[Optional[_builtins.bool]] = None,
+            login_network_masks: pulumi.Input[Optional[_builtins.str]] = None,
+            login_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            max_idle_days_for_access_keys: pulumi.Input[Optional[_builtins.int]] = None,
+            max_idle_days_for_users: pulumi.Input[Optional[_builtins.int]] = None,
+            mfa_operation_for_login: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_for_risk_login: pulumi.Input[Optional[_builtins.str]] = None,
+            verification_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SecurityPreference':
         """
         Get an existing SecurityPreference resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -118,13 +118,13 @@ export interface GetResourceGroupsOutputArgs {
     /**
      * The name of the resource pool, which cannot exceed 64 bytes in length.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * A list of AnalyticDB for MySQL (ADB) Resource Group IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

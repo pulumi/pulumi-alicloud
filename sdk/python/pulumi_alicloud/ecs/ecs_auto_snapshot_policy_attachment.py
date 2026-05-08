@@ -58,9 +58,9 @@ class EcsAutoSnapshotPolicyAttachmentArgs:
 @pulumi.input_type
 class _EcsAutoSnapshotPolicyAttachmentState:
     def __init__(__self__, *,
-                 auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsAutoSnapshotPolicyAttachment resources.
 
@@ -77,38 +77,38 @@ class _EcsAutoSnapshotPolicyAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyId")
-    def auto_snapshot_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_snapshot_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the automatic snapshot policy that is applied to the cloud disk.
         """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
     @auto_snapshot_policy_id.setter
-    def auto_snapshot_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_snapshot_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_snapshot_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the disk.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
 
@@ -118,8 +118,8 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Auto Snapshot Policy Attachment resource.
@@ -255,8 +255,8 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -283,9 +283,9 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'EcsAutoSnapshotPolicyAttachment':
+            auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EcsAutoSnapshotPolicyAttachment':
         """
         Get an existing EcsAutoSnapshotPolicyAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

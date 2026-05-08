@@ -25,9 +25,9 @@ class AggregateCompliancePackArgs:
                  aggregator_id: pulumi.Input[_builtins.str],
                  description: pulumi.Input[_builtins.str],
                  risk_level: pulumi.Input[_builtins.int],
-                 compliance_pack_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]] = None,
-                 config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]] = None):
+                 compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]] = None,
+                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]] = None):
         """
         The set of arguments for constructing a AggregateCompliancePack resource.
 
@@ -103,54 +103,54 @@ class AggregateCompliancePackArgs:
 
     @_builtins.property
     @pulumi.getter(name="compliancePackTemplateId")
-    def compliance_pack_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compliance_pack_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Template ID of compliance package.
         """
         return pulumi.get(self, "compliance_pack_template_id")
 
     @compliance_pack_template_id.setter
-    def compliance_pack_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compliance_pack_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compliance_pack_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="configRuleIds")
-    def config_rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]]:
+    def config_rule_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]]:
         """
         A list of Config Rule IDs. See `config_rule_ids` below.
         """
         return pulumi.get(self, "config_rule_ids")
 
     @config_rule_ids.setter
-    def config_rule_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]]):
+    def config_rule_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]]):
         pulumi.set(self, "config_rule_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="configRules")
     @_utilities.deprecated("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
-    def config_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]]:
+    def config_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]]:
         """
         A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
         return pulumi.get(self, "config_rules")
 
     @config_rules.setter
-    def config_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]]):
+    def config_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]]):
         pulumi.set(self, "config_rules", value)
 
 
 @pulumi.input_type
 class _AggregateCompliancePackState:
     def __init__(__self__, *,
-                 aggregate_compliance_pack_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 aggregator_compliance_pack_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aggregator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compliance_pack_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]] = None,
-                 config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 risk_level: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 aggregate_compliance_pack_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 aggregator_compliance_pack_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]] = None,
+                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 risk_level: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AggregateCompliancePack resources.
 
@@ -188,111 +188,111 @@ class _AggregateCompliancePackState:
 
     @_builtins.property
     @pulumi.getter(name="aggregateCompliancePackName")
-    def aggregate_compliance_pack_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aggregate_compliance_pack_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
         """
         return pulumi.get(self, "aggregate_compliance_pack_name")
 
     @aggregate_compliance_pack_name.setter
-    def aggregate_compliance_pack_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aggregate_compliance_pack_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aggregate_compliance_pack_name", value)
 
     @_builtins.property
     @pulumi.getter(name="aggregatorCompliancePackId")
-    def aggregator_compliance_pack_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aggregator_compliance_pack_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the compliance package.
         """
         return pulumi.get(self, "aggregator_compliance_pack_id")
 
     @aggregator_compliance_pack_id.setter
-    def aggregator_compliance_pack_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aggregator_compliance_pack_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aggregator_compliance_pack_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aggregatorId")
-    def aggregator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aggregator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of aggregator.
         """
         return pulumi.get(self, "aggregator_id")
 
     @aggregator_id.setter
-    def aggregator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aggregator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aggregator_id", value)
 
     @_builtins.property
     @pulumi.getter(name="compliancePackTemplateId")
-    def compliance_pack_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compliance_pack_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Template ID of compliance package.
         """
         return pulumi.get(self, "compliance_pack_template_id")
 
     @compliance_pack_template_id.setter
-    def compliance_pack_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compliance_pack_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compliance_pack_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="configRuleIds")
-    def config_rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]]:
+    def config_rule_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]]:
         """
         A list of Config Rule IDs. See `config_rule_ids` below.
         """
         return pulumi.get(self, "config_rule_ids")
 
     @config_rule_ids.setter
-    def config_rule_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]]):
+    def config_rule_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]]):
         pulumi.set(self, "config_rule_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="configRules")
     @_utilities.deprecated("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
-    def config_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]]:
+    def config_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]]:
         """
         A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
         return pulumi.get(self, "config_rules")
 
     @config_rules.setter
-    def config_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]]):
+    def config_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]]):
         pulumi.set(self, "config_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of compliance package.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="riskLevel")
-    def risk_level(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def risk_level(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Risk Level. Valid values:
         """
         return pulumi.get(self, "risk_level")
 
     @risk_level.setter
-    def risk_level(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def risk_level(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "risk_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Aggregate Compliance Pack.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -302,13 +302,13 @@ class AggregateCompliancePack(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregate_compliance_pack_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 aggregator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compliance_pack_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]]] = None,
-                 config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 risk_level: Optional[pulumi.Input[_builtins.int]] = None,
+                 aggregate_compliance_pack_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]]] = None,
+                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 risk_level: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Cloud Config Aggregate Compliance Pack resource.
@@ -469,13 +469,13 @@ class AggregateCompliancePack(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregate_compliance_pack_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 aggregator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compliance_pack_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]]] = None,
-                 config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 risk_level: Optional[pulumi.Input[_builtins.int]] = None,
+                 aggregate_compliance_pack_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]]] = None,
+                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 risk_level: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -512,15 +512,15 @@ class AggregateCompliancePack(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aggregate_compliance_pack_name: Optional[pulumi.Input[_builtins.str]] = None,
-            aggregator_compliance_pack_id: Optional[pulumi.Input[_builtins.str]] = None,
-            aggregator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            compliance_pack_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-            config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]]] = None,
-            config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            risk_level: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'AggregateCompliancePack':
+            aggregate_compliance_pack_name: pulumi.Input[Optional[_builtins.str]] = None,
+            aggregator_compliance_pack_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]]] = None,
+            config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            risk_level: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'AggregateCompliancePack':
         """
         Get an existing AggregateCompliancePack resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

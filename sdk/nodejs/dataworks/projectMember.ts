@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultProjectMember = new alicloud.dataworks.ProjectMember("default", {
  *     userId: defaultKCTrB2.id,
- *     projectId: defaultQeRfvU.id,
+ *     projectId: defaultQeRfvU.id.apply(x =>Number(x)),
  *     roles: [{
  *         code: adminCode,
  *     }],
@@ -150,19 +150,19 @@ export interface ProjectMemberState {
     /**
      * Project ID
      */
-    projectId?: pulumi.Input<number>;
+    projectId?: pulumi.Input<number | undefined>;
     /**
      * List of roles owned by members. See `roles` below.
      */
-    roles?: pulumi.Input<pulumi.Input<inputs.dataworks.ProjectMemberRole>[]>;
+    roles?: pulumi.Input<pulumi.Input<inputs.dataworks.ProjectMemberRole>[] | undefined>;
     /**
      * The status of the user in project
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The user ID of the member.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -176,7 +176,7 @@ export interface ProjectMemberArgs {
     /**
      * List of roles owned by members. See `roles` below.
      */
-    roles?: pulumi.Input<pulumi.Input<inputs.dataworks.ProjectMemberRole>[]>;
+    roles?: pulumi.Input<pulumi.Input<inputs.dataworks.ProjectMemberRole>[] | undefined>;
     /**
      * The user ID of the member.
      */

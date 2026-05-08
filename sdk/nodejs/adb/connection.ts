@@ -142,23 +142,23 @@ export interface ConnectionState {
     /**
      * Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * Connection cluster string.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster that can run database.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * The ip address of connection string.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * Connection cluster port.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -168,7 +168,7 @@ export interface ConnectionArgs {
     /**
      * Prefix of the cluster public endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter. Default to `<db_cluster_id> + tf`.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster that can run database.
      */

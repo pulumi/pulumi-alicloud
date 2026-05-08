@@ -44,8 +44,8 @@ public final class SddpFunctions {
      * import com.pulumi.alicloud.sddp.ConfigArgs;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -97,8 +97,8 @@ public final class SddpFunctions {
      * import com.pulumi.alicloud.sddp.ConfigArgs;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -150,8 +150,8 @@ public final class SddpFunctions {
      * import com.pulumi.alicloud.sddp.ConfigArgs;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -203,8 +203,8 @@ public final class SddpFunctions {
      * import com.pulumi.alicloud.sddp.ConfigArgs;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -256,8 +256,8 @@ public final class SddpFunctions {
      * import com.pulumi.alicloud.sddp.ConfigArgs;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -309,8 +309,8 @@ public final class SddpFunctions {
      * import com.pulumi.alicloud.sddp.ConfigArgs;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -362,8 +362,8 @@ public final class SddpFunctions {
      * import com.pulumi.alicloud.sddp.ConfigArgs;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -413,8 +413,8 @@ public final class SddpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetDataLimitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -457,8 +457,8 @@ public final class SddpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetDataLimitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -501,8 +501,8 @@ public final class SddpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetDataLimitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -545,8 +545,8 @@ public final class SddpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetDataLimitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -589,8 +589,8 @@ public final class SddpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetDataLimitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -633,8 +633,8 @@ public final class SddpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetDataLimitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -677,8 +677,8 @@ public final class SddpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetDataLimitsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -721,8 +721,8 @@ public final class SddpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -765,8 +765,8 @@ public final class SddpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -809,8 +809,8 @@ public final class SddpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -853,8 +853,8 @@ public final class SddpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -897,8 +897,8 @@ public final class SddpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -941,8 +941,8 @@ public final class SddpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -985,8 +985,8 @@ public final class SddpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1031,8 +1031,8 @@ public final class SddpFunctions {
      * import com.pulumi.alicloud.sddp.RuleArgs;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1086,8 +1086,8 @@ public final class SddpFunctions {
      * import com.pulumi.alicloud.sddp.RuleArgs;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1141,8 +1141,8 @@ public final class SddpFunctions {
      * import com.pulumi.alicloud.sddp.RuleArgs;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1196,8 +1196,8 @@ public final class SddpFunctions {
      * import com.pulumi.alicloud.sddp.RuleArgs;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1251,8 +1251,8 @@ public final class SddpFunctions {
      * import com.pulumi.alicloud.sddp.RuleArgs;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1306,8 +1306,8 @@ public final class SddpFunctions {
      * import com.pulumi.alicloud.sddp.RuleArgs;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1361,8 +1361,8 @@ public final class SddpFunctions {
      * import com.pulumi.alicloud.sddp.RuleArgs;
      * import com.pulumi.alicloud.sddp.SddpFunctions;
      * import com.pulumi.alicloud.sddp.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

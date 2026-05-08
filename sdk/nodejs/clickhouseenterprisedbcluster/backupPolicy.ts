@@ -151,19 +151,19 @@ export interface BackupPolicyState {
     /**
      * Backup retention time.
      */
-    backupRetentionPeriod?: pulumi.Input<number>;
+    backupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The instance ID.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Backup period.
      */
-    preferredBackupPeriod?: pulumi.Input<string>;
+    preferredBackupPeriod?: pulumi.Input<string | undefined>;
     /**
      * Backup time.
      */
-    preferredBackupTime?: pulumi.Input<string>;
+    preferredBackupTime?: pulumi.Input<string | undefined>;
 }
 
 /**

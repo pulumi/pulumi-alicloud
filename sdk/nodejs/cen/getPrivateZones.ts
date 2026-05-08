@@ -136,19 +136,19 @@ export interface GetPrivateZonesOutputArgs {
     /**
      * The service region. The service region is the target region of the PrivateZone service accessed through CEN.
      */
-    hostRegionId?: pulumi.Input<string>;
+    hostRegionId?: pulumi.Input<string | undefined>;
     /**
      * A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`. 
      * **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
      * * `hostRegionId ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

@@ -136,10 +136,10 @@ def get_ots_snapshots(end_time: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         snapshots=pulumi.get(__ret__, 'snapshots'),
         start_time=pulumi.get(__ret__, 'start_time'))
-def get_ots_snapshots_output(end_time: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             start_time: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ots_snapshots_output(end_time: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             start_time: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOtsSnapshotsResult]:
     """
     This data source provides the Hbr Ots Snapshots of the current Alibaba Cloud user.

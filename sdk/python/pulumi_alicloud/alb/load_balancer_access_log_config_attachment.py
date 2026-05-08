@@ -73,10 +73,10 @@ class LoadBalancerAccessLogConfigAttachmentArgs:
 @pulumi.input_type
 class _LoadBalancerAccessLogConfigAttachmentState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_store: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_store: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerAccessLogConfigAttachment resources.
 
@@ -96,50 +96,50 @@ class _LoadBalancerAccessLogConfigAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the load balancing instance.
         """
         return pulumi.get(self, "load_balancer_id")
 
     @load_balancer_id.setter
-    def load_balancer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="logProject")
-    def log_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The log items shipped by the access log.
         """
         return pulumi.get(self, "log_project")
 
     @log_project.setter
-    def log_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_project", value)
 
     @_builtins.property
     @pulumi.getter(name="logStore")
-    def log_store(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_store(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Logstore for log delivery.
         """
         return pulumi.get(self, "log_store")
 
     @log_store.setter
-    def log_store(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_store(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_store", value)
 
 
@@ -149,9 +149,9 @@ class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_store: Optional[pulumi.Input[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_store: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Application Load Balancer (ALB) Load Balancer Access Log Config Attachment resource.
@@ -356,9 +356,9 @@ class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_store: Optional[pulumi.Input[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_store: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -388,10 +388,10 @@ class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            log_project: Optional[pulumi.Input[_builtins.str]] = None,
-            log_store: Optional[pulumi.Input[_builtins.str]] = None) -> 'LoadBalancerAccessLogConfigAttachment':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            log_project: pulumi.Input[Optional[_builtins.str]] = None,
+            log_store: pulumi.Input[Optional[_builtins.str]] = None) -> 'LoadBalancerAccessLogConfigAttachment':
         """
         Get an existing LoadBalancerAccessLogConfigAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

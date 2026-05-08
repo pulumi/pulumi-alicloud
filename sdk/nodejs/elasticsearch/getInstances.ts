@@ -61,9 +61,9 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesOutputArgs {
-    descriptionRegex?: pulumi.Input<string>;
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    outputFile?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    version?: pulumi.Input<string>;
+    descriptionRegex?: pulumi.Input<string | undefined>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    outputFile?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    version?: pulumi.Input<string | undefined>;
 }

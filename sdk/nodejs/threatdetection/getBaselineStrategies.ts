@@ -143,18 +143,18 @@ export interface GetBaselineStrategiesOutputArgs {
     /**
      * The type of policy. Value:-**common**: standard policy-**custom**: custom policy
      */
-    customType?: pulumi.Input<string>;
+    customType?: pulumi.Input<string | undefined>;
     /**
      * A list of Baseline Strategy IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Group Metric Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    strategyIds?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
+    strategyIds?: pulumi.Input<string | undefined>;
 }

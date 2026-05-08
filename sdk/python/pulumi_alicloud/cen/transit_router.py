@@ -20,11 +20,11 @@ __all__ = ['TransitRouterArgs', 'TransitRouter']
 class TransitRouterArgs:
     def __init__(__self__, *,
                  cen_id: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 support_multicast: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 support_multicast: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouter resource.
 
@@ -63,43 +63,43 @@ class TransitRouterArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The dry run.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="supportMulticast")
-    def support_multicast(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def support_multicast(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
         """
         return pulumi.get(self, "support_multicast")
 
     @support_multicast.setter
-    def support_multicast(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def support_multicast(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "support_multicast", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterDescription")
-    def transit_router_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Enterprise Edition transit router instance.
         The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
@@ -107,12 +107,12 @@ class TransitRouterArgs:
         return pulumi.get(self, "transit_router_description")
 
     @transit_router_description.setter
-    def transit_router_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterName")
-    def transit_router_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Enterprise Edition transit router.
         The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
@@ -120,24 +120,24 @@ class TransitRouterArgs:
         return pulumi.get(self, "transit_router_name")
 
     @transit_router_name.setter
-    def transit_router_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_name", value)
 
 
 @pulumi.input_type
 class _TransitRouterState:
     def __init__(__self__, *,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_multicast: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_multicast: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouter resources.
 
@@ -180,91 +180,91 @@ class _TransitRouterState:
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.247.0) The time when the transit router was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The dry run.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.247.0) The ID of the region where the transit router is deployed.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the transit router.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="supportMulticast")
-    def support_multicast(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def support_multicast(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
         """
         return pulumi.get(self, "support_multicast")
 
     @support_multicast.setter
-    def support_multicast(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def support_multicast(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "support_multicast", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterDescription")
-    def transit_router_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Enterprise Edition transit router instance.
         The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
@@ -272,24 +272,24 @@ class _TransitRouterState:
         return pulumi.get(self, "transit_router_description")
 
     @transit_router_description.setter
-    def transit_router_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterName")
-    def transit_router_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Enterprise Edition transit router.
         The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
@@ -297,19 +297,19 @@ class _TransitRouterState:
         return pulumi.get(self, "transit_router_name")
 
     @transit_router_name.setter
-    def transit_router_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition of the transit router.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -319,12 +319,12 @@ class TransitRouter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 support_multicast: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 support_multicast: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router resource.
@@ -434,12 +434,12 @@ class TransitRouter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 support_multicast: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 support_multicast: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -472,17 +472,17 @@ class TransitRouter(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            support_multicast: Optional[pulumi.Input[_builtins.bool]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            transit_router_description: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_name: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitRouter':
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            support_multicast: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transit_router_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_name: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitRouter':
         """
         Get an existing TransitRouter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

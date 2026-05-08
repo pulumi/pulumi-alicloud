@@ -22,12 +22,12 @@ class ProjectArgs:
                  display_name: pulumi.Input[_builtins.str],
                  pai_task_enabled: pulumi.Input[_builtins.bool],
                  project_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dev_environment_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dev_role_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dev_environment_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dev_role_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
 
@@ -95,89 +95,89 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workspace Description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="devEnvironmentEnabled")
-    def dev_environment_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dev_environment_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is Development Environment Enabled
         """
         return pulumi.get(self, "dev_environment_enabled")
 
     @dev_environment_enabled.setter
-    def dev_environment_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dev_environment_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dev_environment_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="devRoleDisabled")
-    def dev_role_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dev_role_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is Development Role Disabled
         """
         return pulumi.get(self, "dev_role_disabled")
 
     @dev_role_disabled.setter
-    def dev_role_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dev_role_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dev_role_disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Aliyun Resource Group Id
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workspace Status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Aliyun Resource Tag
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ProjectState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dev_environment_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dev_role_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pai_task_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dev_environment_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dev_role_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pai_task_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Project resources.
 
@@ -212,110 +212,110 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workspace Description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="devEnvironmentEnabled")
-    def dev_environment_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dev_environment_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is Development Environment Enabled
         """
         return pulumi.get(self, "dev_environment_enabled")
 
     @dev_environment_enabled.setter
-    def dev_environment_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dev_environment_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dev_environment_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="devRoleDisabled")
-    def dev_role_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dev_role_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is Development Role Disabled
         """
         return pulumi.get(self, "dev_role_disabled")
 
     @dev_role_disabled.setter
-    def dev_role_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dev_role_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dev_role_disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workspace Display Name
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="paiTaskEnabled")
-    def pai_task_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pai_task_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Create PAI Workspace Together
         """
         return pulumi.get(self, "pai_task_enabled")
 
     @pai_task_enabled.setter
-    def pai_task_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pai_task_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pai_task_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workspace Name
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Aliyun Resource Group Id
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workspace Status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Aliyun Resource Tag
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -325,15 +325,15 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dev_environment_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dev_role_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pai_task_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dev_environment_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dev_role_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pai_task_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Data Works Project resource.
@@ -460,15 +460,15 @@ class Project(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dev_environment_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dev_role_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pai_task_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dev_environment_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dev_role_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pai_task_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -503,15 +503,15 @@ class Project(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dev_environment_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            dev_role_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            pai_task_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            project_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Project':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dev_environment_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            dev_role_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pai_task_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

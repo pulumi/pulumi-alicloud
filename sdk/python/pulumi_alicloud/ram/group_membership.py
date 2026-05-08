@@ -58,8 +58,8 @@ class GroupMembershipArgs:
 @pulumi.input_type
 class _GroupMembershipState:
     def __init__(__self__, *,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering GroupMembership resources.
 
@@ -73,26 +73,26 @@ class _GroupMembershipState:
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="userNames")
-    def user_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
         return pulumi.get(self, "user_names")
 
     @user_names.setter
-    def user_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_names", value)
 
 
@@ -102,8 +102,8 @@ class GroupMembership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a RAM Group membership resource.
@@ -245,8 +245,8 @@ class GroupMembership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -272,8 +272,8 @@ class GroupMembership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            user_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'GroupMembership':
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'GroupMembership':
         """
         Get an existing GroupMembership resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

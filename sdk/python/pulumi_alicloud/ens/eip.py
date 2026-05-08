@@ -22,10 +22,10 @@ class EipArgs:
                  ens_region_id: pulumi.Input[_builtins.str],
                  internet_charge_type: pulumi.Input[_builtins.str],
                  payment_type: pulumi.Input[_builtins.str],
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 eip_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 eip_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Eip resource.
 
@@ -87,65 +87,65 @@ class EipArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the EIP.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="eipName")
-    def eip_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eip_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the EIP.
         """
         return pulumi.get(self, "eip_name")
 
     @eip_name.setter
-    def eip_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eip_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eip_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def isp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
         """
         return pulumi.get(self, "isp")
 
     @isp.setter
-    def isp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isp", value)
 
 
 @pulumi.input_type
 class _EipState:
     def __init__(__self__, *,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 eip_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 eip_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Eip resources.
 
@@ -180,110 +180,110 @@ class _EipState:
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the EIP instance.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the EIP.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="eipName")
-    def eip_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eip_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the EIP.
         """
         return pulumi.get(self, "eip_name")
 
     @eip_name.setter
-    def eip_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eip_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eip_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ensRegionId")
-    def ens_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ens_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ens node ID.
         """
         return pulumi.get(self, "ens_region_id")
 
     @ens_region_id.setter
-    def ens_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ens_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ens_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The metering method of the EIP. Valid value: `95BandwidthByMonth`.
         """
         return pulumi.get(self, "internet_charge_type")
 
     @internet_charge_type.setter
-    def internet_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_charge_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def isp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
         """
         return pulumi.get(self, "isp")
 
     @isp.setter
-    def isp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isp", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the EIP. Valid value: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the EIP.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -293,13 +293,13 @@ class Eip(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 eip_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 eip_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ENS Eip resource.
@@ -416,13 +416,13 @@ class Eip(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 eip_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 eip_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -457,15 +457,15 @@ class Eip(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            eip_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            isp: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Eip':
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            eip_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            isp: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Eip':
         """
         Get an existing Eip resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

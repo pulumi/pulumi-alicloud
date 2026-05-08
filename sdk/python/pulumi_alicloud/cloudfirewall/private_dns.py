@@ -24,16 +24,16 @@ class PrivateDnsArgs:
                  private_dns_type: pulumi.Input[_builtins.str],
                  region_no: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
-                 domain_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrivateDns resource.
 
@@ -141,145 +141,145 @@ class PrivateDnsArgs:
 
     @_builtins.property
     @pulumi.getter(name="domainNameLists")
-    def domain_name_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domain_name_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Private DNS domain name list
         """
         return pulumi.get(self, "domain_name_lists")
 
     @domain_name_lists.setter
-    def domain_name_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domain_name_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_name_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP protocol
         """
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
-    def ip_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="memberUid")
-    def member_uid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def member_uid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The member Uid
         """
         return pulumi.get(self, "member_uid")
 
     @member_uid.setter
-    def member_uid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def member_uid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "member_uid", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Port of Private DNS instance
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryDns")
-    def primary_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary DNS IP
         """
         return pulumi.get(self, "primary_dns")
 
     @primary_dns.setter
-    def primary_dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryVswitchId")
-    def primary_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary zone Switch ID
         """
         return pulumi.get(self, "primary_vswitch_id")
 
     @primary_vswitch_id.setter
-    def primary_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryVswitchIp")
-    def primary_vswitch_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_vswitch_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary zone switch IP
         """
         return pulumi.get(self, "primary_vswitch_ip")
 
     @primary_vswitch_ip.setter
-    def primary_vswitch_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_vswitch_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_vswitch_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyDns")
-    def standby_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Standby DNS IP
         """
         return pulumi.get(self, "standby_dns")
 
     @standby_dns.setter
-    def standby_dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyVswitchId")
-    def standby_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Standby zone switch ID
         """
         return pulumi.get(self, "standby_vswitch_id")
 
     @standby_vswitch_id.setter
-    def standby_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyVswitchIp")
-    def standby_vswitch_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_vswitch_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Standby zone switch IP address
         """
         return pulumi.get(self, "standby_vswitch_ip")
 
     @standby_vswitch_ip.setter
-    def standby_vswitch_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_vswitch_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_vswitch_ip", value)
 
 
 @pulumi.input_type
 class _PrivateDnsState:
     def __init__(__self__, *,
-                 access_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 firewall_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_dns_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 firewall_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_dns_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrivateDns resources.
 
@@ -338,206 +338,206 @@ class _PrivateDnsState:
 
     @_builtins.property
     @pulumi.getter(name="accessInstanceId")
-    def access_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of Private DNS instance
         """
         return pulumi.get(self, "access_instance_id")
 
     @access_instance_id.setter
-    def access_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accessInstanceName")
-    def access_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of Private DNS instance
         """
         return pulumi.get(self, "access_instance_name")
 
     @access_instance_name.setter
-    def access_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="domainNameLists")
-    def domain_name_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domain_name_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Private DNS domain name list
         """
         return pulumi.get(self, "domain_name_lists")
 
     @domain_name_lists.setter
-    def domain_name_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domain_name_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_name_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallTypes")
-    def firewall_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def firewall_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The type of firewall
         """
         return pulumi.get(self, "firewall_types")
 
     @firewall_types.setter
-    def firewall_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def firewall_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "firewall_types", value)
 
     @_builtins.property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP protocol
         """
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
-    def ip_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="memberUid")
-    def member_uid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def member_uid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The member Uid
         """
         return pulumi.get(self, "member_uid")
 
     @member_uid.setter
-    def member_uid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def member_uid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "member_uid", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Port of Private DNS instance
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryDns")
-    def primary_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary DNS IP
         """
         return pulumi.get(self, "primary_dns")
 
     @primary_dns.setter
-    def primary_dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryVswitchId")
-    def primary_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary zone Switch ID
         """
         return pulumi.get(self, "primary_vswitch_id")
 
     @primary_vswitch_id.setter
-    def primary_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryVswitchIp")
-    def primary_vswitch_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_vswitch_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary zone switch IP
         """
         return pulumi.get(self, "primary_vswitch_ip")
 
     @primary_vswitch_ip.setter
-    def primary_vswitch_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_vswitch_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_vswitch_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="privateDnsType")
-    def private_dns_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_dns_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of Private DNS instance
         """
         return pulumi.get(self, "private_dns_type")
 
     @private_dns_type.setter
-    def private_dns_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_dns_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_dns_type", value)
 
     @_builtins.property
     @pulumi.getter(name="regionNo")
-    def region_no(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_no(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of Private DNS instance
         """
         return pulumi.get(self, "region_no")
 
     @region_no.setter
-    def region_no(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_no(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_no", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyDns")
-    def standby_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Standby DNS IP
         """
         return pulumi.get(self, "standby_dns")
 
     @standby_dns.setter
-    def standby_dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyVswitchId")
-    def standby_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Standby zone switch ID
         """
         return pulumi.get(self, "standby_vswitch_id")
 
     @standby_vswitch_id.setter
-    def standby_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyVswitchIp")
-    def standby_vswitch_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_vswitch_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Standby zone switch IP address
         """
         return pulumi.get(self, "standby_vswitch_ip")
 
     @standby_vswitch_ip.setter
-    def standby_vswitch_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_vswitch_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_vswitch_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -547,21 +547,21 @@ class PrivateDns(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 firewall_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_dns_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 firewall_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_dns_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Private Dns resource.
@@ -611,7 +611,7 @@ class PrivateDns(pulumi.CustomResource):
             domain_name_lists=["www.aliyun.com"],
             primary_vswitch_ip="172.16.3.1",
             standby_vswitch_ip="172.16.4.1",
-            member_uid=current.id)
+            member_uid=output(current.id).apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -697,7 +697,7 @@ class PrivateDns(pulumi.CustomResource):
             domain_name_lists=["www.aliyun.com"],
             primary_vswitch_ip="172.16.3.1",
             standby_vswitch_ip="172.16.4.1",
-            member_uid=current.id)
+            member_uid=output(current.id).apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -726,21 +726,21 @@ class PrivateDns(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 firewall_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_dns_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 firewall_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_dns_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -787,23 +787,23 @@ class PrivateDns(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            access_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            firewall_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            member_uid: Optional[pulumi.Input[_builtins.int]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            primary_dns: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_vswitch_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            private_dns_type: Optional[pulumi.Input[_builtins.str]] = None,
-            region_no: Optional[pulumi.Input[_builtins.str]] = None,
-            standby_dns: Optional[pulumi.Input[_builtins.str]] = None,
-            standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            standby_vswitch_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'PrivateDns':
+            access_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            firewall_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            member_uid: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            primary_dns: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_vswitch_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            private_dns_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_no: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_dns: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_vswitch_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'PrivateDns':
         """
         Get an existing PrivateDns resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

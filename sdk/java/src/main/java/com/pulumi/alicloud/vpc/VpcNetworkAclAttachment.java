@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.NetworkAclArgs;
  * import com.pulumi.alicloud.vpc.VpcNetworkAclAttachment;
  * import com.pulumi.alicloud.vpc.VpcNetworkAclAttachmentArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -70,11 +70,11 @@ import javax.annotation.Nullable;
  * 
  *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(defaultNetwork.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
- *                 .input(_cidrBlock)
+ *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                 .input(defaultNetwork.cidrBlock())
  *                 .newbits(8)
  *                 .netnum(2)
- *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 

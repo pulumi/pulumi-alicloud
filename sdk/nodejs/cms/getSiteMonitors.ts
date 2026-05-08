@@ -185,17 +185,17 @@ export interface GetSiteMonitorsOutputArgs {
     /**
      * A list of Site Monitor IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Task ID.
      */
-    taskId?: pulumi.Input<string>;
+    taskId?: pulumi.Input<string | undefined>;
     /**
      * Task Type.
      */
-    taskType?: pulumi.Input<string>;
+    taskType?: pulumi.Input<string | undefined>;
 }

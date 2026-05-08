@@ -75,8 +75,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -131,8 +131,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -187,8 +187,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -243,8 +243,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -299,8 +299,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -355,8 +355,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -411,8 +411,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -465,8 +465,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetAssetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -507,8 +507,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetAssetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -549,8 +549,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetAssetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -591,8 +591,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetAssetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -633,8 +633,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetAssetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -675,8 +675,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetAssetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -717,8 +717,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetAssetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -761,8 +761,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetBackupPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -811,8 +811,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetBackupPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -861,8 +861,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetBackupPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -911,8 +911,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetBackupPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -961,8 +961,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetBackupPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1011,8 +1011,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetBackupPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1061,8 +1061,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetBackupPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1111,8 +1111,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.BaselineStrategyArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1168,8 +1168,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.BaselineStrategyArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1225,8 +1225,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.BaselineStrategyArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1282,8 +1282,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.BaselineStrategyArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1339,8 +1339,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.BaselineStrategyArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1396,8 +1396,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.BaselineStrategyArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1453,8 +1453,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.BaselineStrategyArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1508,8 +1508,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1550,8 +1550,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1592,8 +1592,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1634,8 +1634,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1676,8 +1676,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1718,8 +1718,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1760,8 +1760,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1802,8 +1802,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1844,8 +1844,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1886,8 +1886,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1928,8 +1928,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1970,8 +1970,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2012,8 +2012,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2054,8 +2054,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2098,8 +2098,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneyPotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2145,8 +2145,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneyPotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2192,8 +2192,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneyPotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2239,8 +2239,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneyPotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2286,8 +2286,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneyPotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2333,8 +2333,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneyPotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2380,8 +2380,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneyPotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2425,8 +2425,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2469,8 +2469,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2513,8 +2513,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2557,8 +2557,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2601,8 +2601,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2645,8 +2645,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2689,8 +2689,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2733,8 +2733,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotNodesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2776,8 +2776,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotNodesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2819,8 +2819,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotNodesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2862,8 +2862,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotNodesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2905,8 +2905,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotNodesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2948,8 +2948,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotNodesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2991,8 +2991,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotNodesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3034,8 +3034,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotPresetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3080,8 +3080,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotPresetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3126,8 +3126,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotPresetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3172,8 +3172,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotPresetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3218,8 +3218,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotPresetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3264,8 +3264,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotPresetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3310,8 +3310,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotPresetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3359,8 +3359,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3426,8 +3426,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3493,8 +3493,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3560,8 +3560,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3627,8 +3627,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3694,8 +3694,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3761,8 +3761,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3825,8 +3825,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3868,8 +3868,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3911,8 +3911,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3954,8 +3954,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3997,8 +3997,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4040,8 +4040,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4083,8 +4083,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4130,8 +4130,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetLogShipperArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4176,8 +4176,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetLogShipperArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4222,8 +4222,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetLogShipperArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4268,8 +4268,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetLogShipperArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4314,8 +4314,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetLogShipperArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4360,8 +4360,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetLogShipperArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4406,8 +4406,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetLogShipperArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4450,8 +4450,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetVulWhitelistsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4495,8 +4495,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetVulWhitelistsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4540,8 +4540,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetVulWhitelistsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4585,8 +4585,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetVulWhitelistsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4630,8 +4630,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetVulWhitelistsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4675,8 +4675,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetVulWhitelistsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4720,8 +4720,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetVulWhitelistsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4763,8 +4763,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetWebLockConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4806,8 +4806,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetWebLockConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4849,8 +4849,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetWebLockConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4892,8 +4892,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetWebLockConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4935,8 +4935,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetWebLockConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4978,8 +4978,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetWebLockConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5021,8 +5021,8 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetWebLockConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

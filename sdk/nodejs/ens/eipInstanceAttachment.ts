@@ -168,11 +168,11 @@ export interface EipInstanceAttachmentState {
     /**
      * The first ID of the resource
      */
-    allocationId?: pulumi.Input<string>;
+    allocationId?: pulumi.Input<string | undefined>;
     /**
      * Instance ID
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the EIP instance. Value:
      * - `Nat`:NAT gateway.
@@ -180,17 +180,17 @@ export interface EipInstanceAttachmentState {
      * - `NetworkInterface`: Secondary ENI.
      * - `EnsInstance` (default): The ENS instance.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the EIP is a backup EIP. Value:
      * - true: Spare.
      * - false: not standby.
      */
-    standby?: pulumi.Input<boolean>;
+    standby?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the EIP.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -212,11 +212,11 @@ export interface EipInstanceAttachmentArgs {
      * - `NetworkInterface`: Secondary ENI.
      * - `EnsInstance` (default): The ENS instance.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the EIP is a backup EIP. Value:
      * - true: Spare.
      * - false: not standby.
      */
-    standby?: pulumi.Input<boolean>;
+    standby?: pulumi.Input<boolean | undefined>;
 }

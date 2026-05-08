@@ -221,83 +221,83 @@ export interface BandwidthPackageState {
     /**
      * Whether to pay automatically. Valid values:
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
      */
-    autoRenewDuration?: pulumi.Input<number>;
+    autoRenewDuration?: pulumi.Input<number | undefined>;
     /**
      * Whether use vouchers. Default value: `false`. Valid values:
      */
-    autoUseCoupon?: pulumi.Input<boolean>;
+    autoUseCoupon?: pulumi.Input<boolean | undefined>;
     /**
      * The bandwidth value of bandwidth packet.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The name of the bandwidth packet.
      */
-    bandwidthPackageName?: pulumi.Input<string>;
+    bandwidthPackageName?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
      * > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      */
-    bandwidthType?: pulumi.Input<string>;
+    bandwidthType?: pulumi.Input<string | undefined>;
     /**
      * The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
      */
-    billingType?: pulumi.Input<string>;
+    billingType?: pulumi.Input<string | undefined>;
     /**
      * Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
      */
-    cbnGeographicRegionIda?: pulumi.Input<string>;
+    cbnGeographicRegionIda?: pulumi.Input<string | undefined>;
     /**
      * Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
      */
-    cbnGeographicRegionIdb?: pulumi.Input<string>;
+    cbnGeographicRegionIdb?: pulumi.Input<string | undefined>;
     /**
      * The description of bandwidth package.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      */
-    promotionOptionNo?: pulumi.Input<string>;
+    promotionOptionNo?: pulumi.Input<string | undefined>;
     /**
      * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
      */
-    ratio?: pulumi.Input<number>;
+    ratio?: pulumi.Input<number | undefined>;
     /**
      * Whether to renew a bandwidth packet. automatically or not. Valid values:
      * - `AutoRenewal`: Enable auto renewal.
      * - `Normal`: Disable auto renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Bandwidth Package.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -307,15 +307,15 @@ export interface BandwidthPackageArgs {
     /**
      * Whether to pay automatically. Valid values:
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
      */
-    autoRenewDuration?: pulumi.Input<number>;
+    autoRenewDuration?: pulumi.Input<number | undefined>;
     /**
      * Whether use vouchers. Default value: `false`. Valid values:
      */
-    autoUseCoupon?: pulumi.Input<boolean>;
+    autoUseCoupon?: pulumi.Input<boolean | undefined>;
     /**
      * The bandwidth value of bandwidth packet.
      */
@@ -323,59 +323,59 @@ export interface BandwidthPackageArgs {
     /**
      * The name of the bandwidth packet.
      */
-    bandwidthPackageName?: pulumi.Input<string>;
+    bandwidthPackageName?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
      * > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      */
-    bandwidthType?: pulumi.Input<string>;
+    bandwidthType?: pulumi.Input<string | undefined>;
     /**
      * The billing type. Valid values: `PayBy95`, `PayByTraffic`. **NOTE:** `billingType` is valid only when `paymentType` is set to `PayAsYouGo`.
      */
-    billingType?: pulumi.Input<string>;
+    billingType?: pulumi.Input<string | undefined>;
     /**
      * Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
      */
-    cbnGeographicRegionIda?: pulumi.Input<string>;
+    cbnGeographicRegionIda?: pulumi.Input<string | undefined>;
     /**
      * Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
      */
-    cbnGeographicRegionIdb?: pulumi.Input<string>;
+    cbnGeographicRegionIdb?: pulumi.Input<string | undefined>;
     /**
      * The description of bandwidth package.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `paymentType` is set to `Subscription`, this parameter is required.
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      */
-    promotionOptionNo?: pulumi.Input<string>;
+    promotionOptionNo?: pulumi.Input<string | undefined>;
     /**
      * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
      */
-    ratio?: pulumi.Input<number>;
+    ratio?: pulumi.Input<number | undefined>;
     /**
      * Whether to renew a bandwidth packet. automatically or not. Valid values:
      * - `AutoRenewal`: Enable auto renewal.
      * - `Normal`: Disable auto renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
      */

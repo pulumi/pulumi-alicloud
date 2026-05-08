@@ -121,15 +121,15 @@ export interface DomainState {
     /**
      * The ID of the global acceleration instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -21,25 +21,25 @@ __all__ = ['BucketArgs', 'Bucket']
 @pulumi.input_type
 class BucketArgs:
     def __init__(__self__, *,
-                 access_monitor: Optional[pulumi.Input['BucketAccessMonitorArgs']] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lifecycle_rule_allow_same_action_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
-                 logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
-                 logging_isenable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 referer_config: Optional[pulumi.Input['BucketRefererConfigArgs']] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_side_encryption_rule: Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transfer_acceleration: Optional[pulumi.Input['BucketTransferAccelerationArgs']] = None,
-                 versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
-                 website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
+                 access_monitor: pulumi.Input[Optional['BucketAccessMonitorArgs']] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorsRuleArgs']]]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lifecycle_rule_allow_same_action_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
+                 logging: pulumi.Input[Optional['BucketLoggingArgs']] = None,
+                 logging_isenable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 referer_config: pulumi.Input[Optional['BucketRefererConfigArgs']] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_side_encryption_rule: pulumi.Input[Optional['BucketServerSideEncryptionRuleArgs']] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transfer_acceleration: pulumi.Input[Optional['BucketTransferAccelerationArgs']] = None,
+                 versioning: pulumi.Input[Optional['BucketVersioningArgs']] = None,
+                 website: pulumi.Input[Optional['BucketWebsiteArgs']] = None):
         """
         The set of arguments for constructing a Bucket resource.
 
@@ -110,262 +110,262 @@ class BucketArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessMonitor")
-    def access_monitor(self) -> Optional[pulumi.Input['BucketAccessMonitorArgs']]:
+    def access_monitor(self) -> pulumi.Input[Optional['BucketAccessMonitorArgs']]:
         """
         A access monitor status of a bucket. See `access_monitor` below.
         """
         return pulumi.get(self, "access_monitor")
 
     @access_monitor.setter
-    def access_monitor(self, value: Optional[pulumi.Input['BucketAccessMonitorArgs']]):
+    def access_monitor(self, value: pulumi.Input[Optional['BucketAccessMonitorArgs']]):
         pulumi.set(self, "access_monitor", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""")
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket. If omitted, Terraform will assign a random and unique name.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="corsRules")
-    def cors_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]]]:
+    def cors_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorsRuleArgs']]]]:
         """
         A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
         """
         return pulumi.get(self, "cors_rules")
 
     @cors_rules.setter
-    def cors_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]]]):
+    def cors_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorsRuleArgs']]]]):
         pulumi.set(self, "cors_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleRuleAllowSameActionOverlap")
-    def lifecycle_rule_allow_same_action_overlap(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lifecycle_rule_allow_same_action_overlap(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean that indicates lifecycle rules allow prefix overlap.
         """
         return pulumi.get(self, "lifecycle_rule_allow_same_action_overlap")
 
     @lifecycle_rule_allow_same_action_overlap.setter
-    def lifecycle_rule_allow_same_action_overlap(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lifecycle_rule_allow_same_action_overlap(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lifecycle_rule_allow_same_action_overlap", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]:
+    def lifecycle_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]:
         """
         A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
         """
         return pulumi.get(self, "lifecycle_rules")
 
     @lifecycle_rules.setter
-    def lifecycle_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]):
+    def lifecycle_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]):
         pulumi.set(self, "lifecycle_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def logging(self) -> Optional[pulumi.Input['BucketLoggingArgs']]:
+    def logging(self) -> pulumi.Input[Optional['BucketLoggingArgs']]:
         """
         A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
         """
         return pulumi.get(self, "logging")
 
     @logging.setter
-    def logging(self, value: Optional[pulumi.Input['BucketLoggingArgs']]):
+    def logging(self, value: pulumi.Input[Optional['BucketLoggingArgs']]):
         pulumi.set(self, "logging", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingIsenable")
     @_utilities.deprecated("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
-    def logging_isenable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logging_isenable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The flag of using logging enable container. Defaults true.
         """
         return pulumi.get(self, "logging_isenable")
 
     @logging_isenable.setter
-    def logging_isenable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logging_isenable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logging_isenable", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="redundancyType")
-    def redundancy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redundancy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         """
         return pulumi.get(self, "redundancy_type")
 
     @redundancy_type.setter
-    def redundancy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redundancy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redundancy_type", value)
 
     @_builtins.property
     @pulumi.getter(name="refererConfig")
-    def referer_config(self) -> Optional[pulumi.Input['BucketRefererConfigArgs']]:
+    def referer_config(self) -> pulumi.Input[Optional['BucketRefererConfigArgs']]:
         """
         The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `referer_config` below.
         """
         return pulumi.get(self, "referer_config")
 
     @referer_config.setter
-    def referer_config(self, value: Optional[pulumi.Input['BucketRefererConfigArgs']]):
+    def referer_config(self, value: pulumi.Input[Optional['BucketRefererConfigArgs']]):
         pulumi.set(self, "referer_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the bucket belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverSideEncryptionRule")
-    def server_side_encryption_rule(self) -> Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']]:
+    def server_side_encryption_rule(self) -> pulumi.Input[Optional['BucketServerSideEncryptionRuleArgs']]:
         """
         A configuration of server-side encryption. See `server_side_encryption_rule` below.
         """
         return pulumi.get(self, "server_side_encryption_rule")
 
     @server_side_encryption_rule.setter
-    def server_side_encryption_rule(self, value: Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']]):
+    def server_side_encryption_rule(self, value: pulumi.Input[Optional['BucketServerSideEncryptionRuleArgs']]):
         pulumi.set(self, "server_side_encryption_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         """
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
-    def storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_class", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transferAcceleration")
-    def transfer_acceleration(self) -> Optional[pulumi.Input['BucketTransferAccelerationArgs']]:
+    def transfer_acceleration(self) -> pulumi.Input[Optional['BucketTransferAccelerationArgs']]:
         """
         A transfer acceleration status of a bucket. See `transfer_acceleration` below.
         """
         return pulumi.get(self, "transfer_acceleration")
 
     @transfer_acceleration.setter
-    def transfer_acceleration(self, value: Optional[pulumi.Input['BucketTransferAccelerationArgs']]):
+    def transfer_acceleration(self, value: pulumi.Input[Optional['BucketTransferAccelerationArgs']]):
         pulumi.set(self, "transfer_acceleration", value)
 
     @_builtins.property
     @pulumi.getter
-    def versioning(self) -> Optional[pulumi.Input['BucketVersioningArgs']]:
+    def versioning(self) -> pulumi.Input[Optional['BucketVersioningArgs']]:
         """
         A state of versioning. See `versioning` below.
         """
         return pulumi.get(self, "versioning")
 
     @versioning.setter
-    def versioning(self, value: Optional[pulumi.Input['BucketVersioningArgs']]):
+    def versioning(self, value: pulumi.Input[Optional['BucketVersioningArgs']]):
         pulumi.set(self, "versioning", value)
 
     @_builtins.property
     @pulumi.getter
-    def website(self) -> Optional[pulumi.Input['BucketWebsiteArgs']]:
+    def website(self) -> pulumi.Input[Optional['BucketWebsiteArgs']]:
         """
         A website configuration. See `website` below.
         """
         return pulumi.get(self, "website")
 
     @website.setter
-    def website(self, value: Optional[pulumi.Input['BucketWebsiteArgs']]):
+    def website(self, value: pulumi.Input[Optional['BucketWebsiteArgs']]):
         pulumi.set(self, "website", value)
 
 
 @pulumi.input_type
 class _BucketState:
     def __init__(__self__, *,
-                 access_monitor: Optional[pulumi.Input['BucketAccessMonitorArgs']] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]]] = None,
-                 creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 extranet_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 intranet_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_rule_allow_same_action_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
-                 logging_isenable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 referer_config: Optional[pulumi.Input['BucketRefererConfigArgs']] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_side_encryption_rule: Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transfer_acceleration: Optional[pulumi.Input['BucketTransferAccelerationArgs']] = None,
-                 versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
-                 website: Optional[pulumi.Input['BucketWebsiteArgs']] = None):
+                 access_monitor: pulumi.Input[Optional['BucketAccessMonitorArgs']] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorsRuleArgs']]]] = None,
+                 creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 extranet_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 intranet_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_rule_allow_same_action_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging: pulumi.Input[Optional['BucketLoggingArgs']] = None,
+                 logging_isenable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 referer_config: pulumi.Input[Optional['BucketRefererConfigArgs']] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_side_encryption_rule: pulumi.Input[Optional['BucketServerSideEncryptionRuleArgs']] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transfer_acceleration: pulumi.Input[Optional['BucketTransferAccelerationArgs']] = None,
+                 versioning: pulumi.Input[Optional['BucketVersioningArgs']] = None,
+                 website: pulumi.Input[Optional['BucketWebsiteArgs']] = None):
         """
         Input properties used for looking up and filtering Bucket resources.
 
@@ -451,292 +451,292 @@ class _BucketState:
 
     @_builtins.property
     @pulumi.getter(name="accessMonitor")
-    def access_monitor(self) -> Optional[pulumi.Input['BucketAccessMonitorArgs']]:
+    def access_monitor(self) -> pulumi.Input[Optional['BucketAccessMonitorArgs']]:
         """
         A access monitor status of a bucket. See `access_monitor` below.
         """
         return pulumi.get(self, "access_monitor")
 
     @access_monitor.setter
-    def access_monitor(self, value: Optional[pulumi.Input['BucketAccessMonitorArgs']]):
+    def access_monitor(self, value: pulumi.Input[Optional['BucketAccessMonitorArgs']]):
         pulumi.set(self, "access_monitor", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""")
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket. If omitted, Terraform will assign a random and unique name.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="corsRules")
-    def cors_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]]]:
+    def cors_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorsRuleArgs']]]]:
         """
         A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
         """
         return pulumi.get(self, "cors_rules")
 
     @cors_rules.setter
-    def cors_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]]]):
+    def cors_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorsRuleArgs']]]]):
         pulumi.set(self, "cors_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="creationDate")
-    def creation_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation date of the bucket.
         """
         return pulumi.get(self, "creation_date")
 
     @creation_date.setter
-    def creation_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_date", value)
 
     @_builtins.property
     @pulumi.getter(name="extranetEndpoint")
-    def extranet_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def extranet_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extranet access endpoint of the bucket.
         """
         return pulumi.get(self, "extranet_endpoint")
 
     @extranet_endpoint.setter
-    def extranet_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def extranet_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "extranet_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="intranetEndpoint")
-    def intranet_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def intranet_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The intranet access endpoint of the bucket.
         """
         return pulumi.get(self, "intranet_endpoint")
 
     @intranet_endpoint.setter
-    def intranet_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def intranet_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "intranet_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleRuleAllowSameActionOverlap")
-    def lifecycle_rule_allow_same_action_overlap(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lifecycle_rule_allow_same_action_overlap(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean that indicates lifecycle rules allow prefix overlap.
         """
         return pulumi.get(self, "lifecycle_rule_allow_same_action_overlap")
 
     @lifecycle_rule_allow_same_action_overlap.setter
-    def lifecycle_rule_allow_same_action_overlap(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lifecycle_rule_allow_same_action_overlap(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lifecycle_rule_allow_same_action_overlap", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]:
+    def lifecycle_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]:
         """
         A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
         """
         return pulumi.get(self, "lifecycle_rules")
 
     @lifecycle_rules.setter
-    def lifecycle_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]):
+    def lifecycle_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]]):
         pulumi.set(self, "lifecycle_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the bucket.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def logging(self) -> Optional[pulumi.Input['BucketLoggingArgs']]:
+    def logging(self) -> pulumi.Input[Optional['BucketLoggingArgs']]:
         """
         A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
         """
         return pulumi.get(self, "logging")
 
     @logging.setter
-    def logging(self, value: Optional[pulumi.Input['BucketLoggingArgs']]):
+    def logging(self, value: pulumi.Input[Optional['BucketLoggingArgs']]):
         pulumi.set(self, "logging", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingIsenable")
     @_utilities.deprecated("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
-    def logging_isenable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logging_isenable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The flag of using logging enable container. Defaults true.
         """
         return pulumi.get(self, "logging_isenable")
 
     @logging_isenable.setter
-    def logging_isenable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logging_isenable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logging_isenable", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bucket owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="redundancyType")
-    def redundancy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redundancy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         """
         return pulumi.get(self, "redundancy_type")
 
     @redundancy_type.setter
-    def redundancy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redundancy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redundancy_type", value)
 
     @_builtins.property
     @pulumi.getter(name="refererConfig")
-    def referer_config(self) -> Optional[pulumi.Input['BucketRefererConfigArgs']]:
+    def referer_config(self) -> pulumi.Input[Optional['BucketRefererConfigArgs']]:
         """
         The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `referer_config` below.
         """
         return pulumi.get(self, "referer_config")
 
     @referer_config.setter
-    def referer_config(self, value: Optional[pulumi.Input['BucketRefererConfigArgs']]):
+    def referer_config(self, value: pulumi.Input[Optional['BucketRefererConfigArgs']]):
         pulumi.set(self, "referer_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the bucket belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverSideEncryptionRule")
-    def server_side_encryption_rule(self) -> Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']]:
+    def server_side_encryption_rule(self) -> pulumi.Input[Optional['BucketServerSideEncryptionRuleArgs']]:
         """
         A configuration of server-side encryption. See `server_side_encryption_rule` below.
         """
         return pulumi.get(self, "server_side_encryption_rule")
 
     @server_side_encryption_rule.setter
-    def server_side_encryption_rule(self, value: Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']]):
+    def server_side_encryption_rule(self, value: pulumi.Input[Optional['BucketServerSideEncryptionRuleArgs']]):
         pulumi.set(self, "server_side_encryption_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         """
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
-    def storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_class", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transferAcceleration")
-    def transfer_acceleration(self) -> Optional[pulumi.Input['BucketTransferAccelerationArgs']]:
+    def transfer_acceleration(self) -> pulumi.Input[Optional['BucketTransferAccelerationArgs']]:
         """
         A transfer acceleration status of a bucket. See `transfer_acceleration` below.
         """
         return pulumi.get(self, "transfer_acceleration")
 
     @transfer_acceleration.setter
-    def transfer_acceleration(self, value: Optional[pulumi.Input['BucketTransferAccelerationArgs']]):
+    def transfer_acceleration(self, value: pulumi.Input[Optional['BucketTransferAccelerationArgs']]):
         pulumi.set(self, "transfer_acceleration", value)
 
     @_builtins.property
     @pulumi.getter
-    def versioning(self) -> Optional[pulumi.Input['BucketVersioningArgs']]:
+    def versioning(self) -> pulumi.Input[Optional['BucketVersioningArgs']]:
         """
         A state of versioning. See `versioning` below.
         """
         return pulumi.get(self, "versioning")
 
     @versioning.setter
-    def versioning(self, value: Optional[pulumi.Input['BucketVersioningArgs']]):
+    def versioning(self, value: pulumi.Input[Optional['BucketVersioningArgs']]):
         pulumi.set(self, "versioning", value)
 
     @_builtins.property
     @pulumi.getter
-    def website(self) -> Optional[pulumi.Input['BucketWebsiteArgs']]:
+    def website(self) -> pulumi.Input[Optional['BucketWebsiteArgs']]:
         """
         A website configuration. See `website` below.
         """
         return pulumi.get(self, "website")
 
     @website.setter
-    def website(self, value: Optional[pulumi.Input['BucketWebsiteArgs']]):
+    def website(self, value: pulumi.Input[Optional['BucketWebsiteArgs']]):
         pulumi.set(self, "website", value)
 
 
@@ -746,25 +746,25 @@ class Bucket(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_monitor: Optional[pulumi.Input[Union['BucketAccessMonitorArgs', 'BucketAccessMonitorArgsDict']]] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsRuleArgs', 'BucketCorsRuleArgsDict']]]]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lifecycle_rule_allow_same_action_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
-                 logging: Optional[pulumi.Input[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
-                 logging_isenable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 referer_config: Optional[pulumi.Input[Union['BucketRefererConfigArgs', 'BucketRefererConfigArgsDict']]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_side_encryption_rule: Optional[pulumi.Input[Union['BucketServerSideEncryptionRuleArgs', 'BucketServerSideEncryptionRuleArgsDict']]] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transfer_acceleration: Optional[pulumi.Input[Union['BucketTransferAccelerationArgs', 'BucketTransferAccelerationArgsDict']]] = None,
-                 versioning: Optional[pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
-                 website: Optional[pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None,
+                 access_monitor: pulumi.Input[Optional[Union['BucketAccessMonitorArgs', 'BucketAccessMonitorArgsDict']]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorsRuleArgs', 'BucketCorsRuleArgsDict']]]]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lifecycle_rule_allow_same_action_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
+                 logging: pulumi.Input[Optional[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
+                 logging_isenable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 referer_config: pulumi.Input[Optional[Union['BucketRefererConfigArgs', 'BucketRefererConfigArgsDict']]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_side_encryption_rule: pulumi.Input[Optional[Union['BucketServerSideEncryptionRuleArgs', 'BucketServerSideEncryptionRuleArgsDict']]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transfer_acceleration: pulumi.Input[Optional[Union['BucketTransferAccelerationArgs', 'BucketTransferAccelerationArgsDict']]] = None,
+                 versioning: pulumi.Input[Optional[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
+                 website: pulumi.Input[Optional[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None,
                  __props__=None):
         """
         Provides a resource to create a oss bucket and set its attribution.
@@ -1729,25 +1729,25 @@ class Bucket(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_monitor: Optional[pulumi.Input[Union['BucketAccessMonitorArgs', 'BucketAccessMonitorArgsDict']]] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsRuleArgs', 'BucketCorsRuleArgsDict']]]]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lifecycle_rule_allow_same_action_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
-                 logging: Optional[pulumi.Input[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
-                 logging_isenable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 referer_config: Optional[pulumi.Input[Union['BucketRefererConfigArgs', 'BucketRefererConfigArgsDict']]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_side_encryption_rule: Optional[pulumi.Input[Union['BucketServerSideEncryptionRuleArgs', 'BucketServerSideEncryptionRuleArgsDict']]] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transfer_acceleration: Optional[pulumi.Input[Union['BucketTransferAccelerationArgs', 'BucketTransferAccelerationArgsDict']]] = None,
-                 versioning: Optional[pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
-                 website: Optional[pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None,
+                 access_monitor: pulumi.Input[Optional[Union['BucketAccessMonitorArgs', 'BucketAccessMonitorArgsDict']]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorsRuleArgs', 'BucketCorsRuleArgsDict']]]]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lifecycle_rule_allow_same_action_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
+                 logging: pulumi.Input[Optional[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
+                 logging_isenable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 referer_config: pulumi.Input[Optional[Union['BucketRefererConfigArgs', 'BucketRefererConfigArgsDict']]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_side_encryption_rule: pulumi.Input[Optional[Union['BucketServerSideEncryptionRuleArgs', 'BucketServerSideEncryptionRuleArgsDict']]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transfer_acceleration: pulumi.Input[Optional[Union['BucketTransferAccelerationArgs', 'BucketTransferAccelerationArgsDict']]] = None,
+                 versioning: pulumi.Input[Optional[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
+                 website: pulumi.Input[Optional[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1791,30 +1791,30 @@ class Bucket(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_monitor: Optional[pulumi.Input[Union['BucketAccessMonitorArgs', 'BucketAccessMonitorArgsDict']]] = None,
-            acl: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsRuleArgs', 'BucketCorsRuleArgsDict']]]]] = None,
-            creation_date: Optional[pulumi.Input[_builtins.str]] = None,
-            extranet_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            intranet_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            lifecycle_rule_allow_same_action_overlap: Optional[pulumi.Input[_builtins.bool]] = None,
-            lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            logging: Optional[pulumi.Input[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
-            logging_isenable: Optional[pulumi.Input[_builtins.bool]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            policy: Optional[pulumi.Input[_builtins.str]] = None,
-            redundancy_type: Optional[pulumi.Input[_builtins.str]] = None,
-            referer_config: Optional[pulumi.Input[Union['BucketRefererConfigArgs', 'BucketRefererConfigArgsDict']]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            server_side_encryption_rule: Optional[pulumi.Input[Union['BucketServerSideEncryptionRuleArgs', 'BucketServerSideEncryptionRuleArgsDict']]] = None,
-            storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            transfer_acceleration: Optional[pulumi.Input[Union['BucketTransferAccelerationArgs', 'BucketTransferAccelerationArgsDict']]] = None,
-            versioning: Optional[pulumi.Input[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
-            website: Optional[pulumi.Input[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None) -> 'Bucket':
+            access_monitor: pulumi.Input[Optional[Union['BucketAccessMonitorArgs', 'BucketAccessMonitorArgsDict']]] = None,
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorsRuleArgs', 'BucketCorsRuleArgsDict']]]]] = None,
+            creation_date: pulumi.Input[Optional[_builtins.str]] = None,
+            extranet_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            intranet_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_rule_allow_same_action_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+            lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            logging: pulumi.Input[Optional[Union['BucketLoggingArgs', 'BucketLoggingArgsDict']]] = None,
+            logging_isenable: pulumi.Input[Optional[_builtins.bool]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            redundancy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            referer_config: pulumi.Input[Optional[Union['BucketRefererConfigArgs', 'BucketRefererConfigArgsDict']]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_side_encryption_rule: pulumi.Input[Optional[Union['BucketServerSideEncryptionRuleArgs', 'BucketServerSideEncryptionRuleArgsDict']]] = None,
+            storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transfer_acceleration: pulumi.Input[Optional[Union['BucketTransferAccelerationArgs', 'BucketTransferAccelerationArgsDict']]] = None,
+            versioning: pulumi.Input[Optional[Union['BucketVersioningArgs', 'BucketVersioningArgsDict']]] = None,
+            website: pulumi.Input[Optional[Union['BucketWebsiteArgs', 'BucketWebsiteArgsDict']]] = None) -> 'Bucket':
         """
         Get an existing Bucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

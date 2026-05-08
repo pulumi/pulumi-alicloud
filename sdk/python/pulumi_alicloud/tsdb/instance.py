@@ -23,12 +23,12 @@ class InstanceArgs:
                  instance_storage: pulumi.Input[_builtins.str],
                  payment_type: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 app_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -154,91 +154,91 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="appKey")
-    def app_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The app key.
         """
         return pulumi.get(self, "app_key")
 
     @app_key.setter
-    def app_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_key", value)
 
     @_builtins.property
     @pulumi.getter(name="diskCategory")
-    def disk_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
         """
         return pulumi.get(self, "disk_category")
 
     @disk_category.setter
-    def disk_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_category", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The duration.
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="engineType")
-    def engine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
         """
         return pulumi.get(self, "engine_type")
 
     @engine_type.setter
-    def engine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceAlias")
-    def instance_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alias of the instance.
         """
         return pulumi.get(self, "instance_alias")
 
     @instance_alias.setter
-    def instance_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_alias", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the instance.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 app_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -301,67 +301,67 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="appKey")
-    def app_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The app key.
         """
         return pulumi.get(self, "app_key")
 
     @app_key.setter
-    def app_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_key", value)
 
     @_builtins.property
     @pulumi.getter(name="diskCategory")
-    def disk_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
         """
         return pulumi.get(self, "disk_category")
 
     @disk_category.setter
-    def disk_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_category", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The duration.
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="engineType")
-    def engine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
         """
         return pulumi.get(self, "engine_type")
 
     @engine_type.setter
-    def engine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceAlias")
-    def instance_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alias of the instance.
         """
         return pulumi.get(self, "instance_alias")
 
     @instance_alias.setter
-    def instance_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_alias", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the instance. 
         - Following enumerative value for TSDB for InfluxDB️ standart edition:
@@ -390,67 +390,67 @@ class _InstanceState:
         return pulumi.get(self, "instance_class")
 
     @instance_class.setter
-    def instance_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_class", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceStorage")
-    def instance_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
         """
         return pulumi.get(self, "instance_storage")
 
     @instance_storage.setter
-    def instance_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vswitch id.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the instance.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -460,16 +460,16 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Time Series Database (TSDB) Instance resource.
@@ -617,16 +617,16 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -665,17 +665,17 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_key: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-            duration: Optional[pulumi.Input[_builtins.str]] = None,
-            engine_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_alias: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_storage: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            app_key: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

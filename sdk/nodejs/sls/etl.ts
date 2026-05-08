@@ -183,19 +183,19 @@ export interface EtlState {
     /**
      * Detailed configuration of the data processing task.   See `configuration` below.
      */
-    configuration?: pulumi.Input<inputs.sls.EtlConfiguration>;
+    configuration?: pulumi.Input<inputs.sls.EtlConfiguration | undefined>;
     /**
      * The time when the task was created.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Description of the data processing task.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the data processing task.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The job name. Naming rules are as follows:
      * - Job names must be unique within the same project.
@@ -203,15 +203,15 @@ export interface EtlState {
      * - Must start and end with a lowercase letter or digit.
      * - Must be 2 to 64 characters in length.
      */
-    jobName?: pulumi.Input<string>;
+    jobName?: pulumi.Input<string | undefined>;
     /**
      * Project name.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Task status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -225,7 +225,7 @@ export interface EtlArgs {
     /**
      * Description of the data processing task.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the data processing task.
      */

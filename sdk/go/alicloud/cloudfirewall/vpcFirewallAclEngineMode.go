@@ -44,7 +44,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
+//			cen2, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
 //				Description:     pulumi.String("yqc-example001"),
 //				CenInstanceName: pulumi.String("yqc-example-CenInstance001"),
 //			})
@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			TR, err := cen.NewTransitRouter(ctx, "TR", &cen.TransitRouterArgs{
-//				CenId: cen.ID(),
+//				CenId: cen2.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -82,7 +82,7 @@ import (
 //			}
 //			_, err = cen.NewTransitRouterVpcAttachment(ctx, "tr-vpc1", &cen.TransitRouterVpcAttachmentArgs{
 //				VpcId: vpc1.ID(),
-//				CenId: cen.ID(),
+//				CenId: cen2.ID(),
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						VswitchId: vpc1vsw1.ID(),
@@ -103,7 +103,7 @@ import (
 //			}
 //			_, err = cloudfirewall.NewVpcFirewallAclEngineMode(ctx, "default", &cloudfirewall.VpcFirewallAclEngineModeArgs{
 //				StrictMode:    pulumi.Int(0),
-//				VpcFirewallId: cen.ID(),
+//				VpcFirewallId: cen2.ID(),
 //				MemberUid:     pulumi.String("1511928242963727"),
 //			})
 //			if err != nil {

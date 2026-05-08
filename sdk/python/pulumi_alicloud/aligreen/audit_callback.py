@@ -103,11 +103,11 @@ class AuditCallbackArgs:
 @pulumi.input_type
 class _AuditCallbackState:
     def __init__(__self__, *,
-                 audit_callback_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 callback_suggestions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 callback_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 crypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 audit_callback_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 callback_suggestions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 callback_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 crypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuditCallback resources.
 
@@ -130,62 +130,62 @@ class _AuditCallbackState:
 
     @_builtins.property
     @pulumi.getter(name="auditCallbackName")
-    def audit_callback_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audit_callback_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AuditCallback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
         """
         return pulumi.get(self, "audit_callback_name")
 
     @audit_callback_name.setter
-    def audit_callback_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audit_callback_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audit_callback_name", value)
 
     @_builtins.property
     @pulumi.getter(name="callbackSuggestions")
-    def callback_suggestions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def callback_suggestions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of audit results supported by message notification. Value: block: confirmed violation, review: Suspected violation, review: normal.
         """
         return pulumi.get(self, "callback_suggestions")
 
     @callback_suggestions.setter
-    def callback_suggestions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def callback_suggestions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "callback_suggestions", value)
 
     @_builtins.property
     @pulumi.getter(name="callbackTypes")
-    def callback_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def callback_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Callback types. Value: machineScan: Machine audit result notification, selfAudit: self-service audit notification.
         """
         return pulumi.get(self, "callback_types")
 
     @callback_types.setter
-    def callback_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def callback_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "callback_types", value)
 
     @_builtins.property
     @pulumi.getter(name="cryptType")
-    def crypt_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crypt_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption algorithm is used to verify that the callback request is sent by the content security service to your business service. The value is SHA256:SHA256 encryption algorithm and SM3: SM3 encryption algorithm.
         """
         return pulumi.get(self, "crypt_type")
 
     @crypt_type.setter
-    def crypt_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crypt_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crypt_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The detection result will be called back to the url.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -195,11 +195,11 @@ class AuditCallback(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_callback_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 callback_suggestions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 callback_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 crypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 audit_callback_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 callback_suggestions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 callback_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 crypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Aligreen Audit Callback resource.
@@ -326,11 +326,11 @@ class AuditCallback(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_callback_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 callback_suggestions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 callback_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 crypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 audit_callback_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 callback_suggestions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 callback_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 crypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -365,11 +365,11 @@ class AuditCallback(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            audit_callback_name: Optional[pulumi.Input[_builtins.str]] = None,
-            callback_suggestions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            callback_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            crypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'AuditCallback':
+            audit_callback_name: pulumi.Input[Optional[_builtins.str]] = None,
+            callback_suggestions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            callback_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            crypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'AuditCallback':
         """
         Get an existing AuditCallback resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

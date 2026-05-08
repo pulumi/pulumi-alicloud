@@ -136,27 +136,27 @@ export interface GetFileSystemsOutputArgs {
     /**
      * A regex string to filter the results by the ：FileSystem description.
      */
-    descriptionRegex?: pulumi.Input<string>;
+    descriptionRegex?: pulumi.Input<string | undefined>;
     /**
      * A list of FileSystemId.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The protocol type of the file system.
      * Valid values:
      * `NFS`,
      * `SMB` (Available when the `fileSystemType` is `standard`).
      */
-    protocolType?: pulumi.Input<string>;
+    protocolType?: pulumi.Input<string | undefined>;
     /**
      * The storage type of the file system.
      * * Valid values:
      * * `Performance` (Available when the `fileSystemType` is `standard`)
      * * `Capacity` (Available when the `fileSystemType` is `standard`)
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
 }

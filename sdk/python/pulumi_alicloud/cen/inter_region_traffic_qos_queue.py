@@ -21,10 +21,10 @@ class InterRegionTrafficQosQueueArgs:
     def __init__(__self__, *,
                  dscps: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]],
                  traffic_qos_policy_id: pulumi.Input[_builtins.str],
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 inter_region_traffic_qos_queue_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 inter_region_traffic_qos_queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 remain_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None):
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 inter_region_traffic_qos_queue_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 inter_region_traffic_qos_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 remain_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a InterRegionTrafficQosQueue resource.
 
@@ -72,63 +72,63 @@ class InterRegionTrafficQosQueueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="interRegionTrafficQosQueueDescription")
-    def inter_region_traffic_qos_queue_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inter_region_traffic_qos_queue_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description information of the traffic scheduling policy.
         """
         return pulumi.get(self, "inter_region_traffic_qos_queue_description")
 
     @inter_region_traffic_qos_queue_description.setter
-    def inter_region_traffic_qos_queue_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inter_region_traffic_qos_queue_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inter_region_traffic_qos_queue_description", value)
 
     @_builtins.property
     @pulumi.getter(name="interRegionTrafficQosQueueName")
-    def inter_region_traffic_qos_queue_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inter_region_traffic_qos_queue_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the traffic scheduling policy.
         """
         return pulumi.get(self, "inter_region_traffic_qos_queue_name")
 
     @inter_region_traffic_qos_queue_name.setter
-    def inter_region_traffic_qos_queue_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inter_region_traffic_qos_queue_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inter_region_traffic_qos_queue_name", value)
 
     @_builtins.property
     @pulumi.getter(name="remainBandwidthPercent")
-    def remain_bandwidth_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def remain_bandwidth_percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentage of cross-region bandwidth that the current queue can use.
         """
         return pulumi.get(self, "remain_bandwidth_percent")
 
     @remain_bandwidth_percent.setter
-    def remain_bandwidth_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def remain_bandwidth_percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "remain_bandwidth_percent", value)
 
 
 @pulumi.input_type
 class _InterRegionTrafficQosQueueState:
     def __init__(__self__, *,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 dscps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 inter_region_traffic_qos_queue_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 inter_region_traffic_qos_queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 remain_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 dscps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 inter_region_traffic_qos_queue_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 inter_region_traffic_qos_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 remain_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InterRegionTrafficQosQueue resources.
 
@@ -157,86 +157,86 @@ class _InterRegionTrafficQosQueueState:
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter
-    def dscps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def dscps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
         """
         return pulumi.get(self, "dscps")
 
     @dscps.setter
-    def dscps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def dscps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "dscps", value)
 
     @_builtins.property
     @pulumi.getter(name="interRegionTrafficQosQueueDescription")
-    def inter_region_traffic_qos_queue_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inter_region_traffic_qos_queue_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description information of the traffic scheduling policy.
         """
         return pulumi.get(self, "inter_region_traffic_qos_queue_description")
 
     @inter_region_traffic_qos_queue_description.setter
-    def inter_region_traffic_qos_queue_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inter_region_traffic_qos_queue_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inter_region_traffic_qos_queue_description", value)
 
     @_builtins.property
     @pulumi.getter(name="interRegionTrafficQosQueueName")
-    def inter_region_traffic_qos_queue_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inter_region_traffic_qos_queue_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the traffic scheduling policy.
         """
         return pulumi.get(self, "inter_region_traffic_qos_queue_name")
 
     @inter_region_traffic_qos_queue_name.setter
-    def inter_region_traffic_qos_queue_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inter_region_traffic_qos_queue_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inter_region_traffic_qos_queue_name", value)
 
     @_builtins.property
     @pulumi.getter(name="remainBandwidthPercent")
-    def remain_bandwidth_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def remain_bandwidth_percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentage of cross-region bandwidth that the current queue can use.
         """
         return pulumi.get(self, "remain_bandwidth_percent")
 
     @remain_bandwidth_percent.setter
-    def remain_bandwidth_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def remain_bandwidth_percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "remain_bandwidth_percent", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the traffic scheduling policy.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficQosPolicyId")
-    def traffic_qos_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_qos_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the traffic scheduling policy.
         """
         return pulumi.get(self, "traffic_qos_policy_id")
 
     @traffic_qos_policy_id.setter
-    def traffic_qos_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_qos_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_qos_policy_id", value)
 
 
@@ -246,12 +246,12 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 dscps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 inter_region_traffic_qos_queue_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 inter_region_traffic_qos_queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 remain_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 traffic_qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 dscps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 inter_region_traffic_qos_queue_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 inter_region_traffic_qos_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 remain_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 traffic_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue resource.
@@ -437,12 +437,12 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 dscps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 inter_region_traffic_qos_queue_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 inter_region_traffic_qos_queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 remain_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 traffic_qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 dscps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 inter_region_traffic_qos_queue_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 inter_region_traffic_qos_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 remain_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 traffic_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -473,13 +473,13 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-            dscps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            inter_region_traffic_qos_queue_description: Optional[pulumi.Input[_builtins.str]] = None,
-            inter_region_traffic_qos_queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-            remain_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            traffic_qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'InterRegionTrafficQosQueue':
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            dscps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            inter_region_traffic_qos_queue_description: pulumi.Input[Optional[_builtins.str]] = None,
+            inter_region_traffic_qos_queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            remain_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'InterRegionTrafficQosQueue':
         """
         Get an existing InterRegionTrafficQosQueue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

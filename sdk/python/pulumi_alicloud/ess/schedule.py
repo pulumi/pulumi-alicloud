@@ -19,19 +19,19 @@ __all__ = ['ScheduleArgs', 'Schedule']
 @pulumi.input_type
 class ScheduleArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 recurrence_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 recurrence_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Schedule resource.
         """
@@ -64,138 +64,138 @@ class ScheduleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="launchExpirationTime")
-    def launch_expiration_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def launch_expiration_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "launch_expiration_time")
 
     @launch_expiration_time.setter
-    def launch_expiration_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def launch_expiration_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "launch_expiration_time", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTime")
-    def launch_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "launch_time")
 
     @launch_time.setter
-    def launch_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maxValue")
-    def max_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_value")
 
     @max_value.setter
-    def max_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_value", value)
 
     @_builtins.property
     @pulumi.getter(name="minValue")
-    def min_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "min_value")
 
     @min_value.setter
-    def min_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_value", value)
 
     @_builtins.property
     @pulumi.getter(name="recurrenceEndTime")
-    def recurrence_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "recurrence_end_time")
 
     @recurrence_end_time.setter
-    def recurrence_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="recurrenceType")
-    def recurrence_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "recurrence_type")
 
     @recurrence_type.setter
-    def recurrence_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence_type", value)
 
     @_builtins.property
     @pulumi.getter(name="recurrenceValue")
-    def recurrence_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "recurrence_value")
 
     @recurrence_value.setter
-    def recurrence_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence_value", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scaling_group_id")
 
     @scaling_group_id.setter
-    def scaling_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledAction")
-    def scheduled_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scheduled_action")
 
     @scheduled_action.setter
-    def scheduled_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_action", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledTaskName")
-    def scheduled_task_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_task_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scheduled_task_name")
 
     @scheduled_task_name.setter
-    def scheduled_task_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_task_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_task_name", value)
 
     @_builtins.property
     @pulumi.getter(name="taskEnabled")
-    def task_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def task_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "task_enabled")
 
     @task_enabled.setter
-    def task_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def task_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "task_enabled", value)
 
 
 @pulumi.input_type
 class _ScheduleState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 recurrence_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 recurrence_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Schedule resources.
         """
@@ -228,119 +228,119 @@ class _ScheduleState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="launchExpirationTime")
-    def launch_expiration_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def launch_expiration_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "launch_expiration_time")
 
     @launch_expiration_time.setter
-    def launch_expiration_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def launch_expiration_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "launch_expiration_time", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTime")
-    def launch_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "launch_time")
 
     @launch_time.setter
-    def launch_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maxValue")
-    def max_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_value")
 
     @max_value.setter
-    def max_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_value", value)
 
     @_builtins.property
     @pulumi.getter(name="minValue")
-    def min_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "min_value")
 
     @min_value.setter
-    def min_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_value", value)
 
     @_builtins.property
     @pulumi.getter(name="recurrenceEndTime")
-    def recurrence_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "recurrence_end_time")
 
     @recurrence_end_time.setter
-    def recurrence_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="recurrenceType")
-    def recurrence_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "recurrence_type")
 
     @recurrence_type.setter
-    def recurrence_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence_type", value)
 
     @_builtins.property
     @pulumi.getter(name="recurrenceValue")
-    def recurrence_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "recurrence_value")
 
     @recurrence_value.setter
-    def recurrence_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence_value", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scaling_group_id")
 
     @scaling_group_id.setter
-    def scaling_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledAction")
-    def scheduled_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scheduled_action")
 
     @scheduled_action.setter
-    def scheduled_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_action", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledTaskName")
-    def scheduled_task_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_task_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scheduled_task_name")
 
     @scheduled_task_name.setter
-    def scheduled_task_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_task_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_task_name", value)
 
     @_builtins.property
     @pulumi.getter(name="taskEnabled")
-    def task_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def task_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "task_enabled")
 
     @task_enabled.setter
-    def task_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def task_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "task_enabled", value)
 
 
@@ -350,19 +350,19 @@ class Schedule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 recurrence_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 recurrence_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         > **NOTE:** This resource has been deprecated from v1.45.0. New resource `ess.ScheduledTask` will replace.
@@ -396,19 +396,19 @@ class Schedule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 launch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 recurrence_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 launch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 recurrence_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -441,19 +441,19 @@ class Schedule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            launch_expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-            launch_time: Optional[pulumi.Input[_builtins.str]] = None,
-            max_value: Optional[pulumi.Input[_builtins.int]] = None,
-            min_value: Optional[pulumi.Input[_builtins.int]] = None,
-            recurrence_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            recurrence_type: Optional[pulumi.Input[_builtins.str]] = None,
-            recurrence_value: Optional[pulumi.Input[_builtins.str]] = None,
-            scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduled_action: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduled_task_name: Optional[pulumi.Input[_builtins.str]] = None,
-            task_enabled: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Schedule':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            launch_expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+            launch_time: pulumi.Input[Optional[_builtins.str]] = None,
+            max_value: pulumi.Input[Optional[_builtins.int]] = None,
+            min_value: pulumi.Input[Optional[_builtins.int]] = None,
+            recurrence_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            recurrence_type: pulumi.Input[Optional[_builtins.str]] = None,
+            recurrence_value: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_action: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+            task_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Schedule':
         """
         Get an existing Schedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

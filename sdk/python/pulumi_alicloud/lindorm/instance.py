@@ -22,46 +22,46 @@ class InstanceArgs:
                  disk_category: pulumi.Input[_builtins.str],
                  payment_type: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 arbiter_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arbiter_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arch_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 cold_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 core_single_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 core_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_proection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_single_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 lts_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 lts_node_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_zone_combination: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 search_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 search_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stream_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 stream_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 table_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 time_series_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_series_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_serires_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 arbiter_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arbiter_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arch_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 cold_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 core_single_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 core_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_proection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_single_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 lts_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 lts_node_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_zone_combination: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 search_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stream_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 stream_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 table_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 time_series_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_series_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_serires_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -236,91 +236,91 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="arbiterVswitchId")
-    def arbiter_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arbiter_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
         """
         return pulumi.get(self, "arbiter_vswitch_id")
 
     @arbiter_vswitch_id.setter
-    def arbiter_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arbiter_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arbiter_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="arbiterZoneId")
-    def arbiter_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arbiter_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
         """
         return pulumi.get(self, "arbiter_zone_id")
 
     @arbiter_zone_id.setter
-    def arbiter_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arbiter_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arbiter_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="archVersion")
-    def arch_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arch_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
         """
         return pulumi.get(self, "arch_version")
 
     @arch_version.setter
-    def arch_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arch_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arch_version", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="coldStorage")
-    def cold_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cold_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         """
         return pulumi.get(self, "cold_storage")
 
     @cold_storage.setter
-    def cold_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cold_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cold_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="coreSingleStorage")
-    def core_single_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def core_single_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         """
         return pulumi.get(self, "core_single_storage")
 
     @core_single_storage.setter
-    def core_single_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def core_single_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "core_single_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="coreSpec")
-    def core_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def core_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
         - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
@@ -329,449 +329,449 @@ class InstanceArgs:
         return pulumi.get(self, "core_spec")
 
     @core_spec.setter
-    def core_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def core_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "core_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProection")
-    def deletion_proection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_proection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The deletion protection of instance.
         """
         return pulumi.get(self, "deletion_proection")
 
     @deletion_proection.setter
-    def deletion_proection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_proection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_proection", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="fileEngineNodeCount")
-    def file_engine_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def file_engine_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of file engine.
         """
         return pulumi.get(self, "file_engine_node_count")
 
     @file_engine_node_count.setter
-    def file_engine_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def file_engine_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "file_engine_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="fileEngineSpecification")
-    def file_engine_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_engine_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of file engine. Valid values: `lindorm.c.xlarge`.
         """
         return pulumi.get(self, "file_engine_specification")
 
     @file_engine_specification.setter
-    def file_engine_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_engine_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_engine_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceStorage")
-    def instance_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
         """
         return pulumi.get(self, "instance_storage")
 
     @instance_storage.setter
-    def instance_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="ipWhiteLists")
-    def ip_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_white_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ip white list of instance.
         """
         return pulumi.get(self, "ip_white_lists")
 
     @ip_white_lists.setter
-    def ip_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_white_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_white_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="logDiskCategory")
-    def log_disk_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
         """
         return pulumi.get(self, "log_disk_category")
 
     @log_disk_category.setter
-    def log_disk_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_disk_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_disk_category", value)
 
     @_builtins.property
     @pulumi.getter(name="logNum")
-    def log_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
         """
         return pulumi.get(self, "log_num")
 
     @log_num.setter
-    def log_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_num", value)
 
     @_builtins.property
     @pulumi.getter(name="logSingleStorage")
-    def log_single_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_single_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         """
         return pulumi.get(self, "log_single_storage")
 
     @log_single_storage.setter
-    def log_single_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_single_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_single_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="logSpec")
-    def log_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
         """
         return pulumi.get(self, "log_spec")
 
     @log_spec.setter
-    def log_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="ltsNodeCount")
-    def lts_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lts_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of lindorm tunnel service.
         """
         return pulumi.get(self, "lts_node_count")
 
     @lts_node_count.setter
-    def lts_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lts_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lts_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ltsNodeSpecification")
-    def lts_node_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lts_node_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
         """
         return pulumi.get(self, "lts_node_specification")
 
     @lts_node_specification.setter
-    def lts_node_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lts_node_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lts_node_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="multiZoneCombination")
-    def multi_zone_combination(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def multi_zone_combination(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
         """
         return pulumi.get(self, "multi_zone_combination")
 
     @multi_zone_combination.setter
-    def multi_zone_combination(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def multi_zone_combination(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "multi_zone_combination", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
         """
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryVswitchId")
-    def primary_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
         """
         return pulumi.get(self, "primary_vswitch_id")
 
     @primary_vswitch_id.setter
-    def primary_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryZoneId")
-    def primary_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
         """
         return pulumi.get(self, "primary_zone_id")
 
     @primary_zone_id.setter
-    def primary_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="searchEngineNodeCount")
-    def search_engine_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def search_engine_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of search engine.
         """
         return pulumi.get(self, "search_engine_node_count")
 
     @search_engine_node_count.setter
-    def search_engine_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def search_engine_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "search_engine_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="searchEngineSpecification")
-    def search_engine_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def search_engine_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         """
         return pulumi.get(self, "search_engine_specification")
 
     @search_engine_specification.setter
-    def search_engine_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def search_engine_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "search_engine_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyVswitchId")
-    def standby_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
         """
         return pulumi.get(self, "standby_vswitch_id")
 
     @standby_vswitch_id.setter
-    def standby_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyZoneId")
-    def standby_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
         """
         return pulumi.get(self, "standby_zone_id")
 
     @standby_zone_id.setter
-    def standby_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="streamEngineNodeCount")
-    def stream_engine_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stream_engine_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of LindormStream nodes in the instance.
         """
         return pulumi.get(self, "stream_engine_node_count")
 
     @stream_engine_node_count.setter
-    def stream_engine_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stream_engine_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stream_engine_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="streamEngineSpecification")
-    def stream_engine_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stream_engine_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         """
         return pulumi.get(self, "stream_engine_specification")
 
     @stream_engine_specification.setter
-    def stream_engine_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stream_engine_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stream_engine_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="tableEngineNodeCount")
-    def table_engine_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def table_engine_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of table engine.
         """
         return pulumi.get(self, "table_engine_node_count")
 
     @table_engine_node_count.setter
-    def table_engine_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def table_engine_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "table_engine_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="tableEngineSpecification")
-    def table_engine_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_engine_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         """
         return pulumi.get(self, "table_engine_specification")
 
     @table_engine_specification.setter
-    def table_engine_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_engine_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_engine_specification", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="timeSeriesEngineNodeCount")
-    def time_series_engine_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_series_engine_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of time series engine.
         """
         return pulumi.get(self, "time_series_engine_node_count")
 
     @time_series_engine_node_count.setter
-    def time_series_engine_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_series_engine_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_series_engine_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="timeSeriesEngineSpecification")
-    def time_series_engine_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_series_engine_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         """
         return pulumi.get(self, "time_series_engine_specification")
 
     @time_series_engine_specification.setter
-    def time_series_engine_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_series_engine_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_series_engine_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="timeSeriresEngineSpecification")
     @_utilities.deprecated("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
-    def time_serires_engine_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_serires_engine_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
         return pulumi.get(self, "time_serires_engine_specification")
 
     @time_serires_engine_specification.setter
-    def time_serires_engine_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_serires_engine_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_serires_engine_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ID of the instance.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the instance.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 arbiter_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arbiter_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arch_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 cold_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 core_single_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 core_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_proection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_file_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_lts_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_search_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_stream_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_table_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_time_serires_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_single_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 lts_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 lts_node_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_zone_combination: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 search_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 search_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 stream_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 stream_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 table_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 time_series_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_series_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_serires_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 arbiter_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arbiter_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arch_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 cold_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 core_single_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 core_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_proection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_file_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_lts_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_search_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_stream_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_table_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_time_serires_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_single_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 lts_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 lts_node_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_zone_combination: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 search_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 stream_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 stream_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 table_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 time_series_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_series_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_serires_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -937,91 +937,91 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="arbiterVswitchId")
-    def arbiter_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arbiter_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
         """
         return pulumi.get(self, "arbiter_vswitch_id")
 
     @arbiter_vswitch_id.setter
-    def arbiter_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arbiter_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arbiter_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="arbiterZoneId")
-    def arbiter_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arbiter_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
         """
         return pulumi.get(self, "arbiter_zone_id")
 
     @arbiter_zone_id.setter
-    def arbiter_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arbiter_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arbiter_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="archVersion")
-    def arch_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arch_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
         """
         return pulumi.get(self, "arch_version")
 
     @arch_version.setter
-    def arch_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arch_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arch_version", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable auto-renewal for the instance. Valid when the `payment_type` is `Subscription`. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subscription duration that is supported by auto-renewal. Unit: months. Valid values: `1` to `12`. This parameter is required only if the AutoRenew parameter is set to true.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="coldStorage")
-    def cold_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cold_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         """
         return pulumi.get(self, "cold_storage")
 
     @cold_storage.setter
-    def cold_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cold_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cold_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="coreSingleStorage")
-    def core_single_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def core_single_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         """
         return pulumi.get(self, "core_single_storage")
 
     @core_single_storage.setter
-    def core_single_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def core_single_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "core_single_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="coreSpec")
-    def core_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def core_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
         - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
@@ -1030,524 +1030,524 @@ class _InstanceState:
         return pulumi.get(self, "core_spec")
 
     @core_spec.setter
-    def core_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def core_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "core_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProection")
-    def deletion_proection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_proection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The deletion protection of instance.
         """
         return pulumi.get(self, "deletion_proection")
 
     @deletion_proection.setter
-    def deletion_proection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_proection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_proection", value)
 
     @_builtins.property
     @pulumi.getter(name="diskCategory")
-    def disk_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
         """
         return pulumi.get(self, "disk_category")
 
     @disk_category.setter
-    def disk_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_category", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledFileEngine")
-    def enabled_file_engine(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled_file_engine(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Available since v1.163.0) Whether to enable file engine.
         """
         return pulumi.get(self, "enabled_file_engine")
 
     @enabled_file_engine.setter
-    def enabled_file_engine(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled_file_engine(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled_file_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledLtsEngine")
-    def enabled_lts_engine(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled_lts_engine(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Available since v1.163.0) Whether to enable lts engine.
         """
         return pulumi.get(self, "enabled_lts_engine")
 
     @enabled_lts_engine.setter
-    def enabled_lts_engine(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled_lts_engine(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled_lts_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledSearchEngine")
-    def enabled_search_engine(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled_search_engine(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Available since v1.163.0) Whether to enable search engine.
         """
         return pulumi.get(self, "enabled_search_engine")
 
     @enabled_search_engine.setter
-    def enabled_search_engine(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled_search_engine(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled_search_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledStreamEngine")
-    def enabled_stream_engine(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled_stream_engine(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Available since v1.211.0) Whether to enable streaming engine.
         """
         return pulumi.get(self, "enabled_stream_engine")
 
     @enabled_stream_engine.setter
-    def enabled_stream_engine(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled_stream_engine(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled_stream_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledTableEngine")
-    def enabled_table_engine(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled_table_engine(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Available since v1.163.0) Whether to enable table engine.
         """
         return pulumi.get(self, "enabled_table_engine")
 
     @enabled_table_engine.setter
-    def enabled_table_engine(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled_table_engine(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled_table_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledTimeSeriresEngine")
-    def enabled_time_serires_engine(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled_time_serires_engine(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Available since v1.163.0) Whether to enable time serires engine.
         """
         return pulumi.get(self, "enabled_time_serires_engine")
 
     @enabled_time_serires_engine.setter
-    def enabled_time_serires_engine(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled_time_serires_engine(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled_time_serires_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="fileEngineNodeCount")
-    def file_engine_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def file_engine_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of file engine.
         """
         return pulumi.get(self, "file_engine_node_count")
 
     @file_engine_node_count.setter
-    def file_engine_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def file_engine_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "file_engine_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="fileEngineSpecification")
-    def file_engine_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_engine_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of file engine. Valid values: `lindorm.c.xlarge`.
         """
         return pulumi.get(self, "file_engine_specification")
 
     @file_engine_specification.setter
-    def file_engine_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_engine_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_engine_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceStorage")
-    def instance_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage capacity of the instance. Unit: GB. Valid values: [80, 10485760], and the value must be divisible by 80.
         """
         return pulumi.get(self, "instance_storage")
 
     @instance_storage.setter
-    def instance_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="ipWhiteLists")
-    def ip_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_white_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ip white list of instance.
         """
         return pulumi.get(self, "ip_white_lists")
 
     @ip_white_lists.setter
-    def ip_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_white_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_white_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="logDiskCategory")
-    def log_disk_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
         """
         return pulumi.get(self, "log_disk_category")
 
     @log_disk_category.setter
-    def log_disk_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_disk_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_disk_category", value)
 
     @_builtins.property
     @pulumi.getter(name="logNum")
-    def log_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
         """
         return pulumi.get(self, "log_num")
 
     @log_num.setter
-    def log_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_num", value)
 
     @_builtins.property
     @pulumi.getter(name="logSingleStorage")
-    def log_single_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_single_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         """
         return pulumi.get(self, "log_single_storage")
 
     @log_single_storage.setter
-    def log_single_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_single_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_single_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="logSpec")
-    def log_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
         """
         return pulumi.get(self, "log_spec")
 
     @log_spec.setter
-    def log_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="ltsNodeCount")
-    def lts_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lts_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of lindorm tunnel service.
         """
         return pulumi.get(self, "lts_node_count")
 
     @lts_node_count.setter
-    def lts_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lts_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lts_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ltsNodeSpecification")
-    def lts_node_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lts_node_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
         """
         return pulumi.get(self, "lts_node_specification")
 
     @lts_node_specification.setter
-    def lts_node_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lts_node_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lts_node_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="multiZoneCombination")
-    def multi_zone_combination(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def multi_zone_combination(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
         """
         return pulumi.get(self, "multi_zone_combination")
 
     @multi_zone_combination.setter
-    def multi_zone_combination(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def multi_zone_combination(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "multi_zone_combination", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method. Valid values: `PayAsYouGo` and `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
         """
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryVswitchId")
-    def primary_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
         """
         return pulumi.get(self, "primary_vswitch_id")
 
     @primary_vswitch_id.setter
-    def primary_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryZoneId")
-    def primary_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
         """
         return pulumi.get(self, "primary_zone_id")
 
     @primary_zone_id.setter
-    def primary_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="searchEngineNodeCount")
-    def search_engine_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def search_engine_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of search engine.
         """
         return pulumi.get(self, "search_engine_node_count")
 
     @search_engine_node_count.setter
-    def search_engine_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def search_engine_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "search_engine_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="searchEngineSpecification")
-    def search_engine_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def search_engine_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
         """
         return pulumi.get(self, "search_engine_specification")
 
     @search_engine_specification.setter
-    def search_engine_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def search_engine_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "search_engine_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceType")
-    def service_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.196.0) The instance type.
         """
         return pulumi.get(self, "service_type")
 
     @service_type.setter
-    def service_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_type", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyVswitchId")
-    def standby_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
         """
         return pulumi.get(self, "standby_vswitch_id")
 
     @standby_vswitch_id.setter
-    def standby_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyZoneId")
-    def standby_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
         """
         return pulumi.get(self, "standby_zone_id")
 
     @standby_zone_id.setter
-    def standby_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_zone_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of Instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="streamEngineNodeCount")
-    def stream_engine_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stream_engine_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of LindormStream nodes in the instance.
         """
         return pulumi.get(self, "stream_engine_node_count")
 
     @stream_engine_node_count.setter
-    def stream_engine_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stream_engine_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stream_engine_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="streamEngineSpecification")
-    def stream_engine_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stream_engine_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         """
         return pulumi.get(self, "stream_engine_specification")
 
     @stream_engine_specification.setter
-    def stream_engine_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stream_engine_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stream_engine_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="tableEngineNodeCount")
-    def table_engine_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def table_engine_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of table engine.
         """
         return pulumi.get(self, "table_engine_node_count")
 
     @table_engine_node_count.setter
-    def table_engine_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def table_engine_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "table_engine_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="tableEngineSpecification")
-    def table_engine_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_engine_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         """
         return pulumi.get(self, "table_engine_specification")
 
     @table_engine_specification.setter
-    def table_engine_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_engine_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_engine_specification", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="timeSeriesEngineNodeCount")
-    def time_series_engine_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_series_engine_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of time series engine.
         """
         return pulumi.get(self, "time_series_engine_node_count")
 
     @time_series_engine_node_count.setter
-    def time_series_engine_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_series_engine_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_series_engine_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="timeSeriesEngineSpecification")
-    def time_series_engine_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_series_engine_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         """
         return pulumi.get(self, "time_series_engine_specification")
 
     @time_series_engine_specification.setter
-    def time_series_engine_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_series_engine_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_series_engine_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="timeSeriresEngineSpecification")
     @_utilities.deprecated("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
-    def time_serires_engine_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_serires_engine_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
         return pulumi.get(self, "time_serires_engine_specification")
 
     @time_serires_engine_specification.setter
-    def time_serires_engine_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_serires_engine_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_serires_engine_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ID of the instance.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vswitch id.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the instance.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -1557,49 +1557,49 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 arbiter_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arbiter_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arch_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 cold_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 core_single_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 core_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_proection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_single_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 lts_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 lts_node_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_zone_combination: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 search_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 search_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stream_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 stream_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 table_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 time_series_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_series_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_serires_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 arbiter_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arbiter_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arch_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 cold_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 core_single_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 core_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_proection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_single_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 lts_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 lts_node_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_zone_combination: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 search_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stream_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 stream_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 table_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 time_series_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_series_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_serires_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Lindorm Instance resource.
@@ -1770,49 +1770,49 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 arbiter_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arbiter_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arch_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 cold_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 core_single_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 core_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_proection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_single_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 lts_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 lts_node_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_zone_combination: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 search_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 search_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stream_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 stream_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 table_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 time_series_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_series_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_serires_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 arbiter_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arbiter_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arch_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 cold_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 core_single_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 core_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_proection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_single_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 lts_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 lts_node_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_zone_combination: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 search_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stream_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 stream_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 table_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 time_series_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_series_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_serires_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1889,57 +1889,57 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            arbiter_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            arbiter_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            arch_version: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew_period: Optional[pulumi.Input[_builtins.str]] = None,
-            cold_storage: Optional[pulumi.Input[_builtins.int]] = None,
-            core_single_storage: Optional[pulumi.Input[_builtins.int]] = None,
-            core_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_proection: Optional[pulumi.Input[_builtins.bool]] = None,
-            disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-            duration: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled_file_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled_lts_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled_search_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled_stream_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled_table_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled_time_serires_engine: Optional[pulumi.Input[_builtins.bool]] = None,
-            file_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            file_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_storage: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            log_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-            log_num: Optional[pulumi.Input[_builtins.int]] = None,
-            log_single_storage: Optional[pulumi.Input[_builtins.int]] = None,
-            log_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            lts_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            lts_node_specification: Optional[pulumi.Input[_builtins.str]] = None,
-            multi_zone_combination: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            search_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            search_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-            service_type: Optional[pulumi.Input[_builtins.str]] = None,
-            standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            stream_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            stream_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-            table_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            table_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            time_series_engine_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            time_series_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-            time_serires_engine_specification: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            arbiter_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            arbiter_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            arch_version: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.str]] = None,
+            cold_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            core_single_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            core_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_proection: pulumi.Input[Optional[_builtins.bool]] = None,
+            disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled_file_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled_lts_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled_search_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled_stream_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled_table_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled_time_serires_engine: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            file_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            log_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+            log_num: pulumi.Input[Optional[_builtins.int]] = None,
+            log_single_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            log_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            lts_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            lts_node_specification: pulumi.Input[Optional[_builtins.str]] = None,
+            multi_zone_combination: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            search_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            search_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+            service_type: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            stream_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            stream_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+            table_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            table_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            time_series_engine_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            time_series_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+            time_serires_engine_specification: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

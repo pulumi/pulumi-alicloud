@@ -160,17 +160,17 @@ export interface CommonBandwithPackageAttachmentState {
      * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
      * > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
      */
-    bandwidthPackageBandwidth?: pulumi.Input<string>;
+    bandwidthPackageBandwidth?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Internet Shared Bandwidth instance.
      */
-    bandwidthPackageId?: pulumi.Input<string>;
+    bandwidthPackageId?: pulumi.Input<string | undefined>;
     /**
      * . Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidthPackageBandwidth` = `"Cancelled"`.
      *
      * @deprecated Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = "Cancelled"
      */
-    cancelCommonBandwidthPackageIpBandwidth?: pulumi.Input<boolean>;
+    cancelCommonBandwidthPackageIpBandwidth?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the EIP that you want to query.
      *
@@ -178,15 +178,15 @@ export interface CommonBandwithPackageAttachmentState {
      *
      * > **NOTE:** If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
      */
-    ipType?: pulumi.Input<string>;
+    ipType?: pulumi.Input<string | undefined>;
     /**
      * The status of the Internet Shared Bandwidth instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -197,7 +197,7 @@ export interface CommonBandwithPackageAttachmentArgs {
      * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
      * > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
      */
-    bandwidthPackageBandwidth?: pulumi.Input<string>;
+    bandwidthPackageBandwidth?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Internet Shared Bandwidth instance.
      */
@@ -207,7 +207,7 @@ export interface CommonBandwithPackageAttachmentArgs {
      *
      * @deprecated Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = "Cancelled"
      */
-    cancelCommonBandwidthPackageIpBandwidth?: pulumi.Input<boolean>;
+    cancelCommonBandwidthPackageIpBandwidth?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the EIP that you want to query.
      *
@@ -219,5 +219,5 @@ export interface CommonBandwithPackageAttachmentArgs {
     /**
      * The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
      */
-    ipType?: pulumi.Input<string>;
+    ipType?: pulumi.Input<string | undefined>;
 }

@@ -293,54 +293,54 @@ export interface EndpointGroupState {
     /**
      * The ID of the Global Accelerator instance to which the endpoint group will be added.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The description of the endpoint group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
      */
-    endpointConfigurations?: pulumi.Input<pulumi.Input<inputs.ga.EndpointGroupEndpointConfiguration>[]>;
+    endpointConfigurations?: pulumi.Input<pulumi.Input<inputs.ga.EndpointGroupEndpointConfiguration>[] | undefined>;
     /**
      * (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpointGroupIpList` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
      */
-    endpointGroupIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    endpointGroupIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the region where the endpoint group is deployed.
      */
-    endpointGroupRegion?: pulumi.Input<string>;
+    endpointGroupRegion?: pulumi.Input<string | undefined>;
     /**
      * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
      * > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
      */
-    endpointGroupType?: pulumi.Input<string>;
+    endpointGroupType?: pulumi.Input<string | undefined>;
     /**
      * The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
      * > **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
      */
-    endpointProtocolVersion?: pulumi.Input<string>;
+    endpointProtocolVersion?: pulumi.Input<string | undefined>;
     /**
      * The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
      * > **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      */
-    endpointRequestProtocol?: pulumi.Input<string>;
+    endpointRequestProtocol?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the health check feature. Valid values:
      */
-    healthCheckEnabled?: pulumi.Input<boolean>;
+    healthCheckEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The interval between two consecutive health checks. Unit: seconds.
      */
-    healthCheckIntervalSeconds?: pulumi.Input<number>;
+    healthCheckIntervalSeconds?: pulumi.Input<number | undefined>;
     /**
      * The path specified as the destination of the targets for health checks.
      */
-    healthCheckPath?: pulumi.Input<string>;
+    healthCheckPath?: pulumi.Input<string | undefined>;
     /**
      * The port that is used for health checks.
      */
-    healthCheckPort?: pulumi.Input<number>;
+    healthCheckPort?: pulumi.Input<number | undefined>;
     /**
      * The protocol that is used to connect to the targets for health checks. Valid values:
      * - `TCP` or `tcp`: TCP protocol.
@@ -348,36 +348,36 @@ export interface EndpointGroupState {
      * - `HTTPS` or `https`: HTTPS protocol.
      * > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      */
-    healthCheckProtocol?: pulumi.Input<string>;
+    healthCheckProtocol?: pulumi.Input<string | undefined>;
     /**
      * The ID of the listener that is associated with the endpoint group.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * The name of the endpoint group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
      * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */
-    portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides>;
+    portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides | undefined>;
     /**
      * The status of the endpoint group.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
      */
-    thresholdCount?: pulumi.Input<number>;
+    thresholdCount?: pulumi.Input<number | undefined>;
     /**
      * The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
      */
-    trafficPercentage?: pulumi.Input<number>;
+    trafficPercentage?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -391,7 +391,7 @@ export interface EndpointGroupArgs {
     /**
      * The description of the endpoint group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
      */
@@ -404,33 +404,33 @@ export interface EndpointGroupArgs {
      * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
      * > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
      */
-    endpointGroupType?: pulumi.Input<string>;
+    endpointGroupType?: pulumi.Input<string | undefined>;
     /**
      * The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values: `HTTP1.1`, `HTTP2`.
      * > **NOTE:** `endpointProtocolVersion` is valid only when `endpointRequestProtocol` is set to `HTTPS`.
      */
-    endpointProtocolVersion?: pulumi.Input<string>;
+    endpointProtocolVersion?: pulumi.Input<string | undefined>;
     /**
      * The protocol that is used by the backend server. Valid values: `HTTP`, `HTTPS`.
      * > **NOTE:** `endpointRequestProtocol` can be specified only if the listener that is associated with the endpoint group uses `HTTP` or `HTTPS`. For the listener of `HTTP` protocol, `endpointRequestProtocol` can only be set to `HTTP`.
      */
-    endpointRequestProtocol?: pulumi.Input<string>;
+    endpointRequestProtocol?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the health check feature. Valid values:
      */
-    healthCheckEnabled?: pulumi.Input<boolean>;
+    healthCheckEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The interval between two consecutive health checks. Unit: seconds.
      */
-    healthCheckIntervalSeconds?: pulumi.Input<number>;
+    healthCheckIntervalSeconds?: pulumi.Input<number | undefined>;
     /**
      * The path specified as the destination of the targets for health checks.
      */
-    healthCheckPath?: pulumi.Input<string>;
+    healthCheckPath?: pulumi.Input<string | undefined>;
     /**
      * The port that is used for health checks.
      */
-    healthCheckPort?: pulumi.Input<number>;
+    healthCheckPort?: pulumi.Input<number | undefined>;
     /**
      * The protocol that is used to connect to the targets for health checks. Valid values:
      * - `TCP` or `tcp`: TCP protocol.
@@ -438,7 +438,7 @@ export interface EndpointGroupArgs {
      * - `HTTPS` or `https`: HTTPS protocol.
      * > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      */
-    healthCheckProtocol?: pulumi.Input<string>;
+    healthCheckProtocol?: pulumi.Input<string | undefined>;
     /**
      * The ID of the listener that is associated with the endpoint group.
      */
@@ -446,22 +446,22 @@ export interface EndpointGroupArgs {
     /**
      * The name of the endpoint group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
      * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */
-    portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides>;
+    portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
      */
-    thresholdCount?: pulumi.Input<number>;
+    thresholdCount?: pulumi.Input<number | undefined>;
     /**
      * The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
      */
-    trafficPercentage?: pulumi.Input<number>;
+    trafficPercentage?: pulumi.Input<number | undefined>;
 }

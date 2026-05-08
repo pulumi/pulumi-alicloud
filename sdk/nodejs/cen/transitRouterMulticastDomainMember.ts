@@ -41,10 +41,10 @@ import * as utilities from "../utilities";
  * const exampleEcsNetworkInterface = new alicloud.ecs.EcsNetworkInterface("example", {
  *     networkInterfaceName: name,
  *     vswitchId: exampleSwitch.id,
- *     primaryIpAddress: exampleSwitch.cidrBlock.apply(cidrBlock => std.cidrhostOutput({
- *         input: cidrBlock,
+ *     primaryIpAddress: std.cidrhostOutput({
+ *         input: exampleSwitch.cidrBlock,
  *         host: 100,
- *     })).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  *     securityGroupIds: [exampleSecurityGroup.id],
  * });
  * const exampleInstance = new alicloud.cen.Instance("example", {cenInstanceName: name});
@@ -191,27 +191,27 @@ export interface TransitRouterMulticastDomainMemberState {
     /**
      * Specifies whether only to precheck the request.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The IP address of the multicast group to which the multicast member belongs. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
      */
-    groupIpAddress?: pulumi.Input<string>;
+    groupIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ENI.
      */
-    networkInterfaceId?: pulumi.Input<string>;
+    networkInterfaceId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Transit Router Multicast Domain Member.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the multicast domain to which the multicast member belongs.
      */
-    transitRouterMulticastDomainId?: pulumi.Input<string>;
+    transitRouterMulticastDomainId?: pulumi.Input<string | undefined>;
     /**
      * The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -221,7 +221,7 @@ export interface TransitRouterMulticastDomainMemberArgs {
     /**
      * Specifies whether only to precheck the request.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The IP address of the multicast group to which the multicast member belongs. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
      */
@@ -237,5 +237,5 @@ export interface TransitRouterMulticastDomainMemberArgs {
     /**
      * The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

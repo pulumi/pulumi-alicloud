@@ -38,11 +38,11 @@ import * as utilities from "../utilities";
  *     vpcId: vpc.id,
  *     vswitchName: name,
  *     zoneId: enhanced.then(enhanced => enhanced.zones?.[0]?.zoneId),
- *     cidrBlock: vpc.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
- *         input: cidrBlock,
+ *     cidrBlock: std.cidrsubnetOutput({
+ *         input: vpc.cidrBlock,
  *         newbits: 8,
  *         netnum: 8,
- *     })).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  * });
  * const defaultSnapshotPolicy = new alicloud.ecs.SnapshotPolicy("default", {
  *     name: name,
@@ -58,13 +58,13 @@ import * as utilities from "../utilities";
  *         "23",
  *     ],
  * });
- * const _default = vswitch.zoneId.apply(zoneId => alicloud.ecs.getInstanceTypesOutput({
- *     availabilityZone: zoneId,
+ * const _default = alicloud.ecs.getInstanceTypesOutput({
+ *     availabilityZone: vswitch.zoneId,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
  *     kubernetesNodeRole: "Worker",
  *     instanceTypeFamily: "ecs.sn1ne",
- * }));
+ * });
  * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
  *     name: `terraform-example-${defaultInteger.result}`,
  *     clusterSpec: "ack.pro.small",
@@ -225,31 +225,31 @@ export interface AddonReleaseState {
     /**
      * Addon Name.
      */
-    addonName?: pulumi.Input<string>;
+    addonName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    addonReleaseName?: pulumi.Input<string>;
+    addonReleaseName?: pulumi.Input<string | undefined>;
     /**
      * Version number of Addon. Addon information can be obtained through ListAddons.
      */
-    addonVersion?: pulumi.Input<string>;
+    addonVersion?: pulumi.Input<string | undefined>;
     /**
      * The installed locale.
      */
-    aliyunLang?: pulumi.Input<string>;
+    aliyunLang?: pulumi.Input<string | undefined>;
     /**
      * Creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Environment id.
      */
-    environmentId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<string | undefined>;
     /**
      * Configuration information for installing Addon. Obtain the configuration template from ListAddonSchema, for example, {"host":"mysql-service.default","port":3306,"username":"root","password":"roots"}.
      */
-    values?: pulumi.Input<string>;
+    values?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -263,7 +263,7 @@ export interface AddonReleaseArgs {
     /**
      * The name of the resource.
      */
-    addonReleaseName?: pulumi.Input<string>;
+    addonReleaseName?: pulumi.Input<string | undefined>;
     /**
      * Version number of Addon. Addon information can be obtained through ListAddons.
      */
@@ -271,7 +271,7 @@ export interface AddonReleaseArgs {
     /**
      * The installed locale.
      */
-    aliyunLang?: pulumi.Input<string>;
+    aliyunLang?: pulumi.Input<string | undefined>;
     /**
      * Environment id.
      */
@@ -279,5 +279,5 @@ export interface AddonReleaseArgs {
     /**
      * Configuration information for installing Addon. Obtain the configuration template from ListAddonSchema, for example, {"host":"mysql-service.default","port":3306,"username":"root","password":"roots"}.
      */
-    values?: pulumi.Input<string>;
+    values?: pulumi.Input<string | undefined>;
 }

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     planSubscribeType: "enterpriseplan",
  * });
  * const defaultWafRuleset = new alicloud.esa.WafRuleset("default", {
- *     siteId: _default.then(_default => _default.sites?.[0]?.siteId),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.siteId)).apply(x =>String(x)),
  *     phase: "http_custom",
  *     siteVersion: 0,
  *     name: name,
@@ -141,7 +141,7 @@ export interface GetWafRulesetsResult {
  *     planSubscribeType: "enterpriseplan",
  * });
  * const defaultWafRuleset = new alicloud.esa.WafRuleset("default", {
- *     siteId: _default.then(_default => _default.sites?.[0]?.siteId),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.siteId)).apply(x =>String(x)),
  *     phase: "http_custom",
  *     siteVersion: 0,
  *     name: name,
@@ -176,15 +176,15 @@ export interface GetWafRulesetsOutputArgs {
     /**
      * A list of Waf Ruleset IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Waf Ruleset name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The WAF operation phase.
      */
@@ -192,7 +192,7 @@ export interface GetWafRulesetsOutputArgs {
     /**
      * The query parameters. See `queryArgs` below.
      */
-    queryArgs?: pulumi.Input<inputs.esa.GetWafRulesetsQueryArgsArgs>;
+    queryArgs?: pulumi.Input<inputs.esa.GetWafRulesetsQueryArgsArgs | undefined>;
     /**
      * The ID of the Site.
      */
@@ -204,5 +204,5 @@ export interface GetWafRulesetsOutputArgs {
     /**
      * The status of the rule set. Valid values: `on`, `off`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

@@ -185,35 +185,35 @@ export interface StoreIndexState {
      *
      * > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
      */
-    fieldSearches?: pulumi.Input<pulumi.Input<inputs.log.StoreIndexFieldSearch>[]>;
+    fieldSearches?: pulumi.Input<pulumi.Input<inputs.log.StoreIndexFieldSearch>[] | undefined>;
     /**
      * The configuration of full text index. See `fullText` below.
      */
-    fullText?: pulumi.Input<inputs.log.StoreIndexFullText>;
+    fullText?: pulumi.Input<inputs.log.StoreIndexFullText | undefined>;
     /**
      * Whether to enable log reduce. Default to false.
      */
-    logReduce?: pulumi.Input<boolean>;
+    logReduce?: pulumi.Input<boolean | undefined>;
     /**
      * The black list of log reduce.
      */
-    logReduceBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+    logReduceBlackLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The white list of log reduce.
      */
-    logReduceWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    logReduceWhiteLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The log store name to the query index belongs.
      */
-    logstore?: pulumi.Input<string>;
+    logstore?: pulumi.Input<string | undefined>;
     /**
      * The max text length.
      */
-    maxTextLen?: pulumi.Input<number>;
+    maxTextLen?: pulumi.Input<number | undefined>;
     /**
      * The project name to the log store belongs.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -225,23 +225,23 @@ export interface StoreIndexArgs {
      *
      * > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
      */
-    fieldSearches?: pulumi.Input<pulumi.Input<inputs.log.StoreIndexFieldSearch>[]>;
+    fieldSearches?: pulumi.Input<pulumi.Input<inputs.log.StoreIndexFieldSearch>[] | undefined>;
     /**
      * The configuration of full text index. See `fullText` below.
      */
-    fullText?: pulumi.Input<inputs.log.StoreIndexFullText>;
+    fullText?: pulumi.Input<inputs.log.StoreIndexFullText | undefined>;
     /**
      * Whether to enable log reduce. Default to false.
      */
-    logReduce?: pulumi.Input<boolean>;
+    logReduce?: pulumi.Input<boolean | undefined>;
     /**
      * The black list of log reduce.
      */
-    logReduceBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+    logReduceBlackLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The white list of log reduce.
      */
-    logReduceWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    logReduceWhiteLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The log store name to the query index belongs.
      */
@@ -249,7 +249,7 @@ export interface StoreIndexArgs {
     /**
      * The max text length.
      */
-    maxTextLen?: pulumi.Input<number>;
+    maxTextLen?: pulumi.Input<number | undefined>;
     /**
      * The project name to the log store belongs.
      */

@@ -22,8 +22,8 @@ class RouterVpcAssociationArgs:
                  association_region_id: pulumi.Input[_builtins.str],
                  ecr_id: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
-                 allowed_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_owner_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a RouterVpcAssociation resource.
 
@@ -80,19 +80,19 @@ class RouterVpcAssociationArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedPrefixes")
-    def allowed_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of allowed route prefixes.
         """
         return pulumi.get(self, "allowed_prefixes")
 
     @allowed_prefixes.setter
-    def allowed_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcOwnerId")
-    def vpc_owner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vpc_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Alibaba Cloud account that owns the VPC.
         > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
@@ -100,21 +100,21 @@ class RouterVpcAssociationArgs:
         return pulumi.get(self, "vpc_owner_id")
 
     @vpc_owner_id.setter
-    def vpc_owner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vpc_owner_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vpc_owner_id", value)
 
 
 @pulumi.input_type
 class _RouterVpcAssociationState:
     def __init__(__self__, *,
-                 allowed_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 association_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 association_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 association_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_owner_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RouterVpcAssociation resources.
 
@@ -147,91 +147,91 @@ class _RouterVpcAssociationState:
 
     @_builtins.property
     @pulumi.getter(name="allowedPrefixes")
-    def allowed_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of allowed route prefixes.
         """
         return pulumi.get(self, "allowed_prefixes")
 
     @allowed_prefixes.setter
-    def allowed_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="associationId")
-    def association_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def association_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the association between the ECR and the VPC.
         """
         return pulumi.get(self, "association_id")
 
     @association_id.setter
-    def association_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def association_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "association_id", value)
 
     @_builtins.property
     @pulumi.getter(name="associationRegionId")
-    def association_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def association_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource to be associated.
         """
         return pulumi.get(self, "association_region_id")
 
     @association_region_id.setter
-    def association_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def association_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "association_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the association was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ecrId")
-    def ecr_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecr_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ECR ID.
         """
         return pulumi.get(self, "ecr_id")
 
     @ecr_id.setter
-    def ecr_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecr_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecr_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment state of the associated resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcOwnerId")
-    def vpc_owner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vpc_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Alibaba Cloud account that owns the VPC.
         > **NOTE:** If you want to connect to a network instance that belongs to a different account, `vpc_owner_id` is required.
@@ -239,7 +239,7 @@ class _RouterVpcAssociationState:
         return pulumi.get(self, "vpc_owner_id")
 
     @vpc_owner_id.setter
-    def vpc_owner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vpc_owner_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vpc_owner_id", value)
 
 
@@ -249,11 +249,11 @@ class RouterVpcAssociation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 association_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Express Connect Router Express Connect Router Vpc Association resource. Bind relationship object between leased line gateway and VPC.
@@ -285,7 +285,7 @@ class RouterVpcAssociation(pulumi.CustomResource):
                 "172.16.2.0/24",
                 "172.16.1.0/24",
             ],
-            vpc_owner_id=current.id,
+            vpc_owner_id=output(current.id).apply(lambda x: int(x)),
             association_region_id="cn-hangzhou",
             vpc_id=default8q_at_d6.id)
         ```
@@ -346,7 +346,7 @@ class RouterVpcAssociation(pulumi.CustomResource):
                 "172.16.2.0/24",
                 "172.16.1.0/24",
             ],
-            vpc_owner_id=current.id,
+            vpc_owner_id=output(current.id).apply(lambda x: int(x)),
             association_region_id="cn-hangzhou",
             vpc_id=default8q_at_d6.id)
         ```
@@ -377,11 +377,11 @@ class RouterVpcAssociation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 association_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -415,14 +415,14 @@ class RouterVpcAssociation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allowed_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            association_id: Optional[pulumi.Input[_builtins.str]] = None,
-            association_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_owner_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'RouterVpcAssociation':
+            allowed_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            association_id: pulumi.Input[Optional[_builtins.str]] = None,
+            association_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_owner_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'RouterVpcAssociation':
         """
         Get an existing RouterVpcAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -22,41 +22,41 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  payment_type: pulumi.Input[_builtins.str],
-                 buy_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_image_scan: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_image_scan_new: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_paid_flag: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_paid_host_auto_bind: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_paid_host_auto_bind_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_pay_module_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_pay_module_switch_obj: Optional[pulumi.Input['InstancePostPayModuleSwitchObjArgs']] = None,
-                 rasp_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_anti_ransomware: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_cspm: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_cspm_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_sc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sas_sdk: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_sdk_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_sls_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_webguard_boolean: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_webguard_order_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_flow: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_sls_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_switch1: Optional[pulumi.Input[_builtins.str]] = None,
-                 v_core: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 vul_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 vul_switch: Optional[pulumi.Input[_builtins.str]] = None):
+                 buy_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_image_scan: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_image_scan_new: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_paid_flag: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_paid_host_auto_bind: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_paid_host_auto_bind_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_pay_module_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_pay_module_switch_obj: pulumi.Input[Optional['InstancePostPayModuleSwitchObjArgs']] = None,
+                 rasp_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_anti_ransomware: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_cspm: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_cspm_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_sc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sas_sdk: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_sdk_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_sls_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_webguard_boolean: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_webguard_order_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_flow: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_sls_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_switch1: pulumi.Input[Optional[_builtins.str]] = None,
+                 v_core: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 vul_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 vul_switch: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -263,20 +263,20 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="buyNumber")
-    def buy_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def buy_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of servers.
         """
         return pulumi.get(self, "buy_number")
 
     @buy_number.setter
-    def buy_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def buy_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "buy_number", value)
 
     @_builtins.property
     @pulumi.getter(name="containerImageScan")
     @_utilities.deprecated("""Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""")
-    def container_image_scan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_image_scan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container Image security scan. Interval type, value interval:[0,200000].
 
@@ -285,12 +285,12 @@ class InstanceArgs:
         return pulumi.get(self, "container_image_scan")
 
     @container_image_scan.setter
-    def container_image_scan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_image_scan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_image_scan", value)
 
     @_builtins.property
     @pulumi.getter(name="containerImageScanNew")
-    def container_image_scan_new(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_image_scan_new(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container Image security scan. Interval type, value interval:[0,200000].
 
@@ -299,12 +299,12 @@ class InstanceArgs:
         return pulumi.get(self, "container_image_scan_new")
 
     @container_image_scan_new.setter
-    def container_image_scan_new(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_image_scan_new(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_image_scan_new", value)
 
     @_builtins.property
     @pulumi.getter
-    def honeypot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def honeypot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of cloud honeypot licenses. Interval type, value interval:[20,500].
 
@@ -313,12 +313,12 @@ class InstanceArgs:
         return pulumi.get(self, "honeypot")
 
     @honeypot.setter
-    def honeypot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def honeypot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "honeypot", value)
 
     @_builtins.property
     @pulumi.getter(name="honeypotSwitch")
-    def honeypot_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def honeypot_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud honeypot. Value:
         - 1: Yes.
@@ -327,12 +327,12 @@ class InstanceArgs:
         return pulumi.get(self, "honeypot_switch")
 
     @honeypot_switch.setter
-    def honeypot_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def honeypot_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "honeypot_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Change configuration type, value
         - Upgrade: Upgrade.
@@ -341,12 +341,12 @@ class InstanceArgs:
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
 
@@ -355,49 +355,49 @@ class InstanceArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="postPaidFlag")
-    def post_paid_flag(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def post_paid_flag(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Post-paid signage. Value:
         """
         return pulumi.get(self, "post_paid_flag")
 
     @post_paid_flag.setter
-    def post_paid_flag(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def post_paid_flag(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "post_paid_flag", value)
 
     @_builtins.property
     @pulumi.getter(name="postPaidHostAutoBind")
-    def post_paid_host_auto_bind(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def post_paid_host_auto_bind(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic binding switch for new assets in host and container protection. Valid values:
         """
         return pulumi.get(self, "post_paid_host_auto_bind")
 
     @post_paid_host_auto_bind.setter
-    def post_paid_host_auto_bind(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def post_paid_host_auto_bind(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "post_paid_host_auto_bind", value)
 
     @_builtins.property
     @pulumi.getter(name="postPaidHostAutoBindVersion")
-    def post_paid_host_auto_bind_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def post_paid_host_auto_bind_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
         """
         return pulumi.get(self, "post_paid_host_auto_bind_version")
 
     @post_paid_host_auto_bind_version.setter
-    def post_paid_host_auto_bind_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def post_paid_host_auto_bind_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "post_paid_host_auto_bind_version", value)
 
     @_builtins.property
     @pulumi.getter(name="postPayModuleSwitch")
     @_utilities.deprecated("""Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.""")
-    def post_pay_module_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_pay_module_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
         - Key:
@@ -417,36 +417,36 @@ class InstanceArgs:
         return pulumi.get(self, "post_pay_module_switch")
 
     @post_pay_module_switch.setter
-    def post_pay_module_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_pay_module_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_pay_module_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="postPayModuleSwitchObj")
-    def post_pay_module_switch_obj(self) -> Optional[pulumi.Input['InstancePostPayModuleSwitchObjArgs']]:
+    def post_pay_module_switch_obj(self) -> pulumi.Input[Optional['InstancePostPayModuleSwitchObjArgs']]:
         """
         Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
         """
         return pulumi.get(self, "post_pay_module_switch_obj")
 
     @post_pay_module_switch_obj.setter
-    def post_pay_module_switch_obj(self, value: Optional[pulumi.Input['InstancePostPayModuleSwitchObjArgs']]):
+    def post_pay_module_switch_obj(self, value: pulumi.Input[Optional['InstancePostPayModuleSwitchObjArgs']]):
         pulumi.set(self, "post_pay_module_switch_obj", value)
 
     @_builtins.property
     @pulumi.getter(name="raspCount")
-    def rasp_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rasp_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of application protection licenses. Interval type, value interval:[1,100000000].
         """
         return pulumi.get(self, "rasp_count")
 
     @rasp_count.setter
-    def rasp_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rasp_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rasp_count", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic renewal cycle, in months.
 
@@ -455,12 +455,12 @@ class InstanceArgs:
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
-    def renewal_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal period unit, value:
         - M: month.
@@ -471,12 +471,12 @@ class InstanceArgs:
         return pulumi.get(self, "renewal_period_unit")
 
     @renewal_period_unit.setter
-    def renewal_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal status, value:
         - AutoRenewal: automatic renewal.
@@ -487,12 +487,12 @@ class InstanceArgs:
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="sasAntiRansomware")
-    def sas_anti_ransomware(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_anti_ransomware(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
 
@@ -501,12 +501,12 @@ class InstanceArgs:
         return pulumi.get(self, "sas_anti_ransomware")
 
     @sas_anti_ransomware.setter
-    def sas_anti_ransomware(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_anti_ransomware(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_anti_ransomware", value)
 
     @_builtins.property
     @pulumi.getter(name="sasCspm")
-    def sas_cspm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_cspm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
 
@@ -515,12 +515,12 @@ class InstanceArgs:
         return pulumi.get(self, "sas_cspm")
 
     @sas_cspm.setter
-    def sas_cspm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_cspm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_cspm", value)
 
     @_builtins.property
     @pulumi.getter(name="sasCspmSwitch")
-    def sas_cspm_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_cspm_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud platform configuration check switch. Value:
         - 0: No.
@@ -529,12 +529,12 @@ class InstanceArgs:
         return pulumi.get(self, "sas_cspm_switch")
 
     @sas_cspm_switch.setter
-    def sas_cspm_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_cspm_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_cspm_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="sasSc")
-    def sas_sc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sas_sc(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Security screen. Value:
         - true: Yes.
@@ -543,12 +543,12 @@ class InstanceArgs:
         return pulumi.get(self, "sas_sc")
 
     @sas_sc.setter
-    def sas_sc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sas_sc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sas_sc", value)
 
     @_builtins.property
     @pulumi.getter(name="sasSdk")
-    def sas_sdk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_sdk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
 
@@ -557,24 +557,24 @@ class InstanceArgs:
         return pulumi.get(self, "sas_sdk")
 
     @sas_sdk.setter
-    def sas_sdk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_sdk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_sdk", value)
 
     @_builtins.property
     @pulumi.getter(name="sasSdkSwitch")
-    def sas_sdk_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_sdk_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Malicious file detection SDK.
         """
         return pulumi.get(self, "sas_sdk_switch")
 
     @sas_sdk_switch.setter
-    def sas_sdk_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_sdk_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_sdk_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="sasSlsStorage")
-    def sas_sls_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_sls_storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
 
@@ -583,12 +583,12 @@ class InstanceArgs:
         return pulumi.get(self, "sas_sls_storage")
 
     @sas_sls_storage.setter
-    def sas_sls_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_sls_storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_sls_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="sasWebguardBoolean")
-    def sas_webguard_boolean(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_webguard_boolean(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Web tamper-proof switch. Value:
         - 0: No.
@@ -597,12 +597,12 @@ class InstanceArgs:
         return pulumi.get(self, "sas_webguard_boolean")
 
     @sas_webguard_boolean.setter
-    def sas_webguard_boolean(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_webguard_boolean(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_webguard_boolean", value)
 
     @_builtins.property
     @pulumi.getter(name="sasWebguardOrderNum")
-    def sas_webguard_order_num(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_webguard_order_num(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tamper-proof authorization number. Value:
         - 0: No
@@ -611,12 +611,12 @@ class InstanceArgs:
         return pulumi.get(self, "sas_webguard_order_num")
 
     @sas_webguard_order_num.setter
-    def sas_webguard_order_num(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_webguard_order_num(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_webguard_order_num", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionType")
-    def subscription_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subscription type. Value:
         - Subscription: Prepaid.
@@ -625,12 +625,12 @@ class InstanceArgs:
         return pulumi.get(self, "subscription_type")
 
     @subscription_type.setter
-    def subscription_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_type", value)
 
     @_builtins.property
     @pulumi.getter(name="threatAnalysis")
-    def threat_analysis(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threat_analysis(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
 
@@ -639,12 +639,12 @@ class InstanceArgs:
         return pulumi.get(self, "threat_analysis")
 
     @threat_analysis.setter
-    def threat_analysis(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threat_analysis(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threat_analysis", value)
 
     @_builtins.property
     @pulumi.getter(name="threatAnalysisFlow")
-    def threat_analysis_flow(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threat_analysis_flow(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
 
@@ -653,12 +653,12 @@ class InstanceArgs:
         return pulumi.get(self, "threat_analysis_flow")
 
     @threat_analysis_flow.setter
-    def threat_analysis_flow(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threat_analysis_flow(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threat_analysis_flow", value)
 
     @_builtins.property
     @pulumi.getter(name="threatAnalysisSlsStorage")
-    def threat_analysis_sls_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threat_analysis_sls_storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
 
@@ -667,12 +667,12 @@ class InstanceArgs:
         return pulumi.get(self, "threat_analysis_sls_storage")
 
     @threat_analysis_sls_storage.setter
-    def threat_analysis_sls_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threat_analysis_sls_storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threat_analysis_sls_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="threatAnalysisSwitch")
-    def threat_analysis_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threat_analysis_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Threat analysis. Value:
         - 0: No.
@@ -681,12 +681,12 @@ class InstanceArgs:
         return pulumi.get(self, "threat_analysis_switch")
 
     @threat_analysis_switch.setter
-    def threat_analysis_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threat_analysis_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threat_analysis_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="threatAnalysisSwitch1")
-    def threat_analysis_switch1(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threat_analysis_switch1(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Threat analysis and response switch (new), values:
         - 0: No
@@ -695,24 +695,24 @@ class InstanceArgs:
         return pulumi.get(self, "threat_analysis_switch1")
 
     @threat_analysis_switch1.setter
-    def threat_analysis_switch1(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threat_analysis_switch1(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threat_analysis_switch1", value)
 
     @_builtins.property
     @pulumi.getter(name="vCore")
-    def v_core(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def v_core(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of cores.
         """
         return pulumi.get(self, "v_core")
 
     @v_core.setter
-    def v_core(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def v_core(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "v_core", value)
 
     @_builtins.property
     @pulumi.getter(name="versionCode")
-    def version_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Select the security center version. Value:
         - level7: Antivirus Edition.
@@ -724,12 +724,12 @@ class InstanceArgs:
         return pulumi.get(self, "version_code")
 
     @version_code.setter
-    def version_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_code", value)
 
     @_builtins.property
     @pulumi.getter(name="vulCount")
-    def vul_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vul_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Vulnerability repair times, interval type, value range:[20,100000000].
 
@@ -738,12 +738,12 @@ class InstanceArgs:
         return pulumi.get(self, "vul_count")
 
     @vul_count.setter
-    def vul_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vul_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vul_count", value)
 
     @_builtins.property
     @pulumi.getter(name="vulSwitch")
-    def vul_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vul_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Vulnerability fix switch. Value:
         - 0: No.
@@ -754,51 +754,51 @@ class InstanceArgs:
         return pulumi.get(self, "vul_switch")
 
     @vul_switch.setter
-    def vul_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vul_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vul_switch", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 buy_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_image_scan: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_image_scan_new: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_paid_flag: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_paid_host_auto_bind: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_paid_host_auto_bind_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_pay_module_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_pay_module_switch_obj: Optional[pulumi.Input['InstancePostPayModuleSwitchObjArgs']] = None,
-                 rasp_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_anti_ransomware: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_cspm: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_cspm_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_sc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sas_sdk: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_sdk_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_sls_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_webguard_boolean: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_webguard_order_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_flow: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_sls_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_switch1: Optional[pulumi.Input[_builtins.str]] = None,
-                 v_core: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 vul_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 vul_switch: Optional[pulumi.Input[_builtins.str]] = None):
+                 buy_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_image_scan: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_image_scan_new: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_paid_flag: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_paid_host_auto_bind: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_paid_host_auto_bind_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_pay_module_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_pay_module_switch_obj: pulumi.Input[Optional['InstancePostPayModuleSwitchObjArgs']] = None,
+                 rasp_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_anti_ransomware: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_cspm: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_cspm_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_sc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sas_sdk: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_sdk_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_sls_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_webguard_boolean: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_webguard_order_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_flow: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_sls_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_switch1: pulumi.Input[Optional[_builtins.str]] = None,
+                 v_core: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 vul_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 vul_switch: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -1000,20 +1000,20 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="buyNumber")
-    def buy_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def buy_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of servers.
         """
         return pulumi.get(self, "buy_number")
 
     @buy_number.setter
-    def buy_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def buy_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "buy_number", value)
 
     @_builtins.property
     @pulumi.getter(name="containerImageScan")
     @_utilities.deprecated("""Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""")
-    def container_image_scan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_image_scan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container Image security scan. Interval type, value interval:[0,200000].
 
@@ -1022,12 +1022,12 @@ class _InstanceState:
         return pulumi.get(self, "container_image_scan")
 
     @container_image_scan.setter
-    def container_image_scan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_image_scan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_image_scan", value)
 
     @_builtins.property
     @pulumi.getter(name="containerImageScanNew")
-    def container_image_scan_new(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_image_scan_new(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container Image security scan. Interval type, value interval:[0,200000].
 
@@ -1036,24 +1036,24 @@ class _InstanceState:
         return pulumi.get(self, "container_image_scan_new")
 
     @container_image_scan_new.setter
-    def container_image_scan_new(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_image_scan_new(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_image_scan_new", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def honeypot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def honeypot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of cloud honeypot licenses. Interval type, value interval:[20,500].
 
@@ -1062,12 +1062,12 @@ class _InstanceState:
         return pulumi.get(self, "honeypot")
 
     @honeypot.setter
-    def honeypot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def honeypot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "honeypot", value)
 
     @_builtins.property
     @pulumi.getter(name="honeypotSwitch")
-    def honeypot_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def honeypot_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud honeypot. Value:
         - 1: Yes.
@@ -1076,12 +1076,12 @@ class _InstanceState:
         return pulumi.get(self, "honeypot_switch")
 
     @honeypot_switch.setter
-    def honeypot_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def honeypot_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "honeypot_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Change configuration type, value
         - Upgrade: Upgrade.
@@ -1090,24 +1090,24 @@ class _InstanceState:
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
 
@@ -1116,49 +1116,49 @@ class _InstanceState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="postPaidFlag")
-    def post_paid_flag(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def post_paid_flag(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Post-paid signage. Value:
         """
         return pulumi.get(self, "post_paid_flag")
 
     @post_paid_flag.setter
-    def post_paid_flag(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def post_paid_flag(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "post_paid_flag", value)
 
     @_builtins.property
     @pulumi.getter(name="postPaidHostAutoBind")
-    def post_paid_host_auto_bind(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def post_paid_host_auto_bind(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic binding switch for new assets in host and container protection. Valid values:
         """
         return pulumi.get(self, "post_paid_host_auto_bind")
 
     @post_paid_host_auto_bind.setter
-    def post_paid_host_auto_bind(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def post_paid_host_auto_bind(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "post_paid_host_auto_bind", value)
 
     @_builtins.property
     @pulumi.getter(name="postPaidHostAutoBindVersion")
-    def post_paid_host_auto_bind_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def post_paid_host_auto_bind_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version that is automatically bound to the host and container protection of a pay-as-you-go instance. Valid values:
         """
         return pulumi.get(self, "post_paid_host_auto_bind_version")
 
     @post_paid_host_auto_bind_version.setter
-    def post_paid_host_auto_bind_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def post_paid_host_auto_bind_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "post_paid_host_auto_bind_version", value)
 
     @_builtins.property
     @pulumi.getter(name="postPayModuleSwitch")
     @_utilities.deprecated("""Field `post_pay_module_switch` has been deprecated from provider version 1.269.0. New field `post_pay_module_switch_obj` instead.""")
-    def post_pay_module_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_pay_module_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
         - Key:
@@ -1178,36 +1178,36 @@ class _InstanceState:
         return pulumi.get(self, "post_pay_module_switch")
 
     @post_pay_module_switch.setter
-    def post_pay_module_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_pay_module_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_pay_module_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="postPayModuleSwitchObj")
-    def post_pay_module_switch_obj(self) -> Optional[pulumi.Input['InstancePostPayModuleSwitchObjArgs']]:
+    def post_pay_module_switch_obj(self) -> pulumi.Input[Optional['InstancePostPayModuleSwitchObjArgs']]:
         """
         Pay-as-you-go module switch. See `post_pay_module_switch_obj` below.
         """
         return pulumi.get(self, "post_pay_module_switch_obj")
 
     @post_pay_module_switch_obj.setter
-    def post_pay_module_switch_obj(self, value: Optional[pulumi.Input['InstancePostPayModuleSwitchObjArgs']]):
+    def post_pay_module_switch_obj(self, value: pulumi.Input[Optional['InstancePostPayModuleSwitchObjArgs']]):
         pulumi.set(self, "post_pay_module_switch_obj", value)
 
     @_builtins.property
     @pulumi.getter(name="raspCount")
-    def rasp_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rasp_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of application protection licenses. Interval type, value interval:[1,100000000].
         """
         return pulumi.get(self, "rasp_count")
 
     @rasp_count.setter
-    def rasp_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rasp_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rasp_count", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic renewal cycle, in months.
 
@@ -1216,12 +1216,12 @@ class _InstanceState:
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
-    def renewal_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal period unit, value:
         - M: month.
@@ -1232,12 +1232,12 @@ class _InstanceState:
         return pulumi.get(self, "renewal_period_unit")
 
     @renewal_period_unit.setter
-    def renewal_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal status, value:
         - AutoRenewal: automatic renewal.
@@ -1248,12 +1248,12 @@ class _InstanceState:
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="sasAntiRansomware")
-    def sas_anti_ransomware(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_anti_ransomware(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
 
@@ -1262,12 +1262,12 @@ class _InstanceState:
         return pulumi.get(self, "sas_anti_ransomware")
 
     @sas_anti_ransomware.setter
-    def sas_anti_ransomware(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_anti_ransomware(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_anti_ransomware", value)
 
     @_builtins.property
     @pulumi.getter(name="sasCspm")
-    def sas_cspm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_cspm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
 
@@ -1276,12 +1276,12 @@ class _InstanceState:
         return pulumi.get(self, "sas_cspm")
 
     @sas_cspm.setter
-    def sas_cspm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_cspm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_cspm", value)
 
     @_builtins.property
     @pulumi.getter(name="sasCspmSwitch")
-    def sas_cspm_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_cspm_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud platform configuration check switch. Value:
         - 0: No.
@@ -1290,12 +1290,12 @@ class _InstanceState:
         return pulumi.get(self, "sas_cspm_switch")
 
     @sas_cspm_switch.setter
-    def sas_cspm_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_cspm_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_cspm_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="sasSc")
-    def sas_sc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sas_sc(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Security screen. Value:
         - true: Yes.
@@ -1304,12 +1304,12 @@ class _InstanceState:
         return pulumi.get(self, "sas_sc")
 
     @sas_sc.setter
-    def sas_sc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sas_sc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sas_sc", value)
 
     @_builtins.property
     @pulumi.getter(name="sasSdk")
-    def sas_sdk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_sdk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
 
@@ -1318,24 +1318,24 @@ class _InstanceState:
         return pulumi.get(self, "sas_sdk")
 
     @sas_sdk.setter
-    def sas_sdk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_sdk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_sdk", value)
 
     @_builtins.property
     @pulumi.getter(name="sasSdkSwitch")
-    def sas_sdk_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_sdk_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Malicious file detection SDK.
         """
         return pulumi.get(self, "sas_sdk_switch")
 
     @sas_sdk_switch.setter
-    def sas_sdk_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_sdk_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_sdk_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="sasSlsStorage")
-    def sas_sls_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_sls_storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
 
@@ -1344,12 +1344,12 @@ class _InstanceState:
         return pulumi.get(self, "sas_sls_storage")
 
     @sas_sls_storage.setter
-    def sas_sls_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_sls_storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_sls_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="sasWebguardBoolean")
-    def sas_webguard_boolean(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_webguard_boolean(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Web tamper-proof switch. Value:
         - 0: No.
@@ -1358,12 +1358,12 @@ class _InstanceState:
         return pulumi.get(self, "sas_webguard_boolean")
 
     @sas_webguard_boolean.setter
-    def sas_webguard_boolean(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_webguard_boolean(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_webguard_boolean", value)
 
     @_builtins.property
     @pulumi.getter(name="sasWebguardOrderNum")
-    def sas_webguard_order_num(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas_webguard_order_num(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tamper-proof authorization number. Value:
         - 0: No
@@ -1372,24 +1372,24 @@ class _InstanceState:
         return pulumi.get(self, "sas_webguard_order_num")
 
     @sas_webguard_order_num.setter
-    def sas_webguard_order_num(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas_webguard_order_num(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas_webguard_order_num", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource attribute field representing the resource status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionType")
-    def subscription_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subscription type. Value:
         - Subscription: Prepaid.
@@ -1398,12 +1398,12 @@ class _InstanceState:
         return pulumi.get(self, "subscription_type")
 
     @subscription_type.setter
-    def subscription_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_type", value)
 
     @_builtins.property
     @pulumi.getter(name="threatAnalysis")
-    def threat_analysis(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threat_analysis(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
 
@@ -1412,12 +1412,12 @@ class _InstanceState:
         return pulumi.get(self, "threat_analysis")
 
     @threat_analysis.setter
-    def threat_analysis(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threat_analysis(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threat_analysis", value)
 
     @_builtins.property
     @pulumi.getter(name="threatAnalysisFlow")
-    def threat_analysis_flow(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threat_analysis_flow(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
 
@@ -1426,12 +1426,12 @@ class _InstanceState:
         return pulumi.get(self, "threat_analysis_flow")
 
     @threat_analysis_flow.setter
-    def threat_analysis_flow(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threat_analysis_flow(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threat_analysis_flow", value)
 
     @_builtins.property
     @pulumi.getter(name="threatAnalysisSlsStorage")
-    def threat_analysis_sls_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threat_analysis_sls_storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
 
@@ -1440,12 +1440,12 @@ class _InstanceState:
         return pulumi.get(self, "threat_analysis_sls_storage")
 
     @threat_analysis_sls_storage.setter
-    def threat_analysis_sls_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threat_analysis_sls_storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threat_analysis_sls_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="threatAnalysisSwitch")
-    def threat_analysis_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threat_analysis_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Threat analysis. Value:
         - 0: No.
@@ -1454,12 +1454,12 @@ class _InstanceState:
         return pulumi.get(self, "threat_analysis_switch")
 
     @threat_analysis_switch.setter
-    def threat_analysis_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threat_analysis_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threat_analysis_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="threatAnalysisSwitch1")
-    def threat_analysis_switch1(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threat_analysis_switch1(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Threat analysis and response switch (new), values:
         - 0: No
@@ -1468,24 +1468,24 @@ class _InstanceState:
         return pulumi.get(self, "threat_analysis_switch1")
 
     @threat_analysis_switch1.setter
-    def threat_analysis_switch1(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threat_analysis_switch1(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threat_analysis_switch1", value)
 
     @_builtins.property
     @pulumi.getter(name="vCore")
-    def v_core(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def v_core(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of cores.
         """
         return pulumi.get(self, "v_core")
 
     @v_core.setter
-    def v_core(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def v_core(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "v_core", value)
 
     @_builtins.property
     @pulumi.getter(name="versionCode")
-    def version_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Select the security center version. Value:
         - level7: Antivirus Edition.
@@ -1497,12 +1497,12 @@ class _InstanceState:
         return pulumi.get(self, "version_code")
 
     @version_code.setter
-    def version_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_code", value)
 
     @_builtins.property
     @pulumi.getter(name="vulCount")
-    def vul_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vul_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Vulnerability repair times, interval type, value range:[20,100000000].
 
@@ -1511,12 +1511,12 @@ class _InstanceState:
         return pulumi.get(self, "vul_count")
 
     @vul_count.setter
-    def vul_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vul_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vul_count", value)
 
     @_builtins.property
     @pulumi.getter(name="vulSwitch")
-    def vul_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vul_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Vulnerability fix switch. Value:
         - 0: No.
@@ -1527,7 +1527,7 @@ class _InstanceState:
         return pulumi.get(self, "vul_switch")
 
     @vul_switch.setter
-    def vul_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vul_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vul_switch", value)
 
 
@@ -1537,42 +1537,42 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 buy_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_image_scan: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_image_scan_new: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_paid_flag: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_paid_host_auto_bind: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_paid_host_auto_bind_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_pay_module_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_pay_module_switch_obj: Optional[pulumi.Input[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']]] = None,
-                 rasp_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_anti_ransomware: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_cspm: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_cspm_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_sc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sas_sdk: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_sdk_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_sls_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_webguard_boolean: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_webguard_order_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_flow: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_sls_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_switch1: Optional[pulumi.Input[_builtins.str]] = None,
-                 v_core: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 vul_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 vul_switch: Optional[pulumi.Input[_builtins.str]] = None,
+                 buy_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_image_scan: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_image_scan_new: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_paid_flag: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_paid_host_auto_bind: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_paid_host_auto_bind_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_pay_module_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_pay_module_switch_obj: pulumi.Input[Optional[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']]] = None,
+                 rasp_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_anti_ransomware: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_cspm: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_cspm_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_sc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sas_sdk: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_sdk_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_sls_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_webguard_boolean: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_webguard_order_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_flow: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_sls_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_switch1: pulumi.Input[Optional[_builtins.str]] = None,
+                 v_core: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 vul_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 vul_switch: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Instance resource.
@@ -1824,42 +1824,42 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 buy_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_image_scan: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_image_scan_new: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_paid_flag: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_paid_host_auto_bind: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_paid_host_auto_bind_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_pay_module_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_pay_module_switch_obj: Optional[pulumi.Input[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']]] = None,
-                 rasp_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_anti_ransomware: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_cspm: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_cspm_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_sc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sas_sdk: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_sdk_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_sls_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_webguard_boolean: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas_webguard_order_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_flow: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_sls_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_analysis_switch1: Optional[pulumi.Input[_builtins.str]] = None,
-                 v_core: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 vul_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 vul_switch: Optional[pulumi.Input[_builtins.str]] = None,
+                 buy_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_image_scan: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_image_scan_new: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_paid_flag: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_paid_host_auto_bind: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_paid_host_auto_bind_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_pay_module_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_pay_module_switch_obj: pulumi.Input[Optional[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']]] = None,
+                 rasp_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_anti_ransomware: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_cspm: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_cspm_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_sc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sas_sdk: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_sdk_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_sls_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_webguard_boolean: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas_webguard_order_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_flow: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_sls_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_analysis_switch1: pulumi.Input[Optional[_builtins.str]] = None,
+                 v_core: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 vul_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 vul_switch: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1919,44 +1919,44 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            buy_number: Optional[pulumi.Input[_builtins.str]] = None,
-            container_image_scan: Optional[pulumi.Input[_builtins.str]] = None,
-            container_image_scan_new: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            honeypot: Optional[pulumi.Input[_builtins.str]] = None,
-            honeypot_switch: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            post_paid_flag: Optional[pulumi.Input[_builtins.int]] = None,
-            post_paid_host_auto_bind: Optional[pulumi.Input[_builtins.int]] = None,
-            post_paid_host_auto_bind_version: Optional[pulumi.Input[_builtins.int]] = None,
-            post_pay_module_switch: Optional[pulumi.Input[_builtins.str]] = None,
-            post_pay_module_switch_obj: Optional[pulumi.Input[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']]] = None,
-            rasp_count: Optional[pulumi.Input[_builtins.str]] = None,
-            renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-            sas_anti_ransomware: Optional[pulumi.Input[_builtins.str]] = None,
-            sas_cspm: Optional[pulumi.Input[_builtins.str]] = None,
-            sas_cspm_switch: Optional[pulumi.Input[_builtins.str]] = None,
-            sas_sc: Optional[pulumi.Input[_builtins.bool]] = None,
-            sas_sdk: Optional[pulumi.Input[_builtins.str]] = None,
-            sas_sdk_switch: Optional[pulumi.Input[_builtins.str]] = None,
-            sas_sls_storage: Optional[pulumi.Input[_builtins.str]] = None,
-            sas_webguard_boolean: Optional[pulumi.Input[_builtins.str]] = None,
-            sas_webguard_order_num: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            subscription_type: Optional[pulumi.Input[_builtins.str]] = None,
-            threat_analysis: Optional[pulumi.Input[_builtins.str]] = None,
-            threat_analysis_flow: Optional[pulumi.Input[_builtins.str]] = None,
-            threat_analysis_sls_storage: Optional[pulumi.Input[_builtins.str]] = None,
-            threat_analysis_switch: Optional[pulumi.Input[_builtins.str]] = None,
-            threat_analysis_switch1: Optional[pulumi.Input[_builtins.str]] = None,
-            v_core: Optional[pulumi.Input[_builtins.str]] = None,
-            version_code: Optional[pulumi.Input[_builtins.str]] = None,
-            vul_count: Optional[pulumi.Input[_builtins.str]] = None,
-            vul_switch: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            buy_number: pulumi.Input[Optional[_builtins.str]] = None,
+            container_image_scan: pulumi.Input[Optional[_builtins.str]] = None,
+            container_image_scan_new: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            honeypot: pulumi.Input[Optional[_builtins.str]] = None,
+            honeypot_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            post_paid_flag: pulumi.Input[Optional[_builtins.int]] = None,
+            post_paid_host_auto_bind: pulumi.Input[Optional[_builtins.int]] = None,
+            post_paid_host_auto_bind_version: pulumi.Input[Optional[_builtins.int]] = None,
+            post_pay_module_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            post_pay_module_switch_obj: pulumi.Input[Optional[Union['InstancePostPayModuleSwitchObjArgs', 'InstancePostPayModuleSwitchObjArgsDict']]] = None,
+            rasp_count: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_anti_ransomware: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_cspm: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_cspm_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_sc: pulumi.Input[Optional[_builtins.bool]] = None,
+            sas_sdk: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_sdk_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_sls_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_webguard_boolean: pulumi.Input[Optional[_builtins.str]] = None,
+            sas_webguard_order_num: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
+            threat_analysis: pulumi.Input[Optional[_builtins.str]] = None,
+            threat_analysis_flow: pulumi.Input[Optional[_builtins.str]] = None,
+            threat_analysis_sls_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            threat_analysis_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            threat_analysis_switch1: pulumi.Input[Optional[_builtins.str]] = None,
+            v_core: pulumi.Input[Optional[_builtins.str]] = None,
+            version_code: pulumi.Input[Optional[_builtins.str]] = None,
+            vul_count: pulumi.Input[Optional[_builtins.str]] = None,
+            vul_switch: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

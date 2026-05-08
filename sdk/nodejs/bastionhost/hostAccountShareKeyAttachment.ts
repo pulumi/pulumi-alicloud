@@ -166,15 +166,15 @@ export interface HostAccountShareKeyAttachmentState {
     /**
      * The ID list of the host account.
      */
-    hostAccountId?: pulumi.Input<string>;
+    hostAccountId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the host shared key.
      */
-    hostShareKeyId?: pulumi.Input<string>;
+    hostShareKeyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Bastion machine instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
 }
 
 /**

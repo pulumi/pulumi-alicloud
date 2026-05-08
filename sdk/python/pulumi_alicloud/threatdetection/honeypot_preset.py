@@ -90,11 +90,11 @@ class HoneypotPresetArgs:
 @pulumi.input_type
 class _HoneypotPresetState:
     def __init__(__self__, *,
-                 honeypot_image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_preset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta: Optional[pulumi.Input['HoneypotPresetMetaArgs']] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 preset_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 honeypot_image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_preset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional['HoneypotPresetMetaArgs']] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 preset_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HoneypotPreset resources.
 
@@ -117,62 +117,62 @@ class _HoneypotPresetState:
 
     @_builtins.property
     @pulumi.getter(name="honeypotImageName")
-    def honeypot_image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def honeypot_image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Honeypot mirror name
         """
         return pulumi.get(self, "honeypot_image_name")
 
     @honeypot_image_name.setter
-    def honeypot_image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def honeypot_image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "honeypot_image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="honeypotPresetId")
-    def honeypot_preset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def honeypot_preset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique ID of honeypot Template
         """
         return pulumi.get(self, "honeypot_preset_id")
 
     @honeypot_preset_id.setter
-    def honeypot_preset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def honeypot_preset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "honeypot_preset_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input['HoneypotPresetMetaArgs']]:
+    def meta(self) -> pulumi.Input[Optional['HoneypotPresetMetaArgs']]:
         """
         Honeypot template custom parameters. See `meta` below.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input['HoneypotPresetMetaArgs']]):
+    def meta(self, value: pulumi.Input[Optional['HoneypotPresetMetaArgs']]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique id of management node
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="presetName")
-    def preset_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preset_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Honeypot template custom name
         """
         return pulumi.get(self, "preset_name")
 
     @preset_name.setter
-    def preset_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preset_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preset_name", value)
 
 
@@ -182,10 +182,10 @@ class HoneypotPreset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 honeypot_image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta: Optional[pulumi.Input[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 preset_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 honeypot_image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 preset_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Honeypot Preset resource.
@@ -307,10 +307,10 @@ class HoneypotPreset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 honeypot_image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta: Optional[pulumi.Input[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 preset_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 honeypot_image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 preset_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -343,11 +343,11 @@ class HoneypotPreset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            honeypot_image_name: Optional[pulumi.Input[_builtins.str]] = None,
-            honeypot_preset_id: Optional[pulumi.Input[_builtins.str]] = None,
-            meta: Optional[pulumi.Input[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']]] = None,
-            node_id: Optional[pulumi.Input[_builtins.str]] = None,
-            preset_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'HoneypotPreset':
+            honeypot_image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            honeypot_preset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            meta: pulumi.Input[Optional[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']]] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            preset_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'HoneypotPreset':
         """
         Get an existing HoneypotPreset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

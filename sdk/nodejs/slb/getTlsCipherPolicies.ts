@@ -138,25 +138,25 @@ export interface GetTlsCipherPoliciesOutputArgs {
     /**
      * A list of Tls Cipher Policy IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The include listener.
      */
-    includeListener?: pulumi.Input<boolean>;
+    includeListener?: pulumi.Input<boolean | undefined>;
     /**
      * A regex string to filter results by Tls Cipher Policy name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * TLS policy instance state. Valid values: `configuring`, `normal`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
      */
-    tlsCipherPolicyName?: pulumi.Input<string>;
+    tlsCipherPolicyName?: pulumi.Input<string | undefined>;
 }

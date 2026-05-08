@@ -27,11 +27,11 @@ class TemplateApplicationsArgs:
                  quota_action_code: pulumi.Input[_builtins.str],
                  quota_category: pulumi.Input[_builtins.str],
                  reason: pulumi.Input[_builtins.str],
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateApplicationsDimensionArgs']]]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 notice_type: Optional[pulumi.Input[_builtins.int]] = None):
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateApplicationsDimensionArgs']]]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 notice_type: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a TemplateApplications resource.
 
@@ -158,19 +158,19 @@ class TemplateApplicationsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TemplateApplicationsDimensionArgs']]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TemplateApplicationsDimensionArgs']]]]:
         """
         Quota dimension. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateApplicationsDimensionArgs']]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateApplicationsDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
         > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
@@ -178,12 +178,12 @@ class TemplateApplicationsArgs:
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="envLanguage")
-    def env_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the quota application result notification. Value:
         - zh (default): Chinese.
@@ -192,12 +192,12 @@ class TemplateApplicationsArgs:
         return pulumi.get(self, "env_language")
 
     @env_language.setter
-    def env_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_language", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
         > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
@@ -205,12 +205,12 @@ class TemplateApplicationsArgs:
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="noticeType")
-    def notice_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def notice_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to send notification of quota application result. Value:
         - 0 (default): No.
@@ -219,25 +219,25 @@ class TemplateApplicationsArgs:
         return pulumi.get(self, "notice_type")
 
     @notice_type.setter
-    def notice_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def notice_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "notice_type", value)
 
 
 @pulumi.input_type
 class _TemplateApplicationsState:
     def __init__(__self__, *,
-                 aliyun_uids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 desire_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateApplicationsDimensionArgs']]]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 notice_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_action_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_application_details: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateApplicationsQuotaApplicationDetailArgs']]]] = None,
-                 quota_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+                 aliyun_uids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 desire_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateApplicationsDimensionArgs']]]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_application_details: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateApplicationsQuotaApplicationDetailArgs']]]] = None,
+                 quota_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TemplateApplications resources.
 
@@ -294,7 +294,7 @@ class _TemplateApplicationsState:
 
     @_builtins.property
     @pulumi.getter(name="aliyunUids")
-    def aliyun_uids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def aliyun_uids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
         > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
@@ -302,12 +302,12 @@ class _TemplateApplicationsState:
         return pulumi.get(self, "aliyun_uids")
 
     @aliyun_uids.setter
-    def aliyun_uids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def aliyun_uids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "aliyun_uids", value)
 
     @_builtins.property
     @pulumi.getter(name="desireValue")
-    def desire_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def desire_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The value of the quota request.
         > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
@@ -315,24 +315,24 @@ class _TemplateApplicationsState:
         return pulumi.get(self, "desire_value")
 
     @desire_value.setter
-    def desire_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def desire_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "desire_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TemplateApplicationsDimensionArgs']]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TemplateApplicationsDimensionArgs']]]]:
         """
         Quota dimension. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateApplicationsDimensionArgs']]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateApplicationsDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
         > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
@@ -340,12 +340,12 @@ class _TemplateApplicationsState:
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="envLanguage")
-    def env_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the quota application result notification. Value:
         - zh (default): Chinese.
@@ -354,12 +354,12 @@ class _TemplateApplicationsState:
         return pulumi.get(self, "env_language")
 
     @env_language.setter
-    def env_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_language", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
         > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
@@ -367,12 +367,12 @@ class _TemplateApplicationsState:
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="noticeType")
-    def notice_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def notice_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to send notification of quota application result. Value:
         - 0 (default): No.
@@ -381,12 +381,12 @@ class _TemplateApplicationsState:
         return pulumi.get(self, "notice_type")
 
     @notice_type.setter
-    def notice_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def notice_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "notice_type", value)
 
     @_builtins.property
     @pulumi.getter(name="productCode")
-    def product_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud service name abbreviation.
         > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
@@ -394,36 +394,36 @@ class _TemplateApplicationsState:
         return pulumi.get(self, "product_code")
 
     @product_code.setter
-    def product_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_code", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaActionCode")
-    def quota_action_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_action_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The quota ID.
         """
         return pulumi.get(self, "quota_action_code")
 
     @quota_action_code.setter
-    def quota_action_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_action_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_action_code", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaApplicationDetails")
-    def quota_application_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TemplateApplicationsQuotaApplicationDetailArgs']]]]:
+    def quota_application_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TemplateApplicationsQuotaApplicationDetailArgs']]]]:
         """
         List of quota application details.
         """
         return pulumi.get(self, "quota_application_details")
 
     @quota_application_details.setter
-    def quota_application_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateApplicationsQuotaApplicationDetailArgs']]]]):
+    def quota_application_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateApplicationsQuotaApplicationDetailArgs']]]]):
         pulumi.set(self, "quota_application_details", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaCategory")
-    def quota_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The quota type. Value:
         - CommonQuota (default): Generic quota.
@@ -433,12 +433,12 @@ class _TemplateApplicationsState:
         return pulumi.get(self, "quota_category")
 
     @quota_category.setter
-    def quota_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_category", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reason for quota application.
         > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
@@ -446,7 +446,7 @@ class _TemplateApplicationsState:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
 
@@ -456,17 +456,17 @@ class TemplateApplications(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aliyun_uids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 desire_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict']]]]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 notice_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_action_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
+                 aliyun_uids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 desire_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict']]]]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Quotas Template Applications resource. Template Batch Application.
@@ -496,7 +496,7 @@ class TemplateApplications(pulumi.CustomResource):
             env_language="zh",
             notice_type=0,
             quota_category="WhiteListLabel",
-            desire_value=1,
+            desire_value=float(1),
             reason="example",
             quota_action_code="quotas.label_multi/A",
             aliyun_uids=[account.id],
@@ -579,7 +579,7 @@ class TemplateApplications(pulumi.CustomResource):
             env_language="zh",
             notice_type=0,
             quota_category="WhiteListLabel",
-            desire_value=1,
+            desire_value=float(1),
             reason="example",
             quota_action_code="quotas.label_multi/A",
             aliyun_uids=[account.id],
@@ -616,17 +616,17 @@ class TemplateApplications(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aliyun_uids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 desire_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict']]]]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 notice_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_action_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
+                 aliyun_uids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 desire_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict']]]]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -670,18 +670,18 @@ class TemplateApplications(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aliyun_uids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            desire_value: Optional[pulumi.Input[_builtins.float]] = None,
-            dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict']]]]] = None,
-            effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-            env_language: Optional[pulumi.Input[_builtins.str]] = None,
-            expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-            notice_type: Optional[pulumi.Input[_builtins.int]] = None,
-            product_code: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_action_code: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_application_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateApplicationsQuotaApplicationDetailArgs', 'TemplateApplicationsQuotaApplicationDetailArgsDict']]]]] = None,
-            quota_category: Optional[pulumi.Input[_builtins.str]] = None,
-            reason: Optional[pulumi.Input[_builtins.str]] = None) -> 'TemplateApplications':
+            aliyun_uids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            desire_value: pulumi.Input[Optional[_builtins.float]] = None,
+            dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateApplicationsDimensionArgs', 'TemplateApplicationsDimensionArgsDict']]]]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            env_language: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+            product_code: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_application_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateApplicationsQuotaApplicationDetailArgs', 'TemplateApplicationsQuotaApplicationDetailArgsDict']]]]] = None,
+            quota_category: pulumi.Input[Optional[_builtins.str]] = None,
+            reason: pulumi.Input[Optional[_builtins.str]] = None) -> 'TemplateApplications':
         """
         Get an existing TemplateApplications resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

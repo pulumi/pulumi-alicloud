@@ -134,26 +134,26 @@ export interface GetResolutionLinesOutputArgs {
     /**
      * Domain Name.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * language.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * A list of lines codes.
      */
-    lineCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    lineCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of line display names.
      */
-    lineDisplayNames?: pulumi.Input<pulumi.Input<string>[]>;
-    lineNames?: pulumi.Input<pulumi.Input<string>[]>;
+    lineDisplayNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    lineNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ip of user client.
      */
-    userClientIp?: pulumi.Input<string>;
+    userClientIp?: pulumi.Input<string | undefined>;
 }

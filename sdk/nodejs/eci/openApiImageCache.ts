@@ -108,32 +108,32 @@ export class OpenApiImageCache extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OpenApiImageCache resources.
  */
 export interface OpenApiImageCacheState {
-    containerGroupId?: pulumi.Input<string>;
-    eipInstanceId?: pulumi.Input<string>;
-    imageCacheName?: pulumi.Input<string>;
-    imageCacheSize?: pulumi.Input<number>;
-    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.OpenApiImageCacheImageRegistryCredential>[]>;
-    images?: pulumi.Input<pulumi.Input<string>[]>;
-    resourceGroupId?: pulumi.Input<string>;
-    retentionDays?: pulumi.Input<number>;
-    securityGroupId?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
-    vswitchId?: pulumi.Input<string>;
-    zoneId?: pulumi.Input<string>;
+    containerGroupId?: pulumi.Input<string | undefined>;
+    eipInstanceId?: pulumi.Input<string | undefined>;
+    imageCacheName?: pulumi.Input<string | undefined>;
+    imageCacheSize?: pulumi.Input<number | undefined>;
+    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.OpenApiImageCacheImageRegistryCredential>[] | undefined>;
+    images?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
+    retentionDays?: pulumi.Input<number | undefined>;
+    securityGroupId?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    vswitchId?: pulumi.Input<string | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a OpenApiImageCache resource.
  */
 export interface OpenApiImageCacheArgs {
-    eipInstanceId?: pulumi.Input<string>;
+    eipInstanceId?: pulumi.Input<string | undefined>;
     imageCacheName: pulumi.Input<string>;
-    imageCacheSize?: pulumi.Input<number>;
-    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.OpenApiImageCacheImageRegistryCredential>[]>;
+    imageCacheSize?: pulumi.Input<number | undefined>;
+    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.OpenApiImageCacheImageRegistryCredential>[] | undefined>;
     images: pulumi.Input<pulumi.Input<string>[]>;
-    resourceGroupId?: pulumi.Input<string>;
-    retentionDays?: pulumi.Input<number>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
+    retentionDays?: pulumi.Input<number | undefined>;
     securityGroupId: pulumi.Input<string>;
     vswitchId: pulumi.Input<string>;
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

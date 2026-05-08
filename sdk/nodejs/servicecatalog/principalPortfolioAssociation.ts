@@ -150,15 +150,15 @@ export interface PrincipalPortfolioAssociationState {
     /**
      * Product Portfolio ID
      */
-    portfolioId?: pulumi.Input<string>;
+    portfolioId?: pulumi.Input<string | undefined>;
     /**
      * RAM entity ID
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * RAM entity type
      */
-    principalType?: pulumi.Input<string>;
+    principalType?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -138,27 +138,27 @@ export interface NetworkState {
     /**
      * The network segment of the network. You can use the following network segments or a subset of them as the network segment: `10.0.0.0/8` (default), `172.16.0.0/12`, `192.168.0.0/16`.
      */
-    cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * Creation time, timestamp (MS).
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description information.Rules:It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`. Example value: this is my first network.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Ens node IDExample value: cn-beijing-telecom.
      */
-    ensRegionId?: pulumi.Input<string>;
+    ensRegionId?: pulumi.Input<string | undefined>;
     /**
      * Name of the network instanceThe naming rules are as follows: 1. Length is 2~128 English or Chinese characters; 2. It must start with a large or small letter or Chinese, not with `http://` and `https://`; 3. Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
-    networkName?: pulumi.Input<string>;
+    networkName?: pulumi.Input<string | undefined>;
     /**
      * The status of the network instance. Pending: Configuring, Available: Available.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -172,7 +172,7 @@ export interface NetworkArgs {
     /**
      * Description information.Rules:It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`. Example value: this is my first network.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Ens node IDExample value: cn-beijing-telecom.
      */
@@ -180,5 +180,5 @@ export interface NetworkArgs {
     /**
      * Name of the network instanceThe naming rules are as follows: 1. Length is 2~128 English or Chinese characters; 2. It must start with a large or small letter or Chinese, not with `http://` and `https://`; 3. Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
-    networkName?: pulumi.Input<string>;
+    networkName?: pulumi.Input<string | undefined>;
 }

@@ -242,59 +242,59 @@ export interface NestServiceInstanceState {
     /**
      * The order information of cloud market. See `commodity` below.
      */
-    commodity?: pulumi.Input<inputs.compute.NestServiceInstanceCommodity>;
+    commodity?: pulumi.Input<inputs.compute.NestServiceInstanceCommodity | undefined>;
     /**
      * Whether the service instance has the O&M function. Default value: `false`. Valid values:
      */
-    enableInstanceOps?: pulumi.Input<boolean>;
+    enableInstanceOps?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
      */
-    enableUserPrometheus?: pulumi.Input<boolean>;
+    enableUserPrometheus?: pulumi.Input<boolean | undefined>;
     /**
      * The configuration of O&M. See `operationMetadata` below.
      */
-    operationMetadata?: pulumi.Input<inputs.compute.NestServiceInstanceOperationMetadata>;
+    operationMetadata?: pulumi.Input<inputs.compute.NestServiceInstanceOperationMetadata | undefined>;
     /**
      * The parameters entered by the deployment service instance.
      */
-    parameters?: pulumi.Input<string>;
+    parameters?: pulumi.Input<string | undefined>;
     /**
      * The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the service.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Service Instance.
      */
-    serviceInstanceName?: pulumi.Input<string>;
+    serviceInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The version of the service.
      */
-    serviceVersion?: pulumi.Input<string>;
+    serviceVersion?: pulumi.Input<string | undefined>;
     /**
      * The name of the specification.
      */
-    specificationName?: pulumi.Input<string>;
+    specificationName?: pulumi.Input<string | undefined>;
     /**
      * The status of the Service Instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the template.
      */
-    templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -304,31 +304,31 @@ export interface NestServiceInstanceArgs {
     /**
      * The order information of cloud market. See `commodity` below.
      */
-    commodity?: pulumi.Input<inputs.compute.NestServiceInstanceCommodity>;
+    commodity?: pulumi.Input<inputs.compute.NestServiceInstanceCommodity | undefined>;
     /**
      * Whether the service instance has the O&M function. Default value: `false`. Valid values:
      */
-    enableInstanceOps?: pulumi.Input<boolean>;
+    enableInstanceOps?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
      */
-    enableUserPrometheus?: pulumi.Input<boolean>;
+    enableUserPrometheus?: pulumi.Input<boolean | undefined>;
     /**
      * The configuration of O&M. See `operationMetadata` below.
      */
-    operationMetadata?: pulumi.Input<inputs.compute.NestServiceInstanceOperationMetadata>;
+    operationMetadata?: pulumi.Input<inputs.compute.NestServiceInstanceOperationMetadata | undefined>;
     /**
      * The parameters entered by the deployment service instance.
      */
-    parameters?: pulumi.Input<string>;
+    parameters?: pulumi.Input<string | undefined>;
     /**
      * The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the service.
      */
@@ -336,7 +336,7 @@ export interface NestServiceInstanceArgs {
     /**
      * The name of the Service Instance.
      */
-    serviceInstanceName?: pulumi.Input<string>;
+    serviceInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The version of the service.
      */
@@ -344,13 +344,13 @@ export interface NestServiceInstanceArgs {
     /**
      * The name of the specification.
      */
-    specificationName?: pulumi.Input<string>;
+    specificationName?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the template.
      */
-    templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string | undefined>;
 }

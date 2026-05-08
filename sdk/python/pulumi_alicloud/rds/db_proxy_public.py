@@ -23,7 +23,7 @@ class DbProxyPublicArgs:
                  db_instance_id: pulumi.Input[_builtins.str],
                  db_proxy_connection_string_net_type: pulumi.Input[_builtins.str],
                  db_proxy_endpoint_id: pulumi.Input[_builtins.str],
-                 db_proxy_new_connect_string_port: Optional[pulumi.Input[_builtins.str]] = None):
+                 db_proxy_new_connect_string_port: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbProxyPublic resource.
 
@@ -90,25 +90,25 @@ class DbProxyPublicArgs:
 
     @_builtins.property
     @pulumi.getter(name="dbProxyNewConnectStringPort")
-    def db_proxy_new_connect_string_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_new_connect_string_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port for the new database proxy connection address is 3306 by default for MySQL and 5432 by default for PostgreSQL, which can be customized.
         """
         return pulumi.get(self, "db_proxy_new_connect_string_port")
 
     @db_proxy_new_connect_string_port.setter
-    def db_proxy_new_connect_string_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_new_connect_string_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_new_connect_string_port", value)
 
 
 @pulumi.input_type
 class _DbProxyPublicState:
     def __init__(__self__, *,
-                 connection_string_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_connection_string_net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_new_connect_string_port: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_string_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_connection_string_net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_new_connect_string_port: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbProxyPublic resources.
 
@@ -131,62 +131,62 @@ class _DbProxyPublicState:
 
     @_builtins.property
     @pulumi.getter(name="connectionStringPrefix")
-    def connection_string_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_string_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix for the new database proxy connection address can be customized.
         """
         return pulumi.get(self, "connection_string_prefix")
 
     @connection_string_prefix.setter
-    def connection_string_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_string_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_string_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance ID.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyConnectionStringNetType")
-    def db_proxy_connection_string_net_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_connection_string_net_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the new database proxy connection address,This resource defaults to Public.
         """
         return pulumi.get(self, "db_proxy_connection_string_net_type")
 
     @db_proxy_connection_string_net_type.setter
-    def db_proxy_connection_string_net_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_connection_string_net_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_connection_string_net_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyEndpointId")
-    def db_proxy_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database proxy connection address ID.
         """
         return pulumi.get(self, "db_proxy_endpoint_id")
 
     @db_proxy_endpoint_id.setter
-    def db_proxy_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbProxyNewConnectStringPort")
-    def db_proxy_new_connect_string_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_proxy_new_connect_string_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port for the new database proxy connection address is 3306 by default for MySQL and 5432 by default for PostgreSQL, which can be customized.
         """
         return pulumi.get(self, "db_proxy_new_connect_string_port")
 
     @db_proxy_new_connect_string_port.setter
-    def db_proxy_new_connect_string_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_proxy_new_connect_string_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_proxy_new_connect_string_port", value)
 
 
@@ -196,11 +196,11 @@ class DbProxyPublic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_string_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_connection_string_net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_new_connect_string_port: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_string_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_connection_string_net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_new_connect_string_port: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RDS database proxy public network address resource.
@@ -411,11 +411,11 @@ class DbProxyPublic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_string_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_connection_string_net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_proxy_new_connect_string_port: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_string_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_connection_string_net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_proxy_new_connect_string_port: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -448,11 +448,11 @@ class DbProxyPublic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_string_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_proxy_connection_string_net_type: Optional[pulumi.Input[_builtins.str]] = None,
-            db_proxy_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_proxy_new_connect_string_port: Optional[pulumi.Input[_builtins.str]] = None) -> 'DbProxyPublic':
+            connection_string_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_connection_string_net_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_proxy_new_connect_string_port: pulumi.Input[Optional[_builtins.str]] = None) -> 'DbProxyPublic':
         """
         Get an existing DbProxyPublic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -116,7 +116,7 @@ def get_domain_extensions(frontend_port: Optional[_builtins.int] = None,
 
     foo = alicloud.slb.get_domain_extensions(ids=["fake-de-id"],
         load_balancer_id="fake-lb-id",
-        frontend_port="fake-port")
+        frontend_port=int("fake-port"))
     ```
 
 
@@ -139,10 +139,10 @@ def get_domain_extensions(frontend_port: Optional[_builtins.int] = None,
         ids=pulumi.get(__ret__, 'ids'),
         load_balancer_id=pulumi.get(__ret__, 'load_balancer_id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_domain_extensions_output(frontend_port: Optional[pulumi.Input[_builtins.int]] = None,
-                                 ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_domain_extensions_output(frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                                 ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainExtensionsResult]:
     """
     This data source provides the domain extensions associated with a server load balancer listener.
@@ -157,7 +157,7 @@ def get_domain_extensions_output(frontend_port: Optional[pulumi.Input[_builtins.
 
     foo = alicloud.slb.get_domain_extensions(ids=["fake-de-id"],
         load_balancer_id="fake-lb-id",
-        frontend_port="fake-port")
+        frontend_port=int("fake-port"))
     ```
 
 

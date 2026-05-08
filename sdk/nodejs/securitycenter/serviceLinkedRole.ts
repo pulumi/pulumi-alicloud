@@ -95,7 +95,7 @@ export interface ServiceLinkedRoleState {
     /**
      * The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
      */
-    status?: pulumi.Input<boolean>;
+    status?: pulumi.Input<boolean | undefined>;
 }
 
 /**

@@ -19,8 +19,8 @@ __all__ = ['TenantRoleUserAttachmentArgs', 'TenantRoleUserAttachment']
 @pulumi.input_type
 class TenantRoleUserAttachmentArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_role: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TenantRoleUserAttachment resource.
 
@@ -43,7 +43,7 @@ class TenantRoleUserAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account UID
 
@@ -59,27 +59,27 @@ class TenantRoleUserAttachmentArgs:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantRole")
-    def tenant_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
         """
         return pulumi.get(self, "tenant_role")
 
     @tenant_role.setter
-    def tenant_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_role", value)
 
 
 @pulumi.input_type
 class _TenantRoleUserAttachmentState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_role: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TenantRoleUserAttachment resources.
 
@@ -102,7 +102,7 @@ class _TenantRoleUserAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account UID
 
@@ -118,19 +118,19 @@ class _TenantRoleUserAttachmentState:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantRole")
-    def tenant_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tenant role. By default, admin and super_administrator are available. You can add more roles in the console.
         """
         return pulumi.get(self, "tenant_role")
 
     @tenant_role.setter
-    def tenant_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_role", value)
 
 
@@ -140,8 +140,8 @@ class TenantRoleUserAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_role: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Max Compute Tenant Role User Attachment resource.
@@ -256,8 +256,8 @@ class TenantRoleUserAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_role: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -279,8 +279,8 @@ class TenantRoleUserAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant_role: Optional[pulumi.Input[_builtins.str]] = None) -> 'TenantRoleUserAttachment':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_role: pulumi.Input[Optional[_builtins.str]] = None) -> 'TenantRoleUserAttachment':
         """
         Get an existing TenantRoleUserAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

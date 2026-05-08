@@ -22,7 +22,7 @@ class WorkspaceExperimentArgs:
                  artifact_uri: pulumi.Input[_builtins.str],
                  experiment_name: pulumi.Input[_builtins.str],
                  workspace_id: pulumi.Input[_builtins.str],
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None):
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceExperiment resource.
 
@@ -75,25 +75,25 @@ class WorkspaceExperimentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def accessibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accessibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Experimental Visibility
         """
         return pulumi.get(self, "accessibility")
 
     @accessibility.setter
-    def accessibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accessibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accessibility", value)
 
 
 @pulumi.input_type
 class _WorkspaceExperimentState:
     def __init__(__self__, *,
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 artifact_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 artifact_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceExperiment resources.
 
@@ -116,62 +116,62 @@ class _WorkspaceExperimentState:
 
     @_builtins.property
     @pulumi.getter
-    def accessibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accessibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Experimental Visibility
         """
         return pulumi.get(self, "accessibility")
 
     @accessibility.setter
-    def accessibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accessibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accessibility", value)
 
     @_builtins.property
     @pulumi.getter(name="artifactUri")
-    def artifact_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def artifact_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ArtifactUri is default OSS storage path of the output of trials in the experiment
         """
         return pulumi.get(self, "artifact_uri")
 
     @artifact_uri.setter
-    def artifact_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def artifact_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "artifact_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         GmtCreateTime is time when this entity is created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="experimentName")
-    def experiment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def experiment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name is the name of the experiment, unique in a namespace
         """
         return pulumi.get(self, "experiment_name")
 
     @experiment_name.setter
-    def experiment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def experiment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "experiment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         WorkspaceId is the workspace id which contains the experiment
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -181,10 +181,10 @@ class WorkspaceExperiment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 artifact_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 artifact_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a PAI Workspace Experiment resource.
@@ -298,10 +298,10 @@ class WorkspaceExperiment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 artifact_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 artifact_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -332,11 +332,11 @@ class WorkspaceExperiment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-            artifact_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            experiment_name: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkspaceExperiment':
+            accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+            artifact_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceExperiment':
         """
         Get an existing WorkspaceExperiment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

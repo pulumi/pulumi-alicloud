@@ -21,8 +21,8 @@ class OrganizationArgs:
     def __init__(__self__, *,
                  organization_name: pulumi.Input[_builtins.str],
                  source: pulumi.Input[_builtins.str],
-                 desired_member_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 real_pk: Optional[pulumi.Input[_builtins.str]] = None):
+                 desired_member_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 real_pk: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Organization resource.
 
@@ -64,36 +64,36 @@ class OrganizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="desiredMemberCount")
-    def desired_member_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_member_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The desired member count.
         """
         return pulumi.get(self, "desired_member_count")
 
     @desired_member_count.setter
-    def desired_member_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_member_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_member_count", value)
 
     @_builtins.property
     @pulumi.getter(name="realPk")
-    def real_pk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def real_pk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
         """
         return pulumi.get(self, "real_pk")
 
     @real_pk.setter
-    def real_pk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def real_pk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "real_pk", value)
 
 
 @pulumi.input_type
 class _OrganizationState:
     def __init__(__self__, *,
-                 desired_member_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 organization_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 real_pk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 desired_member_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 organization_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 real_pk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Organization resources.
 
@@ -113,50 +113,50 @@ class _OrganizationState:
 
     @_builtins.property
     @pulumi.getter(name="desiredMemberCount")
-    def desired_member_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_member_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The desired member count.
         """
         return pulumi.get(self, "desired_member_count")
 
     @desired_member_count.setter
-    def desired_member_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_member_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_member_count", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationName")
-    def organization_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Company name.
         """
         return pulumi.get(self, "organization_name")
 
     @organization_name.setter
-    def organization_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_name", value)
 
     @_builtins.property
     @pulumi.getter(name="realPk")
-    def real_pk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def real_pk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
         """
         return pulumi.get(self, "real_pk")
 
     @real_pk.setter
-    def real_pk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def real_pk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "real_pk", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is organization source information
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
@@ -166,10 +166,10 @@ class Organization(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 desired_member_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 organization_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 real_pk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 desired_member_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 organization_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 real_pk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RDC Organization resource.
@@ -265,10 +265,10 @@ class Organization(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 desired_member_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 organization_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 real_pk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 desired_member_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 organization_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 real_pk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -296,10 +296,10 @@ class Organization(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            desired_member_count: Optional[pulumi.Input[_builtins.int]] = None,
-            organization_name: Optional[pulumi.Input[_builtins.str]] = None,
-            real_pk: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None) -> 'Organization':
+            desired_member_count: pulumi.Input[Optional[_builtins.int]] = None,
+            organization_name: pulumi.Input[Optional[_builtins.str]] = None,
+            real_pk: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None) -> 'Organization':
         """
         Get an existing Organization resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

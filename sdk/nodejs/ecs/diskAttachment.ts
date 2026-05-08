@@ -143,27 +143,27 @@ export class DiskAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DiskAttachment resources.
  */
 export interface DiskAttachmentState {
-    bootable?: pulumi.Input<boolean>;
-    deleteWithInstance?: pulumi.Input<boolean>;
-    device?: pulumi.Input<string>;
+    bootable?: pulumi.Input<boolean | undefined>;
+    deleteWithInstance?: pulumi.Input<boolean | undefined>;
+    device?: pulumi.Input<string | undefined>;
     /**
      * ID of the Disk to be attached.
      */
-    diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string | undefined>;
     /**
      * ID of the Instance to attach to.
      */
-    instanceId?: pulumi.Input<string>;
-    keyPairName?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
+    keyPairName?: pulumi.Input<string | undefined>;
+    password?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DiskAttachment resource.
  */
 export interface DiskAttachmentArgs {
-    bootable?: pulumi.Input<boolean>;
-    deleteWithInstance?: pulumi.Input<boolean>;
+    bootable?: pulumi.Input<boolean | undefined>;
+    deleteWithInstance?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the Disk to be attached.
      */
@@ -172,6 +172,6 @@ export interface DiskAttachmentArgs {
      * ID of the Instance to attach to.
      */
     instanceId: pulumi.Input<string>;
-    keyPairName?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
+    password?: pulumi.Input<string | undefined>;
 }

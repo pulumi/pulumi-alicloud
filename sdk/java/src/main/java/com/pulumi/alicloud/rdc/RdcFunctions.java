@@ -37,8 +37,8 @@ public final class RdcFunctions {
      * import com.pulumi.alicloud.rdc.OrganizationArgs;
      * import com.pulumi.alicloud.rdc.RdcFunctions;
      * import com.pulumi.alicloud.rdc.inputs.GetOrganizationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -98,8 +98,8 @@ public final class RdcFunctions {
      * import com.pulumi.alicloud.rdc.OrganizationArgs;
      * import com.pulumi.alicloud.rdc.RdcFunctions;
      * import com.pulumi.alicloud.rdc.inputs.GetOrganizationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -159,8 +159,8 @@ public final class RdcFunctions {
      * import com.pulumi.alicloud.rdc.OrganizationArgs;
      * import com.pulumi.alicloud.rdc.RdcFunctions;
      * import com.pulumi.alicloud.rdc.inputs.GetOrganizationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -220,8 +220,8 @@ public final class RdcFunctions {
      * import com.pulumi.alicloud.rdc.OrganizationArgs;
      * import com.pulumi.alicloud.rdc.RdcFunctions;
      * import com.pulumi.alicloud.rdc.inputs.GetOrganizationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -281,8 +281,8 @@ public final class RdcFunctions {
      * import com.pulumi.alicloud.rdc.OrganizationArgs;
      * import com.pulumi.alicloud.rdc.RdcFunctions;
      * import com.pulumi.alicloud.rdc.inputs.GetOrganizationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -342,8 +342,8 @@ public final class RdcFunctions {
      * import com.pulumi.alicloud.rdc.OrganizationArgs;
      * import com.pulumi.alicloud.rdc.RdcFunctions;
      * import com.pulumi.alicloud.rdc.inputs.GetOrganizationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -403,8 +403,8 @@ public final class RdcFunctions {
      * import com.pulumi.alicloud.rdc.OrganizationArgs;
      * import com.pulumi.alicloud.rdc.RdcFunctions;
      * import com.pulumi.alicloud.rdc.inputs.GetOrganizationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

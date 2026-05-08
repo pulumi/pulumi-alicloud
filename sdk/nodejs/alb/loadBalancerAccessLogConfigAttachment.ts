@@ -194,19 +194,19 @@ export interface LoadBalancerAccessLogConfigAttachmentState {
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the load balancing instance.
      */
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
     /**
      * The log items shipped by the access log.
      */
-    logProject?: pulumi.Input<string>;
+    logProject?: pulumi.Input<string | undefined>;
     /**
      * Logstore for log delivery.
      */
-    logStore?: pulumi.Input<string>;
+    logStore?: pulumi.Input<string | undefined>;
 }
 
 /**

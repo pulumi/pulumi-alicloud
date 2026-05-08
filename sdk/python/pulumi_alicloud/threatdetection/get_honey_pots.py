@@ -194,13 +194,13 @@ def get_honey_pots(honeypot_id: Optional[_builtins.str] = None,
         node_name=pulumi.get(__ret__, 'node_name'),
         output_file=pulumi.get(__ret__, 'output_file'),
         pots=pulumi.get(__ret__, 'pots'))
-def get_honey_pots_output(honeypot_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          honeypot_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                          name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          node_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          node_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_honey_pots_output(honeypot_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          honeypot_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                          name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          node_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          node_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHoneyPotsResult]:
     """
     This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)

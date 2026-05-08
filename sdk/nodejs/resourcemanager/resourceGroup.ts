@@ -143,33 +143,33 @@ export interface ResourceGroupState {
     /**
      * The ID of the Alibaba Cloud account to which the resource group belongs.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The display name of the resource group. The name must be 1 to 50 characters in length.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource group in all regions.
      */
-    regionStatuses?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceGroupRegionStatus>[]>;
+    regionStatuses?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceGroupRegionStatus>[] | undefined>;
     /**
      * The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
      */
-    resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource group.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -185,13 +185,13 @@ export interface ResourceGroupArgs {
      *
      * @deprecated Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
      */
-    resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

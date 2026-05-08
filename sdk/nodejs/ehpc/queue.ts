@@ -362,61 +362,61 @@ export interface QueueState {
      * The cluster ID.
      * You can call the ListClusters operation to query the cluster ID.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The hardware configurations of the compute nodes in the queue. Valid values of N: 1 to 10. See `computeNodes` below.
      */
-    computeNodes?: pulumi.Input<pulumi.Input<inputs.ehpc.QueueComputeNode>[]>;
+    computeNodes?: pulumi.Input<pulumi.Input<inputs.ehpc.QueueComputeNode>[] | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable auto scale-in for the queue. Valid values:
      *
      * - true
      * - false
      */
-    enableScaleIn?: pulumi.Input<boolean>;
+    enableScaleIn?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable auto scale-out for the queue. Valid values:
      *
      * - true
      * - false
      */
-    enableScaleOut?: pulumi.Input<boolean>;
+    enableScaleOut?: pulumi.Input<boolean | undefined>;
     /**
      * The hostname prefix of the added compute nodes.
      */
-    hostnamePrefix?: pulumi.Input<string>;
+    hostnamePrefix?: pulumi.Input<string | undefined>;
     /**
      * The hostname suffix of the compute nodes in the queue.
      */
-    hostnameSuffix?: pulumi.Input<string>;
+    hostnameSuffix?: pulumi.Input<string | undefined>;
     /**
      * The initial number of compute nodes in the queue.
      */
-    initialCount?: pulumi.Input<number>;
+    initialCount?: pulumi.Input<number | undefined>;
     /**
      * The type of the network for interconnecting compute nodes in the queue.
      */
-    interConnect?: pulumi.Input<string>;
+    interConnect?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of compute nodes that the queue can contain.
      */
-    maxCount?: pulumi.Input<number>;
+    maxCount?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of compute nodes that the queue must contain.
      */
-    minCount?: pulumi.Input<number>;
+    minCount?: pulumi.Input<number | undefined>;
     /**
      * The queue name.
      */
-    queueName?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string | undefined>;
     /**
      * The vSwitches available for use by compute nodes in the queue.
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -427,55 +427,55 @@ export interface QueueArgs {
      * The cluster ID.
      * You can call the ListClusters operation to query the cluster ID.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The hardware configurations of the compute nodes in the queue. Valid values of N: 1 to 10. See `computeNodes` below.
      */
-    computeNodes?: pulumi.Input<pulumi.Input<inputs.ehpc.QueueComputeNode>[]>;
+    computeNodes?: pulumi.Input<pulumi.Input<inputs.ehpc.QueueComputeNode>[] | undefined>;
     /**
      * Specifies whether to enable auto scale-in for the queue. Valid values:
      *
      * - true
      * - false
      */
-    enableScaleIn?: pulumi.Input<boolean>;
+    enableScaleIn?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable auto scale-out for the queue. Valid values:
      *
      * - true
      * - false
      */
-    enableScaleOut?: pulumi.Input<boolean>;
+    enableScaleOut?: pulumi.Input<boolean | undefined>;
     /**
      * The hostname prefix of the added compute nodes.
      */
-    hostnamePrefix?: pulumi.Input<string>;
+    hostnamePrefix?: pulumi.Input<string | undefined>;
     /**
      * The hostname suffix of the compute nodes in the queue.
      */
-    hostnameSuffix?: pulumi.Input<string>;
+    hostnameSuffix?: pulumi.Input<string | undefined>;
     /**
      * The initial number of compute nodes in the queue.
      */
-    initialCount?: pulumi.Input<number>;
+    initialCount?: pulumi.Input<number | undefined>;
     /**
      * The type of the network for interconnecting compute nodes in the queue.
      */
-    interConnect?: pulumi.Input<string>;
+    interConnect?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of compute nodes that the queue can contain.
      */
-    maxCount?: pulumi.Input<number>;
+    maxCount?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of compute nodes that the queue must contain.
      */
-    minCount?: pulumi.Input<number>;
+    minCount?: pulumi.Input<number | undefined>;
     /**
      * The queue name.
      */
-    queueName?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string | undefined>;
     /**
      * The vSwitches available for use by compute nodes in the queue.
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -26,23 +26,25 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := ecs.GetCapacityReservations(ctx, &ecs.GetCapacityReservationsArgs{
-// Ids: interface{}{
-// defaultAlicloudEcsCapacityReservation.Id,
-// },
-// NameRegex: pulumi.StringRef(defaultAlicloudEcsCapacityReservation.Name),
-// InstanceType: pulumi.StringRef("ecs.c6.large"),
-// Platform: pulumi.StringRef("linux"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudEcsCapacityReservationExampleId", _default.Reservations[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := ecs.GetCapacityReservations(ctx, &ecs.GetCapacityReservationsArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudEcsCapacityReservation.Id,
+//				},
+//				NameRegex:    pulumi.StringRef(defaultAlicloudEcsCapacityReservation.Name),
+//				InstanceType: pulumi.StringRef("ecs.c6.large"),
+//				Platform:     pulumi.StringRef("linux"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudEcsCapacityReservationExampleId", _default.Reservations[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetCapacityReservations(ctx *pulumi.Context, args *GetCapacityReservationsArgs, opts ...pulumi.InvokeOption) (*GetCapacityReservationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

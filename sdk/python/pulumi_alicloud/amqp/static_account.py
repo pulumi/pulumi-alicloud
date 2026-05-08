@@ -73,13 +73,13 @@ class StaticAccountArgs:
 @pulumi.input_type
 class _StaticAccountState:
     def __init__(__self__, *,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StaticAccount resources.
 
@@ -108,86 +108,86 @@ class _StaticAccountState:
 
     @_builtins.property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access key.
         """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
-    def access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timestamp that indicates when the pair of static username and password was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Amqp instance ID.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="masterUid")
-    def master_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the user's primary account.
         """
         return pulumi.get(self, "master_uid")
 
     @master_uid.setter
-    def master_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_uid", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The static password.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secret key.
         """
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
-    def secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_key", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The static username.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
@@ -197,9 +197,9 @@ class StaticAccount(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Amqp Static Account resource.
@@ -324,9 +324,9 @@ class StaticAccount(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -361,13 +361,13 @@ class StaticAccount(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_key: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            master_uid: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-            user_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'StaticAccount':
+            access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            master_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'StaticAccount':
         """
         Get an existing StaticAccount resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -78,8 +78,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetAdConnectorDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -123,8 +123,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetAdConnectorDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -168,8 +168,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetAdConnectorDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -213,8 +213,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetAdConnectorDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -258,8 +258,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetAdConnectorDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -303,8 +303,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetAdConnectorDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -348,8 +348,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetAdConnectorDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -393,8 +393,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetAdConnectorOfficeSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -442,8 +442,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetAdConnectorOfficeSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -491,8 +491,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetAdConnectorOfficeSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -540,8 +540,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetAdConnectorOfficeSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -589,8 +589,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetAdConnectorOfficeSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -638,8 +638,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetAdConnectorOfficeSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -687,8 +687,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetAdConnectorOfficeSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -736,8 +736,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -780,8 +780,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -824,8 +824,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -868,8 +868,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -912,8 +912,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -956,8 +956,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1000,8 +1000,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1055,8 +1055,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Command;
      * import com.pulumi.alicloud.eds.CommandArgs;
      * import com.pulumi.alicloud.eds.inputs.GetCommandsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1153,8 +1153,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Command;
      * import com.pulumi.alicloud.eds.CommandArgs;
      * import com.pulumi.alicloud.eds.inputs.GetCommandsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1251,8 +1251,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Command;
      * import com.pulumi.alicloud.eds.CommandArgs;
      * import com.pulumi.alicloud.eds.inputs.GetCommandsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1349,8 +1349,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Command;
      * import com.pulumi.alicloud.eds.CommandArgs;
      * import com.pulumi.alicloud.eds.inputs.GetCommandsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1447,8 +1447,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Command;
      * import com.pulumi.alicloud.eds.CommandArgs;
      * import com.pulumi.alicloud.eds.inputs.GetCommandsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1545,8 +1545,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Command;
      * import com.pulumi.alicloud.eds.CommandArgs;
      * import com.pulumi.alicloud.eds.inputs.GetCommandsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1643,8 +1643,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Command;
      * import com.pulumi.alicloud.eds.CommandArgs;
      * import com.pulumi.alicloud.eds.inputs.GetCommandsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1730,8 +1730,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetCustomPropertiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1775,8 +1775,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetCustomPropertiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1820,8 +1820,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetCustomPropertiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1865,8 +1865,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetCustomPropertiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1910,8 +1910,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetCustomPropertiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1955,8 +1955,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetCustomPropertiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2000,8 +2000,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetCustomPropertiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2045,8 +2045,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2090,8 +2090,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2135,8 +2135,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2180,8 +2180,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2225,8 +2225,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2270,8 +2270,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2315,8 +2315,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetDesktopTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2371,8 +2371,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Desktop;
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.inputs.GetDesktopsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2476,8 +2476,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Desktop;
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.inputs.GetDesktopsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2581,8 +2581,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Desktop;
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.inputs.GetDesktopsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2686,8 +2686,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Desktop;
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.inputs.GetDesktopsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2791,8 +2791,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Desktop;
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.inputs.GetDesktopsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2896,8 +2896,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Desktop;
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.inputs.GetDesktopsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3001,8 +3001,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Desktop;
      * import com.pulumi.alicloud.eds.DesktopArgs;
      * import com.pulumi.alicloud.eds.inputs.GetDesktopsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3106,8 +3106,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Image;
      * import com.pulumi.alicloud.eds.ImageArgs;
      * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3209,8 +3209,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Image;
      * import com.pulumi.alicloud.eds.ImageArgs;
      * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3312,8 +3312,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Image;
      * import com.pulumi.alicloud.eds.ImageArgs;
      * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3415,8 +3415,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Image;
      * import com.pulumi.alicloud.eds.ImageArgs;
      * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3518,8 +3518,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Image;
      * import com.pulumi.alicloud.eds.ImageArgs;
      * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3621,8 +3621,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Image;
      * import com.pulumi.alicloud.eds.ImageArgs;
      * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3724,8 +3724,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.Image;
      * import com.pulumi.alicloud.eds.ImageArgs;
      * import com.pulumi.alicloud.eds.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3820,8 +3820,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.NasFileSystemArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetNasFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3886,8 +3886,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.NasFileSystemArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetNasFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3952,8 +3952,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.NasFileSystemArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetNasFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4018,8 +4018,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.NasFileSystemArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetNasFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4084,8 +4084,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.NasFileSystemArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetNasFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4150,8 +4150,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.NasFileSystemArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetNasFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4216,8 +4216,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.NasFileSystemArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetNasFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4282,8 +4282,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.NetworkPackageArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetNetworkPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4342,8 +4342,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.NetworkPackageArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetNetworkPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4402,8 +4402,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.NetworkPackageArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetNetworkPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4462,8 +4462,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.NetworkPackageArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetNetworkPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4522,8 +4522,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.NetworkPackageArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetNetworkPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4582,8 +4582,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.NetworkPackageArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetNetworkPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4642,8 +4642,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.NetworkPackageArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetNetworkPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4702,8 +4702,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetPolicyGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4772,8 +4772,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetPolicyGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4842,8 +4842,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetPolicyGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4912,8 +4912,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetPolicyGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4982,8 +4982,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetPolicyGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5052,8 +5052,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetPolicyGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5122,8 +5122,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetPolicyGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5188,8 +5188,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetRamDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5238,8 +5238,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetRamDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5288,8 +5288,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetRamDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5338,8 +5338,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetRamDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5388,8 +5388,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetRamDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5438,8 +5438,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetRamDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5488,8 +5488,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetRamDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5538,8 +5538,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5584,8 +5584,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5630,8 +5630,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5676,8 +5676,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5722,8 +5722,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5768,8 +5768,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5814,8 +5814,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5860,8 +5860,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5904,8 +5904,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5948,8 +5948,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5992,8 +5992,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6036,8 +6036,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6080,8 +6080,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6124,8 +6124,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6170,8 +6170,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.UserArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6223,8 +6223,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.UserArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6276,8 +6276,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.UserArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6329,8 +6329,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.UserArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6382,8 +6382,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.UserArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6435,8 +6435,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.UserArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6488,8 +6488,8 @@ public final class EdsFunctions {
      * import com.pulumi.alicloud.eds.UserArgs;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6539,8 +6539,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6583,8 +6583,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6627,8 +6627,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6671,8 +6671,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6715,8 +6715,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6759,8 +6759,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6803,8 +6803,8 @@ public final class EdsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eds.EdsFunctions;
      * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

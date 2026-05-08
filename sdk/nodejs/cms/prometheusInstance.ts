@@ -176,47 +176,47 @@ export interface PrometheusInstanceState {
     /**
      * The number of days that data is automatically archived after the storage duration expires. Valid values: `60` to `3650`.
      */
-    archiveDuration?: pulumi.Input<number>;
+    archiveDuration?: pulumi.Input<number | undefined>;
     /**
      * The policy for password-free read access.
      */
-    authFreeReadPolicy?: pulumi.Input<string>;
+    authFreeReadPolicy?: pulumi.Input<string | undefined>;
     /**
      * The policy for password-free write access.
      */
-    authFreeWritePolicy?: pulumi.Input<string>;
+    authFreeWritePolicy?: pulumi.Input<string | undefined>;
     /**
      * Instance creation time, using UTC +0 time, in the format of yyyy-MM-ddTHH:mmZ.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable password-free read access. Valid values: `true`, `false`.
      */
-    enableAuthFreeRead?: pulumi.Input<boolean>;
+    enableAuthFreeRead?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable password-free write access. Valid values: `true`, `false`.
      */
-    enableAuthFreeWrite?: pulumi.Input<boolean>;
+    enableAuthFreeWrite?: pulumi.Input<boolean | undefined>;
     /**
      * Payment Type.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance.
      */
-    prometheusInstanceName?: pulumi.Input<string>;
+    prometheusInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The storage duration of the instance in days.
      */
-    storageDuration?: pulumi.Input<number>;
+    storageDuration?: pulumi.Input<number | undefined>;
     /**
      * The workspace to which the instance belongs.
      */
-    workspace?: pulumi.Input<string>;
+    workspace?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -226,23 +226,23 @@ export interface PrometheusInstanceArgs {
     /**
      * The number of days that data is automatically archived after the storage duration expires. Valid values: `60` to `3650`.
      */
-    archiveDuration?: pulumi.Input<number>;
+    archiveDuration?: pulumi.Input<number | undefined>;
     /**
      * The policy for password-free read access.
      */
-    authFreeReadPolicy?: pulumi.Input<string>;
+    authFreeReadPolicy?: pulumi.Input<string | undefined>;
     /**
      * The policy for password-free write access.
      */
-    authFreeWritePolicy?: pulumi.Input<string>;
+    authFreeWritePolicy?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable password-free read access. Valid values: `true`, `false`.
      */
-    enableAuthFreeRead?: pulumi.Input<boolean>;
+    enableAuthFreeRead?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable password-free write access. Valid values: `true`, `false`.
      */
-    enableAuthFreeWrite?: pulumi.Input<boolean>;
+    enableAuthFreeWrite?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the instance.
      */
@@ -250,7 +250,7 @@ export interface PrometheusInstanceArgs {
     /**
      * The storage duration of the instance in days.
      */
-    storageDuration?: pulumi.Input<number>;
+    storageDuration?: pulumi.Input<number | undefined>;
     /**
      * The workspace to which the instance belongs.
      */

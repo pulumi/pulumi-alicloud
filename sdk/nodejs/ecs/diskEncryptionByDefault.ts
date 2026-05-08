@@ -101,7 +101,7 @@ export interface DiskEncryptionByDefaultState {
     /**
      * Indicates whether account-level default encryption of EBS resources is enabled in the region. Valid values:
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -111,5 +111,5 @@ export interface DiskEncryptionByDefaultArgs {
     /**
      * Indicates whether account-level default encryption of EBS resources is enabled in the region. Valid values:
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
 }

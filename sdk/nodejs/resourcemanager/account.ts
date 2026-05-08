@@ -208,47 +208,47 @@ export interface AccountState {
      *
      * @deprecated Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.
      */
-    abandonAbleCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
+    abandonAbleCheckIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the check item that can choose to abandon and continue to perform member deletion.
      * The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
      */
-    abandonableCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
+    abandonableCheckIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Account name prefix. Empty the system randomly generated.
      * Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
      * The format of the full account name is @< ResourceDirectoryId>.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
      * The account name must be unique in the resource directory.
      */
-    accountNamePrefix?: pulumi.Input<string>;
+    accountNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * Member name
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent folder
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * Whether to force delete the account.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Ways for members to join the resource directory.  invited, created
      */
-    joinMethod?: pulumi.Input<string>;
+    joinMethod?: pulumi.Input<string | undefined>;
     /**
      * The time when the member joined the resource directory
      */
-    joinTime?: pulumi.Input<string>;
+    joinTime?: pulumi.Input<string | undefined>;
     /**
      * The modification time of the invitation
      */
-    modifyTime?: pulumi.Input<string>;
+    modifyTime?: pulumi.Input<string | undefined>;
     /**
      * The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
      */
-    payerAccountId?: pulumi.Input<string>;
+    payerAccountId?: pulumi.Input<string | undefined>;
     /**
      * The identity type of the member. Valid values:
      * - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
@@ -256,25 +256,25 @@ export interface AccountState {
      *
      * > **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
      */
-    resellAccountType?: pulumi.Input<string>;
+    resellAccountType?: pulumi.Input<string | undefined>;
     /**
      * Resource directory ID
      */
-    resourceDirectoryId?: pulumi.Input<string>;
+    resourceDirectoryId?: pulumi.Input<string | undefined>;
     /**
      * Member joining status.  CreateSuccess,CreateVerifying,CreateFailed,CreateExpired,CreateCancelled,PromoteVerifying,PromoteFailed,PromoteExpired,PromoteCancelled,PromoteSuccess,InviteSuccess,Removed
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Member type. The value of ResourceAccount indicates the resource account
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -286,19 +286,19 @@ export interface AccountArgs {
      *
      * @deprecated Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.
      */
-    abandonAbleCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
+    abandonAbleCheckIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the check item that can choose to abandon and continue to perform member deletion.
      * The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
      */
-    abandonableCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
+    abandonableCheckIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Account name prefix. Empty the system randomly generated.
      * Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
      * The format of the full account name is @< ResourceDirectoryId>.aliyunid.com, for example: 'alice @ rd-3G ****.aliyunid.com'
      * The account name must be unique in the resource directory.
      */
-    accountNamePrefix?: pulumi.Input<string>;
+    accountNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * Member name
      */
@@ -306,15 +306,15 @@ export interface AccountArgs {
     /**
      * The ID of the parent folder
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * Whether to force delete the account.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
      */
-    payerAccountId?: pulumi.Input<string>;
+    payerAccountId?: pulumi.Input<string | undefined>;
     /**
      * The identity type of the member. Valid values:
      * - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
@@ -322,15 +322,15 @@ export interface AccountArgs {
      *
      * > **NOTE:**  This parameter is available only for resellers at the international site (alibabacloud.com).
      */
-    resellAccountType?: pulumi.Input<string>;
+    resellAccountType?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Member type. The value of ResourceAccount indicates the resource account
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

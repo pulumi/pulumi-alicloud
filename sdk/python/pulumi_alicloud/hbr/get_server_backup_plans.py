@@ -131,9 +131,9 @@ def get_server_backup_plans(filters: Optional[Sequence[Union['GetServerBackupPla
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         plans=pulumi.get(__ret__, 'plans'))
-def get_server_backup_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict']]]]] = None,
-                                   ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                   output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_server_backup_plans_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict']]]]] = None,
+                                   ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                   output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerBackupPlansResult]:
     """
     This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.

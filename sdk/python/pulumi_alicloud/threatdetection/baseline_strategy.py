@@ -26,7 +26,7 @@ class BaselineStrategyArgs:
                  risk_sub_type_name: pulumi.Input[_builtins.str],
                  start_time: pulumi.Input[_builtins.str],
                  target_type: pulumi.Input[_builtins.str],
-                 cycle_start_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 cycle_start_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a BaselineStrategy resource.
 
@@ -147,7 +147,7 @@ class BaselineStrategyArgs:
 
     @_builtins.property
     @pulumi.getter(name="cycleStartTime")
-    def cycle_start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cycle_start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The detection period of the policy. Value:
         * **0**: 0:00~06:00
@@ -158,22 +158,22 @@ class BaselineStrategyArgs:
         return pulumi.get(self, "cycle_start_time")
 
     @cycle_start_time.setter
-    def cycle_start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cycle_start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cycle_start_time", value)
 
 
 @pulumi.input_type
 class _BaselineStrategyState:
     def __init__(__self__, *,
-                 baseline_strategy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 baseline_strategy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cycle_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 cycle_start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 risk_sub_type_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 baseline_strategy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 baseline_strategy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cycle_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 cycle_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 risk_sub_type_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BaselineStrategy resources.
 
@@ -216,31 +216,31 @@ class _BaselineStrategyState:
 
     @_builtins.property
     @pulumi.getter(name="baselineStrategyId")
-    def baseline_strategy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def baseline_strategy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the baseline check policy.
         """
         return pulumi.get(self, "baseline_strategy_id")
 
     @baseline_strategy_id.setter
-    def baseline_strategy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def baseline_strategy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "baseline_strategy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="baselineStrategyName")
-    def baseline_strategy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def baseline_strategy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy name.
         """
         return pulumi.get(self, "baseline_strategy_name")
 
     @baseline_strategy_name.setter
-    def baseline_strategy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def baseline_strategy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "baseline_strategy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="customType")
-    def custom_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of policy. Value:
         * **common**: standard policy
@@ -249,24 +249,24 @@ class _BaselineStrategyState:
         return pulumi.get(self, "custom_type")
 
     @custom_type.setter
-    def custom_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_type", value)
 
     @_builtins.property
     @pulumi.getter(name="cycleDays")
-    def cycle_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cycle_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The detection period of the policy.
         """
         return pulumi.get(self, "cycle_days")
 
     @cycle_days.setter
-    def cycle_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cycle_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cycle_days", value)
 
     @_builtins.property
     @pulumi.getter(name="cycleStartTime")
-    def cycle_start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cycle_start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The detection period of the policy. Value:
         * **0**: 0:00~06:00
@@ -277,48 +277,48 @@ class _BaselineStrategyState:
         return pulumi.get(self, "cycle_start_time")
 
     @cycle_start_time.setter
-    def cycle_start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cycle_start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cycle_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The baseline check policy execution end time.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="riskSubTypeName")
-    def risk_sub_type_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def risk_sub_type_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Detection item subtype.
         """
         return pulumi.get(self, "risk_sub_type_name")
 
     @risk_sub_type_name.setter
-    def risk_sub_type_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def risk_sub_type_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "risk_sub_type_name", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The baseline check policy start time.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method of adding assets that take effect from the policy. Value:
         * **groupId**: Added by asset group.
@@ -327,7 +327,7 @@ class _BaselineStrategyState:
         return pulumi.get(self, "target_type")
 
     @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_type", value)
 
 
@@ -337,14 +337,14 @@ class BaselineStrategy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 baseline_strategy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cycle_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 cycle_start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 risk_sub_type_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 baseline_strategy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cycle_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 cycle_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 risk_sub_type_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Baseline Strategy resource.
@@ -458,14 +458,14 @@ class BaselineStrategy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 baseline_strategy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cycle_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 cycle_start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 risk_sub_type_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 baseline_strategy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cycle_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 cycle_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 risk_sub_type_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -508,15 +508,15 @@ class BaselineStrategy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            baseline_strategy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            baseline_strategy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_type: Optional[pulumi.Input[_builtins.str]] = None,
-            cycle_days: Optional[pulumi.Input[_builtins.int]] = None,
-            cycle_start_time: Optional[pulumi.Input[_builtins.int]] = None,
-            end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            risk_sub_type_name: Optional[pulumi.Input[_builtins.str]] = None,
-            start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            target_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'BaselineStrategy':
+            baseline_strategy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            baseline_strategy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cycle_days: pulumi.Input[Optional[_builtins.int]] = None,
+            cycle_start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            risk_sub_type_name: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'BaselineStrategy':
         """
         Get an existing BaselineStrategy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

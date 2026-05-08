@@ -19,13 +19,13 @@ __all__ = ['MaliciousFileWhitelistConfigArgs', 'MaliciousFileWhitelistConfig']
 @pulumi.input_type
 class MaliciousFileWhitelistConfigArgs:
     def __init__(__self__, *,
-                 event_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 field: Optional[pulumi.Input[_builtins.str]] = None,
-                 field_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 event_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MaliciousFileWhitelistConfig resource.
 
@@ -55,55 +55,55 @@ class MaliciousFileWhitelistConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="eventName")
-    def event_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the security alert associated with the representative rule.
         """
         return pulumi.get(self, "event_name")
 
     @event_name.setter
-    def event_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents the alarm associated with the resource and the white field.
         """
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field", value)
 
     @_builtins.property
     @pulumi.getter(name="fieldValue")
-    def field_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents the whiteout target value in effect for the resource.
         """
         return pulumi.get(self, "field_value")
 
     @field_value.setter
-    def field_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The decision operator in effect on behalf of the resource.
         """
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Business Source:
         - agentless: agentless detection.
@@ -111,45 +111,45 @@ class MaliciousFileWhitelistConfigArgs:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of target in effect on behalf of the resource.
         """
         return pulumi.get(self, "target_type")
 
     @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_type", value)
 
     @_builtins.property
     @pulumi.getter(name="targetValue")
-    def target_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents the specific value of the target type in effect for the resource.
         """
         return pulumi.get(self, "target_value")
 
     @target_value.setter
-    def target_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_value", value)
 
 
 @pulumi.input_type
 class _MaliciousFileWhitelistConfigState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 field: Optional[pulumi.Input[_builtins.str]] = None,
-                 field_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MaliciousFileWhitelistConfig resources.
 
@@ -182,67 +182,67 @@ class _MaliciousFileWhitelistConfigState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="eventName")
-    def event_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the security alert associated with the representative rule.
         """
         return pulumi.get(self, "event_name")
 
     @event_name.setter
-    def event_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents the alarm associated with the resource and the white field.
         """
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field", value)
 
     @_builtins.property
     @pulumi.getter(name="fieldValue")
-    def field_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents the whiteout target value in effect for the resource.
         """
         return pulumi.get(self, "field_value")
 
     @field_value.setter
-    def field_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The decision operator in effect on behalf of the resource.
         """
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Business Source:
         - agentless: agentless detection.
@@ -250,31 +250,31 @@ class _MaliciousFileWhitelistConfigState:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of target in effect on behalf of the resource.
         """
         return pulumi.get(self, "target_type")
 
     @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_type", value)
 
     @_builtins.property
     @pulumi.getter(name="targetValue")
-    def target_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents the specific value of the target type in effect for the resource.
         """
         return pulumi.get(self, "target_value")
 
     @target_value.setter
-    def target_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_value", value)
 
 
@@ -284,13 +284,13 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 event_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 field: Optional[pulumi.Input[_builtins.str]] = None,
-                 field_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 event_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Malicious File Whitelist Config resource. malicious file add whitelist config.
@@ -404,13 +404,13 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 event_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 field: Optional[pulumi.Input[_builtins.str]] = None,
-                 field_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 event_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -438,14 +438,14 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            event_name: Optional[pulumi.Input[_builtins.str]] = None,
-            field: Optional[pulumi.Input[_builtins.str]] = None,
-            field_value: Optional[pulumi.Input[_builtins.str]] = None,
-            operator: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None,
-            target_type: Optional[pulumi.Input[_builtins.str]] = None,
-            target_value: Optional[pulumi.Input[_builtins.str]] = None) -> 'MaliciousFileWhitelistConfig':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            event_name: pulumi.Input[Optional[_builtins.str]] = None,
+            field: pulumi.Input[Optional[_builtins.str]] = None,
+            field_value: pulumi.Input[Optional[_builtins.str]] = None,
+            operator: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None,
+            target_value: pulumi.Input[Optional[_builtins.str]] = None) -> 'MaliciousFileWhitelistConfig':
         """
         Get an existing MaliciousFileWhitelistConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

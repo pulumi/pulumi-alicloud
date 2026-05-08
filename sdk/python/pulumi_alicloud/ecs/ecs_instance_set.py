@@ -24,47 +24,47 @@ class EcsInstanceSetArgs:
                  image_id: pulumi.Input[_builtins.str],
                  instance_type: pulumi.Input[_builtins.str],
                  security_group_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_release_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_check_os_with_assistant: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]] = None,
-                 dedicated_host_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deployment_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_instance_filter: Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hpc_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 unique_suffix: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_check_os_with_assistant: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]] = None,
+                 dedicated_host_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_instance_filter: pulumi.Input[Optional['EcsInstanceSetExcludeInstanceFilterArgs']] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hpc_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 unique_suffix: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsInstanceSet resource.
 
@@ -249,43 +249,43 @@ class EcsInstanceSetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of instances that you want to create. Valid values: `1` to `100`.
         """
         return pulumi.get(self, "amount")
 
     @amount.setter
-    def amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "amount", value)
 
     @_builtins.property
     @pulumi.getter(name="autoReleaseTime")
-    def auto_release_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_release_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The automatic release time of the `PostPaid` instance.
         """
         return pulumi.get(self, "auto_release_time")
 
     @auto_release_time.setter
-    def auto_release_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_release_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_release_time", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable auto-renewal for the instance. **Note:** `auto_renew` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Auto renewal period of an instance, in the unit of month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
@@ -295,252 +295,252 @@ class EcsInstanceSetArgs:
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="bootCheckOsWithAssistant")
-    def boot_check_os_with_assistant(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def boot_check_os_with_assistant(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicate how to check instance ready to use. Valid values:
         """
         return pulumi.get(self, "boot_check_os_with_assistant")
 
     @boot_check_os_with_assistant.setter
-    def boot_check_os_with_assistant(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def boot_check_os_with_assistant(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "boot_check_os_with_assistant", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]]:
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]]:
         """
         The list of data disks created with instance. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
-    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]]):
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostId")
-    def dedicated_host_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         """
         return pulumi.get(self, "dedicated_host_id")
 
     @dedicated_host_id.setter
-    def dedicated_host_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable release protection for the instance.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentSetId")
-    def deployment_set_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the deployment set to which to deploy the instance.
         """
         return pulumi.get(self, "deployment_set_id")
 
     @deployment_set_id.setter
-    def deployment_set_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_set_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_set_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeInstanceFilter")
-    def exclude_instance_filter(self) -> Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']]:
+    def exclude_instance_filter(self) -> pulumi.Input[Optional['EcsInstanceSetExcludeInstanceFilterArgs']]:
         """
         The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
         """
         return pulumi.get(self, "exclude_instance_filter")
 
     @exclude_instance_filter.setter
-    def exclude_instance_filter(self, value: Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']]):
+    def exclude_instance_filter(self, value: pulumi.Input[Optional['EcsInstanceSetExcludeInstanceFilterArgs']]):
         pulumi.set(self, "exclude_instance_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hostname of instance.
         """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
-    def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="hpcClusterId")
-    def hpc_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hpc_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         """
         return pulumi.get(self, "hpc_cluster_id")
 
     @hpc_cluster_id.setter
-    def hpc_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hpc_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hpc_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the instance. Valid values: `PrePaid`, `PostPaid`.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
         """
         return pulumi.get(self, "internet_charge_type")
 
     @internet_charge_type.setter
-    def internet_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internet_max_bandwidth_out(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
     @internet_max_bandwidth_out.setter
-    def internet_max_bandwidth_out(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internet_max_bandwidth_out(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internet_max_bandwidth_out", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of key pair that can login ECS instance successfully without password.
         """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateId")
-    def launch_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the launch template.
         """
         return pulumi.get(self, "launch_template_id")
 
     @launch_template_id.setter
-    def launch_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateName")
-    def launch_template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
         """
         return pulumi.get(self, "launch_template_name")
 
     @launch_template_name.setter
-    def launch_template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_template_name", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateVersion")
-    def launch_template_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_template_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the launch template.
         """
         return pulumi.get(self, "launch_template_version")
 
     @launch_template_version.setter
-    def launch_template_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_template_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_template_version", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]]:
         """
         A list of NetworkInterface. See `network_interfaces` below.
         """
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordInherit")
-    def password_inherit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_inherit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use the password preset in the image.
         """
         return pulumi.get(self, "password_inherit")
 
     @password_inherit.setter
-    def password_inherit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_inherit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_inherit", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy the resource, in month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
@@ -550,48 +550,48 @@ class EcsInstanceSetArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `period_unit` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="ramRoleName")
-    def ram_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ram_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Instance RAM role name.
         """
         return pulumi.get(self, "ram_role_name")
 
     @ram_role_name.setter
-    def ram_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ram_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ram_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of resource group which the instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityEnhancementStrategy")
-    def security_enhancement_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_enhancement_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security enhancement strategy. Valid values:
         - `Active`: Enable security enhancement strategy, it only works on system images.
@@ -600,24 +600,24 @@ class EcsInstanceSetArgs:
         return pulumi.get(self, "security_enhancement_strategy")
 
     @security_enhancement_strategy.setter
-    def security_enhancement_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_enhancement_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_enhancement_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPriceLimit")
-    def spot_price_limit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def spot_price_limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spot_price_limit` takes effect only if `spot_strategy` is set to `SpotWithPriceLimit`.
         """
         return pulumi.get(self, "spot_price_limit")
 
     @spot_price_limit.setter
-    def spot_price_limit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def spot_price_limit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "spot_price_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="spotStrategy")
-    def spot_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The spot strategy of a Pay-As-You-Go instance. Valid values:
         - `NoSpot`: A regular Pay-As-You-Go instance.
@@ -628,178 +628,178 @@ class EcsInstanceSetArgs:
         return pulumi.get(self, "spot_strategy")
 
     @spot_strategy.setter
-    def spot_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskAutoSnapshotPolicyId")
-    def system_disk_auto_snapshot_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_auto_snapshot_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the automatic snapshot policy applied to the system disk.
         """
         return pulumi.get(self, "system_disk_auto_snapshot_policy_id")
 
     @system_disk_auto_snapshot_policy_id.setter
-    def system_disk_auto_snapshot_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_auto_snapshot_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_auto_snapshot_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskCategory")
-    def system_disk_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         """
         return pulumi.get(self, "system_disk_category")
 
     @system_disk_category.setter
-    def system_disk_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_category", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskDescription")
-    def system_disk_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "system_disk_description")
 
     @system_disk_description.setter
-    def system_disk_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_description", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskName")
-    def system_disk_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the system disk.
         """
         return pulumi.get(self, "system_disk_name")
 
     @system_disk_name.setter
-    def system_disk_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_name", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskPerformanceLevel")
-    def system_disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         """
         return pulumi.get(self, "system_disk_performance_level")
 
     @system_disk_performance_level.setter
-    def system_disk_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def system_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the system disk, measured in GiB. Valid values: `20` to `500`.
         """
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
-    def system_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def system_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "system_disk_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="uniqueSuffix")
-    def unique_suffix(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unique_suffix(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically append incremental suffixes to the hostname specified by the HostName parameter and to the instance name specified by the InstanceName parameter when you batch create instances. The incremental suffixes can range from `001` to `999`.
         """
         return pulumi.get(self, "unique_suffix")
 
     @unique_suffix.setter
-    def unique_suffix(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unique_suffix(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unique_suffix", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The virtual switch ID to launch in VPC.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone in which to create the instance.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _EcsInstanceSetState:
     def __init__(__self__, *,
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_release_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_check_os_with_assistant: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]] = None,
-                 dedicated_host_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deployment_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_instance_filter: Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hpc_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 unique_suffix: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_check_os_with_assistant: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]] = None,
+                 dedicated_host_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_instance_filter: pulumi.Input[Optional['EcsInstanceSetExcludeInstanceFilterArgs']] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hpc_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 unique_suffix: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsInstanceSet resources.
 
@@ -954,43 +954,43 @@ class _EcsInstanceSetState:
 
     @_builtins.property
     @pulumi.getter
-    def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of instances that you want to create. Valid values: `1` to `100`.
         """
         return pulumi.get(self, "amount")
 
     @amount.setter
-    def amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "amount", value)
 
     @_builtins.property
     @pulumi.getter(name="autoReleaseTime")
-    def auto_release_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_release_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The automatic release time of the `PostPaid` instance.
         """
         return pulumi.get(self, "auto_release_time")
 
     @auto_release_time.setter
-    def auto_release_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_release_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_release_time", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable auto-renewal for the instance. **Note:** `auto_renew` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Auto renewal period of an instance, in the unit of month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
@@ -1000,288 +1000,288 @@ class _EcsInstanceSetState:
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="bootCheckOsWithAssistant")
-    def boot_check_os_with_assistant(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def boot_check_os_with_assistant(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicate how to check instance ready to use. Valid values:
         """
         return pulumi.get(self, "boot_check_os_with_assistant")
 
     @boot_check_os_with_assistant.setter
-    def boot_check_os_with_assistant(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def boot_check_os_with_assistant(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "boot_check_os_with_assistant", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]]:
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]]:
         """
         The list of data disks created with instance. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
-    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]]):
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostId")
-    def dedicated_host_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         """
         return pulumi.get(self, "dedicated_host_id")
 
     @dedicated_host_id.setter
-    def dedicated_host_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable release protection for the instance.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentSetId")
-    def deployment_set_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the deployment set to which to deploy the instance.
         """
         return pulumi.get(self, "deployment_set_id")
 
     @deployment_set_id.setter
-    def deployment_set_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_set_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_set_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeInstanceFilter")
-    def exclude_instance_filter(self) -> Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']]:
+    def exclude_instance_filter(self) -> pulumi.Input[Optional['EcsInstanceSetExcludeInstanceFilterArgs']]:
         """
         The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
         """
         return pulumi.get(self, "exclude_instance_filter")
 
     @exclude_instance_filter.setter
-    def exclude_instance_filter(self, value: Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']]):
+    def exclude_instance_filter(self, value: pulumi.Input[Optional['EcsInstanceSetExcludeInstanceFilterArgs']]):
         pulumi.set(self, "exclude_instance_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hostname of instance.
         """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
-    def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="hpcClusterId")
-    def hpc_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hpc_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         """
         return pulumi.get(self, "hpc_cluster_id")
 
     @hpc_cluster_id.setter
-    def hpc_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hpc_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hpc_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Image to use for the instance.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the instance. Valid values: `PrePaid`, `PostPaid`.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of ECS Instance ID.
         """
         return pulumi.get(self, "instance_ids")
 
     @instance_ids.setter
-    def instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of instance to start.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
         """
         return pulumi.get(self, "internet_charge_type")
 
     @internet_charge_type.setter
-    def internet_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internet_max_bandwidth_out(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
     @internet_max_bandwidth_out.setter
-    def internet_max_bandwidth_out(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internet_max_bandwidth_out(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internet_max_bandwidth_out", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of key pair that can login ECS instance successfully without password.
         """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateId")
-    def launch_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the launch template.
         """
         return pulumi.get(self, "launch_template_id")
 
     @launch_template_id.setter
-    def launch_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateName")
-    def launch_template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
         """
         return pulumi.get(self, "launch_template_name")
 
     @launch_template_name.setter
-    def launch_template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_template_name", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateVersion")
-    def launch_template_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_template_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the launch template.
         """
         return pulumi.get(self, "launch_template_version")
 
     @launch_template_version.setter
-    def launch_template_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_template_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_template_version", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]]:
         """
         A list of NetworkInterface. See `network_interfaces` below.
         """
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordInherit")
-    def password_inherit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_inherit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use the password preset in the image.
         """
         return pulumi.get(self, "password_inherit")
 
     @password_inherit.setter
-    def password_inherit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_inherit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_inherit", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy the resource, in month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
@@ -1291,48 +1291,48 @@ class _EcsInstanceSetState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `period_unit` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="ramRoleName")
-    def ram_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ram_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Instance RAM role name.
         """
         return pulumi.get(self, "ram_role_name")
 
     @ram_role_name.setter
-    def ram_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ram_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ram_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of resource group which the instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityEnhancementStrategy")
-    def security_enhancement_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_enhancement_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security enhancement strategy. Valid values:
         - `Active`: Enable security enhancement strategy, it only works on system images.
@@ -1341,36 +1341,36 @@ class _EcsInstanceSetState:
         return pulumi.get(self, "security_enhancement_strategy")
 
     @security_enhancement_strategy.setter
-    def security_enhancement_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_enhancement_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_enhancement_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of security group ids to associate with.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPriceLimit")
-    def spot_price_limit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def spot_price_limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spot_price_limit` takes effect only if `spot_strategy` is set to `SpotWithPriceLimit`.
         """
         return pulumi.get(self, "spot_price_limit")
 
     @spot_price_limit.setter
-    def spot_price_limit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def spot_price_limit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "spot_price_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="spotStrategy")
-    def spot_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The spot strategy of a Pay-As-You-Go instance. Valid values:
         - `NoSpot`: A regular Pay-As-You-Go instance.
@@ -1381,127 +1381,127 @@ class _EcsInstanceSetState:
         return pulumi.get(self, "spot_strategy")
 
     @spot_strategy.setter
-    def spot_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskAutoSnapshotPolicyId")
-    def system_disk_auto_snapshot_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_auto_snapshot_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the automatic snapshot policy applied to the system disk.
         """
         return pulumi.get(self, "system_disk_auto_snapshot_policy_id")
 
     @system_disk_auto_snapshot_policy_id.setter
-    def system_disk_auto_snapshot_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_auto_snapshot_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_auto_snapshot_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskCategory")
-    def system_disk_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         """
         return pulumi.get(self, "system_disk_category")
 
     @system_disk_category.setter
-    def system_disk_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_category", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskDescription")
-    def system_disk_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "system_disk_description")
 
     @system_disk_description.setter
-    def system_disk_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_description", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskName")
-    def system_disk_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the system disk.
         """
         return pulumi.get(self, "system_disk_name")
 
     @system_disk_name.setter
-    def system_disk_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_name", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskPerformanceLevel")
-    def system_disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         """
         return pulumi.get(self, "system_disk_performance_level")
 
     @system_disk_performance_level.setter
-    def system_disk_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def system_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the system disk, measured in GiB. Valid values: `20` to `500`.
         """
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
-    def system_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def system_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "system_disk_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="uniqueSuffix")
-    def unique_suffix(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unique_suffix(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically append incremental suffixes to the hostname specified by the HostName parameter and to the instance name specified by the InstanceName parameter when you batch create instances. The incremental suffixes can range from `001` to `999`.
         """
         return pulumi.get(self, "unique_suffix")
 
     @unique_suffix.setter
-    def unique_suffix(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unique_suffix(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unique_suffix", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The virtual switch ID to launch in VPC.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone in which to create the instance.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -1511,50 +1511,50 @@ class EcsInstanceSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_release_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_check_os_with_assistant: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetDataDiskArgs', 'EcsInstanceSetDataDiskArgsDict']]]]] = None,
-                 dedicated_host_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deployment_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_instance_filter: Optional[pulumi.Input[Union['EcsInstanceSetExcludeInstanceFilterArgs', 'EcsInstanceSetExcludeInstanceFilterArgsDict']]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hpc_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetNetworkInterfaceArgs', 'EcsInstanceSetNetworkInterfaceArgsDict']]]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 unique_suffix: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_check_os_with_assistant: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsInstanceSetDataDiskArgs', 'EcsInstanceSetDataDiskArgsDict']]]]] = None,
+                 dedicated_host_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_instance_filter: pulumi.Input[Optional[Union['EcsInstanceSetExcludeInstanceFilterArgs', 'EcsInstanceSetExcludeInstanceFilterArgsDict']]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hpc_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsInstanceSetNetworkInterfaceArgs', 'EcsInstanceSetNetworkInterfaceArgsDict']]]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 unique_suffix: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Instance Set resource.
@@ -1583,7 +1583,7 @@ class EcsInstanceSet(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -1707,7 +1707,7 @@ class EcsInstanceSet(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -1754,50 +1754,50 @@ class EcsInstanceSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_release_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 boot_check_os_with_assistant: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetDataDiskArgs', 'EcsInstanceSetDataDiskArgsDict']]]]] = None,
-                 dedicated_host_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deployment_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_instance_filter: Optional[pulumi.Input[Union['EcsInstanceSetExcludeInstanceFilterArgs', 'EcsInstanceSetExcludeInstanceFilterArgsDict']]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hpc_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetNetworkInterfaceArgs', 'EcsInstanceSetNetworkInterfaceArgsDict']]]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 unique_suffix: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_check_os_with_assistant: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsInstanceSetDataDiskArgs', 'EcsInstanceSetDataDiskArgsDict']]]]] = None,
+                 dedicated_host_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_instance_filter: pulumi.Input[Optional[Union['EcsInstanceSetExcludeInstanceFilterArgs', 'EcsInstanceSetExcludeInstanceFilterArgsDict']]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hpc_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsInstanceSetNetworkInterfaceArgs', 'EcsInstanceSetNetworkInterfaceArgsDict']]]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 unique_suffix: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1870,51 +1870,51 @@ class EcsInstanceSet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            amount: Optional[pulumi.Input[_builtins.int]] = None,
-            auto_release_time: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            boot_check_os_with_assistant: Optional[pulumi.Input[_builtins.bool]] = None,
-            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetDataDiskArgs', 'EcsInstanceSetDataDiskArgsDict']]]]] = None,
-            dedicated_host_id: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            deployment_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            exclude_instance_filter: Optional[pulumi.Input[Union['EcsInstanceSetExcludeInstanceFilterArgs', 'EcsInstanceSetExcludeInstanceFilterArgsDict']]] = None,
-            host_name: Optional[pulumi.Input[_builtins.str]] = None,
-            hpc_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-            key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-            launch_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-            launch_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-            launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetNetworkInterfaceArgs', 'EcsInstanceSetNetworkInterfaceArgsDict']]]]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            password_inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
-            spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_description: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            unique_suffix: Optional[pulumi.Input[_builtins.bool]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'EcsInstanceSet':
+            amount: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            boot_check_os_with_assistant: pulumi.Input[Optional[_builtins.bool]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsInstanceSetDataDiskArgs', 'EcsInstanceSetDataDiskArgsDict']]]]] = None,
+            dedicated_host_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_instance_filter: pulumi.Input[Optional[Union['EcsInstanceSetExcludeInstanceFilterArgs', 'EcsInstanceSetExcludeInstanceFilterArgsDict']]] = None,
+            host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            hpc_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsInstanceSetNetworkInterfaceArgs', 'EcsInstanceSetNetworkInterfaceArgsDict']]]]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+            spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_description: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            unique_suffix: pulumi.Input[Optional[_builtins.bool]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EcsInstanceSet':
         """
         Get an existing EcsInstanceSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

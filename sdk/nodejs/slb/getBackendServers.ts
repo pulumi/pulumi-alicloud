@@ -96,7 +96,7 @@ export interface GetBackendServersOutputArgs {
     /**
      * List of attached ECS instance IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the SLB with attachments.
      */
@@ -104,5 +104,5 @@ export interface GetBackendServersOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

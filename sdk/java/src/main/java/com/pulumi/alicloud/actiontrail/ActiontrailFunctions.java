@@ -54,8 +54,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetConsumerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -99,8 +99,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetConsumerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -144,8 +144,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetConsumerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -189,8 +189,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetConsumerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -234,8 +234,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetConsumerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -280,8 +280,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -322,8 +322,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -364,8 +364,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -406,8 +406,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -448,8 +448,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -490,8 +490,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -532,8 +532,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -575,8 +575,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetHistoryDeliveryJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -626,8 +626,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetHistoryDeliveryJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -677,8 +677,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetHistoryDeliveryJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -728,8 +728,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetHistoryDeliveryJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -779,8 +779,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetHistoryDeliveryJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -830,8 +830,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetHistoryDeliveryJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -881,8 +881,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetHistoryDeliveryJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -938,8 +938,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.alicloud.alikafka.InstanceArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1016,8 +1016,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.alicloud.alikafka.InstanceArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1094,8 +1094,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.alicloud.alikafka.InstanceArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1172,8 +1172,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.alicloud.alikafka.InstanceArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1250,8 +1250,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.alicloud.alikafka.InstanceArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1328,8 +1328,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.alicloud.alikafka.InstanceArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1406,8 +1406,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.alicloud.alikafka.InstanceArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1476,8 +1476,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1523,8 +1523,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1570,8 +1570,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1617,8 +1617,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1664,8 +1664,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1725,8 +1725,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.alicloud.alikafka.SaslUserArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1829,8 +1829,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.alicloud.alikafka.SaslUserArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1933,8 +1933,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.alicloud.alikafka.SaslUserArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2037,8 +2037,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.alicloud.alikafka.SaslUserArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2141,8 +2141,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.alicloud.alikafka.SaslUserArgs;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetSaslUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2231,8 +2231,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2276,8 +2276,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2321,8 +2321,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2366,8 +2366,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2411,8 +2411,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTopicsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2456,8 +2456,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2499,8 +2499,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2542,8 +2542,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2585,8 +2585,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2628,8 +2628,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2671,8 +2671,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2714,8 +2714,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2757,8 +2757,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2804,8 +2804,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2851,8 +2851,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2898,8 +2898,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2945,8 +2945,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2992,8 +2992,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3039,8 +3039,8 @@ public final class ActiontrailFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
      * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -95,7 +95,7 @@ export interface GetAttachmentsOutputArgs {
     /**
      * List of attached ECS instance IDs.
      */
-    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the SLB with attachments.
      */
@@ -103,5 +103,5 @@ export interface GetAttachmentsOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

@@ -151,11 +151,11 @@ export interface GetListenersOutputArgs {
     /**
      * A regex string to filter results by SLB listener description.
      */
-    descriptionRegex?: pulumi.Input<string>;
+    descriptionRegex?: pulumi.Input<string | undefined>;
     /**
      * Filter listeners by the specified frontend port.
      */
-    frontendPort?: pulumi.Input<number>;
+    frontendPort?: pulumi.Input<number | undefined>;
     /**
      * ID of the SLB with listeners.
      */
@@ -163,9 +163,9 @@ export interface GetListenersOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
 }

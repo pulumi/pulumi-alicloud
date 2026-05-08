@@ -100,7 +100,7 @@ def get_resource_directories(output_file: Optional[_builtins.str] = None,
         directories=pulumi.get(__ret__, 'directories'),
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_resource_directories_output(output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_resource_directories_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceDirectoriesResult]:
     """
     This data source provides the Resource Manager Resource Directories of the current Alibaba Cloud user.

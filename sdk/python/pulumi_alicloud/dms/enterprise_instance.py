@@ -32,20 +32,20 @@ class EnterpriseInstanceArgs:
                  query_timeout: pulumi.Input[_builtins.int],
                  safe_rule: pulumi.Input[_builtins.str],
                  sell_trust: pulumi.Input[_builtins.bool],
-                 data_link_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dba_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ddl_online: Optional[pulumi.Input[_builtins.int]] = None,
-                 ecs_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 safe_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_test: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tid: Optional[pulumi.Input[_builtins.int]] = None,
-                 use_dsql: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_link_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dba_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ddl_online: pulumi.Input[Optional[_builtins.int]] = None,
+                 ecs_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 safe_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_test: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tid: pulumi.Input[Optional[_builtins.int]] = None,
+                 use_dsql: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnterpriseInstance resource.
 
@@ -284,207 +284,207 @@ class EnterpriseInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataLinkName")
-    def data_link_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_link_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cross-database query datalink name.
         """
         return pulumi.get(self, "data_link_name")
 
     @data_link_name.setter
-    def data_link_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_link_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_link_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dbaId")
-    def dba_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dba_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dba id of the database instance.
         """
         return pulumi.get(self, "dba_id")
 
     @dba_id.setter
-    def dba_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dba_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dba_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ddlOnline")
-    def ddl_online(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ddl_online(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
         """
         return pulumi.get(self, "ddl_online")
 
     @ddl_online.setter
-    def ddl_online(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ddl_online(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ddl_online", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsInstanceId")
-    def ecs_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
         """
         return pulumi.get(self, "ecs_instance_id")
 
     @ecs_instance_id.setter
-    def ecs_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsRegion")
-    def ecs_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the instance is located. This value must be passed when the value of InstanceSource is RDS, ECS self-built library, and VPC dedicated line IDC.
         """
         return pulumi.get(self, "ecs_region")
 
     @ecs_region.setter
-    def ecs_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_region", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceAlias")
     @_utilities.deprecated("""Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""")
-    def instance_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
         """
         return pulumi.get(self, "instance_alias")
 
     @instance_alias.setter
-    def instance_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_alias", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance id of the database instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance name, to help users quickly distinguish positioning.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="safeRuleId")
-    def safe_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def safe_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The safe rule id of the database instance.
         """
         return pulumi.get(self, "safe_rule_id")
 
     @safe_rule_id.setter
-    def safe_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def safe_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "safe_rule_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
         """
         return pulumi.get(self, "sid")
 
     @sid.setter
-    def sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sid", value)
 
     @_builtins.property
     @pulumi.getter(name="skipTest")
-    def skip_test(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_test(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the instance ignores test connectivity. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "skip_test")
 
     @skip_test.setter
-    def skip_test(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_test(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_test", value)
 
     @_builtins.property
     @pulumi.getter
-    def tid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The tenant ID.
         """
         return pulumi.get(self, "tid")
 
     @tid.setter
-    def tid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tid", value)
 
     @_builtins.property
     @pulumi.getter(name="useDsql")
-    def use_dsql(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def use_dsql(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
         """
         return pulumi.get(self, "use_dsql")
 
     @use_dsql.setter
-    def use_dsql(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def use_dsql(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "use_dsql", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
 @pulumi.input_type
 class _EnterpriseInstanceState:
     def __init__(__self__, *,
-                 data_link_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 dba_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dba_nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dba_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 ddl_online: Optional[pulumi.Input[_builtins.int]] = None,
-                 ecs_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 export_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 query_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 safe_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 safe_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sell_trust: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_test: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tid: Optional[pulumi.Input[_builtins.int]] = None,
-                 use_dsql: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_link_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 dba_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dba_nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dba_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 ddl_online: pulumi.Input[Optional[_builtins.int]] = None,
+                 ecs_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 export_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 query_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 safe_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 safe_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sell_trust: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_test: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tid: pulumi.Input[Optional[_builtins.int]] = None,
+                 use_dsql: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseInstance resources.
 
@@ -590,272 +590,272 @@ class _EnterpriseInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="dataLinkName")
-    def data_link_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_link_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cross-database query datalink name.
         """
         return pulumi.get(self, "data_link_name")
 
     @data_link_name.setter
-    def data_link_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_link_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_link_name", value)
 
     @_builtins.property
     @pulumi.getter(name="databasePassword")
-    def database_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database access password.
         """
         return pulumi.get(self, "database_password")
 
     @database_password.setter
-    def database_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_password", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseUser")
-    def database_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database access account.
         """
         return pulumi.get(self, "database_user")
 
     @database_user.setter
-    def database_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_user", value)
 
     @_builtins.property
     @pulumi.getter(name="dbaId")
-    def dba_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dba_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dba id of the database instance.
         """
         return pulumi.get(self, "dba_id")
 
     @dba_id.setter
-    def dba_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dba_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dba_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbaNickName")
-    def dba_nick_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dba_nick_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance dba nickname.
         """
         return pulumi.get(self, "dba_nick_name")
 
     @dba_nick_name.setter
-    def dba_nick_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dba_nick_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dba_nick_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dbaUid")
-    def dba_uid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dba_uid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The DBA of the instance is passed into the Alibaba Cloud uid of the DBA.
         """
         return pulumi.get(self, "dba_uid")
 
     @dba_uid.setter
-    def dba_uid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dba_uid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dba_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="ddlOnline")
-    def ddl_online(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ddl_online(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to use online services, currently only supports MySQL and PolarDB. Valid values: `0` Not used, `1` Native online DDL priority, `2` DMS lock-free table structure change priority.
         """
         return pulumi.get(self, "ddl_online")
 
     @ddl_online.setter
-    def ddl_online(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ddl_online(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ddl_online", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsInstanceId")
-    def ecs_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ECS instance ID. The value of InstanceSource is the ECS self-built library. This value must be passed.
         """
         return pulumi.get(self, "ecs_instance_id")
 
     @ecs_instance_id.setter
-    def ecs_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsRegion")
-    def ecs_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the instance is located. This value must be passed when the value of InstanceSource is RDS, ECS self-built library, and VPC dedicated line IDC.
         """
         return pulumi.get(self, "ecs_region")
 
     @ecs_region.setter
-    def ecs_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_region", value)
 
     @_builtins.property
     @pulumi.getter(name="envType")
-    def env_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Environment type. Valid values: `product` production environment, `dev` development environment, `pre` pre-release environment, `test` test environment, `sit` SIT environment, `uat` UAT environment, `pet` pressure test environment, `stag` STAG environment.
         """
         return pulumi.get(self, "env_type")
 
     @env_type.setter
-    def env_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_type", value)
 
     @_builtins.property
     @pulumi.getter(name="exportTimeout")
-    def export_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def export_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Export timeout, unit: s (seconds).
         """
         return pulumi.get(self, "export_timeout")
 
     @export_timeout.setter
-    def export_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def export_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "export_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host address of the target database.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceAlias")
     @_utilities.deprecated("""Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""")
-    def instance_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
         """
         return pulumi.get(self, "instance_alias")
 
     @instance_alias.setter
-    def instance_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_alias", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance id of the database instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance name, to help users quickly distinguish positioning.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceSource")
-    def instance_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source of the database instance. Valid values: `PUBLIC_OWN`, `RDS`, `ECS_OWN`, `VPC_IDC`.
         """
         return pulumi.get(self, "instance_source")
 
     @instance_source.setter
-    def instance_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_source", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database type. Valid values: `MySQL`, `SQLServer`, `PostgreSQL`, `Oracle,` `DRDS`, `OceanBase`, `Mongo`, `Redis`.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network type. Valid values: `CLASSIC`, `VPC`.
         """
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Access port of the target database.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="queryTimeout")
-    def query_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def query_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Query timeout time, unit: s (seconds).
         """
         return pulumi.get(self, "query_timeout")
 
     @query_timeout.setter
-    def query_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def query_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "query_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="safeRule")
-    def safe_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def safe_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security rule of the instance is passed into the name of the security rule in the enterprise.
         """
         return pulumi.get(self, "safe_rule")
 
     @safe_rule.setter
-    def safe_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def safe_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "safe_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="safeRuleId")
-    def safe_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def safe_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The safe rule id of the database instance.
         """
         return pulumi.get(self, "safe_rule_id")
 
     @safe_rule_id.setter
-    def safe_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def safe_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "safe_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sellTrust")
-    def sell_trust(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sell_trust(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the security hosting feature for the database instance. Possible values: `true`, `false`.
 
@@ -864,92 +864,92 @@ class _EnterpriseInstanceState:
         return pulumi.get(self, "sell_trust")
 
     @sell_trust.setter
-    def sell_trust(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sell_trust(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sell_trust", value)
 
     @_builtins.property
     @pulumi.getter
-    def sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
         """
         return pulumi.get(self, "sid")
 
     @sid.setter
-    def sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sid", value)
 
     @_builtins.property
     @pulumi.getter(name="skipTest")
-    def skip_test(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_test(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the instance ignores test connectivity. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "skip_test")
 
     @skip_test.setter
-    def skip_test(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_test(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_test", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.""")
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         It has been deprecated from provider version 1.100.0 and 'status' instead.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The tenant ID.
         """
         return pulumi.get(self, "tid")
 
     @tid.setter
-    def tid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tid", value)
 
     @_builtins.property
     @pulumi.getter(name="useDsql")
-    def use_dsql(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def use_dsql(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
         """
         return pulumi.get(self, "use_dsql")
 
     @use_dsql.setter
-    def use_dsql(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def use_dsql(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "use_dsql", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC ID. This value must be passed when the value of InstanceSource is VPC dedicated line IDC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -959,33 +959,33 @@ class EnterpriseInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_link_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 dba_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dba_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 ddl_online: Optional[pulumi.Input[_builtins.int]] = None,
-                 ecs_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 export_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 query_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 safe_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 safe_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sell_trust: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_test: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tid: Optional[pulumi.Input[_builtins.int]] = None,
-                 use_dsql: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_link_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 dba_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dba_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 ddl_online: pulumi.Input[Optional[_builtins.int]] = None,
+                 ecs_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 export_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 query_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 safe_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 safe_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sell_trust: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_test: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tid: pulumi.Input[Optional[_builtins.int]] = None,
+                 use_dsql: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DMS Enterprise Instance resource.
@@ -1034,7 +1034,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             vswitch_id=default_switch.id,
             instance_name=name,
             security_ips=[
@@ -1051,7 +1051,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             account_password="Example12345",
             account_type="Normal")
         default_enterprise_instance = alicloud.dms.EnterpriseInstance("default",
-            tid=default_get_user_tenants.ids[0],
+            tid=output(default_get_user_tenants.ids[0]).apply(lambda x: int(x)),
             instance_type="mysql",
             instance_source="RDS",
             network_type="VPC",
@@ -1061,7 +1061,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             database_user=default_account.account_name,
             database_password=default_account.account_password,
             instance_name=name,
-            dba_uid=current.id,
+            dba_uid=output(current.id).apply(lambda x: int(x)),
             safe_rule="904496",
             use_dsql=1,
             query_timeout=60,
@@ -1165,7 +1165,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             vswitch_id=default_switch.id,
             instance_name=name,
             security_ips=[
@@ -1182,7 +1182,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             account_password="Example12345",
             account_type="Normal")
         default_enterprise_instance = alicloud.dms.EnterpriseInstance("default",
-            tid=default_get_user_tenants.ids[0],
+            tid=output(default_get_user_tenants.ids[0]).apply(lambda x: int(x)),
             instance_type="mysql",
             instance_source="RDS",
             network_type="VPC",
@@ -1192,7 +1192,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             database_user=default_account.account_name,
             database_password=default_account.account_password,
             instance_name=name,
-            dba_uid=current.id,
+            dba_uid=output(current.id).apply(lambda x: int(x)),
             safe_rule="904496",
             use_dsql=1,
             query_timeout=60,
@@ -1226,33 +1226,33 @@ class EnterpriseInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_link_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 dba_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dba_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 ddl_online: Optional[pulumi.Input[_builtins.int]] = None,
-                 ecs_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 export_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 query_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 safe_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 safe_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sell_trust: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_test: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tid: Optional[pulumi.Input[_builtins.int]] = None,
-                 use_dsql: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_link_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 dba_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dba_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 ddl_online: pulumi.Input[Optional[_builtins.int]] = None,
+                 ecs_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 export_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 query_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 safe_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 safe_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sell_trust: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_test: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tid: pulumi.Input[Optional[_builtins.int]] = None,
+                 use_dsql: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1330,36 +1330,36 @@ class EnterpriseInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_link_name: Optional[pulumi.Input[_builtins.str]] = None,
-            database_password: Optional[pulumi.Input[_builtins.str]] = None,
-            database_user: Optional[pulumi.Input[_builtins.str]] = None,
-            dba_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dba_nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-            dba_uid: Optional[pulumi.Input[_builtins.int]] = None,
-            ddl_online: Optional[pulumi.Input[_builtins.int]] = None,
-            ecs_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ecs_region: Optional[pulumi.Input[_builtins.str]] = None,
-            env_type: Optional[pulumi.Input[_builtins.str]] = None,
-            export_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_alias: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_source: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            network_type: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            query_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            safe_rule: Optional[pulumi.Input[_builtins.str]] = None,
-            safe_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sell_trust: Optional[pulumi.Input[_builtins.bool]] = None,
-            sid: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_test: Optional[pulumi.Input[_builtins.bool]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tid: Optional[pulumi.Input[_builtins.int]] = None,
-            use_dsql: Optional[pulumi.Input[_builtins.int]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnterpriseInstance':
+            data_link_name: pulumi.Input[Optional[_builtins.str]] = None,
+            database_password: pulumi.Input[Optional[_builtins.str]] = None,
+            database_user: pulumi.Input[Optional[_builtins.str]] = None,
+            dba_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dba_nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dba_uid: pulumi.Input[Optional[_builtins.int]] = None,
+            ddl_online: pulumi.Input[Optional[_builtins.int]] = None,
+            ecs_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_region: pulumi.Input[Optional[_builtins.str]] = None,
+            env_type: pulumi.Input[Optional[_builtins.str]] = None,
+            export_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_source: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            query_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            safe_rule: pulumi.Input[Optional[_builtins.str]] = None,
+            safe_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sell_trust: pulumi.Input[Optional[_builtins.bool]] = None,
+            sid: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_test: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tid: pulumi.Input[Optional[_builtins.int]] = None,
+            use_dsql: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnterpriseInstance':
         """
         Get an existing EnterpriseInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

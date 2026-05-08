@@ -73,7 +73,7 @@ import (
 //					"caseSensitive": false,
 //					"token": []string{
 //						"\n",
-//						"	",
+//						"\t",
 //						",",
 //						" ",
 //						";",

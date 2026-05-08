@@ -20,12 +20,12 @@ __all__ = ['TopicArgs', 'Topic']
 class TopicArgs:
     def __init__(__self__, *,
                  project_name: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 life_cycle: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_schema: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 record_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 life_cycle: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_schema: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 record_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Topic resource.
 
@@ -72,7 +72,7 @@ class TopicArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comment of the datahub topic. It cannot be longer than 255 characters.
 
@@ -81,36 +81,36 @@ class TopicArgs:
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="lifeCycle")
-    def life_cycle(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def life_cycle(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
         """
         return pulumi.get(self, "life_cycle")
 
     @life_cycle.setter
-    def life_cycle(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def life_cycle(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "life_cycle", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="recordSchema")
-    def record_schema(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def record_schema(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
         - BIGINT
@@ -122,46 +122,46 @@ class TopicArgs:
         return pulumi.get(self, "record_schema")
 
     @record_schema.setter
-    def record_schema(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def record_schema(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "record_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="recordType")
-    def record_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def record_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
         """
         return pulumi.get(self, "record_type")
 
     @record_type.setter
-    def record_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def record_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "record_type", value)
 
     @_builtins.property
     @pulumi.getter(name="shardCount")
-    def shard_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shard_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
         """
         return pulumi.get(self, "shard_count")
 
     @shard_count.setter
-    def shard_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shard_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shard_count", value)
 
 
 @pulumi.input_type
 class _TopicState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modify_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 life_cycle: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_schema: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 record_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 life_cycle: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_schema: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 record_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
 
@@ -203,7 +203,7 @@ class _TopicState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comment of the datahub topic. It cannot be longer than 255 characters.
 
@@ -212,72 +212,72 @@ class _TopicState:
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create time of the datahub topic. It is a human-readable string rather than 64-bits UTC.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifyTime")
-    def last_modify_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modify_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last modify time of the datahub topic. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
         """
         return pulumi.get(self, "last_modify_time")
 
     @last_modify_time.setter
-    def last_modify_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modify_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modify_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lifeCycle")
-    def life_cycle(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def life_cycle(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
         """
         return pulumi.get(self, "life_cycle")
 
     @life_cycle.setter
-    def life_cycle(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def life_cycle(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "life_cycle", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the datahub project that this topic belongs to. It is case-insensitive.
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="recordSchema")
-    def record_schema(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def record_schema(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
         - BIGINT
@@ -289,31 +289,31 @@ class _TopicState:
         return pulumi.get(self, "record_schema")
 
     @record_schema.setter
-    def record_schema(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def record_schema(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "record_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="recordType")
-    def record_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def record_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
         """
         return pulumi.get(self, "record_type")
 
     @record_type.setter
-    def record_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def record_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "record_type", value)
 
     @_builtins.property
     @pulumi.getter(name="shardCount")
-    def shard_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shard_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
         """
         return pulumi.get(self, "shard_count")
 
     @shard_count.setter
-    def shard_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shard_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shard_count", value)
 
 
@@ -323,13 +323,13 @@ class Topic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 life_cycle: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_schema: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 record_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 life_cycle: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_schema: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 record_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The topic is the basic unit of Datahub data source and is used to define one kind of data or stream. It contains a set of subscriptions. You can manage the datahub source of an application by using topics. [Refer to details](https://www.alibabacloud.com/help/en/datahub/latest/nerbcz).
@@ -477,13 +477,13 @@ class Topic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 life_cycle: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_schema: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 record_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 life_cycle: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_schema: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 record_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -514,15 +514,15 @@ class Topic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modify_time: Optional[pulumi.Input[_builtins.str]] = None,
-            life_cycle: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_name: Optional[pulumi.Input[_builtins.str]] = None,
-            record_schema: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            record_type: Optional[pulumi.Input[_builtins.str]] = None,
-            shard_count: Optional[pulumi.Input[_builtins.int]] = None) -> 'Topic':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+            life_cycle: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            record_schema: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            record_type: pulumi.Input[Optional[_builtins.str]] = None,
+            shard_count: pulumi.Input[Optional[_builtins.int]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

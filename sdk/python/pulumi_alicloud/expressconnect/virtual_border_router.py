@@ -24,24 +24,24 @@ class VirtualBorderRouterArgs:
                  peering_subnet_mask: pulumi.Input[_builtins.str],
                  physical_connection_id: pulumi.Input[_builtins.str],
                  vlan_id: pulumi.Input[_builtins.int],
-                 associated_physical_connections: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 circuit_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_multiplier: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_rx_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_tx_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_ipv6_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sitelink_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vbr_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_border_router_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 associated_physical_connections: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_multiplier: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 local_ipv6_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_rx_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_tx_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_ipv6_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_ipv6_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sitelink_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vbr_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_border_router_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VirtualBorderRouter resource.
 
@@ -181,19 +181,19 @@ class VirtualBorderRouterArgs:
     @_builtins.property
     @pulumi.getter(name="associatedPhysicalConnections")
     @_utilities.deprecated("""Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.""")
-    def associated_physical_connections(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def associated_physical_connections(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
         """
         return pulumi.get(self, "associated_physical_connections")
 
     @associated_physical_connections.setter
-    def associated_physical_connections(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def associated_physical_connections(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "associated_physical_connections", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth of the VBR instance. Unit: Mbps. Valid values:
         - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
@@ -202,36 +202,36 @@ class VirtualBorderRouterArgs:
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="circuitCode")
-    def circuit_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def circuit_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The circuit code provided by the operator for the physical connection.
         """
         return pulumi.get(self, "circuit_code")
 
     @circuit_code.setter
-    def circuit_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def circuit_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "circuit_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description information of the VBR.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="detectMultiplier")
-    def detect_multiplier(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def detect_multiplier(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Multiple of detection time.
         That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
@@ -240,194 +240,194 @@ class VirtualBorderRouterArgs:
         return pulumi.get(self, "detect_multiplier")
 
     @detect_multiplier.setter
-    def detect_multiplier(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def detect_multiplier(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "detect_multiplier", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIpv6")
-    def enable_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether IPv6 is enabled.
         """
         return pulumi.get(self, "enable_ipv6")
 
     @enable_ipv6.setter
-    def enable_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="localIpv6GatewayIp")
-    def local_ipv6_gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_ipv6_gateway_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 address on the Alibaba Cloud side of the VBR instance.
         """
         return pulumi.get(self, "local_ipv6_gateway_ip")
 
     @local_ipv6_gateway_ip.setter
-    def local_ipv6_gateway_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_ipv6_gateway_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_ipv6_gateway_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="minRxInterval")
-    def min_rx_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_rx_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
         """
         return pulumi.get(self, "min_rx_interval")
 
     @min_rx_interval.setter
-    def min_rx_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_rx_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_rx_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="minTxInterval")
-    def min_tx_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_tx_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
         """
         return pulumi.get(self, "min_tx_interval")
 
     @min_tx_interval.setter
-    def min_tx_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_tx_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_tx_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum transmission unit.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIpv6GatewayIp")
-    def peer_ipv6_gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ipv6_gateway_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 address of the client side of the VBR instance.
         """
         return pulumi.get(self, "peer_ipv6_gateway_ip")
 
     @peer_ipv6_gateway_ip.setter
-    def peer_ipv6_gateway_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ipv6_gateway_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ipv6_gateway_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="peeringIpv6SubnetMask")
-    def peering_ipv6_subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peering_ipv6_subnet_mask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
         """
         return pulumi.get(self, "peering_ipv6_subnet_mask")
 
     @peering_ipv6_subnet_mask.setter
-    def peering_ipv6_subnet_mask(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peering_ipv6_subnet_mask(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peering_ipv6_subnet_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sitelinkEnable")
-    def sitelink_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sitelink_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow inter-IDC communication. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "sitelink_enable")
 
     @sitelink_enable.setter
-    def sitelink_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sitelink_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sitelink_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the VBR. Valid values: `active`, `terminated`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vbrOwnerId")
-    def vbr_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vbr_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
         """
         return pulumi.get(self, "vbr_owner_id")
 
     @vbr_owner_id.setter
-    def vbr_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vbr_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vbr_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualBorderRouterName")
-    def virtual_border_router_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_border_router_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VBR instance.
         """
         return pulumi.get(self, "virtual_border_router_name")
 
     @virtual_border_router_name.setter
-    def virtual_border_router_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_border_router_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_border_router_name", value)
 
 
 @pulumi.input_type
 class _VirtualBorderRouterState:
     def __init__(__self__, *,
-                 associated_physical_connections: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 circuit_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_multiplier: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_rx_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_tx_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_ipv6_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sitelink_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vbr_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_border_router_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 associated_physical_connections: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_multiplier: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 local_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ipv6_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_rx_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_tx_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ipv6_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_ipv6_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sitelink_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vbr_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_border_router_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering VirtualBorderRouter resources.
 
@@ -518,19 +518,19 @@ class _VirtualBorderRouterState:
     @_builtins.property
     @pulumi.getter(name="associatedPhysicalConnections")
     @_utilities.deprecated("""Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.""")
-    def associated_physical_connections(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def associated_physical_connections(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
         """
         return pulumi.get(self, "associated_physical_connections")
 
     @associated_physical_connections.setter
-    def associated_physical_connections(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def associated_physical_connections(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "associated_physical_connections", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth of the VBR instance. Unit: Mbps. Valid values:
         - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
@@ -539,48 +539,48 @@ class _VirtualBorderRouterState:
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="circuitCode")
-    def circuit_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def circuit_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The circuit code provided by the operator for the physical connection.
         """
         return pulumi.get(self, "circuit_code")
 
     @circuit_code.setter
-    def circuit_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def circuit_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "circuit_code", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.263.0) The creation time of the VBR.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description information of the VBR.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="detectMultiplier")
-    def detect_multiplier(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def detect_multiplier(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Multiple of detection time.
         That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
@@ -589,235 +589,235 @@ class _VirtualBorderRouterState:
         return pulumi.get(self, "detect_multiplier")
 
     @detect_multiplier.setter
-    def detect_multiplier(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def detect_multiplier(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "detect_multiplier", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIpv6")
-    def enable_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether IPv6 is enabled.
         """
         return pulumi.get(self, "enable_ipv6")
 
     @enable_ipv6.setter
-    def enable_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="localGatewayIp")
-    def local_gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_gateway_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv4 address on the Alibaba Cloud side of the VBR instance.
         """
         return pulumi.get(self, "local_gateway_ip")
 
     @local_gateway_ip.setter
-    def local_gateway_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_gateway_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_gateway_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="localIpv6GatewayIp")
-    def local_ipv6_gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_ipv6_gateway_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 address on the Alibaba Cloud side of the VBR instance.
         """
         return pulumi.get(self, "local_ipv6_gateway_ip")
 
     @local_ipv6_gateway_ip.setter
-    def local_ipv6_gateway_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_ipv6_gateway_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_ipv6_gateway_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="minRxInterval")
-    def min_rx_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_rx_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
         """
         return pulumi.get(self, "min_rx_interval")
 
     @min_rx_interval.setter
-    def min_rx_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_rx_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_rx_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="minTxInterval")
-    def min_tx_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_tx_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
         """
         return pulumi.get(self, "min_tx_interval")
 
     @min_tx_interval.setter
-    def min_tx_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_tx_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_tx_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum transmission unit.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter(name="peerGatewayIp")
-    def peer_gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_gateway_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv4 address of the client side of the VBR instance.
         """
         return pulumi.get(self, "peer_gateway_ip")
 
     @peer_gateway_ip.setter
-    def peer_gateway_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_gateway_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_gateway_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIpv6GatewayIp")
-    def peer_ipv6_gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ipv6_gateway_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 address of the client side of the VBR instance.
         """
         return pulumi.get(self, "peer_ipv6_gateway_ip")
 
     @peer_ipv6_gateway_ip.setter
-    def peer_ipv6_gateway_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ipv6_gateway_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ipv6_gateway_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="peeringIpv6SubnetMask")
-    def peering_ipv6_subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peering_ipv6_subnet_mask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
         """
         return pulumi.get(self, "peering_ipv6_subnet_mask")
 
     @peering_ipv6_subnet_mask.setter
-    def peering_ipv6_subnet_mask(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peering_ipv6_subnet_mask(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peering_ipv6_subnet_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="peeringSubnetMask")
-    def peering_subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peering_subnet_mask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
         """
         return pulumi.get(self, "peering_subnet_mask")
 
     @peering_subnet_mask.setter
-    def peering_subnet_mask(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peering_subnet_mask(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peering_subnet_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="physicalConnectionId")
-    def physical_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def physical_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the physical connection to which the VBR belongs.
         """
         return pulumi.get(self, "physical_connection_id")
 
     @physical_connection_id.setter
-    def physical_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def physical_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "physical_connection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
         """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
-    def route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_table_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sitelinkEnable")
-    def sitelink_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sitelink_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow inter-IDC communication. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "sitelink_enable")
 
     @sitelink_enable.setter
-    def sitelink_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sitelink_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sitelink_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the VBR. Valid values: `active`, `terminated`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vbrOwnerId")
-    def vbr_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vbr_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
         """
         return pulumi.get(self, "vbr_owner_id")
 
     @vbr_owner_id.setter
-    def vbr_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vbr_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vbr_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualBorderRouterName")
-    def virtual_border_router_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_border_router_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VBR instance.
         """
         return pulumi.get(self, "virtual_border_router_name")
 
     @virtual_border_router_name.setter
-    def virtual_border_router_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_border_router_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_border_router_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
         """
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
-    def vlan_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan_id", value)
 
 
@@ -827,29 +827,29 @@ class VirtualBorderRouter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 associated_physical_connections: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 circuit_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_multiplier: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_rx_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_tx_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_ipv6_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sitelink_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vbr_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_border_router_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 associated_physical_connections: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_multiplier: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 local_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ipv6_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_rx_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_tx_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ipv6_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_ipv6_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sitelink_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vbr_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_border_router_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Express Connect Virtual Border Router resource.
@@ -881,7 +881,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
             peering_subnet_mask="255.255.255.252",
             physical_connection_id=default.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=default_integer["id"],
+            vlan_id=int(default_integer["id"]),
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
@@ -964,7 +964,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
             peering_subnet_mask="255.255.255.252",
             physical_connection_id=default.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=default_integer["id"],
+            vlan_id=int(default_integer["id"]),
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
@@ -996,29 +996,29 @@ class VirtualBorderRouter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 associated_physical_connections: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 circuit_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_multiplier: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_rx_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_tx_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 peer_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_ipv6_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sitelink_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vbr_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_border_router_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 associated_physical_connections: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_multiplier: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 local_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ipv6_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_rx_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_tx_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 peer_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ipv6_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_ipv6_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sitelink_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vbr_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_border_router_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1073,31 +1073,31 @@ class VirtualBorderRouter(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            associated_physical_connections: Optional[pulumi.Input[_builtins.str]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            circuit_code: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            detect_multiplier: Optional[pulumi.Input[_builtins.int]] = None,
-            enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-            local_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            local_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            min_rx_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            min_tx_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            mtu: Optional[pulumi.Input[_builtins.int]] = None,
-            peer_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            peering_ipv6_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-            peering_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-            physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sitelink_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vbr_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-            virtual_border_router_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vlan_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'VirtualBorderRouter':
+            associated_physical_connections: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            circuit_code: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            detect_multiplier: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            local_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            local_ipv6_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            min_rx_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            min_tx_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            peer_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_ipv6_gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_ipv6_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            physical_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sitelink_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vbr_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_border_router_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'VirtualBorderRouter':
         """
         Get an existing VirtualBorderRouter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

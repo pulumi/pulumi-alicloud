@@ -208,55 +208,55 @@ export interface GatewayState {
     /**
      * The description of the gateway.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gatewayClass` is required. Otherwise, `gatewayClass` will be ignored. If `paymentType` is set to `Subscription`, `gatewayClass` cannot be modified.
      */
-    gatewayClass?: pulumi.Input<string>;
+    gatewayClass?: pulumi.Input<string | undefined>;
     /**
      * The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
      */
-    gatewayName?: pulumi.Input<string>;
+    gatewayName?: pulumi.Input<string | undefined>;
     /**
      * The location of the gateway. Valid values: `Cloud`, `On_Premise`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
      */
-    publicNetworkBandwidth?: pulumi.Input<number>;
+    publicNetworkBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The detailed reason why you want to delete the gateway.
      */
-    reasonDetail?: pulumi.Input<string>;
+    reasonDetail?: pulumi.Input<string | undefined>;
     /**
      * The type of the reason why you want to delete the gateway.
      */
-    reasonType?: pulumi.Input<string>;
+    reasonType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to release the gateway after the subscription expires. Valid values:
      */
-    releaseAfterExpiration?: pulumi.Input<boolean>;
+    releaseAfterExpiration?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the Gateway.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the gateway cluster.
      */
-    storageBundleId?: pulumi.Input<string>;
+    storageBundleId?: pulumi.Input<string | undefined>;
     /**
      * The type of the gateway. Valid values: `File`, `Iscsi`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitchId` is required. Otherwise, `vswitchId` will be ignored.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -266,11 +266,11 @@ export interface GatewayArgs {
     /**
      * The description of the gateway.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gatewayClass` is required. Otherwise, `gatewayClass` will be ignored. If `paymentType` is set to `Subscription`, `gatewayClass` cannot be modified.
      */
-    gatewayClass?: pulumi.Input<string>;
+    gatewayClass?: pulumi.Input<string | undefined>;
     /**
      * The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
      */
@@ -282,23 +282,23 @@ export interface GatewayArgs {
     /**
      * The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** Since version 1.233.0, `paymentType` can be set to `Subscription`, but even after the gateway is created by Terraform, you still need to make purchases on the console.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
      */
-    publicNetworkBandwidth?: pulumi.Input<number>;
+    publicNetworkBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The detailed reason why you want to delete the gateway.
      */
-    reasonDetail?: pulumi.Input<string>;
+    reasonDetail?: pulumi.Input<string | undefined>;
     /**
      * The type of the reason why you want to delete the gateway.
      */
-    reasonType?: pulumi.Input<string>;
+    reasonType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to release the gateway after the subscription expires. Valid values:
      */
-    releaseAfterExpiration?: pulumi.Input<boolean>;
+    releaseAfterExpiration?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the gateway cluster.
      */
@@ -310,5 +310,5 @@ export interface GatewayArgs {
     /**
      * The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitchId` is required. Otherwise, `vswitchId` will be ignored.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

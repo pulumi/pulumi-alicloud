@@ -22,12 +22,12 @@ __all__ = ['V3LayerVersionArgs', 'V3LayerVersion']
 class V3LayerVersionArgs:
     def __init__(__self__, *,
                  layer_name: pulumi.Input[_builtins.str],
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 code: Optional[pulumi.Input['V3LayerVersionCodeArgs']] = None,
-                 compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 license: Optional[pulumi.Input[_builtins.str]] = None,
-                 public: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 code: pulumi.Input[Optional['V3LayerVersionCodeArgs']] = None,
+                 compatible_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
+                 public: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a V3LayerVersion resource.
 
@@ -67,91 +67,91 @@ class V3LayerVersionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access permission of the layer, 1: public, 0: private, default is private
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input['V3LayerVersionCodeArgs']]:
+    def code(self) -> pulumi.Input[Optional['V3LayerVersionCodeArgs']]:
         """
         Layer code configuration See `code` below.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input['V3LayerVersionCodeArgs']]):
+    def code(self, value: pulumi.Input[Optional['V3LayerVersionCodeArgs']]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibleRuntimes")
-    def compatible_runtimes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def compatible_runtimes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of runtime environments supported by the layer
         """
         return pulumi.get(self, "compatible_runtimes")
 
     @compatible_runtimes.setter
-    def compatible_runtimes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def compatible_runtimes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "compatible_runtimes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the version
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def license(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Layer License Agreement
         """
         return pulumi.get(self, "license")
 
     @license.setter
-    def license(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license", value)
 
     @_builtins.property
     @pulumi.getter
-    def public(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
         """
         return pulumi.get(self, "public")
 
     @public.setter
-    def public(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public", value)
 
 
 @pulumi.input_type
 class _V3LayerVersionState:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 code: Optional[pulumi.Input['V3LayerVersionCodeArgs']] = None,
-                 code_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 layer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 layer_version_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 license: Optional[pulumi.Input[_builtins.str]] = None,
-                 public: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 code: pulumi.Input[Optional['V3LayerVersionCodeArgs']] = None,
+                 code_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 compatible_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 layer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 layer_version_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
+                 public: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V3LayerVersion resources.
 
@@ -192,134 +192,134 @@ class _V3LayerVersionState:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access permission of the layer, 1: public, 0: private, default is private
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input['V3LayerVersionCodeArgs']]:
+    def code(self) -> pulumi.Input[Optional['V3LayerVersionCodeArgs']]:
         """
         Layer code configuration See `code` below.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input['V3LayerVersionCodeArgs']]):
+    def code(self, value: pulumi.Input[Optional['V3LayerVersionCodeArgs']]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter(name="codeSize")
-    def code_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.234.0) The code package size of the layer, in bytes.
         """
         return pulumi.get(self, "code_size")
 
     @code_size.setter
-    def code_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_size", value)
 
     @_builtins.property
     @pulumi.getter(name="compatibleRuntimes")
-    def compatible_runtimes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def compatible_runtimes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of runtime environments supported by the layer
         """
         return pulumi.get(self, "compatible_runtimes")
 
     @compatible_runtimes.setter
-    def compatible_runtimes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def compatible_runtimes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "compatible_runtimes", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the version
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="layerName")
-    def layer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def layer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the layer
         """
         return pulumi.get(self, "layer_name")
 
     @layer_name.setter
-    def layer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def layer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "layer_name", value)
 
     @_builtins.property
     @pulumi.getter(name="layerVersionArn")
-    def layer_version_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def layer_version_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
         """
         return pulumi.get(self, "layer_version_arn")
 
     @layer_version_arn.setter
-    def layer_version_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def layer_version_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "layer_version_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def license(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Layer License Agreement
         """
         return pulumi.get(self, "license")
 
     @license.setter
-    def license(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license", value)
 
     @_builtins.property
     @pulumi.getter
-    def public(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
         """
         return pulumi.get(self, "public")
 
     @public.setter
-    def public(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the layer
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -329,13 +329,13 @@ class V3LayerVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 code: Optional[pulumi.Input[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict']]] = None,
-                 compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 layer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 license: Optional[pulumi.Input[_builtins.str]] = None,
-                 public: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 code: pulumi.Input[Optional[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict']]] = None,
+                 compatible_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 layer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
+                 public: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a FCV3 Layer Version resource.
@@ -452,13 +452,13 @@ class V3LayerVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 code: Optional[pulumi.Input[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict']]] = None,
-                 compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 layer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 license: Optional[pulumi.Input[_builtins.str]] = None,
-                 public: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 code: pulumi.Input[Optional[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict']]] = None,
+                 compatible_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 layer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
+                 public: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -491,17 +491,17 @@ class V3LayerVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl: Optional[pulumi.Input[_builtins.str]] = None,
-            code: Optional[pulumi.Input[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict']]] = None,
-            code_size: Optional[pulumi.Input[_builtins.str]] = None,
-            compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            layer_name: Optional[pulumi.Input[_builtins.str]] = None,
-            layer_version_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            license: Optional[pulumi.Input[_builtins.str]] = None,
-            public: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'V3LayerVersion':
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            code: pulumi.Input[Optional[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict']]] = None,
+            code_size: pulumi.Input[Optional[_builtins.str]] = None,
+            compatible_runtimes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            layer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            layer_version_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            license: pulumi.Input[Optional[_builtins.str]] = None,
+            public: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'V3LayerVersion':
         """
         Get an existing V3LayerVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

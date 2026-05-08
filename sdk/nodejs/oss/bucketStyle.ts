@@ -146,23 +146,23 @@ export interface BucketStyleState {
     /**
      * Storage space to which the picture style belongs
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Style category, valid values: image, document, video.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The Image style content can contain single or multiple image processing parameters.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Image Style Creation Time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Image Style Name
      */
-    styleName?: pulumi.Input<string>;
+    styleName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -176,7 +176,7 @@ export interface BucketStyleArgs {
     /**
      * Style category, valid values: image, document, video.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The Image style content can contain single or multiple image processing parameters.
      */

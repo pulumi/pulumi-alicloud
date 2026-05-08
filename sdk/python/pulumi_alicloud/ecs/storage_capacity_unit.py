@@ -20,11 +20,11 @@ __all__ = ['StorageCapacityUnitArgs', 'StorageCapacityUnit']
 class StorageCapacityUnitArgs:
     def __init__(__self__, *,
                  capacity: pulumi.Input[_builtins.int],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_capacity_unit_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_capacity_unit_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StorageCapacityUnit resource.
 
@@ -63,19 +63,19 @@ class StorageCapacityUnitArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Storage Capacity Unit. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The validity period of the Storage Capacity Unit. Default value: `1`.
         * When PeriodUnit is set to Month, Valid values: `1`, `2`, `3`, `6`.
@@ -84,56 +84,56 @@ class StorageCapacityUnitArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the validity period of the Storage Capacity Unit. Default value: `Month`. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the Storage Capacity Unit takes effect. It cannot be earlier than or more than six months later than the time when the Storage Capacity Unit is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. **NOTE:** This parameter is empty by default. The Storage Capacity Unit immediately takes effect after it is created.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="storageCapacityUnitName")
-    def storage_capacity_unit_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_capacity_unit_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Storage Capacity Unit.
         """
         return pulumi.get(self, "storage_capacity_unit_name")
 
     @storage_capacity_unit_name.setter
-    def storage_capacity_unit_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_capacity_unit_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_capacity_unit_name", value)
 
 
 @pulumi.input_type
 class _StorageCapacityUnitState:
     def __init__(__self__, *,
-                 capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_capacity_unit_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_capacity_unit_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageCapacityUnit resources.
 
@@ -164,31 +164,31 @@ class _StorageCapacityUnitState:
 
     @_builtins.property
     @pulumi.getter
-    def capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The capacity of the Storage Capacity Unit. Unit: GiB. Valid values: `20`, `40`, `100`, `200`, `500`, `1024`, `2048`, `5120`, `10240`, `20480`, and `51200`.
         """
         return pulumi.get(self, "capacity")
 
     @capacity.setter
-    def capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "capacity", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Storage Capacity Unit. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The validity period of the Storage Capacity Unit. Default value: `1`.
         * When PeriodUnit is set to Month, Valid values: `1`, `2`, `3`, `6`.
@@ -197,55 +197,55 @@ class _StorageCapacityUnitState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the validity period of the Storage Capacity Unit. Default value: `Month`. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the Storage Capacity Unit takes effect. It cannot be earlier than or more than six months later than the time when the Storage Capacity Unit is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. **NOTE:** This parameter is empty by default. The Storage Capacity Unit immediately takes effect after it is created.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of Storage Capacity Unit.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageCapacityUnitName")
-    def storage_capacity_unit_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_capacity_unit_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Storage Capacity Unit.
         """
         return pulumi.get(self, "storage_capacity_unit_name")
 
     @storage_capacity_unit_name.setter
-    def storage_capacity_unit_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_capacity_unit_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_capacity_unit_name", value)
 
 
@@ -255,12 +255,12 @@ class StorageCapacityUnit(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_capacity_unit_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_capacity_unit_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Storage Capacity Unit resource.
@@ -358,12 +358,12 @@ class StorageCapacityUnit(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_capacity_unit_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_capacity_unit_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -392,13 +392,13 @@ class StorageCapacityUnit(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_capacity_unit_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'StorageCapacityUnit':
+            capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_capacity_unit_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'StorageCapacityUnit':
         """
         Get an existing StorageCapacityUnit resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

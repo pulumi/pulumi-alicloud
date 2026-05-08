@@ -25,17 +25,17 @@ class PcaCertificateArgs:
                  organization_unit: pulumi.Input[_builtins.str],
                  state: pulumi.Input[_builtins.str],
                  years: pulumi.Input[_builtins.int],
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 crl_day: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_crl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parent_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_len_constraint: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 crl_day: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_crl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extended_key_usages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_len_constraint: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PcaCertificate resource.
 
@@ -186,7 +186,7 @@ class PcaCertificateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
         - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
@@ -204,12 +204,12 @@ class PcaCertificateArgs:
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="aliasName")
-    def alias_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A custom alias for the certificate, used to define a user-friendly name.
 
@@ -218,12 +218,12 @@ class PcaCertificateArgs:
         return pulumi.get(self, "alias_name")
 
     @alias_name.setter
-    def alias_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias_name", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateType")
-    def certificate_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the CA certificate. Default value: `ROOT`. Valid values:
         - `ROOT`: A root CA certificate.
@@ -232,12 +232,12 @@ class PcaCertificateArgs:
         return pulumi.get(self, "certificate_type")
 
     @certificate_type.setter
-    def certificate_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_type", value)
 
     @_builtins.property
     @pulumi.getter(name="countryCode")
-    def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def country_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
         For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
@@ -245,24 +245,24 @@ class PcaCertificateArgs:
         return pulumi.get(self, "country_code")
 
     @country_code.setter
-    def country_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def country_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "country_code", value)
 
     @_builtins.property
     @pulumi.getter(name="crlDay")
-    def crl_day(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def crl_day(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval (in days) for updating the Certificate Revocation List (CRL).
         """
         return pulumi.get(self, "crl_day")
 
     @crl_day.setter
-    def crl_day(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def crl_day(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "crl_day", value)
 
     @_builtins.property
     @pulumi.getter(name="enableCrl")
-    def enable_crl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_crl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable CRL.
 
@@ -271,12 +271,12 @@ class PcaCertificateArgs:
         return pulumi.get(self, "enable_crl")
 
     @enable_crl.setter
-    def enable_crl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_crl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_crl", value)
 
     @_builtins.property
     @pulumi.getter(name="extendedKeyUsages")
-    def extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def extended_key_usages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Extended attributes of the certificate, used to define extended key usages.  
 
@@ -285,24 +285,24 @@ class PcaCertificateArgs:
         return pulumi.get(self, "extended_key_usages")
 
     @extended_key_usages.setter
-    def extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def extended_key_usages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extended_key_usages", value)
 
     @_builtins.property
     @pulumi.getter(name="parentIdentifier")
-    def parent_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Parent node identifier.
         """
         return pulumi.get(self, "parent_identifier")
 
     @parent_identifier.setter
-    def parent_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="pathLenConstraint")
-    def path_len_constraint(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def path_len_constraint(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum depth of subordinate CA levels allowed under this CA.
 
@@ -311,55 +311,55 @@ class PcaCertificateArgs:
         return pulumi.get(self, "path_len_constraint")
 
     @path_len_constraint.setter
-    def path_len_constraint(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def path_len_constraint(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "path_len_constraint", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A resource property field representing the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Tags
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _PcaCertificateState:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 common_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 crl_day: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_crl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 locality: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_len_constraint: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 years: Optional[pulumi.Input[_builtins.int]] = None):
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 crl_day: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_crl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extended_key_usages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 locality: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_len_constraint: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 years: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering PcaCertificate resources.
 
@@ -445,7 +445,7 @@ class _PcaCertificateState:
 
     @_builtins.property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key algorithm type of the root CA certificate. The key algorithm is expressed in the format `_`. Valid values:
         - `RSA_1024`: Corresponds to the signature algorithm Sha256WithRSA.
@@ -463,12 +463,12 @@ class _PcaCertificateState:
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="aliasName")
-    def alias_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A custom alias for the certificate, used to define a user-friendly name.
 
@@ -477,12 +477,12 @@ class _PcaCertificateState:
         return pulumi.get(self, "alias_name")
 
     @alias_name.setter
-    def alias_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias_name", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateType")
-    def certificate_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the CA certificate. Default value: `ROOT`. Valid values:
         - `ROOT`: A root CA certificate.
@@ -491,24 +491,24 @@ class _PcaCertificateState:
         return pulumi.get(self, "certificate_type")
 
     @certificate_type.setter
-    def certificate_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_type", value)
 
     @_builtins.property
     @pulumi.getter(name="commonName")
-    def common_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def common_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
         """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
-    def common_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def common_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "common_name", value)
 
     @_builtins.property
     @pulumi.getter(name="countryCode")
-    def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def country_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
         For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
@@ -516,24 +516,24 @@ class _PcaCertificateState:
         return pulumi.get(self, "country_code")
 
     @country_code.setter
-    def country_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def country_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "country_code", value)
 
     @_builtins.property
     @pulumi.getter(name="crlDay")
-    def crl_day(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def crl_day(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval (in days) for updating the Certificate Revocation List (CRL).
         """
         return pulumi.get(self, "crl_day")
 
     @crl_day.setter
-    def crl_day(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def crl_day(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "crl_day", value)
 
     @_builtins.property
     @pulumi.getter(name="enableCrl")
-    def enable_crl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_crl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable CRL.
 
@@ -542,12 +542,12 @@ class _PcaCertificateState:
         return pulumi.get(self, "enable_crl")
 
     @enable_crl.setter
-    def enable_crl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_crl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_crl", value)
 
     @_builtins.property
     @pulumi.getter(name="extendedKeyUsages")
-    def extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def extended_key_usages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Extended attributes of the certificate, used to define extended key usages.  
 
@@ -556,60 +556,60 @@ class _PcaCertificateState:
         return pulumi.get(self, "extended_key_usages")
 
     @extended_key_usages.setter
-    def extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def extended_key_usages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extended_key_usages", value)
 
     @_builtins.property
     @pulumi.getter
-    def locality(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def locality(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the city where the organization is located.
         """
         return pulumi.get(self, "locality")
 
     @locality.setter
-    def locality(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def locality(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "locality", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the organization associated with the CA certificate.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationUnit")
-    def organization_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the department or branch within the organization
         """
         return pulumi.get(self, "organization_unit")
 
     @organization_unit.setter
-    def organization_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="parentIdentifier")
-    def parent_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Parent node identifier.
         """
         return pulumi.get(self, "parent_identifier")
 
     @parent_identifier.setter
-    def parent_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="pathLenConstraint")
-    def path_len_constraint(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def path_len_constraint(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum depth of subordinate CA levels allowed under this CA.
 
@@ -618,60 +618,60 @@ class _PcaCertificateState:
         return pulumi.get(self, "path_len_constraint")
 
     @path_len_constraint.setter
-    def path_len_constraint(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def path_len_constraint(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "path_len_constraint", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A resource property field representing the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the province, municipality directly under the central government, or autonomous region where the organization is located
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current CA status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Tags
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def years(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def years(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The validity period of the root CA certificate, in years.
 
@@ -680,7 +680,7 @@ class _PcaCertificateState:
         return pulumi.get(self, "years")
 
     @years.setter
-    def years(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def years(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "years", value)
 
 
@@ -695,23 +695,23 @@ class PcaCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 common_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 crl_day: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_crl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 locality: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_len_constraint: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 years: Optional[pulumi.Input[_builtins.int]] = None,
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 crl_day: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_crl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extended_key_usages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 locality: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_len_constraint: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 years: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a SSL Certificates Pca Certificate resource.
@@ -852,23 +852,23 @@ class PcaCertificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 common_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 crl_day: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_crl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 locality: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_len_constraint: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 years: Optional[pulumi.Input[_builtins.int]] = None,
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 crl_day: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_crl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extended_key_usages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 locality: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_len_constraint: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 years: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         pulumi.log.warn("""PcaCertificate is deprecated: alicloud.sslcertificatesservice/pcacertificate.PcaCertificate has been deprecated in favor of alicloud.sslcertificatesservicepca/certificate.Certificate""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -919,24 +919,24 @@ class PcaCertificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate_type: Optional[pulumi.Input[_builtins.str]] = None,
-            common_name: Optional[pulumi.Input[_builtins.str]] = None,
-            country_code: Optional[pulumi.Input[_builtins.str]] = None,
-            crl_day: Optional[pulumi.Input[_builtins.int]] = None,
-            enable_crl: Optional[pulumi.Input[_builtins.bool]] = None,
-            extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            locality: Optional[pulumi.Input[_builtins.str]] = None,
-            organization: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            path_len_constraint: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            years: Optional[pulumi.Input[_builtins.int]] = None) -> 'PcaCertificate':
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_type: pulumi.Input[Optional[_builtins.str]] = None,
+            common_name: pulumi.Input[Optional[_builtins.str]] = None,
+            country_code: pulumi.Input[Optional[_builtins.str]] = None,
+            crl_day: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_crl: pulumi.Input[Optional[_builtins.bool]] = None,
+            extended_key_usages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            locality: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            path_len_constraint: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            years: pulumi.Input[Optional[_builtins.int]] = None) -> 'PcaCertificate':
         """
         Get an existing PcaCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

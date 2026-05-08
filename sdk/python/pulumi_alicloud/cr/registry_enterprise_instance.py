@@ -24,19 +24,19 @@ class RegistryEnterpriseInstanceArgs:
                  instance_name: pulumi.Input[_builtins.str],
                  instance_type: pulumi.Input[_builtins.str],
                  payment_type: pulumi.Input[_builtins.str],
-                 custom_oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_scanner: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 namespace_quota: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_quota: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_quota: Optional[pulumi.Input[_builtins.int]] = None):
+                 custom_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_scanner: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 namespace_quota: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_quota: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_quota: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseInstance resource.
 
@@ -163,7 +163,7 @@ class RegistryEnterpriseInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="customOssBucket")
-    def custom_oss_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_oss_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom OSS Bucket name
 
@@ -172,24 +172,24 @@ class RegistryEnterpriseInstanceArgs:
         return pulumi.get(self, "custom_oss_bucket")
 
     @custom_oss_bucket.setter
-    def custom_oss_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_oss_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_oss_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultOssBucket")
-    def default_oss_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_oss_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to use the default OSS Bucket. Value:
         """
         return pulumi.get(self, "default_oss_bucket")
 
     @default_oss_bucket.setter
-    def default_oss_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_oss_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_oss_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="imageScanner")
-    def image_scanner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_scanner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security scan engine used by the Enterprise Edition of Container Image Service. Value:
         - `ACR`: Uses the Trivy scan engine provided by default.
@@ -200,36 +200,36 @@ class RegistryEnterpriseInstanceArgs:
         return pulumi.get(self, "image_scanner")
 
     @image_scanner.setter
-    def image_scanner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_scanner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_scanner", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
-    def kms_encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceQuota")
-    def namespace_quota(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def namespace_quota(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of additional namespaces to purchase. The value is an integral multiple of `5`.
 
@@ -238,24 +238,24 @@ class RegistryEnterpriseInstanceArgs:
         return pulumi.get(self, "namespace_quota")
 
     @namespace_quota.setter
-    def namespace_quota(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def namespace_quota(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "namespace_quota", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
 
@@ -267,12 +267,12 @@ class RegistryEnterpriseInstanceArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic renewal cycle, in months.
 
@@ -281,12 +281,12 @@ class RegistryEnterpriseInstanceArgs:
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal status, value:
         - AutoRenewal: automatic renewal.
@@ -297,12 +297,12 @@ class RegistryEnterpriseInstanceArgs:
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="repoQuota")
-    def repo_quota(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def repo_quota(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of additional repositories to purchase. The value is an integral multiple of `1000`.
 
@@ -311,24 +311,24 @@ class RegistryEnterpriseInstanceArgs:
         return pulumi.get(self, "repo_quota")
 
     @repo_quota.setter
-    def repo_quota(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def repo_quota(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "repo_quota", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcQuota")
-    def vpc_quota(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vpc_quota(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of VPC access controls.
 
@@ -340,35 +340,35 @@ class RegistryEnterpriseInstanceArgs:
         return pulumi.get(self, "vpc_quota")
 
     @vpc_quota.setter
-    def vpc_quota(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vpc_quota(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vpc_quota", value)
 
 
 @pulumi.input_type
 class _RegistryEnterpriseInstanceState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_scanner: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointArgs']]]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 namespace_quota: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_quota: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_quota: Optional[pulumi.Input[_builtins.int]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_scanner: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointArgs']]]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 namespace_quota: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_quota: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_quota: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseInstance resources.
 
@@ -477,32 +477,32 @@ class _RegistryEnterpriseInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="createdTime")
     @_utilities.deprecated("""Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.""")
-    def created_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
         """
         return pulumi.get(self, "created_time")
 
     @created_time.setter
-    def created_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customOssBucket")
-    def custom_oss_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_oss_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom OSS Bucket name
 
@@ -511,36 +511,36 @@ class _RegistryEnterpriseInstanceState:
         return pulumi.get(self, "custom_oss_bucket")
 
     @custom_oss_bucket.setter
-    def custom_oss_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_oss_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_oss_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultOssBucket")
-    def default_oss_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_oss_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to use the default OSS Bucket. Value:
         """
         return pulumi.get(self, "default_oss_bucket")
 
     @default_oss_bucket.setter
-    def default_oss_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_oss_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_oss_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expiration Time
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="imageScanner")
-    def image_scanner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_scanner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security scan engine used by the Enterprise Edition of Container Image Service. Value:
         - `ACR`: Uses the Trivy scan engine provided by default.
@@ -551,36 +551,36 @@ class _RegistryEnterpriseInstanceState:
         return pulumi.get(self, "image_scanner")
 
     @image_scanner.setter
-    def image_scanner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_scanner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_scanner", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceEndpoints")
-    def instance_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointArgs']]]]:
+    def instance_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointArgs']]]]:
         """
         (Available since v1.240.0) Instance Network Access Endpoint List
         """
         return pulumi.get(self, "instance_endpoints")
 
     @instance_endpoints.setter
-    def instance_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointArgs']]]]):
+    def instance_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointArgs']]]]):
         pulumi.set(self, "instance_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         InstanceName
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
         - `Basic`: Basic instance
@@ -592,36 +592,36 @@ class _RegistryEnterpriseInstanceState:
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
-    def kms_encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceQuota")
-    def namespace_quota(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def namespace_quota(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of additional namespaces to purchase. The value is an integral multiple of `5`.
 
@@ -630,24 +630,24 @@ class _RegistryEnterpriseInstanceState:
         return pulumi.get(self, "namespace_quota")
 
     @namespace_quota.setter
-    def namespace_quota(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def namespace_quota(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "namespace_quota", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Payment type, value:
         - Subscription: Prepaid.
@@ -655,12 +655,12 @@ class _RegistryEnterpriseInstanceState:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
 
@@ -672,24 +672,24 @@ class _RegistryEnterpriseInstanceState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RegionId
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic renewal cycle, in months.
 
@@ -698,12 +698,12 @@ class _RegistryEnterpriseInstanceState:
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal status, value:
         - AutoRenewal: automatic renewal.
@@ -714,12 +714,12 @@ class _RegistryEnterpriseInstanceState:
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="repoQuota")
-    def repo_quota(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def repo_quota(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of additional repositories to purchase. The value is an integral multiple of `1000`.
 
@@ -728,36 +728,36 @@ class _RegistryEnterpriseInstanceState:
         return pulumi.get(self, "repo_quota")
 
     @repo_quota.setter
-    def repo_quota(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def repo_quota(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "repo_quota", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance Status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcQuota")
-    def vpc_quota(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vpc_quota(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of VPC access controls.
 
@@ -769,7 +769,7 @@ class _RegistryEnterpriseInstanceState:
         return pulumi.get(self, "vpc_quota")
 
     @vpc_quota.setter
-    def vpc_quota(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vpc_quota(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vpc_quota", value)
 
 
@@ -779,22 +779,22 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_scanner: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 namespace_quota: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_quota: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_quota: Optional[pulumi.Input[_builtins.int]] = None,
+                 custom_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_scanner: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 namespace_quota: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_quota: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_quota: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a CR Instance resource.
@@ -958,22 +958,22 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_scanner: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 namespace_quota: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_quota: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_quota: Optional[pulumi.Input[_builtins.int]] = None,
+                 custom_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_scanner: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 namespace_quota: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_quota: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_quota: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1023,28 +1023,28 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            created_time: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            default_oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            image_scanner: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegistryEnterpriseInstanceInstanceEndpointArgs', 'RegistryEnterpriseInstanceInstanceEndpointArgsDict']]]]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            namespace_quota: Optional[pulumi.Input[_builtins.int]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_quota: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_quota: Optional[pulumi.Input[_builtins.int]] = None) -> 'RegistryEnterpriseInstance':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            created_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            default_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            image_scanner: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegistryEnterpriseInstanceInstanceEndpointArgs', 'RegistryEnterpriseInstanceInstanceEndpointArgsDict']]]]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            namespace_quota: pulumi.Input[Optional[_builtins.int]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_quota: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_quota: pulumi.Input[Optional[_builtins.int]] = None) -> 'RegistryEnterpriseInstance':
         """
         Get an existing RegistryEnterpriseInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

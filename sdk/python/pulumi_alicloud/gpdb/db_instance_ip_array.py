@@ -22,8 +22,8 @@ class DbInstanceIpArrayArgs:
                  db_instance_id: pulumi.Input[_builtins.str],
                  db_instance_ip_array_name: pulumi.Input[_builtins.str],
                  security_ip_lists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 db_instance_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 db_instance_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbInstanceIpArray resource.
 
@@ -97,19 +97,19 @@ class DbInstanceIpArrayArgs:
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceIpArrayAttribute")
-    def db_instance_ip_array_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_ip_array_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default is empty. To distinguish between different attribute values, the console does not display groups with the 'hidden' attribute.
         """
         return pulumi.get(self, "db_instance_ip_array_attribute")
 
     @db_instance_ip_array_attribute.setter
-    def db_instance_ip_array_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_ip_array_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_ip_array_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyMode")
-    def modify_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method of modification. Valid values:
 
@@ -120,18 +120,18 @@ class DbInstanceIpArrayArgs:
         return pulumi.get(self, "modify_mode")
 
     @modify_mode.setter
-    def modify_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_mode", value)
 
 
 @pulumi.input_type
 class _DbInstanceIpArrayState:
     def __init__(__self__, *,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DbInstanceIpArray resources.
 
@@ -165,7 +165,7 @@ class _DbInstanceIpArrayState:
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID.
 
@@ -174,24 +174,24 @@ class _DbInstanceIpArrayState:
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceIpArrayAttribute")
-    def db_instance_ip_array_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_ip_array_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default is empty. To distinguish between different attribute values, the console does not display groups with the 'hidden' attribute.
         """
         return pulumi.get(self, "db_instance_ip_array_attribute")
 
     @db_instance_ip_array_attribute.setter
-    def db_instance_ip_array_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_ip_array_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_ip_array_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceIpArrayName")
-    def db_instance_ip_array_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_ip_array_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the IP address whitelist. If you do not specify this parameter, the default whitelist is queried.
 
@@ -200,12 +200,12 @@ class _DbInstanceIpArrayState:
         return pulumi.get(self, "db_instance_ip_array_name")
 
     @db_instance_ip_array_name.setter
-    def db_instance_ip_array_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_ip_array_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_ip_array_name", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyMode")
-    def modify_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method of modification. Valid values:
 
@@ -216,12 +216,12 @@ class _DbInstanceIpArrayState:
         return pulumi.get(self, "modify_mode")
 
     @modify_mode.setter
-    def modify_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpLists")
-    def security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IP address whitelist contains a maximum of 1000 IP addresses separated by commas in the following three formats:
         - 0.0.0.0/0
@@ -231,7 +231,7 @@ class _DbInstanceIpArrayState:
         return pulumi.get(self, "security_ip_lists")
 
     @security_ip_lists.setter
-    def security_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_ip_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_ip_lists", value)
 
 
@@ -241,11 +241,11 @@ class DbInstanceIpArray(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a GPDB DB Instance IP Array resource.
@@ -419,11 +419,11 @@ class DbInstanceIpArray(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -454,11 +454,11 @@ class DbInstanceIpArray(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DbInstanceIpArray':
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DbInstanceIpArray':
         """
         Get an existing DbInstanceIpArray resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

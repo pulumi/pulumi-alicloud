@@ -132,23 +132,23 @@ export interface UserState {
     /**
      * The email of the user email.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
      */
-    endUserId?: pulumi.Input<string>;
+    endUserId?: pulumi.Input<string | undefined>;
     /**
      * The password of the user password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The phone of the mobile phone number.
      */
-    phone?: pulumi.Input<string>;
+    phone?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Unlocked`, `Locked`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -166,13 +166,13 @@ export interface UserArgs {
     /**
      * The password of the user password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The phone of the mobile phone number.
      */
-    phone?: pulumi.Input<string>;
+    phone?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Unlocked`, `Locked`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

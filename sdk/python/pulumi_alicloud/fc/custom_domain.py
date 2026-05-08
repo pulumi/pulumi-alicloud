@@ -23,8 +23,8 @@ class CustomDomainArgs:
     def __init__(__self__, *,
                  domain_name: pulumi.Input[_builtins.str],
                  protocol: pulumi.Input[_builtins.str],
-                 cert_config: Optional[pulumi.Input['CustomDomainCertConfigArgs']] = None,
-                 route_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]] = None):
+                 cert_config: pulumi.Input[Optional['CustomDomainCertConfigArgs']] = None,
+                 route_configs: pulumi.Input[Optional[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]] = None):
         """
         The set of arguments for constructing a CustomDomain resource.
 
@@ -66,40 +66,40 @@ class CustomDomainArgs:
 
     @_builtins.property
     @pulumi.getter(name="certConfig")
-    def cert_config(self) -> Optional[pulumi.Input['CustomDomainCertConfigArgs']]:
+    def cert_config(self) -> pulumi.Input[Optional['CustomDomainCertConfigArgs']]:
         """
         The configuration of HTTPS certificate.See `cert_config` below.
         """
         return pulumi.get(self, "cert_config")
 
     @cert_config.setter
-    def cert_config(self, value: Optional[pulumi.Input['CustomDomainCertConfigArgs']]):
+    def cert_config(self, value: pulumi.Input[Optional['CustomDomainCertConfigArgs']]):
         pulumi.set(self, "cert_config", value)
 
     @_builtins.property
     @pulumi.getter(name="routeConfigs")
-    def route_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]]:
+    def route_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]]:
         """
         The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         """
         return pulumi.get(self, "route_configs")
 
     @route_configs.setter
-    def route_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]]):
+    def route_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]]):
         pulumi.set(self, "route_configs", value)
 
 
 @pulumi.input_type
 class _CustomDomainState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_config: Optional[pulumi.Input['CustomDomainCertConfigArgs']] = None,
-                 created_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_config: pulumi.Input[Optional['CustomDomainCertConfigArgs']] = None,
+                 created_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_configs: pulumi.Input[Optional[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering CustomDomain resources.
 
@@ -131,98 +131,98 @@ class _CustomDomainState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account id.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="apiVersion")
-    def api_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The api version of Function Compute.
         """
         return pulumi.get(self, "api_version")
 
     @api_version.setter
-    def api_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_version", value)
 
     @_builtins.property
     @pulumi.getter(name="certConfig")
-    def cert_config(self) -> Optional[pulumi.Input['CustomDomainCertConfigArgs']]:
+    def cert_config(self) -> pulumi.Input[Optional['CustomDomainCertConfigArgs']]:
         """
         The configuration of HTTPS certificate.See `cert_config` below.
         """
         return pulumi.get(self, "cert_config")
 
     @cert_config.setter
-    def cert_config(self, value: Optional[pulumi.Input['CustomDomainCertConfigArgs']]):
+    def cert_config(self, value: pulumi.Input[Optional['CustomDomainCertConfigArgs']]):
         pulumi.set(self, "cert_config", value)
 
     @_builtins.property
     @pulumi.getter(name="createdTime")
-    def created_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date this resource was created.
         """
         return pulumi.get(self, "created_time")
 
     @created_time.setter
-    def created_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_time", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The custom domain name. For example, "example.com".
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date this resource was last modified.
         """
         return pulumi.get(self, "last_modified_time")
 
     @last_modified_time.setter
-    def last_modified_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol, `HTTP` or `HTTP,HTTPS`.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="routeConfigs")
-    def route_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]]:
+    def route_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]]:
         """
         The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         """
         return pulumi.get(self, "route_configs")
 
     @route_configs.setter
-    def route_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]]):
+    def route_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]]):
         pulumi.set(self, "route_configs", value)
 
 
@@ -232,10 +232,10 @@ class CustomDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cert_config: Optional[pulumi.Input[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict']]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict']]]]] = None,
+                 cert_config: pulumi.Input[Optional[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict']]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides an Alicloud Function Compute custom domain resource.
@@ -483,10 +483,10 @@ class CustomDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cert_config: Optional[pulumi.Input[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict']]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict']]]]] = None,
+                 cert_config: pulumi.Input[Optional[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict']]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -518,14 +518,14 @@ class CustomDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            api_version: Optional[pulumi.Input[_builtins.str]] = None,
-            cert_config: Optional[pulumi.Input[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict']]] = None,
-            created_time: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            route_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict']]]]] = None) -> 'CustomDomain':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            api_version: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_config: pulumi.Input[Optional[Union['CustomDomainCertConfigArgs', 'CustomDomainCertConfigArgsDict']]] = None,
+            created_time: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            route_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainRouteConfigArgs', 'CustomDomainRouteConfigArgsDict']]]]] = None) -> 'CustomDomain':
         """
         Get an existing CustomDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

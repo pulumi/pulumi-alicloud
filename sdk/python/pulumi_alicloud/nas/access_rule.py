@@ -20,12 +20,12 @@ __all__ = ['AccessRuleArgs', 'AccessRule']
 class AccessRuleArgs:
     def __init__(__self__, *,
                  access_group_name: pulumi.Input[_builtins.str],
-                 file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 rw_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_access_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 rw_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_access_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessRule resource.
 
@@ -65,89 +65,89 @@ class AccessRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="fileSystemType")
-    def file_system_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         filesystem type. include standard, extreme.
         """
         return pulumi.get(self, "file_system_type")
 
     @file_system_type.setter
-    def file_system_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6SourceCidrIp")
-    def ipv6_source_cidr_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_source_cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ipv6SourceCidrIp.
         """
         return pulumi.get(self, "ipv6_source_cidr_ip")
 
     @ipv6_source_cidr_ip.setter
-    def ipv6_source_cidr_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_source_cidr_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_source_cidr_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Priority.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="rwAccessType")
-    def rw_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rw_access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RWAccess.
         """
         return pulumi.get(self, "rw_access_type")
 
     @rw_access_type.setter
-    def rw_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rw_access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rw_access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceCidrIp")
-    def source_cidr_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SourceCidrIp.
         """
         return pulumi.get(self, "source_cidr_ip")
 
     @source_cidr_ip.setter
-    def source_cidr_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_cidr_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_cidr_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="userAccessType")
-    def user_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UserAccess.
         """
         return pulumi.get(self, "user_access_type")
 
     @user_access_type.setter
-    def user_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_access_type", value)
 
 
 @pulumi.input_type
 class _AccessRuleState:
     def __init__(__self__, *,
-                 access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rw_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_access_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rw_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_access_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessRule resources.
 
@@ -182,110 +182,110 @@ class _AccessRuleState:
 
     @_builtins.property
     @pulumi.getter(name="accessGroupName")
-    def access_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AccessGroupName.
         """
         return pulumi.get(self, "access_group_name")
 
     @access_group_name.setter
-    def access_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="accessRuleId")
-    def access_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource.
         """
         return pulumi.get(self, "access_rule_id")
 
     @access_rule_id.setter
-    def access_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSystemType")
-    def file_system_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         filesystem type. include standard, extreme.
         """
         return pulumi.get(self, "file_system_type")
 
     @file_system_type.setter
-    def file_system_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6SourceCidrIp")
-    def ipv6_source_cidr_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_source_cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ipv6SourceCidrIp.
         """
         return pulumi.get(self, "ipv6_source_cidr_ip")
 
     @ipv6_source_cidr_ip.setter
-    def ipv6_source_cidr_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_source_cidr_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_source_cidr_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Priority.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.256.0) The region ID.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rwAccessType")
-    def rw_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rw_access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RWAccess.
         """
         return pulumi.get(self, "rw_access_type")
 
     @rw_access_type.setter
-    def rw_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rw_access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rw_access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceCidrIp")
-    def source_cidr_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SourceCidrIp.
         """
         return pulumi.get(self, "source_cidr_ip")
 
     @source_cidr_ip.setter
-    def source_cidr_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_cidr_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_cidr_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="userAccessType")
-    def user_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UserAccess.
         """
         return pulumi.get(self, "user_access_type")
 
     @user_access_type.setter
-    def user_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_access_type", value)
 
 
@@ -295,13 +295,13 @@ class AccessRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 rw_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_access_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 rw_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_access_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a NAS Access Rule resource.
@@ -430,13 +430,13 @@ class AccessRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 rw_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_access_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 rw_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_access_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -467,15 +467,15 @@ class AccessRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            access_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rw_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-            source_cidr_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            user_access_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessRule':
+            access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            access_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rw_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            user_access_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessRule':
         """
         Get an existing AccessRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

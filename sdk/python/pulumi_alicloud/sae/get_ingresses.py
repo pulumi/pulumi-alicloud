@@ -148,16 +148,16 @@ def get_ingresses(enable_details: Optional[_builtins.bool] = None,
         package_type="your_package_url",
         jdk="jdk_specifications",
         vswitch_id=default_alicloud_vswitches["ids"][0],
-        replicas="your_replicas",
-        cpu="cpu_specifications",
-        memory="memory_specifications")
+        replicas=int("your_replicas"),
+        cpu=int("cpu_specifications"),
+        memory=int("memory_specifications"))
     default_ingress = alicloud.sae.Ingress("default",
         slb_id=default_load_balancer.id,
         namespace_id=default_namespace.id,
-        listener_port="your_listener_port",
+        listener_port=int("your_listener_port"),
         rules=[{
             "app_id": default_application.id,
-            "container_port": "your_container_port",
+            "container_port": int("your_container_port"),
             "domain": "your_domain",
             "app_name": "your_name",
             "path": "your_path",
@@ -187,10 +187,10 @@ def get_ingresses(enable_details: Optional[_builtins.bool] = None,
         ingresses=pulumi.get(__ret__, 'ingresses'),
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_ingresses_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                         ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ingresses_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                         ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIngressesResult]:
     """
     This data source provides the Sae Ingresses of the current Alibaba Cloud user.
@@ -240,16 +240,16 @@ def get_ingresses_output(enable_details: Optional[pulumi.Input[Optional[_builtin
         package_type="your_package_url",
         jdk="jdk_specifications",
         vswitch_id=default_alicloud_vswitches["ids"][0],
-        replicas="your_replicas",
-        cpu="cpu_specifications",
-        memory="memory_specifications")
+        replicas=int("your_replicas"),
+        cpu=int("cpu_specifications"),
+        memory=int("memory_specifications"))
     default_ingress = alicloud.sae.Ingress("default",
         slb_id=default_load_balancer.id,
         namespace_id=default_namespace.id,
-        listener_port="your_listener_port",
+        listener_port=int("your_listener_port"),
         rules=[{
             "app_id": default_application.id,
-            "container_port": "your_container_port",
+            "container_port": int("your_container_port"),
             "domain": "your_domain",
             "app_name": "your_name",
             "path": "your_path",

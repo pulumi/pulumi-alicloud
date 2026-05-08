@@ -185,15 +185,15 @@ export interface ServiceMeshState {
     /**
      * List of clusters.
      */
-    clusterIds?: pulumi.Input<pulumi.Input<string>[]>;
+    clusterIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Cluster specification
      */
-    clusterSpec?: pulumi.Input<string>;
+    clusterSpec?: pulumi.Input<string | undefined>;
     /**
      * Service grid creation time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether to customize Prometheus. Value:
      * -'true': custom Prometheus.
@@ -201,15 +201,15 @@ export interface ServiceMeshState {
      *
      * Default value: 'false '.
      */
-    customizedPrometheus?: pulumi.Input<boolean>;
+    customizedPrometheus?: pulumi.Input<boolean | undefined>;
     /**
      * Grid instance version type (for example: the standard, the Pro version, etc.)
      */
-    edition?: pulumi.Input<string>;
+    edition?: pulumi.Input<string | undefined>;
     /**
      * Data plane KubeAPI access capability See `extraConfiguration` below.
      */
-    extraConfiguration?: pulumi.Input<inputs.servicemesh.ServiceMeshExtraConfiguration>;
+    extraConfiguration?: pulumi.Input<inputs.servicemesh.ServiceMeshExtraConfiguration | undefined>;
     /**
      * Whether to forcibly delete the ASM instance. Value:
      * -'true': force deletion of ASM instance
@@ -217,43 +217,43 @@ export interface ServiceMeshState {
      *
      * Default value: false
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * Kubeconfig configuration content
      */
-    kubeconfig?: pulumi.Input<string>;
+    kubeconfig?: pulumi.Input<string | undefined>;
     /**
      * Load balancing information See `loadBalancer` below.
      */
-    loadBalancer?: pulumi.Input<inputs.servicemesh.ServiceMeshLoadBalancer>;
+    loadBalancer?: pulumi.Input<inputs.servicemesh.ServiceMeshLoadBalancer | undefined>;
     /**
      * Service grid configuration information See `meshConfig` below.
      */
-    meshConfig?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfig>;
+    meshConfig?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfig | undefined>;
     /**
      * Service grid network configuration information See `network` below.
      */
-    network?: pulumi.Input<inputs.servicemesh.ServiceMeshNetwork>;
+    network?: pulumi.Input<inputs.servicemesh.ServiceMeshNetwork | undefined>;
     /**
      * The Prometheus service address (in non-custom cases, use the ARMS address format).
      */
-    prometheusUrl?: pulumi.Input<string>;
+    prometheusUrl?: pulumi.Input<string | undefined>;
     /**
      * ServiceMeshName
      */
-    serviceMeshName?: pulumi.Input<string>;
+    serviceMeshName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Service grid version number
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -263,11 +263,11 @@ export interface ServiceMeshArgs {
     /**
      * List of clusters.
      */
-    clusterIds?: pulumi.Input<pulumi.Input<string>[]>;
+    clusterIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Cluster specification
      */
-    clusterSpec?: pulumi.Input<string>;
+    clusterSpec?: pulumi.Input<string | undefined>;
     /**
      * Whether to customize Prometheus. Value:
      * -'true': custom Prometheus.
@@ -275,15 +275,15 @@ export interface ServiceMeshArgs {
      *
      * Default value: 'false '.
      */
-    customizedPrometheus?: pulumi.Input<boolean>;
+    customizedPrometheus?: pulumi.Input<boolean | undefined>;
     /**
      * Grid instance version type (for example: the standard, the Pro version, etc.)
      */
-    edition?: pulumi.Input<string>;
+    edition?: pulumi.Input<string | undefined>;
     /**
      * Data plane KubeAPI access capability See `extraConfiguration` below.
      */
-    extraConfiguration?: pulumi.Input<inputs.servicemesh.ServiceMeshExtraConfiguration>;
+    extraConfiguration?: pulumi.Input<inputs.servicemesh.ServiceMeshExtraConfiguration | undefined>;
     /**
      * Whether to forcibly delete the ASM instance. Value:
      * -'true': force deletion of ASM instance
@@ -291,15 +291,15 @@ export interface ServiceMeshArgs {
      *
      * Default value: false
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * Load balancing information See `loadBalancer` below.
      */
-    loadBalancer?: pulumi.Input<inputs.servicemesh.ServiceMeshLoadBalancer>;
+    loadBalancer?: pulumi.Input<inputs.servicemesh.ServiceMeshLoadBalancer | undefined>;
     /**
      * Service grid configuration information See `meshConfig` below.
      */
-    meshConfig?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfig>;
+    meshConfig?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfig | undefined>;
     /**
      * Service grid network configuration information See `network` below.
      */
@@ -307,17 +307,17 @@ export interface ServiceMeshArgs {
     /**
      * The Prometheus service address (in non-custom cases, use the ARMS address format).
      */
-    prometheusUrl?: pulumi.Input<string>;
+    prometheusUrl?: pulumi.Input<string | undefined>;
     /**
      * ServiceMeshName
      */
-    serviceMeshName?: pulumi.Input<string>;
+    serviceMeshName?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Service grid version number
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

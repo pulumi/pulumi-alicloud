@@ -28,7 +28,7 @@ class ServiceEnterprisePublicArgs:
 @pulumi.input_type
 class _ServiceEnterprisePublicState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceEnterprisePublic resources.
 
@@ -39,14 +39,14 @@ class _ServiceEnterprisePublicState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
 
@@ -167,7 +167,7 @@ class ServiceEnterprisePublic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceEnterprisePublic':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceEnterprisePublic':
         """
         Get an existing ServiceEnterprisePublic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

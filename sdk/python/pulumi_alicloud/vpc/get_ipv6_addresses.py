@@ -181,12 +181,12 @@ def get_ipv6_addresses(associated_instance_id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
-def get_ipv6_addresses_output(associated_instance_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              vswitch_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ipv6_addresses_output(associated_instance_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              vswitch_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpv6AddressesResult]:
     """
     This data source provides the Vpc Ipv6 Addresses of the current Alibaba Cloud user.

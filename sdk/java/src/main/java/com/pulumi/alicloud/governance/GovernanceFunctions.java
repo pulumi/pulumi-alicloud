@@ -37,8 +37,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.alicloud.governance.GovernanceFunctions;
      * import com.pulumi.alicloud.governance.inputs.GetBaselinesArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -122,8 +122,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.alicloud.governance.GovernanceFunctions;
      * import com.pulumi.alicloud.governance.inputs.GetBaselinesArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -207,8 +207,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.alicloud.governance.GovernanceFunctions;
      * import com.pulumi.alicloud.governance.inputs.GetBaselinesArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -292,8 +292,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.alicloud.governance.GovernanceFunctions;
      * import com.pulumi.alicloud.governance.inputs.GetBaselinesArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -377,8 +377,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.alicloud.governance.GovernanceFunctions;
      * import com.pulumi.alicloud.governance.inputs.GetBaselinesArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -462,8 +462,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.alicloud.governance.GovernanceFunctions;
      * import com.pulumi.alicloud.governance.inputs.GetBaselinesArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -547,8 +547,8 @@ public final class GovernanceFunctions {
      * import com.pulumi.alicloud.governance.GovernanceFunctions;
      * import com.pulumi.alicloud.governance.inputs.GetBaselinesArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

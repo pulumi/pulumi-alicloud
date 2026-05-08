@@ -201,14 +201,14 @@ def get_network_acls(ids: Optional[Sequence[_builtins.str]] = None,
         resource_type=pulumi.get(__ret__, 'resource_type'),
         status=pulumi.get(__ret__, 'status'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-def get_network_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            network_acl_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            resource_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            resource_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_network_acls_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            network_acl_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            resource_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            resource_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkAclsResult]:
     """
     This data source provides the Network Acls of the current Alibaba Cloud user.

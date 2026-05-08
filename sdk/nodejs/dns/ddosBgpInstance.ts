@@ -197,55 +197,55 @@ export interface DdosBgpInstanceState {
     /**
      * The bandwidth of the package configuration.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
      */
-    baseBandwidth?: pulumi.Input<number>;
+    baseBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The name of the instance.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
      */
-    ipCount?: pulumi.Input<number>;
+    ipCount?: pulumi.Input<number | undefined>;
     /**
      * The protection IP address type of the protection package. Valid values:
      * - `IPv4`
      * - `IPv6`
      */
-    ipType?: pulumi.Input<string>;
+    ipType?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The normal clean bandwidth. Unit: Mbit/s.
      */
-    normalBandwidth?: pulumi.Input<number>;
+    normalBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Resource Group ID
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.259.0) The status of the Instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The key of the tag that is added to the Anti-DDoS Origin instance.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -259,11 +259,11 @@ export interface DdosBgpInstanceArgs {
     /**
      * The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
      */
-    baseBandwidth?: pulumi.Input<number>;
+    baseBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The name of the instance.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
      */
@@ -279,7 +279,7 @@ export interface DdosBgpInstanceArgs {
      *
      * @deprecated Field `name` has been deprecated from provider version 1.259.0. New field `instanceName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The normal clean bandwidth. Unit: Mbit/s.
      */
@@ -287,17 +287,17 @@ export interface DdosBgpInstanceArgs {
     /**
      * The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Resource Group ID
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The key of the tag that is added to the Anti-DDoS Origin instance.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

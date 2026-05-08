@@ -167,10 +167,10 @@ def get_shared_resources(ids: Optional[Sequence[_builtins.str]] = None,
         resource_share_id=pulumi.get(__ret__, 'resource_share_id'),
         resources=pulumi.get(__ret__, 'resources'),
         status=pulumi.get(__ret__, 'status'))
-def get_shared_resources_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                resource_share_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_shared_resources_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                resource_share_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSharedResourcesResult]:
     """
     This data source provides the Resource Manager Shared Resources of the current Alibaba Cloud user.

@@ -223,23 +223,23 @@ export interface GrafanaWorkspaceState {
      * The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
      * The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
      */
-    accountNumber?: pulumi.Input<string>;
+    accountNumber?: pulumi.Input<string | undefined>;
     /**
      * Language environment (if not filled in, default is zh):
      * - zh
      * - en
      */
-    aliyunLang?: pulumi.Input<string>;
+    aliyunLang?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically renew. Value range:
      * - true: Automatic renewal. Default value: true.
      * - false: Do not renew automatically.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The number of additional user-defined accounts. Value Description:
      * - GrafanaWorkspaceEdition is standard, this parameter is invalid.
@@ -247,21 +247,21 @@ export interface GrafanaWorkspaceState {
      * - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
      * - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
      */
-    customAccountNumber?: pulumi.Input<string>;
+    customAccountNumber?: pulumi.Input<string | undefined>;
     /**
      * Description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The time of the instance package. Valid values:
      * - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
      * - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * Grafana version
      */
-    grafanaVersion?: pulumi.Input<string>;
+    grafanaVersion?: pulumi.Input<string | undefined>;
     /**
      * The edition. **Valid values:**
      * - standard: `Beta Edition(For internal testing only) `
@@ -269,35 +269,35 @@ export interface GrafanaWorkspaceState {
      * - experts_edition: Pro Edition
      * - advanced_edition: Advanced Edition
      */
-    grafanaWorkspaceEdition?: pulumi.Input<string>;
+    grafanaWorkspaceEdition?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
-    grafanaWorkspaceName?: pulumi.Input<string>;
+    grafanaWorkspaceName?: pulumi.Input<string | undefined>;
     /**
      * The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -311,19 +311,19 @@ export interface GrafanaWorkspaceArgs {
      * The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
      * The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
      */
-    accountNumber?: pulumi.Input<string>;
+    accountNumber?: pulumi.Input<string | undefined>;
     /**
      * Language environment (if not filled in, default is zh):
      * - zh
      * - en
      */
-    aliyunLang?: pulumi.Input<string>;
+    aliyunLang?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically renew. Value range:
      * - true: Automatic renewal. Default value: true.
      * - false: Do not renew automatically.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The number of additional user-defined accounts. Value Description:
      * - GrafanaWorkspaceEdition is standard, this parameter is invalid.
@@ -331,21 +331,21 @@ export interface GrafanaWorkspaceArgs {
      * - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
      * - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
      */
-    customAccountNumber?: pulumi.Input<string>;
+    customAccountNumber?: pulumi.Input<string | undefined>;
     /**
      * Description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The time of the instance package. Valid values:
      * - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
      * - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * Grafana version
      */
-    grafanaVersion?: pulumi.Input<string>;
+    grafanaVersion?: pulumi.Input<string | undefined>;
     /**
      * The edition. **Valid values:**
      * - standard: `Beta Edition(For internal testing only) `
@@ -353,7 +353,7 @@ export interface GrafanaWorkspaceArgs {
      * - experts_edition: Pro Edition
      * - advanced_edition: Advanced Edition
      */
-    grafanaWorkspaceEdition?: pulumi.Input<string>;
+    grafanaWorkspaceEdition?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
@@ -361,17 +361,17 @@ export interface GrafanaWorkspaceArgs {
     /**
      * The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

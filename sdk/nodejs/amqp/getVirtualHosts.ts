@@ -126,7 +126,7 @@ export interface GetVirtualHostsOutputArgs {
     /**
      * A list of Virtual Host IDs. Its element value is same as Virtual Host Name.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * InstanceId.
      */
@@ -134,9 +134,9 @@ export interface GetVirtualHostsOutputArgs {
     /**
      * A regex string to filter results by Virtual Host name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

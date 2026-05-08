@@ -123,27 +123,27 @@ export interface BackupPlanState {
     /**
      * Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The backup cycle. Valid values: `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday`, `Wednesday`.
      */
-    backupPeriod?: pulumi.Input<string>;
+    backupPeriod?: pulumi.Input<string | undefined>;
     /**
      * The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
      */
-    backupTime?: pulumi.Input<string>;
+    backupTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the cluster for the backup.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the data center for the backup in the cluster.
      */
-    dataCenterId?: pulumi.Input<string>;
+    dataCenterId?: pulumi.Input<string | undefined>;
     /**
      * The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
      */
-    retentionPeriod?: pulumi.Input<number>;
+    retentionPeriod?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -153,11 +153,11 @@ export interface BackupPlanArgs {
     /**
      * Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The backup cycle. Valid values: `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday`, `Wednesday`.
      */
-    backupPeriod?: pulumi.Input<string>;
+    backupPeriod?: pulumi.Input<string | undefined>;
     /**
      * The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
      */
@@ -173,5 +173,5 @@ export interface BackupPlanArgs {
     /**
      * The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
      */
-    retentionPeriod?: pulumi.Input<number>;
+    retentionPeriod?: pulumi.Input<number | undefined>;
 }

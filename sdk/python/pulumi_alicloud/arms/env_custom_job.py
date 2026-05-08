@@ -22,8 +22,8 @@ class EnvCustomJobArgs:
                  config_yaml: pulumi.Input[_builtins.str],
                  env_custom_job_name: pulumi.Input[_builtins.str],
                  environment_id: pulumi.Input[_builtins.str],
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvCustomJob resource.
 
@@ -79,37 +79,37 @@ class EnvCustomJobArgs:
 
     @_builtins.property
     @pulumi.getter(name="aliyunLang")
-    def aliyun_lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aliyun_lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The locale. The default is Chinese zh | en.
         """
         return pulumi.get(self, "aliyun_lang")
 
     @aliyun_lang.setter
-    def aliyun_lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aliyun_lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aliyun_lang", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status: run, stop.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _EnvCustomJobState:
     def __init__(__self__, *,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_custom_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_custom_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvCustomJob resources.
 
@@ -132,62 +132,62 @@ class _EnvCustomJobState:
 
     @_builtins.property
     @pulumi.getter(name="aliyunLang")
-    def aliyun_lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aliyun_lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The locale. The default is Chinese zh | en.
         """
         return pulumi.get(self, "aliyun_lang")
 
     @aliyun_lang.setter
-    def aliyun_lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aliyun_lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aliyun_lang", value)
 
     @_builtins.property
     @pulumi.getter(name="configYaml")
-    def config_yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Yaml configuration string.
         """
         return pulumi.get(self, "config_yaml")
 
     @config_yaml.setter
-    def config_yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_yaml", value)
 
     @_builtins.property
     @pulumi.getter(name="envCustomJobName")
-    def env_custom_job_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_custom_job_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom job name.
         """
         return pulumi.get(self, "env_custom_job_name")
 
     @env_custom_job_name.setter
-    def env_custom_job_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_custom_job_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_custom_job_name", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
-    def environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Environment id.
         """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
-    def environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status: run, stop.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -197,11 +197,11 @@ class EnvCustomJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_custom_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_custom_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ARMS Env Custom Job resource. Custom jobs in the arms environment.
@@ -354,11 +354,11 @@ class EnvCustomJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_custom_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_custom_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -389,11 +389,11 @@ class EnvCustomJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-            config_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-            env_custom_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnvCustomJob':
+            aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+            config_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+            env_custom_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnvCustomJob':
         """
         Get an existing EnvCustomJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -20,34 +20,34 @@ __all__ = ['CacheRuleArgs', 'CacheRule']
 class CacheRuleArgs:
     def __init__(__self__, *,
                  site_id: pulumi.Input[_builtins.str],
-                 additional_cacheable_ports: Optional[pulumi.Input[_builtins.str]] = None,
-                 browser_cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 browser_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bypass_cache: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_deception_armor: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_reserve_eligibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_presence_cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_presence_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_status_code_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_body_cache_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_body_size_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_cache: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_string_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 serve_stale: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 sort_query_string_for_cache: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_device_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_geo: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_language: Optional[pulumi.Input[_builtins.str]] = None):
+                 additional_cacheable_ports: pulumi.Input[Optional[_builtins.str]] = None,
+                 browser_cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 browser_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bypass_cache: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_deception_armor: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_reserve_eligibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_presence_cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_presence_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_status_code_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_body_cache_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_body_size_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_cache: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_string_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 serve_stale: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 sort_query_string_for_cache: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_device_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_geo: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_language: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CacheRule resource.
 
@@ -155,223 +155,223 @@ class CacheRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalCacheablePorts")
-    def additional_cacheable_ports(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def additional_cacheable_ports(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
         """
         return pulumi.get(self, "additional_cacheable_ports")
 
     @additional_cacheable_ports.setter
-    def additional_cacheable_ports(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def additional_cacheable_ports(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "additional_cacheable_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="browserCacheMode")
-    def browser_cache_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def browser_cache_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Browser cache mode. Possible values:
         """
         return pulumi.get(self, "browser_cache_mode")
 
     @browser_cache_mode.setter
-    def browser_cache_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def browser_cache_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "browser_cache_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="browserCacheTtl")
-    def browser_cache_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def browser_cache_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Browser cache expiration time in seconds.
         """
         return pulumi.get(self, "browser_cache_ttl")
 
     @browser_cache_ttl.setter
-    def browser_cache_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def browser_cache_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "browser_cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="bypassCache")
-    def bypass_cache(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bypass_cache(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the bypass cache mode. Possible values:
         """
         return pulumi.get(self, "bypass_cache")
 
     @bypass_cache.setter
-    def bypass_cache(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bypass_cache(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bypass_cache", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheDeceptionArmor")
-    def cache_deception_armor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_deception_armor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
         """
         return pulumi.get(self, "cache_deception_armor")
 
     @cache_deception_armor.setter
-    def cache_deception_armor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_deception_armor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_deception_armor", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheReserveEligibility")
-    def cache_reserve_eligibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_reserve_eligibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
         """
         return pulumi.get(self, "cache_reserve_eligibility")
 
     @cache_reserve_eligibility.setter
-    def cache_reserve_eligibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_reserve_eligibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_reserve_eligibility", value)
 
     @_builtins.property
     @pulumi.getter(name="checkPresenceCookie")
-    def check_presence_cookie(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_presence_cookie(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
         """
         return pulumi.get(self, "check_presence_cookie")
 
     @check_presence_cookie.setter
-    def check_presence_cookie(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_presence_cookie(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_presence_cookie", value)
 
     @_builtins.property
     @pulumi.getter(name="checkPresenceHeader")
-    def check_presence_header(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_presence_header(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
         """
         return pulumi.get(self, "check_presence_header")
 
     @check_presence_header.setter
-    def check_presence_header(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_presence_header(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_presence_header", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeCacheMode")
-    def edge_cache_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edge_cache_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Edge cache mode. Possible values:
         """
         return pulumi.get(self, "edge_cache_mode")
 
     @edge_cache_mode.setter
-    def edge_cache_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edge_cache_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edge_cache_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeCacheTtl")
-    def edge_cache_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edge_cache_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Edge cache expiration time in seconds.
         """
         return pulumi.get(self, "edge_cache_ttl")
 
     @edge_cache_ttl.setter
-    def edge_cache_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edge_cache_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edge_cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeStatusCodeCacheTtl")
-    def edge_status_code_cache_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edge_status_code_cache_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status code cache expiration time in seconds.
         """
         return pulumi.get(self, "edge_status_code_cache_ttl")
 
     @edge_status_code_cache_ttl.setter
-    def edge_status_code_cache_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edge_status_code_cache_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edge_status_code_cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="includeCookie")
-    def include_cookie(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def include_cookie(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "include_cookie")
 
     @include_cookie.setter
-    def include_cookie(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def include_cookie(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "include_cookie", value)
 
     @_builtins.property
     @pulumi.getter(name="includeHeader")
-    def include_header(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def include_header(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "include_header")
 
     @include_header.setter
-    def include_header(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def include_header(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "include_header", value)
 
     @_builtins.property
     @pulumi.getter(name="postBodyCacheKey")
-    def post_body_cache_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_body_cache_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Processing pattern for the cache key.
         """
         return pulumi.get(self, "post_body_cache_key")
 
     @post_body_cache_key.setter
-    def post_body_cache_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_body_cache_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_body_cache_key", value)
 
     @_builtins.property
     @pulumi.getter(name="postBodySizeLimit")
-    def post_body_size_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_body_size_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
         """
         return pulumi.get(self, "post_body_size_limit")
 
     @post_body_size_limit.setter
-    def post_body_size_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_body_size_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_body_size_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="postCache")
-    def post_cache(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_cache(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Toggle for the Post cache feature.
         """
         return pulumi.get(self, "post_cache")
 
     @post_cache.setter
-    def post_cache(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_cache(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_cache", value)
 
     @_builtins.property
     @pulumi.getter(name="queryString")
-    def query_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "query_string")
 
     @query_string.setter
-    def query_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_string", value)
 
     @_builtins.property
     @pulumi.getter(name="queryStringMode")
-    def query_string_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_string_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The processing mode for query strings when generating the cache key. Possible values:
         """
         return pulumi.get(self, "query_string_mode")
 
     @query_string_mode.setter
-    def query_string_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_string_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_string_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
         - Match all incoming requests: value set to true.
@@ -380,151 +380,151 @@ class CacheRuleArgs:
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleEnable")
-    def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
     @rule_enable.setter
-    def rule_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sequence(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "sequence")
 
     @sequence.setter
-    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sequence(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="serveStale")
-    def serve_stale(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serve_stale(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
         """
         return pulumi.get(self, "serve_stale")
 
     @serve_stale.setter
-    def serve_stale(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serve_stale(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serve_stale", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
-    def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
-    def site_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "site_version", value)
 
     @_builtins.property
     @pulumi.getter(name="sortQueryStringForCache")
-    def sort_query_string_for_cache(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sort_query_string_for_cache(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query string sorting, disabled by default. Possible values:
         """
         return pulumi.get(self, "sort_query_string_for_cache")
 
     @sort_query_string_for_cache.setter
-    def sort_query_string_for_cache(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sort_query_string_for_cache(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sort_query_string_for_cache", value)
 
     @_builtins.property
     @pulumi.getter(name="userDeviceType")
-    def user_device_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_device_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When generating the cache key, add the client device type. Possible values:
         """
         return pulumi.get(self, "user_device_type")
 
     @user_device_type.setter
-    def user_device_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_device_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_device_type", value)
 
     @_builtins.property
     @pulumi.getter(name="userGeo")
-    def user_geo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_geo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When generating the cache key, add the client's geographic location. Possible values:
         """
         return pulumi.get(self, "user_geo")
 
     @user_geo.setter
-    def user_geo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_geo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_geo", value)
 
     @_builtins.property
     @pulumi.getter(name="userLanguage")
-    def user_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When generating cache keys, include the client's language type. Possible values:
         """
         return pulumi.get(self, "user_language")
 
     @user_language.setter
-    def user_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_language", value)
 
 
 @pulumi.input_type
 class _CacheRuleState:
     def __init__(__self__, *,
-                 additional_cacheable_ports: Optional[pulumi.Input[_builtins.str]] = None,
-                 browser_cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 browser_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bypass_cache: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_deception_armor: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_reserve_eligibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_rule_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 check_presence_cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_presence_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_status_code_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_body_cache_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_body_size_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_cache: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_string_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 serve_stale: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 sort_query_string_for_cache: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_device_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_geo: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_language: Optional[pulumi.Input[_builtins.str]] = None):
+                 additional_cacheable_ports: pulumi.Input[Optional[_builtins.str]] = None,
+                 browser_cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 browser_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bypass_cache: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_deception_armor: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_reserve_eligibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 check_presence_cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_presence_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_status_code_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_body_cache_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_body_size_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_cache: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_string_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 serve_stale: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 sort_query_string_for_cache: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_device_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_geo: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_language: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CacheRule resources.
 
@@ -624,235 +624,235 @@ class _CacheRuleState:
 
     @_builtins.property
     @pulumi.getter(name="additionalCacheablePorts")
-    def additional_cacheable_ports(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def additional_cacheable_ports(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
         """
         return pulumi.get(self, "additional_cacheable_ports")
 
     @additional_cacheable_ports.setter
-    def additional_cacheable_ports(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def additional_cacheable_ports(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "additional_cacheable_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="browserCacheMode")
-    def browser_cache_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def browser_cache_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Browser cache mode. Possible values:
         """
         return pulumi.get(self, "browser_cache_mode")
 
     @browser_cache_mode.setter
-    def browser_cache_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def browser_cache_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "browser_cache_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="browserCacheTtl")
-    def browser_cache_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def browser_cache_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Browser cache expiration time in seconds.
         """
         return pulumi.get(self, "browser_cache_ttl")
 
     @browser_cache_ttl.setter
-    def browser_cache_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def browser_cache_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "browser_cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="bypassCache")
-    def bypass_cache(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bypass_cache(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the bypass cache mode. Possible values:
         """
         return pulumi.get(self, "bypass_cache")
 
     @bypass_cache.setter
-    def bypass_cache(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bypass_cache(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bypass_cache", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheDeceptionArmor")
-    def cache_deception_armor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_deception_armor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
         """
         return pulumi.get(self, "cache_deception_armor")
 
     @cache_deception_armor.setter
-    def cache_deception_armor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_deception_armor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_deception_armor", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheReserveEligibility")
-    def cache_reserve_eligibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_reserve_eligibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
         """
         return pulumi.get(self, "cache_reserve_eligibility")
 
     @cache_reserve_eligibility.setter
-    def cache_reserve_eligibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_reserve_eligibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_reserve_eligibility", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheRuleId")
-    def cache_rule_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cache_rule_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Cache Rule Id.
         """
         return pulumi.get(self, "cache_rule_id")
 
     @cache_rule_id.setter
-    def cache_rule_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cache_rule_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cache_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="checkPresenceCookie")
-    def check_presence_cookie(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_presence_cookie(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
         """
         return pulumi.get(self, "check_presence_cookie")
 
     @check_presence_cookie.setter
-    def check_presence_cookie(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_presence_cookie(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_presence_cookie", value)
 
     @_builtins.property
     @pulumi.getter(name="checkPresenceHeader")
-    def check_presence_header(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_presence_header(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
         """
         return pulumi.get(self, "check_presence_header")
 
     @check_presence_header.setter
-    def check_presence_header(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_presence_header(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_presence_header", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeCacheMode")
-    def edge_cache_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edge_cache_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Edge cache mode. Possible values:
         """
         return pulumi.get(self, "edge_cache_mode")
 
     @edge_cache_mode.setter
-    def edge_cache_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edge_cache_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edge_cache_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeCacheTtl")
-    def edge_cache_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edge_cache_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Edge cache expiration time in seconds.
         """
         return pulumi.get(self, "edge_cache_ttl")
 
     @edge_cache_ttl.setter
-    def edge_cache_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edge_cache_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edge_cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeStatusCodeCacheTtl")
-    def edge_status_code_cache_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edge_status_code_cache_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status code cache expiration time in seconds.
         """
         return pulumi.get(self, "edge_status_code_cache_ttl")
 
     @edge_status_code_cache_ttl.setter
-    def edge_status_code_cache_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edge_status_code_cache_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edge_status_code_cache_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="includeCookie")
-    def include_cookie(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def include_cookie(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "include_cookie")
 
     @include_cookie.setter
-    def include_cookie(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def include_cookie(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "include_cookie", value)
 
     @_builtins.property
     @pulumi.getter(name="includeHeader")
-    def include_header(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def include_header(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "include_header")
 
     @include_header.setter
-    def include_header(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def include_header(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "include_header", value)
 
     @_builtins.property
     @pulumi.getter(name="postBodyCacheKey")
-    def post_body_cache_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_body_cache_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Processing pattern for the cache key.
         """
         return pulumi.get(self, "post_body_cache_key")
 
     @post_body_cache_key.setter
-    def post_body_cache_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_body_cache_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_body_cache_key", value)
 
     @_builtins.property
     @pulumi.getter(name="postBodySizeLimit")
-    def post_body_size_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_body_size_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
         """
         return pulumi.get(self, "post_body_size_limit")
 
     @post_body_size_limit.setter
-    def post_body_size_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_body_size_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_body_size_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="postCache")
-    def post_cache(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_cache(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Toggle for the Post cache feature.
         """
         return pulumi.get(self, "post_cache")
 
     @post_cache.setter
-    def post_cache(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_cache(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_cache", value)
 
     @_builtins.property
     @pulumi.getter(name="queryString")
-    def query_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "query_string")
 
     @query_string.setter
-    def query_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_string", value)
 
     @_builtins.property
     @pulumi.getter(name="queryStringMode")
-    def query_string_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_string_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The processing mode for query strings when generating the cache key. Possible values:
         """
         return pulumi.get(self, "query_string_mode")
 
     @query_string_mode.setter
-    def query_string_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_string_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_string_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
         - Match all incoming requests: value set to true.
@@ -861,127 +861,127 @@ class _CacheRuleState:
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleEnable")
-    def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
     @rule_enable.setter
-    def rule_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sequence(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "sequence")
 
     @sequence.setter
-    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sequence(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="serveStale")
-    def serve_stale(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serve_stale(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
         """
         return pulumi.get(self, "serve_stale")
 
     @serve_stale.setter
-    def serve_stale(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serve_stale(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serve_stale", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The site ID, which can be obtained by calling the [ListSites] API.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
-    def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
-    def site_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "site_version", value)
 
     @_builtins.property
     @pulumi.getter(name="sortQueryStringForCache")
-    def sort_query_string_for_cache(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sort_query_string_for_cache(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query string sorting, disabled by default. Possible values:
         """
         return pulumi.get(self, "sort_query_string_for_cache")
 
     @sort_query_string_for_cache.setter
-    def sort_query_string_for_cache(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sort_query_string_for_cache(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sort_query_string_for_cache", value)
 
     @_builtins.property
     @pulumi.getter(name="userDeviceType")
-    def user_device_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_device_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When generating the cache key, add the client device type. Possible values:
         """
         return pulumi.get(self, "user_device_type")
 
     @user_device_type.setter
-    def user_device_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_device_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_device_type", value)
 
     @_builtins.property
     @pulumi.getter(name="userGeo")
-    def user_geo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_geo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When generating the cache key, add the client's geographic location. Possible values:
         """
         return pulumi.get(self, "user_geo")
 
     @user_geo.setter
-    def user_geo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_geo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_geo", value)
 
     @_builtins.property
     @pulumi.getter(name="userLanguage")
-    def user_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When generating cache keys, include the client's language type. Possible values:
         """
         return pulumi.get(self, "user_language")
 
     @user_language.setter
-    def user_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_language", value)
 
 
@@ -991,35 +991,35 @@ class CacheRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_cacheable_ports: Optional[pulumi.Input[_builtins.str]] = None,
-                 browser_cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 browser_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bypass_cache: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_deception_armor: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_reserve_eligibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_presence_cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_presence_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_status_code_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_body_cache_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_body_size_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_cache: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_string_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 serve_stale: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 sort_query_string_for_cache: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_device_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_geo: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_language: Optional[pulumi.Input[_builtins.str]] = None,
+                 additional_cacheable_ports: pulumi.Input[Optional[_builtins.str]] = None,
+                 browser_cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 browser_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bypass_cache: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_deception_armor: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_reserve_eligibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_presence_cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_presence_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_status_code_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_body_cache_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_body_size_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_cache: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_string_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 serve_stale: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 sort_query_string_for_cache: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_device_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_geo: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_language: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Cache Rule resource.
@@ -1056,7 +1056,7 @@ class CacheRule(pulumi.CustomResource):
             query_string_mode="ignore_all",
             rule="http.host eq \\"video.example.com\\"",
             cache_deception_armor="off",
-            site_id=default.sites[0].id,
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)),
             bypass_cache="cache_all",
             edge_cache_ttl="300",
             rule_enable="off",
@@ -1151,7 +1151,7 @@ class CacheRule(pulumi.CustomResource):
             query_string_mode="ignore_all",
             rule="http.host eq \\"video.example.com\\"",
             cache_deception_armor="off",
-            site_id=default.sites[0].id,
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)),
             bypass_cache="cache_all",
             edge_cache_ttl="300",
             rule_enable="off",
@@ -1186,35 +1186,35 @@ class CacheRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_cacheable_ports: Optional[pulumi.Input[_builtins.str]] = None,
-                 browser_cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 browser_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bypass_cache: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_deception_armor: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_reserve_eligibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_presence_cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_presence_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_status_code_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_body_cache_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_body_size_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_cache: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_string_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 serve_stale: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 sort_query_string_for_cache: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_device_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_geo: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_language: Optional[pulumi.Input[_builtins.str]] = None,
+                 additional_cacheable_ports: pulumi.Input[Optional[_builtins.str]] = None,
+                 browser_cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 browser_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bypass_cache: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_deception_armor: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_reserve_eligibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_presence_cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_presence_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_status_code_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_body_cache_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_body_size_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_cache: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_string_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 serve_stale: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 sort_query_string_for_cache: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_device_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_geo: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_language: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1266,36 +1266,36 @@ class CacheRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_cacheable_ports: Optional[pulumi.Input[_builtins.str]] = None,
-            browser_cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            browser_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-            bypass_cache: Optional[pulumi.Input[_builtins.str]] = None,
-            cache_deception_armor: Optional[pulumi.Input[_builtins.str]] = None,
-            cache_reserve_eligibility: Optional[pulumi.Input[_builtins.str]] = None,
-            cache_rule_id: Optional[pulumi.Input[_builtins.int]] = None,
-            check_presence_cookie: Optional[pulumi.Input[_builtins.str]] = None,
-            check_presence_header: Optional[pulumi.Input[_builtins.str]] = None,
-            edge_cache_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            edge_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-            edge_status_code_cache_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-            include_cookie: Optional[pulumi.Input[_builtins.str]] = None,
-            include_header: Optional[pulumi.Input[_builtins.str]] = None,
-            post_body_cache_key: Optional[pulumi.Input[_builtins.str]] = None,
-            post_body_size_limit: Optional[pulumi.Input[_builtins.str]] = None,
-            post_cache: Optional[pulumi.Input[_builtins.str]] = None,
-            query_string: Optional[pulumi.Input[_builtins.str]] = None,
-            query_string_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            rule: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sequence: Optional[pulumi.Input[_builtins.int]] = None,
-            serve_stale: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            site_version: Optional[pulumi.Input[_builtins.int]] = None,
-            sort_query_string_for_cache: Optional[pulumi.Input[_builtins.str]] = None,
-            user_device_type: Optional[pulumi.Input[_builtins.str]] = None,
-            user_geo: Optional[pulumi.Input[_builtins.str]] = None,
-            user_language: Optional[pulumi.Input[_builtins.str]] = None) -> 'CacheRule':
+            additional_cacheable_ports: pulumi.Input[Optional[_builtins.str]] = None,
+            browser_cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            browser_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            bypass_cache: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_deception_armor: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_reserve_eligibility: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            check_presence_cookie: pulumi.Input[Optional[_builtins.str]] = None,
+            check_presence_header: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_cache_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_status_code_cache_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            include_cookie: pulumi.Input[Optional[_builtins.str]] = None,
+            include_header: pulumi.Input[Optional[_builtins.str]] = None,
+            post_body_cache_key: pulumi.Input[Optional[_builtins.str]] = None,
+            post_body_size_limit: pulumi.Input[Optional[_builtins.str]] = None,
+            post_cache: pulumi.Input[Optional[_builtins.str]] = None,
+            query_string: pulumi.Input[Optional[_builtins.str]] = None,
+            query_string_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            serve_stale: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None,
+            sort_query_string_for_cache: pulumi.Input[Optional[_builtins.str]] = None,
+            user_device_type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_geo: pulumi.Input[Optional[_builtins.str]] = None,
+            user_language: pulumi.Input[Optional[_builtins.str]] = None) -> 'CacheRule':
         """
         Get an existing CacheRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

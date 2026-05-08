@@ -126,23 +126,23 @@ export interface GetEndUserProductsOutputArgs {
     /**
      * A list of End User Product IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by product name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The field that is used to sort the queried data. The value is fixed as CreateTime, which specifies the creation time of products.
      */
-    sortBy?: pulumi.Input<string>;
+    sortBy?: pulumi.Input<string | undefined>;
     /**
      * The order in which you want to sort the queried data. Valid values: `Asc`, `Desc`.
      */
-    sortOrder?: pulumi.Input<string>;
+    sortOrder?: pulumi.Input<string | undefined>;
 }

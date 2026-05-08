@@ -19,7 +19,7 @@ __all__ = ['DiskEncryptionByDefaultArgs', 'DiskEncryptionByDefault']
 @pulumi.input_type
 class DiskEncryptionByDefaultArgs:
     def __init__(__self__, *,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None):
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DiskEncryptionByDefault resource.
 
@@ -30,21 +30,21 @@ class DiskEncryptionByDefaultArgs:
 
     @_builtins.property
     @pulumi.getter
-    def encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether account-level default encryption of EBS resources is enabled in the region. Valid values:
         """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
-    def encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypted", value)
 
 
 @pulumi.input_type
 class _DiskEncryptionByDefaultState:
     def __init__(__self__, *,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None):
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering DiskEncryptionByDefault resources.
 
@@ -55,14 +55,14 @@ class _DiskEncryptionByDefaultState:
 
     @_builtins.property
     @pulumi.getter
-    def encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether account-level default encryption of EBS resources is enabled in the region. Valid values:
         """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
-    def encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypted", value)
 
 
@@ -72,7 +72,7 @@ class DiskEncryptionByDefault(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Ecs Disk Encryption By Default resource.
@@ -169,7 +169,7 @@ class DiskEncryptionByDefault(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -190,7 +190,7 @@ class DiskEncryptionByDefault(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            encrypted: Optional[pulumi.Input[_builtins.bool]] = None) -> 'DiskEncryptionByDefault':
+            encrypted: pulumi.Input[Optional[_builtins.bool]] = None) -> 'DiskEncryptionByDefault':
         """
         Get an existing DiskEncryptionByDefault resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

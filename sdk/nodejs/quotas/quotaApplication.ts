@@ -240,78 +240,78 @@ export interface QuotaApplicationState {
     /**
      * The approve value of the quota application.
      */
-    approveValue?: pulumi.Input<string>;
+    approveValue?: pulumi.Input<string | undefined>;
     /**
      * This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
      * - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
      * - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
      */
-    auditMode?: pulumi.Input<string>;
+    auditMode?: pulumi.Input<string | undefined>;
     /**
      * The audit reason.
      */
-    auditReason?: pulumi.Input<string>;
+    auditReason?: pulumi.Input<string | undefined>;
     /**
      * Resource attribute field representing creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The desire value of the quota application.
      */
-    desireValue?: pulumi.Input<number>;
+    desireValue?: pulumi.Input<number | undefined>;
     /**
      * QuotaDimensions. See `dimensions` below.
      */
-    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaApplicationDimension>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaApplicationDimension>[] | undefined>;
     /**
      * The effective time of the quota application.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * The language of the quota alert notification. Value:
      * - zh (default): Chinese.
      * - en: English.
      */
-    envLanguage?: pulumi.Input<string>;
+    envLanguage?: pulumi.Input<string | undefined>;
     /**
      * The expired time of the quota application.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
      */
-    noticeType?: pulumi.Input<number>;
+    noticeType?: pulumi.Input<number | undefined>;
     /**
      * The product code.
      */
-    productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string | undefined>;
     /**
      * The ID of quota action.
      */
-    quotaActionCode?: pulumi.Input<string>;
+    quotaActionCode?: pulumi.Input<string | undefined>;
     /**
      * The quota type.
      * - CommonQuota (default): Generic quota.
      * - FlowControl:API rate quota.
      * - WhiteListLabel: Equity quota.
      */
-    quotaCategory?: pulumi.Input<string>;
+    quotaCategory?: pulumi.Input<string | undefined>;
     /**
      * The description of the quota application.
      */
-    quotaDescription?: pulumi.Input<string>;
+    quotaDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the quota application.
      */
-    quotaName?: pulumi.Input<string>;
+    quotaName?: pulumi.Input<string | undefined>;
     /**
      * The unit of the quota application.
      */
-    quotaUnit?: pulumi.Input<string>;
+    quotaUnit?: pulumi.Input<string | undefined>;
     /**
      * The reason of the quota application.
      */
-    reason?: pulumi.Input<string>;
+    reason?: pulumi.Input<string | undefined>;
     /**
      * Application Status:
      * - Disagree: reject.
@@ -319,7 +319,7 @@ export interface QuotaApplicationState {
      * - Process: under review.
      * - Cancel: Closed.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -331,7 +331,7 @@ export interface QuotaApplicationArgs {
      * - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
      * - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
      */
-    auditMode?: pulumi.Input<string>;
+    auditMode?: pulumi.Input<string | undefined>;
     /**
      * The desire value of the quota application.
      */
@@ -339,25 +339,25 @@ export interface QuotaApplicationArgs {
     /**
      * QuotaDimensions. See `dimensions` below.
      */
-    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaApplicationDimension>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaApplicationDimension>[] | undefined>;
     /**
      * The effective time of the quota application.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * The language of the quota alert notification. Value:
      * - zh (default): Chinese.
      * - en: English.
      */
-    envLanguage?: pulumi.Input<string>;
+    envLanguage?: pulumi.Input<string | undefined>;
     /**
      * The expired time of the quota application.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
      */
-    noticeType?: pulumi.Input<number>;
+    noticeType?: pulumi.Input<number | undefined>;
     /**
      * The product code.
      */
@@ -372,7 +372,7 @@ export interface QuotaApplicationArgs {
      * - FlowControl:API rate quota.
      * - WhiteListLabel: Equity quota.
      */
-    quotaCategory?: pulumi.Input<string>;
+    quotaCategory?: pulumi.Input<string | undefined>;
     /**
      * The reason of the quota application.
      */

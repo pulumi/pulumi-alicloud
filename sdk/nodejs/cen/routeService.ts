@@ -173,33 +173,33 @@ export interface RouteServiceState {
     /**
      * The region of the network instances that access the cloud services.
      */
-    accessRegionId?: pulumi.Input<string>;
+    accessRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the CEN instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The description of the cloud service.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The domain name or IP address of the cloud service.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The region of the cloud service.
      */
-    hostRegionId?: pulumi.Input<string>;
+    hostRegionId?: pulumi.Input<string | undefined>;
     /**
      * The VPC associated with the cloud service.
      *
      * > **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
      */
-    hostVpcId?: pulumi.Input<string>;
+    hostVpcId?: pulumi.Input<string | undefined>;
     /**
      * The status of the cloud service.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -217,7 +217,7 @@ export interface RouteServiceArgs {
     /**
      * The description of the cloud service.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The domain name or IP address of the cloud service.
      */

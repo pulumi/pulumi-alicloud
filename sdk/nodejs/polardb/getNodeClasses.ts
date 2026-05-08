@@ -146,23 +146,23 @@ export interface GetNodeClassesOutputArgs {
     /**
      * The PolarDB node cluster series.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The PolarDB node class type by the user.
      */
-    dbNodeClass?: pulumi.Input<string>;
+    dbNodeClass?: pulumi.Input<string | undefined>;
     /**
      * Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
      */
-    dbType?: pulumi.Input<string>;
+    dbType?: pulumi.Input<string | undefined>;
     /**
      * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
      */
-    dbVersion?: pulumi.Input<string>;
+    dbVersion?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi up`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.
      */
@@ -170,9 +170,9 @@ export interface GetNodeClassesOutputArgs {
     /**
      * The Region to launch the PolarDB cluster.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The Zone to launch the PolarDB cluster.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

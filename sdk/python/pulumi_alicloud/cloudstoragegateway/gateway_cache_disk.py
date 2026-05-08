@@ -21,8 +21,8 @@ class GatewayCacheDiskArgs:
     def __init__(__self__, *,
                  cache_disk_size_in_gb: pulumi.Input[_builtins.int],
                  gateway_id: pulumi.Input[_builtins.str],
-                 cache_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 cache_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GatewayCacheDisk resource.
 
@@ -64,39 +64,39 @@ class GatewayCacheDiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="cacheDiskCategory")
-    def cache_disk_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
         """
         return pulumi.get(self, "cache_disk_category")
 
     @cache_disk_category.setter
-    def cache_disk_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_disk_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_disk_category", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
         """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
 
 @pulumi.input_type
 class _GatewayCacheDiskState:
     def __init__(__self__, *,
-                 cache_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_disk_size_in_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 cache_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None):
+                 cache_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_disk_size_in_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 cache_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering GatewayCacheDisk resources.
 
@@ -125,86 +125,86 @@ class _GatewayCacheDiskState:
 
     @_builtins.property
     @pulumi.getter(name="cacheDiskCategory")
-    def cache_disk_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
         """
         return pulumi.get(self, "cache_disk_category")
 
     @cache_disk_category.setter
-    def cache_disk_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_disk_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_disk_category", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheDiskSizeInGb")
-    def cache_disk_size_in_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cache_disk_size_in_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The capacity of the cache disk.
         """
         return pulumi.get(self, "cache_disk_size_in_gb")
 
     @cache_disk_size_in_gb.setter
-    def cache_disk_size_in_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cache_disk_size_in_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cache_disk_size_in_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheId")
-    def cache_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cache disk.
         """
         return pulumi.get(self, "cache_id")
 
     @cache_id.setter
-    def cache_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
-    def gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the gateway.
         """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
-    def gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="localFilePath")
-    def local_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the cache disk.
         """
         return pulumi.get(self, "local_file_path")
 
     @local_file_path.setter
-    def local_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_file_path", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
         """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the Gateway Cache Disk.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
 
@@ -214,10 +214,10 @@ class GatewayCacheDisk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cache_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_disk_size_in_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 cache_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_disk_size_in_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Storage Gateway Gateway Cache Disk resource.
@@ -375,10 +375,10 @@ class GatewayCacheDisk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cache_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 cache_disk_size_in_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 cache_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_disk_size_in_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -409,13 +409,13 @@ class GatewayCacheDisk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cache_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-            cache_disk_size_in_gb: Optional[pulumi.Input[_builtins.int]] = None,
-            cache_id: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            local_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-            performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.int]] = None) -> 'GatewayCacheDisk':
+            cache_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_disk_size_in_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            cache_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None) -> 'GatewayCacheDisk':
         """
         Get an existing GatewayCacheDisk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

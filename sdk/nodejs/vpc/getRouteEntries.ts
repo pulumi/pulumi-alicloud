@@ -239,15 +239,15 @@ export interface GetRouteEntriesOutputArgs {
     /**
      * The destination CIDR block of the route entry.
      */
-    cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * The instance ID of the next hop.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the router table to which the route entry belongs.
      */
@@ -255,5 +255,5 @@ export interface GetRouteEntriesOutputArgs {
     /**
      * The type of the route entry.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

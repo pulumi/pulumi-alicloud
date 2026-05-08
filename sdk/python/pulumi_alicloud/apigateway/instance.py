@@ -25,22 +25,22 @@ class InstanceArgs:
                  instance_name: pulumi.Input[_builtins.str],
                  instance_spec: pulumi.Input[_builtins.str],
                  payment_type: pulumi.Input[_builtins.str],
-                 delete_vpc_ip_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_ipv6_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ingress_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_wait_switch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 to_connect_vpc_ip_block: Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']] = None,
-                 user_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_slb_intranet_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_vswitch_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]] = None):
+                 delete_vpc_ip_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_ipv6_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ingress_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait_switch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 to_connect_vpc_ip_block: pulumi.Input[Optional['InstanceToConnectVpcIpBlockArgs']] = None,
+                 user_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_slb_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_vswitch_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -158,19 +158,19 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="deleteVpcIpBlock")
-    def delete_vpc_ip_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_vpc_ip_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
         """
         return pulumi.get(self, "delete_vpc_ip_block")
 
     @delete_vpc_ip_block.setter
-    def delete_vpc_ip_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_vpc_ip_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_vpc_ip_block", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time of the instance package. Valid values:
         - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
@@ -181,60 +181,60 @@ class InstanceArgs:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="egressIpv6Enable")
-    def egress_ipv6_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def egress_ipv6_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether IPv6 egress capability is enabled.
         """
         return pulumi.get(self, "egress_ipv6_enable")
 
     @egress_ipv6_enable.setter
-    def egress_ipv6_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def egress_ipv6_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "egress_ipv6_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressVpcId")
-    def ingress_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VpcID which the client at.
         """
         return pulumi.get(self, "ingress_vpc_id")
 
     @ingress_vpc_id.setter
-    def ingress_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressVpcOwnerId")
-    def ingress_vpc_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress_vpc_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user ID that the VpcID of `ingress_vpc_id` belongs to.
         """
         return pulumi.get(self, "ingress_vpc_owner_id")
 
     @ingress_vpc_owner_id.setter
-    def ingress_vpc_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress_vpc_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress_vpc_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressVswitchId")
-    def ingress_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
         """
         return pulumi.get(self, "ingress_vswitch_id")
 
     @ingress_vswitch_id.setter
-    def ingress_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceCidr")
-    def instance_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block for the instance deployment. Valid values are:
         - `192.168.0.0/16`.
@@ -243,145 +243,145 @@ class InstanceArgs:
         return pulumi.get(self, "instance_cidr")
 
     @instance_cidr.setter
-    def instance_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the instance. Valid values are:
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Enabled")
-    def ipv6_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ipv6_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether IPv6 ingress capability is enabled.
         """
         return pulumi.get(self, "ipv6_enabled")
 
     @ipv6_enabled.setter
-    def ipv6_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ipv6_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipv6_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
         """
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="skipWaitSwitch")
-    def skip_wait_switch(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_wait_switch(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
         """
         return pulumi.get(self, "skip_wait_switch")
 
     @skip_wait_switch.setter
-    def skip_wait_switch(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_wait_switch(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_wait_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="toConnectVpcIpBlock")
-    def to_connect_vpc_ip_block(self) -> Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]:
+    def to_connect_vpc_ip_block(self) -> pulumi.Input[Optional['InstanceToConnectVpcIpBlockArgs']]:
         """
         The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         """
         return pulumi.get(self, "to_connect_vpc_ip_block")
 
     @to_connect_vpc_ip_block.setter
-    def to_connect_vpc_ip_block(self, value: Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]):
+    def to_connect_vpc_ip_block(self, value: pulumi.Input[Optional['InstanceToConnectVpcIpBlockArgs']]):
         pulumi.set(self, "to_connect_vpc_ip_block", value)
 
     @_builtins.property
     @pulumi.getter(name="userVpcId")
-    def user_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User's VpcID.
         """
         return pulumi.get(self, "user_vpc_id")
 
     @user_vpc_id.setter
-    def user_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcSlbIntranetEnable")
-    def vpc_slb_intranet_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vpc_slb_intranet_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the slb of the Vpc supports.
         """
         return pulumi.get(self, "vpc_slb_intranet_enable")
 
     @vpc_slb_intranet_enable.setter
-    def vpc_slb_intranet_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vpc_slb_intranet_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vpc_slb_intranet_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone where the instance is deployed.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneVswitchSecurityGroups")
-    def zone_vswitch_security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]]:
+    def zone_vswitch_security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]]:
         """
         Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
         """
         return pulumi.get(self, "zone_vswitch_security_groups")
 
     @zone_vswitch_security_groups.setter
-    def zone_vswitch_security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]]):
+    def zone_vswitch_security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]]):
         pulumi.set(self, "zone_vswitch_security_groups", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 connect_cidr_blocks: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_vpc_ip_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_ipv6_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 https_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_wait_switch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 to_connect_vpc_ip_block: Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']] = None,
-                 user_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_slb_intranet_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_vswitch_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]] = None):
+                 connect_cidr_blocks: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_vpc_ip_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_ipv6_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 https_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait_switch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 to_connect_vpc_ip_block: pulumi.Input[Optional['InstanceToConnectVpcIpBlockArgs']] = None,
+                 user_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_slb_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_vswitch_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -467,43 +467,43 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="connectCidrBlocks")
-    def connect_cidr_blocks(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connect_cidr_blocks(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
         """
         return pulumi.get(self, "connect_cidr_blocks")
 
     @connect_cidr_blocks.setter
-    def connect_cidr_blocks(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connect_cidr_blocks(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connect_cidr_blocks", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteVpcIpBlock")
-    def delete_vpc_ip_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_vpc_ip_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
         """
         return pulumi.get(self, "delete_vpc_ip_block")
 
     @delete_vpc_ip_block.setter
-    def delete_vpc_ip_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_vpc_ip_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_vpc_ip_block", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time of the instance package. Valid values:
         - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
@@ -514,72 +514,72 @@ class _InstanceState:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="egressIpv6Enable")
-    def egress_ipv6_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def egress_ipv6_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether IPv6 egress capability is enabled.
         """
         return pulumi.get(self, "egress_ipv6_enable")
 
     @egress_ipv6_enable.setter
-    def egress_ipv6_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def egress_ipv6_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "egress_ipv6_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsPolicy")
-    def https_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Https policy.
         """
         return pulumi.get(self, "https_policy")
 
     @https_policy.setter
-    def https_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressVpcId")
-    def ingress_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VpcID which the client at.
         """
         return pulumi.get(self, "ingress_vpc_id")
 
     @ingress_vpc_id.setter
-    def ingress_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressVpcOwnerId")
-    def ingress_vpc_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress_vpc_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user ID that the VpcID of `ingress_vpc_id` belongs to.
         """
         return pulumi.get(self, "ingress_vpc_owner_id")
 
     @ingress_vpc_owner_id.setter
-    def ingress_vpc_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress_vpc_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress_vpc_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressVswitchId")
-    def ingress_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
         """
         return pulumi.get(self, "ingress_vswitch_id")
 
     @ingress_vswitch_id.setter
-    def ingress_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceCidr")
-    def instance_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block for the instance deployment. Valid values are:
         - `192.168.0.0/16`.
@@ -588,175 +588,175 @@ class _InstanceState:
         return pulumi.get(self, "instance_cidr")
 
     @instance_cidr.setter
-    def instance_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance name.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceSpec")
-    def instance_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance spec.
         """
         return pulumi.get(self, "instance_spec")
 
     @instance_spec.setter
-    def instance_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the instance. Valid values are:
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Enabled")
-    def ipv6_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ipv6_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether IPv6 ingress capability is enabled.
         """
         return pulumi.get(self, "ipv6_enabled")
 
     @ipv6_enabled.setter
-    def ipv6_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ipv6_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipv6_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
         """
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="skipWaitSwitch")
-    def skip_wait_switch(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_wait_switch(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
         """
         return pulumi.get(self, "skip_wait_switch")
 
     @skip_wait_switch.setter
-    def skip_wait_switch(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_wait_switch(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_wait_switch", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="supportIpv6")
-    def support_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def support_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Does ipv6 support.
         """
         return pulumi.get(self, "support_ipv6")
 
     @support_ipv6.setter
-    def support_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def support_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "support_ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="toConnectVpcIpBlock")
-    def to_connect_vpc_ip_block(self) -> Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]:
+    def to_connect_vpc_ip_block(self) -> pulumi.Input[Optional['InstanceToConnectVpcIpBlockArgs']]:
         """
         The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         """
         return pulumi.get(self, "to_connect_vpc_ip_block")
 
     @to_connect_vpc_ip_block.setter
-    def to_connect_vpc_ip_block(self, value: Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]):
+    def to_connect_vpc_ip_block(self, value: pulumi.Input[Optional['InstanceToConnectVpcIpBlockArgs']]):
         pulumi.set(self, "to_connect_vpc_ip_block", value)
 
     @_builtins.property
     @pulumi.getter(name="userVpcId")
-    def user_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User's VpcID.
         """
         return pulumi.get(self, "user_vpc_id")
 
     @user_vpc_id.setter
-    def user_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcSlbIntranetEnable")
-    def vpc_slb_intranet_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vpc_slb_intranet_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the slb of the Vpc supports.
         """
         return pulumi.get(self, "vpc_slb_intranet_enable")
 
     @vpc_slb_intranet_enable.setter
-    def vpc_slb_intranet_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vpc_slb_intranet_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vpc_slb_intranet_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone where the instance is deployed.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneVswitchSecurityGroups")
-    def zone_vswitch_security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]]:
+    def zone_vswitch_security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]]:
         """
         Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
         """
         return pulumi.get(self, "zone_vswitch_security_groups")
 
     @zone_vswitch_security_groups.setter
-    def zone_vswitch_security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]]):
+    def zone_vswitch_security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]]):
         pulumi.set(self, "zone_vswitch_security_groups", value)
 
 
@@ -766,26 +766,26 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_vpc_ip_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_ipv6_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 https_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_wait_switch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 to_connect_vpc_ip_block: Optional[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
-                 user_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_slb_intranet_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_vswitch_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]]] = None,
+                 delete_vpc_ip_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_ipv6_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 https_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait_switch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 to_connect_vpc_ip_block: pulumi.Input[Optional[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
+                 user_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_slb_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_vswitch_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Api Gateway Instance resource.
@@ -1011,26 +1011,26 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_vpc_ip_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_ipv6_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 https_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_wait_switch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 to_connect_vpc_ip_block: Optional[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
-                 user_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_slb_intranet_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_vswitch_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]]] = None,
+                 delete_vpc_ip_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_ipv6_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 https_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait_switch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 to_connect_vpc_ip_block: pulumi.Input[Optional[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
+                 user_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_slb_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_vswitch_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1082,30 +1082,30 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connect_cidr_blocks: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_vpc_ip_block: Optional[pulumi.Input[_builtins.str]] = None,
-            duration: Optional[pulumi.Input[_builtins.int]] = None,
-            egress_ipv6_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            https_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            ingress_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ingress_vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ingress_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_wait_switch: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            support_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-            to_connect_vpc_ip_block: Optional[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
-            user_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_slb_intranet_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_vswitch_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]]] = None) -> 'Instance':
+            connect_cidr_blocks: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_vpc_ip_block: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            egress_ipv6_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            https_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ingress_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ingress_vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ingress_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_wait_switch: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            to_connect_vpc_ip_block: pulumi.Input[Optional[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
+            user_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_slb_intranet_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_vswitch_security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

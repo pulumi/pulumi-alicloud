@@ -289,7 +289,7 @@ export interface ImageState {
     /**
      * The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
      */
-    architecture?: pulumi.Input<string>;
+    architecture?: pulumi.Input<string | undefined>;
     /**
      * The new boot mode of the image. Valid values:
      *
@@ -303,33 +303,33 @@ export interface ImageState {
      *
      * > **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
      */
-    bootMode?: pulumi.Input<string>;
+    bootMode?: pulumi.Input<string | undefined>;
     /**
      * The create time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
      */
-    deleteAutoSnapshot?: pulumi.Input<boolean>;
+    deleteAutoSnapshot?: pulumi.Input<boolean | undefined>;
     /**
      * The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
      *
      * > **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
      */
-    detectionStrategy?: pulumi.Input<string>;
+    detectionStrategy?: pulumi.Input<string | undefined>;
     /**
      * Snapshot information for the image See `diskDeviceMapping` below.
      */
-    diskDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.ImageDiskDeviceMapping>[]>;
+    diskDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.ImageDiskDeviceMapping>[] | undefined>;
     /**
      * Features See `features` below.
      */
-    features?: pulumi.Input<inputs.ecs.ImageFeatures>;
+    features?: pulumi.Input<inputs.ecs.ImageFeatures | undefined>;
     /**
      * Whether to perform forced deletion. Value range:
      * - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
@@ -337,59 +337,59 @@ export interface ImageState {
      *
      * Default value: false
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
      */
-    imageFamily?: pulumi.Input<string>;
+    imageFamily?: pulumi.Input<string | undefined>;
     /**
      * The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * The image version.
      *
      * > **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
      */
-    imageVersion?: pulumi.Input<string>;
+    imageVersion?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
      */
-    licenseType?: pulumi.Input<string>;
+    licenseType?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.227.0. New field 'image_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
      *
      * > **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the snapshot that you want to use to create the custom image.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The status of the image. By default, if you do not specify this parameter, only images in the Available state are returned.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -399,7 +399,7 @@ export interface ImageArgs {
     /**
      * The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
      */
-    architecture?: pulumi.Input<string>;
+    architecture?: pulumi.Input<string | undefined>;
     /**
      * The new boot mode of the image. Valid values:
      *
@@ -413,29 +413,29 @@ export interface ImageArgs {
      *
      * > **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
      */
-    bootMode?: pulumi.Input<string>;
+    bootMode?: pulumi.Input<string | undefined>;
     /**
      * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
      */
-    deleteAutoSnapshot?: pulumi.Input<boolean>;
+    deleteAutoSnapshot?: pulumi.Input<boolean | undefined>;
     /**
      * The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
      *
      * > **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
      */
-    detectionStrategy?: pulumi.Input<string>;
+    detectionStrategy?: pulumi.Input<string | undefined>;
     /**
      * Snapshot information for the image See `diskDeviceMapping` below.
      */
-    diskDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.ImageDiskDeviceMapping>[]>;
+    diskDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.ImageDiskDeviceMapping>[] | undefined>;
     /**
      * Features See `features` below.
      */
-    features?: pulumi.Input<inputs.ecs.ImageFeatures>;
+    features?: pulumi.Input<inputs.ecs.ImageFeatures | undefined>;
     /**
      * Whether to perform forced deletion. Value range:
      * - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
@@ -443,53 +443,53 @@ export interface ImageArgs {
      *
      * Default value: false
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
      */
-    imageFamily?: pulumi.Input<string>;
+    imageFamily?: pulumi.Input<string | undefined>;
     /**
      * The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * The image version.
      *
      * > **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
      */
-    imageVersion?: pulumi.Input<string>;
+    imageVersion?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
      */
-    licenseType?: pulumi.Input<string>;
+    licenseType?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.227.0. New field 'image_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
      *
      * > **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the snapshot that you want to use to create the custom image.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The tag
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

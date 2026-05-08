@@ -31,12 +31,12 @@ namespace Pulumi.AliCloud.Cfg
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example-oss";
-    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,

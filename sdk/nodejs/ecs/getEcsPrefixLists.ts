@@ -116,18 +116,18 @@ export interface GetEcsPrefixListsOutputArgs {
     /**
      * The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
      */
-    addressFamily?: pulumi.Input<string>;
-    enableDetails?: pulumi.Input<boolean>;
+    addressFamily?: pulumi.Input<string | undefined>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Prefix List IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by `prefixListName`.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

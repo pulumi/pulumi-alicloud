@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Ess
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
@@ -35,14 +35,14 @@ namespace Pulumi.AliCloud.Ess
     /// 
     ///     var myName = $"{name}-{defaultInteger.Result}";
     /// 
-    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultGetAccount = AliCloud.Index.GetAccount.Invoke();
+    ///     var defaultGetAccount = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",

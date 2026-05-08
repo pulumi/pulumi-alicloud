@@ -25,7 +25,7 @@ class ResourceArgs:
                  cluster_name: pulumi.Input[_builtins.str],
                  machine_types: pulumi.Input['ResourceMachineTypesArgs'],
                  user_access_param: pulumi.Input['ResourceUserAccessParamArgs'],
-                 cluster_desc: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_desc: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Resource resource.
 
@@ -92,26 +92,26 @@ class ResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterDesc")
-    def cluster_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to provide a description or comment on the compute cluster.
         """
         return pulumi.get(self, "cluster_desc")
 
     @cluster_desc.setter
-    def cluster_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_desc", value)
 
 
 @pulumi.input_type
 class _ResourceState:
     def __init__(__self__, *,
-                 cluster_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_types: Optional[pulumi.Input['ResourceMachineTypesArgs']] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_access_param: Optional[pulumi.Input['ResourceUserAccessParamArgs']] = None):
+                 cluster_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_types: pulumi.Input[Optional['ResourceMachineTypesArgs']] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_access_param: pulumi.Input[Optional['ResourceUserAccessParamArgs']] = None):
         """
         Input properties used for looking up and filtering Resource resources.
 
@@ -137,74 +137,74 @@ class _ResourceState:
 
     @_builtins.property
     @pulumi.getter(name="clusterDesc")
-    def cluster_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to provide a description or comment on the compute cluster.
         """
         return pulumi.get(self, "cluster_desc")
 
     @cluster_desc.setter
-    def cluster_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to uniquely identify a computing cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents the name of the compute cluster, usually including the model number.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="machineTypes")
-    def machine_types(self) -> Optional[pulumi.Input['ResourceMachineTypesArgs']]:
+    def machine_types(self) -> pulumi.Input[Optional['ResourceMachineTypesArgs']]:
         """
         Generally refers to the type or instance type of a computing resource. See `machine_types` below.
         """
         return pulumi.get(self, "machine_types")
 
     @machine_types.setter
-    def machine_types(self, value: Optional[pulumi.Input['ResourceMachineTypesArgs']]):
+    def machine_types(self, value: pulumi.Input[Optional['ResourceMachineTypesArgs']]):
         pulumi.set(self, "machine_types", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Resource.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userAccessParam")
-    def user_access_param(self) -> Optional[pulumi.Input['ResourceUserAccessParamArgs']]:
+    def user_access_param(self) -> pulumi.Input[Optional['ResourceUserAccessParamArgs']]:
         """
         Used to define the access parameters for the user. See `user_access_param` below.
         """
         return pulumi.get(self, "user_access_param")
 
     @user_access_param.setter
-    def user_access_param(self, value: Optional[pulumi.Input['ResourceUserAccessParamArgs']]):
+    def user_access_param(self, value: pulumi.Input[Optional['ResourceUserAccessParamArgs']]):
         pulumi.set(self, "user_access_param", value)
 
 
@@ -214,11 +214,11 @@ class Resource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_types: Optional[pulumi.Input[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict']]] = None,
-                 user_access_param: Optional[pulumi.Input[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict']]] = None,
+                 cluster_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_types: pulumi.Input[Optional[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict']]] = None,
+                 user_access_param: pulumi.Input[Optional[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Eflo Resource resource.
@@ -373,11 +373,11 @@ class Resource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_types: Optional[pulumi.Input[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict']]] = None,
-                 user_access_param: Optional[pulumi.Input[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict']]] = None,
+                 cluster_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_types: pulumi.Input[Optional[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict']]] = None,
+                 user_access_param: pulumi.Input[Optional[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -411,12 +411,12 @@ class Resource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_desc: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            machine_types: Optional[pulumi.Input[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict']]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_access_param: Optional[pulumi.Input[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict']]] = None) -> 'Resource':
+            cluster_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_types: pulumi.Input[Optional[Union['ResourceMachineTypesArgs', 'ResourceMachineTypesArgsDict']]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_access_param: pulumi.Input[Optional[Union['ResourceUserAccessParamArgs', 'ResourceUserAccessParamArgsDict']]] = None) -> 'Resource':
         """
         Get an existing Resource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

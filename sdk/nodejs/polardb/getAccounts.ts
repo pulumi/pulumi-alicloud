@@ -182,5 +182,5 @@ export interface GetAccountsOutputArgs {
     /**
      * A regex string to filter results by account name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
 }

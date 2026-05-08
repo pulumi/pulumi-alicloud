@@ -64,14 +64,14 @@ import (
 //				Logstore: exampleStore.LogstoreName,
 //				FullText: &log.StoreIndexFullTextArgs{
 //					CaseSensitive: pulumi.Bool(true),
-//					Token:         pulumi.String(" #$^*\n	"),
+//					Token:         pulumi.String(" #$^*\r\n\t"),
 //				},
 //				FieldSearches: log.StoreIndexFieldSearchArray{
 //					&log.StoreIndexFieldSearchArgs{
 //						Name:            pulumi.String("terraform-example"),
 //						EnableAnalytics: pulumi.Bool(true),
 //						Type:            pulumi.String("text"),
-//						Token:           pulumi.String(" #$^*\n	"),
+//						Token:           pulumi.String(" #$^*\r\n\t"),
 //					},
 //				},
 //			})

@@ -413,13 +413,13 @@ export interface GetPolicyDocumentOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
      */
-    statements?: pulumi.Input<pulumi.Input<inputs.ram.GetPolicyDocumentStatementArgs>[]>;
+    statements?: pulumi.Input<pulumi.Input<inputs.ram.GetPolicyDocumentStatementArgs>[] | undefined>;
     /**
      * Version of the RAM policy document. Valid value is `1`. Default value is `1`.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

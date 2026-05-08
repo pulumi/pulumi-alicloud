@@ -126,8 +126,8 @@ def get_topics(name_prefix: Optional[_builtins.str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         topics=pulumi.get(__ret__, 'topics'))
-def get_topics_output(name_prefix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_topics_output(name_prefix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTopicsResult]:
     """
     This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.

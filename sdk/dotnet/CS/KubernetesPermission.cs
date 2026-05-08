@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -83,11 +83,11 @@ namespace Pulumi.AliCloud.CS
     ///         Name = $"{name}-{defaultInteger.Result}",
     ///         ClusterSpec = "ack.pro.small",
     ///         Version = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas[0]?.Version)),
-    ///         WorkerVswitchIds = Std.Index.Join.Invoke(new()
+    ///         WorkerVswitchIds = Std.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Input = defaultSwitch.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Index.Split.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
     ///             Text = invoke.Result,

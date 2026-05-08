@@ -22,8 +22,8 @@ class NatGatewayArgs:
                  ens_region_id: pulumi.Input[_builtins.str],
                  network_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NatGateway resource.
 
@@ -79,38 +79,38 @@ class NatGatewayArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         NAT specifications. Value: `enat.default`.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="natName")
-    def nat_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the NAT gateway. The length is 1 to 128 characters, but it cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "nat_name")
 
     @nat_name.setter
-    def nat_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_name", value)
 
 
 @pulumi.input_type
 class _NatGatewayState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NatGateway resources.
 
@@ -136,74 +136,74 @@ class _NatGatewayState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time. UTC time, in the format of YYYY-MM-DDThh:mm:ssZ.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ensRegionId")
-    def ens_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ens_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ENS node.
         """
         return pulumi.get(self, "ens_region_id")
 
     @ens_region_id.setter
-    def ens_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ens_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ens_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         NAT specifications. Value: `enat.default`.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="natName")
-    def nat_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the NAT gateway. The length is 1 to 128 characters, but it cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "nat_name")
 
     @nat_name.setter
-    def nat_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkId")
-    def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network ID.
         """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
-    def network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -213,11 +213,11 @@ class NatGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ENS Nat Gateway resource.
@@ -354,11 +354,11 @@ class NatGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -390,12 +390,12 @@ class NatGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'NatGateway':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'NatGateway':
         """
         Get an existing NatGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

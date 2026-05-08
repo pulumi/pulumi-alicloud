@@ -299,71 +299,71 @@ export interface VpcCenTrFirewallState {
     /**
      * The ID of the Cloud Enterprise Network (CEN) instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The description of the firewall.
      */
-    firewallDescription?: pulumi.Input<string>;
+    firewallDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the firewall ENI.
      */
-    firewallEniId?: pulumi.Input<string>;
+    firewallEniId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC where the firewall ENI resides.
      */
-    firewallEniVpcId?: pulumi.Input<string>;
+    firewallEniVpcId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud Firewall.
      */
-    firewallName?: pulumi.Input<string>;
+    firewallName?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
      */
-    firewallSubnetCidr?: pulumi.Input<string>;
+    firewallSubnetCidr?: pulumi.Input<string | undefined>;
     /**
      * The ID of the firewall VPC connection.
      */
-    firewallVpcAttachmentId?: pulumi.Input<string>;
+    firewallVpcAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block of the firewall VPC in automatic mode.
      */
-    firewallVpcCidr?: pulumi.Input<string>;
+    firewallVpcCidr?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the transit router instance.
      */
-    regionNo?: pulumi.Input<string>;
+    regionNo?: pulumi.Input<string | undefined>;
     /**
      * The routing mode. Valid values:
      */
-    routeMode?: pulumi.Input<string>;
+    routeMode?: pulumi.Input<string | undefined>;
     /**
      * The status of the firewall.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      */
-    trAttachmentMasterCidr?: pulumi.Input<string>;
+    trAttachmentMasterCidr?: pulumi.Input<string | undefined>;
     /**
      * The primary zone of the vSwitch.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    trAttachmentMasterZone?: pulumi.Input<string>;
+    trAttachmentMasterZone?: pulumi.Input<string | undefined>;
     /**
      * The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
      */
-    trAttachmentSlaveCidr?: pulumi.Input<string>;
+    trAttachmentSlaveCidr?: pulumi.Input<string | undefined>;
     /**
      * The secondary zone of the vSwitch.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    trAttachmentSlaveZone?: pulumi.Input<string>;
+    trAttachmentSlaveZone?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Transit Router instance.
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -377,7 +377,7 @@ export interface VpcCenTrFirewallArgs {
     /**
      * The description of the firewall.
      */
-    firewallDescription?: pulumi.Input<string>;
+    firewallDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud Firewall.
      */
@@ -407,7 +407,7 @@ export interface VpcCenTrFirewallArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    trAttachmentMasterZone?: pulumi.Input<string>;
+    trAttachmentMasterZone?: pulumi.Input<string | undefined>;
     /**
      * The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
      */
@@ -417,7 +417,7 @@ export interface VpcCenTrFirewallArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    trAttachmentSlaveZone?: pulumi.Input<string>;
+    trAttachmentSlaveZone?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Transit Router instance.
      */

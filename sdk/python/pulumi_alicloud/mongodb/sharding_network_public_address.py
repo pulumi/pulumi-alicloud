@@ -60,9 +60,9 @@ class ShardingNetworkPublicAddressArgs:
 @pulumi.input_type
 class _ShardingNetworkPublicAddressState:
     def __init__(__self__, *,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPublicAddressNetworkAddressArgs']]]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_addresses: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingNetworkPublicAddressNetworkAddressArgs']]]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ShardingNetworkPublicAddress resources.
 
@@ -79,38 +79,38 @@ class _ShardingNetworkPublicAddressState:
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAddresses")
-    def network_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPublicAddressNetworkAddressArgs']]]]:
+    def network_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShardingNetworkPublicAddressNetworkAddressArgs']]]]:
         """
         The endpoint of the instance.
         """
         return pulumi.get(self, "network_addresses")
 
     @network_addresses.setter
-    def network_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPublicAddressNetworkAddressArgs']]]]):
+    def network_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShardingNetworkPublicAddressNetworkAddressArgs']]]]):
         pulumi.set(self, "network_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
 
@@ -120,8 +120,8 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a MongoDB Sharding Network Public Address resource.
@@ -293,8 +293,8 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -321,9 +321,9 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            network_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingNetworkPublicAddressNetworkAddressArgs', 'ShardingNetworkPublicAddressNetworkAddressArgsDict']]]]] = None,
-            node_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ShardingNetworkPublicAddress':
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShardingNetworkPublicAddressNetworkAddressArgs', 'ShardingNetworkPublicAddressNetworkAddressArgsDict']]]]] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ShardingNetworkPublicAddress':
         """
         Get an existing ShardingNetworkPublicAddress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

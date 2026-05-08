@@ -26,8 +26,8 @@ class LoadBalancerArgs:
                  network_id: pulumi.Input[_builtins.str],
                  payment_type: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
 
@@ -111,41 +111,41 @@ class LoadBalancerArgs:
 
     @_builtins.property
     @pulumi.getter(name="backendServers")
-    def backend_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]]:
+    def backend_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]]:
         """
         The list of backend servers. See `backend_servers` below.
         """
         return pulumi.get(self, "backend_servers")
 
     @backend_servers.setter
-    def backend_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]]):
+    def backend_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]]):
         pulumi.set(self, "backend_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
-    def load_balancer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
         """
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
-    def load_balancer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_name", value)
 
 
 @pulumi.input_type
 class _LoadBalancerState:
     def __init__(__self__, *,
-                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
 
@@ -180,110 +180,110 @@ class _LoadBalancerState:
 
     @_builtins.property
     @pulumi.getter(name="backendServers")
-    def backend_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]]:
+    def backend_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]]:
         """
         The list of backend servers. See `backend_servers` below.
         """
         return pulumi.get(self, "backend_servers")
 
     @backend_servers.setter
-    def backend_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]]):
+    def backend_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerBackendServerArgs']]]]):
         pulumi.set(self, "backend_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation Time (UTC) of the load balancing instance.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ensRegionId")
-    def ens_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ens_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ENS node.
         """
         return pulumi.get(self, "ens_region_id")
 
     @ens_region_id.setter
-    def ens_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ens_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ens_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
-    def load_balancer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
         """
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
-    def load_balancer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_name", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerSpec")
-    def load_balancer_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
         """
         return pulumi.get(self, "load_balancer_spec")
 
     @load_balancer_spec.setter
-    def load_balancer_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="networkId")
-    def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network ID of the created edge load balancing (ELB) instance.
         """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
-    def network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server Load Balancer Instance Payment Type. Value:PayAsYouGo
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the SLB instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch to which the VPC instance belongs.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -293,13 +293,13 @@ class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerBackendServerArgs', 'LoadBalancerBackendServerArgsDict']]]]] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerBackendServerArgs', 'LoadBalancerBackendServerArgsDict']]]]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ENS Load Balancer resource.
@@ -436,13 +436,13 @@ class LoadBalancer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerBackendServerArgs', 'LoadBalancerBackendServerArgsDict']]]]] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerBackendServerArgs', 'LoadBalancerBackendServerArgsDict']]]]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -481,15 +481,15 @@ class LoadBalancer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerBackendServerArgs', 'LoadBalancerBackendServerArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'LoadBalancer':
+            backend_servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerBackendServerArgs', 'LoadBalancerBackendServerArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'LoadBalancer':
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

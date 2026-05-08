@@ -73,9 +73,9 @@ class SecurityIpArgs:
 @pulumi.input_type
 class _SecurityIpState:
     def __init__(__self__, *,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_list: Optional[pulumi.Input[_builtins.str]] = None):
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_list: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityIp resources.
 
@@ -92,38 +92,38 @@ class _SecurityIpState:
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster ID.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The whitelist name.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpList")
-    def security_ip_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_ip_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address list under the whitelist group.
         """
         return pulumi.get(self, "security_ip_list")
 
     @security_ip_list.setter
-    def security_ip_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_ip_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_ip_list", value)
 
 
@@ -133,9 +133,9 @@ class SecurityIp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_list: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_list: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Click House Enterprise Db Cluster Security I P resource.
@@ -286,9 +286,9 @@ class SecurityIp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_list: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_list: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -317,9 +317,9 @@ class SecurityIp(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            security_ip_list: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecurityIp':
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_list: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityIp':
         """
         Get an existing SecurityIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

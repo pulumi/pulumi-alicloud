@@ -127,11 +127,11 @@ export interface V3VpcBindingState {
     /**
      * Function Name
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * VPC instance ID
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -145,5 +145,5 @@ export interface V3VpcBindingArgs {
     /**
      * VPC instance ID
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

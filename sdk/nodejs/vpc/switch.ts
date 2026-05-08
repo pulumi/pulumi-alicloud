@@ -246,61 +246,61 @@ export interface SwitchState {
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
      */
-    cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the VSwitch.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of VSwitch.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the IPv6 function is enabled in the switch. Value:
      */
-    enableIpv6?: pulumi.Input<boolean>;
+    enableIpv6?: pulumi.Input<boolean | undefined>;
     /**
      * The IPv6 CIDR block of the VSwitch.
      */
-    ipv6CidrBlock?: pulumi.Input<string>;
+    ipv6CidrBlock?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 CIDR block of the VSwitch.
      */
-    ipv6CidrBlockMask?: pulumi.Input<number>;
+    ipv6CidrBlockMask?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags of VSwitch.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The name of the VSwitch.
      */
-    vswitchName?: pulumi.Input<string>;
+    vswitchName?: pulumi.Input<string | undefined>;
     /**
      * The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -312,47 +312,47 @@ export interface SwitchArgs {
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
      */
-    cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * The description of VSwitch.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the IPv6 function is enabled in the switch. Value:
      */
-    enableIpv6?: pulumi.Input<boolean>;
+    enableIpv6?: pulumi.Input<boolean | undefined>;
     /**
      * The IPv6 CIDR block of the VSwitch.
      */
-    ipv6CidrBlockMask?: pulumi.Input<number>;
+    ipv6CidrBlockMask?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The tags of VSwitch.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The name of the VSwitch.
      */
-    vswitchName?: pulumi.Input<string>;
+    vswitchName?: pulumi.Input<string | undefined>;
     /**
      * The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

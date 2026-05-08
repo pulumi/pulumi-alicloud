@@ -175,13 +175,13 @@ def get_ecs_invocations(command_id: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'))
-def get_ecs_invocations_output(command_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               content_encoding: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               invoke_status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                               page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_ecs_invocations_output(command_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               content_encoding: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               invoke_status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                               page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEcsInvocationsResult]:
     """
     This data source provides the Ecs Invocations of the current Alibaba Cloud user.

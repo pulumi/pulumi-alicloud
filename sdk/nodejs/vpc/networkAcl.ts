@@ -208,52 +208,52 @@ export interface NetworkAclState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Out direction rule information. See `egressAclEntries` below.
      */
-    egressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEgressAclEntry>[]>;
+    egressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEgressAclEntry>[] | undefined>;
     /**
      * Inward direction rule information. See `ingressAclEntries` below.
      */
-    ingressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclIngressAclEntry>[]>;
+    ingressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclIngressAclEntry>[] | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the network ACL.
      * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      */
-    networkAclName?: pulumi.Input<string>;
+    networkAclName?: pulumi.Input<string | undefined>;
     /**
      * The associated resource. See `resources` below.
      */
-    resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[] | undefined>;
     /**
      * SOURCE NetworkAcl specified by CopyNetworkAclEntries
      */
-    sourceNetworkAclId?: pulumi.Input<string>;
+    sourceNetworkAclId?: pulumi.Input<string | undefined>;
     /**
      * The state of the network ACL.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags of this resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the associated VPC.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -263,38 +263,38 @@ export interface NetworkAclArgs {
     /**
      * The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Out direction rule information. See `egressAclEntries` below.
      */
-    egressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEgressAclEntry>[]>;
+    egressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEgressAclEntry>[] | undefined>;
     /**
      * Inward direction rule information. See `ingressAclEntries` below.
      */
-    ingressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclIngressAclEntry>[]>;
+    ingressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclIngressAclEntry>[] | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the network ACL.
      * The name must be 1 to 128 characters in length and cannot start with http:// or https.
      */
-    networkAclName?: pulumi.Input<string>;
+    networkAclName?: pulumi.Input<string | undefined>;
     /**
      * The associated resource. See `resources` below.
      */
-    resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[] | undefined>;
     /**
      * SOURCE NetworkAcl specified by CopyNetworkAclEntries
      */
-    sourceNetworkAclId?: pulumi.Input<string>;
+    sourceNetworkAclId?: pulumi.Input<string | undefined>;
     /**
      * The tags of this resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the associated VPC.
      *

@@ -21,14 +21,14 @@ class CertificateArgs:
     def __init__(__self__, *,
                  created_type: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
-                 cas_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 domains: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 cas_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
 
@@ -102,67 +102,67 @@ class CertificateArgs:
 
     @_builtins.property
     @pulumi.getter(name="casId")
-    def cas_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cas_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud certificate ID.
         """
         return pulumi.get(self, "cas_id")
 
     @cas_id.setter
-    def cas_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cas_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cas_id", value)
 
     @_builtins.property
     @pulumi.getter(name="certId")
-    def cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate Id.
         """
         return pulumi.get(self, "cert_id")
 
     @cert_id.setter
-    def cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_id", value)
 
     @_builtins.property
     @pulumi.getter(name="certName")
-    def cert_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate name.
         """
         return pulumi.get(self, "cert_name")
 
     @cert_name.setter
-    def cert_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Certificate content.
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A list of domain names. Multiple domain names are separated by commas.
         """
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domains", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate private key.
 
@@ -171,12 +171,12 @@ class CertificateArgs:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region. This parameter is required if the type is CAS.
         For accounts on the Chinese site, this parameter value is: cn-hangzhou
@@ -185,37 +185,37 @@ class CertificateArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _CertificateState:
     def __init__(__self__, *,
-                 cas_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 domains: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 cas_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
 
@@ -268,67 +268,67 @@ class _CertificateState:
 
     @_builtins.property
     @pulumi.getter(name="casId")
-    def cas_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cas_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud certificate ID.
         """
         return pulumi.get(self, "cas_id")
 
     @cas_id.setter
-    def cas_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cas_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cas_id", value)
 
     @_builtins.property
     @pulumi.getter(name="certId")
-    def cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate Id.
         """
         return pulumi.get(self, "cert_id")
 
     @cert_id.setter
-    def cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_id", value)
 
     @_builtins.property
     @pulumi.getter(name="certName")
-    def cert_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate name.
         """
         return pulumi.get(self, "cert_name")
 
     @cert_name.setter
-    def cert_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Certificate content.
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="createdType")
-    def created_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate type.
         - cas (Certificate Center Certificate)
@@ -340,24 +340,24 @@ class _CertificateState:
         return pulumi.get(self, "created_type")
 
     @created_type.setter
-    def created_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A list of domain names. Multiple domain names are separated by commas.
         """
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domains", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate private key.
 
@@ -366,12 +366,12 @@ class _CertificateState:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region. This parameter is required if the type is CAS.
         For accounts on the Chinese site, this parameter value is: cn-hangzhou
@@ -380,43 +380,43 @@ class _CertificateState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The site ID, which can be obtained by calling the ListSites interface.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -426,16 +426,16 @@ class Certificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cas_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 domains: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 cas_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Certificate resource.
@@ -457,7 +457,7 @@ class Certificate(pulumi.CustomResource):
         default_certificate = alicloud.esa.Certificate("default",
             created_type="free",
             domains="101.gositecdn.cn",
-            site_id=default.sites[0].id,
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)),
             type="lets_encrypt")
         ```
 
@@ -520,7 +520,7 @@ class Certificate(pulumi.CustomResource):
         default_certificate = alicloud.esa.Certificate("default",
             created_type="free",
             domains="101.gositecdn.cn",
-            site_id=default.sites[0].id,
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)),
             type="lets_encrypt")
         ```
 
@@ -550,16 +550,16 @@ class Certificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cas_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 domains: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 cas_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -595,18 +595,18 @@ class Certificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cas_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            created_type: Optional[pulumi.Input[_builtins.str]] = None,
-            domains: Optional[pulumi.Input[_builtins.str]] = None,
-            private_key: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Certificate':
+            cas_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            created_type: pulumi.Input[Optional[_builtins.str]] = None,
+            domains: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

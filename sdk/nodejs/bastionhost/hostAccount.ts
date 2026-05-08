@@ -190,35 +190,35 @@ export interface HostAccountState {
     /**
      * Hosting account ID.
      */
-    hostAccountId?: pulumi.Input<string>;
+    hostAccountId?: pulumi.Input<string | undefined>;
     /**
      * The name of the host account. The name can be up to 128 characters in length.
      */
-    hostAccountName?: pulumi.Input<string>;
+    hostAccountName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the host for which you want to create an account.
      */
-    hostId?: pulumi.Input<string>;
+    hostId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Bastionhost instance where you want to create an account for the host.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocolName` is `SSH`.
      */
-    passPhrase?: pulumi.Input<string>;
+    passPhrase?: pulumi.Input<string | undefined>;
     /**
      * The password of the host account.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocolName` is `SSH`
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The protocol used by the host account. Valid values: SSH,RDP
      */
-    protocolName?: pulumi.Input<string>;
+    protocolName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -240,15 +240,15 @@ export interface HostAccountArgs {
     /**
      * The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocolName` is `SSH`.
      */
-    passPhrase?: pulumi.Input<string>;
+    passPhrase?: pulumi.Input<string | undefined>;
     /**
      * The password of the host account.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocolName` is `SSH`
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The protocol used by the host account. Valid values: SSH,RDP
      */

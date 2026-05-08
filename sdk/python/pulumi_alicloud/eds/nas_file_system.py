@@ -20,11 +20,11 @@ __all__ = ['NasFileSystemArgs', 'NasFileSystem']
 class NasFileSystemArgs:
     def __init__(__self__, *,
                  office_site_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_target_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_file_system_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 reset: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_target_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_file_system_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reset: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a NasFileSystem resource.
 
@@ -61,75 +61,75 @@ class NasFileSystemArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of nas file system.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The filesystem id of nas file system.
         """
         return pulumi.get(self, "file_system_id")
 
     @file_system_id.setter
-    def file_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mountTargetDomain")
-    def mount_target_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_target_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain of mount target.
         """
         return pulumi.get(self, "mount_target_domain")
 
     @mount_target_domain.setter
-    def mount_target_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_target_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_target_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="nasFileSystemName")
-    def nas_file_system_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nas_file_system_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of nas file system.
         """
         return pulumi.get(self, "nas_file_system_name")
 
     @nas_file_system_name.setter
-    def nas_file_system_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nas_file_system_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nas_file_system_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def reset(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reset(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
         """
         return pulumi.get(self, "reset")
 
     @reset.setter
-    def reset(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reset(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reset", value)
 
 
 @pulumi.input_type
 class _NasFileSystemState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_target_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_file_system_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 office_site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reset: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_target_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_file_system_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reset: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NasFileSystem resources.
 
@@ -158,86 +158,86 @@ class _NasFileSystemState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of nas file system.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The filesystem id of nas file system.
         """
         return pulumi.get(self, "file_system_id")
 
     @file_system_id.setter
-    def file_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mountTargetDomain")
-    def mount_target_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_target_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain of mount target.
         """
         return pulumi.get(self, "mount_target_domain")
 
     @mount_target_domain.setter
-    def mount_target_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_target_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_target_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="nasFileSystemName")
-    def nas_file_system_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nas_file_system_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of nas file system.
         """
         return pulumi.get(self, "nas_file_system_name")
 
     @nas_file_system_name.setter
-    def nas_file_system_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nas_file_system_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nas_file_system_name", value)
 
     @_builtins.property
     @pulumi.getter(name="officeSiteId")
-    def office_site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def office_site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of office site.
         """
         return pulumi.get(self, "office_site_id")
 
     @office_site_id.setter
-    def office_site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def office_site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "office_site_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def reset(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reset(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
         """
         return pulumi.get(self, "reset")
 
     @reset.setter
-    def reset(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reset(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reset", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -247,12 +247,12 @@ class NasFileSystem(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_target_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_file_system_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 office_site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reset: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_target_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_file_system_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reset: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a ECD Nas File System resource.
@@ -374,12 +374,12 @@ class NasFileSystem(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_target_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_file_system_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 office_site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reset: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_target_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_file_system_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reset: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -408,13 +408,13 @@ class NasFileSystem(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-            mount_target_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            nas_file_system_name: Optional[pulumi.Input[_builtins.str]] = None,
-            office_site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            reset: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'NasFileSystem':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mount_target_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            nas_file_system_name: pulumi.Input[Optional[_builtins.str]] = None,
+            office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reset: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'NasFileSystem':
         """
         Get an existing NasFileSystem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

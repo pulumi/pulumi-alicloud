@@ -23,9 +23,9 @@ class QuotaArgs:
     def __init__(__self__, *,
                  commodity_code: pulumi.Input[_builtins.str],
                  payment_type: pulumi.Input[_builtins.str],
-                 commodity_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 part_nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_quota_info_lists: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]]] = None):
+                 commodity_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 part_nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_quota_info_lists: pulumi.Input[Optional[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]]] = None):
         """
         The set of arguments for constructing a Quota resource.
 
@@ -85,7 +85,7 @@ class QuotaArgs:
 
     @_builtins.property
     @pulumi.getter(name="commodityData")
-    def commodity_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commodity_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Define quota rules when creating quotas, for example:{"CU":50,"ord_time":"1:Month","autoRenew":false}.
         CU (minimum quota resource size is 50)
@@ -96,12 +96,12 @@ class QuotaArgs:
         return pulumi.get(self, "commodity_data")
 
     @commodity_data.setter
-    def commodity_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commodity_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commodity_data", value)
 
     @_builtins.property
     @pulumi.getter(name="partNickName")
-    def part_nick_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def part_nick_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Quota partial nickname, supports English letters and numbers, up to 24 characters
 
@@ -110,12 +110,12 @@ class QuotaArgs:
         return pulumi.get(self, "part_nick_name")
 
     @part_nick_name.setter
-    def part_nick_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def part_nick_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "part_nick_name", value)
 
     @_builtins.property
     @pulumi.getter(name="subQuotaInfoLists")
-    def sub_quota_info_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]]]:
+    def sub_quota_info_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]]]:
         """
         Secondary Quota list
 
@@ -125,18 +125,18 @@ class QuotaArgs:
         return pulumi.get(self, "sub_quota_info_lists")
 
     @sub_quota_info_lists.setter
-    def sub_quota_info_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]]]):
+    def sub_quota_info_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]]]):
         pulumi.set(self, "sub_quota_info_lists", value)
 
 
 @pulumi.input_type
 class _QuotaState:
     def __init__(__self__, *,
-                 commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 commodity_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 part_nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_quota_info_lists: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]]] = None):
+                 commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 commodity_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 part_nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_quota_info_lists: pulumi.Input[Optional[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]]] = None):
         """
         Input properties used for looking up and filtering Quota resources.
 
@@ -171,7 +171,7 @@ class _QuotaState:
 
     @_builtins.property
     @pulumi.getter(name="commodityCode")
-    def commodity_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commodity_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values: odps_intl/odpsplus_intl/odps/odpsplus
         - *NOTE:** --odps_intl: International Station standard post-payment -- odpsplus_intl: International Station standard pre-payment -- odps: China Station standard post-payment -- odpsplus: China Station standard pre-payment
@@ -179,12 +179,12 @@ class _QuotaState:
         return pulumi.get(self, "commodity_code")
 
     @commodity_code.setter
-    def commodity_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commodity_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commodity_code", value)
 
     @_builtins.property
     @pulumi.getter(name="commodityData")
-    def commodity_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commodity_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Define quota rules when creating quotas, for example:{"CU":50,"ord_time":"1:Month","autoRenew":false}.
         CU (minimum quota resource size is 50)
@@ -195,12 +195,12 @@ class _QuotaState:
         return pulumi.get(self, "commodity_data")
 
     @commodity_data.setter
-    def commodity_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commodity_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commodity_data", value)
 
     @_builtins.property
     @pulumi.getter(name="partNickName")
-    def part_nick_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def part_nick_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Quota partial nickname, supports English letters and numbers, up to 24 characters
 
@@ -209,12 +209,12 @@ class _QuotaState:
         return pulumi.get(self, "part_nick_name")
 
     @part_nick_name.setter
-    def part_nick_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def part_nick_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "part_nick_name", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Payment type. Valid values: Subscription/PayAsYouGo
 
@@ -223,12 +223,12 @@ class _QuotaState:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="subQuotaInfoLists")
-    def sub_quota_info_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]]]:
+    def sub_quota_info_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]]]:
         """
         Secondary Quota list
 
@@ -238,7 +238,7 @@ class _QuotaState:
         return pulumi.get(self, "sub_quota_info_lists")
 
     @sub_quota_info_lists.setter
-    def sub_quota_info_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]]]):
+    def sub_quota_info_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['QuotaSubQuotaInfoListArgs']]]]):
         pulumi.set(self, "sub_quota_info_lists", value)
 
 
@@ -248,11 +248,11 @@ class Quota(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 commodity_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 part_nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_quota_info_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict']]]]] = None,
+                 commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 commodity_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 part_nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_quota_info_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Max Compute Quota resource.
@@ -477,11 +477,11 @@ class Quota(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 commodity_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 part_nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_quota_info_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict']]]]] = None,
+                 commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 commodity_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 part_nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_quota_info_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -510,11 +510,11 @@ class Quota(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-            commodity_data: Optional[pulumi.Input[_builtins.str]] = None,
-            part_nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            sub_quota_info_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict']]]]] = None) -> 'Quota':
+            commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+            commodity_data: pulumi.Input[Optional[_builtins.str]] = None,
+            part_nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_quota_info_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaSubQuotaInfoListArgs', 'QuotaSubQuotaInfoListArgsDict']]]]] = None) -> 'Quota':
         """
         Get an existing Quota resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

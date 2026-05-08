@@ -21,8 +21,8 @@ class PolicyArgs:
     def __init__(__self__, *,
                  policy_document: pulumi.Input[_builtins.str],
                  policy_name: pulumi.Input[_builtins.str],
-                 default_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Policy resource.
 
@@ -68,37 +68,37 @@ class PolicyArgs:
     @_builtins.property
     @pulumi.getter(name="defaultVersion")
     @_utilities.deprecated("""Field 'default_version' has been deprecated from provider version 1.90.0""")
-    def default_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the policy. Default to v1.
         """
         return pulumi.get(self, "default_version")
 
     @default_version.setter
-    def default_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the policy. The description must be 1 to 1,024 characters in length.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _PolicyState:
     def __init__(__self__, *,
-                 default_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
 
@@ -125,62 +125,62 @@ class _PolicyState:
     @_builtins.property
     @pulumi.getter(name="defaultVersion")
     @_utilities.deprecated("""Field 'default_version' has been deprecated from provider version 1.90.0""")
-    def default_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the policy. Default to v1.
         """
         return pulumi.get(self, "default_version")
 
     @default_version.setter
-    def default_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the policy. The description must be 1 to 1,024 characters in length.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="policyDocument")
-    def policy_document(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_document(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the policy. The content must be 1 to 2,048 characters in length.
         """
         return pulumi.get(self, "policy_document")
 
     @policy_document.setter
-    def policy_document(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_document(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_document", value)
 
     @_builtins.property
     @pulumi.getter(name="policyName")
-    def policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
-    def policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyType")
-    def policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the policy. Valid values: `Custom`, `System`.
         """
         return pulumi.get(self, "policy_type")
 
     @policy_type.setter
-    def policy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_type", value)
 
 
@@ -190,10 +190,10 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Policy resource.\\
@@ -307,10 +307,10 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -339,11 +339,11 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_version: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Policy':
+            default_version: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

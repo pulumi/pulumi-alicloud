@@ -20,8 +20,8 @@ __all__ = ['BucketUserDefinedLogFieldsArgs', 'BucketUserDefinedLogFields']
 class BucketUserDefinedLogFieldsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 header_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 param_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 header_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 param_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a BucketUserDefinedLogFields resource.
 
@@ -49,35 +49,35 @@ class BucketUserDefinedLogFieldsArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerSets")
-    def header_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def header_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Container for custom request header configuration information.
         """
         return pulumi.get(self, "header_sets")
 
     @header_sets.setter
-    def header_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def header_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "header_sets", value)
 
     @_builtins.property
     @pulumi.getter(name="paramSets")
-    def param_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def param_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Container for custom request parameters configuration information.
         """
         return pulumi.get(self, "param_sets")
 
     @param_sets.setter
-    def param_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def param_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "param_sets", value)
 
 
 @pulumi.input_type
 class _BucketUserDefinedLogFieldsState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 header_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 param_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 header_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 param_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering BucketUserDefinedLogFields resources.
 
@@ -94,38 +94,38 @@ class _BucketUserDefinedLogFieldsState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="headerSets")
-    def header_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def header_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Container for custom request header configuration information.
         """
         return pulumi.get(self, "header_sets")
 
     @header_sets.setter
-    def header_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def header_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "header_sets", value)
 
     @_builtins.property
     @pulumi.getter(name="paramSets")
-    def param_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def param_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Container for custom request parameters configuration information.
         """
         return pulumi.get(self, "param_sets")
 
     @param_sets.setter
-    def param_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def param_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "param_sets", value)
 
 
@@ -135,9 +135,9 @@ class BucketUserDefinedLogFields(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 header_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 param_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 header_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 param_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a OSS Bucket User Defined Log Fields resource. Used to personalize the user_defined_log_fields field in the Bucket real-time log.
@@ -266,9 +266,9 @@ class BucketUserDefinedLogFields(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 header_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 param_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 header_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 param_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -293,9 +293,9 @@ class BucketUserDefinedLogFields(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            header_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            param_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'BucketUserDefinedLogFields':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            header_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            param_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'BucketUserDefinedLogFields':
         """
         Get an existing BucketUserDefinedLogFields resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -161,10 +161,10 @@ def get_registry_enterprise_namespaces(ids: Optional[Sequence[_builtins.str]] = 
         names=pulumi.get(__ret__, 'names'),
         namespaces=pulumi.get(__ret__, 'namespaces'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_registry_enterprise_namespaces_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                              instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                              name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_registry_enterprise_namespaces_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                              instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                              name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistryEnterpriseNamespacesResult]:
     """
     This data source provides a list Container Registry Enterprise Edition namespaces on Alibaba Cloud.

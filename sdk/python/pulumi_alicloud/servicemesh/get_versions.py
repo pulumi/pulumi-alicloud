@@ -127,9 +127,9 @@ def get_versions(edition: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         versions=pulumi.get(__ret__, 'versions'))
-def get_versions_output(edition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_versions_output(edition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVersionsResult]:
     """
     This data source provides ASM available versions in the specified region.

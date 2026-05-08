@@ -172,11 +172,11 @@ def get_server_certificates(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_server_certificates_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                   name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   resource_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_server_certificates_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                   name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerCertificatesResult]:
     """
     This data source provides the server certificate list.

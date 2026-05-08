@@ -73,13 +73,13 @@ import * as utilities from "../utilities";
  *     logtailConfigName: "tfaccsls62147",
  *     inputType: "file",
  * });
- * const _default = defaultLogtailConfig.logtailConfigName.apply(logtailConfigName => alicloud.sls.getLogtailConfigsOutput({
- *     logtailConfigName: logtailConfigName,
+ * const _default = alicloud.sls.getLogtailConfigsOutput({
+ *     logtailConfigName: defaultLogtailConfig.logtailConfigName,
  *     logstoreName: "example",
  *     projectName: projectName,
  *     offset: 0,
  *     size: 100,
- * }));
+ * });
  * export const alicloudSlsLogtailConfigExampleId = _default.apply(_default => _default.configs?.[0]?.id);
  * ```
  */
@@ -233,13 +233,13 @@ export interface GetLogtailConfigsResult {
  *     logtailConfigName: "tfaccsls62147",
  *     inputType: "file",
  * });
- * const _default = defaultLogtailConfig.logtailConfigName.apply(logtailConfigName => alicloud.sls.getLogtailConfigsOutput({
- *     logtailConfigName: logtailConfigName,
+ * const _default = alicloud.sls.getLogtailConfigsOutput({
+ *     logtailConfigName: defaultLogtailConfig.logtailConfigName,
  *     logstoreName: "example",
  *     projectName: projectName,
  *     offset: 0,
  *     size: 100,
- * }));
+ * });
  * export const alicloudSlsLogtailConfigExampleId = _default.apply(_default => _default.configs?.[0]?.id);
  * ```
  */
@@ -264,7 +264,7 @@ export interface GetLogtailConfigsOutputArgs {
     /**
      * A list of Logtail Config IDs. The value is formulated as `<project_name>:<logtail_config_name>`.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Logstore name.
      */
@@ -272,11 +272,11 @@ export interface GetLogtailConfigsOutputArgs {
     /**
      * The name of the resource
      */
-    logtailConfigName?: pulumi.Input<string>;
+    logtailConfigName?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Group Metric Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * Query start row. The default value is 0.
      */
@@ -284,7 +284,7 @@ export interface GetLogtailConfigsOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Project name
      */

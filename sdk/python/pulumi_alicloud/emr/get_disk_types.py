@@ -183,12 +183,12 @@ def get_disk_types(cluster_type: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         types=pulumi.get(__ret__, 'types'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_disk_types_output(cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                          destination_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                          instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                          instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_disk_types_output(cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                          destination_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                          instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                          instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                          output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDiskTypesResult]:
     """
     The `emr_get_disk_types` data source provides a collection of data disk and

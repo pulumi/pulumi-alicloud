@@ -116,21 +116,21 @@ export interface GetMailAddressesOutputArgs {
     /**
      * A list of Mail Address IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The key word about account email address.
      */
-    keyWord?: pulumi.Input<string>;
+    keyWord?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Account type. Valid values: `batch`, `trigger`.
      */
-    sendtype?: pulumi.Input<string>;
+    sendtype?: pulumi.Input<string | undefined>;
     /**
      * Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

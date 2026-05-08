@@ -125,19 +125,19 @@ export interface SavedQueryState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Query Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Query Expression.
      */
-    expression?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    savedQueryName?: pulumi.Input<string>;
+    savedQueryName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -147,7 +147,7 @@ export interface SavedQueryArgs {
     /**
      * Query Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Query Expression.
      */

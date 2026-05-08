@@ -22,7 +22,7 @@ class AclAttachmentArgs:
                  acl_id: pulumi.Input[_builtins.str],
                  acl_type: pulumi.Input[_builtins.str],
                  listener_id: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AclAttachment resource.
 
@@ -75,25 +75,25 @@ class AclAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The dry run.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
 
 @pulumi.input_type
 class _AclAttachmentState:
     def __init__(__self__, *,
-                 acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclAttachment resources.
 
@@ -116,62 +116,62 @@ class _AclAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="aclId")
-    def acl_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of an ACL.
         """
         return pulumi.get(self, "acl_id")
 
     @acl_id.setter
-    def acl_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aclType")
-    def acl_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the ACL. Valid values:
         """
         return pulumi.get(self, "acl_type")
 
     @acl_type.setter
-    def acl_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The dry run.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the listener.
         """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
-    def listener_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Acl Attachment.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -181,10 +181,10 @@ class AclAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Acl Attachment resource.
@@ -332,10 +332,10 @@ class AclAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -366,11 +366,11 @@ class AclAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_type: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'AclAttachment':
+            acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'AclAttachment':
         """
         Get an existing AclAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -317,11 +317,11 @@ export interface InstanceV2State {
     /**
      * Coordination Zone VswitchId
      */
-    arbiterVswitchId?: pulumi.Input<string>;
+    arbiterVswitchId?: pulumi.Input<string | undefined>;
     /**
      * Coordination Zone ZoneId
      */
-    arbiterZoneId?: pulumi.Input<string>;
+    arbiterZoneId?: pulumi.Input<string | undefined>;
     /**
      * Deployment Scenario
      *
@@ -332,7 +332,7 @@ export interface InstanceV2State {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    archVersion?: pulumi.Input<string>;
+    archVersion?: pulumi.Input<string | undefined>;
     /**
      * Automatic renewal duration. Unit: Month.
      *
@@ -343,17 +343,17 @@ export interface InstanceV2State {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    autoRenewDuration?: pulumi.Input<string>;
+    autoRenewDuration?: pulumi.Input<string | undefined>;
     /**
      * Whether the instance is automatically renewed. Enumerated values:
      */
-    autoRenewal?: pulumi.Input<boolean>;
+    autoRenewal?: pulumi.Input<boolean | undefined>;
     /**
      * The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
      *
      * > **NOTE:**  Cloud storage capacity in GB
      */
-    cloudStorageSize?: pulumi.Input<number>;
+    cloudStorageSize?: pulumi.Input<number | undefined>;
     /**
      * Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
      *
@@ -362,25 +362,25 @@ export interface InstanceV2State {
      * - **Performance storage**: Performance-based cloud storage
      * - **Capacity Storage**: Capacity-based cloud storage
      */
-    cloudStorageType?: pulumi.Input<string>;
+    cloudStorageType?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable deletion protection
      */
-    deletionProtection?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<string | undefined>;
     /**
      * The specified duration when the resource is purchased. Only the subscription instances are valid.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Engine List See `engineList` below.
      */
-    engineLists?: pulumi.Input<pulumi.Input<inputs.lindorm.InstanceV2EngineList>[]>;
+    engineLists?: pulumi.Input<pulumi.Input<inputs.lindorm.InstanceV2EngineList>[] | undefined>;
     /**
      * Instance name
      */
-    instanceAlias?: pulumi.Input<string>;
+    instanceAlias?: pulumi.Input<string | undefined>;
     /**
      * Resource attribute fields representing payment types
      *
@@ -388,49 +388,49 @@ export interface InstanceV2State {
      * - `PREPAY`: Prepaid mode
      * - `POSTPAY`: Postpay mode
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Purchase duration unit: Month, Year
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * Primary zone VswitchId
      */
-    primaryVswitchId?: pulumi.Input<string>;
+    primaryVswitchId?: pulumi.Input<string | undefined>;
     /**
      * Primary zone ZoneID
      */
-    primaryZoneId?: pulumi.Input<string>;
+    primaryZoneId?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Standby zone VswitchId
      */
-    standbyVswitchId?: pulumi.Input<string>;
+    standbyVswitchId?: pulumi.Input<string | undefined>;
     /**
      * Standby zone ZoneID
      */
-    standbyZoneId?: pulumi.Input<string>;
+    standbyZoneId?: pulumi.Input<string | undefined>;
     /**
      * VpcId
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * VswitchId
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * Instance whitelist list See `whiteIpList` below.
      */
-    whiteIpLists?: pulumi.Input<pulumi.Input<inputs.lindorm.InstanceV2WhiteIpList>[]>;
+    whiteIpLists?: pulumi.Input<pulumi.Input<inputs.lindorm.InstanceV2WhiteIpList>[] | undefined>;
     /**
      * The zone ID  of the resource
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -440,11 +440,11 @@ export interface InstanceV2Args {
     /**
      * Coordination Zone VswitchId
      */
-    arbiterVswitchId?: pulumi.Input<string>;
+    arbiterVswitchId?: pulumi.Input<string | undefined>;
     /**
      * Coordination Zone ZoneId
      */
-    arbiterZoneId?: pulumi.Input<string>;
+    arbiterZoneId?: pulumi.Input<string | undefined>;
     /**
      * Deployment Scenario
      *
@@ -466,17 +466,17 @@ export interface InstanceV2Args {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    autoRenewDuration?: pulumi.Input<string>;
+    autoRenewDuration?: pulumi.Input<string | undefined>;
     /**
      * Whether the instance is automatically renewed. Enumerated values:
      */
-    autoRenewal?: pulumi.Input<boolean>;
+    autoRenewal?: pulumi.Input<boolean | undefined>;
     /**
      * The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
      *
      * > **NOTE:**  Cloud storage capacity in GB
      */
-    cloudStorageSize?: pulumi.Input<number>;
+    cloudStorageSize?: pulumi.Input<number | undefined>;
     /**
      * Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
      *
@@ -485,17 +485,17 @@ export interface InstanceV2Args {
      * - **Performance storage**: Performance-based cloud storage
      * - **Capacity Storage**: Capacity-based cloud storage
      */
-    cloudStorageType?: pulumi.Input<string>;
+    cloudStorageType?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable deletion protection
      */
-    deletionProtection?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<string | undefined>;
     /**
      * The specified duration when the resource is purchased. Only the subscription instances are valid.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Engine List See `engineList` below.
      */
@@ -517,23 +517,23 @@ export interface InstanceV2Args {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * Primary zone VswitchId
      */
-    primaryVswitchId?: pulumi.Input<string>;
+    primaryVswitchId?: pulumi.Input<string | undefined>;
     /**
      * Primary zone ZoneID
      */
-    primaryZoneId?: pulumi.Input<string>;
+    primaryZoneId?: pulumi.Input<string | undefined>;
     /**
      * Standby zone VswitchId
      */
-    standbyVswitchId?: pulumi.Input<string>;
+    standbyVswitchId?: pulumi.Input<string | undefined>;
     /**
      * Standby zone ZoneID
      */
-    standbyZoneId?: pulumi.Input<string>;
+    standbyZoneId?: pulumi.Input<string | undefined>;
     /**
      * VpcId
      */
@@ -545,7 +545,7 @@ export interface InstanceV2Args {
     /**
      * Instance whitelist list See `whiteIpList` below.
      */
-    whiteIpLists?: pulumi.Input<pulumi.Input<inputs.lindorm.InstanceV2WhiteIpList>[]>;
+    whiteIpLists?: pulumi.Input<pulumi.Input<inputs.lindorm.InstanceV2WhiteIpList>[] | undefined>;
     /**
      * The zone ID  of the resource
      */

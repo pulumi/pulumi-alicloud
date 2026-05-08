@@ -201,7 +201,7 @@ export interface GetEtlsOutputArgs {
     /**
      * A list of Etl IDs. The value is formulated as `<project>:<job_name>`.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Source Logstore Name.
      */
@@ -209,11 +209,11 @@ export interface GetEtlsOutputArgs {
     /**
      * Query start row. The default value is 0.
      */
-    offset?: pulumi.Input<number>;
+    offset?: pulumi.Input<number | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Project Name
      */
@@ -221,5 +221,5 @@ export interface GetEtlsOutputArgs {
     /**
      * Specify the number of data processing tasks returned by the query
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
 }

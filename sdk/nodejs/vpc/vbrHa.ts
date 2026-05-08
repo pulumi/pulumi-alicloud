@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *             input: `${name}-%d`,
  *             args: [range.value + 1],
  *         }).then(invoke => invoke.result),
- *         vlanId: vlanId.id + range.value,
+ *         vlanId: Number(vlanId.id) + range.value,
  *         minRxInterval: 1000,
  *         minTxInterval: 1000,
  *         detectMultiplier: 10,
@@ -198,38 +198,38 @@ export interface VbrHaState {
     /**
      * The creation time of the VBR.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the VBR switching group.
      * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to PreCheck only this request. Value range:
      * - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
      * - *false** (default): Send a normal request and start the instance directly after passing the check.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The instance ID of another VBR in The VBR switching group.
      */
-    peerVbrId?: pulumi.Input<string>;
+    peerVbrId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region to which the VBR belongs.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Status of VBR switching Group
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * VBR switch group name.
      */
-    vbrHaName?: pulumi.Input<string>;
+    vbrHaName?: pulumi.Input<string | undefined>;
     /**
      * The VBR instance ID.
      */
-    vbrId?: pulumi.Input<string>;
+    vbrId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -240,13 +240,13 @@ export interface VbrHaArgs {
      * The description of the VBR switching group.
      * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to PreCheck only this request. Value range:
      * - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
      * - *false** (default): Send a normal request and start the instance directly after passing the check.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The instance ID of another VBR in The VBR switching group.
      */
@@ -254,7 +254,7 @@ export interface VbrHaArgs {
     /**
      * VBR switch group name.
      */
-    vbrHaName?: pulumi.Input<string>;
+    vbrHaName?: pulumi.Input<string | undefined>;
     /**
      * The VBR instance ID.
      */

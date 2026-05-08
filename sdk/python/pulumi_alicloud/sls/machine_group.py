@@ -25,8 +25,8 @@ class MachineGroupArgs:
                  machine_identify_type: pulumi.Input[_builtins.str],
                  machine_lists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  project_name: pulumi.Input[_builtins.str],
-                 group_attribute: Optional[pulumi.Input['MachineGroupGroupAttributeArgs']] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_attribute: pulumi.Input[Optional['MachineGroupGroupAttributeArgs']] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MachineGroup resource.
 
@@ -116,38 +116,38 @@ class MachineGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupAttribute")
-    def group_attribute(self) -> Optional[pulumi.Input['MachineGroupGroupAttributeArgs']]:
+    def group_attribute(self) -> pulumi.Input[Optional['MachineGroupGroupAttributeArgs']]:
         """
         Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
         """
         return pulumi.get(self, "group_attribute")
 
     @group_attribute.setter
-    def group_attribute(self, value: Optional[pulumi.Input['MachineGroupGroupAttributeArgs']]):
+    def group_attribute(self, value: pulumi.Input[Optional['MachineGroupGroupAttributeArgs']]):
         pulumi.set(self, "group_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="groupType")
-    def group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the machine group. Set the value to an empty string.
         """
         return pulumi.get(self, "group_type")
 
     @group_type.setter
-    def group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_type", value)
 
 
 @pulumi.input_type
 class _MachineGroupState:
     def __init__(__self__, *,
-                 group_attribute: Optional[pulumi.Input['MachineGroupGroupAttributeArgs']] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_identify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_attribute: pulumi.Input[Optional['MachineGroupGroupAttributeArgs']] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_identify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MachineGroup resources.
 
@@ -183,19 +183,19 @@ class _MachineGroupState:
 
     @_builtins.property
     @pulumi.getter(name="groupAttribute")
-    def group_attribute(self) -> Optional[pulumi.Input['MachineGroupGroupAttributeArgs']]:
+    def group_attribute(self) -> pulumi.Input[Optional['MachineGroupGroupAttributeArgs']]:
         """
         Properties of machine groups. For details, please refer to the groupAttribute parameter description in the following table. See `group_attribute` below.
         """
         return pulumi.get(self, "group_attribute")
 
     @group_attribute.setter
-    def group_attribute(self, value: Optional[pulumi.Input['MachineGroupGroupAttributeArgs']]):
+    def group_attribute(self, value: pulumi.Input[Optional['MachineGroupGroupAttributeArgs']]):
         pulumi.set(self, "group_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the machine group. The name must meet the following requirements:
 
@@ -207,24 +207,24 @@ class _MachineGroupState:
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupType")
-    def group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the machine group. Set the value to an empty string.
         """
         return pulumi.get(self, "group_type")
 
     @group_type.setter
-    def group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_type", value)
 
     @_builtins.property
     @pulumi.getter(name="machineIdentifyType")
-    def machine_identify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_identify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier type of the machine group. Valid values:
 
@@ -234,12 +234,12 @@ class _MachineGroupState:
         return pulumi.get(self, "machine_identify_type")
 
     @machine_identify_type.setter
-    def machine_identify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_identify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_identify_type", value)
 
     @_builtins.property
     @pulumi.getter(name="machineLists")
-    def machine_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def machine_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The identification information of the machine group.
         - If machineidentifiytype is configured to ip, enter the ip address of the server.
@@ -248,19 +248,19 @@ class _MachineGroupState:
         return pulumi.get(self, "machine_lists")
 
     @machine_lists.setter
-    def machine_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def machine_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "machine_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project.
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
 
@@ -270,12 +270,12 @@ class MachineGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_attribute: Optional[pulumi.Input[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict']]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_identify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_attribute: pulumi.Input[Optional[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict']]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_identify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Log Service (SLS) Machine Group resource.
@@ -411,12 +411,12 @@ class MachineGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_attribute: Optional[pulumi.Input[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict']]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_identify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_attribute: pulumi.Input[Optional[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict']]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_identify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -450,12 +450,12 @@ class MachineGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group_attribute: Optional[pulumi.Input[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict']]] = None,
-            group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            group_type: Optional[pulumi.Input[_builtins.str]] = None,
-            machine_identify_type: Optional[pulumi.Input[_builtins.str]] = None,
-            machine_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'MachineGroup':
+            group_attribute: pulumi.Input[Optional[Union['MachineGroupGroupAttributeArgs', 'MachineGroupGroupAttributeArgsDict']]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_identify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'MachineGroup':
         """
         Get an existing MachineGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

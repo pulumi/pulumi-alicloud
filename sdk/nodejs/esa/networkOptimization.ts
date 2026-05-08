@@ -191,53 +191,53 @@ export interface NetworkOptimizationState {
     /**
      * ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
      */
-    configId?: pulumi.Input<number>;
+    configId?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable GRPC, default is disabled. Value range:
      */
-    grpc?: pulumi.Input<string>;
+    grpc?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable HTTP2 origin, default is disabled. Value range:
      */
-    http2Origin?: pulumi.Input<string>;
+    http2Origin?: pulumi.Input<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * Site ID.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable smart routing service, default is disabled. Value range:
      */
-    smartRouting?: pulumi.Input<string>;
+    smartRouting?: pulumi.Input<string | undefined>;
     /**
      * Maximum upload file size, in MB, value range: 100～500.
      */
-    uploadMaxFilesize?: pulumi.Input<string>;
+    uploadMaxFilesize?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable Websocket, default is enabled. Value range:
      */
-    websocket?: pulumi.Input<string>;
+    websocket?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -247,29 +247,29 @@ export interface NetworkOptimizationArgs {
     /**
      * Whether to enable GRPC, default is disabled. Value range:
      */
-    grpc?: pulumi.Input<string>;
+    grpc?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable HTTP2 origin, default is disabled. Value range:
      */
-    http2Origin?: pulumi.Input<string>;
+    http2Origin?: pulumi.Input<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * Site ID.
      */
@@ -277,17 +277,17 @@ export interface NetworkOptimizationArgs {
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable smart routing service, default is disabled. Value range:
      */
-    smartRouting?: pulumi.Input<string>;
+    smartRouting?: pulumi.Input<string | undefined>;
     /**
      * Maximum upload file size, in MB, value range: 100～500.
      */
-    uploadMaxFilesize?: pulumi.Input<string>;
+    uploadMaxFilesize?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable Websocket, default is enabled. Value range:
      */
-    websocket?: pulumi.Input<string>;
+    websocket?: pulumi.Input<string | undefined>;
 }

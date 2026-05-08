@@ -166,39 +166,39 @@ export interface BasicDefenseThresholdState {
     /**
      * Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
      */
-    bps?: pulumi.Input<number>;
+    bps?: pulumi.Input<number | undefined>;
     /**
      * The type of the threshold to query. Valid values: `defense`,`blackhole`.
      */
-    ddosType?: pulumi.Input<string>;
+    ddosType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The Internet IP address.
      */
-    internetIp?: pulumi.Input<string>;
+    internetIp?: pulumi.Input<string | undefined>;
     /**
      * Whether it is the system default threshold. Value:
      */
-    isAuto?: pulumi.Input<boolean>;
+    isAuto?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum traffic scrubbing threshold. Unit: Mbit/s.
      */
-    maxBps?: pulumi.Input<number>;
+    maxBps?: pulumi.Input<number | undefined>;
     /**
      * The maximum packet scrubbing threshold. Unit: pps.
      */
-    maxPps?: pulumi.Input<number>;
+    maxPps?: pulumi.Input<number | undefined>;
     /**
      * The current message number cleaning threshold. Unit: pps.
      */
-    pps?: pulumi.Input<number>;
+    pps?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -208,7 +208,7 @@ export interface BasicDefenseThresholdArgs {
     /**
      * Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
      */
-    bps?: pulumi.Input<number>;
+    bps?: pulumi.Input<number | undefined>;
     /**
      * The type of the threshold to query. Valid values: `defense`,`blackhole`.
      */
@@ -224,13 +224,13 @@ export interface BasicDefenseThresholdArgs {
     /**
      * The Internet IP address.
      */
-    internetIp?: pulumi.Input<string>;
+    internetIp?: pulumi.Input<string | undefined>;
     /**
      * Whether it is the system default threshold. Value:
      */
-    isAuto?: pulumi.Input<boolean>;
+    isAuto?: pulumi.Input<boolean | undefined>;
     /**
      * The current message number cleaning threshold. Unit: pps.
      */
-    pps?: pulumi.Input<number>;
+    pps?: pulumi.Input<number | undefined>;
 }

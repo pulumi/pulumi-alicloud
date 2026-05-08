@@ -181,23 +181,23 @@ export interface EcsNetworkInterfaceAttachmentState {
     /**
      * The ID of the ECS instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The index of the network card.
      */
-    networkCardIndex?: pulumi.Input<number>;
+    networkCardIndex?: pulumi.Input<number | undefined>;
     /**
      * The ID of the network interface.
      */
-    networkInterfaceId?: pulumi.Input<string>;
+    networkInterfaceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the trunk network instance.
      */
-    trunkNetworkInstanceId?: pulumi.Input<string>;
+    trunkNetworkInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The wait for network configuration ready.
      */
-    waitForNetworkConfigurationReady?: pulumi.Input<boolean>;
+    waitForNetworkConfigurationReady?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -211,7 +211,7 @@ export interface EcsNetworkInterfaceAttachmentArgs {
     /**
      * The index of the network card.
      */
-    networkCardIndex?: pulumi.Input<number>;
+    networkCardIndex?: pulumi.Input<number | undefined>;
     /**
      * The ID of the network interface.
      */
@@ -219,9 +219,9 @@ export interface EcsNetworkInterfaceAttachmentArgs {
     /**
      * The ID of the trunk network instance.
      */
-    trunkNetworkInstanceId?: pulumi.Input<string>;
+    trunkNetworkInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The wait for network configuration ready.
      */
-    waitForNetworkConfigurationReady?: pulumi.Input<boolean>;
+    waitForNetworkConfigurationReady?: pulumi.Input<boolean | undefined>;
 }

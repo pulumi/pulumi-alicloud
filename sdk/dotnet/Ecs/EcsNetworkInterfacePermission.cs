@@ -29,12 +29,12 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.Index.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultGetAccount = AliCloud.Index.GetAccount.Invoke();
+    ///     var defaultGetAccount = AliCloud.GetAccount.Invoke();
     /// 
     ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
@@ -67,11 +67,11 @@ namespace Pulumi.AliCloud.Ecs
     ///             defaultSecurityGroup.Id,
     ///         },
     ///         Description = "terraform-example",
-    ///         PrimaryIpAddress = defaultSwitch.CidrBlock.Apply(cidrBlock =&gt; Std.Index.Cidrhost.Invoke(new()
+    ///         PrimaryIpAddress = Std.Cidrhost.Invoke(new()
     ///         {
-    ///             Input = cidrBlock,
+    ///             Input = defaultSwitch.CidrBlock,
     ///             Host = 100,
-    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },

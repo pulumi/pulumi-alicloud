@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Nas
     ///         FileSystemType = "extreme",
     ///     });
     /// 
-    ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length;
+    ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length();
     /// 
     ///     var zoneId = Output.Tuple(@default, countSize).Apply(values =&gt;
     ///     {

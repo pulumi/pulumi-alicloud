@@ -23,16 +23,16 @@ class EventSourceV2Args:
     def __init__(__self__, *,
                  event_bus_name: pulumi.Input[_builtins.str],
                  event_source_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_external_source: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_http_event_parameters: Optional[pulumi.Input['EventSourceV2SourceHttpEventParametersArgs']] = None,
-                 source_kafka_parameters: Optional[pulumi.Input['EventSourceV2SourceKafkaParametersArgs']] = None,
-                 source_mns_parameters: Optional[pulumi.Input['EventSourceV2SourceMnsParametersArgs']] = None,
-                 source_oss_event_parameters: Optional[pulumi.Input['EventSourceV2SourceOssEventParametersArgs']] = None,
-                 source_rabbit_mq_parameters: Optional[pulumi.Input['EventSourceV2SourceRabbitMqParametersArgs']] = None,
-                 source_rocketmq_parameters: Optional[pulumi.Input['EventSourceV2SourceRocketmqParametersArgs']] = None,
-                 source_scheduled_event_parameters: Optional[pulumi.Input['EventSourceV2SourceScheduledEventParametersArgs']] = None,
-                 source_sls_parameters: Optional[pulumi.Input['EventSourceV2SourceSlsParametersArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_http_event_parameters: pulumi.Input[Optional['EventSourceV2SourceHttpEventParametersArgs']] = None,
+                 source_kafka_parameters: pulumi.Input[Optional['EventSourceV2SourceKafkaParametersArgs']] = None,
+                 source_mns_parameters: pulumi.Input[Optional['EventSourceV2SourceMnsParametersArgs']] = None,
+                 source_oss_event_parameters: pulumi.Input[Optional['EventSourceV2SourceOssEventParametersArgs']] = None,
+                 source_rabbit_mq_parameters: pulumi.Input[Optional['EventSourceV2SourceRabbitMqParametersArgs']] = None,
+                 source_rocketmq_parameters: pulumi.Input[Optional['EventSourceV2SourceRocketmqParametersArgs']] = None,
+                 source_scheduled_event_parameters: pulumi.Input[Optional['EventSourceV2SourceScheduledEventParametersArgs']] = None,
+                 source_sls_parameters: pulumi.Input[Optional['EventSourceV2SourceSlsParametersArgs']] = None):
         """
         The set of arguments for constructing a EventSourceV2 resource.
 
@@ -100,19 +100,19 @@ class EventSourceV2Args:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The detail describe of event source
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedExternalSource")
-    def linked_external_source(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def linked_external_source(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to connect to an external data source
 
@@ -121,121 +121,121 @@ class EventSourceV2Args:
         return pulumi.get(self, "linked_external_source")
 
     @linked_external_source.setter
-    def linked_external_source(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def linked_external_source(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "linked_external_source", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceHttpEventParameters")
-    def source_http_event_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceHttpEventParametersArgs']]:
+    def source_http_event_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceHttpEventParametersArgs']]:
         """
         The request parameter SourceHttpEventParameters. See `source_http_event_parameters` below.
         """
         return pulumi.get(self, "source_http_event_parameters")
 
     @source_http_event_parameters.setter
-    def source_http_event_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceHttpEventParametersArgs']]):
+    def source_http_event_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceHttpEventParametersArgs']]):
         pulumi.set(self, "source_http_event_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceKafkaParameters")
-    def source_kafka_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceKafkaParametersArgs']]:
+    def source_kafka_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceKafkaParametersArgs']]:
         """
         Kafka event source parameter. See `source_kafka_parameters` below.
         """
         return pulumi.get(self, "source_kafka_parameters")
 
     @source_kafka_parameters.setter
-    def source_kafka_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceKafkaParametersArgs']]):
+    def source_kafka_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceKafkaParametersArgs']]):
         pulumi.set(self, "source_kafka_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceMnsParameters")
-    def source_mns_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceMnsParametersArgs']]:
+    def source_mns_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceMnsParametersArgs']]:
         """
         Lightweight message queue (formerly MNS) event source parameter. See `source_mns_parameters` below.
         """
         return pulumi.get(self, "source_mns_parameters")
 
     @source_mns_parameters.setter
-    def source_mns_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceMnsParametersArgs']]):
+    def source_mns_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceMnsParametersArgs']]):
         pulumi.set(self, "source_mns_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceOssEventParameters")
-    def source_oss_event_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceOssEventParametersArgs']]:
+    def source_oss_event_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceOssEventParametersArgs']]:
         """
         OSS event source parameters See `source_oss_event_parameters` below.
         """
         return pulumi.get(self, "source_oss_event_parameters")
 
     @source_oss_event_parameters.setter
-    def source_oss_event_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceOssEventParametersArgs']]):
+    def source_oss_event_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceOssEventParametersArgs']]):
         pulumi.set(self, "source_oss_event_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRabbitMqParameters")
-    def source_rabbit_mq_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceRabbitMqParametersArgs']]:
+    def source_rabbit_mq_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceRabbitMqParametersArgs']]:
         """
         The request parameter SourceRabbitMQParameters. See `source_rabbit_mq_parameters` below.
         """
         return pulumi.get(self, "source_rabbit_mq_parameters")
 
     @source_rabbit_mq_parameters.setter
-    def source_rabbit_mq_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceRabbitMqParametersArgs']]):
+    def source_rabbit_mq_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceRabbitMqParametersArgs']]):
         pulumi.set(self, "source_rabbit_mq_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRocketmqParameters")
-    def source_rocketmq_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceRocketmqParametersArgs']]:
+    def source_rocketmq_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceRocketmqParametersArgs']]:
         """
         The request parameter SourceRocketMQParameters. See `source_rocketmq_parameters` below.
         """
         return pulumi.get(self, "source_rocketmq_parameters")
 
     @source_rocketmq_parameters.setter
-    def source_rocketmq_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceRocketmqParametersArgs']]):
+    def source_rocketmq_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceRocketmqParametersArgs']]):
         pulumi.set(self, "source_rocketmq_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceScheduledEventParameters")
-    def source_scheduled_event_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceScheduledEventParametersArgs']]:
+    def source_scheduled_event_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceScheduledEventParametersArgs']]:
         """
         Time event source parameter. See `source_scheduled_event_parameters` below.
         """
         return pulumi.get(self, "source_scheduled_event_parameters")
 
     @source_scheduled_event_parameters.setter
-    def source_scheduled_event_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceScheduledEventParametersArgs']]):
+    def source_scheduled_event_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceScheduledEventParametersArgs']]):
         pulumi.set(self, "source_scheduled_event_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSlsParameters")
-    def source_sls_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceSlsParametersArgs']]:
+    def source_sls_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceSlsParametersArgs']]:
         """
         The request parameter SourceSLSParameters. See `source_sls_parameters` below.
         """
         return pulumi.get(self, "source_sls_parameters")
 
     @source_sls_parameters.setter
-    def source_sls_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceSlsParametersArgs']]):
+    def source_sls_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceSlsParametersArgs']]):
         pulumi.set(self, "source_sls_parameters", value)
 
 
 @pulumi.input_type
 class _EventSourceV2State:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_bus_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_external_source: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_http_event_parameters: Optional[pulumi.Input['EventSourceV2SourceHttpEventParametersArgs']] = None,
-                 source_kafka_parameters: Optional[pulumi.Input['EventSourceV2SourceKafkaParametersArgs']] = None,
-                 source_mns_parameters: Optional[pulumi.Input['EventSourceV2SourceMnsParametersArgs']] = None,
-                 source_oss_event_parameters: Optional[pulumi.Input['EventSourceV2SourceOssEventParametersArgs']] = None,
-                 source_rabbit_mq_parameters: Optional[pulumi.Input['EventSourceV2SourceRabbitMqParametersArgs']] = None,
-                 source_rocketmq_parameters: Optional[pulumi.Input['EventSourceV2SourceRocketmqParametersArgs']] = None,
-                 source_scheduled_event_parameters: Optional[pulumi.Input['EventSourceV2SourceScheduledEventParametersArgs']] = None,
-                 source_sls_parameters: Optional[pulumi.Input['EventSourceV2SourceSlsParametersArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_http_event_parameters: pulumi.Input[Optional['EventSourceV2SourceHttpEventParametersArgs']] = None,
+                 source_kafka_parameters: pulumi.Input[Optional['EventSourceV2SourceKafkaParametersArgs']] = None,
+                 source_mns_parameters: pulumi.Input[Optional['EventSourceV2SourceMnsParametersArgs']] = None,
+                 source_oss_event_parameters: pulumi.Input[Optional['EventSourceV2SourceOssEventParametersArgs']] = None,
+                 source_rabbit_mq_parameters: pulumi.Input[Optional['EventSourceV2SourceRabbitMqParametersArgs']] = None,
+                 source_rocketmq_parameters: pulumi.Input[Optional['EventSourceV2SourceRocketmqParametersArgs']] = None,
+                 source_scheduled_event_parameters: pulumi.Input[Optional['EventSourceV2SourceScheduledEventParametersArgs']] = None,
+                 source_sls_parameters: pulumi.Input[Optional['EventSourceV2SourceSlsParametersArgs']] = None):
         """
         Input properties used for looking up and filtering EventSourceV2 resources.
 
@@ -281,43 +281,43 @@ class _EventSourceV2State:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The detail describe of event source
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="eventBusName")
-    def event_bus_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_bus_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the bus associated with the event source
         """
         return pulumi.get(self, "event_bus_name")
 
     @event_bus_name.setter
-    def event_bus_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_bus_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_bus_name", value)
 
     @_builtins.property
     @pulumi.getter(name="eventSourceName")
-    def event_source_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_source_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The code name of event source
         """
         return pulumi.get(self, "event_source_name")
 
     @event_source_name.setter
-    def event_source_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_source_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_source_name", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedExternalSource")
-    def linked_external_source(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def linked_external_source(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to connect to an external data source
 
@@ -326,103 +326,103 @@ class _EventSourceV2State:
         return pulumi.get(self, "linked_external_source")
 
     @linked_external_source.setter
-    def linked_external_source(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def linked_external_source(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "linked_external_source", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceHttpEventParameters")
-    def source_http_event_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceHttpEventParametersArgs']]:
+    def source_http_event_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceHttpEventParametersArgs']]:
         """
         The request parameter SourceHttpEventParameters. See `source_http_event_parameters` below.
         """
         return pulumi.get(self, "source_http_event_parameters")
 
     @source_http_event_parameters.setter
-    def source_http_event_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceHttpEventParametersArgs']]):
+    def source_http_event_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceHttpEventParametersArgs']]):
         pulumi.set(self, "source_http_event_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceKafkaParameters")
-    def source_kafka_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceKafkaParametersArgs']]:
+    def source_kafka_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceKafkaParametersArgs']]:
         """
         Kafka event source parameter. See `source_kafka_parameters` below.
         """
         return pulumi.get(self, "source_kafka_parameters")
 
     @source_kafka_parameters.setter
-    def source_kafka_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceKafkaParametersArgs']]):
+    def source_kafka_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceKafkaParametersArgs']]):
         pulumi.set(self, "source_kafka_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceMnsParameters")
-    def source_mns_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceMnsParametersArgs']]:
+    def source_mns_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceMnsParametersArgs']]:
         """
         Lightweight message queue (formerly MNS) event source parameter. See `source_mns_parameters` below.
         """
         return pulumi.get(self, "source_mns_parameters")
 
     @source_mns_parameters.setter
-    def source_mns_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceMnsParametersArgs']]):
+    def source_mns_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceMnsParametersArgs']]):
         pulumi.set(self, "source_mns_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceOssEventParameters")
-    def source_oss_event_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceOssEventParametersArgs']]:
+    def source_oss_event_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceOssEventParametersArgs']]:
         """
         OSS event source parameters See `source_oss_event_parameters` below.
         """
         return pulumi.get(self, "source_oss_event_parameters")
 
     @source_oss_event_parameters.setter
-    def source_oss_event_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceOssEventParametersArgs']]):
+    def source_oss_event_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceOssEventParametersArgs']]):
         pulumi.set(self, "source_oss_event_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRabbitMqParameters")
-    def source_rabbit_mq_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceRabbitMqParametersArgs']]:
+    def source_rabbit_mq_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceRabbitMqParametersArgs']]:
         """
         The request parameter SourceRabbitMQParameters. See `source_rabbit_mq_parameters` below.
         """
         return pulumi.get(self, "source_rabbit_mq_parameters")
 
     @source_rabbit_mq_parameters.setter
-    def source_rabbit_mq_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceRabbitMqParametersArgs']]):
+    def source_rabbit_mq_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceRabbitMqParametersArgs']]):
         pulumi.set(self, "source_rabbit_mq_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRocketmqParameters")
-    def source_rocketmq_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceRocketmqParametersArgs']]:
+    def source_rocketmq_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceRocketmqParametersArgs']]:
         """
         The request parameter SourceRocketMQParameters. See `source_rocketmq_parameters` below.
         """
         return pulumi.get(self, "source_rocketmq_parameters")
 
     @source_rocketmq_parameters.setter
-    def source_rocketmq_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceRocketmqParametersArgs']]):
+    def source_rocketmq_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceRocketmqParametersArgs']]):
         pulumi.set(self, "source_rocketmq_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceScheduledEventParameters")
-    def source_scheduled_event_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceScheduledEventParametersArgs']]:
+    def source_scheduled_event_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceScheduledEventParametersArgs']]:
         """
         Time event source parameter. See `source_scheduled_event_parameters` below.
         """
         return pulumi.get(self, "source_scheduled_event_parameters")
 
     @source_scheduled_event_parameters.setter
-    def source_scheduled_event_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceScheduledEventParametersArgs']]):
+    def source_scheduled_event_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceScheduledEventParametersArgs']]):
         pulumi.set(self, "source_scheduled_event_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSlsParameters")
-    def source_sls_parameters(self) -> Optional[pulumi.Input['EventSourceV2SourceSlsParametersArgs']]:
+    def source_sls_parameters(self) -> pulumi.Input[Optional['EventSourceV2SourceSlsParametersArgs']]:
         """
         The request parameter SourceSLSParameters. See `source_sls_parameters` below.
         """
         return pulumi.get(self, "source_sls_parameters")
 
     @source_sls_parameters.setter
-    def source_sls_parameters(self, value: Optional[pulumi.Input['EventSourceV2SourceSlsParametersArgs']]):
+    def source_sls_parameters(self, value: pulumi.Input[Optional['EventSourceV2SourceSlsParametersArgs']]):
         pulumi.set(self, "source_sls_parameters", value)
 
 
@@ -432,18 +432,18 @@ class EventSourceV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_bus_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_external_source: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_http_event_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict']]] = None,
-                 source_kafka_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict']]] = None,
-                 source_mns_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict']]] = None,
-                 source_oss_event_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict']]] = None,
-                 source_rabbit_mq_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict']]] = None,
-                 source_rocketmq_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict']]] = None,
-                 source_scheduled_event_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict']]] = None,
-                 source_sls_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_http_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict']]] = None,
+                 source_kafka_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict']]] = None,
+                 source_mns_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict']]] = None,
+                 source_oss_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict']]] = None,
+                 source_rabbit_mq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict']]] = None,
+                 source_rocketmq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict']]] = None,
+                 source_scheduled_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict']]] = None,
+                 source_sls_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Event Bridge Event Source V2 resource.
@@ -595,18 +595,18 @@ class EventSourceV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_bus_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_external_source: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_http_event_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict']]] = None,
-                 source_kafka_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict']]] = None,
-                 source_mns_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict']]] = None,
-                 source_oss_event_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict']]] = None,
-                 source_rabbit_mq_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict']]] = None,
-                 source_rocketmq_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict']]] = None,
-                 source_scheduled_event_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict']]] = None,
-                 source_sls_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_http_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict']]] = None,
+                 source_kafka_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict']]] = None,
+                 source_mns_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict']]] = None,
+                 source_oss_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict']]] = None,
+                 source_rabbit_mq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict']]] = None,
+                 source_rocketmq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict']]] = None,
+                 source_scheduled_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict']]] = None,
+                 source_sls_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -642,18 +642,18 @@ class EventSourceV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            event_bus_name: Optional[pulumi.Input[_builtins.str]] = None,
-            event_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-            linked_external_source: Optional[pulumi.Input[_builtins.bool]] = None,
-            source_http_event_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict']]] = None,
-            source_kafka_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict']]] = None,
-            source_mns_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict']]] = None,
-            source_oss_event_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict']]] = None,
-            source_rabbit_mq_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict']]] = None,
-            source_rocketmq_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict']]] = None,
-            source_scheduled_event_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict']]] = None,
-            source_sls_parameters: Optional[pulumi.Input[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict']]] = None) -> 'EventSourceV2':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
+            event_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_external_source: pulumi.Input[Optional[_builtins.bool]] = None,
+            source_http_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceHttpEventParametersArgs', 'EventSourceV2SourceHttpEventParametersArgsDict']]] = None,
+            source_kafka_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceKafkaParametersArgs', 'EventSourceV2SourceKafkaParametersArgsDict']]] = None,
+            source_mns_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceMnsParametersArgs', 'EventSourceV2SourceMnsParametersArgsDict']]] = None,
+            source_oss_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceOssEventParametersArgs', 'EventSourceV2SourceOssEventParametersArgsDict']]] = None,
+            source_rabbit_mq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRabbitMqParametersArgs', 'EventSourceV2SourceRabbitMqParametersArgsDict']]] = None,
+            source_rocketmq_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceRocketmqParametersArgs', 'EventSourceV2SourceRocketmqParametersArgsDict']]] = None,
+            source_scheduled_event_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceScheduledEventParametersArgs', 'EventSourceV2SourceScheduledEventParametersArgsDict']]] = None,
+            source_sls_parameters: pulumi.Input[Optional[Union['EventSourceV2SourceSlsParametersArgs', 'EventSourceV2SourceSlsParametersArgsDict']]] = None) -> 'EventSourceV2':
         """
         Get an existing EventSourceV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

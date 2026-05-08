@@ -300,7 +300,7 @@ export interface NodeState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Account password, value description:
      * - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
@@ -312,21 +312,21 @@ export interface NodeState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * Whether to pay automatically. Value description:
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Additional parameters, business information.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    businessInfo?: pulumi.Input<string>;
+    businessInfo?: pulumi.Input<string | undefined>;
     /**
      * The ID of the sharded cluster instance.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Effective time of configuration change. Value description:
      * - `Immediately` (default): takes effect Immediately.
@@ -334,20 +334,20 @@ export interface NodeState {
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * Request Source, value description:
      * - `OpenApi`: The request source is OpenApi.
      */
-    fromApp?: pulumi.Input<string>;
+    fromApp?: pulumi.Input<string | undefined>;
     /**
      * The specifications of the Shard node or Mongos node. For more information, see Instance Specifications.
      */
-    nodeClass?: pulumi.Input<string>;
+    nodeClass?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
-    nodeId?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string | undefined>;
     /**
      * The disk space of the Node. Unit: GB.
      *
@@ -355,11 +355,11 @@ export interface NodeState {
      *
      * > **NOTE:**  When the node type is `Shard`, you need to configure this parameter.
      */
-    nodeStorage?: pulumi.Input<number>;
+    nodeStorage?: pulumi.Input<number | undefined>;
     /**
      * Node type, value description:
      */
-    nodeType?: pulumi.Input<string>;
+    nodeType?: pulumi.Input<string | undefined>;
     /**
      * Order type, value description:
      * - `UPGRADE`: UPGRADE.
@@ -367,7 +367,7 @@ export interface NodeState {
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string | undefined>;
     /**
      * The number of read-only nodes in the Shard.
      *
@@ -375,21 +375,21 @@ export interface NodeState {
      *
      * > **NOTE:**  This parameter is currently only supported by China Station.
      */
-    readonlyReplicas?: pulumi.Input<number>;
+    readonlyReplicas?: pulumi.Input<number | undefined>;
     /**
      * Whether to apply for the direct connection address of the Shard node. Value description:
      */
-    shardDirect?: pulumi.Input<boolean>;
+    shardDirect?: pulumi.Input<boolean | undefined>;
     /**
      * Running status of node in sharded cluster
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    switchTime?: pulumi.Input<string>;
+    switchTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -408,7 +408,7 @@ export interface NodeArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Account password, value description:
      * - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
@@ -420,17 +420,17 @@ export interface NodeArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * Whether to pay automatically. Value description:
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Additional parameters, business information.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    businessInfo?: pulumi.Input<string>;
+    businessInfo?: pulumi.Input<string | undefined>;
     /**
      * The ID of the sharded cluster instance.
      */
@@ -442,12 +442,12 @@ export interface NodeArgs {
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * Request Source, value description:
      * - `OpenApi`: The request source is OpenApi.
      */
-    fromApp?: pulumi.Input<string>;
+    fromApp?: pulumi.Input<string | undefined>;
     /**
      * The specifications of the Shard node or Mongos node. For more information, see Instance Specifications.
      */
@@ -459,7 +459,7 @@ export interface NodeArgs {
      *
      * > **NOTE:**  When the node type is `Shard`, you need to configure this parameter.
      */
-    nodeStorage?: pulumi.Input<number>;
+    nodeStorage?: pulumi.Input<number | undefined>;
     /**
      * Node type, value description:
      */
@@ -471,7 +471,7 @@ export interface NodeArgs {
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string | undefined>;
     /**
      * The number of read-only nodes in the Shard.
      *
@@ -479,15 +479,15 @@ export interface NodeArgs {
      *
      * > **NOTE:**  This parameter is currently only supported by China Station.
      */
-    readonlyReplicas?: pulumi.Input<number>;
+    readonlyReplicas?: pulumi.Input<number | undefined>;
     /**
      * Whether to apply for the direct connection address of the Shard node. Value description:
      */
-    shardDirect?: pulumi.Input<boolean>;
+    shardDirect?: pulumi.Input<boolean | undefined>;
     /**
      * The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    switchTime?: pulumi.Input<string>;
+    switchTime?: pulumi.Input<string | undefined>;
 }

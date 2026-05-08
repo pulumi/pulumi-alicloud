@@ -240,54 +240,54 @@ export interface InstanceState {
     /**
      * The number of CPU cores and the upper limit of memory used by the database file storage instance.
      */
-    advancedFeatures?: pulumi.Input<string>;
+    advancedFeatures?: pulumi.Input<string | undefined>;
     /**
      * Category of database file system.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether to delete the original snapshot after creating DBFS using the snapshot.
      */
-    deleteSnapshot?: pulumi.Input<boolean>;
+    deleteSnapshot?: pulumi.Input<boolean | undefined>;
     /**
      * The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecsList` below.
      *
      * @deprecated Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
      */
-    ecsLists?: pulumi.Input<pulumi.Input<inputs.databasefilesystem.InstanceEcsList>[]>;
+    ecsLists?: pulumi.Input<pulumi.Input<inputs.databasefilesystem.InstanceEcsList>[] | undefined>;
     /**
      * Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
      */
-    enableRaid?: pulumi.Input<boolean>;
+    enableRaid?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to encrypt DBFS.Valid values: true or false. Default value: false.
      */
-    encryption?: pulumi.Input<boolean>;
+    encryption?: pulumi.Input<boolean | undefined>;
     /**
      * Database file system name.
      */
-    fsName?: pulumi.Input<string>;
+    fsName?: pulumi.Input<string | undefined>;
     /**
      * . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
      *
      * @deprecated Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Instance type. Value range:
      * - dbfs.small
      * - dbfs.medium
      * - dbfs.large (default)
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the KMS key used by DBFS.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
      * - PL0: single disk maximum random read-write IOPS 10000
@@ -295,40 +295,40 @@ export interface InstanceState {
      * - PL2: single disk maximum random read-write IOPS 100000
      * - PL3: single disk maximum random read-write IOPS 1 million.
      */
-    performanceLevel?: pulumi.Input<string>;
+    performanceLevel?: pulumi.Input<string | undefined>;
     /**
      * Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
      */
-    raidStripeUnitNumber?: pulumi.Input<number>;
+    raidStripeUnitNumber?: pulumi.Input<number | undefined>;
     /**
      * Size of database file system, unit GiB.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The ID of the snapshot used to create the DBFS instance.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The usage scenario of DBFS. Value range:
      * - MySQL 5.7
      * - PostgreSQL
      * - MongoDB.
      */
-    usedScene?: pulumi.Input<string>;
+    usedScene?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone to which the database file system belongs.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -338,7 +338,7 @@ export interface InstanceArgs {
     /**
      * The number of CPU cores and the upper limit of memory used by the database file storage instance.
      */
-    advancedFeatures?: pulumi.Input<string>;
+    advancedFeatures?: pulumi.Input<string | undefined>;
     /**
      * Category of database file system.
      */
@@ -346,42 +346,42 @@ export interface InstanceArgs {
     /**
      * Whether to delete the original snapshot after creating DBFS using the snapshot.
      */
-    deleteSnapshot?: pulumi.Input<boolean>;
+    deleteSnapshot?: pulumi.Input<boolean | undefined>;
     /**
      * The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecsList` below.
      *
      * @deprecated Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
      */
-    ecsLists?: pulumi.Input<pulumi.Input<inputs.databasefilesystem.InstanceEcsList>[]>;
+    ecsLists?: pulumi.Input<pulumi.Input<inputs.databasefilesystem.InstanceEcsList>[] | undefined>;
     /**
      * Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
      */
-    enableRaid?: pulumi.Input<boolean>;
+    enableRaid?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to encrypt DBFS.Valid values: true or false. Default value: false.
      */
-    encryption?: pulumi.Input<boolean>;
+    encryption?: pulumi.Input<boolean | undefined>;
     /**
      * Database file system name.
      */
-    fsName?: pulumi.Input<string>;
+    fsName?: pulumi.Input<string | undefined>;
     /**
      * . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
      *
      * @deprecated Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Instance type. Value range:
      * - dbfs.small
      * - dbfs.medium
      * - dbfs.large (default)
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the KMS key used by DBFS.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
      * - PL0: single disk maximum random read-write IOPS 10000
@@ -389,11 +389,11 @@ export interface InstanceArgs {
      * - PL2: single disk maximum random read-write IOPS 100000
      * - PL3: single disk maximum random read-write IOPS 1 million.
      */
-    performanceLevel?: pulumi.Input<string>;
+    performanceLevel?: pulumi.Input<string | undefined>;
     /**
      * Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
      */
-    raidStripeUnitNumber?: pulumi.Input<number>;
+    raidStripeUnitNumber?: pulumi.Input<number | undefined>;
     /**
      * Size of database file system, unit GiB.
      */
@@ -401,20 +401,20 @@ export interface InstanceArgs {
     /**
      * The ID of the snapshot used to create the DBFS instance.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The usage scenario of DBFS. Value range:
      * - MySQL 5.7
      * - PostgreSQL
      * - MongoDB.
      */
-    usedScene?: pulumi.Input<string>;
+    usedScene?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone to which the database file system belongs.
      */

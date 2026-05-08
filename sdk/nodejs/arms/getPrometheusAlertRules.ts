@@ -148,22 +148,22 @@ export interface GetPrometheusAlertRulesOutputArgs {
     /**
      * A list of Prometheus Alert Rule IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    matchExpressions?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    matchExpressions?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Prometheus Alert Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `0`, `1`.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
     /**
      * The type of the alert rule.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

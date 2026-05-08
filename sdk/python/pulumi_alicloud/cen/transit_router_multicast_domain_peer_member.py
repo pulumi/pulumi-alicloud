@@ -22,7 +22,7 @@ class TransitRouterMulticastDomainPeerMemberArgs:
                  group_ip_address: pulumi.Input[_builtins.str],
                  peer_transit_router_multicast_domain_id: pulumi.Input[_builtins.str],
                  transit_router_multicast_domain_id: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a TransitRouterMulticastDomainPeerMember resource.
 
@@ -75,25 +75,25 @@ class TransitRouterMulticastDomainPeerMemberArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether only to precheck the request.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
 
 @pulumi.input_type
 class _TransitRouterMulticastDomainPeerMemberState:
     def __init__(__self__, *,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterMulticastDomainPeerMember resources.
 
@@ -119,43 +119,43 @@ class _TransitRouterMulticastDomainPeerMemberState:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether only to precheck the request.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="groupIpAddress")
-    def group_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the multicast group to which the multicast member belongs. Value range: **224.0.0.1** to **239.255.255.254**.If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
         """
         return pulumi.get(self, "group_ip_address")
 
     @group_ip_address.setter
-    def group_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="peerTransitRouterMulticastDomainId")
-    def peer_transit_router_multicast_domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_transit_router_multicast_domain_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IDs of the inter-region multicast domains.
         """
         return pulumi.get(self, "peer_transit_router_multicast_domain_id")
 
     @peer_transit_router_multicast_domain_id.setter
-    def peer_transit_router_multicast_domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_transit_router_multicast_domain_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_transit_router_multicast_domain_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the multicast resource. Valid values:
         - Registering: being created
@@ -165,19 +165,19 @@ class _TransitRouterMulticastDomainPeerMemberState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterMulticastDomainId")
-    def transit_router_multicast_domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_multicast_domain_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the multicast domain to which the multicast member belongs.
         """
         return pulumi.get(self, "transit_router_multicast_domain_id")
 
     @transit_router_multicast_domain_id.setter
-    def transit_router_multicast_domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_multicast_domain_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_multicast_domain_id", value)
 
 
@@ -187,10 +187,10 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cen Transit Router Multicast Domain Peer Member resource.
@@ -356,10 +356,10 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -390,11 +390,11 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            group_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitRouterMulticastDomainPeerMember':
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitRouterMulticastDomainPeerMember':
         """
         Get an existing TransitRouterMulticastDomainPeerMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

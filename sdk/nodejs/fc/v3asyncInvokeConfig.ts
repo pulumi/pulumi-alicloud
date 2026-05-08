@@ -222,39 +222,39 @@ export interface V3AsyncInvokeConfigState {
     /**
      * Whether to enable an asynchronous task
      */
-    asyncTask?: pulumi.Input<boolean>;
+    asyncTask?: pulumi.Input<boolean | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Target Configuration See `destinationConfig` below.
      */
-    destinationConfig?: pulumi.Input<inputs.fc.V3AsyncInvokeConfigDestinationConfig>;
+    destinationConfig?: pulumi.Input<inputs.fc.V3AsyncInvokeConfigDestinationConfig | undefined>;
     /**
      * (Available since v1.234.0) Function resource identification
      */
-    functionArn?: pulumi.Input<string>;
+    functionArn?: pulumi.Input<string | undefined>;
     /**
      * Function Name
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.234.0) Last modification time
      */
-    lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string | undefined>;
     /**
      * Event maximum survival time
      */
-    maxAsyncEventAgeInSeconds?: pulumi.Input<number>;
+    maxAsyncEventAgeInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Number of Asynchronous call retries
      */
-    maxAsyncRetryAttempts?: pulumi.Input<number>;
+    maxAsyncRetryAttempts?: pulumi.Input<number | undefined>;
     /**
      * Function version or alias
      */
-    qualifier?: pulumi.Input<string>;
+    qualifier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -264,11 +264,11 @@ export interface V3AsyncInvokeConfigArgs {
     /**
      * Whether to enable an asynchronous task
      */
-    asyncTask?: pulumi.Input<boolean>;
+    asyncTask?: pulumi.Input<boolean | undefined>;
     /**
      * Target Configuration See `destinationConfig` below.
      */
-    destinationConfig?: pulumi.Input<inputs.fc.V3AsyncInvokeConfigDestinationConfig>;
+    destinationConfig?: pulumi.Input<inputs.fc.V3AsyncInvokeConfigDestinationConfig | undefined>;
     /**
      * Function Name
      */
@@ -276,13 +276,13 @@ export interface V3AsyncInvokeConfigArgs {
     /**
      * Event maximum survival time
      */
-    maxAsyncEventAgeInSeconds?: pulumi.Input<number>;
+    maxAsyncEventAgeInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Number of Asynchronous call retries
      */
-    maxAsyncRetryAttempts?: pulumi.Input<number>;
+    maxAsyncRetryAttempts?: pulumi.Input<number | undefined>;
     /**
      * Function version or alias
      */
-    qualifier?: pulumi.Input<string>;
+    qualifier?: pulumi.Input<string | undefined>;
 }

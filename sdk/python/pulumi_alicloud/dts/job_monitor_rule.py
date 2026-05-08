@@ -21,9 +21,9 @@ class JobMonitorRuleArgs:
     def __init__(__self__, *,
                  dts_job_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 delay_rule_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 delay_rule_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a JobMonitorRule resource.
 
@@ -68,49 +68,49 @@ class JobMonitorRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="delayRuleTime")
-    def delay_rule_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delay_rule_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Trigger delay alarm threshold, which is measured in seconds.
         """
         return pulumi.get(self, "delay_rule_time")
 
     @delay_rule_time.setter
-    def delay_rule_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delay_rule_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delay_rule_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def phone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def phone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
         """
         return pulumi.get(self, "phone")
 
     @phone.setter
-    def phone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def phone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "phone", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable monitoring rules, valid values: `Y`, `N`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 @pulumi.input_type
 class _JobMonitorRuleState:
     def __init__(__self__, *,
-                 delay_rule_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 delay_rule_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering JobMonitorRule resources.
 
@@ -133,62 +133,62 @@ class _JobMonitorRuleState:
 
     @_builtins.property
     @pulumi.getter(name="delayRuleTime")
-    def delay_rule_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delay_rule_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Trigger delay alarm threshold, which is measured in seconds.
         """
         return pulumi.get(self, "delay_rule_time")
 
     @delay_rule_time.setter
-    def delay_rule_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delay_rule_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delay_rule_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dtsJobId")
-    def dts_job_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dts_job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Migration, synchronization or subscription task ID can be by calling the [DescribeDtsJobs] get.
         """
         return pulumi.get(self, "dts_job_id")
 
     @dts_job_id.setter
-    def dts_job_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dts_job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dts_job_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def phone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def phone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
         """
         return pulumi.get(self, "phone")
 
     @phone.setter
-    def phone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def phone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "phone", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable monitoring rules, valid values: `Y`, `N`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -198,11 +198,11 @@ class JobMonitorRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delay_rule_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 delay_rule_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DTS Job Monitor Rule resource.
@@ -217,6 +217,7 @@ class JobMonitorRule(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import json
         import pulumi_alicloud as alicloud
         import pulumi_std as std
@@ -248,13 +249,13 @@ class JobMonitorRule(pulumi.CustomResource):
         example_security_group = alicloud.ecs.SecurityGroup("example",
             name=name,
             vpc_id=example_network.id)
-        example_instance = []
+        example_instance: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_instance.append(alicloud.rds.Instance(f"example-{range['value']}",
                 engine="MySQL",
                 engine_version="8.0",
                 instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-                instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+                instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
                 instance_charge_type="Postpaid",
                 instance_name=std.format(input=f"{name}_%d",
                     args=[range["value"] + 1]).result,
@@ -262,7 +263,7 @@ class JobMonitorRule(pulumi.CustomResource):
                 monitoring_period=60,
                 db_instance_storage_type="cloud_essd",
                 security_group_ids=[example_security_group.id]))
-        example_rds_account = []
+        example_rds_account: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_rds_account.append(alicloud.rds.RdsAccount(f"example-{range['value']}",
                 db_instance_id=example_instance[range["value"]].id,
@@ -270,13 +271,13 @@ class JobMonitorRule(pulumi.CustomResource):
                     args=[range["value"] + 1]).result,
                 account_password=std.format(input="example_password_%d",
                     args=[range["value"] + 1]).result))
-        example_database = []
+        example_database: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_database.append(alicloud.rds.Database(f"example-{range['value']}",
                 instance_id=example_instance[range["value"]].id,
                 name=std.format(input=f"{name}_%d",
                     args=[range["value"] + 1]).result))
-        example_account_privilege = []
+        example_account_privilege: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_account_privilege.append(alicloud.rds.AccountPrivilege(f"example-{range['value']}",
                 instance_id=example_instance[range["value"]].id,
@@ -363,6 +364,7 @@ class JobMonitorRule(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import json
         import pulumi_alicloud as alicloud
         import pulumi_std as std
@@ -394,13 +396,13 @@ class JobMonitorRule(pulumi.CustomResource):
         example_security_group = alicloud.ecs.SecurityGroup("example",
             name=name,
             vpc_id=example_network.id)
-        example_instance = []
+        example_instance: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_instance.append(alicloud.rds.Instance(f"example-{range['value']}",
                 engine="MySQL",
                 engine_version="8.0",
                 instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-                instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+                instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
                 instance_charge_type="Postpaid",
                 instance_name=std.format(input=f"{name}_%d",
                     args=[range["value"] + 1]).result,
@@ -408,7 +410,7 @@ class JobMonitorRule(pulumi.CustomResource):
                 monitoring_period=60,
                 db_instance_storage_type="cloud_essd",
                 security_group_ids=[example_security_group.id]))
-        example_rds_account = []
+        example_rds_account: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_rds_account.append(alicloud.rds.RdsAccount(f"example-{range['value']}",
                 db_instance_id=example_instance[range["value"]].id,
@@ -416,13 +418,13 @@ class JobMonitorRule(pulumi.CustomResource):
                     args=[range["value"] + 1]).result,
                 account_password=std.format(input="example_password_%d",
                     args=[range["value"] + 1]).result))
-        example_database = []
+        example_database: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_database.append(alicloud.rds.Database(f"example-{range['value']}",
                 instance_id=example_instance[range["value"]].id,
                 name=std.format(input=f"{name}_%d",
                     args=[range["value"] + 1]).result))
-        example_account_privilege = []
+        example_account_privilege: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_account_privilege.append(alicloud.rds.AccountPrivilege(f"example-{range['value']}",
                 instance_id=example_instance[range["value"]].id,
@@ -497,11 +499,11 @@ class JobMonitorRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delay_rule_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 delay_rule_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -530,11 +532,11 @@ class JobMonitorRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delay_rule_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dts_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-            phone: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'JobMonitorRule':
+            delay_rule_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dts_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            phone: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'JobMonitorRule':
         """
         Get an existing JobMonitorRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

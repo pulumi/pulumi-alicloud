@@ -180,31 +180,31 @@ export interface GatewayCacheDiskState {
     /**
      * The type of the cache disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`. **NOTE:** From version 1.227.0, `cacheDiskCategory` can be set to `cloudEssd`.
      */
-    cacheDiskCategory?: pulumi.Input<string>;
+    cacheDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * The capacity of the cache disk.
      */
-    cacheDiskSizeInGb?: pulumi.Input<number>;
+    cacheDiskSizeInGb?: pulumi.Input<number | undefined>;
     /**
      * The ID of the cache disk.
      */
-    cacheId?: pulumi.Input<string>;
+    cacheId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the gateway.
      */
-    gatewayId?: pulumi.Input<string>;
+    gatewayId?: pulumi.Input<string | undefined>;
     /**
      * The path of the cache disk.
      */
-    localFilePath?: pulumi.Input<string>;
+    localFilePath?: pulumi.Input<string | undefined>;
     /**
      * The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cacheDiskCategory` is set to `cloudEssd`, `performanceLevel` is required.
      */
-    performanceLevel?: pulumi.Input<string>;
+    performanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The status of the Gateway Cache Disk.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -214,7 +214,7 @@ export interface GatewayCacheDiskArgs {
     /**
      * The type of the cache disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`. **NOTE:** From version 1.227.0, `cacheDiskCategory` can be set to `cloudEssd`.
      */
-    cacheDiskCategory?: pulumi.Input<string>;
+    cacheDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * The capacity of the cache disk.
      */
@@ -226,5 +226,5 @@ export interface GatewayCacheDiskArgs {
     /**
      * The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cacheDiskCategory` is set to `cloudEssd`, `performanceLevel` is required.
      */
-    performanceLevel?: pulumi.Input<string>;
+    performanceLevel?: pulumi.Input<string | undefined>;
 }

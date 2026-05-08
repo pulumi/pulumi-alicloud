@@ -22,15 +22,15 @@ __all__ = [
 ]
 
 class VscMountPointInstanceArgsDict(TypedDict):
-    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the ECS instance to which the HDFS file system is mounted.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The status of the ECS instance on which the HDFS file system is mounted.
     """
-    vscs: NotRequired[pulumi.Input[Sequence[pulumi.Input['VscMountPointInstanceVscArgsDict']]]]
+    vscs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VscMountPointInstanceVscArgs']]]]]
     """
     The VSC list of mounted HDFS file systems.
     """
@@ -38,9 +38,9 @@ class VscMountPointInstanceArgsDict(TypedDict):
 @pulumi.input_type
 class VscMountPointInstanceArgs:
     def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vscs: Optional[pulumi.Input[Sequence[pulumi.Input['VscMountPointInstanceVscArgs']]]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vscs: pulumi.Input[Optional[Sequence[pulumi.Input['VscMountPointInstanceVscArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] instance_id: The ID of the ECS instance to which the HDFS file system is mounted.
         :param pulumi.Input[_builtins.str] status: The status of the ECS instance on which the HDFS file system is mounted.
@@ -55,51 +55,51 @@ class VscMountPointInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ECS instance to which the HDFS file system is mounted.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the ECS instance on which the HDFS file system is mounted.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def vscs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VscMountPointInstanceVscArgs']]]]:
+    def vscs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VscMountPointInstanceVscArgs']]]]:
         """
         The VSC list of mounted HDFS file systems.
         """
         return pulumi.get(self, "vscs")
 
     @vscs.setter
-    def vscs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VscMountPointInstanceVscArgs']]]]):
+    def vscs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VscMountPointInstanceVscArgs']]]]):
         pulumi.set(self, "vscs", value)
 
 
 class VscMountPointInstanceVscArgsDict(TypedDict):
-    vsc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vsc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VSC Channel primary key representation, used to retrieve the specified VSC Channel.
     """
-    vsc_status: NotRequired[pulumi.Input[_builtins.str]]
+    vsc_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VSC Mount status.
     """
-    vsc_type: NotRequired[pulumi.Input[_builtins.str]]
+    vsc_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VSC type.
     """
@@ -107,9 +107,9 @@ class VscMountPointInstanceVscArgsDict(TypedDict):
 @pulumi.input_type
 class VscMountPointInstanceVscArgs:
     def __init__(__self__, *,
-                 vsc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vsc_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vsc_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 vsc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vsc_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vsc_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] vsc_id: VSC Channel primary key representation, used to retrieve the specified VSC Channel.
         :param pulumi.Input[_builtins.str] vsc_status: VSC Mount status.
@@ -124,38 +124,38 @@ class VscMountPointInstanceVscArgs:
 
     @_builtins.property
     @pulumi.getter(name="vscId")
-    def vsc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vsc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VSC Channel primary key representation, used to retrieve the specified VSC Channel.
         """
         return pulumi.get(self, "vsc_id")
 
     @vsc_id.setter
-    def vsc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vsc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vsc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vscStatus")
-    def vsc_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vsc_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VSC Mount status.
         """
         return pulumi.get(self, "vsc_status")
 
     @vsc_status.setter
-    def vsc_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vsc_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vsc_status", value)
 
     @_builtins.property
     @pulumi.getter(name="vscType")
-    def vsc_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vsc_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VSC type.
         """
         return pulumi.get(self, "vsc_type")
 
     @vsc_type.setter
-    def vsc_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vsc_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vsc_type", value)
 
 

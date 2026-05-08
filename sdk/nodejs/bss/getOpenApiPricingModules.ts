@@ -126,15 +126,15 @@ export function getOpenApiPricingModulesOutput(args: GetOpenApiPricingModulesOut
  * A collection of arguments for invoking getOpenApiPricingModules.
  */
 export interface GetOpenApiPricingModulesOutputArgs {
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Property name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The product code.
      */
@@ -142,7 +142,7 @@ export interface GetOpenApiPricingModulesOutputArgs {
     /**
      * The product type.
      */
-    productType?: pulumi.Input<string>;
+    productType?: pulumi.Input<string | undefined>;
     /**
      * Subscription type. Value:
      * * Subscription: Prepaid.

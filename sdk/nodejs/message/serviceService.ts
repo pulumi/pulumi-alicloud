@@ -97,7 +97,7 @@ export interface ServiceServiceState {
     /**
      * The status of the Service.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -131,7 +131,7 @@ export interface GetIpamIpamPoolCidrsOutputArgs {
     /**
      * The CIDR address segment to be preset.> currently, only IPv4 address segments are supported.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * The ID of the IPAM pool instance.
      */
@@ -139,5 +139,5 @@ export interface GetIpamIpamPoolCidrsOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

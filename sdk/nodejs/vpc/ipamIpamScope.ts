@@ -164,20 +164,20 @@ export interface IpamIpamScopeState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The id of the Ipam instance.
      */
-    ipamId?: pulumi.Input<string>;
+    ipamId?: pulumi.Input<string | undefined>;
     /**
      * The description of the IPAM's scope of action.
      * It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
      */
-    ipamScopeDescription?: pulumi.Input<string>;
+    ipamScopeDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    ipamScopeName?: pulumi.Input<string>;
+    ipamScopeName?: pulumi.Input<string | undefined>;
     /**
      * IPAM scope of action type:
      * `private`.
@@ -185,23 +185,23 @@ export interface IpamIpamScopeState {
      *
      * > **NOTE:**  Currently, only the role scope of the private network is supported.
      */
-    ipamScopeType?: pulumi.Input<string>;
+    ipamScopeType?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -216,11 +216,11 @@ export interface IpamIpamScopeArgs {
      * The description of the IPAM's scope of action.
      * It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
      */
-    ipamScopeDescription?: pulumi.Input<string>;
+    ipamScopeDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    ipamScopeName?: pulumi.Input<string>;
+    ipamScopeName?: pulumi.Input<string | undefined>;
     /**
      * IPAM scope of action type:
      * `private`.
@@ -228,13 +228,13 @@ export interface IpamIpamScopeArgs {
      *
      * > **NOTE:**  Currently, only the role scope of the private network is supported.
      */
-    ipamScopeType?: pulumi.Input<string>;
+    ipamScopeType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

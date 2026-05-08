@@ -20,22 +20,22 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  payment_type: pulumi.Input[_builtins.str],
-                 account_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 band_width: Optional[pulumi.Input[_builtins.int]] = None,
-                 cfw_account: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cfw_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cfw_log_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 fw_vpc_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 logistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 band_width: pulumi.Input[Optional[_builtins.int]] = None,
+                 cfw_account: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cfw_log_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 fw_vpc_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 logistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -113,152 +113,152 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountNumber")
-    def account_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def account_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of multi account. It will be ignored when `cfw_account = false`.
         """
         return pulumi.get(self, "account_number")
 
     @account_number.setter
-    def account_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def account_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "account_number", value)
 
     @_builtins.property
     @pulumi.getter(name="bandWidth")
-    def band_width(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def band_width(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         """
         return pulumi.get(self, "band_width")
 
     @band_width.setter
-    def band_width(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def band_width(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "band_width", value)
 
     @_builtins.property
     @pulumi.getter(name="cfwAccount")
-    def cfw_account(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cfw_account(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use multi-account. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "cfw_account")
 
     @cfw_account.setter
-    def cfw_account(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cfw_account(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cfw_account", value)
 
     @_builtins.property
     @pulumi.getter(name="cfwLog")
-    def cfw_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cfw_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
         """
         return pulumi.get(self, "cfw_log")
 
     @cfw_log.setter
-    def cfw_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cfw_log(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cfw_log", value)
 
     @_builtins.property
     @pulumi.getter(name="cfwLogStorage")
-    def cfw_log_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cfw_log_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
         """
         return pulumi.get(self, "cfw_log_storage")
 
     @cfw_log_storage.setter
-    def cfw_log_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cfw_log_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cfw_log_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="fwVpcNumber")
-    def fw_vpc_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fw_vpc_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         """
         return pulumi.get(self, "fw_vpc_number")
 
     @fw_vpc_number.setter
-    def fw_vpc_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fw_vpc_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fw_vpc_number", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of assets.
         """
         return pulumi.get(self, "instance_count")
 
     @instance_count.setter
-    def instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ipNumber")
-    def ip_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ip_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of public IPs that can be protected. Valid values: 20 to 4000.
         """
         return pulumi.get(self, "ip_number")
 
     @ip_number.setter
-    def ip_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ip_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ip_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def logistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logistics.
         """
         return pulumi.get(self, "logistics")
 
     @logistics.setter
-    def logistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logistics", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
     @_utilities.deprecated("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
         """
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalDuration")
-    def renewal_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renewal_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
         **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
@@ -266,24 +266,24 @@ class InstanceArgs:
         return pulumi.get(self, "renewal_duration")
 
     @renewal_duration.setter
-    def renewal_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renewal_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renewal_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalDurationUnit")
-    def renewal_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "renewal_duration_unit")
 
     @renewal_duration_unit.setter
-    def renewal_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
         - `AutoRenewal`: Auto renewal.
@@ -294,47 +294,47 @@ class InstanceArgs:
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 account_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 band_width: Optional[pulumi.Input[_builtins.int]] = None,
-                 cfw_account: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cfw_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cfw_log_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 fw_vpc_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 logistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 release_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_status: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 band_width: pulumi.Input[Optional[_builtins.int]] = None,
+                 cfw_account: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cfw_log_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 fw_vpc_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 logistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 release_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_status: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -416,200 +416,200 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="accountNumber")
-    def account_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def account_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of multi account. It will be ignored when `cfw_account = false`.
         """
         return pulumi.get(self, "account_number")
 
     @account_number.setter
-    def account_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def account_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "account_number", value)
 
     @_builtins.property
     @pulumi.getter(name="bandWidth")
-    def band_width(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def band_width(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         """
         return pulumi.get(self, "band_width")
 
     @band_width.setter
-    def band_width(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def band_width(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "band_width", value)
 
     @_builtins.property
     @pulumi.getter(name="cfwAccount")
-    def cfw_account(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cfw_account(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use multi-account. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "cfw_account")
 
     @cfw_account.setter
-    def cfw_account(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cfw_account(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cfw_account", value)
 
     @_builtins.property
     @pulumi.getter(name="cfwLog")
-    def cfw_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cfw_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
         """
         return pulumi.get(self, "cfw_log")
 
     @cfw_log.setter
-    def cfw_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cfw_log(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cfw_log", value)
 
     @_builtins.property
     @pulumi.getter(name="cfwLogStorage")
-    def cfw_log_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cfw_log_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
         """
         return pulumi.get(self, "cfw_log_storage")
 
     @cfw_log_storage.setter
-    def cfw_log_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cfw_log_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cfw_log_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="fwVpcNumber")
-    def fw_vpc_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fw_vpc_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         """
         return pulumi.get(self, "fw_vpc_number")
 
     @fw_vpc_number.setter
-    def fw_vpc_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fw_vpc_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fw_vpc_number", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of assets.
         """
         return pulumi.get(self, "instance_count")
 
     @instance_count.setter
-    def instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ipNumber")
-    def ip_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ip_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of public IPs that can be protected. Valid values: 20 to 4000.
         """
         return pulumi.get(self, "ip_number")
 
     @ip_number.setter
-    def ip_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ip_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ip_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def logistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logistics.
         """
         return pulumi.get(self, "logistics")
 
     @logistics.setter
-    def logistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logistics", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseTime")
-    def release_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The release time.
         """
         return pulumi.get(self, "release_time")
 
     @release_time.setter
-    def release_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release_time", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
     @_utilities.deprecated("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
         """
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalDuration")
-    def renewal_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renewal_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
         **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
@@ -617,24 +617,24 @@ class _InstanceState:
         return pulumi.get(self, "renewal_duration")
 
     @renewal_duration.setter
-    def renewal_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renewal_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renewal_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalDurationUnit")
-    def renewal_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "renewal_duration_unit")
 
     @renewal_duration_unit.setter
-    def renewal_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
         - `AutoRenewal`: Auto renewal.
@@ -645,43 +645,43 @@ class _InstanceState:
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of Cloud Firewall Instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="userStatus")
-    def user_status(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def user_status(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Available since v1.232.0) The user status of Cloud Firewall Instance.
         """
         return pulumi.get(self, "user_status")
 
     @user_status.setter
-    def user_status(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def user_status(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "user_status", value)
 
 
@@ -691,23 +691,23 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 band_width: Optional[pulumi.Input[_builtins.int]] = None,
-                 cfw_account: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cfw_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cfw_log_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 fw_vpc_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 logistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 band_width: pulumi.Input[Optional[_builtins.int]] = None,
+                 cfw_account: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cfw_log_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 fw_vpc_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 logistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Instance resource.
@@ -853,23 +853,23 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 band_width: Optional[pulumi.Input[_builtins.int]] = None,
-                 cfw_account: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cfw_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cfw_log_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 fw_vpc_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 logistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 band_width: pulumi.Input[Optional[_builtins.int]] = None,
+                 cfw_account: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cfw_log_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 fw_vpc_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 logistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -913,28 +913,28 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_number: Optional[pulumi.Input[_builtins.int]] = None,
-            band_width: Optional[pulumi.Input[_builtins.int]] = None,
-            cfw_account: Optional[pulumi.Input[_builtins.bool]] = None,
-            cfw_log: Optional[pulumi.Input[_builtins.bool]] = None,
-            cfw_log_storage: Optional[pulumi.Input[_builtins.int]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            fw_vpc_number: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-            ip_number: Optional[pulumi.Input[_builtins.int]] = None,
-            logistics: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            release_time: Optional[pulumi.Input[_builtins.str]] = None,
-            renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-            spec: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            user_status: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Instance':
+            account_number: pulumi.Input[Optional[_builtins.int]] = None,
+            band_width: pulumi.Input[Optional[_builtins.int]] = None,
+            cfw_account: pulumi.Input[Optional[_builtins.bool]] = None,
+            cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
+            cfw_log_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            fw_vpc_number: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_number: pulumi.Input[Optional[_builtins.int]] = None,
+            logistics: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            release_time: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            user_status: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

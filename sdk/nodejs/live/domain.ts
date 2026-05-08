@@ -171,11 +171,11 @@ export interface DomainState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string | undefined>;
     /**
      * Creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Fuzzy match filter for domain names.
      *
@@ -183,33 +183,33 @@ export interface DomainState {
      *
      * > **NOTE:** - If `domainType` is set to `liveEdge`, and this parameter is not specified, the system queries information about the user's ingest domains by default.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * Domain business type. Valid values:  
      * - `liveVideo`: Playback domain.
      * - `liveEdge`: Edge ingest domain.
      */
-    domainType?: pulumi.Input<string>;
+    domainType?: pulumi.Input<string | undefined>;
     /**
      * Region to which the domain belongs.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Resource group ID. For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/2381067.html).
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Acceleration region. This parameter takes effect only for international users and China site users with L3 or higher privileges. Valid values:
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Domain status. Valid values:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * List of tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -221,7 +221,7 @@ export interface DomainArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string | undefined>;
     /**
      * Fuzzy match filter for domain names.
      *
@@ -243,17 +243,17 @@ export interface DomainArgs {
     /**
      * Resource group ID. For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/2381067.html).
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Acceleration region. This parameter takes effect only for international users and China site users with L3 or higher privileges. Valid values:
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Domain status. Valid values:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * List of tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

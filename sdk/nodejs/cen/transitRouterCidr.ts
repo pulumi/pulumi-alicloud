@@ -149,29 +149,29 @@ export interface TransitRouterCidrState {
     /**
      * The new CIDR block of the transit router.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * The new description of the transit router CIDR block.
      * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
      */
-    publishCidrRoute?: pulumi.Input<boolean>;
+    publishCidrRoute?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the CIDR block.
      */
-    transitRouterCidrId?: pulumi.Input<string>;
+    transitRouterCidrId?: pulumi.Input<string | undefined>;
     /**
      * The new name of the transit router CIDR block.
      * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
-    transitRouterCidrName?: pulumi.Input<string>;
+    transitRouterCidrName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the transit router.
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -186,16 +186,16 @@ export interface TransitRouterCidrArgs {
      * The new description of the transit router CIDR block.
      * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
      */
-    publishCidrRoute?: pulumi.Input<boolean>;
+    publishCidrRoute?: pulumi.Input<boolean | undefined>;
     /**
      * The new name of the transit router CIDR block.
      * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
-    transitRouterCidrName?: pulumi.Input<string>;
+    transitRouterCidrName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the transit router.
      */

@@ -278,23 +278,23 @@ export interface AuditState {
     /**
      * Aliuid value of your account.
      */
-    aliuid?: pulumi.Input<string>;
+    aliuid?: pulumi.Input<string | undefined>;
     /**
      * Name of SLS log audit.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Multi-account configuration, please fill in multiple aliuid.
      */
-    multiAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    multiAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
      */
-    resourceDirectoryType?: pulumi.Input<string>;
+    resourceDirectoryType?: pulumi.Input<string | undefined>;
     /**
      * Log audit detailed configuration.
      */
-    variableMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    variableMap?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -312,13 +312,13 @@ export interface AuditArgs {
     /**
      * Multi-account configuration, please fill in multiple aliuid.
      */
-    multiAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    multiAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource Directory type. Optional values are all or custom. If the value is custom, argument multiAccount should be provided.
      */
-    resourceDirectoryType?: pulumi.Input<string>;
+    resourceDirectoryType?: pulumi.Input<string | undefined>;
     /**
      * Log audit detailed configuration.
      */
-    variableMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    variableMap?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -36,27 +36,27 @@ __all__ = [
 ]
 
 class DbInstancePlanPlanConfigArgsDict(TypedDict):
-    pause: NotRequired[pulumi.Input['DbInstancePlanPlanConfigPauseArgsDict']]
+    pause: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigPauseArgs']]]
     """
     Pause instance plan config. See `pause` below.
     """
-    resume: NotRequired[pulumi.Input['DbInstancePlanPlanConfigResumeArgsDict']]
+    resume: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigResumeArgs']]]
     """
     Resume instance plan config. See `resume` below.
     """
-    scale_down: NotRequired[pulumi.Input['DbInstancePlanPlanConfigScaleDownArgsDict']]
+    scale_down: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigScaleDownArgs']]]
     """
     Scale down instance plan config. See `scale_down` below.
     """
-    scale_in: NotRequired[pulumi.Input['DbInstancePlanPlanConfigScaleInArgsDict']]
+    scale_in: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigScaleInArgs']]]
     """
     Scale In instance plan config. See `scale_in` below.
     """
-    scale_out: NotRequired[pulumi.Input['DbInstancePlanPlanConfigScaleOutArgsDict']]
+    scale_out: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigScaleOutArgs']]]
     """
     Scale out instance plan config. See `scale_out` below.
     """
-    scale_up: NotRequired[pulumi.Input['DbInstancePlanPlanConfigScaleUpArgsDict']]
+    scale_up: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigScaleUpArgs']]]
     """
     Scale up instance plan config. See `scale_up` below.
     """
@@ -64,12 +64,12 @@ class DbInstancePlanPlanConfigArgsDict(TypedDict):
 @pulumi.input_type
 class DbInstancePlanPlanConfigArgs:
     def __init__(__self__, *,
-                 pause: Optional[pulumi.Input['DbInstancePlanPlanConfigPauseArgs']] = None,
-                 resume: Optional[pulumi.Input['DbInstancePlanPlanConfigResumeArgs']] = None,
-                 scale_down: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleDownArgs']] = None,
-                 scale_in: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleInArgs']] = None,
-                 scale_out: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleOutArgs']] = None,
-                 scale_up: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleUpArgs']] = None):
+                 pause: pulumi.Input[Optional['DbInstancePlanPlanConfigPauseArgs']] = None,
+                 resume: pulumi.Input[Optional['DbInstancePlanPlanConfigResumeArgs']] = None,
+                 scale_down: pulumi.Input[Optional['DbInstancePlanPlanConfigScaleDownArgs']] = None,
+                 scale_in: pulumi.Input[Optional['DbInstancePlanPlanConfigScaleInArgs']] = None,
+                 scale_out: pulumi.Input[Optional['DbInstancePlanPlanConfigScaleOutArgs']] = None,
+                 scale_up: pulumi.Input[Optional['DbInstancePlanPlanConfigScaleUpArgs']] = None):
         """
         :param pulumi.Input['DbInstancePlanPlanConfigPauseArgs'] pause: Pause instance plan config. See `pause` below.
         :param pulumi.Input['DbInstancePlanPlanConfigResumeArgs'] resume: Resume instance plan config. See `resume` below.
@@ -93,87 +93,87 @@ class DbInstancePlanPlanConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def pause(self) -> Optional[pulumi.Input['DbInstancePlanPlanConfigPauseArgs']]:
+    def pause(self) -> pulumi.Input[Optional['DbInstancePlanPlanConfigPauseArgs']]:
         """
         Pause instance plan config. See `pause` below.
         """
         return pulumi.get(self, "pause")
 
     @pause.setter
-    def pause(self, value: Optional[pulumi.Input['DbInstancePlanPlanConfigPauseArgs']]):
+    def pause(self, value: pulumi.Input[Optional['DbInstancePlanPlanConfigPauseArgs']]):
         pulumi.set(self, "pause", value)
 
     @_builtins.property
     @pulumi.getter
-    def resume(self) -> Optional[pulumi.Input['DbInstancePlanPlanConfigResumeArgs']]:
+    def resume(self) -> pulumi.Input[Optional['DbInstancePlanPlanConfigResumeArgs']]:
         """
         Resume instance plan config. See `resume` below.
         """
         return pulumi.get(self, "resume")
 
     @resume.setter
-    def resume(self, value: Optional[pulumi.Input['DbInstancePlanPlanConfigResumeArgs']]):
+    def resume(self, value: pulumi.Input[Optional['DbInstancePlanPlanConfigResumeArgs']]):
         pulumi.set(self, "resume", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleDown")
-    def scale_down(self) -> Optional[pulumi.Input['DbInstancePlanPlanConfigScaleDownArgs']]:
+    def scale_down(self) -> pulumi.Input[Optional['DbInstancePlanPlanConfigScaleDownArgs']]:
         """
         Scale down instance plan config. See `scale_down` below.
         """
         return pulumi.get(self, "scale_down")
 
     @scale_down.setter
-    def scale_down(self, value: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleDownArgs']]):
+    def scale_down(self, value: pulumi.Input[Optional['DbInstancePlanPlanConfigScaleDownArgs']]):
         pulumi.set(self, "scale_down", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleIn")
-    def scale_in(self) -> Optional[pulumi.Input['DbInstancePlanPlanConfigScaleInArgs']]:
+    def scale_in(self) -> pulumi.Input[Optional['DbInstancePlanPlanConfigScaleInArgs']]:
         """
         Scale In instance plan config. See `scale_in` below.
         """
         return pulumi.get(self, "scale_in")
 
     @scale_in.setter
-    def scale_in(self, value: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleInArgs']]):
+    def scale_in(self, value: pulumi.Input[Optional['DbInstancePlanPlanConfigScaleInArgs']]):
         pulumi.set(self, "scale_in", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleOut")
-    def scale_out(self) -> Optional[pulumi.Input['DbInstancePlanPlanConfigScaleOutArgs']]:
+    def scale_out(self) -> pulumi.Input[Optional['DbInstancePlanPlanConfigScaleOutArgs']]:
         """
         Scale out instance plan config. See `scale_out` below.
         """
         return pulumi.get(self, "scale_out")
 
     @scale_out.setter
-    def scale_out(self, value: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleOutArgs']]):
+    def scale_out(self, value: pulumi.Input[Optional['DbInstancePlanPlanConfigScaleOutArgs']]):
         pulumi.set(self, "scale_out", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleUp")
-    def scale_up(self) -> Optional[pulumi.Input['DbInstancePlanPlanConfigScaleUpArgs']]:
+    def scale_up(self) -> pulumi.Input[Optional['DbInstancePlanPlanConfigScaleUpArgs']]:
         """
         Scale up instance plan config. See `scale_up` below.
         """
         return pulumi.get(self, "scale_up")
 
     @scale_up.setter
-    def scale_up(self, value: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleUpArgs']]):
+    def scale_up(self, value: pulumi.Input[Optional['DbInstancePlanPlanConfigScaleUpArgs']]):
         pulumi.set(self, "scale_up", value)
 
 
 class DbInstancePlanPlanConfigPauseArgsDict(TypedDict):
-    execute_time: NotRequired[pulumi.Input[_builtins.str]]
+    execute_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The executed time of the Plan.
     """
-    plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
+    plan_cron_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cron Time of the plan.
     """
-    plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
+    plan_task_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.231.0) The status of the plan task.
     """
@@ -181,9 +181,9 @@ class DbInstancePlanPlanConfigPauseArgsDict(TypedDict):
 @pulumi.input_type
 class DbInstancePlanPlanConfigPauseArgs:
     def __init__(__self__, *,
-                 execute_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_cron_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_task_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 execute_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_cron_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_task_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] execute_time: The executed time of the Plan.
         :param pulumi.Input[_builtins.str] plan_cron_time: The Cron Time of the plan.
@@ -198,51 +198,51 @@ class DbInstancePlanPlanConfigPauseArgs:
 
     @_builtins.property
     @pulumi.getter(name="executeTime")
-    def execute_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execute_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The executed time of the Plan.
         """
         return pulumi.get(self, "execute_time")
 
     @execute_time.setter
-    def execute_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execute_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execute_time", value)
 
     @_builtins.property
     @pulumi.getter(name="planCronTime")
-    def plan_cron_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_cron_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cron Time of the plan.
         """
         return pulumi.get(self, "plan_cron_time")
 
     @plan_cron_time.setter
-    def plan_cron_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_cron_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_cron_time", value)
 
     @_builtins.property
     @pulumi.getter(name="planTaskStatus")
-    def plan_task_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_task_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.231.0) The status of the plan task.
         """
         return pulumi.get(self, "plan_task_status")
 
     @plan_task_status.setter
-    def plan_task_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_task_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_task_status", value)
 
 
 class DbInstancePlanPlanConfigResumeArgsDict(TypedDict):
-    execute_time: NotRequired[pulumi.Input[_builtins.str]]
+    execute_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The executed time of the Plan.
     """
-    plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
+    plan_cron_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cron Time of the plan.
     """
-    plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
+    plan_task_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.231.0) The status of the plan task.
     """
@@ -250,9 +250,9 @@ class DbInstancePlanPlanConfigResumeArgsDict(TypedDict):
 @pulumi.input_type
 class DbInstancePlanPlanConfigResumeArgs:
     def __init__(__self__, *,
-                 execute_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_cron_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_task_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 execute_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_cron_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_task_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] execute_time: The executed time of the Plan.
         :param pulumi.Input[_builtins.str] plan_cron_time: The Cron Time of the plan.
@@ -267,55 +267,55 @@ class DbInstancePlanPlanConfigResumeArgs:
 
     @_builtins.property
     @pulumi.getter(name="executeTime")
-    def execute_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execute_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The executed time of the Plan.
         """
         return pulumi.get(self, "execute_time")
 
     @execute_time.setter
-    def execute_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execute_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execute_time", value)
 
     @_builtins.property
     @pulumi.getter(name="planCronTime")
-    def plan_cron_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_cron_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cron Time of the plan.
         """
         return pulumi.get(self, "plan_cron_time")
 
     @plan_cron_time.setter
-    def plan_cron_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_cron_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_cron_time", value)
 
     @_builtins.property
     @pulumi.getter(name="planTaskStatus")
-    def plan_task_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_task_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.231.0) The status of the plan task.
         """
         return pulumi.get(self, "plan_task_status")
 
     @plan_task_status.setter
-    def plan_task_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_task_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_task_status", value)
 
 
 class DbInstancePlanPlanConfigScaleDownArgsDict(TypedDict):
-    execute_time: NotRequired[pulumi.Input[_builtins.str]]
+    execute_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The executed time of the Plan.
     """
-    instance_spec: NotRequired[pulumi.Input[_builtins.str]]
+    instance_spec: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of segment nodes of the Plan.
     """
-    plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
+    plan_cron_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cron Time of the plan.
     """
-    plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
+    plan_task_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.231.0) The status of the plan task.
     """
@@ -323,10 +323,10 @@ class DbInstancePlanPlanConfigScaleDownArgsDict(TypedDict):
 @pulumi.input_type
 class DbInstancePlanPlanConfigScaleDownArgs:
     def __init__(__self__, *,
-                 execute_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_cron_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_task_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 execute_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_cron_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_task_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] execute_time: The executed time of the Plan.
         :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes of the Plan.
@@ -344,67 +344,67 @@ class DbInstancePlanPlanConfigScaleDownArgs:
 
     @_builtins.property
     @pulumi.getter(name="executeTime")
-    def execute_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execute_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The executed time of the Plan.
         """
         return pulumi.get(self, "execute_time")
 
     @execute_time.setter
-    def execute_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execute_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execute_time", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceSpec")
-    def instance_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of segment nodes of the Plan.
         """
         return pulumi.get(self, "instance_spec")
 
     @instance_spec.setter
-    def instance_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="planCronTime")
-    def plan_cron_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_cron_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cron Time of the plan.
         """
         return pulumi.get(self, "plan_cron_time")
 
     @plan_cron_time.setter
-    def plan_cron_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_cron_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_cron_time", value)
 
     @_builtins.property
     @pulumi.getter(name="planTaskStatus")
-    def plan_task_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_task_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.231.0) The status of the plan task.
         """
         return pulumi.get(self, "plan_task_status")
 
     @plan_task_status.setter
-    def plan_task_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_task_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_task_status", value)
 
 
 class DbInstancePlanPlanConfigScaleInArgsDict(TypedDict):
-    execute_time: NotRequired[pulumi.Input[_builtins.str]]
+    execute_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The executed time of the Plan.
     """
-    plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
+    plan_cron_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cron Time of the plan.
     """
-    plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
+    plan_task_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.231.0) The status of the plan task.
     """
-    segment_node_num: NotRequired[pulumi.Input[_builtins.str]]
+    segment_node_num: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The segment Node Num of the Plan.
     """
@@ -412,10 +412,10 @@ class DbInstancePlanPlanConfigScaleInArgsDict(TypedDict):
 @pulumi.input_type
 class DbInstancePlanPlanConfigScaleInArgs:
     def __init__(__self__, *,
-                 execute_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_cron_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_task_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 segment_node_num: Optional[pulumi.Input[_builtins.str]] = None):
+                 execute_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_cron_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_task_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 segment_node_num: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] execute_time: The executed time of the Plan.
         :param pulumi.Input[_builtins.str] plan_cron_time: The Cron Time of the plan.
@@ -433,67 +433,67 @@ class DbInstancePlanPlanConfigScaleInArgs:
 
     @_builtins.property
     @pulumi.getter(name="executeTime")
-    def execute_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execute_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The executed time of the Plan.
         """
         return pulumi.get(self, "execute_time")
 
     @execute_time.setter
-    def execute_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execute_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execute_time", value)
 
     @_builtins.property
     @pulumi.getter(name="planCronTime")
-    def plan_cron_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_cron_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cron Time of the plan.
         """
         return pulumi.get(self, "plan_cron_time")
 
     @plan_cron_time.setter
-    def plan_cron_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_cron_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_cron_time", value)
 
     @_builtins.property
     @pulumi.getter(name="planTaskStatus")
-    def plan_task_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_task_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.231.0) The status of the plan task.
         """
         return pulumi.get(self, "plan_task_status")
 
     @plan_task_status.setter
-    def plan_task_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_task_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_task_status", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentNodeNum")
-    def segment_node_num(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def segment_node_num(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The segment Node Num of the Plan.
         """
         return pulumi.get(self, "segment_node_num")
 
     @segment_node_num.setter
-    def segment_node_num(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def segment_node_num(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "segment_node_num", value)
 
 
 class DbInstancePlanPlanConfigScaleOutArgsDict(TypedDict):
-    execute_time: NotRequired[pulumi.Input[_builtins.str]]
+    execute_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The executed time of the Plan.
     """
-    plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
+    plan_cron_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cron Time of the plan.
     """
-    plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
+    plan_task_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.231.0) The status of the plan task.
     """
-    segment_node_num: NotRequired[pulumi.Input[_builtins.str]]
+    segment_node_num: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The segment Node Num of the Plan.
     """
@@ -501,10 +501,10 @@ class DbInstancePlanPlanConfigScaleOutArgsDict(TypedDict):
 @pulumi.input_type
 class DbInstancePlanPlanConfigScaleOutArgs:
     def __init__(__self__, *,
-                 execute_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_cron_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_task_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 segment_node_num: Optional[pulumi.Input[_builtins.str]] = None):
+                 execute_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_cron_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_task_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 segment_node_num: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] execute_time: The executed time of the Plan.
         :param pulumi.Input[_builtins.str] plan_cron_time: The Cron Time of the plan.
@@ -522,67 +522,67 @@ class DbInstancePlanPlanConfigScaleOutArgs:
 
     @_builtins.property
     @pulumi.getter(name="executeTime")
-    def execute_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execute_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The executed time of the Plan.
         """
         return pulumi.get(self, "execute_time")
 
     @execute_time.setter
-    def execute_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execute_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execute_time", value)
 
     @_builtins.property
     @pulumi.getter(name="planCronTime")
-    def plan_cron_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_cron_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cron Time of the plan.
         """
         return pulumi.get(self, "plan_cron_time")
 
     @plan_cron_time.setter
-    def plan_cron_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_cron_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_cron_time", value)
 
     @_builtins.property
     @pulumi.getter(name="planTaskStatus")
-    def plan_task_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_task_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.231.0) The status of the plan task.
         """
         return pulumi.get(self, "plan_task_status")
 
     @plan_task_status.setter
-    def plan_task_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_task_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_task_status", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentNodeNum")
-    def segment_node_num(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def segment_node_num(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The segment Node Num of the Plan.
         """
         return pulumi.get(self, "segment_node_num")
 
     @segment_node_num.setter
-    def segment_node_num(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def segment_node_num(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "segment_node_num", value)
 
 
 class DbInstancePlanPlanConfigScaleUpArgsDict(TypedDict):
-    execute_time: NotRequired[pulumi.Input[_builtins.str]]
+    execute_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The executed time of the Plan.
     """
-    instance_spec: NotRequired[pulumi.Input[_builtins.str]]
+    instance_spec: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of segment nodes of the Plan.
     """
-    plan_cron_time: NotRequired[pulumi.Input[_builtins.str]]
+    plan_cron_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cron Time of the plan.
     """
-    plan_task_status: NotRequired[pulumi.Input[_builtins.str]]
+    plan_task_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.231.0) The status of the plan task.
     """
@@ -590,10 +590,10 @@ class DbInstancePlanPlanConfigScaleUpArgsDict(TypedDict):
 @pulumi.input_type
 class DbInstancePlanPlanConfigScaleUpArgs:
     def __init__(__self__, *,
-                 execute_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_cron_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_task_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 execute_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_cron_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_task_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] execute_time: The executed time of the Plan.
         :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes of the Plan.
@@ -611,64 +611,64 @@ class DbInstancePlanPlanConfigScaleUpArgs:
 
     @_builtins.property
     @pulumi.getter(name="executeTime")
-    def execute_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execute_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The executed time of the Plan.
         """
         return pulumi.get(self, "execute_time")
 
     @execute_time.setter
-    def execute_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execute_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execute_time", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceSpec")
-    def instance_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of segment nodes of the Plan.
         """
         return pulumi.get(self, "instance_spec")
 
     @instance_spec.setter
-    def instance_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="planCronTime")
-    def plan_cron_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_cron_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cron Time of the plan.
         """
         return pulumi.get(self, "plan_cron_time")
 
     @plan_cron_time.setter
-    def plan_cron_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_cron_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_cron_time", value)
 
     @_builtins.property
     @pulumi.getter(name="planTaskStatus")
-    def plan_task_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_task_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.231.0) The status of the plan task.
         """
         return pulumi.get(self, "plan_task_status")
 
     @plan_task_status.setter
-    def plan_task_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_task_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_task_status", value)
 
 
 class InstanceIpWhitelistArgsDict(TypedDict):
-    ip_group_attribute: NotRequired[pulumi.Input[_builtins.str]]
+    ip_group_attribute: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of this parameter is empty by default. The attribute of the whitelist group. 
     If the value contains `hidden`, this white list item will not output.
     """
-    ip_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    ip_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP whitelist group name.
     """
-    security_ip_list: NotRequired[pulumi.Input[_builtins.str]]
+    security_ip_list: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
     """
@@ -676,9 +676,9 @@ class InstanceIpWhitelistArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceIpWhitelistArgs:
     def __init__(__self__, *,
-                 ip_group_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_list: Optional[pulumi.Input[_builtins.str]] = None):
+                 ip_group_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_list: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. 
                If the value contains `hidden`, this white list item will not output.
@@ -694,7 +694,7 @@ class InstanceIpWhitelistArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipGroupAttribute")
-    def ip_group_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_group_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of this parameter is empty by default. The attribute of the whitelist group. 
         If the value contains `hidden`, this white list item will not output.
@@ -702,31 +702,31 @@ class InstanceIpWhitelistArgs:
         return pulumi.get(self, "ip_group_attribute")
 
     @ip_group_attribute.setter
-    def ip_group_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_group_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_group_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="ipGroupName")
-    def ip_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP whitelist group name.
         """
         return pulumi.get(self, "ip_group_name")
 
     @ip_group_name.setter
-    def ip_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpList")
-    def security_ip_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_ip_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         """
         return pulumi.get(self, "security_ip_list")
 
     @security_ip_list.setter
-    def security_ip_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_ip_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_ip_list", value)
 
 
@@ -739,23 +739,23 @@ class InstanceParameterArgsDict(TypedDict):
     """
     The value of the parameter.
     """
-    default_value: NotRequired[pulumi.Input[_builtins.str]]
+    default_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.231.0) The default value of the parameter.
     """
-    force_restart_instance: NotRequired[pulumi.Input[_builtins.str]]
+    force_restart_instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.231.0) Whether to force restart the instance to config the parameter.
     """
-    is_changeable_config: NotRequired[pulumi.Input[_builtins.str]]
+    is_changeable_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.231.0) Whether the parameter is changeable.
     """
-    optional_range: NotRequired[pulumi.Input[_builtins.str]]
+    optional_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.231.0) The optional range of the parameter.
     """
-    parameter_description: NotRequired[pulumi.Input[_builtins.str]]
+    parameter_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.231.0) The description of the parameter.
     """
@@ -765,11 +765,11 @@ class InstanceParameterArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 default_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_restart_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_changeable_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 optional_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_description: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_restart_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_changeable_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 optional_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the parameter.
         :param pulumi.Input[_builtins.str] value: The value of the parameter.
@@ -818,62 +818,62 @@ class InstanceParameterArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultValue")
-    def default_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.231.0) The default value of the parameter.
         """
         return pulumi.get(self, "default_value")
 
     @default_value.setter
-    def default_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_value", value)
 
     @_builtins.property
     @pulumi.getter(name="forceRestartInstance")
-    def force_restart_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def force_restart_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.231.0) Whether to force restart the instance to config the parameter.
         """
         return pulumi.get(self, "force_restart_instance")
 
     @force_restart_instance.setter
-    def force_restart_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def force_restart_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "force_restart_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="isChangeableConfig")
-    def is_changeable_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def is_changeable_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.231.0) Whether the parameter is changeable.
         """
         return pulumi.get(self, "is_changeable_config")
 
     @is_changeable_config.setter
-    def is_changeable_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def is_changeable_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "is_changeable_config", value)
 
     @_builtins.property
     @pulumi.getter(name="optionalRange")
-    def optional_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def optional_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.231.0) The optional range of the parameter.
         """
         return pulumi.get(self, "optional_range")
 
     @optional_range.setter
-    def optional_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def optional_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "optional_range", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterDescription")
-    def parameter_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.231.0) The description of the parameter.
         """
         return pulumi.get(self, "parameter_description")
 
     @parameter_description.setter
-    def parameter_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_description", value)
 
 

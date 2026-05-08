@@ -67,11 +67,11 @@ import * as utilities from "../utilities";
  *             key1: "value1",
  *         },
  *     }),
- *     projectId: defaultQeRfvU.id,
+ *     projectId: defaultQeRfvU.id.apply(x =>Number(x)),
  *     connectionPropertiesMode: "UrlMode",
  * });
  * const defaultDataSourceSharedRule = new alicloud.dataworks.DataSourceSharedRule("default", {
- *     targetProjectId: defaultasjsH5.id,
+ *     targetProjectId: defaultasjsH5.id.apply(x =>Number(x)),
  *     dataSourceId: defaultvzu0wG.dataSourceId,
  *     envType: "Prod",
  * });
@@ -189,27 +189,27 @@ export interface DataSourceSharedRuleState {
     /**
      * The creation time of the data source sharing rule.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The ID of the data source, that is, the unique identifier of the data source.
      */
-    dataSourceId?: pulumi.Input<number>;
+    dataSourceId?: pulumi.Input<number | undefined>;
     /**
      * The data source sharing rule ID, that is, the unique identifier of the data source sharing rule.
      */
-    dataSourceSharedRuleId?: pulumi.Input<string>;
+    dataSourceSharedRuleId?: pulumi.Input<string | undefined>;
     /**
      * The environment type of the data source shared to the target project, such as Dev (Development Environment) and Prod (production environment).
      */
-    envType?: pulumi.Input<string>;
+    envType?: pulumi.Input<string | undefined>;
     /**
      * The target user of the data source permission policy, which is null to share to the project.
      */
-    sharedUser?: pulumi.Input<string>;
+    sharedUser?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to which the data source is shared.
      */
-    targetProjectId?: pulumi.Input<number>;
+    targetProjectId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -227,7 +227,7 @@ export interface DataSourceSharedRuleArgs {
     /**
      * The target user of the data source permission policy, which is null to share to the project.
      */
-    sharedUser?: pulumi.Input<string>;
+    sharedUser?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to which the data source is shared.
      */

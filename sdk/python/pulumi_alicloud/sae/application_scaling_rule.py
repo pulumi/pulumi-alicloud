@@ -24,11 +24,11 @@ class ApplicationScalingRuleArgs:
                  app_id: pulumi.Input[_builtins.str],
                  scaling_rule_name: pulumi.Input[_builtins.str],
                  scaling_rule_type: pulumi.Input[_builtins.str],
-                 min_ready_instance_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ready_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_rule_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scaling_rule_metric: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs']] = None,
-                 scaling_rule_timer: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']] = None):
+                 min_ready_instance_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ready_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_rule_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scaling_rule_metric: pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricArgs']] = None,
+                 scaling_rule_timer: pulumi.Input[Optional['ApplicationScalingRuleScalingRuleTimerArgs']] = None):
         """
         The set of arguments for constructing a ApplicationScalingRule resource.
 
@@ -93,76 +93,76 @@ class ApplicationScalingRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="minReadyInstanceRatio")
-    def min_ready_instance_ratio(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_ready_instance_ratio(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The min ready instance ratio.
         """
         return pulumi.get(self, "min_ready_instance_ratio")
 
     @min_ready_instance_ratio.setter
-    def min_ready_instance_ratio(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_ready_instance_ratio(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_ready_instance_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="minReadyInstances")
-    def min_ready_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_ready_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The min ready instances.
         """
         return pulumi.get(self, "min_ready_instances")
 
     @min_ready_instances.setter
-    def min_ready_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_ready_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_ready_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingRuleEnable")
-    def scaling_rule_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def scaling_rule_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
         """
         return pulumi.get(self, "scaling_rule_enable")
 
     @scaling_rule_enable.setter
-    def scaling_rule_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def scaling_rule_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "scaling_rule_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingRuleMetric")
-    def scaling_rule_metric(self) -> Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs']]:
+    def scaling_rule_metric(self) -> pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricArgs']]:
         """
         Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         """
         return pulumi.get(self, "scaling_rule_metric")
 
     @scaling_rule_metric.setter
-    def scaling_rule_metric(self, value: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs']]):
+    def scaling_rule_metric(self, value: pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricArgs']]):
         pulumi.set(self, "scaling_rule_metric", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingRuleTimer")
-    def scaling_rule_timer(self) -> Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']]:
+    def scaling_rule_timer(self) -> pulumi.Input[Optional['ApplicationScalingRuleScalingRuleTimerArgs']]:
         """
         Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         """
         return pulumi.get(self, "scaling_rule_timer")
 
     @scaling_rule_timer.setter
-    def scaling_rule_timer(self, value: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']]):
+    def scaling_rule_timer(self, value: pulumi.Input[Optional['ApplicationScalingRuleScalingRuleTimerArgs']]):
         pulumi.set(self, "scaling_rule_timer", value)
 
 
 @pulumi.input_type
 class _ApplicationScalingRuleState:
     def __init__(__self__, *,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_ready_instance_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ready_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_rule_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scaling_rule_metric: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs']] = None,
-                 scaling_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_rule_timer: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']] = None,
-                 scaling_rule_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_ready_instance_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ready_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_rule_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scaling_rule_metric: pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricArgs']] = None,
+                 scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_rule_timer: pulumi.Input[Optional['ApplicationScalingRuleScalingRuleTimerArgs']] = None,
+                 scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationScalingRule resources.
 
@@ -194,98 +194,98 @@ class _ApplicationScalingRuleState:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application ID.
         """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="minReadyInstanceRatio")
-    def min_ready_instance_ratio(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_ready_instance_ratio(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The min ready instance ratio.
         """
         return pulumi.get(self, "min_ready_instance_ratio")
 
     @min_ready_instance_ratio.setter
-    def min_ready_instance_ratio(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_ready_instance_ratio(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_ready_instance_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="minReadyInstances")
-    def min_ready_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_ready_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The min ready instances.
         """
         return pulumi.get(self, "min_ready_instances")
 
     @min_ready_instances.setter
-    def min_ready_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_ready_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_ready_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingRuleEnable")
-    def scaling_rule_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def scaling_rule_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
         """
         return pulumi.get(self, "scaling_rule_enable")
 
     @scaling_rule_enable.setter
-    def scaling_rule_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def scaling_rule_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "scaling_rule_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingRuleMetric")
-    def scaling_rule_metric(self) -> Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs']]:
+    def scaling_rule_metric(self) -> pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricArgs']]:
         """
         Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         """
         return pulumi.get(self, "scaling_rule_metric")
 
     @scaling_rule_metric.setter
-    def scaling_rule_metric(self, value: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs']]):
+    def scaling_rule_metric(self, value: pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricArgs']]):
         pulumi.set(self, "scaling_rule_metric", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingRuleName")
-    def scaling_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
         """
         return pulumi.get(self, "scaling_rule_name")
 
     @scaling_rule_name.setter
-    def scaling_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingRuleTimer")
-    def scaling_rule_timer(self) -> Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']]:
+    def scaling_rule_timer(self) -> pulumi.Input[Optional['ApplicationScalingRuleScalingRuleTimerArgs']]:
         """
         Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         """
         return pulumi.get(self, "scaling_rule_timer")
 
     @scaling_rule_timer.setter
-    def scaling_rule_timer(self, value: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']]):
+    def scaling_rule_timer(self, value: pulumi.Input[Optional['ApplicationScalingRuleScalingRuleTimerArgs']]):
         pulumi.set(self, "scaling_rule_timer", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingRuleType")
-    def scaling_rule_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_rule_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
         """
         return pulumi.get(self, "scaling_rule_type")
 
     @scaling_rule_type.setter
-    def scaling_rule_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_rule_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_rule_type", value)
 
 
@@ -295,14 +295,14 @@ class ApplicationScalingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_ready_instance_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ready_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_rule_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scaling_rule_metric: Optional[pulumi.Input[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']]] = None,
-                 scaling_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_rule_timer: Optional[pulumi.Input[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']]] = None,
-                 scaling_rule_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_ready_instance_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ready_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_rule_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scaling_rule_metric: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']]] = None,
+                 scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_rule_timer: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']]] = None,
+                 scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Serverless App Engine (SAE) Application Scaling Rule resource.
@@ -566,14 +566,14 @@ class ApplicationScalingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_ready_instance_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ready_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_rule_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scaling_rule_metric: Optional[pulumi.Input[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']]] = None,
-                 scaling_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_rule_timer: Optional[pulumi.Input[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']]] = None,
-                 scaling_rule_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_ready_instance_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ready_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_rule_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scaling_rule_metric: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']]] = None,
+                 scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_rule_timer: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']]] = None,
+                 scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -607,14 +607,14 @@ class ApplicationScalingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            min_ready_instance_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-            min_ready_instances: Optional[pulumi.Input[_builtins.int]] = None,
-            scaling_rule_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            scaling_rule_metric: Optional[pulumi.Input[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']]] = None,
-            scaling_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            scaling_rule_timer: Optional[pulumi.Input[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']]] = None,
-            scaling_rule_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApplicationScalingRule':
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            min_ready_instance_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+            min_ready_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            scaling_rule_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            scaling_rule_metric: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']]] = None,
+            scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_rule_timer: pulumi.Input[Optional[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']]] = None,
+            scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApplicationScalingRule':
         """
         Get an existing ApplicationScalingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

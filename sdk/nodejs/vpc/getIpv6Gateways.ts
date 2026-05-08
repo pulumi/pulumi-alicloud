@@ -152,25 +152,25 @@ export interface GetIpv6GatewaysOutputArgs {
     /**
      * A list of Ipv6 Gateway IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the IPv6 gateway.
      */
-    ipv6GatewayName?: pulumi.Input<string>;
+    ipv6GatewayName?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Ipv6 Gateway name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

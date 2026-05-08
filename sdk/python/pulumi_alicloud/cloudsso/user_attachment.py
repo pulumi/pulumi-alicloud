@@ -73,9 +73,9 @@ class UserAttachmentArgs:
 @pulumi.input_type
 class _UserAttachmentState:
     def __init__(__self__, *,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserAttachment resources.
 
@@ -92,38 +92,38 @@ class _UserAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
-    def directory_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the directory.
         """
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
-    def directory_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the group.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the user.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -133,9 +133,9 @@ class UserAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud SSO User Attachment resource.
@@ -152,6 +152,7 @@ class UserAttachment(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -164,7 +165,7 @@ class UserAttachment(pulumi.CustomResource):
         default_integer = random.Integer("default",
             min=10000,
             max=99999)
-        default_directory = []
+        default_directory: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
@@ -175,14 +176,14 @@ class UserAttachment(pulumi.CustomResource):
             [""],
         ]).result[0])
         default_user = alicloud.cloudsso.User("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_name=f"{name}-{default_integer['result']}")
         default_group = alicloud.cloudsso.Group("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             group_name=name,
             description=name)
         default_user_attachment = alicloud.cloudsso.UserAttachment("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_id=default_user.user_id,
             group_id=default_group.group_id)
         ```
@@ -225,6 +226,7 @@ class UserAttachment(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -237,7 +239,7 @@ class UserAttachment(pulumi.CustomResource):
         default_integer = random.Integer("default",
             min=10000,
             max=99999)
-        default_directory = []
+        default_directory: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
@@ -248,14 +250,14 @@ class UserAttachment(pulumi.CustomResource):
             [""],
         ]).result[0])
         default_user = alicloud.cloudsso.User("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_name=f"{name}-{default_integer['result']}")
         default_group = alicloud.cloudsso.Group("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             group_name=name,
             description=name)
         default_user_attachment = alicloud.cloudsso.UserAttachment("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_id=default_user.user_id,
             group_id=default_group.group_id)
         ```
@@ -286,9 +288,9 @@ class UserAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -317,9 +319,9 @@ class UserAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserAttachment':
+            directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserAttachment':
         """
         Get an existing UserAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

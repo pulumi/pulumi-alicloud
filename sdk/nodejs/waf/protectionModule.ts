@@ -160,15 +160,15 @@ export interface ProtectionModuleState {
     /**
      * The Protection Module. Valid values: `acCc`, `antifraud`, `dld`, `normalized`, `waf`.
      */
-    defenseType?: pulumi.Input<string>;
+    defenseType?: pulumi.Input<string | undefined>;
     /**
      * The domain name that is added to WAF.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The ID of the WAF instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defenseType` parameter.
      * * The `defenseType` is `waf`. `0`: block mode. `1`: warn mode.
@@ -177,11 +177,11 @@ export interface ProtectionModuleState {
      * * The `defenseType` is `antifraud`. `0`: warn mode. `1`: block mode. `2`: strict interception mode.
      * * The `defenseType` is `normalized`. `0`: warn mode. `1`: block mode.
      */
-    mode?: pulumi.Input<number>;
+    mode?: pulumi.Input<number | undefined>;
     /**
      * The status of the resource. Valid values: `0`, `1`.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -212,5 +212,5 @@ export interface ProtectionModuleArgs {
     /**
      * The status of the resource. Valid values: `0`, `1`.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
 }

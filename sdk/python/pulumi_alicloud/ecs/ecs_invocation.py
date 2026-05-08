@@ -21,12 +21,12 @@ class EcsInvocationArgs:
     def __init__(__self__, *,
                  command_id: pulumi.Input[_builtins.str],
                  instance_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 repeat_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 timed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 windows_password_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 repeat_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 timed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 windows_password_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsInvocation resource.
 
@@ -86,7 +86,7 @@ class EcsInvocationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schedule on which the recurring execution of the command takes place. Take note of the following items:
         * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
@@ -96,48 +96,48 @@ class EcsInvocationArgs:
         return pulumi.get(self, "frequency")
 
     @frequency.setter
-    def frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "frequency", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatMode")
-    def repeat_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repeat_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
         """
         return pulumi.get(self, "repeat_mode")
 
     @repeat_mode.setter
-    def repeat_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repeat_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repeat_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def timed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def timed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to periodically run the command. Default value: `false`.
         """
         return pulumi.get(self, "timed")
 
     @timed.setter
-    def timed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def timed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "timed", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username that is used to run the command on the ECS instance. 
         * For Linux instances, the root username is used.
@@ -147,34 +147,34 @@ class EcsInvocationArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="windowsPasswordName")
-    def windows_password_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def windows_password_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the password used to run the command on a Windows instance.
         """
         return pulumi.get(self, "windows_password_name")
 
     @windows_password_name.setter
-    def windows_password_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def windows_password_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "windows_password_name", value)
 
 
 @pulumi.input_type
 class _EcsInvocationState:
     def __init__(__self__, *,
-                 command_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 repeat_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 timed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 windows_password_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 command_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 repeat_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 timed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 windows_password_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsInvocation resources.
 
@@ -215,19 +215,19 @@ class _EcsInvocationState:
 
     @_builtins.property
     @pulumi.getter(name="commandId")
-    def command_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the command.
         """
         return pulumi.get(self, "command_id")
 
     @command_id.setter
-    def command_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schedule on which the recurring execution of the command takes place. Take note of the following items:
         * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
@@ -237,72 +237,72 @@ class _EcsInvocationState:
         return pulumi.get(self, "frequency")
 
     @frequency.setter
-    def frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "frequency", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of instances to execute the command. You can specify up to 50 instance IDs.
         """
         return pulumi.get(self, "instance_ids")
 
     @instance_ids.setter
-    def instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatMode")
-    def repeat_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repeat_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
         """
         return pulumi.get(self, "repeat_mode")
 
     @repeat_mode.setter
-    def repeat_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repeat_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repeat_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def timed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def timed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to periodically run the command. Default value: `false`.
         """
         return pulumi.get(self, "timed")
 
     @timed.setter
-    def timed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def timed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "timed", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username that is used to run the command on the ECS instance. 
         * For Linux instances, the root username is used.
@@ -312,19 +312,19 @@ class _EcsInvocationState:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="windowsPasswordName")
-    def windows_password_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def windows_password_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the password used to run the command on a Windows instance.
         """
         return pulumi.get(self, "windows_password_name")
 
     @windows_password_name.setter
-    def windows_password_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def windows_password_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "windows_password_name", value)
 
 
@@ -334,14 +334,14 @@ class EcsInvocation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 command_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 repeat_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 timed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 windows_password_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 command_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 repeat_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 timed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 windows_password_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Invocation resource.
@@ -366,7 +366,7 @@ class EcsInvocation(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=8,
+            memory_size=float(8),
             instance_type_family="ecs.g6")
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
@@ -469,7 +469,7 @@ class EcsInvocation(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=8,
+            memory_size=float(8),
             instance_type_family="ecs.g6")
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
@@ -541,14 +541,14 @@ class EcsInvocation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 command_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 repeat_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 timed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 windows_password_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 command_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 repeat_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 timed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 windows_password_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -581,15 +581,15 @@ class EcsInvocation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            command_id: Optional[pulumi.Input[_builtins.str]] = None,
-            frequency: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            repeat_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            timed: Optional[pulumi.Input[_builtins.bool]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None,
-            windows_password_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'EcsInvocation':
+            command_id: pulumi.Input[Optional[_builtins.str]] = None,
+            frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            repeat_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timed: pulumi.Input[Optional[_builtins.bool]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            windows_password_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'EcsInvocation':
         """
         Get an existing EcsInvocation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

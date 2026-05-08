@@ -126,15 +126,15 @@ export interface SnatEntryState {
     /**
      * The destination CIDR block.
      */
-    cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SAG instance.
      */
-    sagId?: pulumi.Input<string>;
+    sagId?: pulumi.Input<string | undefined>;
     /**
      * The public IP address.
      */
-    snatIp?: pulumi.Input<string>;
+    snatIp?: pulumi.Input<string | undefined>;
 }
 
 /**

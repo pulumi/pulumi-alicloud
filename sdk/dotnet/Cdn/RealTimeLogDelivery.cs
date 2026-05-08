@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Cdn
     ///         AppendMeta = true,
     ///     });
     /// 
-    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });

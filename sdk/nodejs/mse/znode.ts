@@ -149,19 +149,19 @@ export interface ZnodeState {
     /**
      * The language type of the returned information. Valid values: `zh` or `en`.
      */
-    acceptLanguage?: pulumi.Input<string>;
+    acceptLanguage?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The Node data.
      */
-    data?: pulumi.Input<string>;
+    data?: pulumi.Input<string | undefined>;
     /**
      * The Node path. The value must start with a forward slash (/).
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -171,7 +171,7 @@ export interface ZnodeArgs {
     /**
      * The language type of the returned information. Valid values: `zh` or `en`.
      */
-    acceptLanguage?: pulumi.Input<string>;
+    acceptLanguage?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Cluster.
      */
@@ -179,7 +179,7 @@ export interface ZnodeArgs {
     /**
      * The Node data.
      */
-    data?: pulumi.Input<string>;
+    data?: pulumi.Input<string | undefined>;
     /**
      * The Node path. The value must start with a forward slash (/).
      */

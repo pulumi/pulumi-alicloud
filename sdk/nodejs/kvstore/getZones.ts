@@ -118,18 +118,18 @@ export interface GetZonesOutputArgs {
      * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
      * * productType - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
      */
-    multi?: pulumi.Input<boolean>;
+    multi?: pulumi.Input<boolean | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    productType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
+    productType?: pulumi.Input<string | undefined>;
 }

@@ -19,23 +19,23 @@ __all__ = ['TrailDeprecatedArgs', 'TrailDeprecated']
 @pulumi.input_type
 class TrailDeprecatedArgs:
     def __init__(__self__, *,
-                 data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_rw: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 mns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_key_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 trail_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 trail_region: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_event_trail_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_rw: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_selectors: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_organization_trail: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_compute_project_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_compute_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 mns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_key_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_project_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 trail_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 trail_region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TrailDeprecated resource.
 
@@ -95,145 +95,145 @@ class TrailDeprecatedArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataEventTrailRegion")
-    def data_event_trail_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_event_trail_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "data_event_trail_region")
 
     @data_event_trail_region.setter
-    def data_event_trail_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_event_trail_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_event_trail_region", value)
 
     @_builtins.property
     @pulumi.getter(name="eventRw")
-    def event_rw(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_rw(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
         """
         return pulumi.get(self, "event_rw")
 
     @event_rw.setter
-    def event_rw(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_rw(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_rw", value)
 
     @_builtins.property
     @pulumi.getter(name="eventSelectors")
-    def event_selectors(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_selectors(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "event_selectors")
 
     @event_selectors.setter
-    def event_selectors(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_selectors(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_selectors", value)
 
     @_builtins.property
     @pulumi.getter(name="isOrganizationTrail")
-    def is_organization_trail(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_organization_trail(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_organization_trail")
 
     @is_organization_trail.setter
-    def is_organization_trail(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_organization_trail(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_organization_trail", value)
 
     @_builtins.property
     @pulumi.getter(name="maxComputeProjectArn")
-    def max_compute_project_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_compute_project_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "max_compute_project_arn")
 
     @max_compute_project_arn.setter
-    def max_compute_project_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_compute_project_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_compute_project_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="maxComputeWriteRoleArn")
-    def max_compute_write_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_compute_write_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "max_compute_write_role_arn")
 
     @max_compute_write_role_arn.setter
-    def max_compute_write_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_compute_write_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_compute_write_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="mnsTopicArn")
     @_utilities.deprecated("""Field `mns_topic_arn` has been deprecated from version 1.118.0""")
-    def mns_topic_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mns_topic_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "mns_topic_arn")
 
     @mns_topic_arn.setter
-    def mns_topic_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mns_topic_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mns_topic_arn", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the trail to be created, which must be unique for an account.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketName")
-    def oss_bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
         """
         return pulumi.get(self, "oss_bucket_name")
 
     @oss_bucket_name.setter
-    def oss_bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ossKeyPrefix")
-    def oss_key_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_key_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix of the specified OSS bucket name. This parameter can be left empty.
         """
         return pulumi.get(self, "oss_key_prefix")
 
     @oss_key_prefix.setter
-    def oss_key_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_key_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_key_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="ossWriteRoleArn")
-    def oss_write_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_write_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "oss_write_role_arn")
 
     @oss_write_role_arn.setter
-    def oss_write_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_write_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_write_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="roleName")
     @_utilities.deprecated("""Field `role_name` has been deprecated from version 1.118.0""")
-    def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RAM role in ActionTrail permitted by the user.
         """
         return pulumi.get(self, "role_name")
 
     @role_name.setter
-    def role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="slsProjectArn")
-    def sls_project_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_project_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique ARN of the Log Service project.
         """
         return pulumi.get(self, "sls_project_arn")
 
     @sls_project_arn.setter
-    def sls_project_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_project_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_project_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="slsWriteRoleArn")
-    def sls_write_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_write_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique ARN of the Log Service role.
 
@@ -242,59 +242,59 @@ class TrailDeprecatedArgs:
         return pulumi.get(self, "sls_write_role_arn")
 
     @sls_write_role_arn.setter
-    def sls_write_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_write_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_write_role_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="trailName")
-    def trail_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trail_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "trail_name")
 
     @trail_name.setter
-    def trail_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trail_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trail_name", value)
 
     @_builtins.property
     @pulumi.getter(name="trailRegion")
-    def trail_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trail_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "trail_region")
 
     @trail_region.setter
-    def trail_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trail_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trail_region", value)
 
 
 @pulumi.input_type
 class _TrailDeprecatedState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_rw: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 mns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_key_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 trail_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 trail_region: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_event_trail_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_rw: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_selectors: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_organization_trail: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_compute_project_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_compute_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 mns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_key_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_project_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 trail_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 trail_region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrailDeprecated resources.
 
@@ -358,163 +358,163 @@ class _TrailDeprecatedState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataEventTrailRegion")
-    def data_event_trail_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_event_trail_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "data_event_trail_region")
 
     @data_event_trail_region.setter
-    def data_event_trail_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_event_trail_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_event_trail_region", value)
 
     @_builtins.property
     @pulumi.getter(name="eventRw")
-    def event_rw(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_rw(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
         """
         return pulumi.get(self, "event_rw")
 
     @event_rw.setter
-    def event_rw(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_rw(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_rw", value)
 
     @_builtins.property
     @pulumi.getter(name="eventSelectors")
-    def event_selectors(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_selectors(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "event_selectors")
 
     @event_selectors.setter
-    def event_selectors(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_selectors(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_selectors", value)
 
     @_builtins.property
     @pulumi.getter(name="isOrganizationTrail")
-    def is_organization_trail(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_organization_trail(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_organization_trail")
 
     @is_organization_trail.setter
-    def is_organization_trail(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_organization_trail(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_organization_trail", value)
 
     @_builtins.property
     @pulumi.getter(name="maxComputeProjectArn")
-    def max_compute_project_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_compute_project_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "max_compute_project_arn")
 
     @max_compute_project_arn.setter
-    def max_compute_project_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_compute_project_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_compute_project_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="maxComputeWriteRoleArn")
-    def max_compute_write_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_compute_write_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "max_compute_write_role_arn")
 
     @max_compute_write_role_arn.setter
-    def max_compute_write_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_compute_write_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_compute_write_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="mnsTopicArn")
     @_utilities.deprecated("""Field `mns_topic_arn` has been deprecated from version 1.118.0""")
-    def mns_topic_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mns_topic_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "mns_topic_arn")
 
     @mns_topic_arn.setter
-    def mns_topic_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mns_topic_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mns_topic_arn", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the trail to be created, which must be unique for an account.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketName")
-    def oss_bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
         """
         return pulumi.get(self, "oss_bucket_name")
 
     @oss_bucket_name.setter
-    def oss_bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ossKeyPrefix")
-    def oss_key_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_key_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix of the specified OSS bucket name. This parameter can be left empty.
         """
         return pulumi.get(self, "oss_key_prefix")
 
     @oss_key_prefix.setter
-    def oss_key_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_key_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_key_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="ossWriteRoleArn")
-    def oss_write_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_write_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "oss_write_role_arn")
 
     @oss_write_role_arn.setter
-    def oss_write_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_write_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_write_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleName")
     @_utilities.deprecated("""Field `role_name` has been deprecated from version 1.118.0""")
-    def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RAM role in ActionTrail permitted by the user.
         """
         return pulumi.get(self, "role_name")
 
     @role_name.setter
-    def role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="slsProjectArn")
-    def sls_project_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_project_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique ARN of the Log Service project.
         """
         return pulumi.get(self, "sls_project_arn")
 
     @sls_project_arn.setter
-    def sls_project_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_project_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_project_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="slsWriteRoleArn")
-    def sls_write_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_write_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique ARN of the Log Service role.
 
@@ -523,34 +523,34 @@ class _TrailDeprecatedState:
         return pulumi.get(self, "sls_write_role_arn")
 
     @sls_write_role_arn.setter
-    def sls_write_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_write_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_write_role_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="trailName")
-    def trail_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trail_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "trail_name")
 
     @trail_name.setter
-    def trail_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trail_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trail_name", value)
 
     @_builtins.property
     @pulumi.getter(name="trailRegion")
-    def trail_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trail_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "trail_region")
 
     @trail_region.setter
-    def trail_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trail_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trail_region", value)
 
 
@@ -565,23 +565,23 @@ class TrailDeprecated(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_rw: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 mns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_key_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 trail_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 trail_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_event_trail_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_rw: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_selectors: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_organization_trail: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_compute_project_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_compute_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 mns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_key_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_project_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 trail_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 trail_region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **DEPRECATED:**  This resource has been renamed to actiontrail.Trail from version 1.95.0.
@@ -682,23 +682,23 @@ class TrailDeprecated(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_rw: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 mns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_key_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 trail_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 trail_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_event_trail_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_rw: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_selectors: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_organization_trail: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_compute_project_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_compute_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 mns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_key_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_project_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 trail_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 trail_region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""TrailDeprecated is deprecated: Resource renamed to `Trail`""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -738,25 +738,25 @@ class TrailDeprecated(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
-            event_rw: Optional[pulumi.Input[_builtins.str]] = None,
-            event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
-            is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
-            max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            mns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_key_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sls_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            sls_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            trail_name: Optional[pulumi.Input[_builtins.str]] = None,
-            trail_region: Optional[pulumi.Input[_builtins.str]] = None) -> 'TrailDeprecated':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_event_trail_region: pulumi.Input[Optional[_builtins.str]] = None,
+            event_rw: pulumi.Input[Optional[_builtins.str]] = None,
+            event_selectors: pulumi.Input[Optional[_builtins.str]] = None,
+            is_organization_trail: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_compute_project_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            max_compute_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            mns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_key_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_project_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_write_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            trail_name: pulumi.Input[Optional[_builtins.str]] = None,
+            trail_region: pulumi.Input[Optional[_builtins.str]] = None) -> 'TrailDeprecated':
         """
         Get an existing TrailDeprecated resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

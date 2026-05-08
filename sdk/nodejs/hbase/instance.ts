@@ -308,120 +308,120 @@ export interface InstanceState {
     /**
      * The account of the cluster web ui. Size [0-128].
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
     /**
      * Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
      */
-    coldStorageSize?: pulumi.Input<number>;
+    coldStorageSize?: pulumi.Input<number | undefined>;
     /**
      * User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
      * - Custom storage space, value range: [20, 64000].
      * - Cluster [400, 64000], step:40-GB increments.
      * - Single [20-500GB], step:1-GB increments.
      */
-    coreDiskSize?: pulumi.Input<number>;
+    coreDiskSize?: pulumi.Input<number | undefined>;
     /**
      * Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
      */
-    coreDiskType?: pulumi.Input<string>;
+    coreDiskType?: pulumi.Input<string | undefined>;
     /**
      * Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
      */
-    coreInstanceQuantity?: pulumi.Input<number>;
+    coreInstanceQuantity?: pulumi.Input<number | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
-    coreInstanceType?: pulumi.Input<string>;
+    coreInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
      */
-    immediateDeleteFlag?: pulumi.Input<boolean>;
+    immediateDeleteFlag?: pulumi.Input<boolean | undefined>;
     /**
      * The white ip list of the cluster.
      */
-    ipWhite?: pulumi.Input<string>;
+    ipWhite?: pulumi.Input<string | undefined>;
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
      */
-    maintainEndTime?: pulumi.Input<string>;
+    maintainEndTime?: pulumi.Input<string | undefined>;
     /**
      * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
      */
-    maintainStartTime?: pulumi.Input<string>;
+    maintainStartTime?: pulumi.Input<string | undefined>;
     /**
      * Count nodes of the master node.
      */
-    masterInstanceQuantity?: pulumi.Input<number>;
+    masterInstanceQuantity?: pulumi.Input<number | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
-    masterInstanceType?: pulumi.Input<string>;
+    masterInstanceType?: pulumi.Input<string | undefined>;
     /**
      * HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The password of the cluster web ui account. Size [0-128].
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
      */
-    payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string | undefined>;
     /**
      * The security group resource of the cluster.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slb service addresses of the cluster. See `slbConnAddrs` below.
      *
      * > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
      */
-    slbConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceSlbConnAddr>[]>;
+    slbConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceSlbConnAddr>[] | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
      */
-    uiProxyConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceUiProxyConnAddr>[]>;
+    uiProxyConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceUiProxyConnAddr>[] | undefined>;
     /**
      * The id of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zookeeper addresses of the cluster. See `zkConnAddrs` below.
      */
-    zkConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceZkConnAddr>[]>;
+    zkConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceZkConnAddr>[] | undefined>;
     /**
      * The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -431,30 +431,30 @@ export interface InstanceArgs {
     /**
      * The account of the cluster web ui. Size [0-128].
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
     /**
      * Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
      */
-    coldStorageSize?: pulumi.Input<number>;
+    coldStorageSize?: pulumi.Input<number | undefined>;
     /**
      * User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
      * - Custom storage space, value range: [20, 64000].
      * - Cluster [400, 64000], step:40-GB increments.
      * - Single [20-500GB], step:1-GB increments.
      */
-    coreDiskSize?: pulumi.Input<number>;
+    coreDiskSize?: pulumi.Input<number | undefined>;
     /**
      * Valid values are `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`，``, localDisk size is fixed. When engine=bds, no need to set disk type(or empty string).
      */
-    coreDiskType?: pulumi.Input<string>;
+    coreDiskType?: pulumi.Input<string | undefined>;
     /**
      * Default=2, [1-200]. If coreInstanceQuantity > 1, this is cluster's instance. If coreInstanceQuantity = 1, this is a single instance.
      */
-    coreInstanceQuantity?: pulumi.Input<number>;
+    coreInstanceQuantity?: pulumi.Input<number | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
@@ -462,15 +462,15 @@ export interface InstanceArgs {
     /**
      * The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when payType = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
      */
@@ -478,19 +478,19 @@ export interface InstanceArgs {
     /**
      * The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
      */
-    immediateDeleteFlag?: pulumi.Input<boolean>;
+    immediateDeleteFlag?: pulumi.Input<boolean | undefined>;
     /**
      * The white ip list of the cluster.
      */
-    ipWhite?: pulumi.Input<string>;
+    ipWhite?: pulumi.Input<string | undefined>;
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
      */
-    maintainEndTime?: pulumi.Input<string>;
+    maintainEndTime?: pulumi.Input<string | undefined>;
     /**
      * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
      */
-    maintainStartTime?: pulumi.Input<string>;
+    maintainStartTime?: pulumi.Input<string | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      */
@@ -498,33 +498,33 @@ export interface InstanceArgs {
     /**
      * HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The password of the cluster web ui account. Size [0-128].
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
      */
-    payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string | undefined>;
     /**
      * The security group resource of the cluster.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The id of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

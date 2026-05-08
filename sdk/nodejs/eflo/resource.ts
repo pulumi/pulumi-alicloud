@@ -172,27 +172,27 @@ export interface ResourceState {
     /**
      * Used to provide a description or comment on the compute cluster.
      */
-    clusterDesc?: pulumi.Input<string>;
+    clusterDesc?: pulumi.Input<string | undefined>;
     /**
      * Used to uniquely identify a computing cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Represents the name of the compute cluster, usually including the model number.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * Generally refers to the type or instance type of a computing resource. See `machineTypes` below.
      */
-    machineTypes?: pulumi.Input<inputs.eflo.ResourceMachineTypes>;
+    machineTypes?: pulumi.Input<inputs.eflo.ResourceMachineTypes | undefined>;
     /**
      * The ID of the Resource.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Used to define the access parameters for the user. See `userAccessParam` below.
      */
-    userAccessParam?: pulumi.Input<inputs.eflo.ResourceUserAccessParam>;
+    userAccessParam?: pulumi.Input<inputs.eflo.ResourceUserAccessParam | undefined>;
 }
 
 /**
@@ -202,7 +202,7 @@ export interface ResourceArgs {
     /**
      * Used to provide a description or comment on the compute cluster.
      */
-    clusterDesc?: pulumi.Input<string>;
+    clusterDesc?: pulumi.Input<string | undefined>;
     /**
      * Used to uniquely identify a computing cluster.
      */

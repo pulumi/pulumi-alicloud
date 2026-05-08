@@ -184,50 +184,50 @@ export interface SubnetState {
     /**
      * CIDR network segment.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Modification time.
      */
-    gmtModified?: pulumi.Input<string>;
+    gmtModified?: pulumi.Input<string | undefined>;
     /**
      * Error message.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * Resource Group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The id of the subnet.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * The Subnet name.
      */
-    subnetName?: pulumi.Input<string>;
+    subnetName?: pulumi.Input<string | undefined>;
     /**
      * Eflo subnet usage type. optional value:
      * - General type is not filled in
      * - OOB:OOB type
      * - LB: LB type
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The Eflo VPD ID.
      */
-    vpdId?: pulumi.Input<string>;
+    vpdId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID  of the resource.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -248,7 +248,7 @@ export interface SubnetArgs {
      * - OOB:OOB type
      * - LB: LB type
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The Eflo VPD ID.
      */

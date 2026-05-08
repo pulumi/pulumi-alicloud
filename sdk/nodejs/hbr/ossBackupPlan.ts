@@ -193,48 +193,48 @@ export interface OssBackupPlanState {
     /**
      * Backup type. Valid values: `COMPLETE`.
      */
-    backupType?: pulumi.Input<string>;
+    backupType?: pulumi.Input<string | undefined>;
     /**
      * The name of OSS bucket.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      */
-    crossAccountRoleName?: pulumi.Input<string>;
+    crossAccountRoleName?: pulumi.Input<string | undefined>;
     /**
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      */
-    crossAccountType?: pulumi.Input<string>;
+    crossAccountType?: pulumi.Input<string | undefined>;
     /**
      * The original account ID of the cross account backup managed by the current account.
      */
-    crossAccountUserId?: pulumi.Input<number>;
+    crossAccountUserId?: pulumi.Input<number | undefined>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
-    ossBackupPlanName?: pulumi.Input<string>;
+    ossBackupPlanName?: pulumi.Input<string | undefined>;
     /**
      * Backup prefix. Once specified, only objects with matching prefixes will be backed up.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * Backup retention days, the minimum is 1.
      */
-    retention?: pulumi.Input<string>;
+    retention?: pulumi.Input<string | undefined>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * * `startTime` Backup start time, UNIX time seconds.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * The ID of backup vault.
      */
-    vaultId?: pulumi.Input<string>;
+    vaultId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -252,19 +252,19 @@ export interface OssBackupPlanArgs {
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      */
-    crossAccountRoleName?: pulumi.Input<string>;
+    crossAccountRoleName?: pulumi.Input<string | undefined>;
     /**
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      */
-    crossAccountType?: pulumi.Input<string>;
+    crossAccountType?: pulumi.Input<string | undefined>;
     /**
      * The original account ID of the cross account backup managed by the current account.
      */
-    crossAccountUserId?: pulumi.Input<number>;
+    crossAccountUserId?: pulumi.Input<number | undefined>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
@@ -272,7 +272,7 @@ export interface OssBackupPlanArgs {
     /**
      * Backup prefix. Once specified, only objects with matching prefixes will be backed up.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * Backup retention days, the minimum is 1.
      */

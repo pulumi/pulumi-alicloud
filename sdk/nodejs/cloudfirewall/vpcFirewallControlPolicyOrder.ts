@@ -146,19 +146,19 @@ export interface VpcFirewallControlPolicyOrderState {
      * The unique identifier ID of the access control policy.  
      * When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
      */
-    aclUuid?: pulumi.Input<string>;
+    aclUuid?: pulumi.Input<string | undefined>;
     /**
      * The language type used for requests and responses.  
      *
      * Valid values:
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The new priority of the access control policy after modification.  
      *
      * > **NOTE:**  For the valid range of the new priority, see the [API for querying the effective priority range](https://help.aliyun.com/document_detail/474145.html).
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.  
      *
@@ -170,7 +170,7 @@ export interface VpcFirewallControlPolicyOrderState {
      *
      * Example: vfw-a42bbb7b887148c9*\*\*\*.
      */
-    vpcFirewallId?: pulumi.Input<string>;
+    vpcFirewallId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,13 +181,13 @@ export interface VpcFirewallControlPolicyOrderArgs {
      * The unique identifier ID of the access control policy.  
      * When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
      */
-    aclUuid?: pulumi.Input<string>;
+    aclUuid?: pulumi.Input<string | undefined>;
     /**
      * The language type used for requests and responses.  
      *
      * Valid values:
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The new priority of the access control policy after modification.  
      *

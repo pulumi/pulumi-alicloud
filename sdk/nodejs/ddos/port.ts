@@ -163,30 +163,30 @@ export interface PortState {
     /**
      * The port of the origin server. Valid values: `0` to `65535`.
      */
-    backendPort?: pulumi.Input<string>;
+    backendPort?: pulumi.Input<string | undefined>;
     /**
      * Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
      * - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
      */
-    config?: pulumi.Input<inputs.ddos.PortConfig>;
+    config?: pulumi.Input<inputs.ddos.PortConfig | undefined>;
     /**
      * The forwarding port to query. Valid values: `0` to `65535`.
      */
-    frontendPort?: pulumi.Input<string>;
+    frontendPort?: pulumi.Input<string | undefined>;
     /**
      * The type of the forwarding protocol to query. Valid values:
      */
-    frontendProtocol?: pulumi.Input<string>;
+    frontendProtocol?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
      *
      * > **NOTE:**  You can call the [DescribeInstanceIds](https://www.alibabacloud.com/help/en/doc-detail/157459.html) operation to query the IDs of all instances.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * List of source IP addresses
      */
-    realServers?: pulumi.Input<pulumi.Input<string>[]>;
+    realServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -196,12 +196,12 @@ export interface PortArgs {
     /**
      * The port of the origin server. Valid values: `0` to `65535`.
      */
-    backendPort?: pulumi.Input<string>;
+    backendPort?: pulumi.Input<string | undefined>;
     /**
      * Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
      * - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
      */
-    config?: pulumi.Input<inputs.ddos.PortConfig>;
+    config?: pulumi.Input<inputs.ddos.PortConfig | undefined>;
     /**
      * The forwarding port to query. Valid values: `0` to `65535`.
      */

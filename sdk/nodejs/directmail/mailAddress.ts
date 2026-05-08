@@ -144,23 +144,23 @@ export interface MailAddressState {
     /**
      * The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Account password. The password must be length 10-20 string, contains numbers, uppercase letters, lowercase letters at the same time.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Return address.
      */
-    replyAddress?: pulumi.Input<string>;
+    replyAddress?: pulumi.Input<string | undefined>;
     /**
      * Account type. Valid values: `batch`, `trigger`.
      */
-    sendtype?: pulumi.Input<string>;
+    sendtype?: pulumi.Input<string | undefined>;
     /**
      * Account Status freeze: 1, normal: 0.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -174,11 +174,11 @@ export interface MailAddressArgs {
     /**
      * Account password. The password must be length 10-20 string, contains numbers, uppercase letters, lowercase letters at the same time.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Return address.
      */
-    replyAddress?: pulumi.Input<string>;
+    replyAddress?: pulumi.Input<string | undefined>;
     /**
      * Account type. Valid values: `batch`, `trigger`.
      */

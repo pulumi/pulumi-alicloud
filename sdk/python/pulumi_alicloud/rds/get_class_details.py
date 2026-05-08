@@ -280,10 +280,10 @@ def get_class_details(class_code: Optional[_builtins.str] = None,
         max_iops=pulumi.get(__ret__, 'max_iops'),
         memory_class=pulumi.get(__ret__, 'memory_class'),
         reference_price=pulumi.get(__ret__, 'reference_price'))
-def get_class_details_output(class_code: Optional[pulumi.Input[_builtins.str]] = None,
-                             commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-                             engine: Optional[pulumi.Input[_builtins.str]] = None,
-                             engine_version: Optional[pulumi.Input[_builtins.str]] = None,
+def get_class_details_output(class_code: pulumi.Input[Optional[_builtins.str]] = None,
+                             commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+                             engine: pulumi.Input[Optional[_builtins.str]] = None,
+                             engine_version: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClassDetailsResult]:
     """
     This data source provides details of the Rds specifications of current Alibaba Cloud users.

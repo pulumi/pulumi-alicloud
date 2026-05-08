@@ -20,8 +20,8 @@ __all__ = ['AuditLogConfigArgs', 'AuditLogConfig']
 class AuditLogConfigArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
-                 db_audit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retention: Optional[pulumi.Input[_builtins.int]] = None):
+                 db_audit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retention: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a AuditLogConfig resource.
 
@@ -55,7 +55,7 @@ class AuditLogConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dbAudit")
-    def db_audit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def db_audit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates Whether to Enable the Audit Log.  Valid value: 
         * true: Default Value, Open.
@@ -66,12 +66,12 @@ class AuditLogConfigArgs:
         return pulumi.get(self, "db_audit")
 
     @db_audit.setter
-    def db_audit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def db_audit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "db_audit", value)
 
     @_builtins.property
     @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Audit Log Retention Period Value: 1~365. 
 
@@ -80,18 +80,18 @@ class AuditLogConfigArgs:
         return pulumi.get(self, "retention")
 
     @retention.setter
-    def retention(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention", value)
 
 
 @pulumi.input_type
 class _AuditLogConfigState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_audit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_audit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuditLogConfig resources.
 
@@ -120,19 +120,19 @@ class _AuditLogConfigState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance Creation Time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dbAudit")
-    def db_audit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def db_audit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates Whether to Enable the Audit Log.  Valid value: 
         * true: Default Value, Open.
@@ -143,24 +143,24 @@ class _AuditLogConfigState:
         return pulumi.get(self, "db_audit")
 
     @db_audit.setter
-    def db_audit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def db_audit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "db_audit", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance ID, Call the Describeinstances Get.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Audit Log Retention Period Value: 1~365. 
 
@@ -169,19 +169,19 @@ class _AuditLogConfigState:
         return pulumi.get(self, "retention")
 
     @retention.setter
-    def retention(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -191,9 +191,9 @@ class AuditLogConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_audit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input[_builtins.int]] = None,
+                 db_audit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Tair (Redis OSS-Compatible) And Memcache (KVStore) Audit Log Config resource.
@@ -350,9 +350,9 @@ class AuditLogConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_audit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input[_builtins.int]] = None,
+                 db_audit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -379,11 +379,11 @@ class AuditLogConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            db_audit: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            retention: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'AuditLogConfig':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            db_audit: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            retention: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'AuditLogConfig':
         """
         Get an existing AuditLogConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

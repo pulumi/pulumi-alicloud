@@ -20,10 +20,10 @@ __all__ = ['EditingProjectArgs', 'EditingProject']
 class EditingProjectArgs:
     def __init__(__self__, *,
                  title: pulumi.Input[_builtins.str],
-                 cover_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 division: Optional[pulumi.Input[_builtins.str]] = None,
-                 editing_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeline: Optional[pulumi.Input[_builtins.str]] = None):
+                 cover_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 division: pulumi.Input[Optional[_builtins.str]] = None,
+                 editing_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeline: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EditingProject resource.
 
@@ -57,62 +57,62 @@ class EditingProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="coverUrl")
-    def cover_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cover_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
         """
         return pulumi.get(self, "cover_url")
 
     @cover_url.setter
-    def cover_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cover_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cover_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def division(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def division(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where you want to create the online editing project.
         """
         return pulumi.get(self, "division")
 
     @division.setter
-    def division(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def division(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "division", value)
 
     @_builtins.property
     @pulumi.getter(name="editingProjectName")
-    def editing_project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def editing_project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the online editing project.
         """
         return pulumi.get(self, "editing_project_name")
 
     @editing_project_name.setter
-    def editing_project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def editing_project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "editing_project_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeline(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/basic-structures). If you do not specify this parameter, an empty timeline is created and the duration of the online editing project is zero.
         """
         return pulumi.get(self, "timeline")
 
     @timeline.setter
-    def timeline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeline", value)
 
 
 @pulumi.input_type
 class _EditingProjectState:
     def __init__(__self__, *,
-                 cover_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 division: Optional[pulumi.Input[_builtins.str]] = None,
-                 editing_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 cover_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 division: pulumi.Input[Optional[_builtins.str]] = None,
+                 editing_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EditingProject resources.
 
@@ -138,74 +138,74 @@ class _EditingProjectState:
 
     @_builtins.property
     @pulumi.getter(name="coverUrl")
-    def cover_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cover_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
         """
         return pulumi.get(self, "cover_url")
 
     @cover_url.setter
-    def cover_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cover_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cover_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def division(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def division(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where you want to create the online editing project.
         """
         return pulumi.get(self, "division")
 
     @division.setter
-    def division(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def division(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "division", value)
 
     @_builtins.property
     @pulumi.getter(name="editingProjectName")
-    def editing_project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def editing_project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the online editing project.
         """
         return pulumi.get(self, "editing_project_name")
 
     @editing_project_name.setter
-    def editing_project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def editing_project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "editing_project_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeline(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/basic-structures). If you do not specify this parameter, an empty timeline is created and the duration of the online editing project is zero.
         """
         return pulumi.get(self, "timeline")
 
     @timeline.setter
-    def timeline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeline", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The title of the online editing project.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
@@ -215,11 +215,11 @@ class EditingProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cover_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 division: Optional[pulumi.Input[_builtins.str]] = None,
-                 editing_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
+                 cover_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 division: pulumi.Input[Optional[_builtins.str]] = None,
+                 editing_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VOD Editing Project resource.
@@ -352,11 +352,11 @@ class EditingProject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cover_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 division: Optional[pulumi.Input[_builtins.str]] = None,
-                 editing_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
+                 cover_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 division: pulumi.Input[Optional[_builtins.str]] = None,
+                 editing_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -384,12 +384,12 @@ class EditingProject(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cover_url: Optional[pulumi.Input[_builtins.str]] = None,
-            division: Optional[pulumi.Input[_builtins.str]] = None,
-            editing_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            timeline: Optional[pulumi.Input[_builtins.str]] = None,
-            title: Optional[pulumi.Input[_builtins.str]] = None) -> 'EditingProject':
+            cover_url: pulumi.Input[Optional[_builtins.str]] = None,
+            division: pulumi.Input[Optional[_builtins.str]] = None,
+            editing_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timeline: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None) -> 'EditingProject':
         """
         Get an existing EditingProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -153,43 +153,43 @@ export interface DbInstancePlanState {
     /**
      * The ID of the GPDB instance.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Plan.
      */
-    dbInstancePlanName?: pulumi.Input<string>;
+    dbInstancePlanName?: pulumi.Input<string | undefined>;
     /**
      * The execution information of the plan. See `planConfig` below.
      */
-    planConfigs?: pulumi.Input<pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfig>[]>;
+    planConfigs?: pulumi.Input<pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfig>[] | undefined>;
     /**
      * The description of the Plan.
      */
-    planDesc?: pulumi.Input<string>;
+    planDesc?: pulumi.Input<string | undefined>;
     /**
      * The end time of the Plan.
      */
-    planEndDate?: pulumi.Input<string>;
+    planEndDate?: pulumi.Input<string | undefined>;
     /**
      * The ID of the plan.
      */
-    planId?: pulumi.Input<string>;
+    planId?: pulumi.Input<string | undefined>;
     /**
      * The execution mode of the plan. Valid values: `Postpone`, `Regular`.
      */
-    planScheduleType?: pulumi.Input<string>;
+    planScheduleType?: pulumi.Input<string | undefined>;
     /**
      * The start time of the Plan.
      */
-    planStartDate?: pulumi.Input<string>;
+    planStartDate?: pulumi.Input<string | undefined>;
     /**
      * The type of the Plan. Valid values: `PauseResume`, `Resize`.
      */
-    planType?: pulumi.Input<string>;
+    planType?: pulumi.Input<string | undefined>;
     /**
      * The Status of the Plan. Valid values: `active`, `cancel`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -211,11 +211,11 @@ export interface DbInstancePlanArgs {
     /**
      * The description of the Plan.
      */
-    planDesc?: pulumi.Input<string>;
+    planDesc?: pulumi.Input<string | undefined>;
     /**
      * The end time of the Plan.
      */
-    planEndDate?: pulumi.Input<string>;
+    planEndDate?: pulumi.Input<string | undefined>;
     /**
      * The execution mode of the plan. Valid values: `Postpone`, `Regular`.
      */
@@ -223,7 +223,7 @@ export interface DbInstancePlanArgs {
     /**
      * The start time of the Plan.
      */
-    planStartDate?: pulumi.Input<string>;
+    planStartDate?: pulumi.Input<string | undefined>;
     /**
      * The type of the Plan. Valid values: `PauseResume`, `Resize`.
      */
@@ -231,5 +231,5 @@ export interface DbInstancePlanArgs {
     /**
      * The Status of the Plan. Valid values: `active`, `cancel`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

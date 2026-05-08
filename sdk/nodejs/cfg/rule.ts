@@ -287,115 +287,115 @@ export interface RuleState {
     /**
      * The ID of Alicloud account.
      */
-    accountId?: pulumi.Input<number>;
+    accountId?: pulumi.Input<number | undefined>;
     /**
      * compliance information.
      */
-    compliance?: pulumi.Input<inputs.cfg.RuleCompliance>;
+    compliance?: pulumi.Input<inputs.cfg.RuleCompliance | undefined>;
     /**
      * Compliance Package ID.
      */
-    compliancePackId?: pulumi.Input<string>;
+    compliancePackId?: pulumi.Input<string | undefined>;
     /**
      * config rule arn.
      */
-    configRuleArn?: pulumi.Input<string>;
+    configRuleArn?: pulumi.Input<string | undefined>;
     /**
      * The ID of the rule.
      */
-    configRuleId?: pulumi.Input<string>;
+    configRuleId?: pulumi.Input<string | undefined>;
     /**
      * The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      */
-    configRuleTriggerTypes?: pulumi.Input<string>;
+    configRuleTriggerTypes?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the rule was created.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The description of the rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The event source of the rule.
      */
-    eventSource?: pulumi.Input<string>;
+    eventSource?: pulumi.Input<string | undefined>;
     /**
      * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
      */
-    excludeResourceIdsScope?: pulumi.Input<string>;
+    excludeResourceIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The settings of the input parameters for the rule.
      */
-    inputParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    inputParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
      */
-    maximumExecutionFrequency?: pulumi.Input<string>;
+    maximumExecutionFrequency?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the rule was last modified.
      */
-    modifiedTimestamp?: pulumi.Input<number>;
+    modifiedTimestamp?: pulumi.Input<number | undefined>;
     /**
      * The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    regionIdsScope?: pulumi.Input<string>;
+    regionIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    resourceGroupIdsScope?: pulumi.Input<string>;
+    resourceGroupIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The types of the resources to be evaluated against the rule.
      */
-    resourceTypesScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceTypesScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
      */
-    riskLevel?: pulumi.Input<number>;
+    riskLevel?: pulumi.Input<number | undefined>;
     /**
      * The name of the rule.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
      *
      * @deprecated Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
      */
-    scopeComplianceResourceTypes?: pulumi.Input<string>;
+    scopeComplianceResourceTypes?: pulumi.Input<string | undefined>;
     /**
      * Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
      *
      * @deprecated Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
      */
-    sourceDetailMessageType?: pulumi.Input<string>;
+    sourceDetailMessageType?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
      */
-    sourceIdentifier?: pulumi.Input<string>;
+    sourceIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
      *
      * @deprecated Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
      */
-    sourceMaximumExecutionFrequency?: pulumi.Input<string>;
+    sourceMaximumExecutionFrequency?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
      */
-    sourceOwner?: pulumi.Input<string>;
+    sourceOwner?: pulumi.Input<string | undefined>;
     /**
      * The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The rule monitors the tag key, only applies to rules created based on managed rules.
      */
-    tagKeyScope?: pulumi.Input<string>;
+    tagKeyScope?: pulumi.Input<string | undefined>;
     /**
      * The rule monitors the tag value, only applies to rules created based on managed rules.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    tagValueScope?: pulumi.Input<string>;
+    tagValueScope?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -405,35 +405,35 @@ export interface RuleArgs {
     /**
      * The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      */
-    configRuleTriggerTypes?: pulumi.Input<string>;
+    configRuleTriggerTypes?: pulumi.Input<string | undefined>;
     /**
      * The description of the rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
      */
-    excludeResourceIdsScope?: pulumi.Input<string>;
+    excludeResourceIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The settings of the input parameters for the rule.
      */
-    inputParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    inputParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
      */
-    maximumExecutionFrequency?: pulumi.Input<string>;
+    maximumExecutionFrequency?: pulumi.Input<string | undefined>;
     /**
      * The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    regionIdsScope?: pulumi.Input<string>;
+    regionIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
      */
-    resourceGroupIdsScope?: pulumi.Input<string>;
+    resourceGroupIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The types of the resources to be evaluated against the rule.
      */
-    resourceTypesScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceTypesScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
      */
@@ -447,13 +447,13 @@ export interface RuleArgs {
      *
      * @deprecated Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
      */
-    scopeComplianceResourceTypes?: pulumi.Input<string>;
+    scopeComplianceResourceTypes?: pulumi.Input<string | undefined>;
     /**
      * Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
      *
      * @deprecated Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
      */
-    sourceDetailMessageType?: pulumi.Input<string>;
+    sourceDetailMessageType?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
      */
@@ -463,7 +463,7 @@ export interface RuleArgs {
      *
      * @deprecated Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
      */
-    sourceMaximumExecutionFrequency?: pulumi.Input<string>;
+    sourceMaximumExecutionFrequency?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
      */
@@ -471,15 +471,15 @@ export interface RuleArgs {
     /**
      * The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The rule monitors the tag key, only applies to rules created based on managed rules.
      */
-    tagKeyScope?: pulumi.Input<string>;
+    tagKeyScope?: pulumi.Input<string | undefined>;
     /**
      * The rule monitors the tag value, only applies to rules created based on managed rules.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    tagValueScope?: pulumi.Input<string>;
+    tagValueScope?: pulumi.Input<string | undefined>;
 }

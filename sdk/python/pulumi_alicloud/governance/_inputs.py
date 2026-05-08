@@ -22,11 +22,11 @@ __all__ = [
 ]
 
 class AccountAccountTagArgsDict(TypedDict):
-    tag_key: NotRequired[pulumi.Input[_builtins.str]]
+    tag_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The key of the tags
     """
-    tag_value: NotRequired[pulumi.Input[_builtins.str]]
+    tag_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the tags
     """
@@ -34,8 +34,8 @@ class AccountAccountTagArgsDict(TypedDict):
 @pulumi.input_type
 class AccountAccountTagArgs:
     def __init__(__self__, *,
-                 tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] tag_key: The key of the tags
         :param pulumi.Input[_builtins.str] tag_value: The value of the tags
@@ -47,39 +47,39 @@ class AccountAccountTagArgs:
 
     @_builtins.property
     @pulumi.getter(name="tagKey")
-    def tag_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of the tags
         """
         return pulumi.get(self, "tag_key")
 
     @tag_key.setter
-    def tag_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_key", value)
 
     @_builtins.property
     @pulumi.getter(name="tagValue")
-    def tag_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the tags
         """
         return pulumi.get(self, "tag_value")
 
     @tag_value.setter
-    def tag_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_value", value)
 
 
 class BaselineBaselineItemArgsDict(TypedDict):
-    config: NotRequired[pulumi.Input[_builtins.str]]
+    config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Baseline item configuration. The format is a JSON string.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The baseline item name.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The baseline item version.
     """
@@ -87,9 +87,9 @@ class BaselineBaselineItemArgsDict(TypedDict):
 @pulumi.input_type
 class BaselineBaselineItemArgs:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] config: Baseline item configuration. The format is a JSON string.
         :param pulumi.Input[_builtins.str] name: The baseline item name.
@@ -104,38 +104,38 @@ class BaselineBaselineItemArgs:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Baseline item configuration. The format is a JSON string.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The baseline item name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The baseline item version.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 

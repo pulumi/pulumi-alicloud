@@ -109,7 +109,7 @@ export interface DelegateAccountState {
     /**
      * Delegate administrator account Id
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
 }
 
 /**

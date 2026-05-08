@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *     }),
  *     dataSourceType: "kafka",
  *     dataSourceDescription: "example",
- *     serviceId: default2dUszY.serviceId,
+ *     serviceId: default2dUszY.serviceId.apply(x =>Number(x)),
  * });
  * const _default = new alicloud.gpdb.StreamingJob("default", {
  *     account: "example_001",
@@ -369,7 +369,7 @@ export interface StreamingJobState {
     /**
      * The name of the database account.
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
     /**
      * The delivery guarantee setting.
      *
@@ -378,67 +378,67 @@ export interface StreamingJobState {
      * - ATLEAST
      * - EXACTLY
      */
-    consistency?: pulumi.Input<string>;
+    consistency?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The data source ID.
      */
-    dataSourceId?: pulumi.Input<string>;
+    dataSourceId?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Target Field
      */
-    destColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    destColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the destination database.
      */
-    destDatabase?: pulumi.Input<string>;
+    destDatabase?: pulumi.Input<string | undefined>;
     /**
      * Target Schema
      */
-    destSchema?: pulumi.Input<string>;
+    destSchema?: pulumi.Input<string | undefined>;
     /**
      * The name of the destination table.
      */
-    destTable?: pulumi.Input<string>;
+    destTable?: pulumi.Input<string | undefined>;
     /**
      * The number of allowed error rows. Write failures occur when Kafka data does not match the destination table in AnalyticDB for PostgreSQL. If the specified value is exceeded, the job fails.
      */
-    errorLimitCount?: pulumi.Input<number>;
+    errorLimitCount?: pulumi.Input<number | undefined>;
     /**
      * Automatic offset reset
      */
-    fallbackOffset?: pulumi.Input<string>;
+    fallbackOffset?: pulumi.Input<string | undefined>;
     /**
      * Group Name
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
      */
-    jobConfig?: pulumi.Input<string>;
+    jobConfig?: pulumi.Input<string | undefined>;
     /**
      * The description of the job.
      */
-    jobDescription?: pulumi.Input<string>;
+    jobDescription?: pulumi.Input<string | undefined>;
     /**
      * The job ID.
      */
-    jobId?: pulumi.Input<string>;
+    jobId?: pulumi.Input<string | undefined>;
     /**
      * The name of the job.
      */
-    jobName?: pulumi.Input<string>;
+    jobName?: pulumi.Input<string | undefined>;
     /**
      * Match Field
      */
-    matchColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    matchColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The configuration mode. Valid values:
      *
@@ -446,19 +446,19 @@ export interface StreamingJobState {
      *
      * 2.  professional: In professional mode, you can submit a YAML configuration file.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The password of the database account.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Source Field
      */
-    srcColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    srcColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Service status, value:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to test the real-time job. Valid values:
      *
@@ -467,11 +467,11 @@ export interface StreamingJobState {
      *
      * Default value: false.
      */
-    tryRun?: pulumi.Input<boolean>;
+    tryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Update Field
      */
-    updateColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    updateColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The write mode.
      *
@@ -481,7 +481,7 @@ export interface StreamingJobState {
      * - update
      * - merge
      */
-    writeMode?: pulumi.Input<string>;
+    writeMode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -491,7 +491,7 @@ export interface StreamingJobArgs {
     /**
      * The name of the database account.
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
     /**
      * The delivery guarantee setting.
      *
@@ -500,7 +500,7 @@ export interface StreamingJobArgs {
      * - ATLEAST
      * - EXACTLY
      */
-    consistency?: pulumi.Input<string>;
+    consistency?: pulumi.Input<string | undefined>;
     /**
      * The data source ID.
      */
@@ -512,39 +512,39 @@ export interface StreamingJobArgs {
     /**
      * Target Field
      */
-    destColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    destColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the destination database.
      */
-    destDatabase?: pulumi.Input<string>;
+    destDatabase?: pulumi.Input<string | undefined>;
     /**
      * Target Schema
      */
-    destSchema?: pulumi.Input<string>;
+    destSchema?: pulumi.Input<string | undefined>;
     /**
      * The name of the destination table.
      */
-    destTable?: pulumi.Input<string>;
+    destTable?: pulumi.Input<string | undefined>;
     /**
      * The number of allowed error rows. Write failures occur when Kafka data does not match the destination table in AnalyticDB for PostgreSQL. If the specified value is exceeded, the job fails.
      */
-    errorLimitCount?: pulumi.Input<number>;
+    errorLimitCount?: pulumi.Input<number | undefined>;
     /**
      * Automatic offset reset
      */
-    fallbackOffset?: pulumi.Input<string>;
+    fallbackOffset?: pulumi.Input<string | undefined>;
     /**
      * Group Name
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
      */
-    jobConfig?: pulumi.Input<string>;
+    jobConfig?: pulumi.Input<string | undefined>;
     /**
      * The description of the job.
      */
-    jobDescription?: pulumi.Input<string>;
+    jobDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the job.
      */
@@ -552,7 +552,7 @@ export interface StreamingJobArgs {
     /**
      * Match Field
      */
-    matchColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    matchColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The configuration mode. Valid values:
      *
@@ -560,15 +560,15 @@ export interface StreamingJobArgs {
      *
      * 2.  professional: In professional mode, you can submit a YAML configuration file.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The password of the database account.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Source Field
      */
-    srcColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    srcColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies whether to test the real-time job. Valid values:
      *
@@ -577,11 +577,11 @@ export interface StreamingJobArgs {
      *
      * Default value: false.
      */
-    tryRun?: pulumi.Input<boolean>;
+    tryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Update Field
      */
-    updateColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    updateColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The write mode.
      *
@@ -591,5 +591,5 @@ export interface StreamingJobArgs {
      * - update
      * - merge
      */
-    writeMode?: pulumi.Input<string>;
+    writeMode?: pulumi.Input<string | undefined>;
 }

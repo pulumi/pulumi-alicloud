@@ -24,26 +24,26 @@ class DBClusterLakeVersionArgs:
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 backup_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_default_resource_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kms_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_form: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 reserved_node_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_to_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_resource: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_default_resource_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_form: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 reserved_node_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_to_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DBClusterLakeVersion resource.
 
@@ -188,103 +188,103 @@ class DBClusterLakeVersionArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupSetId")
-    def backup_set_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the backup set that you want to use to restore data.
         """
         return pulumi.get(self, "backup_set_id")
 
     @backup_set_id.setter
-    def backup_set_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_set_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_set_id", value)
 
     @_builtins.property
     @pulumi.getter(name="computeResource")
-    def compute_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The computing resources of the cluster.
         """
         return pulumi.get(self, "compute_resource")
 
     @compute_resource.setter
-    def compute_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterDescription")
-    def db_cluster_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the cluster.
         """
         return pulumi.get(self, "db_cluster_description")
 
     @db_cluster_description.setter
-    def db_cluster_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
-    def disk_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disk_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable disk encryption. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "disk_encryption")
 
     @disk_encryption.setter
-    def disk_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disk_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDefaultResourceGroup")
-    def enable_default_resource_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_default_resource_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable default allocation of resources to user_default resource groups.
         """
         return pulumi.get(self, "enable_default_resource_group")
 
     @enable_default_resource_group.setter
-    def enable_default_resource_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_default_resource_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_default_resource_group", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSsl")
-    def enable_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_ssl")
 
     @enable_ssl.setter
-    def enable_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsId")
-    def kms_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
         """
         return pulumi.get(self, "kms_id")
 
     @kms_id.setter
-    def kms_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="productForm")
-    def product_form(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_form(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The product form of the cluster. Valid values:
         - `IntegrationForm`: Integrated.
@@ -293,12 +293,12 @@ class DBClusterLakeVersionArgs:
         return pulumi.get(self, "product_form")
 
     @product_form.setter
-    def product_form(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_form(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_form", value)
 
     @_builtins.property
     @pulumi.getter(name="productVersion")
-    def product_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition of the cluster. Valid values:
         - `BasicVersion`: Basic Edition.
@@ -308,96 +308,96 @@ class DBClusterLakeVersionArgs:
         return pulumi.get(self, "product_version")
 
     @product_version.setter
-    def product_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_version", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedNodeCount")
-    def reserved_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reserved_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of reserved resource nodes.
         """
         return pulumi.get(self, "reserved_node_count")
 
     @reserved_node_count.setter
-    def reserved_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reserved_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reserved_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedNodeSize")
-    def reserved_node_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserved_node_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specifications of reserved resource nodes.
         """
         return pulumi.get(self, "reserved_node_size")
 
     @reserved_node_size.setter
-    def reserved_node_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserved_node_size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserved_node_size", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="restoreToTime")
-    def restore_to_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restore_to_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time to which you want to restore data from the backup set.
         """
         return pulumi.get(self, "restore_to_time")
 
     @restore_to_time.setter
-    def restore_to_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restore_to_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restore_to_time", value)
 
     @_builtins.property
     @pulumi.getter(name="restoreType")
-    def restore_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restore_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that you want to use to restore data. Valid values:
         """
         return pulumi.get(self, "restore_type")
 
     @restore_type.setter
-    def restore_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restore_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restore_type", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryVswitchId")
-    def secondary_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the secondary zone.
         """
         return pulumi.get(self, "secondary_vswitch_id")
 
     @secondary_vswitch_id.setter
-    def secondary_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryZoneId")
-    def secondary_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the secondary vSwitch.
         """
         return pulumi.get(self, "secondary_zone_id")
 
     @secondary_zone_id.setter
-    def secondary_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIps")
-    def security_ips(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_ips(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
         - IP addresses, such as 10.23.XX.XX.
@@ -406,73 +406,73 @@ class DBClusterLakeVersionArgs:
         return pulumi.get(self, "security_ips")
 
     @security_ips.setter
-    def security_ips(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_ips(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDbClusterId")
-    def source_db_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_db_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
         """
         return pulumi.get(self, "source_db_cluster_id")
 
     @source_db_cluster_id.setter
-    def source_db_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_db_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_db_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="storageResource")
-    def storage_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage resources of the cluster.
         """
         return pulumi.get(self, "storage_resource")
 
     @storage_resource.setter
-    def storage_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_resource", value)
 
 
 @pulumi.input_type
 class _DBClusterLakeVersionState:
     def __init__(__self__, *,
-                 backup_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_default_resource_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 expired: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kms_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 lock_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 lock_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_form: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 reserved_node_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_to_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_default_resource_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 expired: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 lock_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 lock_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_form: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 reserved_node_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_to_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DBClusterLakeVersion resources.
 
@@ -595,247 +595,247 @@ class _DBClusterLakeVersionState:
 
     @_builtins.property
     @pulumi.getter(name="backupSetId")
-    def backup_set_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the backup set that you want to use to restore data.
         """
         return pulumi.get(self, "backup_set_id")
 
     @backup_set_id.setter
-    def backup_set_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_set_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_set_id", value)
 
     @_builtins.property
     @pulumi.getter(name="commodityCode")
-    def commodity_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commodity_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service.
         """
         return pulumi.get(self, "commodity_code")
 
     @commodity_code.setter
-    def commodity_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commodity_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commodity_code", value)
 
     @_builtins.property
     @pulumi.getter(name="computeResource")
-    def compute_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The computing resources of the cluster.
         """
         return pulumi.get(self, "compute_resource")
 
     @compute_resource.setter
-    def compute_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint of the cluster.
         """
         return pulumi.get(self, "connection_string")
 
     @connection_string.setter
-    def connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The createTime of the cluster.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterDescription")
-    def db_cluster_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the cluster.
         """
         return pulumi.get(self, "db_cluster_description")
 
     @db_cluster_description.setter
-    def db_cluster_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_description", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterVersion")
-    def db_cluster_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the cluster. Valid values: `5.0`.
         """
         return pulumi.get(self, "db_cluster_version")
 
     @db_cluster_version.setter
-    def db_cluster_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_version", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
-    def disk_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disk_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable disk encryption. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "disk_encryption")
 
     @disk_encryption.setter
-    def disk_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disk_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDefaultResourceGroup")
-    def enable_default_resource_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_default_resource_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable default allocation of resources to user_default resource groups.
         """
         return pulumi.get(self, "enable_default_resource_group")
 
     @enable_default_resource_group.setter
-    def enable_default_resource_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_default_resource_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_default_resource_group", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSsl")
-    def enable_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_ssl")
 
     @enable_ssl.setter
-    def enable_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl", value)
 
     @_builtins.property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The engine of the database.
         """
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The engine version of the database.
         """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the cluster expires.
         """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def expired(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def expired(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the cluster has expired.
         """
         return pulumi.get(self, "expired")
 
     @expired.setter
-    def expired(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def expired(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "expired", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsId")
-    def kms_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
         """
         return pulumi.get(self, "kms_id")
 
     @kms_id.setter
-    def kms_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lockMode")
-    def lock_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lock_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lock mode of the cluster.
         """
         return pulumi.get(self, "lock_mode")
 
     @lock_mode.setter
-    def lock_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lock_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lock_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="lockReason")
-    def lock_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lock_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason why the cluster is locked.
         """
         return pulumi.get(self, "lock_reason")
 
     @lock_reason.setter
-    def lock_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lock_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lock_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`. From version 1.272.0, `payment_type` can be modified.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port that is used to access the cluster.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="productForm")
-    def product_form(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_form(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The product form of the cluster. Valid values:
         - `IntegrationForm`: Integrated.
@@ -844,12 +844,12 @@ class _DBClusterLakeVersionState:
         return pulumi.get(self, "product_form")
 
     @product_form.setter
-    def product_form(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_form(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_form", value)
 
     @_builtins.property
     @pulumi.getter(name="productVersion")
-    def product_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition of the cluster. Valid values:
         - `BasicVersion`: Basic Edition.
@@ -859,96 +859,96 @@ class _DBClusterLakeVersionState:
         return pulumi.get(self, "product_version")
 
     @product_version.setter
-    def product_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_version", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedNodeCount")
-    def reserved_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reserved_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of reserved resource nodes.
         """
         return pulumi.get(self, "reserved_node_count")
 
     @reserved_node_count.setter
-    def reserved_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reserved_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reserved_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedNodeSize")
-    def reserved_node_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserved_node_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specifications of reserved resource nodes.
         """
         return pulumi.get(self, "reserved_node_size")
 
     @reserved_node_size.setter
-    def reserved_node_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserved_node_size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserved_node_size", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="restoreToTime")
-    def restore_to_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restore_to_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time to which you want to restore data from the backup set.
         """
         return pulumi.get(self, "restore_to_time")
 
     @restore_to_time.setter
-    def restore_to_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restore_to_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restore_to_time", value)
 
     @_builtins.property
     @pulumi.getter(name="restoreType")
-    def restore_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restore_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that you want to use to restore data. Valid values:
         """
         return pulumi.get(self, "restore_type")
 
     @restore_type.setter
-    def restore_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restore_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restore_type", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryVswitchId")
-    def secondary_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the secondary zone.
         """
         return pulumi.get(self, "secondary_vswitch_id")
 
     @secondary_vswitch_id.setter
-    def secondary_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryZoneId")
-    def secondary_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the secondary vSwitch.
         """
         return pulumi.get(self, "secondary_zone_id")
 
     @secondary_zone_id.setter
-    def secondary_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIps")
-    def security_ips(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_ips(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
         - IP addresses, such as 10.23.XX.XX.
@@ -957,79 +957,79 @@ class _DBClusterLakeVersionState:
         return pulumi.get(self, "security_ips")
 
     @security_ips.setter
-    def security_ips(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_ips(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDbClusterId")
-    def source_db_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_db_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
         """
         return pulumi.get(self, "source_db_cluster_id")
 
     @source_db_cluster_id.setter
-    def source_db_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_db_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_db_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageResource")
-    def storage_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage resources of the cluster.
         """
         return pulumi.get(self, "storage_resource")
 
     @storage_resource.setter
-    def storage_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vpc ID of the resource.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the resource.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -1039,31 +1039,31 @@ class DBClusterLakeVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_default_resource_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kms_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_form: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 reserved_node_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_to_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_default_resource_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_form: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 reserved_node_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_to_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a AnalyticDB for MySQL (ADB) DB Cluster Lake Version resource.
@@ -1203,31 +1203,31 @@ class DBClusterLakeVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_default_resource_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kms_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_form: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 reserved_node_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_to_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_default_resource_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_form: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 reserved_node_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_to_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1293,42 +1293,42 @@ class DBClusterLakeVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-            commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-            compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_description: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_default_resource_group: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-            engine: Optional[pulumi.Input[_builtins.str]] = None,
-            engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-            expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-            expired: Optional[pulumi.Input[_builtins.bool]] = None,
-            kms_id: Optional[pulumi.Input[_builtins.str]] = None,
-            lock_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            lock_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            port: Optional[pulumi.Input[_builtins.str]] = None,
-            product_form: Optional[pulumi.Input[_builtins.str]] = None,
-            product_version: Optional[pulumi.Input[_builtins.str]] = None,
-            reserved_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            reserved_node_size: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            restore_to_time: Optional[pulumi.Input[_builtins.str]] = None,
-            restore_type: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_ips: Optional[pulumi.Input[_builtins.str]] = None,
-            source_db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_resource: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DBClusterLakeVersion':
+            backup_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_default_resource_group: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            expired: pulumi.Input[Optional[_builtins.bool]] = None,
+            kms_id: pulumi.Input[Optional[_builtins.str]] = None,
+            lock_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            lock_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            product_form: pulumi.Input[Optional[_builtins.str]] = None,
+            product_version: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            reserved_node_size: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            restore_to_time: pulumi.Input[Optional[_builtins.str]] = None,
+            restore_type: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ips: pulumi.Input[Optional[_builtins.str]] = None,
+            source_db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DBClusterLakeVersion':
         """
         Get an existing DBClusterLakeVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

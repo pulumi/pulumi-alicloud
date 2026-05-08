@@ -232,59 +232,59 @@ export interface VvpInstanceState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The number of subscription periods. If the payment type is PRE, this parameter is required.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * The payment type of the resource.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The subscription period. If the payment type is PRE, this parameter is required.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * The resource group to which the newly purchased instance belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.264.0) The ID of the K8s cluster.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Resource specifications. See `resourceSpec` below.
      */
-    resourceSpec?: pulumi.Input<inputs.realtimecompute.VvpInstanceResourceSpec>;
+    resourceSpec?: pulumi.Input<inputs.realtimecompute.VvpInstanceResourceSpec | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Store information. See `storage` below.
      */
-    storage?: pulumi.Input<inputs.realtimecompute.VvpInstanceStorage>;
+    storage?: pulumi.Input<inputs.realtimecompute.VvpInstanceStorage | undefined>;
     /**
      * The tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VPC ID of the user.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * Virtual Switch ID.
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the workspace.
      */
-    vvpInstanceName?: pulumi.Input<string>;
+    vvpInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the resource.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -294,7 +294,7 @@ export interface VvpInstanceArgs {
     /**
      * The number of subscription periods. If the payment type is PRE, this parameter is required.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * The payment type of the resource.
      */
@@ -302,15 +302,15 @@ export interface VvpInstanceArgs {
     /**
      * The subscription period. If the payment type is PRE, this parameter is required.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * The resource group to which the newly purchased instance belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Resource specifications. See `resourceSpec` below.
      */
-    resourceSpec?: pulumi.Input<inputs.realtimecompute.VvpInstanceResourceSpec>;
+    resourceSpec?: pulumi.Input<inputs.realtimecompute.VvpInstanceResourceSpec | undefined>;
     /**
      * Store information. See `storage` below.
      */
@@ -318,7 +318,7 @@ export interface VvpInstanceArgs {
     /**
      * The tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VPC ID of the user.
      */

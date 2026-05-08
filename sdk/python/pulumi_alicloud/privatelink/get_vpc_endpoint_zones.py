@@ -144,9 +144,9 @@ def get_vpc_endpoint_zones(endpoint_id: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'),
         zones=pulumi.get(__ret__, 'zones'))
-def get_vpc_endpoint_zones_output(endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                  output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_vpc_endpoint_zones_output(endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                  output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcEndpointZonesResult]:
     """
     This data source provides the Privatelink Vpc Endpoint Zones of the current Alibaba Cloud user.

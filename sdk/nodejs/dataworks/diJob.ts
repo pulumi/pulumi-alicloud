@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * });
  * const _default = new alicloud.dataworks.DiJob("default", {
  *     description: name,
- *     projectId: defaultMMHL8U.id,
+ *     projectId: defaultMMHL8U.id.apply(x =>Number(x)),
  *     jobName: "zhenyuan_example_case",
  *     migrationType: "api_FullAndRealtimeIncremental",
  *     sourceDataSourceSettings: [{
@@ -296,27 +296,27 @@ export interface DiJobState {
     /**
      * Description of the integration task
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Destination data source See `destinationDataSourceSettings` below.
      */
-    destinationDataSourceSettings?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobDestinationDataSourceSetting>[]>;
+    destinationDataSourceSettings?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobDestinationDataSourceSetting>[] | undefined>;
     /**
      * The type of the target data source. Enumerated values: Hologres and Hive.
      */
-    destinationDataSourceType?: pulumi.Input<string>;
+    destinationDataSourceType?: pulumi.Input<string | undefined>;
     /**
      * Integration Task Id
      */
-    diJobId?: pulumi.Input<number>;
+    diJobId?: pulumi.Input<number | undefined>;
     /**
      * Task Name.
      */
-    jobName?: pulumi.Input<string>;
+    jobName?: pulumi.Input<string | undefined>;
     /**
      * The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `jobSettings` below.
      */
-    jobSettings?: pulumi.Input<inputs.dataworks.DiJobJobSettings>;
+    jobSettings?: pulumi.Input<inputs.dataworks.DiJobJobSettings | undefined>;
     /**
      * Synchronization type, optional enumeration values are:
      *
@@ -330,31 +330,31 @@ export interface DiJobState {
      *
      * FullAndOfflineIncremental (full amount + offline increment)
      */
-    migrationType?: pulumi.Input<string>;
+    migrationType?: pulumi.Input<string | undefined>;
     /**
      * Project Id
      */
-    projectId?: pulumi.Input<number>;
+    projectId?: pulumi.Input<number | undefined>;
     /**
      * Resource Group Properties See `resourceSettings` below.
      */
-    resourceSettings?: pulumi.Input<inputs.dataworks.DiJobResourceSettings>;
+    resourceSettings?: pulumi.Input<inputs.dataworks.DiJobResourceSettings | undefined>;
     /**
      * Source data source setting List See `sourceDataSourceSettings` below.
      */
-    sourceDataSourceSettings?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobSourceDataSourceSetting>[]>;
+    sourceDataSourceSettings?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobSourceDataSourceSetting>[] | undefined>;
     /**
      * The type of the source data source. The enumerated value is MySQL.
      */
-    sourceDataSourceType?: pulumi.Input<string>;
+    sourceDataSourceType?: pulumi.Input<string | undefined>;
     /**
      * Synchronize object transformation mapping list See `tableMappings` below.
      */
-    tableMappings?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobTableMapping>[]>;
+    tableMappings?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobTableMapping>[] | undefined>;
     /**
      * Definition list of synchronization object conversion rules See `transformationRules` below.
      */
-    transformationRules?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobTransformationRule>[]>;
+    transformationRules?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobTransformationRule>[] | undefined>;
 }
 
 /**
@@ -364,7 +364,7 @@ export interface DiJobArgs {
     /**
      * Description of the integration task
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Destination data source See `destinationDataSourceSettings` below.
      */
@@ -380,7 +380,7 @@ export interface DiJobArgs {
     /**
      * The dimension settings of the synchronization task, including the DDL processing policy, the source and destination column data type mapping policy, and the task runtime parameters. See `jobSettings` below.
      */
-    jobSettings?: pulumi.Input<inputs.dataworks.DiJobJobSettings>;
+    jobSettings?: pulumi.Input<inputs.dataworks.DiJobJobSettings | undefined>;
     /**
      * Synchronization type, optional enumeration values are:
      *
@@ -398,7 +398,7 @@ export interface DiJobArgs {
     /**
      * Project Id
      */
-    projectId?: pulumi.Input<number>;
+    projectId?: pulumi.Input<number | undefined>;
     /**
      * Resource Group Properties See `resourceSettings` below.
      */
@@ -418,5 +418,5 @@ export interface DiJobArgs {
     /**
      * Definition list of synchronization object conversion rules See `transformationRules` below.
      */
-    transformationRules?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobTransformationRule>[]>;
+    transformationRules?: pulumi.Input<pulumi.Input<inputs.dataworks.DiJobTransformationRule>[] | undefined>;
 }

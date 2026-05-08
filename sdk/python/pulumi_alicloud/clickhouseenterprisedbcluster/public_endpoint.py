@@ -75,9 +75,9 @@ class PublicEndpointArgs:
 @pulumi.input_type
 class _PublicEndpointState:
     def __init__(__self__, *,
-                 connection_string_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_string_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublicEndpoint resources.
 
@@ -95,31 +95,31 @@ class _PublicEndpointState:
 
     @_builtins.property
     @pulumi.getter(name="connectionStringPrefix")
-    def connection_string_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_string_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public network connection string prefix of the instance.
         """
         return pulumi.get(self, "connection_string_prefix")
 
     @connection_string_prefix.setter
-    def connection_string_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_string_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_string_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster ID.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="netType")
-    def net_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network type of the connection address. Valid values:
         - Public: Public network.
@@ -127,7 +127,7 @@ class _PublicEndpointState:
         return pulumi.get(self, "net_type")
 
     @net_type.setter
-    def net_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_type", value)
 
 
@@ -137,9 +137,9 @@ class PublicEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_string_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_string_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Click House Enterprise Db Cluster Public Endpoint resource.
@@ -291,9 +291,9 @@ class PublicEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_string_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_string_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,9 +322,9 @@ class PublicEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_string_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            net_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'PublicEndpoint':
+            connection_string_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            net_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'PublicEndpoint':
         """
         Get an existing PublicEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

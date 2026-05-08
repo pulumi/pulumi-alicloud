@@ -175,27 +175,27 @@ export interface ServiceGroupMonitoringAgentProcessState {
     /**
      * The alert rule configurations. See `alertConfig` below.
      */
-    alertConfigs?: pulumi.Input<pulumi.Input<inputs.cloudmonitor.ServiceGroupMonitoringAgentProcessAlertConfig>[]>;
+    alertConfigs?: pulumi.Input<pulumi.Input<inputs.cloudmonitor.ServiceGroupMonitoringAgentProcessAlertConfig>[] | undefined>;
     /**
      * The ID of the application group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Group Monitoring Agent Process.
      */
-    groupMonitoringAgentProcessId?: pulumi.Input<string>;
+    groupMonitoringAgentProcessId?: pulumi.Input<string | undefined>;
     /**
      * The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
      */
-    matchExpressFilterRelation?: pulumi.Input<string>;
+    matchExpressFilterRelation?: pulumi.Input<string | undefined>;
     /**
      * The expressions used to match instances. See `matchExpress` below.
      */
-    matchExpresses?: pulumi.Input<pulumi.Input<inputs.cloudmonitor.ServiceGroupMonitoringAgentProcessMatchExpress>[]>;
+    matchExpresses?: pulumi.Input<pulumi.Input<inputs.cloudmonitor.ServiceGroupMonitoringAgentProcessMatchExpress>[] | undefined>;
     /**
      * The name of the process.
      */
-    processName?: pulumi.Input<string>;
+    processName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -213,11 +213,11 @@ export interface ServiceGroupMonitoringAgentProcessArgs {
     /**
      * The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
      */
-    matchExpressFilterRelation?: pulumi.Input<string>;
+    matchExpressFilterRelation?: pulumi.Input<string | undefined>;
     /**
      * The expressions used to match instances. See `matchExpress` below.
      */
-    matchExpresses?: pulumi.Input<pulumi.Input<inputs.cloudmonitor.ServiceGroupMonitoringAgentProcessMatchExpress>[]>;
+    matchExpresses?: pulumi.Input<pulumi.Input<inputs.cloudmonitor.ServiceGroupMonitoringAgentProcessMatchExpress>[] | undefined>;
     /**
      * The name of the process.
      */

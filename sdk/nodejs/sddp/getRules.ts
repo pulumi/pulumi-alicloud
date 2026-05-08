@@ -211,50 +211,50 @@ export interface GetRulesOutputArgs {
     /**
      * Sensitive Data Identification Rules for the Type of. Valid values:
      */
-    category?: pulumi.Input<number>;
+    category?: pulumi.Input<number | undefined>;
     /**
      * The Content Classification.
      */
-    contentCategory?: pulumi.Input<string>;
+    contentCategory?: pulumi.Input<string | undefined>;
     /**
      * Sensitive Data Identification Rules of Type. Valid values:
      */
-    customType?: pulumi.Input<number>;
-    enableDetails?: pulumi.Input<boolean>;
+    customType?: pulumi.Input<number | undefined>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Rule IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Product ID. Valid values:
      */
-    productId?: pulumi.Input<string>;
+    productId?: pulumi.Input<string | undefined>;
     /**
      * Sensitive Data Identification Rules of Risk Level ID. Valid values:
      */
-    riskLevelId?: pulumi.Input<string>;
+    riskLevelId?: pulumi.Input<string | undefined>;
     /**
      * Rule Type.
      */
-    ruleType?: pulumi.Input<number>;
+    ruleType?: pulumi.Input<number | undefined>;
     /**
      * Sensitive Data Identification Rules Detection State of.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The Level of Risk. Valid values:
      */
-    warnLevel?: pulumi.Input<number>;
+    warnLevel?: pulumi.Input<number | undefined>;
 }

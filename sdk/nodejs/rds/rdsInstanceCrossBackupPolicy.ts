@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceStorage: output(defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *     instanceChargeType: "Postpaid",
  *     category: "HighAvailability",
  *     instanceName: name,
@@ -210,27 +210,27 @@ export interface RdsInstanceCrossBackupPolicyState {
      * - Disabled
      * - Enable
      */
-    backupEnabled?: pulumi.Input<string>;
+    backupEnabled?: pulumi.Input<string | undefined>;
     /**
      * The time when cross-region backup was enabled on the instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    backupEnabledTime?: pulumi.Input<string>;
+    backupEnabledTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the destination region where the cross-region backup files of the instance are stored.
      */
-    crossBackupRegion?: pulumi.Input<string>;
+    crossBackupRegion?: pulumi.Input<string | undefined>;
     /**
      * The policy that is used to save cross-region backups of the instance. Default value: 1. The default value 1 indicates that all cross-region backups are saved.
      */
-    crossBackupType?: pulumi.Input<string>;
+    crossBackupType?: pulumi.Input<string | undefined>;
     /**
      * The state of the instance. For more information, see Instance status.
      */
-    dbInstanceStatus?: pulumi.Input<string>;
+    dbInstanceStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The lock status of the instance. Valid values:
      * - Unlock: The instance is not locked.
@@ -239,25 +239,25 @@ export interface RdsInstanceCrossBackupPolicyState {
      * - LockByRestoration: The instance is automatically locked before a rollback.
      * - LockByDiskQuota: The instance is automatically locked because its storage space is exhausted. In this situation, the instance is inaccessible.
      */
-    lockMode?: pulumi.Input<string>;
+    lockMode?: pulumi.Input<string | undefined>;
     /**
      * The status of the cross-region log backup feature on the instance. Valid values:
      * - Enable: Enables the feature.
      * - Disabled: Disables the feature.
      */
-    logBackupEnabled?: pulumi.Input<string>;
+    logBackupEnabled?: pulumi.Input<string | undefined>;
     /**
      * The time when cross-region log backup was enabled on the instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    logBackupEnabledTime?: pulumi.Input<string>;
+    logBackupEnabledTime?: pulumi.Input<string | undefined>;
     /**
      * The policy that is used to retain cross-region backups of the instance. Default value: 1. The default value 1 indicate that cross-region backups are retained based on the specified retention period.
      */
-    retentType?: pulumi.Input<string>;
+    retentType?: pulumi.Input<string | undefined>;
     /**
      * The number of days for which the cross-region backup files of the instance are retained. Valid values: 7 to 1825. Default value: 7.
      */
-    retention?: pulumi.Input<number>;
+    retention?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -277,9 +277,9 @@ export interface RdsInstanceCrossBackupPolicyArgs {
      * - Enable: Enables the feature.
      * - Disabled: Disables the feature.
      */
-    logBackupEnabled?: pulumi.Input<string>;
+    logBackupEnabled?: pulumi.Input<string | undefined>;
     /**
      * The number of days for which the cross-region backup files of the instance are retained. Valid values: 7 to 1825. Default value: 7.
      */
-    retention?: pulumi.Input<number>;
+    retention?: pulumi.Input<number | undefined>;
 }

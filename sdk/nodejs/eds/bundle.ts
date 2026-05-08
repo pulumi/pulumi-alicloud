@@ -178,41 +178,41 @@ export interface BundleState {
     /**
      * The name of the bundle.
      */
-    bundleName?: pulumi.Input<string>;
+    bundleName?: pulumi.Input<string | undefined>;
     /**
      * The description of the bundle.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The desktop type. You can call `alicloud.eds.getDesktopTypes` to query desktop type.
      */
-    desktopType?: pulumi.Input<string>;
+    desktopType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the image.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The language. Valid values: `zh-CN`, `zh-HK`, `en-US`, `ja-JP`.
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      */
-    rootDiskPerformanceLevel?: pulumi.Input<string>;
+    rootDiskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The root disk size gib.
      */
-    rootDiskSizeGib?: pulumi.Input<number>;
+    rootDiskSizeGib?: pulumi.Input<number | undefined>;
     /**
      * The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      */
-    userDiskPerformanceLevel?: pulumi.Input<string>;
+    userDiskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
      * - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
      * - The data disk size (user_disk_size_gib) set in the template must be greater than the data disk size (data_disk_size) in the mirror.
      */
-    userDiskSizeGibs?: pulumi.Input<pulumi.Input<number>[]>;
+    userDiskSizeGibs?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 /**
@@ -222,11 +222,11 @@ export interface BundleArgs {
     /**
      * The name of the bundle.
      */
-    bundleName?: pulumi.Input<string>;
+    bundleName?: pulumi.Input<string | undefined>;
     /**
      * The description of the bundle.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The desktop type. You can call `alicloud.eds.getDesktopTypes` to query desktop type.
      */
@@ -238,11 +238,11 @@ export interface BundleArgs {
     /**
      * The language. Valid values: `zh-CN`, `zh-HK`, `en-US`, `ja-JP`.
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      */
-    rootDiskPerformanceLevel?: pulumi.Input<string>;
+    rootDiskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The root disk size gib.
      */
@@ -250,7 +250,7 @@ export interface BundleArgs {
     /**
      * The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      */
-    userDiskPerformanceLevel?: pulumi.Input<string>;
+    userDiskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
      * - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).

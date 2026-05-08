@@ -20,10 +20,10 @@ __all__ = ['VscArgs', 'Vsc']
 class VscArgs:
     def __init__(__self__, *,
                  node_id: pulumi.Input[_builtins.str],
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vsc_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vsc_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vsc_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vsc_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Vsc resource.
 
@@ -57,62 +57,62 @@ class VscArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vscName")
-    def vsc_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vsc_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Vsc.
         """
         return pulumi.get(self, "vsc_name")
 
     @vsc_name.setter
-    def vsc_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vsc_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vsc_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vscType")
-    def vsc_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vsc_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Vsc. Default value: `primary`. Valid values: `primary`.
         """
         return pulumi.get(self, "vsc_type")
 
     @vsc_type.setter
-    def vsc_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vsc_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vsc_type", value)
 
 
 @pulumi.input_type
 class _VscState:
     def __init__(__self__, *,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vsc_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vsc_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vsc_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vsc_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vsc resources.
 
@@ -138,74 +138,74 @@ class _VscState:
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Node.
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Vsc.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vscName")
-    def vsc_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vsc_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Vsc.
         """
         return pulumi.get(self, "vsc_name")
 
     @vsc_name.setter
-    def vsc_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vsc_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vsc_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vscType")
-    def vsc_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vsc_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Vsc. Default value: `primary`. Valid values: `primary`.
         """
         return pulumi.get(self, "vsc_type")
 
     @vsc_type.setter
-    def vsc_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vsc_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vsc_type", value)
 
 
@@ -215,11 +215,11 @@ class Vsc(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vsc_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vsc_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vsc_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vsc_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Eflo Vsc resource.
@@ -326,11 +326,11 @@ class Vsc(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vsc_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vsc_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vsc_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vsc_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -358,12 +358,12 @@ class Vsc(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            node_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vsc_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vsc_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Vsc':
+            node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vsc_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vsc_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Vsc':
         """
         Get an existing Vsc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -126,19 +126,19 @@ export interface ShortUrlState {
     /**
      * Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
      */
-    effectiveDays?: pulumi.Input<number>;
+    effectiveDays?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource.
      */
-    shortUrlName?: pulumi.Input<string>;
+    shortUrlName?: pulumi.Input<string | undefined>;
     /**
      * The original link address.
      */
-    sourceUrl?: pulumi.Input<string>;
+    sourceUrl?: pulumi.Input<string | undefined>;
     /**
      * Short chain status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

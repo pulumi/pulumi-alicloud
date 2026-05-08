@@ -20,20 +20,20 @@ __all__ = ['HttpsBasicConfigurationArgs', 'HttpsBasicConfiguration']
 class HttpsBasicConfigurationArgs:
     def __init__(__self__, *,
                  site_id: pulumi.Input[_builtins.str],
-                 ciphersuite: Optional[pulumi.Input[_builtins.str]] = None,
-                 ciphersuite_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 http2: Optional[pulumi.Input[_builtins.str]] = None,
-                 http3: Optional[pulumi.Input[_builtins.str]] = None,
-                 https: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocsp_stapling: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 tls10: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls11: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls12: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls13: Optional[pulumi.Input[_builtins.str]] = None):
+                 ciphersuite: pulumi.Input[Optional[_builtins.str]] = None,
+                 ciphersuite_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 http2: pulumi.Input[Optional[_builtins.str]] = None,
+                 http3: pulumi.Input[Optional[_builtins.str]] = None,
+                 https: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocsp_stapling: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 tls10: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls11: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls12: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls13: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a HttpsBasicConfiguration resource.
 
@@ -120,19 +120,19 @@ class HttpsBasicConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ciphersuite(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ciphersuite(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
         """
         return pulumi.get(self, "ciphersuite")
 
     @ciphersuite.setter
-    def ciphersuite(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ciphersuite(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ciphersuite", value)
 
     @_builtins.property
     @pulumi.getter(name="ciphersuiteGroup")
-    def ciphersuite_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ciphersuite_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cipher suite group. Default is all cipher suites. Possible values:
         - all: All cipher suites.
@@ -142,12 +142,12 @@ class HttpsBasicConfigurationArgs:
         return pulumi.get(self, "ciphersuite_group")
 
     @ciphersuite_group.setter
-    def ciphersuite_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ciphersuite_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ciphersuite_group", value)
 
     @_builtins.property
     @pulumi.getter
-    def http2(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http2(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether HTTP2 is enabled. Default is on. Possible values:
         - on: Enabled.
@@ -156,12 +156,12 @@ class HttpsBasicConfigurationArgs:
         return pulumi.get(self, "http2")
 
     @http2.setter
-    def http2(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http2(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http2", value)
 
     @_builtins.property
     @pulumi.getter
-    def http3(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http3(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable HTTP3, which is enabled by default. The value can be:
         - on: Enabled.
@@ -170,12 +170,12 @@ class HttpsBasicConfigurationArgs:
         return pulumi.get(self, "http3")
 
     @http3.setter
-    def http3(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http3(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http3", value)
 
     @_builtins.property
     @pulumi.getter
-    def https(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable HTTPS. Default is enabled. Possible values:
         - on: Enable.
@@ -184,12 +184,12 @@ class HttpsBasicConfigurationArgs:
         return pulumi.get(self, "https")
 
     @https.setter
-    def https(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https", value)
 
     @_builtins.property
     @pulumi.getter(name="ocspStapling")
-    def ocsp_stapling(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ocsp_stapling(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether OCSP is enabled. Default is off. Possible values:
         - on: Enabled.
@@ -198,12 +198,12 @@ class HttpsBasicConfigurationArgs:
         return pulumi.get(self, "ocsp_stapling")
 
     @ocsp_stapling.setter
-    def ocsp_stapling(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ocsp_stapling(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ocsp_stapling", value)
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
         -  Match all incoming requests: value set to true
@@ -212,12 +212,12 @@ class HttpsBasicConfigurationArgs:
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleEnable")
-    def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         - on: open.
@@ -226,36 +226,36 @@ class HttpsBasicConfigurationArgs:
         return pulumi.get(self, "rule_enable")
 
     @rule_enable.setter
-    def rule_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sequence(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "sequence")
 
     @sequence.setter
-    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sequence(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls10(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls10(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable TLS1.0. Default is disabled. Possible values:
         - on: Enable.
@@ -264,12 +264,12 @@ class HttpsBasicConfigurationArgs:
         return pulumi.get(self, "tls10")
 
     @tls10.setter
-    def tls10(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls10(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls10", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls11(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls11(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable TLS1.1. Default is enabled. Possible values:
         - on: Enable.
@@ -278,12 +278,12 @@ class HttpsBasicConfigurationArgs:
         return pulumi.get(self, "tls11")
 
     @tls11.setter
-    def tls11(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls11(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls11", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls12(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls12(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable TLS1.2. Default is enabled. Possible values:
         - on: Enable.
@@ -292,12 +292,12 @@ class HttpsBasicConfigurationArgs:
         return pulumi.get(self, "tls12")
 
     @tls12.setter
-    def tls12(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls12(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls12", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls13(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls13(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable TLS1.3. Default is enabled. Possible values:
         - on: Enable.
@@ -306,29 +306,29 @@ class HttpsBasicConfigurationArgs:
         return pulumi.get(self, "tls13")
 
     @tls13.setter
-    def tls13(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls13(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls13", value)
 
 
 @pulumi.input_type
 class _HttpsBasicConfigurationState:
     def __init__(__self__, *,
-                 ciphersuite: Optional[pulumi.Input[_builtins.str]] = None,
-                 ciphersuite_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 http2: Optional[pulumi.Input[_builtins.str]] = None,
-                 http3: Optional[pulumi.Input[_builtins.str]] = None,
-                 https: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocsp_stapling: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls10: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls11: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls12: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls13: Optional[pulumi.Input[_builtins.str]] = None):
+                 ciphersuite: pulumi.Input[Optional[_builtins.str]] = None,
+                 ciphersuite_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 http2: pulumi.Input[Optional[_builtins.str]] = None,
+                 http3: pulumi.Input[Optional[_builtins.str]] = None,
+                 https: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocsp_stapling: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls10: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls11: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls12: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls13: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HttpsBasicConfiguration resources.
 
@@ -407,19 +407,19 @@ class _HttpsBasicConfigurationState:
 
     @_builtins.property
     @pulumi.getter
-    def ciphersuite(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ciphersuite(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
         """
         return pulumi.get(self, "ciphersuite")
 
     @ciphersuite.setter
-    def ciphersuite(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ciphersuite(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ciphersuite", value)
 
     @_builtins.property
     @pulumi.getter(name="ciphersuiteGroup")
-    def ciphersuite_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ciphersuite_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cipher suite group. Default is all cipher suites. Possible values:
         - all: All cipher suites.
@@ -429,24 +429,24 @@ class _HttpsBasicConfigurationState:
         return pulumi.get(self, "ciphersuite_group")
 
     @ciphersuite_group.setter
-    def ciphersuite_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ciphersuite_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ciphersuite_group", value)
 
     @_builtins.property
     @pulumi.getter(name="configId")
-    def config_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def config_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ConfigId of the configuration, which can be obtained by calling the [ListHttpsBasicConfigurations](https://www.alibabacloud.com/help/en/doc-detail/2867470.html) interface.
         """
         return pulumi.get(self, "config_id")
 
     @config_id.setter
-    def config_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def config_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "config_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def http2(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http2(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether HTTP2 is enabled. Default is on. Possible values:
         - on: Enabled.
@@ -455,12 +455,12 @@ class _HttpsBasicConfigurationState:
         return pulumi.get(self, "http2")
 
     @http2.setter
-    def http2(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http2(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http2", value)
 
     @_builtins.property
     @pulumi.getter
-    def http3(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http3(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable HTTP3, which is enabled by default. The value can be:
         - on: Enabled.
@@ -469,12 +469,12 @@ class _HttpsBasicConfigurationState:
         return pulumi.get(self, "http3")
 
     @http3.setter
-    def http3(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http3(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http3", value)
 
     @_builtins.property
     @pulumi.getter
-    def https(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable HTTPS. Default is enabled. Possible values:
         - on: Enable.
@@ -483,12 +483,12 @@ class _HttpsBasicConfigurationState:
         return pulumi.get(self, "https")
 
     @https.setter
-    def https(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https", value)
 
     @_builtins.property
     @pulumi.getter(name="ocspStapling")
-    def ocsp_stapling(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ocsp_stapling(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether OCSP is enabled. Default is off. Possible values:
         - on: Enabled.
@@ -497,12 +497,12 @@ class _HttpsBasicConfigurationState:
         return pulumi.get(self, "ocsp_stapling")
 
     @ocsp_stapling.setter
-    def ocsp_stapling(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ocsp_stapling(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ocsp_stapling", value)
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
         -  Match all incoming requests: value set to true
@@ -511,12 +511,12 @@ class _HttpsBasicConfigurationState:
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleEnable")
-    def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         - on: open.
@@ -525,48 +525,48 @@ class _HttpsBasicConfigurationState:
         return pulumi.get(self, "rule_enable")
 
     @rule_enable.setter
-    def rule_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sequence(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "sequence")
 
     @sequence.setter
-    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sequence(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Site ID, which can be obtained by calling the ListSites interface.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls10(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls10(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable TLS1.0. Default is disabled. Possible values:
         - on: Enable.
@@ -575,12 +575,12 @@ class _HttpsBasicConfigurationState:
         return pulumi.get(self, "tls10")
 
     @tls10.setter
-    def tls10(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls10(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls10", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls11(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls11(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable TLS1.1. Default is enabled. Possible values:
         - on: Enable.
@@ -589,12 +589,12 @@ class _HttpsBasicConfigurationState:
         return pulumi.get(self, "tls11")
 
     @tls11.setter
-    def tls11(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls11(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls11", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls12(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls12(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable TLS1.2. Default is enabled. Possible values:
         - on: Enable.
@@ -603,12 +603,12 @@ class _HttpsBasicConfigurationState:
         return pulumi.get(self, "tls12")
 
     @tls12.setter
-    def tls12(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls12(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls12", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls13(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls13(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable TLS1.3. Default is enabled. Possible values:
         - on: Enable.
@@ -617,7 +617,7 @@ class _HttpsBasicConfigurationState:
         return pulumi.get(self, "tls13")
 
     @tls13.setter
-    def tls13(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls13(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls13", value)
 
 
@@ -627,21 +627,21 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ciphersuite: Optional[pulumi.Input[_builtins.str]] = None,
-                 ciphersuite_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 http2: Optional[pulumi.Input[_builtins.str]] = None,
-                 http3: Optional[pulumi.Input[_builtins.str]] = None,
-                 https: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocsp_stapling: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls10: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls11: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls12: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls13: Optional[pulumi.Input[_builtins.str]] = None,
+                 ciphersuite: pulumi.Input[Optional[_builtins.str]] = None,
+                 ciphersuite_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 http2: pulumi.Input[Optional[_builtins.str]] = None,
+                 http3: pulumi.Input[Optional[_builtins.str]] = None,
+                 https: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocsp_stapling: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls10: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls11: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls12: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls13: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Https Basic Configuration resource.
@@ -815,21 +815,21 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ciphersuite: Optional[pulumi.Input[_builtins.str]] = None,
-                 ciphersuite_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 http2: Optional[pulumi.Input[_builtins.str]] = None,
-                 http3: Optional[pulumi.Input[_builtins.str]] = None,
-                 https: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocsp_stapling: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls10: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls11: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls12: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls13: Optional[pulumi.Input[_builtins.str]] = None,
+                 ciphersuite: pulumi.Input[Optional[_builtins.str]] = None,
+                 ciphersuite_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 http2: pulumi.Input[Optional[_builtins.str]] = None,
+                 http3: pulumi.Input[Optional[_builtins.str]] = None,
+                 https: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocsp_stapling: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls10: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls11: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls12: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls13: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -867,22 +867,22 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ciphersuite: Optional[pulumi.Input[_builtins.str]] = None,
-            ciphersuite_group: Optional[pulumi.Input[_builtins.str]] = None,
-            config_id: Optional[pulumi.Input[_builtins.int]] = None,
-            http2: Optional[pulumi.Input[_builtins.str]] = None,
-            http3: Optional[pulumi.Input[_builtins.str]] = None,
-            https: Optional[pulumi.Input[_builtins.str]] = None,
-            ocsp_stapling: Optional[pulumi.Input[_builtins.str]] = None,
-            rule: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sequence: Optional[pulumi.Input[_builtins.int]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tls10: Optional[pulumi.Input[_builtins.str]] = None,
-            tls11: Optional[pulumi.Input[_builtins.str]] = None,
-            tls12: Optional[pulumi.Input[_builtins.str]] = None,
-            tls13: Optional[pulumi.Input[_builtins.str]] = None) -> 'HttpsBasicConfiguration':
+            ciphersuite: pulumi.Input[Optional[_builtins.str]] = None,
+            ciphersuite_group: pulumi.Input[Optional[_builtins.str]] = None,
+            config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            http2: pulumi.Input[Optional[_builtins.str]] = None,
+            http3: pulumi.Input[Optional[_builtins.str]] = None,
+            https: pulumi.Input[Optional[_builtins.str]] = None,
+            ocsp_stapling: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tls10: pulumi.Input[Optional[_builtins.str]] = None,
+            tls11: pulumi.Input[Optional[_builtins.str]] = None,
+            tls12: pulumi.Input[Optional[_builtins.str]] = None,
+            tls13: pulumi.Input[Optional[_builtins.str]] = None) -> 'HttpsBasicConfiguration':
         """
         Get an existing HttpsBasicConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

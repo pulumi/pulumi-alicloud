@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Cas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,

@@ -22,10 +22,10 @@ class ServerGroupServerAttachmentArgs:
                  server_group_id: pulumi.Input[_builtins.str],
                  server_id: pulumi.Input[_builtins.str],
                  server_type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ServerGroupServerAttachment resource.
 
@@ -104,7 +104,7 @@ class ServerGroupServerAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the servers.
         The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
@@ -112,58 +112,58 @@ class ServerGroupServerAttachmentArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port that is used by the backend server. Valid values: `1` to `65535`.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="serverIp")
-    def server_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
         """
         return pulumi.get(self, "server_ip")
 
     @server_ip.setter
-    def server_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
 @pulumi.input_type
 class _ServerGroupServerAttachmentState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerGroupServerAttachment resources.
 
@@ -207,7 +207,7 @@ class _ServerGroupServerAttachmentState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the servers.
         The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
@@ -215,36 +215,36 @@ class _ServerGroupServerAttachmentState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port that is used by the backend server. Valid values: `1` to `65535`.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroupId")
-    def server_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the server group.
         """
         return pulumi.get(self, "server_group_id")
 
     @server_group_id.setter
-    def server_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverId")
-    def server_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the server.
 
@@ -254,24 +254,24 @@ class _ServerGroupServerAttachmentState:
         return pulumi.get(self, "server_id")
 
     @server_id.setter
-    def server_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverIp")
-    def server_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
         """
         return pulumi.get(self, "server_ip")
 
     @server_ip.setter
-    def server_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="serverType")
-    def server_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the backend server. Valid values:
 
@@ -283,43 +283,43 @@ class _ServerGroupServerAttachmentState:
         return pulumi.get(self, "server_type")
 
     @server_type.setter
-    def server_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the server.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -329,13 +329,13 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Network Load Balancer (NLB) Server Group Server Attachment resource.
@@ -495,13 +495,13 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -536,15 +536,15 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            server_id: Optional[pulumi.Input[_builtins.str]] = None,
-            server_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            server_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            weight: Optional[pulumi.Input[_builtins.int]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServerGroupServerAttachment':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            server_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServerGroupServerAttachment':
         """
         Get an existing ServerGroupServerAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

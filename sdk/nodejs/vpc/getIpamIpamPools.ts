@@ -210,41 +210,41 @@ export interface GetIpamIpamPoolsOutputArgs {
     /**
      * A list of Ipam Pool IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The first ID of the resource.
      */
-    ipamPoolId?: pulumi.Input<string>;
+    ipamPoolId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    ipamPoolName?: pulumi.Input<string>;
+    ipamPoolName?: pulumi.Input<string | undefined>;
     /**
      * Ipam scope id.
      */
-    ipamScopeId?: pulumi.Input<string>;
+    ipamScopeId?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Group Metric Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The effective region of the IPAM address pool.
      */
-    poolRegionId?: pulumi.Input<string>;
+    poolRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The instance ID of the source IPAM address pool.> If this parameter is not entered, the created address pool is the parent address pool.
      */
-    sourceIpamPoolId?: pulumi.Input<string>;
+    sourceIpamPoolId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

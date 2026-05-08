@@ -61,8 +61,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -149,8 +149,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -237,8 +237,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -325,8 +325,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -413,8 +413,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -501,8 +501,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -589,8 +589,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -666,8 +666,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -707,8 +707,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -748,8 +748,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -789,8 +789,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -830,8 +830,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -871,8 +871,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -912,8 +912,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -957,8 +957,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1001,8 +1001,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1045,8 +1045,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1089,8 +1089,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1133,8 +1133,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1177,8 +1177,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1221,8 +1221,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetBackendsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1261,8 +1261,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1302,8 +1302,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1343,8 +1343,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1384,8 +1384,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1425,8 +1425,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1466,8 +1466,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1507,8 +1507,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1552,8 +1552,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1602,8 +1602,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1652,8 +1652,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1702,8 +1702,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1752,8 +1752,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1802,8 +1802,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1852,8 +1852,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetLogConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1902,8 +1902,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetModelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1953,8 +1953,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetModelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2004,8 +2004,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetModelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2055,8 +2055,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetModelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2106,8 +2106,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetModelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2157,8 +2157,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetPluginsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2206,8 +2206,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetPluginsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2255,8 +2255,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetPluginsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2304,8 +2304,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetPluginsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2353,8 +2353,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetPluginsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2402,8 +2402,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetPluginsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2451,8 +2451,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetPluginsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2500,8 +2500,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2544,8 +2544,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2588,8 +2588,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2632,8 +2632,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2676,8 +2676,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2720,8 +2720,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2764,8 +2764,8 @@ public final class ApigatewayFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

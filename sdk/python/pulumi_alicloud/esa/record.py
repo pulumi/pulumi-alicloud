@@ -25,13 +25,13 @@ class RecordArgs:
                  record_name: pulumi.Input[_builtins.str],
                  record_type: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
-                 auth_conf: Optional[pulumi.Input['RecordAuthConfArgs']] = None,
-                 biz_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
+                 auth_conf: pulumi.Input[Optional['RecordAuthConfArgs']] = None,
+                 biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Record resource.
 
@@ -122,67 +122,67 @@ class RecordArgs:
 
     @_builtins.property
     @pulumi.getter(name="authConf")
-    def auth_conf(self) -> Optional[pulumi.Input['RecordAuthConfArgs']]:
+    def auth_conf(self) -> pulumi.Input[Optional['RecordAuthConfArgs']]:
         """
         The origin authentication information of the CNAME record. See `auth_conf` below.
         """
         return pulumi.get(self, "auth_conf")
 
     @auth_conf.setter
-    def auth_conf(self, value: Optional[pulumi.Input['RecordAuthConfArgs']]):
+    def auth_conf(self, value: pulumi.Input[Optional['RecordAuthConfArgs']]):
         pulumi.set(self, "auth_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="bizName")
-    def biz_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biz_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
         """
         return pulumi.get(self, "biz_name")
 
     @biz_name.setter
-    def biz_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biz_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biz_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment of the record. The maximum length is 100 characters.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPolicy")
-    def host_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
         """
         return pulumi.get(self, "host_policy")
 
     @host_policy.setter
-    def host_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxied(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxied(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
         """
         return pulumi.get(self, "proxied")
 
     @proxied.setter
-    def proxied(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxied(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxied", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
         - `OSS`: OSS bucket.
@@ -195,37 +195,37 @@ class RecordArgs:
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
 
 @pulumi.input_type
 class _RecordState:
     def __init__(__self__, *,
-                 auth_conf: Optional[pulumi.Input['RecordAuthConfArgs']] = None,
-                 biz_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input['RecordDataArgs']] = None,
-                 host_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
+                 auth_conf: pulumi.Input[Optional['RecordAuthConfArgs']] = None,
+                 biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional['RecordDataArgs']] = None,
+                 host_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 record_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Record resources.
 
@@ -275,127 +275,127 @@ class _RecordState:
 
     @_builtins.property
     @pulumi.getter(name="authConf")
-    def auth_conf(self) -> Optional[pulumi.Input['RecordAuthConfArgs']]:
+    def auth_conf(self) -> pulumi.Input[Optional['RecordAuthConfArgs']]:
         """
         The origin authentication information of the CNAME record. See `auth_conf` below.
         """
         return pulumi.get(self, "auth_conf")
 
     @auth_conf.setter
-    def auth_conf(self, value: Optional[pulumi.Input['RecordAuthConfArgs']]):
+    def auth_conf(self, value: pulumi.Input[Optional['RecordAuthConfArgs']]):
         pulumi.set(self, "auth_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="bizName")
-    def biz_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biz_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
         """
         return pulumi.get(self, "biz_name")
 
     @biz_name.setter
-    def biz_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biz_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biz_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment of the record. The maximum length is 100 characters.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input['RecordDataArgs']]:
+    def data(self) -> pulumi.Input[Optional['RecordDataArgs']]:
         """
         The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
         """
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input['RecordDataArgs']]):
+    def data(self, value: pulumi.Input[Optional['RecordDataArgs']]):
         pulumi.set(self, "data", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPolicy")
-    def host_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
         """
         return pulumi.get(self, "host_policy")
 
     @host_policy.setter
-    def host_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxied(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxied(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
         """
         return pulumi.get(self, "proxied")
 
     @proxied.setter
-    def proxied(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxied(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxied", value)
 
     @_builtins.property
     @pulumi.getter(name="recordName")
-    def record_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def record_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The record name. This parameter specifies a filter condition for the query.
         """
         return pulumi.get(self, "record_name")
 
     @record_name.setter
-    def record_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def record_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "record_name", value)
 
     @_builtins.property
     @pulumi.getter(name="recordType")
-    def record_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def record_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the DNS record, such as A/AAAA, CNAME, and TXT.
         """
         return pulumi.get(self, "record_type")
 
     @record_type.setter
-    def record_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def record_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "record_type", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The website ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
         - `OSS`: OSS bucket.
@@ -408,19 +408,19 @@ class _RecordState:
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
 
@@ -430,17 +430,17 @@ class Record(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_conf: Optional[pulumi.Input[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict']]] = None,
-                 biz_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
-                 host_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
+                 auth_conf: pulumi.Input[Optional[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict']]] = None,
+                 biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
+                 host_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 record_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a ESA Record resource.
@@ -597,17 +597,17 @@ class Record(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_conf: Optional[pulumi.Input[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict']]] = None,
-                 biz_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
-                 host_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
+                 auth_conf: pulumi.Input[Optional[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict']]] = None,
+                 biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
+                 host_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 record_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -647,18 +647,18 @@ class Record(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_conf: Optional[pulumi.Input[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict']]] = None,
-            biz_name: Optional[pulumi.Input[_builtins.str]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data: Optional[pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
-            host_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            proxied: Optional[pulumi.Input[_builtins.bool]] = None,
-            record_name: Optional[pulumi.Input[_builtins.str]] = None,
-            record_type: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ttl: Optional[pulumi.Input[_builtins.int]] = None) -> 'Record':
+            auth_conf: pulumi.Input[Optional[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict']]] = None,
+            biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data: pulumi.Input[Optional[Union['RecordDataArgs', 'RecordDataArgsDict']]] = None,
+            host_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            proxied: pulumi.Input[Optional[_builtins.bool]] = None,
+            record_name: pulumi.Input[Optional[_builtins.str]] = None,
+            record_type: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None) -> 'Record':
         """
         Get an existing Record resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

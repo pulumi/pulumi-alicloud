@@ -151,10 +151,10 @@ def get_accelerator_spare_ip_attachments(accelerator_id: Optional[_builtins.str]
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-def get_accelerator_spare_ip_attachments_output(accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_accelerator_spare_ip_attachments_output(accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAcceleratorSpareIpAttachmentsResult]:
     """
     This data source provides the Ga Accelerator Spare Ip Attachments of the current Alibaba Cloud user.

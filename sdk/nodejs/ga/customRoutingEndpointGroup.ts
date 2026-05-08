@@ -167,27 +167,27 @@ export interface CustomRoutingEndpointGroupState {
     /**
      * The ID of the GA instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The name of the endpoint group.
      */
-    customRoutingEndpointGroupName?: pulumi.Input<string>;
+    customRoutingEndpointGroupName?: pulumi.Input<string | undefined>;
     /**
      * The description of the endpoint group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region in which to create the endpoint group.
      */
-    endpointGroupRegion?: pulumi.Input<string>;
+    endpointGroupRegion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the custom routing listener.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Custom Routing Endpoint Group.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -201,11 +201,11 @@ export interface CustomRoutingEndpointGroupArgs {
     /**
      * The name of the endpoint group.
      */
-    customRoutingEndpointGroupName?: pulumi.Input<string>;
+    customRoutingEndpointGroupName?: pulumi.Input<string | undefined>;
     /**
      * The description of the endpoint group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region in which to create the endpoint group.
      */

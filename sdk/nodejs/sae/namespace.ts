@@ -137,23 +137,23 @@ export interface NamespaceState {
     /**
      * Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
      */
-    enableMicroRegistration?: pulumi.Input<boolean>;
+    enableMicroRegistration?: pulumi.Input<boolean | undefined>;
     /**
      * The Description of Namespace.
      */
-    namespaceDescription?: pulumi.Input<string>;
+    namespaceDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * The Name of Namespace.
      */
-    namespaceName?: pulumi.Input<string>;
+    namespaceName?: pulumi.Input<string | undefined>;
     /**
      * The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
      */
-    namespaceShortId?: pulumi.Input<string>;
+    namespaceShortId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -163,15 +163,15 @@ export interface NamespaceArgs {
     /**
      * Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
      */
-    enableMicroRegistration?: pulumi.Input<boolean>;
+    enableMicroRegistration?: pulumi.Input<boolean | undefined>;
     /**
      * The Description of Namespace.
      */
-    namespaceDescription?: pulumi.Input<string>;
+    namespaceDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * The Name of Namespace.
      */
@@ -179,5 +179,5 @@ export interface NamespaceArgs {
     /**
      * The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
      */
-    namespaceShortId?: pulumi.Input<string>;
+    namespaceShortId?: pulumi.Input<string | undefined>;
 }

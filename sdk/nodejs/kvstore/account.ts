@@ -199,43 +199,43 @@ export interface AccountState {
      * * The name can be up to 100 characters in length.
      * * The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * The privilege of account access database. Default value: `RoleReadWrite` 
      * - `RoleReadOnly`: This value is only for Redis and Memcache
      * - `RoleReadWrite`: This value is only for Redis and Memcache
      */
-    accountPrivilege?: pulumi.Input<string>;
+    accountPrivilege?: pulumi.Input<string | undefined>;
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
      * Default to Normal.
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -252,23 +252,23 @@ export interface AccountArgs {
     /**
      * The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * The privilege of account access database. Default value: `RoleReadWrite` 
      * - `RoleReadOnly`: This value is only for Redis and Memcache
      * - `RoleReadWrite`: This value is only for Redis and Memcache
      */
-    accountPrivilege?: pulumi.Input<string>;
+    accountPrivilege?: pulumi.Input<string | undefined>;
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
      * Default to Normal.
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
      */
@@ -276,9 +276,9 @@ export interface AccountArgs {
     /**
      * An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

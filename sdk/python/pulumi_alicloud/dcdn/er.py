@@ -22,8 +22,8 @@ __all__ = ['ErArgs', 'Er']
 class ErArgs:
     def __init__(__self__, *,
                  er_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_conf: Optional[pulumi.Input['ErEnvConfArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_conf: pulumi.Input[Optional['ErEnvConfArgs']] = None):
         """
         The set of arguments for constructing a Er resource.
 
@@ -51,35 +51,35 @@ class ErArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Routine The description of the routine.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="envConf")
-    def env_conf(self) -> Optional[pulumi.Input['ErEnvConfArgs']]:
+    def env_conf(self) -> pulumi.Input[Optional['ErEnvConfArgs']]:
         """
         The configurations of the specified environment. See `env_conf` below.
         """
         return pulumi.get(self, "env_conf")
 
     @env_conf.setter
-    def env_conf(self, value: Optional[pulumi.Input['ErEnvConfArgs']]):
+    def env_conf(self, value: pulumi.Input[Optional['ErEnvConfArgs']]):
         pulumi.set(self, "env_conf", value)
 
 
 @pulumi.input_type
 class _ErState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_conf: Optional[pulumi.Input['ErEnvConfArgs']] = None,
-                 er_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_conf: pulumi.Input[Optional['ErEnvConfArgs']] = None,
+                 er_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Er resources.
 
@@ -96,38 +96,38 @@ class _ErState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Routine The description of the routine.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="envConf")
-    def env_conf(self) -> Optional[pulumi.Input['ErEnvConfArgs']]:
+    def env_conf(self) -> pulumi.Input[Optional['ErEnvConfArgs']]:
         """
         The configurations of the specified environment. See `env_conf` below.
         """
         return pulumi.get(self, "env_conf")
 
     @env_conf.setter
-    def env_conf(self, value: Optional[pulumi.Input['ErEnvConfArgs']]):
+    def env_conf(self, value: pulumi.Input[Optional['ErEnvConfArgs']]):
         pulumi.set(self, "env_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="erName")
-    def er_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def er_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
         """
         return pulumi.get(self, "er_name")
 
     @er_name.setter
-    def er_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def er_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "er_name", value)
 
 
@@ -137,9 +137,9 @@ class Er(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_conf: Optional[pulumi.Input[Union['ErEnvConfArgs', 'ErEnvConfArgsDict']]] = None,
-                 er_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_conf: pulumi.Input[Optional[Union['ErEnvConfArgs', 'ErEnvConfArgsDict']]] = None,
+                 er_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DCDN Er resource.
@@ -258,9 +258,9 @@ class Er(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_conf: Optional[pulumi.Input[Union['ErEnvConfArgs', 'ErEnvConfArgsDict']]] = None,
-                 er_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_conf: pulumi.Input[Optional[Union['ErEnvConfArgs', 'ErEnvConfArgsDict']]] = None,
+                 er_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -285,9 +285,9 @@ class Er(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            env_conf: Optional[pulumi.Input[Union['ErEnvConfArgs', 'ErEnvConfArgsDict']]] = None,
-            er_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Er':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            env_conf: pulumi.Input[Optional[Union['ErEnvConfArgs', 'ErEnvConfArgsDict']]] = None,
+            er_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Er':
         """
         Get an existing Er resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

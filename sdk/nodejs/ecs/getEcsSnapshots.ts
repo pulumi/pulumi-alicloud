@@ -368,65 +368,65 @@ export interface GetEcsSnapshotsOutputArgs {
     /**
      * The category of the snapshot. Valid Values: `flash` and `standard`.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to check the validity of the request without actually making the request.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the snapshot is encrypted.
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Snapshot IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The kms key id.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Snapshot name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The resource group id.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The snapshot link id.
      */
-    snapshotLinkId?: pulumi.Input<string>;
+    snapshotLinkId?: pulumi.Input<string | undefined>;
     /**
      * The name of the snapshot.
      */
-    snapshotName?: pulumi.Input<string>;
+    snapshotName?: pulumi.Input<string | undefined>;
     /**
      * The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
      */
-    snapshotType?: pulumi.Input<string>;
+    snapshotType?: pulumi.Input<string | undefined>;
     /**
      * The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
      */
-    sourceDiskType?: pulumi.Input<string>;
+    sourceDiskType?: pulumi.Input<string | undefined>;
     /**
      * The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the snapshot.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
      */
-    usage?: pulumi.Input<string>;
+    usage?: pulumi.Input<string | undefined>;
 }

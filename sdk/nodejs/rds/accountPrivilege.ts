@@ -169,15 +169,15 @@ export interface AccountPrivilegeState {
     /**
      * A specified account name.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * List of specified database name.
      */
-    dbNames?: pulumi.Input<pulumi.Input<string>[]>;
+    dbNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Id of instance in which account belongs.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The privilege of one account access database. Valid values: 
      * - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
@@ -187,7 +187,7 @@ export interface AccountPrivilegeState {
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
      * Default to "ReadOnly".
      */
-    privilege?: pulumi.Input<string>;
+    privilege?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -215,5 +215,5 @@ export interface AccountPrivilegeArgs {
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
      * Default to "ReadOnly".
      */
-    privilege?: pulumi.Input<string>;
+    privilege?: pulumi.Input<string | undefined>;
 }

@@ -113,7 +113,7 @@ export interface GetRouteEntriesOutputArgs {
     /**
      * The destination CIDR block of the route entry to query.
      */
-    cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * ID of the CEN instance.
      */
@@ -121,7 +121,7 @@ export interface GetRouteEntriesOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * ID of the route table of the VPC or VBR.
      */

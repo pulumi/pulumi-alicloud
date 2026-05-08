@@ -22,7 +22,7 @@ class ExternalDataServiceArgs:
                  db_instance_id: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
                  service_spec: pulumi.Input[_builtins.str],
-                 service_description: Optional[pulumi.Input[_builtins.str]] = None):
+                 service_description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExternalDataService resource.
 
@@ -75,27 +75,27 @@ class ExternalDataServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceDescription")
-    def service_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service Description
         """
         return pulumi.get(self, "service_description")
 
     @service_description.setter
-    def service_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_description", value)
 
 
 @pulumi.input_type
 class _ExternalDataServiceState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExternalDataService resources.
 
@@ -124,86 +124,86 @@ class _ExternalDataServiceState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance ID
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDescription")
-    def service_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service Description
         """
         return pulumi.get(self, "service_description")
 
     @service_description.setter
-    def service_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_description", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Service ID
         """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service Name
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceSpec")
-    def service_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service Specifications
         """
         return pulumi.get(self, "service_spec")
 
     @service_spec.setter
-    def service_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -213,10 +213,10 @@ class ExternalDataService(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_spec: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a AnalyticDB for PostgreSQL (GPDB) External Data Service resource.
@@ -370,10 +370,10 @@ class ExternalDataService(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_spec: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -406,13 +406,13 @@ class ExternalDataService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_description: Optional[pulumi.Input[_builtins.str]] = None,
-            service_id: Optional[pulumi.Input[_builtins.int]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            service_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ExternalDataService':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_description: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.int]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ExternalDataService':
         """
         Get an existing ExternalDataService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -50,59 +50,59 @@ __all__ = [
 ]
 
 class BgpPolicyContentArgsDict(TypedDict):
-    black_ip_list_expire_at: NotRequired[pulumi.Input[_builtins.int]]
+    black_ip_list_expire_at: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Blacklist and whitelist timeout.
     """
-    enable_defense: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_defense: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable L4 protection.
     """
-    enable_drop_icmp: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_drop_icmp: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Switch to discard ICMP.
     """
-    enable_intelligence: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_intelligence: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the intelligent switch is on.
     """
-    finger_print_rule_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentFingerPrintRuleListArgsDict']]]]
+    finger_print_rule_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentFingerPrintRuleListArgs']]]]]
     """
     Fingerprint Rules. See `finger_print_rule_list` below.
     """
-    intelligence_level: NotRequired[pulumi.Input[_builtins.str]]
+    intelligence_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Smart mode. Valid values: weak, hard, and default.
     """
-    layer4_rule_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentLayer4RuleListArgsDict']]]]
+    layer4_rule_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentLayer4RuleListArgs']]]]]
     """
     L4 protection rules. See `layer4_rule_list` below.
     """
-    port_rule_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentPortRuleListArgsDict']]]]
+    port_rule_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentPortRuleListArgs']]]]]
     """
     Port Rule List. See `port_rule_list` below.
     """
-    reflect_block_udp_port_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    reflect_block_udp_port_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     Reflective port filtering.
     """
-    region_block_country_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    region_block_country_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     List of Regional Banned Countries.
     """
-    region_block_province_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    region_block_province_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     List of Prohibited Provinces by Region.
     """
-    source_block_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentSourceBlockListArgsDict']]]]
+    source_block_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentSourceBlockListArgs']]]]]
     """
     Source pull Black. See `source_block_list` below.
     """
-    source_limit: NotRequired[pulumi.Input['BgpPolicyContentSourceLimitArgsDict']]
+    source_limit: NotRequired[pulumi.Input[Optional['BgpPolicyContentSourceLimitArgs']]]
     """
     Do not fill in when the source speed limit is deleted. See `source_limit` below.
     """
-    whiten_gfbr_nets: NotRequired[pulumi.Input[_builtins.bool]]
+    whiten_gfbr_nets: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Add white high protection back to source network segment switch.
     """
@@ -110,20 +110,20 @@ class BgpPolicyContentArgsDict(TypedDict):
 @pulumi.input_type
 class BgpPolicyContentArgs:
     def __init__(__self__, *,
-                 black_ip_list_expire_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_defense: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_drop_icmp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_intelligence: Optional[pulumi.Input[_builtins.bool]] = None,
-                 finger_print_rule_lists: Optional[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentFingerPrintRuleListArgs']]]] = None,
-                 intelligence_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 layer4_rule_lists: Optional[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentLayer4RuleListArgs']]]] = None,
-                 port_rule_lists: Optional[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentPortRuleListArgs']]]] = None,
-                 reflect_block_udp_port_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 region_block_country_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 region_block_province_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 source_block_lists: Optional[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentSourceBlockListArgs']]]] = None,
-                 source_limit: Optional[pulumi.Input['BgpPolicyContentSourceLimitArgs']] = None,
-                 whiten_gfbr_nets: Optional[pulumi.Input[_builtins.bool]] = None):
+                 black_ip_list_expire_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_defense: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_drop_icmp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_intelligence: pulumi.Input[Optional[_builtins.bool]] = None,
+                 finger_print_rule_lists: pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentFingerPrintRuleListArgs']]]] = None,
+                 intelligence_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 layer4_rule_lists: pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentLayer4RuleListArgs']]]] = None,
+                 port_rule_lists: pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentPortRuleListArgs']]]] = None,
+                 reflect_block_udp_port_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 region_block_country_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 region_block_province_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 source_block_lists: pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentSourceBlockListArgs']]]] = None,
+                 source_limit: pulumi.Input[Optional['BgpPolicyContentSourceLimitArgs']] = None,
+                 whiten_gfbr_nets: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.int] black_ip_list_expire_at: Blacklist and whitelist timeout.
         :param pulumi.Input[_builtins.bool] enable_defense: Whether to enable L4 protection.
@@ -171,170 +171,170 @@ class BgpPolicyContentArgs:
 
     @_builtins.property
     @pulumi.getter(name="blackIpListExpireAt")
-    def black_ip_list_expire_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def black_ip_list_expire_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Blacklist and whitelist timeout.
         """
         return pulumi.get(self, "black_ip_list_expire_at")
 
     @black_ip_list_expire_at.setter
-    def black_ip_list_expire_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def black_ip_list_expire_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "black_ip_list_expire_at", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDefense")
-    def enable_defense(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_defense(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable L4 protection.
         """
         return pulumi.get(self, "enable_defense")
 
     @enable_defense.setter
-    def enable_defense(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_defense(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_defense", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDropIcmp")
-    def enable_drop_icmp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_drop_icmp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Switch to discard ICMP.
         """
         return pulumi.get(self, "enable_drop_icmp")
 
     @enable_drop_icmp.setter
-    def enable_drop_icmp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_drop_icmp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_drop_icmp", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIntelligence")
-    def enable_intelligence(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_intelligence(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the intelligent switch is on.
         """
         return pulumi.get(self, "enable_intelligence")
 
     @enable_intelligence.setter
-    def enable_intelligence(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_intelligence(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_intelligence", value)
 
     @_builtins.property
     @pulumi.getter(name="fingerPrintRuleLists")
-    def finger_print_rule_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentFingerPrintRuleListArgs']]]]:
+    def finger_print_rule_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentFingerPrintRuleListArgs']]]]:
         """
         Fingerprint Rules. See `finger_print_rule_list` below.
         """
         return pulumi.get(self, "finger_print_rule_lists")
 
     @finger_print_rule_lists.setter
-    def finger_print_rule_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentFingerPrintRuleListArgs']]]]):
+    def finger_print_rule_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentFingerPrintRuleListArgs']]]]):
         pulumi.set(self, "finger_print_rule_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="intelligenceLevel")
-    def intelligence_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def intelligence_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Smart mode. Valid values: weak, hard, and default.
         """
         return pulumi.get(self, "intelligence_level")
 
     @intelligence_level.setter
-    def intelligence_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def intelligence_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "intelligence_level", value)
 
     @_builtins.property
     @pulumi.getter(name="layer4RuleLists")
-    def layer4_rule_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentLayer4RuleListArgs']]]]:
+    def layer4_rule_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentLayer4RuleListArgs']]]]:
         """
         L4 protection rules. See `layer4_rule_list` below.
         """
         return pulumi.get(self, "layer4_rule_lists")
 
     @layer4_rule_lists.setter
-    def layer4_rule_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentLayer4RuleListArgs']]]]):
+    def layer4_rule_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentLayer4RuleListArgs']]]]):
         pulumi.set(self, "layer4_rule_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="portRuleLists")
-    def port_rule_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentPortRuleListArgs']]]]:
+    def port_rule_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentPortRuleListArgs']]]]:
         """
         Port Rule List. See `port_rule_list` below.
         """
         return pulumi.get(self, "port_rule_lists")
 
     @port_rule_lists.setter
-    def port_rule_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentPortRuleListArgs']]]]):
+    def port_rule_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentPortRuleListArgs']]]]):
         pulumi.set(self, "port_rule_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="reflectBlockUdpPortLists")
-    def reflect_block_udp_port_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def reflect_block_udp_port_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Reflective port filtering.
         """
         return pulumi.get(self, "reflect_block_udp_port_lists")
 
     @reflect_block_udp_port_lists.setter
-    def reflect_block_udp_port_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def reflect_block_udp_port_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "reflect_block_udp_port_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="regionBlockCountryLists")
-    def region_block_country_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def region_block_country_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         List of Regional Banned Countries.
         """
         return pulumi.get(self, "region_block_country_lists")
 
     @region_block_country_lists.setter
-    def region_block_country_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def region_block_country_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "region_block_country_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="regionBlockProvinceLists")
-    def region_block_province_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def region_block_province_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         List of Prohibited Provinces by Region.
         """
         return pulumi.get(self, "region_block_province_lists")
 
     @region_block_province_lists.setter
-    def region_block_province_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def region_block_province_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "region_block_province_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceBlockLists")
-    def source_block_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentSourceBlockListArgs']]]]:
+    def source_block_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentSourceBlockListArgs']]]]:
         """
         Source pull Black. See `source_block_list` below.
         """
         return pulumi.get(self, "source_block_lists")
 
     @source_block_lists.setter
-    def source_block_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentSourceBlockListArgs']]]]):
+    def source_block_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentSourceBlockListArgs']]]]):
         pulumi.set(self, "source_block_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceLimit")
-    def source_limit(self) -> Optional[pulumi.Input['BgpPolicyContentSourceLimitArgs']]:
+    def source_limit(self) -> pulumi.Input[Optional['BgpPolicyContentSourceLimitArgs']]:
         """
         Do not fill in when the source speed limit is deleted. See `source_limit` below.
         """
         return pulumi.get(self, "source_limit")
 
     @source_limit.setter
-    def source_limit(self, value: Optional[pulumi.Input['BgpPolicyContentSourceLimitArgs']]):
+    def source_limit(self, value: pulumi.Input[Optional['BgpPolicyContentSourceLimitArgs']]):
         pulumi.set(self, "source_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="whitenGfbrNets")
-    def whiten_gfbr_nets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def whiten_gfbr_nets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Add white high protection back to source network segment switch.
         """
         return pulumi.get(self, "whiten_gfbr_nets")
 
     @whiten_gfbr_nets.setter
-    def whiten_gfbr_nets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def whiten_gfbr_nets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "whiten_gfbr_nets", value)
 
 
@@ -375,19 +375,19 @@ class BgpPolicyContentFingerPrintRuleListArgsDict(TypedDict):
     """
     Source port start 0-65535.
     """
-    finger_print_rule_id: NotRequired[pulumi.Input[_builtins.str]]
+    finger_print_rule_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The UUID of the rule is required to be deleted and modified, and it is not required to be created.
     """
-    offset: NotRequired[pulumi.Input[_builtins.int]]
+    offset: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Offset.
     """
-    payload_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    payload_bytes: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Load match, hexadecimal string; Similar to 'abcd'.
     """
-    rate_value: NotRequired[pulumi.Input[_builtins.int]]
+    rate_value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Speed limit value 1-100000.
     """
@@ -404,10 +404,10 @@ class BgpPolicyContentFingerPrintRuleListArgs:
                  seq_no: pulumi.Input[_builtins.int],
                  src_port_end: pulumi.Input[_builtins.int],
                  src_port_start: pulumi.Input[_builtins.int],
-                 finger_print_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 offset: Optional[pulumi.Input[_builtins.int]] = None,
-                 payload_bytes: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_value: Optional[pulumi.Input[_builtins.int]] = None):
+                 finger_print_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 offset: pulumi.Input[Optional[_builtins.int]] = None,
+                 payload_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_value: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] dst_port_end: End of destination port 0-65535.
         :param pulumi.Input[_builtins.int] dst_port_start: Destination Port start 0-65535.
@@ -551,50 +551,50 @@ class BgpPolicyContentFingerPrintRuleListArgs:
 
     @_builtins.property
     @pulumi.getter(name="fingerPrintRuleId")
-    def finger_print_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def finger_print_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the rule is required to be deleted and modified, and it is not required to be created.
         """
         return pulumi.get(self, "finger_print_rule_id")
 
     @finger_print_rule_id.setter
-    def finger_print_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def finger_print_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "finger_print_rule_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def offset(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def offset(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Offset.
         """
         return pulumi.get(self, "offset")
 
     @offset.setter
-    def offset(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def offset(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "offset", value)
 
     @_builtins.property
     @pulumi.getter(name="payloadBytes")
-    def payload_bytes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payload_bytes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Load match, hexadecimal string; Similar to 'abcd'.
         """
         return pulumi.get(self, "payload_bytes")
 
     @payload_bytes.setter
-    def payload_bytes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payload_bytes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payload_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="rateValue")
-    def rate_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rate_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Speed limit value 1-100000.
         """
         return pulumi.get(self, "rate_value")
 
     @rate_value.setter
-    def rate_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rate_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rate_value", value)
 
 
@@ -835,7 +835,7 @@ class BgpPolicyContentPortRuleListArgsDict(TypedDict):
     """
     Source port start 0-65535.
     """
-    port_rule_id: NotRequired[pulumi.Input[_builtins.str]]
+    port_rule_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Rule UUID is required to be deleted and modified, and is not required to be created.
     """
@@ -850,7 +850,7 @@ class BgpPolicyContentPortRuleListArgs:
                  seq_no: pulumi.Input[_builtins.int],
                  src_port_end: pulumi.Input[_builtins.int],
                  src_port_start: pulumi.Input[_builtins.int],
-                 port_rule_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 port_rule_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] dst_port_end: End of destination port 0-65535.
         :param pulumi.Input[_builtins.int] dst_port_start: Destination Port start 0-65535.
@@ -957,14 +957,14 @@ class BgpPolicyContentPortRuleListArgs:
 
     @_builtins.property
     @pulumi.getter(name="portRuleId")
-    def port_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule UUID is required to be deleted and modified, and is not required to be created.
         """
         return pulumi.get(self, "port_rule_id")
 
     @port_rule_id.setter
-    def port_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_rule_id", value)
 
 
@@ -1054,19 +1054,19 @@ class BgpPolicyContentSourceBlockListArgs:
 
 
 class BgpPolicyContentSourceLimitArgsDict(TypedDict):
-    bps: NotRequired[pulumi.Input[_builtins.int]]
+    bps: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     bps range 1024~268435456.
     """
-    pps: NotRequired[pulumi.Input[_builtins.int]]
+    pps: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Pps range 32~500000.
     """
-    syn_bps: NotRequired[pulumi.Input[_builtins.int]]
+    syn_bps: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     SynBps range 1024~268435456.
     """
-    syn_pps: NotRequired[pulumi.Input[_builtins.int]]
+    syn_pps: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     SynPps range 1~100000.
     """
@@ -1074,10 +1074,10 @@ class BgpPolicyContentSourceLimitArgsDict(TypedDict):
 @pulumi.input_type
 class BgpPolicyContentSourceLimitArgs:
     def __init__(__self__, *,
-                 bps: Optional[pulumi.Input[_builtins.int]] = None,
-                 pps: Optional[pulumi.Input[_builtins.int]] = None,
-                 syn_bps: Optional[pulumi.Input[_builtins.int]] = None,
-                 syn_pps: Optional[pulumi.Input[_builtins.int]] = None):
+                 bps: pulumi.Input[Optional[_builtins.int]] = None,
+                 pps: pulumi.Input[Optional[_builtins.int]] = None,
+                 syn_bps: pulumi.Input[Optional[_builtins.int]] = None,
+                 syn_pps: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] bps: bps range 1024~268435456.
         :param pulumi.Input[_builtins.int] pps: Pps range 32~500000.
@@ -1095,50 +1095,50 @@ class BgpPolicyContentSourceLimitArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         bps range 1024~268435456.
         """
         return pulumi.get(self, "bps")
 
     @bps.setter
-    def bps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bps", value)
 
     @_builtins.property
     @pulumi.getter
-    def pps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Pps range 32~500000.
         """
         return pulumi.get(self, "pps")
 
     @pps.setter
-    def pps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pps", value)
 
     @_builtins.property
     @pulumi.getter(name="synBps")
-    def syn_bps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def syn_bps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         SynBps range 1024~268435456.
         """
         return pulumi.get(self, "syn_bps")
 
     @syn_bps.setter
-    def syn_bps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def syn_bps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "syn_bps", value)
 
     @_builtins.property
     @pulumi.getter(name="synPps")
-    def syn_pps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def syn_pps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         SynPps range 1~100000.
         """
         return pulumi.get(self, "syn_pps")
 
     @syn_pps.setter
-    def syn_pps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def syn_pps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "syn_pps", value)
 
 
@@ -1155,7 +1155,7 @@ class CooDomainPreciseAccessRuleConditionArgsDict(TypedDict):
     """
     Matching method.
     """
-    header_name: NotRequired[pulumi.Input[_builtins.str]]
+    header_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Custom HTTP header field name.
 
@@ -1168,7 +1168,7 @@ class CooDomainPreciseAccessRuleConditionArgs:
                  content: pulumi.Input[_builtins.str],
                  field: pulumi.Input[_builtins.str],
                  match_method: pulumi.Input[_builtins.str],
-                 header_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 header_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] content: Matching content.
         :param pulumi.Input[_builtins.str] field: Matching field.
@@ -1221,7 +1221,7 @@ class CooDomainPreciseAccessRuleConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerName")
-    def header_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def header_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom HTTP header field name.
 
@@ -1230,7 +1230,7 @@ class CooDomainPreciseAccessRuleConditionArgs:
         return pulumi.get(self, "header_name")
 
     @header_name.setter
-    def header_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def header_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "header_name", value)
 
 
@@ -1247,11 +1247,11 @@ class CooWebCcRuleRuleDetailArgsDict(TypedDict):
     """
     Rate limiting statistics. See `rate_limit` below.
     """
-    statistics: NotRequired[pulumi.Input['CooWebCcRuleRuleDetailStatisticsArgsDict']]
+    statistics: NotRequired[pulumi.Input[Optional['CooWebCcRuleRuleDetailStatisticsArgs']]]
     """
     Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
     """
-    status_code: NotRequired[pulumi.Input['CooWebCcRuleRuleDetailStatusCodeArgsDict']]
+    status_code: NotRequired[pulumi.Input[Optional['CooWebCcRuleRuleDetailStatusCodeArgs']]]
     """
     The HTTP status code. See `status_code` below.
     """
@@ -1262,8 +1262,8 @@ class CooWebCcRuleRuleDetailArgs:
                  action: pulumi.Input[_builtins.str],
                  conditions: pulumi.Input[Sequence[pulumi.Input['CooWebCcRuleRuleDetailConditionArgs']]],
                  rate_limit: pulumi.Input['CooWebCcRuleRuleDetailRateLimitArgs'],
-                 statistics: Optional[pulumi.Input['CooWebCcRuleRuleDetailStatisticsArgs']] = None,
-                 status_code: Optional[pulumi.Input['CooWebCcRuleRuleDetailStatusCodeArgs']] = None):
+                 statistics: pulumi.Input[Optional['CooWebCcRuleRuleDetailStatisticsArgs']] = None,
+                 status_code: pulumi.Input[Optional['CooWebCcRuleRuleDetailStatusCodeArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] action: The action to take when a match occurs. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input['CooWebCcRuleRuleDetailConditionArgs']]] conditions: List of matching conditions.   See `condition` below.
@@ -1317,26 +1317,26 @@ class CooWebCcRuleRuleDetailArgs:
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input['CooWebCcRuleRuleDetailStatisticsArgs']]:
+    def statistics(self) -> pulumi.Input[Optional['CooWebCcRuleRuleDetailStatisticsArgs']]:
         """
         Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input['CooWebCcRuleRuleDetailStatisticsArgs']]):
+    def statistics(self, value: pulumi.Input[Optional['CooWebCcRuleRuleDetailStatisticsArgs']]):
         pulumi.set(self, "statistics", value)
 
     @_builtins.property
     @pulumi.getter(name="statusCode")
-    def status_code(self) -> Optional[pulumi.Input['CooWebCcRuleRuleDetailStatusCodeArgs']]:
+    def status_code(self) -> pulumi.Input[Optional['CooWebCcRuleRuleDetailStatusCodeArgs']]:
         """
         The HTTP status code. See `status_code` below.
         """
         return pulumi.get(self, "status_code")
 
     @status_code.setter
-    def status_code(self, value: Optional[pulumi.Input['CooWebCcRuleRuleDetailStatusCodeArgs']]):
+    def status_code(self, value: pulumi.Input[Optional['CooWebCcRuleRuleDetailStatusCodeArgs']]):
         pulumi.set(self, "status_code", value)
 
 
@@ -1353,7 +1353,7 @@ class CooWebCcRuleRuleDetailConditionArgsDict(TypedDict):
     """
     Matching method.
     """
-    header_name: NotRequired[pulumi.Input[_builtins.str]]
+    header_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Set this parameter only when the statistic source is `header`.
     """
@@ -1364,7 +1364,7 @@ class CooWebCcRuleRuleDetailConditionArgs:
                  content: pulumi.Input[_builtins.str],
                  field: pulumi.Input[_builtins.str],
                  match_method: pulumi.Input[_builtins.str],
-                 header_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 header_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] content: Matching content.
         :param pulumi.Input[_builtins.str] field: The statistic source. Valid values:
@@ -1415,14 +1415,14 @@ class CooWebCcRuleRuleDetailConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerName")
-    def header_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def header_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set this parameter only when the statistic source is `header`.
         """
         return pulumi.get(self, "header_name")
 
     @header_name.setter
-    def header_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def header_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "header_name", value)
 
 
@@ -1443,7 +1443,7 @@ class CooWebCcRuleRuleDetailRateLimitArgsDict(TypedDict):
     """
     Block duration. Unit: seconds.
     """
-    sub_key: NotRequired[pulumi.Input[_builtins.str]]
+    sub_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Header field name (required only when the statistic source is `header`).
     """
@@ -1455,7 +1455,7 @@ class CooWebCcRuleRuleDetailRateLimitArgs:
                  target: pulumi.Input[_builtins.str],
                  threshold: pulumi.Input[_builtins.int],
                  ttl: pulumi.Input[_builtins.int],
-                 sub_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 sub_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] interval: Statistical interval. Unit: seconds.
         :param pulumi.Input[_builtins.str] target: Statistic source. Valid values:
@@ -1520,14 +1520,14 @@ class CooWebCcRuleRuleDetailRateLimitArgs:
 
     @_builtins.property
     @pulumi.getter(name="subKey")
-    def sub_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Header field name (required only when the statistic source is `header`).
         """
         return pulumi.get(self, "sub_key")
 
     @sub_key.setter
-    def sub_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_key", value)
 
 
@@ -1540,7 +1540,7 @@ class CooWebCcRuleRuleDetailStatisticsArgsDict(TypedDict):
     """
     The deduplication mode. Valid values:
     """
-    header_name: NotRequired[pulumi.Input[_builtins.str]]
+    header_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Set this parameter only when the statistic source is `header`.
     """
@@ -1550,7 +1550,7 @@ class CooWebCcRuleRuleDetailStatisticsArgs:
     def __init__(__self__, *,
                  field: pulumi.Input[_builtins.str],
                  mode: pulumi.Input[_builtins.str],
-                 header_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 header_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] field: The statistic source. Valid values:
         :param pulumi.Input[_builtins.str] mode: The deduplication mode. Valid values:
@@ -1587,14 +1587,14 @@ class CooWebCcRuleRuleDetailStatisticsArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerName")
-    def header_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def header_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set this parameter only when the statistic source is `header`.
         """
         return pulumi.get(self, "header_name")
 
     @header_name.setter
-    def header_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def header_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "header_name", value)
 
 
@@ -1611,11 +1611,11 @@ class CooWebCcRuleRuleDetailStatusCodeArgsDict(TypedDict):
     """
     Whether to use a ratio:
     """
-    count_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    count_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     When the ratio is not used, the enforcement action is triggered only when the corresponding status code reaches `CountThreshold`. The value range is `2` to `50000`.
     """
-    ratio_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    ratio_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     When the ratio is used, the enforcement action is triggered only when the corresponding status code reaches `RatioThreshold`. The value range is `1` to `100`.
     """
@@ -1626,8 +1626,8 @@ class CooWebCcRuleRuleDetailStatusCodeArgs:
                  code: pulumi.Input[_builtins.int],
                  enabled: pulumi.Input[_builtins.bool],
                  use_ratio: pulumi.Input[_builtins.bool],
-                 count_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 ratio_threshold: Optional[pulumi.Input[_builtins.int]] = None):
+                 count_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 ratio_threshold: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] code: Status code. The value range is `100` to `599`:
         :param pulumi.Input[_builtins.bool] enabled: Whether the rule is enabled. Valid values:
@@ -1681,26 +1681,26 @@ class CooWebCcRuleRuleDetailStatusCodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="countThreshold")
-    def count_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def count_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When the ratio is not used, the enforcement action is triggered only when the corresponding status code reaches `CountThreshold`. The value range is `2` to `50000`.
         """
         return pulumi.get(self, "count_threshold")
 
     @count_threshold.setter
-    def count_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def count_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "count_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="ratioThreshold")
-    def ratio_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ratio_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When the ratio is used, the enforcement action is triggered only when the corresponding status code reaches `RatioThreshold`. The value range is `1` to `100`.
         """
         return pulumi.get(self, "ratio_threshold")
 
     @ratio_threshold.setter
-    def ratio_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ratio_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ratio_threshold", value)
 
 
@@ -1709,7 +1709,7 @@ class DomainResourceProxyTypeArgsDict(TypedDict):
     """
     The port numbers.
     """
-    proxy_type: NotRequired[pulumi.Input[_builtins.str]]
+    proxy_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the protocol. Valid values:
     """
@@ -1718,7 +1718,7 @@ class DomainResourceProxyTypeArgsDict(TypedDict):
 class DomainResourceProxyTypeArgs:
     def __init__(__self__, *,
                  proxy_ports: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]],
-                 proxy_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 proxy_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] proxy_ports: The port numbers.
         :param pulumi.Input[_builtins.str] proxy_type: The type of the protocol. Valid values:
@@ -1741,19 +1741,19 @@ class DomainResourceProxyTypeArgs:
 
     @_builtins.property
     @pulumi.getter(name="proxyType")
-    def proxy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the protocol. Valid values:
         """
         return pulumi.get(self, "proxy_type")
 
     @proxy_type.setter
-    def proxy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_type", value)
 
 
 class PortConfigArgsDict(TypedDict):
-    persistence_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    persistence_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The timeout period for session retention. Value range: 30~3600, unit: second. The default is 0, which means off.
     """
@@ -1761,7 +1761,7 @@ class PortConfigArgsDict(TypedDict):
 @pulumi.input_type
 class PortConfigArgs:
     def __init__(__self__, *,
-                 persistence_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 persistence_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] persistence_timeout: The timeout period for session retention. Value range: 30~3600, unit: second. The default is 0, which means off.
         """
@@ -1770,41 +1770,41 @@ class PortConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="persistenceTimeout")
-    def persistence_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def persistence_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period for session retention. Value range: 30~3600, unit: second. The default is 0, which means off.
         """
         return pulumi.get(self, "persistence_timeout")
 
     @persistence_timeout.setter
-    def persistence_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def persistence_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "persistence_timeout", value)
 
 
 class SchedulerRuleRuleArgsDict(TypedDict):
-    priority: NotRequired[pulumi.Input[_builtins.int]]
+    priority: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The priority of the rule.
     """
-    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The region where the interaction resource that is used in the scheduling rule is deployed. **NOTE:** This parameter is returned only if the RuleType parameter is set to 2.
     """
-    status: NotRequired[pulumi.Input[_builtins.int]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The status of the scheduling rule.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The address type of the interaction resource. Valid values:
     `A`: IPv4 address.
     `CNAME`: CNAME record.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The address of the interaction resource.
     """
-    value_type: NotRequired[pulumi.Input[_builtins.int]]
+    value_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Required. The type of the linked resource. It is an Integer. Valid values:
     `1`: The IP address of Anti-DDoS Pro or Anti-DDoS Premium
@@ -1816,12 +1816,12 @@ class SchedulerRuleRuleArgsDict(TypedDict):
 @pulumi.input_type
 class SchedulerRuleRuleArgs:
     def __init__(__self__, *,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_type: Optional[pulumi.Input[_builtins.int]] = None):
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_type: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] priority: The priority of the rule.
         :param pulumi.Input[_builtins.str] region_id: The region where the interaction resource that is used in the scheduling rule is deployed. **NOTE:** This parameter is returned only if the RuleType parameter is set to 2.
@@ -1851,43 +1851,43 @@ class SchedulerRuleRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of the rule.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the interaction resource that is used in the scheduling rule is deployed. **NOTE:** This parameter is returned only if the RuleType parameter is set to 2.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the scheduling rule.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address type of the interaction resource. Valid values:
         `A`: IPv4 address.
@@ -1896,24 +1896,24 @@ class SchedulerRuleRuleArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the interaction resource.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
     @_builtins.property
     @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def value_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Required. The type of the linked resource. It is an Integer. Valid values:
         `1`: The IP address of Anti-DDoS Pro or Anti-DDoS Premium
@@ -1924,7 +1924,7 @@ class SchedulerRuleRuleArgs:
         return pulumi.get(self, "value_type")
 
     @value_type.setter
-    def value_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def value_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "value_type", value)
 
 

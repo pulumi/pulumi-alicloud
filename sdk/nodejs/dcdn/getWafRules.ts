@@ -109,15 +109,15 @@ export interface GetWafRulesOutputArgs {
     /**
      * A list of Waf Rule IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The query conditions. The value is a string in the JSON format.
      */
-    queryArgs?: pulumi.Input<string>;
+    queryArgs?: pulumi.Input<string | undefined>;
 }

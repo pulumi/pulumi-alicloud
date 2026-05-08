@@ -168,15 +168,15 @@ export interface LogTailAttachmentState {
     /**
      * The Logtail configuration name, which is unique in the same project.
      */
-    logtailConfigName?: pulumi.Input<string>;
+    logtailConfigName?: pulumi.Input<string | undefined>;
     /**
      * The machine group name, which is unique in the same project.
      */
-    machineGroupName?: pulumi.Input<string>;
+    machineGroupName?: pulumi.Input<string | undefined>;
     /**
      * The project name to the log store belongs.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -169,23 +169,23 @@ export interface MultiAccountDeliveryChannelState {
     /**
      * The description of the delivery channel.
      */
-    deliveryChannelDescription?: pulumi.Input<string>;
+    deliveryChannelDescription?: pulumi.Input<string | undefined>;
     /**
      * The effective scope of the delivery channel. See `deliveryChannelFilter` below.
      */
-    deliveryChannelFilter?: pulumi.Input<inputs.resourcemanager.MultiAccountDeliveryChannelDeliveryChannelFilter>;
+    deliveryChannelFilter?: pulumi.Input<inputs.resourcemanager.MultiAccountDeliveryChannelDeliveryChannelFilter | undefined>;
     /**
      * The name of the delivery channel.
      */
-    multiAccountDeliveryChannelName?: pulumi.Input<string>;
+    multiAccountDeliveryChannelName?: pulumi.Input<string | undefined>;
     /**
      * The configurations for delivery of resource configuration change events. See `resourceChangeDelivery` below.
      */
-    resourceChangeDelivery?: pulumi.Input<inputs.resourcemanager.MultiAccountDeliveryChannelResourceChangeDelivery>;
+    resourceChangeDelivery?: pulumi.Input<inputs.resourcemanager.MultiAccountDeliveryChannelResourceChangeDelivery | undefined>;
     /**
      * The configurations for delivery of scheduled resource snapshots. See `resourceSnapshotDelivery` below.
      */
-    resourceSnapshotDelivery?: pulumi.Input<inputs.resourcemanager.MultiAccountDeliveryChannelResourceSnapshotDelivery>;
+    resourceSnapshotDelivery?: pulumi.Input<inputs.resourcemanager.MultiAccountDeliveryChannelResourceSnapshotDelivery | undefined>;
 }
 
 /**
@@ -207,9 +207,9 @@ export interface MultiAccountDeliveryChannelArgs {
     /**
      * The configurations for delivery of resource configuration change events. See `resourceChangeDelivery` below.
      */
-    resourceChangeDelivery?: pulumi.Input<inputs.resourcemanager.MultiAccountDeliveryChannelResourceChangeDelivery>;
+    resourceChangeDelivery?: pulumi.Input<inputs.resourcemanager.MultiAccountDeliveryChannelResourceChangeDelivery | undefined>;
     /**
      * The configurations for delivery of scheduled resource snapshots. See `resourceSnapshotDelivery` below.
      */
-    resourceSnapshotDelivery?: pulumi.Input<inputs.resourcemanager.MultiAccountDeliveryChannelResourceSnapshotDelivery>;
+    resourceSnapshotDelivery?: pulumi.Input<inputs.resourcemanager.MultiAccountDeliveryChannelResourceSnapshotDelivery | undefined>;
 }

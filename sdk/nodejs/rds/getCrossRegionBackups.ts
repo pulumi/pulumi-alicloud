@@ -148,17 +148,17 @@ export interface GetCrossRegionBackupsOutputArgs {
     /**
      * The ID of the cross-region data backup file.
      */
-    backupId?: pulumi.Input<string>;
+    backupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the cross-region data backup file.
      */
-    crossBackupId?: pulumi.Input<string>;
+    crossBackupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the destination region where the cross-region data backup file is stored.
      *
      * > **NOTE:** Note You must specify the `crossBackupId` parameter. Alternatively, you must specify the `startTime` and `endTime` parameters.
      */
-    crossBackupRegion?: pulumi.Input<string>;
+    crossBackupRegion?: pulumi.Input<string | undefined>;
     /**
      * The db instance id.
      */
@@ -166,21 +166,21 @@ export interface GetCrossRegionBackupsOutputArgs {
     /**
      * The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * A list of Cross Region Backup IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }

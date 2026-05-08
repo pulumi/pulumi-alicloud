@@ -22,11 +22,11 @@ __all__ = ['V3AsyncInvokeConfigArgs', 'V3AsyncInvokeConfig']
 class V3AsyncInvokeConfigArgs:
     def __init__(__self__, *,
                  function_name: pulumi.Input[_builtins.str],
-                 async_task: Optional[pulumi.Input[_builtins.bool]] = None,
-                 destination_config: Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigArgs']] = None,
-                 max_async_event_age_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_async_retry_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None):
+                 async_task: pulumi.Input[Optional[_builtins.bool]] = None,
+                 destination_config: pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigArgs']] = None,
+                 max_async_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_async_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a V3AsyncInvokeConfig resource.
 
@@ -63,77 +63,77 @@ class V3AsyncInvokeConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="asyncTask")
-    def async_task(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def async_task(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable an asynchronous task
         """
         return pulumi.get(self, "async_task")
 
     @async_task.setter
-    def async_task(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def async_task(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "async_task", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationConfig")
-    def destination_config(self) -> Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigArgs']]:
+    def destination_config(self) -> pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigArgs']]:
         """
         Target Configuration See `destination_config` below.
         """
         return pulumi.get(self, "destination_config")
 
     @destination_config.setter
-    def destination_config(self, value: Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigArgs']]):
+    def destination_config(self, value: pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigArgs']]):
         pulumi.set(self, "destination_config", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAsyncEventAgeInSeconds")
-    def max_async_event_age_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_async_event_age_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Event maximum survival time
         """
         return pulumi.get(self, "max_async_event_age_in_seconds")
 
     @max_async_event_age_in_seconds.setter
-    def max_async_event_age_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_async_event_age_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_async_event_age_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAsyncRetryAttempts")
-    def max_async_retry_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_async_retry_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of Asynchronous call retries
         """
         return pulumi.get(self, "max_async_retry_attempts")
 
     @max_async_retry_attempts.setter
-    def max_async_retry_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_async_retry_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_async_retry_attempts", value)
 
     @_builtins.property
     @pulumi.getter
-    def qualifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qualifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function version or alias
         """
         return pulumi.get(self, "qualifier")
 
     @qualifier.setter
-    def qualifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qualifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qualifier", value)
 
 
 @pulumi.input_type
 class _V3AsyncInvokeConfigState:
     def __init__(__self__, *,
-                 async_task: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_config: Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigArgs']] = None,
-                 function_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_async_event_age_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_async_retry_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None):
+                 async_task: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_config: pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigArgs']] = None,
+                 function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_async_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_async_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V3AsyncInvokeConfig resources.
 
@@ -168,110 +168,110 @@ class _V3AsyncInvokeConfigState:
 
     @_builtins.property
     @pulumi.getter(name="asyncTask")
-    def async_task(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def async_task(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable an asynchronous task
         """
         return pulumi.get(self, "async_task")
 
     @async_task.setter
-    def async_task(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def async_task(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "async_task", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationConfig")
-    def destination_config(self) -> Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigArgs']]:
+    def destination_config(self) -> pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigArgs']]:
         """
         Target Configuration See `destination_config` below.
         """
         return pulumi.get(self, "destination_config")
 
     @destination_config.setter
-    def destination_config(self, value: Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigArgs']]):
+    def destination_config(self, value: pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigArgs']]):
         pulumi.set(self, "destination_config", value)
 
     @_builtins.property
     @pulumi.getter(name="functionArn")
-    def function_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.234.0) Function resource identification
         """
         return pulumi.get(self, "function_arn")
 
     @function_arn.setter
-    def function_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function Name
         """
         return pulumi.get(self, "function_name")
 
     @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_name", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.234.0) Last modification time
         """
         return pulumi.get(self, "last_modified_time")
 
     @last_modified_time.setter
-    def last_modified_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAsyncEventAgeInSeconds")
-    def max_async_event_age_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_async_event_age_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Event maximum survival time
         """
         return pulumi.get(self, "max_async_event_age_in_seconds")
 
     @max_async_event_age_in_seconds.setter
-    def max_async_event_age_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_async_event_age_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_async_event_age_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAsyncRetryAttempts")
-    def max_async_retry_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_async_retry_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of Asynchronous call retries
         """
         return pulumi.get(self, "max_async_retry_attempts")
 
     @max_async_retry_attempts.setter
-    def max_async_retry_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_async_retry_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_async_retry_attempts", value)
 
     @_builtins.property
     @pulumi.getter
-    def qualifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qualifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function version or alias
         """
         return pulumi.get(self, "qualifier")
 
     @qualifier.setter
-    def qualifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qualifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qualifier", value)
 
 
@@ -281,12 +281,12 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 async_task: Optional[pulumi.Input[_builtins.bool]] = None,
-                 destination_config: Optional[pulumi.Input[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict']]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_async_event_age_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_async_retry_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 async_task: pulumi.Input[Optional[_builtins.bool]] = None,
+                 destination_config: pulumi.Input[Optional[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict']]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_async_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_async_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a FCV3 Async Invoke Config resource.
@@ -512,12 +512,12 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 async_task: Optional[pulumi.Input[_builtins.bool]] = None,
-                 destination_config: Optional[pulumi.Input[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict']]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_async_event_age_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_async_retry_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 async_task: pulumi.Input[Optional[_builtins.bool]] = None,
+                 destination_config: pulumi.Input[Optional[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict']]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_async_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_async_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -548,15 +548,15 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            async_task: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_config: Optional[pulumi.Input[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict']]] = None,
-            function_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            function_name: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-            max_async_event_age_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            max_async_retry_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-            qualifier: Optional[pulumi.Input[_builtins.str]] = None) -> 'V3AsyncInvokeConfig':
+            async_task: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_config: pulumi.Input[Optional[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict']]] = None,
+            function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            max_async_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            max_async_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+            qualifier: pulumi.Input[Optional[_builtins.str]] = None) -> 'V3AsyncInvokeConfig':
         """
         Get an existing V3AsyncInvokeConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

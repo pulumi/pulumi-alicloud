@@ -106,13 +106,13 @@ export interface GetVersionsOutputArgs {
      * - Default: Standard Edition
      * - Pro: Professional Edition
      */
-    edition?: pulumi.Input<string>;
+    edition?: pulumi.Input<string | undefined>;
     /**
      * A list of ASM versions. Its element formats as `<edition>:<version>`.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

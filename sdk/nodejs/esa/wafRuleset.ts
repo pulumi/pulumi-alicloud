@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     planSubscribeType: "enterpriseplan",
  * });
  * const defaultWafRuleset = new alicloud.esa.WafRuleset("default", {
- *     siteId: _default.then(_default => _default.sites?.[0]?.siteId),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.siteId)).apply(x =>String(x)),
  *     phase: "http_custom",
  *     siteVersion: 0,
  *     name: name,
@@ -145,29 +145,29 @@ export interface WafRulesetState {
     /**
      * The ruleset name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The WAF phase
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * waf rule set id
      */
-    rulesetId?: pulumi.Input<number>;
+    rulesetId?: pulumi.Input<number | undefined>;
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The site version.
      *
      * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
     /**
      * Rule Set Status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -177,7 +177,7 @@ export interface WafRulesetArgs {
     /**
      * The ruleset name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The WAF phase
      */
@@ -191,9 +191,9 @@ export interface WafRulesetArgs {
      *
      * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
     /**
      * Rule Set Status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

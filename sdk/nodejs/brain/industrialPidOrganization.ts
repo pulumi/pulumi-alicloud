@@ -104,11 +104,11 @@ export interface IndustrialPidOrganizationState {
     /**
      * The ID of parent pid organization.
      */
-    parentPidOrganizationId?: pulumi.Input<string>;
+    parentPidOrganizationId?: pulumi.Input<string | undefined>;
     /**
      * The name of pid organization.
      */
-    pidOrganizationName?: pulumi.Input<string>;
+    pidOrganizationName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -118,7 +118,7 @@ export interface IndustrialPidOrganizationArgs {
     /**
      * The ID of parent pid organization.
      */
-    parentPidOrganizationId?: pulumi.Input<string>;
+    parentPidOrganizationId?: pulumi.Input<string | undefined>;
     /**
      * The name of pid organization.
      */

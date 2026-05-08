@@ -25,32 +25,32 @@ class ContainerGroupArgs:
                  containers: pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]],
                  security_group_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]] = None,
-                 auto_create_eip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_match_image_cache: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 dns_config: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']] = None,
-                 dns_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 eip_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ephemeral_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
-                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]] = None,
-                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]] = None,
-                 insecure_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.float]] = None,
-                 plain_http_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restart_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_context: Optional[pulumi.Input['ContainerGroupSecurityContextArgs']] = None,
-                 spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 termination_grace_period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 acr_registry_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]] = None,
+                 auto_create_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_match_image_cache: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 dns_config: pulumi.Input[Optional['ContainerGroupDnsConfigArgs']] = None,
+                 dns_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 eip_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ephemeral_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_aliases: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
+                 image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]] = None,
+                 init_containers: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]] = None,
+                 insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.float]] = None,
+                 plain_http_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_context: pulumi.Input[Optional['ContainerGroupSecurityContextArgs']] = None,
+                 spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 termination_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ContainerGroup resource.
 
@@ -196,271 +196,271 @@ class ContainerGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="acrRegistryInfos")
-    def acr_registry_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]]:
+    def acr_registry_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]]:
         """
         The ACR enterprise edition example properties. See `acr_registry_info` below.
         """
         return pulumi.get(self, "acr_registry_infos")
 
     @acr_registry_infos.setter
-    def acr_registry_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]]):
+    def acr_registry_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]]):
         pulumi.set(self, "acr_registry_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="autoCreateEip")
-    def auto_create_eip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_create_eip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
         """
         return pulumi.get(self, "auto_create_eip")
 
     @auto_create_eip.setter
-    def auto_create_eip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_create_eip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_create_eip", value)
 
     @_builtins.property
     @pulumi.getter(name="autoMatchImageCache")
-    def auto_match_image_cache(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_match_image_cache(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "auto_match_image_cache")
 
     @auto_match_image_cache.setter
-    def auto_match_image_cache(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_match_image_cache(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_match_image_cache", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of CPU resources allocated to the container group.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsConfig")
-    def dns_config(self) -> Optional[pulumi.Input['ContainerGroupDnsConfigArgs']]:
+    def dns_config(self) -> pulumi.Input[Optional['ContainerGroupDnsConfigArgs']]:
         """
         The structure of dnsConfig. See `dns_config` below.
         """
         return pulumi.get(self, "dns_config")
 
     @dns_config.setter
-    def dns_config(self, value: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']]):
+    def dns_config(self, value: pulumi.Input[Optional['ContainerGroupDnsConfigArgs']]):
         pulumi.set(self, "dns_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsPolicy")
-    def dns_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
         """
         return pulumi.get(self, "dns_policy")
 
     @dns_policy.setter
-    def dns_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="eipBandwidth")
-    def eip_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def eip_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth of the EIP. Default value: `5`.
         """
         return pulumi.get(self, "eip_bandwidth")
 
     @eip_bandwidth.setter
-    def eip_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def eip_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "eip_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="eipInstanceId")
-    def eip_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eip_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the elastic IP address (EIP).
         """
         return pulumi.get(self, "eip_instance_id")
 
     @eip_instance_id.setter
-    def eip_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eip_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eip_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ephemeralStorage")
-    def ephemeral_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ephemeral_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the temporary storage space to add. Unit: GiB.
         """
         return pulumi.get(self, "ephemeral_storage")
 
     @ephemeral_storage.setter
-    def ephemeral_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ephemeral_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ephemeral_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="hostAliases")
-    def host_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]:
+    def host_aliases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]:
         """
         HostAliases. See `host_aliases` below.
         """
         return pulumi.get(self, "host_aliases")
 
     @host_aliases.setter
-    def host_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]):
+    def host_aliases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]):
         pulumi.set(self, "host_aliases", value)
 
     @_builtins.property
     @pulumi.getter(name="imageRegistryCredentials")
-    def image_registry_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]]:
+    def image_registry_credentials(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]]:
         """
         The image registry credential. See `image_registry_credential` below.
         """
         return pulumi.get(self, "image_registry_credentials")
 
     @image_registry_credentials.setter
-    def image_registry_credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]]):
+    def image_registry_credentials(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]]):
         pulumi.set(self, "image_registry_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="initContainers")
-    def init_containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]]:
+    def init_containers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]]:
         """
         The list of initContainers. See `init_containers` below.
         """
         return pulumi.get(self, "init_containers")
 
     @init_containers.setter
-    def init_containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]]):
+    def init_containers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]]):
         pulumi.set(self, "init_containers", value)
 
     @_builtins.property
     @pulumi.getter(name="insecureRegistry")
-    def insecure_registry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def insecure_registry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
         """
         return pulumi.get(self, "insecure_registry")
 
     @insecure_registry.setter
-    def insecure_registry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def insecure_registry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "insecure_registry", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the ECS instance.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of memory resources allocated to the container group.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter(name="plainHttpRegistry")
-    def plain_http_registry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plain_http_registry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
         """
         return pulumi.get(self, "plain_http_registry")
 
     @plain_http_registry.setter
-    def plain_http_registry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plain_http_registry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plain_http_registry", value)
 
     @_builtins.property
     @pulumi.getter(name="ramRoleName")
-    def ram_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ram_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         """
         return pulumi.get(self, "ram_role_name")
 
     @ram_role_name.setter
-    def ram_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ram_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ram_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="restartPolicy")
-    def restart_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restart_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         """
         return pulumi.get(self, "restart_policy")
 
     @restart_policy.setter
-    def restart_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restart_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restart_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="securityContext")
-    def security_context(self) -> Optional[pulumi.Input['ContainerGroupSecurityContextArgs']]:
+    def security_context(self) -> pulumi.Input[Optional['ContainerGroupSecurityContextArgs']]:
         """
         The security context of the container group. See `security_context` below.
         """
         return pulumi.get(self, "security_context")
 
     @security_context.setter
-    def security_context(self, value: Optional[pulumi.Input['ContainerGroupSecurityContextArgs']]):
+    def security_context(self, value: pulumi.Input[Optional['ContainerGroupSecurityContextArgs']]):
         pulumi.set(self, "security_context", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPriceLimit")
-    def spot_price_limit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def spot_price_limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The maximum hourly price of the ECI spot instance.
         """
         return pulumi.get(self, "spot_price_limit")
 
     @spot_price_limit.setter
-    def spot_price_limit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def spot_price_limit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "spot_price_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="spotStrategy")
-    def spot_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
         """
         return pulumi.get(self, "spot_strategy")
 
     @spot_strategy.setter
-    def spot_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -469,82 +469,82 @@ class ContainerGroupArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationGracePeriodSeconds")
-    def termination_grace_period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def termination_grace_period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The buffer time during which the program handles operations before the program stops. Unit: seconds.
         """
         return pulumi.get(self, "termination_grace_period_seconds")
 
     @termination_grace_period_seconds.setter
-    def termination_grace_period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def termination_grace_period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "termination_grace_period_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]]:
+    def volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]]:
         """
         The list of volumes. See `volumes` below.
         """
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]]):
+    def volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]]):
         pulumi.set(self, "volumes", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _ContainerGroupState:
     def __init__(__self__, *,
-                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]] = None,
-                 auto_create_eip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_match_image_cache: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 dns_config: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']] = None,
-                 dns_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 eip_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ephemeral_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
-                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]] = None,
-                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]] = None,
-                 insecure_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 intranet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.float]] = None,
-                 plain_http_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restart_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_context: Optional[pulumi.Input['ContainerGroupSecurityContextArgs']] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 termination_grace_period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 acr_registry_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]] = None,
+                 auto_create_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_match_image_cache: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 dns_config: pulumi.Input[Optional['ContainerGroupDnsConfigArgs']] = None,
+                 dns_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 eip_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ephemeral_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_aliases: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
+                 image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]] = None,
+                 init_containers: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]] = None,
+                 insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 intranet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.float]] = None,
+                 plain_http_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_context: pulumi.Input[Optional['ContainerGroupSecurityContextArgs']] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 termination_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContainerGroup resources.
 
@@ -654,343 +654,343 @@ class _ContainerGroupState:
 
     @_builtins.property
     @pulumi.getter(name="acrRegistryInfos")
-    def acr_registry_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]]:
+    def acr_registry_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]]:
         """
         The ACR enterprise edition example properties. See `acr_registry_info` below.
         """
         return pulumi.get(self, "acr_registry_infos")
 
     @acr_registry_infos.setter
-    def acr_registry_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]]):
+    def acr_registry_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]]):
         pulumi.set(self, "acr_registry_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="autoCreateEip")
-    def auto_create_eip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_create_eip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
         """
         return pulumi.get(self, "auto_create_eip")
 
     @auto_create_eip.setter
-    def auto_create_eip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_create_eip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_create_eip", value)
 
     @_builtins.property
     @pulumi.getter(name="autoMatchImageCache")
-    def auto_match_image_cache(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_match_image_cache(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "auto_match_image_cache")
 
     @auto_match_image_cache.setter
-    def auto_match_image_cache(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_match_image_cache(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_match_image_cache", value)
 
     @_builtins.property
     @pulumi.getter(name="containerGroupName")
-    def container_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the container group.
         """
         return pulumi.get(self, "container_group_name")
 
     @container_group_name.setter
-    def container_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]]:
+    def containers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]]:
         """
         The list of containers. See `containers` below.
         """
         return pulumi.get(self, "containers")
 
     @containers.setter
-    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]]):
+    def containers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]]):
         pulumi.set(self, "containers", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of CPU resources allocated to the container group.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsConfig")
-    def dns_config(self) -> Optional[pulumi.Input['ContainerGroupDnsConfigArgs']]:
+    def dns_config(self) -> pulumi.Input[Optional['ContainerGroupDnsConfigArgs']]:
         """
         The structure of dnsConfig. See `dns_config` below.
         """
         return pulumi.get(self, "dns_config")
 
     @dns_config.setter
-    def dns_config(self, value: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']]):
+    def dns_config(self, value: pulumi.Input[Optional['ContainerGroupDnsConfigArgs']]):
         pulumi.set(self, "dns_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsPolicy")
-    def dns_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
         """
         return pulumi.get(self, "dns_policy")
 
     @dns_policy.setter
-    def dns_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="eipBandwidth")
-    def eip_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def eip_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth of the EIP. Default value: `5`.
         """
         return pulumi.get(self, "eip_bandwidth")
 
     @eip_bandwidth.setter
-    def eip_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def eip_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "eip_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="eipInstanceId")
-    def eip_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eip_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the elastic IP address (EIP).
         """
         return pulumi.get(self, "eip_instance_id")
 
     @eip_instance_id.setter
-    def eip_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eip_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eip_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ephemeralStorage")
-    def ephemeral_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ephemeral_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the temporary storage space to add. Unit: GiB.
         """
         return pulumi.get(self, "ephemeral_storage")
 
     @ephemeral_storage.setter
-    def ephemeral_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ephemeral_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ephemeral_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="hostAliases")
-    def host_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]:
+    def host_aliases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]:
         """
         HostAliases. See `host_aliases` below.
         """
         return pulumi.get(self, "host_aliases")
 
     @host_aliases.setter
-    def host_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]):
+    def host_aliases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]]):
         pulumi.set(self, "host_aliases", value)
 
     @_builtins.property
     @pulumi.getter(name="imageRegistryCredentials")
-    def image_registry_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]]:
+    def image_registry_credentials(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]]:
         """
         The image registry credential. See `image_registry_credential` below.
         """
         return pulumi.get(self, "image_registry_credentials")
 
     @image_registry_credentials.setter
-    def image_registry_credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]]):
+    def image_registry_credentials(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]]):
         pulumi.set(self, "image_registry_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="initContainers")
-    def init_containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]]:
+    def init_containers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]]:
         """
         The list of initContainers. See `init_containers` below.
         """
         return pulumi.get(self, "init_containers")
 
     @init_containers.setter
-    def init_containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]]):
+    def init_containers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]]):
         pulumi.set(self, "init_containers", value)
 
     @_builtins.property
     @pulumi.getter(name="insecureRegistry")
-    def insecure_registry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def insecure_registry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
         """
         return pulumi.get(self, "insecure_registry")
 
     @insecure_registry.setter
-    def insecure_registry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def insecure_registry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "insecure_registry", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the ECS instance.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="internetIp")
-    def internet_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.170.0) The Public IP of the container group.
         """
         return pulumi.get(self, "internet_ip")
 
     @internet_ip.setter
-    def internet_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="intranetIp")
-    def intranet_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def intranet_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.170.0) The Private IP of the container group.
         """
         return pulumi.get(self, "intranet_ip")
 
     @intranet_ip.setter
-    def intranet_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def intranet_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "intranet_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of memory resources allocated to the container group.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter(name="plainHttpRegistry")
-    def plain_http_registry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plain_http_registry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
         """
         return pulumi.get(self, "plain_http_registry")
 
     @plain_http_registry.setter
-    def plain_http_registry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plain_http_registry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plain_http_registry", value)
 
     @_builtins.property
     @pulumi.getter(name="ramRoleName")
-    def ram_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ram_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         """
         return pulumi.get(self, "ram_role_name")
 
     @ram_role_name.setter
-    def ram_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ram_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ram_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group. **NOTE:** From version 1.208.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="restartPolicy")
-    def restart_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restart_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
         """
         return pulumi.get(self, "restart_policy")
 
     @restart_policy.setter
-    def restart_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restart_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restart_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="securityContext")
-    def security_context(self) -> Optional[pulumi.Input['ContainerGroupSecurityContextArgs']]:
+    def security_context(self) -> pulumi.Input[Optional['ContainerGroupSecurityContextArgs']]:
         """
         The security context of the container group. See `security_context` below.
         """
         return pulumi.get(self, "security_context")
 
     @security_context.setter
-    def security_context(self, value: Optional[pulumi.Input['ContainerGroupSecurityContextArgs']]):
+    def security_context(self, value: pulumi.Input[Optional['ContainerGroupSecurityContextArgs']]):
         pulumi.set(self, "security_context", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPriceLimit")
-    def spot_price_limit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def spot_price_limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The maximum hourly price of the ECI spot instance.
         """
         return pulumi.get(self, "spot_price_limit")
 
     @spot_price_limit.setter
-    def spot_price_limit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def spot_price_limit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "spot_price_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="spotStrategy")
-    def spot_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
         """
         return pulumi.get(self, "spot_strategy")
 
     @spot_strategy.setter
-    def spot_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of container group.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -999,36 +999,36 @@ class _ContainerGroupState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationGracePeriodSeconds")
-    def termination_grace_period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def termination_grace_period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The buffer time during which the program handles operations before the program stops. Unit: seconds.
         """
         return pulumi.get(self, "termination_grace_period_seconds")
 
     @termination_grace_period_seconds.setter
-    def termination_grace_period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def termination_grace_period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "termination_grace_period_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]]:
+    def volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]]:
         """
         The list of volumes. See `volumes` below.
         """
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]]):
+    def volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]]):
         pulumi.set(self, "volumes", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
         **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
@@ -1036,19 +1036,19 @@ class _ContainerGroupState:
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -1058,36 +1058,36 @@ class ContainerGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]]] = None,
-                 auto_create_eip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_match_image_cache: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 dns_config: Optional[pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
-                 dns_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 eip_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ephemeral_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
-                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
-                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
-                 insecure_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.float]] = None,
-                 plain_http_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restart_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_context: Optional[pulumi.Input[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 termination_grace_period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 acr_registry_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]]] = None,
+                 auto_create_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_match_image_cache: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 dns_config: pulumi.Input[Optional[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
+                 dns_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 eip_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ephemeral_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
+                 image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
+                 init_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
+                 insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.float]] = None,
+                 plain_http_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_context: pulumi.Input[Optional[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 termination_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides ECI Container Group resource.
@@ -1122,8 +1122,8 @@ class ContainerGroup(pulumi.CustomResource):
             vpc_id=default_network.id)
         default_container_group = alicloud.eci.ContainerGroup("default",
             container_group_name=name,
-            cpu=8,
-            memory=16,
+            cpu=float(8),
+            memory=float(16),
             restart_policy="OnFailure",
             security_group_id=default_security_group.id,
             vswitch_id=default_switch.id,
@@ -1281,8 +1281,8 @@ class ContainerGroup(pulumi.CustomResource):
             vpc_id=default_network.id)
         default_container_group = alicloud.eci.ContainerGroup("default",
             container_group_name=name,
-            cpu=8,
-            memory=16,
+            cpu=float(8),
+            memory=float(16),
             restart_policy="OnFailure",
             security_group_id=default_security_group.id,
             vswitch_id=default_switch.id,
@@ -1380,36 +1380,36 @@ class ContainerGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]]] = None,
-                 auto_create_eip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_match_image_cache: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 dns_config: Optional[pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
-                 dns_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 eip_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ephemeral_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
-                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
-                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
-                 insecure_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.float]] = None,
-                 plain_http_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restart_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_context: Optional[pulumi.Input[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 termination_grace_period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 acr_registry_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]]] = None,
+                 auto_create_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_match_image_cache: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 dns_config: pulumi.Input[Optional[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
+                 dns_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 eip_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ephemeral_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
+                 image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
+                 init_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
+                 insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.float]] = None,
+                 plain_http_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_context: pulumi.Input[Optional[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 termination_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1470,39 +1470,39 @@ class ContainerGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]]] = None,
-            auto_create_eip: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_match_image_cache: Optional[pulumi.Input[_builtins.bool]] = None,
-            container_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
-            cpu: Optional[pulumi.Input[_builtins.float]] = None,
-            dns_config: Optional[pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
-            dns_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            eip_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ephemeral_storage: Optional[pulumi.Input[_builtins.int]] = None,
-            host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
-            image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
-            init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
-            insecure_registry: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            intranet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            memory: Optional[pulumi.Input[_builtins.float]] = None,
-            plain_http_registry: Optional[pulumi.Input[_builtins.str]] = None,
-            ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            restart_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            security_context: Optional[pulumi.Input[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
-            spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            termination_grace_period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ContainerGroup':
+            acr_registry_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupAcrRegistryInfoArgs', 'ContainerGroupAcrRegistryInfoArgsDict']]]]] = None,
+            auto_create_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_match_image_cache: pulumi.Input[Optional[_builtins.bool]] = None,
+            container_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
+            cpu: pulumi.Input[Optional[_builtins.float]] = None,
+            dns_config: pulumi.Input[Optional[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
+            dns_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            eip_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ephemeral_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            host_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
+            image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
+            init_containers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
+            insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            intranet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            memory: pulumi.Input[Optional[_builtins.float]] = None,
+            plain_http_registry: pulumi.Input[Optional[_builtins.str]] = None,
+            ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            restart_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            security_context: pulumi.Input[Optional[Union['ContainerGroupSecurityContextArgs', 'ContainerGroupSecurityContextArgsDict']]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+            spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            termination_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerGroupVolumeArgs', 'ContainerGroupVolumeArgsDict']]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ContainerGroup':
         """
         Get an existing ContainerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

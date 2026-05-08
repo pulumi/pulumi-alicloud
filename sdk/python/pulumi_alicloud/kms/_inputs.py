@@ -20,19 +20,19 @@ __all__ = [
 ]
 
 class InstanceBindVpcArgsDict(TypedDict):
-    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     region id
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VPC ID
     """
-    vpc_owner_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_owner_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VPC owner root user ID
     """
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     vswitch id
     """
@@ -40,10 +40,10 @@ class InstanceBindVpcArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceBindVpcArgs:
     def __init__(__self__, *,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] region_id: region id
         :param pulumi.Input[_builtins.str] vpc_id: VPC ID
@@ -61,50 +61,50 @@ class InstanceBindVpcArgs:
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         region id
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC ID
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcOwnerId")
-    def vpc_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC owner root user ID
         """
         return pulumi.get(self, "vpc_owner_id")
 
     @vpc_owner_id.setter
-    def vpc_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         vswitch id
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 

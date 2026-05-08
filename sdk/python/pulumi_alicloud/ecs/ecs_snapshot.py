@@ -20,16 +20,16 @@ __all__ = ['EcsSnapshotArgs', 'EcsSnapshot']
 class EcsSnapshotArgs:
     def __init__(__self__, *,
                  disk_id: pulumi.Input[_builtins.str],
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instant_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instant_access_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instant_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instant_access_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EcsSnapshot resource.
 
@@ -90,145 +90,145 @@ class EcsSnapshotArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category of the snapshot. Valid values:
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the snapshot.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="instantAccess")
     @_utilities.deprecated("""Field `instant_access` has been deprecated from provider version 1.231.0.""")
-    def instant_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def instant_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Field `instant_access` has been deprecated from provider version 1.231.0.
         """
         return pulumi.get(self, "instant_access")
 
     @instant_access.setter
-    def instant_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def instant_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "instant_access", value)
 
     @_builtins.property
     @pulumi.getter(name="instantAccessRetentionDays")
     @_utilities.deprecated("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
-    def instant_access_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instant_access_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         """
         return pulumi.get(self, "instant_access_retention_days")
 
     @instant_access_retention_days.setter
-    def instant_access_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instant_access_retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instant_access_retention_days", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
-    def retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_days", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotName")
-    def snapshot_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the snapshot.
         """
         return pulumi.get(self, "snapshot_name")
 
     @snapshot_name.setter
-    def snapshot_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _EcsSnapshotState:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instant_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instant_access_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instant_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instant_access_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering EcsSnapshot resources.
 
@@ -287,173 +287,173 @@ class _EcsSnapshotState:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category of the snapshot. Valid values:
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.239.0) The time when the snapshot was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the snapshot.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the disk.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="instantAccess")
     @_utilities.deprecated("""Field `instant_access` has been deprecated from provider version 1.231.0.""")
-    def instant_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def instant_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Field `instant_access` has been deprecated from provider version 1.231.0.
         """
         return pulumi.get(self, "instant_access")
 
     @instant_access.setter
-    def instant_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def instant_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "instant_access", value)
 
     @_builtins.property
     @pulumi.getter(name="instantAccessRetentionDays")
     @_utilities.deprecated("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
-    def instant_access_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instant_access_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         """
         return pulumi.get(self, "instant_access_retention_days")
 
     @instant_access_retention_days.setter
-    def instant_access_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instant_access_retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instant_access_retention_days", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.239.0) The region ID of the snapshot.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group. **NOTE:** From version 1.239.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
-    def retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_days", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotName")
-    def snapshot_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the snapshot.
         """
         return pulumi.get(self, "snapshot_name")
 
     @snapshot_name.setter
-    def snapshot_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Snapshot.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -463,17 +463,17 @@ class EcsSnapshot(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instant_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instant_access_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instant_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instant_access_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a ECS Snapshot resource.
@@ -664,17 +664,17 @@ class EcsSnapshot(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instant_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instant_access_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instant_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instant_access_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -710,20 +710,20 @@ class EcsSnapshot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            category: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            instant_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            instant_access_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-            snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'EcsSnapshot':
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            instant_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            instant_access_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'EcsSnapshot':
         """
         Get an existing EcsSnapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

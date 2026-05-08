@@ -138,19 +138,19 @@ export interface BasicAccelerateIpState {
     /**
      * The address of the Basic Accelerate IP.
      */
-    accelerateIpAddress?: pulumi.Input<string>;
+    accelerateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Basic GA instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Basic Ip Set.
      */
-    ipSetId?: pulumi.Input<string>;
+    ipSetId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Basic Accelerate IP instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -174,25 +174,25 @@ export class SnapshotPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SnapshotPolicy resources.
  */
 export interface SnapshotPolicyState {
-    autoSnapshotPolicyName?: pulumi.Input<string>;
-    copiedSnapshotsRetentionDays?: pulumi.Input<number>;
-    copyEncryptionConfiguration?: pulumi.Input<inputs.ecs.SnapshotPolicyCopyEncryptionConfiguration>;
-    createTime?: pulumi.Input<string>;
-    enableCrossRegionCopy?: pulumi.Input<boolean>;
+    autoSnapshotPolicyName?: pulumi.Input<string | undefined>;
+    copiedSnapshotsRetentionDays?: pulumi.Input<number | undefined>;
+    copyEncryptionConfiguration?: pulumi.Input<inputs.ecs.SnapshotPolicyCopyEncryptionConfiguration | undefined>;
+    createTime?: pulumi.Input<string | undefined>;
+    enableCrossRegionCopy?: pulumi.Input<boolean | undefined>;
     /**
      * The snapshot policy name.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      */
-    name?: pulumi.Input<string>;
-    regionId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
      * - A maximum of seven time points can be selected.
      * - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
      */
-    repeatWeekdays?: pulumi.Input<pulumi.Input<string>[]>;
-    resourceGroupId?: pulumi.Input<string>;
+    repeatWeekdays?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The snapshot retention time, and the unit of measurement is day. Optional values:
      * - -1: The automatic snapshots are retained permanently.
@@ -200,39 +200,39 @@ export interface SnapshotPolicyState {
      *
      * Default value: -1.
      */
-    retentionDays?: pulumi.Input<number>;
-    status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    targetCopyRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    retentionDays?: pulumi.Input<number | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    targetCopyRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
      * - A maximum of 24 time points can be selected.
      * - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
      */
-    timePoints?: pulumi.Input<pulumi.Input<string>[]>;
+    timePoints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a SnapshotPolicy resource.
  */
 export interface SnapshotPolicyArgs {
-    autoSnapshotPolicyName?: pulumi.Input<string>;
-    copiedSnapshotsRetentionDays?: pulumi.Input<number>;
-    copyEncryptionConfiguration?: pulumi.Input<inputs.ecs.SnapshotPolicyCopyEncryptionConfiguration>;
-    enableCrossRegionCopy?: pulumi.Input<boolean>;
+    autoSnapshotPolicyName?: pulumi.Input<string | undefined>;
+    copiedSnapshotsRetentionDays?: pulumi.Input<number | undefined>;
+    copyEncryptionConfiguration?: pulumi.Input<inputs.ecs.SnapshotPolicyCopyEncryptionConfiguration | undefined>;
+    enableCrossRegionCopy?: pulumi.Input<boolean | undefined>;
     /**
      * The snapshot policy name.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
      * - A maximum of seven time points can be selected.
      * - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
      */
     repeatWeekdays: pulumi.Input<pulumi.Input<string>[]>;
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The snapshot retention time, and the unit of measurement is day. Optional values:
      * - -1: The automatic snapshots are retained permanently.
@@ -241,8 +241,8 @@ export interface SnapshotPolicyArgs {
      * Default value: -1.
      */
     retentionDays: pulumi.Input<number>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    targetCopyRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    targetCopyRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
      * - A maximum of 24 time points can be selected.

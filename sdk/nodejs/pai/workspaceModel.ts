@@ -201,51 +201,51 @@ export interface WorkspaceModelState {
      * - `PRIVATE`: In this workspace, it is only visible to you and the administrator.
      * - `PUBLIC`: In this workspace, it is visible to everyone.
      */
-    accessibility?: pulumi.Input<string>;
+    accessibility?: pulumi.Input<string | undefined>;
     /**
      * The domain of the model. Describe the domain in which the model solves the problem. For example: nlp (natural language processing), cv (computer vision), etc.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Other information about the model.
      */
-    extraInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    extraInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A list of tags. See `labels` below.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.pai.WorkspaceModelLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.pai.WorkspaceModelLabel>[] | undefined>;
     /**
      * The model description, used to distinguish different models.
      */
-    modelDescription?: pulumi.Input<string>;
+    modelDescription?: pulumi.Input<string | undefined>;
     /**
      * The documentation of the model.
      */
-    modelDoc?: pulumi.Input<string>;
+    modelDoc?: pulumi.Input<string | undefined>;
     /**
      * The name of the model. The name must be 1 to 127 characters in length.
      */
-    modelName?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string | undefined>;
     /**
      * The model type. Example: Checkpoint or LoRA.
      */
-    modelType?: pulumi.Input<string>;
+    modelType?: pulumi.Input<string | undefined>;
     /**
      * The sequence number of the model. Can be used for custom sorting.
      */
-    orderNumber?: pulumi.Input<number>;
+    orderNumber?: pulumi.Input<number | undefined>;
     /**
      * The source of the model. The community or organization to which the source model belongs, such as ModelScope or HuggingFace.
      */
-    origin?: pulumi.Input<string>;
+    origin?: pulumi.Input<string | undefined>;
     /**
      * The task of the model. Describes the specific problem that the model solves. Example: text-classification.
      */
-    task?: pulumi.Input<string>;
+    task?: pulumi.Input<string | undefined>;
     /**
      * The ID of the workspace.
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -257,27 +257,27 @@ export interface WorkspaceModelArgs {
      * - `PRIVATE`: In this workspace, it is only visible to you and the administrator.
      * - `PUBLIC`: In this workspace, it is visible to everyone.
      */
-    accessibility?: pulumi.Input<string>;
+    accessibility?: pulumi.Input<string | undefined>;
     /**
      * The domain of the model. Describe the domain in which the model solves the problem. For example: nlp (natural language processing), cv (computer vision), etc.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Other information about the model.
      */
-    extraInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    extraInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A list of tags. See `labels` below.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.pai.WorkspaceModelLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.pai.WorkspaceModelLabel>[] | undefined>;
     /**
      * The model description, used to distinguish different models.
      */
-    modelDescription?: pulumi.Input<string>;
+    modelDescription?: pulumi.Input<string | undefined>;
     /**
      * The documentation of the model.
      */
-    modelDoc?: pulumi.Input<string>;
+    modelDoc?: pulumi.Input<string | undefined>;
     /**
      * The name of the model. The name must be 1 to 127 characters in length.
      */
@@ -285,21 +285,21 @@ export interface WorkspaceModelArgs {
     /**
      * The model type. Example: Checkpoint or LoRA.
      */
-    modelType?: pulumi.Input<string>;
+    modelType?: pulumi.Input<string | undefined>;
     /**
      * The sequence number of the model. Can be used for custom sorting.
      */
-    orderNumber?: pulumi.Input<number>;
+    orderNumber?: pulumi.Input<number | undefined>;
     /**
      * The source of the model. The community or organization to which the source model belongs, such as ModelScope or HuggingFace.
      */
-    origin?: pulumi.Input<string>;
+    origin?: pulumi.Input<string | undefined>;
     /**
      * The task of the model. Describes the specific problem that the model solves. Example: text-classification.
      */
-    task?: pulumi.Input<string>;
+    task?: pulumi.Input<string | undefined>;
     /**
      * The ID of the workspace.
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }

@@ -103,7 +103,7 @@ export interface AiTrafficAnalysisStatusState {
     /**
      * Status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -113,5 +113,5 @@ export interface AiTrafficAnalysisStatusArgs {
     /**
      * Status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

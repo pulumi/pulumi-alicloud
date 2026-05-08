@@ -46,8 +46,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -89,8 +89,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -132,8 +132,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -175,8 +175,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -218,8 +218,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -261,8 +261,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -304,8 +304,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -350,8 +350,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetLaunchOptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -400,8 +400,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetLaunchOptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -450,8 +450,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetLaunchOptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -500,8 +500,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetLaunchOptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -550,8 +550,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetLaunchOptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -597,8 +597,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -641,8 +641,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -685,8 +685,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -729,8 +729,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -773,8 +773,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -817,8 +817,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -861,8 +861,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -908,8 +908,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProductAsEndUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -954,8 +954,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProductAsEndUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1000,8 +1000,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProductAsEndUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1046,8 +1046,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProductAsEndUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1092,8 +1092,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProductAsEndUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1138,8 +1138,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProductAsEndUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1184,8 +1184,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProductAsEndUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1227,8 +1227,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProductVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1271,8 +1271,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProductVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1315,8 +1315,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProductVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1359,8 +1359,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProductVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1403,8 +1403,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProductVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1449,8 +1449,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProvisionedProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1495,8 +1495,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProvisionedProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1541,8 +1541,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProvisionedProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1587,8 +1587,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProvisionedProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1633,8 +1633,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProvisionedProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1679,8 +1679,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProvisionedProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1725,8 +1725,8 @@ public final class ServicecatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
      * import com.pulumi.alicloud.servicecatalog.inputs.GetProvisionedProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

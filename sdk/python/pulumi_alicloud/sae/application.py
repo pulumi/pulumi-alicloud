@@ -24,72 +24,72 @@ class ApplicationArgs:
                  app_name: pulumi.Input[_builtins.str],
                  package_type: pulumi.Input[_builtins.str],
                  replicas: pulumi.Input[_builtins.int],
-                 acr_assume_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 acr_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_enable_application_scaling_rule: Optional[pulumi.Input[_builtins.bool]] = None,
-                 batch_wait_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 change_order_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 command: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_args: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_args_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 config_map_mount_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_map_mount_desc_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_host_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_host_alias_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]] = None,
-                 deploy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edas_container_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ahas: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_grey_tag_route: Optional[pulumi.Input[_builtins.bool]] = None,
-                 envs: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_pull_secrets: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 jar_start_args: Optional[pulumi.Input[_builtins.str]] = None,
-                 jar_start_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdk: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_configs: Optional[pulumi.Input['ApplicationKafkaConfigsArgs']] = None,
-                 liveness: Optional[pulumi.Input[_builtins.str]] = None,
-                 liveness_v2: Optional[pulumi.Input['ApplicationLivenessV2Args']] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 micro_registration: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_ready_instance_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ready_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]] = None,
-                 oss_ak_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_ak_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_mount_descs: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_mount_descs_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]] = None,
-                 package_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 php: Optional[pulumi.Input[_builtins.str]] = None,
-                 php_arms_config_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 php_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 php_config_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_start_v2: Optional[pulumi.Input['ApplicationPostStartV2Args']] = None,
-                 pre_stop: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_stop_v2: Optional[pulumi.Input['ApplicationPreStopV2Args']] = None,
-                 programming_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 pvtz_discovery_svc: Optional[pulumi.Input['ApplicationPvtzDiscoverySvcArgs']] = None,
-                 readiness: Optional[pulumi.Input[_builtins.str]] = None,
-                 readiness_v2: Optional[pulumi.Input['ApplicationReadinessV2Args']] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_configs: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 termination_grace_period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 tomcat_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 tomcat_config_v2: Optional[pulumi.Input['ApplicationTomcatConfigV2Args']] = None,
-                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_strategy_v2: Optional[pulumi.Input['ApplicationUpdateStrategyV2Args']] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 war_start_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_container: Optional[pulumi.Input[_builtins.str]] = None):
+                 acr_assume_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 acr_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_enable_application_scaling_rule: pulumi.Input[Optional[_builtins.bool]] = None,
+                 batch_wait_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 change_order_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 command: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_args: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_args_v2s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 config_map_mount_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_map_mount_desc_v2s: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_host_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_host_alias_v2s: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]] = None,
+                 deploy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edas_container_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ahas: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_grey_tag_route: pulumi.Input[Optional[_builtins.bool]] = None,
+                 envs: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_pull_secrets: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 jar_start_args: pulumi.Input[Optional[_builtins.str]] = None,
+                 jar_start_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdk: pulumi.Input[Optional[_builtins.str]] = None,
+                 kafka_configs: pulumi.Input[Optional['ApplicationKafkaConfigsArgs']] = None,
+                 liveness: pulumi.Input[Optional[_builtins.str]] = None,
+                 liveness_v2: pulumi.Input[Optional['ApplicationLivenessV2Args']] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 micro_registration: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_ready_instance_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ready_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]] = None,
+                 oss_ak_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_ak_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_mount_descs: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_mount_descs_v2s: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]] = None,
+                 package_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 php: pulumi.Input[Optional[_builtins.str]] = None,
+                 php_arms_config_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 php_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 php_config_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_start_v2: pulumi.Input[Optional['ApplicationPostStartV2Args']] = None,
+                 pre_stop: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_stop_v2: pulumi.Input[Optional['ApplicationPreStopV2Args']] = None,
+                 programming_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 pvtz_discovery_svc: pulumi.Input[Optional['ApplicationPvtzDiscoverySvcArgs']] = None,
+                 readiness: pulumi.Input[Optional[_builtins.str]] = None,
+                 readiness_v2: pulumi.Input[Optional['ApplicationReadinessV2Args']] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_configs: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 termination_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 tomcat_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 tomcat_config_v2: pulumi.Input[Optional['ApplicationTomcatConfigV2Args']] = None,
+                 update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_strategy_v2: pulumi.Input[Optional['ApplicationUpdateStrategyV2Args']] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 war_start_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_container: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Application resource.
 
@@ -383,323 +383,323 @@ class ApplicationArgs:
 
     @_builtins.property
     @pulumi.getter(name="acrAssumeRoleArn")
-    def acr_assume_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acr_assume_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
         """
         return pulumi.get(self, "acr_assume_role_arn")
 
     @acr_assume_role_arn.setter
-    def acr_assume_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acr_assume_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acr_assume_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="acrInstanceId")
-    def acr_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acr_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
         """
         return pulumi.get(self, "acr_instance_id")
 
     @acr_instance_id.setter
-    def acr_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acr_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acr_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appDescription")
-    def app_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
         """
         return pulumi.get(self, "app_description")
 
     @app_description.setter
-    def app_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_description", value)
 
     @_builtins.property
     @pulumi.getter(name="autoConfig")
-    def auto_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_config(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The auto config. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_config")
 
     @auto_config.setter
-    def auto_config(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_config(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autoEnableApplicationScalingRule")
-    def auto_enable_application_scaling_rule(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_enable_application_scaling_rule(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The auto enable application scaling rule. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_enable_application_scaling_rule")
 
     @auto_enable_application_scaling_rule.setter
-    def auto_enable_application_scaling_rule(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_enable_application_scaling_rule(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_enable_application_scaling_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="batchWaitTime")
-    def batch_wait_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def batch_wait_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The batch wait time.
         """
         return pulumi.get(self, "batch_wait_time")
 
     @batch_wait_time.setter
-    def batch_wait_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def batch_wait_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "batch_wait_time", value)
 
     @_builtins.property
     @pulumi.getter(name="changeOrderDesc")
-    def change_order_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def change_order_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The change order desc.
         """
         return pulumi.get(self, "change_order_desc")
 
     @change_order_desc.setter
-    def change_order_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def change_order_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "change_order_desc", value)
 
     @_builtins.property
     @pulumi.getter
-    def command(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
         """
         return pulumi.get(self, "command")
 
     @command.setter
-    def command(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command", value)
 
     @_builtins.property
     @pulumi.getter(name="commandArgs")
     @_utilities.deprecated("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
-    def command_args(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command_args(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
         """
         return pulumi.get(self, "command_args")
 
     @command_args.setter
-    def command_args(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command_args(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command_args", value)
 
     @_builtins.property
     @pulumi.getter(name="commandArgsV2s")
-    def command_args_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def command_args_v2s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The parameters of the image startup command.
         """
         return pulumi.get(self, "command_args_v2s")
 
     @command_args_v2s.setter
-    def command_args_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def command_args_v2s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "command_args_v2s", value)
 
     @_builtins.property
     @pulumi.getter(name="configMapMountDesc")
     @_utilities.deprecated("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
-    def config_map_mount_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_map_mount_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
         """
         return pulumi.get(self, "config_map_mount_desc")
 
     @config_map_mount_desc.setter
-    def config_map_mount_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_map_mount_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_map_mount_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="configMapMountDescV2s")
-    def config_map_mount_desc_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]]:
+    def config_map_mount_desc_v2s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]]:
         """
         The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
         """
         return pulumi.get(self, "config_map_mount_desc_v2s")
 
     @config_map_mount_desc_v2s.setter
-    def config_map_mount_desc_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]]):
+    def config_map_mount_desc_v2s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]]):
         pulumi.set(self, "config_map_mount_desc_v2s", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="customHostAlias")
     @_utilities.deprecated("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
-    def custom_host_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_host_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
         """
         return pulumi.get(self, "custom_host_alias")
 
     @custom_host_alias.setter
-    def custom_host_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_host_alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_host_alias", value)
 
     @_builtins.property
     @pulumi.getter(name="customHostAliasV2s")
-    def custom_host_alias_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]]:
+    def custom_host_alias_v2s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]]:
         """
         The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
         """
         return pulumi.get(self, "custom_host_alias_v2s")
 
     @custom_host_alias_v2s.setter
-    def custom_host_alias_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]]):
+    def custom_host_alias_v2s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]]):
         pulumi.set(self, "custom_host_alias_v2s", value)
 
     @_builtins.property
     @pulumi.getter
-    def deploy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deploy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The deploy. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "deploy")
 
     @deploy.setter
-    def deploy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deploy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deploy", value)
 
     @_builtins.property
     @pulumi.getter(name="edasContainerVersion")
-    def edas_container_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edas_container_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operating environment used by the Pandora application.
         """
         return pulumi.get(self, "edas_container_version")
 
     @edas_container_version.setter
-    def edas_container_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edas_container_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edas_container_version", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAhas")
-    def enable_ahas(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_ahas(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The enable ahas. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_ahas")
 
     @enable_ahas.setter
-    def enable_ahas(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_ahas(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_ahas", value)
 
     @_builtins.property
     @pulumi.getter(name="enableGreyTagRoute")
-    def enable_grey_tag_route(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_grey_tag_route(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The enable grey tag route. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_grey_tag_route")
 
     @enable_grey_tag_route.setter
-    def enable_grey_tag_route(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_grey_tag_route(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_grey_tag_route", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def envs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
         """
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def envs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter(name="imagePullSecrets")
-    def image_pull_secrets(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_pull_secrets(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the corresponding Secret.
         """
         return pulumi.get(self, "image_pull_secrets")
 
     @image_pull_secrets.setter
-    def image_pull_secrets(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_pull_secrets(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_pull_secrets", value)
 
     @_builtins.property
     @pulumi.getter(name="imageUrl")
-    def image_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mirror address. Only Image type applications can configure the mirror address.
         """
         return pulumi.get(self, "image_url")
 
     @image_url.setter
-    def image_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_url", value)
 
     @_builtins.property
     @pulumi.getter(name="jarStartArgs")
-    def jar_start_args(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jar_start_args(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         """
         return pulumi.get(self, "jar_start_args")
 
     @jar_start_args.setter
-    def jar_start_args(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jar_start_args(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jar_start_args", value)
 
     @_builtins.property
     @pulumi.getter(name="jarStartOptions")
-    def jar_start_options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jar_start_options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         """
         return pulumi.get(self, "jar_start_options")
 
     @jar_start_options.setter
-    def jar_start_options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jar_start_options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jar_start_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def jdk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jdk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JDK version that the deployment package depends on. Image type applications are not supported.
         """
         return pulumi.get(self, "jdk")
 
     @jdk.setter
-    def jdk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jdk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jdk", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaConfigs")
-    def kafka_configs(self) -> Optional[pulumi.Input['ApplicationKafkaConfigsArgs']]:
+    def kafka_configs(self) -> pulumi.Input[Optional['ApplicationKafkaConfigsArgs']]:
         """
         The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
         """
         return pulumi.get(self, "kafka_configs")
 
     @kafka_configs.setter
-    def kafka_configs(self, value: Optional[pulumi.Input['ApplicationKafkaConfigsArgs']]):
+    def kafka_configs(self, value: pulumi.Input[Optional['ApplicationKafkaConfigsArgs']]):
         pulumi.set(self, "kafka_configs", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
-    def liveness(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def liveness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
         **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
@@ -707,48 +707,48 @@ class ApplicationArgs:
         return pulumi.get(self, "liveness")
 
     @liveness.setter
-    def liveness(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def liveness(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "liveness", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessV2")
-    def liveness_v2(self) -> Optional[pulumi.Input['ApplicationLivenessV2Args']]:
+    def liveness_v2(self) -> pulumi.Input[Optional['ApplicationLivenessV2Args']]:
         """
         The liveness check settings of the container. See `liveness_v2` below.
         """
         return pulumi.get(self, "liveness_v2")
 
     @liveness_v2.setter
-    def liveness_v2(self, value: Optional[pulumi.Input['ApplicationLivenessV2Args']]):
+    def liveness_v2(self, value: pulumi.Input[Optional['ApplicationLivenessV2Args']]):
         pulumi.set(self, "liveness_v2", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter(name="microRegistration")
-    def micro_registration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def micro_registration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Select the Nacos registry. Valid values: `0`, `1`, `2`.
         """
         return pulumi.get(self, "micro_registration")
 
     @micro_registration.setter
-    def micro_registration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def micro_registration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "micro_registration", value)
 
     @_builtins.property
     @pulumi.getter(name="minReadyInstanceRatio")
-    def min_ready_instance_ratio(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_ready_instance_ratio(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
         * `-1`: Initialization value, indicating that percentages are not used.
@@ -757,244 +757,244 @@ class ApplicationArgs:
         return pulumi.get(self, "min_ready_instance_ratio")
 
     @min_ready_instance_ratio.setter
-    def min_ready_instance_ratio(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_ready_instance_ratio(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_ready_instance_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="minReadyInstances")
-    def min_ready_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_ready_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
         """
         return pulumi.get(self, "min_ready_instances")
 
     @min_ready_instances.setter
-    def min_ready_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_ready_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_ready_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
         """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
-    def namespace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nasConfigs")
-    def nas_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]]:
+    def nas_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]]:
         """
         The configurations for mounting the NAS file system. See `nas_configs` below.
         """
         return pulumi.get(self, "nas_configs")
 
     @nas_configs.setter
-    def nas_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]]):
+    def nas_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]]):
         pulumi.set(self, "nas_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="ossAkId")
-    def oss_ak_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_ak_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OSS AccessKey ID.
         """
         return pulumi.get(self, "oss_ak_id")
 
     @oss_ak_id.setter
-    def oss_ak_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_ak_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_ak_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ossAkSecret")
-    def oss_ak_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_ak_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OSS  AccessKey Secret.
         """
         return pulumi.get(self, "oss_ak_secret")
 
     @oss_ak_secret.setter
-    def oss_ak_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_ak_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_ak_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="ossMountDescs")
     @_utilities.deprecated("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
-    def oss_mount_descs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_mount_descs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
         """
         return pulumi.get(self, "oss_mount_descs")
 
     @oss_mount_descs.setter
-    def oss_mount_descs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_mount_descs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_mount_descs", value)
 
     @_builtins.property
     @pulumi.getter(name="ossMountDescsV2s")
-    def oss_mount_descs_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]]:
+    def oss_mount_descs_v2s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]]:
         """
         The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
         """
         return pulumi.get(self, "oss_mount_descs_v2s")
 
     @oss_mount_descs_v2s.setter
-    def oss_mount_descs_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]]):
+    def oss_mount_descs_v2s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]]):
         pulumi.set(self, "oss_mount_descs_v2s", value)
 
     @_builtins.property
     @pulumi.getter(name="packageUrl")
-    def package_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deployment package address. Only FatJar or War type applications can configure the deployment package address.
         """
         return pulumi.get(self, "package_url")
 
     @package_url.setter
-    def package_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_url", value)
 
     @_builtins.property
     @pulumi.getter(name="packageVersion")
-    def package_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the deployment package. Required when the Package Type is War and FatJar.
         """
         return pulumi.get(self, "package_version")
 
     @package_version.setter
-    def package_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def php(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def php(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Php environment.
         """
         return pulumi.get(self, "php")
 
     @php.setter
-    def php(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def php(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "php", value)
 
     @_builtins.property
     @pulumi.getter(name="phpArmsConfigLocation")
-    def php_arms_config_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def php_arms_config_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
         """
         return pulumi.get(self, "php_arms_config_location")
 
     @php_arms_config_location.setter
-    def php_arms_config_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def php_arms_config_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "php_arms_config_location", value)
 
     @_builtins.property
     @pulumi.getter(name="phpConfig")
-    def php_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def php_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PHP configuration file content.
         """
         return pulumi.get(self, "php_config")
 
     @php_config.setter
-    def php_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def php_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "php_config", value)
 
     @_builtins.property
     @pulumi.getter(name="phpConfigLocation")
-    def php_config_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def php_config_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
         """
         return pulumi.get(self, "php_config_location")
 
     @php_config_location.setter
-    def php_config_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def php_config_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "php_config_location", value)
 
     @_builtins.property
     @pulumi.getter(name="postStart")
     @_utilities.deprecated("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
-    def post_start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
         """
         return pulumi.get(self, "post_start")
 
     @post_start.setter
-    def post_start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_start", value)
 
     @_builtins.property
     @pulumi.getter(name="postStartV2")
-    def post_start_v2(self) -> Optional[pulumi.Input['ApplicationPostStartV2Args']]:
+    def post_start_v2(self) -> pulumi.Input[Optional['ApplicationPostStartV2Args']]:
         """
         The script that is run immediately after the container is started. See `post_start_v2` below.
         """
         return pulumi.get(self, "post_start_v2")
 
     @post_start_v2.setter
-    def post_start_v2(self, value: Optional[pulumi.Input['ApplicationPostStartV2Args']]):
+    def post_start_v2(self, value: pulumi.Input[Optional['ApplicationPostStartV2Args']]):
         pulumi.set(self, "post_start_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="preStop")
     @_utilities.deprecated("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
-    def pre_stop(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pre_stop(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
         """
         return pulumi.get(self, "pre_stop")
 
     @pre_stop.setter
-    def pre_stop(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pre_stop(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pre_stop", value)
 
     @_builtins.property
     @pulumi.getter(name="preStopV2")
-    def pre_stop_v2(self) -> Optional[pulumi.Input['ApplicationPreStopV2Args']]:
+    def pre_stop_v2(self) -> pulumi.Input[Optional['ApplicationPreStopV2Args']]:
         """
         The script that is run before the container is stopped. See `pre_stop_v2` below.
         """
         return pulumi.get(self, "pre_stop_v2")
 
     @pre_stop_v2.setter
-    def pre_stop_v2(self, value: Optional[pulumi.Input['ApplicationPreStopV2Args']]):
+    def pre_stop_v2(self, value: pulumi.Input[Optional['ApplicationPreStopV2Args']]):
         pulumi.set(self, "pre_stop_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="programmingLanguage")
-    def programming_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def programming_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
         """
         return pulumi.get(self, "programming_language")
 
     @programming_language.setter
-    def programming_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def programming_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "programming_language", value)
 
     @_builtins.property
     @pulumi.getter(name="pvtzDiscoverySvc")
-    def pvtz_discovery_svc(self) -> Optional[pulumi.Input['ApplicationPvtzDiscoverySvcArgs']]:
+    def pvtz_discovery_svc(self) -> pulumi.Input[Optional['ApplicationPvtzDiscoverySvcArgs']]:
         """
         The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
         """
         return pulumi.get(self, "pvtz_discovery_svc")
 
     @pvtz_discovery_svc.setter
-    def pvtz_discovery_svc(self, value: Optional[pulumi.Input['ApplicationPvtzDiscoverySvcArgs']]):
+    def pvtz_discovery_svc(self, value: pulumi.Input[Optional['ApplicationPvtzDiscoverySvcArgs']]):
         pulumi.set(self, "pvtz_discovery_svc", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
-    def readiness(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def readiness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
         **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
@@ -1002,36 +1002,36 @@ class ApplicationArgs:
         return pulumi.get(self, "readiness")
 
     @readiness.setter
-    def readiness(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def readiness(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "readiness", value)
 
     @_builtins.property
     @pulumi.getter(name="readinessV2")
-    def readiness_v2(self) -> Optional[pulumi.Input['ApplicationReadinessV2Args']]:
+    def readiness_v2(self) -> pulumi.Input[Optional['ApplicationReadinessV2Args']]:
         """
         The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
         """
         return pulumi.get(self, "readiness_v2")
 
     @readiness_v2.setter
-    def readiness_v2(self, value: Optional[pulumi.Input['ApplicationReadinessV2Args']]):
+    def readiness_v2(self, value: pulumi.Input[Optional['ApplicationReadinessV2Args']]):
         pulumi.set(self, "readiness_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="slsConfigs")
-    def sls_configs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_configs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configuration for log collection to SLS. Valid parameter descriptions are as follows:
         * `projectName`: Configures the project name on SLS.
@@ -1049,61 +1049,61 @@ class ApplicationArgs:
         return pulumi.get(self, "sls_configs")
 
     @sls_configs.setter
-    def sls_configs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_configs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationGracePeriodSeconds")
-    def termination_grace_period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def termination_grace_period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
         """
         return pulumi.get(self, "termination_grace_period_seconds")
 
     @termination_grace_period_seconds.setter
-    def termination_grace_period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def termination_grace_period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "termination_grace_period_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time zone. Default value: `Asia/Shanghai`.
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="tomcatConfig")
     @_utilities.deprecated("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
-    def tomcat_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tomcat_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
         **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
@@ -1111,167 +1111,167 @@ class ApplicationArgs:
         return pulumi.get(self, "tomcat_config")
 
     @tomcat_config.setter
-    def tomcat_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tomcat_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tomcat_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tomcatConfigV2")
-    def tomcat_config_v2(self) -> Optional[pulumi.Input['ApplicationTomcatConfigV2Args']]:
+    def tomcat_config_v2(self) -> pulumi.Input[Optional['ApplicationTomcatConfigV2Args']]:
         """
         The Tomcat configuration. See `tomcat_config_v2` below.
         """
         return pulumi.get(self, "tomcat_config_v2")
 
     @tomcat_config_v2.setter
-    def tomcat_config_v2(self, value: Optional[pulumi.Input['ApplicationTomcatConfigV2Args']]):
+    def tomcat_config_v2(self, value: pulumi.Input[Optional['ApplicationTomcatConfigV2Args']]):
         pulumi.set(self, "tomcat_config_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="updateStrategy")
     @_utilities.deprecated("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
-    def update_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
         """
         return pulumi.get(self, "update_strategy")
 
     @update_strategy.setter
-    def update_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="updateStrategyV2")
-    def update_strategy_v2(self) -> Optional[pulumi.Input['ApplicationUpdateStrategyV2Args']]:
+    def update_strategy_v2(self) -> pulumi.Input[Optional['ApplicationUpdateStrategyV2Args']]:
         """
         The release policy. See `update_strategy_v2` below.
         """
         return pulumi.get(self, "update_strategy_v2")
 
     @update_strategy_v2.setter
-    def update_strategy_v2(self, value: Optional[pulumi.Input['ApplicationUpdateStrategyV2Args']]):
+    def update_strategy_v2(self, value: pulumi.Input[Optional['ApplicationUpdateStrategyV2Args']]):
         pulumi.set(self, "update_strategy_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vpc id.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="warStartOptions")
-    def war_start_options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def war_start_options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
         """
         return pulumi.get(self, "war_start_options")
 
     @war_start_options.setter
-    def war_start_options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def war_start_options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "war_start_options", value)
 
     @_builtins.property
     @pulumi.getter(name="webContainer")
-    def web_container(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def web_container(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of tomcat that the deployment package depends on. Image type applications are not supported.
         """
         return pulumi.get(self, "web_container")
 
     @web_container.setter
-    def web_container(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def web_container(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "web_container", value)
 
 
 @pulumi.input_type
 class _ApplicationState:
     def __init__(__self__, *,
-                 acr_assume_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 acr_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_enable_application_scaling_rule: Optional[pulumi.Input[_builtins.bool]] = None,
-                 batch_wait_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 change_order_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 command: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_args: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_args_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 config_map_mount_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_map_mount_desc_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_host_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_host_alias_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]] = None,
-                 deploy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edas_container_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ahas: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_grey_tag_route: Optional[pulumi.Input[_builtins.bool]] = None,
-                 envs: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_pull_secrets: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 jar_start_args: Optional[pulumi.Input[_builtins.str]] = None,
-                 jar_start_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdk: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_configs: Optional[pulumi.Input['ApplicationKafkaConfigsArgs']] = None,
-                 liveness: Optional[pulumi.Input[_builtins.str]] = None,
-                 liveness_v2: Optional[pulumi.Input['ApplicationLivenessV2Args']] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 micro_registration: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_ready_instance_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ready_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]] = None,
-                 oss_ak_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_ak_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_mount_descs: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_mount_descs_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 php: Optional[pulumi.Input[_builtins.str]] = None,
-                 php_arms_config_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 php_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 php_config_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_start_v2: Optional[pulumi.Input['ApplicationPostStartV2Args']] = None,
-                 pre_stop: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_stop_v2: Optional[pulumi.Input['ApplicationPreStopV2Args']] = None,
-                 programming_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 pvtz_discovery_svc: Optional[pulumi.Input['ApplicationPvtzDiscoverySvcArgs']] = None,
-                 readiness: Optional[pulumi.Input[_builtins.str]] = None,
-                 readiness_v2: Optional[pulumi.Input['ApplicationReadinessV2Args']] = None,
-                 replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_configs: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 termination_grace_period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 tomcat_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 tomcat_config_v2: Optional[pulumi.Input['ApplicationTomcatConfigV2Args']] = None,
-                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_strategy_v2: Optional[pulumi.Input['ApplicationUpdateStrategyV2Args']] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 war_start_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_container: Optional[pulumi.Input[_builtins.str]] = None):
+                 acr_assume_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 acr_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_enable_application_scaling_rule: pulumi.Input[Optional[_builtins.bool]] = None,
+                 batch_wait_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 change_order_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 command: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_args: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_args_v2s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 config_map_mount_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_map_mount_desc_v2s: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_host_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_host_alias_v2s: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]] = None,
+                 deploy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edas_container_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ahas: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_grey_tag_route: pulumi.Input[Optional[_builtins.bool]] = None,
+                 envs: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_pull_secrets: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 jar_start_args: pulumi.Input[Optional[_builtins.str]] = None,
+                 jar_start_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdk: pulumi.Input[Optional[_builtins.str]] = None,
+                 kafka_configs: pulumi.Input[Optional['ApplicationKafkaConfigsArgs']] = None,
+                 liveness: pulumi.Input[Optional[_builtins.str]] = None,
+                 liveness_v2: pulumi.Input[Optional['ApplicationLivenessV2Args']] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 micro_registration: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_ready_instance_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ready_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]] = None,
+                 oss_ak_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_ak_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_mount_descs: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_mount_descs_v2s: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 php: pulumi.Input[Optional[_builtins.str]] = None,
+                 php_arms_config_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 php_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 php_config_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_start_v2: pulumi.Input[Optional['ApplicationPostStartV2Args']] = None,
+                 pre_stop: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_stop_v2: pulumi.Input[Optional['ApplicationPreStopV2Args']] = None,
+                 programming_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 pvtz_discovery_svc: pulumi.Input[Optional['ApplicationPvtzDiscoverySvcArgs']] = None,
+                 readiness: pulumi.Input[Optional[_builtins.str]] = None,
+                 readiness_v2: pulumi.Input[Optional['ApplicationReadinessV2Args']] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_configs: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 termination_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 tomcat_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 tomcat_config_v2: pulumi.Input[Optional['ApplicationTomcatConfigV2Args']] = None,
+                 update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_strategy_v2: pulumi.Input[Optional['ApplicationUpdateStrategyV2Args']] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 war_start_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_container: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Application resources.
 
@@ -1532,335 +1532,335 @@ class _ApplicationState:
 
     @_builtins.property
     @pulumi.getter(name="acrAssumeRoleArn")
-    def acr_assume_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acr_assume_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
         """
         return pulumi.get(self, "acr_assume_role_arn")
 
     @acr_assume_role_arn.setter
-    def acr_assume_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acr_assume_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acr_assume_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="acrInstanceId")
-    def acr_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acr_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
         """
         return pulumi.get(self, "acr_instance_id")
 
     @acr_instance_id.setter
-    def acr_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acr_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acr_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appDescription")
-    def app_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
         """
         return pulumi.get(self, "app_description")
 
     @app_description.setter
-    def app_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_description", value)
 
     @_builtins.property
     @pulumi.getter(name="appName")
-    def app_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
         """
         return pulumi.get(self, "app_name")
 
     @app_name.setter
-    def app_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_name", value)
 
     @_builtins.property
     @pulumi.getter(name="autoConfig")
-    def auto_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_config(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The auto config. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_config")
 
     @auto_config.setter
-    def auto_config(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_config(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autoEnableApplicationScalingRule")
-    def auto_enable_application_scaling_rule(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_enable_application_scaling_rule(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The auto enable application scaling rule. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "auto_enable_application_scaling_rule")
 
     @auto_enable_application_scaling_rule.setter
-    def auto_enable_application_scaling_rule(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_enable_application_scaling_rule(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_enable_application_scaling_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="batchWaitTime")
-    def batch_wait_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def batch_wait_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The batch wait time.
         """
         return pulumi.get(self, "batch_wait_time")
 
     @batch_wait_time.setter
-    def batch_wait_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def batch_wait_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "batch_wait_time", value)
 
     @_builtins.property
     @pulumi.getter(name="changeOrderDesc")
-    def change_order_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def change_order_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The change order desc.
         """
         return pulumi.get(self, "change_order_desc")
 
     @change_order_desc.setter
-    def change_order_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def change_order_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "change_order_desc", value)
 
     @_builtins.property
     @pulumi.getter
-    def command(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
         """
         return pulumi.get(self, "command")
 
     @command.setter
-    def command(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command", value)
 
     @_builtins.property
     @pulumi.getter(name="commandArgs")
     @_utilities.deprecated("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
-    def command_args(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command_args(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
         """
         return pulumi.get(self, "command_args")
 
     @command_args.setter
-    def command_args(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command_args(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command_args", value)
 
     @_builtins.property
     @pulumi.getter(name="commandArgsV2s")
-    def command_args_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def command_args_v2s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The parameters of the image startup command.
         """
         return pulumi.get(self, "command_args_v2s")
 
     @command_args_v2s.setter
-    def command_args_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def command_args_v2s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "command_args_v2s", value)
 
     @_builtins.property
     @pulumi.getter(name="configMapMountDesc")
     @_utilities.deprecated("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
-    def config_map_mount_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_map_mount_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
         """
         return pulumi.get(self, "config_map_mount_desc")
 
     @config_map_mount_desc.setter
-    def config_map_mount_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_map_mount_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_map_mount_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="configMapMountDescV2s")
-    def config_map_mount_desc_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]]:
+    def config_map_mount_desc_v2s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]]:
         """
         The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
         """
         return pulumi.get(self, "config_map_mount_desc_v2s")
 
     @config_map_mount_desc_v2s.setter
-    def config_map_mount_desc_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]]):
+    def config_map_mount_desc_v2s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]]):
         pulumi.set(self, "config_map_mount_desc_v2s", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="customHostAlias")
     @_utilities.deprecated("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
-    def custom_host_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_host_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
         """
         return pulumi.get(self, "custom_host_alias")
 
     @custom_host_alias.setter
-    def custom_host_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_host_alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_host_alias", value)
 
     @_builtins.property
     @pulumi.getter(name="customHostAliasV2s")
-    def custom_host_alias_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]]:
+    def custom_host_alias_v2s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]]:
         """
         The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
         """
         return pulumi.get(self, "custom_host_alias_v2s")
 
     @custom_host_alias_v2s.setter
-    def custom_host_alias_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]]):
+    def custom_host_alias_v2s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]]):
         pulumi.set(self, "custom_host_alias_v2s", value)
 
     @_builtins.property
     @pulumi.getter
-    def deploy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deploy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The deploy. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "deploy")
 
     @deploy.setter
-    def deploy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deploy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deploy", value)
 
     @_builtins.property
     @pulumi.getter(name="edasContainerVersion")
-    def edas_container_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edas_container_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operating environment used by the Pandora application.
         """
         return pulumi.get(self, "edas_container_version")
 
     @edas_container_version.setter
-    def edas_container_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edas_container_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edas_container_version", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAhas")
-    def enable_ahas(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_ahas(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The enable ahas. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_ahas")
 
     @enable_ahas.setter
-    def enable_ahas(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_ahas(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_ahas", value)
 
     @_builtins.property
     @pulumi.getter(name="enableGreyTagRoute")
-    def enable_grey_tag_route(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_grey_tag_route(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The enable grey tag route. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_grey_tag_route")
 
     @enable_grey_tag_route.setter
-    def enable_grey_tag_route(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_grey_tag_route(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_grey_tag_route", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def envs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container environment variable parameters. For example,`	[{"name":"envtmp","value":"0"}]`. The value description is as follows:
         """
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def envs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter(name="imagePullSecrets")
-    def image_pull_secrets(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_pull_secrets(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the corresponding Secret.
         """
         return pulumi.get(self, "image_pull_secrets")
 
     @image_pull_secrets.setter
-    def image_pull_secrets(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_pull_secrets(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_pull_secrets", value)
 
     @_builtins.property
     @pulumi.getter(name="imageUrl")
-    def image_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mirror address. Only Image type applications can configure the mirror address.
         """
         return pulumi.get(self, "image_url")
 
     @image_url.setter
-    def image_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_url", value)
 
     @_builtins.property
     @pulumi.getter(name="jarStartArgs")
-    def jar_start_args(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jar_start_args(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         """
         return pulumi.get(self, "jar_start_args")
 
     @jar_start_args.setter
-    def jar_start_args(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jar_start_args(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jar_start_args", value)
 
     @_builtins.property
     @pulumi.getter(name="jarStartOptions")
-    def jar_start_options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jar_start_options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs.
         """
         return pulumi.get(self, "jar_start_options")
 
     @jar_start_options.setter
-    def jar_start_options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jar_start_options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jar_start_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def jdk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jdk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JDK version that the deployment package depends on. Image type applications are not supported.
         """
         return pulumi.get(self, "jdk")
 
     @jdk.setter
-    def jdk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jdk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jdk", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaConfigs")
-    def kafka_configs(self) -> Optional[pulumi.Input['ApplicationKafkaConfigsArgs']]:
+    def kafka_configs(self) -> pulumi.Input[Optional['ApplicationKafkaConfigsArgs']]:
         """
         The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
         """
         return pulumi.get(self, "kafka_configs")
 
     @kafka_configs.setter
-    def kafka_configs(self, value: Optional[pulumi.Input['ApplicationKafkaConfigsArgs']]):
+    def kafka_configs(self, value: pulumi.Input[Optional['ApplicationKafkaConfigsArgs']]):
         pulumi.set(self, "kafka_configs", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
-    def liveness(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def liveness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
         **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
@@ -1868,48 +1868,48 @@ class _ApplicationState:
         return pulumi.get(self, "liveness")
 
     @liveness.setter
-    def liveness(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def liveness(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "liveness", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessV2")
-    def liveness_v2(self) -> Optional[pulumi.Input['ApplicationLivenessV2Args']]:
+    def liveness_v2(self) -> pulumi.Input[Optional['ApplicationLivenessV2Args']]:
         """
         The liveness check settings of the container. See `liveness_v2` below.
         """
         return pulumi.get(self, "liveness_v2")
 
     @liveness_v2.setter
-    def liveness_v2(self, value: Optional[pulumi.Input['ApplicationLivenessV2Args']]):
+    def liveness_v2(self, value: pulumi.Input[Optional['ApplicationLivenessV2Args']]):
         pulumi.set(self, "liveness_v2", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter(name="microRegistration")
-    def micro_registration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def micro_registration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Select the Nacos registry. Valid values: `0`, `1`, `2`.
         """
         return pulumi.get(self, "micro_registration")
 
     @micro_registration.setter
-    def micro_registration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def micro_registration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "micro_registration", value)
 
     @_builtins.property
     @pulumi.getter(name="minReadyInstanceRatio")
-    def min_ready_instance_ratio(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_ready_instance_ratio(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
         * `-1`: Initialization value, indicating that percentages are not used.
@@ -1918,256 +1918,256 @@ class _ApplicationState:
         return pulumi.get(self, "min_ready_instance_ratio")
 
     @min_ready_instance_ratio.setter
-    def min_ready_instance_ratio(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_ready_instance_ratio(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_ready_instance_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="minReadyInstances")
-    def min_ready_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_ready_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
         """
         return pulumi.get(self, "min_ready_instances")
 
     @min_ready_instances.setter
-    def min_ready_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_ready_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_ready_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
         """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
-    def namespace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nasConfigs")
-    def nas_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]]:
+    def nas_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]]:
         """
         The configurations for mounting the NAS file system. See `nas_configs` below.
         """
         return pulumi.get(self, "nas_configs")
 
     @nas_configs.setter
-    def nas_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]]):
+    def nas_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]]):
         pulumi.set(self, "nas_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="ossAkId")
-    def oss_ak_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_ak_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OSS AccessKey ID.
         """
         return pulumi.get(self, "oss_ak_id")
 
     @oss_ak_id.setter
-    def oss_ak_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_ak_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_ak_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ossAkSecret")
-    def oss_ak_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_ak_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OSS  AccessKey Secret.
         """
         return pulumi.get(self, "oss_ak_secret")
 
     @oss_ak_secret.setter
-    def oss_ak_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_ak_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_ak_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="ossMountDescs")
     @_utilities.deprecated("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
-    def oss_mount_descs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_mount_descs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
         """
         return pulumi.get(self, "oss_mount_descs")
 
     @oss_mount_descs.setter
-    def oss_mount_descs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_mount_descs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_mount_descs", value)
 
     @_builtins.property
     @pulumi.getter(name="ossMountDescsV2s")
-    def oss_mount_descs_v2s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]]:
+    def oss_mount_descs_v2s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]]:
         """
         The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
         """
         return pulumi.get(self, "oss_mount_descs_v2s")
 
     @oss_mount_descs_v2s.setter
-    def oss_mount_descs_v2s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]]):
+    def oss_mount_descs_v2s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]]):
         pulumi.set(self, "oss_mount_descs_v2s", value)
 
     @_builtins.property
     @pulumi.getter(name="packageType")
-    def package_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
         """
         return pulumi.get(self, "package_type")
 
     @package_type.setter
-    def package_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_type", value)
 
     @_builtins.property
     @pulumi.getter(name="packageUrl")
-    def package_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deployment package address. Only FatJar or War type applications can configure the deployment package address.
         """
         return pulumi.get(self, "package_url")
 
     @package_url.setter
-    def package_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_url", value)
 
     @_builtins.property
     @pulumi.getter(name="packageVersion")
-    def package_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the deployment package. Required when the Package Type is War and FatJar.
         """
         return pulumi.get(self, "package_version")
 
     @package_version.setter
-    def package_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def php(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def php(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Php environment.
         """
         return pulumi.get(self, "php")
 
     @php.setter
-    def php(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def php(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "php", value)
 
     @_builtins.property
     @pulumi.getter(name="phpArmsConfigLocation")
-    def php_arms_config_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def php_arms_config_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don't need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
         """
         return pulumi.get(self, "php_arms_config_location")
 
     @php_arms_config_location.setter
-    def php_arms_config_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def php_arms_config_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "php_arms_config_location", value)
 
     @_builtins.property
     @pulumi.getter(name="phpConfig")
-    def php_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def php_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PHP configuration file content.
         """
         return pulumi.get(self, "php_config")
 
     @php_config.setter
-    def php_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def php_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "php_config", value)
 
     @_builtins.property
     @pulumi.getter(name="phpConfigLocation")
-    def php_config_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def php_config_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
         """
         return pulumi.get(self, "php_config_location")
 
     @php_config_location.setter
-    def php_config_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def php_config_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "php_config_location", value)
 
     @_builtins.property
     @pulumi.getter(name="postStart")
     @_utilities.deprecated("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
-    def post_start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
         """
         return pulumi.get(self, "post_start")
 
     @post_start.setter
-    def post_start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_start", value)
 
     @_builtins.property
     @pulumi.getter(name="postStartV2")
-    def post_start_v2(self) -> Optional[pulumi.Input['ApplicationPostStartV2Args']]:
+    def post_start_v2(self) -> pulumi.Input[Optional['ApplicationPostStartV2Args']]:
         """
         The script that is run immediately after the container is started. See `post_start_v2` below.
         """
         return pulumi.get(self, "post_start_v2")
 
     @post_start_v2.setter
-    def post_start_v2(self, value: Optional[pulumi.Input['ApplicationPostStartV2Args']]):
+    def post_start_v2(self, value: pulumi.Input[Optional['ApplicationPostStartV2Args']]):
         pulumi.set(self, "post_start_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="preStop")
     @_utilities.deprecated("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
-    def pre_stop(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pre_stop(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
         """
         return pulumi.get(self, "pre_stop")
 
     @pre_stop.setter
-    def pre_stop(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pre_stop(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pre_stop", value)
 
     @_builtins.property
     @pulumi.getter(name="preStopV2")
-    def pre_stop_v2(self) -> Optional[pulumi.Input['ApplicationPreStopV2Args']]:
+    def pre_stop_v2(self) -> pulumi.Input[Optional['ApplicationPreStopV2Args']]:
         """
         The script that is run before the container is stopped. See `pre_stop_v2` below.
         """
         return pulumi.get(self, "pre_stop_v2")
 
     @pre_stop_v2.setter
-    def pre_stop_v2(self, value: Optional[pulumi.Input['ApplicationPreStopV2Args']]):
+    def pre_stop_v2(self, value: pulumi.Input[Optional['ApplicationPreStopV2Args']]):
         pulumi.set(self, "pre_stop_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="programmingLanguage")
-    def programming_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def programming_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
         """
         return pulumi.get(self, "programming_language")
 
     @programming_language.setter
-    def programming_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def programming_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "programming_language", value)
 
     @_builtins.property
     @pulumi.getter(name="pvtzDiscoverySvc")
-    def pvtz_discovery_svc(self) -> Optional[pulumi.Input['ApplicationPvtzDiscoverySvcArgs']]:
+    def pvtz_discovery_svc(self) -> pulumi.Input[Optional['ApplicationPvtzDiscoverySvcArgs']]:
         """
         The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
         """
         return pulumi.get(self, "pvtz_discovery_svc")
 
     @pvtz_discovery_svc.setter
-    def pvtz_discovery_svc(self, value: Optional[pulumi.Input['ApplicationPvtzDiscoverySvcArgs']]):
+    def pvtz_discovery_svc(self, value: pulumi.Input[Optional['ApplicationPvtzDiscoverySvcArgs']]):
         pulumi.set(self, "pvtz_discovery_svc", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
-    def readiness(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def readiness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
         **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
@@ -2175,48 +2175,48 @@ class _ApplicationState:
         return pulumi.get(self, "readiness")
 
     @readiness.setter
-    def readiness(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def readiness(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "readiness", value)
 
     @_builtins.property
     @pulumi.getter(name="readinessV2")
-    def readiness_v2(self) -> Optional[pulumi.Input['ApplicationReadinessV2Args']]:
+    def readiness_v2(self) -> pulumi.Input[Optional['ApplicationReadinessV2Args']]:
         """
         The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
         """
         return pulumi.get(self, "readiness_v2")
 
     @readiness_v2.setter
-    def readiness_v2(self, value: Optional[pulumi.Input['ApplicationReadinessV2Args']]):
+    def readiness_v2(self, value: pulumi.Input[Optional['ApplicationReadinessV2Args']]):
         pulumi.set(self, "readiness_v2", value)
 
     @_builtins.property
     @pulumi.getter
-    def replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Initial number of instances.
         """
         return pulumi.get(self, "replicas")
 
     @replicas.setter
-    def replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replicas", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="slsConfigs")
-    def sls_configs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_configs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configuration for log collection to SLS. Valid parameter descriptions are as follows:
         * `projectName`: Configures the project name on SLS.
@@ -2234,61 +2234,61 @@ class _ApplicationState:
         return pulumi.get(self, "sls_configs")
 
     @sls_configs.setter
-    def sls_configs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_configs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationGracePeriodSeconds")
-    def termination_grace_period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def termination_grace_period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
         """
         return pulumi.get(self, "termination_grace_period_seconds")
 
     @termination_grace_period_seconds.setter
-    def termination_grace_period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def termination_grace_period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "termination_grace_period_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time zone. Default value: `Asia/Shanghai`.
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="tomcatConfig")
     @_utilities.deprecated("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
-    def tomcat_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tomcat_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
         **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
@@ -2296,92 +2296,92 @@ class _ApplicationState:
         return pulumi.get(self, "tomcat_config")
 
     @tomcat_config.setter
-    def tomcat_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tomcat_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tomcat_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tomcatConfigV2")
-    def tomcat_config_v2(self) -> Optional[pulumi.Input['ApplicationTomcatConfigV2Args']]:
+    def tomcat_config_v2(self) -> pulumi.Input[Optional['ApplicationTomcatConfigV2Args']]:
         """
         The Tomcat configuration. See `tomcat_config_v2` below.
         """
         return pulumi.get(self, "tomcat_config_v2")
 
     @tomcat_config_v2.setter
-    def tomcat_config_v2(self, value: Optional[pulumi.Input['ApplicationTomcatConfigV2Args']]):
+    def tomcat_config_v2(self, value: pulumi.Input[Optional['ApplicationTomcatConfigV2Args']]):
         pulumi.set(self, "tomcat_config_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="updateStrategy")
     @_utilities.deprecated("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
-    def update_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
         """
         return pulumi.get(self, "update_strategy")
 
     @update_strategy.setter
-    def update_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="updateStrategyV2")
-    def update_strategy_v2(self) -> Optional[pulumi.Input['ApplicationUpdateStrategyV2Args']]:
+    def update_strategy_v2(self) -> pulumi.Input[Optional['ApplicationUpdateStrategyV2Args']]:
         """
         The release policy. See `update_strategy_v2` below.
         """
         return pulumi.get(self, "update_strategy_v2")
 
     @update_strategy_v2.setter
-    def update_strategy_v2(self, value: Optional[pulumi.Input['ApplicationUpdateStrategyV2Args']]):
+    def update_strategy_v2(self, value: pulumi.Input[Optional['ApplicationUpdateStrategyV2Args']]):
         pulumi.set(self, "update_strategy_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vpc id.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="warStartOptions")
-    def war_start_options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def war_start_options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
         """
         return pulumi.get(self, "war_start_options")
 
     @war_start_options.setter
-    def war_start_options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def war_start_options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "war_start_options", value)
 
     @_builtins.property
     @pulumi.getter(name="webContainer")
-    def web_container(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def web_container(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of tomcat that the deployment package depends on. Image type applications are not supported.
         """
         return pulumi.get(self, "web_container")
 
     @web_container.setter
-    def web_container(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def web_container(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "web_container", value)
 
 
@@ -2391,75 +2391,75 @@ class Application(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acr_assume_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 acr_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_enable_application_scaling_rule: Optional[pulumi.Input[_builtins.bool]] = None,
-                 batch_wait_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 change_order_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 command: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_args: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_args_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 config_map_mount_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_map_mount_desc_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationConfigMapMountDescV2Args', 'ApplicationConfigMapMountDescV2ArgsDict']]]]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_host_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_host_alias_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationCustomHostAliasV2Args', 'ApplicationCustomHostAliasV2ArgsDict']]]]] = None,
-                 deploy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edas_container_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ahas: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_grey_tag_route: Optional[pulumi.Input[_builtins.bool]] = None,
-                 envs: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_pull_secrets: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 jar_start_args: Optional[pulumi.Input[_builtins.str]] = None,
-                 jar_start_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdk: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_configs: Optional[pulumi.Input[Union['ApplicationKafkaConfigsArgs', 'ApplicationKafkaConfigsArgsDict']]] = None,
-                 liveness: Optional[pulumi.Input[_builtins.str]] = None,
-                 liveness_v2: Optional[pulumi.Input[Union['ApplicationLivenessV2Args', 'ApplicationLivenessV2ArgsDict']]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 micro_registration: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_ready_instance_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ready_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationNasConfigArgs', 'ApplicationNasConfigArgsDict']]]]] = None,
-                 oss_ak_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_ak_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_mount_descs: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_mount_descs_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationOssMountDescsV2Args', 'ApplicationOssMountDescsV2ArgsDict']]]]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 php: Optional[pulumi.Input[_builtins.str]] = None,
-                 php_arms_config_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 php_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 php_config_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_start_v2: Optional[pulumi.Input[Union['ApplicationPostStartV2Args', 'ApplicationPostStartV2ArgsDict']]] = None,
-                 pre_stop: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_stop_v2: Optional[pulumi.Input[Union['ApplicationPreStopV2Args', 'ApplicationPreStopV2ArgsDict']]] = None,
-                 programming_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 pvtz_discovery_svc: Optional[pulumi.Input[Union['ApplicationPvtzDiscoverySvcArgs', 'ApplicationPvtzDiscoverySvcArgsDict']]] = None,
-                 readiness: Optional[pulumi.Input[_builtins.str]] = None,
-                 readiness_v2: Optional[pulumi.Input[Union['ApplicationReadinessV2Args', 'ApplicationReadinessV2ArgsDict']]] = None,
-                 replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_configs: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 termination_grace_period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 tomcat_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 tomcat_config_v2: Optional[pulumi.Input[Union['ApplicationTomcatConfigV2Args', 'ApplicationTomcatConfigV2ArgsDict']]] = None,
-                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_strategy_v2: Optional[pulumi.Input[Union['ApplicationUpdateStrategyV2Args', 'ApplicationUpdateStrategyV2ArgsDict']]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 war_start_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_container: Optional[pulumi.Input[_builtins.str]] = None,
+                 acr_assume_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 acr_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_enable_application_scaling_rule: pulumi.Input[Optional[_builtins.bool]] = None,
+                 batch_wait_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 change_order_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 command: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_args: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_args_v2s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 config_map_mount_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_map_mount_desc_v2s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationConfigMapMountDescV2Args', 'ApplicationConfigMapMountDescV2ArgsDict']]]]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_host_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_host_alias_v2s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationCustomHostAliasV2Args', 'ApplicationCustomHostAliasV2ArgsDict']]]]] = None,
+                 deploy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edas_container_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ahas: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_grey_tag_route: pulumi.Input[Optional[_builtins.bool]] = None,
+                 envs: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_pull_secrets: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 jar_start_args: pulumi.Input[Optional[_builtins.str]] = None,
+                 jar_start_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdk: pulumi.Input[Optional[_builtins.str]] = None,
+                 kafka_configs: pulumi.Input[Optional[Union['ApplicationKafkaConfigsArgs', 'ApplicationKafkaConfigsArgsDict']]] = None,
+                 liveness: pulumi.Input[Optional[_builtins.str]] = None,
+                 liveness_v2: pulumi.Input[Optional[Union['ApplicationLivenessV2Args', 'ApplicationLivenessV2ArgsDict']]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 micro_registration: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_ready_instance_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ready_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationNasConfigArgs', 'ApplicationNasConfigArgsDict']]]]] = None,
+                 oss_ak_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_ak_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_mount_descs: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_mount_descs_v2s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOssMountDescsV2Args', 'ApplicationOssMountDescsV2ArgsDict']]]]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 php: pulumi.Input[Optional[_builtins.str]] = None,
+                 php_arms_config_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 php_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 php_config_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_start_v2: pulumi.Input[Optional[Union['ApplicationPostStartV2Args', 'ApplicationPostStartV2ArgsDict']]] = None,
+                 pre_stop: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_stop_v2: pulumi.Input[Optional[Union['ApplicationPreStopV2Args', 'ApplicationPreStopV2ArgsDict']]] = None,
+                 programming_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 pvtz_discovery_svc: pulumi.Input[Optional[Union['ApplicationPvtzDiscoverySvcArgs', 'ApplicationPvtzDiscoverySvcArgsDict']]] = None,
+                 readiness: pulumi.Input[Optional[_builtins.str]] = None,
+                 readiness_v2: pulumi.Input[Optional[Union['ApplicationReadinessV2Args', 'ApplicationReadinessV2ArgsDict']]] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_configs: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 termination_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 tomcat_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 tomcat_config_v2: pulumi.Input[Optional[Union['ApplicationTomcatConfigV2Args', 'ApplicationTomcatConfigV2ArgsDict']]] = None,
+                 update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_strategy_v2: pulumi.Input[Optional[Union['ApplicationUpdateStrategyV2Args', 'ApplicationUpdateStrategyV2ArgsDict']]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 war_start_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_container: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Serverless App Engine (SAE) Application resource.
@@ -2706,75 +2706,75 @@ class Application(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acr_assume_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 acr_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_enable_application_scaling_rule: Optional[pulumi.Input[_builtins.bool]] = None,
-                 batch_wait_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 change_order_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 command: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_args: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_args_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 config_map_mount_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_map_mount_desc_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationConfigMapMountDescV2Args', 'ApplicationConfigMapMountDescV2ArgsDict']]]]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_host_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_host_alias_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationCustomHostAliasV2Args', 'ApplicationCustomHostAliasV2ArgsDict']]]]] = None,
-                 deploy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edas_container_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ahas: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_grey_tag_route: Optional[pulumi.Input[_builtins.bool]] = None,
-                 envs: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_pull_secrets: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 jar_start_args: Optional[pulumi.Input[_builtins.str]] = None,
-                 jar_start_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdk: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_configs: Optional[pulumi.Input[Union['ApplicationKafkaConfigsArgs', 'ApplicationKafkaConfigsArgsDict']]] = None,
-                 liveness: Optional[pulumi.Input[_builtins.str]] = None,
-                 liveness_v2: Optional[pulumi.Input[Union['ApplicationLivenessV2Args', 'ApplicationLivenessV2ArgsDict']]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 micro_registration: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_ready_instance_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ready_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationNasConfigArgs', 'ApplicationNasConfigArgsDict']]]]] = None,
-                 oss_ak_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_ak_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_mount_descs: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_mount_descs_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationOssMountDescsV2Args', 'ApplicationOssMountDescsV2ArgsDict']]]]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 php: Optional[pulumi.Input[_builtins.str]] = None,
-                 php_arms_config_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 php_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 php_config_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_start_v2: Optional[pulumi.Input[Union['ApplicationPostStartV2Args', 'ApplicationPostStartV2ArgsDict']]] = None,
-                 pre_stop: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_stop_v2: Optional[pulumi.Input[Union['ApplicationPreStopV2Args', 'ApplicationPreStopV2ArgsDict']]] = None,
-                 programming_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 pvtz_discovery_svc: Optional[pulumi.Input[Union['ApplicationPvtzDiscoverySvcArgs', 'ApplicationPvtzDiscoverySvcArgsDict']]] = None,
-                 readiness: Optional[pulumi.Input[_builtins.str]] = None,
-                 readiness_v2: Optional[pulumi.Input[Union['ApplicationReadinessV2Args', 'ApplicationReadinessV2ArgsDict']]] = None,
-                 replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_configs: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 termination_grace_period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 tomcat_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 tomcat_config_v2: Optional[pulumi.Input[Union['ApplicationTomcatConfigV2Args', 'ApplicationTomcatConfigV2ArgsDict']]] = None,
-                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_strategy_v2: Optional[pulumi.Input[Union['ApplicationUpdateStrategyV2Args', 'ApplicationUpdateStrategyV2ArgsDict']]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 war_start_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_container: Optional[pulumi.Input[_builtins.str]] = None,
+                 acr_assume_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 acr_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_enable_application_scaling_rule: pulumi.Input[Optional[_builtins.bool]] = None,
+                 batch_wait_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 change_order_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 command: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_args: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_args_v2s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 config_map_mount_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_map_mount_desc_v2s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationConfigMapMountDescV2Args', 'ApplicationConfigMapMountDescV2ArgsDict']]]]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_host_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_host_alias_v2s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationCustomHostAliasV2Args', 'ApplicationCustomHostAliasV2ArgsDict']]]]] = None,
+                 deploy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edas_container_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ahas: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_grey_tag_route: pulumi.Input[Optional[_builtins.bool]] = None,
+                 envs: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_pull_secrets: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 jar_start_args: pulumi.Input[Optional[_builtins.str]] = None,
+                 jar_start_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdk: pulumi.Input[Optional[_builtins.str]] = None,
+                 kafka_configs: pulumi.Input[Optional[Union['ApplicationKafkaConfigsArgs', 'ApplicationKafkaConfigsArgsDict']]] = None,
+                 liveness: pulumi.Input[Optional[_builtins.str]] = None,
+                 liveness_v2: pulumi.Input[Optional[Union['ApplicationLivenessV2Args', 'ApplicationLivenessV2ArgsDict']]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 micro_registration: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_ready_instance_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ready_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationNasConfigArgs', 'ApplicationNasConfigArgsDict']]]]] = None,
+                 oss_ak_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_ak_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_mount_descs: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_mount_descs_v2s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOssMountDescsV2Args', 'ApplicationOssMountDescsV2ArgsDict']]]]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 php: pulumi.Input[Optional[_builtins.str]] = None,
+                 php_arms_config_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 php_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 php_config_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_start_v2: pulumi.Input[Optional[Union['ApplicationPostStartV2Args', 'ApplicationPostStartV2ArgsDict']]] = None,
+                 pre_stop: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_stop_v2: pulumi.Input[Optional[Union['ApplicationPreStopV2Args', 'ApplicationPreStopV2ArgsDict']]] = None,
+                 programming_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 pvtz_discovery_svc: pulumi.Input[Optional[Union['ApplicationPvtzDiscoverySvcArgs', 'ApplicationPvtzDiscoverySvcArgsDict']]] = None,
+                 readiness: pulumi.Input[Optional[_builtins.str]] = None,
+                 readiness_v2: pulumi.Input[Optional[Union['ApplicationReadinessV2Args', 'ApplicationReadinessV2ArgsDict']]] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_configs: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 termination_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 tomcat_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 tomcat_config_v2: pulumi.Input[Optional[Union['ApplicationTomcatConfigV2Args', 'ApplicationTomcatConfigV2ArgsDict']]] = None,
+                 update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_strategy_v2: pulumi.Input[Optional[Union['ApplicationUpdateStrategyV2Args', 'ApplicationUpdateStrategyV2ArgsDict']]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 war_start_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_container: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2871,75 +2871,75 @@ class Application(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acr_assume_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            acr_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            app_description: Optional[pulumi.Input[_builtins.str]] = None,
-            app_name: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_config: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_enable_application_scaling_rule: Optional[pulumi.Input[_builtins.bool]] = None,
-            batch_wait_time: Optional[pulumi.Input[_builtins.int]] = None,
-            change_order_desc: Optional[pulumi.Input[_builtins.str]] = None,
-            command: Optional[pulumi.Input[_builtins.str]] = None,
-            command_args: Optional[pulumi.Input[_builtins.str]] = None,
-            command_args_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            config_map_mount_desc: Optional[pulumi.Input[_builtins.str]] = None,
-            config_map_mount_desc_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationConfigMapMountDescV2Args', 'ApplicationConfigMapMountDescV2ArgsDict']]]]] = None,
-            cpu: Optional[pulumi.Input[_builtins.int]] = None,
-            custom_host_alias: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_host_alias_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationCustomHostAliasV2Args', 'ApplicationCustomHostAliasV2ArgsDict']]]]] = None,
-            deploy: Optional[pulumi.Input[_builtins.bool]] = None,
-            edas_container_version: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_ahas: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_grey_tag_route: Optional[pulumi.Input[_builtins.bool]] = None,
-            envs: Optional[pulumi.Input[_builtins.str]] = None,
-            image_pull_secrets: Optional[pulumi.Input[_builtins.str]] = None,
-            image_url: Optional[pulumi.Input[_builtins.str]] = None,
-            jar_start_args: Optional[pulumi.Input[_builtins.str]] = None,
-            jar_start_options: Optional[pulumi.Input[_builtins.str]] = None,
-            jdk: Optional[pulumi.Input[_builtins.str]] = None,
-            kafka_configs: Optional[pulumi.Input[Union['ApplicationKafkaConfigsArgs', 'ApplicationKafkaConfigsArgsDict']]] = None,
-            liveness: Optional[pulumi.Input[_builtins.str]] = None,
-            liveness_v2: Optional[pulumi.Input[Union['ApplicationLivenessV2Args', 'ApplicationLivenessV2ArgsDict']]] = None,
-            memory: Optional[pulumi.Input[_builtins.int]] = None,
-            micro_registration: Optional[pulumi.Input[_builtins.str]] = None,
-            min_ready_instance_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-            min_ready_instances: Optional[pulumi.Input[_builtins.int]] = None,
-            namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nas_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationNasConfigArgs', 'ApplicationNasConfigArgsDict']]]]] = None,
-            oss_ak_id: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_ak_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_mount_descs: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_mount_descs_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationOssMountDescsV2Args', 'ApplicationOssMountDescsV2ArgsDict']]]]] = None,
-            package_type: Optional[pulumi.Input[_builtins.str]] = None,
-            package_url: Optional[pulumi.Input[_builtins.str]] = None,
-            package_version: Optional[pulumi.Input[_builtins.str]] = None,
-            php: Optional[pulumi.Input[_builtins.str]] = None,
-            php_arms_config_location: Optional[pulumi.Input[_builtins.str]] = None,
-            php_config: Optional[pulumi.Input[_builtins.str]] = None,
-            php_config_location: Optional[pulumi.Input[_builtins.str]] = None,
-            post_start: Optional[pulumi.Input[_builtins.str]] = None,
-            post_start_v2: Optional[pulumi.Input[Union['ApplicationPostStartV2Args', 'ApplicationPostStartV2ArgsDict']]] = None,
-            pre_stop: Optional[pulumi.Input[_builtins.str]] = None,
-            pre_stop_v2: Optional[pulumi.Input[Union['ApplicationPreStopV2Args', 'ApplicationPreStopV2ArgsDict']]] = None,
-            programming_language: Optional[pulumi.Input[_builtins.str]] = None,
-            pvtz_discovery_svc: Optional[pulumi.Input[Union['ApplicationPvtzDiscoverySvcArgs', 'ApplicationPvtzDiscoverySvcArgsDict']]] = None,
-            readiness: Optional[pulumi.Input[_builtins.str]] = None,
-            readiness_v2: Optional[pulumi.Input[Union['ApplicationReadinessV2Args', 'ApplicationReadinessV2ArgsDict']]] = None,
-            replicas: Optional[pulumi.Input[_builtins.int]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sls_configs: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            termination_grace_period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            timezone: Optional[pulumi.Input[_builtins.str]] = None,
-            tomcat_config: Optional[pulumi.Input[_builtins.str]] = None,
-            tomcat_config_v2: Optional[pulumi.Input[Union['ApplicationTomcatConfigV2Args', 'ApplicationTomcatConfigV2ArgsDict']]] = None,
-            update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            update_strategy_v2: Optional[pulumi.Input[Union['ApplicationUpdateStrategyV2Args', 'ApplicationUpdateStrategyV2ArgsDict']]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            war_start_options: Optional[pulumi.Input[_builtins.str]] = None,
-            web_container: Optional[pulumi.Input[_builtins.str]] = None) -> 'Application':
+            acr_assume_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            acr_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_description: pulumi.Input[Optional[_builtins.str]] = None,
+            app_name: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_enable_application_scaling_rule: pulumi.Input[Optional[_builtins.bool]] = None,
+            batch_wait_time: pulumi.Input[Optional[_builtins.int]] = None,
+            change_order_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            command: pulumi.Input[Optional[_builtins.str]] = None,
+            command_args: pulumi.Input[Optional[_builtins.str]] = None,
+            command_args_v2s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            config_map_mount_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            config_map_mount_desc_v2s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationConfigMapMountDescV2Args', 'ApplicationConfigMapMountDescV2ArgsDict']]]]] = None,
+            cpu: pulumi.Input[Optional[_builtins.int]] = None,
+            custom_host_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_host_alias_v2s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationCustomHostAliasV2Args', 'ApplicationCustomHostAliasV2ArgsDict']]]]] = None,
+            deploy: pulumi.Input[Optional[_builtins.bool]] = None,
+            edas_container_version: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_ahas: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_grey_tag_route: pulumi.Input[Optional[_builtins.bool]] = None,
+            envs: pulumi.Input[Optional[_builtins.str]] = None,
+            image_pull_secrets: pulumi.Input[Optional[_builtins.str]] = None,
+            image_url: pulumi.Input[Optional[_builtins.str]] = None,
+            jar_start_args: pulumi.Input[Optional[_builtins.str]] = None,
+            jar_start_options: pulumi.Input[Optional[_builtins.str]] = None,
+            jdk: pulumi.Input[Optional[_builtins.str]] = None,
+            kafka_configs: pulumi.Input[Optional[Union['ApplicationKafkaConfigsArgs', 'ApplicationKafkaConfigsArgsDict']]] = None,
+            liveness: pulumi.Input[Optional[_builtins.str]] = None,
+            liveness_v2: pulumi.Input[Optional[Union['ApplicationLivenessV2Args', 'ApplicationLivenessV2ArgsDict']]] = None,
+            memory: pulumi.Input[Optional[_builtins.int]] = None,
+            micro_registration: pulumi.Input[Optional[_builtins.str]] = None,
+            min_ready_instance_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+            min_ready_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nas_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationNasConfigArgs', 'ApplicationNasConfigArgsDict']]]]] = None,
+            oss_ak_id: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_ak_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_mount_descs: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_mount_descs_v2s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOssMountDescsV2Args', 'ApplicationOssMountDescsV2ArgsDict']]]]] = None,
+            package_type: pulumi.Input[Optional[_builtins.str]] = None,
+            package_url: pulumi.Input[Optional[_builtins.str]] = None,
+            package_version: pulumi.Input[Optional[_builtins.str]] = None,
+            php: pulumi.Input[Optional[_builtins.str]] = None,
+            php_arms_config_location: pulumi.Input[Optional[_builtins.str]] = None,
+            php_config: pulumi.Input[Optional[_builtins.str]] = None,
+            php_config_location: pulumi.Input[Optional[_builtins.str]] = None,
+            post_start: pulumi.Input[Optional[_builtins.str]] = None,
+            post_start_v2: pulumi.Input[Optional[Union['ApplicationPostStartV2Args', 'ApplicationPostStartV2ArgsDict']]] = None,
+            pre_stop: pulumi.Input[Optional[_builtins.str]] = None,
+            pre_stop_v2: pulumi.Input[Optional[Union['ApplicationPreStopV2Args', 'ApplicationPreStopV2ArgsDict']]] = None,
+            programming_language: pulumi.Input[Optional[_builtins.str]] = None,
+            pvtz_discovery_svc: pulumi.Input[Optional[Union['ApplicationPvtzDiscoverySvcArgs', 'ApplicationPvtzDiscoverySvcArgsDict']]] = None,
+            readiness: pulumi.Input[Optional[_builtins.str]] = None,
+            readiness_v2: pulumi.Input[Optional[Union['ApplicationReadinessV2Args', 'ApplicationReadinessV2ArgsDict']]] = None,
+            replicas: pulumi.Input[Optional[_builtins.int]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_configs: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            termination_grace_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            tomcat_config: pulumi.Input[Optional[_builtins.str]] = None,
+            tomcat_config_v2: pulumi.Input[Optional[Union['ApplicationTomcatConfigV2Args', 'ApplicationTomcatConfigV2ArgsDict']]] = None,
+            update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            update_strategy_v2: pulumi.Input[Optional[Union['ApplicationUpdateStrategyV2Args', 'ApplicationUpdateStrategyV2ArgsDict']]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            war_start_options: pulumi.Input[Optional[_builtins.str]] = None,
+            web_container: pulumi.Input[Optional[_builtins.str]] = None) -> 'Application':
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

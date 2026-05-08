@@ -378,139 +378,139 @@ export interface GatewayFileShareState {
     /**
      * Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
      */
-    accessBasedEnumeration?: pulumi.Input<boolean>;
+    accessBasedEnumeration?: pulumi.Input<boolean | undefined>;
     /**
      * The Max upload speed of the gateway file share. Unit: `MB/s`, 0 means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
      */
-    backendLimit?: pulumi.Input<number>;
+    backendLimit?: pulumi.Input<number | undefined>;
     /**
      * The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
      */
-    browsable?: pulumi.Input<boolean>;
+    browsable?: pulumi.Input<boolean | undefined>;
     /**
      * Direct reading OSS of the gateway file share.
      */
-    bypassCacheRead?: pulumi.Input<boolean>;
+    bypassCacheRead?: pulumi.Input<boolean | undefined>;
     /**
      * The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
      */
-    cacheMode?: pulumi.Input<string>;
+    cacheMode?: pulumi.Input<string | undefined>;
     /**
      * File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
      */
-    directIo?: pulumi.Input<boolean>;
+    directIo?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum download speed of the gateway file share. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
      */
-    downloadLimit?: pulumi.Input<number>;
+    downloadLimit?: pulumi.Input<number | undefined>;
     /**
      * The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
      */
-    fastReclaim?: pulumi.Input<boolean>;
+    fastReclaim?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum write speed of the gateway file share. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
      */
-    feLimit?: pulumi.Input<number>;
+    feLimit?: pulumi.Input<number | undefined>;
     /**
      * The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
      */
-    gatewayFileShareName?: pulumi.Input<string>;
+    gatewayFileShareName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the gateway.
      */
-    gatewayId?: pulumi.Input<string>;
+    gatewayId?: pulumi.Input<string | undefined>;
     /**
      * The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignoreDelete` and `remoteSync` cannot be enabled simultaneously. Gateway version >= 1.0.40 above support.
      */
-    ignoreDelete?: pulumi.Input<boolean>;
+    ignoreDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The whether debris optimization of the gateway file share. Default value: `false`.
      */
-    inPlace?: pulumi.Input<boolean>;
+    inPlace?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the file share.
      */
-    indexId?: pulumi.Input<string>;
+    indexId?: pulumi.Input<string | undefined>;
     /**
      * The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version >= 1.0.40 above support.
      */
-    lagPeriod?: pulumi.Input<number>;
+    lagPeriod?: pulumi.Input<number | undefined>;
     /**
      * The cache disk inside the device name.
      */
-    localPath?: pulumi.Input<string>;
+    localPath?: pulumi.Input<string | undefined>;
     /**
      * The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** If it is enabled, NFS V3 cannot be mounted. The attribute is valid when the attribute `protocol` is `NFS`. Gateway version >= 1.2.0 above support.
      */
-    nfsV4Optimization?: pulumi.Input<boolean>;
+    nfsV4Optimization?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the OSS Bucket.
      */
-    ossBucketName?: pulumi.Input<string>;
+    ossBucketName?: pulumi.Input<string | undefined>;
     /**
      * Whether they are using SSL connect to OSS Bucket.
      */
-    ossBucketSsl?: pulumi.Input<boolean>;
+    ossBucketSsl?: pulumi.Input<boolean | undefined>;
     /**
      * The gateway file share corresponds to the Object Storage SERVICE (OSS), Bucket Endpoint. **NOTE:** distinguish between intranet and internet Endpoint. We recommend that if the OSS Bucket and the gateway is in the same Region is use the RDS intranet IP Endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`.
      */
-    ossEndpoint?: pulumi.Input<string>;
+    ossEndpoint?: pulumi.Input<string | undefined>;
     /**
      * In part mode, the directory path group JSON format.
      */
-    partialSyncPaths?: pulumi.Input<string>;
+    partialSyncPaths?: pulumi.Input<string | undefined>;
     /**
      * The subdirectory path under the object storage (OSS) bucket corresponding to the file share. If it is blank, it means the root directory of the bucket.
      */
-    pathPrefix?: pulumi.Input<string>;
+    pathPrefix?: pulumi.Input<string | undefined>;
     /**
      * The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
      */
-    pollingInterval?: pulumi.Input<number>;
+    pollingInterval?: pulumi.Input<number | undefined>;
     /**
      * Share types. Valid values: `SMB`, `NFS`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
      */
-    remoteSync?: pulumi.Input<boolean>;
+    remoteSync?: pulumi.Input<boolean | undefined>;
     /**
      * Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remoteSync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
      */
-    remoteSyncDownload?: pulumi.Input<boolean>;
+    remoteSyncDownload?: pulumi.Input<boolean | undefined>;
     /**
      * File sharing NFS read-only client list (IP address or IP address range). Use commas (,) to separate multiple clients.
      */
-    roClientList?: pulumi.Input<string>;
+    roClientList?: pulumi.Input<string | undefined>;
     /**
      * The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
      */
-    roUserList?: pulumi.Input<string>;
+    roUserList?: pulumi.Input<string | undefined>;
     /**
      * Read and write the client list. When Protocol NFS is returned when the status is.
      */
-    rwClientList?: pulumi.Input<string>;
+    rwClientList?: pulumi.Input<string | undefined>;
     /**
      * Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
      */
-    rwUserList?: pulumi.Input<string>;
+    rwUserList?: pulumi.Input<string | undefined>;
     /**
      * The NFS protocol user mapping of the gateway file share. Valid values: `none`, `rootSquash`, `allSquash`, `allAnonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
      */
-    squash?: pulumi.Input<string>;
+    squash?: pulumi.Input<string | undefined>;
     /**
      * Whether to support the archive transparent read.
      */
-    supportArchive?: pulumi.Input<boolean>;
+    supportArchive?: pulumi.Input<boolean | undefined>;
     /**
      * The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version >= 1.3.0 above support.
      */
-    transferAcceleration?: pulumi.Input<boolean>;
+    transferAcceleration?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
      */
-    windowsAcl?: pulumi.Input<boolean>;
+    windowsAcl?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -520,39 +520,39 @@ export interface GatewayFileShareArgs {
     /**
      * Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
      */
-    accessBasedEnumeration?: pulumi.Input<boolean>;
+    accessBasedEnumeration?: pulumi.Input<boolean | undefined>;
     /**
      * The Max upload speed of the gateway file share. Unit: `MB/s`, 0 means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
      */
-    backendLimit?: pulumi.Input<number>;
+    backendLimit?: pulumi.Input<number | undefined>;
     /**
      * The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
      */
-    browsable?: pulumi.Input<boolean>;
+    browsable?: pulumi.Input<boolean | undefined>;
     /**
      * Direct reading OSS of the gateway file share.
      */
-    bypassCacheRead?: pulumi.Input<boolean>;
+    bypassCacheRead?: pulumi.Input<boolean | undefined>;
     /**
      * The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
      */
-    cacheMode?: pulumi.Input<string>;
+    cacheMode?: pulumi.Input<string | undefined>;
     /**
      * File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
      */
-    directIo?: pulumi.Input<boolean>;
+    directIo?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum download speed of the gateway file share. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version >= 1.3.0 above support.
      */
-    downloadLimit?: pulumi.Input<number>;
+    downloadLimit?: pulumi.Input<number | undefined>;
     /**
      * The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version >= 1.0.39 above support.
      */
-    fastReclaim?: pulumi.Input<boolean>;
+    fastReclaim?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum write speed of the gateway file share. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
      */
-    feLimit?: pulumi.Input<number>;
+    feLimit?: pulumi.Input<number | undefined>;
     /**
      * The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
      */
@@ -564,15 +564,15 @@ export interface GatewayFileShareArgs {
     /**
      * The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignoreDelete` and `remoteSync` cannot be enabled simultaneously. Gateway version >= 1.0.40 above support.
      */
-    ignoreDelete?: pulumi.Input<boolean>;
+    ignoreDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The whether debris optimization of the gateway file share. Default value: `false`.
      */
-    inPlace?: pulumi.Input<boolean>;
+    inPlace?: pulumi.Input<boolean | undefined>;
     /**
      * The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version >= 1.0.40 above support.
      */
-    lagPeriod?: pulumi.Input<number>;
+    lagPeriod?: pulumi.Input<number | undefined>;
     /**
      * The cache disk inside the device name.
      */
@@ -580,7 +580,7 @@ export interface GatewayFileShareArgs {
     /**
      * The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** If it is enabled, NFS V3 cannot be mounted. The attribute is valid when the attribute `protocol` is `NFS`. Gateway version >= 1.2.0 above support.
      */
-    nfsV4Optimization?: pulumi.Input<boolean>;
+    nfsV4Optimization?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the OSS Bucket.
      */
@@ -588,7 +588,7 @@ export interface GatewayFileShareArgs {
     /**
      * Whether they are using SSL connect to OSS Bucket.
      */
-    ossBucketSsl?: pulumi.Input<boolean>;
+    ossBucketSsl?: pulumi.Input<boolean | undefined>;
     /**
      * The gateway file share corresponds to the Object Storage SERVICE (OSS), Bucket Endpoint. **NOTE:** distinguish between intranet and internet Endpoint. We recommend that if the OSS Bucket and the gateway is in the same Region is use the RDS intranet IP Endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`.
      */
@@ -596,15 +596,15 @@ export interface GatewayFileShareArgs {
     /**
      * In part mode, the directory path group JSON format.
      */
-    partialSyncPaths?: pulumi.Input<string>;
+    partialSyncPaths?: pulumi.Input<string | undefined>;
     /**
      * The subdirectory path under the object storage (OSS) bucket corresponding to the file share. If it is blank, it means the root directory of the bucket.
      */
-    pathPrefix?: pulumi.Input<string>;
+    pathPrefix?: pulumi.Input<string | undefined>;
     /**
      * The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
      */
-    pollingInterval?: pulumi.Input<number>;
+    pollingInterval?: pulumi.Input<number | undefined>;
     /**
      * Share types. Valid values: `SMB`, `NFS`.
      */
@@ -612,41 +612,41 @@ export interface GatewayFileShareArgs {
     /**
      * Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
      */
-    remoteSync?: pulumi.Input<boolean>;
+    remoteSync?: pulumi.Input<boolean | undefined>;
     /**
      * Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remoteSync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
      */
-    remoteSyncDownload?: pulumi.Input<boolean>;
+    remoteSyncDownload?: pulumi.Input<boolean | undefined>;
     /**
      * File sharing NFS read-only client list (IP address or IP address range). Use commas (,) to separate multiple clients.
      */
-    roClientList?: pulumi.Input<string>;
+    roClientList?: pulumi.Input<string | undefined>;
     /**
      * The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
      */
-    roUserList?: pulumi.Input<string>;
+    roUserList?: pulumi.Input<string | undefined>;
     /**
      * Read and write the client list. When Protocol NFS is returned when the status is.
      */
-    rwClientList?: pulumi.Input<string>;
+    rwClientList?: pulumi.Input<string | undefined>;
     /**
      * Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
      */
-    rwUserList?: pulumi.Input<string>;
+    rwUserList?: pulumi.Input<string | undefined>;
     /**
      * The NFS protocol user mapping of the gateway file share. Valid values: `none`, `rootSquash`, `allSquash`, `allAnonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
      */
-    squash?: pulumi.Input<string>;
+    squash?: pulumi.Input<string | undefined>;
     /**
      * Whether to support the archive transparent read.
      */
-    supportArchive?: pulumi.Input<boolean>;
+    supportArchive?: pulumi.Input<boolean | undefined>;
     /**
      * The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version >= 1.3.0 above support.
      */
-    transferAcceleration?: pulumi.Input<boolean>;
+    transferAcceleration?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
      */
-    windowsAcl?: pulumi.Input<boolean>;
+    windowsAcl?: pulumi.Input<boolean | undefined>;
 }

@@ -125,21 +125,21 @@ export interface GetHealthCheckTemplatesOutputArgs {
     /**
      * The health check template ids.
      */
-    healthCheckTemplateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    healthCheckTemplateIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      */
-    healthCheckTemplateName?: pulumi.Input<string>;
+    healthCheckTemplateName?: pulumi.Input<string | undefined>;
     /**
      * A list of Health Check Template IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Health Check Template name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

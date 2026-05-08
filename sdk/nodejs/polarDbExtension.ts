@@ -183,27 +183,27 @@ export interface PolarDbExtensionState {
     /**
      * The database account name of the associated PolarDB cluster. Only support `Super` account.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the cluster.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * PolarDB cluster database name.
      */
-    dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string | undefined>;
     /**
      * Default version.
      */
-    defaultVersion?: pulumi.Input<string>;
+    defaultVersion?: pulumi.Input<string | undefined>;
     /**
      * Information about the installed plug-ins under the specified database.
      */
-    extensionName?: pulumi.Input<string>;
+    extensionName?: pulumi.Input<string | undefined>;
     /**
      * Installed version, only supports upgrading to the default version.
      */
-    installedVersion?: pulumi.Input<string>;
+    installedVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -229,5 +229,5 @@ export interface PolarDbExtensionArgs {
     /**
      * Installed version, only supports upgrading to the default version.
      */
-    installedVersion?: pulumi.Input<string>;
+    installedVersion?: pulumi.Input<string | undefined>;
 }

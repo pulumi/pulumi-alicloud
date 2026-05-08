@@ -40,13 +40,13 @@ __all__ = [
 ]
 
 class ChainChainConfigArgsDict(TypedDict):
-    nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeArgsDict']]]]
+    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeArgs']]]]]
     """
     Each node in the delivery chain. See `nodes` below.
 
     > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
     """
-    routers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterArgsDict']]]]
+    routers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterArgs']]]]]
     """
     Execution sequence relationship between delivery chain nodes. See `routers` below.
     """
@@ -54,8 +54,8 @@ class ChainChainConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ChainChainConfigArgs:
     def __init__(__self__, *,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeArgs']]]] = None,
-                 routers: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterArgs']]]] = None):
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeArgs']]]] = None,
+                 routers: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeArgs']]] nodes: Each node in the delivery chain. See `nodes` below.
                
@@ -69,7 +69,7 @@ class ChainChainConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeArgs']]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeArgs']]]]:
         """
         Each node in the delivery chain. See `nodes` below.
 
@@ -78,32 +78,32 @@ class ChainChainConfigArgs:
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeArgs']]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeArgs']]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def routers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterArgs']]]]:
+    def routers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterArgs']]]]:
         """
         Execution sequence relationship between delivery chain nodes. See `routers` below.
         """
         return pulumi.get(self, "routers")
 
     @routers.setter
-    def routers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterArgs']]]]):
+    def routers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterArgs']]]]):
         pulumi.set(self, "routers", value)
 
 
 class ChainChainConfigNodeArgsDict(TypedDict):
-    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable the delivery chain node. Valid values: `true`, `false`.
     """
-    node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgsDict']]]]
+    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgs']]]]]
     """
     The configuration of delivery chain node. See `node_config` below.
     """
-    node_name: NotRequired[pulumi.Input[_builtins.str]]
+    node_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of delivery chain node.
     """
@@ -111,9 +111,9 @@ class ChainChainConfigNodeArgsDict(TypedDict):
 @pulumi.input_type
 class ChainChainConfigNodeArgs:
     def __init__(__self__, *,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgs']]]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgs']]]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable: Whether to enable the delivery chain node. Valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgs']]] node_configs: The configuration of delivery chain node. See `node_config` below.
@@ -128,43 +128,43 @@ class ChainChainConfigNodeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the delivery chain node. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeConfigs")
-    def node_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgs']]]]:
+    def node_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgs']]]]:
         """
         The configuration of delivery chain node. See `node_config` below.
         """
         return pulumi.get(self, "node_configs")
 
     @node_configs.setter
-    def node_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgs']]]]):
+    def node_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgs']]]]):
         pulumi.set(self, "node_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of delivery chain node.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
 
 class ChainChainConfigNodeNodeConfigArgsDict(TypedDict):
-    deny_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgsDict']]]]
+    deny_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgs']]]]]
     """
     Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
     """
@@ -172,7 +172,7 @@ class ChainChainConfigNodeNodeConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ChainChainConfigNodeNodeConfigArgs:
     def __init__(__self__, *,
-                 deny_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgs']]]] = None):
+                 deny_policies: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgs']]] deny_policies: Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
         """
@@ -181,31 +181,31 @@ class ChainChainConfigNodeNodeConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="denyPolicies")
-    def deny_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgs']]]]:
+    def deny_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgs']]]]:
         """
         Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
         """
         return pulumi.get(self, "deny_policies")
 
     @deny_policies.setter
-    def deny_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgs']]]]):
+    def deny_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgs']]]]):
         pulumi.set(self, "deny_policies", value)
 
 
 class ChainChainConfigNodeNodeConfigDenyPolicyArgsDict(TypedDict):
-    action: NotRequired[pulumi.Input[_builtins.str]]
+    action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
     """
-    issue_count: NotRequired[pulumi.Input[_builtins.str]]
+    issue_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The count of scanning vulnerabilities that triggers blocking.
     """
-    issue_level: NotRequired[pulumi.Input[_builtins.str]]
+    issue_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
     """
-    logic: NotRequired[pulumi.Input[_builtins.str]]
+    logic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The logic of trigger blocking. Valid values: `AND`, `OR`.
     """
@@ -213,10 +213,10 @@ class ChainChainConfigNodeNodeConfigDenyPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class ChainChainConfigNodeNodeConfigDenyPolicyArgs:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 issue_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 issue_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 logic: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 issue_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 issue_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 logic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] action: The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
         :param pulumi.Input[_builtins.str] issue_count: The count of scanning vulnerabilities that triggers blocking.
@@ -234,59 +234,59 @@ class ChainChainConfigNodeNodeConfigDenyPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="issueCount")
-    def issue_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issue_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The count of scanning vulnerabilities that triggers blocking.
         """
         return pulumi.get(self, "issue_count")
 
     @issue_count.setter
-    def issue_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issue_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issue_count", value)
 
     @_builtins.property
     @pulumi.getter(name="issueLevel")
-    def issue_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issue_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
         """
         return pulumi.get(self, "issue_level")
 
     @issue_level.setter
-    def issue_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issue_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issue_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def logic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logic of trigger blocking. Valid values: `AND`, `OR`.
         """
         return pulumi.get(self, "logic")
 
     @logic.setter
-    def logic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logic", value)
 
 
 class ChainChainConfigRouterArgsDict(TypedDict):
-    froms: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterFromArgsDict']]]]
+    froms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterFromArgs']]]]]
     """
     Source node. See `from` below.
     """
-    tos: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterToArgsDict']]]]
+    tos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterToArgs']]]]]
     """
     Destination node. See `to` below.
     """
@@ -294,8 +294,8 @@ class ChainChainConfigRouterArgsDict(TypedDict):
 @pulumi.input_type
 class ChainChainConfigRouterArgs:
     def __init__(__self__, *,
-                 froms: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterFromArgs']]]] = None,
-                 tos: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterToArgs']]]] = None):
+                 froms: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterFromArgs']]]] = None,
+                 tos: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterToArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterFromArgs']]] froms: Source node. See `from` below.
         :param pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterToArgs']]] tos: Destination node. See `to` below.
@@ -307,31 +307,31 @@ class ChainChainConfigRouterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def froms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterFromArgs']]]]:
+    def froms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterFromArgs']]]]:
         """
         Source node. See `from` below.
         """
         return pulumi.get(self, "froms")
 
     @froms.setter
-    def froms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterFromArgs']]]]):
+    def froms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterFromArgs']]]]):
         pulumi.set(self, "froms", value)
 
     @_builtins.property
     @pulumi.getter
-    def tos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterToArgs']]]]:
+    def tos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterToArgs']]]]:
         """
         Destination node. See `to` below.
         """
         return pulumi.get(self, "tos")
 
     @tos.setter
-    def tos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterToArgs']]]]):
+    def tos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterToArgs']]]]):
         pulumi.set(self, "tos", value)
 
 
 class ChainChainConfigRouterFromArgsDict(TypedDict):
-    node_name: NotRequired[pulumi.Input[_builtins.str]]
+    node_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
     """
@@ -339,7 +339,7 @@ class ChainChainConfigRouterFromArgsDict(TypedDict):
 @pulumi.input_type
 class ChainChainConfigRouterFromArgs:
     def __init__(__self__, *,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] node_name: The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
         """
@@ -348,19 +348,19 @@ class ChainChainConfigRouterFromArgs:
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
 
 class ChainChainConfigRouterToArgsDict(TypedDict):
-    node_name: NotRequired[pulumi.Input[_builtins.str]]
+    node_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
     """
@@ -368,7 +368,7 @@ class ChainChainConfigRouterToArgsDict(TypedDict):
 @pulumi.input_type
 class ChainChainConfigRouterToArgs:
     def __init__(__self__, *,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] node_name: The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
         """
@@ -377,27 +377,27 @@ class ChainChainConfigRouterToArgs:
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
 
 class RegistryEnterpriseInstanceInstanceEndpointArgsDict(TypedDict):
-    domains: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgsDict']]]]
+    domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgs']]]]]
     """
     Domain List
     """
-    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     enable
     """
-    endpoint_type: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Network Access Endpoint Type
     """
@@ -405,9 +405,9 @@ class RegistryEnterpriseInstanceInstanceEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class RegistryEnterpriseInstanceInstanceEndpointArgs:
     def __init__(__self__, *,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgs']]]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgs']]]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgs']]] domains: Domain List
         :param pulumi.Input[_builtins.bool] enable: enable
@@ -422,47 +422,47 @@ class RegistryEnterpriseInstanceInstanceEndpointArgs:
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgs']]]]:
+    def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgs']]]]:
         """
         Domain List
         """
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgs']]]]):
+    def domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgs']]]]):
         pulumi.set(self, "domains", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         enable
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network Access Endpoint Type
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
 
 class RegistryEnterpriseInstanceInstanceEndpointDomainArgsDict(TypedDict):
-    domain: NotRequired[pulumi.Input[_builtins.str]]
+    domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Domain
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Domain Type
     """
@@ -470,8 +470,8 @@ class RegistryEnterpriseInstanceInstanceEndpointDomainArgsDict(TypedDict):
 @pulumi.input_type
 class RegistryEnterpriseInstanceInstanceEndpointDomainArgs:
     def __init__(__self__, *,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain: Domain
         :param pulumi.Input[_builtins.str] type: Domain Type
@@ -483,39 +483,39 @@ class RegistryEnterpriseInstanceInstanceEndpointDomainArgs:
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain Type
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class RepoDomainListArgsDict(TypedDict):
-    internal: NotRequired[pulumi.Input[_builtins.str]]
+    internal: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Domain of internal endpoint, only in some regions.
     """
-    public: NotRequired[pulumi.Input[_builtins.str]]
+    public: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Domain of public endpoint.
     """
-    vpc: NotRequired[pulumi.Input[_builtins.str]]
+    vpc: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Domain of vpc endpoint.
     """
@@ -523,9 +523,9 @@ class RepoDomainListArgsDict(TypedDict):
 @pulumi.input_type
 class RepoDomainListArgs:
     def __init__(__self__, *,
-                 internal: Optional[pulumi.Input[_builtins.str]] = None,
-                 public: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None):
+                 internal: pulumi.Input[Optional[_builtins.str]] = None,
+                 public: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] internal: Domain of internal endpoint, only in some regions.
         :param pulumi.Input[_builtins.str] public: Domain of public endpoint.
@@ -540,38 +540,38 @@ class RepoDomainListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def internal(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internal(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain of internal endpoint, only in some regions.
         """
         return pulumi.get(self, "internal")
 
     @internal.setter
-    def internal(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internal(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internal", value)
 
     @_builtins.property
     @pulumi.getter
-    def public(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain of public endpoint.
         """
         return pulumi.get(self, "public")
 
     @public.setter
-    def public(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain of vpc endpoint.
         """
         return pulumi.get(self, "vpc")
 
     @vpc.setter
-    def vpc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc", value)
 
 

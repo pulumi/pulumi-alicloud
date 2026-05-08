@@ -21,7 +21,7 @@ class DiskArgs:
     def __init__(__self__, *,
                  disk_size: pulumi.Input[_builtins.int],
                  instance_id: pulumi.Input[_builtins.str],
-                 remark: Optional[pulumi.Input[_builtins.str]] = None):
+                 remark: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Disk resource.
 
@@ -60,26 +60,26 @@ class DiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Note information.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
 
 @pulumi.input_type
 class _DiskState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Disk resources.
 
@@ -105,74 +105,74 @@ class _DiskState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="diskName")
-    def disk_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "disk_name")
 
     @disk_name.setter
-    def disk_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_name", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         disk size
         """
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
-    def disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         instance id
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Note information.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
 
@@ -182,9 +182,9 @@ class Disk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Simple Application Server Disk resource.
@@ -315,9 +315,9 @@ class Disk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -347,12 +347,12 @@ class Disk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None) -> 'Disk':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None) -> 'Disk':
         """
         Get an existing Disk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

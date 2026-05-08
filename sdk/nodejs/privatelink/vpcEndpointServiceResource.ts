@@ -176,27 +176,27 @@ export interface VpcEndpointServiceResourceState {
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * (Available since v1.235.0) The ID of the region where the service resource is deployed.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The service resource ID.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Service resource type, value:
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The endpoint service ID.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -206,7 +206,7 @@ export interface VpcEndpointServiceResourceArgs {
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The service resource ID.
      */
@@ -222,5 +222,5 @@ export interface VpcEndpointServiceResourceArgs {
     /**
      * The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

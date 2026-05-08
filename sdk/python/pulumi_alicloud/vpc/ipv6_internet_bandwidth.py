@@ -22,7 +22,7 @@ class Ipv6InternetBandwidthArgs:
                  bandwidth: pulumi.Input[_builtins.int],
                  ipv6_address_id: pulumi.Input[_builtins.str],
                  ipv6_gateway_id: pulumi.Input[_builtins.str],
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Ipv6InternetBandwidth resource.
 
@@ -75,25 +75,25 @@ class Ipv6InternetBandwidthArgs:
 
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
         """
         return pulumi.get(self, "internet_charge_type")
 
     @internet_charge_type.setter
-    def internet_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_charge_type", value)
 
 
 @pulumi.input_type
 class _Ipv6InternetBandwidthState:
     def __init__(__self__, *,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_address_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_address_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ipv6InternetBandwidth resources.
 
@@ -116,62 +116,62 @@ class _Ipv6InternetBandwidthState:
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internet_charge_type` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
         """
         return pulumi.get(self, "internet_charge_type")
 
     @internet_charge_type.setter
-    def internet_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6AddressId")
-    def ipv6_address_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_address_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IPv6 address instance.
         """
         return pulumi.get(self, "ipv6_address_id")
 
     @ipv6_address_id.setter
-    def ipv6_address_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_address_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_address_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6GatewayId")
-    def ipv6_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IPv6 gateway to which the IPv6 address belongs.
         """
         return pulumi.get(self, "ipv6_gateway_id")
 
     @ipv6_gateway_id.setter
-    def ipv6_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -181,10 +181,10 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_address_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_address_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPC Ipv6 Internet Bandwidth resource. Public network bandwidth of IPv6 address.
@@ -362,10 +362,10 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_address_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_address_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -396,11 +396,11 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_address_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Ipv6InternetBandwidth':
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_address_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Ipv6InternetBandwidth':
         """
         Get an existing Ipv6InternetBandwidth resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

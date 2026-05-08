@@ -201,31 +201,31 @@ export interface Ipv6EgressRuleState {
     /**
      * The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the IPv6 address to which you want to apply the egress-only rule.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the IPv6 EgressRule.
      */
-    ipv6EgressRuleId?: pulumi.Input<string>;
+    ipv6EgressRuleId?: pulumi.Input<string | undefined>;
     /**
      * The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
      */
-    ipv6EgressRuleName?: pulumi.Input<string>;
+    ipv6EgressRuleName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the IPv6 gateway.
      */
-    ipv6GatewayId?: pulumi.Input<string>;
+    ipv6GatewayId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -235,7 +235,7 @@ export interface Ipv6EgressRuleArgs {
     /**
      * The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the IPv6 address to which you want to apply the egress-only rule.
      */
@@ -243,11 +243,11 @@ export interface Ipv6EgressRuleArgs {
     /**
      * The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
      */
-    ipv6EgressRuleName?: pulumi.Input<string>;
+    ipv6EgressRuleName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the IPv6 gateway.
      */

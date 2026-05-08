@@ -24,11 +24,11 @@ class TrafficMarkingPolicyArgs:
                  marking_dscp: pulumi.Input[_builtins.int],
                  priority: pulumi.Input[_builtins.int],
                  transit_router_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 traffic_marking_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_match_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 traffic_marking_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_match_rules: pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]] = None):
         """
         The set of arguments for constructing a TrafficMarkingPolicy resource.
 
@@ -94,55 +94,55 @@ class TrafficMarkingPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TrafficMarkingPolicyDescription
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request. Value:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to forcibly delete the traffic marker policy. Valid values:
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMarkingPolicyName")
-    def traffic_marking_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_marking_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TrafficMarkingPolicyName
         """
         return pulumi.get(self, "traffic_marking_policy_name")
 
     @traffic_marking_policy_name.setter
-    def traffic_marking_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_marking_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_marking_policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMatchRules")
-    def traffic_match_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]]:
+    def traffic_match_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]]:
         """
         List of stream classification rules.
         You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
@@ -150,23 +150,23 @@ class TrafficMarkingPolicyArgs:
         return pulumi.get(self, "traffic_match_rules")
 
     @traffic_match_rules.setter
-    def traffic_match_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]]):
+    def traffic_match_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]]):
         pulumi.set(self, "traffic_match_rules", value)
 
 
 @pulumi.input_type
 class _TrafficMarkingPolicyState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 marking_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_marking_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_marking_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_match_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 marking_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_marking_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_marking_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_match_rules: pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrafficMarkingPolicy resources.
 
@@ -205,103 +205,103 @@ class _TrafficMarkingPolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TrafficMarkingPolicyDescription
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request. Value:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to forcibly delete the traffic marker policy. Valid values:
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="markingDscp")
-    def marking_dscp(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def marking_dscp(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         MarkingDscp
         """
         return pulumi.get(self, "marking_dscp")
 
     @marking_dscp.setter
-    def marking_dscp(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def marking_dscp(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "marking_dscp", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Priority
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMarkingPolicyId")
-    def traffic_marking_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_marking_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "traffic_marking_policy_id")
 
     @traffic_marking_policy_id.setter
-    def traffic_marking_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_marking_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_marking_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMarkingPolicyName")
-    def traffic_marking_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_marking_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TrafficMarkingPolicyName
         """
         return pulumi.get(self, "traffic_marking_policy_name")
 
     @traffic_marking_policy_name.setter
-    def traffic_marking_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_marking_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_marking_policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMatchRules")
-    def traffic_match_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]]:
+    def traffic_match_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]]:
         """
         List of stream classification rules.
         You can add up to 50 stream classification rules at a time. See `traffic_match_rules` below.
@@ -309,19 +309,19 @@ class _TrafficMarkingPolicyState:
         return pulumi.get(self, "traffic_match_rules")
 
     @traffic_match_rules.setter
-    def traffic_match_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]]):
+    def traffic_match_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TrafficMarkingPolicyTrafficMatchRuleArgs']]]]):
         pulumi.set(self, "traffic_match_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TransitRouterId
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
 
@@ -331,14 +331,14 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 marking_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 traffic_marking_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_match_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 marking_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 traffic_marking_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Traffic Marking Policy resource.
@@ -451,14 +451,14 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 marking_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 traffic_marking_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_match_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 marking_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 traffic_marking_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -494,16 +494,16 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            marking_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            traffic_marking_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            traffic_marking_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            traffic_match_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]]] = None,
-            transit_router_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TrafficMarkingPolicy':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            marking_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_marking_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_marking_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrafficMarkingPolicyTrafficMatchRuleArgs', 'TrafficMarkingPolicyTrafficMatchRuleArgsDict']]]]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TrafficMarkingPolicy':
         """
         Get an existing TrafficMarkingPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

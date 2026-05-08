@@ -20,18 +20,18 @@ __all__ = ['GrafanaWorkspaceArgs', 'GrafanaWorkspace']
 class GrafanaWorkspaceArgs:
     def __init__(__self__, *,
                  grafana_workspace_name: pulumi.Input[_builtins.str],
-                 account_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_account_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_workspace_edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 account_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_account_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_workspace_edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a GrafanaWorkspace resource.
 
@@ -107,7 +107,7 @@ class GrafanaWorkspaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountNumber")
-    def account_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value Description:
         GrafanaWorkspaceEdition is standard, this parameter is invalid.
@@ -118,12 +118,12 @@ class GrafanaWorkspaceArgs:
         return pulumi.get(self, "account_number")
 
     @account_number.setter
-    def account_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_number", value)
 
     @_builtins.property
     @pulumi.getter(name="aliyunLang")
-    def aliyun_lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aliyun_lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Language environment (if not filled in, default is zh):
         - zh
@@ -132,12 +132,12 @@ class GrafanaWorkspaceArgs:
         return pulumi.get(self, "aliyun_lang")
 
     @aliyun_lang.setter
-    def aliyun_lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aliyun_lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aliyun_lang", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically renew. Value range:
         - true: Automatic renewal. Default value: true.
@@ -146,12 +146,12 @@ class GrafanaWorkspaceArgs:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="customAccountNumber")
-    def custom_account_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_account_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of additional user-defined accounts. Value Description:
         - GrafanaWorkspaceEdition is standard, this parameter is invalid.
@@ -162,24 +162,24 @@ class GrafanaWorkspaceArgs:
         return pulumi.get(self, "custom_account_number")
 
     @custom_account_number.setter
-    def custom_account_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_account_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_account_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time of the instance package. Valid values:
         - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
@@ -188,24 +188,24 @@ class GrafanaWorkspaceArgs:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaVersion")
-    def grafana_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grafana_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Grafana version
         """
         return pulumi.get(self, "grafana_version")
 
     @grafana_version.setter
-    def grafana_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grafana_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grafana_version", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaWorkspaceEdition")
-    def grafana_workspace_edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grafana_workspace_edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition. **Valid values:**
         - standard: `Beta Edition(For internal testing only) `
@@ -216,77 +216,77 @@ class GrafanaWorkspaceArgs:
         return pulumi.get(self, "grafana_workspace_edition")
 
     @grafana_workspace_edition.setter
-    def grafana_workspace_edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grafana_workspace_edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grafana_workspace_edition", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
         """
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _GrafanaWorkspaceState:
     def __init__(__self__, *,
-                 account_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_account_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_workspace_edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 account_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_account_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_workspace_edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering GrafanaWorkspace resources.
 
@@ -360,7 +360,7 @@ class _GrafanaWorkspaceState:
 
     @_builtins.property
     @pulumi.getter(name="accountNumber")
-    def account_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value Description:
         GrafanaWorkspaceEdition is standard, this parameter is invalid.
@@ -371,12 +371,12 @@ class _GrafanaWorkspaceState:
         return pulumi.get(self, "account_number")
 
     @account_number.setter
-    def account_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_number", value)
 
     @_builtins.property
     @pulumi.getter(name="aliyunLang")
-    def aliyun_lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aliyun_lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Language environment (if not filled in, default is zh):
         - zh
@@ -385,12 +385,12 @@ class _GrafanaWorkspaceState:
         return pulumi.get(self, "aliyun_lang")
 
     @aliyun_lang.setter
-    def aliyun_lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aliyun_lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aliyun_lang", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically renew. Value range:
         - true: Automatic renewal. Default value: true.
@@ -399,24 +399,24 @@ class _GrafanaWorkspaceState:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customAccountNumber")
-    def custom_account_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_account_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of additional user-defined accounts. Value Description:
         - GrafanaWorkspaceEdition is standard, this parameter is invalid.
@@ -427,24 +427,24 @@ class _GrafanaWorkspaceState:
         return pulumi.get(self, "custom_account_number")
 
     @custom_account_number.setter
-    def custom_account_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_account_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_account_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time of the instance package. Valid values:
         - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
@@ -453,24 +453,24 @@ class _GrafanaWorkspaceState:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaVersion")
-    def grafana_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grafana_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Grafana version
         """
         return pulumi.get(self, "grafana_version")
 
     @grafana_version.setter
-    def grafana_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grafana_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grafana_version", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaWorkspaceEdition")
-    def grafana_workspace_edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grafana_workspace_edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition. **Valid values:**
         - standard: `Beta Edition(For internal testing only) `
@@ -481,91 +481,91 @@ class _GrafanaWorkspaceState:
         return pulumi.get(self, "grafana_workspace_edition")
 
     @grafana_workspace_edition.setter
-    def grafana_workspace_edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grafana_workspace_edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grafana_workspace_edition", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaWorkspaceName")
-    def grafana_workspace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grafana_workspace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "grafana_workspace_name")
 
     @grafana_workspace_name.setter
-    def grafana_workspace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grafana_workspace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grafana_workspace_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
         """
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -575,19 +575,19 @@ class GrafanaWorkspace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_account_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_workspace_edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 account_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_account_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_workspace_edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Grafana Workspace resource.
@@ -730,19 +730,19 @@ class GrafanaWorkspace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_account_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_workspace_edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 account_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_account_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_workspace_edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -780,22 +780,22 @@ class GrafanaWorkspace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_number: Optional[pulumi.Input[_builtins.str]] = None,
-            aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_account_number: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            duration: Optional[pulumi.Input[_builtins.str]] = None,
-            grafana_version: Optional[pulumi.Input[_builtins.str]] = None,
-            grafana_workspace_edition: Optional[pulumi.Input[_builtins.str]] = None,
-            grafana_workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'GrafanaWorkspace':
+            account_number: pulumi.Input[Optional[_builtins.str]] = None,
+            aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_account_number: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.str]] = None,
+            grafana_version: pulumi.Input[Optional[_builtins.str]] = None,
+            grafana_workspace_edition: pulumi.Input[Optional[_builtins.str]] = None,
+            grafana_workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'GrafanaWorkspace':
         """
         Get an existing GrafanaWorkspace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -153,33 +153,33 @@ export interface GroupState {
      *
      * @deprecated Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Name of the group. Two groups on a single instance cannot have the same name. A `groupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
      */
-    groupType?: pulumi.Input<string>;
+    groupType?: pulumi.Input<string | undefined>;
     /**
      * ID of the ONS Instance that owns the groups.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
      */
-    readEnable?: pulumi.Input<boolean>;
+    readEnable?: pulumi.Input<boolean | undefined>;
     /**
      * This attribute is a concise description of group. The length cannot exceed 256.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -191,15 +191,15 @@ export interface GroupArgs {
      *
      * @deprecated Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Name of the group. Two groups on a single instance cannot have the same name. A `groupName` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
      */
-    groupType?: pulumi.Input<string>;
+    groupType?: pulumi.Input<string | undefined>;
     /**
      * ID of the ONS Instance that owns the groups.
      */
@@ -207,15 +207,15 @@ export interface GroupArgs {
     /**
      * This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
      */
-    readEnable?: pulumi.Input<boolean>;
+    readEnable?: pulumi.Input<boolean | undefined>;
     /**
      * This attribute is a concise description of group. The length cannot exceed 256.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

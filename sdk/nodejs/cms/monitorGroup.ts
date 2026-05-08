@@ -128,23 +128,23 @@ export interface MonitorGroupState {
     /**
      * The alert group to which alert notifications will be sent.
      */
-    contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    contactGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the application group.
      */
-    monitorGroupName?: pulumi.Input<string>;
+    monitorGroupName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group.
      */
-    resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -154,21 +154,21 @@ export interface MonitorGroupArgs {
     /**
      * The alert group to which alert notifications will be sent.
      */
-    contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    contactGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the application group.
      */
-    monitorGroupName?: pulumi.Input<string>;
+    monitorGroupName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group.
      */
-    resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

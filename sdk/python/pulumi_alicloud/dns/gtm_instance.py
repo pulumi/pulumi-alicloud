@@ -27,20 +27,20 @@ class GtmInstanceArgs:
                  payment_type: pulumi.Input[_builtins.str],
                  period: pulumi.Input[_builtins.int],
                  sms_notification_count: pulumi.Input[_builtins.int],
-                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]] = None,
-                 alert_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cname_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_cname_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_rr: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_user_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_zone_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 strategy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
+                 alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]] = None,
+                 alert_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cname_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_cname_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_rr: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_user_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_zone_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a GtmInstance resource.
 
@@ -174,196 +174,196 @@ class GtmInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="alertConfigs")
-    def alert_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]]:
+    def alert_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]]:
         """
         The alert notification methods. See `alert_config` below for details.
         """
         return pulumi.get(self, "alert_configs")
 
     @alert_configs.setter
-    def alert_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]]):
+    def alert_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]]):
         pulumi.set(self, "alert_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="alertGroups")
-    def alert_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def alert_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The alert group.
         """
         return pulumi.get(self, "alert_groups")
 
     @alert_groups.setter
-    def alert_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def alert_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alert_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="cnameType")
-    def cname_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cname_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access type of the CNAME domain name. Valid value: `PUBLIC`.
         """
         return pulumi.get(self, "cname_type")
 
     @cname_type.setter
-    def cname_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cname_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cname_type", value)
 
     @_builtins.property
     @pulumi.getter(name="forceUpdate")
-    def force_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The force update.
         """
         return pulumi.get(self, "force_update")
 
     @force_update.setter
-    def force_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_update", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lang.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="publicCnameMode")
-    def public_cname_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_cname_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Public Network domain name access method. Valid values: `CUSTOM`, `SYSTEM_ASSIGN`.
         """
         return pulumi.get(self, "public_cname_mode")
 
     @public_cname_mode.setter
-    def public_cname_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_cname_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_cname_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="publicRr")
-    def public_rr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_rr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CNAME access domain name.
         """
         return pulumi.get(self, "public_rr")
 
     @public_rr.setter
-    def public_rr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_rr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_rr", value)
 
     @_builtins.property
     @pulumi.getter(name="publicUserDomainName")
-    def public_user_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_user_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The website domain name that the user uses on the Internet.
         """
         return pulumi.get(self, "public_user_domain_name")
 
     @public_user_domain_name.setter
-    def public_user_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_user_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_user_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="publicZoneName")
-    def public_zone_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_zone_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name that is used to access GTM over the Internet.
         """
         return pulumi.get(self, "public_zone_name")
 
     @public_zone_name.setter
-    def public_zone_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_zone_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_zone_name", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic renewal period, the unit is month. When setting `renewal_status` to AutoRenewal, it must be set.
         """
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`.
         """
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="strategyMode")
-    def strategy_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strategy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the access policy. Valid values: `GEO`, `LATENCY`.
         """
         return pulumi.get(self, "strategy_mode")
 
     @strategy_mode.setter
-    def strategy_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strategy_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strategy_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The global time to live. Valid values: `60`, `120`, `300`, `600`. Unit: second.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
 
 @pulumi.input_type
 class _GtmInstanceState:
     def __init__(__self__, *,
-                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]] = None,
-                 alert_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cname_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check_task_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 public_cname_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_rr: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_user_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_zone_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sms_notification_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 strategy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
+                 alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]] = None,
+                 alert_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cname_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check_task_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 public_cname_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_rr: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_user_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_zone_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sms_notification_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering GtmInstance resources.
 
@@ -431,242 +431,242 @@ class _GtmInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="alertConfigs")
-    def alert_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]]:
+    def alert_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]]:
         """
         The alert notification methods. See `alert_config` below for details.
         """
         return pulumi.get(self, "alert_configs")
 
     @alert_configs.setter
-    def alert_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]]):
+    def alert_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GtmInstanceAlertConfigArgs']]]]):
         pulumi.set(self, "alert_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="alertGroups")
-    def alert_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def alert_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The alert group.
         """
         return pulumi.get(self, "alert_groups")
 
     @alert_groups.setter
-    def alert_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def alert_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alert_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="cnameType")
-    def cname_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cname_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access type of the CNAME domain name. Valid value: `PUBLIC`.
         """
         return pulumi.get(self, "cname_type")
 
     @cname_type.setter
-    def cname_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cname_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cname_type", value)
 
     @_builtins.property
     @pulumi.getter(name="forceUpdate")
-    def force_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The force update.
         """
         return pulumi.get(self, "force_update")
 
     @force_update.setter
-    def force_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_update", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckTaskCount")
-    def health_check_task_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_task_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The quota of detection tasks.
         """
         return pulumi.get(self, "health_check_task_count")
 
     @health_check_task_count.setter
-    def health_check_task_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_task_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_task_count", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lang.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="packageEdition")
-    def package_edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Paid package version. Valid values: `ultimate`, `standard`.
         """
         return pulumi.get(self, "package_edition")
 
     @package_edition.setter
-    def package_edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_edition", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Payment Type of the resource. Valid value: `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="publicCnameMode")
-    def public_cname_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_cname_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Public Network domain name access method. Valid values: `CUSTOM`, `SYSTEM_ASSIGN`.
         """
         return pulumi.get(self, "public_cname_mode")
 
     @public_cname_mode.setter
-    def public_cname_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_cname_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_cname_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="publicRr")
-    def public_rr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_rr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CNAME access domain name.
         """
         return pulumi.get(self, "public_rr")
 
     @public_rr.setter
-    def public_rr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_rr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_rr", value)
 
     @_builtins.property
     @pulumi.getter(name="publicUserDomainName")
-    def public_user_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_user_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The website domain name that the user uses on the Internet.
         """
         return pulumi.get(self, "public_user_domain_name")
 
     @public_user_domain_name.setter
-    def public_user_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_user_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_user_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="publicZoneName")
-    def public_zone_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_zone_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name that is used to access GTM over the Internet.
         """
         return pulumi.get(self, "public_zone_name")
 
     @public_zone_name.setter
-    def public_zone_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_zone_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_zone_name", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic renewal period, the unit is month. When setting `renewal_status` to AutoRenewal, it must be set.
         """
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`.
         """
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="smsNotificationCount")
-    def sms_notification_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sms_notification_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The quota of SMS notifications.
         """
         return pulumi.get(self, "sms_notification_count")
 
     @sms_notification_count.setter
-    def sms_notification_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sms_notification_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sms_notification_count", value)
 
     @_builtins.property
     @pulumi.getter(name="strategyMode")
-    def strategy_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strategy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the access policy. Valid values: `GEO`, `LATENCY`.
         """
         return pulumi.get(self, "strategy_mode")
 
     @strategy_mode.setter
-    def strategy_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strategy_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strategy_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The global time to live. Valid values: `60`, `120`, `300`, `600`. Unit: second.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
 
@@ -676,26 +676,26 @@ class GtmInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GtmInstanceAlertConfigArgs', 'GtmInstanceAlertConfigArgsDict']]]]] = None,
-                 alert_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cname_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check_task_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 public_cname_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_rr: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_user_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_zone_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sms_notification_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 strategy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
+                 alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GtmInstanceAlertConfigArgs', 'GtmInstanceAlertConfigArgsDict']]]]] = None,
+                 alert_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cname_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check_task_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 public_cname_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_rr: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_user_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_zone_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sms_notification_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Alidns Gtm Instance resource.
@@ -849,26 +849,26 @@ class GtmInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GtmInstanceAlertConfigArgs', 'GtmInstanceAlertConfigArgsDict']]]]] = None,
-                 alert_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cname_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check_task_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 public_cname_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_rr: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_user_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_zone_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sms_notification_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 strategy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
+                 alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GtmInstanceAlertConfigArgs', 'GtmInstanceAlertConfigArgsDict']]]]] = None,
+                 alert_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cname_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check_task_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 public_cname_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_rr: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_user_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_zone_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sms_notification_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -920,26 +920,26 @@ class GtmInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GtmInstanceAlertConfigArgs', 'GtmInstanceAlertConfigArgsDict']]]]] = None,
-            alert_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cname_type: Optional[pulumi.Input[_builtins.str]] = None,
-            force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-            health_check_task_count: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            package_edition: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            public_cname_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            public_rr: Optional[pulumi.Input[_builtins.str]] = None,
-            public_user_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            public_zone_name: Optional[pulumi.Input[_builtins.str]] = None,
-            renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sms_notification_count: Optional[pulumi.Input[_builtins.int]] = None,
-            strategy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            ttl: Optional[pulumi.Input[_builtins.int]] = None) -> 'GtmInstance':
+            alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GtmInstanceAlertConfigArgs', 'GtmInstanceAlertConfigArgsDict']]]]] = None,
+            alert_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cname_type: pulumi.Input[Optional[_builtins.str]] = None,
+            force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            health_check_task_count: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            package_edition: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            public_cname_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            public_rr: pulumi.Input[Optional[_builtins.str]] = None,
+            public_user_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            public_zone_name: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sms_notification_count: pulumi.Input[Optional[_builtins.int]] = None,
+            strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None) -> 'GtmInstance':
         """
         Get an existing GtmInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

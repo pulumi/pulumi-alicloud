@@ -21,7 +21,7 @@ class AssetSelectionConfigArgs:
     def __init__(__self__, *,
                  business_type: pulumi.Input[_builtins.str],
                  target_type: pulumi.Input[_builtins.str],
-                 platform: Optional[pulumi.Input[_builtins.str]] = None):
+                 platform: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AssetSelectionConfig resource.
 
@@ -60,23 +60,23 @@ class AssetSelectionConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operating system type.
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform", value)
 
 
 @pulumi.input_type
 class _AssetSelectionConfigState:
     def __init__(__self__, *,
-                 business_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 business_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AssetSelectionConfig resources.
 
@@ -93,38 +93,38 @@ class _AssetSelectionConfigState:
 
     @_builtins.property
     @pulumi.getter(name="businessType")
-    def business_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def business_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "business_type")
 
     @business_type.setter
-    def business_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def business_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "business_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operating system type.
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform", value)
 
     @_builtins.property
     @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target object type.
         """
         return pulumi.get(self, "target_type")
 
     @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_type", value)
 
 
@@ -134,9 +134,9 @@ class AssetSelectionConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 business_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 business_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Asset Selection Config resource.
@@ -249,9 +249,9 @@ class AssetSelectionConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 business_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 business_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -278,9 +278,9 @@ class AssetSelectionConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            business_type: Optional[pulumi.Input[_builtins.str]] = None,
-            platform: Optional[pulumi.Input[_builtins.str]] = None,
-            target_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'AssetSelectionConfig':
+            business_type: pulumi.Input[Optional[_builtins.str]] = None,
+            platform: pulumi.Input[Optional[_builtins.str]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AssetSelectionConfig':
         """
         Get an existing AssetSelectionConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

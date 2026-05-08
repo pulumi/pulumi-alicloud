@@ -20,11 +20,11 @@ __all__ = ['IpamIpamScopeArgs', 'IpamIpamScope']
 class IpamIpamScopeArgs:
     def __init__(__self__, *,
                  ipam_id: pulumi.Input[_builtins.str],
-                 ipam_scope_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_scope_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_scope_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 ipam_scope_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_scope_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_scope_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a IpamIpamScope resource.
 
@@ -66,7 +66,7 @@ class IpamIpamScopeArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipamScopeDescription")
-    def ipam_scope_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_scope_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the IPAM's scope of action.
         It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
@@ -74,24 +74,24 @@ class IpamIpamScopeArgs:
         return pulumi.get(self, "ipam_scope_description")
 
     @ipam_scope_description.setter
-    def ipam_scope_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_scope_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_scope_description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamScopeName")
-    def ipam_scope_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_scope_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "ipam_scope_name")
 
     @ipam_scope_name.setter
-    def ipam_scope_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_scope_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_scope_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamScopeType")
-    def ipam_scope_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_scope_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPAM scope of action type:
         `private`.
@@ -102,46 +102,46 @@ class IpamIpamScopeArgs:
         return pulumi.get(self, "ipam_scope_type")
 
     @ipam_scope_type.setter
-    def ipam_scope_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_scope_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_scope_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _IpamIpamScopeState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_scope_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_scope_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_scope_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_scope_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_scope_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_scope_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering IpamIpamScope resources.
 
@@ -181,31 +181,31 @@ class _IpamIpamScopeState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamId")
-    def ipam_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the Ipam instance.
         """
         return pulumi.get(self, "ipam_id")
 
     @ipam_id.setter
-    def ipam_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamScopeDescription")
-    def ipam_scope_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_scope_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the IPAM's scope of action.
         It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
@@ -213,24 +213,24 @@ class _IpamIpamScopeState:
         return pulumi.get(self, "ipam_scope_description")
 
     @ipam_scope_description.setter
-    def ipam_scope_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_scope_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_scope_description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamScopeName")
-    def ipam_scope_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_scope_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "ipam_scope_name")
 
     @ipam_scope_name.setter
-    def ipam_scope_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_scope_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_scope_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamScopeType")
-    def ipam_scope_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_scope_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPAM scope of action type:
         `private`.
@@ -241,55 +241,55 @@ class _IpamIpamScopeState:
         return pulumi.get(self, "ipam_scope_type")
 
     @ipam_scope_type.setter
-    def ipam_scope_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_scope_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_scope_type", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -299,12 +299,12 @@ class IpamIpamScope(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ipam_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_scope_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_scope_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_scope_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ipam_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_scope_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_scope_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_scope_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Vpc Ipam Ipam Scope resource.
@@ -425,12 +425,12 @@ class IpamIpamScope(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ipam_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_scope_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_scope_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_scope_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ipam_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_scope_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_scope_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_scope_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -461,15 +461,15 @@ class IpamIpamScope(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            ipam_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ipam_scope_description: Optional[pulumi.Input[_builtins.str]] = None,
-            ipam_scope_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ipam_scope_type: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'IpamIpamScope':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_scope_description: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_scope_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_scope_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'IpamIpamScope':
         """
         Get an existing IpamIpamScope resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

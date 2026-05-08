@@ -204,43 +204,43 @@ export interface TunnelState {
     /**
      * The channels of OTS tunnel. Each element contains the following attributes:
      */
-    channels?: pulumi.Input<pulumi.Input<inputs.ots.TunnelChannel>[]>;
+    channels?: pulumi.Input<pulumi.Input<inputs.ots.TunnelChannel>[] | undefined>;
     /**
      * The creation time of the Tunnel.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Whether the tunnel has expired.
      */
-    expired?: pulumi.Input<boolean>;
+    expired?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the OTS instance in which table will located.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The name of the OTS table. If changed, a new table would be created.
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
     /**
      * The tunnel id of the OTS which could not be changed.
      */
-    tunnelId?: pulumi.Input<string>;
+    tunnelId?: pulumi.Input<string | undefined>;
     /**
      * The name of the OTS tunnel. If changed, a new tunnel would be created.
      */
-    tunnelName?: pulumi.Input<string>;
+    tunnelName?: pulumi.Input<string | undefined>;
     /**
      * The latest consumption time of the tunnel, unix time in nanosecond.
      */
-    tunnelRpo?: pulumi.Input<number>;
+    tunnelRpo?: pulumi.Input<number | undefined>;
     /**
      * The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
      */
-    tunnelStage?: pulumi.Input<string>;
+    tunnelStage?: pulumi.Input<string | undefined>;
     /**
      * The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
      */
-    tunnelType?: pulumi.Input<string>;
+    tunnelType?: pulumi.Input<string | undefined>;
 }
 
 /**

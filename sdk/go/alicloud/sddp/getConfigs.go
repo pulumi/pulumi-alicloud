@@ -44,9 +44,9 @@ import (
 //				},
 //				OutputFile: pulumi.String("./t.json"),
 //			}, nil)
-//			ctx.Export("sddpConfigId", _default.ApplyT(func(_default sddp.GetConfigsResult) (interface{}, error) {
+//			ctx.Export("sddpConfigId", _default.ApplyT(func(_default sddp.GetConfigsResult) ([]string, error) {
 //				return _default.Ids, nil
-//			}).(pulumi.AnyOutput))
+//			}).(pulumi.StringArrayOutput))
 //			return nil
 //		})
 //	}

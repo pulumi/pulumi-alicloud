@@ -252,78 +252,78 @@ export interface InstanceState {
     /**
      * The number of multi account. It will be ignored when `cfwAccount = false`.
      */
-    accountNumber?: pulumi.Input<number>;
+    accountNumber?: pulumi.Input<number | undefined>;
     /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      */
-    bandWidth?: pulumi.Input<number>;
+    bandWidth?: pulumi.Input<number | undefined>;
     /**
      * Whether to use multi-account. Valid values: `true`, `false`.
      */
-    cfwAccount?: pulumi.Input<boolean>;
+    cfwAccount?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, `cfwLog` can only be set to `true`, `cfwLog` cannot be modified to `false`.
      */
-    cfwLog?: pulumi.Input<boolean>;
+    cfwLog?: pulumi.Input<boolean | undefined>;
     /**
      * The log storage capacity. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, or `cfwLog` is set to `false`, `cfwLogStorage` will be ignored.
      */
-    cfwLogStorage?: pulumi.Input<number>;
+    cfwLogStorage?: pulumi.Input<number | undefined>;
     /**
      * The creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The end time.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The number of protected VPCs. It will be ignored when `spec = "premiumVersion"`. Valid values between 2 and 500.
      */
-    fwVpcNumber?: pulumi.Input<number>;
+    fwVpcNumber?: pulumi.Input<number | undefined>;
     /**
      * The number of assets.
      */
-    instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number | undefined>;
     /**
      * The number of public IPs that can be protected. Valid values: 20 to 4000.
      */
-    ipNumber?: pulumi.Input<number>;
+    ipNumber?: pulumi.Input<number | undefined>;
     /**
      * The logistics.
      */
-    logistics?: pulumi.Input<string>;
+    logistics?: pulumi.Input<string | undefined>;
     /**
      * The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
      */
-    modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `paymentType` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The release time.
      */
-    releaseTime?: pulumi.Input<string>;
+    releaseTime?: pulumi.Input<string | undefined>;
     /**
      * Automatic renewal period. Attribute `renewPeriod` has been deprecated since 1.209.1. Using `renewalDuration` instead.
      *
      * @deprecated Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Auto-Renewal Duration. It is required under the condition that `renewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
      * **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
      */
-    renewalDuration?: pulumi.Input<number>;
+    renewalDuration?: pulumi.Input<number | undefined>;
     /**
      * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
      */
-    renewalDurationUnit?: pulumi.Input<string>;
+    renewalDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
      * - `AutoRenewal`: Auto renewal.
@@ -331,19 +331,19 @@ export interface InstanceState {
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
      */
-    spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string | undefined>;
     /**
      * The status of Cloud Firewall Instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.232.0) The user status of Cloud Firewall Instance.
      */
-    userStatus?: pulumi.Input<boolean>;
+    userStatus?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -353,43 +353,43 @@ export interface InstanceArgs {
     /**
      * The number of multi account. It will be ignored when `cfwAccount = false`.
      */
-    accountNumber?: pulumi.Input<number>;
+    accountNumber?: pulumi.Input<number | undefined>;
     /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      */
-    bandWidth?: pulumi.Input<number>;
+    bandWidth?: pulumi.Input<number | undefined>;
     /**
      * Whether to use multi-account. Valid values: `true`, `false`.
      */
-    cfwAccount?: pulumi.Input<boolean>;
+    cfwAccount?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, `cfwLog` can only be set to `true`, `cfwLog` cannot be modified to `false`.
      */
-    cfwLog?: pulumi.Input<boolean>;
+    cfwLog?: pulumi.Input<boolean | undefined>;
     /**
      * The log storage capacity. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, or `cfwLog` is set to `false`, `cfwLogStorage` will be ignored.
      */
-    cfwLogStorage?: pulumi.Input<number>;
+    cfwLogStorage?: pulumi.Input<number | undefined>;
     /**
      * The number of protected VPCs. It will be ignored when `spec = "premiumVersion"`. Valid values between 2 and 500.
      */
-    fwVpcNumber?: pulumi.Input<number>;
+    fwVpcNumber?: pulumi.Input<number | undefined>;
     /**
      * The number of assets.
      */
-    instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number | undefined>;
     /**
      * The number of public IPs that can be protected. Valid values: 20 to 4000.
      */
-    ipNumber?: pulumi.Input<number>;
+    ipNumber?: pulumi.Input<number | undefined>;
     /**
      * The logistics.
      */
-    logistics?: pulumi.Input<string>;
+    logistics?: pulumi.Input<string | undefined>;
     /**
      * The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
      */
-    modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
      */
@@ -397,22 +397,22 @@ export interface InstanceArgs {
     /**
      * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `paymentType` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal period. Attribute `renewPeriod` has been deprecated since 1.209.1. Using `renewalDuration` instead.
      *
      * @deprecated Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Auto-Renewal Duration. It is required under the condition that `renewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
      * **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
      */
-    renewalDuration?: pulumi.Input<number>;
+    renewalDuration?: pulumi.Input<number | undefined>;
     /**
      * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
      */
-    renewalDurationUnit?: pulumi.Input<string>;
+    renewalDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
      * - `AutoRenewal`: Auto renewal.
@@ -420,9 +420,9 @@ export interface InstanceArgs {
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
      */
-    spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string | undefined>;
 }

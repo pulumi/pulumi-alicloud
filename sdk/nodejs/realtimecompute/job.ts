@@ -220,43 +220,43 @@ export interface JobState {
     /**
      * deploymentId
      */
-    deploymentId?: pulumi.Input<string>;
+    deploymentId?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
-    jobId?: pulumi.Input<string>;
+    jobId?: pulumi.Input<string | undefined>;
     /**
      * Local variables See `localVariables` below.
      */
-    localVariables?: pulumi.Input<pulumi.Input<inputs.realtimecompute.JobLocalVariable>[]>;
+    localVariables?: pulumi.Input<pulumi.Input<inputs.realtimecompute.JobLocalVariable>[] | undefined>;
     /**
      * namespace
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * workspace
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Resource Queue for Job Run
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    resourceQueueName?: pulumi.Input<string>;
+    resourceQueueName?: pulumi.Input<string | undefined>;
     /**
      * Restore strategy See `restoreStrategy` below.
      */
-    restoreStrategy?: pulumi.Input<inputs.realtimecompute.JobRestoreStrategy>;
+    restoreStrategy?: pulumi.Input<inputs.realtimecompute.JobRestoreStrategy | undefined>;
     /**
      * job status See `status` below.
      */
-    status?: pulumi.Input<inputs.realtimecompute.JobStatus>;
+    status?: pulumi.Input<inputs.realtimecompute.JobStatus | undefined>;
     /**
      * Job Stop Policy
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    stopStrategy?: pulumi.Input<string>;
+    stopStrategy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -266,11 +266,11 @@ export interface JobArgs {
     /**
      * deploymentId
      */
-    deploymentId?: pulumi.Input<string>;
+    deploymentId?: pulumi.Input<string | undefined>;
     /**
      * Local variables See `localVariables` below.
      */
-    localVariables?: pulumi.Input<pulumi.Input<inputs.realtimecompute.JobLocalVariable>[]>;
+    localVariables?: pulumi.Input<pulumi.Input<inputs.realtimecompute.JobLocalVariable>[] | undefined>;
     /**
      * namespace
      */
@@ -284,19 +284,19 @@ export interface JobArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    resourceQueueName?: pulumi.Input<string>;
+    resourceQueueName?: pulumi.Input<string | undefined>;
     /**
      * Restore strategy See `restoreStrategy` below.
      */
-    restoreStrategy?: pulumi.Input<inputs.realtimecompute.JobRestoreStrategy>;
+    restoreStrategy?: pulumi.Input<inputs.realtimecompute.JobRestoreStrategy | undefined>;
     /**
      * job status See `status` below.
      */
-    status?: pulumi.Input<inputs.realtimecompute.JobStatus>;
+    status?: pulumi.Input<inputs.realtimecompute.JobStatus | undefined>;
     /**
      * Job Stop Policy
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    stopStrategy?: pulumi.Input<string>;
+    stopStrategy?: pulumi.Input<string | undefined>;
 }

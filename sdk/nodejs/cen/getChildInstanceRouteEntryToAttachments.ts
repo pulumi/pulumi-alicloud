@@ -137,7 +137,7 @@ export interface GetChildInstanceRouteEntryToAttachmentsOutputArgs {
     /**
      * The ID of the CEN instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
@@ -145,15 +145,15 @@ export interface GetChildInstanceRouteEntryToAttachmentsOutputArgs {
     /**
      * Limit search to a list of specific IDs.The value is formulated as `<cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>`.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * ServiceType
      */
-    serviceType?: pulumi.Input<string>;
+    serviceType?: pulumi.Input<string | undefined>;
     /**
      * TransitRouterAttachmentId
      */

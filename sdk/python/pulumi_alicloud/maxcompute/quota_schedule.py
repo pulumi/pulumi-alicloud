@@ -23,7 +23,7 @@ class QuotaScheduleArgs:
     def __init__(__self__, *,
                  nickname: pulumi.Input[_builtins.str],
                  timezone: pulumi.Input[_builtins.str],
-                 schedule_lists: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]]] = None):
+                 schedule_lists: pulumi.Input[Optional[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]]] = None):
         """
         The set of arguments for constructing a QuotaSchedule resource.
 
@@ -62,23 +62,23 @@ class QuotaScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="scheduleLists")
-    def schedule_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]]]:
+    def schedule_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]]]:
         """
         schedule list See `schedule_list` below.
         """
         return pulumi.get(self, "schedule_lists")
 
     @schedule_lists.setter
-    def schedule_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]]]):
+    def schedule_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]]]):
         pulumi.set(self, "schedule_lists", value)
 
 
 @pulumi.input_type
 class _QuotaScheduleState:
     def __init__(__self__, *,
-                 nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_lists: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None):
+                 nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_lists: pulumi.Input[Optional[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QuotaSchedule resources.
 
@@ -95,38 +95,38 @@ class _QuotaScheduleState:
 
     @_builtins.property
     @pulumi.getter
-    def nickname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nickname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The nickname of level-1 compute quota.
         """
         return pulumi.get(self, "nickname")
 
     @nickname.setter
-    def nickname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nickname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nickname", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleLists")
-    def schedule_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]]]:
+    def schedule_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]]]:
         """
         schedule list See `schedule_list` below.
         """
         return pulumi.get(self, "schedule_lists")
 
     @schedule_lists.setter
-    def schedule_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]]]):
+    def schedule_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['QuotaScheduleScheduleListArgs']]]]):
         pulumi.set(self, "schedule_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time zone, reference value: UTC +8
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
 
@@ -136,9 +136,9 @@ class QuotaSchedule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict']]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
+                 nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict']]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Max Compute Quota Schedule resource.
@@ -427,9 +427,9 @@ class QuotaSchedule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict']]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
+                 nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict']]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -456,9 +456,9 @@ class QuotaSchedule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            nickname: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict']]]]] = None,
-            timezone: Optional[pulumi.Input[_builtins.str]] = None) -> 'QuotaSchedule':
+            nickname: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QuotaScheduleScheduleListArgs', 'QuotaScheduleScheduleListArgsDict']]]]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None) -> 'QuotaSchedule':
         """
         Get an existing QuotaSchedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

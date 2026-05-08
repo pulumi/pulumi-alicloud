@@ -145,9 +145,9 @@ def get_ipam_ipam_pool_cidrs(cidr: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ipam_pool_id=pulumi.get(__ret__, 'ipam_pool_id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_ipam_ipam_pool_cidrs_output(cidr: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ipam_ipam_pool_cidrs_output(cidr: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpamIpamPoolCidrsResult]:
     """
     This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr)

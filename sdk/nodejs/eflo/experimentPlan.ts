@@ -72,9 +72,9 @@ import * as utilities from "../utilities";
  *     clusterDesc: name,
  * });
  * const defaultExperimentPlan = new alicloud.eflo.ExperimentPlan("default", {
- *     resourceId: defaultResource.resourceId,
+ *     resourceId: defaultResource.resourceId.apply(x =>Number(x)),
  *     planName: name,
- *     templateId: defaultpSZN7t.id,
+ *     templateId: defaultpSZN7t.id.apply(x =>Number(x)),
  * });
  * ```
  *
@@ -193,31 +193,31 @@ export interface ExperimentPlanState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Additional operating parameters. You can include information about the specified node.
      */
-    externalParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    externalParams?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates the name of the experiment plan, which is used to distinguish different experiment plans.
      */
-    planName?: pulumi.Input<string>;
+    planName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource.
      */
-    resourceId?: pulumi.Input<number>;
+    resourceId?: pulumi.Input<number | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the template.
      */
-    templateId?: pulumi.Input<number>;
+    templateId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -227,15 +227,15 @@ export interface ExperimentPlanArgs {
     /**
      * Additional operating parameters. You can include information about the specified node.
      */
-    externalParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    externalParams?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates the name of the experiment plan, which is used to distinguish different experiment plans.
      */
-    planName?: pulumi.Input<string>;
+    planName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource.
      */
@@ -243,7 +243,7 @@ export interface ExperimentPlanArgs {
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the template.
      */

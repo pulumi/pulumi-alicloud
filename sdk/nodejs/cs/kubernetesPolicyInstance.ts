@@ -243,27 +243,27 @@ export interface KubernetesPolicyInstanceState {
     /**
      * Policy Governance Implementation Actions
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Target cluster ID
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Rule Instance Name
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Limits the namespace of the policy implementation. Empty indicates all namespaces.
      */
-    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    namespaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The parameter configuration of the current rule instance. For more information about the parameters supported by each policy rule, see [Container Security Policy Rule Base Description](https://www.alibabacloud.com/help/doc-detail/359819.html).
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Policy Name
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -273,7 +273,7 @@ export interface KubernetesPolicyInstanceArgs {
     /**
      * Policy Governance Implementation Actions
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Target cluster ID
      */
@@ -281,11 +281,11 @@ export interface KubernetesPolicyInstanceArgs {
     /**
      * Limits the namespace of the policy implementation. Empty indicates all namespaces.
      */
-    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    namespaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The parameter configuration of the current rule instance. For more information about the parameters supported by each policy rule, see [Container Security Policy Rule Base Description](https://www.alibabacloud.com/help/doc-detail/359819.html).
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Policy Name
      */

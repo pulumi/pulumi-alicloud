@@ -21,8 +21,8 @@ class HoneypotNodeArgs:
     def __init__(__self__, *,
                  available_probe_num: pulumi.Input[_builtins.int],
                  node_name: pulumi.Input[_builtins.str],
-                 allow_honeypot_access_internet: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_group_probe_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allow_honeypot_access_internet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_group_probe_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a HoneypotNode resource.
 
@@ -64,38 +64,38 @@ class HoneypotNodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowHoneypotAccessInternet")
-    def allow_honeypot_access_internet(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_honeypot_access_internet(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
         """
         return pulumi.get(self, "allow_honeypot_access_internet")
 
     @allow_honeypot_access_internet.setter
-    def allow_honeypot_access_internet(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_honeypot_access_internet(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_honeypot_access_internet", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupProbeIpLists")
-    def security_group_probe_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_probe_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Release the collection of network segments.
         """
         return pulumi.get(self, "security_group_probe_ip_lists")
 
     @security_group_probe_ip_lists.setter
-    def security_group_probe_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_probe_ip_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_probe_ip_lists", value)
 
 
 @pulumi.input_type
 class _HoneypotNodeState:
     def __init__(__self__, *,
-                 allow_honeypot_access_internet: Optional[pulumi.Input[_builtins.bool]] = None,
-                 available_probe_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_probe_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None):
+                 allow_honeypot_access_internet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 available_probe_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_probe_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HoneypotNode resources.
 
@@ -121,74 +121,74 @@ class _HoneypotNodeState:
 
     @_builtins.property
     @pulumi.getter(name="allowHoneypotAccessInternet")
-    def allow_honeypot_access_internet(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_honeypot_access_internet(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
         """
         return pulumi.get(self, "allow_honeypot_access_internet")
 
     @allow_honeypot_access_internet.setter
-    def allow_honeypot_access_internet(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_honeypot_access_internet(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_honeypot_access_internet", value)
 
     @_builtins.property
     @pulumi.getter(name="availableProbeNum")
-    def available_probe_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def available_probe_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of probes available.
         """
         return pulumi.get(self, "available_probe_num")
 
     @available_probe_num.setter
-    def available_probe_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def available_probe_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "available_probe_num", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Management node name.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupProbeIpLists")
-    def security_group_probe_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_probe_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Release the collection of network segments.
         """
         return pulumi.get(self, "security_group_probe_ip_lists")
 
     @security_group_probe_ip_lists.setter
-    def security_group_probe_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_probe_ip_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_probe_ip_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
 
@@ -198,10 +198,10 @@ class HoneypotNode(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_honeypot_access_internet: Optional[pulumi.Input[_builtins.bool]] = None,
-                 available_probe_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_probe_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_honeypot_access_internet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 available_probe_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_probe_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Honeypot Node resource.
@@ -303,10 +303,10 @@ class HoneypotNode(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_honeypot_access_internet: Optional[pulumi.Input[_builtins.bool]] = None,
-                 available_probe_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_probe_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_honeypot_access_internet: pulumi.Input[Optional[_builtins.bool]] = None,
+                 available_probe_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_probe_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -336,12 +336,12 @@ class HoneypotNode(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_honeypot_access_internet: Optional[pulumi.Input[_builtins.bool]] = None,
-            available_probe_num: Optional[pulumi.Input[_builtins.int]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_probe_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.int]] = None) -> 'HoneypotNode':
+            allow_honeypot_access_internet: pulumi.Input[Optional[_builtins.bool]] = None,
+            available_probe_num: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_probe_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None) -> 'HoneypotNode':
         """
         Get an existing HoneypotNode resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

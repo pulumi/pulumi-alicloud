@@ -181,9 +181,9 @@ def get_role_policy_attachments(ids: Optional[Sequence[_builtins.str]] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         role_name=pulumi.get(__ret__, 'role_name'))
-def get_role_policy_attachments_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                       output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       role_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_role_policy_attachments_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       role_name: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRolePolicyAttachmentsResult]:
     """
     This data source provides Ram Role Policy Attachment available to the user.[What is Role Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToRole)

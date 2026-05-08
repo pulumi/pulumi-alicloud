@@ -170,11 +170,11 @@ def get_groups(directory_id: Optional[_builtins.str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         provision_type=pulumi.get(__ret__, 'provision_type'))
-def get_groups_output(directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                      ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                      name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      provision_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_groups_output(directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                      ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                      name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      provision_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupsResult]:
     """
     This data source provides the Cloud Sso Groups of the current Alibaba Cloud user.

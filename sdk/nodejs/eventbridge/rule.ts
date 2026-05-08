@@ -182,27 +182,27 @@ export interface RuleState {
     /**
      * The description of the event rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the event bus.
      */
-    eventBusName?: pulumi.Input<string>;
+    eventBusName?: pulumi.Input<string | undefined>;
     /**
      * The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
      */
-    filterPattern?: pulumi.Input<string>;
+    filterPattern?: pulumi.Input<string | undefined>;
     /**
      * The name of the event rule.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The targets of rule. See `targets` below.
      */
-    targets?: pulumi.Input<pulumi.Input<inputs.eventbridge.RuleTarget>[]>;
+    targets?: pulumi.Input<pulumi.Input<inputs.eventbridge.RuleTarget>[] | undefined>;
 }
 
 /**
@@ -212,7 +212,7 @@ export interface RuleArgs {
     /**
      * The description of the event rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the event bus.
      */
@@ -228,7 +228,7 @@ export interface RuleArgs {
     /**
      * The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The targets of rule. See `targets` below.
      */

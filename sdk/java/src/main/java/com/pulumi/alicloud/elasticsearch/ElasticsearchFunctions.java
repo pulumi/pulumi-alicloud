@@ -55,8 +55,8 @@ public final class ElasticsearchFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.elasticsearch.ElasticsearchFunctions;
      * import com.pulumi.alicloud.elasticsearch.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -97,8 +97,8 @@ public final class ElasticsearchFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.elasticsearch.ElasticsearchFunctions;
      * import com.pulumi.alicloud.elasticsearch.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -139,8 +139,8 @@ public final class ElasticsearchFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.elasticsearch.ElasticsearchFunctions;
      * import com.pulumi.alicloud.elasticsearch.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -181,8 +181,8 @@ public final class ElasticsearchFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.elasticsearch.ElasticsearchFunctions;
      * import com.pulumi.alicloud.elasticsearch.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -223,8 +223,8 @@ public final class ElasticsearchFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.elasticsearch.ElasticsearchFunctions;
      * import com.pulumi.alicloud.elasticsearch.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -265,8 +265,8 @@ public final class ElasticsearchFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.elasticsearch.ElasticsearchFunctions;
      * import com.pulumi.alicloud.elasticsearch.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -307,8 +307,8 @@ public final class ElasticsearchFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.elasticsearch.ElasticsearchFunctions;
      * import com.pulumi.alicloud.elasticsearch.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

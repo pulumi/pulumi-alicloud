@@ -23,13 +23,13 @@ class NacosConfigArgs:
                  data_id: pulumi.Input[_builtins.str],
                  group: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 accept_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 beta_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 accept_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 beta_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NacosConfig resource.
 
@@ -114,104 +114,104 @@ class NacosConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="acceptLanguage")
-    def accept_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accept_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language type of the returned information. Valid values: `zh`, `en`.
         """
         return pulumi.get(self, "accept_language")
 
     @accept_language.setter
-    def accept_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accept_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accept_language", value)
 
     @_builtins.property
     @pulumi.getter(name="appName")
-    def app_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the application.
         """
         return pulumi.get(self, "app_name")
 
     @app_name.setter
-    def app_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_name", value)
 
     @_builtins.property
     @pulumi.getter(name="betaIps")
-    def beta_ips(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def beta_ips(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of IP addresses where the beta release of the configuration is performed.
         """
         return pulumi.get(self, "beta_ips")
 
     @beta_ips.setter
-    def beta_ips(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def beta_ips(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "beta_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the configuration.
         """
         return pulumi.get(self, "desc")
 
     @desc.setter
-    def desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desc", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of Namespace. If you want to create a config under the `public` namespace, this parameter can be set to an empty string  *`""`* or just not set this parameter.
         """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
-    def namespace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tags(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tags of the configuration.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tags(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The format of the configuration. Supported formats include TEXT, JSON, and XML.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _NacosConfigState:
     def __init__(__self__, *,
-                 accept_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 beta_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted_data_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 accept_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 beta_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_data_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NacosConfig resources.
 
@@ -255,146 +255,146 @@ class _NacosConfigState:
 
     @_builtins.property
     @pulumi.getter(name="acceptLanguage")
-    def accept_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accept_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language type of the returned information. Valid values: `zh`, `en`.
         """
         return pulumi.get(self, "accept_language")
 
     @accept_language.setter
-    def accept_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accept_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accept_language", value)
 
     @_builtins.property
     @pulumi.getter(name="appName")
-    def app_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the application.
         """
         return pulumi.get(self, "app_name")
 
     @app_name.setter
-    def app_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_name", value)
 
     @_builtins.property
     @pulumi.getter(name="betaIps")
-    def beta_ips(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def beta_ips(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of IP addresses where the beta release of the configuration is performed.
         """
         return pulumi.get(self, "beta_ips")
 
     @beta_ips.setter
-    def beta_ips(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def beta_ips(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "beta_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the configuration.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter(name="dataId")
-    def data_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the data.
         """
         return pulumi.get(self, "data_id")
 
     @data_id.setter
-    def data_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the configuration.
         """
         return pulumi.get(self, "desc")
 
     @desc.setter
-    def desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desc", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptedDataKey")
-    def encrypted_data_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypted_data_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption key.
         """
         return pulumi.get(self, "encrypted_data_key")
 
     @encrypted_data_key.setter
-    def encrypted_data_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypted_data_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypted_data_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the group.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of Namespace. If you want to create a config under the `public` namespace, this parameter can be set to an empty string  *`""`* or just not set this parameter.
         """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
-    def namespace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tags(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tags of the configuration.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tags(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The format of the configuration. Supported formats include TEXT, JSON, and XML.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -404,17 +404,17 @@ class NacosConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accept_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 beta_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 accept_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 beta_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Microservice Engine (MSE) Nacos Config resource.
@@ -577,17 +577,17 @@ class NacosConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accept_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 beta_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 accept_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 beta_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -627,18 +627,18 @@ class NacosConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accept_language: Optional[pulumi.Input[_builtins.str]] = None,
-            app_name: Optional[pulumi.Input[_builtins.str]] = None,
-            beta_ips: Optional[pulumi.Input[_builtins.str]] = None,
-            content: Optional[pulumi.Input[_builtins.str]] = None,
-            data_id: Optional[pulumi.Input[_builtins.str]] = None,
-            desc: Optional[pulumi.Input[_builtins.str]] = None,
-            encrypted_data_key: Optional[pulumi.Input[_builtins.str]] = None,
-            group: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'NacosConfig':
+            accept_language: pulumi.Input[Optional[_builtins.str]] = None,
+            app_name: pulumi.Input[Optional[_builtins.str]] = None,
+            beta_ips: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            data_id: pulumi.Input[Optional[_builtins.str]] = None,
+            desc: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted_data_key: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'NacosConfig':
         """
         Get an existing NacosConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

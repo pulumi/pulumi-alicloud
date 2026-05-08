@@ -22,15 +22,15 @@ __all__ = [
 ]
 
 class LakeAccountAccountPrivilegeArgsDict(TypedDict):
-    privilege_object: NotRequired[pulumi.Input['LakeAccountAccountPrivilegePrivilegeObjectArgsDict']]
+    privilege_object: NotRequired[pulumi.Input[Optional['LakeAccountAccountPrivilegePrivilegeObjectArgs']]]
     """
     Object associated to privileges. See `privilege_object` below.
     """
-    privilege_type: NotRequired[pulumi.Input[_builtins.str]]
+    privilege_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of privileges.
     """
-    privileges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    privileges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     privilege list.
     """
@@ -38,9 +38,9 @@ class LakeAccountAccountPrivilegeArgsDict(TypedDict):
 @pulumi.input_type
 class LakeAccountAccountPrivilegeArgs:
     def __init__(__self__, *,
-                 privilege_object: Optional[pulumi.Input['LakeAccountAccountPrivilegePrivilegeObjectArgs']] = None,
-                 privilege_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 privileges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 privilege_object: pulumi.Input[Optional['LakeAccountAccountPrivilegePrivilegeObjectArgs']] = None,
+                 privilege_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 privileges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['LakeAccountAccountPrivilegePrivilegeObjectArgs'] privilege_object: Object associated to privileges. See `privilege_object` below.
         :param pulumi.Input[_builtins.str] privilege_type: The type of privileges.
@@ -55,51 +55,51 @@ class LakeAccountAccountPrivilegeArgs:
 
     @_builtins.property
     @pulumi.getter(name="privilegeObject")
-    def privilege_object(self) -> Optional[pulumi.Input['LakeAccountAccountPrivilegePrivilegeObjectArgs']]:
+    def privilege_object(self) -> pulumi.Input[Optional['LakeAccountAccountPrivilegePrivilegeObjectArgs']]:
         """
         Object associated to privileges. See `privilege_object` below.
         """
         return pulumi.get(self, "privilege_object")
 
     @privilege_object.setter
-    def privilege_object(self, value: Optional[pulumi.Input['LakeAccountAccountPrivilegePrivilegeObjectArgs']]):
+    def privilege_object(self, value: pulumi.Input[Optional['LakeAccountAccountPrivilegePrivilegeObjectArgs']]):
         pulumi.set(self, "privilege_object", value)
 
     @_builtins.property
     @pulumi.getter(name="privilegeType")
-    def privilege_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def privilege_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of privileges.
         """
         return pulumi.get(self, "privilege_type")
 
     @privilege_type.setter
-    def privilege_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def privilege_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "privilege_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def privileges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def privileges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         privilege list.
         """
         return pulumi.get(self, "privileges")
 
     @privileges.setter
-    def privileges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def privileges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "privileges", value)
 
 
 class LakeAccountAccountPrivilegePrivilegeObjectArgsDict(TypedDict):
-    column: NotRequired[pulumi.Input[_builtins.str]]
+    column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of column.
     """
-    database: NotRequired[pulumi.Input[_builtins.str]]
+    database: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of database.
     """
-    table: NotRequired[pulumi.Input[_builtins.str]]
+    table: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of table.
     """
@@ -107,9 +107,9 @@ class LakeAccountAccountPrivilegePrivilegeObjectArgsDict(TypedDict):
 @pulumi.input_type
 class LakeAccountAccountPrivilegePrivilegeObjectArgs:
     def __init__(__self__, *,
-                 column: Optional[pulumi.Input[_builtins.str]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None):
+                 column: pulumi.Input[Optional[_builtins.str]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] column: The name of column.
         :param pulumi.Input[_builtins.str] database: The name of database.
@@ -124,38 +124,38 @@ class LakeAccountAccountPrivilegePrivilegeObjectArgs:
 
     @_builtins.property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of column.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of database.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter
-    def table(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of table.
         """
         return pulumi.get(self, "table")
 
     @table.setter
-    def table(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table", value)
 
 

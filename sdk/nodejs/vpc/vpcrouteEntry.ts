@@ -182,19 +182,19 @@ export interface VPCRouteEntryState {
     /**
      * Description of the route entry.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination network segment of the routing entry.
      */
-    destinationCidrBlock?: pulumi.Input<string>;
+    destinationCidrBlock?: pulumi.Input<string | undefined>;
     /**
      * Next jump See `nextHops` below.
      */
-    nextHops?: pulumi.Input<pulumi.Input<inputs.vpc.VPCRouteEntryNextHop>[]>;
+    nextHops?: pulumi.Input<pulumi.Input<inputs.vpc.VPCRouteEntryNextHop>[] | undefined>;
     /**
      * The ID of the next hop instance of the custom route entry.
      */
-    nexthopId?: pulumi.Input<string>;
+    nexthopId?: pulumi.Input<string | undefined>;
     /**
      * The type of the next hop of the custom route entry. Valid values:
      * - `Instance` (default): The ECS Instance.
@@ -211,23 +211,23 @@ export interface VPCRouteEntryState {
      * - `Ecr`: Leased line gateway.
      * - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
      */
-    nexthopType?: pulumi.Input<string>;
+    nexthopType?: pulumi.Input<string | undefined>;
     /**
      * The name of the route entry.
      */
-    routeEntryName?: pulumi.Input<string>;
+    routeEntryName?: pulumi.Input<string | undefined>;
     /**
      * Route publish status and publish target type See `routePublishTargets` below.
      */
-    routePublishTargets?: pulumi.Input<pulumi.Input<inputs.vpc.VPCRouteEntryRoutePublishTarget>[]>;
+    routePublishTargets?: pulumi.Input<pulumi.Input<inputs.vpc.VPCRouteEntryRoutePublishTarget>[] | undefined>;
     /**
      * Routing table ID
      */
-    routeTableId?: pulumi.Input<string>;
+    routeTableId?: pulumi.Input<string | undefined>;
     /**
      * The status of the route entry.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -237,7 +237,7 @@ export interface VPCRouteEntryArgs {
     /**
      * Description of the route entry.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination network segment of the routing entry.
      */
@@ -245,11 +245,11 @@ export interface VPCRouteEntryArgs {
     /**
      * Next jump See `nextHops` below.
      */
-    nextHops?: pulumi.Input<pulumi.Input<inputs.vpc.VPCRouteEntryNextHop>[]>;
+    nextHops?: pulumi.Input<pulumi.Input<inputs.vpc.VPCRouteEntryNextHop>[] | undefined>;
     /**
      * The ID of the next hop instance of the custom route entry.
      */
-    nexthopId?: pulumi.Input<string>;
+    nexthopId?: pulumi.Input<string | undefined>;
     /**
      * The type of the next hop of the custom route entry. Valid values:
      * - `Instance` (default): The ECS Instance.
@@ -266,15 +266,15 @@ export interface VPCRouteEntryArgs {
      * - `Ecr`: Leased line gateway.
      * - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
      */
-    nexthopType?: pulumi.Input<string>;
+    nexthopType?: pulumi.Input<string | undefined>;
     /**
      * The name of the route entry.
      */
-    routeEntryName?: pulumi.Input<string>;
+    routeEntryName?: pulumi.Input<string | undefined>;
     /**
      * Route publish status and publish target type See `routePublishTargets` below.
      */
-    routePublishTargets?: pulumi.Input<pulumi.Input<inputs.vpc.VPCRouteEntryRoutePublishTarget>[]>;
+    routePublishTargets?: pulumi.Input<pulumi.Input<inputs.vpc.VPCRouteEntryRoutePublishTarget>[] | undefined>;
     /**
      * Routing table ID
      */

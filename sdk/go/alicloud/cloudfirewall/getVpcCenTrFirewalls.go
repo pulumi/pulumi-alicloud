@@ -77,7 +77,7 @@ import (
 //			if param := cfg.Get("zone2"); param != "" {
 //				zone2 = param
 //			}
-//			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
+//			cen2, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
 //				Description:     pulumi.String("terraform example"),
 //				CenInstanceName: pulumi.String("Cen_Terraform_example01"),
 //			})
@@ -88,7 +88,7 @@ import (
 //				SupportMulticast:         pulumi.Bool(false),
 //				TransitRouterName:        pulumi.String("CEN_TR_Terraform"),
 //				TransitRouterDescription: pulumi.String("tr-created-by-terraform"),
-//				CenId:                    cen.ID(),
+//				CenId:                    cen2.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -158,7 +158,7 @@ import (
 //					},
 //				},
 //				VpcId: vpc1.ID(),
-//				CenId: cen.ID(),
+//				CenId: cen2.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -176,7 +176,7 @@ import (
 //						ZoneId:    vpc2vsw2.ZoneId,
 //					},
 //				},
-//				CenId: cen.ID(),
+//				CenId: cen2.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -185,7 +185,7 @@ import (
 //				FirewallDescription:    pulumi.String("VpcCenTrFirewall created by terraform"),
 //				RegionNo:               pulumi.String(pulumi.String(region)),
 //				RouteMode:              pulumi.String("managed"),
-//				CenId:                  cen.ID(),
+//				CenId:                  cen2.ID(),
 //				FirewallVpcCidr:        pulumi.String(pulumi.String(firewallVpcCidr)),
 //				TransitRouterId:        tr.TransitRouterId,
 //				TrAttachmentMasterCidr: pulumi.String(pulumi.String(trAttachmentMasterCidr)),
@@ -200,7 +200,7 @@ import (
 //				Ids: pulumi.StringArray{
 //					defaultVpcCenTrFirewall.ID(),
 //				},
-//				CenId:           cen.ID(),
+//				CenId:           cen2.ID(),
 //				FirewallName:    pulumi.String(pulumi.String(firewallName)),
 //				RegionNo:        pulumi.String(pulumi.String(region)),
 //				RouteMode:       pulumi.String("managed"),

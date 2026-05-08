@@ -166,39 +166,39 @@ export interface NodeGroupAttachmentState {
     /**
      * Cluster ID
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupAttachmentDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupAttachmentDataDisk>[] | undefined>;
     /**
      * Node hostname
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Node login password
      */
-    loginPassword?: pulumi.Input<string>;
+    loginPassword?: pulumi.Input<string | undefined>;
     /**
      * Node group ID
      */
-    nodeGroupId?: pulumi.Input<string>;
+    nodeGroupId?: pulumi.Input<string | undefined>;
     /**
      * Node ID
      */
-    nodeId?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string | undefined>;
     /**
      * User-defined data
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * Vpc id
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * vswitch id
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,11 +208,11 @@ export interface NodeGroupAttachmentArgs {
     /**
      * Cluster ID
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupAttachmentDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupAttachmentDataDisk>[] | undefined>;
     /**
      * Node hostname
      */
@@ -220,19 +220,19 @@ export interface NodeGroupAttachmentArgs {
     /**
      * Node login password
      */
-    loginPassword?: pulumi.Input<string>;
+    loginPassword?: pulumi.Input<string | undefined>;
     /**
      * Node group ID
      */
-    nodeGroupId?: pulumi.Input<string>;
+    nodeGroupId?: pulumi.Input<string | undefined>;
     /**
      * Node ID
      */
-    nodeId?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string | undefined>;
     /**
      * User-defined data
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * Vpc id
      */

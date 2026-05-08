@@ -169,51 +169,51 @@ export interface SmartagFlowLogState {
     /**
      * The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
      */
-    activeAging?: pulumi.Input<number>;
+    activeAging?: pulumi.Input<number | undefined>;
     /**
      * The description of the flow log.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the flow log.
      */
-    flowLogName?: pulumi.Input<string>;
+    flowLogName?: pulumi.Input<string | undefined>;
     /**
      * The time interval at which log data of inactive connections is connected. Valid values: `10` to `600`. Default value: `15`. Unit: second.
      */
-    inactiveAging?: pulumi.Input<number>;
+    inactiveAging?: pulumi.Input<number | undefined>;
     /**
      * The Logstore in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
      */
-    logstoreName?: pulumi.Input<string>;
+    logstoreName?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the NetFlow collector where the flow log is stored. If `outputType` is set to `netflow` or `all`, this parameter is required.
      */
-    netflowServerIp?: pulumi.Input<string>;
+    netflowServerIp?: pulumi.Input<string | undefined>;
     /**
      * The port of the NetFlow collector. Default value: `9995`. If `outputType` is set to `netflow` or `all`, this parameter is required.
      */
-    netflowServerPort?: pulumi.Input<number>;
+    netflowServerPort?: pulumi.Input<number | undefined>;
     /**
      * The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
      */
-    netflowVersion?: pulumi.Input<string>;
+    netflowVersion?: pulumi.Input<string | undefined>;
     /**
      * The location where the flow log is stored. Valid values:
      */
-    outputType?: pulumi.Input<string>;
+    outputType?: pulumi.Input<string | undefined>;
     /**
      * The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region where Log Service is deployed. If `outputType` is set to `sls` or `all`, this parameter is required.
      */
-    slsRegionId?: pulumi.Input<string>;
+    slsRegionId?: pulumi.Input<string | undefined>;
     /**
      * The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -223,35 +223,35 @@ export interface SmartagFlowLogArgs {
     /**
      * The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
      */
-    activeAging?: pulumi.Input<number>;
+    activeAging?: pulumi.Input<number | undefined>;
     /**
      * The description of the flow log.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the flow log.
      */
-    flowLogName?: pulumi.Input<string>;
+    flowLogName?: pulumi.Input<string | undefined>;
     /**
      * The time interval at which log data of inactive connections is connected. Valid values: `10` to `600`. Default value: `15`. Unit: second.
      */
-    inactiveAging?: pulumi.Input<number>;
+    inactiveAging?: pulumi.Input<number | undefined>;
     /**
      * The Logstore in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
      */
-    logstoreName?: pulumi.Input<string>;
+    logstoreName?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the NetFlow collector where the flow log is stored. If `outputType` is set to `netflow` or `all`, this parameter is required.
      */
-    netflowServerIp?: pulumi.Input<string>;
+    netflowServerIp?: pulumi.Input<string | undefined>;
     /**
      * The port of the NetFlow collector. Default value: `9995`. If `outputType` is set to `netflow` or `all`, this parameter is required.
      */
-    netflowServerPort?: pulumi.Input<number>;
+    netflowServerPort?: pulumi.Input<number | undefined>;
     /**
      * The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `outputType` is set to `netflow` or `all`, this parameter is required.
      */
-    netflowVersion?: pulumi.Input<string>;
+    netflowVersion?: pulumi.Input<string | undefined>;
     /**
      * The location where the flow log is stored. Valid values:
      */
@@ -259,13 +259,13 @@ export interface SmartagFlowLogArgs {
     /**
      * The project in Log Service. If `outputType` is set to `sls` or `all`, this parameter is required.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region where Log Service is deployed. If `outputType` is set to `sls` or `all`, this parameter is required.
      */
-    slsRegionId?: pulumi.Input<string>;
+    slsRegionId?: pulumi.Input<string | undefined>;
     /**
      * The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

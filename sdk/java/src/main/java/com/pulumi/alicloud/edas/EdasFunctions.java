@@ -43,8 +43,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -87,8 +87,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -131,8 +131,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -175,8 +175,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -219,8 +219,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -263,8 +263,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -307,8 +307,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetApplicationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -351,8 +351,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -396,8 +396,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -441,8 +441,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -486,8 +486,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -531,8 +531,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -633,8 +633,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -683,8 +683,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -733,8 +733,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -783,8 +783,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -833,8 +833,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -883,8 +883,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -933,8 +933,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -985,8 +985,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1031,8 +1031,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1077,8 +1077,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1123,8 +1123,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1169,8 +1169,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1215,8 +1215,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1261,8 +1261,8 @@ public final class EdasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.edas.EdasFunctions;
      * import com.pulumi.alicloud.edas.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

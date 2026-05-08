@@ -260,43 +260,43 @@ export interface AlidnsCloudGtmAddressState {
     /**
      * The address value. Must match `type`: an IPv4 address, an IPv6 address, or a domain name.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * How the availability of the address is determined. Valid values:
      */
-    availableMode?: pulumi.Input<string>;
+    availableMode?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the address.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether the address participates in DNS resolution. Valid values:
      */
-    enableStatus?: pulumi.Input<string>;
+    enableStatus?: pulumi.Input<string | undefined>;
     /**
      * The rule used to judge overall health when the address has multiple health-check tasks. Valid values:
      */
-    healthJudgement?: pulumi.Input<string>;
+    healthJudgement?: pulumi.Input<string | undefined>;
     /**
      * The health-check tasks attached to this address. Each task references a Cloud GTM monitor template. See `healthTasks` below.
      */
-    healthTasks?: pulumi.Input<pulumi.Input<inputs.alidnscloudgtmaddress.AlidnsCloudGtmAddressHealthTask>[]>;
+    healthTasks?: pulumi.Input<pulumi.Input<inputs.alidnscloudgtmaddress.AlidnsCloudGtmAddressHealthTask>[] | undefined>;
     /**
      * The manually-set availability status. Only meaningful when `availableMode` is `manual`. Valid values: `available`, `unavailable`.
      */
-    manualAvailableStatus?: pulumi.Input<string>;
+    manualAvailableStatus?: pulumi.Input<string | undefined>;
     /**
      * The name of the address. Used to identify the address in the Cloud GTM console.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The remark of the address. Passing an empty value clears the existing remark.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * The address type. Valid values: `IPv4`, `IPv6`, `domain`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -322,19 +322,19 @@ export interface AlidnsCloudGtmAddressArgs {
     /**
      * The health-check tasks attached to this address. Each task references a Cloud GTM monitor template. See `healthTasks` below.
      */
-    healthTasks?: pulumi.Input<pulumi.Input<inputs.alidnscloudgtmaddress.AlidnsCloudGtmAddressHealthTask>[]>;
+    healthTasks?: pulumi.Input<pulumi.Input<inputs.alidnscloudgtmaddress.AlidnsCloudGtmAddressHealthTask>[] | undefined>;
     /**
      * The manually-set availability status. Only meaningful when `availableMode` is `manual`. Valid values: `available`, `unavailable`.
      */
-    manualAvailableStatus?: pulumi.Input<string>;
+    manualAvailableStatus?: pulumi.Input<string | undefined>;
     /**
      * The name of the address. Used to identify the address in the Cloud GTM console.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The remark of the address. Passing an empty value clears the existing remark.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * The address type. Valid values: `IPv4`, `IPv6`, `domain`.
      */

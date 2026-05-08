@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     peeringSubnetMask: "255.255.255.252",
  *     physicalConnectionId: defaultGetPhysicalConnections.then(defaultGetPhysicalConnections => defaultGetPhysicalConnections.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
- *     vlanId: vlanId.id,
+ *     vlanId: Number(vlanId.id),
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
@@ -194,37 +194,37 @@ export interface VbrHealthCheckState {
     /**
      * The ID of the CEN instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
      */
-    healthCheckInterval?: pulumi.Input<number>;
+    healthCheckInterval?: pulumi.Input<number | undefined>;
     /**
      * The source IP address of health checks.
      */
-    healthCheckSourceIp?: pulumi.Input<string>;
+    healthCheckSourceIp?: pulumi.Input<string | undefined>;
     /**
      * The destination IP address of health checks.
      */
-    healthCheckTargetIp?: pulumi.Input<string>;
+    healthCheckTargetIp?: pulumi.Input<string | undefined>;
     /**
      * Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
      */
-    healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VBR.
      */
-    vbrInstanceId?: pulumi.Input<string>;
+    vbrInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the account to which the VBR belongs.
      */
-    vbrInstanceOwnerId?: pulumi.Input<number>;
+    vbrInstanceOwnerId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the region to which the VBR belongs.
      *
      * ->**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
      */
-    vbrInstanceRegionId?: pulumi.Input<string>;
+    vbrInstanceRegionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -238,11 +238,11 @@ export interface VbrHealthCheckArgs {
     /**
      * Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
      */
-    healthCheckInterval?: pulumi.Input<number>;
+    healthCheckInterval?: pulumi.Input<number | undefined>;
     /**
      * The source IP address of health checks.
      */
-    healthCheckSourceIp?: pulumi.Input<string>;
+    healthCheckSourceIp?: pulumi.Input<string | undefined>;
     /**
      * The destination IP address of health checks.
      */
@@ -250,7 +250,7 @@ export interface VbrHealthCheckArgs {
     /**
      * Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
      */
-    healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VBR.
      */
@@ -258,7 +258,7 @@ export interface VbrHealthCheckArgs {
     /**
      * The ID of the account to which the VBR belongs.
      */
-    vbrInstanceOwnerId?: pulumi.Input<number>;
+    vbrInstanceOwnerId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the region to which the VBR belongs.
      *

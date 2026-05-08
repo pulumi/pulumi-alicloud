@@ -143,38 +143,38 @@ export interface GetAssetsOutputArgs {
     /**
      * Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
      */
-    criteria?: pulumi.Input<string>;
+    criteria?: pulumi.Input<string | undefined>;
     /**
      * A list of Asset IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set asset importance. Value:
      * - **2**: Significant assets
      * - **1**: General assets
      * - **0**: Test asset
      */
-    importance?: pulumi.Input<number>;
+    importance?: pulumi.Input<number | undefined>;
     /**
      * Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
      * - **OR**: indicates that the relationship between multiple search conditions is **OR**.
      * - **AND**: indicates that the relationship between multiple search conditions is **AND**.
      */
-    logicalExp?: pulumi.Input<string>;
+    logicalExp?: pulumi.Input<string | undefined>;
     /**
      * The type of asset to query. Value:
      * - **ecs**: server.
      * - **cloud_product**: Cloud product.
      */
-    machineTypes?: pulumi.Input<string>;
+    machineTypes?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to internationalize the name of the default group. Default value: false
      */
-    noGroupTrace?: pulumi.Input<boolean>;
+    noGroupTrace?: pulumi.Input<boolean | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
 }

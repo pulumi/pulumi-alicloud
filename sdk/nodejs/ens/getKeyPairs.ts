@@ -111,15 +111,15 @@ export interface GetKeyPairsOutputArgs {
     /**
      * The name of the key pair.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Key Pair name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The version number.
      */

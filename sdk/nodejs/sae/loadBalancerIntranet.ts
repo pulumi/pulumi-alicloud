@@ -181,19 +181,19 @@ export interface LoadBalancerIntranetState {
     /**
      * The target application ID that needs to be bound to the SLB.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Use designated private network SLBs that have been purchased to support non-shared instances.
      */
-    intranetIp?: pulumi.Input<string>;
+    intranetIp?: pulumi.Input<string | undefined>;
     /**
      * The intranet SLB ID.
      */
-    intranetSlbId?: pulumi.Input<string>;
+    intranetSlbId?: pulumi.Input<string | undefined>;
     /**
      * The bound private network SLB. See `intranet` below.
      */
-    intranets?: pulumi.Input<pulumi.Input<inputs.sae.LoadBalancerIntranetIntranet>[]>;
+    intranets?: pulumi.Input<pulumi.Input<inputs.sae.LoadBalancerIntranetIntranet>[] | undefined>;
 }
 
 /**
@@ -207,7 +207,7 @@ export interface LoadBalancerIntranetArgs {
     /**
      * The intranet SLB ID.
      */
-    intranetSlbId?: pulumi.Input<string>;
+    intranetSlbId?: pulumi.Input<string | undefined>;
     /**
      * The bound private network SLB. See `intranet` below.
      */

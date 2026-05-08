@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceStorage: output(exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *     instanceChargeType: "Postpaid",
  *     instanceName: name,
  *     vswitchId: exampleSwitch.id,
@@ -416,159 +416,159 @@ export interface SubscriptionJobState {
     /**
      * Subscription start time in Unix timestamp format.
      */
-    checkpoint?: pulumi.Input<string>;
+    checkpoint?: pulumi.Input<string | undefined>;
     /**
      * [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
      */
-    computeUnit?: pulumi.Input<number>;
+    computeUnit?: pulumi.Input<number | undefined>;
     /**
      * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
      */
-    databaseCount?: pulumi.Input<number>;
+    databaseCount?: pulumi.Input<number | undefined>;
     /**
      * Subscription object, in the format of JSON strings. For detailed definitions, please refer to the description of migration, synchronization or subscription objects [document](https://help.aliyun.com/document_detail/209545.html).
      */
-    dbList?: pulumi.Input<string>;
+    dbList?: pulumi.Input<string | undefined>;
     /**
      * This parameter decides whether to monitor the delay status. Valid values: `true`, `false`.
      */
-    delayNotice?: pulumi.Input<boolean>;
+    delayNotice?: pulumi.Input<boolean | undefined>;
     /**
      * The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
      */
-    delayPhone?: pulumi.Input<string>;
+    delayPhone?: pulumi.Input<string | undefined>;
     /**
      * When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
      */
-    delayRuleTime?: pulumi.Input<string>;
+    delayRuleTime?: pulumi.Input<string | undefined>;
     /**
      * The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`.
      */
-    destinationEndpointEngineName?: pulumi.Input<string>;
+    destinationEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
      * The destination region. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
      */
-    destinationRegion?: pulumi.Input<string>;
+    destinationRegion?: pulumi.Input<string | undefined>;
     /**
      * The ID of subscription instance.
      */
-    dtsInstanceId?: pulumi.Input<string>;
+    dtsInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of subscription task.
      */
-    dtsJobName?: pulumi.Input<string>;
+    dtsJobName?: pulumi.Input<string | undefined>;
     /**
      * This parameter decides whether to monitor abnormal status. Valid values: `true`, `false`.
      */
-    errorNotice?: pulumi.Input<boolean>;
+    errorNotice?: pulumi.Input<boolean | undefined>;
     /**
      * The mobile phone number of the contact for abnormal alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
      */
-    errorPhone?: pulumi.Input<string>;
+    errorPhone?: pulumi.Input<string | undefined>;
     /**
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
      */
-    instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string | undefined>;
     /**
      * The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      */
-    paymentDuration?: pulumi.Input<number>;
+    paymentDuration?: pulumi.Input<number | undefined>;
     /**
      * The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      */
-    paymentDurationUnit?: pulumi.Input<string>;
+    paymentDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter description of the [Reserve parameter](https://help.aliyun.com/document_detail/176470.html).
      */
-    reserve?: pulumi.Input<string>;
+    reserve?: pulumi.Input<string | undefined>;
     /**
      * To subscribe to the name of the database.
      */
-    sourceEndpointDatabaseName?: pulumi.Input<string>;
+    sourceEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
      * The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
      */
-    sourceEndpointEngineName?: pulumi.Input<string>;
+    sourceEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
      * The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
      */
-    sourceEndpointInstanceId?: pulumi.Input<string>;
+    sourceEndpointInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
      */
-    sourceEndpointInstanceType?: pulumi.Input<string>;
+    sourceEndpointInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The IP of source endpoint.
      */
-    sourceEndpointIp?: pulumi.Input<string>;
+    sourceEndpointIp?: pulumi.Input<string | undefined>;
     /**
      * The SID of Oracle Database. When the source database is self-built Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
      */
-    sourceEndpointOracleSid?: pulumi.Input<string>;
+    sourceEndpointOracleSid?: pulumi.Input<string | undefined>;
     /**
      * The Alibaba Cloud account ID to which the source instance belongs. This parameter is only available when configuring data subscriptions across Alibaba Cloud accounts and must be passed in.
      */
-    sourceEndpointOwnerId?: pulumi.Input<string>;
+    sourceEndpointOwnerId?: pulumi.Input<string | undefined>;
     /**
      * The password of source database instance account.
      */
-    sourceEndpointPassword?: pulumi.Input<string>;
+    sourceEndpointPassword?: pulumi.Input<string | undefined>;
     /**
      * The port of source database.
      */
-    sourceEndpointPort?: pulumi.Input<string>;
+    sourceEndpointPort?: pulumi.Input<string | undefined>;
     /**
      * The region of source database.
      */
-    sourceEndpointRegion?: pulumi.Input<string>;
+    sourceEndpointRegion?: pulumi.Input<string | undefined>;
     /**
      * Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
      */
-    sourceEndpointRole?: pulumi.Input<string>;
+    sourceEndpointRole?: pulumi.Input<string | undefined>;
     /**
      * The username of source database instance account.
      */
-    sourceEndpointUserName?: pulumi.Input<string>;
+    sourceEndpointUserName?: pulumi.Input<string | undefined>;
     /**
      * The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
      */
-    subscriptionDataTypeDdl?: pulumi.Input<boolean>;
+    subscriptionDataTypeDdl?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to subscribe the DML type of data. Valid values: `true`, `false`.
      */
-    subscriptionDataTypeDml?: pulumi.Input<boolean>;
+    subscriptionDataTypeDml?: pulumi.Input<boolean | undefined>;
     /**
      * Subscription task type of network value: classic: classic Network. Virtual Private Cloud (vpc): a vpc. Valid values: `classic`, `vpc`.
      */
-    subscriptionInstanceNetworkType?: pulumi.Input<string>;
+    subscriptionInstanceNetworkType?: pulumi.Input<string | undefined>;
     /**
      * The ID of subscription vpc instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
      */
-    subscriptionInstanceVpcId?: pulumi.Input<string>;
+    subscriptionInstanceVpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of subscription VSwitch instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
      */
-    subscriptionInstanceVswitchId?: pulumi.Input<string>;
+    subscriptionInstanceVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The sync architecture. Valid values: `bidirectional`, `oneway`.
      */
-    syncArchitecture?: pulumi.Input<string>;
+    syncArchitecture?: pulumi.Input<string | undefined>;
     /**
      * The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
      */
-    synchronizationDirection?: pulumi.Input<string>;
+    synchronizationDirection?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -578,67 +578,67 @@ export interface SubscriptionJobArgs {
     /**
      * Subscription start time in Unix timestamp format.
      */
-    checkpoint?: pulumi.Input<string>;
+    checkpoint?: pulumi.Input<string | undefined>;
     /**
      * [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
      */
-    computeUnit?: pulumi.Input<number>;
+    computeUnit?: pulumi.Input<number | undefined>;
     /**
      * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
      */
-    databaseCount?: pulumi.Input<number>;
+    databaseCount?: pulumi.Input<number | undefined>;
     /**
      * Subscription object, in the format of JSON strings. For detailed definitions, please refer to the description of migration, synchronization or subscription objects [document](https://help.aliyun.com/document_detail/209545.html).
      */
-    dbList?: pulumi.Input<string>;
+    dbList?: pulumi.Input<string | undefined>;
     /**
      * This parameter decides whether to monitor the delay status. Valid values: `true`, `false`.
      */
-    delayNotice?: pulumi.Input<boolean>;
+    delayNotice?: pulumi.Input<boolean | undefined>;
     /**
      * The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
      */
-    delayPhone?: pulumi.Input<string>;
+    delayPhone?: pulumi.Input<string | undefined>;
     /**
      * When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
      */
-    delayRuleTime?: pulumi.Input<string>;
+    delayRuleTime?: pulumi.Input<string | undefined>;
     /**
      * The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`.
      */
-    destinationEndpointEngineName?: pulumi.Input<string>;
+    destinationEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
      * The destination region. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
      */
-    destinationRegion?: pulumi.Input<string>;
+    destinationRegion?: pulumi.Input<string | undefined>;
     /**
      * The ID of subscription instance.
      */
-    dtsInstanceId?: pulumi.Input<string>;
+    dtsInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of subscription task.
      */
-    dtsJobName?: pulumi.Input<string>;
+    dtsJobName?: pulumi.Input<string | undefined>;
     /**
      * This parameter decides whether to monitor abnormal status. Valid values: `true`, `false`.
      */
-    errorNotice?: pulumi.Input<boolean>;
+    errorNotice?: pulumi.Input<boolean | undefined>;
     /**
      * The mobile phone number of the contact for abnormal alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
      */
-    errorPhone?: pulumi.Input<string>;
+    errorPhone?: pulumi.Input<string | undefined>;
     /**
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
      */
-    instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string | undefined>;
     /**
      * The duration of prepaid instance purchase. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      */
-    paymentDuration?: pulumi.Input<number>;
+    paymentDuration?: pulumi.Input<number | undefined>;
     /**
      * The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      */
-    paymentDurationUnit?: pulumi.Input<string>;
+    paymentDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
      */
@@ -646,11 +646,11 @@ export interface SubscriptionJobArgs {
     /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter description of the [Reserve parameter](https://help.aliyun.com/document_detail/176470.html).
      */
-    reserve?: pulumi.Input<string>;
+    reserve?: pulumi.Input<string | undefined>;
     /**
      * To subscribe to the name of the database.
      */
-    sourceEndpointDatabaseName?: pulumi.Input<string>;
+    sourceEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
      * The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
      */
@@ -658,7 +658,7 @@ export interface SubscriptionJobArgs {
     /**
      * The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
      */
-    sourceEndpointInstanceId?: pulumi.Input<string>;
+    sourceEndpointInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
      */
@@ -666,23 +666,23 @@ export interface SubscriptionJobArgs {
     /**
      * The IP of source endpoint.
      */
-    sourceEndpointIp?: pulumi.Input<string>;
+    sourceEndpointIp?: pulumi.Input<string | undefined>;
     /**
      * The SID of Oracle Database. When the source database is self-built Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
      */
-    sourceEndpointOracleSid?: pulumi.Input<string>;
+    sourceEndpointOracleSid?: pulumi.Input<string | undefined>;
     /**
      * The Alibaba Cloud account ID to which the source instance belongs. This parameter is only available when configuring data subscriptions across Alibaba Cloud accounts and must be passed in.
      */
-    sourceEndpointOwnerId?: pulumi.Input<string>;
+    sourceEndpointOwnerId?: pulumi.Input<string | undefined>;
     /**
      * The password of source database instance account.
      */
-    sourceEndpointPassword?: pulumi.Input<string>;
+    sourceEndpointPassword?: pulumi.Input<string | undefined>;
     /**
      * The port of source database.
      */
-    sourceEndpointPort?: pulumi.Input<string>;
+    sourceEndpointPort?: pulumi.Input<string | undefined>;
     /**
      * The region of source database.
      */
@@ -690,45 +690,45 @@ export interface SubscriptionJobArgs {
     /**
      * Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
      */
-    sourceEndpointRole?: pulumi.Input<string>;
+    sourceEndpointRole?: pulumi.Input<string | undefined>;
     /**
      * The username of source database instance account.
      */
-    sourceEndpointUserName?: pulumi.Input<string>;
+    sourceEndpointUserName?: pulumi.Input<string | undefined>;
     /**
      * The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
      */
-    subscriptionDataTypeDdl?: pulumi.Input<boolean>;
+    subscriptionDataTypeDdl?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to subscribe the DML type of data. Valid values: `true`, `false`.
      */
-    subscriptionDataTypeDml?: pulumi.Input<boolean>;
+    subscriptionDataTypeDml?: pulumi.Input<boolean | undefined>;
     /**
      * Subscription task type of network value: classic: classic Network. Virtual Private Cloud (vpc): a vpc. Valid values: `classic`, `vpc`.
      */
-    subscriptionInstanceNetworkType?: pulumi.Input<string>;
+    subscriptionInstanceNetworkType?: pulumi.Input<string | undefined>;
     /**
      * The ID of subscription vpc instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
      */
-    subscriptionInstanceVpcId?: pulumi.Input<string>;
+    subscriptionInstanceVpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of subscription VSwitch instance. When the value of `subscriptionInstanceNetworkType` is vpc, this parameter is available and must be passed in.
      */
-    subscriptionInstanceVswitchId?: pulumi.Input<string>;
+    subscriptionInstanceVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The sync architecture. Valid values: `bidirectional`, `oneway`.
      */
-    syncArchitecture?: pulumi.Input<string>;
+    syncArchitecture?: pulumi.Input<string | undefined>;
     /**
      * The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
      */
-    synchronizationDirection?: pulumi.Input<string>;
+    synchronizationDirection?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

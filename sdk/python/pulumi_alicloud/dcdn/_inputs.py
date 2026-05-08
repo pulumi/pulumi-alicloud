@@ -153,23 +153,23 @@ class DomainConfigFunctionArgArgs:
 
 
 class DomainSourceArgsDict(TypedDict):
-    content: NotRequired[pulumi.Input[_builtins.str]]
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The address of the source station.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The port number. Valid values: `443` and `80`. Default to `80`.
     """
-    priority: NotRequired[pulumi.Input[_builtins.str]]
+    priority: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The priority of the origin if multiple origins are specified. Default to `20`.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the origin. Valid values:
     """
-    weight: NotRequired[pulumi.Input[_builtins.str]]
+    weight: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The weight of the origin if multiple origins are specified. Default to `10`.
     """
@@ -177,11 +177,11 @@ class DomainSourceArgsDict(TypedDict):
 @pulumi.input_type
 class DomainSourceArgs:
     def __init__(__self__, *,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 priority: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.str]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 priority: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] content: The address of the source station.
         :param pulumi.Input[_builtins.int] port: The port number. Valid values: `443` and `80`. Default to `80`.
@@ -202,211 +202,211 @@ class DomainSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the source station.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port number. Valid values: `443` and `80`. Default to `80`.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The priority of the origin if multiple origins are specified. Default to `20`.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the origin. Valid values:
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The weight of the origin if multiple origins are specified. Default to `10`.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "weight", value)
 
 
 class ErEnvConfArgsDict(TypedDict):
-    preset_canary_anhui: NotRequired[pulumi.Input['ErEnvConfPresetCanaryAnhuiArgsDict']]
+    preset_canary_anhui: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryAnhuiArgs']]]
     """
     The configuration of a presetCanaryAnhui environment. See `staging` below.
     """
-    preset_canary_beijing: NotRequired[pulumi.Input['ErEnvConfPresetCanaryBeijingArgsDict']]
+    preset_canary_beijing: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryBeijingArgs']]]
     """
     The configuration of a presetCanaryBeijing environment. See `staging` below.
     """
-    preset_canary_chongqing: NotRequired[pulumi.Input['ErEnvConfPresetCanaryChongqingArgsDict']]
+    preset_canary_chongqing: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryChongqingArgs']]]
     """
     The configuration of a presetCanaryChongqing environment. See `staging` below.
     """
-    preset_canary_fujian: NotRequired[pulumi.Input['ErEnvConfPresetCanaryFujianArgsDict']]
+    preset_canary_fujian: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryFujianArgs']]]
     """
     The configuration of a presetCanaryFujian environment. See `staging` below.
     """
-    preset_canary_gansu: NotRequired[pulumi.Input['ErEnvConfPresetCanaryGansuArgsDict']]
+    preset_canary_gansu: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryGansuArgs']]]
     """
     The configuration of a presetCanaryGansu environment. See `staging` below.
     """
-    preset_canary_guangdong: NotRequired[pulumi.Input['ErEnvConfPresetCanaryGuangdongArgsDict']]
+    preset_canary_guangdong: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryGuangdongArgs']]]
     """
     The configuration of a presetCanaryGuangdong environment. See `staging` below.
     """
-    preset_canary_guangxi: NotRequired[pulumi.Input['ErEnvConfPresetCanaryGuangxiArgsDict']]
+    preset_canary_guangxi: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryGuangxiArgs']]]
     """
     The configuration of a presetCanaryGuangxi environment. See `staging` below.
     """
-    preset_canary_guizhou: NotRequired[pulumi.Input['ErEnvConfPresetCanaryGuizhouArgsDict']]
+    preset_canary_guizhou: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryGuizhouArgs']]]
     """
     The configuration of a presetCanaryGuizhou environment. See `staging` below.
     """
-    preset_canary_hainan: NotRequired[pulumi.Input['ErEnvConfPresetCanaryHainanArgsDict']]
+    preset_canary_hainan: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryHainanArgs']]]
     """
     The configuration of a presetCanaryHainan environment. See `staging` below.
     """
-    preset_canary_hebei: NotRequired[pulumi.Input['ErEnvConfPresetCanaryHebeiArgsDict']]
+    preset_canary_hebei: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryHebeiArgs']]]
     """
     The configuration of a presetCanaryHebei environment. See `staging` below.
     """
-    preset_canary_heilongjiang: NotRequired[pulumi.Input['ErEnvConfPresetCanaryHeilongjiangArgsDict']]
+    preset_canary_heilongjiang: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryHeilongjiangArgs']]]
     """
     The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
     """
-    preset_canary_henan: NotRequired[pulumi.Input['ErEnvConfPresetCanaryHenanArgsDict']]
+    preset_canary_henan: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryHenanArgs']]]
     """
     The configuration of a presetCanaryHenan environment. See `staging` below.
     """
-    preset_canary_hong_kong: NotRequired[pulumi.Input['ErEnvConfPresetCanaryHongKongArgsDict']]
+    preset_canary_hong_kong: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryHongKongArgs']]]
     """
     The configuration of a presetCanaryHongKong environment. See `staging` below.
     """
-    preset_canary_hubei: NotRequired[pulumi.Input['ErEnvConfPresetCanaryHubeiArgsDict']]
+    preset_canary_hubei: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryHubeiArgs']]]
     """
     The configuration of a presetCanaryHubei environment. See `staging` below.
     """
-    preset_canary_hunan: NotRequired[pulumi.Input['ErEnvConfPresetCanaryHunanArgsDict']]
+    preset_canary_hunan: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryHunanArgs']]]
     """
     The configuration of a presetCanaryHunan environment. See `staging` below.
     """
-    preset_canary_jiangsu: NotRequired[pulumi.Input['ErEnvConfPresetCanaryJiangsuArgsDict']]
+    preset_canary_jiangsu: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryJiangsuArgs']]]
     """
     The configuration of a presetCanaryJiangsu environment. See `staging` below.
     """
-    preset_canary_jiangxi: NotRequired[pulumi.Input['ErEnvConfPresetCanaryJiangxiArgsDict']]
+    preset_canary_jiangxi: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryJiangxiArgs']]]
     """
     The configuration of a presetCanaryJiangxi environment. See `staging` below.
     """
-    preset_canary_jilin: NotRequired[pulumi.Input['ErEnvConfPresetCanaryJilinArgsDict']]
+    preset_canary_jilin: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryJilinArgs']]]
     """
     The configuration of a presetCanaryJilin environment. See `staging` below.
     """
-    preset_canary_liaoning: NotRequired[pulumi.Input['ErEnvConfPresetCanaryLiaoningArgsDict']]
+    preset_canary_liaoning: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryLiaoningArgs']]]
     """
     The configuration of a presetCanaryLiaoning environment. See `staging` below.
     """
-    preset_canary_macau: NotRequired[pulumi.Input['ErEnvConfPresetCanaryMacauArgsDict']]
+    preset_canary_macau: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryMacauArgs']]]
     """
     The configuration of a presetCanaryMacau environment. See `staging` below.
     """
-    preset_canary_neimenggu: NotRequired[pulumi.Input['ErEnvConfPresetCanaryNeimengguArgsDict']]
+    preset_canary_neimenggu: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryNeimengguArgs']]]
     """
     The configuration of a presetCanaryNeimenggu environment. See `staging` below.
     """
-    preset_canary_ningxia: NotRequired[pulumi.Input['ErEnvConfPresetCanaryNingxiaArgsDict']]
+    preset_canary_ningxia: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryNingxiaArgs']]]
     """
     The configuration of a presetCanaryNingxia environment. See `staging` below.
     """
-    preset_canary_overseas: NotRequired[pulumi.Input['ErEnvConfPresetCanaryOverseasArgsDict']]
+    preset_canary_overseas: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryOverseasArgs']]]
     """
     The configuration of a presetCanaryOverseas environment. See `staging` below.
     """
-    preset_canary_qinghai: NotRequired[pulumi.Input['ErEnvConfPresetCanaryQinghaiArgsDict']]
+    preset_canary_qinghai: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryQinghaiArgs']]]
     """
     The configuration of a presetCanaryQinghai environment. See `staging` below.
     """
-    preset_canary_shaanxi: NotRequired[pulumi.Input['ErEnvConfPresetCanaryShaanxiArgsDict']]
+    preset_canary_shaanxi: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryShaanxiArgs']]]
     """
     The configuration of a presetCanaryShaanxi environment. See `staging` below.
     """
-    preset_canary_shandong: NotRequired[pulumi.Input['ErEnvConfPresetCanaryShandongArgsDict']]
+    preset_canary_shandong: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryShandongArgs']]]
     """
     The configuration of a presetCanaryShandong environment. See `staging` below.
     """
-    preset_canary_shanghai: NotRequired[pulumi.Input['ErEnvConfPresetCanaryShanghaiArgsDict']]
+    preset_canary_shanghai: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryShanghaiArgs']]]
     """
     The configuration of a presetCanaryShanghai environment. See `staging` below.
     """
-    preset_canary_shanxi: NotRequired[pulumi.Input['ErEnvConfPresetCanaryShanxiArgsDict']]
+    preset_canary_shanxi: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryShanxiArgs']]]
     """
     The configuration of a presetCanaryShanxi environment. See `staging` below.
     """
-    preset_canary_sichuan: NotRequired[pulumi.Input['ErEnvConfPresetCanarySichuanArgsDict']]
+    preset_canary_sichuan: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanarySichuanArgs']]]
     """
     The configuration of a presetCanarySichuan environment. See `staging` below.
     """
-    preset_canary_taiwan: NotRequired[pulumi.Input['ErEnvConfPresetCanaryTaiwanArgsDict']]
+    preset_canary_taiwan: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryTaiwanArgs']]]
     """
     The configuration of a presetCanaryTaiwan environment. See `staging` below.
     """
-    preset_canary_tianjin: NotRequired[pulumi.Input['ErEnvConfPresetCanaryTianjinArgsDict']]
+    preset_canary_tianjin: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryTianjinArgs']]]
     """
     The configuration of a presetCanaryTianjin environment. See `staging` below.
     """
-    preset_canary_xinjiang: NotRequired[pulumi.Input['ErEnvConfPresetCanaryXinjiangArgsDict']]
+    preset_canary_xinjiang: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryXinjiangArgs']]]
     """
     The configuration of a presetCanaryXinjiang environment. See `staging` below.
     """
-    preset_canary_xizang: NotRequired[pulumi.Input['ErEnvConfPresetCanaryXizangArgsDict']]
+    preset_canary_xizang: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryXizangArgs']]]
     """
     The configuration of a presetCanaryXizang environment. See `staging` below.
     """
-    preset_canary_yunnan: NotRequired[pulumi.Input['ErEnvConfPresetCanaryYunnanArgsDict']]
+    preset_canary_yunnan: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryYunnanArgs']]]
     """
     The configuration of a presetCanaryYunnan environment. See `staging` below.
     """
-    preset_canary_zhejiang: NotRequired[pulumi.Input['ErEnvConfPresetCanaryZhejiangArgsDict']]
+    preset_canary_zhejiang: NotRequired[pulumi.Input[Optional['ErEnvConfPresetCanaryZhejiangArgs']]]
     """
     The configuration of a presetCanaryZhejiang environment. See `staging` below.
     """
-    production: NotRequired[pulumi.Input['ErEnvConfProductionArgsDict']]
+    production: NotRequired[pulumi.Input[Optional['ErEnvConfProductionArgs']]]
     """
     The configuration of a production environment. See `staging` below.
     """
-    staging: NotRequired[pulumi.Input['ErEnvConfStagingArgsDict']]
+    staging: NotRequired[pulumi.Input[Optional['ErEnvConfStagingArgs']]]
     """
     The configuration of a staging environment. See `staging` below.
     """
@@ -414,43 +414,43 @@ class ErEnvConfArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfArgs:
     def __init__(__self__, *,
-                 preset_canary_anhui: Optional[pulumi.Input['ErEnvConfPresetCanaryAnhuiArgs']] = None,
-                 preset_canary_beijing: Optional[pulumi.Input['ErEnvConfPresetCanaryBeijingArgs']] = None,
-                 preset_canary_chongqing: Optional[pulumi.Input['ErEnvConfPresetCanaryChongqingArgs']] = None,
-                 preset_canary_fujian: Optional[pulumi.Input['ErEnvConfPresetCanaryFujianArgs']] = None,
-                 preset_canary_gansu: Optional[pulumi.Input['ErEnvConfPresetCanaryGansuArgs']] = None,
-                 preset_canary_guangdong: Optional[pulumi.Input['ErEnvConfPresetCanaryGuangdongArgs']] = None,
-                 preset_canary_guangxi: Optional[pulumi.Input['ErEnvConfPresetCanaryGuangxiArgs']] = None,
-                 preset_canary_guizhou: Optional[pulumi.Input['ErEnvConfPresetCanaryGuizhouArgs']] = None,
-                 preset_canary_hainan: Optional[pulumi.Input['ErEnvConfPresetCanaryHainanArgs']] = None,
-                 preset_canary_hebei: Optional[pulumi.Input['ErEnvConfPresetCanaryHebeiArgs']] = None,
-                 preset_canary_heilongjiang: Optional[pulumi.Input['ErEnvConfPresetCanaryHeilongjiangArgs']] = None,
-                 preset_canary_henan: Optional[pulumi.Input['ErEnvConfPresetCanaryHenanArgs']] = None,
-                 preset_canary_hong_kong: Optional[pulumi.Input['ErEnvConfPresetCanaryHongKongArgs']] = None,
-                 preset_canary_hubei: Optional[pulumi.Input['ErEnvConfPresetCanaryHubeiArgs']] = None,
-                 preset_canary_hunan: Optional[pulumi.Input['ErEnvConfPresetCanaryHunanArgs']] = None,
-                 preset_canary_jiangsu: Optional[pulumi.Input['ErEnvConfPresetCanaryJiangsuArgs']] = None,
-                 preset_canary_jiangxi: Optional[pulumi.Input['ErEnvConfPresetCanaryJiangxiArgs']] = None,
-                 preset_canary_jilin: Optional[pulumi.Input['ErEnvConfPresetCanaryJilinArgs']] = None,
-                 preset_canary_liaoning: Optional[pulumi.Input['ErEnvConfPresetCanaryLiaoningArgs']] = None,
-                 preset_canary_macau: Optional[pulumi.Input['ErEnvConfPresetCanaryMacauArgs']] = None,
-                 preset_canary_neimenggu: Optional[pulumi.Input['ErEnvConfPresetCanaryNeimengguArgs']] = None,
-                 preset_canary_ningxia: Optional[pulumi.Input['ErEnvConfPresetCanaryNingxiaArgs']] = None,
-                 preset_canary_overseas: Optional[pulumi.Input['ErEnvConfPresetCanaryOverseasArgs']] = None,
-                 preset_canary_qinghai: Optional[pulumi.Input['ErEnvConfPresetCanaryQinghaiArgs']] = None,
-                 preset_canary_shaanxi: Optional[pulumi.Input['ErEnvConfPresetCanaryShaanxiArgs']] = None,
-                 preset_canary_shandong: Optional[pulumi.Input['ErEnvConfPresetCanaryShandongArgs']] = None,
-                 preset_canary_shanghai: Optional[pulumi.Input['ErEnvConfPresetCanaryShanghaiArgs']] = None,
-                 preset_canary_shanxi: Optional[pulumi.Input['ErEnvConfPresetCanaryShanxiArgs']] = None,
-                 preset_canary_sichuan: Optional[pulumi.Input['ErEnvConfPresetCanarySichuanArgs']] = None,
-                 preset_canary_taiwan: Optional[pulumi.Input['ErEnvConfPresetCanaryTaiwanArgs']] = None,
-                 preset_canary_tianjin: Optional[pulumi.Input['ErEnvConfPresetCanaryTianjinArgs']] = None,
-                 preset_canary_xinjiang: Optional[pulumi.Input['ErEnvConfPresetCanaryXinjiangArgs']] = None,
-                 preset_canary_xizang: Optional[pulumi.Input['ErEnvConfPresetCanaryXizangArgs']] = None,
-                 preset_canary_yunnan: Optional[pulumi.Input['ErEnvConfPresetCanaryYunnanArgs']] = None,
-                 preset_canary_zhejiang: Optional[pulumi.Input['ErEnvConfPresetCanaryZhejiangArgs']] = None,
-                 production: Optional[pulumi.Input['ErEnvConfProductionArgs']] = None,
-                 staging: Optional[pulumi.Input['ErEnvConfStagingArgs']] = None):
+                 preset_canary_anhui: pulumi.Input[Optional['ErEnvConfPresetCanaryAnhuiArgs']] = None,
+                 preset_canary_beijing: pulumi.Input[Optional['ErEnvConfPresetCanaryBeijingArgs']] = None,
+                 preset_canary_chongqing: pulumi.Input[Optional['ErEnvConfPresetCanaryChongqingArgs']] = None,
+                 preset_canary_fujian: pulumi.Input[Optional['ErEnvConfPresetCanaryFujianArgs']] = None,
+                 preset_canary_gansu: pulumi.Input[Optional['ErEnvConfPresetCanaryGansuArgs']] = None,
+                 preset_canary_guangdong: pulumi.Input[Optional['ErEnvConfPresetCanaryGuangdongArgs']] = None,
+                 preset_canary_guangxi: pulumi.Input[Optional['ErEnvConfPresetCanaryGuangxiArgs']] = None,
+                 preset_canary_guizhou: pulumi.Input[Optional['ErEnvConfPresetCanaryGuizhouArgs']] = None,
+                 preset_canary_hainan: pulumi.Input[Optional['ErEnvConfPresetCanaryHainanArgs']] = None,
+                 preset_canary_hebei: pulumi.Input[Optional['ErEnvConfPresetCanaryHebeiArgs']] = None,
+                 preset_canary_heilongjiang: pulumi.Input[Optional['ErEnvConfPresetCanaryHeilongjiangArgs']] = None,
+                 preset_canary_henan: pulumi.Input[Optional['ErEnvConfPresetCanaryHenanArgs']] = None,
+                 preset_canary_hong_kong: pulumi.Input[Optional['ErEnvConfPresetCanaryHongKongArgs']] = None,
+                 preset_canary_hubei: pulumi.Input[Optional['ErEnvConfPresetCanaryHubeiArgs']] = None,
+                 preset_canary_hunan: pulumi.Input[Optional['ErEnvConfPresetCanaryHunanArgs']] = None,
+                 preset_canary_jiangsu: pulumi.Input[Optional['ErEnvConfPresetCanaryJiangsuArgs']] = None,
+                 preset_canary_jiangxi: pulumi.Input[Optional['ErEnvConfPresetCanaryJiangxiArgs']] = None,
+                 preset_canary_jilin: pulumi.Input[Optional['ErEnvConfPresetCanaryJilinArgs']] = None,
+                 preset_canary_liaoning: pulumi.Input[Optional['ErEnvConfPresetCanaryLiaoningArgs']] = None,
+                 preset_canary_macau: pulumi.Input[Optional['ErEnvConfPresetCanaryMacauArgs']] = None,
+                 preset_canary_neimenggu: pulumi.Input[Optional['ErEnvConfPresetCanaryNeimengguArgs']] = None,
+                 preset_canary_ningxia: pulumi.Input[Optional['ErEnvConfPresetCanaryNingxiaArgs']] = None,
+                 preset_canary_overseas: pulumi.Input[Optional['ErEnvConfPresetCanaryOverseasArgs']] = None,
+                 preset_canary_qinghai: pulumi.Input[Optional['ErEnvConfPresetCanaryQinghaiArgs']] = None,
+                 preset_canary_shaanxi: pulumi.Input[Optional['ErEnvConfPresetCanaryShaanxiArgs']] = None,
+                 preset_canary_shandong: pulumi.Input[Optional['ErEnvConfPresetCanaryShandongArgs']] = None,
+                 preset_canary_shanghai: pulumi.Input[Optional['ErEnvConfPresetCanaryShanghaiArgs']] = None,
+                 preset_canary_shanxi: pulumi.Input[Optional['ErEnvConfPresetCanaryShanxiArgs']] = None,
+                 preset_canary_sichuan: pulumi.Input[Optional['ErEnvConfPresetCanarySichuanArgs']] = None,
+                 preset_canary_taiwan: pulumi.Input[Optional['ErEnvConfPresetCanaryTaiwanArgs']] = None,
+                 preset_canary_tianjin: pulumi.Input[Optional['ErEnvConfPresetCanaryTianjinArgs']] = None,
+                 preset_canary_xinjiang: pulumi.Input[Optional['ErEnvConfPresetCanaryXinjiangArgs']] = None,
+                 preset_canary_xizang: pulumi.Input[Optional['ErEnvConfPresetCanaryXizangArgs']] = None,
+                 preset_canary_yunnan: pulumi.Input[Optional['ErEnvConfPresetCanaryYunnanArgs']] = None,
+                 preset_canary_zhejiang: pulumi.Input[Optional['ErEnvConfPresetCanaryZhejiangArgs']] = None,
+                 production: pulumi.Input[Optional['ErEnvConfProductionArgs']] = None,
+                 staging: pulumi.Input[Optional['ErEnvConfStagingArgs']] = None):
         """
         :param pulumi.Input['ErEnvConfPresetCanaryAnhuiArgs'] preset_canary_anhui: The configuration of a presetCanaryAnhui environment. See `staging` below.
         :param pulumi.Input['ErEnvConfPresetCanaryBeijingArgs'] preset_canary_beijing: The configuration of a presetCanaryBeijing environment. See `staging` below.
@@ -567,459 +567,459 @@ class ErEnvConfArgs:
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryAnhui")
-    def preset_canary_anhui(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryAnhuiArgs']]:
+    def preset_canary_anhui(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryAnhuiArgs']]:
         """
         The configuration of a presetCanaryAnhui environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_anhui")
 
     @preset_canary_anhui.setter
-    def preset_canary_anhui(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryAnhuiArgs']]):
+    def preset_canary_anhui(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryAnhuiArgs']]):
         pulumi.set(self, "preset_canary_anhui", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryBeijing")
-    def preset_canary_beijing(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryBeijingArgs']]:
+    def preset_canary_beijing(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryBeijingArgs']]:
         """
         The configuration of a presetCanaryBeijing environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_beijing")
 
     @preset_canary_beijing.setter
-    def preset_canary_beijing(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryBeijingArgs']]):
+    def preset_canary_beijing(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryBeijingArgs']]):
         pulumi.set(self, "preset_canary_beijing", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryChongqing")
-    def preset_canary_chongqing(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryChongqingArgs']]:
+    def preset_canary_chongqing(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryChongqingArgs']]:
         """
         The configuration of a presetCanaryChongqing environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_chongqing")
 
     @preset_canary_chongqing.setter
-    def preset_canary_chongqing(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryChongqingArgs']]):
+    def preset_canary_chongqing(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryChongqingArgs']]):
         pulumi.set(self, "preset_canary_chongqing", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryFujian")
-    def preset_canary_fujian(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryFujianArgs']]:
+    def preset_canary_fujian(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryFujianArgs']]:
         """
         The configuration of a presetCanaryFujian environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_fujian")
 
     @preset_canary_fujian.setter
-    def preset_canary_fujian(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryFujianArgs']]):
+    def preset_canary_fujian(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryFujianArgs']]):
         pulumi.set(self, "preset_canary_fujian", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryGansu")
-    def preset_canary_gansu(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryGansuArgs']]:
+    def preset_canary_gansu(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryGansuArgs']]:
         """
         The configuration of a presetCanaryGansu environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_gansu")
 
     @preset_canary_gansu.setter
-    def preset_canary_gansu(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryGansuArgs']]):
+    def preset_canary_gansu(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryGansuArgs']]):
         pulumi.set(self, "preset_canary_gansu", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryGuangdong")
-    def preset_canary_guangdong(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryGuangdongArgs']]:
+    def preset_canary_guangdong(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryGuangdongArgs']]:
         """
         The configuration of a presetCanaryGuangdong environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_guangdong")
 
     @preset_canary_guangdong.setter
-    def preset_canary_guangdong(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryGuangdongArgs']]):
+    def preset_canary_guangdong(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryGuangdongArgs']]):
         pulumi.set(self, "preset_canary_guangdong", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryGuangxi")
-    def preset_canary_guangxi(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryGuangxiArgs']]:
+    def preset_canary_guangxi(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryGuangxiArgs']]:
         """
         The configuration of a presetCanaryGuangxi environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_guangxi")
 
     @preset_canary_guangxi.setter
-    def preset_canary_guangxi(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryGuangxiArgs']]):
+    def preset_canary_guangxi(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryGuangxiArgs']]):
         pulumi.set(self, "preset_canary_guangxi", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryGuizhou")
-    def preset_canary_guizhou(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryGuizhouArgs']]:
+    def preset_canary_guizhou(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryGuizhouArgs']]:
         """
         The configuration of a presetCanaryGuizhou environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_guizhou")
 
     @preset_canary_guizhou.setter
-    def preset_canary_guizhou(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryGuizhouArgs']]):
+    def preset_canary_guizhou(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryGuizhouArgs']]):
         pulumi.set(self, "preset_canary_guizhou", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryHainan")
-    def preset_canary_hainan(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryHainanArgs']]:
+    def preset_canary_hainan(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryHainanArgs']]:
         """
         The configuration of a presetCanaryHainan environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_hainan")
 
     @preset_canary_hainan.setter
-    def preset_canary_hainan(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryHainanArgs']]):
+    def preset_canary_hainan(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryHainanArgs']]):
         pulumi.set(self, "preset_canary_hainan", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryHebei")
-    def preset_canary_hebei(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryHebeiArgs']]:
+    def preset_canary_hebei(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryHebeiArgs']]:
         """
         The configuration of a presetCanaryHebei environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_hebei")
 
     @preset_canary_hebei.setter
-    def preset_canary_hebei(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryHebeiArgs']]):
+    def preset_canary_hebei(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryHebeiArgs']]):
         pulumi.set(self, "preset_canary_hebei", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryHeilongjiang")
-    def preset_canary_heilongjiang(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryHeilongjiangArgs']]:
+    def preset_canary_heilongjiang(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryHeilongjiangArgs']]:
         """
         The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_heilongjiang")
 
     @preset_canary_heilongjiang.setter
-    def preset_canary_heilongjiang(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryHeilongjiangArgs']]):
+    def preset_canary_heilongjiang(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryHeilongjiangArgs']]):
         pulumi.set(self, "preset_canary_heilongjiang", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryHenan")
-    def preset_canary_henan(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryHenanArgs']]:
+    def preset_canary_henan(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryHenanArgs']]:
         """
         The configuration of a presetCanaryHenan environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_henan")
 
     @preset_canary_henan.setter
-    def preset_canary_henan(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryHenanArgs']]):
+    def preset_canary_henan(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryHenanArgs']]):
         pulumi.set(self, "preset_canary_henan", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryHongKong")
-    def preset_canary_hong_kong(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryHongKongArgs']]:
+    def preset_canary_hong_kong(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryHongKongArgs']]:
         """
         The configuration of a presetCanaryHongKong environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_hong_kong")
 
     @preset_canary_hong_kong.setter
-    def preset_canary_hong_kong(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryHongKongArgs']]):
+    def preset_canary_hong_kong(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryHongKongArgs']]):
         pulumi.set(self, "preset_canary_hong_kong", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryHubei")
-    def preset_canary_hubei(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryHubeiArgs']]:
+    def preset_canary_hubei(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryHubeiArgs']]:
         """
         The configuration of a presetCanaryHubei environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_hubei")
 
     @preset_canary_hubei.setter
-    def preset_canary_hubei(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryHubeiArgs']]):
+    def preset_canary_hubei(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryHubeiArgs']]):
         pulumi.set(self, "preset_canary_hubei", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryHunan")
-    def preset_canary_hunan(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryHunanArgs']]:
+    def preset_canary_hunan(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryHunanArgs']]:
         """
         The configuration of a presetCanaryHunan environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_hunan")
 
     @preset_canary_hunan.setter
-    def preset_canary_hunan(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryHunanArgs']]):
+    def preset_canary_hunan(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryHunanArgs']]):
         pulumi.set(self, "preset_canary_hunan", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryJiangsu")
-    def preset_canary_jiangsu(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryJiangsuArgs']]:
+    def preset_canary_jiangsu(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryJiangsuArgs']]:
         """
         The configuration of a presetCanaryJiangsu environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_jiangsu")
 
     @preset_canary_jiangsu.setter
-    def preset_canary_jiangsu(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryJiangsuArgs']]):
+    def preset_canary_jiangsu(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryJiangsuArgs']]):
         pulumi.set(self, "preset_canary_jiangsu", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryJiangxi")
-    def preset_canary_jiangxi(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryJiangxiArgs']]:
+    def preset_canary_jiangxi(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryJiangxiArgs']]:
         """
         The configuration of a presetCanaryJiangxi environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_jiangxi")
 
     @preset_canary_jiangxi.setter
-    def preset_canary_jiangxi(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryJiangxiArgs']]):
+    def preset_canary_jiangxi(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryJiangxiArgs']]):
         pulumi.set(self, "preset_canary_jiangxi", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryJilin")
-    def preset_canary_jilin(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryJilinArgs']]:
+    def preset_canary_jilin(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryJilinArgs']]:
         """
         The configuration of a presetCanaryJilin environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_jilin")
 
     @preset_canary_jilin.setter
-    def preset_canary_jilin(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryJilinArgs']]):
+    def preset_canary_jilin(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryJilinArgs']]):
         pulumi.set(self, "preset_canary_jilin", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryLiaoning")
-    def preset_canary_liaoning(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryLiaoningArgs']]:
+    def preset_canary_liaoning(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryLiaoningArgs']]:
         """
         The configuration of a presetCanaryLiaoning environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_liaoning")
 
     @preset_canary_liaoning.setter
-    def preset_canary_liaoning(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryLiaoningArgs']]):
+    def preset_canary_liaoning(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryLiaoningArgs']]):
         pulumi.set(self, "preset_canary_liaoning", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryMacau")
-    def preset_canary_macau(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryMacauArgs']]:
+    def preset_canary_macau(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryMacauArgs']]:
         """
         The configuration of a presetCanaryMacau environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_macau")
 
     @preset_canary_macau.setter
-    def preset_canary_macau(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryMacauArgs']]):
+    def preset_canary_macau(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryMacauArgs']]):
         pulumi.set(self, "preset_canary_macau", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryNeimenggu")
-    def preset_canary_neimenggu(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryNeimengguArgs']]:
+    def preset_canary_neimenggu(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryNeimengguArgs']]:
         """
         The configuration of a presetCanaryNeimenggu environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_neimenggu")
 
     @preset_canary_neimenggu.setter
-    def preset_canary_neimenggu(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryNeimengguArgs']]):
+    def preset_canary_neimenggu(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryNeimengguArgs']]):
         pulumi.set(self, "preset_canary_neimenggu", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryNingxia")
-    def preset_canary_ningxia(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryNingxiaArgs']]:
+    def preset_canary_ningxia(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryNingxiaArgs']]:
         """
         The configuration of a presetCanaryNingxia environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_ningxia")
 
     @preset_canary_ningxia.setter
-    def preset_canary_ningxia(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryNingxiaArgs']]):
+    def preset_canary_ningxia(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryNingxiaArgs']]):
         pulumi.set(self, "preset_canary_ningxia", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryOverseas")
-    def preset_canary_overseas(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryOverseasArgs']]:
+    def preset_canary_overseas(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryOverseasArgs']]:
         """
         The configuration of a presetCanaryOverseas environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_overseas")
 
     @preset_canary_overseas.setter
-    def preset_canary_overseas(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryOverseasArgs']]):
+    def preset_canary_overseas(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryOverseasArgs']]):
         pulumi.set(self, "preset_canary_overseas", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryQinghai")
-    def preset_canary_qinghai(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryQinghaiArgs']]:
+    def preset_canary_qinghai(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryQinghaiArgs']]:
         """
         The configuration of a presetCanaryQinghai environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_qinghai")
 
     @preset_canary_qinghai.setter
-    def preset_canary_qinghai(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryQinghaiArgs']]):
+    def preset_canary_qinghai(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryQinghaiArgs']]):
         pulumi.set(self, "preset_canary_qinghai", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryShaanxi")
-    def preset_canary_shaanxi(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryShaanxiArgs']]:
+    def preset_canary_shaanxi(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryShaanxiArgs']]:
         """
         The configuration of a presetCanaryShaanxi environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_shaanxi")
 
     @preset_canary_shaanxi.setter
-    def preset_canary_shaanxi(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryShaanxiArgs']]):
+    def preset_canary_shaanxi(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryShaanxiArgs']]):
         pulumi.set(self, "preset_canary_shaanxi", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryShandong")
-    def preset_canary_shandong(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryShandongArgs']]:
+    def preset_canary_shandong(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryShandongArgs']]:
         """
         The configuration of a presetCanaryShandong environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_shandong")
 
     @preset_canary_shandong.setter
-    def preset_canary_shandong(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryShandongArgs']]):
+    def preset_canary_shandong(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryShandongArgs']]):
         pulumi.set(self, "preset_canary_shandong", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryShanghai")
-    def preset_canary_shanghai(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryShanghaiArgs']]:
+    def preset_canary_shanghai(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryShanghaiArgs']]:
         """
         The configuration of a presetCanaryShanghai environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_shanghai")
 
     @preset_canary_shanghai.setter
-    def preset_canary_shanghai(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryShanghaiArgs']]):
+    def preset_canary_shanghai(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryShanghaiArgs']]):
         pulumi.set(self, "preset_canary_shanghai", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryShanxi")
-    def preset_canary_shanxi(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryShanxiArgs']]:
+    def preset_canary_shanxi(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryShanxiArgs']]:
         """
         The configuration of a presetCanaryShanxi environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_shanxi")
 
     @preset_canary_shanxi.setter
-    def preset_canary_shanxi(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryShanxiArgs']]):
+    def preset_canary_shanxi(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryShanxiArgs']]):
         pulumi.set(self, "preset_canary_shanxi", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanarySichuan")
-    def preset_canary_sichuan(self) -> Optional[pulumi.Input['ErEnvConfPresetCanarySichuanArgs']]:
+    def preset_canary_sichuan(self) -> pulumi.Input[Optional['ErEnvConfPresetCanarySichuanArgs']]:
         """
         The configuration of a presetCanarySichuan environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_sichuan")
 
     @preset_canary_sichuan.setter
-    def preset_canary_sichuan(self, value: Optional[pulumi.Input['ErEnvConfPresetCanarySichuanArgs']]):
+    def preset_canary_sichuan(self, value: pulumi.Input[Optional['ErEnvConfPresetCanarySichuanArgs']]):
         pulumi.set(self, "preset_canary_sichuan", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryTaiwan")
-    def preset_canary_taiwan(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryTaiwanArgs']]:
+    def preset_canary_taiwan(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryTaiwanArgs']]:
         """
         The configuration of a presetCanaryTaiwan environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_taiwan")
 
     @preset_canary_taiwan.setter
-    def preset_canary_taiwan(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryTaiwanArgs']]):
+    def preset_canary_taiwan(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryTaiwanArgs']]):
         pulumi.set(self, "preset_canary_taiwan", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryTianjin")
-    def preset_canary_tianjin(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryTianjinArgs']]:
+    def preset_canary_tianjin(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryTianjinArgs']]:
         """
         The configuration of a presetCanaryTianjin environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_tianjin")
 
     @preset_canary_tianjin.setter
-    def preset_canary_tianjin(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryTianjinArgs']]):
+    def preset_canary_tianjin(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryTianjinArgs']]):
         pulumi.set(self, "preset_canary_tianjin", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryXinjiang")
-    def preset_canary_xinjiang(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryXinjiangArgs']]:
+    def preset_canary_xinjiang(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryXinjiangArgs']]:
         """
         The configuration of a presetCanaryXinjiang environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_xinjiang")
 
     @preset_canary_xinjiang.setter
-    def preset_canary_xinjiang(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryXinjiangArgs']]):
+    def preset_canary_xinjiang(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryXinjiangArgs']]):
         pulumi.set(self, "preset_canary_xinjiang", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryXizang")
-    def preset_canary_xizang(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryXizangArgs']]:
+    def preset_canary_xizang(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryXizangArgs']]:
         """
         The configuration of a presetCanaryXizang environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_xizang")
 
     @preset_canary_xizang.setter
-    def preset_canary_xizang(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryXizangArgs']]):
+    def preset_canary_xizang(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryXizangArgs']]):
         pulumi.set(self, "preset_canary_xizang", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryYunnan")
-    def preset_canary_yunnan(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryYunnanArgs']]:
+    def preset_canary_yunnan(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryYunnanArgs']]:
         """
         The configuration of a presetCanaryYunnan environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_yunnan")
 
     @preset_canary_yunnan.setter
-    def preset_canary_yunnan(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryYunnanArgs']]):
+    def preset_canary_yunnan(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryYunnanArgs']]):
         pulumi.set(self, "preset_canary_yunnan", value)
 
     @_builtins.property
     @pulumi.getter(name="presetCanaryZhejiang")
-    def preset_canary_zhejiang(self) -> Optional[pulumi.Input['ErEnvConfPresetCanaryZhejiangArgs']]:
+    def preset_canary_zhejiang(self) -> pulumi.Input[Optional['ErEnvConfPresetCanaryZhejiangArgs']]:
         """
         The configuration of a presetCanaryZhejiang environment. See `staging` below.
         """
         return pulumi.get(self, "preset_canary_zhejiang")
 
     @preset_canary_zhejiang.setter
-    def preset_canary_zhejiang(self, value: Optional[pulumi.Input['ErEnvConfPresetCanaryZhejiangArgs']]):
+    def preset_canary_zhejiang(self, value: pulumi.Input[Optional['ErEnvConfPresetCanaryZhejiangArgs']]):
         pulumi.set(self, "preset_canary_zhejiang", value)
 
     @_builtins.property
     @pulumi.getter
-    def production(self) -> Optional[pulumi.Input['ErEnvConfProductionArgs']]:
+    def production(self) -> pulumi.Input[Optional['ErEnvConfProductionArgs']]:
         """
         The configuration of a production environment. See `staging` below.
         """
         return pulumi.get(self, "production")
 
     @production.setter
-    def production(self, value: Optional[pulumi.Input['ErEnvConfProductionArgs']]):
+    def production(self, value: pulumi.Input[Optional['ErEnvConfProductionArgs']]):
         pulumi.set(self, "production", value)
 
     @_builtins.property
     @pulumi.getter
-    def staging(self) -> Optional[pulumi.Input['ErEnvConfStagingArgs']]:
+    def staging(self) -> pulumi.Input[Optional['ErEnvConfStagingArgs']]:
         """
         The configuration of a staging environment. See `staging` below.
         """
         return pulumi.get(self, "staging")
 
     @staging.setter
-    def staging(self, value: Optional[pulumi.Input['ErEnvConfStagingArgs']]):
+    def staging(self, value: pulumi.Input[Optional['ErEnvConfStagingArgs']]):
         pulumi.set(self, "staging", value)
 
 
 class ErEnvConfPresetCanaryAnhuiArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1027,9 +1027,9 @@ class ErEnvConfPresetCanaryAnhuiArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryAnhuiArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -1044,51 +1044,51 @@ class ErEnvConfPresetCanaryAnhuiArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryBeijingArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1096,9 +1096,9 @@ class ErEnvConfPresetCanaryBeijingArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryBeijingArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -1113,51 +1113,51 @@ class ErEnvConfPresetCanaryBeijingArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryChongqingArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1165,9 +1165,9 @@ class ErEnvConfPresetCanaryChongqingArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryChongqingArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -1182,51 +1182,51 @@ class ErEnvConfPresetCanaryChongqingArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryFujianArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1234,9 +1234,9 @@ class ErEnvConfPresetCanaryFujianArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryFujianArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -1251,51 +1251,51 @@ class ErEnvConfPresetCanaryFujianArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryGansuArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1303,9 +1303,9 @@ class ErEnvConfPresetCanaryGansuArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryGansuArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -1320,51 +1320,51 @@ class ErEnvConfPresetCanaryGansuArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryGuangdongArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1372,9 +1372,9 @@ class ErEnvConfPresetCanaryGuangdongArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryGuangdongArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -1389,51 +1389,51 @@ class ErEnvConfPresetCanaryGuangdongArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryGuangxiArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1441,9 +1441,9 @@ class ErEnvConfPresetCanaryGuangxiArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryGuangxiArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -1458,51 +1458,51 @@ class ErEnvConfPresetCanaryGuangxiArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryGuizhouArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1510,9 +1510,9 @@ class ErEnvConfPresetCanaryGuizhouArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryGuizhouArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -1527,51 +1527,51 @@ class ErEnvConfPresetCanaryGuizhouArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryHainanArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1579,9 +1579,9 @@ class ErEnvConfPresetCanaryHainanArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryHainanArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -1596,51 +1596,51 @@ class ErEnvConfPresetCanaryHainanArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryHebeiArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1648,9 +1648,9 @@ class ErEnvConfPresetCanaryHebeiArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryHebeiArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -1665,51 +1665,51 @@ class ErEnvConfPresetCanaryHebeiArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryHeilongjiangArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1717,9 +1717,9 @@ class ErEnvConfPresetCanaryHeilongjiangArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryHeilongjiangArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -1734,51 +1734,51 @@ class ErEnvConfPresetCanaryHeilongjiangArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryHenanArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1786,9 +1786,9 @@ class ErEnvConfPresetCanaryHenanArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryHenanArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -1803,51 +1803,51 @@ class ErEnvConfPresetCanaryHenanArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryHongKongArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1855,9 +1855,9 @@ class ErEnvConfPresetCanaryHongKongArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryHongKongArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -1872,51 +1872,51 @@ class ErEnvConfPresetCanaryHongKongArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryHubeiArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1924,9 +1924,9 @@ class ErEnvConfPresetCanaryHubeiArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryHubeiArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -1941,51 +1941,51 @@ class ErEnvConfPresetCanaryHubeiArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryHunanArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -1993,9 +1993,9 @@ class ErEnvConfPresetCanaryHunanArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryHunanArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2010,51 +2010,51 @@ class ErEnvConfPresetCanaryHunanArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryJiangsuArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -2062,9 +2062,9 @@ class ErEnvConfPresetCanaryJiangsuArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryJiangsuArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2079,51 +2079,51 @@ class ErEnvConfPresetCanaryJiangsuArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryJiangxiArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -2131,9 +2131,9 @@ class ErEnvConfPresetCanaryJiangxiArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryJiangxiArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2148,51 +2148,51 @@ class ErEnvConfPresetCanaryJiangxiArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryJilinArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -2200,9 +2200,9 @@ class ErEnvConfPresetCanaryJilinArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryJilinArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2217,51 +2217,51 @@ class ErEnvConfPresetCanaryJilinArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryLiaoningArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -2269,9 +2269,9 @@ class ErEnvConfPresetCanaryLiaoningArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryLiaoningArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2286,51 +2286,51 @@ class ErEnvConfPresetCanaryLiaoningArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryMacauArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -2338,9 +2338,9 @@ class ErEnvConfPresetCanaryMacauArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryMacauArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2355,51 +2355,51 @@ class ErEnvConfPresetCanaryMacauArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryNeimengguArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -2407,9 +2407,9 @@ class ErEnvConfPresetCanaryNeimengguArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryNeimengguArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2424,51 +2424,51 @@ class ErEnvConfPresetCanaryNeimengguArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryNingxiaArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -2476,9 +2476,9 @@ class ErEnvConfPresetCanaryNingxiaArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryNingxiaArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2493,51 +2493,51 @@ class ErEnvConfPresetCanaryNingxiaArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryOverseasArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -2545,9 +2545,9 @@ class ErEnvConfPresetCanaryOverseasArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryOverseasArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2562,51 +2562,51 @@ class ErEnvConfPresetCanaryOverseasArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryQinghaiArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -2614,9 +2614,9 @@ class ErEnvConfPresetCanaryQinghaiArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryQinghaiArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2631,51 +2631,51 @@ class ErEnvConfPresetCanaryQinghaiArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryShaanxiArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -2683,9 +2683,9 @@ class ErEnvConfPresetCanaryShaanxiArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryShaanxiArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2700,51 +2700,51 @@ class ErEnvConfPresetCanaryShaanxiArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryShandongArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -2752,9 +2752,9 @@ class ErEnvConfPresetCanaryShandongArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryShandongArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2769,51 +2769,51 @@ class ErEnvConfPresetCanaryShandongArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryShanghaiArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -2821,9 +2821,9 @@ class ErEnvConfPresetCanaryShanghaiArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryShanghaiArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2838,51 +2838,51 @@ class ErEnvConfPresetCanaryShanghaiArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryShanxiArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -2890,9 +2890,9 @@ class ErEnvConfPresetCanaryShanxiArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryShanxiArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2907,51 +2907,51 @@ class ErEnvConfPresetCanaryShanxiArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanarySichuanArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -2959,9 +2959,9 @@ class ErEnvConfPresetCanarySichuanArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanarySichuanArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -2976,51 +2976,51 @@ class ErEnvConfPresetCanarySichuanArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryTaiwanArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -3028,9 +3028,9 @@ class ErEnvConfPresetCanaryTaiwanArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryTaiwanArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -3045,51 +3045,51 @@ class ErEnvConfPresetCanaryTaiwanArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryTianjinArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -3097,9 +3097,9 @@ class ErEnvConfPresetCanaryTianjinArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryTianjinArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -3114,51 +3114,51 @@ class ErEnvConfPresetCanaryTianjinArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryXinjiangArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -3166,9 +3166,9 @@ class ErEnvConfPresetCanaryXinjiangArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryXinjiangArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -3183,51 +3183,51 @@ class ErEnvConfPresetCanaryXinjiangArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryXizangArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -3235,9 +3235,9 @@ class ErEnvConfPresetCanaryXizangArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryXizangArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -3252,51 +3252,51 @@ class ErEnvConfPresetCanaryXizangArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryYunnanArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -3304,9 +3304,9 @@ class ErEnvConfPresetCanaryYunnanArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryYunnanArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -3321,51 +3321,51 @@ class ErEnvConfPresetCanaryYunnanArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfPresetCanaryZhejiangArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -3373,9 +3373,9 @@ class ErEnvConfPresetCanaryZhejiangArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfPresetCanaryZhejiangArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -3390,51 +3390,51 @@ class ErEnvConfPresetCanaryZhejiangArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfProductionArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -3442,9 +3442,9 @@ class ErEnvConfProductionArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfProductionArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -3459,51 +3459,51 @@ class ErEnvConfProductionArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
 class ErEnvConfStagingArgsDict(TypedDict):
-    allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allowed DCDN domain names.
     """
-    code_rev: NotRequired[pulumi.Input[_builtins.str]]
+    code_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number of the code.
     """
-    spec_name: NotRequired[pulumi.Input[_builtins.str]]
+    spec_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
     """
@@ -3511,9 +3511,9 @@ class ErEnvConfStagingArgsDict(TypedDict):
 @pulumi.input_type
 class ErEnvConfStagingArgs:
     def __init__(__self__, *,
-                 allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_hosts: Allowed DCDN domain names.
         :param pulumi.Input[_builtins.str] code_rev: The version number of the code.
@@ -3528,38 +3528,38 @@ class ErEnvConfStagingArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedHosts")
-    def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed DCDN domain names.
         """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
-    def allowed_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRev")
-    def code_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the code.
         """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
-    def code_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="specName")
-    def spec_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
         """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
-    def spec_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_name", value)
 
 
@@ -3676,11 +3676,11 @@ class WafRuleConditionArgsDict(TypedDict):
     """
     The logical symbol.
     """
-    sub_key: NotRequired[pulumi.Input[_builtins.str]]
+    sub_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The match subfield.
     """
-    values: NotRequired[pulumi.Input[_builtins.str]]
+    values: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The match content. Separate multiple values with commas (,).
     """
@@ -3690,8 +3690,8 @@ class WafRuleConditionArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
                  op_value: pulumi.Input[_builtins.str],
-                 sub_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[_builtins.str]] = None):
+                 sub_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The match field.
         :param pulumi.Input[_builtins.str] op_value: The logical symbol.
@@ -3731,51 +3731,51 @@ class WafRuleConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="subKey")
-    def sub_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The match subfield.
         """
         return pulumi.get(self, "sub_key")
 
     @sub_key.setter
-    def sub_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def values(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The match content. Separate multiple values with commas (,).
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def values(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "values", value)
 
 
 class WafRuleRateLimitArgsDict(TypedDict):
-    interval: NotRequired[pulumi.Input[_builtins.int]]
+    interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Statistical duration, 5-1800.
     """
-    status: NotRequired[pulumi.Input['WafRuleRateLimitStatusArgsDict']]
+    status: NotRequired[pulumi.Input[Optional['WafRuleRateLimitStatusArgs']]]
     """
     Response code statistics. See `status` below.
     """
-    sub_key: NotRequired[pulumi.Input[_builtins.str]]
+    sub_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
     """
-    target: NotRequired[pulumi.Input[_builtins.str]]
+    target: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The statistical field for frequency control. Currently, `IP`, `Header`, `Query String Parameter`, `Cookie Name`, `Session` is supported.
     """
-    threshold: NotRequired[pulumi.Input[_builtins.int]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
     """
-    ttl: NotRequired[pulumi.Input[_builtins.int]]
+    ttl: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
     """
@@ -3783,12 +3783,12 @@ class WafRuleRateLimitArgsDict(TypedDict):
 @pulumi.input_type
 class WafRuleRateLimitArgs:
     def __init__(__self__, *,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input['WafRuleRateLimitStatusArgs']] = None,
-                 sub_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional['WafRuleRateLimitStatusArgs']] = None,
+                 sub_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] interval: Statistical duration, 5-1800.
         :param pulumi.Input['WafRuleRateLimitStatusArgs'] status: Response code statistics. See `status` below.
@@ -3812,87 +3812,87 @@ class WafRuleRateLimitArgs:
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Statistical duration, 5-1800.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['WafRuleRateLimitStatusArgs']]:
+    def status(self) -> pulumi.Input[Optional['WafRuleRateLimitStatusArgs']]:
         """
         Response code statistics. See `status` below.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['WafRuleRateLimitStatusArgs']]):
+    def status(self, value: pulumi.Input[Optional['WafRuleRateLimitStatusArgs']]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="subKey")
-    def sub_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
         """
         return pulumi.get(self, "sub_key")
 
     @sub_key.setter
-    def sub_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The statistical field for frequency control. Currently, `IP`, `Header`, `Query String Parameter`, `Cookie Name`, `Session` is supported.
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
 
 class WafRuleRateLimitStatusArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.str]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The HTTP status code returned.
     """
-    count: NotRequired[pulumi.Input[_builtins.int]]
+    count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
     """
-    ratio: NotRequired[pulumi.Input[_builtins.int]]
+    ratio: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
     """
@@ -3900,9 +3900,9 @@ class WafRuleRateLimitStatusArgsDict(TypedDict):
 @pulumi.input_type
 class WafRuleRateLimitStatusArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.str]] = None,
-                 count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ratio: Optional[pulumi.Input[_builtins.int]] = None):
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ratio: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] code: The HTTP status code returned.
         :param pulumi.Input[_builtins.int] count: The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
@@ -3917,38 +3917,38 @@ class WafRuleRateLimitStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTP status code returned.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "count", value)
 
     @_builtins.property
     @pulumi.getter
-    def ratio(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ratio(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
         """
         return pulumi.get(self, "ratio")
 
     @ratio.setter
-    def ratio(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ratio(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ratio", value)
 
 

@@ -138,19 +138,19 @@ export interface VpcEndpointServiceUserState {
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The endpoint service ID.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * The whitelist in the format of ARN.
      */
-    userArn?: pulumi.Input<string>;
+    userArn?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -160,7 +160,7 @@ export interface VpcEndpointServiceUserArgs {
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The endpoint service ID.
      */
@@ -168,7 +168,7 @@ export interface VpcEndpointServiceUserArgs {
     /**
      * The whitelist in the format of ARN.
      */
-    userArn?: pulumi.Input<string>;
+    userArn?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
      */

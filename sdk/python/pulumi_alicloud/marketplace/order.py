@@ -22,11 +22,11 @@ class OrderArgs:
                  package_version: pulumi.Input[_builtins.str],
                  pricing_cycle: pulumi.Input[_builtins.str],
                  product_code: pulumi.Input[_builtins.str],
-                 components: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 coupon_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 quantity: Optional[pulumi.Input[_builtins.int]] = None):
+                 components: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 coupon_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 quantity: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Order resource.
 
@@ -91,76 +91,76 @@ class OrderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def components(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def components(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Service providers customize additional components.
         """
         return pulumi.get(self, "components")
 
     @components.setter
-    def components(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def components(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "components", value)
 
     @_builtins.property
     @pulumi.getter(name="couponId")
-    def coupon_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def coupon_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The coupon id of the market product.
         """
         return pulumi.get(self, "coupon_id")
 
     @coupon_id.setter
-    def coupon_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def coupon_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "coupon_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of purchase cycles.
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="payType")
-    def pay_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
         """
         return pulumi.get(self, "pay_type")
 
     @pay_type.setter
-    def pay_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def quantity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def quantity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The quantity of the market product will be purchased.
         """
         return pulumi.get(self, "quantity")
 
     @quantity.setter
-    def quantity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def quantity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "quantity", value)
 
 
 @pulumi.input_type
 class _OrderState:
     def __init__(__self__, *,
-                 components: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 coupon_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quantity: Optional[pulumi.Input[_builtins.int]] = None):
+                 components: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 coupon_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quantity: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Order resources.
 
@@ -192,98 +192,98 @@ class _OrderState:
 
     @_builtins.property
     @pulumi.getter
-    def components(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def components(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Service providers customize additional components.
         """
         return pulumi.get(self, "components")
 
     @components.setter
-    def components(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def components(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "components", value)
 
     @_builtins.property
     @pulumi.getter(name="couponId")
-    def coupon_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def coupon_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The coupon id of the market product.
         """
         return pulumi.get(self, "coupon_id")
 
     @coupon_id.setter
-    def coupon_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def coupon_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "coupon_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of purchase cycles.
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="packageVersion")
-    def package_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The package version of the market product.
         """
         return pulumi.get(self, "package_version")
 
     @package_version.setter
-    def package_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_version", value)
 
     @_builtins.property
     @pulumi.getter(name="payType")
-    def pay_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
         """
         return pulumi.get(self, "pay_type")
 
     @pay_type.setter
-    def pay_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
         """
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="productCode")
-    def product_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The product_code of market place product.
         """
         return pulumi.get(self, "product_code")
 
     @product_code.setter
-    def product_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def quantity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def quantity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The quantity of the market product will be purchased.
         """
         return pulumi.get(self, "quantity")
 
     @quantity.setter
-    def quantity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def quantity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "quantity", value)
 
 
@@ -293,14 +293,14 @@ class Order(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 components: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 coupon_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quantity: Optional[pulumi.Input[_builtins.int]] = None,
+                 components: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 coupon_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quantity: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a market order resource.
@@ -406,14 +406,14 @@ class Order(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 components: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 coupon_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quantity: Optional[pulumi.Input[_builtins.int]] = None,
+                 components: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 coupon_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quantity: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -447,14 +447,14 @@ class Order(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            components: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            coupon_id: Optional[pulumi.Input[_builtins.str]] = None,
-            duration: Optional[pulumi.Input[_builtins.int]] = None,
-            package_version: Optional[pulumi.Input[_builtins.str]] = None,
-            pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            product_code: Optional[pulumi.Input[_builtins.str]] = None,
-            quantity: Optional[pulumi.Input[_builtins.int]] = None) -> 'Order':
+            components: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            coupon_id: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            package_version: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            product_code: pulumi.Input[Optional[_builtins.str]] = None,
+            quantity: pulumi.Input[Optional[_builtins.int]] = None) -> 'Order':
         """
         Get an existing Order resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

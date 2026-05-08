@@ -164,47 +164,47 @@ export interface HandshakeState {
     /**
      * The time when the invitation was created. The time is displayed in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The time when the invitation expires. The time is displayed in UTC.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the management account of the resource directory.
      */
-    masterAccountId?: pulumi.Input<string>;
+    masterAccountId?: pulumi.Input<string | undefined>;
     /**
      * The name of the management account of the resource directory.
      */
-    masterAccountName?: pulumi.Input<string>;
+    masterAccountName?: pulumi.Input<string | undefined>;
     /**
      * The time when the invitation was modified. The time is displayed in UTC.
      */
-    modifyTime?: pulumi.Input<string>;
+    modifyTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the invitation.
      * The description can be up to 1,024 characters in length.
      */
-    note?: pulumi.Input<string>;
+    note?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource directory.
      */
-    resourceDirectoryId?: pulumi.Input<string>;
+    resourceDirectoryId?: pulumi.Input<string | undefined>;
     /**
      * The status of the invitation.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID or logon email address of the account that you want to invite.
      */
-    targetEntity?: pulumi.Input<string>;
+    targetEntity?: pulumi.Input<string | undefined>;
     /**
      * The type of the invited account. Valid values:
      *
      * - Account: indicates the ID of the account.
      * - Email: indicates the logon email address of the account.
      */
-    targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -215,7 +215,7 @@ export interface HandshakeArgs {
      * The description of the invitation.
      * The description can be up to 1,024 characters in length.
      */
-    note?: pulumi.Input<string>;
+    note?: pulumi.Input<string | undefined>;
     /**
      * The ID or logon email address of the account that you want to invite.
      */

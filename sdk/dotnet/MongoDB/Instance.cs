@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.MongoDB
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.MongoDB.GetZones.Invoke();
     /// 
-    ///     var index = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length.Apply(length =&gt; length - 1);
+    ///     var index = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length().Apply(length =&gt; length - 1);
     /// 
     ///     var zoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[index].Id);
     /// 

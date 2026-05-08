@@ -147,35 +147,35 @@ export interface CustomerGatewayState {
     /**
      * Asn.
      */
-    asn?: pulumi.Input<string>;
+    asn?: pulumi.Input<string | undefined>;
     /**
      * The time when the customer gateway was created.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The name of the customer gateway.
      */
-    customerGatewayName?: pulumi.Input<string>;
+    customerGatewayName?: pulumi.Input<string | undefined>;
     /**
      * The description of the customer gateway.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the customer gateway.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.216.0. New field 'customer_gateway_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * tag.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -185,15 +185,15 @@ export interface CustomerGatewayArgs {
     /**
      * Asn.
      */
-    asn?: pulumi.Input<string>;
+    asn?: pulumi.Input<string | undefined>;
     /**
      * The name of the customer gateway.
      */
-    customerGatewayName?: pulumi.Input<string>;
+    customerGatewayName?: pulumi.Input<string | undefined>;
     /**
      * The description of the customer gateway.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the customer gateway.
      */
@@ -203,11 +203,11 @@ export interface CustomerGatewayArgs {
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.210.0. New field 'customer_gateway_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * tag.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -25,7 +25,7 @@ class BindingArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  source_exchange: pulumi.Input[_builtins.str],
                  virtual_host_name: pulumi.Input[_builtins.str],
-                 argument: Optional[pulumi.Input[_builtins.str]] = None):
+                 argument: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Binding resource.
 
@@ -133,7 +133,7 @@ class BindingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def argument(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def argument(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
         - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
@@ -143,20 +143,20 @@ class BindingArgs:
         return pulumi.get(self, "argument")
 
     @argument.setter
-    def argument(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def argument(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "argument", value)
 
 
 @pulumi.input_type
 class _BindingState:
     def __init__(__self__, *,
-                 argument: Optional[pulumi.Input[_builtins.str]] = None,
-                 binding_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 binding_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_exchange: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 argument: pulumi.Input[Optional[_builtins.str]] = None,
+                 binding_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 binding_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Binding resources.
 
@@ -193,7 +193,7 @@ class _BindingState:
 
     @_builtins.property
     @pulumi.getter
-    def argument(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def argument(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
         - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
@@ -203,12 +203,12 @@ class _BindingState:
         return pulumi.get(self, "argument")
 
     @argument.setter
-    def argument(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def argument(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "argument", value)
 
     @_builtins.property
     @pulumi.getter(name="bindingKey")
-    def binding_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def binding_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Binding Key.
         * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -220,67 +220,67 @@ class _BindingState:
         return pulumi.get(self, "binding_key")
 
     @binding_key.setter
-    def binding_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def binding_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "binding_key", value)
 
     @_builtins.property
     @pulumi.getter(name="bindingType")
-    def binding_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def binding_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
         """
         return pulumi.get(self, "binding_type")
 
     @binding_type.setter
-    def binding_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def binding_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "binding_type", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationName")
-    def destination_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the object that you want to bind to the source exchange.
         """
         return pulumi.get(self, "destination_name")
 
     @destination_name.setter
-    def destination_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceExchange")
-    def source_exchange(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_exchange(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the source exchange.
         """
         return pulumi.get(self, "source_exchange")
 
     @source_exchange.setter
-    def source_exchange(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_exchange(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_exchange", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualHostName")
-    def virtual_host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vhost.
         """
         return pulumi.get(self, "virtual_host_name")
 
     @virtual_host_name.setter
-    def virtual_host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_host_name", value)
 
 
@@ -290,13 +290,13 @@ class Binding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 argument: Optional[pulumi.Input[_builtins.str]] = None,
-                 binding_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 binding_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_exchange: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 argument: pulumi.Input[Optional[_builtins.str]] = None,
+                 binding_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 binding_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RabbitMQ (AMQP) Binding resource.
@@ -455,13 +455,13 @@ class Binding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 argument: Optional[pulumi.Input[_builtins.str]] = None,
-                 binding_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 binding_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_exchange: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 argument: pulumi.Input[Optional[_builtins.str]] = None,
+                 binding_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 binding_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -500,13 +500,13 @@ class Binding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            argument: Optional[pulumi.Input[_builtins.str]] = None,
-            binding_key: Optional[pulumi.Input[_builtins.str]] = None,
-            binding_type: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_exchange: Optional[pulumi.Input[_builtins.str]] = None,
-            virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Binding':
+            argument: pulumi.Input[Optional[_builtins.str]] = None,
+            binding_key: pulumi.Input[Optional[_builtins.str]] = None,
+            binding_type: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Binding':
         """
         Get an existing Binding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -132,7 +132,7 @@ export interface GetVpcEndpointLinkedVpcsOutputArgs {
     /**
      * A list of CR Vpc Endpoint Linked Vpc IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the instance.
      */
@@ -146,9 +146,9 @@ export interface GetVpcEndpointLinkedVpcsOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

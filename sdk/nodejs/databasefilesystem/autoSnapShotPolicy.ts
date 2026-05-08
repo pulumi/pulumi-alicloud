@@ -166,43 +166,43 @@ export interface AutoSnapShotPolicyState {
     /**
      * The number of database file systems set by the automatic snapshot policy.
      */
-    appliedDbfsNumber?: pulumi.Input<number>;
+    appliedDbfsNumber?: pulumi.Input<number | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Last modification time of automatic snapshot policy
      */
-    lastModified?: pulumi.Input<string>;
+    lastModified?: pulumi.Input<string | undefined>;
     /**
      * Automatic snapshot policy ID
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Automatic snapshot policy name
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * A collection of automatic snapshots performed on several days of the week. Value range: 1~7, for example, `1` means Monday.
      */
-    repeatWeekdays?: pulumi.Input<pulumi.Input<string>[]>;
+    repeatWeekdays?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Automatic snapshot retention days.
      */
-    retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number | undefined>;
     /**
      * Automatic snapshot policy status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Automatic snapshot policy status details
      */
-    statusDetail?: pulumi.Input<string>;
+    statusDetail?: pulumi.Input<string | undefined>;
     /**
      * The set of times at which the snapshot is taken on the day the automatic snapshot is executed. Value range: `00` to `23`, representing 24 time points from 00:00 to 23:00, for example, `01` indicates 01:00.
      */
-    timePoints?: pulumi.Input<pulumi.Input<string>[]>;
+    timePoints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

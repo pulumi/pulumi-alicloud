@@ -136,9 +136,9 @@ def get_resource_types(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         product=pulumi.get(__ret__, 'product'),
         types=pulumi.get(__ret__, 'types'))
-def get_resource_types_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              product: Optional[pulumi.Input[_builtins.str]] = None,
+def get_resource_types_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              product: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceTypesResult]:
     """
     This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetResourceType)

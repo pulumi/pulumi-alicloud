@@ -199,55 +199,55 @@ export interface UserState {
     /**
      * (Available since v1.262.1) The time when the user was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the user. The description can be up to 1,024 characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the directory.
      */
-    directoryId?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string | undefined>;
     /**
      * The display name of the user. The display name can be up to 256 characters in length.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The first name of the user. The first name can be up to 64 characters in length.
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * The last name of the user. The last name can be up to 64 characters in length.
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
      */
-    mfaAuthenticationSettings?: pulumi.Input<string>;
+    mfaAuthenticationSettings?: pulumi.Input<string | undefined>;
     /**
      * The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the user.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -257,7 +257,7 @@ export interface UserArgs {
     /**
      * The description of the user. The description can be up to 1,024 characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the directory.
      */
@@ -265,35 +265,35 @@ export interface UserArgs {
     /**
      * The display name of the user. The display name can be up to 256 characters in length.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The first name of the user. The first name can be up to 64 characters in length.
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * The last name of the user. The last name can be up to 64 characters in length.
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
      */
-    mfaAuthenticationSettings?: pulumi.Input<string>;
+    mfaAuthenticationSettings?: pulumi.Input<string | undefined>;
     /**
      * The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
      */

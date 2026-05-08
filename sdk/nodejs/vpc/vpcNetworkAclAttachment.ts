@@ -30,11 +30,11 @@ import * as utilities from "../utilities";
  * const defaultNetwork = new alicloud.vpc.Network("default", {cidrBlock: "192.168.0.0/16"});
  * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
- *     cidrBlock: defaultNetwork.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
- *         input: cidrBlock,
+ *     cidrBlock: std.cidrsubnetOutput({
+ *         input: defaultNetwork.cidrBlock,
  *         newbits: 8,
  *         netnum: 2,
- *     })).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
  * const defaultNetworkAcl = new alicloud.vpc.NetworkAcl("default", {vpcId: defaultSwitch.vpcId});
@@ -145,19 +145,19 @@ export interface VpcNetworkAclAttachmentState {
     /**
      * The ID of the network ACL instance.
      */
-    networkAclId?: pulumi.Input<string>;
+    networkAclId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the associated  vswitch instance.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the associated resource. Valid values: `VSwitch`.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The status of the Network Acl Attachment.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

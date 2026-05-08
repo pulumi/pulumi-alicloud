@@ -250,28 +250,28 @@ export interface CommonBandwithPackageState {
      * The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
      * Valid values: `1` to `1000`. Default value: `1`.
      */
-    bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string | undefined>;
     /**
      * The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
-    bandwidthPackageName?: pulumi.Input<string>;
+    bandwidthPackageName?: pulumi.Input<string | undefined>;
     /**
      * The creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable deletion protection. Valid values:
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the Internet Shared Bandwidth instance.
      * The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
      */
-    force?: pulumi.Input<string>;
+    force?: pulumi.Input<string | undefined>;
     /**
      * Billing method of Internet Shared Bandwidth. Valid values:
      * `PayByTraffic`: billed by primary traffic.
@@ -280,7 +280,7 @@ export interface CommonBandwithPackageState {
      * - `PayBy95`: Billed as Enhanced 95.
      * - `PayByDominantTraffic`: billed by primary traffic.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The line type. Valid values:
      *
@@ -298,17 +298,17 @@ export interface CommonBandwithPackageState {
      *
      * If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
      */
-    isp?: pulumi.Input<string>;
+    isp?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The percentage of the minimum bandwidth commitment. The value is only `20`.
      *
@@ -316,35 +316,35 @@ export interface CommonBandwithPackageState {
      *
      * > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
      */
-    ratio?: pulumi.Input<number>;
+    ratio?: pulumi.Input<number | undefined>;
     /**
      * The pagination token that is used in the next request to retrieve a new page of results.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which you want to move the resource.
      *
      * > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
      */
-    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the Internet Shared Bandwidth instance. Default value: `Available`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -359,20 +359,20 @@ export interface CommonBandwithPackageArgs {
     /**
      * The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
-    bandwidthPackageName?: pulumi.Input<string>;
+    bandwidthPackageName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable deletion protection. Valid values:
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the Internet Shared Bandwidth instance.
      * The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
      */
-    force?: pulumi.Input<string>;
+    force?: pulumi.Input<string | undefined>;
     /**
      * Billing method of Internet Shared Bandwidth. Valid values:
      * `PayByTraffic`: billed by primary traffic.
@@ -381,7 +381,7 @@ export interface CommonBandwithPackageArgs {
      * - `PayBy95`: Billed as Enhanced 95.
      * - `PayByDominantTraffic`: billed by primary traffic.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The line type. Valid values:
      *
@@ -399,13 +399,13 @@ export interface CommonBandwithPackageArgs {
      *
      * If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
      */
-    isp?: pulumi.Input<string>;
+    isp?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The percentage of the minimum bandwidth commitment. The value is only `20`.
      *
@@ -413,25 +413,25 @@ export interface CommonBandwithPackageArgs {
      *
      * > **NOTE:** This parameter is available only on the Alibaba Cloud China site.
      */
-    ratio?: pulumi.Input<number>;
+    ratio?: pulumi.Input<number | undefined>;
     /**
      * The ID of the resource group to which you want to move the resource.
      *
      * > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
      */
-    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

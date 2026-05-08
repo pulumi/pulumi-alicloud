@@ -275,81 +275,81 @@ export interface LoadBalancerState {
     /**
      * Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The IP version of the SLB instance to be created, which can be set to ipv4 or ipv6 . Default to "ipv4". Now, only internet instance support ipv6 address.
      */
-    addressIpVersion?: pulumi.Input<string>;
+    addressIpVersion?: pulumi.Input<string | undefined>;
     /**
      * The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
      * - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
      * - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
      */
-    addressType?: pulumi.Input<string>;
+    addressType?: pulumi.Input<string | undefined>;
     /**
      * Valid
      * value is between 1 and 1000, If argument "internetChargeType" is "paybytraffic", then this value will be ignore.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
      */
-    deleteProtection?: pulumi.Input<string>;
+    deleteProtection?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * Valid
      * values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
      * Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
      * must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
      * Terraform will autogenerate a name beginning with `tf-lb`.
      */
-    loadBalancerName?: pulumi.Input<string>;
+    loadBalancerName?: pulumi.Input<string | undefined>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
      */
-    loadBalancerSpec?: pulumi.Input<string>;
+    loadBalancerSpec?: pulumi.Input<string | undefined>;
     /**
      * The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
      */
-    masterZoneId?: pulumi.Input<string>;
+    masterZoneId?: pulumi.Input<string | undefined>;
     /**
      * The reason of modification protection. It's effective when `modificationProtectionStatus` is `ConsoleProtection`.
      */
-    modificationProtectionReason?: pulumi.Input<string>;
+    modificationProtectionReason?: pulumi.Input<string | undefined>;
     /**
      * The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
      */
-    modificationProtectionStatus?: pulumi.Input<string>;
+    modificationProtectionStatus?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The Id of resource group which the SLB belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
      */
-    slaveZoneId?: pulumi.Input<string>;
+    slaveZoneId?: pulumi.Input<string | undefined>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
      * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
@@ -357,7 +357,7 @@ export interface LoadBalancerState {
      *
      * @deprecated Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
      */
-    specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string | undefined>;
     /**
      * The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
      *
@@ -367,15 +367,15 @@ export interface LoadBalancerState {
      *
      * > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -385,81 +385,81 @@ export interface LoadBalancerArgs {
     /**
      * Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The IP version of the SLB instance to be created, which can be set to ipv4 or ipv6 . Default to "ipv4". Now, only internet instance support ipv6 address.
      */
-    addressIpVersion?: pulumi.Input<string>;
+    addressIpVersion?: pulumi.Input<string | undefined>;
     /**
      * The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
      * - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
      * - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
      */
-    addressType?: pulumi.Input<string>;
+    addressType?: pulumi.Input<string | undefined>;
     /**
      * Valid
      * value is between 1 and 1000, If argument "internetChargeType" is "paybytraffic", then this value will be ignore.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
      */
-    deleteProtection?: pulumi.Input<string>;
+    deleteProtection?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * Valid
      * values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
      * Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
      * must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
      * Terraform will autogenerate a name beginning with `tf-lb`.
      */
-    loadBalancerName?: pulumi.Input<string>;
+    loadBalancerName?: pulumi.Input<string | undefined>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
      */
-    loadBalancerSpec?: pulumi.Input<string>;
+    loadBalancerSpec?: pulumi.Input<string | undefined>;
     /**
      * The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
      */
-    masterZoneId?: pulumi.Input<string>;
+    masterZoneId?: pulumi.Input<string | undefined>;
     /**
      * The reason of modification protection. It's effective when `modificationProtectionStatus` is `ConsoleProtection`.
      */
-    modificationProtectionReason?: pulumi.Input<string>;
+    modificationProtectionReason?: pulumi.Input<string | undefined>;
     /**
      * The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
      */
-    modificationProtectionStatus?: pulumi.Input<string>;
+    modificationProtectionStatus?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The Id of resource group which the SLB belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
      */
-    slaveZoneId?: pulumi.Input<string>;
+    slaveZoneId?: pulumi.Input<string | undefined>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
      * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
@@ -467,7 +467,7 @@ export interface LoadBalancerArgs {
      *
      * @deprecated Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
      */
-    specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string | undefined>;
     /**
      * The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
      *
@@ -477,13 +477,13 @@ export interface LoadBalancerArgs {
      *
      * > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

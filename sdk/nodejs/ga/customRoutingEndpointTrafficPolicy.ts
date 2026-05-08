@@ -212,35 +212,35 @@ export interface CustomRoutingEndpointTrafficPolicyState {
     /**
      * The ID of the GA instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the destination to which traffic is allowed.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Custom Routing Endpoint Traffic Policy.
      */
-    customRoutingEndpointTrafficPolicyId?: pulumi.Input<string>;
+    customRoutingEndpointTrafficPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the endpoint group.
      */
-    endpointGroupId?: pulumi.Input<string>;
+    endpointGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Custom Routing Endpoint.
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the listener.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * Port rangeSee the following. See `portRanges` below.
      */
-    portRanges?: pulumi.Input<pulumi.Input<inputs.ga.CustomRoutingEndpointTrafficPolicyPortRange>[]>;
+    portRanges?: pulumi.Input<pulumi.Input<inputs.ga.CustomRoutingEndpointTrafficPolicyPortRange>[] | undefined>;
     /**
      * The status of the Custom Routing Endpoint Traffic Policy.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -258,5 +258,5 @@ export interface CustomRoutingEndpointTrafficPolicyArgs {
     /**
      * Port rangeSee the following. See `portRanges` below.
      */
-    portRanges?: pulumi.Input<pulumi.Input<inputs.ga.CustomRoutingEndpointTrafficPolicyPortRange>[]>;
+    portRanges?: pulumi.Input<pulumi.Input<inputs.ga.CustomRoutingEndpointTrafficPolicyPortRange>[] | undefined>;
 }

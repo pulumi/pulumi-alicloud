@@ -20,8 +20,8 @@ __all__ = ['VulWhitelistArgs', 'VulWhitelist']
 class VulWhitelistArgs:
     def __init__(__self__, *,
                  whitelist: pulumi.Input[_builtins.str],
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_info: Optional[pulumi.Input[_builtins.str]] = None):
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_info: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VulWhitelist resource.
 
@@ -49,35 +49,35 @@ class VulWhitelistArgs:
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reason for adding whitelist.
         """
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter(name="targetInfo")
-    def target_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
         return pulumi.get(self, "target_info")
 
     @target_info.setter
-    def target_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_info", value)
 
 
 @pulumi.input_type
 class _VulWhitelistState:
     def __init__(__self__, *,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 whitelist: Optional[pulumi.Input[_builtins.str]] = None):
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 whitelist: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VulWhitelist resources.
 
@@ -94,38 +94,38 @@ class _VulWhitelistState:
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reason for adding whitelist.
         """
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter(name="targetInfo")
-    def target_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
         return pulumi.get(self, "target_info")
 
     @target_info.setter
-    def target_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_info", value)
 
     @_builtins.property
     @pulumi.getter
-    def whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def whitelist(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
         return pulumi.get(self, "whitelist")
 
     @whitelist.setter
-    def whitelist(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def whitelist(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "whitelist", value)
 
 
@@ -135,9 +135,9 @@ class VulWhitelist(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 whitelist: Optional[pulumi.Input[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 whitelist: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Vul Whitelist resource.
@@ -230,9 +230,9 @@ class VulWhitelist(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 whitelist: Optional[pulumi.Input[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 whitelist: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -257,9 +257,9 @@ class VulWhitelist(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            reason: Optional[pulumi.Input[_builtins.str]] = None,
-            target_info: Optional[pulumi.Input[_builtins.str]] = None,
-            whitelist: Optional[pulumi.Input[_builtins.str]] = None) -> 'VulWhitelist':
+            reason: pulumi.Input[Optional[_builtins.str]] = None,
+            target_info: pulumi.Input[Optional[_builtins.str]] = None,
+            whitelist: pulumi.Input[Optional[_builtins.str]] = None) -> 'VulWhitelist':
         """
         Get an existing VulWhitelist resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

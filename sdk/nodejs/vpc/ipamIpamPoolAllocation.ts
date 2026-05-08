@@ -163,40 +163,40 @@ export interface IpamIpamPoolAllocationState {
     /**
      * The allocated address segment.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * Create a custom reserved network segment from The IPAM address pool by entering a mask.
      *
      * > **NOTE:**  Enter at least one of `Cidr` or **CidrMask.
      */
-    cidrMask?: pulumi.Input<number>;
+    cidrMask?: pulumi.Input<number | undefined>;
     /**
      * Instance creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the ipam pool alloctaion.
      * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
      */
-    ipamPoolAllocationDescription?: pulumi.Input<string>;
+    ipamPoolAllocationDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the ipam pool allocation.
      * It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
      */
-    ipamPoolAllocationName?: pulumi.Input<string>;
+    ipamPoolAllocationName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the IPAM Pool.
      */
-    ipamPoolId?: pulumi.Input<string>;
+    ipamPoolId?: pulumi.Input<string | undefined>;
     /**
      * When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
      * When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The status of the instance. Value:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -206,23 +206,23 @@ export interface IpamIpamPoolAllocationArgs {
     /**
      * The allocated address segment.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * Create a custom reserved network segment from The IPAM address pool by entering a mask.
      *
      * > **NOTE:**  Enter at least one of `Cidr` or **CidrMask.
      */
-    cidrMask?: pulumi.Input<number>;
+    cidrMask?: pulumi.Input<number | undefined>;
     /**
      * The description of the ipam pool alloctaion.
      * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
      */
-    ipamPoolAllocationDescription?: pulumi.Input<string>;
+    ipamPoolAllocationDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the ipam pool allocation.
      * It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
      */
-    ipamPoolAllocationName?: pulumi.Input<string>;
+    ipamPoolAllocationName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the IPAM Pool.
      */

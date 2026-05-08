@@ -23,34 +23,34 @@ class V3FunctionArgs:
     def __init__(__self__, *,
                  handler: pulumi.Input[_builtins.str],
                  runtime: pulumi.Input[_builtins.str],
-                 code: Optional[pulumi.Input['V3FunctionCodeArgs']] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 custom_container_config: Optional[pulumi.Input['V3FunctionCustomContainerConfigArgs']] = None,
-                 custom_dns: Optional[pulumi.Input['V3FunctionCustomDnsArgs']] = None,
-                 custom_runtime_config: Optional[pulumi.Input['V3FunctionCustomRuntimeConfigArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_config: Optional[pulumi.Input['V3FunctionGpuConfigArgs']] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_lifecycle_config: Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigArgs']] = None,
-                 internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 invocation_restriction: Optional[pulumi.Input['V3FunctionInvocationRestrictionArgs']] = None,
-                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_config: Optional[pulumi.Input['V3FunctionLogConfigArgs']] = None,
-                 memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 nas_config: Optional[pulumi.Input['V3FunctionNasConfigArgs']] = None,
-                 oss_mount_config: Optional[pulumi.Input['V3FunctionOssMountConfigArgs']] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_config: Optional[pulumi.Input['V3FunctionVpcConfigArgs']] = None):
+                 code: pulumi.Input[Optional['V3FunctionCodeArgs']] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 custom_container_config: pulumi.Input[Optional['V3FunctionCustomContainerConfigArgs']] = None,
+                 custom_dns: pulumi.Input[Optional['V3FunctionCustomDnsArgs']] = None,
+                 custom_runtime_config: pulumi.Input[Optional['V3FunctionCustomRuntimeConfigArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_config: pulumi.Input[Optional['V3FunctionGpuConfigArgs']] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_lifecycle_config: pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigArgs']] = None,
+                 internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 invocation_restriction: pulumi.Input[Optional['V3FunctionInvocationRestrictionArgs']] = None,
+                 layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_config: pulumi.Input[Optional['V3FunctionLogConfigArgs']] = None,
+                 memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 nas_config: pulumi.Input[Optional['V3FunctionNasConfigArgs']] = None,
+                 oss_mount_config: pulumi.Input[Optional['V3FunctionOssMountConfigArgs']] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_config: pulumi.Input[Optional['V3FunctionVpcConfigArgs']] = None):
         """
         The set of arguments for constructing a V3Function resource.
 
@@ -172,7 +172,7 @@ class V3FunctionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input['V3FunctionCodeArgs']]:
+    def code(self) -> pulumi.Input[Optional['V3FunctionCodeArgs']]:
         """
         Function code ZIP package. code and customContainerConfig. See `code` below.
 
@@ -181,379 +181,379 @@ class V3FunctionArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input['V3FunctionCodeArgs']]):
+    def code(self, value: pulumi.Input[Optional['V3FunctionCodeArgs']]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="customContainerConfig")
-    def custom_container_config(self) -> Optional[pulumi.Input['V3FunctionCustomContainerConfigArgs']]:
+    def custom_container_config(self) -> pulumi.Input[Optional['V3FunctionCustomContainerConfigArgs']]:
         """
         The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
         """
         return pulumi.get(self, "custom_container_config")
 
     @custom_container_config.setter
-    def custom_container_config(self, value: Optional[pulumi.Input['V3FunctionCustomContainerConfigArgs']]):
+    def custom_container_config(self, value: pulumi.Input[Optional['V3FunctionCustomContainerConfigArgs']]):
         pulumi.set(self, "custom_container_config", value)
 
     @_builtins.property
     @pulumi.getter(name="customDns")
-    def custom_dns(self) -> Optional[pulumi.Input['V3FunctionCustomDnsArgs']]:
+    def custom_dns(self) -> pulumi.Input[Optional['V3FunctionCustomDnsArgs']]:
         """
         Function custom DNS configuration See `custom_dns` below.
         """
         return pulumi.get(self, "custom_dns")
 
     @custom_dns.setter
-    def custom_dns(self, value: Optional[pulumi.Input['V3FunctionCustomDnsArgs']]):
+    def custom_dns(self, value: pulumi.Input[Optional['V3FunctionCustomDnsArgs']]):
         pulumi.set(self, "custom_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="customRuntimeConfig")
-    def custom_runtime_config(self) -> Optional[pulumi.Input['V3FunctionCustomRuntimeConfigArgs']]:
+    def custom_runtime_config(self) -> pulumi.Input[Optional['V3FunctionCustomRuntimeConfigArgs']]:
         """
         Customize the runtime configuration. See `custom_runtime_config` below.
         """
         return pulumi.get(self, "custom_runtime_config")
 
     @custom_runtime_config.setter
-    def custom_runtime_config(self, value: Optional[pulumi.Input['V3FunctionCustomRuntimeConfigArgs']]):
+    def custom_runtime_config(self, value: pulumi.Input[Optional['V3FunctionCustomRuntimeConfigArgs']]):
         pulumi.set(self, "custom_runtime_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
         """
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
-    def disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def environment_variables(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The environment variable set for the function, you can get the value of the environment variable in the function.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def environment_variables(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
         """
         return pulumi.get(self, "function_name")
 
     @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuConfig")
-    def gpu_config(self) -> Optional[pulumi.Input['V3FunctionGpuConfigArgs']]:
+    def gpu_config(self) -> pulumi.Input[Optional['V3FunctionGpuConfigArgs']]:
         """
         Function GPU configuration. See `gpu_config` below.
         """
         return pulumi.get(self, "gpu_config")
 
     @gpu_config.setter
-    def gpu_config(self, value: Optional[pulumi.Input['V3FunctionGpuConfigArgs']]):
+    def gpu_config(self, value: pulumi.Input[Optional['V3FunctionGpuConfigArgs']]):
         pulumi.set(self, "gpu_config", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
         """
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
-    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceConcurrency")
-    def instance_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum instance concurrency.
         """
         return pulumi.get(self, "instance_concurrency")
 
     @instance_concurrency.setter
-    def instance_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_concurrency", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceIsolationMode")
-    def instance_isolation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_isolation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance isolation mode
         """
         return pulumi.get(self, "instance_isolation_mode")
 
     @instance_isolation_mode.setter
-    def instance_isolation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_isolation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_isolation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceLifecycleConfig")
-    def instance_lifecycle_config(self) -> Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigArgs']]:
+    def instance_lifecycle_config(self) -> pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigArgs']]:
         """
         Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
         """
         return pulumi.get(self, "instance_lifecycle_config")
 
     @instance_lifecycle_config.setter
-    def instance_lifecycle_config(self, value: Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigArgs']]):
+    def instance_lifecycle_config(self, value: pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigArgs']]):
         pulumi.set(self, "instance_lifecycle_config", value)
 
     @_builtins.property
     @pulumi.getter(name="internetAccess")
-    def internet_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def internet_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow function to access public network
         """
         return pulumi.get(self, "internet_access")
 
     @internet_access.setter
-    def internet_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def internet_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "internet_access", value)
 
     @_builtins.property
     @pulumi.getter(name="invocationRestriction")
-    def invocation_restriction(self) -> Optional[pulumi.Input['V3FunctionInvocationRestrictionArgs']]:
+    def invocation_restriction(self) -> pulumi.Input[Optional['V3FunctionInvocationRestrictionArgs']]:
         """
         Invocation Restriction Detail See `invocation_restriction` below.
         """
         return pulumi.get(self, "invocation_restriction")
 
     @invocation_restriction.setter
-    def invocation_restriction(self, value: Optional[pulumi.Input['V3FunctionInvocationRestrictionArgs']]):
+    def invocation_restriction(self, value: pulumi.Input[Optional['V3FunctionInvocationRestrictionArgs']]):
         pulumi.set(self, "invocation_restriction", value)
 
     @_builtins.property
     @pulumi.getter
-    def layers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def layers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of layers.
         """
         return pulumi.get(self, "layers")
 
     @layers.setter
-    def layers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def layers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "layers", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['V3FunctionLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['V3FunctionLogConfigArgs']]:
         """
         The logs generated by the function are written to the configured Logstore. See `log_config` below.
         """
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['V3FunctionLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['V3FunctionLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter(name="memorySize")
-    def memory_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
         """
         return pulumi.get(self, "memory_size")
 
     @memory_size.setter
-    def memory_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_size", value)
 
     @_builtins.property
     @pulumi.getter(name="nasConfig")
-    def nas_config(self) -> Optional[pulumi.Input['V3FunctionNasConfigArgs']]:
+    def nas_config(self) -> pulumi.Input[Optional['V3FunctionNasConfigArgs']]:
         """
         NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
         """
         return pulumi.get(self, "nas_config")
 
     @nas_config.setter
-    def nas_config(self, value: Optional[pulumi.Input['V3FunctionNasConfigArgs']]):
+    def nas_config(self, value: pulumi.Input[Optional['V3FunctionNasConfigArgs']]):
         pulumi.set(self, "nas_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ossMountConfig")
-    def oss_mount_config(self) -> Optional[pulumi.Input['V3FunctionOssMountConfigArgs']]:
+    def oss_mount_config(self) -> pulumi.Input[Optional['V3FunctionOssMountConfigArgs']]:
         """
         OSS mount configuration See `oss_mount_config` below.
         """
         return pulumi.get(self, "oss_mount_config")
 
     @oss_mount_config.setter
-    def oss_mount_config(self, value: Optional[pulumi.Input['V3FunctionOssMountConfigArgs']]):
+    def oss_mount_config(self, value: pulumi.Input[Optional['V3FunctionOssMountConfigArgs']]):
         pulumi.set(self, "oss_mount_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Group ID
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
         """
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
-    def session_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinityConfig")
-    def session_affinity_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_affinity_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
         """
         return pulumi.get(self, "session_affinity_config")
 
     @session_affinity_config.setter
-    def session_affinity_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_affinity_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_affinity_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum running time of the function, in seconds.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcConfig")
-    def vpc_config(self) -> Optional[pulumi.Input['V3FunctionVpcConfigArgs']]:
+    def vpc_config(self) -> pulumi.Input[Optional['V3FunctionVpcConfigArgs']]:
         """
         VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
         """
         return pulumi.get(self, "vpc_config")
 
     @vpc_config.setter
-    def vpc_config(self, value: Optional[pulumi.Input['V3FunctionVpcConfigArgs']]):
+    def vpc_config(self, value: pulumi.Input[Optional['V3FunctionVpcConfigArgs']]):
         pulumi.set(self, "vpc_config", value)
 
 
 @pulumi.input_type
 class _V3FunctionState:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input['V3FunctionCodeArgs']] = None,
-                 code_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_container_config: Optional[pulumi.Input['V3FunctionCustomContainerConfigArgs']] = None,
-                 custom_dns: Optional[pulumi.Input['V3FunctionCustomDnsArgs']] = None,
-                 custom_runtime_config: Optional[pulumi.Input['V3FunctionCustomRuntimeConfigArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 function_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_config: Optional[pulumi.Input['V3FunctionGpuConfigArgs']] = None,
-                 handler: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_lifecycle_config: Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigArgs']] = None,
-                 internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 invocation_restriction: Optional[pulumi.Input['V3FunctionInvocationRestrictionArgs']] = None,
-                 last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_update_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_update_status_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_update_status_reason_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_config: Optional[pulumi.Input['V3FunctionLogConfigArgs']] = None,
-                 memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 nas_config: Optional[pulumi.Input['V3FunctionNasConfigArgs']] = None,
-                 oss_mount_config: Optional[pulumi.Input['V3FunctionOssMountConfigArgs']] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_reason_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 tracing_config: Optional[pulumi.Input['V3FunctionTracingConfigArgs']] = None,
-                 vpc_config: Optional[pulumi.Input['V3FunctionVpcConfigArgs']] = None):
+                 code: pulumi.Input[Optional['V3FunctionCodeArgs']] = None,
+                 code_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_container_config: pulumi.Input[Optional['V3FunctionCustomContainerConfigArgs']] = None,
+                 custom_dns: pulumi.Input[Optional['V3FunctionCustomDnsArgs']] = None,
+                 custom_runtime_config: pulumi.Input[Optional['V3FunctionCustomRuntimeConfigArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_config: pulumi.Input[Optional['V3FunctionGpuConfigArgs']] = None,
+                 handler: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_lifecycle_config: pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigArgs']] = None,
+                 internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 invocation_restriction: pulumi.Input[Optional['V3FunctionInvocationRestrictionArgs']] = None,
+                 last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_update_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_update_status_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_update_status_reason_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_config: pulumi.Input[Optional['V3FunctionLogConfigArgs']] = None,
+                 memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 nas_config: pulumi.Input[Optional['V3FunctionNasConfigArgs']] = None,
+                 oss_mount_config: pulumi.Input[Optional['V3FunctionOssMountConfigArgs']] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_reason_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 tracing_config: pulumi.Input[Optional['V3FunctionTracingConfigArgs']] = None,
+                 vpc_config: pulumi.Input[Optional['V3FunctionVpcConfigArgs']] = None):
         """
         Input properties used for looking up and filtering V3Function resources.
 
@@ -689,7 +689,7 @@ class _V3FunctionState:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input['V3FunctionCodeArgs']]:
+    def code(self) -> pulumi.Input[Optional['V3FunctionCodeArgs']]:
         """
         Function code ZIP package. code and customContainerConfig. See `code` below.
 
@@ -698,499 +698,499 @@ class _V3FunctionState:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input['V3FunctionCodeArgs']]):
+    def code(self, value: pulumi.Input[Optional['V3FunctionCodeArgs']]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter(name="codeSize")
-    def code_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The code package size of the function returned by the system, in byte Example : 1024
         """
         return pulumi.get(self, "code_size")
 
     @code_size.setter
-    def code_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the function.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customContainerConfig")
-    def custom_container_config(self) -> Optional[pulumi.Input['V3FunctionCustomContainerConfigArgs']]:
+    def custom_container_config(self) -> pulumi.Input[Optional['V3FunctionCustomContainerConfigArgs']]:
         """
         The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
         """
         return pulumi.get(self, "custom_container_config")
 
     @custom_container_config.setter
-    def custom_container_config(self, value: Optional[pulumi.Input['V3FunctionCustomContainerConfigArgs']]):
+    def custom_container_config(self, value: pulumi.Input[Optional['V3FunctionCustomContainerConfigArgs']]):
         pulumi.set(self, "custom_container_config", value)
 
     @_builtins.property
     @pulumi.getter(name="customDns")
-    def custom_dns(self) -> Optional[pulumi.Input['V3FunctionCustomDnsArgs']]:
+    def custom_dns(self) -> pulumi.Input[Optional['V3FunctionCustomDnsArgs']]:
         """
         Function custom DNS configuration See `custom_dns` below.
         """
         return pulumi.get(self, "custom_dns")
 
     @custom_dns.setter
-    def custom_dns(self, value: Optional[pulumi.Input['V3FunctionCustomDnsArgs']]):
+    def custom_dns(self, value: pulumi.Input[Optional['V3FunctionCustomDnsArgs']]):
         pulumi.set(self, "custom_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="customRuntimeConfig")
-    def custom_runtime_config(self) -> Optional[pulumi.Input['V3FunctionCustomRuntimeConfigArgs']]:
+    def custom_runtime_config(self) -> pulumi.Input[Optional['V3FunctionCustomRuntimeConfigArgs']]:
         """
         Customize the runtime configuration. See `custom_runtime_config` below.
         """
         return pulumi.get(self, "custom_runtime_config")
 
     @custom_runtime_config.setter
-    def custom_runtime_config(self, value: Optional[pulumi.Input['V3FunctionCustomRuntimeConfigArgs']]):
+    def custom_runtime_config(self, value: pulumi.Input[Optional['V3FunctionCustomRuntimeConfigArgs']]):
         pulumi.set(self, "custom_runtime_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
         """
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
-    def disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def environment_variables(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The environment variable set for the function, you can get the value of the environment variable in the function.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def environment_variables(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="functionArn")
-    def function_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ARN of function
         """
         return pulumi.get(self, "function_arn")
 
     @function_arn.setter
-    def function_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="functionId")
-    def function_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "function_id")
 
     @function_id.setter
-    def function_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_id", value)
 
     @_builtins.property
     @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
         """
         return pulumi.get(self, "function_name")
 
     @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuConfig")
-    def gpu_config(self) -> Optional[pulumi.Input['V3FunctionGpuConfigArgs']]:
+    def gpu_config(self) -> pulumi.Input[Optional['V3FunctionGpuConfigArgs']]:
         """
         Function GPU configuration. See `gpu_config` below.
         """
         return pulumi.get(self, "gpu_config")
 
     @gpu_config.setter
-    def gpu_config(self, value: Optional[pulumi.Input['V3FunctionGpuConfigArgs']]):
+    def gpu_config(self, value: pulumi.Input[Optional['V3FunctionGpuConfigArgs']]):
         pulumi.set(self, "gpu_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def handler(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def handler(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function Handler: the call entry for the function compute system to run your function.
         """
         return pulumi.get(self, "handler")
 
     @handler.setter
-    def handler(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def handler(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "handler", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
         """
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
-    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceConcurrency")
-    def instance_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum instance concurrency.
         """
         return pulumi.get(self, "instance_concurrency")
 
     @instance_concurrency.setter
-    def instance_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_concurrency", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceIsolationMode")
-    def instance_isolation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_isolation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance isolation mode
         """
         return pulumi.get(self, "instance_isolation_mode")
 
     @instance_isolation_mode.setter
-    def instance_isolation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_isolation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_isolation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceLifecycleConfig")
-    def instance_lifecycle_config(self) -> Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigArgs']]:
+    def instance_lifecycle_config(self) -> pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigArgs']]:
         """
         Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
         """
         return pulumi.get(self, "instance_lifecycle_config")
 
     @instance_lifecycle_config.setter
-    def instance_lifecycle_config(self, value: Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigArgs']]):
+    def instance_lifecycle_config(self, value: pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigArgs']]):
         pulumi.set(self, "instance_lifecycle_config", value)
 
     @_builtins.property
     @pulumi.getter(name="internetAccess")
-    def internet_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def internet_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow function to access public network
         """
         return pulumi.get(self, "internet_access")
 
     @internet_access.setter
-    def internet_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def internet_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "internet_access", value)
 
     @_builtins.property
     @pulumi.getter(name="invocationRestriction")
-    def invocation_restriction(self) -> Optional[pulumi.Input['V3FunctionInvocationRestrictionArgs']]:
+    def invocation_restriction(self) -> pulumi.Input[Optional['V3FunctionInvocationRestrictionArgs']]:
         """
         Invocation Restriction Detail See `invocation_restriction` below.
         """
         return pulumi.get(self, "invocation_restriction")
 
     @invocation_restriction.setter
-    def invocation_restriction(self, value: Optional[pulumi.Input['V3FunctionInvocationRestrictionArgs']]):
+    def invocation_restriction(self, value: pulumi.Input[Optional['V3FunctionInvocationRestrictionArgs']]):
         pulumi.set(self, "invocation_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last time the function was Updated
         """
         return pulumi.get(self, "last_modified_time")
 
     @last_modified_time.setter
-    def last_modified_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdateStatus")
-    def last_update_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_update_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
         """
         return pulumi.get(self, "last_update_status")
 
     @last_update_status.setter
-    def last_update_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_update_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_update_status", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdateStatusReason")
-    def last_update_status_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_update_status_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason that caused the last function to update the Operation State to the current value
         """
         return pulumi.get(self, "last_update_status_reason")
 
     @last_update_status_reason.setter
-    def last_update_status_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_update_status_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_update_status_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdateStatusReasonCode")
-    def last_update_status_reason_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_update_status_reason_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status code of the reason that caused the last function update operation status to the current value
         """
         return pulumi.get(self, "last_update_status_reason_code")
 
     @last_update_status_reason_code.setter
-    def last_update_status_reason_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_update_status_reason_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_update_status_reason_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def layers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def layers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of layers.
         """
         return pulumi.get(self, "layers")
 
     @layers.setter
-    def layers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def layers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "layers", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['V3FunctionLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['V3FunctionLogConfigArgs']]:
         """
         The logs generated by the function are written to the configured Logstore. See `log_config` below.
         """
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['V3FunctionLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['V3FunctionLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter(name="memorySize")
-    def memory_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
         """
         return pulumi.get(self, "memory_size")
 
     @memory_size.setter
-    def memory_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_size", value)
 
     @_builtins.property
     @pulumi.getter(name="nasConfig")
-    def nas_config(self) -> Optional[pulumi.Input['V3FunctionNasConfigArgs']]:
+    def nas_config(self) -> pulumi.Input[Optional['V3FunctionNasConfigArgs']]:
         """
         NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
         """
         return pulumi.get(self, "nas_config")
 
     @nas_config.setter
-    def nas_config(self, value: Optional[pulumi.Input['V3FunctionNasConfigArgs']]):
+    def nas_config(self, value: pulumi.Input[Optional['V3FunctionNasConfigArgs']]):
         pulumi.set(self, "nas_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ossMountConfig")
-    def oss_mount_config(self) -> Optional[pulumi.Input['V3FunctionOssMountConfigArgs']]:
+    def oss_mount_config(self) -> pulumi.Input[Optional['V3FunctionOssMountConfigArgs']]:
         """
         OSS mount configuration See `oss_mount_config` below.
         """
         return pulumi.get(self, "oss_mount_config")
 
     @oss_mount_config.setter
-    def oss_mount_config(self, value: Optional[pulumi.Input['V3FunctionOssMountConfigArgs']]):
+    def oss_mount_config(self, value: pulumi.Input[Optional['V3FunctionOssMountConfigArgs']]):
         pulumi.set(self, "oss_mount_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Group ID
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter
-    def runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function runtime type
         """
         return pulumi.get(self, "runtime")
 
     @runtime.setter
-    def runtime(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
         """
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
-    def session_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinityConfig")
-    def session_affinity_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_affinity_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
         """
         return pulumi.get(self, "session_affinity_config")
 
     @session_affinity_config.setter
-    def session_affinity_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_affinity_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_affinity_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function Status
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateReason")
-    def state_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason why the function is in the current state
         """
         return pulumi.get(self, "state_reason")
 
     @state_reason.setter
-    def state_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="stateReasonCode")
-    def state_reason_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state_reason_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status code of the reason the function is in the current state.
         """
         return pulumi.get(self, "state_reason_code")
 
     @state_reason_code.setter
-    def state_reason_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state_reason_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state_reason_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum running time of the function, in seconds.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="tracingConfig")
-    def tracing_config(self) -> Optional[pulumi.Input['V3FunctionTracingConfigArgs']]:
+    def tracing_config(self) -> pulumi.Input[Optional['V3FunctionTracingConfigArgs']]:
         """
         Tracing configuration
         """
         return pulumi.get(self, "tracing_config")
 
     @tracing_config.setter
-    def tracing_config(self, value: Optional[pulumi.Input['V3FunctionTracingConfigArgs']]):
+    def tracing_config(self, value: pulumi.Input[Optional['V3FunctionTracingConfigArgs']]):
         pulumi.set(self, "tracing_config", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcConfig")
-    def vpc_config(self) -> Optional[pulumi.Input['V3FunctionVpcConfigArgs']]:
+    def vpc_config(self) -> pulumi.Input[Optional['V3FunctionVpcConfigArgs']]:
         """
         VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
         """
         return pulumi.get(self, "vpc_config")
 
     @vpc_config.setter
-    def vpc_config(self, value: Optional[pulumi.Input['V3FunctionVpcConfigArgs']]):
+    def vpc_config(self, value: pulumi.Input[Optional['V3FunctionVpcConfigArgs']]):
         pulumi.set(self, "vpc_config", value)
 
 
@@ -1200,36 +1200,36 @@ class V3Function(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code: Optional[pulumi.Input[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 custom_container_config: Optional[pulumi.Input[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']]] = None,
-                 custom_dns: Optional[pulumi.Input[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict']]] = None,
-                 custom_runtime_config: Optional[pulumi.Input[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_config: Optional[pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
-                 handler: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_lifecycle_config: Optional[pulumi.Input[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']]] = None,
-                 internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 invocation_restriction: Optional[pulumi.Input[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict']]] = None,
-                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_config: Optional[pulumi.Input[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict']]] = None,
-                 memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 nas_config: Optional[pulumi.Input[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']]] = None,
-                 oss_mount_config: Optional[pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_config: Optional[pulumi.Input[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']]] = None,
+                 code: pulumi.Input[Optional[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 custom_container_config: pulumi.Input[Optional[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']]] = None,
+                 custom_dns: pulumi.Input[Optional[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict']]] = None,
+                 custom_runtime_config: pulumi.Input[Optional[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_config: pulumi.Input[Optional[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
+                 handler: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_lifecycle_config: pulumi.Input[Optional[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']]] = None,
+                 internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 invocation_restriction: pulumi.Input[Optional[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict']]] = None,
+                 layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_config: pulumi.Input[Optional[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict']]] = None,
+                 memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 nas_config: pulumi.Input[Optional[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']]] = None,
+                 oss_mount_config: pulumi.Input[Optional[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_config: pulumi.Input[Optional[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Function Compute Service V3 (FCV3) Function resource.
@@ -1477,36 +1477,36 @@ class V3Function(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code: Optional[pulumi.Input[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 custom_container_config: Optional[pulumi.Input[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']]] = None,
-                 custom_dns: Optional[pulumi.Input[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict']]] = None,
-                 custom_runtime_config: Optional[pulumi.Input[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_config: Optional[pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
-                 handler: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_lifecycle_config: Optional[pulumi.Input[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']]] = None,
-                 internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 invocation_restriction: Optional[pulumi.Input[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict']]] = None,
-                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_config: Optional[pulumi.Input[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict']]] = None,
-                 memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 nas_config: Optional[pulumi.Input[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']]] = None,
-                 oss_mount_config: Optional[pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_config: Optional[pulumi.Input[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']]] = None,
+                 code: pulumi.Input[Optional[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 custom_container_config: pulumi.Input[Optional[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']]] = None,
+                 custom_dns: pulumi.Input[Optional[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict']]] = None,
+                 custom_runtime_config: pulumi.Input[Optional[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_config: pulumi.Input[Optional[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
+                 handler: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_lifecycle_config: pulumi.Input[Optional[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']]] = None,
+                 internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 invocation_restriction: pulumi.Input[Optional[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict']]] = None,
+                 layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_config: pulumi.Input[Optional[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict']]] = None,
+                 memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 nas_config: pulumi.Input[Optional[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']]] = None,
+                 oss_mount_config: pulumi.Input[Optional[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_config: pulumi.Input[Optional[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1572,48 +1572,48 @@ class V3Function(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            code: Optional[pulumi.Input[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']]] = None,
-            code_size: Optional[pulumi.Input[_builtins.int]] = None,
-            cpu: Optional[pulumi.Input[_builtins.float]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_container_config: Optional[pulumi.Input[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']]] = None,
-            custom_dns: Optional[pulumi.Input[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict']]] = None,
-            custom_runtime_config: Optional[pulumi.Input[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            function_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            function_id: Optional[pulumi.Input[_builtins.str]] = None,
-            function_name: Optional[pulumi.Input[_builtins.str]] = None,
-            gpu_config: Optional[pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
-            handler: Optional[pulumi.Input[_builtins.str]] = None,
-            idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_lifecycle_config: Optional[pulumi.Input[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']]] = None,
-            internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            invocation_restriction: Optional[pulumi.Input[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict']]] = None,
-            last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-            last_update_status: Optional[pulumi.Input[_builtins.str]] = None,
-            last_update_status_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            last_update_status_reason_code: Optional[pulumi.Input[_builtins.str]] = None,
-            layers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            log_config: Optional[pulumi.Input[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict']]] = None,
-            memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-            nas_config: Optional[pulumi.Input[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']]] = None,
-            oss_mount_config: Optional[pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            runtime: Optional[pulumi.Input[_builtins.str]] = None,
-            session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-            session_affinity_config: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            state_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            state_reason_code: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            tracing_config: Optional[pulumi.Input[Union['V3FunctionTracingConfigArgs', 'V3FunctionTracingConfigArgsDict']]] = None,
-            vpc_config: Optional[pulumi.Input[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']]] = None) -> 'V3Function':
+            code: pulumi.Input[Optional[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']]] = None,
+            code_size: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu: pulumi.Input[Optional[_builtins.float]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_container_config: pulumi.Input[Optional[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']]] = None,
+            custom_dns: pulumi.Input[Optional[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict']]] = None,
+            custom_runtime_config: pulumi.Input[Optional[Union['V3FunctionCustomRuntimeConfigArgs', 'V3FunctionCustomRuntimeConfigArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            function_id: pulumi.Input[Optional[_builtins.str]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_config: pulumi.Input[Optional[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
+            handler: pulumi.Input[Optional[_builtins.str]] = None,
+            idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_lifecycle_config: pulumi.Input[Optional[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']]] = None,
+            internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            invocation_restriction: pulumi.Input[Optional[Union['V3FunctionInvocationRestrictionArgs', 'V3FunctionInvocationRestrictionArgsDict']]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            last_update_status: pulumi.Input[Optional[_builtins.str]] = None,
+            last_update_status_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            last_update_status_reason_code: pulumi.Input[Optional[_builtins.str]] = None,
+            layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            log_config: pulumi.Input[Optional[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict']]] = None,
+            memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+            nas_config: pulumi.Input[Optional[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']]] = None,
+            oss_mount_config: pulumi.Input[Optional[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime: pulumi.Input[Optional[_builtins.str]] = None,
+            session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+            session_affinity_config: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            state_reason_code: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            tracing_config: pulumi.Input[Optional[Union['V3FunctionTracingConfigArgs', 'V3FunctionTracingConfigArgsDict']]] = None,
+            vpc_config: pulumi.Input[Optional[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']]] = None) -> 'V3Function':
         """
         Get an existing V3Function resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

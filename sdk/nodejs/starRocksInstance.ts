@@ -337,109 +337,109 @@ export interface StarRocksInstanceState {
     /**
      * Password of admin user.
      */
-    adminPassword?: pulumi.Input<string>;
+    adminPassword?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable automatic renewal. This is only meaningful when payType is set to PrePaid. Disabled by default.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * BackendNodeGroups See `backendNodeGroups` below.
      */
-    backendNodeGroups?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceBackendNodeGroup>[]>;
+    backendNodeGroups?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceBackendNodeGroup>[] | undefined>;
     /**
      * ZoneId of instance.
      */
-    clusterZoneId?: pulumi.Input<string>;
+    clusterZoneId?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the instance.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Duration of purchase. It is only meaningful when payType is set to PrePaid.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Whether encrypted
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
     /**
      * FrontendNodeGroups See `frontendNodeGroups` below.
      */
-    frontendNodeGroups?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceFrontendNodeGroup>[]>;
+    frontendNodeGroups?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceFrontendNodeGroup>[] | undefined>;
     /**
      * The name of the instance.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * KmsKeyId
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * ObserverNodeGroups See `observerNodeGroups` below.
      */
-    observerNodeGroups?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceObserverNodeGroup>[]>;
+    observerNodeGroups?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceObserverNodeGroup>[] | undefined>;
     /**
      * Role name used for password-free access to OSS.
      */
-    ossAccessingRoleName?: pulumi.Input<string>;
+    ossAccessingRoleName?: pulumi.Input<string | undefined>;
     /**
      * The package type of the instance:
      * - trial
      * - official
      */
-    packageType?: pulumi.Input<string>;
+    packageType?: pulumi.Input<string | undefined>;
     /**
      * The pay type of the instance:
      * - prePaid
      * - postPaid
      */
-    payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string | undefined>;
     /**
      * The duration unit for purchasing:
      * - Month
      * - Year
      * This is only meaningful when PayType is set to PrePaid.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * Promotion
      */
-    promotionOptionNo?: pulumi.Input<string>;
+    promotionOptionNo?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the instance.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * ResourceGroupId
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The run mode of the instance:
      * - sharedNothing
      * - sharedData
      * - lakehouse
      */
-    runMode?: pulumi.Input<string>;
+    runMode?: pulumi.Input<string | undefined>;
     /**
      * The status of the instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Tag list of the instance.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The version of the instance.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The VPC ID of the instance.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The VSwitches info of the instance. See `vswitches` below.
      */
-    vswitches?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceVswitch>[]>;
+    vswitches?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceVswitch>[] | undefined>;
 }
 
 /**
@@ -453,11 +453,11 @@ export interface StarRocksInstanceArgs {
     /**
      * Whether to enable automatic renewal. This is only meaningful when payType is set to PrePaid. Disabled by default.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * BackendNodeGroups See `backendNodeGroups` below.
      */
-    backendNodeGroups?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceBackendNodeGroup>[]>;
+    backendNodeGroups?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceBackendNodeGroup>[] | undefined>;
     /**
      * ZoneId of instance.
      */
@@ -465,15 +465,15 @@ export interface StarRocksInstanceArgs {
     /**
      * Duration of purchase. It is only meaningful when payType is set to PrePaid.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Whether encrypted
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
     /**
      * FrontendNodeGroups See `frontendNodeGroups` below.
      */
-    frontendNodeGroups?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceFrontendNodeGroup>[]>;
+    frontendNodeGroups?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceFrontendNodeGroup>[] | undefined>;
     /**
      * The name of the instance.
      */
@@ -481,15 +481,15 @@ export interface StarRocksInstanceArgs {
     /**
      * KmsKeyId
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * ObserverNodeGroups See `observerNodeGroups` below.
      */
-    observerNodeGroups?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceObserverNodeGroup>[]>;
+    observerNodeGroups?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceObserverNodeGroup>[] | undefined>;
     /**
      * Role name used for password-free access to OSS.
      */
-    ossAccessingRoleName?: pulumi.Input<string>;
+    ossAccessingRoleName?: pulumi.Input<string | undefined>;
     /**
      * The package type of the instance:
      * - trial
@@ -508,15 +508,15 @@ export interface StarRocksInstanceArgs {
      * - Year
      * This is only meaningful when PayType is set to PrePaid.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * Promotion
      */
-    promotionOptionNo?: pulumi.Input<string>;
+    promotionOptionNo?: pulumi.Input<string | undefined>;
     /**
      * ResourceGroupId
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The run mode of the instance:
      * - sharedNothing
@@ -527,7 +527,7 @@ export interface StarRocksInstanceArgs {
     /**
      * Tag list of the instance.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The version of the instance.
      */
@@ -539,5 +539,5 @@ export interface StarRocksInstanceArgs {
     /**
      * The VSwitches info of the instance. See `vswitches` below.
      */
-    vswitches?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceVswitch>[]>;
+    vswitches?: pulumi.Input<pulumi.Input<inputs.StarRocksInstanceVswitch>[] | undefined>;
 }

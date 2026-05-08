@@ -28,29 +28,31 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := cloudconnect.GetNetworks(ctx, &cloudconnect.GetNetworksArgs{
-// Ids: interface{}{
-// defaultAlicloudCloudConnectNetworks.Id,
-// },
-// NameRegex: pulumi.StringRef("^tf-testAcc.*"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// _, err = cloudconnect.NewNetwork(ctx, "default", &cloudconnect.NetworkArgs{
-// Name: pulumi.String("tf-testAccCloudConnectNetworkName"),
-// Description: pulumi.String("tf-testAccCloudConnectNetworkDescription"),
-// CidrBlock: pulumi.String("192.168.0.0/24"),
-// IsDefault: pulumi.Bool(true),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudconnect.GetNetworks(ctx, &cloudconnect.GetNetworksArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudCloudConnectNetworks.Id,
+//				},
+//				NameRegex: pulumi.StringRef("^tf-testAcc.*"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudconnect.NewNetwork(ctx, "default", &cloudconnect.NetworkArgs{
+//				Name:        pulumi.String("tf-testAccCloudConnectNetworkName"),
+//				Description: pulumi.String("tf-testAccCloudConnectNetworkDescription"),
+//				CidrBlock:   pulumi.String("192.168.0.0/24"),
+//				IsDefault:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetNetworks(ctx *pulumi.Context, args *GetNetworksArgs, opts ...pulumi.InvokeOption) (*GetNetworksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

@@ -98,9 +98,9 @@ export interface GetQueuesOutputArgs {
     /**
      * A string to filter resulting queues by their name prefixs.
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

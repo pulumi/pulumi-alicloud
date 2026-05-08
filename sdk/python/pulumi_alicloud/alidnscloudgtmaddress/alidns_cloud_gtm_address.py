@@ -26,10 +26,10 @@ class AlidnsCloudGtmAddressArgs:
                  enable_status: pulumi.Input[_builtins.str],
                  health_judgement: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 health_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['AlidnsCloudGtmAddressHealthTaskArgs']]]] = None,
-                 manual_available_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None):
+                 health_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['AlidnsCloudGtmAddressHealthTaskArgs']]]] = None,
+                 manual_available_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AlidnsCloudGtmAddress resource.
 
@@ -119,66 +119,66 @@ class AlidnsCloudGtmAddressArgs:
 
     @_builtins.property
     @pulumi.getter(name="healthTasks")
-    def health_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlidnsCloudGtmAddressHealthTaskArgs']]]]:
+    def health_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlidnsCloudGtmAddressHealthTaskArgs']]]]:
         """
         The health-check tasks attached to this address. Each task references a Cloud GTM monitor template. See `health_tasks` below.
         """
         return pulumi.get(self, "health_tasks")
 
     @health_tasks.setter
-    def health_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlidnsCloudGtmAddressHealthTaskArgs']]]]):
+    def health_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlidnsCloudGtmAddressHealthTaskArgs']]]]):
         pulumi.set(self, "health_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="manualAvailableStatus")
-    def manual_available_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def manual_available_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The manually-set availability status. Only meaningful when `available_mode` is `manual`. Valid values: `available`, `unavailable`.
         """
         return pulumi.get(self, "manual_available_status")
 
     @manual_available_status.setter
-    def manual_available_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def manual_available_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "manual_available_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the address. Used to identify the address in the Cloud GTM console.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remark of the address. Passing an empty value clears the existing remark.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
 
 @pulumi.input_type
 class _AlidnsCloudGtmAddressState:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 available_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_judgement: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['AlidnsCloudGtmAddressHealthTaskArgs']]]] = None,
-                 manual_available_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 available_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_judgement: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_tasks: pulumi.Input[Optional[Sequence[pulumi.Input['AlidnsCloudGtmAddressHealthTaskArgs']]]] = None,
+                 manual_available_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AlidnsCloudGtmAddress resources.
 
@@ -216,122 +216,122 @@ class _AlidnsCloudGtmAddressState:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address value. Must match `type`: an IPv4 address, an IPv6 address, or a domain name.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter(name="availableMode")
-    def available_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def available_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How the availability of the address is determined. Valid values:
         """
         return pulumi.get(self, "available_mode")
 
     @available_mode.setter
-    def available_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def available_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "available_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the address.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStatus")
-    def enable_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the address participates in DNS resolution. Valid values:
         """
         return pulumi.get(self, "enable_status")
 
     @enable_status.setter
-    def enable_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_status", value)
 
     @_builtins.property
     @pulumi.getter(name="healthJudgement")
-    def health_judgement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_judgement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule used to judge overall health when the address has multiple health-check tasks. Valid values:
         """
         return pulumi.get(self, "health_judgement")
 
     @health_judgement.setter
-    def health_judgement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_judgement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_judgement", value)
 
     @_builtins.property
     @pulumi.getter(name="healthTasks")
-    def health_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlidnsCloudGtmAddressHealthTaskArgs']]]]:
+    def health_tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlidnsCloudGtmAddressHealthTaskArgs']]]]:
         """
         The health-check tasks attached to this address. Each task references a Cloud GTM monitor template. See `health_tasks` below.
         """
         return pulumi.get(self, "health_tasks")
 
     @health_tasks.setter
-    def health_tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlidnsCloudGtmAddressHealthTaskArgs']]]]):
+    def health_tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlidnsCloudGtmAddressHealthTaskArgs']]]]):
         pulumi.set(self, "health_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="manualAvailableStatus")
-    def manual_available_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def manual_available_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The manually-set availability status. Only meaningful when `available_mode` is `manual`. Valid values: `available`, `unavailable`.
         """
         return pulumi.get(self, "manual_available_status")
 
     @manual_available_status.setter
-    def manual_available_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def manual_available_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "manual_available_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the address. Used to identify the address in the Cloud GTM console.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remark of the address. Passing an empty value clears the existing remark.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address type. Valid values: `IPv4`, `IPv6`, `domain`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -341,15 +341,15 @@ class AlidnsCloudGtmAddress(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 available_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_judgement: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict']]]]] = None,
-                 manual_available_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 available_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_judgement: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict']]]]] = None,
+                 manual_available_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Alidns Cloud Gtm Address resource.
@@ -628,15 +628,15 @@ class AlidnsCloudGtmAddress(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 available_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_judgement: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict']]]]] = None,
-                 manual_available_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 available_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_judgement: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict']]]]] = None,
+                 manual_available_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -676,16 +676,16 @@ class AlidnsCloudGtmAddress(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            available_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_status: Optional[pulumi.Input[_builtins.str]] = None,
-            health_judgement: Optional[pulumi.Input[_builtins.str]] = None,
-            health_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict']]]]] = None,
-            manual_available_status: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'AlidnsCloudGtmAddress':
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            available_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+            health_judgement: pulumi.Input[Optional[_builtins.str]] = None,
+            health_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlidnsCloudGtmAddressHealthTaskArgs', 'AlidnsCloudGtmAddressHealthTaskArgsDict']]]]] = None,
+            manual_available_status: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AlidnsCloudGtmAddress':
         """
         Get an existing AlidnsCloudGtmAddress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

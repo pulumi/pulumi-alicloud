@@ -25,8 +25,8 @@ class ExchangeArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  internal: pulumi.Input[_builtins.bool],
                  virtual_host_name: pulumi.Input[_builtins.str],
-                 alternate_exchange: Optional[pulumi.Input[_builtins.str]] = None,
-                 x_delayed_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 alternate_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+                 x_delayed_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Exchange resource.
 
@@ -142,41 +142,41 @@ class ExchangeArgs:
 
     @_builtins.property
     @pulumi.getter(name="alternateExchange")
-    def alternate_exchange(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alternate_exchange(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
         """
         return pulumi.get(self, "alternate_exchange")
 
     @alternate_exchange.setter
-    def alternate_exchange(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alternate_exchange(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alternate_exchange", value)
 
     @_builtins.property
     @pulumi.getter(name="xDelayedType")
-    def x_delayed_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def x_delayed_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
         """
         return pulumi.get(self, "x_delayed_type")
 
     @x_delayed_type.setter
-    def x_delayed_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def x_delayed_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "x_delayed_type", value)
 
 
 @pulumi.input_type
 class _ExchangeState:
     def __init__(__self__, *,
-                 alternate_exchange: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_delete_state: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 exchange_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 exchange_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 x_delayed_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 alternate_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_delete_state: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 exchange_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 exchange_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 x_delayed_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Exchange resources.
 
@@ -220,43 +220,43 @@ class _ExchangeState:
 
     @_builtins.property
     @pulumi.getter(name="alternateExchange")
-    def alternate_exchange(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alternate_exchange(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
         """
         return pulumi.get(self, "alternate_exchange")
 
     @alternate_exchange.setter
-    def alternate_exchange(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alternate_exchange(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alternate_exchange", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDeleteState")
-    def auto_delete_state(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_delete_state(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically delete the exchange. Valid values:
         """
         return pulumi.get(self, "auto_delete_state")
 
     @auto_delete_state.setter
-    def auto_delete_state(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_delete_state(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_delete_state", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         CreateTime
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="exchangeName")
-    def exchange_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exchange_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the exchange that you want to create. The exchange name must meet the following conventions:
 
@@ -266,12 +266,12 @@ class _ExchangeState:
         return pulumi.get(self, "exchange_name")
 
     @exchange_name.setter
-    def exchange_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exchange_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exchange_name", value)
 
     @_builtins.property
     @pulumi.getter(name="exchangeType")
-    def exchange_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exchange_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Exchange type. Value:
         - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
@@ -284,55 +284,55 @@ class _ExchangeState:
         return pulumi.get(self, "exchange_type")
 
     @exchange_type.setter
-    def exchange_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exchange_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exchange_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def internal(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def internal(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the exchange is an internal exchange. Valid values:
         """
         return pulumi.get(self, "internal")
 
     @internal.setter
-    def internal(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def internal(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "internal", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualHostName")
-    def virtual_host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the vhost to which the exchange that you want to create belongs.
         """
         return pulumi.get(self, "virtual_host_name")
 
     @virtual_host_name.setter
-    def virtual_host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="xDelayedType")
-    def x_delayed_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def x_delayed_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
         """
         return pulumi.get(self, "x_delayed_type")
 
     @x_delayed_type.setter
-    def x_delayed_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def x_delayed_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "x_delayed_type", value)
 
 
@@ -342,14 +342,14 @@ class Exchange(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alternate_exchange: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_delete_state: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exchange_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 exchange_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 x_delayed_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 alternate_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_delete_state: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exchange_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 exchange_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 x_delayed_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RabbitMQ (AMQP) Exchange resource.
@@ -514,14 +514,14 @@ class Exchange(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alternate_exchange: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_delete_state: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exchange_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 exchange_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 x_delayed_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 alternate_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_delete_state: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exchange_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 exchange_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 x_delayed_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -562,15 +562,15 @@ class Exchange(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alternate_exchange: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_delete_state: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            exchange_name: Optional[pulumi.Input[_builtins.str]] = None,
-            exchange_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            internal: Optional[pulumi.Input[_builtins.bool]] = None,
-            virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-            x_delayed_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Exchange':
+            alternate_exchange: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_delete_state: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            exchange_name: pulumi.Input[Optional[_builtins.str]] = None,
+            exchange_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            internal: pulumi.Input[Optional[_builtins.bool]] = None,
+            virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            x_delayed_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Exchange':
         """
         Get an existing Exchange resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

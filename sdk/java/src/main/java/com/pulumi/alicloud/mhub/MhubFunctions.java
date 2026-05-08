@@ -38,8 +38,8 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.AppArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
      * import com.pulumi.alicloud.mhub.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -98,8 +98,8 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.AppArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
      * import com.pulumi.alicloud.mhub.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -158,8 +158,8 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.AppArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
      * import com.pulumi.alicloud.mhub.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -218,8 +218,8 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.AppArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
      * import com.pulumi.alicloud.mhub.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -278,8 +278,8 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.AppArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
      * import com.pulumi.alicloud.mhub.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -338,8 +338,8 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.ProductArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
      * import com.pulumi.alicloud.mhub.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -395,8 +395,8 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.ProductArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
      * import com.pulumi.alicloud.mhub.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -452,8 +452,8 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.ProductArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
      * import com.pulumi.alicloud.mhub.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -509,8 +509,8 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.ProductArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
      * import com.pulumi.alicloud.mhub.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -566,8 +566,8 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.ProductArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
      * import com.pulumi.alicloud.mhub.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -623,8 +623,8 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.ProductArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
      * import com.pulumi.alicloud.mhub.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -680,8 +680,8 @@ public final class MhubFunctions {
      * import com.pulumi.alicloud.mhub.ProductArgs;
      * import com.pulumi.alicloud.mhub.MhubFunctions;
      * import com.pulumi.alicloud.mhub.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

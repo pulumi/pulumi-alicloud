@@ -210,51 +210,51 @@ export interface AutoGroupingRuleState {
     /**
      * The IDs of regions to be excluded. Separate multiple IDs with commas (,).
      */
-    excludeRegionIdsScope?: pulumi.Input<string>;
+    excludeRegionIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The IDs of resource groups to be excluded. Separate multiple IDs with commas (,).
      */
-    excludeResourceGroupIdsScope?: pulumi.Input<string>;
+    excludeResourceGroupIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The IDs of resources to be excluded. Separate multiple IDs with commas (,).
      */
-    excludeResourceIdsScope?: pulumi.Input<string>;
+    excludeResourceIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The resource types to be excluded. Separate multiple resource types with commas (,).
      */
-    excludeResourceTypesScope?: pulumi.Input<string>;
+    excludeResourceTypesScope?: pulumi.Input<string | undefined>;
     /**
      * The IDs of regions. Separate multiple IDs with commas (,).
      */
-    regionIdsScope?: pulumi.Input<string>;
+    regionIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The IDs of resource groups. Separate multiple IDs with commas (,).
      */
-    resourceGroupIdsScope?: pulumi.Input<string>;
+    resourceGroupIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The IDs of resources. Separate multiple IDs with commas (,).
      */
-    resourceIdsScope?: pulumi.Input<string>;
+    resourceIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The resource types. Separate multiple resource types with commas (,).
      */
-    resourceTypesScope?: pulumi.Input<string>;
+    resourceTypesScope?: pulumi.Input<string | undefined>;
     /**
      * The content records of the rule. See `ruleContents` below.
      */
-    ruleContents?: pulumi.Input<pulumi.Input<inputs.resourcemanager.AutoGroupingRuleRuleContent>[]>;
+    ruleContents?: pulumi.Input<pulumi.Input<inputs.resourcemanager.AutoGroupingRuleRuleContent>[] | undefined>;
     /**
      * The description of the rule.
      */
-    ruleDesc?: pulumi.Input<string>;
+    ruleDesc?: pulumi.Input<string | undefined>;
     /**
      * The name of the rule.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The type of the rule. Valid values:
      */
-    ruleType?: pulumi.Input<string>;
+    ruleType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -264,35 +264,35 @@ export interface AutoGroupingRuleArgs {
     /**
      * The IDs of regions to be excluded. Separate multiple IDs with commas (,).
      */
-    excludeRegionIdsScope?: pulumi.Input<string>;
+    excludeRegionIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The IDs of resource groups to be excluded. Separate multiple IDs with commas (,).
      */
-    excludeResourceGroupIdsScope?: pulumi.Input<string>;
+    excludeResourceGroupIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The IDs of resources to be excluded. Separate multiple IDs with commas (,).
      */
-    excludeResourceIdsScope?: pulumi.Input<string>;
+    excludeResourceIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The resource types to be excluded. Separate multiple resource types with commas (,).
      */
-    excludeResourceTypesScope?: pulumi.Input<string>;
+    excludeResourceTypesScope?: pulumi.Input<string | undefined>;
     /**
      * The IDs of regions. Separate multiple IDs with commas (,).
      */
-    regionIdsScope?: pulumi.Input<string>;
+    regionIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The IDs of resource groups. Separate multiple IDs with commas (,).
      */
-    resourceGroupIdsScope?: pulumi.Input<string>;
+    resourceGroupIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The IDs of resources. Separate multiple IDs with commas (,).
      */
-    resourceIdsScope?: pulumi.Input<string>;
+    resourceIdsScope?: pulumi.Input<string | undefined>;
     /**
      * The resource types. Separate multiple resource types with commas (,).
      */
-    resourceTypesScope?: pulumi.Input<string>;
+    resourceTypesScope?: pulumi.Input<string | undefined>;
     /**
      * The content records of the rule. See `ruleContents` below.
      */
@@ -300,7 +300,7 @@ export interface AutoGroupingRuleArgs {
     /**
      * The description of the rule.
      */
-    ruleDesc?: pulumi.Input<string>;
+    ruleDesc?: pulumi.Input<string | undefined>;
     /**
      * The name of the rule.
      */

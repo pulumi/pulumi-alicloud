@@ -26,8 +26,8 @@ class DiAlarmRuleArgs:
                  metric_type: pulumi.Input[_builtins.str],
                  notification_settings: pulumi.Input['DiAlarmRuleNotificationSettingsArgs'],
                  trigger_conditions: pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleTriggerConditionArgs']]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DiAlarmRule resource.
 
@@ -115,34 +115,34 @@ class DiAlarmRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type
 class _DiAlarmRuleState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 di_alarm_rule_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 di_alarm_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 di_job_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_settings: Optional[pulumi.Input['DiAlarmRuleNotificationSettingsArgs']] = None,
-                 trigger_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleTriggerConditionArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 di_alarm_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 di_alarm_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 di_job_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_settings: pulumi.Input[Optional['DiAlarmRuleNotificationSettingsArgs']] = None,
+                 trigger_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleTriggerConditionArgs']]]] = None):
         """
         Input properties used for looking up and filtering DiAlarmRule resources.
 
@@ -175,61 +175,61 @@ class _DiAlarmRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diAlarmRuleId")
-    def di_alarm_rule_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def di_alarm_rule_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Resource attribute field representing resource level ID
         """
         return pulumi.get(self, "di_alarm_rule_id")
 
     @di_alarm_rule_id.setter
-    def di_alarm_rule_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def di_alarm_rule_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "di_alarm_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="diAlarmRuleName")
-    def di_alarm_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def di_alarm_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Integration alarm rule name
         """
         return pulumi.get(self, "di_alarm_rule_name")
 
     @di_alarm_rule_name.setter
-    def di_alarm_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def di_alarm_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "di_alarm_rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="diJobId")
-    def di_job_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def di_job_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Task ID: the ID of the task associated with the alert rule.
         """
         return pulumi.get(self, "di_job_id")
 
     @di_job_id.setter
-    def di_job_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def di_job_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "di_job_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="metricType")
-    def metric_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alarm indicator type. Optional enumerated values:
         - Heartbeat (task status alarm)
@@ -239,31 +239,31 @@ class _DiAlarmRuleState:
         return pulumi.get(self, "metric_type")
 
     @metric_type.setter
-    def metric_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_type", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationSettings")
-    def notification_settings(self) -> Optional[pulumi.Input['DiAlarmRuleNotificationSettingsArgs']]:
+    def notification_settings(self) -> pulumi.Input[Optional['DiAlarmRuleNotificationSettingsArgs']]:
         """
         Alarm notification settings See `notification_settings` below.
         """
         return pulumi.get(self, "notification_settings")
 
     @notification_settings.setter
-    def notification_settings(self, value: Optional[pulumi.Input['DiAlarmRuleNotificationSettingsArgs']]):
+    def notification_settings(self, value: pulumi.Input[Optional['DiAlarmRuleNotificationSettingsArgs']]):
         pulumi.set(self, "notification_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerConditions")
-    def trigger_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleTriggerConditionArgs']]]]:
+    def trigger_conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleTriggerConditionArgs']]]]:
         """
         Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
         """
         return pulumi.get(self, "trigger_conditions")
 
     @trigger_conditions.setter
-    def trigger_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleTriggerConditionArgs']]]]):
+    def trigger_conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleTriggerConditionArgs']]]]):
         pulumi.set(self, "trigger_conditions", value)
 
 
@@ -273,13 +273,13 @@ class DiAlarmRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 di_alarm_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 di_job_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_settings: Optional[pulumi.Input[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict']]] = None,
-                 trigger_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 di_alarm_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 di_job_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_settings: pulumi.Input[Optional[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict']]] = None,
+                 trigger_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Data Works Di Alarm Rule resource.
@@ -309,21 +309,21 @@ class DiAlarmRule(pulumi.CustomResource):
             pai_task_enabled=True)
         default_uw8inp = alicloud.dataworks.DiJob("defaultUW8inp",
             description="xxxx",
-            project_id=defaulte_nv8bu.id,
+            project_id=defaulte_nv8bu.id.apply(lambda x: int(x)),
             job_name="xxx",
             migration_type="api_xxx",
             source_data_source_type="xxx",
             resource_settings={
                 "offline_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "xx",
                 },
                 "realtime_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "xx",
                 },
                 "schedule_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "xx",
                 },
             },
@@ -456,21 +456,21 @@ class DiAlarmRule(pulumi.CustomResource):
             pai_task_enabled=True)
         default_uw8inp = alicloud.dataworks.DiJob("defaultUW8inp",
             description="xxxx",
-            project_id=defaulte_nv8bu.id,
+            project_id=defaulte_nv8bu.id.apply(lambda x: int(x)),
             job_name="xxx",
             migration_type="api_xxx",
             source_data_source_type="xxx",
             resource_settings={
                 "offline_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "xx",
                 },
                 "realtime_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "xx",
                 },
                 "schedule_resource_settings": {
-                    "requested_cu": 2,
+                    "requested_cu": float(2),
                     "resource_group_identifier": "xx",
                 },
             },
@@ -573,13 +573,13 @@ class DiAlarmRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 di_alarm_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 di_job_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_settings: Optional[pulumi.Input[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict']]] = None,
-                 trigger_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 di_alarm_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 di_job_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_settings: pulumi.Input[Optional[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict']]] = None,
+                 trigger_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -617,14 +617,14 @@ class DiAlarmRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            di_alarm_rule_id: Optional[pulumi.Input[_builtins.int]] = None,
-            di_alarm_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            di_job_id: Optional[pulumi.Input[_builtins.int]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_settings: Optional[pulumi.Input[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict']]] = None,
-            trigger_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict']]]]] = None) -> 'DiAlarmRule':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            di_alarm_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            di_alarm_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            di_job_id: pulumi.Input[Optional[_builtins.int]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_settings: pulumi.Input[Optional[Union['DiAlarmRuleNotificationSettingsArgs', 'DiAlarmRuleNotificationSettingsArgsDict']]] = None,
+            trigger_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiAlarmRuleTriggerConditionArgs', 'DiAlarmRuleTriggerConditionArgsDict']]]]] = None) -> 'DiAlarmRule':
         """
         Get an existing DiAlarmRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

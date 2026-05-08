@@ -110,11 +110,11 @@ export interface DefaultPatchBaselineState {
     /**
      * The ID of the patch baseline.
      */
-    patchBaselineId?: pulumi.Input<string>;
+    patchBaselineId?: pulumi.Input<string | undefined>;
     /**
      * The name of the patch baseline.
      */
-    patchBaselineName?: pulumi.Input<string>;
+    patchBaselineName?: pulumi.Input<string | undefined>;
 }
 
 /**

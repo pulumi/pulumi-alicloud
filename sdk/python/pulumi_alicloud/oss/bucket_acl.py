@@ -58,8 +58,8 @@ class BucketAclArgs:
 @pulumi.input_type
 class _BucketAclState:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketAcl resources.
 
@@ -73,26 +73,26 @@ class _BucketAclState:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket to which the current ACL configuration belongs.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
 
@@ -102,8 +102,8 @@ class BucketAcl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a OSS Bucket Acl resource. The Access Control List (ACL) of a specific bucket.
@@ -223,8 +223,8 @@ class BucketAcl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -250,8 +250,8 @@ class BucketAcl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None) -> 'BucketAcl':
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None) -> 'BucketAcl':
         """
         Get an existing BucketAcl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

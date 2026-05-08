@@ -45,16 +45,16 @@ namespace Pulumi.AliCloud.Vpc
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var exampleUuid = new Random.Index.Uuid("example");
+    ///     var exampleUuid = new Random.Uuid("example");
     /// 
     ///     var exampleProject = new AliCloud.Log.Project("example", new()
     ///     {
-    ///         ProjectName = Std.Index.Replace.Invoke(new()
+    ///         ProjectName = Std.Replace.Invoke(new()
     ///         {
     ///             Text = exampleUuid.Result,
     ///             Search = "-",
     ///             Replace = "",
-    ///         }).Apply(invoke =&gt; Std.Index.Substr.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
     ///         {
     ///             Input = $"tf-example-{invoke.Result}",
     ///             Offset = 0,

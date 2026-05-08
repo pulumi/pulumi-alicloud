@@ -28,7 +28,7 @@ class UserProvisioningArgs:
                  principal_type: pulumi.Input[_builtins.str],
                  target_id: pulumi.Input[_builtins.str],
                  target_type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserProvisioning resource.
 
@@ -137,32 +137,32 @@ class UserProvisioningArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of User Synchronization
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _UserProvisioningState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 duplication_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_provisioning_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_provisioning_statistics: Optional[pulumi.Input[Sequence[pulumi.Input['UserProvisioningUserProvisioningStatisticArgs']]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 duplication_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_provisioning_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_provisioning_statistics: pulumi.Input[Optional[Sequence[pulumi.Input['UserProvisioningUserProvisioningStatisticArgs']]]] = None):
         """
         Input properties used for looking up and filtering UserProvisioning resources.
 
@@ -206,146 +206,146 @@ class _UserProvisioningState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the synchronization
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionStrategy")
-    def deletion_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The processing policy for users who have been synchronized when deleting synchronization
         """
         return pulumi.get(self, "deletion_strategy")
 
     @deletion_strategy.setter
-    def deletion_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of User Synchronization
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
-    def directory_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the directory to which the synchronization belongs
         """
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
-    def directory_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_id", value)
 
     @_builtins.property
     @pulumi.getter(name="duplicationStrategy")
-    def duplication_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duplication_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Processing Policy for Synchronization Conflicts
         """
         return pulumi.get(self, "duplication_strategy")
 
     @duplication_strategy.setter
-    def duplication_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duplication_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duplication_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="principalId")
-    def principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CloudSSO user/group associated with the synchronization.
         """
         return pulumi.get(self, "principal_id")
 
     @principal_id.setter
-    def principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="principalType")
-    def principal_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CloudSSO user/group associated with the synchronization.
         """
         return pulumi.get(self, "principal_type")
 
     @principal_type.setter
-    def principal_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="targetId")
-    def target_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the destination associated with the synchronization.
         """
         return pulumi.get(self, "target_id")
 
     @target_id.setter
-    def target_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target type associated with the synchronization
         """
         return pulumi.get(self, "target_type")
 
     @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_type", value)
 
     @_builtins.property
     @pulumi.getter(name="userProvisioningId")
-    def user_provisioning_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_provisioning_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "user_provisioning_id")
 
     @user_provisioning_id.setter
-    def user_provisioning_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_provisioning_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_provisioning_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userProvisioningStatistics")
-    def user_provisioning_statistics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserProvisioningUserProvisioningStatisticArgs']]]]:
+    def user_provisioning_statistics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserProvisioningUserProvisioningStatisticArgs']]]]:
         """
         User Provisioning statistics
         """
         return pulumi.get(self, "user_provisioning_statistics")
 
     @user_provisioning_statistics.setter
-    def user_provisioning_statistics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserProvisioningUserProvisioningStatisticArgs']]]]):
+    def user_provisioning_statistics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserProvisioningUserProvisioningStatisticArgs']]]]):
         pulumi.set(self, "user_provisioning_statistics", value)
 
 
@@ -355,14 +355,14 @@ class UserProvisioning(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 duplication_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 duplication_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud SSO User Provisioning resource.
@@ -379,6 +379,7 @@ class UserProvisioning(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -392,7 +393,7 @@ class UserProvisioning(pulumi.CustomResource):
         default_integer = random.Integer("default",
             min=10000,
             max=99999)
-        default_directory = []
+        default_directory: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
@@ -403,10 +404,10 @@ class UserProvisioning(pulumi.CustomResource):
             [""],
         ]).result[0])
         default_user = alicloud.cloudsso.User("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_name=f"{name}-{default_integer['result']}")
         default_group = alicloud.cloudsso.Group("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             group_name=name,
             description=name)
         default_user_provisioning = alicloud.cloudsso.UserProvisioning("default",
@@ -463,6 +464,7 @@ class UserProvisioning(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -476,7 +478,7 @@ class UserProvisioning(pulumi.CustomResource):
         default_integer = random.Integer("default",
             min=10000,
             max=99999)
-        default_directory = []
+        default_directory: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
@@ -487,10 +489,10 @@ class UserProvisioning(pulumi.CustomResource):
             [""],
         ]).result[0])
         default_user = alicloud.cloudsso.User("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_name=f"{name}-{default_integer['result']}")
         default_group = alicloud.cloudsso.Group("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             group_name=name,
             description=name)
         default_user_provisioning = alicloud.cloudsso.UserProvisioning("default",
@@ -530,14 +532,14 @@ class UserProvisioning(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 duplication_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 duplication_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -583,18 +585,18 @@ class UserProvisioning(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-            duplication_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-            principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            target_id: Optional[pulumi.Input[_builtins.str]] = None,
-            target_type: Optional[pulumi.Input[_builtins.str]] = None,
-            user_provisioning_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_provisioning_statistics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserProvisioningUserProvisioningStatisticArgs', 'UserProvisioningUserProvisioningStatisticArgsDict']]]]] = None) -> 'UserProvisioning':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            duplication_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_provisioning_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_provisioning_statistics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserProvisioningUserProvisioningStatisticArgs', 'UserProvisioningUserProvisioningStatisticArgsDict']]]]] = None) -> 'UserProvisioning':
         """
         Get an existing UserProvisioning resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

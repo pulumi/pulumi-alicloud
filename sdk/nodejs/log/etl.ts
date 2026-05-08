@@ -321,99 +321,99 @@ export interface EtlState {
     /**
      * Source logstore access key id.
      */
-    accessKeyId?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string | undefined>;
     /**
      * Source logstore access key secret.
      */
-    accessKeySecret?: pulumi.Input<string>;
+    accessKeySecret?: pulumi.Input<string | undefined>;
     /**
      * The etl job create time.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Description of the log etl job.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Log service etl job alias.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the log etl job.
      */
-    etlName?: pulumi.Input<string>;
+    etlName?: pulumi.Input<string | undefined>;
     /**
      * Target logstore configuration for delivery after data processing. See `etlSinks` below.
      */
-    etlSinks?: pulumi.Input<pulumi.Input<inputs.log.EtlEtlSink>[]>;
+    etlSinks?: pulumi.Input<pulumi.Input<inputs.log.EtlEtlSink>[] | undefined>;
     /**
      * Log service etl type, the default value is `ETL`.
      */
-    etlType?: pulumi.Input<string>;
+    etlType?: pulumi.Input<string | undefined>;
     /**
      * The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
      */
-    fromTime?: pulumi.Input<number>;
+    fromTime?: pulumi.Input<number | undefined>;
     /**
      * An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
      */
-    kmsEncryptedAccessKeyId?: pulumi.Input<string>;
+    kmsEncryptedAccessKeyId?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
      */
-    kmsEncryptedAccessKeySecret?: pulumi.Input<string>;
+    kmsEncryptedAccessKeySecret?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedAccessKeyId` before creating or updating an instance with `kmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
-    kmsEncryptionAccessKeyIdContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionAccessKeyIdContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
-    kmsEncryptionAccessKeySecretContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionAccessKeySecretContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The language of the etl job.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * ETL job last modified time.
      */
-    lastModifiedTime?: pulumi.Input<number>;
+    lastModifiedTime?: pulumi.Input<number | undefined>;
     /**
      * The source logstore of the processing job.
      */
-    logstore?: pulumi.Input<string>;
+    logstore?: pulumi.Input<string | undefined>;
     /**
      * Advanced parameter configuration of processing operations.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the project where the etl job is located.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Sts role info under source logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * Job scheduling type, the default value is Resident.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * Processing operation grammar.
      */
-    script?: pulumi.Input<string>;
+    script?: pulumi.Input<string | undefined>;
     /**
      * Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
      */
-    toTime?: pulumi.Input<number>;
+    toTime?: pulumi.Input<number | undefined>;
     /**
      * Log etl job version. the default value is `2`.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -423,19 +423,19 @@ export interface EtlArgs {
     /**
      * Source logstore access key id.
      */
-    accessKeyId?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string | undefined>;
     /**
      * Source logstore access key secret.
      */
-    accessKeySecret?: pulumi.Input<string>;
+    accessKeySecret?: pulumi.Input<string | undefined>;
     /**
      * The etl job create time.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Description of the log etl job.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Log service etl job alias.
      */
@@ -451,35 +451,35 @@ export interface EtlArgs {
     /**
      * Log service etl type, the default value is `ETL`.
      */
-    etlType?: pulumi.Input<string>;
+    etlType?: pulumi.Input<string | undefined>;
     /**
      * The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
      */
-    fromTime?: pulumi.Input<number>;
+    fromTime?: pulumi.Input<number | undefined>;
     /**
      * An KMS encrypts access key id used to a log etl job. If the `accessKeyId` is filled in, this field will be ignored.
      */
-    kmsEncryptedAccessKeyId?: pulumi.Input<string>;
+    kmsEncryptedAccessKeyId?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts access key secret used to a log etl job. If the `accessKeySecret` is filled in, this field will be ignored.
      */
-    kmsEncryptedAccessKeySecret?: pulumi.Input<string>;
+    kmsEncryptedAccessKeySecret?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedAccessKeyId` before creating or updating an instance with `kmsEncryptedAccessKeyId`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
-    kmsEncryptionAccessKeyIdContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionAccessKeyIdContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
      */
-    kmsEncryptionAccessKeySecretContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionAccessKeySecretContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The language of the etl job.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * ETL job last modified time.
      */
-    lastModifiedTime?: pulumi.Input<number>;
+    lastModifiedTime?: pulumi.Input<number | undefined>;
     /**
      * The source logstore of the processing job.
      */
@@ -487,7 +487,7 @@ export interface EtlArgs {
     /**
      * Advanced parameter configuration of processing operations.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the project where the etl job is located.
      */
@@ -495,11 +495,11 @@ export interface EtlArgs {
     /**
      * Sts role info under source logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * Job scheduling type, the default value is Resident.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * Processing operation grammar.
      */
@@ -507,13 +507,13 @@ export interface EtlArgs {
     /**
      * Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
      */
-    toTime?: pulumi.Input<number>;
+    toTime?: pulumi.Input<number | undefined>;
     /**
      * Log etl job version. the default value is `2`.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }

@@ -112,15 +112,15 @@ export interface ReplicaGroupDrillState {
     /**
      * The ID of the replication group. You can use the describediskreplicaggroups interface to query the asynchronous replication group list to obtain the value of the replication group ID input parameter.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource.
      */
-    replicaGroupDrillId?: pulumi.Input<string>;
+    replicaGroupDrillId?: pulumi.Input<string | undefined>;
     /**
      * Walkthrough status. _failed: Execution failed._failed: Cleanup failed.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

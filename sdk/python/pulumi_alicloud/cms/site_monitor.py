@@ -24,14 +24,14 @@ class SiteMonitorArgs:
                  address: pulumi.Input[_builtins.str],
                  task_name: pulumi.Input[_builtins.str],
                  task_type: pulumi.Input[_builtins.str],
-                 agent_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 custom_schedule: Optional[pulumi.Input['SiteMonitorCustomScheduleArgs']] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]] = None,
-                 option_json: Optional[pulumi.Input['SiteMonitorOptionJsonArgs']] = None,
-                 options_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 agent_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 custom_schedule: pulumi.Input[Optional['SiteMonitorCustomScheduleArgs']] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp_cities: pulumi.Input[Optional[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]] = None,
+                 option_json: pulumi.Input[Optional['SiteMonitorOptionJsonArgs']] = None,
+                 options_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SiteMonitor resource.
 
@@ -111,120 +111,120 @@ class SiteMonitorArgs:
 
     @_builtins.property
     @pulumi.getter(name="agentGroup")
-    def agent_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
         """
         return pulumi.get(self, "agent_group")
 
     @agent_group.setter
-    def agent_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_group", value)
 
     @_builtins.property
     @pulumi.getter(name="alertIds")
     @_utilities.deprecated("""Field `alert_ids` has been deprecated from provider version 1.262.0.""")
-    def alert_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def alert_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field `alert_ids` has been deprecated from provider version 1.262.0.
         """
         return pulumi.get(self, "alert_ids")
 
     @alert_ids.setter
-    def alert_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def alert_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alert_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="customSchedule")
-    def custom_schedule(self) -> Optional[pulumi.Input['SiteMonitorCustomScheduleArgs']]:
+    def custom_schedule(self) -> pulumi.Input[Optional['SiteMonitorCustomScheduleArgs']]:
         """
         Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `custom_schedule` below.
         """
         return pulumi.get(self, "custom_schedule")
 
     @custom_schedule.setter
-    def custom_schedule(self, value: Optional[pulumi.Input['SiteMonitorCustomScheduleArgs']]):
+    def custom_schedule(self, value: pulumi.Input[Optional['SiteMonitorCustomScheduleArgs']]):
         pulumi.set(self, "custom_schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter(name="ispCities")
-    def isp_cities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]]:
+    def isp_cities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]]:
         """
         The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
         """
         return pulumi.get(self, "isp_cities")
 
     @isp_cities.setter
-    def isp_cities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]]):
+    def isp_cities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]]):
         pulumi.set(self, "isp_cities", value)
 
     @_builtins.property
     @pulumi.getter(name="optionJson")
-    def option_json(self) -> Optional[pulumi.Input['SiteMonitorOptionJsonArgs']]:
+    def option_json(self) -> pulumi.Input[Optional['SiteMonitorOptionJsonArgs']]:
         """
         The extended options of the protocol that is used by the site monitoring task. See `option_json` below.
         """
         return pulumi.get(self, "option_json")
 
     @option_json.setter
-    def option_json(self, value: Optional[pulumi.Input['SiteMonitorOptionJsonArgs']]):
+    def option_json(self, value: pulumi.Input[Optional['SiteMonitorOptionJsonArgs']]):
         pulumi.set(self, "option_json", value)
 
     @_builtins.property
     @pulumi.getter(name="optionsJson")
     @_utilities.deprecated("""Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead""")
-    def options_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead.
         """
         return pulumi.get(self, "options_json")
 
     @options_json.setter
-    def options_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options_json", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the site monitoring task. Valid values:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _SiteMonitorState:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_schedule: Optional[pulumi.Input['SiteMonitorCustomScheduleArgs']] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]] = None,
-                 option_json: Optional[pulumi.Input['SiteMonitorOptionJsonArgs']] = None,
-                 options_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_schedule: pulumi.Input[Optional['SiteMonitorCustomScheduleArgs']] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp_cities: pulumi.Input[Optional[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]] = None,
+                 option_json: pulumi.Input[Optional['SiteMonitorOptionJsonArgs']] = None,
+                 options_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SiteMonitor resources.
 
@@ -289,175 +289,175 @@ class _SiteMonitorState:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL or IP address monitored by the site monitoring task.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter(name="agentGroup")
-    def agent_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
         """
         return pulumi.get(self, "agent_group")
 
     @agent_group.setter
-    def agent_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_group", value)
 
     @_builtins.property
     @pulumi.getter(name="alertIds")
     @_utilities.deprecated("""Field `alert_ids` has been deprecated from provider version 1.262.0.""")
-    def alert_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def alert_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field `alert_ids` has been deprecated from provider version 1.262.0.
         """
         return pulumi.get(self, "alert_ids")
 
     @alert_ids.setter
-    def alert_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def alert_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alert_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
     @_utilities.deprecated("""Field `create_time` has been deprecated from provider version 1.262.0.""")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Deprecated since v1.262.0) Field `create_time` has been deprecated from provider version 1.262.0.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customSchedule")
-    def custom_schedule(self) -> Optional[pulumi.Input['SiteMonitorCustomScheduleArgs']]:
+    def custom_schedule(self) -> pulumi.Input[Optional['SiteMonitorCustomScheduleArgs']]:
         """
         Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `custom_schedule` below.
         """
         return pulumi.get(self, "custom_schedule")
 
     @custom_schedule.setter
-    def custom_schedule(self, value: Optional[pulumi.Input['SiteMonitorCustomScheduleArgs']]):
+    def custom_schedule(self, value: pulumi.Input[Optional['SiteMonitorCustomScheduleArgs']]):
         pulumi.set(self, "custom_schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter(name="ispCities")
-    def isp_cities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]]:
+    def isp_cities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]]:
         """
         The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
         """
         return pulumi.get(self, "isp_cities")
 
     @isp_cities.setter
-    def isp_cities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]]):
+    def isp_cities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]]):
         pulumi.set(self, "isp_cities", value)
 
     @_builtins.property
     @pulumi.getter(name="optionJson")
-    def option_json(self) -> Optional[pulumi.Input['SiteMonitorOptionJsonArgs']]:
+    def option_json(self) -> pulumi.Input[Optional['SiteMonitorOptionJsonArgs']]:
         """
         The extended options of the protocol that is used by the site monitoring task. See `option_json` below.
         """
         return pulumi.get(self, "option_json")
 
     @option_json.setter
-    def option_json(self, value: Optional[pulumi.Input['SiteMonitorOptionJsonArgs']]):
+    def option_json(self, value: pulumi.Input[Optional['SiteMonitorOptionJsonArgs']]):
         pulumi.set(self, "option_json", value)
 
     @_builtins.property
     @pulumi.getter(name="optionsJson")
     @_utilities.deprecated("""Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead""")
-    def options_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead.
         """
         return pulumi.get(self, "options_json")
 
     @options_json.setter
-    def options_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options_json", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the site monitoring task. Valid values:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="taskName")
-    def task_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def task_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
         """
         return pulumi.get(self, "task_name")
 
     @task_name.setter
-    def task_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def task_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "task_name", value)
 
     @_builtins.property
     @pulumi.getter(name="taskState")
     @_utilities.deprecated("""Field `task_state` has been deprecated from provider version 1.262.0. New field `status` instead.""")
-    def task_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def task_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Deprecated since v1.262.0) Field `task_state` has been deprecated from provider version 1.262.0. New field `status` instead.
         """
         return pulumi.get(self, "task_state")
 
     @task_state.setter
-    def task_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def task_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "task_state", value)
 
     @_builtins.property
     @pulumi.getter(name="taskType")
-    def task_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def task_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
         """
         return pulumi.get(self, "task_type")
 
     @task_type.setter
-    def task_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def task_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "task_type", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
     @_utilities.deprecated("""Field `update_time` has been deprecated from provider version 1.262.0.""")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Deprecated since v1.262.0) Field `update_time` has been deprecated from provider version 1.262.0.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -467,17 +467,17 @@ class SiteMonitor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 custom_schedule: Optional[pulumi.Input[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']]] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
-                 option_json: Optional[pulumi.Input[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']]] = None,
-                 options_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 custom_schedule: pulumi.Input[Optional[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']]] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp_cities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
+                 option_json: pulumi.Input[Optional[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']]] = None,
+                 options_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Site Monitor resource.
@@ -668,17 +668,17 @@ class SiteMonitor(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 custom_schedule: Optional[pulumi.Input[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']]] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
-                 option_json: Optional[pulumi.Input[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']]] = None,
-                 options_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 custom_schedule: pulumi.Input[Optional[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']]] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp_cities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
+                 option_json: pulumi.Input[Optional[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']]] = None,
+                 options_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -718,20 +718,20 @@ class SiteMonitor(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            agent_group: Optional[pulumi.Input[_builtins.str]] = None,
-            alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_schedule: Optional[pulumi.Input[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']]] = None,
-            interval: Optional[pulumi.Input[_builtins.str]] = None,
-            isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
-            option_json: Optional[pulumi.Input[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']]] = None,
-            options_json: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            task_name: Optional[pulumi.Input[_builtins.str]] = None,
-            task_state: Optional[pulumi.Input[_builtins.str]] = None,
-            task_type: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'SiteMonitor':
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_group: pulumi.Input[Optional[_builtins.str]] = None,
+            alert_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_schedule: pulumi.Input[Optional[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']]] = None,
+            interval: pulumi.Input[Optional[_builtins.str]] = None,
+            isp_cities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
+            option_json: pulumi.Input[Optional[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']]] = None,
+            options_json: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            task_name: pulumi.Input[Optional[_builtins.str]] = None,
+            task_state: pulumi.Input[Optional[_builtins.str]] = None,
+            task_type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'SiteMonitor':
         """
         Get an existing SiteMonitor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -20,22 +20,22 @@ __all__ = ['BackupPolicyArgs', 'BackupPolicy']
 class BackupPolicyArgs:
     def __init__(__self__, *,
                  db_cluster_id: pulumi.Input[_builtins.str],
-                 backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level1_backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level1_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 data_level1_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_level1_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level2_backup_another_region_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level2_backup_another_region_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_level2_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 data_level2_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_backup_another_region_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_backup_another_region_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level1_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level1_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_level1_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_level1_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level2_backup_another_region_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level2_backup_another_region_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_level2_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_level2_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_backup_another_region_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_backup_another_region_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 preferred_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
 
@@ -108,55 +108,55 @@ class BackupPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupFrequency")
-    def backup_frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         """
         return pulumi.get(self, "backup_frequency")
 
     @backup_frequency.setter
-    def backup_frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_frequency", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_retention_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster backup retention days, Fixed for 7 days, not modified.
         """
         return pulumi.get(self, "backup_retention_period")
 
     @backup_retention_period.setter
-    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_retention_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
-    def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_retention_policy_on_cluster_deletion(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
         """
         return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
 
     @backup_retention_policy_on_cluster_deletion.setter
-    def backup_retention_policy_on_cluster_deletion(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_retention_policy_on_cluster_deletion(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_retention_policy_on_cluster_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel1BackupFrequency")
-    def data_level1_backup_frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_level1_backup_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         """
         return pulumi.get(self, "data_level1_backup_frequency")
 
     @data_level1_backup_frequency.setter
-    def data_level1_backup_frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_level1_backup_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_level1_backup_frequency", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel1BackupPeriods")
-    def data_level1_backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def data_level1_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
@@ -164,60 +164,60 @@ class BackupPolicyArgs:
         return pulumi.get(self, "data_level1_backup_periods")
 
     @data_level1_backup_periods.setter
-    def data_level1_backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def data_level1_backup_periods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_level1_backup_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel1BackupRetentionPeriod")
-    def data_level1_backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_level1_backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
         """
         return pulumi.get(self, "data_level1_backup_retention_period")
 
     @data_level1_backup_retention_period.setter
-    def data_level1_backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_level1_backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_level1_backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel1BackupTime")
-    def data_level1_backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_level1_backup_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time period during which automatic backup is performed. The format is HH: MMZ HH: MMZ (UTC time), and the entered value must be an hour apart, such as 14:00z-15:00z.
         """
         return pulumi.get(self, "data_level1_backup_time")
 
     @data_level1_backup_time.setter
-    def data_level1_backup_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_level1_backup_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_level1_backup_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel2BackupAnotherRegionRegion")
-    def data_level2_backup_another_region_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_level2_backup_another_region_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PolarDB Cluster of level-2 backup is a cross regional backup area.
         """
         return pulumi.get(self, "data_level2_backup_another_region_region")
 
     @data_level2_backup_another_region_region.setter
-    def data_level2_backup_another_region_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_level2_backup_another_region_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_level2_backup_another_region_region", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel2BackupAnotherRegionRetentionPeriod")
-    def data_level2_backup_another_region_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_level2_backup_another_region_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         """
         return pulumi.get(self, "data_level2_backup_another_region_retention_period")
 
     @data_level2_backup_another_region_retention_period.setter
-    def data_level2_backup_another_region_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_level2_backup_another_region_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_level2_backup_another_region_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel2BackupPeriods")
-    def data_level2_backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def data_level2_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
@@ -225,36 +225,36 @@ class BackupPolicyArgs:
         return pulumi.get(self, "data_level2_backup_periods")
 
     @data_level2_backup_periods.setter
-    def data_level2_backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def data_level2_backup_periods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_level2_backup_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel2BackupRetentionPeriod")
-    def data_level2_backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_level2_backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         """
         return pulumi.get(self, "data_level2_backup_retention_period")
 
     @data_level2_backup_retention_period.setter
-    def data_level2_backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_level2_backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_level2_backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupAnotherRegionRegion")
-    def log_backup_another_region_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_backup_another_region_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
         """
         return pulumi.get(self, "log_backup_another_region_region")
 
     @log_backup_another_region_region.setter
-    def log_backup_another_region_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_backup_another_region_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_backup_another_region_region", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupAnotherRegionRetentionPeriod")
-    def log_backup_another_region_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_backup_another_region_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
         > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
@@ -262,67 +262,67 @@ class BackupPolicyArgs:
         return pulumi.get(self, "log_backup_another_region_retention_period")
 
     @log_backup_another_region_retention_period.setter
-    def log_backup_another_region_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_backup_another_region_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_backup_another_region_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupRetentionPeriod")
-    def log_backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
         """
         return pulumi.get(self, "log_backup_retention_period")
 
     @log_backup_retention_period.setter
-    def log_backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredBackupPeriods")
-    def preferred_backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def preferred_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         """
         return pulumi.get(self, "preferred_backup_periods")
 
     @preferred_backup_periods.setter
-    def preferred_backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def preferred_backup_periods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preferred_backup_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredBackupTime")
-    def preferred_backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_backup_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
         return pulumi.get(self, "preferred_backup_time")
 
     @preferred_backup_time.setter
-    def preferred_backup_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_backup_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_backup_time", value)
 
 
 @pulumi.input_type
 class _BackupPolicyState:
     def __init__(__self__, *,
-                 backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level1_backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level1_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 data_level1_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_level1_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level2_backup_another_region_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level2_backup_another_region_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_level2_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 data_level2_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_backup_log: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_backup_another_region_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_backup_another_region_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level1_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level1_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_level1_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_level1_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level2_backup_another_region_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level2_backup_another_region_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_level2_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_level2_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_backup_log: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_backup_another_region_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_backup_another_region_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 preferred_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
 
@@ -387,55 +387,55 @@ class _BackupPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="backupFrequency")
-    def backup_frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         """
         return pulumi.get(self, "backup_frequency")
 
     @backup_frequency.setter
-    def backup_frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_frequency", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_retention_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster backup retention days, Fixed for 7 days, not modified.
         """
         return pulumi.get(self, "backup_retention_period")
 
     @backup_retention_period.setter
-    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_retention_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
-    def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_retention_policy_on_cluster_deletion(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
         """
         return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
 
     @backup_retention_policy_on_cluster_deletion.setter
-    def backup_retention_policy_on_cluster_deletion(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_retention_policy_on_cluster_deletion(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_retention_policy_on_cluster_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel1BackupFrequency")
-    def data_level1_backup_frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_level1_backup_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
         """
         return pulumi.get(self, "data_level1_backup_frequency")
 
     @data_level1_backup_frequency.setter
-    def data_level1_backup_frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_level1_backup_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_level1_backup_frequency", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel1BackupPeriods")
-    def data_level1_backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def data_level1_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
@@ -443,60 +443,60 @@ class _BackupPolicyState:
         return pulumi.get(self, "data_level1_backup_periods")
 
     @data_level1_backup_periods.setter
-    def data_level1_backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def data_level1_backup_periods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_level1_backup_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel1BackupRetentionPeriod")
-    def data_level1_backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_level1_backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
         """
         return pulumi.get(self, "data_level1_backup_retention_period")
 
     @data_level1_backup_retention_period.setter
-    def data_level1_backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_level1_backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_level1_backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel1BackupTime")
-    def data_level1_backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_level1_backup_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time period during which automatic backup is performed. The format is HH: MMZ HH: MMZ (UTC time), and the entered value must be an hour apart, such as 14:00z-15:00z.
         """
         return pulumi.get(self, "data_level1_backup_time")
 
     @data_level1_backup_time.setter
-    def data_level1_backup_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_level1_backup_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_level1_backup_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel2BackupAnotherRegionRegion")
-    def data_level2_backup_another_region_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_level2_backup_another_region_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PolarDB Cluster of level-2 backup is a cross regional backup area.
         """
         return pulumi.get(self, "data_level2_backup_another_region_region")
 
     @data_level2_backup_another_region_region.setter
-    def data_level2_backup_another_region_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_level2_backup_another_region_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_level2_backup_another_region_region", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel2BackupAnotherRegionRetentionPeriod")
-    def data_level2_backup_another_region_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_level2_backup_another_region_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         """
         return pulumi.get(self, "data_level2_backup_another_region_retention_period")
 
     @data_level2_backup_another_region_retention_period.setter
-    def data_level2_backup_another_region_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_level2_backup_another_region_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_level2_backup_another_region_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel2BackupPeriods")
-    def data_level2_backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def data_level2_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
         > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
@@ -504,60 +504,60 @@ class _BackupPolicyState:
         return pulumi.get(self, "data_level2_backup_periods")
 
     @data_level2_backup_periods.setter
-    def data_level2_backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def data_level2_backup_periods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_level2_backup_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="dataLevel2BackupRetentionPeriod")
-    def data_level2_backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_level2_backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
         """
         return pulumi.get(self, "data_level2_backup_retention_period")
 
     @data_level2_backup_retention_period.setter
-    def data_level2_backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_level2_backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_level2_backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterId")
-    def db_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of cluster that can run database.
         """
         return pulumi.get(self, "db_cluster_id")
 
     @db_cluster_id.setter
-    def db_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enableBackupLog")
-    def enable_backup_log(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def enable_backup_log(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
         """
         return pulumi.get(self, "enable_backup_log")
 
     @enable_backup_log.setter
-    def enable_backup_log(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def enable_backup_log(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "enable_backup_log", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupAnotherRegionRegion")
-    def log_backup_another_region_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_backup_another_region_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
         """
         return pulumi.get(self, "log_backup_another_region_region")
 
     @log_backup_another_region_region.setter
-    def log_backup_another_region_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_backup_another_region_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_backup_another_region_region", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupAnotherRegionRetentionPeriod")
-    def log_backup_another_region_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_backup_another_region_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
         > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
@@ -565,43 +565,43 @@ class _BackupPolicyState:
         return pulumi.get(self, "log_backup_another_region_retention_period")
 
     @log_backup_another_region_retention_period.setter
-    def log_backup_another_region_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_backup_another_region_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_backup_another_region_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="logBackupRetentionPeriod")
-    def log_backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
         """
         return pulumi.get(self, "log_backup_retention_period")
 
     @log_backup_retention_period.setter
-    def log_backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredBackupPeriods")
-    def preferred_backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def preferred_backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
         """
         return pulumi.get(self, "preferred_backup_periods")
 
     @preferred_backup_periods.setter
-    def preferred_backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def preferred_backup_periods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "preferred_backup_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredBackupTime")
-    def preferred_backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_backup_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         """
         return pulumi.get(self, "preferred_backup_time")
 
     @preferred_backup_time.setter
-    def preferred_backup_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_backup_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_backup_time", value)
 
 
@@ -611,23 +611,23 @@ class BackupPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level1_backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level1_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 data_level1_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_level1_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level2_backup_another_region_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level2_backup_another_region_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_level2_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 data_level2_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_backup_another_region_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_backup_another_region_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level1_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level1_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_level1_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_level1_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level2_backup_another_region_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level2_backup_another_region_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_level2_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_level2_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_backup_another_region_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_backup_another_region_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 preferred_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a PolarDB cluster backup policy resource and used to configure cluster backup policy.
@@ -781,23 +781,23 @@ class BackupPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level1_backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level1_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 data_level1_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_level1_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level2_backup_another_region_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_level2_backup_another_region_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_level2_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 data_level2_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_backup_another_region_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_backup_another_region_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level1_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level1_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_level1_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_level1_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level2_backup_another_region_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_level2_backup_another_region_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_level2_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_level2_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_backup_another_region_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_backup_another_region_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 preferred_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -837,24 +837,24 @@ class BackupPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_retention_period: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-            data_level1_backup_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-            data_level1_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            data_level1_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            data_level1_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_level2_backup_another_region_region: Optional[pulumi.Input[_builtins.str]] = None,
-            data_level2_backup_another_region_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            data_level2_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            data_level2_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_backup_log: Optional[pulumi.Input[_builtins.int]] = None,
-            log_backup_another_region_region: Optional[pulumi.Input[_builtins.str]] = None,
-            log_backup_another_region_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            log_backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'BackupPolicy':
+            backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_retention_period: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+            data_level1_backup_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            data_level1_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            data_level1_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            data_level1_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_level2_backup_another_region_region: pulumi.Input[Optional[_builtins.str]] = None,
+            data_level2_backup_another_region_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            data_level2_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            data_level2_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_backup_log: pulumi.Input[Optional[_builtins.int]] = None,
+            log_backup_another_region_region: pulumi.Input[Optional[_builtins.str]] = None,
+            log_backup_another_region_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            log_backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            preferred_backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'BackupPolicy':
         """
         Get an existing BackupPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -154,27 +154,27 @@ export interface IntegrationPolicyState {
     /**
      * The entity group used to create the policy. See `entityGroup` below.
      */
-    entityGroup?: pulumi.Input<inputs.cms.IntegrationPolicyEntityGroup>;
+    entityGroup?: pulumi.Input<inputs.cms.IntegrationPolicyEntityGroup | undefined>;
     /**
      * Specifies whether to force delete the cloud native appliance. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The policy name.
      */
-    integrationPolicyName?: pulumi.Input<string>;
+    integrationPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The policy type.
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The workspace.
      */
-    workspace?: pulumi.Input<string>;
+    workspace?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -184,11 +184,11 @@ export interface IntegrationPolicyArgs {
     /**
      * The entity group used to create the policy. See `entityGroup` below.
      */
-    entityGroup?: pulumi.Input<inputs.cms.IntegrationPolicyEntityGroup>;
+    entityGroup?: pulumi.Input<inputs.cms.IntegrationPolicyEntityGroup | undefined>;
     /**
      * Specifies whether to force delete the cloud native appliance. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The policy name.
      */

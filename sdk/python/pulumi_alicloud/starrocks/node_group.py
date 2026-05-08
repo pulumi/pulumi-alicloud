@@ -19,22 +19,22 @@ __all__ = ['NodeGroupArgs', 'NodeGroup']
 @pulumi.input_type
 class NodeGroupArgs:
     def __init__(__self__, *,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 fast_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_storage_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 resident_node_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 spec_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.int]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 fast_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_storage_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 resident_node_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a NodeGroup resource.
 
@@ -117,7 +117,7 @@ class NodeGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether auto-renewal is enabled.
 
@@ -126,48 +126,48 @@ class NodeGroupArgs:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter
-    def cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of CUs. CU (Compute Unit) is the basic unit of service measurement, where 1 CU = 1 vCPU + 4 GiB memory. When SpecType is memory-optimized, 1 CU = 1 vCPU + 8 GiB memory.
         """
         return pulumi.get(self, "cu")
 
     @cu.setter
-    def cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cu", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of node group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskNumber")
-    def disk_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of disks.
         """
         return pulumi.get(self, "disk_number")
 
     @disk_number.setter
-    def disk_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration of node group.
 
@@ -176,12 +176,12 @@ class NodeGroupArgs:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="fastMode")
-    def fast_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fast_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to restart in fast restart mode. The default is false.
         - true: Reboots the compute node in fast restart mode. Restart computing nodes in multiple batches, restart in parallel within a batch, and execute serially between batches;
@@ -192,48 +192,48 @@ class NodeGroupArgs:
         return pulumi.get(self, "fast_mode")
 
     @fast_mode.setter
-    def fast_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fast_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fast_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="localStorageInstanceType")
-    def local_storage_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_storage_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node group local SSD instance specification. This value is only relevant when based on ECS instances and SpecType is set to local SSD/large-scale storage.
         """
         return pulumi.get(self, "local_storage_instance_type")
 
     @local_storage_instance_type.setter
-    def local_storage_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_storage_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_storage_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupName")
-    def node_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the node group.
         """
         return pulumi.get(self, "node_group_name")
 
     @node_group_name.setter
-    def node_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="payType")
-    def pay_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Payment type:
         - PrePaid: Subscription (prepaid).
@@ -242,12 +242,12 @@ class NodeGroupArgs:
         return pulumi.get(self, "pay_type")
 
     @pay_type.setter
-    def pay_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unit of purchase duration:
         - Month
@@ -260,12 +260,12 @@ class NodeGroupArgs:
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="promotionOptionNo")
-    def promotion_option_no(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def promotion_option_no(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of promotion option.
 
@@ -274,24 +274,24 @@ class NodeGroupArgs:
         return pulumi.get(self, "promotion_option_no")
 
     @promotion_option_no.setter
-    def promotion_option_no(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def promotion_option_no(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "promotion_option_no", value)
 
     @_builtins.property
     @pulumi.getter(name="residentNodeNumber")
-    def resident_node_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def resident_node_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of nodes.
         """
         return pulumi.get(self, "resident_node_number")
 
     @resident_node_number.setter
-    def resident_node_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def resident_node_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "resident_node_number", value)
 
     @_builtins.property
     @pulumi.getter(name="specType")
-    def spec_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node group spec types include the following:
         - standard: Standard edition.
@@ -303,12 +303,12 @@ class NodeGroupArgs:
         return pulumi.get(self, "spec_type")
 
     @spec_type.setter
-    def spec_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_type", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePerformanceLevel")
-    def storage_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Performance levels of the cloud disk. Includes the following values:
         - pl0: Maximum random read/write IOPS of a single disk is 10,000.
@@ -319,45 +319,45 @@ class NodeGroupArgs:
         return pulumi.get(self, "storage_performance_level")
 
     @storage_performance_level.setter
-    def storage_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSize")
-    def storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Storage size, measured in GiB.
         """
         return pulumi.get(self, "storage_size")
 
     @storage_size.setter
-    def storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_size", value)
 
 
 @pulumi.input_type
 class _NodeGroupState:
     def __init__(__self__, *,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 fast_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_storage_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resident_node_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 spec_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.int]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 fast_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_storage_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resident_node_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering NodeGroup resources.
 
@@ -452,7 +452,7 @@ class _NodeGroupState:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether auto-renewal is enabled.
 
@@ -461,60 +461,60 @@ class _NodeGroupState:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the node group.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of CUs. CU (Compute Unit) is the basic unit of service measurement, where 1 CU = 1 vCPU + 4 GiB memory. When SpecType is memory-optimized, 1 CU = 1 vCPU + 8 GiB memory.
         """
         return pulumi.get(self, "cu")
 
     @cu.setter
-    def cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cu", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of node group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskNumber")
-    def disk_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of disks.
         """
         return pulumi.get(self, "disk_number")
 
     @disk_number.setter
-    def disk_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration of node group.
 
@@ -523,12 +523,12 @@ class _NodeGroupState:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="fastMode")
-    def fast_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fast_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to restart in fast restart mode. The default is false.
         - true: Reboots the compute node in fast restart mode. Restart computing nodes in multiple batches, restart in parallel within a batch, and execute serially between batches;
@@ -539,60 +539,60 @@ class _NodeGroupState:
         return pulumi.get(self, "fast_mode")
 
     @fast_mode.setter
-    def fast_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fast_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fast_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="localStorageInstanceType")
-    def local_storage_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_storage_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node group local SSD instance specification. This value is only relevant when based on ECS instances and SpecType is set to local SSD/large-scale storage.
         """
         return pulumi.get(self, "local_storage_instance_type")
 
     @local_storage_instance_type.setter
-    def local_storage_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_storage_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_storage_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupId")
-    def node_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the node group.
         """
         return pulumi.get(self, "node_group_id")
 
     @node_group_id.setter
-    def node_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupName")
-    def node_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the node group.
         """
         return pulumi.get(self, "node_group_name")
 
     @node_group_name.setter
-    def node_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="payType")
-    def pay_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Payment type:
         - PrePaid: Subscription (prepaid).
@@ -601,12 +601,12 @@ class _NodeGroupState:
         return pulumi.get(self, "pay_type")
 
     @pay_type.setter
-    def pay_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unit of purchase duration:
         - Month
@@ -619,12 +619,12 @@ class _NodeGroupState:
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="promotionOptionNo")
-    def promotion_option_no(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def promotion_option_no(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of promotion option.
 
@@ -633,36 +633,36 @@ class _NodeGroupState:
         return pulumi.get(self, "promotion_option_no")
 
     @promotion_option_no.setter
-    def promotion_option_no(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def promotion_option_no(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "promotion_option_no", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the node group.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="residentNodeNumber")
-    def resident_node_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def resident_node_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of nodes.
         """
         return pulumi.get(self, "resident_node_number")
 
     @resident_node_number.setter
-    def resident_node_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def resident_node_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "resident_node_number", value)
 
     @_builtins.property
     @pulumi.getter(name="specType")
-    def spec_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node group spec types include the following:
         - standard: Standard edition.
@@ -674,24 +674,24 @@ class _NodeGroupState:
         return pulumi.get(self, "spec_type")
 
     @spec_type.setter
-    def spec_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node group status, including the following values:_FAILED: Creation failed._CONFIG: Modifying configuration._TIMEZONE: Modifying timezone._SCALING_OUT: Elastic scaling out._SCALING_IN: Elastic scaling in._OUT: Scaling out._IN: Scaling in._UP: Scaling up (upgrading configuration)._DOWN: Scaling down (downgrading configuration)._PUBLIC_NETWORK: Enabling public network._PUBLIC_NETWORK: Disabling public network._AZ: Switching availability zones.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePerformanceLevel")
-    def storage_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Performance levels of the cloud disk. Includes the following values:
         - pl0: Maximum random read/write IOPS of a single disk is 10,000.
@@ -702,19 +702,19 @@ class _NodeGroupState:
         return pulumi.get(self, "storage_performance_level")
 
     @storage_performance_level.setter
-    def storage_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSize")
-    def storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Storage size, measured in GiB.
         """
         return pulumi.get(self, "storage_size")
 
     @storage_size.setter
-    def storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_size", value)
 
 
@@ -724,22 +724,22 @@ class NodeGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 fast_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_storage_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 resident_node_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 spec_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 fast_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_storage_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 resident_node_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Star Rocks Node Group resource.
@@ -988,22 +988,22 @@ class NodeGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 fast_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_storage_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 resident_node_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 spec_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 fast_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_storage_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 resident_node_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1043,26 +1043,26 @@ class NodeGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            cu: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_number: Optional[pulumi.Input[_builtins.int]] = None,
-            duration: Optional[pulumi.Input[_builtins.int]] = None,
-            fast_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            local_storage_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            node_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resident_node_number: Optional[pulumi.Input[_builtins.int]] = None,
-            spec_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_size: Optional[pulumi.Input[_builtins.int]] = None) -> 'NodeGroup':
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cu: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_number: pulumi.Input[Optional[_builtins.int]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            fast_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            local_storage_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resident_node_number: pulumi.Input[Optional[_builtins.int]] = None,
+            spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_size: pulumi.Input[Optional[_builtins.int]] = None) -> 'NodeGroup':
         """
         Get an existing NodeGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

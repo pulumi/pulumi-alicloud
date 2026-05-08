@@ -137,15 +137,15 @@ export interface GlobalDatabaseNetworkState {
     /**
      * The ID of the primary cluster.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * The description of the Global Database Network.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The status of the Global Database Network.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -159,5 +159,5 @@ export interface GlobalDatabaseNetworkArgs {
     /**
      * The description of the Global Database Network.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
 }

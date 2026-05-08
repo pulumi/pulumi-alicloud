@@ -159,8 +159,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -209,8 +209,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -259,8 +259,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -309,8 +309,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -359,8 +359,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -409,8 +409,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -459,8 +459,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -509,8 +509,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -564,8 +564,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -619,8 +619,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -674,8 +674,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -729,8 +729,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -784,8 +784,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -839,8 +839,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -894,8 +894,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpPeersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -956,8 +956,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpPeersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1018,8 +1018,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpPeersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1080,8 +1080,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpPeersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1142,8 +1142,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpPeersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1204,8 +1204,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpPeersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1266,8 +1266,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetBgpPeersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1328,8 +1328,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetCommonBandwidthPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1387,8 +1387,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetCommonBandwidthPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1446,8 +1446,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetCommonBandwidthPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1505,8 +1505,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetCommonBandwidthPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1564,8 +1564,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetCommonBandwidthPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1623,8 +1623,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetCommonBandwidthPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1682,8 +1682,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetCommonBandwidthPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1741,8 +1741,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1808,8 +1808,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1875,8 +1875,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1942,8 +1942,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2009,8 +2009,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2076,8 +2076,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2143,8 +2143,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetDhcpOptionsSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2208,8 +2208,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2250,8 +2250,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2292,8 +2292,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2334,8 +2334,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2376,8 +2376,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2418,8 +2418,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2460,8 +2460,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2506,8 +2506,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetFlowLogServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2552,8 +2552,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetFlowLogServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2598,8 +2598,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetFlowLogServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2644,8 +2644,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetFlowLogServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2690,8 +2690,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetFlowLogServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2736,8 +2736,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetFlowLogServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2782,8 +2782,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetFlowLogServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2838,8 +2838,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.ForwardEntryArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetForwardEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2938,8 +2938,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.ForwardEntryArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetForwardEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3038,8 +3038,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.ForwardEntryArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetForwardEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3138,8 +3138,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.ForwardEntryArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetForwardEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3238,8 +3238,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.ForwardEntryArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetForwardEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3326,8 +3326,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3372,8 +3372,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3418,8 +3418,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3464,8 +3464,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3510,8 +3510,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3556,8 +3556,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3602,8 +3602,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetHavipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3656,8 +3656,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocationArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolAllocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3735,8 +3735,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocationArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolAllocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3814,8 +3814,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocationArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolAllocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3893,8 +3893,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocationArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolAllocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3972,8 +3972,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolAllocationArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolAllocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4047,8 +4047,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4114,8 +4114,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4181,8 +4181,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4248,8 +4248,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4315,8 +4315,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4382,8 +4382,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4454,8 +4454,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4526,8 +4526,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4598,8 +4598,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4670,8 +4670,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4742,8 +4742,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4814,8 +4814,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamPoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4886,8 +4886,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamScopeArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4953,8 +4953,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamScopeArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5020,8 +5020,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamScopeArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5087,8 +5087,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamScopeArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5154,8 +5154,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamScopeArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5221,8 +5221,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamScopeArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5288,8 +5288,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamScopeArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamScopesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5353,8 +5353,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5417,8 +5417,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5481,8 +5481,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5545,8 +5545,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5609,8 +5609,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5673,8 +5673,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5737,8 +5737,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.IpamIpamArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpamIpamsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5799,8 +5799,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5849,8 +5849,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5899,8 +5899,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5949,8 +5949,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5999,8 +5999,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6049,8 +6049,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6099,8 +6099,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpsecServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6149,8 +6149,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6198,8 +6198,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6247,8 +6247,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6296,8 +6296,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6345,8 +6345,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6394,8 +6394,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6443,8 +6443,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6492,8 +6492,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6552,8 +6552,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6612,8 +6612,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6672,8 +6672,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6732,8 +6732,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6792,8 +6792,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6852,8 +6852,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6912,8 +6912,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6EgressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6978,8 +6978,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6EgressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7044,8 +7044,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6EgressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7110,8 +7110,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6EgressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7176,8 +7176,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6EgressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7242,8 +7242,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6GatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7304,8 +7304,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6GatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7366,8 +7366,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6GatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7428,8 +7428,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6GatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7490,8 +7490,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6GatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7552,8 +7552,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6GatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7614,8 +7614,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6GatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7676,8 +7676,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6InternetBandwidthsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7736,8 +7736,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6InternetBandwidthsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7796,8 +7796,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6InternetBandwidthsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7856,8 +7856,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6InternetBandwidthsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7916,8 +7916,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6InternetBandwidthsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7976,8 +7976,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6InternetBandwidthsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8036,8 +8036,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetIpv6InternetBandwidthsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8100,8 +8100,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.NatGatewayArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8167,8 +8167,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.NatGatewayArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8234,8 +8234,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.NatGatewayArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8301,8 +8301,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.NatGatewayArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8368,8 +8368,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.NatGatewayArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8435,8 +8435,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.NatGatewayArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8502,8 +8502,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.NatGatewayArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8565,8 +8565,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatIpCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8638,8 +8638,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatIpCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8711,8 +8711,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatIpCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8784,8 +8784,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatIpCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8857,8 +8857,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatIpCidrsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8930,8 +8930,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9012,8 +9012,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9094,8 +9094,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9176,8 +9176,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9258,8 +9258,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNatIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9340,8 +9340,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworkAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9386,8 +9386,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworkAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9432,8 +9432,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworkAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9478,8 +9478,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworkAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9524,8 +9524,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworkAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9570,8 +9570,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworkAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9616,8 +9616,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworkAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9658,8 +9658,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9701,8 +9701,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9744,8 +9744,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9787,8 +9787,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9830,8 +9830,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9873,8 +9873,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9916,8 +9916,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9961,8 +9961,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPbrRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10005,8 +10005,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPbrRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10049,8 +10049,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPbrRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10093,8 +10093,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPbrRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10137,8 +10137,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPbrRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10183,8 +10183,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10232,8 +10232,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10281,8 +10281,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10330,8 +10330,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10379,8 +10379,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10428,8 +10428,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10477,8 +10477,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPeerConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10526,8 +10526,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10575,8 +10575,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10624,8 +10624,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10673,8 +10673,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10722,8 +10722,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10771,8 +10771,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10820,8 +10820,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPrefixListsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10871,8 +10871,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolCidrBlocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10925,8 +10925,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolCidrBlocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10979,8 +10979,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolCidrBlocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11033,8 +11033,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolCidrBlocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11087,8 +11087,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolCidrBlocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11139,8 +11139,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11189,8 +11189,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11239,8 +11239,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11289,8 +11289,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11339,8 +11339,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11389,8 +11389,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11439,8 +11439,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetPublicIpAddressPoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11504,8 +11504,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11525,7 +11525,7 @@ public final class VpcFunctions {
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(1)
-     *             .memorySize(2)
+     *             .memorySize(2.0)
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -11630,8 +11630,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11651,7 +11651,7 @@ public final class VpcFunctions {
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(1)
-     *             .memorySize(2)
+     *             .memorySize(2.0)
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -11756,8 +11756,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11777,7 +11777,7 @@ public final class VpcFunctions {
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(1)
-     *             .memorySize(2)
+     *             .memorySize(2.0)
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -11882,8 +11882,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11903,7 +11903,7 @@ public final class VpcFunctions {
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(1)
-     *             .memorySize(2)
+     *             .memorySize(2.0)
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -12008,8 +12008,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouteEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12029,7 +12029,7 @@ public final class VpcFunctions {
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(1)
-     *             .memorySize(2)
+     *             .memorySize(2.0)
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -12121,8 +12121,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.RouteTableArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12182,8 +12182,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.RouteTableArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12243,8 +12243,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.RouteTableArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12304,8 +12304,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.RouteTableArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12365,8 +12365,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.RouteTableArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12426,8 +12426,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.RouteTableArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12487,8 +12487,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.RouteTableArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouteTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12545,8 +12545,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12590,8 +12590,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12635,8 +12635,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12680,8 +12680,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12725,8 +12725,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12770,8 +12770,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12815,8 +12815,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetRouterInterfacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12873,8 +12873,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.SnatEntryArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSnatEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12968,8 +12968,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.SnatEntryArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSnatEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13063,8 +13063,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.SnatEntryArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSnatEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13158,8 +13158,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.SnatEntryArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSnatEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13253,8 +13253,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.SnatEntryArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSnatEntriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13332,8 +13332,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSslVpnClientCertsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13375,8 +13375,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSslVpnClientCertsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13418,8 +13418,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSslVpnClientCertsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13461,8 +13461,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSslVpnClientCertsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13504,8 +13504,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSslVpnClientCertsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13547,8 +13547,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSslVpnClientCertsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13590,8 +13590,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSslVpnClientCertsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13633,8 +13633,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSslVpnServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13676,8 +13676,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSslVpnServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13719,8 +13719,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSslVpnServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13762,8 +13762,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSslVpnServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13805,8 +13805,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSslVpnServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13848,8 +13848,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSslVpnServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13891,8 +13891,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSslVpnServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13940,8 +13940,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14003,8 +14003,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14066,8 +14066,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14129,8 +14129,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14192,8 +14192,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14255,8 +14255,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14318,8 +14318,8 @@ public final class VpcFunctions {
      * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14379,8 +14379,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterEgressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14432,8 +14432,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterEgressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14485,8 +14485,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterEgressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14538,8 +14538,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterEgressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14591,8 +14591,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterEgressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14644,8 +14644,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterIngressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14697,8 +14697,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterIngressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14750,8 +14750,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterIngressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14803,8 +14803,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterIngressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14856,8 +14856,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFilterIngressRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14909,8 +14909,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14969,8 +14969,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15029,8 +15029,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15089,8 +15089,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15149,8 +15149,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15209,8 +15209,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15269,8 +15269,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15331,8 +15331,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15377,8 +15377,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15423,8 +15423,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15469,8 +15469,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15515,8 +15515,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15561,8 +15561,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15607,8 +15607,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15651,8 +15651,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorSessionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15743,8 +15743,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorSessionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15835,8 +15835,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorSessionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15927,8 +15927,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorSessionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16019,8 +16019,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorSessionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16111,8 +16111,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorSessionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16203,8 +16203,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetTrafficMirrorSessionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16295,8 +16295,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetVpcFlowLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16341,8 +16341,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetVpcFlowLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16387,8 +16387,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetVpcFlowLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16433,8 +16433,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetVpcFlowLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16479,8 +16479,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetVpcFlowLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16525,8 +16525,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetVpcFlowLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16571,8 +16571,8 @@ public final class VpcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetVpcFlowLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -132,9 +132,9 @@ def get_notifications(ids: Optional[Sequence[_builtins.str]] = None,
         notifications=pulumi.get(__ret__, 'notifications'),
         output_file=pulumi.get(__ret__, 'output_file'),
         scaling_group_id=pulumi.get(__ret__, 'scaling_group_id'))
-def get_notifications_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_notifications_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotificationsResult]:
     """
     This data source provides available notification resources.

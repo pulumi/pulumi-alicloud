@@ -256,27 +256,27 @@ export interface GetNacosConfigsOutputArgs {
     /**
      * The language type of the returned information. Valid values: `zh`, `en`.
      */
-    acceptLanguage?: pulumi.Input<string>;
+    acceptLanguage?: pulumi.Input<string | undefined>;
     /**
      * The name of the application.
      */
-    appName?: pulumi.Input<string>;
+    appName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the data.
      */
-    dataId?: pulumi.Input<string>;
+    dataId?: pulumi.Input<string | undefined>;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the group.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * A list of MSE Engine Configs ids. It is formatted to `<instance_id>:<namespace_id>:<data_id>:<group>`.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the instance.
      */
@@ -284,18 +284,18 @@ export interface GetNacosConfigsOutputArgs {
     /**
      * The id of Namespace.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      * *
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The extended request parameters. The JSON format is supported.
      */
-    requestPars?: pulumi.Input<string>;
+    requestPars?: pulumi.Input<string | undefined>;
     /**
      * The tags of the configuration.
      */
-    tags?: pulumi.Input<string>;
+    tags?: pulumi.Input<string | undefined>;
 }

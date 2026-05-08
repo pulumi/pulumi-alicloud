@@ -22,17 +22,17 @@ class RuleArgs:
                  category: pulumi.Input[_builtins.int],
                  content: pulumi.Input[_builtins.str],
                  rule_name: pulumi.Input[_builtins.str],
-                 content_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 risk_level_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 stat_express: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 warn_level: Optional[pulumi.Input[_builtins.int]] = None):
+                 content_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 risk_level_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 stat_express: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 warn_level: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Rule resource.
 
@@ -115,155 +115,155 @@ class RuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="contentCategory")
-    def content_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
         """
         return pulumi.get(self, "content_category")
 
     @content_category.setter
-    def content_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_category", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the content within the request and response. Default value: `zh`. Valid values:
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="productCode")
-    def product_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
         """
         return pulumi.get(self, "product_code")
 
     @product_code.setter
-    def product_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_code", value)
 
     @_builtins.property
     @pulumi.getter(name="productId")
-    def product_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the service to which the data asset belongs. Valid values:
         """
         return pulumi.get(self, "product_id")
 
     @product_id.setter
-    def product_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_id", value)
 
     @_builtins.property
     @pulumi.getter(name="riskLevelId")
-    def risk_level_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def risk_level_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "risk_level_id")
 
     @risk_level_id.setter
-    def risk_level_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def risk_level_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "risk_level_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleType")
-    def rule_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rule_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The type of the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "rule_type")
 
     @rule_type.setter
-    def rule_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rule_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rule_type", value)
 
     @_builtins.property
     @pulumi.getter(name="statExpress")
-    def stat_express(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stat_express(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
         """
         return pulumi.get(self, "stat_express")
 
     @stat_express.setter
-    def stat_express(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stat_express(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stat_express", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter(name="warnLevel")
-    def warn_level(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def warn_level(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The risk level of the alert that is triggered. Valid values:
         """
         return pulumi.get(self, "warn_level")
 
     @warn_level.setter
-    def warn_level(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def warn_level(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "warn_level", value)
 
 
 @pulumi.input_type
 class _RuleState:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.int]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 risk_level_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 stat_express: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 warn_level: Optional[pulumi.Input[_builtins.int]] = None):
+                 category: pulumi.Input[Optional[_builtins.int]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 risk_level_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 stat_express: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 warn_level: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
 
@@ -316,182 +316,182 @@ class _RuleState:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The content type of the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter(name="contentCategory")
-    def content_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
         """
         return pulumi.get(self, "content_category")
 
     @content_category.setter
-    def content_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_category", value)
 
     @_builtins.property
     @pulumi.getter(name="customType")
-    def custom_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def custom_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
         """
         return pulumi.get(self, "custom_type")
 
     @custom_type.setter
-    def custom_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def custom_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "custom_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the content within the request and response. Default value: `zh`. Valid values:
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="productCode")
-    def product_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
         """
         return pulumi.get(self, "product_code")
 
     @product_code.setter
-    def product_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_code", value)
 
     @_builtins.property
     @pulumi.getter(name="productId")
-    def product_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the service to which the data asset belongs. Valid values:
         """
         return pulumi.get(self, "product_id")
 
     @product_id.setter
-    def product_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_id", value)
 
     @_builtins.property
     @pulumi.getter(name="riskLevelId")
-    def risk_level_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def risk_level_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "risk_level_id")
 
     @risk_level_id.setter
-    def risk_level_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def risk_level_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "risk_level_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleType")
-    def rule_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rule_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The type of the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "rule_type")
 
     @rule_type.setter
-    def rule_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rule_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rule_type", value)
 
     @_builtins.property
     @pulumi.getter(name="statExpress")
-    def stat_express(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stat_express(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
         """
         return pulumi.get(self, "stat_express")
 
     @stat_express.setter
-    def stat_express(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stat_express(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stat_express", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter(name="warnLevel")
-    def warn_level(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def warn_level(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The risk level of the alert that is triggered. Valid values:
         """
         return pulumi.get(self, "warn_level")
 
     @warn_level.setter
-    def warn_level(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def warn_level(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "warn_level", value)
 
 
@@ -501,20 +501,20 @@ class Rule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 category: Optional[pulumi.Input[_builtins.int]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 risk_level_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 stat_express: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 warn_level: Optional[pulumi.Input[_builtins.int]] = None,
+                 category: pulumi.Input[Optional[_builtins.int]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 risk_level_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 stat_express: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 warn_level: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Data Security Center Rule resource.
@@ -654,20 +654,20 @@ class Rule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 category: Optional[pulumi.Input[_builtins.int]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 risk_level_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 stat_express: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 warn_level: Optional[pulumi.Input[_builtins.int]] = None,
+                 category: pulumi.Input[Optional[_builtins.int]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 risk_level_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 stat_express: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 warn_level: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -708,21 +708,21 @@ class Rule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            category: Optional[pulumi.Input[_builtins.int]] = None,
-            content: Optional[pulumi.Input[_builtins.str]] = None,
-            content_category: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_type: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            product_code: Optional[pulumi.Input[_builtins.str]] = None,
-            product_id: Optional[pulumi.Input[_builtins.str]] = None,
-            risk_level_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_type: Optional[pulumi.Input[_builtins.int]] = None,
-            stat_express: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.int]] = None,
-            target: Optional[pulumi.Input[_builtins.str]] = None,
-            warn_level: Optional[pulumi.Input[_builtins.int]] = None) -> 'Rule':
+            category: pulumi.Input[Optional[_builtins.int]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            content_category: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_type: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            product_code: pulumi.Input[Optional[_builtins.str]] = None,
+            product_id: pulumi.Input[Optional[_builtins.str]] = None,
+            risk_level_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_type: pulumi.Input[Optional[_builtins.int]] = None,
+            stat_express: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            target: pulumi.Input[Optional[_builtins.str]] = None,
+            warn_level: pulumi.Input[Optional[_builtins.int]] = None) -> 'Rule':
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

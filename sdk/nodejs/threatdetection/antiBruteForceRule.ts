@@ -156,31 +156,31 @@ export interface AntiBruteForceRuleState {
     /**
      * The name of the defense rule.
      */
-    antiBruteForceRuleName?: pulumi.Input<string>;
+    antiBruteForceRuleName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to set the defense rule as the default rule. Valid values:
      */
-    defaultRule?: pulumi.Input<boolean>;
+    defaultRule?: pulumi.Input<boolean | undefined>;
     /**
      * FailCount
      */
-    failCount?: pulumi.Input<number>;
+    failCount?: pulumi.Input<number | undefined>;
     /**
      * The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
      */
-    forbiddenTime?: pulumi.Input<number>;
+    forbiddenTime?: pulumi.Input<number | undefined>;
     /**
      * The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
      */
-    protocolType?: pulumi.Input<inputs.threatdetection.AntiBruteForceRuleProtocolType>;
+    protocolType?: pulumi.Input<inputs.threatdetection.AntiBruteForceRuleProtocolType | undefined>;
     /**
      * The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
      */
-    span?: pulumi.Input<number>;
+    span?: pulumi.Input<number | undefined>;
     /**
      * The UUIDs of the servers to which you want to apply the defense rule.
      */
-    uuidLists?: pulumi.Input<pulumi.Input<string>[]>;
+    uuidLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -194,7 +194,7 @@ export interface AntiBruteForceRuleArgs {
     /**
      * Specifies whether to set the defense rule as the default rule. Valid values:
      */
-    defaultRule?: pulumi.Input<boolean>;
+    defaultRule?: pulumi.Input<boolean | undefined>;
     /**
      * FailCount
      */
@@ -206,7 +206,7 @@ export interface AntiBruteForceRuleArgs {
     /**
      * The types of protocols supported for interception by the brute force attack rule creation. See `protocolType` below.
      */
-    protocolType?: pulumi.Input<inputs.threatdetection.AntiBruteForceRuleProtocolType>;
+    protocolType?: pulumi.Input<inputs.threatdetection.AntiBruteForceRuleProtocolType | undefined>;
     /**
      * The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
      */

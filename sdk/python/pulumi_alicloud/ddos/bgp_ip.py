@@ -21,8 +21,8 @@ class BgpIpArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  ip: pulumi.Input[_builtins.str],
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BgpIp resource.
 
@@ -67,38 +67,38 @@ class BgpIpArgs:
 
     @_builtins.property
     @pulumi.getter(name="memberUid")
-    def member_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The member to which the asset belongs.
         """
         return pulumi.get(self, "member_uid")
 
     @member_uid.setter
-    def member_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     @_utilities.deprecated("""Field `resource_group_id` has been deprecated from provider version 1.259.0.""")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `resource_group_id` has been deprecated from provider version 1.259.0.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
 
 @pulumi.input_type
 class _BgpIpState:
     def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpIp resources.
 
@@ -124,63 +124,63 @@ class _BgpIpState:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Anti-DDoS Origin instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address that you want to add.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter(name="memberUid")
-    def member_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The member to which the asset belongs.
         """
         return pulumi.get(self, "member_uid")
 
     @member_uid.setter
-    def member_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     @_utilities.deprecated("""Field `resource_group_id` has been deprecated from provider version 1.259.0.""")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `resource_group_id` has been deprecated from provider version 1.259.0.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the IP address.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -190,10 +190,10 @@ class BgpIp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Anti-DDoS Pro (DdosBgp) Ip resource.
@@ -315,10 +315,10 @@ class BgpIp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -347,11 +347,11 @@ class BgpIp(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ip: Optional[pulumi.Input[_builtins.str]] = None,
-            member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'BgpIp':
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'BgpIp':
         """
         Get an existing BgpIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

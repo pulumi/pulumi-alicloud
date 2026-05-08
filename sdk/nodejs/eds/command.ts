@@ -184,27 +184,27 @@ export interface CommandState {
     /**
      * The Contents of the Script to Base64 Encoded Transmission.
      */
-    commandContent?: pulumi.Input<string>;
+    commandContent?: pulumi.Input<string | undefined>;
     /**
      * The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
      */
-    commandType?: pulumi.Input<string>;
+    commandType?: pulumi.Input<string | undefined>;
     /**
      * That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
      */
-    contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string | undefined>;
     /**
      * The desktop id of the Desktop.
      */
-    desktopId?: pulumi.Input<string>;
+    desktopId?: pulumi.Input<string | undefined>;
     /**
      * Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The timeout period for script execution the unit is seconds. Default to: `60`.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -222,7 +222,7 @@ export interface CommandArgs {
     /**
      * That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
      */
-    contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string | undefined>;
     /**
      * The desktop id of the Desktop.
      */
@@ -230,5 +230,5 @@ export interface CommandArgs {
     /**
      * The timeout period for script execution the unit is seconds. Default to: `60`.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }

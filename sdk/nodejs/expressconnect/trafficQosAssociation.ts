@@ -129,19 +129,19 @@ export interface TrafficQosAssociationState {
     /**
      * The ID of the associated instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the associated instance. Value: **physical connection** physical connection.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The QoS policy ID.
      */
-    qosId?: pulumi.Input<string>;
+    qosId?: pulumi.Input<string | undefined>;
     /**
      * The status of the associated instance. Value:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -151,11 +151,11 @@ export interface TrafficQosAssociationArgs {
     /**
      * The ID of the associated instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the associated instance. Value: **physical connection** physical connection.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The QoS policy ID.
      */

@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  *     dataSourceConfig: kafka_config,
  *     dataSourceType: "kafka",
  *     dataSourceDescription: "example-kafka",
- *     serviceId: defaultwruvdv.serviceId,
+ *     serviceId: defaultwruvdv.serviceId.apply(x =>Number(x)),
  * });
  * ```
  *
@@ -218,41 +218,41 @@ export interface StreamingDataSourceState {
     /**
      * Creation time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The configurations of the data source.
      */
-    dataSourceConfig?: pulumi.Input<string>;
+    dataSourceConfig?: pulumi.Input<string | undefined>;
     /**
      * The description of the data source.
      */
-    dataSourceDescription?: pulumi.Input<string>;
+    dataSourceDescription?: pulumi.Input<string | undefined>;
     /**
      * The data source ID.
      */
-    dataSourceId?: pulumi.Input<string>;
+    dataSourceId?: pulumi.Input<string | undefined>;
     /**
      * Data Source Name
      */
-    dataSourceName?: pulumi.Input<string>;
+    dataSourceName?: pulumi.Input<string | undefined>;
     /**
      * Data Source Type
      */
-    dataSourceType?: pulumi.Input<string>;
+    dataSourceType?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      *
      * > **NOTE:**   You can call the [DescribeDBInstances](https://www.alibabacloud.com/help/en/doc-detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The real-time data service ID.
      */
-    serviceId?: pulumi.Input<number>;
+    serviceId?: pulumi.Input<number | undefined>;
     /**
      * Service Status:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -266,7 +266,7 @@ export interface StreamingDataSourceArgs {
     /**
      * The description of the data source.
      */
-    dataSourceDescription?: pulumi.Input<string>;
+    dataSourceDescription?: pulumi.Input<string | undefined>;
     /**
      * Data Source Name
      */

@@ -155,19 +155,19 @@ export interface EdgeContainerAppRecordState {
     /**
      * The application ID
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The associated domain name.
      */
-    recordName?: pulumi.Input<string>;
+    recordName?: pulumi.Input<string | undefined>;
     /**
      * The website ID.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,5 +185,5 @@ export interface EdgeContainerAppRecordArgs {
     /**
      * The website ID.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
 }

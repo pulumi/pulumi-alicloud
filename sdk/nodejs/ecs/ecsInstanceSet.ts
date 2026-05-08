@@ -422,147 +422,147 @@ export interface EcsInstanceSetState {
     /**
      * The number of instances that you want to create. Valid values: `1` to `100`.
      */
-    amount?: pulumi.Input<number>;
+    amount?: pulumi.Input<number | undefined>;
     /**
      * The automatic release time of the `PostPaid` instance.
      */
-    autoReleaseTime?: pulumi.Input<string>;
+    autoReleaseTime?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable auto-renewal for the instance. **Note:** `autoRenew` is valid only when `instanceChargeType` is set to `PrePaid`.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Auto renewal period of an instance, in the unit of month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
      * **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Indicate how to check instance ready to use. Valid values:
      */
-    bootCheckOsWithAssistant?: pulumi.Input<boolean>;
+    bootCheckOsWithAssistant?: pulumi.Input<boolean | undefined>;
     /**
      * The list of data disks created with instance. See `dataDisks` below.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsInstanceSetDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsInstanceSetDataDisk>[] | undefined>;
     /**
      * The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
      */
-    dedicatedHostId?: pulumi.Input<string>;
+    dedicatedHostId?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable release protection for the instance.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the deployment set to which to deploy the instance.
      */
-    deploymentSetId?: pulumi.Input<string>;
+    deploymentSetId?: pulumi.Input<string | undefined>;
     /**
      * The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
      */
-    excludeInstanceFilter?: pulumi.Input<inputs.ecs.EcsInstanceSetExcludeInstanceFilter>;
+    excludeInstanceFilter?: pulumi.Input<inputs.ecs.EcsInstanceSetExcludeInstanceFilter | undefined>;
     /**
      * The hostname of instance.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
      */
-    hpcClusterId?: pulumi.Input<string>;
+    hpcClusterId?: pulumi.Input<string | undefined>;
     /**
      * The Image to use for the instance.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the instance. Valid values: `PrePaid`, `PostPaid`.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * A list of ECS Instance ID.
      */
-    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The type of instance to start.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
      */
-    internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * The name of key pair that can login ECS instance successfully without password.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the launch template.
      */
-    launchTemplateId?: pulumi.Input<string>;
+    launchTemplateId?: pulumi.Input<string | undefined>;
     /**
      * The name of the launch template. To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
      */
-    launchTemplateName?: pulumi.Input<string>;
+    launchTemplateName?: pulumi.Input<string | undefined>;
     /**
      * The version of the launch template.
      */
-    launchTemplateVersion?: pulumi.Input<string>;
+    launchTemplateVersion?: pulumi.Input<string | undefined>;
     /**
      * A list of NetworkInterface. See `networkInterfaces` below.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ecs.EcsInstanceSetNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ecs.EcsInstanceSetNetworkInterface>[] | undefined>;
     /**
      * The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Whether to use the password preset in the image.
      */
-    passwordInherit?: pulumi.Input<boolean>;
+    passwordInherit?: pulumi.Input<boolean | undefined>;
     /**
      * The duration that you will buy the resource, in month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
      * **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `periodUnit` is valid only when `instanceChargeType` is set to `PrePaid`.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The Instance RAM role name.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
     /**
      * The ID of resource group which the instance belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The security enhancement strategy. Valid values:
      * - `Active`: Enable security enhancement strategy, it only works on system images.
      * - `Deactive`: Disable security enhancement strategy, it works on all images.
      */
-    securityEnhancementStrategy?: pulumi.Input<string>;
+    securityEnhancementStrategy?: pulumi.Input<string | undefined>;
     /**
      * A list of security group ids to associate with.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spotPriceLimit` takes effect only if `spotStrategy` is set to `SpotWithPriceLimit`.
      */
-    spotPriceLimit?: pulumi.Input<number>;
+    spotPriceLimit?: pulumi.Input<number | undefined>;
     /**
      * The spot strategy of a Pay-As-You-Go instance. Valid values:
      * - `NoSpot`: A regular Pay-As-You-Go instance.
@@ -570,47 +570,47 @@ export interface EcsInstanceSetState {
      * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
      * **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the automatic snapshot policy applied to the system disk.
      */
-    systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
+    systemDiskAutoSnapshotPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The category of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
      */
-    systemDiskCategory?: pulumi.Input<string>;
+    systemDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    systemDiskDescription?: pulumi.Input<string>;
+    systemDiskDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the system disk.
      */
-    systemDiskName?: pulumi.Input<string>;
+    systemDiskName?: pulumi.Input<string | undefined>;
     /**
      * The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      */
-    systemDiskPerformanceLevel?: pulumi.Input<string>;
+    systemDiskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The size of the system disk, measured in GiB. Valid values: `20` to `500`.
      */
-    systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether to automatically append incremental suffixes to the hostname specified by the HostName parameter and to the instance name specified by the InstanceName parameter when you batch create instances. The incremental suffixes can range from `001` to `999`.
      */
-    uniqueSuffix?: pulumi.Input<boolean>;
+    uniqueSuffix?: pulumi.Input<boolean | undefined>;
     /**
      * The virtual switch ID to launch in VPC.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone in which to create the instance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -620,58 +620,58 @@ export interface EcsInstanceSetArgs {
     /**
      * The number of instances that you want to create. Valid values: `1` to `100`.
      */
-    amount?: pulumi.Input<number>;
+    amount?: pulumi.Input<number | undefined>;
     /**
      * The automatic release time of the `PostPaid` instance.
      */
-    autoReleaseTime?: pulumi.Input<string>;
+    autoReleaseTime?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable auto-renewal for the instance. **Note:** `autoRenew` is valid only when `instanceChargeType` is set to `PrePaid`.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Auto renewal period of an instance, in the unit of month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
      * **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Indicate how to check instance ready to use. Valid values:
      */
-    bootCheckOsWithAssistant?: pulumi.Input<boolean>;
+    bootCheckOsWithAssistant?: pulumi.Input<boolean | undefined>;
     /**
      * The list of data disks created with instance. See `dataDisks` below.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsInstanceSetDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsInstanceSetDataDisk>[] | undefined>;
     /**
      * The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
      */
-    dedicatedHostId?: pulumi.Input<string>;
+    dedicatedHostId?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable release protection for the instance.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the deployment set to which to deploy the instance.
      */
-    deploymentSetId?: pulumi.Input<string>;
+    deploymentSetId?: pulumi.Input<string | undefined>;
     /**
      * The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The instances that need to be excluded from the Instance Set.  See `excludeInstanceFilter` below.
      */
-    excludeInstanceFilter?: pulumi.Input<inputs.ecs.EcsInstanceSetExcludeInstanceFilter>;
+    excludeInstanceFilter?: pulumi.Input<inputs.ecs.EcsInstanceSetExcludeInstanceFilter | undefined>;
     /**
      * The hostname of instance.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
      */
-    hpcClusterId?: pulumi.Input<string>;
+    hpcClusterId?: pulumi.Input<string | undefined>;
     /**
      * The Image to use for the instance.
      */
@@ -679,11 +679,11 @@ export interface EcsInstanceSetArgs {
     /**
      * The billing method of the instance. Valid values: `PrePaid`, `PostPaid`.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The type of instance to start.
      */
@@ -691,64 +691,64 @@ export interface EcsInstanceSetArgs {
     /**
      * The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
      */
-    internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * The name of key pair that can login ECS instance successfully without password.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the launch template.
      */
-    launchTemplateId?: pulumi.Input<string>;
+    launchTemplateId?: pulumi.Input<string | undefined>;
     /**
      * The name of the launch template. To use a launch template to create an instance, you must use the `launchTemplateId` or `launchTemplateName` parameter to specify the launch template.
      */
-    launchTemplateName?: pulumi.Input<string>;
+    launchTemplateName?: pulumi.Input<string | undefined>;
     /**
      * The version of the launch template.
      */
-    launchTemplateVersion?: pulumi.Input<string>;
+    launchTemplateVersion?: pulumi.Input<string | undefined>;
     /**
      * A list of NetworkInterface. See `networkInterfaces` below.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ecs.EcsInstanceSetNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ecs.EcsInstanceSetNetworkInterface>[] | undefined>;
     /**
      * The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Whether to use the password preset in the image.
      */
-    passwordInherit?: pulumi.Input<boolean>;
+    passwordInherit?: pulumi.Input<boolean | undefined>;
     /**
      * The duration that you will buy the resource, in month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
      * **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `periodUnit` is valid only when `instanceChargeType` is set to `PrePaid`.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The Instance RAM role name.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
     /**
      * The ID of resource group which the instance belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The security enhancement strategy. Valid values:
      * - `Active`: Enable security enhancement strategy, it only works on system images.
      * - `Deactive`: Disable security enhancement strategy, it works on all images.
      */
-    securityEnhancementStrategy?: pulumi.Input<string>;
+    securityEnhancementStrategy?: pulumi.Input<string | undefined>;
     /**
      * A list of security group ids to associate with.
      */
@@ -756,7 +756,7 @@ export interface EcsInstanceSetArgs {
     /**
      * The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spotPriceLimit` takes effect only if `spotStrategy` is set to `SpotWithPriceLimit`.
      */
-    spotPriceLimit?: pulumi.Input<number>;
+    spotPriceLimit?: pulumi.Input<number | undefined>;
     /**
      * The spot strategy of a Pay-As-You-Go instance. Valid values:
      * - `NoSpot`: A regular Pay-As-You-Go instance.
@@ -764,45 +764,45 @@ export interface EcsInstanceSetArgs {
      * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
      * **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the automatic snapshot policy applied to the system disk.
      */
-    systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
+    systemDiskAutoSnapshotPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The category of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
      */
-    systemDiskCategory?: pulumi.Input<string>;
+    systemDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    systemDiskDescription?: pulumi.Input<string>;
+    systemDiskDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the system disk.
      */
-    systemDiskName?: pulumi.Input<string>;
+    systemDiskName?: pulumi.Input<string | undefined>;
     /**
      * The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      */
-    systemDiskPerformanceLevel?: pulumi.Input<string>;
+    systemDiskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The size of the system disk, measured in GiB. Valid values: `20` to `500`.
      */
-    systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether to automatically append incremental suffixes to the hostname specified by the HostName parameter and to the instance name specified by the InstanceName parameter when you batch create instances. The incremental suffixes can range from `001` to `999`.
      */
-    uniqueSuffix?: pulumi.Input<boolean>;
+    uniqueSuffix?: pulumi.Input<boolean | undefined>;
     /**
      * The virtual switch ID to launch in VPC.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone in which to create the instance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

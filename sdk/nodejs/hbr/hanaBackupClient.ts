@@ -197,35 +197,35 @@ export interface HanaBackupClientState {
     /**
      * The alert settings. Valid value: `INHERITED`.
      */
-    alertSetting?: pulumi.Input<string>;
+    alertSetting?: pulumi.Input<string | undefined>;
     /**
      * The ID of the backup client.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The installation information of the HBR clients.
      */
-    clientInfo?: pulumi.Input<string>;
+    clientInfo?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SAP HANA instance.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Hana Backup Client.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
      */
-    useHttps?: pulumi.Input<boolean>;
+    useHttps?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the backup vault.
      */
-    vaultId?: pulumi.Input<string>;
+    vaultId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -235,15 +235,15 @@ export interface HanaBackupClientArgs {
     /**
      * The alert settings. Valid value: `INHERITED`.
      */
-    alertSetting?: pulumi.Input<string>;
+    alertSetting?: pulumi.Input<string | undefined>;
     /**
      * The installation information of the HBR clients.
      */
-    clientInfo?: pulumi.Input<string>;
+    clientInfo?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
      */
-    useHttps?: pulumi.Input<boolean>;
+    useHttps?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the backup vault.
      */

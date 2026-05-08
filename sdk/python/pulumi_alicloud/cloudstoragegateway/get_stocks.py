@@ -112,8 +112,8 @@ def get_stocks(gateway_class: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         stocks=pulumi.get(__ret__, 'stocks'))
-def get_stocks_output(gateway_class: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_stocks_output(gateway_class: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStocksResult]:
     """
     This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.

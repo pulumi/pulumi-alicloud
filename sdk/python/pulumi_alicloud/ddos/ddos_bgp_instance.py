@@ -23,13 +23,13 @@ class DdosBgpInstanceArgs:
                  ip_count: pulumi.Input[_builtins.int],
                  ip_type: pulumi.Input[_builtins.str],
                  normal_bandwidth: pulumi.Input[_builtins.int],
-                 base_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 base_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DdosBgpInstance resource.
 
@@ -121,105 +121,105 @@ class DdosBgpInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="baseBandwidth")
-    def base_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def base_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
         """
         return pulumi.get(self, "base_bandwidth")
 
     @base_bandwidth.setter
-    def base_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def base_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "base_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Group ID
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The key of the tag that is added to the Anti-DDoS Origin instance.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _DdosBgpInstanceState:
     def __init__(__self__, *,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 base_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 normal_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 base_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 normal_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DdosBgpInstance resources.
 
@@ -268,55 +268,55 @@ class _DdosBgpInstanceState:
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth of the package configuration.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="baseBandwidth")
-    def base_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def base_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The basic protection bandwidth of the Anti-DDoS Origin Enterprise instance. Default value: `20`. Valid values: `20`.
         """
         return pulumi.get(self, "base_bandwidth")
 
     @base_bandwidth.setter
-    def base_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def base_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "base_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipCount")
-    def ip_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ip_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
         """
         return pulumi.get(self, "ip_count")
 
     @ip_count.setter
-    def ip_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ip_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ip_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ipType")
-    def ip_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protection IP address type of the protection package. Valid values:
         - `IPv4`
@@ -325,92 +325,92 @@ class _DdosBgpInstanceState:
         return pulumi.get(self, "ip_type")
 
     @ip_type.setter
-    def ip_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_type", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `name` has been deprecated from provider version 1.259.0. New field `instance_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="normalBandwidth")
-    def normal_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def normal_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The normal clean bandwidth. Unit: Mbit/s.
         """
         return pulumi.get(self, "normal_bandwidth")
 
     @normal_bandwidth.setter
-    def normal_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def normal_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "normal_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Group ID
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.259.0) The status of the Instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The key of the tag that is added to the Anti-DDoS Origin instance.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -420,17 +420,17 @@ class DdosBgpInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 base_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 normal_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 base_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 normal_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Anti-DDoS Pro (DdosBgp) Instance resource.
@@ -557,17 +557,17 @@ class DdosBgpInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 base_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 normal_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 base_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 normal_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -609,18 +609,18 @@ class DdosBgpInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            base_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_count: Optional[pulumi.Input[_builtins.int]] = None,
-            ip_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            normal_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'DdosBgpInstance':
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            base_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_count: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            normal_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'DdosBgpInstance':
         """
         Get an existing DdosBgpInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

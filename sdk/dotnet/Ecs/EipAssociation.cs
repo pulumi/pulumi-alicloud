@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var example = AliCloud.Index.GetZones.Invoke(new()
+    ///     var example = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
     ///     });

@@ -159,19 +159,19 @@ export interface TransitRouterMulticastDomainAssociationState {
     /**
      * The status of the Transit Router Multicast Domain Association.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC connection.
      */
-    transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the multicast domain.
      */
-    transitRouterMulticastDomainId?: pulumi.Input<string>;
+    transitRouterMulticastDomainId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**

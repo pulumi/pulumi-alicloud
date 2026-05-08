@@ -180,49 +180,49 @@ export interface SecurityGroupState {
     /**
      * (Available since v1.239.0) The time when the security group was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      *
      * @deprecated Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      */
-    innerAccess?: pulumi.Input<boolean>;
+    innerAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The internal access control policy of the security group. Valid values:
      * - `Accept`: The internal interconnectivity policy.
      * - `Drop`: The internal isolation policy.
      */
-    innerAccessPolicy?: pulumi.Input<string>;
+    innerAccessPolicy?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
      */
-    securityGroupName?: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string | undefined>;
     /**
      * The type of the security group. Default value: `normal`. Valid values:
      */
-    securityGroupType?: pulumi.Input<string>;
+    securityGroupType?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the VPC in which you want to create the security group.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -232,43 +232,43 @@ export interface SecurityGroupArgs {
     /**
      * The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      *
      * @deprecated Field `innerAccess` has been deprecated from provider version 1.55.3. New field `innerAccessPolicy` instead.
      */
-    innerAccess?: pulumi.Input<boolean>;
+    innerAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The internal access control policy of the security group. Valid values:
      * - `Accept`: The internal interconnectivity policy.
      * - `Drop`: The internal isolation policy.
      */
-    innerAccessPolicy?: pulumi.Input<string>;
+    innerAccessPolicy?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.239.0. New field `securityGroupName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
      */
-    securityGroupName?: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string | undefined>;
     /**
      * The type of the security group. Default value: `normal`. Valid values:
      */
-    securityGroupType?: pulumi.Input<string>;
+    securityGroupType?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the VPC in which you want to create the security group.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

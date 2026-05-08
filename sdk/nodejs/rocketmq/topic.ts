@@ -162,21 +162,21 @@ export interface TopicState {
     /**
      * ID of the ONS Instance that owns the topics.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
      */
-    messageType?: pulumi.Input<number>;
+    messageType?: pulumi.Input<number | undefined>;
     /**
      * This attribute has been deprecated.
      *
      * @deprecated Attribute perm has been deprecated and suggest removing it from your template.
      */
-    perm?: pulumi.Input<number>;
+    perm?: pulumi.Input<number | undefined>;
     /**
      * This attribute is a concise description of topic. The length cannot exceed 128.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -184,17 +184,17 @@ export interface TopicState {
      *
      * > **NOTE:** At least one of `topicName` and `topic` should be set.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Replaced by `topicName` after version 1.97.0.
      *
      * @deprecated Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
      */
-    topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string | undefined>;
     /**
      * Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
      */
-    topicName?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -214,11 +214,11 @@ export interface TopicArgs {
      *
      * @deprecated Attribute perm has been deprecated and suggest removing it from your template.
      */
-    perm?: pulumi.Input<number>;
+    perm?: pulumi.Input<number | undefined>;
     /**
      * This attribute is a concise description of topic. The length cannot exceed 128.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -226,15 +226,15 @@ export interface TopicArgs {
      *
      * > **NOTE:** At least one of `topicName` and `topic` should be set.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Replaced by `topicName` after version 1.97.0.
      *
      * @deprecated Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.
      */
-    topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string | undefined>;
     /**
      * Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
      */
-    topicName?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string | undefined>;
 }

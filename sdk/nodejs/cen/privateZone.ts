@@ -157,25 +157,25 @@ export interface PrivateZoneState {
     /**
      * The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
      */
-    accessRegionId?: pulumi.Input<string>;
+    accessRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the CEN instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region where PrivateZone is deployed.
      *
      * ->**NOTE:** The resource `alicloud.cen.PrivateZone` depends on the resource `alicloud.cen.InstanceAttachment`.
      */
-    hostRegionId?: pulumi.Input<string>;
+    hostRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC that is associated with PrivateZone.
      */
-    hostVpcId?: pulumi.Input<string>;
+    hostVpcId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Private Zone.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

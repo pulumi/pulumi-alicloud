@@ -123,21 +123,21 @@ export interface GetGroupsOutputArgs {
     /**
      * A regex string to filter the returned groups by their names.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by a specific policy name. If you set this parameter without setting `policyType`, it will be automatically set to `System`.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by a specific the user name.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }

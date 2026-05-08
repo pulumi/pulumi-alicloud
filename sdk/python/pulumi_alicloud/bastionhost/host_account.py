@@ -23,9 +23,9 @@ class HostAccountArgs:
                  host_id: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
                  protocol_name: pulumi.Input[_builtins.str],
-                 pass_phrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 pass_phrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostAccount resource.
 
@@ -98,52 +98,52 @@ class HostAccountArgs:
 
     @_builtins.property
     @pulumi.getter(name="passPhrase")
-    def pass_phrase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pass_phrase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
         """
         return pulumi.get(self, "pass_phrase")
 
     @pass_phrase.setter
-    def pass_phrase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pass_phrase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pass_phrase", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the host account.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
         """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
 @pulumi.input_type
 class _HostAccountState:
     def __init__(__self__, *,
-                 host_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pass_phrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 host_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pass_phrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostAccount resources.
 
@@ -175,98 +175,98 @@ class _HostAccountState:
 
     @_builtins.property
     @pulumi.getter(name="hostAccountId")
-    def host_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hosting account ID.
         """
         return pulumi.get(self, "host_account_id")
 
     @host_account_id.setter
-    def host_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hostAccountName")
-    def host_account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the host account. The name can be up to 128 characters in length.
         """
         return pulumi.get(self, "host_account_name")
 
     @host_account_name.setter
-    def host_account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="hostId")
-    def host_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the host for which you want to create an account.
         """
         return pulumi.get(self, "host_id")
 
     @host_id.setter
-    def host_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Bastionhost instance where you want to create an account for the host.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="passPhrase")
-    def pass_phrase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pass_phrase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
         """
         return pulumi.get(self, "pass_phrase")
 
     @pass_phrase.setter
-    def pass_phrase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pass_phrase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pass_phrase", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the host account.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
         """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolName")
-    def protocol_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol used by the host account. Valid values: SSH,RDP
         """
         return pulumi.get(self, "protocol_name")
 
     @protocol_name.setter
-    def protocol_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol_name", value)
 
 
@@ -276,13 +276,13 @@ class HostAccount(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 host_account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pass_phrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 host_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pass_phrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Bastion Host Host Account resource.
@@ -437,13 +437,13 @@ class HostAccount(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 host_account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pass_phrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 host_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pass_phrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -481,14 +481,14 @@ class HostAccount(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            host_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            host_account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            host_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            pass_phrase: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            private_key: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'HostAccount':
+            host_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            host_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pass_phrase: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'HostAccount':
         """
         Get an existing HostAccount resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

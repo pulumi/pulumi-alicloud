@@ -165,27 +165,27 @@ export interface OriginCaCertificateState {
     /**
      * Certificate content.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * Creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The certificate name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * OriginCaCertificate Id
      */
-    originCaCertificateId?: pulumi.Input<string>;
+    originCaCertificateId?: pulumi.Input<string | undefined>;
     /**
      * Site Id
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Certificate status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -199,7 +199,7 @@ export interface OriginCaCertificateArgs {
     /**
      * The certificate name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Site Id
      */

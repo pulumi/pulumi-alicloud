@@ -38,8 +38,8 @@ public final class DataworksFunctions {
      * import com.pulumi.alicloud.dataworks.FolderArgs;
      * import com.pulumi.alicloud.dataworks.DataworksFunctions;
      * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -96,8 +96,8 @@ public final class DataworksFunctions {
      * import com.pulumi.alicloud.dataworks.FolderArgs;
      * import com.pulumi.alicloud.dataworks.DataworksFunctions;
      * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -154,8 +154,8 @@ public final class DataworksFunctions {
      * import com.pulumi.alicloud.dataworks.FolderArgs;
      * import com.pulumi.alicloud.dataworks.DataworksFunctions;
      * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -212,8 +212,8 @@ public final class DataworksFunctions {
      * import com.pulumi.alicloud.dataworks.FolderArgs;
      * import com.pulumi.alicloud.dataworks.DataworksFunctions;
      * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -270,8 +270,8 @@ public final class DataworksFunctions {
      * import com.pulumi.alicloud.dataworks.FolderArgs;
      * import com.pulumi.alicloud.dataworks.DataworksFunctions;
      * import com.pulumi.alicloud.dataworks.inputs.GetFoldersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -326,8 +326,8 @@ public final class DataworksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dataworks.DataworksFunctions;
      * import com.pulumi.alicloud.dataworks.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -370,8 +370,8 @@ public final class DataworksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dataworks.DataworksFunctions;
      * import com.pulumi.alicloud.dataworks.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -414,8 +414,8 @@ public final class DataworksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dataworks.DataworksFunctions;
      * import com.pulumi.alicloud.dataworks.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -458,8 +458,8 @@ public final class DataworksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dataworks.DataworksFunctions;
      * import com.pulumi.alicloud.dataworks.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -502,8 +502,8 @@ public final class DataworksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dataworks.DataworksFunctions;
      * import com.pulumi.alicloud.dataworks.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -546,8 +546,8 @@ public final class DataworksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dataworks.DataworksFunctions;
      * import com.pulumi.alicloud.dataworks.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -590,8 +590,8 @@ public final class DataworksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dataworks.DataworksFunctions;
      * import com.pulumi.alicloud.dataworks.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

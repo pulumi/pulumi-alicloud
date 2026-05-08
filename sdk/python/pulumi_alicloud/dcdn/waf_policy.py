@@ -88,10 +88,10 @@ class WafPolicyArgs:
 @pulumi.input_type
 class _WafPolicyState:
     def __init__(__self__, *,
-                 defense_scene: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WafPolicy resources.
 
@@ -111,50 +111,50 @@ class _WafPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="defenseScene")
-    def defense_scene(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def defense_scene(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of protection policy. Valid values: `waf_group`, `custom_acl`, `whitelist`, `ip_blacklist`, `region_block`.
         """
         return pulumi.get(self, "defense_scene")
 
     @defense_scene.setter
-    def defense_scene(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def defense_scene(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "defense_scene", value)
 
     @_builtins.property
     @pulumi.getter(name="policyName")
-    def policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
         """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
-    def policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyType")
-    def policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the protection policy. Valid values: `default`, `custom`.
         """
         return pulumi.get(self, "policy_type")
 
     @policy_type.setter
-    def policy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -164,10 +164,10 @@ class WafPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 defense_scene: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DCDN Waf Policy resource.
@@ -279,10 +279,10 @@ class WafPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 defense_scene: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -314,10 +314,10 @@ class WafPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            defense_scene: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'WafPolicy':
+            defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'WafPolicy':
         """
         Get an existing WafPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

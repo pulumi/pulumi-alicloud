@@ -95,5 +95,5 @@ export interface GetFlowLogServiceOutputArgs {
      *
      * > **NOTE:** Setting `enable = "On"` to open the Vpc Flow Log service that means you have read and agreed the [Vpc Flow Log Terms of Service](https://help.aliyun.com/zh/vpc/support/vpc-terms-of-service). The service can not closed once it is opened.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
 }

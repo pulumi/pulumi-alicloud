@@ -58,9 +58,9 @@ class LoadbalancerCommonBandwidthPackageAttachmentArgs:
 @pulumi.input_type
 class _LoadbalancerCommonBandwidthPackageAttachmentState:
     def __init__(__self__, *,
-                 bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadbalancerCommonBandwidthPackageAttachment resources.
 
@@ -77,38 +77,38 @@ class _LoadbalancerCommonBandwidthPackageAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="bandwidthPackageId")
-    def bandwidth_package_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_package_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether only to precheck the request. Valid values:
         """
         return pulumi.get(self, "bandwidth_package_id")
 
     @bandwidth_package_id.setter
-    def bandwidth_package_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_package_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_package_id", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the EIP bandwidth plan.
         """
         return pulumi.get(self, "load_balancer_id")
 
     @load_balancer_id.setter
-    def load_balancer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network-based load balancing instance status. Value:, indicating that the instance listener will no longer forward traffic.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -118,8 +118,8 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a NLB Loadbalancer Common Bandwidth Package Attachment resource.
@@ -309,8 +309,8 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -337,9 +337,9 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'LoadbalancerCommonBandwidthPackageAttachment':
+            bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'LoadbalancerCommonBandwidthPackageAttachment':
         """
         Get an existing LoadbalancerCommonBandwidthPackageAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

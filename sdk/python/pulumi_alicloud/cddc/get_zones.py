@@ -109,7 +109,7 @@ def get_zones(output_file: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         zones=pulumi.get(__ret__, 'zones'))
-def get_zones_output(output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zones_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     This data source provides the Cddc Zones of the current Alibaba Cloud user.

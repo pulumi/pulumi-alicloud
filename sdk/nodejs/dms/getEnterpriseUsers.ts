@@ -145,29 +145,29 @@ export interface GetEnterpriseUsersOutputArgs {
     /**
      * A list of DMS Enterprise User IDs (UID).
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter the results by the DMS Enterprise User nick_name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The role of the user to query.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The keyword used to query users.
      */
-    searchKey?: pulumi.Input<string>;
+    searchKey?: pulumi.Input<string | undefined>;
     /**
      * The status of the user.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the tenant in DMS Enterprise.
      */
-    tid?: pulumi.Input<number>;
+    tid?: pulumi.Input<number | undefined>;
 }

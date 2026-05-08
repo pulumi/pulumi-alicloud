@@ -216,27 +216,27 @@ export interface GatewayVcoRouteState {
     /**
      * The next hop of the destination route.
      */
-    nextHop?: pulumi.Input<string>;
+    nextHop?: pulumi.Input<string | undefined>;
     /**
      * The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
      */
-    overlayMode?: pulumi.Input<string>;
+    overlayMode?: pulumi.Input<string | undefined>;
     /**
      * The destination network segment of the destination route.
      */
-    routeDest?: pulumi.Input<string>;
+    routeDest?: pulumi.Input<string | undefined>;
     /**
      * The status of the vpn route entry.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The id of the vpn attachment.
      */
-    vpnConnectionId?: pulumi.Input<string>;
+    vpnConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The weight value of the destination route. Valid values: `0`, `100`.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -250,7 +250,7 @@ export interface GatewayVcoRouteArgs {
     /**
      * The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
      */
-    overlayMode?: pulumi.Input<string>;
+    overlayMode?: pulumi.Input<string | undefined>;
     /**
      * The destination network segment of the destination route.
      */

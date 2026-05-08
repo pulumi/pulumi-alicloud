@@ -124,11 +124,11 @@ export interface OriginProtectionState {
      * - on
      * - off
      */
-    originConverge?: pulumi.Input<string>;
+    originConverge?: pulumi.Input<string | undefined>;
     /**
      * Site Id
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -141,7 +141,7 @@ export interface OriginProtectionArgs {
      * - on
      * - off
      */
-    originConverge?: pulumi.Input<string>;
+    originConverge?: pulumi.Input<string | undefined>;
     /**
      * Site Id
      */

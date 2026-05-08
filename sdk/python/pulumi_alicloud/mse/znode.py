@@ -21,8 +21,8 @@ class ZnodeArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
                  path: pulumi.Input[_builtins.str],
-                 accept_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input[_builtins.str]] = None):
+                 accept_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Znode resource.
 
@@ -64,36 +64,36 @@ class ZnodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="acceptLanguage")
-    def accept_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accept_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language type of the returned information. Valid values: `zh` or `en`.
         """
         return pulumi.get(self, "accept_language")
 
     @accept_language.setter
-    def accept_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accept_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accept_language", value)
 
     @_builtins.property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Node data.
         """
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data", value)
 
 
 @pulumi.input_type
 class _ZnodeState:
     def __init__(__self__, *,
-                 accept_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 accept_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Znode resources.
 
@@ -113,50 +113,50 @@ class _ZnodeState:
 
     @_builtins.property
     @pulumi.getter(name="acceptLanguage")
-    def accept_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accept_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language type of the returned information. Valid values: `zh` or `en`.
         """
         return pulumi.get(self, "accept_language")
 
     @accept_language.setter
-    def accept_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accept_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accept_language", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Node data.
         """
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Node path. The value must start with a forward slash (/).
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
@@ -166,10 +166,10 @@ class Znode(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accept_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
+                 accept_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Microservice Engine (MSE) Znode resource.
@@ -305,10 +305,10 @@ class Znode(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accept_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
+                 accept_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -336,10 +336,10 @@ class Znode(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accept_language: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            data: Optional[pulumi.Input[_builtins.str]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None) -> 'Znode':
+            accept_language: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None) -> 'Znode':
         """
         Get an existing Znode resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

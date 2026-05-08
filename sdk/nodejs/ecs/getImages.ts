@@ -243,71 +243,71 @@ export interface GetImagesOutputArgs {
      * - `CreateEcs`: instance creation.
      * - `ChangeOS`: replacement of the system disk or operating system.
      */
-    actionType?: pulumi.Input<string>;
+    actionType?: pulumi.Input<string | undefined>;
     /**
      * The image architecture. Valid values: `i386`, `x8664`, `arm64`.
      */
-    architecture?: pulumi.Input<string>;
+    architecture?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the image is running on an ECS instance. Default value: `false`. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the image family. You can set this parameter to query images of the specified image family. This parameter is empty by default.
      */
-    imageFamily?: pulumi.Input<string>;
+    imageFamily?: pulumi.Input<string | undefined>;
     /**
      * The ID of the image.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The name of the image.
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Alibaba Cloud account to which the image belongs. This parameter takes effect only when you query shared images or community images.
      */
-    imageOwnerId?: pulumi.Input<string>;
+    imageOwnerId?: pulumi.Input<string | undefined>;
     /**
      * The instance type for which the image can be used.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the image supports cloud-init.
      */
-    isSupportCloudInit?: pulumi.Input<boolean>;
+    isSupportCloudInit?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the image can be used on I/O optimized instances.
      */
-    isSupportIoOptimized?: pulumi.Input<boolean>;
+    isSupportIoOptimized?: pulumi.Input<boolean | undefined>;
     /**
      * If more than one result are returned, select the most recent one.
      */
-    mostRecent?: pulumi.Input<boolean>;
+    mostRecent?: pulumi.Input<boolean | undefined>;
     /**
      * A regex string to filter resulting images by name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The operating system type of the image. Valid values: `windows` and `linux`.
      */
-    osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
      */
-    owners?: pulumi.Input<string>;
+    owners?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the custom image belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the snapshot used to create the custom image.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
      * - `Creating`: The image is being created.
@@ -317,13 +317,13 @@ export interface GetImagesOutputArgs {
      * - `CreateFailed`: The image failed to be created.
      * - `Deprecated`: The image is discontinued.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies whether to check the validity of the request without actually making the request. Valid values:
      */
-    usage?: pulumi.Input<string>;
+    usage?: pulumi.Input<string | undefined>;
 }

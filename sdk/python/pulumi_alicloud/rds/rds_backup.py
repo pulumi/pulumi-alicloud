@@ -20,12 +20,12 @@ __all__ = ['RdsBackupArgs', 'RdsBackup']
 class RdsBackupArgs:
     def __init__(__self__, *,
                  db_instance_id: pulumi.Input[_builtins.str],
-                 backup_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_from_state: Optional[pulumi.Input[_builtins.bool]] = None):
+                 backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_from_state: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RdsBackup resource.
 
@@ -83,7 +83,7 @@ class RdsBackupArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupMethod")
-    def backup_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup type. Valid values:  
         * `Logical`: logical backup (supported only for MySQL)
@@ -99,12 +99,12 @@ class RdsBackupArgs:
         return pulumi.get(self, "backup_method")
 
     @backup_method.setter
-    def backup_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_method", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
 
@@ -113,24 +113,24 @@ class RdsBackupArgs:
         return pulumi.get(self, "backup_retention_period")
 
     @backup_retention_period.setter
-    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupStrategy")
-    def backup_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup strategy. Valid values:
         """
         return pulumi.get(self, "backup_strategy")
 
     @backup_strategy.setter
-    def backup_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="backupType")
-    def backup_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup type. Valid values:  
         - FullBackup: full backup
@@ -139,12 +139,12 @@ class RdsBackupArgs:
         return pulumi.get(self, "backup_type")
 
     @backup_type.setter
-    def backup_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dbName")
-    def db_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A list of databases, separated by commas (,).  
 
@@ -156,35 +156,35 @@ class RdsBackupArgs:
         return pulumi.get(self, "db_name")
 
     @db_name.setter
-    def db_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_name", value)
 
     @_builtins.property
     @pulumi.getter(name="removeFromState")
-    def remove_from_state(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remove_from_state(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "remove_from_state")
 
     @remove_from_state.setter
-    def remove_from_state(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remove_from_state(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remove_from_state", value)
 
 
 @pulumi.input_type
 class _RdsBackupState:
     def __init__(__self__, *,
-                 backup_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_from_state: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 store_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_from_state: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 store_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RdsBackup resources.
 
@@ -240,19 +240,19 @@ class _RdsBackupState:
 
     @_builtins.property
     @pulumi.getter(name="backupId")
-    def backup_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup set ID.
         """
         return pulumi.get(self, "backup_id")
 
     @backup_id.setter
-    def backup_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_id", value)
 
     @_builtins.property
     @pulumi.getter(name="backupMethod")
-    def backup_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup type. Valid values:  
         * `Logical`: logical backup (supported only for MySQL)
@@ -268,12 +268,12 @@ class _RdsBackupState:
         return pulumi.get(self, "backup_method")
 
     @backup_method.setter
-    def backup_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_method", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
 
@@ -282,24 +282,24 @@ class _RdsBackupState:
         return pulumi.get(self, "backup_retention_period")
 
     @backup_retention_period.setter
-    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupStrategy")
-    def backup_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup strategy. Valid values:
         """
         return pulumi.get(self, "backup_strategy")
 
     @backup_strategy.setter
-    def backup_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="backupType")
-    def backup_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup type. Valid values:  
         - FullBackup: full backup
@@ -308,24 +308,24 @@ class _RdsBackupState:
         return pulumi.get(self, "backup_type")
 
     @backup_type.setter
-    def backup_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID. You can call DescribeDBInstances to obtain it.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbName")
-    def db_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A list of databases, separated by commas (,).  
 
@@ -337,43 +337,43 @@ class _RdsBackupState:
         return pulumi.get(self, "db_name")
 
     @db_name.setter
-    def db_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_name", value)
 
     @_builtins.property
     @pulumi.getter(name="removeFromState")
-    def remove_from_state(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remove_from_state(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "remove_from_state")
 
     @remove_from_state.setter
-    def remove_from_state(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remove_from_state(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remove_from_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storeStatus")
-    def store_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def store_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether the backup can be deleted.
         """
         return pulumi.get(self, "store_status")
 
     @store_status.setter
-    def store_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def store_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "store_status", value)
 
 
@@ -383,13 +383,13 @@ class RdsBackup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_from_state: Optional[pulumi.Input[_builtins.bool]] = None,
+                 backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_from_state: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a RDS Backup resource.
@@ -516,13 +516,13 @@ class RdsBackup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_from_state: Optional[pulumi.Input[_builtins.bool]] = None,
+                 backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_from_state: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -554,16 +554,16 @@ class RdsBackup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_id: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_method: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_name: Optional[pulumi.Input[_builtins.str]] = None,
-            remove_from_state: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            store_status: Optional[pulumi.Input[_builtins.str]] = None) -> 'RdsBackup':
+            backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_name: pulumi.Input[Optional[_builtins.str]] = None,
+            remove_from_state: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            store_status: pulumi.Input[Optional[_builtins.str]] = None) -> 'RdsBackup':
         """
         Get an existing RdsBackup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

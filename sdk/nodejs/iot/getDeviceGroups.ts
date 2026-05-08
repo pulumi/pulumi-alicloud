@@ -126,29 +126,29 @@ export interface GetDeviceGroupsOutputArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * The GroupName of the device group.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * A list of device group IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The id of the Iot Instance.
      */
-    iotInstanceId?: pulumi.Input<string>;
+    iotInstanceId?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter CEN instances by name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The id of the SuperGroup.
      */
-    superGroupId?: pulumi.Input<string>;
+    superGroupId?: pulumi.Input<string | undefined>;
 }

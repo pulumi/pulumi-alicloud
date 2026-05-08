@@ -160,27 +160,27 @@ export interface GetCustomRoutingEndpointTrafficPoliciesOutputArgs {
     /**
      * The IP addresses of the traffic policies.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The ID of the endpoint group to which the traffic policies belong.
      */
-    endpointGroupId?: pulumi.Input<string>;
+    endpointGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the endpoint to which the traffic policies belong.
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * A list of Custom Routing Endpoint Traffic Policy IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the listener to which the traffic policies belong.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
 }

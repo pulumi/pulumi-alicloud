@@ -214,15 +214,15 @@ export interface QuotaScheduleState {
     /**
      * The nickname of level-1 compute quota.
      */
-    nickname?: pulumi.Input<string>;
+    nickname?: pulumi.Input<string | undefined>;
     /**
      * schedule list See `scheduleList` below.
      */
-    scheduleLists?: pulumi.Input<pulumi.Input<inputs.maxcompute.QuotaScheduleScheduleList>[]>;
+    scheduleLists?: pulumi.Input<pulumi.Input<inputs.maxcompute.QuotaScheduleScheduleList>[] | undefined>;
     /**
      * Time zone, reference value: UTC +8
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -236,7 +236,7 @@ export interface QuotaScheduleArgs {
     /**
      * schedule list See `scheduleList` below.
      */
-    scheduleLists?: pulumi.Input<pulumi.Input<inputs.maxcompute.QuotaScheduleScheduleList>[]>;
+    scheduleLists?: pulumi.Input<pulumi.Input<inputs.maxcompute.QuotaScheduleScheduleList>[] | undefined>;
     /**
      * Time zone, reference value: UTC +8
      */

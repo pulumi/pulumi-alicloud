@@ -20,24 +20,24 @@ __all__ = ['HttpsApplicationConfigurationArgs', 'HttpsApplicationConfiguration']
 class HttpsApplicationConfigurationArgs:
     def __init__(__self__, *,
                  site_id: pulumi.Input[_builtins.str],
-                 alt_svc: Optional[pulumi.Input[_builtins.str]] = None,
-                 alt_svc_clear: Optional[pulumi.Input[_builtins.str]] = None,
-                 alt_svc_ma: Optional[pulumi.Input[_builtins.str]] = None,
-                 alt_svc_persist: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_include_subdomains: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_max_age: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_preload: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_force: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_force_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_no_sni_deny: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_sni_verify: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_sni_whitelist: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None):
+                 alt_svc: pulumi.Input[Optional[_builtins.str]] = None,
+                 alt_svc_clear: pulumi.Input[Optional[_builtins.str]] = None,
+                 alt_svc_ma: pulumi.Input[Optional[_builtins.str]] = None,
+                 alt_svc_persist: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_include_subdomains: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_max_age: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_preload: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_force: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_force_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_no_sni_deny: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_sni_verify: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_sni_whitelist: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a HttpsApplicationConfiguration resource.
 
@@ -115,163 +115,163 @@ class HttpsApplicationConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="altSvc")
-    def alt_svc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alt_svc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function switch, default off. Value range:
         """
         return pulumi.get(self, "alt_svc")
 
     @alt_svc.setter
-    def alt_svc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alt_svc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alt_svc", value)
 
     @_builtins.property
     @pulumi.getter(name="altSvcClear")
-    def alt_svc_clear(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alt_svc_clear(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alt-Svc whether The header contains the clear parameter. This parameter is disabled by default. Value range:
         """
         return pulumi.get(self, "alt_svc_clear")
 
     @alt_svc_clear.setter
-    def alt_svc_clear(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alt_svc_clear(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alt_svc_clear", value)
 
     @_builtins.property
     @pulumi.getter(name="altSvcMa")
-    def alt_svc_ma(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alt_svc_ma(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective time of the Alt-Svc, in seconds. The default value is 86400 seconds.
         """
         return pulumi.get(self, "alt_svc_ma")
 
     @alt_svc_ma.setter
-    def alt_svc_ma(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alt_svc_ma(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alt_svc_ma", value)
 
     @_builtins.property
     @pulumi.getter(name="altSvcPersist")
-    def alt_svc_persist(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alt_svc_persist(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alt-Svc whether The header contains the persist parameter. This parameter is disabled by default. Value range:
         """
         return pulumi.get(self, "alt_svc_persist")
 
     @alt_svc_persist.setter
-    def alt_svc_persist(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alt_svc_persist(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alt_svc_persist", value)
 
     @_builtins.property
     @pulumi.getter
-    def hsts(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hsts(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable HSTS. It is disabled by default. Value range:
         """
         return pulumi.get(self, "hsts")
 
     @hsts.setter
-    def hsts(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hsts(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hsts", value)
 
     @_builtins.property
     @pulumi.getter(name="hstsIncludeSubdomains")
-    def hsts_include_subdomains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hsts_include_subdomains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to include subdomains in HSTS is disabled by default. Value range:
         """
         return pulumi.get(self, "hsts_include_subdomains")
 
     @hsts_include_subdomains.setter
-    def hsts_include_subdomains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hsts_include_subdomains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hsts_include_subdomains", value)
 
     @_builtins.property
     @pulumi.getter(name="hstsMaxAge")
-    def hsts_max_age(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hsts_max_age(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expiration time of HSTS, in seconds.
         """
         return pulumi.get(self, "hsts_max_age")
 
     @hsts_max_age.setter
-    def hsts_max_age(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hsts_max_age(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hsts_max_age", value)
 
     @_builtins.property
     @pulumi.getter(name="hstsPreload")
-    def hsts_preload(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hsts_preload(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable HSTS preloading. It is disabled by default. Value range:
         """
         return pulumi.get(self, "hsts_preload")
 
     @hsts_preload.setter
-    def hsts_preload(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hsts_preload(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hsts_preload", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsForce")
-    def https_force(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_force(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable forced HTTPS. It is disabled by default. Value range:
         """
         return pulumi.get(self, "https_force")
 
     @https_force.setter
-    def https_force(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_force(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_force", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsForceCode")
-    def https_force_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_force_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Forced HTTPS jump status code, value range:
         """
         return pulumi.get(self, "https_force_code")
 
     @https_force_code.setter
-    def https_force_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_force_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_force_code", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsNoSniDeny")
-    def https_no_sni_deny(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_no_sni_deny(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
         """
         return pulumi.get(self, "https_no_sni_deny")
 
     @https_no_sni_deny.setter
-    def https_no_sni_deny(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_no_sni_deny(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_no_sni_deny", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsSniVerify")
-    def https_sni_verify(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_sni_verify(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable SNI verification. It is disabled by default. Value range:
         """
         return pulumi.get(self, "https_sni_verify")
 
     @https_sni_verify.setter
-    def https_sni_verify(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_sni_verify(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_sni_verify", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsSniWhitelist")
-    def https_sni_whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_sni_whitelist(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the list of allowed SNI whitelists, separated by spaces.
         """
         return pulumi.get(self, "https_sni_whitelist")
 
     @https_sni_whitelist.setter
-    def https_sni_whitelist(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_sni_whitelist(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_sni_whitelist", value)
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
         - Match all incoming requests: value set to true
@@ -280,81 +280,81 @@ class HttpsApplicationConfigurationArgs:
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleEnable")
-    def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
     @rule_enable.setter
-    def rule_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sequence(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "sequence")
 
     @sequence.setter
-    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sequence(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
-    def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
-    def site_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "site_version", value)
 
 
 @pulumi.input_type
 class _HttpsApplicationConfigurationState:
     def __init__(__self__, *,
-                 alt_svc: Optional[pulumi.Input[_builtins.str]] = None,
-                 alt_svc_clear: Optional[pulumi.Input[_builtins.str]] = None,
-                 alt_svc_ma: Optional[pulumi.Input[_builtins.str]] = None,
-                 alt_svc_persist: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 hsts: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_include_subdomains: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_max_age: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_preload: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_force: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_force_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_no_sni_deny: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_sni_verify: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_sni_whitelist: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None):
+                 alt_svc: pulumi.Input[Optional[_builtins.str]] = None,
+                 alt_svc_clear: pulumi.Input[Optional[_builtins.str]] = None,
+                 alt_svc_ma: pulumi.Input[Optional[_builtins.str]] = None,
+                 alt_svc_persist: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 hsts: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_include_subdomains: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_max_age: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_preload: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_force: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_force_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_no_sni_deny: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_sni_verify: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_sni_whitelist: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HttpsApplicationConfiguration resources.
 
@@ -424,175 +424,175 @@ class _HttpsApplicationConfigurationState:
 
     @_builtins.property
     @pulumi.getter(name="altSvc")
-    def alt_svc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alt_svc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function switch, default off. Value range:
         """
         return pulumi.get(self, "alt_svc")
 
     @alt_svc.setter
-    def alt_svc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alt_svc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alt_svc", value)
 
     @_builtins.property
     @pulumi.getter(name="altSvcClear")
-    def alt_svc_clear(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alt_svc_clear(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alt-Svc whether The header contains the clear parameter. This parameter is disabled by default. Value range:
         """
         return pulumi.get(self, "alt_svc_clear")
 
     @alt_svc_clear.setter
-    def alt_svc_clear(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alt_svc_clear(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alt_svc_clear", value)
 
     @_builtins.property
     @pulumi.getter(name="altSvcMa")
-    def alt_svc_ma(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alt_svc_ma(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective time of the Alt-Svc, in seconds. The default value is 86400 seconds.
         """
         return pulumi.get(self, "alt_svc_ma")
 
     @alt_svc_ma.setter
-    def alt_svc_ma(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alt_svc_ma(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alt_svc_ma", value)
 
     @_builtins.property
     @pulumi.getter(name="altSvcPersist")
-    def alt_svc_persist(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alt_svc_persist(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alt-Svc whether The header contains the persist parameter. This parameter is disabled by default. Value range:
         """
         return pulumi.get(self, "alt_svc_persist")
 
     @alt_svc_persist.setter
-    def alt_svc_persist(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alt_svc_persist(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alt_svc_persist", value)
 
     @_builtins.property
     @pulumi.getter(name="configId")
-    def config_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def config_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Config Id
         """
         return pulumi.get(self, "config_id")
 
     @config_id.setter
-    def config_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def config_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "config_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def hsts(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hsts(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable HSTS. It is disabled by default. Value range:
         """
         return pulumi.get(self, "hsts")
 
     @hsts.setter
-    def hsts(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hsts(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hsts", value)
 
     @_builtins.property
     @pulumi.getter(name="hstsIncludeSubdomains")
-    def hsts_include_subdomains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hsts_include_subdomains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to include subdomains in HSTS is disabled by default. Value range:
         """
         return pulumi.get(self, "hsts_include_subdomains")
 
     @hsts_include_subdomains.setter
-    def hsts_include_subdomains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hsts_include_subdomains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hsts_include_subdomains", value)
 
     @_builtins.property
     @pulumi.getter(name="hstsMaxAge")
-    def hsts_max_age(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hsts_max_age(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expiration time of HSTS, in seconds.
         """
         return pulumi.get(self, "hsts_max_age")
 
     @hsts_max_age.setter
-    def hsts_max_age(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hsts_max_age(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hsts_max_age", value)
 
     @_builtins.property
     @pulumi.getter(name="hstsPreload")
-    def hsts_preload(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hsts_preload(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable HSTS preloading. It is disabled by default. Value range:
         """
         return pulumi.get(self, "hsts_preload")
 
     @hsts_preload.setter
-    def hsts_preload(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hsts_preload(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hsts_preload", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsForce")
-    def https_force(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_force(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable forced HTTPS. It is disabled by default. Value range:
         """
         return pulumi.get(self, "https_force")
 
     @https_force.setter
-    def https_force(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_force(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_force", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsForceCode")
-    def https_force_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_force_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Forced HTTPS jump status code, value range:
         """
         return pulumi.get(self, "https_force_code")
 
     @https_force_code.setter
-    def https_force_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_force_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_force_code", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsNoSniDeny")
-    def https_no_sni_deny(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_no_sni_deny(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
         """
         return pulumi.get(self, "https_no_sni_deny")
 
     @https_no_sni_deny.setter
-    def https_no_sni_deny(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_no_sni_deny(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_no_sni_deny", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsSniVerify")
-    def https_sni_verify(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_sni_verify(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable SNI verification. It is disabled by default. Value range:
         """
         return pulumi.get(self, "https_sni_verify")
 
     @https_sni_verify.setter
-    def https_sni_verify(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_sni_verify(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_sni_verify", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsSniWhitelist")
-    def https_sni_whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_sni_whitelist(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the list of allowed SNI whitelists, separated by spaces.
         """
         return pulumi.get(self, "https_sni_whitelist")
 
     @https_sni_whitelist.setter
-    def https_sni_whitelist(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_sni_whitelist(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_sni_whitelist", value)
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
         - Match all incoming requests: value set to true
@@ -601,67 +601,67 @@ class _HttpsApplicationConfigurationState:
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleEnable")
-    def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
     @rule_enable.setter
-    def rule_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sequence(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "sequence")
 
     @sequence.setter
-    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sequence(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The site ID, which can be obtained by calling the ListSites API.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
-    def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
-    def site_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "site_version", value)
 
 
@@ -671,25 +671,25 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alt_svc: Optional[pulumi.Input[_builtins.str]] = None,
-                 alt_svc_clear: Optional[pulumi.Input[_builtins.str]] = None,
-                 alt_svc_ma: Optional[pulumi.Input[_builtins.str]] = None,
-                 alt_svc_persist: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_include_subdomains: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_max_age: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_preload: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_force: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_force_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_no_sni_deny: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_sni_verify: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_sni_whitelist: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 alt_svc: pulumi.Input[Optional[_builtins.str]] = None,
+                 alt_svc_clear: pulumi.Input[Optional[_builtins.str]] = None,
+                 alt_svc_ma: pulumi.Input[Optional[_builtins.str]] = None,
+                 alt_svc_persist: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_include_subdomains: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_max_age: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_preload: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_force: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_force_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_no_sni_deny: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_sni_verify: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_sni_whitelist: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a ESA Https Application Configuration resource.
@@ -836,25 +836,25 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alt_svc: Optional[pulumi.Input[_builtins.str]] = None,
-                 alt_svc_clear: Optional[pulumi.Input[_builtins.str]] = None,
-                 alt_svc_ma: Optional[pulumi.Input[_builtins.str]] = None,
-                 alt_svc_persist: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_include_subdomains: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_max_age: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_preload: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_force: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_force_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_no_sni_deny: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_sni_verify: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_sni_whitelist: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 alt_svc: pulumi.Input[Optional[_builtins.str]] = None,
+                 alt_svc_clear: pulumi.Input[Optional[_builtins.str]] = None,
+                 alt_svc_ma: pulumi.Input[Optional[_builtins.str]] = None,
+                 alt_svc_persist: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_include_subdomains: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_max_age: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_preload: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_force: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_force_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_no_sni_deny: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_sni_verify: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_sni_whitelist: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -896,26 +896,26 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alt_svc: Optional[pulumi.Input[_builtins.str]] = None,
-            alt_svc_clear: Optional[pulumi.Input[_builtins.str]] = None,
-            alt_svc_ma: Optional[pulumi.Input[_builtins.str]] = None,
-            alt_svc_persist: Optional[pulumi.Input[_builtins.str]] = None,
-            config_id: Optional[pulumi.Input[_builtins.int]] = None,
-            hsts: Optional[pulumi.Input[_builtins.str]] = None,
-            hsts_include_subdomains: Optional[pulumi.Input[_builtins.str]] = None,
-            hsts_max_age: Optional[pulumi.Input[_builtins.str]] = None,
-            hsts_preload: Optional[pulumi.Input[_builtins.str]] = None,
-            https_force: Optional[pulumi.Input[_builtins.str]] = None,
-            https_force_code: Optional[pulumi.Input[_builtins.str]] = None,
-            https_no_sni_deny: Optional[pulumi.Input[_builtins.str]] = None,
-            https_sni_verify: Optional[pulumi.Input[_builtins.str]] = None,
-            https_sni_whitelist: Optional[pulumi.Input[_builtins.str]] = None,
-            rule: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sequence: Optional[pulumi.Input[_builtins.int]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            site_version: Optional[pulumi.Input[_builtins.int]] = None) -> 'HttpsApplicationConfiguration':
+            alt_svc: pulumi.Input[Optional[_builtins.str]] = None,
+            alt_svc_clear: pulumi.Input[Optional[_builtins.str]] = None,
+            alt_svc_ma: pulumi.Input[Optional[_builtins.str]] = None,
+            alt_svc_persist: pulumi.Input[Optional[_builtins.str]] = None,
+            config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            hsts: pulumi.Input[Optional[_builtins.str]] = None,
+            hsts_include_subdomains: pulumi.Input[Optional[_builtins.str]] = None,
+            hsts_max_age: pulumi.Input[Optional[_builtins.str]] = None,
+            hsts_preload: pulumi.Input[Optional[_builtins.str]] = None,
+            https_force: pulumi.Input[Optional[_builtins.str]] = None,
+            https_force_code: pulumi.Input[Optional[_builtins.str]] = None,
+            https_no_sni_deny: pulumi.Input[Optional[_builtins.str]] = None,
+            https_sni_verify: pulumi.Input[Optional[_builtins.str]] = None,
+            https_sni_whitelist: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None) -> 'HttpsApplicationConfiguration':
         """
         Get an existing HttpsApplicationConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

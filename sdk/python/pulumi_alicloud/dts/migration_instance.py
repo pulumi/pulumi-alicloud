@@ -24,11 +24,11 @@ class MigrationInstanceArgs:
                  payment_type: pulumi.Input[_builtins.str],
                  source_endpoint_engine_name: pulumi.Input[_builtins.str],
                  source_endpoint_region: pulumi.Input[_builtins.str],
-                 compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a MigrationInstance resource.
 
@@ -121,80 +121,80 @@ class MigrationInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="computeUnit")
-    def compute_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def compute_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         """
         return pulumi.get(self, "compute_unit")
 
     @compute_unit.setter
-    def compute_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def compute_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "compute_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseCount")
-    def database_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def database_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
         """
         return pulumi.get(self, "database_count")
 
     @database_count.setter
-    def database_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def database_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "database_count", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance class. Valid values: `large`, `medium`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         """
         return pulumi.get(self, "instance_class")
 
     @instance_class.setter
-    def instance_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_class", value)
 
     @_builtins.property
     @pulumi.getter(name="syncArchitecture")
-    def sync_architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sync architecture. Valid values: `oneway`.
         """
         return pulumi.get(self, "sync_architecture")
 
     @sync_architecture.setter
-    def sync_architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_architecture", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _MigrationInstanceState:
     def __init__(__self__, *,
-                 compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering MigrationInstance resources.
 
@@ -238,146 +238,146 @@ class _MigrationInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="computeUnit")
-    def compute_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def compute_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
         """
         return pulumi.get(self, "compute_unit")
 
     @compute_unit.setter
-    def compute_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def compute_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "compute_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseCount")
-    def database_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def database_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
         """
         return pulumi.get(self, "database_count")
 
     @database_count.setter
-    def database_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def database_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "database_count", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointEngineName")
-    def destination_endpoint_engine_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_engine_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
         """
         return pulumi.get(self, "destination_endpoint_engine_name")
 
     @destination_endpoint_engine_name.setter
-    def destination_endpoint_engine_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_engine_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_engine_name", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointRegion")
-    def destination_endpoint_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
         """
         return pulumi.get(self, "destination_endpoint_region")
 
     @destination_endpoint_region.setter
-    def destination_endpoint_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_region", value)
 
     @_builtins.property
     @pulumi.getter(name="dtsInstanceId")
-    def dts_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dts_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Migration Instance.
         """
         return pulumi.get(self, "dts_instance_id")
 
     @dts_instance_id.setter
-    def dts_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dts_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dts_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance class. Valid values: `large`, `medium`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         """
         return pulumi.get(self, "instance_class")
 
     @instance_class.setter
-    def instance_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_class", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource. Valid values: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointEngineName")
-    def source_endpoint_engine_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_engine_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
         """
         return pulumi.get(self, "source_endpoint_engine_name")
 
     @source_endpoint_engine_name.setter
-    def source_endpoint_engine_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_engine_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_engine_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointRegion")
-    def source_endpoint_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of source instance.
         """
         return pulumi.get(self, "source_endpoint_region")
 
     @source_endpoint_region.setter
-    def source_endpoint_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_region", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="syncArchitecture")
-    def sync_architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sync architecture. Valid values: `oneway`.
         """
         return pulumi.get(self, "sync_architecture")
 
     @sync_architecture.setter
-    def sync_architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_architecture", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -387,16 +387,16 @@ class MigrationInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a DTS Migration Instance resource.
@@ -506,16 +506,16 @@ class MigrationInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -557,18 +557,18 @@ class MigrationInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            compute_unit: Optional[pulumi.Input[_builtins.int]] = None,
-            database_count: Optional[pulumi.Input[_builtins.int]] = None,
-            destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-            dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_architecture: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'MigrationInstance':
+            compute_unit: pulumi.Input[Optional[_builtins.int]] = None,
+            database_count: pulumi.Input[Optional[_builtins.int]] = None,
+            destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_architecture: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'MigrationInstance':
         """
         Get an existing MigrationInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -175,55 +175,55 @@ export interface VaultState {
     /**
      * (Available since v1.243.0) The time when the backup vault was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of Vault. Defaults to an empty string.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
      * - `KMS`: Use Alibaba Cloud Kms to encryption.
      */
-    encryptType?: pulumi.Input<string>;
+    encryptType?: pulumi.Input<string | undefined>;
     /**
      * The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.243.0) The ID of the region in which the backup vault resides.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Vault.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of Vault.
      */
-    vaultName?: pulumi.Input<string>;
+    vaultName?: pulumi.Input<string | undefined>;
     /**
      * The storage class of Vault. Valid values: `STANDARD`.
      */
-    vaultStorageClass?: pulumi.Input<string>;
+    vaultStorageClass?: pulumi.Input<string | undefined>;
     /**
      * The type of Vault. Valid values:
      * - `STANDARD`: Standard backup vault.
      * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
      */
-    vaultType?: pulumi.Input<string>;
+    vaultType?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
      */
-    wormEnabled?: pulumi.Input<boolean>;
+    wormEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -233,25 +233,25 @@ export interface VaultArgs {
     /**
      * The description of Vault. Defaults to an empty string.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
      * - `KMS`: Use Alibaba Cloud Kms to encryption.
      */
-    encryptType?: pulumi.Input<string>;
+    encryptType?: pulumi.Input<string | undefined>;
     /**
      * The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of Vault.
      */
@@ -259,15 +259,15 @@ export interface VaultArgs {
     /**
      * The storage class of Vault. Valid values: `STANDARD`.
      */
-    vaultStorageClass?: pulumi.Input<string>;
+    vaultStorageClass?: pulumi.Input<string | undefined>;
     /**
      * The type of Vault. Valid values:
      * - `STANDARD`: Standard backup vault.
      * - `OTS_BACKUP`: Backup vault for Tablestore. **NOTE:** We recommend that you use `STANDARD`. The cloud backup product will upgrade the backup vault, and the `vaultType` will be changed from `OTS_BACKUP` to `STANDARD`.
      */
-    vaultType?: pulumi.Input<string>;
+    vaultType?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
      */
-    wormEnabled?: pulumi.Input<boolean>;
+    wormEnabled?: pulumi.Input<boolean | undefined>;
 }

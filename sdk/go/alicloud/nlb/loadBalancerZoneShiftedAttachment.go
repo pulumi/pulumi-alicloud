@@ -43,7 +43,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 //				Description: pulumi.String("example"),
 //				CidrBlock:   pulumi.String("10.0.0.0/8"),
 //				EnableIpv6:  pulumi.Bool(true),
@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			vsw1, err := vpc.NewSwitch(ctx, "vsw1", &vpc.SwitchArgs{
-//				VpcId:       vpc.ID(),
+//				VpcId:       vpc2.ID(),
 //				ZoneId:      pulumi.String("cn-beijing-l"),
 //				CidrBlock:   pulumi.String("10.0.1.0/24"),
 //				VswitchName: pulumi.String("tf-exampleacc-41"),
@@ -62,7 +62,7 @@ import (
 //				return err
 //			}
 //			vsw2, err := vpc.NewSwitch(ctx, "vsw2", &vpc.SwitchArgs{
-//				VpcId:             vpc.ID(),
+//				VpcId:             vpc2.ID(),
 //				ZoneId:            pulumi.String("cn-beijing-k"),
 //				CidrBlock:         pulumi.String("10.0.2.0/24"),
 //				VswitchName:       pulumi.String("tf-exampleacc-301"),
@@ -71,7 +71,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			nlb, err := nlb.NewLoadBalancer(ctx, "nlb", &nlb.LoadBalancerArgs{
+//			nlb2, err := nlb.NewLoadBalancer(ctx, "nlb", &nlb.LoadBalancerArgs{
 //				ZoneMappings: nlb.LoadBalancerZoneMappingArray{
 //					&nlb.LoadBalancerZoneMappingArgs{
 //						VswitchId: vsw1.ID(),
@@ -82,7 +82,7 @@ import (
 //						ZoneId:    vsw2.ZoneId,
 //					},
 //				},
-//				VpcId:       vpc.ID(),
+//				VpcId:       vpc2.ID(),
 //				AddressType: pulumi.String("Intranet"),
 //			})
 //			if err != nil {
@@ -91,7 +91,7 @@ import (
 //			_, err = nlb.NewLoadBalancerZoneShiftedAttachment(ctx, "default", &nlb.LoadBalancerZoneShiftedAttachmentArgs{
 //				ZoneId:         vsw1.ZoneId,
 //				VswitchId:      vsw1.ID(),
-//				LoadBalancerId: nlb.ID(),
+//				LoadBalancerId: nlb2.ID(),
 //			})
 //			if err != nil {
 //				return err

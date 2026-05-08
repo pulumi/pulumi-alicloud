@@ -40,8 +40,8 @@ public final class SagFunctions {
      * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.sag.Acl;
      * import com.pulumi.alicloud.sag.AclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -93,8 +93,8 @@ public final class SagFunctions {
      * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.sag.Acl;
      * import com.pulumi.alicloud.sag.AclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -146,8 +146,8 @@ public final class SagFunctions {
      * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.sag.Acl;
      * import com.pulumi.alicloud.sag.AclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -199,8 +199,8 @@ public final class SagFunctions {
      * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.sag.Acl;
      * import com.pulumi.alicloud.sag.AclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -252,8 +252,8 @@ public final class SagFunctions {
      * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.sag.Acl;
      * import com.pulumi.alicloud.sag.AclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -305,8 +305,8 @@ public final class SagFunctions {
      * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.sag.Acl;
      * import com.pulumi.alicloud.sag.AclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -358,8 +358,8 @@ public final class SagFunctions {
      * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.sag.Acl;
      * import com.pulumi.alicloud.sag.AclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -407,8 +407,8 @@ public final class SagFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sag.SagFunctions;
      * import com.pulumi.alicloud.sag.inputs.GetSmartagFlowLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -457,8 +457,8 @@ public final class SagFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sag.SagFunctions;
      * import com.pulumi.alicloud.sag.inputs.GetSmartagFlowLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -507,8 +507,8 @@ public final class SagFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sag.SagFunctions;
      * import com.pulumi.alicloud.sag.inputs.GetSmartagFlowLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -557,8 +557,8 @@ public final class SagFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sag.SagFunctions;
      * import com.pulumi.alicloud.sag.inputs.GetSmartagFlowLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -607,8 +607,8 @@ public final class SagFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sag.SagFunctions;
      * import com.pulumi.alicloud.sag.inputs.GetSmartagFlowLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -657,8 +657,8 @@ public final class SagFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sag.SagFunctions;
      * import com.pulumi.alicloud.sag.inputs.GetSmartagFlowLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -707,8 +707,8 @@ public final class SagFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.sag.SagFunctions;
      * import com.pulumi.alicloud.sag.inputs.GetSmartagFlowLogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

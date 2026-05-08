@@ -254,87 +254,87 @@ export interface ExecutionState {
     /**
      * The counters of OOS Execution.
      */
-    counters?: pulumi.Input<string>;
+    counters?: pulumi.Input<string | undefined>;
     /**
      * The time when the execution was created.
      */
-    createDate?: pulumi.Input<string>;
+    createDate?: pulumi.Input<string | undefined>;
     /**
      * The description of OOS Execution.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The time when the execution was ended.
      */
-    endDate?: pulumi.Input<string>;
+    endDate?: pulumi.Input<string | undefined>;
     /**
      * The user who execute the template.
      */
-    executedBy?: pulumi.Input<string>;
+    executedBy?: pulumi.Input<string | undefined>;
     /**
      * Whether to include subtasks.
      */
-    isParent?: pulumi.Input<boolean>;
+    isParent?: pulumi.Input<boolean | undefined>;
     /**
      * The loop mode of OOS Execution.
      */
-    loopMode?: pulumi.Input<string>;
+    loopMode?: pulumi.Input<string | undefined>;
     /**
      * The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The outputs of OOS Execution.
      */
-    outputs?: pulumi.Input<string>;
+    outputs?: pulumi.Input<string | undefined>;
     /**
      * The parameters required by the template. Default to `{}`.
      */
-    parameters?: pulumi.Input<string>;
+    parameters?: pulumi.Input<string | undefined>;
     /**
      * The id of parent execution.
      */
-    parentExecutionId?: pulumi.Input<string>;
+    parentExecutionId?: pulumi.Input<string | undefined>;
     /**
      * The role that executes the current template.
      */
-    ramRole?: pulumi.Input<string>;
+    ramRole?: pulumi.Input<string | undefined>;
     /**
      * The mode of safety check.
      */
-    safetyCheck?: pulumi.Input<string>;
+    safetyCheck?: pulumi.Input<string | undefined>;
     /**
      * The time when the execution was started.
      */
-    startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string | undefined>;
     /**
      * The status of OOS Execution.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The message of status.
      */
-    statusMessage?: pulumi.Input<string>;
+    statusMessage?: pulumi.Input<string | undefined>;
     /**
      * The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
      */
-    templateContent?: pulumi.Input<string>;
+    templateContent?: pulumi.Input<string | undefined>;
     /**
      * The id of template.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * The name of execution template.
      */
-    templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string | undefined>;
     /**
      * The version of execution template.
      */
-    templateVersion?: pulumi.Input<string>;
+    templateVersion?: pulumi.Input<string | undefined>;
     /**
      * The time when the execution was updated.
      */
-    updateDate?: pulumi.Input<string>;
+    updateDate?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -344,31 +344,31 @@ export interface ExecutionArgs {
     /**
      * The description of OOS Execution.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The loop mode of OOS Execution.
      */
-    loopMode?: pulumi.Input<string>;
+    loopMode?: pulumi.Input<string | undefined>;
     /**
      * The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The parameters required by the template. Default to `{}`.
      */
-    parameters?: pulumi.Input<string>;
+    parameters?: pulumi.Input<string | undefined>;
     /**
      * The id of parent execution.
      */
-    parentExecutionId?: pulumi.Input<string>;
+    parentExecutionId?: pulumi.Input<string | undefined>;
     /**
      * The mode of safety check.
      */
-    safetyCheck?: pulumi.Input<string>;
+    safetyCheck?: pulumi.Input<string | undefined>;
     /**
      * The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
      */
-    templateContent?: pulumi.Input<string>;
+    templateContent?: pulumi.Input<string | undefined>;
     /**
      * The name of execution template.
      */
@@ -376,5 +376,5 @@ export interface ExecutionArgs {
     /**
      * The version of execution template.
      */
-    templateVersion?: pulumi.Input<string>;
+    templateVersion?: pulumi.Input<string | undefined>;
 }

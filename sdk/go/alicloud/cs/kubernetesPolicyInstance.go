@@ -22,6 +22,209 @@ import (
 //
 // # Basic Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// vpcCidr := "10.0.0.0/8";
+// if param := cfg.Get("vpcCidr"); param != ""{
+// vpcCidr = param
+// }
+// vswitchCidrs := []string{
+// "10.1.0.0/16",
+// "10.2.0.0/16",
+// };
+// if param := cfg.GetObject("vswitchCidrs"); param != nil {
+// vswitchCidrs = param
+// }
+// clusterName := "terraform-example-";
+// if param := cfg.Get("clusterName"); param != ""{
+// clusterName = param
+// }
+// podCidr := "172.16.0.0/16";
+// if param := cfg.Get("podCidr"); param != ""{
+// podCidr = param
+// }
+// serviceCidr := "192.168.0.0/16";
+// if param := cfg.Get("serviceCidr"); param != ""{
+// serviceCidr = param
+// }
+// enhanced, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// createVPC, err := vpc.NewNetwork(ctx, "CreateVPC", &vpc.NetworkArgs{
+// CidrBlock: pulumi.String(pulumi.String(vpcCidr)),
+// })
+// if err != nil {
+// return err
+// }
+// // According to the vswitch cidr blocks to launch several vswitches
+// var createVSwitch []*vpc.Switch
+//
+//	for index := 0; index < len(vswitchCidrs); index++ {
+//	    key0 := index
+//	    val0 := index
+//
+// __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("CreateVSwitch-%v", key0), &vpc.SwitchArgs{
+// VpcId: createVPC.ID(),
+// CidrBlock: pulumi.String(vswitchCidrs[val0]),
+// ZoneId: pulumi.String(enhanced.Zones[val0].ZoneId),
+// })
+// if err != nil {
+// return err
+// }
+// createVSwitch = append(createVSwitch, __res)
+// }
+// invokeSplit, err := std.Split(ctx, &std.SplitArgs{
+// Separator: ",",
+// Text: invoke.Result,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// createCluster, err := cs.NewManagedKubernetes(ctx, "CreateCluster", &cs.ManagedKubernetesArgs{
+// NamePrefix: pulumi.String(pulumi.String(clusterName)),
+// ClusterSpec: pulumi.String("ack.standard"),
+// Profile: pulumi.String("Default"),
+// VswitchIds: pulumi.StringArray(std.JoinOutput(ctx, std.JoinOutputArgs{
+// Separator: pulumi.String(","),
+// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:48,19-38),
+// }, nil).ApplyT(func(invoke std.JoinResult) (std.SplitResult, error) {
+// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.SplitResultOutput).ApplyT(func(invoke std.SplitResult) ([]string, error) {
+// return invoke.Result, nil
+// }).(pulumi.StringArrayOutput)),
+// PodCidr: pulumi.String(pulumi.String(podCidr)),
+// ServiceCidr: pulumi.String(pulumi.String(serviceCidr)),
+// IsEnterpriseSecurityGroup: pulumi.Bool(true),
+// IpStack: pulumi.String("ipv4"),
+// ProxyMode: pulumi.String("ipvs"),
+// DeletionProtection: pulumi.Bool(false),
+// Addons: cs.ManagedKubernetesAddonArray{
+// &cs.ManagedKubernetesAddonArgs{
+// Name: pulumi.String("gatekeeper"),
+// },
+// &cs.ManagedKubernetesAddonArgs{
+// Name: pulumi.String("loongcollector"),
+// },
+// &cs.ManagedKubernetesAddonArgs{
+// Name: pulumi.String("policy-template-controller"),
+// },
+// },
+// OperationPolicy: &cs.ManagedKubernetesOperationPolicyArgs{
+// ClusterAutoUpgrade: &cs.ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs{
+// Enabled: pulumi.Bool(false),
+// },
+// },
+// MaintenanceWindow: &cs.ManagedKubernetesMaintenanceWindowArgs{
+// Enable: pulumi.Bool(false),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = cs.NewKubernetesPolicyInstance(ctx, "base", &cs.KubernetesPolicyInstanceArgs{
+// ClusterId: createCluster.ID(),
+// PolicyName: pulumi.String("ACKPSPReadOnlyRootFilesystem"),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = cs.NewKubernetesPolicyInstance(ctx, "string", &cs.KubernetesPolicyInstanceArgs{
+// ClusterId: createCluster.ID(),
+// PolicyName: pulumi.String("ACKPVSizeConstraint"),
+// Action: pulumi.String("deny"),
+// Parameters: pulumi.StringMap{
+// "maxSize": pulumi.String("60Gi"),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = cs.NewKubernetesPolicyInstance(ctx, "int_bool", &cs.KubernetesPolicyInstanceArgs{
+// ClusterId: createCluster.ID(),
+// PolicyName: pulumi.String("ACKPSPHostNetworkingPorts"),
+// Namespaces: pulumi.StringArray{
+// pulumi.String("test"),
+// },
+// Parameters: pulumi.StringMap{
+// "hostNetwork": pulumi.String("true"),
+// "min": pulumi.String("20"),
+// "max": pulumi.String("200"),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// tmpJSON0, err := json.Marshal([]string{
+// "docker.io/library/nginx",
+// "docker.io/library/redis",
+// })
+// if err != nil {
+// return err
+// }
+// json0 := string(tmpJSON0)
+// _, err = cs.NewKubernetesPolicyInstance(ctx, "array", &cs.KubernetesPolicyInstanceArgs{
+// ClusterId: createCluster.ID(),
+// PolicyName: pulumi.String("ACKAllowedRepos"),
+// Parameters: pulumi.StringMap{
+// "repos": pulumi.String(pulumi.String(json0)),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// tmpJSON1, err := json.Marshal([]map[string]interface{}{
+// map[string]interface{}{
+// "key": "test",
+// "allowedRegex": "^test.*$",
+// },
+// map[string]interface{}{
+// "key": "env",
+// "allowedRegex": "^(dev|prod)$",
+// "optional": false,
+// },
+// })
+// if err != nil {
+// return err
+// }
+// json1 := string(tmpJSON1)
+// _, err = cs.NewKubernetesPolicyInstance(ctx, "object", &cs.KubernetesPolicyInstanceArgs{
+// ClusterId: createCluster.ID(),
+// PolicyName: pulumi.String("ACKRequiredLabels"),
+// Action: pulumi.String("warn"),
+// Namespaces: pulumi.StringArray{
+// pulumi.String("test1"),
+// pulumi.String("test2"),
+// pulumi.String("test3"),
+// },
+// Parameters: pulumi.StringMap{
+// "labels": pulumi.String(pulumi.String(json1)),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import

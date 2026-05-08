@@ -77,13 +77,13 @@ export function getMongoInstancesOutput(args?: GetMongoInstancesOutputArgs, opts
  * A collection of arguments for invoking getMongoInstances.
  */
 export interface GetMongoInstancesOutputArgs {
-    availabilityZone?: pulumi.Input<string>;
-    enableDetails?: pulumi.Input<boolean>;
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    instanceClass?: pulumi.Input<string>;
-    instanceType?: pulumi.Input<string>;
-    nameRegex?: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    availabilityZone?: pulumi.Input<string | undefined>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    instanceClass?: pulumi.Input<string | undefined>;
+    instanceType?: pulumi.Input<string | undefined>;
+    nameRegex?: pulumi.Input<string | undefined>;
+    outputFile?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

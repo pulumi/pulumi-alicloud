@@ -205,12 +205,12 @@ def get_backup_jobs(filters: Optional[Sequence[Union['GetBackupJobsFilterArgs', 
         sort_direction=pulumi.get(__ret__, 'sort_direction'),
         source_type=pulumi.get(__ret__, 'source_type'),
         status=pulumi.get(__ret__, 'status'))
-def get_backup_jobs_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetBackupJobsFilterArgs', 'GetBackupJobsFilterArgsDict']]]]] = None,
-                           ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                           output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           sort_direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                           status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_backup_jobs_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetBackupJobsFilterArgs', 'GetBackupJobsFilterArgsDict']]]]] = None,
+                           ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                           output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           sort_direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                           status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupJobsResult]:
     """
     This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.

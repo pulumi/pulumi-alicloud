@@ -339,24 +339,24 @@ export interface RocketMQInstanceState {
     /**
      * The access control list for the instance. See `aclInfo` below.
      */
-    aclInfo?: pulumi.Input<inputs.rocketmq.RocketMQInstanceAclInfo>;
+    aclInfo?: pulumi.Input<inputs.rocketmq.RocketMQInstanceAclInfo | undefined>;
     /**
      * Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
      * - true: Enable auto-renewal
      * - false: Disable auto-renewal
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
      *
      * The values can be as follows:
      * - Monthly renewal: 1, 2, 3, 6, 12
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The minimum periodic unit for the duration of auto-renewal. This parameter is only valid when auto-renewal is enabled. Valid values: `Month`, `Year`.
      */
-    autoRenewPeriodUnit?: pulumi.Input<string>;
+    autoRenewPeriodUnit?: pulumi.Input<string | undefined>;
     /**
      * Commodity code
      *
@@ -366,23 +366,23 @@ export interface RocketMQInstanceState {
      *
      * Next: Serverless instances
      */
-    commodityCode?: pulumi.Input<string>;
+    commodityCode?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The name of instance
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The ip whitelist.
      */
-    ipWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Instance network configuration information See `networkInfo` below.
      */
-    networkInfo?: pulumi.Input<inputs.rocketmq.RocketMQInstanceNetworkInfo>;
+    networkInfo?: pulumi.Input<inputs.rocketmq.RocketMQInstanceNetworkInfo | undefined>;
     /**
      * The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
      *
@@ -392,7 +392,7 @@ export interface RocketMQInstanceState {
      *
      * For more information, please refer to [Billing Methods](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/overview-2).
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
      *
@@ -400,7 +400,7 @@ export interface RocketMQInstanceState {
      * - Monthly purchase: 1, 2, 3, 4, 5, 6
      * - Annual purchase: 1, 2, 3
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The minimum periodic unit for the duration of purchase.
      *
@@ -408,23 +408,23 @@ export interface RocketMQInstanceState {
      * - Month: Purchase on a monthly basis
      * - Year: Purchase on an annual basis
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * product info See `productInfo` below.
      */
-    productInfo?: pulumi.Input<inputs.rocketmq.RocketMQInstanceProductInfo>;
+    productInfo?: pulumi.Input<inputs.rocketmq.RocketMQInstanceProductInfo | undefined>;
     /**
      * (Available since v1.245.0) The ID of the region in which the instance resides.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Custom description
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
      *
@@ -433,19 +433,19 @@ export interface RocketMQInstanceState {
      * - ultimate: Platinum Edition
      * - professional: Professional Edition
      */
-    seriesCode?: pulumi.Input<string>;
+    seriesCode?: pulumi.Input<string | undefined>;
     /**
      * The code of the service code instance. The code of the RocketMQ is rmq.
      */
-    serviceCode?: pulumi.Input<string>;
+    serviceCode?: pulumi.Input<string | undefined>;
     /**
      * Instance software information. See `software` below.
      */
-    software?: pulumi.Input<inputs.rocketmq.RocketMQInstanceSoftware>;
+    software?: pulumi.Input<inputs.rocketmq.RocketMQInstanceSoftware | undefined>;
     /**
      * The status of the instance
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
      *
@@ -456,11 +456,11 @@ export interface RocketMQInstanceState {
      * **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
      * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
      */
-    subSeriesCode?: pulumi.Input<string>;
+    subSeriesCode?: pulumi.Input<string | undefined>;
     /**
      * The resource label.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -470,24 +470,24 @@ export interface RocketMQInstanceArgs {
     /**
      * The access control list for the instance. See `aclInfo` below.
      */
-    aclInfo?: pulumi.Input<inputs.rocketmq.RocketMQInstanceAclInfo>;
+    aclInfo?: pulumi.Input<inputs.rocketmq.RocketMQInstanceAclInfo | undefined>;
     /**
      * Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
      * - true: Enable auto-renewal
      * - false: Disable auto-renewal
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
      *
      * The values can be as follows:
      * - Monthly renewal: 1, 2, 3, 6, 12
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The minimum periodic unit for the duration of auto-renewal. This parameter is only valid when auto-renewal is enabled. Valid values: `Month`, `Year`.
      */
-    autoRenewPeriodUnit?: pulumi.Input<string>;
+    autoRenewPeriodUnit?: pulumi.Input<string | undefined>;
     /**
      * Commodity code
      *
@@ -497,15 +497,15 @@ export interface RocketMQInstanceArgs {
      *
      * Next: Serverless instances
      */
-    commodityCode?: pulumi.Input<string>;
+    commodityCode?: pulumi.Input<string | undefined>;
     /**
      * The name of instance
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The ip whitelist.
      */
-    ipWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Instance network configuration information See `networkInfo` below.
      */
@@ -527,7 +527,7 @@ export interface RocketMQInstanceArgs {
      * - Monthly purchase: 1, 2, 3, 4, 5, 6
      * - Annual purchase: 1, 2, 3
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The minimum periodic unit for the duration of purchase.
      *
@@ -535,19 +535,19 @@ export interface RocketMQInstanceArgs {
      * - Month: Purchase on a monthly basis
      * - Year: Purchase on an annual basis
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * product info See `productInfo` below.
      */
-    productInfo?: pulumi.Input<inputs.rocketmq.RocketMQInstanceProductInfo>;
+    productInfo?: pulumi.Input<inputs.rocketmq.RocketMQInstanceProductInfo | undefined>;
     /**
      * Custom description
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
      *
@@ -564,7 +564,7 @@ export interface RocketMQInstanceArgs {
     /**
      * Instance software information. See `software` below.
      */
-    software?: pulumi.Input<inputs.rocketmq.RocketMQInstanceSoftware>;
+    software?: pulumi.Input<inputs.rocketmq.RocketMQInstanceSoftware | undefined>;
     /**
      * The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
      *
@@ -579,5 +579,5 @@ export interface RocketMQInstanceArgs {
     /**
      * The resource label.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

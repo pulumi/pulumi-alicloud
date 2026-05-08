@@ -42,11 +42,11 @@ __all__ = [
 ]
 
 class AccessControlListAclEntryArgsDict(TypedDict):
-    acl_entry_comment: NotRequired[pulumi.Input[_builtins.str]]
+    acl_entry_comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the ACL.
     """
-    acl_entry_ip: NotRequired[pulumi.Input[_builtins.str]]
+    acl_entry_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
     """
@@ -54,8 +54,8 @@ class AccessControlListAclEntryArgsDict(TypedDict):
 @pulumi.input_type
 class AccessControlListAclEntryArgs:
     def __init__(__self__, *,
-                 acl_entry_comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_entry_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl_entry_comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_entry_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] acl_entry_comment: The description of the ACL.
         :param pulumi.Input[_builtins.str] acl_entry_ip: The entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
@@ -67,26 +67,26 @@ class AccessControlListAclEntryArgs:
 
     @_builtins.property
     @pulumi.getter(name="aclEntryComment")
-    def acl_entry_comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_entry_comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the ACL.
         """
         return pulumi.get(self, "acl_entry_comment")
 
     @acl_entry_comment.setter
-    def acl_entry_comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_entry_comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_entry_comment", value)
 
     @_builtins.property
     @pulumi.getter(name="aclEntryIp")
-    def acl_entry_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_entry_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
         """
         return pulumi.get(self, "acl_entry_ip")
 
     @acl_entry_ip.setter
-    def acl_entry_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_entry_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_entry_ip", value)
 
 
@@ -103,7 +103,7 @@ class ApiConstantParameterArgsDict(TypedDict):
     """
     Constant parameter value.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of Constant parameter.
     """
@@ -114,7 +114,7 @@ class ApiConstantParameterArgs:
                  in_: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] in_: Constant parameter location; values: 'HEAD' and 'QUERY'.
         :param pulumi.Input[_builtins.str] name: Constant parameter name.
@@ -165,14 +165,14 @@ class ApiConstantParameterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of Constant parameter.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -189,39 +189,39 @@ class ApiFcServiceConfigArgsDict(TypedDict):
     """
     Backend service time-out time; unit: millisecond.
     """
-    function_base_url: NotRequired[pulumi.Input[_builtins.str]]
+    function_base_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The base url of function compute service. Required if `function_type` is `HttpTrigger`.
     """
-    function_name: NotRequired[pulumi.Input[_builtins.str]]
+    function_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The function name of function compute service. Required if `function_type` is `FCEvent`.
     """
-    function_type: NotRequired[pulumi.Input[_builtins.str]]
+    function_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
     """
-    function_version: NotRequired[pulumi.Input[_builtins.str]]
+    function_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
     """
-    method: NotRequired[pulumi.Input[_builtins.str]]
+    method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The http method of function compute service. Required if `function_type` is `HttpTrigger`.
     """
-    only_business_path: NotRequired[pulumi.Input[_builtins.bool]]
+    only_business_path: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path of function compute service. Required if `function_type` is `HttpTrigger`.
     """
-    qualifier: NotRequired[pulumi.Input[_builtins.str]]
+    qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The qualifier of function name of compute service.
     """
-    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    service_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
     """
@@ -232,15 +232,15 @@ class ApiFcServiceConfigArgs:
                  arn_role: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
                  timeout: pulumi.Input[_builtins.int],
-                 function_base_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 method: Optional[pulumi.Input[_builtins.str]] = None,
-                 only_business_path: Optional[pulumi.Input[_builtins.bool]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 function_base_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 method: pulumi.Input[Optional[_builtins.str]] = None,
+                 only_business_path: pulumi.Input[Optional[_builtins.bool]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] arn_role: RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         :param pulumi.Input[_builtins.str] region: The region that the function compute service belongs to.
@@ -315,110 +315,110 @@ class ApiFcServiceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="functionBaseUrl")
-    def function_base_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_base_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base url of function compute service. Required if `function_type` is `HttpTrigger`.
         """
         return pulumi.get(self, "function_base_url")
 
     @function_base_url.setter
-    def function_base_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_base_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_base_url", value)
 
     @_builtins.property
     @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The function name of function compute service. Required if `function_type` is `FCEvent`.
         """
         return pulumi.get(self, "function_name")
 
     @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_name", value)
 
     @_builtins.property
     @pulumi.getter(name="functionType")
-    def function_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
         """
         return pulumi.get(self, "function_type")
 
     @function_type.setter
-    def function_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_type", value)
 
     @_builtins.property
     @pulumi.getter(name="functionVersion")
-    def function_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The function compute version of function compute service. Supports values of `2.0`, `3.0`. Default value: `2.0`.
         """
         return pulumi.get(self, "function_version")
 
     @function_version.setter
-    def function_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The http method of function compute service. Required if `function_type` is `HttpTrigger`.
         """
         return pulumi.get(self, "method")
 
     @method.setter
-    def method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "method", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyBusinessPath")
-    def only_business_path(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_business_path(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
         """
         return pulumi.get(self, "only_business_path")
 
     @only_business_path.setter
-    def only_business_path(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_business_path(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_business_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of function compute service. Required if `function_type` is `HttpTrigger`.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def qualifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qualifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The qualifier of function name of compute service.
         """
         return pulumi.get(self, "qualifier")
 
     @qualifier.setter
-    def qualifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qualifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qualifier", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service name of function compute service. Required if `function_type` is `FCEvent` and `function_version` is `2.0`.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
 
@@ -439,15 +439,15 @@ class ApiHttpServiceConfigArgsDict(TypedDict):
     """
     Backend service time-out time; unit: millisecond.
     """
-    aone_name: NotRequired[pulumi.Input[_builtins.str]]
+    aone_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of aone.
     """
-    content_type_category: NotRequired[pulumi.Input[_builtins.str]]
+    content_type_category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
     """
-    content_type_value: NotRequired[pulumi.Input[_builtins.str]]
+    content_type_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The content type value of backend service.
     """
@@ -459,9 +459,9 @@ class ApiHttpServiceConfigArgs:
                  method: pulumi.Input[_builtins.str],
                  path: pulumi.Input[_builtins.str],
                  timeout: pulumi.Input[_builtins.int],
-                 aone_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 aone_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The address of backend service.
         :param pulumi.Input[_builtins.str] method: The http method of backend service.
@@ -532,38 +532,38 @@ class ApiHttpServiceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="aoneName")
-    def aone_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aone_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of aone.
         """
         return pulumi.get(self, "aone_name")
 
     @aone_name.setter
-    def aone_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aone_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aone_name", value)
 
     @_builtins.property
     @pulumi.getter(name="contentTypeCategory")
-    def content_type_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
         """
         return pulumi.get(self, "content_type_category")
 
     @content_type_category.setter
-    def content_type_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type_category", value)
 
     @_builtins.property
     @pulumi.getter(name="contentTypeValue")
-    def content_type_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content type value of backend service.
         """
         return pulumi.get(self, "content_type_value")
 
     @content_type_value.setter
-    def content_type_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type_value", value)
 
 
@@ -584,19 +584,19 @@ class ApiHttpVpcServiceConfigArgsDict(TypedDict):
     """
     Backend service time-out time. Unit: millisecond.
     """
-    aone_name: NotRequired[pulumi.Input[_builtins.str]]
+    aone_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of aone.
     """
-    content_type_category: NotRequired[pulumi.Input[_builtins.str]]
+    content_type_category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
     """
-    content_type_value: NotRequired[pulumi.Input[_builtins.str]]
+    content_type_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The content type value of backend service.
     """
-    vpc_scheme: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
     """
@@ -608,10 +608,10 @@ class ApiHttpVpcServiceConfigArgs:
                  name: pulumi.Input[_builtins.str],
                  path: pulumi.Input[_builtins.str],
                  timeout: pulumi.Input[_builtins.int],
-                 aone_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_scheme: Optional[pulumi.Input[_builtins.str]] = None):
+                 aone_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_scheme: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] method: The http method of backend service.
         :param pulumi.Input[_builtins.str] name: The name of vpc instance.
@@ -685,50 +685,50 @@ class ApiHttpVpcServiceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="aoneName")
-    def aone_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aone_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of aone.
         """
         return pulumi.get(self, "aone_name")
 
     @aone_name.setter
-    def aone_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aone_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aone_name", value)
 
     @_builtins.property
     @pulumi.getter(name="contentTypeCategory")
-    def content_type_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
         """
         return pulumi.get(self, "content_type_category")
 
     @content_type_category.setter
-    def content_type_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type_category", value)
 
     @_builtins.property
     @pulumi.getter(name="contentTypeValue")
-    def content_type_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content type value of backend service.
         """
         return pulumi.get(self, "content_type_value")
 
     @content_type_value.setter
-    def content_type_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type_value", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcScheme")
-    def vpc_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
         """
         return pulumi.get(self, "vpc_scheme")
 
     @vpc_scheme.setter
-    def vpc_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_scheme", value)
 
 
@@ -737,7 +737,7 @@ class ApiMockServiceConfigArgsDict(TypedDict):
     """
     The result of the mock service.
     """
-    aone_name: NotRequired[pulumi.Input[_builtins.str]]
+    aone_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of aone.
     """
@@ -746,7 +746,7 @@ class ApiMockServiceConfigArgsDict(TypedDict):
 class ApiMockServiceConfigArgs:
     def __init__(__self__, *,
                  result: pulumi.Input[_builtins.str],
-                 aone_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 aone_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] result: The result of the mock service.
         :param pulumi.Input[_builtins.str] aone_name: The name of aone.
@@ -769,14 +769,14 @@ class ApiMockServiceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="aoneName")
-    def aone_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aone_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of aone.
         """
         return pulumi.get(self, "aone_name")
 
     @aone_name.setter
-    def aone_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aone_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aone_name", value)
 
 
@@ -797,7 +797,7 @@ class ApiRequestConfigArgsDict(TypedDict):
     """
     The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
     """
-    body_format: NotRequired[pulumi.Input[_builtins.str]]
+    body_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The body format of the api, which support the values of 'STREAM' and 'FORM'.
     """
@@ -809,7 +809,7 @@ class ApiRequestConfigArgs:
                  mode: pulumi.Input[_builtins.str],
                  path: pulumi.Input[_builtins.str],
                  protocol: pulumi.Input[_builtins.str],
-                 body_format: Optional[pulumi.Input[_builtins.str]] = None):
+                 body_format: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] method: The method of the api, including 'GET','POST','PUT' etc.
         :param pulumi.Input[_builtins.str] mode: The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
@@ -874,14 +874,14 @@ class ApiRequestConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="bodyFormat")
-    def body_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def body_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The body format of the api, which support the values of 'STREAM' and 'FORM'.
         """
         return pulumi.get(self, "body_format")
 
     @body_format.setter
-    def body_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def body_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "body_format", value)
 
 
@@ -910,11 +910,11 @@ class ApiRequestParameterArgsDict(TypedDict):
     """
     Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
     """
-    default_value: NotRequired[pulumi.Input[_builtins.str]]
+    default_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The default value of the parameter.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of parameter.
     """
@@ -928,8 +928,8 @@ class ApiRequestParameterArgs:
                  name_service: pulumi.Input[_builtins.str],
                  required: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 default_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] in_: Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
         :param pulumi.Input[_builtins.str] in_service: Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
@@ -1025,26 +1025,26 @@ class ApiRequestParameterArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultValue")
-    def default_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default value of the parameter.
         """
         return pulumi.get(self, "default_value")
 
     @default_value.setter
-    def default_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of parameter.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -1115,27 +1115,27 @@ class ApiSystemParameterArgs:
 
 
 class GroupUserLogConfigArgsDict(TypedDict):
-    jwt_claims: NotRequired[pulumi.Input[_builtins.str]]
+    jwt_claims: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
     """
-    query_string: NotRequired[pulumi.Input[_builtins.str]]
+    query_string: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The query params to be record, support multi query params split by `,`. Set `*` to record all.
     """
-    request_body: NotRequired[pulumi.Input[_builtins.bool]]
+    request_body: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to record the request body.
     """
-    request_headers: NotRequired[pulumi.Input[_builtins.str]]
+    request_headers: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
     """
-    response_body: NotRequired[pulumi.Input[_builtins.bool]]
+    response_body: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to record the response body.
     """
-    response_headers: NotRequired[pulumi.Input[_builtins.str]]
+    response_headers: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
     """
@@ -1143,12 +1143,12 @@ class GroupUserLogConfigArgsDict(TypedDict):
 @pulumi.input_type
 class GroupUserLogConfigArgs:
     def __init__(__self__, *,
-                 jwt_claims: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_body: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 response_body: Optional[pulumi.Input[_builtins.bool]] = None,
-                 response_headers: Optional[pulumi.Input[_builtins.str]] = None):
+                 jwt_claims: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_body: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_headers: pulumi.Input[Optional[_builtins.str]] = None,
+                 response_body: pulumi.Input[Optional[_builtins.bool]] = None,
+                 response_headers: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] jwt_claims: The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
         :param pulumi.Input[_builtins.str] query_string: The query params to be record, support multi query params split by `,`. Set `*` to record all.
@@ -1172,74 +1172,74 @@ class GroupUserLogConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="jwtClaims")
-    def jwt_claims(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jwt_claims(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
         """
         return pulumi.get(self, "jwt_claims")
 
     @jwt_claims.setter
-    def jwt_claims(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jwt_claims(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jwt_claims", value)
 
     @_builtins.property
     @pulumi.getter(name="queryString")
-    def query_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The query params to be record, support multi query params split by `,`. Set `*` to record all.
         """
         return pulumi.get(self, "query_string")
 
     @query_string.setter
-    def query_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_string", value)
 
     @_builtins.property
     @pulumi.getter(name="requestBody")
-    def request_body(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def request_body(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to record the request body.
         """
         return pulumi.get(self, "request_body")
 
     @request_body.setter
-    def request_body(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def request_body(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "request_body", value)
 
     @_builtins.property
     @pulumi.getter(name="requestHeaders")
-    def request_headers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_headers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
         """
         return pulumi.get(self, "request_headers")
 
     @request_headers.setter
-    def request_headers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_headers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="responseBody")
-    def response_body(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def response_body(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to record the response body.
         """
         return pulumi.get(self, "response_body")
 
     @response_body.setter
-    def response_body(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def response_body(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "response_body", value)
 
     @_builtins.property
     @pulumi.getter(name="responseHeaders")
-    def response_headers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def response_headers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
         """
         return pulumi.get(self, "response_headers")
 
     @response_headers.setter
-    def response_headers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def response_headers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "response_headers", value)
 
 
@@ -1248,15 +1248,15 @@ class InstanceToConnectVpcIpBlockArgsDict(TypedDict):
     """
     The CIDR block of the VSwitch.
     """
-    customized: NotRequired[pulumi.Input[_builtins.bool]]
+    customized: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether the IP block is customized.
     """
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VSwitch ID.
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The zone ID.
     """
@@ -1265,9 +1265,9 @@ class InstanceToConnectVpcIpBlockArgsDict(TypedDict):
 class InstanceToConnectVpcIpBlockArgs:
     def __init__(__self__, *,
                  cidr_block: pulumi.Input[_builtins.str],
-                 customized: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 customized: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cidr_block: The CIDR block of the VSwitch.
         :param pulumi.Input[_builtins.bool] customized: Specifies whether the IP block is customized.
@@ -1296,38 +1296,38 @@ class InstanceToConnectVpcIpBlockArgs:
 
     @_builtins.property
     @pulumi.getter
-    def customized(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def customized(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the IP block is customized.
         """
         return pulumi.get(self, "customized")
 
     @customized.setter
-    def customized(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def customized(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "customized", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 

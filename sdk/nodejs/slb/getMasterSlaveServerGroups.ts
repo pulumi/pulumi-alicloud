@@ -89,7 +89,7 @@ export interface GetMasterSlaveServerGroupsOutputArgs {
     /**
      * A list of master slave server group IDs to filter results.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the SLB.
      */
@@ -97,9 +97,9 @@ export interface GetMasterSlaveServerGroupsOutputArgs {
     /**
      * A regex string to filter results by master slave server group name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

@@ -128,11 +128,11 @@ export interface ProductPortfolioAssociationState {
     /**
      * Product Portfolio ID
      */
-    portfolioId?: pulumi.Input<string>;
+    portfolioId?: pulumi.Input<string | undefined>;
     /**
      * Product ID
      */
-    productId?: pulumi.Input<string>;
+    productId?: pulumi.Input<string | undefined>;
 }
 
 /**

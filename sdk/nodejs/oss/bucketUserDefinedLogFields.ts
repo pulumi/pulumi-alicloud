@@ -132,15 +132,15 @@ export interface BucketUserDefinedLogFieldsState {
     /**
      * The name of the bucket.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Container for custom request header configuration information.
      */
-    headerSets?: pulumi.Input<pulumi.Input<string>[]>;
+    headerSets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Container for custom request parameters configuration information.
      */
-    paramSets?: pulumi.Input<pulumi.Input<string>[]>;
+    paramSets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -154,9 +154,9 @@ export interface BucketUserDefinedLogFieldsArgs {
     /**
      * Container for custom request header configuration information.
      */
-    headerSets?: pulumi.Input<pulumi.Input<string>[]>;
+    headerSets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Container for custom request parameters configuration information.
      */
-    paramSets?: pulumi.Input<pulumi.Input<string>[]>;
+    paramSets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

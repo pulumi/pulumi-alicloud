@@ -22,13 +22,13 @@ class InstanceArgs:
                  image_id: pulumi.Input[_builtins.str],
                  period: pulumi.Input[_builtins.int],
                  plan_id: pulumi.Input[_builtins.str],
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -99,102 +99,102 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDiskSize")
-    def data_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
         """
         return pulumi.get(self, "data_disk_size")
 
     @data_disk_size.setter
-    def data_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the simple application server.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The paymen type of the resource. Valid values: `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 plan_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -232,122 +232,122 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDiskSize")
-    def data_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
         """
         return pulumi.get(self, "data_disk_size")
 
     @data_disk_size.setter
-    def data_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the image.  You can use the `simpleapplicationserver_get_images` to query the available images in the specified region. The value must be an integral multiple of 20.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the simple application server.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The paymen type of the resource. Valid values: `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="planId")
-    def plan_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the plan. You can use the `simpleapplicationserver_get_server_plans`  to query all the plans provided by Simple Application Server in the specified region.
         """
         return pulumi.get(self, "plan_id")
 
     @plan_id.setter
-    def plan_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -357,16 +357,16 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 plan_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Simple Application Server Instance resource.
@@ -496,16 +496,16 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 plan_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -541,16 +541,16 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            data_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            plan_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            data_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

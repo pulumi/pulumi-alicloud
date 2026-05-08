@@ -25,13 +25,13 @@ class ApplicationInfoArgs:
                  product_code: pulumi.Input[_builtins.str],
                  quota_action_code: pulumi.Input[_builtins.str],
                  reason: pulumi.Input[_builtins.str],
-                 audit_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 notice_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 quota_category: Optional[pulumi.Input[_builtins.str]] = None):
+                 audit_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 quota_category: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationInfo resource.
         """
@@ -92,89 +92,89 @@ class ApplicationInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="auditMode")
-    def audit_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audit_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "audit_mode")
 
     @audit_mode.setter
-    def audit_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audit_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audit_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]]:
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="envLanguage")
-    def env_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "env_language")
 
     @env_language.setter
-    def env_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_language", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="noticeType")
-    def notice_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def notice_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "notice_type")
 
     @notice_type.setter
-    def notice_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def notice_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "notice_type", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaCategory")
-    def quota_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "quota_category")
 
     @quota_category.setter
-    def quota_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_category", value)
 
 
 @pulumi.input_type
 class _ApplicationInfoState:
     def __init__(__self__, *,
-                 approve_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 audit_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 audit_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 desire_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 notice_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_action_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 approve_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 audit_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 audit_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 desire_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationInfo resources.
         """
@@ -217,164 +217,164 @@ class _ApplicationInfoState:
 
     @_builtins.property
     @pulumi.getter(name="approveValue")
-    def approve_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def approve_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "approve_value")
 
     @approve_value.setter
-    def approve_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def approve_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "approve_value", value)
 
     @_builtins.property
     @pulumi.getter(name="auditMode")
-    def audit_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audit_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "audit_mode")
 
     @audit_mode.setter
-    def audit_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audit_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audit_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="auditReason")
-    def audit_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audit_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "audit_reason")
 
     @audit_reason.setter
-    def audit_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audit_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audit_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="desireValue")
-    def desire_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def desire_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         return pulumi.get(self, "desire_value")
 
     @desire_value.setter
-    def desire_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def desire_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "desire_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]]:
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="envLanguage")
-    def env_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "env_language")
 
     @env_language.setter
-    def env_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_language", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="noticeType")
-    def notice_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def notice_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "notice_type")
 
     @notice_type.setter
-    def notice_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def notice_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "notice_type", value)
 
     @_builtins.property
     @pulumi.getter(name="productCode")
-    def product_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "product_code")
 
     @product_code.setter
-    def product_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_code", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaActionCode")
-    def quota_action_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_action_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "quota_action_code")
 
     @quota_action_code.setter
-    def quota_action_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_action_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_action_code", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaCategory")
-    def quota_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "quota_category")
 
     @quota_category.setter
-    def quota_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_category", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaDescription")
-    def quota_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "quota_description")
 
     @quota_description.setter
-    def quota_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_description", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaName")
-    def quota_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "quota_name")
 
     @quota_name.setter
-    def quota_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_name", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaUnit")
-    def quota_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "quota_unit")
 
     @quota_unit.setter
-    def quota_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_unit", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -384,17 +384,17 @@ class ApplicationInfo(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 desire_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationInfoDimensionArgs', 'ApplicationInfoDimensionArgsDict']]]]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 notice_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_action_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
+                 audit_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 desire_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationInfoDimensionArgs', 'ApplicationInfoDimensionArgsDict']]]]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a ApplicationInfo resource with the given unique name, props, and options.
@@ -426,17 +426,17 @@ class ApplicationInfo(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 desire_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationInfoDimensionArgs', 'ApplicationInfoDimensionArgsDict']]]]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 notice_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_action_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
+                 audit_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 desire_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationInfoDimensionArgs', 'ApplicationInfoDimensionArgsDict']]]]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -482,24 +482,24 @@ class ApplicationInfo(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            approve_value: Optional[pulumi.Input[_builtins.str]] = None,
-            audit_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            audit_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            desire_value: Optional[pulumi.Input[_builtins.float]] = None,
-            dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationInfoDimensionArgs', 'ApplicationInfoDimensionArgsDict']]]]] = None,
-            effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-            env_language: Optional[pulumi.Input[_builtins.str]] = None,
-            expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-            notice_type: Optional[pulumi.Input[_builtins.int]] = None,
-            product_code: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_action_code: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_category: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_description: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_name: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            reason: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApplicationInfo':
+            approve_value: pulumi.Input[Optional[_builtins.str]] = None,
+            audit_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            audit_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            desire_value: pulumi.Input[Optional[_builtins.float]] = None,
+            dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationInfoDimensionArgs', 'ApplicationInfoDimensionArgsDict']]]]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            env_language: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            notice_type: pulumi.Input[Optional[_builtins.int]] = None,
+            product_code: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_action_code: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_category: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_description: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_name: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            reason: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApplicationInfo':
         """
         Get an existing ApplicationInfo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

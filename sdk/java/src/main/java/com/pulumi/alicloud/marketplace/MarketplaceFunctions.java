@@ -34,8 +34,8 @@ public final class MarketplaceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
      * import com.pulumi.alicloud.marketplace.inputs.GetProductArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -79,8 +79,8 @@ public final class MarketplaceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
      * import com.pulumi.alicloud.marketplace.inputs.GetProductArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -124,8 +124,8 @@ public final class MarketplaceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
      * import com.pulumi.alicloud.marketplace.inputs.GetProductArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -169,8 +169,8 @@ public final class MarketplaceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
      * import com.pulumi.alicloud.marketplace.inputs.GetProductArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -214,8 +214,8 @@ public final class MarketplaceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
      * import com.pulumi.alicloud.marketplace.inputs.GetProductArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -259,8 +259,8 @@ public final class MarketplaceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
      * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -305,8 +305,8 @@ public final class MarketplaceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
      * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -351,8 +351,8 @@ public final class MarketplaceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
      * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -397,8 +397,8 @@ public final class MarketplaceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
      * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -443,8 +443,8 @@ public final class MarketplaceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
      * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -489,8 +489,8 @@ public final class MarketplaceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
      * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -535,8 +535,8 @@ public final class MarketplaceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
      * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

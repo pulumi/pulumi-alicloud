@@ -296,78 +296,78 @@ export interface AlarmState {
     /**
      * The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
      */
-    alarmActions?: pulumi.Input<pulumi.Input<string>[]>;
+    alarmActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
      */
-    cloudMonitorGroupId?: pulumi.Input<number>;
+    cloudMonitorGroupId?: pulumi.Input<number | undefined>;
     /**
      * The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
      */
-    comparisonOperator?: pulumi.Input<string>;
+    comparisonOperator?: pulumi.Input<string | undefined>;
     /**
      * The description for the alarm.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
      */
-    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
      */
-    effective?: pulumi.Input<string>;
+    effective?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable specific ess alarm. Default to true.
      */
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
     /**
      * The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
      */
-    evaluationCount?: pulumi.Input<number>;
+    evaluationCount?: pulumi.Input<number | undefined>;
     /**
      * Support multi alert rule. See `expressions` below for details.
      */
-    expressions?: pulumi.Input<pulumi.Input<inputs.ess.AlarmExpression>[]>;
+    expressions?: pulumi.Input<pulumi.Input<inputs.ess.AlarmExpression>[] | undefined>;
     /**
      * The relationship between the trigger conditions in the multi-metric alert rule.
      */
-    expressionsLogicOperator?: pulumi.Input<string>;
+    expressionsLogicOperator?: pulumi.Input<string | undefined>;
     /**
      * The name for the alarm's associated metric. See `dimensions` below for details.
      */
-    metricName?: pulumi.Input<string>;
+    metricName?: pulumi.Input<string | undefined>;
     /**
      * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
      */
-    metricType?: pulumi.Input<string>;
+    metricType?: pulumi.Input<string | undefined>;
     /**
      * The name for ess alarm.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
      */
-    scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the event-triggered task. Valid values:
      * - ALARM: The alert condition is met and an alert is triggered.
      * - OK: The alert condition is not met.
      * - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
      */
-    statistics?: pulumi.Input<string>;
+    statistics?: pulumi.Input<string | undefined>;
     /**
      * The value against which the specified statistics is compared.
      */
-    threshold?: pulumi.Input<string>;
+    threshold?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -381,55 +381,55 @@ export interface AlarmArgs {
     /**
      * Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
      */
-    cloudMonitorGroupId?: pulumi.Input<number>;
+    cloudMonitorGroupId?: pulumi.Input<number | undefined>;
     /**
      * The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
      */
-    comparisonOperator?: pulumi.Input<string>;
+    comparisonOperator?: pulumi.Input<string | undefined>;
     /**
      * The description for the alarm.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
      */
-    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
      */
-    effective?: pulumi.Input<string>;
+    effective?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable specific ess alarm. Default to true.
      */
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
     /**
      * The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
      */
-    evaluationCount?: pulumi.Input<number>;
+    evaluationCount?: pulumi.Input<number | undefined>;
     /**
      * Support multi alert rule. See `expressions` below for details.
      */
-    expressions?: pulumi.Input<pulumi.Input<inputs.ess.AlarmExpression>[]>;
+    expressions?: pulumi.Input<pulumi.Input<inputs.ess.AlarmExpression>[] | undefined>;
     /**
      * The relationship between the trigger conditions in the multi-metric alert rule.
      */
-    expressionsLogicOperator?: pulumi.Input<string>;
+    expressionsLogicOperator?: pulumi.Input<string | undefined>;
     /**
      * The name for the alarm's associated metric. See `dimensions` below for details.
      */
-    metricName?: pulumi.Input<string>;
+    metricName?: pulumi.Input<string | undefined>;
     /**
      * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
      */
-    metricType?: pulumi.Input<string>;
+    metricType?: pulumi.Input<string | undefined>;
     /**
      * The name for ess alarm.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
      */
@@ -437,9 +437,9 @@ export interface AlarmArgs {
     /**
      * The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
      */
-    statistics?: pulumi.Input<string>;
+    statistics?: pulumi.Input<string | undefined>;
     /**
      * The value against which the specified statistics is compared.
      */
-    threshold?: pulumi.Input<string>;
+    threshold?: pulumi.Input<string | undefined>;
 }

@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
 //				VpcName:   pulumi.String(pulumi.String(name)),
 //			})
@@ -67,7 +67,7 @@ import (
 //			}
 //			_, err = fc.NewV3VpcBinding(ctx, "default", &fc.V3VpcBindingArgs{
 //				FunctionName: function.FunctionName,
-//				VpcId:        vpc.ID(),
+//				VpcId:        vpc2.ID(),
 //			})
 //			if err != nil {
 //				return err

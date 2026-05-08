@@ -157,19 +157,19 @@ export interface AccountPrivilegeState {
     /**
      * A specified account name.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
      */
-    accountPrivilege?: pulumi.Input<string>;
+    accountPrivilege?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster in which account belongs.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * List of specified database name.
      */
-    dbNames?: pulumi.Input<pulumi.Input<string>[]>;
+    dbNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -183,7 +183,7 @@ export interface AccountPrivilegeArgs {
     /**
      * The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
      */
-    accountPrivilege?: pulumi.Input<string>;
+    accountPrivilege?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster in which account belongs.
      */

@@ -164,19 +164,19 @@ export interface DefenseResourceGroupState {
     /**
      * The description of the protected object group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the protected object group. The name must be 1 to 255 characters long and can contain Chinese characters, letters, digits, underscores (_), periods (.), and hyphens (-)
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the WAF instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The names of the protected objects that are added to the protected object group.
      */
-    resourceLists?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -186,7 +186,7 @@ export interface DefenseResourceGroupArgs {
     /**
      * The description of the protected object group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the protected object group. The name must be 1 to 255 characters long and can contain Chinese characters, letters, digits, underscores (_), periods (.), and hyphens (-)
      */
@@ -198,5 +198,5 @@ export interface DefenseResourceGroupArgs {
     /**
      * The names of the protected objects that are added to the protected object group.
      */
-    resourceLists?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

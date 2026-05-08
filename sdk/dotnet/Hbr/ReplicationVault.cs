@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Hbr
     ///     var sourceRegion = config.Get("sourceRegion") ?? "cn-hangzhou";
     ///     var @default = AliCloud.Hbr.GetReplicationVaultRegions.Invoke();
     /// 
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,

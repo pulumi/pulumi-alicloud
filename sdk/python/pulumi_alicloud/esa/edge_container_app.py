@@ -22,17 +22,17 @@ class EdgeContainerAppArgs:
                  edge_container_app_name: pulumi.Input[_builtins.str],
                  service_port: pulumi.Input[_builtins.int],
                  target_port: pulumi.Input[_builtins.int],
-                 health_check_fail_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_succ_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 remarks: Optional[pulumi.Input[_builtins.str]] = None):
+                 health_check_fail_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_succ_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 remarks: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EdgeContainerApp resource.
 
@@ -125,19 +125,19 @@ class EdgeContainerAppArgs:
 
     @_builtins.property
     @pulumi.getter(name="healthCheckFailTimes")
-    def health_check_fail_times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_fail_times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive successful health checks required for an application to be considered as healthy. Valid values: 1 to 10. Default value: 2.
         """
         return pulumi.get(self, "health_check_fail_times")
 
     @health_check_fail_times.setter
-    def health_check_fail_times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_fail_times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_fail_times", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckHost")
-    def health_check_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The health check type. By default, this parameter is left empty.
 
@@ -146,24 +146,24 @@ class EdgeContainerAppArgs:
         return pulumi.get(self, "health_check_host")
 
     @health_check_host.setter
-    def health_check_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_host", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckHttpCode")
-    def health_check_http_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_http_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name that is used for health checks. This parameter is empty by default.
         """
         return pulumi.get(self, "health_check_http_code")
 
     @health_check_http_code.setter
-    def health_check_http_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_http_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_http_code", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckInterval")
-    def health_check_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
         Valid values: `1` to `100`.
@@ -172,12 +172,12 @@ class EdgeContainerAppArgs:
         return pulumi.get(self, "health_check_interval")
 
     @health_check_interval.setter
-    def health_check_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckMethod")
-    def health_check_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTP status code returned for a successful health check. Valid values:
 
@@ -187,60 +187,60 @@ class EdgeContainerAppArgs:
         return pulumi.get(self, "health_check_method")
 
     @health_check_method.setter
-    def health_check_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_method", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckPort")
-    def health_check_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The URI used for health checks. The URI must be `1` to `80` characters in length. Default value: "/".
         """
         return pulumi.get(self, "health_check_port")
 
     @health_check_port.setter
-    def health_check_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_port", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckSuccTimes")
-    def health_check_succ_times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_succ_times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `5`.
         """
         return pulumi.get(self, "health_check_succ_times")
 
     @health_check_succ_times.setter
-    def health_check_succ_times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_succ_times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_succ_times", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckTimeout")
-    def health_check_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port used for health checks. Valid values: 1 to 65535. Default value: 80.
         """
         return pulumi.get(self, "health_check_timeout")
 
     @health_check_timeout.setter
-    def health_check_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remarks. This parameter is empty by default.
         """
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
-    def health_check_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_type", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckUri")
-    def health_check_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTP request method for health checks. Valid values:
 
@@ -250,41 +250,41 @@ class EdgeContainerAppArgs:
         return pulumi.get(self, "health_check_uri")
 
     @health_check_uri.setter
-    def health_check_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def remarks(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remarks(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backend port, which is also the service port of the application. Valid values: 1 to 65535.
         """
         return pulumi.get(self, "remarks")
 
     @remarks.setter
-    def remarks(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remarks(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remarks", value)
 
 
 @pulumi.input_type
 class _EdgeContainerAppState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_container_app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_fail_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_succ_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 remarks: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_port: Optional[pulumi.Input[_builtins.int]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_container_app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_fail_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_succ_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 remarks: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering EdgeContainerApp resources.
 
@@ -350,43 +350,43 @@ class _EdgeContainerAppState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the application was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeContainerAppName")
-    def edge_container_app_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edge_container_app_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The application name must start with a lowercase letter. Lowercase letters, numbers, and bars are supported. The length is limited to 6 to 128 characters.
         """
         return pulumi.get(self, "edge_container_app_name")
 
     @edge_container_app_name.setter
-    def edge_container_app_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edge_container_app_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edge_container_app_name", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckFailTimes")
-    def health_check_fail_times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_fail_times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive successful health checks required for an application to be considered as healthy. Valid values: 1 to 10. Default value: 2.
         """
         return pulumi.get(self, "health_check_fail_times")
 
     @health_check_fail_times.setter
-    def health_check_fail_times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_fail_times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_fail_times", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckHost")
-    def health_check_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The health check type. By default, this parameter is left empty.
 
@@ -395,24 +395,24 @@ class _EdgeContainerAppState:
         return pulumi.get(self, "health_check_host")
 
     @health_check_host.setter
-    def health_check_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_host", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckHttpCode")
-    def health_check_http_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_http_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name that is used for health checks. This parameter is empty by default.
         """
         return pulumi.get(self, "health_check_http_code")
 
     @health_check_http_code.setter
-    def health_check_http_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_http_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_http_code", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckInterval")
-    def health_check_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
         Valid values: `1` to `100`.
@@ -421,12 +421,12 @@ class _EdgeContainerAppState:
         return pulumi.get(self, "health_check_interval")
 
     @health_check_interval.setter
-    def health_check_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckMethod")
-    def health_check_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTP status code returned for a successful health check. Valid values:
 
@@ -436,60 +436,60 @@ class _EdgeContainerAppState:
         return pulumi.get(self, "health_check_method")
 
     @health_check_method.setter
-    def health_check_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_method", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckPort")
-    def health_check_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The URI used for health checks. The URI must be `1` to `80` characters in length. Default value: "/".
         """
         return pulumi.get(self, "health_check_port")
 
     @health_check_port.setter
-    def health_check_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_port", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckSuccTimes")
-    def health_check_succ_times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_succ_times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `5`.
         """
         return pulumi.get(self, "health_check_succ_times")
 
     @health_check_succ_times.setter
-    def health_check_succ_times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_succ_times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_succ_times", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckTimeout")
-    def health_check_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port used for health checks. Valid values: 1 to 65535. Default value: 80.
         """
         return pulumi.get(self, "health_check_timeout")
 
     @health_check_timeout.setter
-    def health_check_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remarks. This parameter is empty by default.
         """
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
-    def health_check_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_type", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckUri")
-    def health_check_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTP request method for health checks. Valid values:
 
@@ -499,55 +499,55 @@ class _EdgeContainerAppState:
         return pulumi.get(self, "health_check_uri")
 
     @health_check_uri.setter
-    def health_check_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def remarks(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remarks(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backend port, which is also the service port of the application. Valid values: 1 to 65535.
         """
         return pulumi.get(self, "remarks")
 
     @remarks.setter
-    def remarks(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remarks(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remarks", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePort")
-    def service_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def service_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The name of the application. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name must be 6 to 128 characters in length.
         """
         return pulumi.get(self, "service_port")
 
     @service_port.setter
-    def service_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def service_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "service_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the application.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPort")
-    def target_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The server port. Valid values: 1 to 65535.
         """
         return pulumi.get(self, "target_port")
 
     @target_port.setter
-    def target_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_port", value)
 
 
@@ -557,20 +557,20 @@ class EdgeContainerApp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 edge_container_app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_fail_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_succ_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 remarks: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 edge_container_app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_fail_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_succ_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 remarks: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_port: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a ESA Edge Container App resource.
@@ -714,20 +714,20 @@ class EdgeContainerApp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 edge_container_app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_fail_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_succ_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 remarks: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 edge_container_app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_fail_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_succ_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 remarks: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_port: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -769,22 +769,22 @@ class EdgeContainerApp(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            edge_container_app_name: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_fail_times: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check_host: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check_method: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_port: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check_succ_times: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            remarks: Optional[pulumi.Input[_builtins.str]] = None,
-            service_port: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            target_port: Optional[pulumi.Input[_builtins.int]] = None) -> 'EdgeContainerApp':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_container_app_name: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_fail_times: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_host: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_method: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_port: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_succ_times: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            remarks: pulumi.Input[Optional[_builtins.str]] = None,
+            service_port: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_port: pulumi.Input[Optional[_builtins.int]] = None) -> 'EdgeContainerApp':
         """
         Get an existing EdgeContainerApp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

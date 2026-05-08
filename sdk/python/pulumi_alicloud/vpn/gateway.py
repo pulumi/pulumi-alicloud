@@ -21,23 +21,23 @@ class GatewayArgs:
     def __init__(__self__, *,
                  bandwidth: pulumi.Input[_builtins.int],
                  vpc_id: pulumi.Input[_builtins.str],
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_propagate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disaster_recovery_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ipsec: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpn_gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_propagate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disaster_recovery_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ipsec: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_connections: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpn_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
 
@@ -132,67 +132,67 @@ class GatewayArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to pay automatically. Default value: `true`. Valid values:
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoPropagate")
-    def auto_propagate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_propagate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
         """
         return pulumi.get(self, "auto_propagate")
 
     @auto_propagate.setter
-    def auto_propagate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_propagate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_propagate", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the VPN gateway.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disasterRecoveryVswitchId")
-    def disaster_recovery_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disaster_recovery_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the backup VSwitch to which the VPN gateway is attached.
         """
         return pulumi.get(self, "disaster_recovery_vswitch_id")
 
     @disaster_recovery_vswitch_id.setter
-    def disaster_recovery_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disaster_recovery_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disaster_recovery_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIpsec")
-    def enable_ipsec(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ipsec(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         """
         return pulumi.get(self, "enable_ipsec")
 
     @enable_ipsec.setter
-    def enable_ipsec(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ipsec(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ipsec", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSsl")
-    def enable_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
 
@@ -201,172 +201,172 @@ class GatewayArgs:
         return pulumi.get(self, "enable_ssl")
 
     @enable_ssl.setter
-    def enable_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.""")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
         """
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sslConnections")
-    def ssl_connections(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ssl_connections(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of clients.
         """
         return pulumi.get(self, "ssl_connections")
 
     @ssl_connections.setter
-    def ssl_connections(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ssl_connections(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ssl_connections", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The Tag of.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnGatewayName")
-    def vpn_gateway_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_gateway_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPN gateway.
         """
         return pulumi.get(self, "vpn_gateway_name")
 
     @vpn_gateway_name.setter
-    def vpn_gateway_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_gateway_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_gateway_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnType")
-    def vpn_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
         """
         return pulumi.get(self, "vpn_type")
 
     @vpn_type.setter
-    def vpn_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_type", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VSwitch to which the VPN gateway is attached.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 @pulumi.input_type
 class _GatewayState:
     def __init__(__self__, *,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_propagate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 business_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disaster_recovery_internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 disaster_recovery_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ipsec: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 ssl_vpn_internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_propagate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 business_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disaster_recovery_internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 disaster_recovery_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ipsec: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_connections: pulumi.Input[Optional[_builtins.int]] = None,
+                 ssl_vpn_internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
 
@@ -457,115 +457,115 @@ class _GatewayState:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to pay automatically. Default value: `true`. Valid values:
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoPropagate")
-    def auto_propagate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_propagate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically propagate the BGP route to the VPC. Value:  true: Propagate automatically.  false: does not propagate automatically.
         """
         return pulumi.get(self, "auto_propagate")
 
     @auto_propagate.setter
-    def auto_propagate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_propagate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_propagate", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Bandwidth specification of the VPN gateway. Unit: Mbps.  If you want to create a public VPN gateway, the value is 5, 10, 20, 50, 100, 200, 500, or 1000. If you want to create a private VPN gateway, the value is 200 or 1000.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="businessStatus")
-    def business_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def business_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The business status of the VPN gateway.
         """
         return pulumi.get(self, "business_status")
 
     @business_status.setter
-    def business_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def business_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "business_status", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when the VPN gateway was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the VPN gateway.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disasterRecoveryInternetIp")
-    def disaster_recovery_internet_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disaster_recovery_internet_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
         """
         return pulumi.get(self, "disaster_recovery_internet_ip")
 
     @disaster_recovery_internet_ip.setter
-    def disaster_recovery_internet_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disaster_recovery_internet_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disaster_recovery_internet_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="disasterRecoveryVswitchId")
-    def disaster_recovery_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disaster_recovery_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the backup VSwitch to which the VPN gateway is attached.
         """
         return pulumi.get(self, "disaster_recovery_vswitch_id")
 
     @disaster_recovery_vswitch_id.setter
-    def disaster_recovery_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disaster_recovery_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disaster_recovery_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIpsec")
-    def enable_ipsec(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ipsec(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         """
         return pulumi.get(self, "enable_ipsec")
 
     @enable_ipsec.setter
-    def enable_ipsec(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ipsec(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ipsec", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSsl")
-    def enable_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
 
@@ -574,189 +574,189 @@ class _GatewayState:
         return pulumi.get(self, "enable_ssl")
 
     @enable_ssl.setter
-    def enable_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
     @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.""")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="internetIp")
-    def internet_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The internet ip of the VPN.
         """
         return pulumi.get(self, "internet_ip")
 
     @internet_ip.setter
-    def internet_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_ip", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the VPN gateway. Value:  public (default): public VPN gateway. private: private network VPN gateway.
         """
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of payment. Value: Subscription: prepaid PayAsYouGo: Post-paid.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sslConnections")
-    def ssl_connections(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ssl_connections(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of clients.
         """
         return pulumi.get(self, "ssl_connections")
 
     @ssl_connections.setter
-    def ssl_connections(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ssl_connections(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ssl_connections", value)
 
     @_builtins.property
     @pulumi.getter(name="sslVpnInternetIp")
-    def ssl_vpn_internet_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_vpn_internet_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
         """
         return pulumi.get(self, "ssl_vpn_internet_ip")
 
     @ssl_vpn_internet_ip.setter
-    def ssl_vpn_internet_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_vpn_internet_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_vpn_internet_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The Tag of.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC to which the VPN gateway belongs.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnGatewayName")
-    def vpn_gateway_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_gateway_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPN gateway.
         """
         return pulumi.get(self, "vpn_gateway_name")
 
     @vpn_gateway_name.setter
-    def vpn_gateway_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_gateway_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_gateway_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnType")
-    def vpn_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
         """
         return pulumi.get(self, "vpn_type")
 
     @vpn_type.setter
-    def vpn_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_type", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VSwitch to which the VPN gateway is attached.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -766,25 +766,25 @@ class Gateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_propagate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disaster_recovery_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ipsec: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_propagate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disaster_recovery_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ipsec: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_connections: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPN gateway resource.
@@ -831,7 +831,7 @@ class Gateway(pulumi.CustomResource):
             network_type="public",
             payment_type="Subscription",
             enable_ipsec=True,
-            bandwidth=spec)
+            bandwidth=int(spec))
         ```
 
         ### Deleting `vpn.Gateway` or removing it from your configuration
@@ -926,7 +926,7 @@ class Gateway(pulumi.CustomResource):
             network_type="public",
             payment_type="Subscription",
             enable_ipsec=True,
-            bandwidth=spec)
+            bandwidth=int(spec))
         ```
 
         ### Deleting `vpn.Gateway` or removing it from your configuration
@@ -961,25 +961,25 @@ class Gateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_propagate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disaster_recovery_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ipsec: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_propagate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disaster_recovery_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ipsec: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_connections: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1028,31 +1028,31 @@ class Gateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_propagate: Optional[pulumi.Input[_builtins.bool]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            business_status: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disaster_recovery_internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            disaster_recovery_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_ipsec: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_type: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_connections: Optional[pulumi.Input[_builtins.int]] = None,
-            ssl_vpn_internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpn_gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vpn_type: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Gateway':
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_propagate: pulumi.Input[Optional[_builtins.bool]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            business_status: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disaster_recovery_internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            disaster_recovery_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_ipsec: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_connections: pulumi.Input[Optional[_builtins.int]] = None,
+            ssl_vpn_internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_type: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Gateway':
         """
         Get an existing Gateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

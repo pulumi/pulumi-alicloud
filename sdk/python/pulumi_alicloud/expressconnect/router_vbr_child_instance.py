@@ -23,8 +23,8 @@ class RouterVbrChildInstanceArgs:
                  child_instance_region_id: pulumi.Input[_builtins.str],
                  child_instance_type: pulumi.Input[_builtins.str],
                  ecr_id: pulumi.Input[_builtins.str],
-                 child_instance_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 child_instance_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterVbrChildInstance resource.
 
@@ -96,7 +96,7 @@ class RouterVbrChildInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="childInstanceOwnerId")
-    def child_instance_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def child_instance_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
 
@@ -105,33 +105,33 @@ class RouterVbrChildInstanceArgs:
         return pulumi.get(self, "child_instance_owner_id")
 
     @child_instance_owner_id.setter
-    def child_instance_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def child_instance_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "child_instance_owner_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attribute fields that represent descriptive information
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _RouterVbrChildInstanceState:
     def __init__(__self__, *,
-                 child_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 child_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterVbrChildInstance resources.
 
@@ -165,19 +165,19 @@ class _RouterVbrChildInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="childInstanceId")
-    def child_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def child_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the leased line gateway subinstance.
         """
         return pulumi.get(self, "child_instance_id")
 
     @child_instance_id.setter
-    def child_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def child_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "child_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="childInstanceOwnerId")
-    def child_instance_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def child_instance_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
 
@@ -186,79 +186,79 @@ class _RouterVbrChildInstanceState:
         return pulumi.get(self, "child_instance_owner_id")
 
     @child_instance_owner_id.setter
-    def child_instance_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def child_instance_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "child_instance_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="childInstanceRegionId")
-    def child_instance_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def child_instance_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region of the leased line gateway sub-instance
         """
         return pulumi.get(self, "child_instance_region_id")
 
     @child_instance_region_id.setter
-    def child_instance_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def child_instance_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "child_instance_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="childInstanceType")
-    def child_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def child_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the network instance. Value: `VBR`: VBR instance.
         """
         return pulumi.get(self, "child_instance_type")
 
     @child_instance_type.setter
-    def child_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def child_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "child_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attribute fields that represent descriptive information
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ecrId")
-    def ecr_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecr_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the representative leased line gateway instance.
         """
         return pulumi.get(self, "ecr_id")
 
     @ecr_id.setter
-    def ecr_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecr_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecr_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Binding relationship status of leased line gateway subinstances.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -268,12 +268,12 @@ class RouterVbrChildInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 child_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 child_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Express Connect Router Express Connect Router Vbr Child Instance resource.
@@ -401,12 +401,12 @@ class RouterVbrChildInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 child_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 child_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -442,14 +442,14 @@ class RouterVbrChildInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            child_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            child_instance_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-            child_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            child_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'RouterVbrChildInstance':
+            child_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            child_instance_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            child_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            child_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'RouterVbrChildInstance':
         """
         Get an existing RouterVbrChildInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

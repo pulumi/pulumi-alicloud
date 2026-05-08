@@ -145,7 +145,7 @@ export interface ControlPolicyAttachmentState {
     /**
      * The ID of the access control policy.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
      *
@@ -153,7 +153,7 @@ export interface ControlPolicyAttachmentState {
      * - Subfolders of the Root folder
      * - Members
      */
-    targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -179,23 +179,23 @@ export interface NetworkState {
     /**
      * Time when the network resource was created
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The ID of the resource group.
      */
-    dwResourceGroupId?: pulumi.Input<string>;
+    dwResourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Network Resource Status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Virtual Private Cloud ID of network resources
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vSwitch ID of the network resource.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**

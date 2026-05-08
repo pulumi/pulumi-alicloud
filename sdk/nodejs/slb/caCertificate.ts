@@ -148,25 +148,25 @@ export interface CaCertificateState {
     /**
      * the content of the CA certificate.
      */
-    caCertificate?: pulumi.Input<string>;
+    caCertificate?: pulumi.Input<string | undefined>;
     /**
      * Name of the CA Certificate.
      */
-    caCertificateName?: pulumi.Input<string>;
+    caCertificateName?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the slbCa certificate belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -180,19 +180,19 @@ export interface CaCertificateArgs {
     /**
      * Name of the CA Certificate.
      */
-    caCertificateName?: pulumi.Input<string>;
+    caCertificateName?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the slbCa certificate belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

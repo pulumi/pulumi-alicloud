@@ -145,23 +145,23 @@ export interface WorkspaceRunState {
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Resource attribute field of the experiment ID to which Run belongs
      */
-    experimentId?: pulumi.Input<string>;
+    experimentId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
-    runName?: pulumi.Input<string>;
+    runName?: pulumi.Input<string | undefined>;
     /**
      * Attribute Resource field representing the source task ID
      */
-    sourceId?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string | undefined>;
     /**
      * Resource attribute fields representing the source type
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -175,13 +175,13 @@ export interface WorkspaceRunArgs {
     /**
      * The name of the resource
      */
-    runName?: pulumi.Input<string>;
+    runName?: pulumi.Input<string | undefined>;
     /**
      * Attribute Resource field representing the source task ID
      */
-    sourceId?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string | undefined>;
     /**
      * Resource attribute fields representing the source type
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
 }

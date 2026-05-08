@@ -185,51 +185,51 @@ export interface EventRuleState {
     /**
      * The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
      */
-    contactParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleContactParameter>[]>;
+    contactParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleContactParameter>[] | undefined>;
     /**
      * The description of the event-triggered alert rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
      */
-    eventPattern?: pulumi.Input<inputs.cms.EventRuleEventPattern>;
+    eventPattern?: pulumi.Input<inputs.cms.EventRuleEventPattern | undefined>;
     /**
      * The information about the recipients in Function Compute. See `fcParameters` below.
      */
-    fcParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleFcParameter>[]>;
+    fcParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleFcParameter>[] | undefined>;
     /**
      * The ID of the application group to which the event-triggered alert rule belongs.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The information about the recipients in Message Service (MNS). See `mnsParameters` below.
      */
-    mnsParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleMnsParameter>[]>;
+    mnsParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleMnsParameter>[] | undefined>;
     /**
      * The parameters of API callback notification. See `openApiParameters` below.
      */
-    openApiParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleOpenApiParameter>[]>;
+    openApiParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleOpenApiParameter>[] | undefined>;
     /**
      * The name of the event-triggered alert rule.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The silence time.
      */
-    silenceTime?: pulumi.Input<number>;
+    silenceTime?: pulumi.Input<number | undefined>;
     /**
      * The information about the recipients in Simple Log Service. See `slsParameters` below.
      */
-    slsParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleSlsParameter>[]>;
+    slsParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleSlsParameter>[] | undefined>;
     /**
      * The status of the resource. Valid values: `ENABLED`, `DISABLED`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
      */
-    webhookParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleWebhookParameter>[]>;
+    webhookParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleWebhookParameter>[] | undefined>;
 }
 
 /**
@@ -239,11 +239,11 @@ export interface EventRuleArgs {
     /**
      * The information about the alert contact groups that receive alert notifications. See `contactParameters` below.
      */
-    contactParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleContactParameter>[]>;
+    contactParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleContactParameter>[] | undefined>;
     /**
      * The description of the event-triggered alert rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Event mode, used to describe the trigger conditions for this event. See `eventPattern` below.
      */
@@ -251,19 +251,19 @@ export interface EventRuleArgs {
     /**
      * The information about the recipients in Function Compute. See `fcParameters` below.
      */
-    fcParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleFcParameter>[]>;
+    fcParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleFcParameter>[] | undefined>;
     /**
      * The ID of the application group to which the event-triggered alert rule belongs.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The information about the recipients in Message Service (MNS). See `mnsParameters` below.
      */
-    mnsParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleMnsParameter>[]>;
+    mnsParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleMnsParameter>[] | undefined>;
     /**
      * The parameters of API callback notification. See `openApiParameters` below.
      */
-    openApiParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleOpenApiParameter>[]>;
+    openApiParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleOpenApiParameter>[] | undefined>;
     /**
      * The name of the event-triggered alert rule.
      */
@@ -271,17 +271,17 @@ export interface EventRuleArgs {
     /**
      * The silence time.
      */
-    silenceTime?: pulumi.Input<number>;
+    silenceTime?: pulumi.Input<number | undefined>;
     /**
      * The information about the recipients in Simple Log Service. See `slsParameters` below.
      */
-    slsParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleSlsParameter>[]>;
+    slsParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleSlsParameter>[] | undefined>;
     /**
      * The status of the resource. Valid values: `ENABLED`, `DISABLED`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The information about the callback URLs that are used to receive alert notifications. See `webhookParameters` below.
      */
-    webhookParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleWebhookParameter>[]>;
+    webhookParameters?: pulumi.Input<pulumi.Input<inputs.cms.EventRuleWebhookParameter>[] | undefined>;
 }

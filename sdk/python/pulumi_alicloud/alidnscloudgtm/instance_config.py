@@ -23,11 +23,11 @@ class InstanceConfigArgs:
                  schedule_rr_type: pulumi.Input[_builtins.str],
                  schedule_zone_mode: pulumi.Input[_builtins.str],
                  ttl: pulumi.Input[_builtins.int],
-                 address_pool_lb_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_zone_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence_lb_strategy_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 address_pool_lb_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_zone_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence_lb_strategy_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceConfig resource.
 
@@ -126,7 +126,7 @@ class InstanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="addressPoolLbStrategy")
-    def address_pool_lb_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_pool_lb_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The load balancing strategy among address pools:
         - round_robin: Round-robin. For any incoming DNS resolution request, all address pools are returned, and the order of these address pools is rotated with each request.
@@ -137,48 +137,48 @@ class InstanceConfigArgs:
         return pulumi.get(self, "address_pool_lb_strategy")
 
     @address_pool_lb_strategy.setter
-    def address_pool_lb_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_pool_lb_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_pool_lb_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Remarks. The provided parameter value becomes the updated remark content.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleHostName")
-    def schedule_host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The host record of the GTM access domain.
         """
         return pulumi.get(self, "schedule_host_name")
 
     @schedule_host_name.setter
-    def schedule_host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleZoneName")
-    def schedule_zone_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_zone_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone name, which is the parent zone of the GTM access domain name. It is typically a hosted domain under the same account as the GTM instance in the Alibaba Cloud DNS console, and can be either a primary domain or a subdomain.
         """
         return pulumi.get(self, "schedule_zone_name")
 
     @schedule_zone_name.setter
-    def schedule_zone_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_zone_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_zone_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sequenceLbStrategyMode")
-    def sequence_lb_strategy_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sequence_lb_strategy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
         - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
@@ -187,24 +187,24 @@ class InstanceConfigArgs:
         return pulumi.get(self, "sequence_lb_strategy_mode")
 
     @sequence_lb_strategy_mode.setter
-    def sequence_lb_strategy_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sequence_lb_strategy_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sequence_lb_strategy_mode", value)
 
 
 @pulumi.input_type
 class _InstanceConfigState:
     def __init__(__self__, *,
-                 address_pool_lb_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_rr_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_zone_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_zone_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence_lb_strategy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
+                 address_pool_lb_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_rr_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_zone_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence_lb_strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering InstanceConfig resources.
 
@@ -258,7 +258,7 @@ class _InstanceConfigState:
 
     @_builtins.property
     @pulumi.getter(name="addressPoolLbStrategy")
-    def address_pool_lb_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_pool_lb_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The load balancing strategy among address pools:
         - round_robin: Round-robin. For any incoming DNS resolution request, all address pools are returned, and the order of these address pools is rotated with each request.
@@ -269,24 +269,24 @@ class _InstanceConfigState:
         return pulumi.get(self, "address_pool_lb_strategy")
 
     @address_pool_lb_strategy.setter
-    def address_pool_lb_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_pool_lb_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_pool_lb_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="configId")
-    def config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name instance configuration ID.
         """
         return pulumi.get(self, "config_id")
 
     @config_id.setter
-    def config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStatus")
-    def enable_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The enable status of the domain instance:
         - enable: Enabled. The GTM instance's intelligent scheduling policy is active.
@@ -295,48 +295,48 @@ class _InstanceConfigState:
         return pulumi.get(self, "enable_status")
 
     @enable_status.setter
-    def enable_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_status", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID associated with the GTM 3.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Remarks. The provided parameter value becomes the updated remark content.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleHostName")
-    def schedule_host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The host record of the GTM access domain.
         """
         return pulumi.get(self, "schedule_host_name")
 
     @schedule_host_name.setter
-    def schedule_host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleRrType")
-    def schedule_rr_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_rr_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Record type for the access domain name:  
         - A: IPv4 address
@@ -346,12 +346,12 @@ class _InstanceConfigState:
         return pulumi.get(self, "schedule_rr_type")
 
     @schedule_rr_type.setter
-    def schedule_rr_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_rr_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_rr_type", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleZoneMode")
-    def schedule_zone_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_zone_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access domain name assignment mode:  
         - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
@@ -360,24 +360,24 @@ class _InstanceConfigState:
         return pulumi.get(self, "schedule_zone_mode")
 
     @schedule_zone_mode.setter
-    def schedule_zone_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_zone_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_zone_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleZoneName")
-    def schedule_zone_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_zone_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone name, which is the parent zone of the GTM access domain name. It is typically a hosted domain under the same account as the GTM instance in the Alibaba Cloud DNS console, and can be either a primary domain or a subdomain.
         """
         return pulumi.get(self, "schedule_zone_name")
 
     @schedule_zone_name.setter
-    def schedule_zone_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_zone_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_zone_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sequenceLbStrategyMode")
-    def sequence_lb_strategy_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sequence_lb_strategy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
         - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
@@ -386,19 +386,19 @@ class _InstanceConfigState:
         return pulumi.get(self, "sequence_lb_strategy_mode")
 
     @sequence_lb_strategy_mode.setter
-    def sequence_lb_strategy_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sequence_lb_strategy_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sequence_lb_strategy_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Global TTL (in seconds). This value determines how long the DNS records resolving the access domain name to addresses in the address pool are cached by the ISP's LocalDNS. Custom TTL values are supported.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
 
@@ -408,15 +408,15 @@ class InstanceConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_pool_lb_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_rr_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_zone_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_zone_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence_lb_strategy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
+                 address_pool_lb_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_rr_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_zone_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence_lb_strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Alidns Cloud Gtm Instance Config resource.
@@ -554,15 +554,15 @@ class InstanceConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_pool_lb_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_rr_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_zone_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_zone_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence_lb_strategy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
+                 address_pool_lb_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_rr_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_zone_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence_lb_strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -601,17 +601,17 @@ class InstanceConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address_pool_lb_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_status: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule_rr_type: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule_zone_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule_zone_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sequence_lb_strategy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            ttl: Optional[pulumi.Input[_builtins.int]] = None) -> 'InstanceConfig':
+            address_pool_lb_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_rr_type: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_zone_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence_lb_strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None) -> 'InstanceConfig':
         """
         Get an existing InstanceConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -21,7 +21,7 @@ class UserGroupArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  user_group_name: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserGroup resource.
 
@@ -60,24 +60,24 @@ class UserGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the New Group of Remark Information. Supports up to 500 Characters.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
 
 @pulumi.input_type
 class _UserGroupState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_group_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_group_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserGroup resources.
 
@@ -97,50 +97,50 @@ class _UserGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the New Group of Remark Information. Supports up to 500 Characters.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the New Group of the Bastion Host of Instance Id.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userGroupId")
-    def user_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The User Group self ID.
         """
         return pulumi.get(self, "user_group_id")
 
     @user_group_id.setter
-    def user_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userGroupName")
-    def user_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the New Group Name. Supports up to 128 Characters.
         """
         return pulumi.get(self, "user_group_name")
 
     @user_group_name.setter
-    def user_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_group_name", value)
 
 
@@ -150,9 +150,9 @@ class UserGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Bastion Host User Group resource.
@@ -283,9 +283,9 @@ class UserGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -313,10 +313,10 @@ class UserGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_group_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserGroup':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserGroup':
         """
         Get an existing UserGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

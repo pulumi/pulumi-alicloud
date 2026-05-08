@@ -178,11 +178,11 @@ def get_virtual_border_routers(filters: Optional[Sequence[Union['GetVirtualBorde
         output_file=pulumi.get(__ret__, 'output_file'),
         routers=pulumi.get(__ret__, 'routers'),
         status=pulumi.get(__ret__, 'status'))
-def get_virtual_border_routers_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']]]]] = None,
-                                      ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                      name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_virtual_border_routers_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']]]]] = None,
+                                      ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                      name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualBorderRoutersResult]:
     """
     This data source provides the Express Connect Virtual Border Routers of the current Alibaba Cloud user.

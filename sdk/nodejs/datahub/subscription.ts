@@ -147,27 +147,27 @@ export interface SubscriptionState {
     /**
      * Comment of the datahub subscription. It cannot be longer than 255 characters.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Create time of the datahub subscription. It is a human-readable string rather than 64-bits UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Last modify time of the datahub subscription. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
      */
-    lastModifyTime?: pulumi.Input<string>;
+    lastModifyTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * The identidy of the subscription, generate from server side.
      */
-    subId?: pulumi.Input<string>;
+    subId?: pulumi.Input<string | undefined>;
     /**
      * The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    topicName?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -177,7 +177,7 @@ export interface SubscriptionArgs {
     /**
      * Comment of the datahub subscription. It cannot be longer than 255 characters.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */

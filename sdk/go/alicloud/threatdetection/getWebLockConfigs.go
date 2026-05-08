@@ -26,20 +26,22 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := threatdetection.GetWebLockConfigs(ctx, &threatdetection.GetWebLockConfigsArgs{
-// Ids: interface{}{
-// defaultAlicloudThreatDetectionWebLockConfig.Id,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudThreatDetectionWebLockConfigExampleId", _default.Configs[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := threatdetection.GetWebLockConfigs(ctx, &threatdetection.GetWebLockConfigsArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudThreatDetectionWebLockConfig.Id,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudThreatDetectionWebLockConfigExampleId", _default.Configs[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetWebLockConfigs(ctx *pulumi.Context, args *GetWebLockConfigsArgs, opts ...pulumi.InvokeOption) (*GetWebLockConfigsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

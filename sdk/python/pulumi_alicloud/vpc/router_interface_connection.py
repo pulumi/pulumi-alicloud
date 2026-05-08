@@ -21,9 +21,9 @@ class RouterInterfaceConnectionArgs:
     def __init__(__self__, *,
                  interface_id: pulumi.Input[_builtins.str],
                  opposite_interface_id: pulumi.Input[_builtins.str],
-                 opposite_interface_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 opposite_interface_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterInterfaceConnection resource.
 
@@ -70,31 +70,31 @@ class RouterInterfaceConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="oppositeInterfaceOwnerId")
-    def opposite_interface_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_interface_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to Provider account_id.
         """
         return pulumi.get(self, "opposite_interface_owner_id")
 
     @opposite_interface_owner_id.setter
-    def opposite_interface_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_interface_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_interface_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeRouterId")
-    def opposite_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
         """
         return pulumi.get(self, "opposite_router_id")
 
     @opposite_router_id.setter
-    def opposite_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeRouterType")
-    def opposite_router_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_router_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
 
@@ -103,18 +103,18 @@ class RouterInterfaceConnectionArgs:
         return pulumi.get(self, "opposite_router_type")
 
     @opposite_router_type.setter
-    def opposite_router_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_router_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_router_type", value)
 
 
 @pulumi.input_type
 class _RouterInterfaceConnectionState:
     def __init__(__self__, *,
-                 interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterInterfaceConnection resources.
 
@@ -139,55 +139,55 @@ class _RouterInterfaceConnectionState:
 
     @_builtins.property
     @pulumi.getter(name="interfaceId")
-    def interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         One side router interface ID.
         """
         return pulumi.get(self, "interface_id")
 
     @interface_id.setter
-    def interface_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeInterfaceId")
-    def opposite_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_interface_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
         """
         return pulumi.get(self, "opposite_interface_id")
 
     @opposite_interface_id.setter
-    def opposite_interface_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_interface_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_interface_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeInterfaceOwnerId")
-    def opposite_interface_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_interface_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to Provider account_id.
         """
         return pulumi.get(self, "opposite_interface_owner_id")
 
     @opposite_interface_owner_id.setter
-    def opposite_interface_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_interface_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_interface_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeRouterId")
-    def opposite_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
         """
         return pulumi.get(self, "opposite_router_id")
 
     @opposite_router_id.setter
-    def opposite_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeRouterType")
-    def opposite_router_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_router_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
 
@@ -196,7 +196,7 @@ class _RouterInterfaceConnectionState:
         return pulumi.get(self, "opposite_router_type")
 
     @opposite_router_type.setter
-    def opposite_router_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_router_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_router_type", value)
 
 
@@ -206,11 +206,11 @@ class RouterInterfaceConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **DEPRECATED:**  This resource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interface.
@@ -385,11 +385,11 @@ class RouterInterfaceConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -418,11 +418,11 @@ class RouterInterfaceConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-            opposite_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-            opposite_interface_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-            opposite_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            opposite_router_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'RouterInterfaceConnection':
+            interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_interface_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_router_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'RouterInterfaceConnection':
         """
         Get an existing RouterInterfaceConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

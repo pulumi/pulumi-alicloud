@@ -144,15 +144,15 @@ export interface HistoryDeliveryJobState {
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
     /**
      * The Track Name.
      */
-    trailName?: pulumi.Input<string>;
+    trailName?: pulumi.Input<string | undefined>;
 }
 
 /**

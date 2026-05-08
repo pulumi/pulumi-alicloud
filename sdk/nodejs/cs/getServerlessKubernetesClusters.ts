@@ -141,23 +141,23 @@ export interface GetServerlessKubernetesClustersOutputArgs {
     /**
      * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g.,  `deletionProtection`, `connections`. See full list in attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * Cluster IDs to filter.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.243.0, kubeConfig will not export kubeConfig if this field is not set. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it
      *
      * @deprecated Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    kubeConfigFilePrefix?: pulumi.Input<string>;
+    kubeConfigFilePrefix?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by cluster name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

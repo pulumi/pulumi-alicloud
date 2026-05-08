@@ -24,39 +24,39 @@ class BackupPlanArgs:
                  database_type: pulumi.Input[_builtins.str],
                  instance_class: pulumi.Input[_builtins.str],
                  source_endpoint_instance_type: pulumi.Input[_builtins.str],
-                 backup_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_log_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_objects: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_rate_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_speed_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_strategy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_aliyun_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 duplication_archive_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 duplication_infrequent_access_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_backup_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 used_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 backup_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_log_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_objects: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_rate_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_speed_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_strategy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_aliyun_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 duplication_archive_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 duplication_infrequent_access_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 used_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a BackupPlan resource.
 
@@ -233,442 +233,442 @@ class BackupPlanArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupGatewayId")
-    def backup_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
         """
         return pulumi.get(self, "backup_gateway_id")
 
     @backup_gateway_id.setter
-    def backup_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="backupLogIntervalSeconds")
-    def backup_log_interval_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_log_interval_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The backup log interval seconds.
         """
         return pulumi.get(self, "backup_log_interval_seconds")
 
     @backup_log_interval_seconds.setter
-    def backup_log_interval_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_log_interval_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_log_interval_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="backupObjects")
-    def backup_objects(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_objects(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup object.
         """
         return pulumi.get(self, "backup_objects")
 
     @backup_objects.setter
-    def backup_objects(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_objects(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="backupPeriod")
-    def backup_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full backup cycle, Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. supports the selection of multiple fetch values, separated by English commas (,).
         """
         return pulumi.get(self, "backup_period")
 
     @backup_period.setter
-    def backup_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRateLimit")
-    def backup_rate_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_rate_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup rate limit.
         """
         return pulumi.get(self, "backup_rate_limit")
 
     @backup_rate_limit.setter
-    def backup_rate_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_rate_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_rate_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention time of backup data. Valid values: 0 to 1825. Default value: 730 days.
         """
         return pulumi.get(self, "backup_retention_period")
 
     @backup_retention_period.setter
-    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupSpeedLimit")
-    def backup_speed_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_speed_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup speed limit.
         """
         return pulumi.get(self, "backup_speed_limit")
 
     @backup_speed_limit.setter
-    def backup_speed_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_speed_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_speed_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="backupStartTime")
-    def backup_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of full Backup. The format is `<I> HH:mm</I>` Z(UTC time).
         """
         return pulumi.get(self, "backup_start_time")
 
     @backup_start_time.setter
-    def backup_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="backupStorageType")
-    def backup_storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Built-in storage type, Valid values: `system`.
         """
         return pulumi.get(self, "backup_storage_type")
 
     @backup_storage_type.setter
-    def backup_storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_storage_type", value)
 
     @_builtins.property
     @pulumi.getter(name="backupStrategyType")
-    def backup_strategy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_strategy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup strategy type. Valid values: `simple`, `manual`.
         """
         return pulumi.get(self, "backup_strategy_type")
 
     @backup_strategy_type.setter
-    def backup_strategy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_strategy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_strategy_type", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAliyunId")
-    def cross_aliyun_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_aliyun_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UID that is backed up across Alibaba cloud accounts.
         """
         return pulumi.get(self, "cross_aliyun_id")
 
     @cross_aliyun_id.setter
-    def cross_aliyun_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_aliyun_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_aliyun_id", value)
 
     @_builtins.property
     @pulumi.getter(name="crossRoleName")
-    def cross_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the RAM role that is backed up across Alibaba cloud accounts.
         """
         return pulumi.get(self, "cross_role_name")
 
     @cross_role_name.setter
-    def cross_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseRegion")
-    def database_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database region.
         """
         return pulumi.get(self, "database_region")
 
     @database_region.setter
-    def database_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_region", value)
 
     @_builtins.property
     @pulumi.getter(name="duplicationArchivePeriod")
-    def duplication_archive_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duplication_archive_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The storage time for conversion to archive cold standby is 365 days by default.
         """
         return pulumi.get(self, "duplication_archive_period")
 
     @duplication_archive_period.setter
-    def duplication_archive_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duplication_archive_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duplication_archive_period", value)
 
     @_builtins.property
     @pulumi.getter(name="duplicationInfrequentAccessPeriod")
-    def duplication_infrequent_access_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duplication_infrequent_access_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The storage time is converted to low-frequency access. The default time is 180 days.
         """
         return pulumi.get(self, "duplication_infrequent_access_period")
 
     @duplication_infrequent_access_period.setter
-    def duplication_infrequent_access_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duplication_infrequent_access_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duplication_infrequent_access_period", value)
 
     @_builtins.property
     @pulumi.getter(name="enableBackupLog")
-    def enable_backup_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_backup_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable incremental log Backup.
         """
         return pulumi.get(self, "enable_backup_log")
 
     @enable_backup_log.setter
-    def enable_backup_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_backup_log(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_backup_log", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type. Valid values: `RDS`, `PolarDB`, `DDS`, `Kvstore`, `Other`.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketName")
-    def oss_bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OSS Bucket name. The system automatically generates a new name by default.
         """
         return pulumi.get(self, "oss_bucket_name")
 
     @oss_bucket_name.setter
-    def oss_bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify that the prepaid instance is of the package year or monthly type. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointDatabaseName")
-    def source_endpoint_database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database. This parameter is required when the `database_type` is `PostgreSQL` or `MongoDB`.
         """
         return pulumi.get(self, "source_endpoint_database_name")
 
     @source_endpoint_database_name.setter
-    def source_endpoint_database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_database_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointInstanceId")
-    def source_endpoint_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the database instance. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, or `Express`.
         """
         return pulumi.get(self, "source_endpoint_instance_id")
 
     @source_endpoint_instance_id.setter
-    def source_endpoint_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointIp")
-    def source_endpoint_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source endpoint ip.
         """
         return pulumi.get(self, "source_endpoint_ip")
 
     @source_endpoint_ip.setter
-    def source_endpoint_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointOracleSid")
-    def source_endpoint_oracle_sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_oracle_sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
         """
         return pulumi.get(self, "source_endpoint_oracle_sid")
 
     @source_endpoint_oracle_sid.setter
-    def source_endpoint_oracle_sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_oracle_sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_oracle_sid", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointPassword")
-    def source_endpoint_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source endpoint password.  This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
         """
         return pulumi.get(self, "source_endpoint_password")
 
     @source_endpoint_password.setter
-    def source_endpoint_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_password", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointPort")
-    def source_endpoint_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def source_endpoint_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The source endpoint port.
         """
         return pulumi.get(self, "source_endpoint_port")
 
     @source_endpoint_port.setter
-    def source_endpoint_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def source_endpoint_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "source_endpoint_port", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointRegion")
-    def source_endpoint_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the database. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
         """
         return pulumi.get(self, "source_endpoint_region")
 
     @source_endpoint_region.setter
-    def source_endpoint_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_region", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointSid")
-    def source_endpoint_sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
         """
         return pulumi.get(self, "source_endpoint_sid")
 
     @source_endpoint_sid.setter
-    def source_endpoint_sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_sid", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")
-    def source_endpoint_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source endpoint username. This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
         """
         return pulumi.get(self, "source_endpoint_user_name")
 
     @source_endpoint_user_name.setter
-    def source_endpoint_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `pause`, `running`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRegion")
-    def storage_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage region.
         """
         return pulumi.get(self, "storage_region")
 
     @storage_region.setter
-    def storage_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_region", value)
 
     @_builtins.property
     @pulumi.getter(name="usedTime")
-    def used_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def used_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
         """
         return pulumi.get(self, "used_time")
 
     @used_time.setter
-    def used_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def used_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "used_time", value)
 
 
 @pulumi.input_type
 class _BackupPlanState:
     def __init__(__self__, *,
-                 backup_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_log_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_objects: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_rate_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_speed_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_strategy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_aliyun_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 duplication_archive_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 duplication_infrequent_access_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_backup_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 used_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 backup_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_log_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_objects: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_rate_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_speed_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_strategy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_aliyun_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 duplication_archive_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 duplication_infrequent_access_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 used_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering BackupPlan resources.
 
@@ -790,458 +790,458 @@ class _BackupPlanState:
 
     @_builtins.property
     @pulumi.getter(name="backupGatewayId")
-    def backup_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the backup gateway. This parameter is required when the `source_endpoint_instance_type` is `Agent`.
         """
         return pulumi.get(self, "backup_gateway_id")
 
     @backup_gateway_id.setter
-    def backup_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="backupLogIntervalSeconds")
-    def backup_log_interval_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_log_interval_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The backup log interval seconds.
         """
         return pulumi.get(self, "backup_log_interval_seconds")
 
     @backup_log_interval_seconds.setter
-    def backup_log_interval_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_log_interval_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_log_interval_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="backupMethod")
-    def backup_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup method. Valid values: `duplication`, `logical`, `physical`.
         """
         return pulumi.get(self, "backup_method")
 
     @backup_method.setter
-    def backup_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_method", value)
 
     @_builtins.property
     @pulumi.getter(name="backupObjects")
-    def backup_objects(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_objects(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup object.
         """
         return pulumi.get(self, "backup_objects")
 
     @backup_objects.setter
-    def backup_objects(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_objects(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_objects", value)
 
     @_builtins.property
     @pulumi.getter(name="backupPeriod")
-    def backup_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full backup cycle, Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. supports the selection of multiple fetch values, separated by English commas (,).
         """
         return pulumi.get(self, "backup_period")
 
     @backup_period.setter
-    def backup_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupPlanName")
-    def backup_plan_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_plan_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "backup_plan_name")
 
     @backup_plan_name.setter
-    def backup_plan_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_plan_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_plan_name", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRateLimit")
-    def backup_rate_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_rate_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup rate limit.
         """
         return pulumi.get(self, "backup_rate_limit")
 
     @backup_rate_limit.setter
-    def backup_rate_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_rate_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_rate_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention time of backup data. Valid values: 0 to 1825. Default value: 730 days.
         """
         return pulumi.get(self, "backup_retention_period")
 
     @backup_retention_period.setter
-    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupSpeedLimit")
-    def backup_speed_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_speed_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup speed limit.
         """
         return pulumi.get(self, "backup_speed_limit")
 
     @backup_speed_limit.setter
-    def backup_speed_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_speed_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_speed_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="backupStartTime")
-    def backup_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of full Backup. The format is `<I> HH:mm</I>` Z(UTC time).
         """
         return pulumi.get(self, "backup_start_time")
 
     @backup_start_time.setter
-    def backup_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="backupStorageType")
-    def backup_storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Built-in storage type, Valid values: `system`.
         """
         return pulumi.get(self, "backup_storage_type")
 
     @backup_storage_type.setter
-    def backup_storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_storage_type", value)
 
     @_builtins.property
     @pulumi.getter(name="backupStrategyType")
-    def backup_strategy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_strategy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup strategy type. Valid values: `simple`, `manual`.
         """
         return pulumi.get(self, "backup_strategy_type")
 
     @backup_strategy_type.setter
-    def backup_strategy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_strategy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_strategy_type", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAliyunId")
-    def cross_aliyun_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_aliyun_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UID that is backed up across Alibaba cloud accounts.
         """
         return pulumi.get(self, "cross_aliyun_id")
 
     @cross_aliyun_id.setter
-    def cross_aliyun_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_aliyun_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_aliyun_id", value)
 
     @_builtins.property
     @pulumi.getter(name="crossRoleName")
-    def cross_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the RAM role that is backed up across Alibaba cloud accounts.
         """
         return pulumi.get(self, "cross_role_name")
 
     @cross_role_name.setter
-    def cross_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseRegion")
-    def database_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database region.
         """
         return pulumi.get(self, "database_region")
 
     @database_region.setter
-    def database_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_region", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseType")
-    def database_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database type. Valid values: `DRDS`, `FIle`, `MSSQL`, `MariaDB`, `MongoDB`, `MySQL`, `Oracle`, `PPAS`, `PostgreSQL`, `Redis`.
         """
         return pulumi.get(self, "database_type")
 
     @database_type.setter
-    def database_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_type", value)
 
     @_builtins.property
     @pulumi.getter(name="duplicationArchivePeriod")
-    def duplication_archive_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duplication_archive_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The storage time for conversion to archive cold standby is 365 days by default.
         """
         return pulumi.get(self, "duplication_archive_period")
 
     @duplication_archive_period.setter
-    def duplication_archive_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duplication_archive_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duplication_archive_period", value)
 
     @_builtins.property
     @pulumi.getter(name="duplicationInfrequentAccessPeriod")
-    def duplication_infrequent_access_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duplication_infrequent_access_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The storage time is converted to low-frequency access. The default time is 180 days.
         """
         return pulumi.get(self, "duplication_infrequent_access_period")
 
     @duplication_infrequent_access_period.setter
-    def duplication_infrequent_access_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duplication_infrequent_access_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duplication_infrequent_access_period", value)
 
     @_builtins.property
     @pulumi.getter(name="enableBackupLog")
-    def enable_backup_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_backup_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable incremental log Backup.
         """
         return pulumi.get(self, "enable_backup_log")
 
     @enable_backup_log.setter
-    def enable_backup_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_backup_log(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_backup_log", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`.
         """
         return pulumi.get(self, "instance_class")
 
     @instance_class.setter
-    def instance_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_class", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type. Valid values: `RDS`, `PolarDB`, `DDS`, `Kvstore`, `Other`.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketName")
-    def oss_bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OSS Bucket name. The system automatically generates a new name by default.
         """
         return pulumi.get(self, "oss_bucket_name")
 
     @oss_bucket_name.setter
-    def oss_bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify that the prepaid instance is of the package year or monthly type. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointDatabaseName")
-    def source_endpoint_database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database. This parameter is required when the `database_type` is `PostgreSQL` or `MongoDB`.
         """
         return pulumi.get(self, "source_endpoint_database_name")
 
     @source_endpoint_database_name.setter
-    def source_endpoint_database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_database_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointInstanceId")
-    def source_endpoint_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the database instance. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, or `Express`.
         """
         return pulumi.get(self, "source_endpoint_instance_id")
 
     @source_endpoint_instance_id.setter
-    def source_endpoint_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointInstanceType")
-    def source_endpoint_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the database. Valid values: `RDS`, `ECS`, `Express`, `Agent`, `DDS`, `Other`.
         """
         return pulumi.get(self, "source_endpoint_instance_type")
 
     @source_endpoint_instance_type.setter
-    def source_endpoint_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointIp")
-    def source_endpoint_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source endpoint ip.
         """
         return pulumi.get(self, "source_endpoint_ip")
 
     @source_endpoint_ip.setter
-    def source_endpoint_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointOracleSid")
-    def source_endpoint_oracle_sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_oracle_sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
         """
         return pulumi.get(self, "source_endpoint_oracle_sid")
 
     @source_endpoint_oracle_sid.setter
-    def source_endpoint_oracle_sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_oracle_sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_oracle_sid", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointPassword")
-    def source_endpoint_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source endpoint password.  This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
         """
         return pulumi.get(self, "source_endpoint_password")
 
     @source_endpoint_password.setter
-    def source_endpoint_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_password", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointPort")
-    def source_endpoint_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def source_endpoint_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The source endpoint port.
         """
         return pulumi.get(self, "source_endpoint_port")
 
     @source_endpoint_port.setter
-    def source_endpoint_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def source_endpoint_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "source_endpoint_port", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointRegion")
-    def source_endpoint_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the database. This parameter is required when the `source_endpoint_instance_type` is `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
         """
         return pulumi.get(self, "source_endpoint_region")
 
     @source_endpoint_region.setter
-    def source_endpoint_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_region", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointSid")
-    def source_endpoint_sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Oracle SID name. This parameter is required when the `database_type` is `Oracle`.
         """
         return pulumi.get(self, "source_endpoint_sid")
 
     @source_endpoint_sid.setter
-    def source_endpoint_sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_sid", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")
-    def source_endpoint_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source endpoint username. This parameter is not required when the `database_type` is `Redis`, or when the `source_endpoint_instance_type` is `Agent` and the `database_type` is `MSSQL`. This parameter is required in other scenarios.
         """
         return pulumi.get(self, "source_endpoint_user_name")
 
     @source_endpoint_user_name.setter
-    def source_endpoint_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `pause`, `running`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRegion")
-    def storage_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage region.
         """
         return pulumi.get(self, "storage_region")
 
     @storage_region.setter
-    def storage_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_region", value)
 
     @_builtins.property
     @pulumi.getter(name="usedTime")
-    def used_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def used_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
         """
         return pulumi.get(self, "used_time")
 
     @used_time.setter
-    def used_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def used_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "used_time", value)
 
 
@@ -1251,44 +1251,44 @@ class BackupPlan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_log_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_objects: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_rate_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_speed_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_strategy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_aliyun_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 duplication_archive_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 duplication_infrequent_access_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_backup_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 used_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 backup_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_log_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_objects: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_rate_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_speed_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_strategy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_aliyun_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 duplication_archive_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 duplication_infrequent_access_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 used_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a DBS Backup Plan resource.
@@ -1334,7 +1334,7 @@ class BackupPlan(pulumi.CustomResource):
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             vswitch_id=vswitch_id,
             instance_name=name)
         default_database = alicloud.rds.Database("default",
@@ -1473,7 +1473,7 @@ class BackupPlan(pulumi.CustomResource):
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             vswitch_id=vswitch_id,
             instance_name=name)
         default_database = alicloud.rds.Database("default",
@@ -1536,44 +1536,44 @@ class BackupPlan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_log_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_objects: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_rate_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_speed_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_strategy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_aliyun_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 duplication_archive_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 duplication_infrequent_access_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_backup_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 used_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 backup_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_log_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_objects: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_rate_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_speed_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_strategy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_aliyun_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 duplication_archive_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 duplication_infrequent_access_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 used_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1643,44 +1643,44 @@ class BackupPlan(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_log_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_method: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_objects: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_period: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_rate_limit: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_speed_limit: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_strategy_type: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_aliyun_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            database_region: Optional[pulumi.Input[_builtins.str]] = None,
-            database_type: Optional[pulumi.Input[_builtins.str]] = None,
-            duplication_archive_period: Optional[pulumi.Input[_builtins.int]] = None,
-            duplication_infrequent_access_period: Optional[pulumi.Input[_builtins.int]] = None,
-            enable_backup_log: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_port: Optional[pulumi.Input[_builtins.int]] = None,
-            source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_sid: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_region: Optional[pulumi.Input[_builtins.str]] = None,
-            used_time: Optional[pulumi.Input[_builtins.int]] = None) -> 'BackupPlan':
+            backup_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_log_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_method: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_objects: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_rate_limit: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_speed_limit: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_strategy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_aliyun_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            database_region: pulumi.Input[Optional[_builtins.str]] = None,
+            database_type: pulumi.Input[Optional[_builtins.str]] = None,
+            duplication_archive_period: pulumi.Input[Optional[_builtins.int]] = None,
+            duplication_infrequent_access_period: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_port: pulumi.Input[Optional[_builtins.int]] = None,
+            source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_sid: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_region: pulumi.Input[Optional[_builtins.str]] = None,
+            used_time: pulumi.Input[Optional[_builtins.int]] = None) -> 'BackupPlan':
         """
         Get an existing BackupPlan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

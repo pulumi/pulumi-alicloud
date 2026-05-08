@@ -180,49 +180,49 @@ export interface MetricRuleTemplateState {
     /**
      * The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
      */
-    alertTemplates?: pulumi.Input<pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplate>[]>;
+    alertTemplates?: pulumi.Input<pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplate>[] | undefined>;
     /**
      * The mode in which the alert template is applied. Valid values:
      * - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
      * - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
      */
-    applyMode?: pulumi.Input<string>;
+    applyMode?: pulumi.Input<string | undefined>;
     /**
      * The description of the alert template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
      */
-    enableEndTime?: pulumi.Input<string>;
+    enableEndTime?: pulumi.Input<string | undefined>;
     /**
      * The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
      */
-    enableStartTime?: pulumi.Input<string>;
+    enableStartTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the application group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert template.
      */
-    metricRuleTemplateName?: pulumi.Input<string>;
+    metricRuleTemplateName?: pulumi.Input<string | undefined>;
     /**
      * The alert notification method. Valid values:
      */
-    notifyLevel?: pulumi.Input<string>;
+    notifyLevel?: pulumi.Input<string | undefined>;
     /**
      * The version of the alert template.
      */
-    restVersion?: pulumi.Input<string>;
+    restVersion?: pulumi.Input<string | undefined>;
     /**
      * The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
      */
-    silenceTime?: pulumi.Input<number>;
+    silenceTime?: pulumi.Input<number | undefined>;
     /**
      * The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
      */
-    webhook?: pulumi.Input<string>;
+    webhook?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -232,29 +232,29 @@ export interface MetricRuleTemplateArgs {
     /**
      * The details of alert rules that are generated based on the alert template. See `alertTemplates` below.
      */
-    alertTemplates?: pulumi.Input<pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplate>[]>;
+    alertTemplates?: pulumi.Input<pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplate>[] | undefined>;
     /**
      * The mode in which the alert template is applied. Valid values:
      * - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
      * - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
      */
-    applyMode?: pulumi.Input<string>;
+    applyMode?: pulumi.Input<string | undefined>;
     /**
      * The description of the alert template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
      */
-    enableEndTime?: pulumi.Input<string>;
+    enableEndTime?: pulumi.Input<string | undefined>;
     /**
      * The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
      */
-    enableStartTime?: pulumi.Input<string>;
+    enableStartTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the application group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert template.
      */
@@ -262,13 +262,13 @@ export interface MetricRuleTemplateArgs {
     /**
      * The alert notification method. Valid values:
      */
-    notifyLevel?: pulumi.Input<string>;
+    notifyLevel?: pulumi.Input<string | undefined>;
     /**
      * The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
      */
-    silenceTime?: pulumi.Input<number>;
+    silenceTime?: pulumi.Input<number | undefined>;
     /**
      * The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
      */
-    webhook?: pulumi.Input<string>;
+    webhook?: pulumi.Input<string | undefined>;
 }

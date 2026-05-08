@@ -185,13 +185,13 @@ def get_transit_router_multicast_domain_peer_members(ids: Optional[Sequence[_bui
         resource_type=pulumi.get(__ret__, 'resource_type'),
         transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'),
         transit_router_multicast_domain_id=pulumi.get(__ret__, 'transit_router_multicast_domain_id'))
-def get_transit_router_multicast_domain_peer_members_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                            peer_transit_router_multicast_domains: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                            resource_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                            resource_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                            transit_router_attachment_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                            transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_transit_router_multicast_domain_peer_members_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                            peer_transit_router_multicast_domains: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                            resource_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                            resource_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                            transit_router_attachment_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                            transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterMulticastDomainPeerMembersResult]:
     """
     This data source provides Cen Transit Router Multicast Domain Peer Member available to the user. [What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupmembers)

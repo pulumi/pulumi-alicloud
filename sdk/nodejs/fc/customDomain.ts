@@ -233,35 +233,35 @@ export interface CustomDomainState {
     /**
      * The account id.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The api version of Function Compute.
      */
-    apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string | undefined>;
     /**
      * The configuration of HTTPS certificate.See `certConfig` below.
      */
-    certConfig?: pulumi.Input<inputs.fc.CustomDomainCertConfig>;
+    certConfig?: pulumi.Input<inputs.fc.CustomDomainCertConfig | undefined>;
     /**
      * The date this resource was created.
      */
-    createdTime?: pulumi.Input<string>;
+    createdTime?: pulumi.Input<string | undefined>;
     /**
      * The custom domain name. For example, "example.com".
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * The date this resource was last modified.
      */
-    lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string | undefined>;
     /**
      * The protocol, `HTTP` or `HTTP,HTTPS`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The configuration of domain route, mapping the path and Function Compute function.See `routeConfig` below.
      */
-    routeConfigs?: pulumi.Input<pulumi.Input<inputs.fc.CustomDomainRouteConfig>[]>;
+    routeConfigs?: pulumi.Input<pulumi.Input<inputs.fc.CustomDomainRouteConfig>[] | undefined>;
 }
 
 /**
@@ -271,7 +271,7 @@ export interface CustomDomainArgs {
     /**
      * The configuration of HTTPS certificate.See `certConfig` below.
      */
-    certConfig?: pulumi.Input<inputs.fc.CustomDomainCertConfig>;
+    certConfig?: pulumi.Input<inputs.fc.CustomDomainCertConfig | undefined>;
     /**
      * The custom domain name. For example, "example.com".
      */
@@ -283,5 +283,5 @@ export interface CustomDomainArgs {
     /**
      * The configuration of domain route, mapping the path and Function Compute function.See `routeConfig` below.
      */
-    routeConfigs?: pulumi.Input<pulumi.Input<inputs.fc.CustomDomainRouteConfig>[]>;
+    routeConfigs?: pulumi.Input<pulumi.Input<inputs.fc.CustomDomainRouteConfig>[] | undefined>;
 }

@@ -149,9 +149,9 @@ def get_main_versions(cluster_types: Optional[Sequence[_builtins.str]] = None,
         ids=pulumi.get(__ret__, 'ids'),
         main_versions=pulumi.get(__ret__, 'main_versions'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_main_versions_output(cluster_types: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             emr_version: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_main_versions_output(cluster_types: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             emr_version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMainVersionsResult]:
     """
     The `emr_get_main_versions` data source provides a collection of emr

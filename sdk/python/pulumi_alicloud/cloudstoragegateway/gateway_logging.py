@@ -22,7 +22,7 @@ class GatewayLoggingArgs:
                  gateway_id: pulumi.Input[_builtins.str],
                  sls_logstore: pulumi.Input[_builtins.str],
                  sls_project: pulumi.Input[_builtins.str],
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GatewayLogging resource.
 
@@ -75,24 +75,24 @@ class GatewayLoggingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `Enabled`, `Disable`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _GatewayLoggingState:
     def __init__(__self__, *,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewayLogging resources.
 
@@ -112,50 +112,50 @@ class _GatewayLoggingState:
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
-    def gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Gateway.
         """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
-    def gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="slsLogstore")
-    def sls_logstore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_logstore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Log Store.
         """
         return pulumi.get(self, "sls_logstore")
 
     @sls_logstore.setter
-    def sls_logstore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_logstore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_logstore", value)
 
     @_builtins.property
     @pulumi.getter(name="slsProject")
-    def sls_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Project.
         """
         return pulumi.get(self, "sls_project")
 
     @sls_project.setter
-    def sls_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_project", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `Enabled`, `Disable`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -165,10 +165,10 @@ class GatewayLogging(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Storage Gateway Gateway Logging resource.
@@ -354,10 +354,10 @@ class GatewayLogging(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -387,10 +387,10 @@ class GatewayLogging(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sls_logstore: Optional[pulumi.Input[_builtins.str]] = None,
-            sls_project: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'GatewayLogging':
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_logstore: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_project: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'GatewayLogging':
         """
         Get an existing GatewayLogging resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

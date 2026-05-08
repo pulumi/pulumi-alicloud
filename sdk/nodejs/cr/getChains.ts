@@ -157,11 +157,11 @@ export function getChainsOutput(args: GetChainsOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getChains.
  */
 export interface GetChainsOutputArgs {
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Chain IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of CR Enterprise Edition instance.
      */
@@ -169,17 +169,17 @@ export interface GetChainsOutputArgs {
     /**
      * A regex string to filter results by Chain name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The name of CR Enterprise Edition repository.
      */
-    repoName?: pulumi.Input<string>;
+    repoName?: pulumi.Input<string | undefined>;
     /**
      * The name of CR Enterprise Edition namespace.
      */
-    repoNamespaceName?: pulumi.Input<string>;
+    repoNamespaceName?: pulumi.Input<string | undefined>;
 }

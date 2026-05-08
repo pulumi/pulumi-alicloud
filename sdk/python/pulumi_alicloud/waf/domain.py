@@ -23,21 +23,21 @@ class DomainArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  is_access_product: pulumi.Input[_builtins.str],
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http2_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 http_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 http_to_user_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 https_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancing: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_headers: Optional[pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]]] = None,
-                 read_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 write_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http2_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 http_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 http_to_user_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 https_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancing: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_headers: pulumi.Input[Optional[Sequence[pulumi.Input['DomainLogHeaderArgs']]]] = None,
+                 read_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 write_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Domain resource.
 
@@ -124,80 +124,80 @@ class DomainArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
         """
         return pulumi.get(self, "cluster_type")
 
     @cluster_type.setter
-    def cluster_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_type", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionTime")
-    def connection_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The connection timeout for WAF exclusive clusters. Unit: seconds.
         """
         return pulumi.get(self, "connection_time")
 
     @connection_time.setter
-    def connection_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_time", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="http2Ports")
-    def http2_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def http2_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of the HTTP 2.0 ports.
         """
         return pulumi.get(self, "http2_ports")
 
     @http2_ports.setter
-    def http2_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def http2_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "http2_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="httpPorts")
-    def http_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def http_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of the HTTP ports.
         """
         return pulumi.get(self, "http_ports")
 
     @http_ports.setter
-    def http_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def http_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "http_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="httpToUserIp")
-    def http_to_user_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_to_user_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
         By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
@@ -205,48 +205,48 @@ class DomainArgs:
         return pulumi.get(self, "http_to_user_ip")
 
     @http_to_user_ip.setter
-    def http_to_user_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_to_user_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_to_user_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsPorts")
-    def https_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def https_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of the HTTPS ports.
         """
         return pulumi.get(self, "https_ports")
 
     @https_ports.setter
-    def https_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def https_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "https_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsRedirect")
-    def https_redirect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_redirect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
         """
         return pulumi.get(self, "https_redirect")
 
     @https_redirect.setter
-    def https_redirect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_redirect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_redirect", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancing")
-    def load_balancing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
         """
         return pulumi.get(self, "load_balancing")
 
     @load_balancing.setter
-    def load_balancing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancing", value)
 
     @_builtins.property
     @pulumi.getter(name="logHeaders")
-    def log_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]]]:
+    def log_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainLogHeaderArgs']]]]:
         """
         The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
         * key: The key of label
@@ -255,79 +255,79 @@ class DomainArgs:
         return pulumi.get(self, "log_headers")
 
     @log_headers.setter
-    def log_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]]]):
+    def log_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainLogHeaderArgs']]]]):
         pulumi.set(self, "log_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="readTime")
-    def read_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def read_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The read timeout of a WAF exclusive cluster. Unit: seconds.
         """
         return pulumi.get(self, "read_time")
 
     @read_time.setter
-    def read_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def read_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "read_time", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceIps")
-    def source_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of the IP address or domain of the origin server to which the specified domain points.
         """
         return pulumi.get(self, "source_ips")
 
     @source_ips.setter
-    def source_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="writeTime")
-    def write_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def write_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
         """
         return pulumi.get(self, "write_time")
 
     @write_time.setter
-    def write_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def write_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "write_time", value)
 
 
 @pulumi.input_type
 class _DomainState:
     def __init__(__self__, *,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cname: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http2_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 http_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 http_to_user_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 https_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_access_product: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancing: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_headers: Optional[pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]]] = None,
-                 read_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 write_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cname: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http2_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 http_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 http_to_user_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 https_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_access_product: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancing: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_headers: pulumi.Input[Optional[Sequence[pulumi.Input['DomainLogHeaderArgs']]]] = None,
+                 read_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 write_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
 
@@ -395,92 +395,92 @@ class _DomainState:
 
     @_builtins.property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the WAF cluster. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
         """
         return pulumi.get(self, "cluster_type")
 
     @cluster_type.setter
-    def cluster_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def cname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CNAME record assigned by the WAF instance to the specified domain.
         """
         return pulumi.get(self, "cname")
 
     @cname.setter
-    def cname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cname", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionTime")
-    def connection_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The connection timeout for WAF exclusive clusters. Unit: seconds.
         """
         return pulumi.get(self, "connection_time")
 
     @connection_time.setter
-    def connection_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_time", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="http2Ports")
-    def http2_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def http2_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of the HTTP 2.0 ports.
         """
         return pulumi.get(self, "http2_ports")
 
     @http2_ports.setter
-    def http2_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def http2_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "http2_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="httpPorts")
-    def http_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def http_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of the HTTP ports.
         """
         return pulumi.get(self, "http_ports")
 
     @http_ports.setter
-    def http_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def http_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "http_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="httpToUserIp")
-    def http_to_user_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_to_user_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
         By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
@@ -488,72 +488,72 @@ class _DomainState:
         return pulumi.get(self, "http_to_user_ip")
 
     @http_to_user_ip.setter
-    def http_to_user_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_to_user_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_to_user_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsPorts")
-    def https_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def https_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of the HTTPS ports.
         """
         return pulumi.get(self, "https_ports")
 
     @https_ports.setter
-    def https_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def https_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "https_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsRedirect")
-    def https_redirect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_redirect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
         """
         return pulumi.get(self, "https_redirect")
 
     @https_redirect.setter
-    def https_redirect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_redirect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_redirect", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the WAF instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isAccessProduct")
-    def is_access_product(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def is_access_product(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
         """
         return pulumi.get(self, "is_access_product")
 
     @is_access_product.setter
-    def is_access_product(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def is_access_product(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "is_access_product", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancing")
-    def load_balancing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
         """
         return pulumi.get(self, "load_balancing")
 
     @load_balancing.setter
-    def load_balancing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancing", value)
 
     @_builtins.property
     @pulumi.getter(name="logHeaders")
-    def log_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]]]:
+    def log_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainLogHeaderArgs']]]]:
         """
         The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
         * key: The key of label
@@ -562,55 +562,55 @@ class _DomainState:
         return pulumi.get(self, "log_headers")
 
     @log_headers.setter
-    def log_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainLogHeaderArgs']]]]):
+    def log_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainLogHeaderArgs']]]]):
         pulumi.set(self, "log_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="readTime")
-    def read_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def read_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The read timeout of a WAF exclusive cluster. Unit: seconds.
         """
         return pulumi.get(self, "read_time")
 
     @read_time.setter
-    def read_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def read_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "read_time", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceIps")
-    def source_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of the IP address or domain of the origin server to which the specified domain points.
         """
         return pulumi.get(self, "source_ips")
 
     @source_ips.setter
-    def source_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="writeTime")
-    def write_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def write_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
         """
         return pulumi.get(self, "write_time")
 
     @write_time.setter
-    def write_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def write_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "write_time", value)
 
 
@@ -620,23 +620,23 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http2_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 http_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 http_to_user_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 https_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_access_product: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancing: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict']]]]] = None,
-                 read_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 write_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http2_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 http_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 http_to_user_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 https_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_access_product: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancing: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict']]]]] = None,
+                 read_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 write_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         > **DEPRECATED:**  This resource has been deprecated and using wafv3.Domain instead.
@@ -770,23 +770,23 @@ class Domain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http2_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 http_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 http_to_user_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 https_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_access_product: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancing: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict']]]]] = None,
-                 read_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 write_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http2_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 http_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 http_to_user_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 https_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_access_product: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancing: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict']]]]] = None,
+                 read_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 write_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -828,24 +828,24 @@ class Domain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-            cname: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_time: Optional[pulumi.Input[_builtins.int]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            http2_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            http_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            http_to_user_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            https_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            https_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            is_access_product: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancing: Optional[pulumi.Input[_builtins.str]] = None,
-            log_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict']]]]] = None,
-            read_time: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            write_time: Optional[pulumi.Input[_builtins.int]] = None) -> 'Domain':
+            cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cname: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_time: pulumi.Input[Optional[_builtins.int]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            http2_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            http_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            http_to_user_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            https_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            https_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_access_product: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancing: pulumi.Input[Optional[_builtins.str]] = None,
+            log_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict']]]]] = None,
+            read_time: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            write_time: pulumi.Input[Optional[_builtins.int]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

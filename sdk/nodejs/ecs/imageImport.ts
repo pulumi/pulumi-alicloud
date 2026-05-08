@@ -176,36 +176,36 @@ export interface ImageImportState {
     /**
      * The architecture of the image. Default value: `x8664`. Valid values: `x8664`, `i386`.
      */
-    architecture?: pulumi.Input<string>;
+    architecture?: pulumi.Input<string | undefined>;
     /**
      * The boot mode of the image. Valid values: `BIOS`, `UEFI`.
      */
-    bootMode?: pulumi.Input<string>;
+    bootMode?: pulumi.Input<string | undefined>;
     /**
      * The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The information about the custom image. See `diskDeviceMapping` below.
      */
-    diskDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.ImageImportDiskDeviceMapping>[]>;
+    diskDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.ImageImportDiskDeviceMapping>[] | undefined>;
     /**
      * The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
      */
-    licenseType?: pulumi.Input<string>;
+    licenseType?: pulumi.Input<string | undefined>;
     /**
      * The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
      */
-    osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string | undefined>;
     /**
      * The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
      * > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -215,15 +215,15 @@ export interface ImageImportArgs {
     /**
      * The architecture of the image. Default value: `x8664`. Valid values: `x8664`, `i386`.
      */
-    architecture?: pulumi.Input<string>;
+    architecture?: pulumi.Input<string | undefined>;
     /**
      * The boot mode of the image. Valid values: `BIOS`, `UEFI`.
      */
-    bootMode?: pulumi.Input<string>;
+    bootMode?: pulumi.Input<string | undefined>;
     /**
      * The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The information about the custom image. See `diskDeviceMapping` below.
      */
@@ -231,18 +231,18 @@ export interface ImageImportArgs {
     /**
      * The name of the image. The `imageName` must be `2` to `128` characters in length. The `imageName` must start with a letter and cannot start with acs: or aliyun. The `imageName` cannot contain http:// or https://. The `imageName` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
      */
-    licenseType?: pulumi.Input<string>;
+    licenseType?: pulumi.Input<string | undefined>;
     /**
      * The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
      */
-    osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string | undefined>;
     /**
      * The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
      * > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
 }

@@ -179,57 +179,57 @@ export interface PublicIpAddressPoolState {
     /**
      * The name of the VPC Public IP address pool.
      */
-    bizType?: pulumi.Input<string>;
+    bizType?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether there is a free IP address.
      */
-    ipAddressRemaining?: pulumi.Input<boolean>;
+    ipAddressRemaining?: pulumi.Input<boolean | undefined>;
     /**
      * The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
      */
-    isp?: pulumi.Input<string>;
+    isp?: pulumi.Input<string | undefined>;
     /**
      * The resource ID in terraform of VPC Public Ip Address Pool.
      */
-    publicIpAddressPoolId?: pulumi.Input<string>;
+    publicIpAddressPoolId?: pulumi.Input<string | undefined>;
     /**
      * The name of the VPC Public IP address pool.
      */
-    publicIpAddressPoolName?: pulumi.Input<string>;
+    publicIpAddressPoolName?: pulumi.Input<string | undefined>;
     /**
      * The resource group ID of the VPC Public IP address pool.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Security protection level.
      * - If the configuration is empty, the default value is DDoS protection (Basic edition).
      * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
      */
-    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the VPC Public IP address pool.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags of PrefixList.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The total number of public IP address pools.
      */
-    totalIpNum?: pulumi.Input<number>;
+    totalIpNum?: pulumi.Input<number | undefined>;
     /**
      * The number of used IP addresses in the public IP address pool.
      */
-    usedIpNum?: pulumi.Input<number>;
+    usedIpNum?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -239,31 +239,31 @@ export interface PublicIpAddressPoolArgs {
     /**
      * The name of the VPC Public IP address pool.
      */
-    bizType?: pulumi.Input<string>;
+    bizType?: pulumi.Input<string | undefined>;
     /**
      * Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
      */
-    isp?: pulumi.Input<string>;
+    isp?: pulumi.Input<string | undefined>;
     /**
      * The name of the VPC Public IP address pool.
      */
-    publicIpAddressPoolName?: pulumi.Input<string>;
+    publicIpAddressPoolName?: pulumi.Input<string | undefined>;
     /**
      * The resource group ID of the VPC Public IP address pool.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Security protection level.
      * - If the configuration is empty, the default value is DDoS protection (Basic edition).
      * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
      */
-    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The tags of PrefixList.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

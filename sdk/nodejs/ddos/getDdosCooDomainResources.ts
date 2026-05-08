@@ -115,17 +115,17 @@ export interface GetDdosCooDomainResourcesOutputArgs {
     /**
      * A list of Domain Resource IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A ID list of Ddoscoo instance.
      */
-    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Match the pattern.
      */
-    queryDomainPattern?: pulumi.Input<string>;
+    queryDomainPattern?: pulumi.Input<string | undefined>;
 }

@@ -158,31 +158,31 @@ export interface EcFailoverTestJobState {
     /**
      * Job description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Job name.
      */
-    ecFailoverTestJobName?: pulumi.Input<string>;
+    ecFailoverTestJobName?: pulumi.Input<string | undefined>;
     /**
      * Job duration.
      */
-    jobDuration?: pulumi.Input<number>;
+    jobDuration?: pulumi.Input<number | undefined>;
     /**
      * Job type.
      */
-    jobType?: pulumi.Input<string>;
+    jobType?: pulumi.Input<string | undefined>;
     /**
      * Resource id list.
      */
-    resourceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource type.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -192,11 +192,11 @@ export interface EcFailoverTestJobArgs {
     /**
      * Job description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Job name.
      */
-    ecFailoverTestJobName?: pulumi.Input<string>;
+    ecFailoverTestJobName?: pulumi.Input<string | undefined>;
     /**
      * Job duration.
      */
@@ -216,5 +216,5 @@ export interface EcFailoverTestJobArgs {
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

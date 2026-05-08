@@ -26,8 +26,8 @@ class RuleArgs:
                  rule_actions: pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]],
                  rule_conditions: pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]],
                  rule_name: pulumi.Input[_builtins.str],
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Rule resource.
 
@@ -113,7 +113,7 @@ class RuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
         - `Request`: The forwarding rule is applied to the client requests received by ALB.
@@ -122,33 +122,33 @@ class RuleArgs:
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to precheck this request.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
 
 @pulumi.input_type
 class _RuleState:
     def __init__(__self__, *,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]]] = None,
-                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input['RuleRuleActionArgs']]]] = None,
+                 rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['RuleRuleConditionArgs']]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
 
@@ -182,7 +182,7 @@ class _RuleState:
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
         - `Request`: The forwarding rule is applied to the client requests received by ALB.
@@ -191,91 +191,91 @@ class _RuleState:
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to precheck this request.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the listener to which the forwarding rule belongs.
         """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
-    def listener_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleActions")
-    def rule_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]]]:
+    def rule_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleRuleActionArgs']]]]:
         """
         The actions of the forwarding rules. See `rule_actions` below.
         """
         return pulumi.get(self, "rule_actions")
 
     @rule_actions.setter
-    def rule_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]]]):
+    def rule_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleRuleActionArgs']]]]):
         pulumi.set(self, "rule_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleConditions")
-    def rule_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]]]:
+    def rule_conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleRuleConditionArgs']]]]:
         """
         The conditions of the forwarding rule. See `rule_conditions` below.
         """
         return pulumi.get(self, "rule_conditions")
 
     @rule_conditions.setter
-    def rule_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]]]):
+    def rule_conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleRuleConditionArgs']]]]):
         pulumi.set(self, "rule_conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -285,13 +285,13 @@ class Rule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleActionArgs', 'RuleRuleActionArgsDict']]]]] = None,
-                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleConditionArgs', 'RuleRuleConditionArgsDict']]]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleRuleActionArgs', 'RuleRuleActionArgsDict']]]]] = None,
+                 rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleRuleConditionArgs', 'RuleRuleConditionArgsDict']]]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Application Load Balancer (ALB) Rule resource.
@@ -308,6 +308,7 @@ class Rule(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -320,7 +321,7 @@ class Rule(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=default_network.id,
@@ -447,6 +448,7 @@ class Rule(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -459,7 +461,7 @@ class Rule(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=default_network.id,
@@ -568,13 +570,13 @@ class Rule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleActionArgs', 'RuleRuleActionArgsDict']]]]] = None,
-                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleConditionArgs', 'RuleRuleConditionArgsDict']]]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleRuleActionArgs', 'RuleRuleActionArgsDict']]]]] = None,
+                 rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleRuleConditionArgs', 'RuleRuleConditionArgsDict']]]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -612,14 +614,14 @@ class Rule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            direction: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleActionArgs', 'RuleRuleActionArgsDict']]]]] = None,
-            rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleConditionArgs', 'RuleRuleConditionArgsDict']]]]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Rule':
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleRuleActionArgs', 'RuleRuleActionArgsDict']]]]] = None,
+            rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleRuleConditionArgs', 'RuleRuleConditionArgsDict']]]]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Rule':
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

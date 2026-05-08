@@ -22,8 +22,8 @@ class TransitRouterMulticastDomainMemberArgs:
                  group_ip_address: pulumi.Input[_builtins.str],
                  network_interface_id: pulumi.Input[_builtins.str],
                  transit_router_multicast_domain_id: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterMulticastDomainMember resource.
 
@@ -79,38 +79,38 @@ class TransitRouterMulticastDomainMemberArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether only to precheck the request.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
 @pulumi.input_type
 class _TransitRouterMulticastDomainMemberState:
     def __init__(__self__, *,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterMulticastDomainMember resources.
 
@@ -136,74 +136,74 @@ class _TransitRouterMulticastDomainMemberState:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether only to precheck the request.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="groupIpAddress")
-    def group_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the multicast group to which the multicast member belongs. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
         """
         return pulumi.get(self, "group_ip_address")
 
     @group_ip_address.setter
-    def group_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceId")
-    def network_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_interface_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ENI.
         """
         return pulumi.get(self, "network_interface_id")
 
     @network_interface_id.setter
-    def network_interface_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_interface_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_interface_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Transit Router Multicast Domain Member.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterMulticastDomainId")
-    def transit_router_multicast_domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_multicast_domain_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the multicast domain to which the multicast member belongs.
         """
         return pulumi.get(self, "transit_router_multicast_domain_id")
 
     @transit_router_multicast_domain_id.setter
-    def transit_router_multicast_domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_multicast_domain_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_multicast_domain_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -213,11 +213,11 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cen Transit Router Multicast Domain Member resource.
@@ -255,8 +255,8 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
         example_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("example",
             network_interface_name=name,
             vswitch_id=example_switch.id,
-            primary_ip_address=example_switch.cidr_block.apply(lambda cidr_block: std.cidrhost_output(input=cidr_block,
-                host=100)).apply(lambda invoke: invoke.result),
+            primary_ip_address=std.cidrhost_output(input=example_switch.cidr_block,
+                host=100).apply(lambda invoke: invoke.result),
             security_group_ids=[example_security_group.id])
         example_instance = alicloud.cen.Instance("example", cen_instance_name=name)
         example_transit_router = alicloud.cen.TransitRouter("example",
@@ -346,8 +346,8 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
         example_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("example",
             network_interface_name=name,
             vswitch_id=example_switch.id,
-            primary_ip_address=example_switch.cidr_block.apply(lambda cidr_block: std.cidrhost_output(input=cidr_block,
-                host=100)).apply(lambda invoke: invoke.result),
+            primary_ip_address=std.cidrhost_output(input=example_switch.cidr_block,
+                host=100).apply(lambda invoke: invoke.result),
             security_group_ids=[example_security_group.id])
         example_instance = alicloud.cen.Instance("example", cen_instance_name=name)
         example_transit_router = alicloud.cen.TransitRouter("example",
@@ -402,11 +402,11 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -438,12 +438,12 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            group_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitRouterMulticastDomainMember':
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitRouterMulticastDomainMember':
         """
         Get an existing TransitRouterMulticastDomainMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

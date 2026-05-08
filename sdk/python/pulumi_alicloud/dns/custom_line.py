@@ -24,7 +24,7 @@ class CustomLineArgs:
                  custom_line_name: pulumi.Input[_builtins.str],
                  domain_name: pulumi.Input[_builtins.str],
                  ip_segment_lists: pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]],
-                 lang: Optional[pulumi.Input[_builtins.str]] = None):
+                 lang: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomLine resource.
 
@@ -77,24 +77,24 @@ class CustomLineArgs:
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lang.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
 
 @pulumi.input_type
 class _CustomLineState:
     def __init__(__self__, *,
-                 custom_line_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_line_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_segment_lists: pulumi.Input[Optional[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomLine resources.
 
@@ -114,50 +114,50 @@ class _CustomLineState:
 
     @_builtins.property
     @pulumi.getter(name="customLineName")
-    def custom_line_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_line_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Custom Line.
         """
         return pulumi.get(self, "custom_line_name")
 
     @custom_line_name.setter
-    def custom_line_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_line_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_line_name", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Domain name.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipSegmentLists")
-    def ip_segment_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]]]:
+    def ip_segment_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]]]:
         """
         The IP segment list. See `ip_segment_list` below for details.
         """
         return pulumi.get(self, "ip_segment_lists")
 
     @ip_segment_lists.setter
-    def ip_segment_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]]]):
+    def ip_segment_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]]]):
         pulumi.set(self, "ip_segment_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lang.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
 
@@ -167,10 +167,10 @@ class CustomLine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_line_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_line_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_segment_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Alidns Custom Line resource.
@@ -270,10 +270,10 @@ class CustomLine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_line_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_line_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_segment_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -303,10 +303,10 @@ class CustomLine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            custom_line_name: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None) -> 'CustomLine':
+            custom_line_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_segment_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomLine':
         """
         Get an existing CustomLine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

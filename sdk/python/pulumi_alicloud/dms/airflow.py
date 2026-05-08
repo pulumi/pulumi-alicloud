@@ -30,10 +30,10 @@ class AirflowArgs:
                  worker_serverless_replicas: pulumi.Input[_builtins.int],
                  workspace_id: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 dags_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugins_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 requirement_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_file: Optional[pulumi.Input[_builtins.str]] = None):
+                 dags_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugins_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 requirement_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_file: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Airflow resource.
 
@@ -207,73 +207,73 @@ class AirflowArgs:
 
     @_builtins.property
     @pulumi.getter(name="dagsDir")
-    def dags_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dags_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dag scan path
         """
         return pulumi.get(self, "dags_dir")
 
     @dags_dir.setter
-    def dags_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dags_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dags_dir", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginsDir")
-    def plugins_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugins_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the plugin scanned by the airflow instance.
         """
         return pulumi.get(self, "plugins_dir")
 
     @plugins_dir.setter
-    def plugins_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugins_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugins_dir", value)
 
     @_builtins.property
     @pulumi.getter(name="requirementFile")
-    def requirement_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def requirement_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to installable package
         """
         return pulumi.get(self, "requirement_file")
 
     @requirement_file.setter
-    def requirement_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def requirement_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "requirement_file", value)
 
     @_builtins.property
     @pulumi.getter(name="startupFile")
-    def startup_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def startup_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Launch script for the airflow container
         """
         return pulumi.get(self, "startup_file")
 
     @startup_file.setter
-    def startup_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def startup_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "startup_file", value)
 
 
 @pulumi.input_type
 class _AirflowState:
     def __init__(__self__, *,
-                 airflow_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 airflow_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 dags_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugins_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 requirement_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_serverless_replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 airflow_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 airflow_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 dags_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugins_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 requirement_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_serverless_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Airflow resources.
 
@@ -332,206 +332,206 @@ class _AirflowState:
 
     @_builtins.property
     @pulumi.getter(name="airflowId")
-    def airflow_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def airflow_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AirflowId
         """
         return pulumi.get(self, "airflow_id")
 
     @airflow_id.setter
-    def airflow_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def airflow_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "airflow_id", value)
 
     @_builtins.property
     @pulumi.getter(name="airflowName")
-    def airflow_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def airflow_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Airflow instance
         """
         return pulumi.get(self, "airflow_name")
 
     @airflow_name.setter
-    def airflow_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def airflow_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "airflow_name", value)
 
     @_builtins.property
     @pulumi.getter(name="appSpec")
-    def app_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Airflow instance specifications
         """
         return pulumi.get(self, "app_spec")
 
     @app_spec.setter
-    def app_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="dagsDir")
-    def dags_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dags_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dag scan path
         """
         return pulumi.get(self, "dags_dir")
 
     @dags_dir.setter
-    def dags_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dags_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dags_dir", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the airflow instance
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketName")
-    def oss_bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OSS bucket name
         """
         return pulumi.get(self, "oss_bucket_name")
 
     @oss_bucket_name.setter
-    def oss_bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ossPath")
-    def oss_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OSS path
         """
         return pulumi.get(self, "oss_path")
 
     @oss_path.setter
-    def oss_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_path", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginsDir")
-    def plugins_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugins_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the plugin scanned by the airflow instance.
         """
         return pulumi.get(self, "plugins_dir")
 
     @plugins_dir.setter
-    def plugins_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugins_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugins_dir", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="requirementFile")
-    def requirement_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def requirement_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to installable package
         """
         return pulumi.get(self, "requirement_file")
 
     @requirement_file.setter
-    def requirement_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def requirement_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "requirement_file", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security group ID
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="startupFile")
-    def startup_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def startup_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Launch script for the airflow container
         """
         return pulumi.get(self, "startup_file")
 
     @startup_file.setter
-    def startup_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def startup_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "startup_file", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Vpc id
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Switch ID
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workerServerlessReplicas")
-    def worker_serverless_replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def worker_serverless_replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Worker Node extension
         """
         return pulumi.get(self, "worker_serverless_replicas")
 
     @worker_serverless_replicas.setter
-    def worker_serverless_replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def worker_serverless_replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "worker_serverless_replicas", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DMS workspace ID
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone ID in the region
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -541,21 +541,21 @@ class Airflow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 airflow_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 dags_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugins_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 requirement_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_serverless_replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 airflow_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 dags_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugins_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 requirement_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_serverless_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Dms Airflow resource.
@@ -722,21 +722,21 @@ class Airflow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 airflow_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 dags_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugins_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 requirement_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_serverless_replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 airflow_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 dags_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugins_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 requirement_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_serverless_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -795,23 +795,23 @@ class Airflow(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            airflow_id: Optional[pulumi.Input[_builtins.str]] = None,
-            airflow_name: Optional[pulumi.Input[_builtins.str]] = None,
-            app_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            dags_dir: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_path: Optional[pulumi.Input[_builtins.str]] = None,
-            plugins_dir: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            requirement_file: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            startup_file: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            worker_serverless_replicas: Optional[pulumi.Input[_builtins.int]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Airflow':
+            airflow_id: pulumi.Input[Optional[_builtins.str]] = None,
+            airflow_name: pulumi.Input[Optional[_builtins.str]] = None,
+            app_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            dags_dir: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_path: pulumi.Input[Optional[_builtins.str]] = None,
+            plugins_dir: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            requirement_file: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            startup_file: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            worker_serverless_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Airflow':
         """
         Get an existing Airflow resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

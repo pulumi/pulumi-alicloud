@@ -88,14 +88,14 @@ class HoneyPotArgs:
 @pulumi.input_type
 class _HoneyPotState:
     def __init__(__self__, *,
-                 honeypot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 preset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 honeypot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 preset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 states: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HoneyPot resources.
 
@@ -127,98 +127,98 @@ class _HoneyPotState:
 
     @_builtins.property
     @pulumi.getter(name="honeypotId")
-    def honeypot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def honeypot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Honeypot ID.
         """
         return pulumi.get(self, "honeypot_id")
 
     @honeypot_id.setter
-    def honeypot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def honeypot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "honeypot_id", value)
 
     @_builtins.property
     @pulumi.getter(name="honeypotImageId")
-    def honeypot_image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def honeypot_image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image ID of the honeypot.
         """
         return pulumi.get(self, "honeypot_image_id")
 
     @honeypot_image_id.setter
-    def honeypot_image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def honeypot_image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "honeypot_image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="honeypotImageName")
-    def honeypot_image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def honeypot_image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Honeypot mirror name.
         """
         return pulumi.get(self, "honeypot_image_name")
 
     @honeypot_image_name.setter
-    def honeypot_image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def honeypot_image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "honeypot_image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="honeypotName")
-    def honeypot_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def honeypot_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Honeypot custom name.
         """
         return pulumi.get(self, "honeypot_name")
 
     @honeypot_name.setter
-    def honeypot_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def honeypot_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "honeypot_name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the honeypot management node.
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="presetId")
-    def preset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The custom parameter ID of honeypot.
         """
         return pulumi.get(self, "preset_id")
 
     @preset_id.setter
-    def preset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preset_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Honeypot status.
         """
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "states", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -228,10 +228,10 @@ class HoneyPot(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 honeypot_image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 honeypot_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Honey Pot resource.
@@ -345,10 +345,10 @@ class HoneyPot(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 honeypot_image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 honeypot_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -384,14 +384,14 @@ class HoneyPot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            honeypot_id: Optional[pulumi.Input[_builtins.str]] = None,
-            honeypot_image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            honeypot_image_name: Optional[pulumi.Input[_builtins.str]] = None,
-            honeypot_name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_id: Optional[pulumi.Input[_builtins.str]] = None,
-            preset_id: Optional[pulumi.Input[_builtins.str]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'HoneyPot':
+            honeypot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            honeypot_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            honeypot_image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            honeypot_name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            preset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'HoneyPot':
         """
         Get an existing HoneyPot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -149,19 +149,19 @@ export interface HybridMonitorFcTaskState {
     /**
      * The ID of the monitoring task.
      */
-    hybridMonitorFcTaskId?: pulumi.Input<string>;
+    hybridMonitorFcTaskId?: pulumi.Input<string | undefined>;
     /**
      * The index warehouse where the host belongs.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
      */
-    targetUserId?: pulumi.Input<string>;
+    targetUserId?: pulumi.Input<string | undefined>;
     /**
      * The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
      */
-    yarmConfig?: pulumi.Input<string>;
+    yarmConfig?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -175,7 +175,7 @@ export interface HybridMonitorFcTaskArgs {
     /**
      * The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
      */
-    targetUserId?: pulumi.Input<string>;
+    targetUserId?: pulumi.Input<string | undefined>;
     /**
      * The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
      */

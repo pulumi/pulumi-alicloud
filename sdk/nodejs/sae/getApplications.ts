@@ -215,41 +215,41 @@ export interface GetApplicationsOutputArgs {
     /**
      * Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
      */
-    appName?: pulumi.Input<string>;
+    appName?: pulumi.Input<string | undefined>;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * The field type. Valid values:`appName`, `appIds`, `slbIps`, `instanceIps`
      */
-    fieldType?: pulumi.Input<string>;
+    fieldType?: pulumi.Input<string | undefined>;
     /**
      * The field value.
      */
-    fieldValue?: pulumi.Input<string>;
+    fieldValue?: pulumi.Input<string | undefined>;
     /**
      * A list of Application IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * The order by.Valid values:`running`,`instances`.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The reverse.
      */
-    reverse?: pulumi.Input<boolean>;
+    reverse?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

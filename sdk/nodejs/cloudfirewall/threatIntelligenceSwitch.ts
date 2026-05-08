@@ -119,15 +119,15 @@ export interface ThreatIntelligenceSwitchState {
     /**
      * Rule action. Value:
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * The threat intelligence classification ID.
      */
-    categoryId?: pulumi.Input<string>;
+    categoryId?: pulumi.Input<string | undefined>;
     /**
      * Switch status. Value:
      */
-    enableStatus?: pulumi.Input<number>;
+    enableStatus?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -137,13 +137,13 @@ export interface ThreatIntelligenceSwitchArgs {
     /**
      * Rule action. Value:
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * The threat intelligence classification ID.
      */
-    categoryId?: pulumi.Input<string>;
+    categoryId?: pulumi.Input<string | undefined>;
     /**
      * Switch status. Value:
      */
-    enableStatus?: pulumi.Input<number>;
+    enableStatus?: pulumi.Input<number | undefined>;
 }

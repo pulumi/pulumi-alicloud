@@ -23,9 +23,9 @@ class GreyTagRouteArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[_builtins.str],
                  grey_tag_route_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dubbo_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]] = None,
-                 sc_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dubbo_rules: pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]] = None,
+                 sc_rules: pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]] = None):
         """
         The set of arguments for constructing a GreyTagRoute resource.
 
@@ -70,49 +70,49 @@ class GreyTagRouteArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of GreyTagRoute.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dubboRules")
-    def dubbo_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]]:
+    def dubbo_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]]:
         """
         The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
         """
         return pulumi.get(self, "dubbo_rules")
 
     @dubbo_rules.setter
-    def dubbo_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]]):
+    def dubbo_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]]):
         pulumi.set(self, "dubbo_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="scRules")
-    def sc_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]]:
+    def sc_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]]:
         """
         The grayscale rule created for SpringCloud Application. See `sc_rules` below.
         """
         return pulumi.get(self, "sc_rules")
 
     @sc_rules.setter
-    def sc_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]]):
+    def sc_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]]):
         pulumi.set(self, "sc_rules", value)
 
 
 @pulumi.input_type
 class _GreyTagRouteState:
     def __init__(__self__, *,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dubbo_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]] = None,
-                 grey_tag_route_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sc_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dubbo_rules: pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]] = None,
+                 grey_tag_route_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sc_rules: pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering GreyTagRoute resources.
 
@@ -135,62 +135,62 @@ class _GreyTagRouteState:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID  of the SAE Application.
         """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of GreyTagRoute.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dubboRules")
-    def dubbo_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]]:
+    def dubbo_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]]:
         """
         The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
         """
         return pulumi.get(self, "dubbo_rules")
 
     @dubbo_rules.setter
-    def dubbo_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]]):
+    def dubbo_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]]):
         pulumi.set(self, "dubbo_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="greyTagRouteName")
-    def grey_tag_route_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grey_tag_route_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of GreyTagRoute.
         """
         return pulumi.get(self, "grey_tag_route_name")
 
     @grey_tag_route_name.setter
-    def grey_tag_route_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grey_tag_route_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grey_tag_route_name", value)
 
     @_builtins.property
     @pulumi.getter(name="scRules")
-    def sc_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]]:
+    def sc_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]]:
         """
         The grayscale rule created for SpringCloud Application. See `sc_rules` below.
         """
         return pulumi.get(self, "sc_rules")
 
     @sc_rules.setter
-    def sc_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]]):
+    def sc_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]]):
         pulumi.set(self, "sc_rules", value)
 
 
@@ -200,11 +200,11 @@ class GreyTagRoute(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dubbo_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict']]]]] = None,
-                 grey_tag_route_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sc_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict']]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dubbo_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict']]]]] = None,
+                 grey_tag_route_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sc_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Serverless App Engine (SAE) GreyTagRoute resource.
@@ -423,11 +423,11 @@ class GreyTagRoute(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dubbo_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict']]]]] = None,
-                 grey_tag_route_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sc_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict']]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dubbo_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict']]]]] = None,
+                 grey_tag_route_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sc_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -456,11 +456,11 @@ class GreyTagRoute(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dubbo_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict']]]]] = None,
-            grey_tag_route_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sc_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict']]]]] = None) -> 'GreyTagRoute':
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dubbo_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteDubboRuleArgs', 'GreyTagRouteDubboRuleArgsDict']]]]] = None,
+            grey_tag_route_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sc_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GreyTagRouteScRuleArgs', 'GreyTagRouteScRuleArgsDict']]]]] = None) -> 'GreyTagRoute':
         """
         Get an existing GreyTagRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

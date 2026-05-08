@@ -51,8 +51,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -95,8 +95,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -139,8 +139,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -183,8 +183,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -227,8 +227,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -271,8 +271,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -315,8 +315,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -359,8 +359,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -405,8 +405,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -451,8 +451,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -497,8 +497,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -543,8 +543,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointConnectionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -589,8 +589,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -634,8 +634,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -679,8 +679,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -724,8 +724,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -769,8 +769,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -814,8 +814,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -859,8 +859,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -904,8 +904,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -949,8 +949,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -994,8 +994,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServiceUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1041,8 +1041,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1095,8 +1095,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1149,8 +1149,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1203,8 +1203,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1257,8 +1257,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1311,8 +1311,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1365,8 +1365,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1417,8 +1417,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1462,8 +1462,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1507,8 +1507,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1552,8 +1552,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1597,8 +1597,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1642,8 +1642,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1688,8 +1688,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1734,8 +1734,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1780,8 +1780,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1826,8 +1826,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1872,8 +1872,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1918,8 +1918,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

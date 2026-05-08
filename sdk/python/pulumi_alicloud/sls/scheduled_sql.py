@@ -26,8 +26,8 @@ class ScheduledSqlArgs:
                  schedule: pulumi.Input['ScheduledSqlScheduleArgs'],
                  scheduled_sql_configuration: pulumi.Input['ScheduledSqlScheduledSqlConfigurationArgs'],
                  scheduled_sql_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ScheduledSql resource.
 
@@ -119,39 +119,39 @@ class ScheduledSqlArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the scheduled SQL job.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _ScheduledSqlState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input['ScheduledSqlScheduleArgs']] = None,
-                 scheduled_sql_configuration: Optional[pulumi.Input['ScheduledSqlScheduledSqlConfigurationArgs']] = None,
-                 scheduled_sql_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional['ScheduledSqlScheduleArgs']] = None,
+                 scheduled_sql_configuration: pulumi.Input[Optional['ScheduledSqlScheduledSqlConfigurationArgs']] = None,
+                 scheduled_sql_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ScheduledSql resources.
 
@@ -184,67 +184,67 @@ class _ScheduledSqlState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Task display name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A short description of struct.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['ScheduledSqlScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['ScheduledSqlScheduleArgs']]:
         """
         Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['ScheduledSqlScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['ScheduledSqlScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledSqlConfiguration")
-    def scheduled_sql_configuration(self) -> Optional[pulumi.Input['ScheduledSqlScheduledSqlConfigurationArgs']]:
+    def scheduled_sql_configuration(self) -> pulumi.Input[Optional['ScheduledSqlScheduledSqlConfigurationArgs']]:
         """
         Task configuration. See `scheduled_sql_configuration` below.
         """
         return pulumi.get(self, "scheduled_sql_configuration")
 
     @scheduled_sql_configuration.setter
-    def scheduled_sql_configuration(self, value: Optional[pulumi.Input['ScheduledSqlScheduledSqlConfigurationArgs']]):
+    def scheduled_sql_configuration(self, value: pulumi.Input[Optional['ScheduledSqlScheduledSqlConfigurationArgs']]):
         pulumi.set(self, "scheduled_sql_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledSqlName")
-    def scheduled_sql_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_sql_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The job name. The naming rules are as follows:
         - Job names must be unique within the same project.
@@ -255,19 +255,19 @@ class _ScheduledSqlState:
         return pulumi.get(self, "scheduled_sql_name")
 
     @scheduled_sql_name.setter
-    def scheduled_sql_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_sql_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_sql_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the scheduled SQL job.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -277,13 +277,13 @@ class ScheduledSql(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']]] = None,
-                 scheduled_sql_configuration: Optional[pulumi.Input[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']]] = None,
-                 scheduled_sql_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']]] = None,
+                 scheduled_sql_configuration: pulumi.Input[Optional[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']]] = None,
+                 scheduled_sql_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Log Service (SLS) Scheduled Sql resource.
@@ -472,13 +472,13 @@ class ScheduledSql(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']]] = None,
-                 scheduled_sql_configuration: Optional[pulumi.Input[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']]] = None,
-                 scheduled_sql_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']]] = None,
+                 scheduled_sql_configuration: pulumi.Input[Optional[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']]] = None,
+                 scheduled_sql_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -515,13 +515,13 @@ class ScheduledSql(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule: Optional[pulumi.Input[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']]] = None,
-            scheduled_sql_configuration: Optional[pulumi.Input[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']]] = None,
-            scheduled_sql_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ScheduledSql':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']]] = None,
+            scheduled_sql_configuration: pulumi.Input[Optional[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']]] = None,
+            scheduled_sql_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ScheduledSql':
         """
         Get an existing ScheduledSql resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

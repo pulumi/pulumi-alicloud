@@ -21,9 +21,9 @@ class VbrHaArgs:
     def __init__(__self__, *,
                  peer_vbr_id: pulumi.Input[_builtins.str],
                  vbr_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vbr_ha_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vbr_ha_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VbrHa resource.
 
@@ -71,7 +71,7 @@ class VbrHaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the VBR switching group.
         It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
@@ -79,12 +79,12 @@ class VbrHaArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request. Value range:
         - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
@@ -93,33 +93,33 @@ class VbrHaArgs:
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="vbrHaName")
-    def vbr_ha_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vbr_ha_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VBR switch group name.
         """
         return pulumi.get(self, "vbr_ha_name")
 
     @vbr_ha_name.setter
-    def vbr_ha_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vbr_ha_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vbr_ha_name", value)
 
 
 @pulumi.input_type
 class _VbrHaState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 peer_vbr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vbr_ha_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vbr_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 peer_vbr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vbr_ha_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vbr_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VbrHa resources.
 
@@ -154,19 +154,19 @@ class _VbrHaState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the VBR.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the VBR switching group.
         It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
@@ -174,12 +174,12 @@ class _VbrHaState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request. Value range:
         - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
@@ -188,67 +188,67 @@ class _VbrHaState:
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="peerVbrId")
-    def peer_vbr_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_vbr_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID of another VBR in The VBR switching group.
         """
         return pulumi.get(self, "peer_vbr_id")
 
     @peer_vbr_id.setter
-    def peer_vbr_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_vbr_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_vbr_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region to which the VBR belongs.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of VBR switching Group
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vbrHaName")
-    def vbr_ha_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vbr_ha_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VBR switch group name.
         """
         return pulumi.get(self, "vbr_ha_name")
 
     @vbr_ha_name.setter
-    def vbr_ha_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vbr_ha_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vbr_ha_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vbrId")
-    def vbr_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vbr_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VBR instance ID.
         """
         return pulumi.get(self, "vbr_id")
 
     @vbr_id.setter
-    def vbr_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vbr_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vbr_id", value)
 
 
@@ -258,11 +258,11 @@ class VbrHa(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 peer_vbr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vbr_ha_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vbr_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 peer_vbr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vbr_ha_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vbr_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Express Connect Vbr Ha resource.
@@ -279,6 +279,7 @@ class VbrHa(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -292,7 +293,7 @@ class VbrHa(pulumi.CustomResource):
         vlan_id = random.Integer("vlan_id",
             max=2999,
             min=1)
-        example_virtual_border_router = []
+        example_virtual_border_router: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_virtual_border_router.append(alicloud.expressconnect.VirtualBorderRouter(f"example-{range['value']}",
                 local_gateway_ip="10.0.0.1",
@@ -301,7 +302,7 @@ class VbrHa(pulumi.CustomResource):
                 physical_connection_id=example.connections[range["value"]].id,
                 virtual_border_router_name=std.format(input=f"{name}-%d",
                     args=[range["value"] + 1]).result,
-                vlan_id=vlan_id["id"] + range["value"],
+                vlan_id=int(float(vlan_id["id"]) + float(range["value"])),
                 min_rx_interval=1000,
                 min_tx_interval=1000,
                 detect_multiplier=10))
@@ -309,7 +310,7 @@ class VbrHa(pulumi.CustomResource):
             cen_instance_name=name,
             description=name,
             protection_level="REDUCED")
-        example_instance_attachment = []
+        example_instance_attachment: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_instance_attachment.append(alicloud.cen.InstanceAttachment(f"example-{range['value']}",
                 instance_id=example_instance.id,
@@ -366,6 +367,7 @@ class VbrHa(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -379,7 +381,7 @@ class VbrHa(pulumi.CustomResource):
         vlan_id = random.Integer("vlan_id",
             max=2999,
             min=1)
-        example_virtual_border_router = []
+        example_virtual_border_router: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_virtual_border_router.append(alicloud.expressconnect.VirtualBorderRouter(f"example-{range['value']}",
                 local_gateway_ip="10.0.0.1",
@@ -388,7 +390,7 @@ class VbrHa(pulumi.CustomResource):
                 physical_connection_id=example.connections[range["value"]].id,
                 virtual_border_router_name=std.format(input=f"{name}-%d",
                     args=[range["value"] + 1]).result,
-                vlan_id=vlan_id["id"] + range["value"],
+                vlan_id=int(float(vlan_id["id"]) + float(range["value"])),
                 min_rx_interval=1000,
                 min_tx_interval=1000,
                 detect_multiplier=10))
@@ -396,7 +398,7 @@ class VbrHa(pulumi.CustomResource):
             cen_instance_name=name,
             description=name,
             protection_level="REDUCED")
-        example_instance_attachment = []
+        example_instance_attachment: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_instance_attachment.append(alicloud.cen.InstanceAttachment(f"example-{range['value']}",
                 instance_id=example_instance.id,
@@ -436,11 +438,11 @@ class VbrHa(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 peer_vbr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vbr_ha_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vbr_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 peer_vbr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vbr_ha_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vbr_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -472,14 +474,14 @@ class VbrHa(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            peer_vbr_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vbr_ha_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vbr_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VbrHa':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            peer_vbr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vbr_ha_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vbr_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VbrHa':
         """
         Get an existing VbrHa resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

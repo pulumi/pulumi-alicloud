@@ -221,30 +221,30 @@ export interface GetDesktopsOutputArgs {
     /**
      * The desktop name.
      */
-    desktopName?: pulumi.Input<string>;
-    endUserIds?: pulumi.Input<pulumi.Input<string>[]>;
+    desktopName?: pulumi.Input<string | undefined>;
+    endUserIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of Desktop IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Desktop name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Simple Office Site.
      */
-    officeSiteId?: pulumi.Input<string>;
+    officeSiteId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The policy group id of the Desktop.
      */
-    policyGroupId?: pulumi.Input<string>;
+    policyGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

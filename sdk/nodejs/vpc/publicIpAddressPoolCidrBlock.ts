@@ -138,24 +138,24 @@ export interface PublicIpAddressPoolCidrBlockState {
     /**
      * The CIDR block.
      */
-    cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
      * > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
      */
-    cidrMask?: pulumi.Input<number>;
+    cidrMask?: pulumi.Input<number | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC Public IP address pool.
      */
-    publicIpAddressPoolId?: pulumi.Input<string>;
+    publicIpAddressPoolId?: pulumi.Input<string | undefined>;
     /**
      * The status of the VPC Public Ip Address Pool Cidr Block.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -165,12 +165,12 @@ export interface PublicIpAddressPoolCidrBlockArgs {
     /**
      * The CIDR block.
      */
-    cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
      * > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
      */
-    cidrMask?: pulumi.Input<number>;
+    cidrMask?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VPC Public IP address pool.
      */

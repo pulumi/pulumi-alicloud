@@ -187,12 +187,12 @@ def get_service_hybrid_double_writes(ids: Optional[Sequence[_builtins.str]] = No
         source_namespace=pulumi.get(__ret__, 'source_namespace'),
         source_user_id=pulumi.get(__ret__, 'source_user_id'),
         user_id=pulumi.get(__ret__, 'user_id'))
-def get_service_hybrid_double_writes_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                            namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            source_namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            source_user_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            user_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_service_hybrid_double_writes_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                            namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            source_namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            source_user_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            user_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceHybridDoubleWritesResult]:
     """
     This data source provides the Cloud Monitor Service Hybrid Double Writes of the current Alibaba Cloud user.

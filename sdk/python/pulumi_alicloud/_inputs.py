@@ -66,13 +66,13 @@ class MilvusInstanceComponentArgsDict(TypedDict):
     2.5: proxy ,mix_coordinator,data,query,index
     2.6 need to configure: proxy,mix_coordinator,data,query,streaming
     """
-    cu_type: NotRequired[pulumi.Input[_builtins.str]]
+    cu_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The calculation type. The default value is general, and the ram type needs to be opened with a work order.
     - general: Generic
     - ram: Capacity
     """
-    disk_size_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_size_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
     """
@@ -83,8 +83,8 @@ class MilvusInstanceComponentArgs:
                  cu_num: pulumi.Input[_builtins.int],
                  replica: pulumi.Input[_builtins.int],
                  type: pulumi.Input[_builtins.str],
-                 cu_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 cu_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] cu_num: The number of CU. For example: 4
         :param pulumi.Input[_builtins.int] replica: The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
@@ -148,7 +148,7 @@ class MilvusInstanceComponentArgs:
 
     @_builtins.property
     @pulumi.getter(name="cuType")
-    def cu_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cu_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The calculation type. The default value is general, and the ram type needs to be opened with a work order.
         - general: Generic
@@ -157,28 +157,28 @@ class MilvusInstanceComponentArgs:
         return pulumi.get(self, "cu_type")
 
     @cu_type.setter
-    def cu_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cu_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cu_type", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeType")
-    def disk_size_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_size_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
         """
         return pulumi.get(self, "disk_size_type")
 
     @disk_size_type.setter
-    def disk_size_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_size_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_size_type", value)
 
 
 class MilvusInstanceVswitchIdArgsDict(TypedDict):
-    vsw_id: NotRequired[pulumi.Input[_builtins.str]]
+    vsw_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VSwitch id, which must correspond to the zone id.
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The availability zone must correspond to the vswId.
     """
@@ -186,8 +186,8 @@ class MilvusInstanceVswitchIdArgsDict(TypedDict):
 @pulumi.input_type
 class MilvusInstanceVswitchIdArgs:
     def __init__(__self__, *,
-                 vsw_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 vsw_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] vsw_id: VSwitch id, which must correspond to the zone id.
         :param pulumi.Input[_builtins.str] zone_id: The availability zone must correspond to the vswId.
@@ -199,56 +199,56 @@ class MilvusInstanceVswitchIdArgs:
 
     @_builtins.property
     @pulumi.getter(name="vswId")
-    def vsw_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vsw_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VSwitch id, which must correspond to the zone id.
         """
         return pulumi.get(self, "vsw_id")
 
     @vsw_id.setter
-    def vsw_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vsw_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vsw_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The availability zone must correspond to the vswId.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict(TypedDict):
-    api_name: NotRequired[pulumi.Input[_builtins.str]]
+    api_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The API name, such as ListApiMcpServers.
     """
-    api_override_json: NotRequired[pulumi.Input[_builtins.str]]
+    api_override_json: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
 
     > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
     """
-    api_version: NotRequired[pulumi.Input[_builtins.str]]
+    api_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API version information, typically in date format, such as 2014-05-26.
     """
-    const_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict']]]]
+    const_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]]]]
     """
     Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
     Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `const_parameters` below.
     """
-    enable_output_schema: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_output_schema: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.  
 
     > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
     """
-    execute_cli_command: NotRequired[pulumi.Input[_builtins.bool]]
+    execute_cli_command: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:  
     - SSE protocol: up to 30 minutes
@@ -258,7 +258,7 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict(TypedDict):
 
     > **NOTE:** The identity used to execute the CLI differs from the identity used by the MCP Server. Pay attention to the associated security risks.>
     """
-    product: NotRequired[pulumi.Input[_builtins.str]]
+    product: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the cloud product, such as Ecs.
     """
@@ -266,13 +266,13 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict(TypedDict):
 @pulumi.input_type
 class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
     def __init__(__self__, *,
-                 api_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_override_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 const_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]]] = None,
-                 enable_output_schema: Optional[pulumi.Input[_builtins.bool]] = None,
-                 execute_cli_command: Optional[pulumi.Input[_builtins.bool]] = None,
-                 product: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_override_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 const_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]]] = None,
+                 enable_output_schema: pulumi.Input[Optional[_builtins.bool]] = None,
+                 execute_cli_command: pulumi.Input[Optional[_builtins.bool]] = None,
+                 product: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] api_name: The API name, such as ListApiMcpServers.
         :param pulumi.Input[_builtins.str] api_override_json: API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
@@ -310,19 +310,19 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiName")
-    def api_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The API name, such as ListApiMcpServers.
         """
         return pulumi.get(self, "api_name")
 
     @api_name.setter
-    def api_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_name", value)
 
     @_builtins.property
     @pulumi.getter(name="apiOverrideJson")
-    def api_override_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_override_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
 
@@ -331,24 +331,24 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
         return pulumi.get(self, "api_override_json")
 
     @api_override_json.setter
-    def api_override_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_override_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_override_json", value)
 
     @_builtins.property
     @pulumi.getter(name="apiVersion")
-    def api_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API version information, typically in date format, such as 2014-05-26.
         """
         return pulumi.get(self, "api_version")
 
     @api_version.setter
-    def api_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_version", value)
 
     @_builtins.property
     @pulumi.getter(name="constParameters")
-    def const_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]]]:
+    def const_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]]]:
         """
         Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
         Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `const_parameters` below.
@@ -356,12 +356,12 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
         return pulumi.get(self, "const_parameters")
 
     @const_parameters.setter
-    def const_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]]]):
+    def const_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]]]):
         pulumi.set(self, "const_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="enableOutputSchema")
-    def enable_output_schema(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_output_schema(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.  
 
@@ -370,12 +370,12 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
         return pulumi.get(self, "enable_output_schema")
 
     @enable_output_schema.setter
-    def enable_output_schema(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_output_schema(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_output_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="executeCliCommand")
-    def execute_cli_command(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_cli_command(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:  
         - SSE protocol: up to 30 minutes
@@ -388,24 +388,24 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
         return pulumi.get(self, "execute_cli_command")
 
     @execute_cli_command.setter
-    def execute_cli_command(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_cli_command(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_cli_command", value)
 
     @_builtins.property
     @pulumi.getter
-    def product(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cloud product, such as Ecs.
         """
         return pulumi.get(self, "product")
 
     @product.setter
-    def product(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product", value)
 
 
 class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
 
@@ -420,7 +420,7 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict(
 
     > **NOTE:** x_mcp_region_id is a built-in MCP parameter used to control the region and can also be configured as a fixed value to invoke services in a specified region.>
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This property does not have a description in the spec, please add it before generating code.
     """
@@ -428,8 +428,8 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict(
 @pulumi.input_type
 class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
                
@@ -452,7 +452,7 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
 
@@ -470,19 +470,19 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This property does not have a description in the spec, please add it before generating code.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -553,19 +553,19 @@ class OpenApiExplorerApiMcpServerApiArgs:
 
 
 class OpenApiExplorerApiMcpServerPromptArgsDict(TypedDict):
-    arguments: NotRequired[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgsDict']]]]
+    arguments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgs']]]]]
     """
     Parameters for the prompt. See `arguments` below.
     """
-    content: NotRequired[pulumi.Input[_builtins.str]]
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Full content of the prompt, supporting dynamic parameters. Parameters must be defined in Arguments, using the format {{ARG}}, where ARG supports English characters. Example: My name is: {{name}}.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the prompt parameter.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the prompt parameter.
     """
@@ -573,10 +573,10 @@ class OpenApiExplorerApiMcpServerPromptArgsDict(TypedDict):
 @pulumi.input_type
 class OpenApiExplorerApiMcpServerPromptArgs:
     def __init__(__self__, *,
-                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgs']]]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 arguments: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgs']]]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgs']]] arguments: Parameters for the prompt. See `arguments` below.
         :param pulumi.Input[_builtins.str] content: Full content of the prompt, supporting dynamic parameters. Parameters must be defined in Arguments, using the format {{ARG}}, where ARG supports English characters. Example: My name is: {{name}}.
@@ -594,63 +594,63 @@ class OpenApiExplorerApiMcpServerPromptArgs:
 
     @_builtins.property
     @pulumi.getter
-    def arguments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgs']]]]:
+    def arguments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgs']]]]:
         """
         Parameters for the prompt. See `arguments` below.
         """
         return pulumi.get(self, "arguments")
 
     @arguments.setter
-    def arguments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgs']]]]):
+    def arguments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgs']]]]):
         pulumi.set(self, "arguments", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full content of the prompt, supporting dynamic parameters. Parameters must be defined in Arguments, using the format {{ARG}}, where ARG supports English characters. Example: My name is: {{name}}.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the prompt parameter.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the prompt parameter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class OpenApiExplorerApiMcpServerPromptArgumentArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the API MCP service.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
     """
-    required: NotRequired[pulumi.Input[_builtins.bool]]
+    required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates whether the prompt parameter is required.
     """
@@ -658,9 +658,9 @@ class OpenApiExplorerApiMcpServerPromptArgumentArgsDict(TypedDict):
 @pulumi.input_type
 class OpenApiExplorerApiMcpServerPromptArgumentArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 required: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 required: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] description: Description of the API MCP service.
         :param pulumi.Input[_builtins.str] name: Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
@@ -675,62 +675,62 @@ class OpenApiExplorerApiMcpServerPromptArgumentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the API MCP service.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the prompt parameter is required.
         """
         return pulumi.get(self, "required")
 
     @required.setter
-    def required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "required", value)
 
 
 class OpenApiExplorerApiMcpServerTerraformToolArgsDict(TypedDict):
-    async_: NotRequired[pulumi.Input[_builtins.bool]]
+    async_: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
     """
-    code: NotRequired[pulumi.Input[_builtins.str]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Terraform Tool code. Overview of the HCL Language
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the Terraform Tool. This description will be used as the description for the MCP tool.
     """
-    destroy_policy: NotRequired[pulumi.Input[_builtins.str]]
+    destroy_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cleanup policy applied to temporary resources after task completion, based on the task execution status:
     - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
     - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
     - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
     """
@@ -738,11 +738,11 @@ class OpenApiExplorerApiMcpServerTerraformToolArgsDict(TypedDict):
 @pulumi.input_type
 class OpenApiExplorerApiMcpServerTerraformToolArgs:
     def __init__(__self__, *,
-                 async_: Optional[pulumi.Input[_builtins.bool]] = None,
-                 code: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destroy_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 async_: pulumi.Input[Optional[_builtins.bool]] = None,
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destroy_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] async_: Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
         :param pulumi.Input[_builtins.str] code: Terraform Tool code. Overview of the HCL Language
@@ -766,43 +766,43 @@ class OpenApiExplorerApiMcpServerTerraformToolArgs:
 
     @_builtins.property
     @pulumi.getter(name="async")
-    def async_(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def async_(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
         """
         return pulumi.get(self, "async_")
 
     @async_.setter
-    def async_(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def async_(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "async_", value)
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Terraform Tool code. Overview of the HCL Language
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the Terraform Tool. This description will be used as the description for the MCP tool.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destroyPolicy")
-    def destroy_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destroy_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cleanup policy applied to temporary resources after task completion, based on the task execution status:
         - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
@@ -812,19 +812,19 @@ class OpenApiExplorerApiMcpServerTerraformToolArgs:
         return pulumi.get(self, "destroy_policy")
 
     @destroy_policy.setter
-    def destroy_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destroy_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destroy_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Terraform Tool, which supports letters (a–z, A–Z) and digits (0–9).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -833,16 +833,16 @@ class ProviderAssumeRoleArgsDict(TypedDict):
     """
     The ARN of a RAM role to assume prior to making API calls.
     """
-    external_id: NotRequired[pulumi.Input[_builtins.str]]
-    policy: NotRequired[pulumi.Input[_builtins.str]]
+    external_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
     """
-    session_expiration: NotRequired[pulumi.Input[_builtins.int]]
+    session_expiration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
     """
-    session_name: NotRequired[pulumi.Input[_builtins.str]]
+    session_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
     """
@@ -851,10 +851,10 @@ class ProviderAssumeRoleArgsDict(TypedDict):
 class ProviderAssumeRoleArgs:
     def __init__(__self__, *,
                  role_arn: pulumi.Input[_builtins.str],
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_expiration: Optional[pulumi.Input[_builtins.int]] = None,
-                 session_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_expiration: pulumi.Input[Optional[_builtins.int]] = None,
+                 session_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] role_arn: The ARN of a RAM role to assume prior to making API calls.
         :param pulumi.Input[_builtins.str] policy: The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
@@ -885,47 +885,47 @@ class ProviderAssumeRoleArgs:
 
     @_builtins.property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "external_id")
 
     @external_id.setter
-    def external_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionExpiration")
-    def session_expiration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def session_expiration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
         """
         return pulumi.get(self, "session_expiration")
 
     @session_expiration.setter
-    def session_expiration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def session_expiration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_expiration", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionName")
-    def session_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The session name to use when assuming the role. If omitted, `terraform` is passed to the AssumeRole call as session name.
         """
         return pulumi.get(self, "session_name")
 
     @session_name.setter
-    def session_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_name", value)
 
 
@@ -938,20 +938,20 @@ class ProviderAssumeRoleWithOidcArgsDict(TypedDict):
     """
     ARN of a RAM role to assume prior to making API calls.
     """
-    oidc_token: NotRequired[pulumi.Input[_builtins.str]]
-    oidc_token_file: NotRequired[pulumi.Input[_builtins.str]]
+    oidc_token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    oidc_token_file: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The file path of OIDC token that is issued by the external IdP.
     """
-    policy: NotRequired[pulumi.Input[_builtins.str]]
+    policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
     """
-    role_session_name: NotRequired[pulumi.Input[_builtins.str]]
+    role_session_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
     """
-    session_expiration: NotRequired[pulumi.Input[_builtins.int]]
+    session_expiration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
     """
@@ -961,11 +961,11 @@ class ProviderAssumeRoleWithOidcArgs:
     def __init__(__self__, *,
                  oidc_provider_arn: pulumi.Input[_builtins.str],
                  role_arn: pulumi.Input[_builtins.str],
-                 oidc_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_token_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_session_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_expiration: Optional[pulumi.Input[_builtins.int]] = None):
+                 oidc_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_token_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_session_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_expiration: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] oidc_provider_arn: ARN of the OIDC IdP.
         :param pulumi.Input[_builtins.str] role_arn: ARN of a RAM role to assume prior to making API calls.
@@ -1013,670 +1013,670 @@ class ProviderAssumeRoleWithOidcArgs:
 
     @_builtins.property
     @pulumi.getter(name="oidcToken")
-    def oidc_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oidc_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "oidc_token")
 
     @oidc_token.setter
-    def oidc_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oidc_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oidc_token", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcTokenFile")
-    def oidc_token_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oidc_token_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file path of OIDC token that is issued by the external IdP.
         """
         return pulumi.get(self, "oidc_token_file")
 
     @oidc_token_file.setter
-    def oidc_token_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oidc_token_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oidc_token_file", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="roleSessionName")
-    def role_session_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_session_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
         """
         return pulumi.get(self, "role_session_name")
 
     @role_session_name.setter
-    def role_session_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_session_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_session_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionExpiration")
-    def session_expiration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def session_expiration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
         """
         return pulumi.get(self, "session_expiration")
 
     @session_expiration.setter
-    def session_expiration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def session_expiration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_expiration", value)
 
 
 class ProviderEndpointArgsDict(TypedDict):
-    acr: NotRequired[pulumi.Input[_builtins.str]]
+    acr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
     """
-    actiontrail: NotRequired[pulumi.Input[_builtins.str]]
+    actiontrail: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Actiontrail endpoints.
     """
-    adb: NotRequired[pulumi.Input[_builtins.str]]
+    adb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
     """
-    aiworkspace: NotRequired[pulumi.Input[_builtins.str]]
-    alb: NotRequired[pulumi.Input[_builtins.str]]
+    aiworkspace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    alb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
     """
-    alidfs: NotRequired[pulumi.Input[_builtins.str]]
+    alidfs: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
     """
-    alidns: NotRequired[pulumi.Input[_builtins.str]]
+    alidns: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
     """
-    alikafka: NotRequired[pulumi.Input[_builtins.str]]
+    alikafka: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
     """
-    amqp: NotRequired[pulumi.Input[_builtins.str]]
+    amqp: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
     """
-    antiddos_public: NotRequired[pulumi.Input[_builtins.str]]
+    antiddos_public: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
     """
-    apig: NotRequired[pulumi.Input[_builtins.str]]
-    apigateway: NotRequired[pulumi.Input[_builtins.str]]
+    apig: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    apigateway: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
     """
-    arms: NotRequired[pulumi.Input[_builtins.str]]
+    arms: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
     """
-    bastionhost: NotRequired[pulumi.Input[_builtins.str]]
+    bastionhost: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bastionhost endpoints.
     """
-    beebot: NotRequired[pulumi.Input[_builtins.str]]
+    beebot: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
     """
-    bpstudio: NotRequired[pulumi.Input[_builtins.str]]
+    bpstudio: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bpstudio endpoints.
     """
-    brain_industrial: NotRequired[pulumi.Input[_builtins.str]]
+    brain_industrial: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom brain_industrial endpoints.
     """
-    bssopenapi: NotRequired[pulumi.Input[_builtins.str]]
+    bssopenapi: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom BSSOPENAPI endpoints.
     """
-    cas: NotRequired[pulumi.Input[_builtins.str]]
+    cas: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CAS endpoints.
     """
-    cassandra: NotRequired[pulumi.Input[_builtins.str]]
+    cassandra: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cassandra endpoints.
     """
-    cbn: NotRequired[pulumi.Input[_builtins.str]]
+    cbn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbn endpoints.
     """
-    cbs: NotRequired[pulumi.Input[_builtins.str]]
+    cbs: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
     """
-    cddc: NotRequired[pulumi.Input[_builtins.str]]
+    cddc: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cddc endpoints.
     """
-    cdn: NotRequired[pulumi.Input[_builtins.str]]
+    cdn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CDN endpoints.
     """
-    cds: NotRequired[pulumi.Input[_builtins.str]]
+    cds: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
     """
-    chatbot: NotRequired[pulumi.Input[_builtins.str]]
+    chatbot: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
     """
-    clickhouse: NotRequired[pulumi.Input[_builtins.str]]
+    clickhouse: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
     """
-    cloudapi: NotRequired[pulumi.Input[_builtins.str]]
+    cloudapi: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
     """
-    cloudauth: NotRequired[pulumi.Input[_builtins.str]]
+    cloudauth: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
     """
-    cloudfirewall: NotRequired[pulumi.Input[_builtins.str]]
+    cloudfirewall: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
     """
-    cloudfw: NotRequired[pulumi.Input[_builtins.str]]
+    cloudfw: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfw endpoints.
     """
-    cloudphone: NotRequired[pulumi.Input[_builtins.str]]
+    cloudphone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudphone endpoints.
     """
-    cloudsso: NotRequired[pulumi.Input[_builtins.str]]
+    cloudsso: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudsso endpoints.
     """
-    cms: NotRequired[pulumi.Input[_builtins.str]]
+    cms: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Cloud Monitor endpoints.
     """
-    computenest: NotRequired[pulumi.Input[_builtins.str]]
+    computenest: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom computenest endpoints.
     """
-    config: NotRequired[pulumi.Input[_builtins.str]]
+    config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom config endpoints.
     """
-    cr: NotRequired[pulumi.Input[_builtins.str]]
+    cr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Registry endpoints.
     """
-    cs: NotRequired[pulumi.Input[_builtins.str]]
+    cs: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Service endpoints.
     """
-    das: NotRequired[pulumi.Input[_builtins.str]]
+    das: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
     """
-    datahub: NotRequired[pulumi.Input[_builtins.str]]
+    datahub: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Datahub endpoints.
     """
-    dataworks_public: NotRequired[pulumi.Input[_builtins.str]]
+    dataworks_public: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
     """
-    dataworkspublic: NotRequired[pulumi.Input[_builtins.str]]
+    dataworkspublic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
     """
-    dbfs: NotRequired[pulumi.Input[_builtins.str]]
+    dbfs: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
     """
-    dbs: NotRequired[pulumi.Input[_builtins.str]]
+    dbs: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
     """
-    dcdn: NotRequired[pulumi.Input[_builtins.str]]
+    dcdn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
     """
-    ddosbasic: NotRequired[pulumi.Input[_builtins.str]]
+    ddosbasic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
     """
-    ddosbgp: NotRequired[pulumi.Input[_builtins.str]]
+    ddosbgp: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSBGP endpoints.
     """
-    ddoscoo: NotRequired[pulumi.Input[_builtins.str]]
+    ddoscoo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSCOO endpoints.
     """
-    dds: NotRequired[pulumi.Input[_builtins.str]]
+    dds: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
     """
-    devops_rdc: NotRequired[pulumi.Input[_builtins.str]]
-    devopsrdc: NotRequired[pulumi.Input[_builtins.str]]
+    devops_rdc: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    devopsrdc: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
     """
-    dfs: NotRequired[pulumi.Input[_builtins.str]]
+    dfs: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
     """
-    dg: NotRequired[pulumi.Input[_builtins.str]]
+    dg: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
     """
-    dm: NotRequired[pulumi.Input[_builtins.str]]
+    dm: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dm endpoints.
     """
-    dms_enterprise: NotRequired[pulumi.Input[_builtins.str]]
+    dms_enterprise: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dms_enterprise endpoints.
     """
-    dmsenterprise: NotRequired[pulumi.Input[_builtins.str]]
+    dmsenterprise: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsenterprise endpoints.
     """
-    dns: NotRequired[pulumi.Input[_builtins.str]]
+    dns: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DNS endpoints.
     """
-    drds: NotRequired[pulumi.Input[_builtins.str]]
+    drds: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
     """
-    dts: NotRequired[pulumi.Input[_builtins.str]]
+    dts: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dts endpoints.
     """
-    dysms: NotRequired[pulumi.Input[_builtins.str]]
-    dysmsapi: NotRequired[pulumi.Input[_builtins.str]]
+    dysms: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    dysmsapi: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dysmsapi endpoints.
     """
-    eais: NotRequired[pulumi.Input[_builtins.str]]
+    eais: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
     """
-    ebs: NotRequired[pulumi.Input[_builtins.str]]
+    ebs: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
     """
-    ecd: NotRequired[pulumi.Input[_builtins.str]]
+    ecd: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
     """
-    eci: NotRequired[pulumi.Input[_builtins.str]]
+    eci: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
     """
-    ecs: NotRequired[pulumi.Input[_builtins.str]]
+    ecs: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ECS endpoints.
     """
-    edas: NotRequired[pulumi.Input[_builtins.str]]
+    edas: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edas endpoints.
     """
-    edasschedulerx: NotRequired[pulumi.Input[_builtins.str]]
+    edasschedulerx: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
     """
-    eds_user: NotRequired[pulumi.Input[_builtins.str]]
+    eds_user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
     """
-    edsuser: NotRequired[pulumi.Input[_builtins.str]]
+    edsuser: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
     """
-    eflo: NotRequired[pulumi.Input[_builtins.str]]
+    eflo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
     """
-    eflo_cnp: NotRequired[pulumi.Input[_builtins.str]]
-    eflo_controller: NotRequired[pulumi.Input[_builtins.str]]
+    eflo_cnp: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    eflo_controller: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
     """
-    ehpc: NotRequired[pulumi.Input[_builtins.str]]
+    ehpc: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
     """
-    ehs: NotRequired[pulumi.Input[_builtins.str]]
+    ehs: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
     """
-    eipanycast: NotRequired[pulumi.Input[_builtins.str]]
+    eipanycast: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
     """
-    elasticsearch: NotRequired[pulumi.Input[_builtins.str]]
+    elasticsearch: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Elasticsearch endpoints.
     """
-    emr: NotRequired[pulumi.Input[_builtins.str]]
+    emr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom EMR endpoints.
     """
-    ens: NotRequired[pulumi.Input[_builtins.str]]
+    ens: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
     """
-    esa: NotRequired[pulumi.Input[_builtins.str]]
-    ess: NotRequired[pulumi.Input[_builtins.str]]
+    esa: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    ess: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
     """
-    eventbridge: NotRequired[pulumi.Input[_builtins.str]]
+    eventbridge: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridge_share endpoints.
     """
-    fc: NotRequired[pulumi.Input[_builtins.str]]
+    fc: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
     """
-    fc_open: NotRequired[pulumi.Input[_builtins.str]]
+    fc_open: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
     """
-    fnf: NotRequired[pulumi.Input[_builtins.str]]
+    fnf: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
     """
-    ga: NotRequired[pulumi.Input[_builtins.str]]
+    ga: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
     """
-    gaplus: NotRequired[pulumi.Input[_builtins.str]]
+    gaplus: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
     """
-    gdb: NotRequired[pulumi.Input[_builtins.str]]
+    gdb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
     """
-    gds: NotRequired[pulumi.Input[_builtins.str]]
+    gds: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
     """
-    gpdb: NotRequired[pulumi.Input[_builtins.str]]
+    gpdb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
     """
-    gwlb: NotRequired[pulumi.Input[_builtins.str]]
-    gwsecd: NotRequired[pulumi.Input[_builtins.str]]
+    gwlb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    gwsecd: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
     """
-    hbr: NotRequired[pulumi.Input[_builtins.str]]
+    hbr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hbr endpoints.
     """
-    hcs_sgw: NotRequired[pulumi.Input[_builtins.str]]
+    hcs_sgw: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hcs_sgw endpoints.
     """
-    hitsdb: NotRequired[pulumi.Input[_builtins.str]]
+    hitsdb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hitsdb endpoints.
     """
-    imm: NotRequired[pulumi.Input[_builtins.str]]
+    imm: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imm endpoints.
     """
-    imp: NotRequired[pulumi.Input[_builtins.str]]
+    imp: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imp endpoints.
     """
-    ims: NotRequired[pulumi.Input[_builtins.str]]
+    ims: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ims endpoints.
     """
-    iot: NotRequired[pulumi.Input[_builtins.str]]
+    iot: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom iot endpoints.
     """
-    kms: NotRequired[pulumi.Input[_builtins.str]]
+    kms: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom KMS endpoints.
     """
-    kvstore: NotRequired[pulumi.Input[_builtins.str]]
+    kvstore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom R-KVStore endpoints.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Location Service endpoints.
     """
-    log: NotRequired[pulumi.Input[_builtins.str]]
+    log: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Log Service endpoints.
     """
-    market: NotRequired[pulumi.Input[_builtins.str]]
+    market: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Market Place endpoints.
     """
-    maxcompute: NotRequired[pulumi.Input[_builtins.str]]
+    maxcompute: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MaxCompute endpoints.
     """
-    mhub: NotRequired[pulumi.Input[_builtins.str]]
+    mhub: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
     """
-    mns: NotRequired[pulumi.Input[_builtins.str]]
+    mns: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
     """
-    mns_open: NotRequired[pulumi.Input[_builtins.str]]
+    mns_open: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
     """
-    mscopensubscription: NotRequired[pulumi.Input[_builtins.str]]
+    mscopensubscription: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
     """
-    mse: NotRequired[pulumi.Input[_builtins.str]]
+    mse: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
     """
-    nas: NotRequired[pulumi.Input[_builtins.str]]
+    nas: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom NAS endpoints.
     """
-    nlb: NotRequired[pulumi.Input[_builtins.str]]
+    nlb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
     """
-    oceanbase: NotRequired[pulumi.Input[_builtins.str]]
+    oceanbase: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
     """
-    oceanbasepro: NotRequired[pulumi.Input[_builtins.str]]
+    oceanbasepro: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
     """
-    ons: NotRequired[pulumi.Input[_builtins.str]]
+    ons: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
     """
-    onsproxy: NotRequired[pulumi.Input[_builtins.str]]
+    onsproxy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
     """
-    oos: NotRequired[pulumi.Input[_builtins.str]]
+    oos: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
     """
-    opensearch: NotRequired[pulumi.Input[_builtins.str]]
+    opensearch: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom opensearch endpoints.
     """
-    oss: NotRequired[pulumi.Input[_builtins.str]]
+    oss: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom OSS endpoints.
     """
-    ots: NotRequired[pulumi.Input[_builtins.str]]
+    ots: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Table Store endpoints.
     """
-    polardb: NotRequired[pulumi.Input[_builtins.str]]
+    polardb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom PolarDB endpoints.
     """
-    polardbx: NotRequired[pulumi.Input[_builtins.str]]
+    polardbx: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
     """
-    privatelink: NotRequired[pulumi.Input[_builtins.str]]
+    privatelink: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
     """
-    pvtz: NotRequired[pulumi.Input[_builtins.str]]
+    pvtz: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Private Zone endpoints.
     """
-    quickbi: NotRequired[pulumi.Input[_builtins.str]]
+    quickbi: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
     """
-    quickbi_public: NotRequired[pulumi.Input[_builtins.str]]
+    quickbi_public: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
     """
-    quotas: NotRequired[pulumi.Input[_builtins.str]]
+    quotas: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
     """
-    r_kvstore: NotRequired[pulumi.Input[_builtins.str]]
+    r_kvstore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom r_kvstore endpoints.
     """
-    ram: NotRequired[pulumi.Input[_builtins.str]]
+    ram: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RAM endpoints.
     """
-    rds: NotRequired[pulumi.Input[_builtins.str]]
+    rds: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
     """
-    redisa: NotRequired[pulumi.Input[_builtins.str]]
+    redisa: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
     """
-    resourcemanager: NotRequired[pulumi.Input[_builtins.str]]
+    resourcemanager: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
     """
-    resourcesharing: NotRequired[pulumi.Input[_builtins.str]]
-    ressharing: NotRequired[pulumi.Input[_builtins.str]]
+    resourcesharing: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    ressharing: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
     """
-    rocketmq: NotRequired[pulumi.Input[_builtins.str]]
-    ros: NotRequired[pulumi.Input[_builtins.str]]
+    rocketmq: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    ros: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
     """
-    sae: NotRequired[pulumi.Input[_builtins.str]]
+    sae: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
     """
-    sas: NotRequired[pulumi.Input[_builtins.str]]
+    sas: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
     """
-    scdn: NotRequired[pulumi.Input[_builtins.str]]
+    scdn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
     """
-    schedulerx2: NotRequired[pulumi.Input[_builtins.str]]
+    schedulerx2: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
     """
-    sddp: NotRequired[pulumi.Input[_builtins.str]]
+    sddp: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
     """
-    selectdb: NotRequired[pulumi.Input[_builtins.str]]
+    selectdb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
     """
-    serverless: NotRequired[pulumi.Input[_builtins.str]]
+    serverless: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
     """
-    servicecatalog: NotRequired[pulumi.Input[_builtins.str]]
+    servicecatalog: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
     """
-    servicemesh: NotRequired[pulumi.Input[_builtins.str]]
+    servicemesh: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
     """
-    sgw: NotRequired[pulumi.Input[_builtins.str]]
+    sgw: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
     """
-    slb: NotRequired[pulumi.Input[_builtins.str]]
+    slb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom SLB endpoints.
     """
-    smartag: NotRequired[pulumi.Input[_builtins.str]]
+    smartag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom smartag endpoints.
     """
-    srvcatalog: NotRequired[pulumi.Input[_builtins.str]]
+    srvcatalog: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
     """
-    sts: NotRequired[pulumi.Input[_builtins.str]]
+    sts: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom STS endpoints.
     """
-    swas: NotRequired[pulumi.Input[_builtins.str]]
+    swas: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
     """
-    swas_open: NotRequired[pulumi.Input[_builtins.str]]
+    swas_open: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
     """
-    tag: NotRequired[pulumi.Input[_builtins.str]]
+    tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
     """
-    vod: NotRequired[pulumi.Input[_builtins.str]]
+    vod: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vod endpoints.
     """
-    vpc: NotRequired[pulumi.Input[_builtins.str]]
+    vpc: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
     """
-    vpcipam: NotRequired[pulumi.Input[_builtins.str]]
-    vpcpeer: NotRequired[pulumi.Input[_builtins.str]]
+    vpcipam: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    vpcpeer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
     """
-    vs: NotRequired[pulumi.Input[_builtins.str]]
+    vs: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vs endpoints.
     """
-    waf: NotRequired[pulumi.Input[_builtins.str]]
+    waf: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf endpoints.
     """
-    waf_openapi: NotRequired[pulumi.Input[_builtins.str]]
+    waf_openapi: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf_openapi endpoints.
     """
@@ -1684,166 +1684,166 @@ class ProviderEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class ProviderEndpointArgs:
     def __init__(__self__, *,
-                 acr: Optional[pulumi.Input[_builtins.str]] = None,
-                 actiontrail: Optional[pulumi.Input[_builtins.str]] = None,
-                 adb: Optional[pulumi.Input[_builtins.str]] = None,
-                 aiworkspace: Optional[pulumi.Input[_builtins.str]] = None,
-                 alb: Optional[pulumi.Input[_builtins.str]] = None,
-                 alidfs: Optional[pulumi.Input[_builtins.str]] = None,
-                 alidns: Optional[pulumi.Input[_builtins.str]] = None,
-                 alikafka: Optional[pulumi.Input[_builtins.str]] = None,
-                 amqp: Optional[pulumi.Input[_builtins.str]] = None,
-                 antiddos_public: Optional[pulumi.Input[_builtins.str]] = None,
-                 apig: Optional[pulumi.Input[_builtins.str]] = None,
-                 apigateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 arms: Optional[pulumi.Input[_builtins.str]] = None,
-                 bastionhost: Optional[pulumi.Input[_builtins.str]] = None,
-                 beebot: Optional[pulumi.Input[_builtins.str]] = None,
-                 bpstudio: Optional[pulumi.Input[_builtins.str]] = None,
-                 brain_industrial: Optional[pulumi.Input[_builtins.str]] = None,
-                 bssopenapi: Optional[pulumi.Input[_builtins.str]] = None,
-                 cas: Optional[pulumi.Input[_builtins.str]] = None,
-                 cassandra: Optional[pulumi.Input[_builtins.str]] = None,
-                 cbn: Optional[pulumi.Input[_builtins.str]] = None,
-                 cbs: Optional[pulumi.Input[_builtins.str]] = None,
-                 cddc: Optional[pulumi.Input[_builtins.str]] = None,
-                 cdn: Optional[pulumi.Input[_builtins.str]] = None,
-                 cds: Optional[pulumi.Input[_builtins.str]] = None,
-                 chatbot: Optional[pulumi.Input[_builtins.str]] = None,
-                 clickhouse: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudapi: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudauth: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudfirewall: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudfw: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudphone: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudsso: Optional[pulumi.Input[_builtins.str]] = None,
-                 cms: Optional[pulumi.Input[_builtins.str]] = None,
-                 computenest: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 cr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cs: Optional[pulumi.Input[_builtins.str]] = None,
-                 das: Optional[pulumi.Input[_builtins.str]] = None,
-                 datahub: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataworks_public: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataworkspublic: Optional[pulumi.Input[_builtins.str]] = None,
-                 dbfs: Optional[pulumi.Input[_builtins.str]] = None,
-                 dbs: Optional[pulumi.Input[_builtins.str]] = None,
-                 dcdn: Optional[pulumi.Input[_builtins.str]] = None,
-                 ddosbasic: Optional[pulumi.Input[_builtins.str]] = None,
-                 ddosbgp: Optional[pulumi.Input[_builtins.str]] = None,
-                 ddoscoo: Optional[pulumi.Input[_builtins.str]] = None,
-                 dds: Optional[pulumi.Input[_builtins.str]] = None,
-                 devops_rdc: Optional[pulumi.Input[_builtins.str]] = None,
-                 devopsrdc: Optional[pulumi.Input[_builtins.str]] = None,
-                 dfs: Optional[pulumi.Input[_builtins.str]] = None,
-                 dg: Optional[pulumi.Input[_builtins.str]] = None,
-                 dm: Optional[pulumi.Input[_builtins.str]] = None,
-                 dms_enterprise: Optional[pulumi.Input[_builtins.str]] = None,
-                 dmsenterprise: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 drds: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts: Optional[pulumi.Input[_builtins.str]] = None,
-                 dysms: Optional[pulumi.Input[_builtins.str]] = None,
-                 dysmsapi: Optional[pulumi.Input[_builtins.str]] = None,
-                 eais: Optional[pulumi.Input[_builtins.str]] = None,
-                 ebs: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecd: Optional[pulumi.Input[_builtins.str]] = None,
-                 eci: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs: Optional[pulumi.Input[_builtins.str]] = None,
-                 edas: Optional[pulumi.Input[_builtins.str]] = None,
-                 edasschedulerx: Optional[pulumi.Input[_builtins.str]] = None,
-                 eds_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 edsuser: Optional[pulumi.Input[_builtins.str]] = None,
-                 eflo: Optional[pulumi.Input[_builtins.str]] = None,
-                 eflo_cnp: Optional[pulumi.Input[_builtins.str]] = None,
-                 eflo_controller: Optional[pulumi.Input[_builtins.str]] = None,
-                 ehpc: Optional[pulumi.Input[_builtins.str]] = None,
-                 ehs: Optional[pulumi.Input[_builtins.str]] = None,
-                 eipanycast: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch: Optional[pulumi.Input[_builtins.str]] = None,
-                 emr: Optional[pulumi.Input[_builtins.str]] = None,
-                 ens: Optional[pulumi.Input[_builtins.str]] = None,
-                 esa: Optional[pulumi.Input[_builtins.str]] = None,
-                 ess: Optional[pulumi.Input[_builtins.str]] = None,
-                 eventbridge: Optional[pulumi.Input[_builtins.str]] = None,
-                 fc: Optional[pulumi.Input[_builtins.str]] = None,
-                 fc_open: Optional[pulumi.Input[_builtins.str]] = None,
-                 fnf: Optional[pulumi.Input[_builtins.str]] = None,
-                 ga: Optional[pulumi.Input[_builtins.str]] = None,
-                 gaplus: Optional[pulumi.Input[_builtins.str]] = None,
-                 gdb: Optional[pulumi.Input[_builtins.str]] = None,
-                 gds: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpdb: Optional[pulumi.Input[_builtins.str]] = None,
-                 gwlb: Optional[pulumi.Input[_builtins.str]] = None,
-                 gwsecd: Optional[pulumi.Input[_builtins.str]] = None,
-                 hbr: Optional[pulumi.Input[_builtins.str]] = None,
-                 hcs_sgw: Optional[pulumi.Input[_builtins.str]] = None,
-                 hitsdb: Optional[pulumi.Input[_builtins.str]] = None,
-                 imm: Optional[pulumi.Input[_builtins.str]] = None,
-                 imp: Optional[pulumi.Input[_builtins.str]] = None,
-                 ims: Optional[pulumi.Input[_builtins.str]] = None,
-                 iot: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms: Optional[pulumi.Input[_builtins.str]] = None,
-                 kvstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 log: Optional[pulumi.Input[_builtins.str]] = None,
-                 market: Optional[pulumi.Input[_builtins.str]] = None,
-                 maxcompute: Optional[pulumi.Input[_builtins.str]] = None,
-                 mhub: Optional[pulumi.Input[_builtins.str]] = None,
-                 mns: Optional[pulumi.Input[_builtins.str]] = None,
-                 mns_open: Optional[pulumi.Input[_builtins.str]] = None,
-                 mscopensubscription: Optional[pulumi.Input[_builtins.str]] = None,
-                 mse: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas: Optional[pulumi.Input[_builtins.str]] = None,
-                 nlb: Optional[pulumi.Input[_builtins.str]] = None,
-                 oceanbase: Optional[pulumi.Input[_builtins.str]] = None,
-                 oceanbasepro: Optional[pulumi.Input[_builtins.str]] = None,
-                 ons: Optional[pulumi.Input[_builtins.str]] = None,
-                 onsproxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 oos: Optional[pulumi.Input[_builtins.str]] = None,
-                 opensearch: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots: Optional[pulumi.Input[_builtins.str]] = None,
-                 polardb: Optional[pulumi.Input[_builtins.str]] = None,
-                 polardbx: Optional[pulumi.Input[_builtins.str]] = None,
-                 privatelink: Optional[pulumi.Input[_builtins.str]] = None,
-                 pvtz: Optional[pulumi.Input[_builtins.str]] = None,
-                 quickbi: Optional[pulumi.Input[_builtins.str]] = None,
-                 quickbi_public: Optional[pulumi.Input[_builtins.str]] = None,
-                 quotas: Optional[pulumi.Input[_builtins.str]] = None,
-                 r_kvstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram: Optional[pulumi.Input[_builtins.str]] = None,
-                 rds: Optional[pulumi.Input[_builtins.str]] = None,
-                 redisa: Optional[pulumi.Input[_builtins.str]] = None,
-                 resourcemanager: Optional[pulumi.Input[_builtins.str]] = None,
-                 resourcesharing: Optional[pulumi.Input[_builtins.str]] = None,
-                 ressharing: Optional[pulumi.Input[_builtins.str]] = None,
-                 rocketmq: Optional[pulumi.Input[_builtins.str]] = None,
-                 ros: Optional[pulumi.Input[_builtins.str]] = None,
-                 sae: Optional[pulumi.Input[_builtins.str]] = None,
-                 sas: Optional[pulumi.Input[_builtins.str]] = None,
-                 scdn: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedulerx2: Optional[pulumi.Input[_builtins.str]] = None,
-                 sddp: Optional[pulumi.Input[_builtins.str]] = None,
-                 selectdb: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless: Optional[pulumi.Input[_builtins.str]] = None,
-                 servicecatalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 servicemesh: Optional[pulumi.Input[_builtins.str]] = None,
-                 sgw: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb: Optional[pulumi.Input[_builtins.str]] = None,
-                 smartag: Optional[pulumi.Input[_builtins.str]] = None,
-                 srvcatalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 sts: Optional[pulumi.Input[_builtins.str]] = None,
-                 swas: Optional[pulumi.Input[_builtins.str]] = None,
-                 swas_open: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 vod: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpcipam: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpcpeer: Optional[pulumi.Input[_builtins.str]] = None,
-                 vs: Optional[pulumi.Input[_builtins.str]] = None,
-                 waf: Optional[pulumi.Input[_builtins.str]] = None,
-                 waf_openapi: Optional[pulumi.Input[_builtins.str]] = None):
+                 acr: pulumi.Input[Optional[_builtins.str]] = None,
+                 actiontrail: pulumi.Input[Optional[_builtins.str]] = None,
+                 adb: pulumi.Input[Optional[_builtins.str]] = None,
+                 aiworkspace: pulumi.Input[Optional[_builtins.str]] = None,
+                 alb: pulumi.Input[Optional[_builtins.str]] = None,
+                 alidfs: pulumi.Input[Optional[_builtins.str]] = None,
+                 alidns: pulumi.Input[Optional[_builtins.str]] = None,
+                 alikafka: pulumi.Input[Optional[_builtins.str]] = None,
+                 amqp: pulumi.Input[Optional[_builtins.str]] = None,
+                 antiddos_public: pulumi.Input[Optional[_builtins.str]] = None,
+                 apig: pulumi.Input[Optional[_builtins.str]] = None,
+                 apigateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 arms: pulumi.Input[Optional[_builtins.str]] = None,
+                 bastionhost: pulumi.Input[Optional[_builtins.str]] = None,
+                 beebot: pulumi.Input[Optional[_builtins.str]] = None,
+                 bpstudio: pulumi.Input[Optional[_builtins.str]] = None,
+                 brain_industrial: pulumi.Input[Optional[_builtins.str]] = None,
+                 bssopenapi: pulumi.Input[Optional[_builtins.str]] = None,
+                 cas: pulumi.Input[Optional[_builtins.str]] = None,
+                 cassandra: pulumi.Input[Optional[_builtins.str]] = None,
+                 cbn: pulumi.Input[Optional[_builtins.str]] = None,
+                 cbs: pulumi.Input[Optional[_builtins.str]] = None,
+                 cddc: pulumi.Input[Optional[_builtins.str]] = None,
+                 cdn: pulumi.Input[Optional[_builtins.str]] = None,
+                 cds: pulumi.Input[Optional[_builtins.str]] = None,
+                 chatbot: pulumi.Input[Optional[_builtins.str]] = None,
+                 clickhouse: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudapi: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudauth: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudfirewall: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudfw: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudphone: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudsso: pulumi.Input[Optional[_builtins.str]] = None,
+                 cms: pulumi.Input[Optional[_builtins.str]] = None,
+                 computenest: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 cr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cs: pulumi.Input[Optional[_builtins.str]] = None,
+                 das: pulumi.Input[Optional[_builtins.str]] = None,
+                 datahub: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataworks_public: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataworkspublic: pulumi.Input[Optional[_builtins.str]] = None,
+                 dbfs: pulumi.Input[Optional[_builtins.str]] = None,
+                 dbs: pulumi.Input[Optional[_builtins.str]] = None,
+                 dcdn: pulumi.Input[Optional[_builtins.str]] = None,
+                 ddosbasic: pulumi.Input[Optional[_builtins.str]] = None,
+                 ddosbgp: pulumi.Input[Optional[_builtins.str]] = None,
+                 ddoscoo: pulumi.Input[Optional[_builtins.str]] = None,
+                 dds: pulumi.Input[Optional[_builtins.str]] = None,
+                 devops_rdc: pulumi.Input[Optional[_builtins.str]] = None,
+                 devopsrdc: pulumi.Input[Optional[_builtins.str]] = None,
+                 dfs: pulumi.Input[Optional[_builtins.str]] = None,
+                 dg: pulumi.Input[Optional[_builtins.str]] = None,
+                 dm: pulumi.Input[Optional[_builtins.str]] = None,
+                 dms_enterprise: pulumi.Input[Optional[_builtins.str]] = None,
+                 dmsenterprise: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 drds: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts: pulumi.Input[Optional[_builtins.str]] = None,
+                 dysms: pulumi.Input[Optional[_builtins.str]] = None,
+                 dysmsapi: pulumi.Input[Optional[_builtins.str]] = None,
+                 eais: pulumi.Input[Optional[_builtins.str]] = None,
+                 ebs: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecd: pulumi.Input[Optional[_builtins.str]] = None,
+                 eci: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs: pulumi.Input[Optional[_builtins.str]] = None,
+                 edas: pulumi.Input[Optional[_builtins.str]] = None,
+                 edasschedulerx: pulumi.Input[Optional[_builtins.str]] = None,
+                 eds_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 edsuser: pulumi.Input[Optional[_builtins.str]] = None,
+                 eflo: pulumi.Input[Optional[_builtins.str]] = None,
+                 eflo_cnp: pulumi.Input[Optional[_builtins.str]] = None,
+                 eflo_controller: pulumi.Input[Optional[_builtins.str]] = None,
+                 ehpc: pulumi.Input[Optional[_builtins.str]] = None,
+                 ehs: pulumi.Input[Optional[_builtins.str]] = None,
+                 eipanycast: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch: pulumi.Input[Optional[_builtins.str]] = None,
+                 emr: pulumi.Input[Optional[_builtins.str]] = None,
+                 ens: pulumi.Input[Optional[_builtins.str]] = None,
+                 esa: pulumi.Input[Optional[_builtins.str]] = None,
+                 ess: pulumi.Input[Optional[_builtins.str]] = None,
+                 eventbridge: pulumi.Input[Optional[_builtins.str]] = None,
+                 fc: pulumi.Input[Optional[_builtins.str]] = None,
+                 fc_open: pulumi.Input[Optional[_builtins.str]] = None,
+                 fnf: pulumi.Input[Optional[_builtins.str]] = None,
+                 ga: pulumi.Input[Optional[_builtins.str]] = None,
+                 gaplus: pulumi.Input[Optional[_builtins.str]] = None,
+                 gdb: pulumi.Input[Optional[_builtins.str]] = None,
+                 gds: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpdb: pulumi.Input[Optional[_builtins.str]] = None,
+                 gwlb: pulumi.Input[Optional[_builtins.str]] = None,
+                 gwsecd: pulumi.Input[Optional[_builtins.str]] = None,
+                 hbr: pulumi.Input[Optional[_builtins.str]] = None,
+                 hcs_sgw: pulumi.Input[Optional[_builtins.str]] = None,
+                 hitsdb: pulumi.Input[Optional[_builtins.str]] = None,
+                 imm: pulumi.Input[Optional[_builtins.str]] = None,
+                 imp: pulumi.Input[Optional[_builtins.str]] = None,
+                 ims: pulumi.Input[Optional[_builtins.str]] = None,
+                 iot: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms: pulumi.Input[Optional[_builtins.str]] = None,
+                 kvstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 log: pulumi.Input[Optional[_builtins.str]] = None,
+                 market: pulumi.Input[Optional[_builtins.str]] = None,
+                 maxcompute: pulumi.Input[Optional[_builtins.str]] = None,
+                 mhub: pulumi.Input[Optional[_builtins.str]] = None,
+                 mns: pulumi.Input[Optional[_builtins.str]] = None,
+                 mns_open: pulumi.Input[Optional[_builtins.str]] = None,
+                 mscopensubscription: pulumi.Input[Optional[_builtins.str]] = None,
+                 mse: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas: pulumi.Input[Optional[_builtins.str]] = None,
+                 nlb: pulumi.Input[Optional[_builtins.str]] = None,
+                 oceanbase: pulumi.Input[Optional[_builtins.str]] = None,
+                 oceanbasepro: pulumi.Input[Optional[_builtins.str]] = None,
+                 ons: pulumi.Input[Optional[_builtins.str]] = None,
+                 onsproxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 oos: pulumi.Input[Optional[_builtins.str]] = None,
+                 opensearch: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots: pulumi.Input[Optional[_builtins.str]] = None,
+                 polardb: pulumi.Input[Optional[_builtins.str]] = None,
+                 polardbx: pulumi.Input[Optional[_builtins.str]] = None,
+                 privatelink: pulumi.Input[Optional[_builtins.str]] = None,
+                 pvtz: pulumi.Input[Optional[_builtins.str]] = None,
+                 quickbi: pulumi.Input[Optional[_builtins.str]] = None,
+                 quickbi_public: pulumi.Input[Optional[_builtins.str]] = None,
+                 quotas: pulumi.Input[Optional[_builtins.str]] = None,
+                 r_kvstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram: pulumi.Input[Optional[_builtins.str]] = None,
+                 rds: pulumi.Input[Optional[_builtins.str]] = None,
+                 redisa: pulumi.Input[Optional[_builtins.str]] = None,
+                 resourcemanager: pulumi.Input[Optional[_builtins.str]] = None,
+                 resourcesharing: pulumi.Input[Optional[_builtins.str]] = None,
+                 ressharing: pulumi.Input[Optional[_builtins.str]] = None,
+                 rocketmq: pulumi.Input[Optional[_builtins.str]] = None,
+                 ros: pulumi.Input[Optional[_builtins.str]] = None,
+                 sae: pulumi.Input[Optional[_builtins.str]] = None,
+                 sas: pulumi.Input[Optional[_builtins.str]] = None,
+                 scdn: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedulerx2: pulumi.Input[Optional[_builtins.str]] = None,
+                 sddp: pulumi.Input[Optional[_builtins.str]] = None,
+                 selectdb: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless: pulumi.Input[Optional[_builtins.str]] = None,
+                 servicecatalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 servicemesh: pulumi.Input[Optional[_builtins.str]] = None,
+                 sgw: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb: pulumi.Input[Optional[_builtins.str]] = None,
+                 smartag: pulumi.Input[Optional[_builtins.str]] = None,
+                 srvcatalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 sts: pulumi.Input[Optional[_builtins.str]] = None,
+                 swas: pulumi.Input[Optional[_builtins.str]] = None,
+                 swas_open: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 vod: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpcipam: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpcpeer: pulumi.Input[Optional[_builtins.str]] = None,
+                 vs: pulumi.Input[Optional[_builtins.str]] = None,
+                 waf: pulumi.Input[Optional[_builtins.str]] = None,
+                 waf_openapi: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] acr: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
         :param pulumi.Input[_builtins.str] actiontrail: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Actiontrail endpoints.
@@ -2319,1904 +2319,1904 @@ class ProviderEndpointArgs:
 
     @_builtins.property
     @pulumi.getter
-    def acr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
         """
         return pulumi.get(self, "acr")
 
     @acr.setter
-    def acr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acr", value)
 
     @_builtins.property
     @pulumi.getter
-    def actiontrail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def actiontrail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Actiontrail endpoints.
         """
         return pulumi.get(self, "actiontrail")
 
     @actiontrail.setter
-    def actiontrail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def actiontrail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "actiontrail", value)
 
     @_builtins.property
     @pulumi.getter
-    def adb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def adb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom AnalyticDB endpoints.
         """
         return pulumi.get(self, "adb")
 
     @adb.setter
-    def adb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def adb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "adb", value)
 
     @_builtins.property
     @pulumi.getter
-    def aiworkspace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aiworkspace(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "aiworkspace")
 
     @aiworkspace.setter
-    def aiworkspace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aiworkspace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aiworkspace", value)
 
     @_builtins.property
     @pulumi.getter
-    def alb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alb endpoints.
         """
         return pulumi.get(self, "alb")
 
     @alb.setter
-    def alb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alb", value)
 
     @_builtins.property
     @pulumi.getter
-    def alidfs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alidfs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
         """
         return pulumi.get(self, "alidfs")
 
     @alidfs.setter
-    def alidfs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alidfs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alidfs", value)
 
     @_builtins.property
     @pulumi.getter
-    def alidns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alidns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidns endpoints.
         """
         return pulumi.get(self, "alidns")
 
     @alidns.setter
-    def alidns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alidns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alidns", value)
 
     @_builtins.property
     @pulumi.getter
-    def alikafka(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alikafka(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ALIKAFKA endpoints.
         """
         return pulumi.get(self, "alikafka")
 
     @alikafka.setter
-    def alikafka(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alikafka(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alikafka", value)
 
     @_builtins.property
     @pulumi.getter
-    def amqp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def amqp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
         """
         return pulumi.get(self, "amqp")
 
     @amqp.setter
-    def amqp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def amqp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "amqp", value)
 
     @_builtins.property
     @pulumi.getter(name="antiddosPublic")
-    def antiddos_public(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def antiddos_public(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
         """
         return pulumi.get(self, "antiddos_public")
 
     @antiddos_public.setter
-    def antiddos_public(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def antiddos_public(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "antiddos_public", value)
 
     @_builtins.property
     @pulumi.getter
-    def apig(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def apig(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "apig")
 
     @apig.setter
-    def apig(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def apig(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "apig", value)
 
     @_builtins.property
     @pulumi.getter
-    def apigateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def apigateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
         """
         return pulumi.get(self, "apigateway")
 
     @apigateway.setter
-    def apigateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def apigateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "apigateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def arms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
         """
         return pulumi.get(self, "arms")
 
     @arms.setter
-    def arms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arms", value)
 
     @_builtins.property
     @pulumi.getter
-    def bastionhost(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bastionhost(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bastionhost endpoints.
         """
         return pulumi.get(self, "bastionhost")
 
     @bastionhost.setter
-    def bastionhost(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bastionhost(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bastionhost", value)
 
     @_builtins.property
     @pulumi.getter
-    def beebot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def beebot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
         """
         return pulumi.get(self, "beebot")
 
     @beebot.setter
-    def beebot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def beebot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "beebot", value)
 
     @_builtins.property
     @pulumi.getter
-    def bpstudio(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bpstudio(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom bpstudio endpoints.
         """
         return pulumi.get(self, "bpstudio")
 
     @bpstudio.setter
-    def bpstudio(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bpstudio(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bpstudio", value)
 
     @_builtins.property
     @pulumi.getter(name="brainIndustrial")
-    def brain_industrial(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def brain_industrial(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom brain_industrial endpoints.
         """
         return pulumi.get(self, "brain_industrial")
 
     @brain_industrial.setter
-    def brain_industrial(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def brain_industrial(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "brain_industrial", value)
 
     @_builtins.property
     @pulumi.getter
-    def bssopenapi(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bssopenapi(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom BSSOPENAPI endpoints.
         """
         return pulumi.get(self, "bssopenapi")
 
     @bssopenapi.setter
-    def bssopenapi(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bssopenapi(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bssopenapi", value)
 
     @_builtins.property
     @pulumi.getter
-    def cas(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cas(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CAS endpoints.
         """
         return pulumi.get(self, "cas")
 
     @cas.setter
-    def cas(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cas(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cas", value)
 
     @_builtins.property
     @pulumi.getter
-    def cassandra(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cassandra(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cassandra endpoints.
         """
         return pulumi.get(self, "cassandra")
 
     @cassandra.setter
-    def cassandra(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cassandra(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cassandra", value)
 
     @_builtins.property
     @pulumi.getter
-    def cbn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cbn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbn endpoints.
         """
         return pulumi.get(self, "cbn")
 
     @cbn.setter
-    def cbn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cbn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cbn", value)
 
     @_builtins.property
     @pulumi.getter
-    def cbs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cbs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
         """
         return pulumi.get(self, "cbs")
 
     @cbs.setter
-    def cbs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cbs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cbs", value)
 
     @_builtins.property
     @pulumi.getter
-    def cddc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cddc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cddc endpoints.
         """
         return pulumi.get(self, "cddc")
 
     @cddc.setter
-    def cddc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cddc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cddc", value)
 
     @_builtins.property
     @pulumi.getter
-    def cdn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cdn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom CDN endpoints.
         """
         return pulumi.get(self, "cdn")
 
     @cdn.setter
-    def cdn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cdn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cdn", value)
 
     @_builtins.property
     @pulumi.getter
-    def cds(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cds(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
         """
         return pulumi.get(self, "cds")
 
     @cds.setter
-    def cds(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cds(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cds", value)
 
     @_builtins.property
     @pulumi.getter
-    def chatbot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chatbot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
         """
         return pulumi.get(self, "chatbot")
 
     @chatbot.setter
-    def chatbot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chatbot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chatbot", value)
 
     @_builtins.property
     @pulumi.getter
-    def clickhouse(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clickhouse(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
         """
         return pulumi.get(self, "clickhouse")
 
     @clickhouse.setter
-    def clickhouse(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clickhouse(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clickhouse", value)
 
     @_builtins.property
     @pulumi.getter
-    def cloudapi(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloudapi(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
         """
         return pulumi.get(self, "cloudapi")
 
     @cloudapi.setter
-    def cloudapi(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloudapi(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloudapi", value)
 
     @_builtins.property
     @pulumi.getter
-    def cloudauth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloudauth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
         """
         return pulumi.get(self, "cloudauth")
 
     @cloudauth.setter
-    def cloudauth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloudauth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloudauth", value)
 
     @_builtins.property
     @pulumi.getter
-    def cloudfirewall(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloudfirewall(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
         """
         return pulumi.get(self, "cloudfirewall")
 
     @cloudfirewall.setter
-    def cloudfirewall(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloudfirewall(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloudfirewall", value)
 
     @_builtins.property
     @pulumi.getter
-    def cloudfw(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloudfw(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfw endpoints.
         """
         return pulumi.get(self, "cloudfw")
 
     @cloudfw.setter
-    def cloudfw(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloudfw(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloudfw", value)
 
     @_builtins.property
     @pulumi.getter
-    def cloudphone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloudphone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudphone endpoints.
         """
         return pulumi.get(self, "cloudphone")
 
     @cloudphone.setter
-    def cloudphone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloudphone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloudphone", value)
 
     @_builtins.property
     @pulumi.getter
-    def cloudsso(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloudsso(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudsso endpoints.
         """
         return pulumi.get(self, "cloudsso")
 
     @cloudsso.setter
-    def cloudsso(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloudsso(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloudsso", value)
 
     @_builtins.property
     @pulumi.getter
-    def cms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Cloud Monitor endpoints.
         """
         return pulumi.get(self, "cms")
 
     @cms.setter
-    def cms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cms", value)
 
     @_builtins.property
     @pulumi.getter
-    def computenest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def computenest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom computenest endpoints.
         """
         return pulumi.get(self, "computenest")
 
     @computenest.setter
-    def computenest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def computenest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "computenest", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom config endpoints.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter
-    def cr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Registry endpoints.
         """
         return pulumi.get(self, "cr")
 
     @cr.setter
-    def cr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cr", value)
 
     @_builtins.property
     @pulumi.getter
-    def cs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Container Service endpoints.
         """
         return pulumi.get(self, "cs")
 
     @cs.setter
-    def cs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cs", value)
 
     @_builtins.property
     @pulumi.getter
-    def das(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def das(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom das endpoints.
         """
         return pulumi.get(self, "das")
 
     @das.setter
-    def das(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def das(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "das", value)
 
     @_builtins.property
     @pulumi.getter
-    def datahub(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datahub(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Datahub endpoints.
         """
         return pulumi.get(self, "datahub")
 
     @datahub.setter
-    def datahub(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datahub(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datahub", value)
 
     @_builtins.property
     @pulumi.getter(name="dataworksPublic")
-    def dataworks_public(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataworks_public(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
         """
         return pulumi.get(self, "dataworks_public")
 
     @dataworks_public.setter
-    def dataworks_public(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataworks_public(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataworks_public", value)
 
     @_builtins.property
     @pulumi.getter
-    def dataworkspublic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataworkspublic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dataworkspublic endpoints.
         """
         return pulumi.get(self, "dataworkspublic")
 
     @dataworkspublic.setter
-    def dataworkspublic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataworkspublic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataworkspublic", value)
 
     @_builtins.property
     @pulumi.getter
-    def dbfs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dbfs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dbfs endpoints.
         """
         return pulumi.get(self, "dbfs")
 
     @dbfs.setter
-    def dbfs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dbfs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dbfs", value)
 
     @_builtins.property
     @pulumi.getter
-    def dbs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dbs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cbs endpoints.
         """
         return pulumi.get(self, "dbs")
 
     @dbs.setter
-    def dbs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dbs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dbs", value)
 
     @_builtins.property
     @pulumi.getter
-    def dcdn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dcdn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dcdn endpoints.
         """
         return pulumi.get(self, "dcdn")
 
     @dcdn.setter
-    def dcdn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dcdn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dcdn", value)
 
     @_builtins.property
     @pulumi.getter
-    def ddosbasic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ddosbasic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
         """
         return pulumi.get(self, "ddosbasic")
 
     @ddosbasic.setter
-    def ddosbasic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ddosbasic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ddosbasic", value)
 
     @_builtins.property
     @pulumi.getter
-    def ddosbgp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ddosbgp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSBGP endpoints.
         """
         return pulumi.get(self, "ddosbgp")
 
     @ddosbgp.setter
-    def ddosbgp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ddosbgp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ddosbgp", value)
 
     @_builtins.property
     @pulumi.getter
-    def ddoscoo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ddoscoo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DDOSCOO endpoints.
         """
         return pulumi.get(self, "ddoscoo")
 
     @ddoscoo.setter
-    def ddoscoo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ddoscoo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ddoscoo", value)
 
     @_builtins.property
     @pulumi.getter
-    def dds(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dds(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MongoDB endpoints.
         """
         return pulumi.get(self, "dds")
 
     @dds.setter
-    def dds(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dds(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dds", value)
 
     @_builtins.property
     @pulumi.getter(name="devopsRdc")
-    def devops_rdc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def devops_rdc(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "devops_rdc")
 
     @devops_rdc.setter
-    def devops_rdc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def devops_rdc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "devops_rdc", value)
 
     @_builtins.property
     @pulumi.getter
-    def devopsrdc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def devopsrdc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom devopsrdc endpoints.
         """
         return pulumi.get(self, "devopsrdc")
 
     @devopsrdc.setter
-    def devopsrdc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def devopsrdc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "devopsrdc", value)
 
     @_builtins.property
     @pulumi.getter
-    def dfs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dfs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom alidfs endpoints.
         """
         return pulumi.get(self, "dfs")
 
     @dfs.setter
-    def dfs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dfs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dfs", value)
 
     @_builtins.property
     @pulumi.getter
-    def dg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dg endpoints.
         """
         return pulumi.get(self, "dg")
 
     @dg.setter
-    def dg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dg", value)
 
     @_builtins.property
     @pulumi.getter
-    def dm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dm endpoints.
         """
         return pulumi.get(self, "dm")
 
     @dm.setter
-    def dm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dm", value)
 
     @_builtins.property
     @pulumi.getter(name="dmsEnterprise")
-    def dms_enterprise(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dms_enterprise(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dms_enterprise endpoints.
         """
         return pulumi.get(self, "dms_enterprise")
 
     @dms_enterprise.setter
-    def dms_enterprise(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dms_enterprise(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dms_enterprise", value)
 
     @_builtins.property
     @pulumi.getter
-    def dmsenterprise(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dmsenterprise(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dmsenterprise endpoints.
         """
         return pulumi.get(self, "dmsenterprise")
 
     @dmsenterprise.setter
-    def dmsenterprise(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dmsenterprise(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dmsenterprise", value)
 
     @_builtins.property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DNS endpoints.
         """
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns", value)
 
     @_builtins.property
     @pulumi.getter
-    def drds(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def drds(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
         """
         return pulumi.get(self, "drds")
 
     @drds.setter
-    def drds(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def drds(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "drds", value)
 
     @_builtins.property
     @pulumi.getter
-    def dts(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dts(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dts endpoints.
         """
         return pulumi.get(self, "dts")
 
     @dts.setter
-    def dts(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dts(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dts", value)
 
     @_builtins.property
     @pulumi.getter
-    def dysms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dysms(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dysms")
 
     @dysms.setter
-    def dysms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dysms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dysms", value)
 
     @_builtins.property
     @pulumi.getter
-    def dysmsapi(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dysmsapi(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom dysmsapi endpoints.
         """
         return pulumi.get(self, "dysmsapi")
 
     @dysmsapi.setter
-    def dysmsapi(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dysmsapi(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dysmsapi", value)
 
     @_builtins.property
     @pulumi.getter
-    def eais(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eais(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eais endpoints.
         """
         return pulumi.get(self, "eais")
 
     @eais.setter
-    def eais(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eais(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eais", value)
 
     @_builtins.property
     @pulumi.getter
-    def ebs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ebs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ebs endpoints.
         """
         return pulumi.get(self, "ebs")
 
     @ebs.setter
-    def ebs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ebs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ebs", value)
 
     @_builtins.property
     @pulumi.getter
-    def ecd(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecd(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
         """
         return pulumi.get(self, "ecd")
 
     @ecd.setter
-    def ecd(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecd(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecd", value)
 
     @_builtins.property
     @pulumi.getter
-    def eci(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eci(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eci endpoints.
         """
         return pulumi.get(self, "eci")
 
     @eci.setter
-    def eci(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eci(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eci", value)
 
     @_builtins.property
     @pulumi.getter
-    def ecs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ECS endpoints.
         """
         return pulumi.get(self, "ecs")
 
     @ecs.setter
-    def ecs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs", value)
 
     @_builtins.property
     @pulumi.getter
-    def edas(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edas(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edas endpoints.
         """
         return pulumi.get(self, "edas")
 
     @edas.setter
-    def edas(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edas(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edas", value)
 
     @_builtins.property
     @pulumi.getter
-    def edasschedulerx(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edasschedulerx(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
         """
         return pulumi.get(self, "edasschedulerx")
 
     @edasschedulerx.setter
-    def edasschedulerx(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edasschedulerx(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edasschedulerx", value)
 
     @_builtins.property
     @pulumi.getter(name="edsUser")
-    def eds_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eds_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
         """
         return pulumi.get(self, "eds_user")
 
     @eds_user.setter
-    def eds_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eds_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eds_user", value)
 
     @_builtins.property
     @pulumi.getter
-    def edsuser(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edsuser(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
         """
         return pulumi.get(self, "edsuser")
 
     @edsuser.setter
-    def edsuser(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edsuser(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edsuser", value)
 
     @_builtins.property
     @pulumi.getter
-    def eflo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eflo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
         """
         return pulumi.get(self, "eflo")
 
     @eflo.setter
-    def eflo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eflo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eflo", value)
 
     @_builtins.property
     @pulumi.getter(name="efloCnp")
-    def eflo_cnp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eflo_cnp(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "eflo_cnp")
 
     @eflo_cnp.setter
-    def eflo_cnp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eflo_cnp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eflo_cnp", value)
 
     @_builtins.property
     @pulumi.getter(name="efloController")
-    def eflo_controller(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eflo_controller(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
         """
         return pulumi.get(self, "eflo_controller")
 
     @eflo_controller.setter
-    def eflo_controller(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eflo_controller(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eflo_controller", value)
 
     @_builtins.property
     @pulumi.getter
-    def ehpc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ehpc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
         """
         return pulumi.get(self, "ehpc")
 
     @ehpc.setter
-    def ehpc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ehpc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ehpc", value)
 
     @_builtins.property
     @pulumi.getter
-    def ehs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ehs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
         """
         return pulumi.get(self, "ehs")
 
     @ehs.setter
-    def ehs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ehs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ehs", value)
 
     @_builtins.property
     @pulumi.getter
-    def eipanycast(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eipanycast(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
         """
         return pulumi.get(self, "eipanycast")
 
     @eipanycast.setter
-    def eipanycast(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eipanycast(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eipanycast", value)
 
     @_builtins.property
     @pulumi.getter
-    def elasticsearch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elasticsearch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Elasticsearch endpoints.
         """
         return pulumi.get(self, "elasticsearch")
 
     @elasticsearch.setter
-    def elasticsearch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elasticsearch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elasticsearch", value)
 
     @_builtins.property
     @pulumi.getter
-    def emr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def emr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom EMR endpoints.
         """
         return pulumi.get(self, "emr")
 
     @emr.setter
-    def emr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def emr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "emr", value)
 
     @_builtins.property
     @pulumi.getter
-    def ens(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ens(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ens endpoints.
         """
         return pulumi.get(self, "ens")
 
     @ens.setter
-    def ens(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ens(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ens", value)
 
     @_builtins.property
     @pulumi.getter
-    def esa(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def esa(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "esa")
 
     @esa.setter
-    def esa(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def esa(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "esa", value)
 
     @_builtins.property
     @pulumi.getter
-    def ess(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ess(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Autoscaling endpoints.
         """
         return pulumi.get(self, "ess")
 
     @ess.setter
-    def ess(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ess(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ess", value)
 
     @_builtins.property
     @pulumi.getter
-    def eventbridge(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eventbridge(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eventbridge_share endpoints.
         """
         return pulumi.get(self, "eventbridge")
 
     @eventbridge.setter
-    def eventbridge(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eventbridge(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eventbridge", value)
 
     @_builtins.property
     @pulumi.getter
-    def fc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
         """
         return pulumi.get(self, "fc")
 
     @fc.setter
-    def fc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fc", value)
 
     @_builtins.property
     @pulumi.getter(name="fcOpen")
-    def fc_open(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fc_open(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Function Computing endpoints.
         """
         return pulumi.get(self, "fc_open")
 
     @fc_open.setter
-    def fc_open(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fc_open(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fc_open", value)
 
     @_builtins.property
     @pulumi.getter
-    def fnf(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fnf(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom fnf endpoints.
         """
         return pulumi.get(self, "fnf")
 
     @fnf.setter
-    def fnf(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fnf(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fnf", value)
 
     @_builtins.property
     @pulumi.getter
-    def ga(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ga(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ga endpoints.
         """
         return pulumi.get(self, "ga")
 
     @ga.setter
-    def ga(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ga(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ga", value)
 
     @_builtins.property
     @pulumi.getter
-    def gaplus(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gaplus(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gaplus endpoints.
         """
         return pulumi.get(self, "gaplus")
 
     @gaplus.setter
-    def gaplus(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gaplus(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gaplus", value)
 
     @_builtins.property
     @pulumi.getter
-    def gdb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gdb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
         """
         return pulumi.get(self, "gdb")
 
     @gdb.setter
-    def gdb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gdb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gdb", value)
 
     @_builtins.property
     @pulumi.getter
-    def gds(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gds(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gds endpoints.
         """
         return pulumi.get(self, "gds")
 
     @gds.setter
-    def gds(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gds(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gds", value)
 
     @_builtins.property
     @pulumi.getter
-    def gpdb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gpdb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom GPDB endpoints.
         """
         return pulumi.get(self, "gpdb")
 
     @gpdb.setter
-    def gpdb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gpdb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gpdb", value)
 
     @_builtins.property
     @pulumi.getter
-    def gwlb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gwlb(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gwlb")
 
     @gwlb.setter
-    def gwlb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gwlb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gwlb", value)
 
     @_builtins.property
     @pulumi.getter
-    def gwsecd(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gwsecd(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom gwsecd endpoints.
         """
         return pulumi.get(self, "gwsecd")
 
     @gwsecd.setter
-    def gwsecd(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gwsecd(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gwsecd", value)
 
     @_builtins.property
     @pulumi.getter
-    def hbr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hbr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hbr endpoints.
         """
         return pulumi.get(self, "hbr")
 
     @hbr.setter
-    def hbr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hbr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hbr", value)
 
     @_builtins.property
     @pulumi.getter(name="hcsSgw")
-    def hcs_sgw(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hcs_sgw(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hcs_sgw endpoints.
         """
         return pulumi.get(self, "hcs_sgw")
 
     @hcs_sgw.setter
-    def hcs_sgw(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hcs_sgw(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hcs_sgw", value)
 
     @_builtins.property
     @pulumi.getter
-    def hitsdb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hitsdb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom hitsdb endpoints.
         """
         return pulumi.get(self, "hitsdb")
 
     @hitsdb.setter
-    def hitsdb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hitsdb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hitsdb", value)
 
     @_builtins.property
     @pulumi.getter
-    def imm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def imm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imm endpoints.
         """
         return pulumi.get(self, "imm")
 
     @imm.setter
-    def imm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def imm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "imm", value)
 
     @_builtins.property
     @pulumi.getter
-    def imp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def imp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom imp endpoints.
         """
         return pulumi.get(self, "imp")
 
     @imp.setter
-    def imp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def imp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "imp", value)
 
     @_builtins.property
     @pulumi.getter
-    def ims(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ims(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ims endpoints.
         """
         return pulumi.get(self, "ims")
 
     @ims.setter
-    def ims(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ims(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ims", value)
 
     @_builtins.property
     @pulumi.getter
-    def iot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom iot endpoints.
         """
         return pulumi.get(self, "iot")
 
     @iot.setter
-    def iot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iot", value)
 
     @_builtins.property
     @pulumi.getter
-    def kms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom KMS endpoints.
         """
         return pulumi.get(self, "kms")
 
     @kms.setter
-    def kms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms", value)
 
     @_builtins.property
     @pulumi.getter
-    def kvstore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kvstore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom R-KVStore endpoints.
         """
         return pulumi.get(self, "kvstore")
 
     @kvstore.setter
-    def kvstore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kvstore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kvstore", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Location Service endpoints.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def log(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Log Service endpoints.
         """
         return pulumi.get(self, "log")
 
     @log.setter
-    def log(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log", value)
 
     @_builtins.property
     @pulumi.getter
-    def market(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def market(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Market Place endpoints.
         """
         return pulumi.get(self, "market")
 
     @market.setter
-    def market(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def market(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "market", value)
 
     @_builtins.property
     @pulumi.getter
-    def maxcompute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maxcompute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MaxCompute endpoints.
         """
         return pulumi.get(self, "maxcompute")
 
     @maxcompute.setter
-    def maxcompute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maxcompute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maxcompute", value)
 
     @_builtins.property
     @pulumi.getter
-    def mhub(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mhub(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mhub endpoints.
         """
         return pulumi.get(self, "mhub")
 
     @mhub.setter
-    def mhub(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mhub(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mhub", value)
 
     @_builtins.property
     @pulumi.getter
-    def mns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
         """
         return pulumi.get(self, "mns")
 
     @mns.setter
-    def mns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mns", value)
 
     @_builtins.property
     @pulumi.getter(name="mnsOpen")
-    def mns_open(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mns_open(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom MNS endpoints.
         """
         return pulumi.get(self, "mns_open")
 
     @mns_open.setter
-    def mns_open(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mns_open(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mns_open", value)
 
     @_builtins.property
     @pulumi.getter
-    def mscopensubscription(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mscopensubscription(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mscopensubscription endpoints.
         """
         return pulumi.get(self, "mscopensubscription")
 
     @mscopensubscription.setter
-    def mscopensubscription(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mscopensubscription(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mscopensubscription", value)
 
     @_builtins.property
     @pulumi.getter
-    def mse(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mse(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom mse endpoints.
         """
         return pulumi.get(self, "mse")
 
     @mse.setter
-    def mse(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mse(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mse", value)
 
     @_builtins.property
     @pulumi.getter
-    def nas(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nas(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom NAS endpoints.
         """
         return pulumi.get(self, "nas")
 
     @nas.setter
-    def nas(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nas(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nas", value)
 
     @_builtins.property
     @pulumi.getter
-    def nlb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nlb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom nlb endpoints.
         """
         return pulumi.get(self, "nlb")
 
     @nlb.setter
-    def nlb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nlb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nlb", value)
 
     @_builtins.property
     @pulumi.getter
-    def oceanbase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oceanbase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
         """
         return pulumi.get(self, "oceanbase")
 
     @oceanbase.setter
-    def oceanbase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oceanbase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oceanbase", value)
 
     @_builtins.property
     @pulumi.getter
-    def oceanbasepro(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oceanbasepro(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oceanbase endpoints.
         """
         return pulumi.get(self, "oceanbasepro")
 
     @oceanbasepro.setter
-    def oceanbasepro(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oceanbasepro(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oceanbasepro", value)
 
     @_builtins.property
     @pulumi.getter
-    def ons(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ons(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ONS endpoints.
         """
         return pulumi.get(self, "ons")
 
     @ons.setter
-    def ons(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ons(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ons", value)
 
     @_builtins.property
     @pulumi.getter
-    def onsproxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onsproxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom onsproxy endpoints.
         """
         return pulumi.get(self, "onsproxy")
 
     @onsproxy.setter
-    def onsproxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onsproxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onsproxy", value)
 
     @_builtins.property
     @pulumi.getter
-    def oos(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oos(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom oos endpoints.
         """
         return pulumi.get(self, "oos")
 
     @oos.setter
-    def oos(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oos(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oos", value)
 
     @_builtins.property
     @pulumi.getter
-    def opensearch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opensearch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom opensearch endpoints.
         """
         return pulumi.get(self, "opensearch")
 
     @opensearch.setter
-    def opensearch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opensearch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opensearch", value)
 
     @_builtins.property
     @pulumi.getter
-    def oss(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom OSS endpoints.
         """
         return pulumi.get(self, "oss")
 
     @oss.setter
-    def oss(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss", value)
 
     @_builtins.property
     @pulumi.getter
-    def ots(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ots(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Table Store endpoints.
         """
         return pulumi.get(self, "ots")
 
     @ots.setter
-    def ots(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ots(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ots", value)
 
     @_builtins.property
     @pulumi.getter
-    def polardb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def polardb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom PolarDB endpoints.
         """
         return pulumi.get(self, "polardb")
 
     @polardb.setter
-    def polardb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def polardb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "polardb", value)
 
     @_builtins.property
     @pulumi.getter
-    def polardbx(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def polardbx(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom DRDS endpoints.
         """
         return pulumi.get(self, "polardbx")
 
     @polardbx.setter
-    def polardbx(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def polardbx(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "polardbx", value)
 
     @_builtins.property
     @pulumi.getter
-    def privatelink(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def privatelink(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom privatelink endpoints.
         """
         return pulumi.get(self, "privatelink")
 
     @privatelink.setter
-    def privatelink(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def privatelink(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "privatelink", value)
 
     @_builtins.property
     @pulumi.getter
-    def pvtz(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pvtz(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Private Zone endpoints.
         """
         return pulumi.get(self, "pvtz")
 
     @pvtz.setter
-    def pvtz(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pvtz(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pvtz", value)
 
     @_builtins.property
     @pulumi.getter
-    def quickbi(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quickbi(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
         """
         return pulumi.get(self, "quickbi")
 
     @quickbi.setter
-    def quickbi(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quickbi(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quickbi", value)
 
     @_builtins.property
     @pulumi.getter(name="quickbiPublic")
-    def quickbi_public(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quickbi_public(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quickbi endpoints.
         """
         return pulumi.get(self, "quickbi_public")
 
     @quickbi_public.setter
-    def quickbi_public(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quickbi_public(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quickbi_public", value)
 
     @_builtins.property
     @pulumi.getter
-    def quotas(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quotas(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom quotas endpoints.
         """
         return pulumi.get(self, "quotas")
 
     @quotas.setter
-    def quotas(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quotas(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quotas", value)
 
     @_builtins.property
     @pulumi.getter(name="rKvstore")
-    def r_kvstore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def r_kvstore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom r_kvstore endpoints.
         """
         return pulumi.get(self, "r_kvstore")
 
     @r_kvstore.setter
-    def r_kvstore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def r_kvstore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "r_kvstore", value)
 
     @_builtins.property
     @pulumi.getter
-    def ram(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ram(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RAM endpoints.
         """
         return pulumi.get(self, "ram")
 
     @ram.setter
-    def ram(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ram(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ram", value)
 
     @_builtins.property
     @pulumi.getter
-    def rds(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rds(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
         """
         return pulumi.get(self, "rds")
 
     @rds.setter
-    def rds(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rds(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rds", value)
 
     @_builtins.property
     @pulumi.getter
-    def redisa(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redisa(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
         """
         return pulumi.get(self, "redisa")
 
     @redisa.setter
-    def redisa(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redisa(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redisa", value)
 
     @_builtins.property
     @pulumi.getter
-    def resourcemanager(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resourcemanager(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
         """
         return pulumi.get(self, "resourcemanager")
 
     @resourcemanager.setter
-    def resourcemanager(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resourcemanager(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resourcemanager", value)
 
     @_builtins.property
     @pulumi.getter
-    def resourcesharing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resourcesharing(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resourcesharing")
 
     @resourcesharing.setter
-    def resourcesharing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resourcesharing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resourcesharing", value)
 
     @_builtins.property
     @pulumi.getter
-    def ressharing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ressharing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
         """
         return pulumi.get(self, "ressharing")
 
     @ressharing.setter
-    def ressharing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ressharing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ressharing", value)
 
     @_builtins.property
     @pulumi.getter
-    def rocketmq(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rocketmq(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "rocketmq")
 
     @rocketmq.setter
-    def rocketmq(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rocketmq(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rocketmq", value)
 
     @_builtins.property
     @pulumi.getter
-    def ros(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ros(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
         """
         return pulumi.get(self, "ros")
 
     @ros.setter
-    def ros(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ros(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ros", value)
 
     @_builtins.property
     @pulumi.getter
-    def sae(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sae(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
         """
         return pulumi.get(self, "sae")
 
     @sae.setter
-    def sae(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sae(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sae", value)
 
     @_builtins.property
     @pulumi.getter
-    def sas(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sas(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
         """
         return pulumi.get(self, "sas")
 
     @sas.setter
-    def sas(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sas(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sas", value)
 
     @_builtins.property
     @pulumi.getter
-    def scdn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scdn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
         """
         return pulumi.get(self, "scdn")
 
     @scdn.setter
-    def scdn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scdn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scdn", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedulerx2(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedulerx2(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edasschedulerx endpoints.
         """
         return pulumi.get(self, "schedulerx2")
 
     @schedulerx2.setter
-    def schedulerx2(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedulerx2(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedulerx2", value)
 
     @_builtins.property
     @pulumi.getter
-    def sddp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sddp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sddp endpoints.
         """
         return pulumi.get(self, "sddp")
 
     @sddp.setter
-    def sddp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sddp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sddp", value)
 
     @_builtins.property
     @pulumi.getter
-    def selectdb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def selectdb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom selectdb endpoints.
         """
         return pulumi.get(self, "selectdb")
 
     @selectdb.setter
-    def selectdb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def selectdb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "selectdb", value)
 
     @_builtins.property
     @pulumi.getter
-    def serverless(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serverless(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom serverless endpoints.
         """
         return pulumi.get(self, "serverless")
 
     @serverless.setter
-    def serverless(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serverless(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serverless", value)
 
     @_builtins.property
     @pulumi.getter
-    def servicecatalog(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def servicecatalog(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
         """
         return pulumi.get(self, "servicecatalog")
 
     @servicecatalog.setter
-    def servicecatalog(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def servicecatalog(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "servicecatalog", value)
 
     @_builtins.property
     @pulumi.getter
-    def servicemesh(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def servicemesh(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom servicemesh endpoints.
         """
         return pulumi.get(self, "servicemesh")
 
     @servicemesh.setter
-    def servicemesh(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def servicemesh(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "servicemesh", value)
 
     @_builtins.property
     @pulumi.getter
-    def sgw(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sgw(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sgw endpoints.
         """
         return pulumi.get(self, "sgw")
 
     @sgw.setter
-    def sgw(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sgw(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sgw", value)
 
     @_builtins.property
     @pulumi.getter
-    def slb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom SLB endpoints.
         """
         return pulumi.get(self, "slb")
 
     @slb.setter
-    def slb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb", value)
 
     @_builtins.property
     @pulumi.getter
-    def smartag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def smartag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom smartag endpoints.
         """
         return pulumi.get(self, "smartag")
 
     @smartag.setter
-    def smartag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def smartag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "smartag", value)
 
     @_builtins.property
     @pulumi.getter
-    def srvcatalog(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def srvcatalog(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom srvcatalog endpoints.
         """
         return pulumi.get(self, "srvcatalog")
 
     @srvcatalog.setter
-    def srvcatalog(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def srvcatalog(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "srvcatalog", value)
 
     @_builtins.property
     @pulumi.getter
-    def sts(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sts(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom STS endpoints.
         """
         return pulumi.get(self, "sts")
 
     @sts.setter
-    def sts(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sts(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sts", value)
 
     @_builtins.property
     @pulumi.getter
-    def swas(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def swas(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
         """
         return pulumi.get(self, "swas")
 
     @swas.setter
-    def swas(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def swas(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "swas", value)
 
     @_builtins.property
     @pulumi.getter(name="swasOpen")
-    def swas_open(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def swas_open(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom swas endpoints.
         """
         return pulumi.get(self, "swas_open")
 
     @swas_open.setter
-    def swas_open(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def swas_open(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "swas_open", value)
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom tag endpoints.
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def vod(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vod(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vod endpoints.
         """
         return pulumi.get(self, "vod")
 
     @vod.setter
-    def vod(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vod(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vod", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom VPC and VPN endpoints.
         """
         return pulumi.get(self, "vpc")
 
     @vpc.setter
-    def vpc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpcipam(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpcipam(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vpcipam")
 
     @vpcipam.setter
-    def vpcipam(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpcipam(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpcipam", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpcpeer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpcpeer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vpcpeer endpoints.
         """
         return pulumi.get(self, "vpcpeer")
 
     @vpcpeer.setter
-    def vpcpeer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpcpeer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpcpeer", value)
 
     @_builtins.property
     @pulumi.getter
-    def vs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vs endpoints.
         """
         return pulumi.get(self, "vs")
 
     @vs.setter
-    def vs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vs", value)
 
     @_builtins.property
     @pulumi.getter
-    def waf(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def waf(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf endpoints.
         """
         return pulumi.get(self, "waf")
 
     @waf.setter
-    def waf(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def waf(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "waf", value)
 
     @_builtins.property
     @pulumi.getter(name="wafOpenapi")
-    def waf_openapi(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def waf_openapi(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf_openapi endpoints.
         """
         return pulumi.get(self, "waf_openapi")
 
     @waf_openapi.setter
-    def waf_openapi(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def waf_openapi(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "waf_openapi", value)
 
 
 class ProviderSignVersionArgsDict(TypedDict):
-    oss: NotRequired[pulumi.Input[_builtins.str]]
-    sls: NotRequired[pulumi.Input[_builtins.str]]
+    oss: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    sls: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ProviderSignVersionArgs:
     def __init__(__self__, *,
-                 oss: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls: Optional[pulumi.Input[_builtins.str]] = None):
+                 oss: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls: pulumi.Input[Optional[_builtins.str]] = None):
         if oss is not None:
             pulumi.set(__self__, "oss", oss)
         if sls is not None:
@@ -4224,41 +4224,41 @@ class ProviderSignVersionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def oss(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "oss")
 
     @oss.setter
-    def oss(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss", value)
 
     @_builtins.property
     @pulumi.getter
-    def sls(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sls")
 
     @sls.setter
-    def sls(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls", value)
 
 
 class StarRocksInstanceBackendNodeGroupArgsDict(TypedDict):
-    cu: NotRequired[pulumi.Input[_builtins.int]]
+    cu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
     """
-    disk_number: NotRequired[pulumi.Input[_builtins.int]]
+    disk_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of disks.
     """
-    local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    local_storage_instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Local SSD instance specifications.
     """
-    resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
+    resident_node_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Resident node number of node group.
     """
-    spec_type: NotRequired[pulumi.Input[_builtins.str]]
+    spec_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Compute group specification types include the following:
     - standard
@@ -4267,7 +4267,7 @@ class StarRocksInstanceBackendNodeGroupArgsDict(TypedDict):
     - ramEnhanced
     - networkEnhanced
     """
-    storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    storage_performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Performance levels of cloud disks include the following values:
     - pl0: Maximum random read/write IOPS per disk is 10,000.
@@ -4275,11 +4275,11 @@ class StarRocksInstanceBackendNodeGroupArgsDict(TypedDict):
     - pl2: Maximum random read/write IOPS per disk is 100,000.
     - pl3: Maximum random read/write IOPS per disk is 1,000,000.
     """
-    storage_size: NotRequired[pulumi.Input[_builtins.int]]
+    storage_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Storage size, measured in GiB.
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Zone ID.
     """
@@ -4287,14 +4287,14 @@ class StarRocksInstanceBackendNodeGroupArgsDict(TypedDict):
 @pulumi.input_type
 class StarRocksInstanceBackendNodeGroupArgs:
     def __init__(__self__, *,
-                 cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 local_storage_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resident_node_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 spec_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_storage_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resident_node_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] cu: Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
         :param pulumi.Input[_builtins.int] disk_number: The number of disks.
@@ -4333,55 +4333,55 @@ class StarRocksInstanceBackendNodeGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
         """
         return pulumi.get(self, "cu")
 
     @cu.setter
-    def cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cu", value)
 
     @_builtins.property
     @pulumi.getter(name="diskNumber")
-    def disk_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of disks.
         """
         return pulumi.get(self, "disk_number")
 
     @disk_number.setter
-    def disk_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_number", value)
 
     @_builtins.property
     @pulumi.getter(name="localStorageInstanceType")
-    def local_storage_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_storage_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Local SSD instance specifications.
         """
         return pulumi.get(self, "local_storage_instance_type")
 
     @local_storage_instance_type.setter
-    def local_storage_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_storage_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_storage_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="residentNodeNumber")
-    def resident_node_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def resident_node_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Resident node number of node group.
         """
         return pulumi.get(self, "resident_node_number")
 
     @resident_node_number.setter
-    def resident_node_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def resident_node_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "resident_node_number", value)
 
     @_builtins.property
     @pulumi.getter(name="specType")
-    def spec_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Compute group specification types include the following:
         - standard
@@ -4393,12 +4393,12 @@ class StarRocksInstanceBackendNodeGroupArgs:
         return pulumi.get(self, "spec_type")
 
     @spec_type.setter
-    def spec_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_type", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePerformanceLevel")
-    def storage_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Performance levels of cloud disks include the following values:
         - pl0: Maximum random read/write IOPS per disk is 10,000.
@@ -4409,58 +4409,58 @@ class StarRocksInstanceBackendNodeGroupArgs:
         return pulumi.get(self, "storage_performance_level")
 
     @storage_performance_level.setter
-    def storage_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSize")
-    def storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Storage size, measured in GiB.
         """
         return pulumi.get(self, "storage_size")
 
     @storage_size.setter
-    def storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_size", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 class StarRocksInstanceFrontendNodeGroupArgsDict(TypedDict):
-    cu: NotRequired[pulumi.Input[_builtins.int]]
+    cu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
     """
-    disk_number: NotRequired[pulumi.Input[_builtins.int]]
+    disk_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     DiskNumber
     """
-    local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    local_storage_instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Local SSD instance specifications.
     """
-    resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
+    resident_node_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Resident node number of node group.
     """
-    spec_type: NotRequired[pulumi.Input[_builtins.str]]
+    spec_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Compute group specification types include the following:
     - standard
     - ramEnhanced
     """
-    storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    storage_performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Performance levels of cloud disks include the following values:
     - pl0: Maximum random read/write IOPS per disk is 10,000.
@@ -4468,11 +4468,11 @@ class StarRocksInstanceFrontendNodeGroupArgsDict(TypedDict):
     - pl2: Maximum random read/write IOPS per disk is 100,000.
     - pl3: Maximum random read/write IOPS per disk is 1,000,000.
     """
-    storage_size: NotRequired[pulumi.Input[_builtins.int]]
+    storage_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Storage size, measured in GiB.
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Zone ID.
     """
@@ -4480,14 +4480,14 @@ class StarRocksInstanceFrontendNodeGroupArgsDict(TypedDict):
 @pulumi.input_type
 class StarRocksInstanceFrontendNodeGroupArgs:
     def __init__(__self__, *,
-                 cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 local_storage_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resident_node_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 spec_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_storage_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resident_node_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] cu: Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
         :param pulumi.Input[_builtins.int] disk_number: DiskNumber
@@ -4523,55 +4523,55 @@ class StarRocksInstanceFrontendNodeGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
         """
         return pulumi.get(self, "cu")
 
     @cu.setter
-    def cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cu", value)
 
     @_builtins.property
     @pulumi.getter(name="diskNumber")
-    def disk_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         DiskNumber
         """
         return pulumi.get(self, "disk_number")
 
     @disk_number.setter
-    def disk_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_number", value)
 
     @_builtins.property
     @pulumi.getter(name="localStorageInstanceType")
-    def local_storage_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_storage_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Local SSD instance specifications.
         """
         return pulumi.get(self, "local_storage_instance_type")
 
     @local_storage_instance_type.setter
-    def local_storage_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_storage_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_storage_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="residentNodeNumber")
-    def resident_node_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def resident_node_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Resident node number of node group.
         """
         return pulumi.get(self, "resident_node_number")
 
     @resident_node_number.setter
-    def resident_node_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def resident_node_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "resident_node_number", value)
 
     @_builtins.property
     @pulumi.getter(name="specType")
-    def spec_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Compute group specification types include the following:
         - standard
@@ -4580,12 +4580,12 @@ class StarRocksInstanceFrontendNodeGroupArgs:
         return pulumi.get(self, "spec_type")
 
     @spec_type.setter
-    def spec_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_type", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePerformanceLevel")
-    def storage_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Performance levels of cloud disks include the following values:
         - pl0: Maximum random read/write IOPS per disk is 10,000.
@@ -4596,57 +4596,57 @@ class StarRocksInstanceFrontendNodeGroupArgs:
         return pulumi.get(self, "storage_performance_level")
 
     @storage_performance_level.setter
-    def storage_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSize")
-    def storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Storage size, measured in GiB.
         """
         return pulumi.get(self, "storage_size")
 
     @storage_size.setter
-    def storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_size", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 class StarRocksInstanceObserverNodeGroupArgsDict(TypedDict):
-    cu: NotRequired[pulumi.Input[_builtins.int]]
+    cu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
     """
-    disk_number: NotRequired[pulumi.Input[_builtins.int]]
+    disk_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     DiskNumber
     """
-    local_storage_instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    local_storage_instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Local SSD instance specifications.
     """
-    resident_node_number: NotRequired[pulumi.Input[_builtins.int]]
+    resident_node_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Resident node number of node group.
     """
-    spec_type: NotRequired[pulumi.Input[_builtins.str]]
+    spec_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Compute group specification types include the following:
     - standard
     """
-    storage_performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    storage_performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Performance levels of cloud disks include the following values:
     - pl0: Maximum random read/write IOPS per disk is 10,000.
@@ -4654,11 +4654,11 @@ class StarRocksInstanceObserverNodeGroupArgsDict(TypedDict):
     - pl2: Maximum random read/write IOPS per disk is 100,000.
     - pl3: Maximum random read/write IOPS per disk is 1,000,000.
     """
-    storage_size: NotRequired[pulumi.Input[_builtins.int]]
+    storage_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Storage size, measured in GiB.
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Zone ID.
     """
@@ -4666,14 +4666,14 @@ class StarRocksInstanceObserverNodeGroupArgsDict(TypedDict):
 @pulumi.input_type
 class StarRocksInstanceObserverNodeGroupArgs:
     def __init__(__self__, *,
-                 cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 local_storage_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resident_node_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 spec_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_storage_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resident_node_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] cu: Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
         :param pulumi.Input[_builtins.int] disk_number: DiskNumber
@@ -4708,55 +4708,55 @@ class StarRocksInstanceObserverNodeGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
         """
         return pulumi.get(self, "cu")
 
     @cu.setter
-    def cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cu", value)
 
     @_builtins.property
     @pulumi.getter(name="diskNumber")
-    def disk_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         DiskNumber
         """
         return pulumi.get(self, "disk_number")
 
     @disk_number.setter
-    def disk_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_number", value)
 
     @_builtins.property
     @pulumi.getter(name="localStorageInstanceType")
-    def local_storage_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_storage_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Local SSD instance specifications.
         """
         return pulumi.get(self, "local_storage_instance_type")
 
     @local_storage_instance_type.setter
-    def local_storage_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_storage_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_storage_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="residentNodeNumber")
-    def resident_node_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def resident_node_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Resident node number of node group.
         """
         return pulumi.get(self, "resident_node_number")
 
     @resident_node_number.setter
-    def resident_node_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def resident_node_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "resident_node_number", value)
 
     @_builtins.property
     @pulumi.getter(name="specType")
-    def spec_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Compute group specification types include the following:
         - standard
@@ -4764,12 +4764,12 @@ class StarRocksInstanceObserverNodeGroupArgs:
         return pulumi.get(self, "spec_type")
 
     @spec_type.setter
-    def spec_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_type", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePerformanceLevel")
-    def storage_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Performance levels of cloud disks include the following values:
         - pl0: Maximum random read/write IOPS per disk is 10,000.
@@ -4780,31 +4780,31 @@ class StarRocksInstanceObserverNodeGroupArgs:
         return pulumi.get(self, "storage_performance_level")
 
     @storage_performance_level.setter
-    def storage_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSize")
-    def storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Storage size, measured in GiB.
         """
         return pulumi.get(self, "storage_size")
 
     @storage_size.setter
-    def storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_size", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -4813,7 +4813,7 @@ class StarRocksInstanceVswitchArgsDict(TypedDict):
     """
     ID of VSwitch.
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Zone ID of VSwitch.
     """
@@ -4822,7 +4822,7 @@ class StarRocksInstanceVswitchArgsDict(TypedDict):
 class StarRocksInstanceVswitchArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[_builtins.str],
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] vswitch_id: ID of VSwitch.
         :param pulumi.Input[_builtins.str] zone_id: Zone ID of VSwitch.
@@ -4845,14 +4845,14 @@ class StarRocksInstanceVswitchArgs:
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone ID of VSwitch.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 

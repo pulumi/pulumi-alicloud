@@ -204,13 +204,13 @@ def get_secrets(enable_details: Optional[_builtins.bool] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         secrets=pulumi.get(__ret__, 'secrets'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_secrets_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                       fetch_tags: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                       filters: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                       name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_secrets_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                       fetch_tags: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                       filters: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                       name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretsResult]:
     """
     This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.

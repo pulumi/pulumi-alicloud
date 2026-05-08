@@ -22,8 +22,8 @@ class ScheduledPreloadJobArgs:
                  insert_way: pulumi.Input[_builtins.str],
                  scheduled_preload_job_name: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
-                 oss_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_list: Optional[pulumi.Input[_builtins.str]] = None):
+                 oss_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_list: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ScheduledPreloadJob resource.
 
@@ -83,7 +83,7 @@ class ScheduledPreloadJobArgs:
 
     @_builtins.property
     @pulumi.getter(name="ossUrl")
-    def oss_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
 
@@ -92,12 +92,12 @@ class ScheduledPreloadJobArgs:
         return pulumi.get(self, "oss_url")
 
     @oss_url.setter
-    def oss_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_url", value)
 
     @_builtins.property
     @pulumi.getter(name="urlList")
-    def url_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
 
@@ -106,20 +106,20 @@ class ScheduledPreloadJobArgs:
         return pulumi.get(self, "url_list")
 
     @url_list.setter
-    def url_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_list", value)
 
 
 @pulumi.input_type
 class _ScheduledPreloadJobState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 insert_way: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_preload_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_preload_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_list: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 insert_way: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_preload_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_preload_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_list: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ScheduledPreloadJob resources.
 
@@ -152,31 +152,31 @@ class _ScheduledPreloadJobState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the task was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="insertWay")
-    def insert_way(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def insert_way(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method to submit the URLs to be prefetched.
         """
         return pulumi.get(self, "insert_way")
 
     @insert_way.setter
-    def insert_way(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def insert_way(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "insert_way", value)
 
     @_builtins.property
     @pulumi.getter(name="ossUrl")
-    def oss_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
 
@@ -185,48 +185,48 @@ class _ScheduledPreloadJobState:
         return pulumi.get(self, "oss_url")
 
     @oss_url.setter
-    def oss_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_url", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledPreloadJobId")
-    def scheduled_preload_job_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_preload_job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the prefetch task.
         """
         return pulumi.get(self, "scheduled_preload_job_id")
 
     @scheduled_preload_job_id.setter
-    def scheduled_preload_job_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_preload_job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_preload_job_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledPreloadJobName")
-    def scheduled_preload_job_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduled_preload_job_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The task name.
         """
         return pulumi.get(self, "scheduled_preload_job_name")
 
     @scheduled_preload_job_name.setter
-    def scheduled_preload_job_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduled_preload_job_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduled_preload_job_name", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The site ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="urlList")
-    def url_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
 
@@ -235,7 +235,7 @@ class _ScheduledPreloadJobState:
         return pulumi.get(self, "url_list")
 
     @url_list.setter
-    def url_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_list", value)
 
 
@@ -245,11 +245,11 @@ class ScheduledPreloadJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 insert_way: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_preload_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_list: Optional[pulumi.Input[_builtins.str]] = None,
+                 insert_way: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_preload_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_list: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Scheduled Preload Job resource.
@@ -362,11 +362,11 @@ class ScheduledPreloadJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 insert_way: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_preload_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_list: Optional[pulumi.Input[_builtins.str]] = None,
+                 insert_way: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_preload_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_list: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -399,13 +399,13 @@ class ScheduledPreloadJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            insert_way: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_url: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduled_preload_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduled_preload_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            url_list: Optional[pulumi.Input[_builtins.str]] = None) -> 'ScheduledPreloadJob':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            insert_way: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_url: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_preload_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_preload_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            url_list: pulumi.Input[Optional[_builtins.str]] = None) -> 'ScheduledPreloadJob':
         """
         Get an existing ScheduledPreloadJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

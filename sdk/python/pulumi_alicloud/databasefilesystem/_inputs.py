@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 class InstanceEcsListArgsDict(TypedDict):
-    ecs_id: NotRequired[pulumi.Input[_builtins.str]]
+    ecs_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the ECS instance.
     """
@@ -28,7 +28,7 @@ class InstanceEcsListArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceEcsListArgs:
     def __init__(__self__, *,
-                 ecs_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ecs_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ecs_id: The ID of the ECS instance.
         """
@@ -37,14 +37,14 @@ class InstanceEcsListArgs:
 
     @_builtins.property
     @pulumi.getter(name="ecsId")
-    def ecs_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ECS instance.
         """
         return pulumi.get(self, "ecs_id")
 
     @ecs_id.setter
-    def ecs_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_id", value)
 
 

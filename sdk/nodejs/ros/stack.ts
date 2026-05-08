@@ -235,87 +235,87 @@ export interface StackState {
     /**
      * Specifies whether to delete the stack after it is created.
      */
-    createOption?: pulumi.Input<string>;
+    createOption?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
      */
-    deletionProtection?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to disable rollback on stack creation failure. Default to: `false`.
      */
-    disableRollback?: pulumi.Input<boolean>;
+    disableRollback?: pulumi.Input<boolean | undefined>;
     /**
      * The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
      */
-    notificationUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.ros.StackParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.ros.StackParameter>[] | undefined>;
     /**
      * The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
      */
-    replacementOption?: pulumi.Input<string>;
+    replacementOption?: pulumi.Input<string | undefined>;
     /**
      * The retain all resources.
      */
-    retainAllResources?: pulumi.Input<boolean>;
+    retainAllResources?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to retain the resources in the stack.
      */
-    retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    retainResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      */
-    stackName?: pulumi.Input<string>;
+    stackName?: pulumi.Input<string | undefined>;
     /**
      * The structure that contains the stack policy body. The stack policy body must be 1 to 16,384 bytes in length.
      */
-    stackPolicyBody?: pulumi.Input<string>;
+    stackPolicyBody?: pulumi.Input<string | undefined>;
     /**
      * The structure that contains the body of the temporary overriding stack policy. The stack policy body must be 1 to 16,384 bytes in length.
      */
-    stackPolicyDuringUpdateBody?: pulumi.Input<string>;
+    stackPolicyDuringUpdateBody?: pulumi.Input<string | undefined>;
     /**
      * The URL of the file that contains the temporary overriding stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      */
-    stackPolicyDuringUpdateUrl?: pulumi.Input<string>;
+    stackPolicyDuringUpdateUrl?: pulumi.Input<string | undefined>;
     /**
      * The URL of the file that contains the stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      */
-    stackPolicyUrl?: pulumi.Input<string>;
+    stackPolicyUrl?: pulumi.Input<string | undefined>;
     /**
      * The status of Stack.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
      */
-    templateBody?: pulumi.Input<string>;
+    templateBody?: pulumi.Input<string | undefined>;
     /**
      * The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      */
-    templateUrl?: pulumi.Input<string>;
+    templateUrl?: pulumi.Input<string | undefined>;
     /**
      * The version of the template.
      */
-    templateVersion?: pulumi.Input<string>;
+    templateVersion?: pulumi.Input<string | undefined>;
     /**
      * The timeout period that is specified for the stack creation request. Default to: `60`.
      */
-    timeoutInMinutes?: pulumi.Input<number>;
+    timeoutInMinutes?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
      */
-    usePreviousParameters?: pulumi.Input<boolean>;
+    usePreviousParameters?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -325,39 +325,39 @@ export interface StackArgs {
     /**
      * Specifies whether to delete the stack after it is created.
      */
-    createOption?: pulumi.Input<string>;
+    createOption?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
      */
-    deletionProtection?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to disable rollback on stack creation failure. Default to: `false`.
      */
-    disableRollback?: pulumi.Input<boolean>;
+    disableRollback?: pulumi.Input<boolean | undefined>;
     /**
      * The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
      */
-    notificationUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.ros.StackParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.ros.StackParameter>[] | undefined>;
     /**
      * The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
      */
-    replacementOption?: pulumi.Input<string>;
+    replacementOption?: pulumi.Input<string | undefined>;
     /**
      * The retain all resources.
      */
-    retainAllResources?: pulumi.Input<boolean>;
+    retainAllResources?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to retain the resources in the stack.
      */
-    retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    retainResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      */
@@ -365,41 +365,41 @@ export interface StackArgs {
     /**
      * The structure that contains the stack policy body. The stack policy body must be 1 to 16,384 bytes in length.
      */
-    stackPolicyBody?: pulumi.Input<string>;
+    stackPolicyBody?: pulumi.Input<string | undefined>;
     /**
      * The structure that contains the body of the temporary overriding stack policy. The stack policy body must be 1 to 16,384 bytes in length.
      */
-    stackPolicyDuringUpdateBody?: pulumi.Input<string>;
+    stackPolicyDuringUpdateBody?: pulumi.Input<string | undefined>;
     /**
      * The URL of the file that contains the temporary overriding stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      */
-    stackPolicyDuringUpdateUrl?: pulumi.Input<string>;
+    stackPolicyDuringUpdateUrl?: pulumi.Input<string | undefined>;
     /**
      * The URL of the file that contains the stack policy. The URL must point to a policy located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/stack-policy/demo and oss://ros/stack-policy/demo?RegionId=cn-hangzhou. The policy can be up to 16,384 bytes in length and the URL can be up to 1,350 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      */
-    stackPolicyUrl?: pulumi.Input<string>;
+    stackPolicyUrl?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
      */
-    templateBody?: pulumi.Input<string>;
+    templateBody?: pulumi.Input<string | undefined>;
     /**
      * The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      */
-    templateUrl?: pulumi.Input<string>;
+    templateUrl?: pulumi.Input<string | undefined>;
     /**
      * The version of the template.
      */
-    templateVersion?: pulumi.Input<string>;
+    templateVersion?: pulumi.Input<string | undefined>;
     /**
      * The timeout period that is specified for the stack creation request. Default to: `60`.
      */
-    timeoutInMinutes?: pulumi.Input<number>;
+    timeoutInMinutes?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
      */
-    usePreviousParameters?: pulumi.Input<boolean>;
+    usePreviousParameters?: pulumi.Input<boolean | undefined>;
 }

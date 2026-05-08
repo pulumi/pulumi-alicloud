@@ -128,7 +128,7 @@ export interface GetForwardingRulesOutputArgs {
     /**
      * A list of Forwarding Rule IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the listener.
      */
@@ -136,9 +136,9 @@ export interface GetForwardingRulesOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the acceleration region. Valid values: `active`, `configuring`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

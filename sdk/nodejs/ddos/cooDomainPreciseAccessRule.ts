@@ -158,24 +158,24 @@ export interface CooDomainPreciseAccessRuleState {
     /**
      * Action to take on match. Valid values:
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * List of matching conditions. See `condition` below.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.ddos.CooDomainPreciseAccessRuleCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.ddos.CooDomainPreciseAccessRuleCondition>[] | undefined>;
     /**
      * Domain name of the website service.
      * > **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Rule validity period, in seconds. This parameter takes effect only when the rule's matching action is set to block (`action` is `block`), blocking access requests during the validity period. If this parameter is not specified, the rule remains effective permanently.
      */
-    expires?: pulumi.Input<number>;
+    expires?: pulumi.Input<number | undefined>;
     /**
      * Rule name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -198,9 +198,9 @@ export interface CooDomainPreciseAccessRuleArgs {
     /**
      * Rule validity period, in seconds. This parameter takes effect only when the rule's matching action is set to block (`action` is `block`), blocking access requests during the validity period. If this parameter is not specified, the rule remains effective permanently.
      */
-    expires?: pulumi.Input<number>;
+    expires?: pulumi.Input<number | undefined>;
     /**
      * Rule name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

@@ -21,7 +21,7 @@ class ImageExportArgs:
     def __init__(__self__, *,
                  image_id: pulumi.Input[_builtins.str],
                  oss_bucket: pulumi.Input[_builtins.str],
-                 oss_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 oss_prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ImageExport resource.
 
@@ -60,23 +60,23 @@ class ImageExportArgs:
 
     @_builtins.property
     @pulumi.getter(name="ossPrefix")
-    def oss_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
         """
         return pulumi.get(self, "oss_prefix")
 
     @oss_prefix.setter
-    def oss_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_prefix", value)
 
 
 @pulumi.input_type
 class _ImageExportState:
     def __init__(__self__, *,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageExport resources.
 
@@ -93,38 +93,38 @@ class _ImageExportState:
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source image ID.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucket")
-    def oss_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Save the exported OSS bucket.
         """
         return pulumi.get(self, "oss_bucket")
 
     @oss_bucket.setter
-    def oss_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="ossPrefix")
-    def oss_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
         """
         return pulumi.get(self, "oss_prefix")
 
     @oss_prefix.setter
-    def oss_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_prefix", value)
 
 
@@ -134,9 +134,9 @@ class ImageExport(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Export a custom image to the OSS bucket in the same region as the custom image.
@@ -281,9 +281,9 @@ class ImageExport(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -310,9 +310,9 @@ class ImageExport(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            oss_prefix: Optional[pulumi.Input[_builtins.str]] = None) -> 'ImageExport':
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            oss_prefix: pulumi.Input[Optional[_builtins.str]] = None) -> 'ImageExport':
         """
         Get an existing ImageExport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

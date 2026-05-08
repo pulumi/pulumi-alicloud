@@ -106,7 +106,7 @@ export interface GetEndpointGroupIpAddressCidrBlocksOutputArgs {
     /**
      * The ID of the Global Accelerator (GA) instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the endpoint group.
      */
@@ -114,5 +114,5 @@ export interface GetEndpointGroupIpAddressCidrBlocksOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

@@ -121,10 +121,10 @@ export interface GetNetworksOutputArgs {
     /**
      * A list of CCN instances IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter CCN instances by name.
      */
-    nameRegex?: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

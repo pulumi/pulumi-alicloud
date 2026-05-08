@@ -44,11 +44,11 @@ __all__ = [
 ]
 
 class AclAclEntryArgsDict(TypedDict):
-    entry: NotRequired[pulumi.Input[_builtins.str]]
+    entry: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
     """
-    entry_description: NotRequired[pulumi.Input[_builtins.str]]
+    entry_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
     """
@@ -56,8 +56,8 @@ class AclAclEntryArgsDict(TypedDict):
 @pulumi.input_type
 class AclAclEntryArgs:
     def __init__(__self__, *,
-                 entry: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_description: Optional[pulumi.Input[_builtins.str]] = None):
+                 entry: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] entry: The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
         :param pulumi.Input[_builtins.str] entry_description: The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
@@ -69,35 +69,35 @@ class AclAclEntryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def entry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
         """
         return pulumi.get(self, "entry")
 
     @entry.setter
-    def entry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry", value)
 
     @_builtins.property
     @pulumi.getter(name="entryDescription")
-    def entry_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
         """
         return pulumi.get(self, "entry_description")
 
     @entry_description.setter
-    def entry_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_description", value)
 
 
 class CustomRoutingEndpointTrafficPolicyPortRangeArgsDict(TypedDict):
-    from_port: NotRequired[pulumi.Input[_builtins.int]]
+    from_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
     """
-    to_port: NotRequired[pulumi.Input[_builtins.int]]
+    to_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
     """
@@ -105,8 +105,8 @@ class CustomRoutingEndpointTrafficPolicyPortRangeArgsDict(TypedDict):
 @pulumi.input_type
 class CustomRoutingEndpointTrafficPolicyPortRangeArgs:
     def __init__(__self__, *,
-                 from_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 to_port: Optional[pulumi.Input[_builtins.int]] = None):
+                 from_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 to_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] from_port: The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
         :param pulumi.Input[_builtins.int] to_port: The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
@@ -118,26 +118,26 @@ class CustomRoutingEndpointTrafficPolicyPortRangeArgs:
 
     @_builtins.property
     @pulumi.getter(name="fromPort")
-    def from_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def from_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
         """
         return pulumi.get(self, "from_port")
 
     @from_port.setter
-    def from_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def from_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "from_port", value)
 
     @_builtins.property
     @pulumi.getter(name="toPort")
-    def to_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def to_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
         """
         return pulumi.get(self, "to_port")
 
     @to_port.setter
-    def to_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def to_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "to_port", value)
 
 
@@ -165,24 +165,24 @@ class EndpointGroupEndpointConfigurationArgsDict(TypedDict):
     The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
     > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
     """
-    enable_clientip_preservation: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_clientip_preservation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
     """
-    enable_proxy_protocol: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_proxy_protocol: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
     """
-    sub_address: NotRequired[pulumi.Input[_builtins.str]]
+    sub_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The private IP address of the ENI.
     > **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the VPC.
     """
-    vswitch_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    vswitch_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The IDs of vSwitches that are deployed in the VPC.
     """
@@ -193,11 +193,11 @@ class EndpointGroupEndpointConfigurationArgs:
                  endpoint: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
                  weight: pulumi.Input[_builtins.int],
-                 enable_clientip_preservation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sub_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 enable_clientip_preservation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sub_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] endpoint: The IP address or domain name of Endpoint N in the endpoint group.
         :param pulumi.Input[_builtins.str] type: The type of Endpoint N in the endpoint group. Valid values:
@@ -283,31 +283,31 @@ class EndpointGroupEndpointConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableClientipPreservation")
-    def enable_clientip_preservation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_clientip_preservation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_clientip_preservation")
 
     @enable_clientip_preservation.setter
-    def enable_clientip_preservation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_clientip_preservation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_clientip_preservation", value)
 
     @_builtins.property
     @pulumi.getter(name="enableProxyProtocol")
-    def enable_proxy_protocol(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_proxy_protocol(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_proxy_protocol")
 
     @enable_proxy_protocol.setter
-    def enable_proxy_protocol(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_proxy_protocol(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_proxy_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="subAddress")
-    def sub_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private IP address of the ENI.
         > **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
@@ -315,40 +315,40 @@ class EndpointGroupEndpointConfigurationArgs:
         return pulumi.get(self, "sub_address")
 
     @sub_address.setter
-    def sub_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_address", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of vSwitches that are deployed in the VPC.
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
 
 class EndpointGroupPortOverridesArgsDict(TypedDict):
-    endpoint_port: NotRequired[pulumi.Input[_builtins.int]]
+    endpoint_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Forwarding port.
     """
-    listener_port: NotRequired[pulumi.Input[_builtins.int]]
+    listener_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Listener port.
     """
@@ -356,8 +356,8 @@ class EndpointGroupPortOverridesArgsDict(TypedDict):
 @pulumi.input_type
 class EndpointGroupPortOverridesArgs:
     def __init__(__self__, *,
-                 endpoint_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_port: Optional[pulumi.Input[_builtins.int]] = None):
+                 endpoint_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] endpoint_port: Forwarding port.
         :param pulumi.Input[_builtins.int] listener_port: Listener port.
@@ -369,26 +369,26 @@ class EndpointGroupPortOverridesArgs:
 
     @_builtins.property
     @pulumi.getter(name="endpointPort")
-    def endpoint_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def endpoint_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Forwarding port.
         """
         return pulumi.get(self, "endpoint_port")
 
     @endpoint_port.setter
-    def endpoint_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def endpoint_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "endpoint_port", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerPort")
-    def listener_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def listener_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Listener port.
         """
         return pulumi.get(self, "listener_port")
 
     @listener_port.setter
-    def listener_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def listener_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "listener_port", value)
 
 
@@ -401,12 +401,12 @@ class ForwardingRuleRuleActionArgsDict(TypedDict):
     """
     The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
     """
-    forward_group_config: NotRequired[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigArgsDict']]
+    forward_group_config: NotRequired[pulumi.Input[Optional['ForwardingRuleRuleActionForwardGroupConfigArgs']]]
     """
     Forwarding configuration. See `forward_group_config` below.
     > **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
     """
-    rule_action_value: NotRequired[pulumi.Input[_builtins.str]]
+    rule_action_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
     """
@@ -416,8 +416,8 @@ class ForwardingRuleRuleActionArgs:
     def __init__(__self__, *,
                  order: pulumi.Input[_builtins.int],
                  rule_action_type: pulumi.Input[_builtins.str],
-                 forward_group_config: Optional[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigArgs']] = None,
-                 rule_action_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 forward_group_config: pulumi.Input[Optional['ForwardingRuleRuleActionForwardGroupConfigArgs']] = None,
+                 rule_action_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] order: Forwarding priority.
         :param pulumi.Input[_builtins.str] rule_action_type: The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
@@ -458,7 +458,7 @@ class ForwardingRuleRuleActionArgs:
 
     @_builtins.property
     @pulumi.getter(name="forwardGroupConfig")
-    def forward_group_config(self) -> Optional[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigArgs']]:
+    def forward_group_config(self) -> pulumi.Input[Optional['ForwardingRuleRuleActionForwardGroupConfigArgs']]:
         """
         Forwarding configuration. See `forward_group_config` below.
         > **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
@@ -466,19 +466,19 @@ class ForwardingRuleRuleActionArgs:
         return pulumi.get(self, "forward_group_config")
 
     @forward_group_config.setter
-    def forward_group_config(self, value: Optional[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigArgs']]):
+    def forward_group_config(self, value: pulumi.Input[Optional['ForwardingRuleRuleActionForwardGroupConfigArgs']]):
         pulumi.set(self, "forward_group_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleActionValue")
-    def rule_action_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_action_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
         """
         return pulumi.get(self, "rule_action_value")
 
     @rule_action_value.setter
-    def rule_action_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_action_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_action_value", value)
 
 
@@ -543,16 +543,16 @@ class ForwardingRuleRuleConditionArgsDict(TypedDict):
     """
     The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
     """
-    host_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgsDict']]]]
+    host_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]]]]
     """
     The configuration of the domain name. See `host_config` below.
     > **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
     """
-    path_config: NotRequired[pulumi.Input['ForwardingRuleRuleConditionPathConfigArgsDict']]
+    path_config: NotRequired[pulumi.Input[Optional['ForwardingRuleRuleConditionPathConfigArgs']]]
     """
     The configuration of the path. See `path_config` below.
     """
-    rule_condition_value: NotRequired[pulumi.Input[_builtins.str]]
+    rule_condition_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
     """
@@ -561,9 +561,9 @@ class ForwardingRuleRuleConditionArgsDict(TypedDict):
 class ForwardingRuleRuleConditionArgs:
     def __init__(__self__, *,
                  rule_condition_type: pulumi.Input[_builtins.str],
-                 host_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]]] = None,
-                 path_config: Optional[pulumi.Input['ForwardingRuleRuleConditionPathConfigArgs']] = None,
-                 rule_condition_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 host_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]]] = None,
+                 path_config: pulumi.Input[Optional['ForwardingRuleRuleConditionPathConfigArgs']] = None,
+                 rule_condition_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] rule_condition_type: The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
         :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]] host_configs: The configuration of the domain name. See `host_config` below.
@@ -593,7 +593,7 @@ class ForwardingRuleRuleConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="hostConfigs")
-    def host_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]]]:
+    def host_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]]]:
         """
         The configuration of the domain name. See `host_config` below.
         > **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
@@ -601,36 +601,36 @@ class ForwardingRuleRuleConditionArgs:
         return pulumi.get(self, "host_configs")
 
     @host_configs.setter
-    def host_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]]]):
+    def host_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]]]):
         pulumi.set(self, "host_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="pathConfig")
-    def path_config(self) -> Optional[pulumi.Input['ForwardingRuleRuleConditionPathConfigArgs']]:
+    def path_config(self) -> pulumi.Input[Optional['ForwardingRuleRuleConditionPathConfigArgs']]:
         """
         The configuration of the path. See `path_config` below.
         """
         return pulumi.get(self, "path_config")
 
     @path_config.setter
-    def path_config(self, value: Optional[pulumi.Input['ForwardingRuleRuleConditionPathConfigArgs']]):
+    def path_config(self, value: pulumi.Input[Optional['ForwardingRuleRuleConditionPathConfigArgs']]):
         pulumi.set(self, "path_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleConditionValue")
-    def rule_condition_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_condition_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
         """
         return pulumi.get(self, "rule_condition_value")
 
     @rule_condition_value.setter
-    def rule_condition_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_condition_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_condition_value", value)
 
 
 class ForwardingRuleRuleConditionHostConfigArgsDict(TypedDict):
-    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
     """
@@ -638,7 +638,7 @@ class ForwardingRuleRuleConditionHostConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ForwardingRuleRuleConditionHostConfigArgs:
     def __init__(__self__, *,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
         """
@@ -647,19 +647,19 @@ class ForwardingRuleRuleConditionHostConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "values", value)
 
 
 class ForwardingRuleRuleConditionPathConfigArgsDict(TypedDict):
-    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
     """
@@ -667,7 +667,7 @@ class ForwardingRuleRuleConditionPathConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ForwardingRuleRuleConditionPathConfigArgs:
     def __init__(__self__, *,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
         """
@@ -676,19 +676,19 @@ class ForwardingRuleRuleConditionPathConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "values", value)
 
 
 class ListenerCertificateArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The id of the certificate.
     """
@@ -696,7 +696,7 @@ class ListenerCertificateArgsDict(TypedDict):
 @pulumi.input_type
 class ListenerCertificateArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The id of the certificate.
         """
@@ -705,35 +705,35 @@ class ListenerCertificateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the certificate.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
 
 class ListenerForwardedForConfigArgsDict(TypedDict):
-    forwarded_for_ga_ap_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    forwarded_for_ga_ap_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
     """
-    forwarded_for_ga_id_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    forwarded_for_ga_id_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
     """
-    forwarded_for_port_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    forwarded_for_port_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
     """
-    forwarded_for_proto_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    forwarded_for_proto_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
     """
-    real_ip_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    real_ip_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
     """
@@ -741,11 +741,11 @@ class ListenerForwardedForConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ListenerForwardedForConfigArgs:
     def __init__(__self__, *,
-                 forwarded_for_ga_ap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 forwarded_for_ga_id_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 forwarded_for_port_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 forwarded_for_proto_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 real_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 forwarded_for_ga_ap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forwarded_for_ga_id_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forwarded_for_port_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forwarded_for_proto_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 real_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] forwarded_for_ga_ap_enabled: Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.bool] forwarded_for_ga_id_enabled: Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
@@ -766,62 +766,62 @@ class ListenerForwardedForConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="forwardedForGaApEnabled")
-    def forwarded_for_ga_ap_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def forwarded_for_ga_ap_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "forwarded_for_ga_ap_enabled")
 
     @forwarded_for_ga_ap_enabled.setter
-    def forwarded_for_ga_ap_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def forwarded_for_ga_ap_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "forwarded_for_ga_ap_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardedForGaIdEnabled")
-    def forwarded_for_ga_id_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def forwarded_for_ga_id_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "forwarded_for_ga_id_enabled")
 
     @forwarded_for_ga_id_enabled.setter
-    def forwarded_for_ga_id_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def forwarded_for_ga_id_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "forwarded_for_ga_id_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardedForPortEnabled")
-    def forwarded_for_port_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def forwarded_for_port_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "forwarded_for_port_enabled")
 
     @forwarded_for_port_enabled.setter
-    def forwarded_for_port_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def forwarded_for_port_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "forwarded_for_port_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardedForProtoEnabled")
-    def forwarded_for_proto_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def forwarded_for_proto_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "forwarded_for_proto_enabled")
 
     @forwarded_for_proto_enabled.setter
-    def forwarded_for_proto_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def forwarded_for_proto_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "forwarded_for_proto_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="realIpEnabled")
-    def real_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def real_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "real_ip_enabled")
 
     @real_ip_enabled.setter
-    def real_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def real_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "real_ip_enabled", value)
 
 

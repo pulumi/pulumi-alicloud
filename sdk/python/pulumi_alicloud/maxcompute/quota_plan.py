@@ -23,8 +23,8 @@ class QuotaPlanArgs:
     def __init__(__self__, *,
                  nickname: pulumi.Input[_builtins.str],
                  plan_name: pulumi.Input[_builtins.str],
-                 is_effective: Optional[pulumi.Input[_builtins.bool]] = None,
-                 quota: Optional[pulumi.Input['QuotaPlanQuotaArgs']] = None):
+                 is_effective: pulumi.Input[Optional[_builtins.bool]] = None,
+                 quota: pulumi.Input[Optional['QuotaPlanQuotaArgs']] = None):
         """
         The set of arguments for constructing a QuotaPlan resource.
 
@@ -67,7 +67,7 @@ class QuotaPlanArgs:
 
     @_builtins.property
     @pulumi.getter(name="isEffective")
-    def is_effective(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_effective(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to take effect immediately. “Valid values: true”  
         .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
@@ -75,29 +75,29 @@ class QuotaPlanArgs:
         return pulumi.get(self, "is_effective")
 
     @is_effective.setter
-    def is_effective(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_effective(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_effective", value)
 
     @_builtins.property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input['QuotaPlanQuotaArgs']]:
+    def quota(self) -> pulumi.Input[Optional['QuotaPlanQuotaArgs']]:
         """
         Quota property See `quota` below.
         """
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input['QuotaPlanQuotaArgs']]):
+    def quota(self, value: pulumi.Input[Optional['QuotaPlanQuotaArgs']]):
         pulumi.set(self, "quota", value)
 
 
 @pulumi.input_type
 class _QuotaPlanState:
     def __init__(__self__, *,
-                 is_effective: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota: Optional[pulumi.Input['QuotaPlanQuotaArgs']] = None):
+                 is_effective: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota: pulumi.Input[Optional['QuotaPlanQuotaArgs']] = None):
         """
         Input properties used for looking up and filtering QuotaPlan resources.
 
@@ -118,7 +118,7 @@ class _QuotaPlanState:
 
     @_builtins.property
     @pulumi.getter(name="isEffective")
-    def is_effective(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_effective(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to take effect immediately. “Valid values: true”  
         .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
@@ -126,43 +126,43 @@ class _QuotaPlanState:
         return pulumi.get(self, "is_effective")
 
     @is_effective.setter
-    def is_effective(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_effective(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_effective", value)
 
     @_builtins.property
     @pulumi.getter
-    def nickname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nickname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Quota Name
         """
         return pulumi.get(self, "nickname")
 
     @nickname.setter
-    def nickname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nickname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nickname", value)
 
     @_builtins.property
     @pulumi.getter(name="planName")
-    def plan_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Quota plan name. Start with a letter, containing letters, numbers, and underscores (_). It is no more than 64 characters long.
         """
         return pulumi.get(self, "plan_name")
 
     @plan_name.setter
-    def plan_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input['QuotaPlanQuotaArgs']]:
+    def quota(self) -> pulumi.Input[Optional['QuotaPlanQuotaArgs']]:
         """
         Quota property See `quota` below.
         """
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input['QuotaPlanQuotaArgs']]):
+    def quota(self, value: pulumi.Input[Optional['QuotaPlanQuotaArgs']]):
         pulumi.set(self, "quota", value)
 
 
@@ -172,10 +172,10 @@ class QuotaPlan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 is_effective: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota: Optional[pulumi.Input[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict']]] = None,
+                 is_effective: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota: pulumi.Input[Optional[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Max Compute Quota Plan resource.
@@ -203,7 +203,7 @@ class QuotaPlan(pulumi.CustomResource):
             nickname="os_terrform_p",
             quota={
                 "parameter": {
-                    "elastic_reserved_cu": elastic_reserved_cu,
+                    "elastic_reserved_cu": int(elastic_reserved_cu),
                 },
                 "sub_quota_info_lists": [
                     {
@@ -211,7 +211,7 @@ class QuotaPlan(pulumi.CustomResource):
                         "parameter": {
                             "min_cu": 0,
                             "max_cu": 20,
-                            "elastic_reserved_cu": elastic_reserved_cu,
+                            "elastic_reserved_cu": int(elastic_reserved_cu),
                         },
                     },
                     {
@@ -278,7 +278,7 @@ class QuotaPlan(pulumi.CustomResource):
             nickname="os_terrform_p",
             quota={
                 "parameter": {
-                    "elastic_reserved_cu": elastic_reserved_cu,
+                    "elastic_reserved_cu": int(elastic_reserved_cu),
                 },
                 "sub_quota_info_lists": [
                     {
@@ -286,7 +286,7 @@ class QuotaPlan(pulumi.CustomResource):
                         "parameter": {
                             "min_cu": 0,
                             "max_cu": 20,
-                            "elastic_reserved_cu": elastic_reserved_cu,
+                            "elastic_reserved_cu": int(elastic_reserved_cu),
                         },
                     },
                     {
@@ -328,10 +328,10 @@ class QuotaPlan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 is_effective: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota: Optional[pulumi.Input[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict']]] = None,
+                 is_effective: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota: pulumi.Input[Optional[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -359,10 +359,10 @@ class QuotaPlan(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            is_effective: Optional[pulumi.Input[_builtins.bool]] = None,
-            nickname: Optional[pulumi.Input[_builtins.str]] = None,
-            plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-            quota: Optional[pulumi.Input[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict']]] = None) -> 'QuotaPlan':
+            is_effective: pulumi.Input[Optional[_builtins.bool]] = None,
+            nickname: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            quota: pulumi.Input[Optional[Union['QuotaPlanQuotaArgs', 'QuotaPlanQuotaArgsDict']]] = None) -> 'QuotaPlan':
         """
         Get an existing QuotaPlan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

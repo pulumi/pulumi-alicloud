@@ -54,17 +54,17 @@ import * as utilities from "../utilities";
  *     packageType: "your_package_url",
  *     jdk: "jdk_specifications",
  *     vswitchId: defaultAlicloudVswitches.ids[0],
- *     replicas: "your_replicas",
- *     cpu: "cpu_specifications",
- *     memory: "memory_specifications",
+ *     replicas: Number("your_replicas"),
+ *     cpu: Number("cpu_specifications"),
+ *     memory: Number("memory_specifications"),
  * });
  * const defaultIngress = new alicloud.sae.Ingress("default", {
  *     slbId: defaultLoadBalancer.id,
  *     namespaceId: defaultNamespace.id,
- *     listenerPort: "your_listener_port",
+ *     listenerPort: Number("your_listener_port"),
  *     rules: [{
  *         appId: defaultApplication.id,
- *         containerPort: "your_container_port",
+ *         containerPort: Number("your_container_port"),
  *         domain: "your_domain",
  *         appName: "your_name",
  *         path: "your_path",
@@ -170,17 +170,17 @@ export interface GetIngressesResult {
  *     packageType: "your_package_url",
  *     jdk: "jdk_specifications",
  *     vswitchId: defaultAlicloudVswitches.ids[0],
- *     replicas: "your_replicas",
- *     cpu: "cpu_specifications",
- *     memory: "memory_specifications",
+ *     replicas: Number("your_replicas"),
+ *     cpu: Number("cpu_specifications"),
+ *     memory: Number("memory_specifications"),
  * });
  * const defaultIngress = new alicloud.sae.Ingress("default", {
  *     slbId: defaultLoadBalancer.id,
  *     namespaceId: defaultNamespace.id,
- *     listenerPort: "your_listener_port",
+ *     listenerPort: Number("your_listener_port"),
  *     rules: [{
  *         appId: defaultApplication.id,
- *         containerPort: "your_container_port",
+ *         containerPort: Number("your_container_port"),
  *         domain: "your_domain",
  *         appName: "your_name",
  *         path: "your_path",
@@ -209,11 +209,11 @@ export interface GetIngressesOutputArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Ingress IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      */
@@ -221,5 +221,5 @@ export interface GetIngressesOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

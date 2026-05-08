@@ -58,11 +58,11 @@ class InstanceClusterAttachmentArgs:
 @pulumi.input_type
 class _InstanceClusterAttachmentState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_member_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ecu_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_member_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ecu_map: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status_map: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None):
         """
         Input properties used for looking up and filtering InstanceClusterAttachment resources.
 
@@ -85,62 +85,62 @@ class _InstanceClusterAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cluster that you want to create the application.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterMemberIds")
-    def cluster_member_ids(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def cluster_member_ids(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
         """
         return pulumi.get(self, "cluster_member_ids")
 
     @cluster_member_ids.setter
-    def cluster_member_ids(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def cluster_member_ids(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cluster_member_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="ecuMap")
-    def ecu_map(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def ecu_map(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
         """
         return pulumi.get(self, "ecu_map")
 
     @ecu_map.setter
-    def ecu_map(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def ecu_map(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ecu_map", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of instance. Type: list.
         """
         return pulumi.get(self, "instance_ids")
 
     @instance_ids.setter
-    def instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="statusMap")
-    def status_map(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]:
+    def status_map(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]:
         """
         The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
         """
         return pulumi.get(self, "status_map")
 
     @status_map.setter
-    def status_map(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]):
+    def status_map(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "status_map", value)
 
 
@@ -150,8 +150,8 @@ class InstanceClusterAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides an EDAS instance cluster attachment resource, see [What is EDAS Instance Cluster Attachment](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-installagent).
@@ -176,7 +176,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_get_zones.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
@@ -241,7 +241,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_get_zones.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
@@ -287,8 +287,8 @@ class InstanceClusterAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -317,11 +317,11 @@ class InstanceClusterAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_member_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ecu_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None) -> 'InstanceClusterAttachment':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_member_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ecu_map: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status_map: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None) -> 'InstanceClusterAttachment':
         """
         Get an existing InstanceClusterAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

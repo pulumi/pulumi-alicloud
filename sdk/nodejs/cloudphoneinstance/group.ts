@@ -226,29 +226,29 @@ export interface GroupState {
     /**
      * The number of instance groups. The default value is 1 and the maximum value is 100.
      */
-    amount?: pulumi.Input<number>;
+    amount?: pulumi.Input<number | undefined>;
     /**
      * Whether to pay automatically. The default is false.
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable automatic renewal. The default is false.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The billing type.
      */
-    chargeType?: pulumi.Input<string>;
+    chargeType?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable GPU acceleration. The default value is false.
      * - true: On.
      * - false: closed.
      */
-    gpuAcceleration?: pulumi.Input<boolean>;
+    gpuAcceleration?: pulumi.Input<boolean | undefined>;
     /**
      * The image ID.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The instance group name
      *
@@ -256,41 +256,41 @@ export interface GroupState {
      *
      * > **NOTE:** - The instance group name must be no more than 30 characters in length. Start with an uppercase/lowercase letter or Chinese. It cannot start with http:// or https://. Only Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) are supported.
      */
-    instanceGroupName?: pulumi.Input<string>;
+    instanceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Instance group specifications.
      */
-    instanceGroupSpec?: pulumi.Input<string>;
+    instanceGroupSpec?: pulumi.Input<string | undefined>;
     /**
      * The number of instances in the instance group. The maximum value is 100.
      */
-    numberOfInstances?: pulumi.Input<number>;
+    numberOfInstances?: pulumi.Input<number | undefined>;
     /**
      * The network ID.
      * - Create a shared network instance: Network ID is optional. Enter the network ID whose type is **Shared Network** on the [cloud mobile phone console> Network](https://wya.wuying.aliyun.com/network) page. If the console does not have a shared network, you can fill it in. A shared network is automatically created when the instance group is created.
      * - Create a VPC instance: the network ID is required. Enter the network ID of `VPC` on the [cloud mobile phone console> Network](https://wya.wuying.aliyun.com/network) page. If the console does not have a VPC network, you need to create a network first.
      */
-    officeSiteId?: pulumi.Input<string>;
+    officeSiteId?: pulumi.Input<string | undefined>;
     /**
      * The duration of the resource purchase. The unit is specified by PeriodUnit.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The unit of time for purchasing resources.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The policy ID. You can query the list of policies by calling ListPolicyGroups.
      */
-    policyGroupId?: pulumi.Input<string>;
+    policyGroupId?: pulumi.Input<string | undefined>;
     /**
      * Instance group status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The vSwitch ID.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -300,25 +300,25 @@ export interface GroupArgs {
     /**
      * The number of instance groups. The default value is 1 and the maximum value is 100.
      */
-    amount?: pulumi.Input<number>;
+    amount?: pulumi.Input<number | undefined>;
     /**
      * Whether to pay automatically. The default is false.
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable automatic renewal. The default is false.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The billing type.
      */
-    chargeType?: pulumi.Input<string>;
+    chargeType?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable GPU acceleration. The default value is false.
      * - true: On.
      * - false: closed.
      */
-    gpuAcceleration?: pulumi.Input<boolean>;
+    gpuAcceleration?: pulumi.Input<boolean | undefined>;
     /**
      * The image ID.
      */
@@ -330,7 +330,7 @@ export interface GroupArgs {
      *
      * > **NOTE:** - The instance group name must be no more than 30 characters in length. Start with an uppercase/lowercase letter or Chinese. It cannot start with http:// or https://. Only Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-) are supported.
      */
-    instanceGroupName?: pulumi.Input<string>;
+    instanceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Instance group specifications.
      */
@@ -338,27 +338,27 @@ export interface GroupArgs {
     /**
      * The number of instances in the instance group. The maximum value is 100.
      */
-    numberOfInstances?: pulumi.Input<number>;
+    numberOfInstances?: pulumi.Input<number | undefined>;
     /**
      * The network ID.
      * - Create a shared network instance: Network ID is optional. Enter the network ID whose type is **Shared Network** on the [cloud mobile phone console> Network](https://wya.wuying.aliyun.com/network) page. If the console does not have a shared network, you can fill it in. A shared network is automatically created when the instance group is created.
      * - Create a VPC instance: the network ID is required. Enter the network ID of `VPC` on the [cloud mobile phone console> Network](https://wya.wuying.aliyun.com/network) page. If the console does not have a VPC network, you need to create a network first.
      */
-    officeSiteId?: pulumi.Input<string>;
+    officeSiteId?: pulumi.Input<string | undefined>;
     /**
      * The duration of the resource purchase. The unit is specified by PeriodUnit.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The unit of time for purchasing resources.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The policy ID. You can query the list of policies by calling ListPolicyGroups.
      */
-    policyGroupId?: pulumi.Input<string>;
+    policyGroupId?: pulumi.Input<string | undefined>;
     /**
      * The vSwitch ID.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

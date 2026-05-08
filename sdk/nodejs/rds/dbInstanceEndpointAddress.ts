@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceStorage: output(defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *     instanceChargeType: "Postpaid",
  *     instanceName: name,
  *     vswitchId: defaultSwitch.id,
@@ -208,31 +208,31 @@ export interface DbInstanceEndpointAddressState {
     /**
      * The endpoint of the instance.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * The prefix of the public endpoint.
      */
-    connectionStringPrefix?: pulumi.Input<string>;
+    connectionStringPrefix?: pulumi.Input<string | undefined>;
     /**
      * The Endpoint ID of the instance.
      */
-    dbInstanceEndpointId?: pulumi.Input<string>;
+    dbInstanceEndpointId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the endpoint.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * The type of the IP address.
      */
-    ipType?: pulumi.Input<string>;
+    ipType?: pulumi.Input<string | undefined>;
     /**
      * The port number of the public endpoint.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
 }
 
 /**

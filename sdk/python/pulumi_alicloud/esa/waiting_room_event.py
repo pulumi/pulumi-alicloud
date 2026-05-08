@@ -30,15 +30,15 @@ class WaitingRoomEventArgs:
                  total_active_users: pulumi.Input[_builtins.str],
                  waiting_room_event_name: pulumi.Input[_builtins.str],
                  waiting_room_type: pulumi.Input[_builtins.str],
-                 custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_session_renewal_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 json_response_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_queue_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_queue_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 random_pre_queue_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_session_renewal_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 json_response_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_queue_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_queue_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 random_pre_queue_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WaitingRoomEvent resource.
 
@@ -227,137 +227,137 @@ class WaitingRoomEventArgs:
 
     @_builtins.property
     @pulumi.getter(name="customPageHtml")
-    def custom_page_html(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_page_html(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         """
         return pulumi.get(self, "custom_page_html")
 
     @custom_page_html.setter
-    def custom_page_html(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_page_html(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_page_html", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Waiting room description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSessionRenewalEnable")
-    def disable_session_renewal_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disable_session_renewal_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Disable session renewal. Value:
         """
         return pulumi.get(self, "disable_session_renewal_enable")
 
     @disable_session_renewal_enable.setter
-    def disable_session_renewal_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disable_session_renewal_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disable_session_renewal_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonResponseEnable")
-    def json_response_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json_response_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         JSON response switch. Value:
         """
         return pulumi.get(self, "json_response_enable")
 
     @json_response_enable.setter
-    def json_response_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json_response_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json_response_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default language setting. Values include:
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter(name="preQueueEnable")
-    def pre_queue_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pre_queue_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pre-queue switch.
         """
         return pulumi.get(self, "pre_queue_enable")
 
     @pre_queue_enable.setter
-    def pre_queue_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pre_queue_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pre_queue_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="preQueueStartTime")
-    def pre_queue_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pre_queue_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pre-queue start time.
         """
         return pulumi.get(self, "pre_queue_start_time")
 
     @pre_queue_start_time.setter
-    def pre_queue_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pre_queue_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pre_queue_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="randomPreQueueEnable")
-    def random_pre_queue_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def random_pre_queue_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Random queue switch.
         """
         return pulumi.get(self, "random_pre_queue_enable")
 
     @random_pre_queue_enable.setter
-    def random_pre_queue_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def random_pre_queue_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "random_pre_queue_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="waitingRoomId")
-    def waiting_room_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def waiting_room_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         return pulumi.get(self, "waiting_room_id")
 
     @waiting_room_id.setter
-    def waiting_room_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def waiting_room_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "waiting_room_id", value)
 
 
 @pulumi.input_type
 class _WaitingRoomEventState:
     def __init__(__self__, *,
-                 custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_session_renewal_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 json_response_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_users_per_minute: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_queue_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_queue_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 queuing_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 queuing_status_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 random_pre_queue_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_active_users: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_event_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 waiting_room_event_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_session_renewal_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 json_response_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_users_per_minute: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_queue_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_queue_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 queuing_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 queuing_status_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 random_pre_queue_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_active_users: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_event_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 waiting_room_event_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoomEvent resources.
 
@@ -428,254 +428,254 @@ class _WaitingRoomEventState:
 
     @_builtins.property
     @pulumi.getter(name="customPageHtml")
-    def custom_page_html(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_page_html(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         """
         return pulumi.get(self, "custom_page_html")
 
     @custom_page_html.setter
-    def custom_page_html(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_page_html(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_page_html", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Waiting room description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSessionRenewalEnable")
-    def disable_session_renewal_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disable_session_renewal_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Disable session renewal. Value:
         """
         return pulumi.get(self, "disable_session_renewal_enable")
 
     @disable_session_renewal_enable.setter
-    def disable_session_renewal_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disable_session_renewal_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disable_session_renewal_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of the end time of the event.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonResponseEnable")
-    def json_response_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json_response_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         JSON response switch. Value:
         """
         return pulumi.get(self, "json_response_enable")
 
     @json_response_enable.setter
-    def json_response_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json_response_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json_response_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default language setting. Values include:
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter(name="newUsersPerMinute")
-    def new_users_per_minute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def new_users_per_minute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of new users per minute.
         """
         return pulumi.get(self, "new_users_per_minute")
 
     @new_users_per_minute.setter
-    def new_users_per_minute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def new_users_per_minute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "new_users_per_minute", value)
 
     @_builtins.property
     @pulumi.getter(name="preQueueEnable")
-    def pre_queue_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pre_queue_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pre-queue switch.
         """
         return pulumi.get(self, "pre_queue_enable")
 
     @pre_queue_enable.setter
-    def pre_queue_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pre_queue_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pre_queue_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="preQueueStartTime")
-    def pre_queue_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pre_queue_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pre-queue start time.
         """
         return pulumi.get(self, "pre_queue_start_time")
 
     @pre_queue_start_time.setter
-    def pre_queue_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pre_queue_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pre_queue_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="queuingMethod")
-    def queuing_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queuing_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Way of queuing. Value:
         """
         return pulumi.get(self, "queuing_method")
 
     @queuing_method.setter
-    def queuing_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queuing_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queuing_method", value)
 
     @_builtins.property
     @pulumi.getter(name="queuingStatusCode")
-    def queuing_status_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queuing_status_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Waiting room status code. Value:
         """
         return pulumi.get(self, "queuing_status_code")
 
     @queuing_status_code.setter
-    def queuing_status_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queuing_status_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queuing_status_code", value)
 
     @_builtins.property
     @pulumi.getter(name="randomPreQueueEnable")
-    def random_pre_queue_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def random_pre_queue_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Random queue switch.
         """
         return pulumi.get(self, "random_pre_queue_enable")
 
     @random_pre_queue_enable.setter
-    def random_pre_queue_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def random_pre_queue_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "random_pre_queue_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionDuration")
-    def session_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User session duration in minutes.
         """
         return pulumi.get(self, "session_duration")
 
     @session_duration.setter
-    def session_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The site ID, which can be obtained by calling the ListSites API.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of the event start time.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enabled status. Value:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="totalActiveUsers")
-    def total_active_users(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def total_active_users(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Total number of active users.
         """
         return pulumi.get(self, "total_active_users")
 
     @total_active_users.setter
-    def total_active_users(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def total_active_users(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "total_active_users", value)
 
     @_builtins.property
     @pulumi.getter(name="waitingRoomEventId")
-    def waiting_room_event_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def waiting_room_event_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
         """
         return pulumi.get(self, "waiting_room_event_id")
 
     @waiting_room_event_id.setter
-    def waiting_room_event_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def waiting_room_event_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "waiting_room_event_id", value)
 
     @_builtins.property
     @pulumi.getter(name="waitingRoomEventName")
-    def waiting_room_event_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def waiting_room_event_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Event name, custom event description.
         """
         return pulumi.get(self, "waiting_room_event_name")
 
     @waiting_room_event_name.setter
-    def waiting_room_event_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def waiting_room_event_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "waiting_room_event_name", value)
 
     @_builtins.property
     @pulumi.getter(name="waitingRoomId")
-    def waiting_room_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def waiting_room_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         return pulumi.get(self, "waiting_room_id")
 
     @waiting_room_id.setter
-    def waiting_room_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def waiting_room_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "waiting_room_id", value)
 
     @_builtins.property
     @pulumi.getter(name="waitingRoomType")
-    def waiting_room_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def waiting_room_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Waiting room type. The following types are supported:
         """
         return pulumi.get(self, "waiting_room_type")
 
     @waiting_room_type.setter
-    def waiting_room_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def waiting_room_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "waiting_room_type", value)
 
 
@@ -685,26 +685,26 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_session_renewal_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 json_response_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_users_per_minute: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_queue_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_queue_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 queuing_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 queuing_status_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 random_pre_queue_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_active_users: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_event_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_session_renewal_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 json_response_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_users_per_minute: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_queue_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_queue_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 queuing_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 queuing_status_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 random_pre_queue_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_active_users: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_event_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Waiting Room Event resource.
@@ -904,26 +904,26 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_session_renewal_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 json_response_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_users_per_minute: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_queue_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_queue_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 queuing_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 queuing_status_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 random_pre_queue_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_active_users: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_event_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_session_renewal_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 json_response_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_users_per_minute: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_queue_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_queue_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 queuing_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 queuing_status_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 random_pre_queue_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_active_users: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_event_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -986,27 +986,27 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            custom_page_html: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_session_renewal_enable: Optional[pulumi.Input[_builtins.str]] = None,
-            end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            json_response_enable: Optional[pulumi.Input[_builtins.str]] = None,
-            language: Optional[pulumi.Input[_builtins.str]] = None,
-            new_users_per_minute: Optional[pulumi.Input[_builtins.str]] = None,
-            pre_queue_enable: Optional[pulumi.Input[_builtins.str]] = None,
-            pre_queue_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            queuing_method: Optional[pulumi.Input[_builtins.str]] = None,
-            queuing_status_code: Optional[pulumi.Input[_builtins.str]] = None,
-            random_pre_queue_enable: Optional[pulumi.Input[_builtins.str]] = None,
-            session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            total_active_users: Optional[pulumi.Input[_builtins.str]] = None,
-            waiting_room_event_id: Optional[pulumi.Input[_builtins.int]] = None,
-            waiting_room_event_name: Optional[pulumi.Input[_builtins.str]] = None,
-            waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
-            waiting_room_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'WaitingRoomEvent':
+            custom_page_html: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_session_renewal_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            json_response_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            new_users_per_minute: pulumi.Input[Optional[_builtins.str]] = None,
+            pre_queue_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            pre_queue_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            queuing_method: pulumi.Input[Optional[_builtins.str]] = None,
+            queuing_status_code: pulumi.Input[Optional[_builtins.str]] = None,
+            random_pre_queue_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            session_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            total_active_users: pulumi.Input[Optional[_builtins.str]] = None,
+            waiting_room_event_id: pulumi.Input[Optional[_builtins.int]] = None,
+            waiting_room_event_name: pulumi.Input[Optional[_builtins.str]] = None,
+            waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+            waiting_room_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'WaitingRoomEvent':
         """
         Get an existing WaitingRoomEvent resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

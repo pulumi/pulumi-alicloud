@@ -265,88 +265,88 @@ export interface PcaCertificateState {
      *
      * > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * A custom alias for the certificate, used to define a user-friendly name.
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    aliasName?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string | undefined>;
     /**
      * The type of the CA certificate. Default value: `ROOT`. Valid values:
      * - `ROOT`: A root CA certificate.
      * - `SUB_ROOT`: A subordinate CA certificate.
      */
-    certificateType?: pulumi.Input<string>;
+    certificateType?: pulumi.Input<string | undefined>;
     /**
      * The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
      */
-    commonName?: pulumi.Input<string>;
+    commonName?: pulumi.Input<string | undefined>;
     /**
      * The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
      * For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
      */
-    countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string | undefined>;
     /**
      * The interval (in days) for updating the Certificate Revocation List (CRL).
      */
-    crlDay?: pulumi.Input<number>;
+    crlDay?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to enable CRL.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    enableCrl?: pulumi.Input<boolean>;
+    enableCrl?: pulumi.Input<boolean | undefined>;
     /**
      * Extended attributes of the certificate, used to define extended key usages.  
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    extendedKeyUsages?: pulumi.Input<pulumi.Input<string>[]>;
+    extendedKeyUsages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the city where the organization is located.
      */
-    locality?: pulumi.Input<string>;
+    locality?: pulumi.Input<string | undefined>;
     /**
      * The name of the organization associated with the CA certificate.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * The name of the department or branch within the organization
      */
-    organizationUnit?: pulumi.Input<string>;
+    organizationUnit?: pulumi.Input<string | undefined>;
     /**
      * Parent node identifier.
      */
-    parentIdentifier?: pulumi.Input<string>;
+    parentIdentifier?: pulumi.Input<string | undefined>;
     /**
      * The maximum depth of subordinate CA levels allowed under this CA.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    pathLenConstraint?: pulumi.Input<number>;
+    pathLenConstraint?: pulumi.Input<number | undefined>;
     /**
      * A resource property field representing the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the province, municipality directly under the central government, or autonomous region where the organization is located
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The current CA status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The validity period of the root CA certificate, in years.
      *
      * > **NOTE:**  We recommend setting it to 5–10 years.
      */
-    years?: pulumi.Input<number>;
+    years?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -367,19 +367,19 @@ export interface PcaCertificateArgs {
      *
      * > **NOTE:** If `certificateType` is set to `SUB_ROOT`, `algorithm` is required.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * A custom alias for the certificate, used to define a user-friendly name.
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    aliasName?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string | undefined>;
     /**
      * The type of the CA certificate. Default value: `ROOT`. Valid values:
      * - `ROOT`: A root CA certificate.
      * - `SUB_ROOT`: A subordinate CA certificate.
      */
-    certificateType?: pulumi.Input<string>;
+    certificateType?: pulumi.Input<string | undefined>;
     /**
      * The common name or short name of the organization. Chinese characters, English letters, and other characters are supported.
      */
@@ -388,23 +388,23 @@ export interface PcaCertificateArgs {
      * The two-letter uppercase alphabetic code representing the country or region where the organization is located. For example, `CN` represents China and `US` represents the United States.
      * For country codes, see the **International Codes** section in [Managing Company Information](https://help.aliyun.com/document_detail/198289.html).
      */
-    countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string | undefined>;
     /**
      * The interval (in days) for updating the Certificate Revocation List (CRL).
      */
-    crlDay?: pulumi.Input<number>;
+    crlDay?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to enable CRL.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    enableCrl?: pulumi.Input<boolean>;
+    enableCrl?: pulumi.Input<boolean | undefined>;
     /**
      * Extended attributes of the certificate, used to define extended key usages.  
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    extendedKeyUsages?: pulumi.Input<pulumi.Input<string>[]>;
+    extendedKeyUsages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the city where the organization is located.
      */
@@ -420,17 +420,17 @@ export interface PcaCertificateArgs {
     /**
      * Parent node identifier.
      */
-    parentIdentifier?: pulumi.Input<string>;
+    parentIdentifier?: pulumi.Input<string | undefined>;
     /**
      * The maximum depth of subordinate CA levels allowed under this CA.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    pathLenConstraint?: pulumi.Input<number>;
+    pathLenConstraint?: pulumi.Input<number | undefined>;
     /**
      * A resource property field representing the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the province, municipality directly under the central government, or autonomous region where the organization is located
      */
@@ -438,7 +438,7 @@ export interface PcaCertificateArgs {
     /**
      * Tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The validity period of the root CA certificate, in years.
      *

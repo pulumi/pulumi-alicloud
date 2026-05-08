@@ -19,10 +19,10 @@ __all__ = ['AccessKeyArgs', 'AccessKey']
 @pulumi.input_type
 class AccessKeyArgs:
     def __init__(__self__, *,
-                 pgp_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 pgp_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessKey resource.
 
@@ -44,31 +44,31 @@ class AccessKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="pgpKey")
-    def pgp_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pgp_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
         """
         return pulumi.get(self, "pgp_key")
 
     @pgp_key.setter
-    def pgp_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pgp_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pgp_key", value)
 
     @_builtins.property
     @pulumi.getter(name="secretFile")
-    def secret_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
         """
         return pulumi.get(self, "secret_file")
 
     @secret_file.setter
-    def secret_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_file", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the AccessKey. Value:
         - Active: Activated.
@@ -77,33 +77,33 @@ class AccessKeyArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RAM user name.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
 @pulumi.input_type
 class _AccessKeyState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 pgp_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 pgp_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessKey resources.
 
@@ -140,55 +140,55 @@ class _AccessKeyState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.246.0) The create time of the AccessKey.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptedSecret")
-    def encrypted_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypted_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.47.0) The encrypted secret, base64 encoded. > NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encrypted_secret | base64 --decode | keybase pgp decrypt`.
         """
         return pulumi.get(self, "encrypted_secret")
 
     @encrypted_secret.setter
-    def encrypted_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypted_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypted_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="keyFingerprint")
-    def key_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
         """
         return pulumi.get(self, "key_fingerprint")
 
     @key_fingerprint.setter
-    def key_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="pgpKey")
-    def pgp_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pgp_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
         """
         return pulumi.get(self, "pgp_key")
 
     @pgp_key.setter
-    def pgp_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pgp_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pgp_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
         If you use this, please protect your backend state file judiciously.
@@ -198,24 +198,24 @@ class _AccessKeyState:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter(name="secretFile")
-    def secret_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
         """
         return pulumi.get(self, "secret_file")
 
     @secret_file.setter
-    def secret_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_file", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the AccessKey. Value:
         - Active: Activated.
@@ -224,19 +224,19 @@ class _AccessKeyState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RAM user name.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
@@ -246,10 +246,10 @@ class AccessKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 pgp_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 pgp_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RAM Access Key resource.
@@ -459,10 +459,10 @@ class AccessKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 pgp_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 pgp_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -492,14 +492,14 @@ class AccessKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            encrypted_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            key_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            pgp_key: Optional[pulumi.Input[_builtins.str]] = None,
-            secret: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_file: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            user_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessKey':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            key_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            pgp_key: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_file: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessKey':
         """
         Get an existing AccessKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

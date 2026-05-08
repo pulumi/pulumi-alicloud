@@ -201,39 +201,39 @@ export interface ScanRuleState {
     /**
      * Creation time
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Instance ID
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Set of namespaces:  
      * - This parameter must not be empty when the scan scope is NAMESPACE.
      * - This parameter must contain exactly one namespace when the scan scope is REPO.
      */
-    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    namespaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Repository list:  
      * - This parameter must be empty when the scan scope is NAMESPACE.
      * - This parameter must not be empty when the scan scope is REPO.
      */
-    repoNames?: pulumi.Input<pulumi.Input<string>[]>;
+    repoNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Regular expression for matching tags that trigger a scan
      */
-    repoTagFilterPattern?: pulumi.Input<string>;
+    repoTagFilterPattern?: pulumi.Input<string | undefined>;
     /**
      * Event rule name
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * Rule ID
      */
-    scanRuleId?: pulumi.Input<string>;
+    scanRuleId?: pulumi.Input<string | undefined>;
     /**
      * Scan scope
      */
-    scanScope?: pulumi.Input<string>;
+    scanScope?: pulumi.Input<string | undefined>;
     /**
      * Scan type:  
      * - `VUL`: Artifact vulnerability scan
@@ -241,11 +241,11 @@ export interface ScanRuleState {
      *
      * The default value of this parameter is `VUL`.
      */
-    scanType?: pulumi.Input<string>;
+    scanType?: pulumi.Input<string | undefined>;
     /**
      * Trigger type
      */
-    triggerType?: pulumi.Input<string>;
+    triggerType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -261,13 +261,13 @@ export interface ScanRuleArgs {
      * - This parameter must not be empty when the scan scope is NAMESPACE.
      * - This parameter must contain exactly one namespace when the scan scope is REPO.
      */
-    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    namespaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Repository list:  
      * - This parameter must be empty when the scan scope is NAMESPACE.
      * - This parameter must not be empty when the scan scope is REPO.
      */
-    repoNames?: pulumi.Input<pulumi.Input<string>[]>;
+    repoNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Regular expression for matching tags that trigger a scan
      */

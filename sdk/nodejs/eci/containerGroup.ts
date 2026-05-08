@@ -394,138 +394,138 @@ export interface ContainerGroupState {
     /**
      * The ACR enterprise edition example properties. See `acrRegistryInfo` below.
      */
-    acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupAcrRegistryInfo>[]>;
+    acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupAcrRegistryInfo>[] | undefined>;
     /**
      * Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
      */
-    autoCreateEip?: pulumi.Input<boolean>;
+    autoCreateEip?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
      */
-    autoMatchImageCache?: pulumi.Input<boolean>;
+    autoMatchImageCache?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the container group.
      */
-    containerGroupName?: pulumi.Input<string>;
+    containerGroupName?: pulumi.Input<string | undefined>;
     /**
      * The list of containers. See `containers` below.
      */
-    containers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainer>[]>;
+    containers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainer>[] | undefined>;
     /**
      * The amount of CPU resources allocated to the container group.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * The structure of dnsConfig. See `dnsConfig` below.
      */
-    dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig>;
+    dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig | undefined>;
     /**
      * The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
      */
-    dnsPolicy?: pulumi.Input<string>;
+    dnsPolicy?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth of the EIP. Default value: `5`.
      */
-    eipBandwidth?: pulumi.Input<number>;
+    eipBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The ID of the elastic IP address (EIP).
      */
-    eipInstanceId?: pulumi.Input<string>;
+    eipInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The size of the temporary storage space to add. Unit: GiB.
      */
-    ephemeralStorage?: pulumi.Input<number>;
+    ephemeralStorage?: pulumi.Input<number | undefined>;
     /**
      * HostAliases. See `hostAliases` below.
      */
-    hostAliases?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupHostAlias>[]>;
+    hostAliases?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupHostAlias>[] | undefined>;
     /**
      * The image registry credential. See `imageRegistryCredential` below.
      */
-    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupImageRegistryCredential>[]>;
+    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupImageRegistryCredential>[] | undefined>;
     /**
      * The list of initContainers. See `initContainers` below.
      */
-    initContainers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainer>[]>;
+    initContainers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainer>[] | undefined>;
     /**
      * The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
      */
-    insecureRegistry?: pulumi.Input<string>;
+    insecureRegistry?: pulumi.Input<string | undefined>;
     /**
      * The type of the ECS instance.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.170.0) The Public IP of the container group.
      */
-    internetIp?: pulumi.Input<string>;
+    internetIp?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.170.0) The Private IP of the container group.
      */
-    intranetIp?: pulumi.Input<string>;
+    intranetIp?: pulumi.Input<string | undefined>;
     /**
      * The amount of memory resources allocated to the container group.
      */
-    memory?: pulumi.Input<number>;
+    memory?: pulumi.Input<number | undefined>;
     /**
      * The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
      */
-    plainHttpRegistry?: pulumi.Input<string>;
+    plainHttpRegistry?: pulumi.Input<string | undefined>;
     /**
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
      */
-    restartPolicy?: pulumi.Input<string>;
+    restartPolicy?: pulumi.Input<string | undefined>;
     /**
      * The security context of the container group. See `securityContext` below.
      */
-    securityContext?: pulumi.Input<inputs.eci.ContainerGroupSecurityContext>;
+    securityContext?: pulumi.Input<inputs.eci.ContainerGroupSecurityContext | undefined>;
     /**
      * The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The maximum hourly price of the ECI spot instance.
      */
-    spotPriceLimit?: pulumi.Input<number>;
+    spotPriceLimit?: pulumi.Input<number | undefined>;
     /**
      * Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * The status of container group.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The buffer time during which the program handles operations before the program stops. Unit: seconds.
      */
-    terminationGracePeriodSeconds?: pulumi.Input<number>;
+    terminationGracePeriodSeconds?: pulumi.Input<number | undefined>;
     /**
      * The list of volumes. See `volumes` below.
      */
-    volumes?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupVolume>[]>;
+    volumes?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupVolume>[] | undefined>;
     /**
      * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
      * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -535,15 +535,15 @@ export interface ContainerGroupArgs {
     /**
      * The ACR enterprise edition example properties. See `acrRegistryInfo` below.
      */
-    acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupAcrRegistryInfo>[]>;
+    acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupAcrRegistryInfo>[] | undefined>;
     /**
      * Specifies whether to automatically create an EIP and bind the EIP to the elastic container instance.
      */
-    autoCreateEip?: pulumi.Input<boolean>;
+    autoCreateEip?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
      */
-    autoMatchImageCache?: pulumi.Input<boolean>;
+    autoMatchImageCache?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the container group.
      */
@@ -555,71 +555,71 @@ export interface ContainerGroupArgs {
     /**
      * The amount of CPU resources allocated to the container group.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * The structure of dnsConfig. See `dnsConfig` below.
      */
-    dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig>;
+    dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig | undefined>;
     /**
      * The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
      */
-    dnsPolicy?: pulumi.Input<string>;
+    dnsPolicy?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth of the EIP. Default value: `5`.
      */
-    eipBandwidth?: pulumi.Input<number>;
+    eipBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The ID of the elastic IP address (EIP).
      */
-    eipInstanceId?: pulumi.Input<string>;
+    eipInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The size of the temporary storage space to add. Unit: GiB.
      */
-    ephemeralStorage?: pulumi.Input<number>;
+    ephemeralStorage?: pulumi.Input<number | undefined>;
     /**
      * HostAliases. See `hostAliases` below.
      */
-    hostAliases?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupHostAlias>[]>;
+    hostAliases?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupHostAlias>[] | undefined>;
     /**
      * The image registry credential. See `imageRegistryCredential` below.
      */
-    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupImageRegistryCredential>[]>;
+    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupImageRegistryCredential>[] | undefined>;
     /**
      * The list of initContainers. See `initContainers` below.
      */
-    initContainers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainer>[]>;
+    initContainers?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupInitContainer>[] | undefined>;
     /**
      * The address of the self-built mirror warehouse. When creating an image cache using an image in a self-built image repository with a self-signed certificate, you need to configure this parameter to skip certificate authentication to avoid image pull failure due to certificate authentication failure.
      */
-    insecureRegistry?: pulumi.Input<string>;
+    insecureRegistry?: pulumi.Input<string | undefined>;
     /**
      * The type of the ECS instance.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The amount of memory resources allocated to the container group.
      */
-    memory?: pulumi.Input<number>;
+    memory?: pulumi.Input<number | undefined>;
     /**
      * The address of the self-built mirror warehouse. When creating an image cache from an image in a self-built image repository using the HTTP protocol, you need to configure this parameter so that the ECI uses the HTTP protocol to pull the image to avoid image pull failure due to different protocols.
      */
-    plainHttpRegistry?: pulumi.Input<string>;
+    plainHttpRegistry?: pulumi.Input<string | undefined>;
     /**
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. **NOTE:** From version 1.208.0, `resourceGroupId` can be modified.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The restart policy of the container group. Valid values: `Always`, `Never`, `OnFailure`.
      */
-    restartPolicy?: pulumi.Input<string>;
+    restartPolicy?: pulumi.Input<string | undefined>;
     /**
      * The security context of the container group. See `securityContext` below.
      */
-    securityContext?: pulumi.Input<inputs.eci.ContainerGroupSecurityContext>;
+    securityContext?: pulumi.Input<inputs.eci.ContainerGroupSecurityContext | undefined>;
     /**
      * The ID of the security group to which the container group belongs. Container groups within the same security group can access each other.
      */
@@ -627,25 +627,25 @@ export interface ContainerGroupArgs {
     /**
      * The maximum hourly price of the ECI spot instance.
      */
-    spotPriceLimit?: pulumi.Input<number>;
+    spotPriceLimit?: pulumi.Input<number | undefined>;
     /**
      * Filter the results by ECI spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The buffer time during which the program handles operations before the program stops. Unit: seconds.
      */
-    terminationGracePeriodSeconds?: pulumi.Input<number>;
+    terminationGracePeriodSeconds?: pulumi.Input<number | undefined>;
     /**
      * The list of volumes. See `volumes` below.
      */
-    volumes?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupVolume>[]>;
+    volumes?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupVolume>[] | undefined>;
     /**
      * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
      * **NOTE:** From version 1.208.0, You can specify up to 10 `vswitchId`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitchId` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitchId` exists in the set vSwitchIds.
@@ -654,5 +654,5 @@ export interface ContainerGroupArgs {
     /**
      * The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

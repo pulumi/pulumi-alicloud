@@ -206,43 +206,43 @@ export interface JdbcDataSourceState {
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Data Source Description
      */
-    dataSourceDescription?: pulumi.Input<string>;
+    dataSourceDescription?: pulumi.Input<string | undefined>;
     /**
      * The data source ID.
      */
-    dataSourceId?: pulumi.Input<string>;
+    dataSourceId?: pulumi.Input<string | undefined>;
     /**
      * Data Source Name
      */
-    dataSourceName?: pulumi.Input<string>;
+    dataSourceName?: pulumi.Input<string | undefined>;
     /**
      * Data Source Type
      */
-    dataSourceType?: pulumi.Input<string>;
+    dataSourceType?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The JDBC connection string.
      */
-    jdbcConnectionString?: pulumi.Input<string>;
+    jdbcConnectionString?: pulumi.Input<string | undefined>;
     /**
      * The password of the database account.
      */
-    jdbcPassword?: pulumi.Input<string>;
+    jdbcPassword?: pulumi.Input<string | undefined>;
     /**
      * The name of the database account.
      */
-    jdbcUserName?: pulumi.Input<string>;
+    jdbcUserName?: pulumi.Input<string | undefined>;
     /**
      * Data Source Status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -252,15 +252,15 @@ export interface JdbcDataSourceArgs {
     /**
      * Data Source Description
      */
-    dataSourceDescription?: pulumi.Input<string>;
+    dataSourceDescription?: pulumi.Input<string | undefined>;
     /**
      * Data Source Name
      */
-    dataSourceName?: pulumi.Input<string>;
+    dataSourceName?: pulumi.Input<string | undefined>;
     /**
      * Data Source Type
      */
-    dataSourceType?: pulumi.Input<string>;
+    dataSourceType?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */
@@ -268,11 +268,11 @@ export interface JdbcDataSourceArgs {
     /**
      * The JDBC connection string.
      */
-    jdbcConnectionString?: pulumi.Input<string>;
+    jdbcConnectionString?: pulumi.Input<string | undefined>;
     /**
      * The password of the database account.
      */
-    jdbcPassword?: pulumi.Input<string>;
+    jdbcPassword?: pulumi.Input<string | undefined>;
     /**
      * The name of the database account.
      */

@@ -129,15 +129,15 @@ export interface PolicyAttachmentState {
     /**
      * The ID of the tag policy.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the object.
      */
-    targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string | undefined>;
     /**
      * The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
      */
-    targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string | undefined>;
 }
 
 /**

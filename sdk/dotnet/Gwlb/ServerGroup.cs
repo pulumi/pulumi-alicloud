@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Gwlb
     ///         SystemDiskCategory = "cloud_efficiency",
     ///         InternetChargeType = "PayByTraffic",
     ///         InternetMaxBandwidthOut = 5,
-    ///         InstanceName = Std.Index.Format.Invoke(new()
+    ///         InstanceName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s4",
     ///             Args = new[]

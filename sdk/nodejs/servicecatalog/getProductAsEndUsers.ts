@@ -118,15 +118,15 @@ export interface GetProductAsEndUsersOutputArgs {
     /**
      * A list of Product As End User IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by product name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    sortBy?: pulumi.Input<string>;
-    sortOrder?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
+    sortBy?: pulumi.Input<string | undefined>;
+    sortOrder?: pulumi.Input<string | undefined>;
 }

@@ -26,11 +26,11 @@ __all__ = [
 ]
 
 class ServiceEventRuleEndpointArgsDict(TypedDict):
-    endpoint_type: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Message receiving terminal endpoint type
     """
-    endpoint_value: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Message Receiving Terminal Endpoint
     """
@@ -38,8 +38,8 @@ class ServiceEventRuleEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceEventRuleEndpointArgs:
     def __init__(__self__, *,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] endpoint_type: Message receiving terminal endpoint type
         :param pulumi.Input[_builtins.str] endpoint_value: Message Receiving Terminal Endpoint
@@ -51,40 +51,40 @@ class ServiceEventRuleEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Message receiving terminal endpoint type
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointValue")
-    def endpoint_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Message Receiving Terminal Endpoint
         """
         return pulumi.get(self, "endpoint_value")
 
     @endpoint_value.setter
-    def endpoint_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_value", value)
 
 
 class ServiceEventRuleMatchRuleArgsDict(TypedDict):
-    match_state: NotRequired[pulumi.Input[_builtins.str]]
+    match_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Match state. valid values: `true`, `false`.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Prefix matching rule.
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Suffix matching rule.
     """
@@ -92,10 +92,10 @@ class ServiceEventRuleMatchRuleArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceEventRuleMatchRuleArgs:
     def __init__(__self__, *,
-                 match_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 match_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] match_state: Match state. valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] prefix: Prefix matching rule.
@@ -112,60 +112,60 @@ class ServiceEventRuleMatchRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="matchState")
-    def match_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Match state. valid values: `true`, `false`.
         """
         return pulumi.get(self, "match_state")
 
     @match_state.setter
-    def match_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix matching rule.
         """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Suffix matching rule.
         """
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class ServiceQueueDlqPolicyArgsDict(TypedDict):
-    dead_letter_target_queue: NotRequired[pulumi.Input[_builtins.str]]
+    dead_letter_target_queue: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The queue to which dead-letter messages are delivered.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
     """
-    max_receive_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_receive_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of retries.
     """
@@ -173,9 +173,9 @@ class ServiceQueueDlqPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceQueueDlqPolicyArgs:
     def __init__(__self__, *,
-                 dead_letter_target_queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_receive_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 dead_letter_target_queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_receive_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] dead_letter_target_queue: The queue to which dead-letter messages are delivered.
         :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
@@ -190,47 +190,47 @@ class ServiceQueueDlqPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="deadLetterTargetQueue")
-    def dead_letter_target_queue(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dead_letter_target_queue(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The queue to which dead-letter messages are delivered.
         """
         return pulumi.get(self, "dead_letter_target_queue")
 
     @dead_letter_target_queue.setter
-    def dead_letter_target_queue(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dead_letter_target_queue(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dead_letter_target_queue", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maxReceiveCount")
-    def max_receive_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_receive_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of retries.
         """
         return pulumi.get(self, "max_receive_count")
 
     @max_receive_count.setter
-    def max_receive_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_receive_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_receive_count", value)
 
 
 class ServiceSubscriptionDlqPolicyArgsDict(TypedDict):
-    dead_letter_target_queue: NotRequired[pulumi.Input[_builtins.str]]
+    dead_letter_target_queue: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The queue to which dead-letter messages are delivered.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
     """
@@ -238,8 +238,8 @@ class ServiceSubscriptionDlqPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceSubscriptionDlqPolicyArgs:
     def __init__(__self__, *,
-                 dead_letter_target_queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 dead_letter_target_queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] dead_letter_target_queue: The queue to which dead-letter messages are delivered.
         :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
@@ -251,26 +251,26 @@ class ServiceSubscriptionDlqPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="deadLetterTargetQueue")
-    def dead_letter_target_queue(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dead_letter_target_queue(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The queue to which dead-letter messages are delivered.
         """
         return pulumi.get(self, "dead_letter_target_queue")
 
     @dead_letter_target_queue.setter
-    def dead_letter_target_queue(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dead_letter_target_queue(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dead_letter_target_queue", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 

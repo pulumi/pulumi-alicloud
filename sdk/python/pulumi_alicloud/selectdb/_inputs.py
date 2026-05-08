@@ -30,11 +30,11 @@ __all__ = [
 ]
 
 class DbClusterDesiredParamArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Parameter name.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The new value of Parameter.
     """
@@ -42,8 +42,8 @@ class DbClusterDesiredParamArgsDict(TypedDict):
 @pulumi.input_type
 class DbClusterDesiredParamArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Parameter name.
         :param pulumi.Input[_builtins.str] value: The new value of Parameter.
@@ -55,55 +55,55 @@ class DbClusterDesiredParamArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Parameter name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new value of Parameter.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class DbClusterParamChangeLogArgsDict(TypedDict):
-    config_id: NotRequired[pulumi.Input[_builtins.int]]
+    config_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The id of parameter change.
     """
-    gmt_created: NotRequired[pulumi.Input[_builtins.str]]
+    gmt_created: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     When the parameter change is created.
     """
-    gmt_modified: NotRequired[pulumi.Input[_builtins.str]]
+    gmt_modified: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     When the parameter change is modified.
     """
-    is_applied: NotRequired[pulumi.Input[_builtins.bool]]
+    is_applied: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the parameter changing is applied.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Changed parameter name.
     """
-    new_value: NotRequired[pulumi.Input[_builtins.str]]
+    new_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The new value of parameter.
     """
-    old_value: NotRequired[pulumi.Input[_builtins.str]]
+    old_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The old value of parameter.
     """
@@ -111,13 +111,13 @@ class DbClusterParamChangeLogArgsDict(TypedDict):
 @pulumi.input_type
 class DbClusterParamChangeLogArgs:
     def __init__(__self__, *,
-                 config_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 gmt_created: Optional[pulumi.Input[_builtins.str]] = None,
-                 gmt_modified: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_applied: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 old_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 config_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 gmt_created: pulumi.Input[Optional[_builtins.str]] = None,
+                 gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_applied: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 old_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] config_id: The id of parameter change.
         :param pulumi.Input[_builtins.str] gmt_created: When the parameter change is created.
@@ -144,95 +144,95 @@ class DbClusterParamChangeLogArgs:
 
     @_builtins.property
     @pulumi.getter(name="configId")
-    def config_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def config_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The id of parameter change.
         """
         return pulumi.get(self, "config_id")
 
     @config_id.setter
-    def config_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def config_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gmtCreated")
-    def gmt_created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gmt_created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the parameter change is created.
         """
         return pulumi.get(self, "gmt_created")
 
     @gmt_created.setter
-    def gmt_created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gmt_created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gmt_created", value)
 
     @_builtins.property
     @pulumi.getter(name="gmtModified")
-    def gmt_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gmt_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the parameter change is modified.
         """
         return pulumi.get(self, "gmt_modified")
 
     @gmt_modified.setter
-    def gmt_modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gmt_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gmt_modified", value)
 
     @_builtins.property
     @pulumi.getter(name="isApplied")
-    def is_applied(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_applied(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the parameter changing is applied.
         """
         return pulumi.get(self, "is_applied")
 
     @is_applied.setter
-    def is_applied(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_applied(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_applied", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Changed parameter name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="newValue")
-    def new_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def new_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new value of parameter.
         """
         return pulumi.get(self, "new_value")
 
     @new_value.setter
-    def new_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def new_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "new_value", value)
 
     @_builtins.property
     @pulumi.getter(name="oldValue")
-    def old_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def old_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The old value of parameter.
         """
         return pulumi.get(self, "old_value")
 
     @old_value.setter
-    def old_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def old_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "old_value", value)
 
 
 class DbInstanceDesiredSecurityIpListArgsDict(TypedDict):
-    group_name: NotRequired[pulumi.Input[_builtins.str]]
+    group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Security group name.
     """
-    security_ip_list: NotRequired[pulumi.Input[_builtins.str]]
+    security_ip_list: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP list of Security group. Each single IP value should be Separated by comma.
     """
@@ -240,8 +240,8 @@ class DbInstanceDesiredSecurityIpListArgsDict(TypedDict):
 @pulumi.input_type
 class DbInstanceDesiredSecurityIpListArgs:
     def __init__(__self__, *,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_list: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_list: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] group_name: Security group name.
         :param pulumi.Input[_builtins.str] security_ip_list: The IP list of Security group. Each single IP value should be Separated by comma.
@@ -253,51 +253,51 @@ class DbInstanceDesiredSecurityIpListArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security group name.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpList")
-    def security_ip_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_ip_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP list of Security group. Each single IP value should be Separated by comma.
         """
         return pulumi.get(self, "security_ip_list")
 
     @security_ip_list.setter
-    def security_ip_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_ip_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_ip_list", value)
 
 
 class DbInstanceInstanceNetInfoArgsDict(TypedDict):
-    connection_string: NotRequired[pulumi.Input[_builtins.str]]
+    connection_string: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection string of the instance.
     """
-    db_ip: NotRequired[pulumi.Input[_builtins.str]]
+    db_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address of the instance.
     """
-    net_type: NotRequired[pulumi.Input[_builtins.str]]
+    net_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The network type of the instance.
     """
-    port_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['DbInstanceInstanceNetInfoPortListArgsDict']]]]
+    port_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceInstanceNetInfoPortListArgs']]]]]
     """
     A list for port provides SelectDB service.
     """
-    vpc_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VPC ID.
     """
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of vswitch for DBInstance.
     """
@@ -305,12 +305,12 @@ class DbInstanceInstanceNetInfoArgsDict(TypedDict):
 @pulumi.input_type
 class DbInstanceInstanceNetInfoArgs:
     def __init__(__self__, *,
-                 connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceInstanceNetInfoPortListArgs']]]] = None,
-                 vpc_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_lists: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceInstanceNetInfoPortListArgs']]]] = None,
+                 vpc_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] connection_string: The connection string of the instance.
         :param pulumi.Input[_builtins.str] db_ip: The IP address of the instance.
@@ -334,83 +334,83 @@ class DbInstanceInstanceNetInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection string of the instance.
         """
         return pulumi.get(self, "connection_string")
 
     @connection_string.setter
-    def connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="dbIp")
-    def db_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the instance.
         """
         return pulumi.get(self, "db_ip")
 
     @db_ip.setter
-    def db_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="netType")
-    def net_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the instance.
         """
         return pulumi.get(self, "net_type")
 
     @net_type.setter
-    def net_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_type", value)
 
     @_builtins.property
     @pulumi.getter(name="portLists")
-    def port_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceInstanceNetInfoPortListArgs']]]]:
+    def port_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceInstanceNetInfoPortListArgs']]]]:
         """
         A list for port provides SelectDB service.
         """
         return pulumi.get(self, "port_lists")
 
     @port_lists.setter
-    def port_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceInstanceNetInfoPortListArgs']]]]):
+    def port_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceInstanceNetInfoPortListArgs']]]]):
         pulumi.set(self, "port_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcInstanceId")
-    def vpc_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ID.
         """
         return pulumi.get(self, "vpc_instance_id")
 
     @vpc_instance_id.setter
-    def vpc_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of vswitch for DBInstance.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 class DbInstanceInstanceNetInfoPortListArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The port that is used to connect.
     """
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protocol of the port.
     """
@@ -418,8 +418,8 @@ class DbInstanceInstanceNetInfoPortListArgsDict(TypedDict):
 @pulumi.input_type
 class DbInstanceInstanceNetInfoPortListArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] port: The port that is used to connect.
         :param pulumi.Input[_builtins.str] protocol: The protocol of the port.
@@ -431,47 +431,47 @@ class DbInstanceInstanceNetInfoPortListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port that is used to connect.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol of the port.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
 
 class DbInstanceSecurityIpListArgsDict(TypedDict):
-    group_name: NotRequired[pulumi.Input[_builtins.str]]
+    group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Security group name.
     """
-    group_tag: NotRequired[pulumi.Input[_builtins.str]]
+    group_tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag of Security group.
     """
-    list_net_type: NotRequired[pulumi.Input[_builtins.str]]
+    list_net_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The network type of Security group.
     """
-    security_ip_list: NotRequired[pulumi.Input[_builtins.str]]
+    security_ip_list: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP list of Security group. Each single IP value should be Separated by comma.
     """
-    security_ip_type: NotRequired[pulumi.Input[_builtins.str]]
+    security_ip_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address type. Valid values: `ipv4`, `ipv6` (not supported).
     """
@@ -479,11 +479,11 @@ class DbInstanceSecurityIpListArgsDict(TypedDict):
 @pulumi.input_type
 class DbInstanceSecurityIpListArgs:
     def __init__(__self__, *,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 list_net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 list_net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] group_name: Security group name.
         :param pulumi.Input[_builtins.str] group_tag: The tag of Security group.
@@ -504,62 +504,62 @@ class DbInstanceSecurityIpListArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security group name.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupTag")
-    def group_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag of Security group.
         """
         return pulumi.get(self, "group_tag")
 
     @group_tag.setter
-    def group_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="listNetType")
-    def list_net_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def list_net_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of Security group.
         """
         return pulumi.get(self, "list_net_type")
 
     @list_net_type.setter
-    def list_net_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def list_net_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "list_net_type", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpList")
-    def security_ip_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_ip_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP list of Security group. Each single IP value should be Separated by comma.
         """
         return pulumi.get(self, "security_ip_list")
 
     @security_ip_list.setter
-    def security_ip_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_ip_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_ip_list", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpType")
-    def security_ip_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_ip_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address type. Valid values: `ipv4`, `ipv6` (not supported).
         """
         return pulumi.get(self, "security_ip_type")
 
     @security_ip_type.setter
-    def security_ip_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_ip_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_ip_type", value)
 
 

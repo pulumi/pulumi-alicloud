@@ -182,43 +182,43 @@ export interface SecretParameterState {
      * * `MinLength`: The minimum length of the encryption parameter.
      * * `MaxLength`: The maximum length of the encryption parameter.
      */
-    constraints?: pulumi.Input<string>;
+    constraints?: pulumi.Input<string | undefined>;
     /**
      * Parameter creation time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the encryption parameter. The description must be `1` to `200` characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the KMS instance.
      */
-    dkmsInstanceId?: pulumi.Input<string>;
+    dkmsInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Resource Group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
      */
-    secretParameterName?: pulumi.Input<string>;
+    secretParameterName?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The data type of the encryption parameter. Valid values: `Secret`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The value of the encryption parameter. The value must be `1` to `4096` characters in length.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -232,23 +232,23 @@ export interface SecretParameterArgs {
      * * `MinLength`: The minimum length of the encryption parameter.
      * * `MaxLength`: The maximum length of the encryption parameter.
      */
-    constraints?: pulumi.Input<string>;
+    constraints?: pulumi.Input<string | undefined>;
     /**
      * The description of the encryption parameter. The description must be `1` to `200` characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the KMS instance.
      */
-    dkmsInstanceId?: pulumi.Input<string>;
+    dkmsInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Resource Group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
      */
@@ -256,11 +256,11 @@ export interface SecretParameterArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The data type of the encryption parameter. Valid values: `Secret`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The value of the encryption parameter. The value must be `1` to `4096` characters in length.
      */

@@ -172,11 +172,11 @@ export interface GetRegistryEnterpriseReposOutputArgs {
     /**
      * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Repository IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the Container Registry instance.
      */
@@ -184,13 +184,13 @@ export interface GetRegistryEnterpriseReposOutputArgs {
     /**
      * A regex string to filter results by Repository name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The name of the namespace to which the Repository belongs.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

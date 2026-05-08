@@ -58,8 +58,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -101,8 +101,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -144,8 +144,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -187,8 +187,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -230,8 +230,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -273,8 +273,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -316,8 +316,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetAccountAliasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -380,8 +380,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -425,8 +425,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -470,8 +470,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -515,8 +515,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -560,8 +560,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -605,8 +605,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -650,8 +650,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -701,8 +701,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -779,8 +779,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -857,8 +857,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -935,8 +935,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1013,8 +1013,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1091,8 +1091,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1169,8 +1169,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1245,8 +1245,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1295,8 +1295,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1375,8 +1375,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1425,8 +1425,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1475,8 +1475,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1541,8 +1541,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1591,8 +1591,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1671,8 +1671,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1721,8 +1721,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1771,8 +1771,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1837,8 +1837,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1887,8 +1887,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1967,8 +1967,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2017,8 +2017,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2067,8 +2067,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2133,8 +2133,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2183,8 +2183,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2263,8 +2263,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2313,8 +2313,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2363,8 +2363,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2429,8 +2429,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2479,8 +2479,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2559,8 +2559,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2609,8 +2609,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2659,8 +2659,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2725,8 +2725,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2775,8 +2775,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2855,8 +2855,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2905,8 +2905,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2955,8 +2955,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3021,8 +3021,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3071,8 +3071,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3151,8 +3151,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3201,8 +3201,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3251,8 +3251,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3321,8 +3321,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolePolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3431,8 +3431,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolePolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3541,8 +3541,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolePolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3651,8 +3651,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolePolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3761,8 +3761,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolePolicyAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3869,8 +3869,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3951,8 +3951,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4033,8 +4033,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4115,8 +4115,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4197,8 +4197,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4279,8 +4279,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4361,8 +4361,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4439,8 +4439,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4485,8 +4485,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4531,8 +4531,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4577,8 +4577,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4623,8 +4623,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4669,8 +4669,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4715,8 +4715,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4759,8 +4759,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4804,8 +4804,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4849,8 +4849,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4894,8 +4894,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4939,8 +4939,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4984,8 +4984,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5029,8 +5029,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5084,8 +5084,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.UserPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5190,8 +5190,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.UserPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5296,8 +5296,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.UserPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5402,8 +5402,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.UserPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5508,8 +5508,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.UserPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5614,8 +5614,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.UserPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5720,8 +5720,8 @@ public final class RamFunctions {
      * import com.pulumi.alicloud.ram.UserPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

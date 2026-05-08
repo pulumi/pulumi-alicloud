@@ -146,30 +146,30 @@ export function getBackupPoliciesOutput(args?: GetBackupPoliciesOutputArgs, opts
  * A collection of arguments for invoking getBackupPolicies.
  */
 export interface GetBackupPoliciesOutputArgs {
-    currentPage?: pulumi.Input<number>;
+    currentPage?: pulumi.Input<number | undefined>;
     /**
      * A list of Threat Detection Backup Policies IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The information that you want to use to identify the servers protected by the anti-ransomware policy. You can enter the IP address or ID of a server.
      */
-    machineRemark?: pulumi.Input<string>;
+    machineRemark?: pulumi.Input<string | undefined>;
     /**
      * The name of the anti-ransomware policy that you want to query.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Threat Detection Backup Policies name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

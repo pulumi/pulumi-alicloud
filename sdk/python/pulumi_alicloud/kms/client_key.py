@@ -21,9 +21,9 @@ class ClientKeyArgs:
     def __init__(__self__, *,
                  aap_name: pulumi.Input[_builtins.str],
                  password: pulumi.Input[_builtins.str],
-                 not_after: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_before: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_data_file: Optional[pulumi.Input[_builtins.str]] = None):
+                 not_after: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_before: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_data_file: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientKey resource.
 
@@ -68,50 +68,50 @@ class ClientKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="notAfter")
-    def not_after(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def not_after(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ClientKey expiration time. Example: "2027-08-10 T08:03:30Z".
         """
         return pulumi.get(self, "not_after")
 
     @not_after.setter
-    def not_after(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def not_after(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "not_after", value)
 
     @_builtins.property
     @pulumi.getter(name="notBefore")
-    def not_before(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def not_before(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The valid start time of the ClientKey. Example: "2022-08-10 T08:03:30Z".
         """
         return pulumi.get(self, "not_before")
 
     @not_before.setter
-    def not_before(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def not_before(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "not_before", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKeyDataFile")
-    def private_key_data_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key_data_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
         """
         return pulumi.get(self, "private_key_data_file")
 
     @private_key_data_file.setter
-    def private_key_data_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key_data_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key_data_file", value)
 
 
 @pulumi.input_type
 class _ClientKeyState:
     def __init__(__self__, *,
-                 aap_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_after: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_before: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_data_file: Optional[pulumi.Input[_builtins.str]] = None):
+                 aap_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_after: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_before: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_data_file: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClientKey resources.
 
@@ -137,74 +137,74 @@ class _ClientKeyState:
 
     @_builtins.property
     @pulumi.getter(name="aapName")
-    def aap_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aap_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ClientKey's parent Application Access Point name.
         """
         return pulumi.get(self, "aap_name")
 
     @aap_name.setter
-    def aap_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aap_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aap_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create timestamp, e.g. "2022-08-10T08:03:30Z".
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="notAfter")
-    def not_after(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def not_after(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ClientKey expiration time. Example: "2027-08-10 T08:03:30Z".
         """
         return pulumi.get(self, "not_after")
 
     @not_after.setter
-    def not_after(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def not_after(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "not_after", value)
 
     @_builtins.property
     @pulumi.getter(name="notBefore")
-    def not_before(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def not_before(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The valid start time of the ClientKey. Example: "2022-08-10 T08:03:30Z".
         """
         return pulumi.get(self, "not_before")
 
     @not_before.setter
-    def not_before(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def not_before(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "not_before", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         To enhance security, set a password for the downloaded Client Key,When an application accesses KMS, you must use the ClientKey content and this password to initialize the SDK client.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKeyDataFile")
-    def private_key_data_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key_data_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
         """
         return pulumi.get(self, "private_key_data_file")
 
     @private_key_data_file.setter
-    def private_key_data_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key_data_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key_data_file", value)
 
 
@@ -214,11 +214,11 @@ class ClientKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aap_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_after: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_before: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_data_file: Optional[pulumi.Input[_builtins.str]] = None,
+                 aap_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_after: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_before: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_data_file: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a KMS Client Key resource. Client key (of Application Access Point).
@@ -337,11 +337,11 @@ class ClientKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aap_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_after: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_before: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_data_file: Optional[pulumi.Input[_builtins.str]] = None,
+                 aap_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_after: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_before: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_data_file: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -373,12 +373,12 @@ class ClientKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aap_name: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            not_after: Optional[pulumi.Input[_builtins.str]] = None,
-            not_before: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            private_key_data_file: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClientKey':
+            aap_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            not_after: pulumi.Input[Optional[_builtins.str]] = None,
+            not_before: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key_data_file: pulumi.Input[Optional[_builtins.str]] = None) -> 'ClientKey':
         """
         Get an existing ClientKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

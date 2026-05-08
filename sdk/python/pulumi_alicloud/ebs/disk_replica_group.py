@@ -23,16 +23,16 @@ class DiskReplicaGroupArgs:
                  destination_zone_id: pulumi.Input[_builtins.str],
                  source_region_id: pulumi.Input[_builtins.str],
                  source_zone_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_replica_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 one_shot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pair_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_replicate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rpo: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_replica_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pair_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rpo: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DiskReplicaGroup resource.
 
@@ -153,44 +153,44 @@ class DiskReplicaGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the consistent replication group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskReplicaGroupName")
-    def disk_replica_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_replica_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Consistent replication group name.
         """
         return pulumi.get(self, "disk_replica_group_name")
 
     @disk_replica_group_name.setter
-    def disk_replica_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_replica_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_replica_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
     @_utilities.deprecated("""Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.""")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="oneShot")
-    def one_shot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def one_shot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to synchronize immediately. Value range:
         - true: Start data synchronization immediately.
@@ -201,60 +201,60 @@ class DiskReplicaGroupArgs:
         return pulumi.get(self, "one_shot")
 
     @one_shot.setter
-    def one_shot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def one_shot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "one_shot", value)
 
     @_builtins.property
     @pulumi.getter(name="pairIds")
-    def pair_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def pair_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of replication pair IDs contained in a consistent replication group.
         """
         return pulumi.get(self, "pair_ids")
 
     @pair_ids.setter
-    def pair_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def pair_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pair_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         resource group ID of enterprise
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="reverseReplicate")
-    def reverse_replicate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reverse_replicate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
         """
         return pulumi.get(self, "reverse_replicate")
 
     @reverse_replicate.setter
-    def reverse_replicate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reverse_replicate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reverse_replicate", value)
 
     @_builtins.property
     @pulumi.getter
-    def rpo(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rpo(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         """
         return pulumi.get(self, "rpo")
 
     @rpo.setter
-    def rpo(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rpo(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rpo", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the consistent replication group. Possible values:
         - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
@@ -279,12 +279,12 @@ class DiskReplicaGroupArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
 
@@ -293,27 +293,27 @@ class DiskReplicaGroupArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _DiskReplicaGroupState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_replica_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 one_shot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pair_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_replicate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rpo: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_replica_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pair_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rpo: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DiskReplicaGroup resources.
 
@@ -390,68 +390,68 @@ class _DiskReplicaGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the consistent replication group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationRegionId")
-    def destination_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region to which the disaster recovery site belongs.
         """
         return pulumi.get(self, "destination_region_id")
 
     @destination_region_id.setter
-    def destination_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationZoneId")
-    def destination_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone to which the disaster recovery site belongs.
         """
         return pulumi.get(self, "destination_zone_id")
 
     @destination_zone_id.setter
-    def destination_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="diskReplicaGroupName")
-    def disk_replica_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_replica_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Consistent replication group name.
         """
         return pulumi.get(self, "disk_replica_group_name")
 
     @disk_replica_group_name.setter
-    def disk_replica_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_replica_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_replica_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
     @_utilities.deprecated("""Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.""")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="oneShot")
-    def one_shot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def one_shot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to synchronize immediately. Value range:
         - true: Start data synchronization immediately.
@@ -462,84 +462,84 @@ class _DiskReplicaGroupState:
         return pulumi.get(self, "one_shot")
 
     @one_shot.setter
-    def one_shot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def one_shot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "one_shot", value)
 
     @_builtins.property
     @pulumi.getter(name="pairIds")
-    def pair_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def pair_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of replication pair IDs contained in a consistent replication group.
         """
         return pulumi.get(self, "pair_ids")
 
     @pair_ids.setter
-    def pair_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def pair_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pair_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         resource group ID of enterprise
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="reverseReplicate")
-    def reverse_replicate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reverse_replicate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
         """
         return pulumi.get(self, "reverse_replicate")
 
     @reverse_replicate.setter
-    def reverse_replicate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reverse_replicate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reverse_replicate", value)
 
     @_builtins.property
     @pulumi.getter
-    def rpo(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rpo(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         """
         return pulumi.get(self, "rpo")
 
     @rpo.setter
-    def rpo(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rpo(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rpo", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRegionId")
-    def source_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region to which the production site belongs.
         """
         return pulumi.get(self, "source_region_id")
 
     @source_region_id.setter
-    def source_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceZoneId")
-    def source_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone to which the production site belongs.
         """
         return pulumi.get(self, "source_zone_id")
 
     @source_zone_id.setter
-    def source_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_zone_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the consistent replication group. Possible values:
         - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
@@ -564,12 +564,12 @@ class _DiskReplicaGroupState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
 
@@ -578,7 +578,7 @@ class _DiskReplicaGroupState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -588,20 +588,20 @@ class DiskReplicaGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_replica_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 one_shot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pair_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_replicate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rpo: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_replica_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pair_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rpo: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Elastic Block Storage(EBS) Disk Replica Group resource.
@@ -753,20 +753,20 @@ class DiskReplicaGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_replica_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 one_shot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pair_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_replicate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rpo: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_replica_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pair_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rpo: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -808,20 +808,20 @@ class DiskReplicaGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_replica_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            one_shot: Optional[pulumi.Input[_builtins.bool]] = None,
-            pair_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            reverse_replicate: Optional[pulumi.Input[_builtins.bool]] = None,
-            rpo: Optional[pulumi.Input[_builtins.int]] = None,
-            source_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DiskReplicaGroup':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_replica_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
+            pair_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reverse_replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+            rpo: pulumi.Input[Optional[_builtins.int]] = None,
+            source_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DiskReplicaGroup':
         """
         Get an existing DiskReplicaGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

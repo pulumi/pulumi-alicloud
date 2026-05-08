@@ -283,99 +283,99 @@ export interface ClickHouseEnterpriseDbClusterState {
     /**
      * Instance type.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The billing method.
      */
-    chargeType?: pulumi.Input<string>;
+    chargeType?: pulumi.Input<string | undefined>;
     /**
      * List of computing group IDs.
      */
-    computingGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    computingGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The cluster creation time, in the format yyyy-MM-ddTHH:mm:ssZ.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Cluster description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of endpoint details.
      */
-    endpoints?: pulumi.Input<pulumi.Input<inputs.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterEndpoint>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterEndpoint>[] | undefined>;
     /**
      * The minor version number of the cluster engine.
      */
-    engineMinorVersion?: pulumi.Input<string>;
+    engineMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * Network type of the instance.
      */
-    instanceNetworkType?: pulumi.Input<string>;
+    instanceNetworkType?: pulumi.Input<string | undefined>;
     /**
      * The multi-zone configuration. See `multiZones` below.
      */
-    multiZones?: pulumi.Input<pulumi.Input<inputs.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterMultiZone>[]>;
+    multiZones?: pulumi.Input<pulumi.Input<inputs.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterMultiZone>[] | undefined>;
     /**
      * The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
      */
-    nodeScaleMax?: pulumi.Input<number>;
+    nodeScaleMax?: pulumi.Input<number | undefined>;
     /**
      * The minimum value for serverless node auto-scaling. Valid values: 4–32.
      */
-    nodeScaleMin?: pulumi.Input<number>;
+    nodeScaleMin?: pulumi.Input<number | undefined>;
     /**
      * The region ID.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Resource group ID of the cluster.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      */
-    scaleMax?: pulumi.Input<string>;
+    scaleMax?: pulumi.Input<string | undefined>;
     /**
      * The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      */
-    scaleMin?: pulumi.Input<string>;
+    scaleMin?: pulumi.Input<string | undefined>;
     /**
      * The instance status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Pre-purchased storage capacity (GB).
      */
-    storageQuota?: pulumi.Input<string>;
+    storageQuota?: pulumi.Input<string | undefined>;
     /**
      * The storage capacity.
      */
-    storageSize?: pulumi.Input<number>;
+    storageSize?: pulumi.Input<number | undefined>;
     /**
      * The storage type.
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * Tag information.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VPC ID.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * vSwitch ID.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -385,49 +385,49 @@ export interface ClickHouseEnterpriseDbClusterArgs {
     /**
      * Cluster description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The multi-zone configuration. See `multiZones` below.
      */
-    multiZones?: pulumi.Input<pulumi.Input<inputs.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterMultiZone>[]>;
+    multiZones?: pulumi.Input<pulumi.Input<inputs.clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterMultiZone>[] | undefined>;
     /**
      * The number of nodes. Valid values: 2 to 16. This parameter is required when NodeScaleMin and NodeScaleMax are configured to define the auto-scaling range.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * Maximum value for serverless node auto scaling. Valid values range from 4 to 32 and must be greater than the minimum value.
      */
-    nodeScaleMax?: pulumi.Input<number>;
+    nodeScaleMax?: pulumi.Input<number | undefined>;
     /**
      * The minimum value for serverless node auto-scaling. Valid values: 4–32.
      */
-    nodeScaleMin?: pulumi.Input<number>;
+    nodeScaleMin?: pulumi.Input<number | undefined>;
     /**
      * Resource group ID of the cluster.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The maximum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      */
-    scaleMax?: pulumi.Input<string>;
+    scaleMax?: pulumi.Input<string | undefined>;
     /**
      * The minimum value for serverless auto scaling. This parameter is not recommended. We recommend that you use NodeCount, NodeScaleMin, and NodeScaleMax to configure auto scaling capabilities.
      */
-    scaleMin?: pulumi.Input<string>;
+    scaleMin?: pulumi.Input<string | undefined>;
     /**
      * Tag information.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VPC ID.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * vSwitch ID.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

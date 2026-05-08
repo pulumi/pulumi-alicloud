@@ -98,7 +98,7 @@ def get_blocked_regions(language: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         language=pulumi.get(__ret__, 'language'),
         regions=pulumi.get(__ret__, 'regions'))
-def get_blocked_regions_output(language: Optional[pulumi.Input[_builtins.str]] = None,
+def get_blocked_regions_output(language: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBlockedRegionsResult]:
     """
     This data source provides the Cdn blocked regions.

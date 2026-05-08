@@ -203,12 +203,12 @@ def get_registry_enterprise_repos(enable_details: Optional[_builtins.bool] = Non
         namespace=pulumi.get(__ret__, 'namespace'),
         output_file=pulumi.get(__ret__, 'output_file'),
         repos=pulumi.get(__ret__, 'repos'))
-def get_registry_enterprise_repos_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                         ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                         instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                         name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_registry_enterprise_repos_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                         ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                         instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                         name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistryEnterpriseReposResult]:
     """
     This data source provides the Container Registry Enterprise Edition Repositories of the current Alibaba Cloud user.

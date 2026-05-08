@@ -186,46 +186,46 @@ export function getSubnetsOutput(args?: GetSubnetsOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getSubnets.
  */
 export interface GetSubnetsOutputArgs {
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Group Metric Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Resource Group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Primary key ID.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * The Subnet name.
      */
-    subnetName?: pulumi.Input<string>;
+    subnetName?: pulumi.Input<string | undefined>;
     /**
      * Eflo subnet usage type, optional value: 
      * - General type is not filled in
      * - OOB:OOB type
      * - LB: LB type
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The Eflo VPD ID.
      */
-    vpdId?: pulumi.Input<string>;
+    vpdId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the resource.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -21,7 +21,7 @@ class HandshakeArgs:
     def __init__(__self__, *,
                  target_entity: pulumi.Input[_builtins.str],
                  target_type: pulumi.Input[_builtins.str],
-                 note: Optional[pulumi.Input[_builtins.str]] = None):
+                 note: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Handshake resource.
 
@@ -67,7 +67,7 @@ class HandshakeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def note(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def note(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the invitation.
         The description can be up to 1,024 characters in length.
@@ -75,23 +75,23 @@ class HandshakeArgs:
         return pulumi.get(self, "note")
 
     @note.setter
-    def note(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def note(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "note", value)
 
 
 @pulumi.input_type
 class _HandshakeState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_entity: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_entity: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Handshake resources.
 
@@ -133,67 +133,67 @@ class _HandshakeState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the invitation was created. The time is displayed in UTC.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the invitation expires. The time is displayed in UTC.
         """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="masterAccountId")
-    def master_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the management account of the resource directory.
         """
         return pulumi.get(self, "master_account_id")
 
     @master_account_id.setter
-    def master_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="masterAccountName")
-    def master_account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the management account of the resource directory.
         """
         return pulumi.get(self, "master_account_name")
 
     @master_account_name.setter
-    def master_account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyTime")
-    def modify_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the invitation was modified. The time is displayed in UTC.
         """
         return pulumi.get(self, "modify_time")
 
     @modify_time.setter
-    def modify_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def note(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def note(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the invitation.
         The description can be up to 1,024 characters in length.
@@ -201,48 +201,48 @@ class _HandshakeState:
         return pulumi.get(self, "note")
 
     @note.setter
-    def note(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def note(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "note", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceDirectoryId")
-    def resource_directory_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_directory_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource directory.
         """
         return pulumi.get(self, "resource_directory_id")
 
     @resource_directory_id.setter
-    def resource_directory_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_directory_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_directory_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the invitation.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="targetEntity")
-    def target_entity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_entity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or logon email address of the account that you want to invite.
         """
         return pulumi.get(self, "target_entity")
 
     @target_entity.setter
-    def target_entity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_entity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_entity", value)
 
     @_builtins.property
     @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the invited account. Valid values:
 
@@ -252,7 +252,7 @@ class _HandshakeState:
         return pulumi.get(self, "target_type")
 
     @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_type", value)
 
 
@@ -262,9 +262,9 @@ class Handshake(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_entity: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_entity: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Handshake resource.
@@ -363,9 +363,9 @@ class Handshake(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_entity: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_entity: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -399,16 +399,16 @@ class Handshake(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-            master_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            master_account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_time: Optional[pulumi.Input[_builtins.str]] = None,
-            note: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            target_entity: Optional[pulumi.Input[_builtins.str]] = None,
-            target_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Handshake':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            master_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            master_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+            note: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_entity: pulumi.Input[Optional[_builtins.str]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Handshake':
         """
         Get an existing Handshake resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

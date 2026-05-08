@@ -176,39 +176,39 @@ export interface DatabaseState {
     /**
      * The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
      */
-    characterSetName?: pulumi.Input<string>;
+    characterSetName?: pulumi.Input<string | undefined>;
     /**
      * The language that defines the collation rules in the database.
      * > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
      */
-    collate?: pulumi.Input<string>;
+    collate?: pulumi.Input<string | undefined>;
     /**
      * The language that indicates the character type of the database.
      * > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
      */
-    ctype?: pulumi.Input<string>;
+    ctype?: pulumi.Input<string | undefined>;
     /**
      * The ID of cluster.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * The description of the database. The description must meet the following requirements:
      * - It cannot start with `http://` or `https://`.
      * - It must be 2 to 256 characters in length.
      */
-    dbDescription?: pulumi.Input<string>;
+    dbDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
      */
-    dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.265.0) The state of the database.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -218,21 +218,21 @@ export interface DatabaseArgs {
     /**
      * The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
      */
-    characterSetName?: pulumi.Input<string>;
+    characterSetName?: pulumi.Input<string | undefined>;
     /**
      * The language that defines the collation rules in the database.
      * > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
      */
-    collate?: pulumi.Input<string>;
+    collate?: pulumi.Input<string | undefined>;
     /**
      * The language that indicates the character type of the database.
      * > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
      */
-    ctype?: pulumi.Input<string>;
+    ctype?: pulumi.Input<string | undefined>;
     /**
      * The ID of cluster.
      */
@@ -242,7 +242,7 @@ export interface DatabaseArgs {
      * - It cannot start with `http://` or `https://`.
      * - It must be 2 to 256 characters in length.
      */
-    dbDescription?: pulumi.Input<string>;
+    dbDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
      */

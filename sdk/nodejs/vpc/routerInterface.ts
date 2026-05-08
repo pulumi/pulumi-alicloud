@@ -231,83 +231,83 @@ export interface RouterInterfaceState {
      *
      * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
-    accessPointId?: pulumi.Input<string>;
+    accessPointId?: pulumi.Input<string | undefined>;
     /**
      * Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
      */
-    healthCheckSourceIp?: pulumi.Input<string>;
+    healthCheckSourceIp?: pulumi.Input<string | undefined>;
     /**
      * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
      */
-    healthCheckTargetIp?: pulumi.Input<string>;
+    healthCheckTargetIp?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and oppositeRegion are the same.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
      * If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.11.0.
      *
      * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
-    oppositeAccessPointId?: pulumi.Input<string>;
+    oppositeAccessPointId?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      *
      * @deprecated Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
      */
-    oppositeInterfaceId?: pulumi.Input<string>;
+    oppositeInterfaceId?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
      *
      * @deprecated Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.
      */
-    oppositeInterfaceOwnerId?: pulumi.Input<string>;
+    oppositeInterfaceOwnerId?: pulumi.Input<string | undefined>;
     /**
      * The Region of peer side.
      */
-    oppositeRegion?: pulumi.Input<string>;
+    oppositeRegion?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      *
      * @deprecated Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      */
-    oppositeRouterId?: pulumi.Input<string>;
+    oppositeRouterId?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      *
      * @deprecated Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      */
-    oppositeRouterType?: pulumi.Input<string>;
+    oppositeRouterType?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The Router ID.
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
     /**
      * Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
      */
-    routerType?: pulumi.Input<string>;
+    routerType?: pulumi.Input<string | undefined>;
     /**
      * Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
      */
-    specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -317,30 +317,30 @@ export interface RouterInterfaceArgs {
     /**
      * Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
      */
-    healthCheckSourceIp?: pulumi.Input<string>;
+    healthCheckSourceIp?: pulumi.Input<string | undefined>;
     /**
      * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
      */
-    healthCheckTargetIp?: pulumi.Input<string>;
+    healthCheckTargetIp?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and oppositeRegion are the same.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
      * If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.11.0.
      *
      * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
-    oppositeAccessPointId?: pulumi.Input<string>;
+    oppositeAccessPointId?: pulumi.Input<string | undefined>;
     /**
      * The Region of peer side.
      */
@@ -349,7 +349,7 @@ export interface RouterInterfaceArgs {
      * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
      */
@@ -365,5 +365,5 @@ export interface RouterInterfaceArgs {
     /**
      * Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
      */
-    specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string | undefined>;
 }

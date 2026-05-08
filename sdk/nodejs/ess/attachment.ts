@@ -225,19 +225,19 @@ export interface AttachmentState {
     /**
      * Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
      */
-    entrusted?: pulumi.Input<boolean>;
+    entrusted?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
      */
-    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
      */
-    lifecycleHook?: pulumi.Input<boolean>;
+    lifecycleHook?: pulumi.Input<boolean | undefined>;
     /**
      * The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
      *
@@ -251,11 +251,11 @@ export interface AttachmentState {
      * - The attached ECS instances has not been attached to other scaling groups.
      * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
      */
-    loadBalancerWeights?: pulumi.Input<pulumi.Input<number>[]>;
+    loadBalancerWeights?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * ID of the scaling group of a scaling configuration.
      */
-    scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -265,11 +265,11 @@ export interface AttachmentArgs {
     /**
      * Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
      */
-    entrusted?: pulumi.Input<boolean>;
+    entrusted?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
      */
@@ -277,7 +277,7 @@ export interface AttachmentArgs {
     /**
      * Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
      */
-    lifecycleHook?: pulumi.Input<boolean>;
+    lifecycleHook?: pulumi.Input<boolean | undefined>;
     /**
      * The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
      *
@@ -291,7 +291,7 @@ export interface AttachmentArgs {
      * - The attached ECS instances has not been attached to other scaling groups.
      * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
      */
-    loadBalancerWeights?: pulumi.Input<pulumi.Input<number>[]>;
+    loadBalancerWeights?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * ID of the scaling group of a scaling configuration.
      */

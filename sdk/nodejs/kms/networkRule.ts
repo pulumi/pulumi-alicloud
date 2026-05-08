@@ -120,15 +120,15 @@ export interface NetworkRuleState {
     /**
      * Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Network Rule Name.
      */
-    networkRuleName?: pulumi.Input<string>;
+    networkRuleName?: pulumi.Input<string | undefined>;
     /**
      * Allowed private network addresses.
      */
-    sourcePrivateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    sourcePrivateIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -138,11 +138,11 @@ export interface NetworkRuleArgs {
     /**
      * Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Network Rule Name.
      */
-    networkRuleName?: pulumi.Input<string>;
+    networkRuleName?: pulumi.Input<string | undefined>;
     /**
      * Allowed private network addresses.
      */

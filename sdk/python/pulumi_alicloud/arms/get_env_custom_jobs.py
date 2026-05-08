@@ -190,10 +190,10 @@ def get_env_custom_jobs(environment_id: Optional[_builtins.str] = None,
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_env_custom_jobs_output(environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_env_custom_jobs_output(environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                               ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvCustomJobsResult]:
     """
     This data source provides the ARMS Env Custom Jobs of the current Alibaba Cloud user.

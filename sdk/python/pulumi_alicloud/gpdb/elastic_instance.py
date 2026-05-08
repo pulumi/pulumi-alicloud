@@ -26,17 +26,17 @@ class ElasticInstanceArgs:
                  seg_storage_type: pulumi.Input[_builtins.str],
                  storage_size: pulumi.Input[_builtins.int],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 db_instance_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ElasticInstance resource.
 
@@ -181,67 +181,67 @@ class ElasticInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceCategory")
-    def db_instance_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
         """
         return pulumi.get(self, "db_instance_category")
 
     @db_instance_category.setter
-    def db_instance_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_category", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceDescription")
-    def db_instance_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of ADB PG instance. It is a string of 2 to 256 characters.
         """
         return pulumi.get(self, "db_instance_description")
 
     @db_instance_description.setter
-    def db_instance_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
         """
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionType")
-    def encryption_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
         """
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
-    def encryption_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceNetworkType")
-    def instance_network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of ADB PG instance. Only `VPC` supported now.
         """
         return pulumi.get(self, "instance_network_type")
 
     @instance_network_type.setter
-    def instance_network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDuration")
-    def payment_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def payment_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
         **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
@@ -249,12 +249,12 @@ class ElasticInstanceArgs:
         return pulumi.get(self, "payment_duration")
 
     @payment_duration.setter
-    def payment_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def payment_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "payment_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDurationUnit")
-    def payment_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
         **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
@@ -262,82 +262,82 @@ class ElasticInstanceArgs:
         return pulumi.get(self, "payment_duration_unit")
 
     @payment_duration_unit.setter
-    def payment_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpLists")
-    def security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
         return pulumi.get(self, "security_ip_lists")
 
     @security_ip_lists.setter
-    def security_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_ip_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_ip_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _ElasticInstanceState:
     def __init__(__self__, *,
-                 connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 seg_node_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 seg_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ElasticInstance resources.
 
@@ -412,103 +412,103 @@ class _ElasticInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ADB PG instance connection string.
         """
         return pulumi.get(self, "connection_string")
 
     @connection_string.setter
-    def connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceCategory")
-    def db_instance_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition of the instance. Valid values: `Basic`, `HighAvailability`. Default value: `HighAvailability`.
         """
         return pulumi.get(self, "db_instance_category")
 
     @db_instance_category.setter
-    def db_instance_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_category", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceDescription")
-    def db_instance_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of ADB PG instance. It is a string of 2 to 256 characters.
         """
         return pulumi.get(self, "db_instance_description")
 
     @db_instance_description.setter
-    def db_instance_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
         """
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionType")
-    def encryption_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
         """
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
-    def encryption_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database engine: `gpdb`.
         """
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database version. Valid value is `6.0`.
         """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceNetworkType")
-    def instance_network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of ADB PG instance. Only `VPC` supported now.
         """
         return pulumi.get(self, "instance_network_type")
 
     @instance_network_type.setter
-    def instance_network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceSpec")
-    def instance_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of segment nodes. 
         * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
@@ -517,12 +517,12 @@ class _ElasticInstanceState:
         return pulumi.get(self, "instance_spec")
 
     @instance_spec.setter
-    def instance_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDuration")
-    def payment_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def payment_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
         **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
@@ -530,12 +530,12 @@ class _ElasticInstanceState:
         return pulumi.get(self, "payment_duration")
 
     @payment_duration.setter
-    def payment_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def payment_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "payment_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDurationUnit")
-    def payment_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
         **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
@@ -543,127 +543,127 @@ class _ElasticInstanceState:
         return pulumi.get(self, "payment_duration_unit")
 
     @payment_duration_unit.setter
-    def payment_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.196.0) The connection port of the instance.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpLists")
-    def security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
         return pulumi.get(self, "security_ip_lists")
 
     @security_ip_lists.setter
-    def security_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_ip_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_ip_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="segNodeNum")
-    def seg_node_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seg_node_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
         """
         return pulumi.get(self, "seg_node_num")
 
     @seg_node_num.setter
-    def seg_node_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seg_node_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seg_node_num", value)
 
     @_builtins.property
     @pulumi.getter(name="segStorageType")
-    def seg_storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def seg_storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk type of segment nodes. Valid values: `cloud_essd`, `cloud_efficiency`.
         """
         return pulumi.get(self, "seg_storage_type")
 
     @seg_storage_type.setter
-    def seg_storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def seg_storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "seg_storage_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSize")
-    def storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The storage capacity of per segment node. Unit: GB. Minimum is `50`, max is `4000`, step is `50`.
         """
         return pulumi.get(self, "storage_size")
 
     @storage_size.setter
-    def storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The virtual switch ID to launch ADB PG instances in one VPC.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -673,24 +673,24 @@ class ElasticInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 seg_node_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 seg_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.\\
@@ -836,24 +836,24 @@ class ElasticInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 seg_node_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 seg_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -908,27 +908,27 @@ class ElasticInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_category: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-            encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-            encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-            engine: Optional[pulumi.Input[_builtins.str]] = None,
-            engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.str]] = None,
-            security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            seg_node_num: Optional[pulumi.Input[_builtins.int]] = None,
-            seg_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ElasticInstance':
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+            seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ElasticInstance':
         """
         Get an existing ElasticInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

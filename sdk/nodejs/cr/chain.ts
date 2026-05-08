@@ -282,31 +282,31 @@ export interface ChainState {
     /**
      * The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      */
-    chainConfigs?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfig>[]>;
+    chainConfigs?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfig>[] | undefined>;
     /**
      * Delivery chain ID.
      */
-    chainId?: pulumi.Input<string>;
+    chainId?: pulumi.Input<string | undefined>;
     /**
      * The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
      */
-    chainName?: pulumi.Input<string>;
+    chainName?: pulumi.Input<string | undefined>;
     /**
      * The description delivery chain.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of CR Enterprise Edition instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of CR Enterprise Edition repository. **NOTE:** This parameter must specify a correct value, otherwise the created resource will be incorrect.
      */
-    repoName?: pulumi.Input<string>;
+    repoName?: pulumi.Input<string | undefined>;
     /**
      * The name of CR Enterprise Edition namespace. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      */
-    repoNamespaceName?: pulumi.Input<string>;
+    repoNamespaceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -316,7 +316,7 @@ export interface ChainArgs {
     /**
      * The configuration of delivery chain. See `chainConfig` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      */
-    chainConfigs?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfig>[]>;
+    chainConfigs?: pulumi.Input<pulumi.Input<inputs.cr.ChainChainConfig>[] | undefined>;
     /**
      * The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
      */
@@ -324,7 +324,7 @@ export interface ChainArgs {
     /**
      * The description delivery chain.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of CR Enterprise Edition instance.
      */
@@ -332,9 +332,9 @@ export interface ChainArgs {
     /**
      * The name of CR Enterprise Edition repository. **NOTE:** This parameter must specify a correct value, otherwise the created resource will be incorrect.
      */
-    repoName?: pulumi.Input<string>;
+    repoName?: pulumi.Input<string | undefined>;
     /**
      * The name of CR Enterprise Edition namespace. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      */
-    repoNamespaceName?: pulumi.Input<string>;
+    repoNamespaceName?: pulumi.Input<string | undefined>;
 }

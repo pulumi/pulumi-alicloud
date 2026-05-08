@@ -28,17 +28,17 @@ class ServerlessInstanceArgs:
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_price_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]] = None,
-                 storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_price_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]] = None,
+                 storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServerlessInstance resource.
 
@@ -181,159 +181,159 @@ class ServerlessInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set whether the instance is automatically renewed.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceDescription")
-    def db_instance_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The db instance description.
         """
         return pulumi.get(self, "db_instance_description")
 
     @db_instance_description.setter
-    def db_instance_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_description", value)
 
     @_builtins.property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database engine of the instance. Valid values: `MongoDB`.
         """
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainEndTime")
-    def maintain_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintain_start_time` is `01:00Z`, `maintain_end_time` must be `02:00Z`.
         """
         return pulumi.get(self, "maintain_end_time")
 
     @maintain_end_time.setter
-    def maintain_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainStartTime")
-    def maintain_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC.
         """
         return pulumi.get(self, "maintain_start_time")
 
     @maintain_start_time.setter
-    def maintain_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The purchase duration of the instance, in months. Valid values: `1` to `9`, `12`, `24`, `36`, `60`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodPriceType")
-    def period_price_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_price_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The period price type. Valid values: `Day`, `Month`.
         """
         return pulumi.get(self, "period_price_type")
 
     @period_price_type.setter
-    def period_price_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_price_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_price_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpGroups")
-    def security_ip_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]]:
+    def security_ip_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]]:
         """
         An array that consists of the information of IP whitelists.
         """
         return pulumi.get(self, "security_ip_groups")
 
     @security_ip_groups.setter
-    def security_ip_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]]):
+    def security_ip_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]]):
         pulumi.set(self, "security_ip_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="storageEngine")
-    def storage_engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage engine used by the instance. Valid values: `WiredTiger`.
         """
         return pulumi.get(self, "storage_engine")
 
     @storage_engine.setter
-    def storage_engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_engine", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ServerlessInstanceState:
     def __init__(__self__, *,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 capacity_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_price_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 capacity_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_price_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerlessInstance resources.
 
@@ -400,7 +400,7 @@ class _ServerlessInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the database logon account.
         * The password length is `8` to `32` bits.
@@ -409,223 +409,223 @@ class _ServerlessInstanceState:
         return pulumi.get(self, "account_password")
 
     @account_password.setter
-    def account_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set whether the instance is automatically renewed.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityUnit")
-    def capacity_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def capacity_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The I/O throughput consumed by the instance. Valid values: `100` to `8000`.
         """
         return pulumi.get(self, "capacity_unit")
 
     @capacity_unit.setter
-    def capacity_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def capacity_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "capacity_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceDescription")
-    def db_instance_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The db instance description.
         """
         return pulumi.get(self, "db_instance_description")
 
     @db_instance_description.setter
-    def db_instance_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_description", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceStorage")
-    def db_instance_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def db_instance_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The db instance storage. Valid values: `1` to `100`.
         """
         return pulumi.get(self, "db_instance_storage")
 
     @db_instance_storage.setter
-    def db_instance_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def db_instance_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "db_instance_storage", value)
 
     @_builtins.property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database engine of the instance. Valid values: `MongoDB`.
         """
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database version number. Valid values: `4.2`.
         """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainEndTime")
-    def maintain_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintain_start_time` is `01:00Z`, `maintain_end_time` must be `02:00Z`.
         """
         return pulumi.get(self, "maintain_end_time")
 
     @maintain_end_time.setter
-    def maintain_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainStartTime")
-    def maintain_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC.
         """
         return pulumi.get(self, "maintain_start_time")
 
     @maintain_start_time.setter
-    def maintain_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The purchase duration of the instance, in months. Valid values: `1` to `9`, `12`, `24`, `36`, `60`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodPriceType")
-    def period_price_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_price_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The period price type. Valid values: `Day`, `Month`.
         """
         return pulumi.get(self, "period_price_type")
 
     @period_price_type.setter
-    def period_price_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_price_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_price_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpGroups")
-    def security_ip_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]]:
+    def security_ip_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]]:
         """
         An array that consists of the information of IP whitelists.
         """
         return pulumi.get(self, "security_ip_groups")
 
     @security_ip_groups.setter
-    def security_ip_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]]):
+    def security_ip_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]]):
         pulumi.set(self, "security_ip_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance status. For more information, see the instance Status Table.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageEngine")
-    def storage_engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage engine used by the instance. Valid values: `WiredTiger`.
         """
         return pulumi.get(self, "storage_engine")
 
     @storage_engine.setter
-    def storage_engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_engine", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC network.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The of the vswitch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone. Use this parameter to specify the zone created by the instance.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -635,24 +635,24 @@ class ServerlessInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 capacity_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_price_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]]] = None,
-                 storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 capacity_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_price_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]]] = None,
+                 storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a MongoDB Serverless Instance resource.
@@ -814,24 +814,24 @@ class ServerlessInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 capacity_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_price_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]]] = None,
-                 storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 capacity_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_price_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]]] = None,
+                 storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -886,25 +886,25 @@ class ServerlessInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_password: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            capacity_unit: Optional[pulumi.Input[_builtins.int]] = None,
-            db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_storage: Optional[pulumi.Input[_builtins.int]] = None,
-            engine: Optional[pulumi.Input[_builtins.str]] = None,
-            engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-            maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            period_price_type: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServerlessInstance':
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            capacity_unit: pulumi.Input[Optional[_builtins.int]] = None,
+            db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_price_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessInstanceSecurityIpGroupArgs', 'ServerlessInstanceSecurityIpGroupArgsDict']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServerlessInstance':
         """
         Get an existing ServerlessInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

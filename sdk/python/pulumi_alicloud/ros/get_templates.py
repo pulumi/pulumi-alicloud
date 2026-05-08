@@ -188,13 +188,13 @@ def get_templates(enable_details: Optional[_builtins.bool] = None,
         tags=pulumi.get(__ret__, 'tags'),
         template_name=pulumi.get(__ret__, 'template_name'),
         templates=pulumi.get(__ret__, 'templates'))
-def get_templates_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                         ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         share_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                         template_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_templates_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                         ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         share_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                         template_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTemplatesResult]:
     """
     This data source provides the Ros Templates of the current Alibaba Cloud user.

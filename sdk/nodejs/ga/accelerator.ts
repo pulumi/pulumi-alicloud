@@ -198,76 +198,76 @@ export interface AcceleratorState {
     /**
      * The Name of the GA instance.
      */
-    acceleratorName?: pulumi.Input<string>;
+    acceleratorName?: pulumi.Input<string | undefined>;
     /**
      * Auto renewal period of an instance, in the unit of month. The value range is 1-12.
      */
-    autoRenewDuration?: pulumi.Input<number>;
+    autoRenewDuration?: pulumi.Input<number | undefined>;
     /**
      * Use coupons to pay bills automatically. Default value: `false`. Valid values:
      */
-    autoUseCoupon?: pulumi.Input<boolean>;
+    autoUseCoupon?: pulumi.Input<boolean | undefined>;
     /**
      * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
      * - `BandwidthPackage`: billed based on bandwidth plans.
      * - `CDT`: billed based on data transfer.
      */
-    bandwidthBillingType?: pulumi.Input<string>;
+    bandwidthBillingType?: pulumi.Input<string | undefined>;
     /**
      * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
      */
-    crossBorderMode?: pulumi.Input<string>;
+    crossBorderMode?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
      */
-    crossBorderStatus?: pulumi.Input<boolean>;
+    crossBorderStatus?: pulumi.Input<boolean | undefined>;
     /**
      * Descriptive information of the global acceleration instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The subscription duration.
      * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
      * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The billing cycle of the GA instance. Default value: `Month`. Valid values:
      * - `Month`: billed on a monthly basis.
      * - `Year`: billed on an annual basis.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      */
-    promotionOptionNo?: pulumi.Input<string>;
+    promotionOptionNo?: pulumi.Input<string | undefined>;
     /**
      * Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
      * - `AutoRenewal`: Enable auto renewal.
      * - `Normal`: Disable auto renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The instance type of the GA instance. Specification of global acceleration instance. Valid values:
      */
-    spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string | undefined>;
     /**
      * The status of the GA instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -277,70 +277,70 @@ export interface AcceleratorArgs {
     /**
      * The Name of the GA instance.
      */
-    acceleratorName?: pulumi.Input<string>;
+    acceleratorName?: pulumi.Input<string | undefined>;
     /**
      * Auto renewal period of an instance, in the unit of month. The value range is 1-12.
      */
-    autoRenewDuration?: pulumi.Input<number>;
+    autoRenewDuration?: pulumi.Input<number | undefined>;
     /**
      * Use coupons to pay bills automatically. Default value: `false`. Valid values:
      */
-    autoUseCoupon?: pulumi.Input<boolean>;
+    autoUseCoupon?: pulumi.Input<boolean | undefined>;
     /**
      * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
      * - `BandwidthPackage`: billed based on bandwidth plans.
      * - `CDT`: billed based on data transfer.
      */
-    bandwidthBillingType?: pulumi.Input<string>;
+    bandwidthBillingType?: pulumi.Input<string | undefined>;
     /**
      * The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
      */
-    crossBorderMode?: pulumi.Input<string>;
+    crossBorderMode?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
      */
-    crossBorderStatus?: pulumi.Input<boolean>;
+    crossBorderStatus?: pulumi.Input<boolean | undefined>;
     /**
      * Descriptive information of the global acceleration instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The subscription duration.
      * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
      * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The billing cycle of the GA instance. Default value: `Month`. Valid values:
      * - `Month`: billed on a monthly basis.
      * - `Year`: billed on an annual basis.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      */
-    promotionOptionNo?: pulumi.Input<string>;
+    promotionOptionNo?: pulumi.Input<string | undefined>;
     /**
      * Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
      * - `AutoRenewal`: Enable auto renewal.
      * - `Normal`: Disable auto renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The instance type of the GA instance. Specification of global acceleration instance. Valid values:
      */
-    spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

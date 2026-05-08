@@ -412,37 +412,37 @@ export interface GetClusterInstancesOutputArgs {
     /**
      * The emr cluster ID.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * A list of Cluster IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The cluster ecs instance states.
      */
-    instanceStates?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceStates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The max results is used to list emr cluster ecs instances for next page.
      */
-    maxResults?: pulumi.Input<number>;
+    maxResults?: pulumi.Input<number | undefined>;
     /**
      * The next token is used to list emr cluster ecs instances for next page.
      */
-    nextToken?: pulumi.Input<string>;
+    nextToken?: pulumi.Input<string | undefined>;
     /**
      * The cluster node group ids.
      */
-    nodeGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    nodeGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The cluster node group names.
      */
-    nodeGroupNames?: pulumi.Input<pulumi.Input<string>[]>;
+    nodeGroupNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

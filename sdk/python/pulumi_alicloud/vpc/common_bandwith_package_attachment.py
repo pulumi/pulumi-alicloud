@@ -21,9 +21,9 @@ class CommonBandwithPackageAttachmentArgs:
     def __init__(__self__, *,
                  bandwidth_package_id: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 bandwidth_package_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth_package_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 cancel_common_bandwidth_package_ip_bandwidth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CommonBandwithPackageAttachment resource.
 
@@ -80,7 +80,7 @@ class CommonBandwithPackageAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="bandwidthPackageBandwidth")
-    def bandwidth_package_bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_package_bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
@@ -88,44 +88,44 @@ class CommonBandwithPackageAttachmentArgs:
         return pulumi.get(self, "bandwidth_package_bandwidth")
 
     @bandwidth_package_bandwidth.setter
-    def bandwidth_package_bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_package_bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_package_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="cancelCommonBandwidthPackageIpBandwidth")
     @_utilities.deprecated("""Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from version 1.261.0. Replace with bandwidth_package_bandwidth = \"Cancelled\"""")
-    def cancel_common_bandwidth_package_ip_bandwidth(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cancel_common_bandwidth_package_ip_bandwidth(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
         """
         return pulumi.get(self, "cancel_common_bandwidth_package_ip_bandwidth")
 
     @cancel_common_bandwidth_package_ip_bandwidth.setter
-    def cancel_common_bandwidth_package_ip_bandwidth(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cancel_common_bandwidth_package_ip_bandwidth(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cancel_common_bandwidth_package_ip_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="ipType")
-    def ip_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         """
         return pulumi.get(self, "ip_type")
 
     @ip_type.setter
-    def ip_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_type", value)
 
 
 @pulumi.input_type
 class _CommonBandwithPackageAttachmentState:
     def __init__(__self__, *,
-                 bandwidth_package_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth_package_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cancel_common_bandwidth_package_ip_bandwidth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CommonBandwithPackageAttachment resources.
 
@@ -159,7 +159,7 @@ class _CommonBandwithPackageAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="bandwidthPackageBandwidth")
-    def bandwidth_package_bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_package_bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         > **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidth_package_bandwidth` to `Cancelled`.
@@ -167,37 +167,37 @@ class _CommonBandwithPackageAttachmentState:
         return pulumi.get(self, "bandwidth_package_bandwidth")
 
     @bandwidth_package_bandwidth.setter
-    def bandwidth_package_bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_package_bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_package_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthPackageId")
-    def bandwidth_package_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_package_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Internet Shared Bandwidth instance.
         """
         return pulumi.get(self, "bandwidth_package_id")
 
     @bandwidth_package_id.setter
-    def bandwidth_package_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_package_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_package_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cancelCommonBandwidthPackageIpBandwidth")
     @_utilities.deprecated("""Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from version 1.261.0. Replace with bandwidth_package_bandwidth = \"Cancelled\"""")
-    def cancel_common_bandwidth_package_ip_bandwidth(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cancel_common_bandwidth_package_ip_bandwidth(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         . Field `cancel_common_bandwidth_package_ip_bandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidth_package_bandwidth` = `"Cancelled"`.
         """
         return pulumi.get(self, "cancel_common_bandwidth_package_ip_bandwidth")
 
     @cancel_common_bandwidth_package_ip_bandwidth.setter
-    def cancel_common_bandwidth_package_ip_bandwidth(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cancel_common_bandwidth_package_ip_bandwidth(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cancel_common_bandwidth_package_ip_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the EIP that you want to query.
 
@@ -208,31 +208,31 @@ class _CommonBandwithPackageAttachmentState:
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipType")
-    def ip_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         """
         return pulumi.get(self, "ip_type")
 
     @ip_type.setter
-    def ip_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Internet Shared Bandwidth instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -242,11 +242,11 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth_package_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth_package_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cancel_common_bandwidth_package_ip_bandwidth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CBWP Common Bandwidth Package Attachment resource.
@@ -380,11 +380,11 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth_package_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth_package_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cancel_common_bandwidth_package_ip_bandwidth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -414,12 +414,12 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth_package_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-            bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'CommonBandwithPackageAttachment':
+            bandwidth_package_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cancel_common_bandwidth_package_ip_bandwidth: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'CommonBandwithPackageAttachment':
         """
         Get an existing CommonBandwithPackageAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -202,13 +202,13 @@ def get_industrial_pid_loops(enable_details: Optional[_builtins.bool] = None,
         pid_loop_name=pulumi.get(__ret__, 'pid_loop_name'),
         pid_project_id=pulumi.get(__ret__, 'pid_project_id'),
         status=pulumi.get(__ret__, 'status'))
-def get_industrial_pid_loops_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                    ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                    name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    pid_loop_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    pid_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_industrial_pid_loops_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                    ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                    name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    pid_loop_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    pid_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIndustrialPidLoopsResult]:
     """
     This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.

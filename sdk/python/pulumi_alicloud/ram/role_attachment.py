@@ -58,8 +58,8 @@ class RoleAttachmentArgs:
 @pulumi.input_type
 class _RoleAttachmentState:
     def __init__(__self__, *,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RoleAttachment resources.
 
@@ -73,26 +73,26 @@ class _RoleAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of ECS instance's IDs.
         """
         return pulumi.get(self, "instance_ids")
 
     @instance_ids.setter
-    def instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="roleName")
-    def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """
         return pulumi.get(self, "role_name")
 
     @role_name.setter
-    def role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_name", value)
 
 
@@ -102,8 +102,8 @@ class RoleAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RAM role attachment resource to bind role for several ECS instances.
@@ -122,7 +122,7 @@ class RoleAttachment(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=8,
+            memory_size=float(8),
             instance_type_family="ecs.g6")
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
@@ -216,7 +216,7 @@ class RoleAttachment(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=8,
+            memory_size=float(8),
             instance_type_family="ecs.g6")
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
@@ -297,8 +297,8 @@ class RoleAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -324,8 +324,8 @@ class RoleAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            role_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'RoleAttachment':
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'RoleAttachment':
         """
         Get an existing RoleAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

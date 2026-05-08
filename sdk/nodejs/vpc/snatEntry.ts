@@ -180,35 +180,35 @@ export interface SnatEntryState {
     /**
      * Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
      */
-    eipAffinity?: pulumi.Input<number>;
+    eipAffinity?: pulumi.Input<number | undefined>;
     /**
      * The id of the snat entry on the server.
      */
-    snatEntryId?: pulumi.Input<string>;
+    snatEntryId?: pulumi.Input<string | undefined>;
     /**
      * The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
-    snatEntryName?: pulumi.Input<string>;
+    snatEntryName?: pulumi.Input<string | undefined>;
     /**
      * The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
      */
-    snatIp?: pulumi.Input<string>;
+    snatIp?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SNAT table.
      */
-    snatTableId?: pulumi.Input<string>;
+    snatTableId?: pulumi.Input<string | undefined>;
     /**
      * The source CIDR block specified in the SNAT entry.
      */
-    sourceCidr?: pulumi.Input<string>;
+    sourceCidr?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch.
      */
-    sourceVswitchId?: pulumi.Input<string>;
+    sourceVswitchId?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.119.1) The ID of the SNAT entry.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -218,11 +218,11 @@ export interface SnatEntryArgs {
     /**
      * Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
      */
-    eipAffinity?: pulumi.Input<number>;
+    eipAffinity?: pulumi.Input<number | undefined>;
     /**
      * The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
-    snatEntryName?: pulumi.Input<string>;
+    snatEntryName?: pulumi.Input<string | undefined>;
     /**
      * The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snatIp` can be modified.
      */
@@ -234,9 +234,9 @@ export interface SnatEntryArgs {
     /**
      * The source CIDR block specified in the SNAT entry.
      */
-    sourceCidr?: pulumi.Input<string>;
+    sourceCidr?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch.
      */
-    sourceVswitchId?: pulumi.Input<string>;
+    sourceVswitchId?: pulumi.Input<string | undefined>;
 }

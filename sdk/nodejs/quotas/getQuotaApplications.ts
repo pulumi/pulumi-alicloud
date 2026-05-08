@@ -167,20 +167,20 @@ export interface GetQuotaApplicationsOutputArgs {
     /**
      * The quota dimensions.
      */
-    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetQuotaApplicationsDimensionArgs>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetQuotaApplicationsDimensionArgs>[] | undefined>;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Application Info IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    keyWord?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    keyWord?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The product code.
      */
@@ -188,13 +188,13 @@ export interface GetQuotaApplicationsOutputArgs {
     /**
      * The ID of quota action.
      */
-    quotaActionCode?: pulumi.Input<string>;
+    quotaActionCode?: pulumi.Input<string | undefined>;
     /**
      * The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
      */
-    quotaCategory?: pulumi.Input<string>;
+    quotaCategory?: pulumi.Input<string | undefined>;
     /**
      * The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

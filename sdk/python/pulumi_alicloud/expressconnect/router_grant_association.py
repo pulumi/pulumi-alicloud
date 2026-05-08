@@ -107,12 +107,12 @@ class RouterGrantAssociationArgs:
 @pulumi.input_type
 class _RouterGrantAssociationState:
     def __init__(__self__, *,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_owner_ali_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_owner_ali_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterGrantAssociation resources.
 
@@ -140,55 +140,55 @@ class _RouterGrantAssociationState:
 
     @_builtins.property
     @pulumi.getter(name="ecrId")
-    def ecr_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecr_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the associated Leased Line Gateway instance.
         """
         return pulumi.get(self, "ecr_id")
 
     @ecr_id.setter
-    def ecr_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecr_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecr_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ecrOwnerAliUid")
-    def ecr_owner_ali_uid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ecr_owner_ali_uid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Alibaba Cloud account (primary account) to which the leased line gateway instance is authorized.
         """
         return pulumi.get(self, "ecr_owner_ali_uid")
 
     @ecr_owner_ali_uid.setter
-    def ecr_owner_ali_uid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ecr_owner_ali_uid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ecr_owner_ali_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the network instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceRegionId")
-    def instance_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where the authorized network instance is located.
         """
         return pulumi.get(self, "instance_region_id")
 
     @instance_region_id.setter
-    def instance_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the network instance. Value:
         - `VBR`: the VBR instance.
@@ -197,19 +197,19 @@ class _RouterGrantAssociationState:
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -219,11 +219,11 @@ class RouterGrantAssociation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_owner_ali_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_owner_ali_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Express Connect Router Grant Association resource.
@@ -262,7 +262,7 @@ class RouterGrantAssociation(pulumi.CustomResource):
             ecr_id=ecr_id,
             instance_region_id=region,
             instance_id=vpc_id,
-            ecr_owner_ali_uid=ecr_owner_uid,
+            ecr_owner_ali_uid=int(ecr_owner_uid),
             instance_type="VPC")
         ```
 
@@ -330,7 +330,7 @@ class RouterGrantAssociation(pulumi.CustomResource):
             ecr_id=ecr_id,
             instance_region_id=region,
             instance_id=vpc_id,
-            ecr_owner_ali_uid=ecr_owner_uid,
+            ecr_owner_ali_uid=int(ecr_owner_uid),
             instance_type="VPC")
         ```
 
@@ -360,11 +360,11 @@ class RouterGrantAssociation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_owner_ali_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_owner_ali_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -400,12 +400,12 @@ class RouterGrantAssociation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ecr_owner_ali_uid: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'RouterGrantAssociation':
+            ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ecr_owner_ali_uid: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'RouterGrantAssociation':
         """
         Get an existing RouterGrantAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -176,19 +176,19 @@ export interface HostAccountUserAttachmentState {
     /**
      * A list IDs of the host account.
      */
-    hostAccountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    hostAccountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the host.
      */
-    hostId?: pulumi.Input<string>;
+    hostId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Bastionhost instance where you want to authorize the user to manage the specified hosts and host accounts.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user that you want to authorize to manage the specified hosts and host accounts.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**

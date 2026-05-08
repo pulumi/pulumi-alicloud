@@ -60,15 +60,15 @@ __all__ = [
 ]
 
 class DiAlarmRuleNotificationSettingsArgsDict(TypedDict):
-    inhibition_interval: NotRequired[pulumi.Input[_builtins.int]]
+    inhibition_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Alarm suppression interval, in minutes
     """
-    notification_channels: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationChannelArgsDict']]]]
+    notification_channels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationChannelArgs']]]]]
     """
     Alarm notification Channel See `notification_channels` below.
     """
-    notification_receivers: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationReceiverArgsDict']]]]
+    notification_receivers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationReceiverArgs']]]]]
     """
     List of alert notification recipients See `notification_receivers` below.
     """
@@ -76,9 +76,9 @@ class DiAlarmRuleNotificationSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class DiAlarmRuleNotificationSettingsArgs:
     def __init__(__self__, *,
-                 inhibition_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationChannelArgs']]]] = None,
-                 notification_receivers: Optional[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationReceiverArgs']]]] = None):
+                 inhibition_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationChannelArgs']]]] = None,
+                 notification_receivers: pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationReceiverArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.int] inhibition_interval: Alarm suppression interval, in minutes
         :param pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationChannelArgs']]] notification_channels: Alarm notification Channel See `notification_channels` below.
@@ -93,43 +93,43 @@ class DiAlarmRuleNotificationSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="inhibitionInterval")
-    def inhibition_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def inhibition_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Alarm suppression interval, in minutes
         """
         return pulumi.get(self, "inhibition_interval")
 
     @inhibition_interval.setter
-    def inhibition_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def inhibition_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "inhibition_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationChannels")
-    def notification_channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationChannelArgs']]]]:
+    def notification_channels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationChannelArgs']]]]:
         """
         Alarm notification Channel See `notification_channels` below.
         """
         return pulumi.get(self, "notification_channels")
 
     @notification_channels.setter
-    def notification_channels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationChannelArgs']]]]):
+    def notification_channels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationChannelArgs']]]]):
         pulumi.set(self, "notification_channels", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationReceivers")
-    def notification_receivers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationReceiverArgs']]]]:
+    def notification_receivers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationReceiverArgs']]]]:
         """
         List of alert notification recipients See `notification_receivers` below.
         """
         return pulumi.get(self, "notification_receivers")
 
     @notification_receivers.setter
-    def notification_receivers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationReceiverArgs']]]]):
+    def notification_receivers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationReceiverArgs']]]]):
         pulumi.set(self, "notification_receivers", value)
 
 
 class DiAlarmRuleNotificationSettingsNotificationChannelArgsDict(TypedDict):
-    channels: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    channels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Channel, optional enumeration value:
 
@@ -141,13 +141,13 @@ class DiAlarmRuleNotificationSettingsNotificationChannelArgsDict(TypedDict):
 
     Ding (DingTalk)
     """
-    severity: NotRequired[pulumi.Input[_builtins.str]]
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DiAlarmRuleNotificationSettingsNotificationChannelArgs:
     def __init__(__self__, *,
-                 channels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None):
+                 channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] channels: Channel, optional enumeration value:
                
@@ -166,7 +166,7 @@ class DiAlarmRuleNotificationSettingsNotificationChannelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def channels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Channel, optional enumeration value:
 
@@ -181,25 +181,25 @@ class DiAlarmRuleNotificationSettingsNotificationChannelArgs:
         return pulumi.get(self, "channels")
 
     @channels.setter
-    def channels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def channels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "channels", value)
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "severity", value)
 
 
 class DiAlarmRuleNotificationSettingsNotificationReceiverArgsDict(TypedDict):
-    receiver_type: NotRequired[pulumi.Input[_builtins.str]]
+    receiver_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the receiver. Valid values: AliyunUid/DingToken/FeishuToken/WebHookUrl.
     """
-    receiver_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    receiver_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Receiver Value List
     """
@@ -207,8 +207,8 @@ class DiAlarmRuleNotificationSettingsNotificationReceiverArgsDict(TypedDict):
 @pulumi.input_type
 class DiAlarmRuleNotificationSettingsNotificationReceiverArgs:
     def __init__(__self__, *,
-                 receiver_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 receiver_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 receiver_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 receiver_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] receiver_type: The type of the receiver. Valid values: AliyunUid/DingToken/FeishuToken/WebHookUrl.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] receiver_values: Receiver Value List
@@ -220,39 +220,39 @@ class DiAlarmRuleNotificationSettingsNotificationReceiverArgs:
 
     @_builtins.property
     @pulumi.getter(name="receiverType")
-    def receiver_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def receiver_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the receiver. Valid values: AliyunUid/DingToken/FeishuToken/WebHookUrl.
         """
         return pulumi.get(self, "receiver_type")
 
     @receiver_type.setter
-    def receiver_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def receiver_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "receiver_type", value)
 
     @_builtins.property
     @pulumi.getter(name="receiverValues")
-    def receiver_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def receiver_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Receiver Value List
         """
         return pulumi.get(self, "receiver_values")
 
     @receiver_values.setter
-    def receiver_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def receiver_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "receiver_values", value)
 
 
 class DiAlarmRuleTriggerConditionArgsDict(TypedDict):
-    ddl_report_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ddl_report_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     It takes effect only when the DDL notification is issued. The list of effective DDLs is required.
     """
-    duration: NotRequired[pulumi.Input[_builtins.int]]
+    duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Alarm calculation time interval, unit minute
     """
-    severity: NotRequired[pulumi.Input[_builtins.str]]
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Severity, optional enumeration value:
 
@@ -260,7 +260,7 @@ class DiAlarmRuleTriggerConditionArgsDict(TypedDict):
 
     Critical
     """
-    threshold: NotRequired[pulumi.Input[_builtins.int]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Alarm threshold.
 
@@ -274,10 +274,10 @@ class DiAlarmRuleTriggerConditionArgsDict(TypedDict):
 @pulumi.input_type
 class DiAlarmRuleTriggerConditionArgs:
     def __init__(__self__, *,
-                 ddl_report_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.int]] = None):
+                 ddl_report_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ddl_report_tags: It takes effect only when the DDL notification is issued. The list of effective DDLs is required.
         :param pulumi.Input[_builtins.int] duration: Alarm calculation time interval, unit minute
@@ -305,31 +305,31 @@ class DiAlarmRuleTriggerConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="ddlReportTags")
-    def ddl_report_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ddl_report_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         It takes effect only when the DDL notification is issued. The list of effective DDLs is required.
         """
         return pulumi.get(self, "ddl_report_tags")
 
     @ddl_report_tags.setter
-    def ddl_report_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ddl_report_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ddl_report_tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Alarm calculation time interval, unit minute
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Severity, optional enumeration value:
 
@@ -340,12 +340,12 @@ class DiAlarmRuleTriggerConditionArgs:
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "severity", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Alarm threshold.
 
@@ -358,12 +358,12 @@ class DiAlarmRuleTriggerConditionArgs:
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "threshold", value)
 
 
 class DiJobDestinationDataSourceSettingArgsDict(TypedDict):
-    data_source_name: NotRequired[pulumi.Input[_builtins.str]]
+    data_source_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Destination data source name
     """
@@ -371,7 +371,7 @@ class DiJobDestinationDataSourceSettingArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobDestinationDataSourceSettingArgs:
     def __init__(__self__, *,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] data_source_name: Destination data source name
         """
@@ -380,38 +380,38 @@ class DiJobDestinationDataSourceSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataSourceName")
-    def data_source_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Destination data source name
         """
         return pulumi.get(self, "data_source_name")
 
     @data_source_name.setter
-    def data_source_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_name", value)
 
 
 class DiJobJobSettingsArgsDict(TypedDict):
-    channel_settings: NotRequired[pulumi.Input[_builtins.str]]
+    channel_settings: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Channel-related task settings, in the form of a Json String.
 
     For example,
     {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
     """
-    column_data_type_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsColumnDataTypeSettingArgsDict']]]]
+    column_data_type_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsColumnDataTypeSettingArgs']]]]]
     """
     Column type mapping of the synchronization task See `column_data_type_settings` below.
     """
-    cycle_schedule_settings: NotRequired[pulumi.Input['DiJobJobSettingsCycleScheduleSettingsArgsDict']]
+    cycle_schedule_settings: NotRequired[pulumi.Input[Optional['DiJobJobSettingsCycleScheduleSettingsArgs']]]
     """
     Periodic scheduling settings See `cycle_schedule_settings` below.
     """
-    ddl_handling_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsDdlHandlingSettingArgsDict']]]]
+    ddl_handling_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsDdlHandlingSettingArgs']]]]]
     """
     List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
     """
-    runtime_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsRuntimeSettingArgsDict']]]]
+    runtime_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsRuntimeSettingArgs']]]]]
     """
     Run-time setting parameter list See `runtime_settings` below.
     """
@@ -419,11 +419,11 @@ class DiJobJobSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobJobSettingsArgs:
     def __init__(__self__, *,
-                 channel_settings: Optional[pulumi.Input[_builtins.str]] = None,
-                 column_data_type_settings: Optional[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsColumnDataTypeSettingArgs']]]] = None,
-                 cycle_schedule_settings: Optional[pulumi.Input['DiJobJobSettingsCycleScheduleSettingsArgs']] = None,
-                 ddl_handling_settings: Optional[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsDdlHandlingSettingArgs']]]] = None,
-                 runtime_settings: Optional[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsRuntimeSettingArgs']]]] = None):
+                 channel_settings: pulumi.Input[Optional[_builtins.str]] = None,
+                 column_data_type_settings: pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsColumnDataTypeSettingArgs']]]] = None,
+                 cycle_schedule_settings: pulumi.Input[Optional['DiJobJobSettingsCycleScheduleSettingsArgs']] = None,
+                 ddl_handling_settings: pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsDdlHandlingSettingArgs']]]] = None,
+                 runtime_settings: pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsRuntimeSettingArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] channel_settings: Channel-related task settings, in the form of a Json String.
                
@@ -447,7 +447,7 @@ class DiJobJobSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="channelSettings")
-    def channel_settings(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def channel_settings(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Channel-related task settings, in the form of a Json String.
 
@@ -457,64 +457,64 @@ class DiJobJobSettingsArgs:
         return pulumi.get(self, "channel_settings")
 
     @channel_settings.setter
-    def channel_settings(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def channel_settings(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "channel_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="columnDataTypeSettings")
-    def column_data_type_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsColumnDataTypeSettingArgs']]]]:
+    def column_data_type_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsColumnDataTypeSettingArgs']]]]:
         """
         Column type mapping of the synchronization task See `column_data_type_settings` below.
         """
         return pulumi.get(self, "column_data_type_settings")
 
     @column_data_type_settings.setter
-    def column_data_type_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsColumnDataTypeSettingArgs']]]]):
+    def column_data_type_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsColumnDataTypeSettingArgs']]]]):
         pulumi.set(self, "column_data_type_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="cycleScheduleSettings")
-    def cycle_schedule_settings(self) -> Optional[pulumi.Input['DiJobJobSettingsCycleScheduleSettingsArgs']]:
+    def cycle_schedule_settings(self) -> pulumi.Input[Optional['DiJobJobSettingsCycleScheduleSettingsArgs']]:
         """
         Periodic scheduling settings See `cycle_schedule_settings` below.
         """
         return pulumi.get(self, "cycle_schedule_settings")
 
     @cycle_schedule_settings.setter
-    def cycle_schedule_settings(self, value: Optional[pulumi.Input['DiJobJobSettingsCycleScheduleSettingsArgs']]):
+    def cycle_schedule_settings(self, value: pulumi.Input[Optional['DiJobJobSettingsCycleScheduleSettingsArgs']]):
         pulumi.set(self, "cycle_schedule_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="ddlHandlingSettings")
-    def ddl_handling_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsDdlHandlingSettingArgs']]]]:
+    def ddl_handling_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsDdlHandlingSettingArgs']]]]:
         """
         List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
         """
         return pulumi.get(self, "ddl_handling_settings")
 
     @ddl_handling_settings.setter
-    def ddl_handling_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsDdlHandlingSettingArgs']]]]):
+    def ddl_handling_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsDdlHandlingSettingArgs']]]]):
         pulumi.set(self, "ddl_handling_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeSettings")
-    def runtime_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsRuntimeSettingArgs']]]]:
+    def runtime_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsRuntimeSettingArgs']]]]:
         """
         Run-time setting parameter list See `runtime_settings` below.
         """
         return pulumi.get(self, "runtime_settings")
 
     @runtime_settings.setter
-    def runtime_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiJobJobSettingsRuntimeSettingArgs']]]]):
+    def runtime_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsRuntimeSettingArgs']]]]):
         pulumi.set(self, "runtime_settings", value)
 
 
 class DiJobJobSettingsColumnDataTypeSettingArgsDict(TypedDict):
-    destination_data_type: NotRequired[pulumi.Input[_builtins.str]]
+    destination_data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The destination type of the mapping relationship
     """
-    source_data_type: NotRequired[pulumi.Input[_builtins.str]]
+    source_data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The source type of the mapping type
     """
@@ -522,8 +522,8 @@ class DiJobJobSettingsColumnDataTypeSettingArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobJobSettingsColumnDataTypeSettingArgs:
     def __init__(__self__, *,
-                 destination_data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_data_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 destination_data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_data_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] destination_data_type: The destination type of the mapping relationship
         :param pulumi.Input[_builtins.str] source_data_type: The source type of the mapping type
@@ -535,31 +535,31 @@ class DiJobJobSettingsColumnDataTypeSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="destinationDataType")
-    def destination_data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination type of the mapping relationship
         """
         return pulumi.get(self, "destination_data_type")
 
     @destination_data_type.setter
-    def destination_data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_data_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDataType")
-    def source_data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source type of the mapping type
         """
         return pulumi.get(self, "source_data_type")
 
     @source_data_type.setter
-    def source_data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_data_type", value)
 
 
 class DiJobJobSettingsCycleScheduleSettingsArgsDict(TypedDict):
-    cycle_migration_type: NotRequired[pulumi.Input[_builtins.str]]
+    cycle_migration_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of synchronization that requires periodic scheduling. Value range:
 
@@ -567,7 +567,7 @@ class DiJobJobSettingsCycleScheduleSettingsArgsDict(TypedDict):
 
     OfflineIncremental: offline increment
     """
-    schedule_parameters: NotRequired[pulumi.Input[_builtins.str]]
+    schedule_parameters: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Scheduling Parameters
     """
@@ -575,8 +575,8 @@ class DiJobJobSettingsCycleScheduleSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobJobSettingsCycleScheduleSettingsArgs:
     def __init__(__self__, *,
-                 cycle_migration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_parameters: Optional[pulumi.Input[_builtins.str]] = None):
+                 cycle_migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_parameters: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cycle_migration_type: The type of synchronization that requires periodic scheduling. Value range:
                
@@ -592,7 +592,7 @@ class DiJobJobSettingsCycleScheduleSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="cycleMigrationType")
-    def cycle_migration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cycle_migration_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of synchronization that requires periodic scheduling. Value range:
 
@@ -603,25 +603,25 @@ class DiJobJobSettingsCycleScheduleSettingsArgs:
         return pulumi.get(self, "cycle_migration_type")
 
     @cycle_migration_type.setter
-    def cycle_migration_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cycle_migration_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cycle_migration_type", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleParameters")
-    def schedule_parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scheduling Parameters
         """
         return pulumi.get(self, "schedule_parameters")
 
     @schedule_parameters.setter
-    def schedule_parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_parameters", value)
 
 
 class DiJobJobSettingsDdlHandlingSettingArgsDict(TypedDict):
-    action: NotRequired[pulumi.Input[_builtins.str]]
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     DDL type, optional enumeration value:
 
@@ -639,8 +639,8 @@ class DiJobJobSettingsDdlHandlingSettingArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobJobSettingsDdlHandlingSettingArgs:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: DDL type, optional enumeration value:
                
@@ -661,16 +661,16 @@ class DiJobJobSettingsDdlHandlingSettingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DDL type, optional enumeration value:
 
@@ -687,12 +687,12 @@ class DiJobJobSettingsDdlHandlingSettingArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class DiJobJobSettingsRuntimeSettingArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Set name, optional ENUM value:
 
@@ -712,7 +712,7 @@ class DiJobJobSettingsRuntimeSettingArgsDict(TypedDict):
 
     runtime.realtime.concurrent (real-time task concurrency)
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Runtime setting value
     """
@@ -720,8 +720,8 @@ class DiJobJobSettingsRuntimeSettingArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobJobSettingsRuntimeSettingArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Set name, optional ENUM value:
                
@@ -749,7 +749,7 @@ class DiJobJobSettingsRuntimeSettingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set name, optional ENUM value:
 
@@ -772,32 +772,32 @@ class DiJobJobSettingsRuntimeSettingArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Runtime setting value
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class DiJobResourceSettingsArgsDict(TypedDict):
-    offline_resource_settings: NotRequired[pulumi.Input['DiJobResourceSettingsOfflineResourceSettingsArgsDict']]
+    offline_resource_settings: NotRequired[pulumi.Input[Optional['DiJobResourceSettingsOfflineResourceSettingsArgs']]]
     """
     Offline Resource Group configuration See `offline_resource_settings` below.
     """
-    realtime_resource_settings: NotRequired[pulumi.Input['DiJobResourceSettingsRealtimeResourceSettingsArgsDict']]
+    realtime_resource_settings: NotRequired[pulumi.Input[Optional['DiJobResourceSettingsRealtimeResourceSettingsArgs']]]
     """
     Real-time Resource Group See `realtime_resource_settings` below.
     """
-    schedule_resource_settings: NotRequired[pulumi.Input['DiJobResourceSettingsScheduleResourceSettingsArgsDict']]
+    schedule_resource_settings: NotRequired[pulumi.Input[Optional['DiJobResourceSettingsScheduleResourceSettingsArgs']]]
     """
     Scheduling Resource Groups See `schedule_resource_settings` below.
     """
@@ -805,9 +805,9 @@ class DiJobResourceSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobResourceSettingsArgs:
     def __init__(__self__, *,
-                 offline_resource_settings: Optional[pulumi.Input['DiJobResourceSettingsOfflineResourceSettingsArgs']] = None,
-                 realtime_resource_settings: Optional[pulumi.Input['DiJobResourceSettingsRealtimeResourceSettingsArgs']] = None,
-                 schedule_resource_settings: Optional[pulumi.Input['DiJobResourceSettingsScheduleResourceSettingsArgs']] = None):
+                 offline_resource_settings: pulumi.Input[Optional['DiJobResourceSettingsOfflineResourceSettingsArgs']] = None,
+                 realtime_resource_settings: pulumi.Input[Optional['DiJobResourceSettingsRealtimeResourceSettingsArgs']] = None,
+                 schedule_resource_settings: pulumi.Input[Optional['DiJobResourceSettingsScheduleResourceSettingsArgs']] = None):
         """
         :param pulumi.Input['DiJobResourceSettingsOfflineResourceSettingsArgs'] offline_resource_settings: Offline Resource Group configuration See `offline_resource_settings` below.
         :param pulumi.Input['DiJobResourceSettingsRealtimeResourceSettingsArgs'] realtime_resource_settings: Real-time Resource Group See `realtime_resource_settings` below.
@@ -822,47 +822,47 @@ class DiJobResourceSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="offlineResourceSettings")
-    def offline_resource_settings(self) -> Optional[pulumi.Input['DiJobResourceSettingsOfflineResourceSettingsArgs']]:
+    def offline_resource_settings(self) -> pulumi.Input[Optional['DiJobResourceSettingsOfflineResourceSettingsArgs']]:
         """
         Offline Resource Group configuration See `offline_resource_settings` below.
         """
         return pulumi.get(self, "offline_resource_settings")
 
     @offline_resource_settings.setter
-    def offline_resource_settings(self, value: Optional[pulumi.Input['DiJobResourceSettingsOfflineResourceSettingsArgs']]):
+    def offline_resource_settings(self, value: pulumi.Input[Optional['DiJobResourceSettingsOfflineResourceSettingsArgs']]):
         pulumi.set(self, "offline_resource_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="realtimeResourceSettings")
-    def realtime_resource_settings(self) -> Optional[pulumi.Input['DiJobResourceSettingsRealtimeResourceSettingsArgs']]:
+    def realtime_resource_settings(self) -> pulumi.Input[Optional['DiJobResourceSettingsRealtimeResourceSettingsArgs']]:
         """
         Real-time Resource Group See `realtime_resource_settings` below.
         """
         return pulumi.get(self, "realtime_resource_settings")
 
     @realtime_resource_settings.setter
-    def realtime_resource_settings(self, value: Optional[pulumi.Input['DiJobResourceSettingsRealtimeResourceSettingsArgs']]):
+    def realtime_resource_settings(self, value: pulumi.Input[Optional['DiJobResourceSettingsRealtimeResourceSettingsArgs']]):
         pulumi.set(self, "realtime_resource_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleResourceSettings")
-    def schedule_resource_settings(self) -> Optional[pulumi.Input['DiJobResourceSettingsScheduleResourceSettingsArgs']]:
+    def schedule_resource_settings(self) -> pulumi.Input[Optional['DiJobResourceSettingsScheduleResourceSettingsArgs']]:
         """
         Scheduling Resource Groups See `schedule_resource_settings` below.
         """
         return pulumi.get(self, "schedule_resource_settings")
 
     @schedule_resource_settings.setter
-    def schedule_resource_settings(self, value: Optional[pulumi.Input['DiJobResourceSettingsScheduleResourceSettingsArgs']]):
+    def schedule_resource_settings(self, value: pulumi.Input[Optional['DiJobResourceSettingsScheduleResourceSettingsArgs']]):
         pulumi.set(self, "schedule_resource_settings", value)
 
 
 class DiJobResourceSettingsOfflineResourceSettingsArgsDict(TypedDict):
-    requested_cu: NotRequired[pulumi.Input[_builtins.float]]
+    requested_cu: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Scheduling resource group cu
     """
-    resource_group_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    resource_group_identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Scheduling resource group name
     """
@@ -870,8 +870,8 @@ class DiJobResourceSettingsOfflineResourceSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobResourceSettingsOfflineResourceSettingsArgs:
     def __init__(__self__, *,
-                 requested_cu: Optional[pulumi.Input[_builtins.float]] = None,
-                 resource_group_identifier: Optional[pulumi.Input[_builtins.str]] = None):
+                 requested_cu: pulumi.Input[Optional[_builtins.float]] = None,
+                 resource_group_identifier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.float] requested_cu: Scheduling resource group cu
         :param pulumi.Input[_builtins.str] resource_group_identifier: Scheduling resource group name
@@ -883,35 +883,35 @@ class DiJobResourceSettingsOfflineResourceSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="requestedCu")
-    def requested_cu(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def requested_cu(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Scheduling resource group cu
         """
         return pulumi.get(self, "requested_cu")
 
     @requested_cu.setter
-    def requested_cu(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def requested_cu(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "requested_cu", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupIdentifier")
-    def resource_group_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scheduling resource group name
         """
         return pulumi.get(self, "resource_group_identifier")
 
     @resource_group_identifier.setter
-    def resource_group_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_identifier", value)
 
 
 class DiJobResourceSettingsRealtimeResourceSettingsArgsDict(TypedDict):
-    requested_cu: NotRequired[pulumi.Input[_builtins.float]]
+    requested_cu: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Scheduling resource group cu
     """
-    resource_group_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    resource_group_identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Scheduling resource group name
     """
@@ -919,8 +919,8 @@ class DiJobResourceSettingsRealtimeResourceSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobResourceSettingsRealtimeResourceSettingsArgs:
     def __init__(__self__, *,
-                 requested_cu: Optional[pulumi.Input[_builtins.float]] = None,
-                 resource_group_identifier: Optional[pulumi.Input[_builtins.str]] = None):
+                 requested_cu: pulumi.Input[Optional[_builtins.float]] = None,
+                 resource_group_identifier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.float] requested_cu: Scheduling resource group cu
         :param pulumi.Input[_builtins.str] resource_group_identifier: Scheduling resource group name
@@ -932,35 +932,35 @@ class DiJobResourceSettingsRealtimeResourceSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="requestedCu")
-    def requested_cu(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def requested_cu(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Scheduling resource group cu
         """
         return pulumi.get(self, "requested_cu")
 
     @requested_cu.setter
-    def requested_cu(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def requested_cu(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "requested_cu", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupIdentifier")
-    def resource_group_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scheduling resource group name
         """
         return pulumi.get(self, "resource_group_identifier")
 
     @resource_group_identifier.setter
-    def resource_group_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_identifier", value)
 
 
 class DiJobResourceSettingsScheduleResourceSettingsArgsDict(TypedDict):
-    requested_cu: NotRequired[pulumi.Input[_builtins.float]]
+    requested_cu: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Scheduling resource group cu
     """
-    resource_group_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    resource_group_identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Scheduling resource group name
     """
@@ -968,8 +968,8 @@ class DiJobResourceSettingsScheduleResourceSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobResourceSettingsScheduleResourceSettingsArgs:
     def __init__(__self__, *,
-                 requested_cu: Optional[pulumi.Input[_builtins.float]] = None,
-                 resource_group_identifier: Optional[pulumi.Input[_builtins.str]] = None):
+                 requested_cu: pulumi.Input[Optional[_builtins.float]] = None,
+                 resource_group_identifier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.float] requested_cu: Scheduling resource group cu
         :param pulumi.Input[_builtins.str] resource_group_identifier: Scheduling resource group name
@@ -981,35 +981,35 @@ class DiJobResourceSettingsScheduleResourceSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="requestedCu")
-    def requested_cu(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def requested_cu(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Scheduling resource group cu
         """
         return pulumi.get(self, "requested_cu")
 
     @requested_cu.setter
-    def requested_cu(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def requested_cu(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "requested_cu", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupIdentifier")
-    def resource_group_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scheduling resource group name
         """
         return pulumi.get(self, "resource_group_identifier")
 
     @resource_group_identifier.setter
-    def resource_group_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_identifier", value)
 
 
 class DiJobSourceDataSourceSettingArgsDict(TypedDict):
-    data_source_name: NotRequired[pulumi.Input[_builtins.str]]
+    data_source_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data source name of a single source
     """
-    data_source_properties: NotRequired[pulumi.Input['DiJobSourceDataSourceSettingDataSourcePropertiesArgsDict']]
+    data_source_properties: NotRequired[pulumi.Input[Optional['DiJobSourceDataSourceSettingDataSourcePropertiesArgs']]]
     """
     Single Source Data Source Properties See `data_source_properties` below.
     """
@@ -1017,8 +1017,8 @@ class DiJobSourceDataSourceSettingArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobSourceDataSourceSettingArgs:
     def __init__(__self__, *,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_properties: Optional[pulumi.Input['DiJobSourceDataSourceSettingDataSourcePropertiesArgs']] = None):
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_properties: pulumi.Input[Optional['DiJobSourceDataSourceSettingDataSourcePropertiesArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] data_source_name: Data source name of a single source
         :param pulumi.Input['DiJobSourceDataSourceSettingDataSourcePropertiesArgs'] data_source_properties: Single Source Data Source Properties See `data_source_properties` below.
@@ -1030,35 +1030,35 @@ class DiJobSourceDataSourceSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataSourceName")
-    def data_source_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data source name of a single source
         """
         return pulumi.get(self, "data_source_name")
 
     @data_source_name.setter
-    def data_source_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceProperties")
-    def data_source_properties(self) -> Optional[pulumi.Input['DiJobSourceDataSourceSettingDataSourcePropertiesArgs']]:
+    def data_source_properties(self) -> pulumi.Input[Optional['DiJobSourceDataSourceSettingDataSourcePropertiesArgs']]:
         """
         Single Source Data Source Properties See `data_source_properties` below.
         """
         return pulumi.get(self, "data_source_properties")
 
     @data_source_properties.setter
-    def data_source_properties(self, value: Optional[pulumi.Input['DiJobSourceDataSourceSettingDataSourcePropertiesArgs']]):
+    def data_source_properties(self, value: pulumi.Input[Optional['DiJobSourceDataSourceSettingDataSourcePropertiesArgs']]):
         pulumi.set(self, "data_source_properties", value)
 
 
 class DiJobSourceDataSourceSettingDataSourcePropertiesArgsDict(TypedDict):
-    encoding: NotRequired[pulumi.Input[_builtins.str]]
+    encoding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data Source Encoding
     """
-    timezone: NotRequired[pulumi.Input[_builtins.str]]
+    timezone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data Source Time Zone
     """
@@ -1066,8 +1066,8 @@ class DiJobSourceDataSourceSettingDataSourcePropertiesArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobSourceDataSourceSettingDataSourcePropertiesArgs:
     def __init__(__self__, *,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None):
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] encoding: Data Source Encoding
         :param pulumi.Input[_builtins.str] timezone: Data Source Time Zone
@@ -1079,35 +1079,35 @@ class DiJobSourceDataSourceSettingDataSourcePropertiesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Encoding
         """
         return pulumi.get(self, "encoding")
 
     @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoding", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Time Zone
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
 
 class DiJobTableMappingArgsDict(TypedDict):
-    source_object_selection_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobTableMappingSourceObjectSelectionRuleArgsDict']]]]
+    source_object_selection_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobTableMappingSourceObjectSelectionRuleArgs']]]]]
     """
     Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
     """
-    transformation_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['DiJobTableMappingTransformationRuleArgsDict']]]]
+    transformation_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobTableMappingTransformationRuleArgs']]]]]
     """
     A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
     """
@@ -1115,8 +1115,8 @@ class DiJobTableMappingArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobTableMappingArgs:
     def __init__(__self__, *,
-                 source_object_selection_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DiJobTableMappingSourceObjectSelectionRuleArgs']]]] = None,
-                 transformation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DiJobTableMappingTransformationRuleArgs']]]] = None):
+                 source_object_selection_rules: pulumi.Input[Optional[Sequence[pulumi.Input['DiJobTableMappingSourceObjectSelectionRuleArgs']]]] = None,
+                 transformation_rules: pulumi.Input[Optional[Sequence[pulumi.Input['DiJobTableMappingTransformationRuleArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['DiJobTableMappingSourceObjectSelectionRuleArgs']]] source_object_selection_rules: Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
         :param pulumi.Input[Sequence[pulumi.Input['DiJobTableMappingTransformationRuleArgs']]] transformation_rules: A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
@@ -1128,40 +1128,40 @@ class DiJobTableMappingArgs:
 
     @_builtins.property
     @pulumi.getter(name="sourceObjectSelectionRules")
-    def source_object_selection_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiJobTableMappingSourceObjectSelectionRuleArgs']]]]:
+    def source_object_selection_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DiJobTableMappingSourceObjectSelectionRuleArgs']]]]:
         """
         Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
         """
         return pulumi.get(self, "source_object_selection_rules")
 
     @source_object_selection_rules.setter
-    def source_object_selection_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiJobTableMappingSourceObjectSelectionRuleArgs']]]]):
+    def source_object_selection_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DiJobTableMappingSourceObjectSelectionRuleArgs']]]]):
         pulumi.set(self, "source_object_selection_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="transformationRules")
-    def transformation_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiJobTableMappingTransformationRuleArgs']]]]:
+    def transformation_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DiJobTableMappingTransformationRuleArgs']]]]:
         """
         A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
         """
         return pulumi.get(self, "transformation_rules")
 
     @transformation_rules.setter
-    def transformation_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiJobTableMappingTransformationRuleArgs']]]]):
+    def transformation_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DiJobTableMappingTransformationRuleArgs']]]]):
         pulumi.set(self, "transformation_rules", value)
 
 
 class DiJobTableMappingSourceObjectSelectionRuleArgsDict(TypedDict):
-    action: NotRequired[pulumi.Input[_builtins.str]]
-    expression: NotRequired[pulumi.Input[_builtins.str]]
+    action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Expression, such as mysql_table_1
     """
-    expression_type: NotRequired[pulumi.Input[_builtins.str]]
+    expression_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Expression type, value range: Exact/Regex
     """
-    object_type: NotRequired[pulumi.Input[_builtins.str]]
+    object_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Object type, optional enumeration value:
 
@@ -1173,10 +1173,10 @@ class DiJobTableMappingSourceObjectSelectionRuleArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobTableMappingSourceObjectSelectionRuleArgs:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 expression_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 expression_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Expression, such as mysql_table_1
         :param pulumi.Input[_builtins.str] expression_type: Expression type, value range: Exact/Regex
@@ -1197,40 +1197,40 @@ class DiJobTableMappingSourceObjectSelectionRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expression, such as mysql_table_1
         """
         return pulumi.get(self, "expression")
 
     @expression.setter
-    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expression", value)
 
     @_builtins.property
     @pulumi.getter(name="expressionType")
-    def expression_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expression_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expression type, value range: Exact/Regex
         """
         return pulumi.get(self, "expression_type")
 
     @expression_type.setter
-    def expression_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expression_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expression_type", value)
 
     @_builtins.property
     @pulumi.getter(name="objectType")
-    def object_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Object type, optional enumeration value:
 
@@ -1241,12 +1241,12 @@ class DiJobTableMappingSourceObjectSelectionRuleArgs:
         return pulumi.get(self, "object_type")
 
     @object_type.setter
-    def object_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_type", value)
 
 
 class DiJobTableMappingTransformationRuleArgsDict(TypedDict):
-    rule_action_type: NotRequired[pulumi.Input[_builtins.str]]
+    rule_action_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Action type, optional enumeration value:
 
@@ -1260,11 +1260,11 @@ class DiJobTableMappingTransformationRuleArgsDict(TypedDict):
 
     DefineIncrementalCondition
     """
-    rule_name: NotRequired[pulumi.Input[_builtins.str]]
+    rule_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Rule Name
     """
-    rule_target_type: NotRequired[pulumi.Input[_builtins.str]]
+    rule_target_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Target type of action, optional enumeration value:
 
@@ -1276,9 +1276,9 @@ class DiJobTableMappingTransformationRuleArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobTableMappingTransformationRuleArgs:
     def __init__(__self__, *,
-                 rule_action_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_target_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 rule_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_target_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] rule_action_type: Action type, optional enumeration value:
                
@@ -1307,7 +1307,7 @@ class DiJobTableMappingTransformationRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="ruleActionType")
-    def rule_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_action_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Action type, optional enumeration value:
 
@@ -1324,24 +1324,24 @@ class DiJobTableMappingTransformationRuleArgs:
         return pulumi.get(self, "rule_action_type")
 
     @rule_action_type.setter
-    def rule_action_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_action_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_action_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule Name
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleTargetType")
-    def rule_target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target type of action, optional enumeration value:
 
@@ -1352,12 +1352,12 @@ class DiJobTableMappingTransformationRuleArgs:
         return pulumi.get(self, "rule_target_type")
 
     @rule_target_type.setter
-    def rule_target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_target_type", value)
 
 
 class DiJobTransformationRuleArgsDict(TypedDict):
-    rule_action_type: NotRequired[pulumi.Input[_builtins.str]]
+    rule_action_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Action type, optional enumeration value:
 
@@ -1371,17 +1371,17 @@ class DiJobTransformationRuleArgsDict(TypedDict):
 
     DefineIncrementalCondition
     """
-    rule_expression: NotRequired[pulumi.Input[_builtins.str]]
+    rule_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Regular expression, in json string format.
 
     Example renaming rule (Rename): {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}
     """
-    rule_name: NotRequired[pulumi.Input[_builtins.str]]
+    rule_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Rule Name
     """
-    rule_target_type: NotRequired[pulumi.Input[_builtins.str]]
+    rule_target_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Target type of action, optional enumeration value:
 
@@ -1393,10 +1393,10 @@ class DiJobTransformationRuleArgsDict(TypedDict):
 @pulumi.input_type
 class DiJobTransformationRuleArgs:
     def __init__(__self__, *,
-                 rule_action_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_target_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 rule_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_target_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] rule_action_type: Action type, optional enumeration value:
                
@@ -1430,7 +1430,7 @@ class DiJobTransformationRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="ruleActionType")
-    def rule_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_action_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Action type, optional enumeration value:
 
@@ -1447,12 +1447,12 @@ class DiJobTransformationRuleArgs:
         return pulumi.get(self, "rule_action_type")
 
     @rule_action_type.setter
-    def rule_action_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_action_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_action_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleExpression")
-    def rule_expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Regular expression, in json string format.
 
@@ -1461,24 +1461,24 @@ class DiJobTransformationRuleArgs:
         return pulumi.get(self, "rule_expression")
 
     @rule_expression.setter
-    def rule_expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_expression", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule Name
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleTargetType")
-    def rule_target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target type of action, optional enumeration value:
 
@@ -1489,20 +1489,20 @@ class DiJobTransformationRuleArgs:
         return pulumi.get(self, "rule_target_type")
 
     @rule_target_type.setter
-    def rule_target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_target_type", value)
 
 
 class ProjectMemberRoleArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.str]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Project Role Code.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     project role name
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     project role type
     """
@@ -1510,9 +1510,9 @@ class ProjectMemberRoleArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectMemberRoleArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] code: Project Role Code.
         :param pulumi.Input[_builtins.str] name: project role name
@@ -1527,38 +1527,38 @@ class ProjectMemberRoleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project Role Code.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         project role name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         project role type
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 

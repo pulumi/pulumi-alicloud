@@ -62,9 +62,9 @@ class GlobalSecurityIpGroupArgs:
 @pulumi.input_type
 class _GlobalSecurityIpGroupState:
     def __init__(__self__, *,
-                 global_ig_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_security_ip_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 global_ig_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_ip_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalSecurityIpGroup resources.
 
@@ -83,19 +83,19 @@ class _GlobalSecurityIpGroupState:
 
     @_builtins.property
     @pulumi.getter(name="globalIgName")
-    def global_ig_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def global_ig_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the IP whitelist template.
         """
         return pulumi.get(self, "global_ig_name")
 
     @global_ig_name.setter
-    def global_ig_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def global_ig_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "global_ig_name", value)
 
     @_builtins.property
     @pulumi.getter(name="globalSecurityIpList")
-    def global_security_ip_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def global_security_ip_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address in the whitelist template.
 
@@ -104,19 +104,19 @@ class _GlobalSecurityIpGroupState:
         return pulumi.get(self, "global_security_ip_list")
 
     @global_security_ip_list.setter
-    def global_security_ip_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def global_security_ip_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "global_security_ip_list", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
 
@@ -126,8 +126,8 @@ class GlobalSecurityIpGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 global_ig_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_security_ip_list: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_ig_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_ip_list: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Mongodb Global Security IP Group resource.
@@ -231,8 +231,8 @@ class GlobalSecurityIpGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 global_ig_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_security_ip_list: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_ig_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_ip_list: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -259,9 +259,9 @@ class GlobalSecurityIpGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            global_ig_name: Optional[pulumi.Input[_builtins.str]] = None,
-            global_security_ip_list: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GlobalSecurityIpGroup':
+            global_ig_name: pulumi.Input[Optional[_builtins.str]] = None,
+            global_security_ip_list: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'GlobalSecurityIpGroup':
         """
         Get an existing GlobalSecurityIpGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

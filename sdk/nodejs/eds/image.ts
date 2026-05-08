@@ -162,19 +162,19 @@ export interface ImageState {
     /**
      * The description of the image.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The desktop id of the desktop.
      */
-    desktopId?: pulumi.Input<string>;
+    desktopId?: pulumi.Input<string | undefined>;
     /**
      * The name of the image.
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -184,7 +184,7 @@ export interface ImageArgs {
     /**
      * The description of the image.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The desktop id of the desktop.
      */
@@ -192,5 +192,5 @@ export interface ImageArgs {
     /**
      * The name of the image.
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
 }

@@ -20,8 +20,8 @@ __all__ = ['BackupPolicyArgs', 'BackupPolicy']
 class BackupPolicyArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
-                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
 
@@ -49,35 +49,35 @@ class BackupPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupPeriods")
-    def backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
         """
         return pulumi.get(self, "backup_periods")
 
     @backup_periods.setter
-    def backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backup_periods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backup_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="backupTime")
-    def backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup time, in the format of HH:mmZ- HH:mm Z.
         """
         return pulumi.get(self, "backup_time")
 
     @backup_time.setter
-    def backup_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_time", value)
 
 
 @pulumi.input_type
 class _BackupPolicyState:
     def __init__(__self__, *,
-                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
 
@@ -94,38 +94,38 @@ class _BackupPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="backupPeriods")
-    def backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backup_periods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
         """
         return pulumi.get(self, "backup_periods")
 
     @backup_periods.setter
-    def backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backup_periods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backup_periods", value)
 
     @_builtins.property
     @pulumi.getter(name="backupTime")
-    def backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup time, in the format of HH:mmZ- HH:mm Z.
         """
         return pulumi.get(self, "backup_time")
 
     @backup_time.setter
-    def backup_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_time", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
 
@@ -135,9 +135,9 @@ class BackupPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Backup Policy for Tair (Redis OSS-Compatible) And Memcache (KVStore) resource.
@@ -298,9 +298,9 @@ class BackupPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -325,9 +325,9 @@ class BackupPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'BackupPolicy':
+            backup_periods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'BackupPolicy':
         """
         Get an existing BackupPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -209,47 +209,47 @@ export interface DefenseRuleState {
      * > **NOTE:**  Depending on the specified **protection rule type**(`DefenseScene`), the specific parameters vary. For more information, see **Protection Rule Parameter Description**.
      * See `config` below.
      */
-    config?: pulumi.Input<inputs.wafv3.DefenseRuleConfig>;
+    config?: pulumi.Input<inputs.wafv3.DefenseRuleConfig | undefined>;
     /**
      * Sources of protection. Value:
      */
-    defenseOrigin?: pulumi.Input<string>;
+    defenseOrigin?: pulumi.Input<string | undefined>;
     /**
      * The WAF protection scenario to be created.
      *
      * When the protection rule type `DefenseType` is set to `template`, the value is as follows:
      */
-    defenseScene?: pulumi.Input<string>;
+    defenseScene?: pulumi.Input<string | undefined>;
     /**
      * The protection rule type. Value:
      */
-    defenseType?: pulumi.Input<string>;
+    defenseType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Web Application Firewall (WAF) instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The protection object corresponding to the rule to be queried.
      *
      * > **NOTE:**  This parameter is required only when `DefenseType` is set to `resource`.
      */
-    resource?: pulumi.Input<string>;
+    resource?: pulumi.Input<string | undefined>;
     /**
      * The protection rule ID.
      */
-    ruleId?: pulumi.Input<number>;
+    ruleId?: pulumi.Input<number | undefined>;
     /**
      * The rule name.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * Protection rule status.
      */
-    ruleStatus?: pulumi.Input<number>;
+    ruleStatus?: pulumi.Input<number | undefined>;
     /**
      * The protection template ID of the protection rule to be created.
      */
-    templateId?: pulumi.Input<number>;
+    templateId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -266,7 +266,7 @@ export interface DefenseRuleArgs {
     /**
      * Sources of protection. Value:
      */
-    defenseOrigin?: pulumi.Input<string>;
+    defenseOrigin?: pulumi.Input<string | undefined>;
     /**
      * The WAF protection scenario to be created.
      *
@@ -286,17 +286,17 @@ export interface DefenseRuleArgs {
      *
      * > **NOTE:**  This parameter is required only when `DefenseType` is set to `resource`.
      */
-    resource?: pulumi.Input<string>;
+    resource?: pulumi.Input<string | undefined>;
     /**
      * The rule name.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * Protection rule status.
      */
-    ruleStatus?: pulumi.Input<number>;
+    ruleStatus?: pulumi.Input<number | undefined>;
     /**
      * The protection template ID of the protection rule to be created.
      */
-    templateId?: pulumi.Input<number>;
+    templateId?: pulumi.Input<number | undefined>;
 }

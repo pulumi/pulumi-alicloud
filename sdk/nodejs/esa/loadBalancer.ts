@@ -255,71 +255,71 @@ export interface LoadBalancerState {
     /**
      * Cross-pool origin configuration. See `adaptiveRouting` below.
      */
-    adaptiveRouting?: pulumi.Input<inputs.esa.LoadBalancerAdaptiveRouting>;
+    adaptiveRouting?: pulumi.Input<inputs.esa.LoadBalancerAdaptiveRouting | undefined>;
     /**
      * List of default pool IDs.
      */
-    defaultPools?: pulumi.Input<pulumi.Input<number>[]>;
+    defaultPools?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The detailed description of the load balancer for easy management and identification.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the load balancer is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
      */
-    fallbackPool?: pulumi.Input<number>;
+    fallbackPool?: pulumi.Input<number | undefined>;
     /**
      * The unique identifier ID of the load balancer.
      */
-    loadBalancerId?: pulumi.Input<number>;
+    loadBalancerId?: pulumi.Input<number | undefined>;
     /**
      * The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
      */
-    loadBalancerName?: pulumi.Input<string>;
+    loadBalancerName?: pulumi.Input<string | undefined>;
     /**
      * Monitor configuration for health check. See `monitor` below.
      */
-    monitor?: pulumi.Input<inputs.esa.LoadBalancerMonitor>;
+    monitor?: pulumi.Input<inputs.esa.LoadBalancerMonitor | undefined>;
     /**
      * Weighted round-robin configuration, used to control the traffic distribution weights among different pools. See `randomSteering` below.
      */
-    randomSteering?: pulumi.Input<inputs.esa.LoadBalancerRandomSteering>;
+    randomSteering?: pulumi.Input<inputs.esa.LoadBalancerRandomSteering | undefined>;
     /**
      * Address pools corresponding to primary regions.
      */
-    regionPools?: pulumi.Input<string>;
+    regionPools?: pulumi.Input<string | undefined>;
     /**
      * Rule configuration list, used to define behavior under specific conditions. See `rules` below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.esa.LoadBalancerRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.esa.LoadBalancerRule>[] | undefined>;
     /**
      * Session persistence. Valid values:
      */
-    sessionAffinity?: pulumi.Input<string>;
+    sessionAffinity?: pulumi.Input<string | undefined>;
     /**
      * The site ID.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The status of the load balancer.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Load balancing policy.
      */
-    steeringPolicy?: pulumi.Input<string>;
+    steeringPolicy?: pulumi.Input<string | undefined>;
     /**
      * Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
      */
-    subRegionPools?: pulumi.Input<string>;
+    subRegionPools?: pulumi.Input<string | undefined>;
     /**
      * TTL value, the time-to-live for DNS records. The default value is 30. The value range is 10-600.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -329,7 +329,7 @@ export interface LoadBalancerArgs {
     /**
      * Cross-pool origin configuration. See `adaptiveRouting` below.
      */
-    adaptiveRouting?: pulumi.Input<inputs.esa.LoadBalancerAdaptiveRouting>;
+    adaptiveRouting?: pulumi.Input<inputs.esa.LoadBalancerAdaptiveRouting | undefined>;
     /**
      * List of default pool IDs.
      */
@@ -337,11 +337,11 @@ export interface LoadBalancerArgs {
     /**
      * The detailed description of the load balancer for easy management and identification.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the load balancer is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
      */
@@ -357,19 +357,19 @@ export interface LoadBalancerArgs {
     /**
      * Weighted round-robin configuration, used to control the traffic distribution weights among different pools. See `randomSteering` below.
      */
-    randomSteering?: pulumi.Input<inputs.esa.LoadBalancerRandomSteering>;
+    randomSteering?: pulumi.Input<inputs.esa.LoadBalancerRandomSteering | undefined>;
     /**
      * Address pools corresponding to primary regions.
      */
-    regionPools?: pulumi.Input<string>;
+    regionPools?: pulumi.Input<string | undefined>;
     /**
      * Rule configuration list, used to define behavior under specific conditions. See `rules` below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.esa.LoadBalancerRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.esa.LoadBalancerRule>[] | undefined>;
     /**
      * Session persistence. Valid values:
      */
-    sessionAffinity?: pulumi.Input<string>;
+    sessionAffinity?: pulumi.Input<string | undefined>;
     /**
      * The site ID.
      */
@@ -381,9 +381,9 @@ export interface LoadBalancerArgs {
     /**
      * Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
      */
-    subRegionPools?: pulumi.Input<string>;
+    subRegionPools?: pulumi.Input<string | undefined>;
     /**
      * TTL value, the time-to-live for DNS records. The default value is 30. The value range is 10-600.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }

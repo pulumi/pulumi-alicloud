@@ -161,11 +161,11 @@ def get_oss_backup_plans(bucket: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         plans=pulumi.get(__ret__, 'plans'),
         vault_id=pulumi.get(__ret__, 'vault_id'))
-def get_oss_backup_plans_output(bucket: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                vault_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_oss_backup_plans_output(bucket: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                vault_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOssBackupPlansResult]:
     """
     This data source provides the Hbr OssBackupPlans of the current Alibaba Cloud user.

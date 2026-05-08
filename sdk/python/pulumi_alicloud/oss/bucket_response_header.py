@@ -22,7 +22,7 @@ __all__ = ['BucketResponseHeaderArgs', 'BucketResponseHeader']
 class BucketResponseHeaderArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]]] = None):
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]]] = None):
         """
         The set of arguments for constructing a BucketResponseHeader resource.
 
@@ -47,22 +47,22 @@ class BucketResponseHeaderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]]]:
         """
         The container that holds the response header rules. See `rule` below.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type
 class _BucketResponseHeaderState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering BucketResponseHeader resources.
 
@@ -76,26 +76,26 @@ class _BucketResponseHeaderState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]]]:
         """
         The container that holds the response header rules. See `rule` below.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BucketResponseHeaderRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
 
@@ -105,8 +105,8 @@ class BucketResponseHeader(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketResponseHeaderRuleArgs', 'BucketResponseHeaderRuleArgsDict']]]]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketResponseHeaderRuleArgs', 'BucketResponseHeaderRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a OSS Bucket Response Header resource.
@@ -290,8 +290,8 @@ class BucketResponseHeader(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketResponseHeaderRuleArgs', 'BucketResponseHeaderRuleArgsDict']]]]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketResponseHeaderRuleArgs', 'BucketResponseHeaderRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -315,8 +315,8 @@ class BucketResponseHeader(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketResponseHeaderRuleArgs', 'BucketResponseHeaderRuleArgsDict']]]]] = None) -> 'BucketResponseHeader':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketResponseHeaderRuleArgs', 'BucketResponseHeaderRuleArgsDict']]]]] = None) -> 'BucketResponseHeader':
         """
         Get an existing BucketResponseHeader resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

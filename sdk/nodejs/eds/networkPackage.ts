@@ -133,19 +133,19 @@ export interface NetworkPackageState {
     /**
      * The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The internet charge type  of  package.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The ID of office site.
      */
-    officeSiteId?: pulumi.Input<string>;
+    officeSiteId?: pulumi.Input<string | undefined>;
     /**
      * The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

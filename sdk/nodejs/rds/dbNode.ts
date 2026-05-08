@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceStorage: output(defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *     instanceChargeType: "Postpaid",
  *     instanceName: name,
  *     vswitchId: defaultSwitch.id,
@@ -179,27 +179,27 @@ export interface DbNodeState {
     /**
      * The specification information of the node.
      */
-    classCode?: pulumi.Input<string>;
+    classCode?: pulumi.Input<string | undefined>;
     /**
      * The Id of instance that can run database.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the node.
      */
-    nodeId?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the node.
      */
-    nodeRegionId?: pulumi.Input<string>;
+    nodeRegionId?: pulumi.Input<string | undefined>;
     /**
      * The role of node.
      */
-    nodeRole?: pulumi.Input<string>;
+    nodeRole?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the node.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**

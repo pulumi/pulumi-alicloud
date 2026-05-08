@@ -21,8 +21,8 @@ class ResourceArgs:
     def __init__(__self__, *,
                  product: pulumi.Input[_builtins.str],
                  resource_code: pulumi.Input[_builtins.str],
-                 desire_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 desire_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Resource resource.
 
@@ -64,37 +64,37 @@ class ResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="desireAttributes")
-    def desire_attributes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desire_attributes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attributes specified when a user creates or updates a resource.
         """
         return pulumi.get(self, "desire_attributes")
 
     @desire_attributes.setter
-    def desire_attributes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desire_attributes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desire_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If there is a parent resource, you need to enter the id of the parent resource, for example, in the VPC::VSwtich resource, you need to enter the id of the VPC: vpc-dexadfe3r4ad. If there are more than one level of parent resources, you need to use `:` to split.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
 
 @pulumi.input_type
 class _ResourceState:
     def __init__(__self__, *,
-                 desire_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-                 product: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 desire_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+                 product: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Resource resources.
 
@@ -117,62 +117,62 @@ class _ResourceState:
 
     @_builtins.property
     @pulumi.getter(name="desireAttributes")
-    def desire_attributes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desire_attributes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attributes specified when a user creates or updates a resource.
         """
         return pulumi.get(self, "desire_attributes")
 
     @desire_attributes.setter
-    def desire_attributes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desire_attributes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desire_attributes", value)
 
     @_builtins.property
     @pulumi.getter
-    def product(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The product Code represents the product to be operated. Currently supported products and resources can be queried at the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
         """
         return pulumi.get(self, "product")
 
     @product.setter
-    def product(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceAttributes")
-    def resource_attributes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_attributes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The collection of properties for the resource.
         """
         return pulumi.get(self, "resource_attributes")
 
     @resource_attributes.setter
-    def resource_attributes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_attributes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceCode")
-    def resource_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Code, if there is a parent resource, split with `::`, such as VPC::VSwitch. The supported resource Code can be obtained from the following link: [supported-services-and-resource-types](https://help.aliyun.com/zh/cloud-control-api/product-overview/supported-services-and-resource-types).
         """
         return pulumi.get(self, "resource_code")
 
     @resource_code.setter
-    def resource_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_code", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If there is a parent resource, you need to enter the id of the parent resource, for example, in the VPC::VSwtich resource, you need to enter the id of the VPC: vpc-dexadfe3r4ad. If there are more than one level of parent resources, you need to use `:` to split.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
 
@@ -182,10 +182,10 @@ class Resource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 desire_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-                 product: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 desire_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+                 product: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Control Resource resource.
@@ -311,10 +311,10 @@ class Resource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 desire_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-                 product: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 desire_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+                 product: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -345,11 +345,11 @@ class Resource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            desire_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-            product: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_code: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Resource':
+            desire_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+            product: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_code: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Resource':
         """
         Get an existing Resource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

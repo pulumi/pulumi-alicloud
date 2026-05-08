@@ -217,73 +217,73 @@ export interface GetEipAddressesOutputArgs {
     /**
      * The eip name.
      */
-    addressName?: pulumi.Input<string>;
+    addressName?: pulumi.Input<string | undefined>;
     /**
      * The associated instance id.
      */
-    associatedInstanceId?: pulumi.Input<string>;
+    associatedInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The associated instance type.
      */
-    associatedInstanceType?: pulumi.Input<string>;
+    associatedInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Default to `true`. Set it to `false` can hide the `tags` to output.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Address IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The include reservation data. Valid values: `BGP` and `BGP_PRO`.
      */
-    includeReservationData?: pulumi.Input<boolean>;
+    includeReservationData?: pulumi.Input<boolean | undefined>;
     /**
      * The eip address.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
      */
-    ipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    ipAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
      */
-    isp?: pulumi.Input<string>;
+    isp?: pulumi.Input<string | undefined>;
     /**
      * The lock reason.
      */
-    lockReason?: pulumi.Input<string>;
+    lockReason?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Address name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
      */
-    segmentInstanceId?: pulumi.Input<string>;
+    segmentInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

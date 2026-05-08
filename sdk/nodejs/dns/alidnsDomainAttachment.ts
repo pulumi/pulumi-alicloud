@@ -122,11 +122,11 @@ export interface AlidnsDomainAttachmentState {
     /**
      * The domain names bound to the DNS instance.
      */
-    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
+    domainNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The id of the DNS instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
 }
 
 /**

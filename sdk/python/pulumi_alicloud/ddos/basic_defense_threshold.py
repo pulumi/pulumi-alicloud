@@ -22,10 +22,10 @@ class BasicDefenseThresholdArgs:
                  ddos_type: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
                  instance_type: pulumi.Input[_builtins.str],
-                 bps: Optional[pulumi.Input[_builtins.int]] = None,
-                 internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_auto: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pps: Optional[pulumi.Input[_builtins.int]] = None):
+                 bps: pulumi.Input[Optional[_builtins.int]] = None,
+                 internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_auto: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pps: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a BasicDefenseThreshold resource.
 
@@ -87,65 +87,65 @@ class BasicDefenseThresholdArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
         """
         return pulumi.get(self, "bps")
 
     @bps.setter
-    def bps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bps", value)
 
     @_builtins.property
     @pulumi.getter(name="internetIp")
-    def internet_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Internet IP address.
         """
         return pulumi.get(self, "internet_ip")
 
     @internet_ip.setter
-    def internet_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="isAuto")
-    def is_auto(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_auto(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether it is the system default threshold. Value:
         """
         return pulumi.get(self, "is_auto")
 
     @is_auto.setter
-    def is_auto(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_auto(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_auto", value)
 
     @_builtins.property
     @pulumi.getter
-    def pps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The current message number cleaning threshold. Unit: pps.
         """
         return pulumi.get(self, "pps")
 
     @pps.setter
-    def pps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pps", value)
 
 
 @pulumi.input_type
 class _BasicDefenseThresholdState:
     def __init__(__self__, *,
-                 bps: Optional[pulumi.Input[_builtins.int]] = None,
-                 ddos_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_auto: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_bps: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pps: Optional[pulumi.Input[_builtins.int]] = None,
-                 pps: Optional[pulumi.Input[_builtins.int]] = None):
+                 bps: pulumi.Input[Optional[_builtins.int]] = None,
+                 ddos_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_auto: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_bps: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pps: pulumi.Input[Optional[_builtins.int]] = None,
+                 pps: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering BasicDefenseThreshold resources.
 
@@ -180,110 +180,110 @@ class _BasicDefenseThresholdState:
 
     @_builtins.property
     @pulumi.getter
-    def bps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
         """
         return pulumi.get(self, "bps")
 
     @bps.setter
-    def bps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bps", value)
 
     @_builtins.property
     @pulumi.getter(name="ddosType")
-    def ddos_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ddos_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the threshold to query. Valid values: `defense`,`blackhole`.
         """
         return pulumi.get(self, "ddos_type")
 
     @ddos_type.setter
-    def ddos_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ddos_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ddos_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="internetIp")
-    def internet_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Internet IP address.
         """
         return pulumi.get(self, "internet_ip")
 
     @internet_ip.setter
-    def internet_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="isAuto")
-    def is_auto(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_auto(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether it is the system default threshold. Value:
         """
         return pulumi.get(self, "is_auto")
 
     @is_auto.setter
-    def is_auto(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_auto(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_auto", value)
 
     @_builtins.property
     @pulumi.getter(name="maxBps")
-    def max_bps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_bps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum traffic scrubbing threshold. Unit: Mbit/s.
         """
         return pulumi.get(self, "max_bps")
 
     @max_bps.setter
-    def max_bps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_bps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_bps", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPps")
-    def max_pps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_pps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum packet scrubbing threshold. Unit: pps.
         """
         return pulumi.get(self, "max_pps")
 
     @max_pps.setter
-    def max_pps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_pps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_pps", value)
 
     @_builtins.property
     @pulumi.getter
-    def pps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The current message number cleaning threshold. Unit: pps.
         """
         return pulumi.get(self, "pps")
 
     @pps.setter
-    def pps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pps", value)
 
 
@@ -293,13 +293,13 @@ class BasicDefenseThreshold(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bps: Optional[pulumi.Input[_builtins.int]] = None,
-                 ddos_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_auto: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pps: Optional[pulumi.Input[_builtins.int]] = None,
+                 bps: pulumi.Input[Optional[_builtins.int]] = None,
+                 ddos_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_auto: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pps: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Ddos Basic defense threshold resource.
@@ -418,13 +418,13 @@ class BasicDefenseThreshold(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bps: Optional[pulumi.Input[_builtins.int]] = None,
-                 ddos_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_auto: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pps: Optional[pulumi.Input[_builtins.int]] = None,
+                 bps: pulumi.Input[Optional[_builtins.int]] = None,
+                 ddos_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_auto: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pps: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -459,15 +459,15 @@ class BasicDefenseThreshold(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bps: Optional[pulumi.Input[_builtins.int]] = None,
-            ddos_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            is_auto: Optional[pulumi.Input[_builtins.bool]] = None,
-            max_bps: Optional[pulumi.Input[_builtins.int]] = None,
-            max_pps: Optional[pulumi.Input[_builtins.int]] = None,
-            pps: Optional[pulumi.Input[_builtins.int]] = None) -> 'BasicDefenseThreshold':
+            bps: pulumi.Input[Optional[_builtins.int]] = None,
+            ddos_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            is_auto: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_bps: pulumi.Input[Optional[_builtins.int]] = None,
+            max_pps: pulumi.Input[Optional[_builtins.int]] = None,
+            pps: pulumi.Input[Optional[_builtins.int]] = None) -> 'BasicDefenseThreshold':
         """
         Get an existing BasicDefenseThreshold resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

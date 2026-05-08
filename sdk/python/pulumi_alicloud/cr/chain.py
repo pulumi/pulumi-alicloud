@@ -23,10 +23,10 @@ class ChainArgs:
     def __init__(__self__, *,
                  chain_name: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 chain_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_namespace_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 chain_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_namespace_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Chain resource.
 
@@ -74,63 +74,63 @@ class ChainArgs:
 
     @_builtins.property
     @pulumi.getter(name="chainConfigs")
-    def chain_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]]]:
+    def chain_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigArgs']]]]:
         """
         The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         """
         return pulumi.get(self, "chain_configs")
 
     @chain_configs.setter
-    def chain_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]]]):
+    def chain_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigArgs']]]]):
         pulumi.set(self, "chain_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description delivery chain.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="repoName")
-    def repo_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of CR Enterprise Edition repository. **NOTE:** This parameter must specify a correct value, otherwise the created resource will be incorrect.
         """
         return pulumi.get(self, "repo_name")
 
     @repo_name.setter
-    def repo_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_name", value)
 
     @_builtins.property
     @pulumi.getter(name="repoNamespaceName")
-    def repo_namespace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_namespace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of CR Enterprise Edition namespace. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         """
         return pulumi.get(self, "repo_namespace_name")
 
     @repo_namespace_name.setter
-    def repo_namespace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_namespace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_namespace_name", value)
 
 
 @pulumi.input_type
 class _ChainState:
     def __init__(__self__, *,
-                 chain_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]]] = None,
-                 chain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 chain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_namespace_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 chain_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigArgs']]]] = None,
+                 chain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 chain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_namespace_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Chain resources.
 
@@ -159,86 +159,86 @@ class _ChainState:
 
     @_builtins.property
     @pulumi.getter(name="chainConfigs")
-    def chain_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]]]:
+    def chain_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigArgs']]]]:
         """
         The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         """
         return pulumi.get(self, "chain_configs")
 
     @chain_configs.setter
-    def chain_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigArgs']]]]):
+    def chain_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigArgs']]]]):
         pulumi.set(self, "chain_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="chainId")
-    def chain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chain_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delivery chain ID.
         """
         return pulumi.get(self, "chain_id")
 
     @chain_id.setter
-    def chain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chain_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chain_id", value)
 
     @_builtins.property
     @pulumi.getter(name="chainName")
-    def chain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators "_", "-", "." can be used, noted that the separator cannot be at the first or last position.
         """
         return pulumi.get(self, "chain_name")
 
     @chain_name.setter
-    def chain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description delivery chain.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of CR Enterprise Edition instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoName")
-    def repo_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of CR Enterprise Edition repository. **NOTE:** This parameter must specify a correct value, otherwise the created resource will be incorrect.
         """
         return pulumi.get(self, "repo_name")
 
     @repo_name.setter
-    def repo_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_name", value)
 
     @_builtins.property
     @pulumi.getter(name="repoNamespaceName")
-    def repo_namespace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_namespace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of CR Enterprise Edition namespace. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
         """
         return pulumi.get(self, "repo_namespace_name")
 
     @repo_namespace_name.setter
-    def repo_namespace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_namespace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_namespace_name", value)
 
 
@@ -248,12 +248,12 @@ class Chain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chain_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]]] = None,
-                 chain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 chain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]]] = None,
+                 chain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CR Chain resource.
@@ -623,12 +623,12 @@ class Chain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chain_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]]] = None,
-                 chain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 chain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]]] = None,
+                 chain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -659,13 +659,13 @@ class Chain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            chain_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]]] = None,
-            chain_id: Optional[pulumi.Input[_builtins.str]] = None,
-            chain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_namespace_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Chain':
+            chain_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ChainChainConfigArgs', 'ChainChainConfigArgsDict']]]]] = None,
+            chain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            chain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_namespace_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Chain':
         """
         Get an existing Chain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

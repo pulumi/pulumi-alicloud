@@ -22,8 +22,8 @@ class ChartRepositoryArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  repo_name: pulumi.Input[_builtins.str],
                  repo_namespace_name: pulumi.Input[_builtins.str],
-                 repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 summary: Optional[pulumi.Input[_builtins.str]] = None):
+                 repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 summary: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ChartRepository resource.
 
@@ -79,37 +79,37 @@ class ChartRepositoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="repoType")
-    def repo_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
         """
         return pulumi.get(self, "repo_type")
 
     @repo_type.setter
-    def repo_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def summary(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def summary(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The summary about the repository.
         """
         return pulumi.get(self, "summary")
 
     @summary.setter
-    def summary(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def summary(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "summary", value)
 
 
 @pulumi.input_type
 class _ChartRepositoryState:
     def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 summary: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 summary: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ChartRepository resources.
 
@@ -132,62 +132,62 @@ class _ChartRepositoryState:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Container Registry instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoName")
-    def repo_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the repository that you want to create.
         """
         return pulumi.get(self, "repo_name")
 
     @repo_name.setter
-    def repo_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_name", value)
 
     @_builtins.property
     @pulumi.getter(name="repoNamespaceName")
-    def repo_namespace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_namespace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace to which the repository belongs.
         """
         return pulumi.get(self, "repo_namespace_name")
 
     @repo_namespace_name.setter
-    def repo_namespace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_namespace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_namespace_name", value)
 
     @_builtins.property
     @pulumi.getter(name="repoType")
-    def repo_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
         """
         return pulumi.get(self, "repo_type")
 
     @repo_type.setter
-    def repo_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def summary(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def summary(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The summary about the repository.
         """
         return pulumi.get(self, "summary")
 
     @summary.setter
-    def summary(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def summary(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "summary", value)
 
 
@@ -197,11 +197,11 @@ class ChartRepository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 summary: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 summary: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CR Chart Repository resource.
@@ -332,11 +332,11 @@ class ChartRepository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 summary: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 summary: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -367,11 +367,11 @@ class ChartRepository(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-            summary: Optional[pulumi.Input[_builtins.str]] = None) -> 'ChartRepository':
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+            summary: pulumi.Input[Optional[_builtins.str]] = None) -> 'ChartRepository':
         """
         Get an existing ChartRepository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -194,13 +194,13 @@ def get_transit_router_route_table_associations(ids: Optional[Sequence[_builtins
         transit_router_attachment_resource_id=pulumi.get(__ret__, 'transit_router_attachment_resource_id'),
         transit_router_attachment_resource_type=pulumi.get(__ret__, 'transit_router_attachment_resource_type'),
         transit_router_route_table_id=pulumi.get(__ret__, 'transit_router_route_table_id'))
-def get_transit_router_route_table_associations_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                       output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       transit_router_attachment_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       transit_router_attachment_resource_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       transit_router_attachment_resource_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       transit_router_route_table_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_transit_router_route_table_associations_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       transit_router_attachment_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       transit_router_attachment_resource_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       transit_router_attachment_resource_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       transit_router_route_table_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterRouteTableAssociationsResult]:
     """
     This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)

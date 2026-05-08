@@ -27,22 +27,22 @@ class ControlPolicyArgs:
                  proto: pulumi.Input[_builtins.str],
                  source: pulumi.Input[_builtins.str],
                  source_type: pulumi.Input[_builtins.str],
-                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dest_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_port_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_port_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_resolve_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 release: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 repeat_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 application_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dest_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_port_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_port_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_resolve_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 release: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 repeat_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ControlPolicy resource.
 
@@ -225,7 +225,7 @@ class ControlPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationName")
-    def application_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
         > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
@@ -233,12 +233,12 @@ class ControlPolicyArgs:
         return pulumi.get(self, "application_name")
 
     @application_name.setter
-    def application_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_name", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationNameLists")
-    def application_name_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def application_name_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The application types supported by the access control policy.
         > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
@@ -246,48 +246,48 @@ class ControlPolicyArgs:
         return pulumi.get(self, "application_name_lists")
 
     @application_name_lists.setter
-    def application_name_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def application_name_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "application_name_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="destPort")
-    def dest_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
         """
         return pulumi.get(self, "dest_port")
 
     @dest_port.setter
-    def dest_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_port", value)
 
     @_builtins.property
     @pulumi.getter(name="destPortGroup")
-    def dest_port_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_port_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
         """
         return pulumi.get(self, "dest_port_group")
 
     @dest_port_group.setter
-    def dest_port_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_port_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_port_group", value)
 
     @_builtins.property
     @pulumi.getter(name="destPortType")
-    def dest_port_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_port_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the destination port in the access control policy. Valid values: `port`, `group`.
         """
         return pulumi.get(self, "dest_port_type")
 
     @dest_port_type.setter
-    def dest_port_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_port_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_port_type", value)
 
     @_builtins.property
     @pulumi.getter(name="domainResolveType")
-    def domain_resolve_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_resolve_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name resolution method of the access control policy. Valid values:
         - `FQDN`: Fully qualified domain name (FQDN)-based resolution.
@@ -297,12 +297,12 @@ class ControlPolicyArgs:
         return pulumi.get(self, "domain_resolve_type")
 
     @domain_resolve_type.setter
-    def domain_resolve_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_resolve_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_resolve_type", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
         > **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
@@ -310,48 +310,48 @@ class ControlPolicyArgs:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP version supported by the access control policy. Default value: `4`. Valid values:
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the content within the request and response. Valid values: `zh`, `en`.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter
-    def release(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the access control policy. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "release")
 
     @release.setter
-    def release(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatDays")
-    def repeat_days(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def repeat_days(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The days of a week or of a month on which the access control policy takes effect. Valid values:
         - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
@@ -361,12 +361,12 @@ class ControlPolicyArgs:
         return pulumi.get(self, "repeat_days")
 
     @repeat_days.setter
-    def repeat_days(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def repeat_days(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "repeat_days", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatEndTime")
-    def repeat_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repeat_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
         > **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
@@ -374,24 +374,24 @@ class ControlPolicyArgs:
         return pulumi.get(self, "repeat_end_time")
 
     @repeat_end_time.setter
-    def repeat_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repeat_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repeat_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatStartTime")
-    def repeat_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repeat_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
         """
         return pulumi.get(self, "repeat_start_time")
 
     @repeat_start_time.setter
-    def repeat_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repeat_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repeat_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatType")
-    def repeat_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repeat_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
         - `Permanent`: The policy always takes effect.
@@ -403,63 +403,63 @@ class ControlPolicyArgs:
         return pulumi.get(self, "repeat_type")
 
     @repeat_type.setter
-    def repeat_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repeat_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repeat_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceIp")
-    def source_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source IP address of the request.
         """
         return pulumi.get(self, "source_ip")
 
     @source_ip.setter
-    def source_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type
 class _ControlPolicyState:
     def __init__(__self__, *,
-                 acl_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_port_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_port_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_resolve_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 release: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 repeat_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 acl_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_port_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_port_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_resolve_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 release: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 repeat_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ControlPolicy resources.
 
@@ -560,31 +560,31 @@ class _ControlPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="aclAction")
-    def acl_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         """
         return pulumi.get(self, "acl_action")
 
     @acl_action.setter
-    def acl_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_action", value)
 
     @_builtins.property
     @pulumi.getter(name="aclUuid")
-    def acl_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.148.0) The unique ID of the access control policy.
         """
         return pulumi.get(self, "acl_uuid")
 
     @acl_uuid.setter
-    def acl_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationName")
-    def application_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
         > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
@@ -592,12 +592,12 @@ class _ControlPolicyState:
         return pulumi.get(self, "application_name")
 
     @application_name.setter
-    def application_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_name", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationNameLists")
-    def application_name_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def application_name_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The application types supported by the access control policy.
         > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
@@ -605,108 +605,108 @@ class _ControlPolicyState:
         return pulumi.get(self, "application_name_lists")
 
     @application_name_lists.setter
-    def application_name_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def application_name_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "application_name_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.232.0) The time when the access control policy was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the access control policy.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destPort")
-    def dest_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
         """
         return pulumi.get(self, "dest_port")
 
     @dest_port.setter
-    def dest_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_port", value)
 
     @_builtins.property
     @pulumi.getter(name="destPortGroup")
-    def dest_port_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_port_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
         """
         return pulumi.get(self, "dest_port_group")
 
     @dest_port_group.setter
-    def dest_port_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_port_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_port_group", value)
 
     @_builtins.property
     @pulumi.getter(name="destPortType")
-    def dest_port_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_port_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the destination port in the access control policy. Valid values: `port`, `group`.
         """
         return pulumi.get(self, "dest_port_type")
 
     @dest_port_type.setter
-    def dest_port_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_port_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_port_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination address in the access control policy.
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationType")
-    def destination_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
         """
         return pulumi.get(self, "destination_type")
 
     @destination_type.setter
-    def destination_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         """
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
     @_builtins.property
     @pulumi.getter(name="domainResolveType")
-    def domain_resolve_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_resolve_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name resolution method of the access control policy. Valid values:
         - `FQDN`: Fully qualified domain name (FQDN)-based resolution.
@@ -716,12 +716,12 @@ class _ControlPolicyState:
         return pulumi.get(self, "domain_resolve_type")
 
     @domain_resolve_type.setter
-    def domain_resolve_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_resolve_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_resolve_type", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
         > **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
@@ -729,60 +729,60 @@ class _ControlPolicyState:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP version supported by the access control policy. Default value: `4`. Valid values:
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the content within the request and response. Valid values: `zh`, `en`.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter
-    def proto(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proto(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
         """
         return pulumi.get(self, "proto")
 
     @proto.setter
-    def proto(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proto(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proto", value)
 
     @_builtins.property
     @pulumi.getter
-    def release(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the access control policy. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "release")
 
     @release.setter
-    def release(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatDays")
-    def repeat_days(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def repeat_days(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The days of a week or of a month on which the access control policy takes effect. Valid values:
         - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
@@ -792,12 +792,12 @@ class _ControlPolicyState:
         return pulumi.get(self, "repeat_days")
 
     @repeat_days.setter
-    def repeat_days(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def repeat_days(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "repeat_days", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatEndTime")
-    def repeat_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repeat_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
         > **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
@@ -805,24 +805,24 @@ class _ControlPolicyState:
         return pulumi.get(self, "repeat_end_time")
 
     @repeat_end_time.setter
-    def repeat_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repeat_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repeat_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatStartTime")
-    def repeat_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repeat_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
         """
         return pulumi.get(self, "repeat_start_time")
 
     @repeat_start_time.setter
-    def repeat_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repeat_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repeat_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatType")
-    def repeat_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repeat_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
         - `Permanent`: The policy always takes effect.
@@ -834,55 +834,55 @@ class _ControlPolicyState:
         return pulumi.get(self, "repeat_type")
 
     @repeat_type.setter
-    def repeat_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repeat_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repeat_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source address in the access control policy.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceIp")
-    def source_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source IP address of the request.
         """
         return pulumi.get(self, "source_ip")
 
     @source_ip.setter
-    def source_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
         """
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_time", value)
 
 
@@ -892,30 +892,30 @@ class ControlPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_port_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_port_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_resolve_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 release: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 repeat_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 acl_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_port_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_port_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_resolve_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 release: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 repeat_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Control Policy resource.
@@ -1064,30 +1064,30 @@ class ControlPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_port_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_port_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_resolve_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 release: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 repeat_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 acl_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_port_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_port_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_resolve_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 release: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 repeat_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1149,32 +1149,32 @@ class ControlPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_action: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            application_name: Optional[pulumi.Input[_builtins.str]] = None,
-            application_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dest_port: Optional[pulumi.Input[_builtins.str]] = None,
-            dest_port_group: Optional[pulumi.Input[_builtins.str]] = None,
-            dest_port_type: Optional[pulumi.Input[_builtins.str]] = None,
-            destination: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_type: Optional[pulumi.Input[_builtins.str]] = None,
-            direction: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_resolve_type: Optional[pulumi.Input[_builtins.str]] = None,
-            end_time: Optional[pulumi.Input[_builtins.int]] = None,
-            ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            proto: Optional[pulumi.Input[_builtins.str]] = None,
-            release: Optional[pulumi.Input[_builtins.str]] = None,
-            repeat_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            repeat_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            repeat_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None,
-            source_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            start_time: Optional[pulumi.Input[_builtins.int]] = None) -> 'ControlPolicy':
+            acl_action: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            application_name: pulumi.Input[Optional[_builtins.str]] = None,
+            application_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_port: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_port_group: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_port_type: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_type: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_resolve_type: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            proto: pulumi.Input[Optional[_builtins.str]] = None,
+            release: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            repeat_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            source_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None) -> 'ControlPolicy':
         """
         Get an existing ControlPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

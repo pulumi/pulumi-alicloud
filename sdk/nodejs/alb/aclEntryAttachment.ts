@@ -126,19 +126,19 @@ export interface AclEntryAttachmentState {
     /**
      * The ID of the Acl.
      */
-    aclId?: pulumi.Input<string>;
+    aclId?: pulumi.Input<string | undefined>;
     /**
      * The description of the entry.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The CIDR blocks.
      */
-    entry?: pulumi.Input<string>;
+    entry?: pulumi.Input<string | undefined>;
     /**
      * The Status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -152,7 +152,7 @@ export interface AclEntryAttachmentArgs {
     /**
      * The description of the entry.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The CIDR blocks.
      */

@@ -151,38 +151,38 @@ export interface GetMonitorGroupsOutputArgs {
     /**
      * The ID of the tag rule.
      */
-    dynamicTagRuleId?: pulumi.Input<string>;
+    dynamicTagRuleId?: pulumi.Input<string | undefined>;
     /**
      * A list of Monitor Group IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The include template history.
      */
-    includeTemplateHistory?: pulumi.Input<boolean>;
+    includeTemplateHistory?: pulumi.Input<boolean | undefined>;
     /**
      * The keyword to be matched.
      */
-    keyword?: pulumi.Input<string>;
+    keyword?: pulumi.Input<string | undefined>;
     /**
      * The name of the application group.
      */
-    monitorGroupName?: pulumi.Input<string>;
+    monitorGroupName?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Monitor Group name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The select contact groups.
      */
-    selectContactGroups?: pulumi.Input<boolean>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    selectContactGroups?: pulumi.Input<boolean | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

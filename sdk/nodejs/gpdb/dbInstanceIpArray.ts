@@ -181,17 +181,17 @@ export interface DbInstanceIpArrayState {
      *
      * > **NOTE:**  You can call the [DescribeDBInstances](https://www.alibabacloud.com/help/en/doc-detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The default is empty. To distinguish between different attribute values, the console does not display groups with the 'hidden' attribute.
      */
-    dbInstanceIpArrayAttribute?: pulumi.Input<string>;
+    dbInstanceIpArrayAttribute?: pulumi.Input<string | undefined>;
     /**
      * The name of the IP address whitelist. If you do not specify this parameter, the default whitelist is queried.
      *
      * > **NOTE:**   Each instance supports up to 50 IP address whitelists.
      */
-    dbInstanceIpArrayName?: pulumi.Input<string>;
+    dbInstanceIpArrayName?: pulumi.Input<string | undefined>;
     /**
      * The method of modification. Valid values:
      *
@@ -199,14 +199,14 @@ export interface DbInstanceIpArrayState {
      * - `Append`: appends data to the whitelist.
      * - `Delete`: deletes the whitelist.
      */
-    modifyMode?: pulumi.Input<string>;
+    modifyMode?: pulumi.Input<string | undefined>;
     /**
      * The IP address whitelist contains a maximum of 1000 IP addresses separated by commas in the following three formats:
      * - 0.0.0.0/0
      * - 10.23.12.24(IP)
      * - 10.23.12.24/24(CIDR mode, Classless Inter-Domain Routing, '/24' indicates the length of the prefix in the address, and the range is '[1,32]')
      */
-    securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -222,7 +222,7 @@ export interface DbInstanceIpArrayArgs {
     /**
      * The default is empty. To distinguish between different attribute values, the console does not display groups with the 'hidden' attribute.
      */
-    dbInstanceIpArrayAttribute?: pulumi.Input<string>;
+    dbInstanceIpArrayAttribute?: pulumi.Input<string | undefined>;
     /**
      * The name of the IP address whitelist. If you do not specify this parameter, the default whitelist is queried.
      *
@@ -236,7 +236,7 @@ export interface DbInstanceIpArrayArgs {
      * - `Append`: appends data to the whitelist.
      * - `Delete`: deletes the whitelist.
      */
-    modifyMode?: pulumi.Input<string>;
+    modifyMode?: pulumi.Input<string | undefined>;
     /**
      * The IP address whitelist contains a maximum of 1000 IP addresses separated by commas in the following three formats:
      * - 0.0.0.0/0

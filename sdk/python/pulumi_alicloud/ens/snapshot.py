@@ -21,8 +21,8 @@ class SnapshotArgs:
     def __init__(__self__, *,
                  disk_id: pulumi.Input[_builtins.str],
                  ens_region_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
 
@@ -64,38 +64,38 @@ class SnapshotArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Snapshot Description Information.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotName")
-    def snapshot_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the snapshot instance.
         """
         return pulumi.get(self, "snapshot_name")
 
     @snapshot_name.setter
-    def snapshot_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_name", value)
 
 
 @pulumi.input_type
 class _SnapshotState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
 
@@ -121,74 +121,74 @@ class _SnapshotState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance creation timeIt is expressed in accordance with the ISO8601 standard and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.Example value: 2020-08-20 T14:52:28Z.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Snapshot Description Information.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud Disk ID.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ensRegionId")
-    def ens_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ens_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The node ID of ENS.
         """
         return pulumi.get(self, "ens_region_id")
 
     @ens_region_id.setter
-    def ens_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ens_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ens_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotName")
-    def snapshot_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the snapshot instance.
         """
         return pulumi.get(self, "snapshot_name")
 
     @snapshot_name.setter
-    def snapshot_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Snapshot Status. Valid values: creating, available, deleting, error.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -198,10 +198,10 @@ class Snapshot(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ENS Snapshot resource. Snapshot. When you use it for the first time, please contact the product classmates to add a resource whitelist.
@@ -315,10 +315,10 @@ class Snapshot(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -348,12 +348,12 @@ class Snapshot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ens_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Snapshot':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ens_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Snapshot':
         """
         Get an existing Snapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

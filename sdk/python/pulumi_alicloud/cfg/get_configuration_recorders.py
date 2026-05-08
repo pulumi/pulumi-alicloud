@@ -100,7 +100,7 @@ def get_configuration_recorders(output_file: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         recorders=pulumi.get(__ret__, 'recorders'))
-def get_configuration_recorders_output(output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_configuration_recorders_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConfigurationRecordersResult]:
     """
     This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.

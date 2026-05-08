@@ -20,22 +20,22 @@ __all__ = ['TransitRouterPeerAttachmentArgs', 'TransitRouterPeerAttachment']
 class TransitRouterPeerAttachmentArgs:
     def __init__(__self__, *,
                  peer_transit_router_id: pulumi.Input[_builtins.str],
-                 auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 peer_transit_router_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_association_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_table_propagation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_peer_attachment_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 peer_transit_router_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_association_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_table_propagation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_peer_attachment_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterPeerAttachment resource.
 
@@ -128,19 +128,19 @@ class TransitRouterPeerAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPublishRouteEnabled")
-    def auto_publish_route_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_publish_route_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
         """
         return pulumi.get(self, "auto_publish_route_enabled")
 
     @auto_publish_route_enabled.setter
-    def auto_publish_route_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_publish_route_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_publish_route_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth value of the inter-region connection. Unit: Mbit/s.
 
@@ -150,12 +150,12 @@ class TransitRouterPeerAttachmentArgs:
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthType")
-    def bandwidth_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that is used to allocate bandwidth to the inter-region connection. Valid values:
 
@@ -165,12 +165,12 @@ class TransitRouterPeerAttachmentArgs:
         return pulumi.get(self, "bandwidth_type")
 
     @bandwidth_type.setter
-    def bandwidth_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_type", value)
 
     @_builtins.property
     @pulumi.getter(name="cenBandwidthPackageId")
-    def cen_bandwidth_package_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_bandwidth_package_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
 
@@ -179,24 +179,24 @@ class TransitRouterPeerAttachmentArgs:
         return pulumi.get(self, "cen_bandwidth_package_id")
 
     @cen_bandwidth_package_id.setter
-    def cen_bandwidth_package_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_bandwidth_package_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_bandwidth_package_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultLinkType")
-    def default_link_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_link_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default line type.
         Valid values: Platinum and Gold.
@@ -205,36 +205,36 @@ class TransitRouterPeerAttachmentArgs:
         return pulumi.get(self, "default_link_type")
 
     @default_link_type.setter
-    def default_link_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_link_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_link_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="peerTransitRouterRegionId")
-    def peer_transit_router_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_transit_router_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where the peer transit router is deployed.
         """
         return pulumi.get(self, "peer_transit_router_region_id")
 
     @peer_transit_router_region_id.setter
-    def peer_transit_router_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_transit_router_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_transit_router_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource type to attachment. Only support `VR` and default value is `VR`.
 
@@ -243,50 +243,50 @@ class TransitRouterPeerAttachmentArgs:
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableAssociationEnabled")
     @_utilities.deprecated("""Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.""")
-    def route_table_association_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def route_table_association_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
         """
         return pulumi.get(self, "route_table_association_enabled")
 
     @route_table_association_enabled.setter
-    def route_table_association_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def route_table_association_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "route_table_association_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTablePropagationEnabled")
     @_utilities.deprecated("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.""")
-    def route_table_propagation_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def route_table_propagation_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
         """
         return pulumi.get(self, "route_table_propagation_enabled")
 
     @route_table_propagation_enabled.setter
-    def route_table_propagation_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def route_table_propagation_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "route_table_propagation_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentDescription")
-    def transit_router_attachment_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new description of the inter-region connection.
         This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
@@ -294,37 +294,37 @@ class TransitRouterPeerAttachmentArgs:
         return pulumi.get(self, "transit_router_attachment_description")
 
     @transit_router_attachment_description.setter
-    def transit_router_attachment_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentName")
     @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.""")
-    def transit_router_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
     @transit_router_attachment_name.setter
-    def transit_router_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the local Enterprise Edition transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterPeerAttachmentName")
-    def transit_router_peer_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_peer_attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new name of the inter-region connection.
         The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
@@ -332,34 +332,34 @@ class TransitRouterPeerAttachmentArgs:
         return pulumi.get(self, "transit_router_peer_attachment_name")
 
     @transit_router_peer_attachment_name.setter
-    def transit_router_peer_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_peer_attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_peer_attachment_name", value)
 
 
 @pulumi.input_type
 class _TransitRouterPeerAttachmentState:
     def __init__(__self__, *,
-                 auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 peer_transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_transit_router_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_association_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_table_propagation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_peer_attachment_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 peer_transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_transit_router_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_association_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_table_propagation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_peer_attachment_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterPeerAttachment resources.
 
@@ -453,19 +453,19 @@ class _TransitRouterPeerAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="autoPublishRouteEnabled")
-    def auto_publish_route_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_publish_route_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
         """
         return pulumi.get(self, "auto_publish_route_enabled")
 
     @auto_publish_route_enabled.setter
-    def auto_publish_route_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_publish_route_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_publish_route_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth value of the inter-region connection. Unit: Mbit/s.
 
@@ -475,12 +475,12 @@ class _TransitRouterPeerAttachmentState:
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthType")
-    def bandwidth_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that is used to allocate bandwidth to the inter-region connection. Valid values:
 
@@ -490,12 +490,12 @@ class _TransitRouterPeerAttachmentState:
         return pulumi.get(self, "bandwidth_type")
 
     @bandwidth_type.setter
-    def bandwidth_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_type", value)
 
     @_builtins.property
     @pulumi.getter(name="cenBandwidthPackageId")
-    def cen_bandwidth_package_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_bandwidth_package_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
 
@@ -504,36 +504,36 @@ class _TransitRouterPeerAttachmentState:
         return pulumi.get(self, "cen_bandwidth_package_id")
 
     @cen_bandwidth_package_id.setter
-    def cen_bandwidth_package_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_bandwidth_package_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_bandwidth_package_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultLinkType")
-    def default_link_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_link_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default line type.
         Valid values: Platinum and Gold.
@@ -542,60 +542,60 @@ class _TransitRouterPeerAttachmentState:
         return pulumi.get(self, "default_link_type")
 
     @default_link_type.setter
-    def default_link_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_link_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_link_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="peerTransitRouterId")
-    def peer_transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the peer transit router.
         """
         return pulumi.get(self, "peer_transit_router_id")
 
     @peer_transit_router_id.setter
-    def peer_transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_transit_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="peerTransitRouterRegionId")
-    def peer_transit_router_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_transit_router_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where the peer transit router is deployed.
         """
         return pulumi.get(self, "peer_transit_router_region_id")
 
     @peer_transit_router_region_id.setter
-    def peer_transit_router_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_transit_router_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_transit_router_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where the local Enterprise Edition transit router is deployed.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource type to attachment. Only support `VR` and default value is `VR`.
 
@@ -604,62 +604,62 @@ class _TransitRouterPeerAttachmentState:
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableAssociationEnabled")
     @_utilities.deprecated("""Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.""")
-    def route_table_association_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def route_table_association_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Field `route_table_association_enabled` has been deprecated from provider version 1.230.0.
         """
         return pulumi.get(self, "route_table_association_enabled")
 
     @route_table_association_enabled.setter
-    def route_table_association_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def route_table_association_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "route_table_association_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTablePropagationEnabled")
     @_utilities.deprecated("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.""")
-    def route_table_propagation_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def route_table_propagation_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Field `route_table_propagation_enabled` has been deprecated from provider version 1.230.0.
         """
         return pulumi.get(self, "route_table_propagation_enabled")
 
     @route_table_propagation_enabled.setter
-    def route_table_propagation_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def route_table_propagation_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "route_table_propagation_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentDescription")
-    def transit_router_attachment_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new description of the inter-region connection.
         This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
@@ -667,49 +667,49 @@ class _TransitRouterPeerAttachmentState:
         return pulumi.get(self, "transit_router_attachment_description")
 
     @transit_router_attachment_description.setter
-    def transit_router_attachment_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentId")
-    def transit_router_attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the inter-region connection.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
     @transit_router_attachment_id.setter
-    def transit_router_attachment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentName")
     @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.""")
-    def transit_router_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
     @transit_router_attachment_name.setter
-    def transit_router_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the local Enterprise Edition transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterPeerAttachmentName")
-    def transit_router_peer_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_peer_attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new name of the inter-region connection.
         The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
@@ -717,7 +717,7 @@ class _TransitRouterPeerAttachmentState:
         return pulumi.get(self, "transit_router_peer_attachment_name")
 
     @transit_router_peer_attachment_name.setter
-    def transit_router_peer_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_peer_attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_peer_attachment_name", value)
 
 
@@ -727,23 +727,23 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 peer_transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_transit_router_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_association_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_table_propagation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_peer_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 peer_transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_transit_router_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_association_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_table_propagation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_peer_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Peer Attachment resource.
@@ -920,23 +920,23 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 peer_transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_transit_router_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_association_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_table_propagation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_peer_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 peer_transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_transit_router_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_association_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_table_propagation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_peer_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -979,27 +979,27 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            bandwidth_type: Optional[pulumi.Input[_builtins.str]] = None,
-            cen_bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            default_link_type: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            peer_transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_transit_router_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-            route_table_association_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            route_table_propagation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_peer_attachment_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitRouterPeerAttachment':
+            auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            bandwidth_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            default_link_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            peer_transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_transit_router_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_association_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            route_table_propagation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_peer_attachment_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitRouterPeerAttachment':
         """
         Get an existing TransitRouterPeerAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

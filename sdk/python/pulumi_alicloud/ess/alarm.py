@@ -23,21 +23,21 @@ class AlarmArgs:
     def __init__(__self__, *,
                  alarm_actions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  scaling_group_id: pulumi.Input[_builtins.str],
-                 cloud_monitor_group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 expressions: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]] = None,
-                 expressions_logic_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_monitor_group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 expressions: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmExpressionArgs']]]] = None,
+                 expressions_logic_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Alarm resource.
 
@@ -118,206 +118,206 @@ class AlarmArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudMonitorGroupId")
-    def cloud_monitor_group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cloud_monitor_group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         """
         return pulumi.get(self, "cloud_monitor_group_id")
 
     @cloud_monitor_group_id.setter
-    def cloud_monitor_group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cloud_monitor_group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cloud_monitor_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
-    def comparison_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison_operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description for the alarm.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter
-    def effective(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
         """
         return pulumi.get(self, "effective")
 
     @effective.setter
-    def effective(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable specific ess alarm. Default to true.
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="evaluationCount")
-    def evaluation_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def evaluation_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         """
         return pulumi.get(self, "evaluation_count")
 
     @evaluation_count.setter
-    def evaluation_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def evaluation_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "evaluation_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]]:
+    def expressions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlarmExpressionArgs']]]]:
         """
         Support multi alert rule. See `expressions` below for details.
         """
         return pulumi.get(self, "expressions")
 
     @expressions.setter
-    def expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]]):
+    def expressions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmExpressionArgs']]]]):
         pulumi.set(self, "expressions", value)
 
     @_builtins.property
     @pulumi.getter(name="expressionsLogicOperator")
-    def expressions_logic_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expressions_logic_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relationship between the trigger conditions in the multi-metric alert rule.
         """
         return pulumi.get(self, "expressions_logic_operator")
 
     @expressions_logic_operator.setter
-    def expressions_logic_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expressions_logic_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expressions_logic_operator", value)
 
     @_builtins.property
     @pulumi.getter(name="metricName")
-    def metric_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the alarm's associated metric. See `dimensions` below for details.
         """
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
-    def metric_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_name", value)
 
     @_builtins.property
     @pulumi.getter(name="metricType")
-    def metric_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
         """
         return pulumi.get(self, "metric_type")
 
     @metric_type.setter
-    def metric_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for ess alarm.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistics", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value against which the specified statistics is compared.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threshold", value)
 
 
 @pulumi.input_type
 class _AlarmState:
     def __init__(__self__, *,
-                 alarm_actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cloud_monitor_group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 expressions: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]] = None,
-                 expressions_logic_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.str]] = None):
+                 alarm_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cloud_monitor_group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 expressions: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmExpressionArgs']]]] = None,
+                 expressions_logic_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Alarm resources.
 
@@ -382,187 +382,187 @@ class _AlarmState:
 
     @_builtins.property
     @pulumi.getter(name="alarmActions")
-    def alarm_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def alarm_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
         """
         return pulumi.get(self, "alarm_actions")
 
     @alarm_actions.setter
-    def alarm_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def alarm_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alarm_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudMonitorGroupId")
-    def cloud_monitor_group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cloud_monitor_group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         """
         return pulumi.get(self, "cloud_monitor_group_id")
 
     @cloud_monitor_group_id.setter
-    def cloud_monitor_group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cloud_monitor_group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cloud_monitor_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
-    def comparison_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison_operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description for the alarm.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter
-    def effective(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
         """
         return pulumi.get(self, "effective")
 
     @effective.setter
-    def effective(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable specific ess alarm. Default to true.
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="evaluationCount")
-    def evaluation_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def evaluation_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         """
         return pulumi.get(self, "evaluation_count")
 
     @evaluation_count.setter
-    def evaluation_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def evaluation_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "evaluation_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]]:
+    def expressions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlarmExpressionArgs']]]]:
         """
         Support multi alert rule. See `expressions` below for details.
         """
         return pulumi.get(self, "expressions")
 
     @expressions.setter
-    def expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]]):
+    def expressions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmExpressionArgs']]]]):
         pulumi.set(self, "expressions", value)
 
     @_builtins.property
     @pulumi.getter(name="expressionsLogicOperator")
-    def expressions_logic_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expressions_logic_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relationship between the trigger conditions in the multi-metric alert rule.
         """
         return pulumi.get(self, "expressions_logic_operator")
 
     @expressions_logic_operator.setter
-    def expressions_logic_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expressions_logic_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expressions_logic_operator", value)
 
     @_builtins.property
     @pulumi.getter(name="metricName")
-    def metric_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the alarm's associated metric. See `dimensions` below for details.
         """
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
-    def metric_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_name", value)
 
     @_builtins.property
     @pulumi.getter(name="metricType")
-    def metric_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
         """
         return pulumi.get(self, "metric_type")
 
     @metric_type.setter
-    def metric_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for ess alarm.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
         """
         return pulumi.get(self, "scaling_group_id")
 
     @scaling_group_id.setter
-    def scaling_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the event-triggered task. Valid values:
         - ALARM: The alert condition is met and an alert is triggered.
@@ -572,31 +572,31 @@ class _AlarmState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistics", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value against which the specified statistics is compared.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threshold", value)
 
 
@@ -606,23 +606,23 @@ class Alarm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alarm_actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cloud_monitor_group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 expressions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
-                 expressions_logic_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.str]] = None,
+                 alarm_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cloud_monitor_group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
+                 expressions_logic_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESS alarm task resource.
@@ -650,7 +650,7 @@ class Alarm(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=4)
+            memory_size=float(4))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -780,7 +780,7 @@ class Alarm(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=4)
+            memory_size=float(4))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -873,23 +873,23 @@ class Alarm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alarm_actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cloud_monitor_group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 expressions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
-                 expressions_logic_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.str]] = None,
+                 alarm_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cloud_monitor_group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
+                 expressions_logic_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -931,24 +931,24 @@ class Alarm(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alarm_actions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cloud_monitor_group_id: Optional[pulumi.Input[_builtins.int]] = None,
-            comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective: Optional[pulumi.Input[_builtins.str]] = None,
-            enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-            expressions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
-            expressions_logic_operator: Optional[pulumi.Input[_builtins.str]] = None,
-            metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-            metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            statistics: Optional[pulumi.Input[_builtins.str]] = None,
-            threshold: Optional[pulumi.Input[_builtins.str]] = None) -> 'Alarm':
+            alarm_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cloud_monitor_group_id: pulumi.Input[Optional[_builtins.int]] = None,
+            comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective: pulumi.Input[Optional[_builtins.str]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+            expressions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
+            expressions_logic_operator: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            statistics: pulumi.Input[Optional[_builtins.str]] = None,
+            threshold: pulumi.Input[Optional[_builtins.str]] = None) -> 'Alarm':
         """
         Get an existing Alarm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

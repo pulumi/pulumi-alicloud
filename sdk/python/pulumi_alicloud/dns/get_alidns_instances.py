@@ -155,11 +155,11 @@ def get_alidns_instances(domain_type: Optional[_builtins.str] = None,
         lang=pulumi.get(__ret__, 'lang'),
         output_file=pulumi.get(__ret__, 'output_file'),
         user_client_ip=pulumi.get(__ret__, 'user_client_ip'))
-def get_alidns_instances_output(domain_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                lang: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                user_client_ip: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_alidns_instances_output(domain_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                lang: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                user_client_ip: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlidnsInstancesResult]:
     """
     This data source provides a list of Alidns instances in an Alibaba Cloud account according to the specified filters.

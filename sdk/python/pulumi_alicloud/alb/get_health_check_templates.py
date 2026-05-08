@@ -163,11 +163,11 @@ def get_health_check_templates(health_check_template_ids: Optional[Sequence[_bui
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         templates=pulumi.get(__ret__, 'templates'))
-def get_health_check_templates_output(health_check_template_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                      health_check_template_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                      name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_health_check_templates_output(health_check_template_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                      health_check_template_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                      name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHealthCheckTemplatesResult]:
     """
     This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.

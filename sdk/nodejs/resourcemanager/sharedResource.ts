@@ -175,43 +175,43 @@ export interface SharedResourceState {
     /**
      * The time when the shared resource was associated with the resource share.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    permissionName?: pulumi.Input<string>;
+    permissionName?: pulumi.Input<string | undefined>;
     /**
      * The ARN of the resource.
      */
-    propertiesResourceArn?: pulumi.Input<string>;
+    propertiesResourceArn?: pulumi.Input<string | undefined>;
     /**
      * Associated resource ARN.
      *
      * > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
      */
-    resourceArn?: pulumi.Input<string>;
+    resourceArn?: pulumi.Input<string | undefined>;
     /**
      * The ID of the shared resource.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The property of the resource.
      */
-    resourceProperty?: pulumi.Input<string>;
+    resourceProperty?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource share.
      */
-    resourceShareId?: pulumi.Input<string>;
+    resourceShareId?: pulumi.Input<string | undefined>;
     /**
      * The type of the shared resource.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The association status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -223,25 +223,25 @@ export interface SharedResourceArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    permissionName?: pulumi.Input<string>;
+    permissionName?: pulumi.Input<string | undefined>;
     /**
      * The ARN of the resource.
      */
-    propertiesResourceArn?: pulumi.Input<string>;
+    propertiesResourceArn?: pulumi.Input<string | undefined>;
     /**
      * Associated resource ARN.
      *
      * > **NOTE:**  This parameter is not available when the association type 'AssociationType' is the resource consumer 'Target'.
      */
-    resourceArn?: pulumi.Input<string>;
+    resourceArn?: pulumi.Input<string | undefined>;
     /**
      * The ID of the shared resource.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The property of the resource.
      */
-    resourceProperty?: pulumi.Input<string>;
+    resourceProperty?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource share.
      */
@@ -249,5 +249,5 @@ export interface SharedResourceArgs {
     /**
      * The type of the shared resource.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
 }

@@ -20,10 +20,10 @@ __all__ = ['BgpPeerArgs', 'BgpPeer']
 class BgpPeerArgs:
     def __init__(__self__, *,
                  bgp_group_id: pulumi.Input[_builtins.str],
-                 bfd_multi_hop: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_bfd: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None):
+                 bfd_multi_hop: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_bfd: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BgpPeer resource.
 
@@ -57,63 +57,63 @@ class BgpPeerArgs:
 
     @_builtins.property
     @pulumi.getter(name="bfdMultiHop")
-    def bfd_multi_hop(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bfd_multi_hop(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
         """
         return pulumi.get(self, "bfd_multi_hop")
 
     @bfd_multi_hop.setter
-    def bfd_multi_hop(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bfd_multi_hop(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bfd_multi_hop", value)
 
     @_builtins.property
     @pulumi.getter(name="enableBfd")
-    def enable_bfd(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_bfd(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
         """
         return pulumi.get(self, "enable_bfd")
 
     @enable_bfd.setter
-    def enable_bfd(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_bfd(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_bfd", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP version.
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIpAddress")
-    def peer_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the BGP peer.
         """
         return pulumi.get(self, "peer_ip_address")
 
     @peer_ip_address.setter
-    def peer_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ip_address", value)
 
 
 @pulumi.input_type
 class _BgpPeerState:
     def __init__(__self__, *,
-                 bfd_multi_hop: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgp_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bgp_peer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_bfd: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 bfd_multi_hop: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgp_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bgp_peer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_bfd: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpPeer resources.
 
@@ -142,86 +142,86 @@ class _BgpPeerState:
 
     @_builtins.property
     @pulumi.getter(name="bfdMultiHop")
-    def bfd_multi_hop(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bfd_multi_hop(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
         """
         return pulumi.get(self, "bfd_multi_hop")
 
     @bfd_multi_hop.setter
-    def bfd_multi_hop(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bfd_multi_hop(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bfd_multi_hop", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpGroupId")
-    def bgp_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bgp_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the BGP group.
         """
         return pulumi.get(self, "bgp_group_id")
 
     @bgp_group_id.setter
-    def bgp_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bgp_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bgp_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpPeerName")
-    def bgp_peer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bgp_peer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the BGP neighbor.
         """
         return pulumi.get(self, "bgp_peer_name")
 
     @bgp_peer_name.setter
-    def bgp_peer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bgp_peer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bgp_peer_name", value)
 
     @_builtins.property
     @pulumi.getter(name="enableBfd")
-    def enable_bfd(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_bfd(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
         """
         return pulumi.get(self, "enable_bfd")
 
     @enable_bfd.setter
-    def enable_bfd(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_bfd(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_bfd", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP version.
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIpAddress")
-    def peer_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the BGP peer.
         """
         return pulumi.get(self, "peer_ip_address")
 
     @peer_ip_address.setter
-    def peer_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of BGP neighbors.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -231,11 +231,11 @@ class BgpPeer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bfd_multi_hop: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgp_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_bfd: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 bfd_multi_hop: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgp_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_bfd: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Express Connect Bgp Peer resource.
@@ -267,7 +267,7 @@ class BgpPeer(pulumi.CustomResource):
             peering_subnet_mask="255.255.255.252",
             physical_connection_id=example.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id["id"],
+            vlan_id=int(vlan_id["id"]),
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
@@ -341,7 +341,7 @@ class BgpPeer(pulumi.CustomResource):
             peering_subnet_mask="255.255.255.252",
             physical_connection_id=example.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id["id"],
+            vlan_id=int(vlan_id["id"]),
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
@@ -386,11 +386,11 @@ class BgpPeer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bfd_multi_hop: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgp_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_bfd: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 bfd_multi_hop: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgp_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_bfd: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -419,13 +419,13 @@ class BgpPeer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bfd_multi_hop: Optional[pulumi.Input[_builtins.int]] = None,
-            bgp_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bgp_peer_name: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_bfd: Optional[pulumi.Input[_builtins.bool]] = None,
-            ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'BgpPeer':
+            bfd_multi_hop: pulumi.Input[Optional[_builtins.int]] = None,
+            bgp_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bgp_peer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_bfd: pulumi.Input[Optional[_builtins.bool]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'BgpPeer':
         """
         Get an existing BgpPeer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

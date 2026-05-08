@@ -123,25 +123,25 @@ export interface ConfigurationRecorderState {
     /**
      * Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
      */
-    enterpriseEdition?: pulumi.Input<boolean>;
+    enterpriseEdition?: pulumi.Input<boolean | undefined>;
     /**
      * Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
      */
-    organizationEnableStatus?: pulumi.Input<string>;
+    organizationEnableStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Enterprise management account.
      */
-    organizationMasterId?: pulumi.Input<number>;
+    organizationMasterId?: pulumi.Input<number | undefined>;
     /**
      * A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
      * * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
      * * If you use an enterprise account, the `resourceTypes` does not support updating.
      */
-    resourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -151,11 +151,11 @@ export interface ConfigurationRecorderArgs {
     /**
      * Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
      */
-    enterpriseEdition?: pulumi.Input<boolean>;
+    enterpriseEdition?: pulumi.Input<boolean | undefined>;
     /**
      * A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
      * * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
      * * If you use an enterprise account, the `resourceTypes` does not support updating.
      */
-    resourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

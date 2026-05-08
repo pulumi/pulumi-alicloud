@@ -20,12 +20,12 @@ __all__ = ['TransitRouterEcrAttachmentArgs', 'TransitRouterEcrAttachment']
 class TransitRouterEcrAttachmentArgs:
     def __init__(__self__, *,
                  ecr_id: pulumi.Input[_builtins.str],
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_ecr_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_ecr_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterEcrAttachment resource.
 
@@ -65,89 +65,89 @@ class TransitRouterEcrAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CenId
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ecrOwnerId")
-    def ecr_owner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ecr_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         EcrOwnerId
         """
         return pulumi.get(self, "ecr_owner_id")
 
     @ecr_owner_id.setter
-    def ecr_owner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ecr_owner_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ecr_owner_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentDescription")
-    def transit_router_attachment_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TransitRouterAttachmentDescription
         """
         return pulumi.get(self, "transit_router_attachment_description")
 
     @transit_router_attachment_description.setter
-    def transit_router_attachment_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterEcrAttachmentName")
-    def transit_router_ecr_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_ecr_attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TransitRouterAttachmentName
         """
         return pulumi.get(self, "transit_router_ecr_attachment_name")
 
     @transit_router_ecr_attachment_name.setter
-    def transit_router_ecr_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_ecr_attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_ecr_attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TransitRouterId
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
 
 @pulumi.input_type
 class _TransitRouterEcrAttachmentState:
     def __init__(__self__, *,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_ecr_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_ecr_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterEcrAttachment resources.
 
@@ -182,110 +182,110 @@ class _TransitRouterEcrAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CenId
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ecrId")
-    def ecr_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecr_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EcrId
         """
         return pulumi.get(self, "ecr_id")
 
     @ecr_id.setter
-    def ecr_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecr_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecr_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ecrOwnerId")
-    def ecr_owner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ecr_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         EcrOwnerId
         """
         return pulumi.get(self, "ecr_owner_id")
 
     @ecr_owner_id.setter
-    def ecr_owner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ecr_owner_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ecr_owner_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentDescription")
-    def transit_router_attachment_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TransitRouterAttachmentDescription
         """
         return pulumi.get(self, "transit_router_attachment_description")
 
     @transit_router_attachment_description.setter
-    def transit_router_attachment_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterEcrAttachmentName")
-    def transit_router_ecr_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_ecr_attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TransitRouterAttachmentName
         """
         return pulumi.get(self, "transit_router_ecr_attachment_name")
 
     @transit_router_ecr_attachment_name.setter
-    def transit_router_ecr_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_ecr_attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_ecr_attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TransitRouterId
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
 
@@ -295,13 +295,13 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_ecr_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_ecr_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Ecr Attachment resource.
@@ -326,7 +326,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
         if asn is None:
             asn = "4200000667"
         default_o8_hcfx = alicloud.expressconnect.RouterExpressConnectRouter("defaultO8Hcfx",
-            alibaba_side_asn=asn,
+            alibaba_side_asn=int(asn),
             ecr_name=name)
         default_qk_biay = alicloud.cen.Instance("defaultQKBiay", cen_instance_name=name)
         default_qa94_y1 = alicloud.cen.TransitRouter("defaultQa94Y1",
@@ -338,14 +338,14 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
             ecr_id=default_o8_hcfx.id,
             cen_id=default_qk_biay.id,
             transit_router_id=default_qa94_y1.transit_router_id,
-            transit_router_owner_id=current.id)
+            transit_router_owner_id=output(current.id).apply(lambda x: int(x)))
         default = alicloud.cen.TransitRouterEcrAttachment("default",
             ecr_id=default_o8_hcfx.id,
             cen_id=defaulted_pu6c.cen_id,
             transit_router_ecr_attachment_name=name,
             transit_router_attachment_description=name,
             transit_router_id=default_qa94_y1.transit_router_id,
-            ecr_owner_id=current.id)
+            ecr_owner_id=output(current.id).apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -398,7 +398,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
         if asn is None:
             asn = "4200000667"
         default_o8_hcfx = alicloud.expressconnect.RouterExpressConnectRouter("defaultO8Hcfx",
-            alibaba_side_asn=asn,
+            alibaba_side_asn=int(asn),
             ecr_name=name)
         default_qk_biay = alicloud.cen.Instance("defaultQKBiay", cen_instance_name=name)
         default_qa94_y1 = alicloud.cen.TransitRouter("defaultQa94Y1",
@@ -410,14 +410,14 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
             ecr_id=default_o8_hcfx.id,
             cen_id=default_qk_biay.id,
             transit_router_id=default_qa94_y1.transit_router_id,
-            transit_router_owner_id=current.id)
+            transit_router_owner_id=output(current.id).apply(lambda x: int(x)))
         default = alicloud.cen.TransitRouterEcrAttachment("default",
             ecr_id=default_o8_hcfx.id,
             cen_id=defaulted_pu6c.cen_id,
             transit_router_ecr_attachment_name=name,
             transit_router_attachment_description=name,
             transit_router_id=default_qa94_y1.transit_router_id,
-            ecr_owner_id=current.id)
+            ecr_owner_id=output(current.id).apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -446,13 +446,13 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecr_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_ecr_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecr_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_ecr_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -483,15 +483,15 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            ecr_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ecr_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_ecr_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitRouterEcrAttachment':
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ecr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ecr_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_ecr_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitRouterEcrAttachment':
         """
         Get an existing TransitRouterEcrAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

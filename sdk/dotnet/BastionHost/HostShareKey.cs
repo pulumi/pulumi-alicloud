@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.BastionHost
     ///     var name = config.Get("name") ?? "tf_example";
     ///     var @default = AliCloud.BastionHost.GetInstances.Invoke();
     /// 
-    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.BastionHost
     ///     });
     /// 
     ///     var defaultSecurityGroup = new List&lt;AliCloud.Ecs.SecurityGroup&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids)).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         defaultSecurityGroup.Add(new AliCloud.Ecs.SecurityGroup($"default-{range.Value}", new()
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.BastionHost
     ///         }));
     ///     }
     ///     var defaultInstance = new List&lt;AliCloud.BastionHost.Instance&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids)).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         defaultInstance.Add(new AliCloud.BastionHost.Instance($"default-{range.Value}", new()
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.BastionHost
     ///             },
     ///         }));
     ///     }
-    ///     var instanceId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids)).Length, @default, defaultInstance[0].Id).Apply(values =&gt;
+    ///     var instanceId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids)).Length(), @default, defaultInstance[0].Id).Apply(values =&gt;
     ///     {
     ///         var length = values.Item1;
     ///         var @default = values.Item2;

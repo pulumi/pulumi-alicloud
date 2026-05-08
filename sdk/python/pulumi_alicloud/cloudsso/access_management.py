@@ -25,7 +25,7 @@ class AccessManagementArgs:
                  principal_type: pulumi.Input[_builtins.str],
                  target_id: pulumi.Input[_builtins.str],
                  target_type: pulumi.Input[_builtins.str],
-                 deprovision_strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 deprovision_strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessManagement resource.
 
@@ -120,28 +120,28 @@ class AccessManagementArgs:
 
     @_builtins.property
     @pulumi.getter(name="deprovisionStrategy")
-    def deprovision_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deprovision_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
         """
         return pulumi.get(self, "deprovision_strategy")
 
     @deprovision_strategy.setter
-    def deprovision_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deprovision_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deprovision_strategy", value)
 
 
 @pulumi.input_type
 class _AccessManagementState:
     def __init__(__self__, *,
-                 access_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deprovision_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deprovision_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessManagement resources.
 
@@ -173,98 +173,98 @@ class _AccessManagementState:
 
     @_builtins.property
     @pulumi.getter(name="accessConfigurationId")
-    def access_configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_configuration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the access configuration.
         """
         return pulumi.get(self, "access_configuration_id")
 
     @access_configuration_id.setter
-    def access_configuration_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_configuration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_configuration_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.254.0) The time when the access permissions were assigned.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deprovisionStrategy")
-    def deprovision_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deprovision_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
         """
         return pulumi.get(self, "deprovision_strategy")
 
     @deprovision_strategy.setter
-    def deprovision_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deprovision_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deprovision_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
-    def directory_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Directory.
         """
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
-    def directory_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_id", value)
 
     @_builtins.property
     @pulumi.getter(name="principalId")
-    def principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CloudSSO identity.
         """
         return pulumi.get(self, "principal_id")
 
     @principal_id.setter
-    def principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="principalType")
-    def principal_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the CloudSSO identity. Valid values: `User`, `Group`.
         """
         return pulumi.get(self, "principal_type")
 
     @principal_type.setter
-    def principal_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_type", value)
 
     @_builtins.property
     @pulumi.getter(name="targetId")
-    def target_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the task object.
         """
         return pulumi.get(self, "target_id")
 
     @target_id.setter
-    def target_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the task object. Valid values: `RD-Account`.
         """
         return pulumi.get(self, "target_type")
 
     @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_type", value)
 
 
@@ -274,13 +274,13 @@ class AccessManagement(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deprovision_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deprovision_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud SSO Access Assignment resource.
@@ -299,6 +299,7 @@ class AccessManagement(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -312,7 +313,7 @@ class AccessManagement(pulumi.CustomResource):
         default_integer = random.Integer("default",
             min=10000,
             max=99999)
-        default_directory = []
+        default_directory: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
@@ -323,13 +324,13 @@ class AccessManagement(pulumi.CustomResource):
             [""],
         ]).result[0])
         default_user = alicloud.cloudsso.User("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_name=f"{name}-{default_integer['result']}")
         default_access_configuration = alicloud.cloudsso.AccessConfiguration("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             access_configuration_name=f"{name}-{default_integer['result']}")
         default_access_management = alicloud.cloudsso.AccessManagement("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             access_configuration_id=default_access_configuration.access_configuration_id,
             target_type="RD-Account",
             target_id=default_get_resource_directories.directories[0].master_account_id,
@@ -382,6 +383,7 @@ class AccessManagement(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -395,7 +397,7 @@ class AccessManagement(pulumi.CustomResource):
         default_integer = random.Integer("default",
             min=10000,
             max=99999)
-        default_directory = []
+        default_directory: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
@@ -406,13 +408,13 @@ class AccessManagement(pulumi.CustomResource):
             [""],
         ]).result[0])
         default_user = alicloud.cloudsso.User("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             user_name=f"{name}-{default_integer['result']}")
         default_access_configuration = alicloud.cloudsso.AccessConfiguration("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             access_configuration_name=f"{name}-{default_integer['result']}")
         default_access_management = alicloud.cloudsso.AccessManagement("default",
-            directory_id=directory_id,
+            directory_id=output(directory_id).apply(lambda x: str(x)),
             access_configuration_id=default_access_configuration.access_configuration_id,
             target_type="RD-Account",
             target_id=default_get_resource_directories.directories[0].master_account_id,
@@ -447,13 +449,13 @@ class AccessManagement(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deprovision_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deprovision_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -493,14 +495,14 @@ class AccessManagement(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deprovision_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-            principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-            principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-            target_id: Optional[pulumi.Input[_builtins.str]] = None,
-            target_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessManagement':
+            access_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deprovision_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+            target_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessManagement':
         """
         Get an existing AccessManagement resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

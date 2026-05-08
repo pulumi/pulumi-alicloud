@@ -118,11 +118,11 @@ export interface BandwidthPackageAttachmentState {
     /**
      * The ID of the bandwidth package.
      */
-    bandwidthPackageId?: pulumi.Input<string>;
+    bandwidthPackageId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the CEN.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
 }
 
 /**

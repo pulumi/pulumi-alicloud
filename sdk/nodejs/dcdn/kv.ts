@@ -131,15 +131,15 @@ export interface KvState {
     /**
      * The name of the key to Put, the longest 512, cannot contain spaces.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The name specified when the customer calls PutDcdnKvNamespace.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The content of key, up to 2M(2*1000*1000).
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**

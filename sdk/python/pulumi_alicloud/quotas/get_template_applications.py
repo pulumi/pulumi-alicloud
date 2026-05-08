@@ -155,7 +155,7 @@ def get_template_applications(batch_quota_application_id: Optional[_builtins.str
         product_code="vpc",
         quota_category="FlowControl",
         aliyun_uids=[default.ids[0]],
-        desire_value=6,
+        desire_value=float(6),
         notice_type=0,
         env_language="zh",
         reason="example",
@@ -207,12 +207,12 @@ def get_template_applications(batch_quota_application_id: Optional[_builtins.str
         product_code=pulumi.get(__ret__, 'product_code'),
         quota_action_code=pulumi.get(__ret__, 'quota_action_code'),
         quota_category=pulumi.get(__ret__, 'quota_category'))
-def get_template_applications_output(batch_quota_application_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     product_code: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     quota_action_code: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     quota_category: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_template_applications_output(batch_quota_application_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     product_code: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     quota_action_code: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     quota_category: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTemplateApplicationsResult]:
     """
     This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
@@ -231,7 +231,7 @@ def get_template_applications_output(batch_quota_application_id: Optional[pulumi
         product_code="vpc",
         quota_category="FlowControl",
         aliyun_uids=[default.ids[0]],
-        desire_value=6,
+        desire_value=float(6),
         notice_type=0,
         env_language="zh",
         reason="example",

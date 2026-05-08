@@ -22,7 +22,7 @@ class FirewallRuleArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  port: pulumi.Input[_builtins.str],
                  rule_protocol: pulumi.Input[_builtins.str],
-                 remark: Optional[pulumi.Input[_builtins.str]] = None):
+                 remark: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallRule resource.
 
@@ -75,25 +75,25 @@ class FirewallRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remarks of the firewall rule.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
 
 @pulumi.input_type
 class _FirewallRuleState:
     def __init__(__self__, *,
-                 firewall_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 firewall_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_protocol: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallRule resources.
 
@@ -116,62 +116,62 @@ class _FirewallRuleState:
 
     @_builtins.property
     @pulumi.getter(name="firewallRuleId")
-    def firewall_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the firewall rule.
         """
         return pulumi.get(self, "firewall_rule_id")
 
     @firewall_rule_id.setter
-    def firewall_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alibaba Cloud simple application server instance ID.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port range. Valid values of port numbers: `1` to `65535`. Specify a port range in the format of `<start port number>/<end port number>`. Example: `1024/1055`, which indicates the port range of `1024` through `1055`.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remarks of the firewall rule.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleProtocol")
-    def rule_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
         """
         return pulumi.get(self, "rule_protocol")
 
     @rule_protocol.setter
-    def rule_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_protocol", value)
 
 
@@ -181,10 +181,10 @@ class FirewallRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_protocol: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Simple Application Server Firewall Rule resource.
@@ -306,10 +306,10 @@ class FirewallRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_protocol: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -340,11 +340,11 @@ class FirewallRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            firewall_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.str]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_protocol: Optional[pulumi.Input[_builtins.str]] = None) -> 'FirewallRule':
+            firewall_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_protocol: pulumi.Input[Optional[_builtins.str]] = None) -> 'FirewallRule':
         """
         Get an existing FirewallRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

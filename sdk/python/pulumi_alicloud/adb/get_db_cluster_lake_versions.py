@@ -197,13 +197,13 @@ def get_db_cluster_lake_versions(enable_details: Optional[_builtins.bool] = None
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         status=pulumi.get(__ret__, 'status'),
         versions=pulumi.get(__ret__, 'versions'))
-def get_db_cluster_lake_versions_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                        ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                        page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                        resource_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_db_cluster_lake_versions_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                        ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                        page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                        resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDBClusterLakeVersionsResult]:
     """
     This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.

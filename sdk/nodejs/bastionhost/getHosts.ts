@@ -175,19 +175,19 @@ export interface GetHostsOutputArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * The host address.
      */
-    hostAddress?: pulumi.Input<string>;
+    hostAddress?: pulumi.Input<string | undefined>;
     /**
      * Specify the new create a host name of the supports up to 128 characters.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * A list of Host IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specify the new create a host where the Bastion host ID of.
      */
@@ -195,25 +195,25 @@ export interface GetHostsOutputArgs {
     /**
      * A regex string to filter results by Host name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * Specify the new create the host's operating system. Valid values: Linux Windows.
      */
-    osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Specify the newly created ECS instance ID or dedicated cluster host ID.
      */
-    sourceInstanceId?: pulumi.Input<string>;
+    sourceInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The source instance state.
      */
-    sourceInstanceState?: pulumi.Input<string>;
+    sourceInstanceState?: pulumi.Input<string | undefined>;
 }

@@ -450,52 +450,52 @@ export interface InstanceState {
     /**
      * Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
      */
-    bindVpcs?: pulumi.Input<pulumi.Input<inputs.kms.InstanceBindVpc>[]>;
+    bindVpcs?: pulumi.Input<pulumi.Input<inputs.kms.InstanceBindVpc>[] | undefined>;
     /**
      * KMS instance certificate chain in PEM format.
      */
-    caCertificateChainPem?: pulumi.Input<string>;
+    caCertificateChainPem?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * (Available since v1.233.1) Instance expiration time.
      */
-    endDate?: pulumi.Input<string>;
+    endDate?: pulumi.Input<string | undefined>;
     /**
      * Whether to force deletion even without backup.
      *
      * > **NOTE:** This parameter only takes effect when deletion is triggered.
      */
-    forceDeleteWithoutBackup?: pulumi.Input<string>;
+    forceDeleteWithoutBackup?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of stored keys. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    keyNum?: pulumi.Input<number>;
+    keyNum?: pulumi.Input<number | undefined>;
     /**
      * Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      */
-    log?: pulumi.Input<string>;
+    log?: pulumi.Input<string | undefined>;
     /**
      * Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      */
-    logStorage?: pulumi.Input<number>;
+    logStorage?: pulumi.Input<number | undefined>;
     /**
      * The billing method. Valid values:
      *
      * - Subscription: the subscription billing method.
      * - PayAsYouGo: the pay-as-you-go billing method.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The subscription duration. Unit: month. The value must be an integral multiple of 12.
      *
@@ -504,17 +504,17 @@ export interface InstanceState {
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * KMS Instance commodity type (software/hardware)
      */
-    productVersion?: pulumi.Input<string>;
+    productVersion?: pulumi.Input<string | undefined>;
     /**
      * The auto-renewal period. Unit: month.
      *
      * > **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The renewal status of the specified instance. Valid values:
      *
@@ -522,7 +522,7 @@ export interface InstanceState {
      * - ManualRenewal: The instance is manually renewed.
      * - NotRenewal: The instance is not renewed.
      */
-    renewStatus?: pulumi.Input<string>;
+    renewStatus?: pulumi.Input<string | undefined>;
     /**
      * Automatic renewal period unit, value:
      * - M: Month.
@@ -530,39 +530,39 @@ export interface InstanceState {
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    renewalPeriodUnit?: pulumi.Input<string>;
+    renewalPeriodUnit?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    secretNum?: pulumi.Input<number>;
+    secretNum?: pulumi.Input<number | undefined>;
     /**
      * The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    spec?: pulumi.Input<number>;
+    spec?: pulumi.Input<number | undefined>;
     /**
      * Instance status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    vpcNum?: pulumi.Input<number>;
+    vpcNum?: pulumi.Input<number | undefined>;
     /**
      * Instance bind vswitches
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * zone id
      */
-    zoneIds?: pulumi.Input<pulumi.Input<string>[]>;
+    zoneIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -572,40 +572,40 @@ export interface InstanceArgs {
     /**
      * Aucillary VPCs used to access this KMS instance See `bindVpcs` below.
      */
-    bindVpcs?: pulumi.Input<pulumi.Input<inputs.kms.InstanceBindVpc>[]>;
+    bindVpcs?: pulumi.Input<pulumi.Input<inputs.kms.InstanceBindVpc>[] | undefined>;
     /**
      * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to force deletion even without backup.
      *
      * > **NOTE:** This parameter only takes effect when deletion is triggered.
      */
-    forceDeleteWithoutBackup?: pulumi.Input<string>;
+    forceDeleteWithoutBackup?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of stored keys. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    keyNum?: pulumi.Input<number>;
+    keyNum?: pulumi.Input<number | undefined>;
     /**
      * Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      */
-    log?: pulumi.Input<string>;
+    log?: pulumi.Input<string | undefined>;
     /**
      * Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      */
-    logStorage?: pulumi.Input<number>;
+    logStorage?: pulumi.Input<number | undefined>;
     /**
      * The billing method. Valid values:
      *
      * - Subscription: the subscription billing method.
      * - PayAsYouGo: the pay-as-you-go billing method.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The subscription duration. Unit: month. The value must be an integral multiple of 12.
      *
@@ -614,17 +614,17 @@ export interface InstanceArgs {
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * KMS Instance commodity type (software/hardware)
      */
-    productVersion?: pulumi.Input<string>;
+    productVersion?: pulumi.Input<string | undefined>;
     /**
      * The auto-renewal period. Unit: month.
      *
      * > **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The renewal status of the specified instance. Valid values:
      *
@@ -632,7 +632,7 @@ export interface InstanceArgs {
      * - ManualRenewal: The instance is manually renewed.
      * - NotRenewal: The instance is not renewed.
      */
-    renewStatus?: pulumi.Input<string>;
+    renewStatus?: pulumi.Input<string | undefined>;
     /**
      * Automatic renewal period unit, value:
      * - M: Month.
@@ -640,19 +640,19 @@ export interface InstanceArgs {
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    renewalPeriodUnit?: pulumi.Input<string>;
+    renewalPeriodUnit?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    secretNum?: pulumi.Input<number>;
+    secretNum?: pulumi.Input<number | undefined>;
     /**
      * The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    spec?: pulumi.Input<number>;
+    spec?: pulumi.Input<number | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
      */
@@ -660,7 +660,7 @@ export interface InstanceArgs {
     /**
      * The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    vpcNum?: pulumi.Input<number>;
+    vpcNum?: pulumi.Input<number | undefined>;
     /**
      * Instance bind vswitches
      */

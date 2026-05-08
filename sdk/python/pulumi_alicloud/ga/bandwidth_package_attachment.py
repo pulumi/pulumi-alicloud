@@ -58,10 +58,10 @@ class BandwidthPackageAttachmentArgs:
 @pulumi.input_type
 class _BandwidthPackageAttachmentState:
     def __init__(__self__, *,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BandwidthPackageAttachment resources.
 
@@ -81,50 +81,50 @@ class _BandwidthPackageAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
-    def accelerator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Global Accelerator instance.
         """
         return pulumi.get(self, "accelerator_id")
 
     @accelerator_id.setter
-    def accelerator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def accelerators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Accelerators bound with current Bandwidth Package.
         """
         return pulumi.get(self, "accelerators")
 
     @accelerators.setter
-    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def accelerators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "accelerators", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthPackageId")
-    def bandwidth_package_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_package_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
         """
         return pulumi.get(self, "bandwidth_package_id")
 
     @bandwidth_package_id.setter
-    def bandwidth_package_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_package_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_package_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of Bandwidth Package.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -134,8 +134,8 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Bandwidth Package Attachment resource.
@@ -247,8 +247,8 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -276,10 +276,10 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'BandwidthPackageAttachment':
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'BandwidthPackageAttachment':
         """
         Get an existing BandwidthPackageAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

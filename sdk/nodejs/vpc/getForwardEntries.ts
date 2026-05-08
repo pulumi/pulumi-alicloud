@@ -251,15 +251,15 @@ export interface GetForwardEntriesOutputArgs {
     /**
      * The public IP address.
      */
-    externalIp?: pulumi.Input<string>;
+    externalIp?: pulumi.Input<string | undefined>;
     /**
      * The public port.
      */
-    externalPort?: pulumi.Input<string>;
+    externalPort?: pulumi.Input<string | undefined>;
     /**
      * The name of forward entry.
      */
-    forwardEntryName?: pulumi.Input<string>;
+    forwardEntryName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Forward table.
      */
@@ -267,29 +267,29 @@ export interface GetForwardEntriesOutputArgs {
     /**
      * A list of Forward Entries IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The private IP address.
      */
-    internalIp?: pulumi.Input<string>;
+    internalIp?: pulumi.Input<string | undefined>;
     /**
      * The internal port.
      */
-    internalPort?: pulumi.Input<string>;
+    internalPort?: pulumi.Input<string | undefined>;
     /**
      * The ip protocol. Valid values: `any`,`tcp` and `udp`.
      */
-    ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by forward entry name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

@@ -139,7 +139,7 @@ def get_route_entries(cidr_block: Optional[_builtins.str] = None,
     default = alicloud.get_zones(available_resource_creation="VSwitch")
     default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
         cpu_core_count=1,
-        memory_size=2)
+        memory_size=float(2))
     default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
         most_recent=True,
         owners="system")
@@ -211,11 +211,11 @@ def get_route_entries(cidr_block: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         route_table_id=pulumi.get(__ret__, 'route_table_id'),
         type=pulumi.get(__ret__, 'type'))
-def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             instance_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_route_entries_output(cidr_block: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             instance_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                             type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteEntriesResult]:
     """
     This data source provides a list of Route Entries owned by an Alibaba Cloud account.
@@ -231,7 +231,7 @@ def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[_builtin
     default = alicloud.get_zones(available_resource_creation="VSwitch")
     default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
         cpu_core_count=1,
-        memory_size=2)
+        memory_size=float(2))
     default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
         most_recent=True,
         owners="system")

@@ -189,13 +189,13 @@ def get_change_sets(change_set_name: Optional[_builtins.str] = None,
         sets=pulumi.get(__ret__, 'sets'),
         stack_id=pulumi.get(__ret__, 'stack_id'),
         status=pulumi.get(__ret__, 'status'))
-def get_change_sets_output(change_set_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                           ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                           name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           stack_id: Optional[pulumi.Input[_builtins.str]] = None,
-                           status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_change_sets_output(change_set_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                           ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                           name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           stack_id: pulumi.Input[Optional[_builtins.str]] = None,
+                           status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetChangeSetsResult]:
     """
     This data source provides the Ros Change Sets of the current Alibaba Cloud user.

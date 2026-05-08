@@ -110,15 +110,15 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesOutputArgs {
-    domainType?: pulumi.Input<string>;
+    domainType?: pulumi.Input<string | undefined>;
     /**
      * A list of instance IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    lang?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    userClientIp?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
+    userClientIp?: pulumi.Input<string | undefined>;
 }

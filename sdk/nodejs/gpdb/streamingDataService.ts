@@ -174,31 +174,31 @@ export interface StreamingDataServiceState {
     /**
      * Create time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the associated instance.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The description of the service.
      */
-    serviceDescription?: pulumi.Input<string>;
+    serviceDescription?: pulumi.Input<string | undefined>;
     /**
      * Service ID
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * Service Name
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * Resource Specifications
      */
-    serviceSpec?: pulumi.Input<string>;
+    serviceSpec?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -212,7 +212,7 @@ export interface StreamingDataServiceArgs {
     /**
      * The description of the service.
      */
-    serviceDescription?: pulumi.Input<string>;
+    serviceDescription?: pulumi.Input<string | undefined>;
     /**
      * Service Name
      */

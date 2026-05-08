@@ -240,71 +240,71 @@ export interface WafRuleState {
     /**
      * Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `customAcl`.
      */
-    ccStatus?: pulumi.Input<string>;
+    ccStatus?: pulumi.Input<string | undefined>;
     /**
      * The blocked regions in the Chinese mainland, separated by commas (,).
      */
-    cnRegionList?: pulumi.Input<string>;
+    cnRegionList?: pulumi.Input<string | undefined>;
     /**
      * Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.dcdn.WafRuleCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.dcdn.WafRuleCondition>[] | undefined>;
     /**
      * The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
      */
-    defenseScene?: pulumi.Input<string>;
+    defenseScene?: pulumi.Input<string | undefined>;
     /**
      * The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `rule` (takes effect for the current rule) and `service` (takes effect globally).
      */
-    effect?: pulumi.Input<string>;
+    effect?: pulumi.Input<string | undefined>;
     /**
      * Revised the time. The date format is based on ISO8601 notation and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
      */
-    gmtModified?: pulumi.Input<string>;
+    gmtModified?: pulumi.Input<string | undefined>;
     /**
      * Blocked regions outside the Chinese mainland, separated by commas (,).
      */
-    otherRegionList?: pulumi.Input<string>;
+    otherRegionList?: pulumi.Input<string | undefined>;
     /**
      * The protection policy ID.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
      */
-    rateLimit?: pulumi.Input<inputs.dcdn.WafRuleRateLimit>;
+    rateLimit?: pulumi.Input<inputs.dcdn.WafRuleRateLimit | undefined>;
     /**
      * The regular expression.e, when wafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
      */
-    regularRules?: pulumi.Input<pulumi.Input<string>[]>;
+    regularRules?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Regular rule type, when wafGroup appears in tags, this value can be filled in, optional values:["sqli", "xss", "codeExec", "crlf", "lfileii", "rfileii", "webshell", "vvip", "other"]
      */
-    regularTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    regularTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Filter by IP address.
      */
-    remoteAddrs?: pulumi.Input<pulumi.Input<string>[]>;
+    remoteAddrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `regionBlock`.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The types of the protection policies.
      */
-    scenes?: pulumi.Input<pulumi.Input<string>[]>;
+    scenes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the waf rule. Valid values: `on` and `off`. Default value: on.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
      */
-    wafGroupIds?: pulumi.Input<string>;
+    wafGroupIds?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -314,27 +314,27 @@ export interface WafRuleArgs {
     /**
      * Specifies the action of the rule. Valid values: `block`, `monitor`, `js`, `deny`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `customAcl`.
      */
-    ccStatus?: pulumi.Input<string>;
+    ccStatus?: pulumi.Input<string | undefined>;
     /**
      * The blocked regions in the Chinese mainland, separated by commas (,).
      */
-    cnRegionList?: pulumi.Input<string>;
+    cnRegionList?: pulumi.Input<string | undefined>;
     /**
      * Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `customAcl` or `whitelist`.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.dcdn.WafRuleCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.dcdn.WafRuleCondition>[] | undefined>;
     /**
      * The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `rule` (takes effect for the current rule) and `service` (takes effect globally).
      */
-    effect?: pulumi.Input<string>;
+    effect?: pulumi.Input<string | undefined>;
     /**
      * Blocked regions outside the Chinese mainland, separated by commas (,).
      */
-    otherRegionList?: pulumi.Input<string>;
+    otherRegionList?: pulumi.Input<string | undefined>;
     /**
      * The protection policy ID.
      */
@@ -342,19 +342,19 @@ export interface WafRuleArgs {
     /**
      * The rules of rate limiting. If you set `ccStatus` to on, you must configure this parameter. See `rateLimit` below.
      */
-    rateLimit?: pulumi.Input<inputs.dcdn.WafRuleRateLimit>;
+    rateLimit?: pulumi.Input<inputs.dcdn.WafRuleRateLimit | undefined>;
     /**
      * The regular expression.e, when wafGroup appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
      */
-    regularRules?: pulumi.Input<pulumi.Input<string>[]>;
+    regularRules?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Regular rule type, when wafGroup appears in tags, this value can be filled in, optional values:["sqli", "xss", "codeExec", "crlf", "lfileii", "rfileii", "webshell", "vvip", "other"]
      */
-    regularTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    regularTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Filter by IP address.
      */
-    remoteAddrs?: pulumi.Input<pulumi.Input<string>[]>;
+    remoteAddrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `regionBlock`.
      */
@@ -362,13 +362,13 @@ export interface WafRuleArgs {
     /**
      * The types of the protection policies.
      */
-    scenes?: pulumi.Input<pulumi.Input<string>[]>;
+    scenes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the waf rule. Valid values: `on` and `off`. Default value: on.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The id of the waf rule group. The default value is "1012". Multiple rules are separated by commas. **NOTE:** This parameter is valid only when policy is of type `wafGroup`.
      */
-    wafGroupIds?: pulumi.Input<string>;
+    wafGroupIds?: pulumi.Input<string | undefined>;
 }

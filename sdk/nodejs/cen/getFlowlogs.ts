@@ -300,65 +300,65 @@ export interface GetFlowlogsOutputArgs {
     /**
      * The ID of Cen instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The description of the flowlog.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of FlowLog.
      */
-    flowLogId?: pulumi.Input<string>;
+    flowLogId?: pulumi.Input<string | undefined>;
     /**
      * The name of the flowlog.
      */
-    flowLogName?: pulumi.Input<string>;
+    flowLogName?: pulumi.Input<string | undefined>;
     /**
      * Flowlog Version.
      */
-    flowLogVersion?: pulumi.Input<string>;
+    flowLogVersion?: pulumi.Input<string | undefined>;
     /**
      * A list of Flow Log IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * The LogStore that stores the flowlog.
      */
-    logStoreName?: pulumi.Input<string>;
+    logStoreName?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Group Metric Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Current page number.
      */
-    pageNumber?: pulumi.Input<number>;
+    pageNumber?: pulumi.Input<number | undefined>;
     /**
      * Number of records per page.
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The Project that stores the flowlog.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * Region id
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Transit Router ID
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
 }

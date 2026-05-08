@@ -25,9 +25,9 @@ class AnycastEipAddressAttachmentArgs:
                  bind_instance_id: pulumi.Input[_builtins.str],
                  bind_instance_region_id: pulumi.Input[_builtins.str],
                  bind_instance_type: pulumi.Input[_builtins.str],
-                 association_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 pop_locations: Optional[pulumi.Input[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]] = None,
-                 private_ip_address: Optional[pulumi.Input[_builtins.str]] = None):
+                 association_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 pop_locations: pulumi.Input[Optional[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]] = None,
+                 private_ip_address: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AnycastEipAddressAttachment resource.
 
@@ -106,7 +106,7 @@ class AnycastEipAddressAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="associationMode")
-    def association_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def association_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Binding mode, value:
         - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
@@ -115,46 +115,46 @@ class AnycastEipAddressAttachmentArgs:
         return pulumi.get(self, "association_mode")
 
     @association_mode.setter
-    def association_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def association_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "association_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="popLocations")
-    def pop_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]]:
+    def pop_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]]:
         """
         The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
         """
         return pulumi.get(self, "pop_locations")
 
     @pop_locations.setter
-    def pop_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]]):
+    def pop_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]]):
         pulumi.set(self, "pop_locations", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpAddress")
-    def private_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
         """
         return pulumi.get(self, "private_ip_address")
 
     @private_ip_address.setter
-    def private_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip_address", value)
 
 
 @pulumi.input_type
 class _AnycastEipAddressAttachmentState:
     def __init__(__self__, *,
-                 anycast_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 association_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 pop_locations: Optional[pulumi.Input[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]] = None,
-                 private_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 anycast_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 association_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 pop_locations: pulumi.Input[Optional[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]] = None,
+                 private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AnycastEipAddressAttachment resources.
 
@@ -193,19 +193,19 @@ class _AnycastEipAddressAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="anycastId")
-    def anycast_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def anycast_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Anycast EIP instance.
         """
         return pulumi.get(self, "anycast_id")
 
     @anycast_id.setter
-    def anycast_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def anycast_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "anycast_id", value)
 
     @_builtins.property
     @pulumi.getter(name="associationMode")
-    def association_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def association_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Binding mode, value:
         - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
@@ -214,36 +214,36 @@ class _AnycastEipAddressAttachmentState:
         return pulumi.get(self, "association_mode")
 
     @association_mode.setter
-    def association_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def association_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "association_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="bindInstanceId")
-    def bind_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bind_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cloud resource instance to be bound.
         """
         return pulumi.get(self, "bind_instance_id")
 
     @bind_instance_id.setter
-    def bind_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bind_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bind_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bindInstanceRegionId")
-    def bind_instance_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bind_instance_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
         """
         return pulumi.get(self, "bind_instance_region_id")
 
     @bind_instance_region_id.setter
-    def bind_instance_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bind_instance_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bind_instance_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bindInstanceType")
-    def bind_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bind_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the cloud resource instance to be bound. Value:
         - **SlbInstance**: a private network SLB instance.
@@ -252,55 +252,55 @@ class _AnycastEipAddressAttachmentState:
         return pulumi.get(self, "bind_instance_type")
 
     @bind_instance_type.setter
-    def bind_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bind_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bind_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="bindTime")
-    def bind_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bind_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Binding time.Time is expressed according to ISO8601 standard and UTC time is used. The format is: 'YYYY-MM-DDThh:mm:ssZ'.
         """
         return pulumi.get(self, "bind_time")
 
     @bind_time.setter
-    def bind_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bind_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bind_time", value)
 
     @_builtins.property
     @pulumi.getter(name="popLocations")
-    def pop_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]]:
+    def pop_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]]:
         """
         The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
         """
         return pulumi.get(self, "pop_locations")
 
     @pop_locations.setter
-    def pop_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]]):
+    def pop_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]]):
         pulumi.set(self, "pop_locations", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpAddress")
-    def private_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
         """
         return pulumi.get(self, "private_ip_address")
 
     @private_ip_address.setter
-    def private_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the bound cloud resource instance. Value:BINDING: BINDING.Bound: Bound.UNBINDING: UNBINDING.DELETED: DELETED.MODIFYING: being modified.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -310,13 +310,13 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 anycast_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 association_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pop_locations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict']]]]] = None,
-                 private_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 anycast_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 association_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pop_locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict']]]]] = None,
+                 private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Eipanycast Anycast Eip Address Attachment resource.
@@ -385,7 +385,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_vpc = alicloud.vpc.Network("defaultVpc",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
@@ -414,7 +414,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             owners="system")
         default2_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default2.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         defaultds_vsw2 = alicloud.vpc.Switch("defaultdsVsw2",
             vpc_id=default_vpc2.id,
             cidr_block="192.168.0.0/24",
@@ -540,7 +540,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_vpc = alicloud.vpc.Network("defaultVpc",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
@@ -569,7 +569,7 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             owners="system")
         default2_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default2.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         defaultds_vsw2 = alicloud.vpc.Switch("defaultdsVsw2",
             vpc_id=default_vpc2.id,
             cidr_block="192.168.0.0/24",
@@ -623,13 +623,13 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 anycast_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 association_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pop_locations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict']]]]] = None,
-                 private_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 anycast_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 association_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pop_locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict']]]]] = None,
+                 private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -666,15 +666,15 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            anycast_id: Optional[pulumi.Input[_builtins.str]] = None,
-            association_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            bind_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bind_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bind_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            bind_time: Optional[pulumi.Input[_builtins.str]] = None,
-            pop_locations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict']]]]] = None,
-            private_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'AnycastEipAddressAttachment':
+            anycast_id: pulumi.Input[Optional[_builtins.str]] = None,
+            association_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_time: pulumi.Input[Optional[_builtins.str]] = None,
+            pop_locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnycastEipAddressAttachmentPopLocationArgs', 'AnycastEipAddressAttachmentPopLocationArgsDict']]]]] = None,
+            private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'AnycastEipAddressAttachment':
         """
         Get an existing AnycastEipAddressAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

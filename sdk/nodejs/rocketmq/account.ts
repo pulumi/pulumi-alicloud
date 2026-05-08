@@ -180,19 +180,19 @@ export interface AccountState {
     /**
      * The status of the account. Valid values: `DISABLE`, `ENABLE`.
      */
-    accountStatus?: pulumi.Input<string>;
+    accountStatus?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The password of the account.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The username of the account.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -202,7 +202,7 @@ export interface AccountArgs {
     /**
      * The status of the account. Valid values: `DISABLE`, `ENABLE`.
      */
-    accountStatus?: pulumi.Input<string>;
+    accountStatus?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */

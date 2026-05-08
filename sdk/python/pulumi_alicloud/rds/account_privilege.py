@@ -22,7 +22,7 @@ class AccountPrivilegeArgs:
                  account_name: pulumi.Input[_builtins.str],
                  db_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  instance_id: pulumi.Input[_builtins.str],
-                 privilege: Optional[pulumi.Input[_builtins.str]] = None):
+                 privilege: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountPrivilege resource.
 
@@ -81,7 +81,7 @@ class AccountPrivilegeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def privilege(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def privilege(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The privilege of one account access database. Valid values: 
         - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
@@ -94,17 +94,17 @@ class AccountPrivilegeArgs:
         return pulumi.get(self, "privilege")
 
     @privilege.setter
-    def privilege(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def privilege(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "privilege", value)
 
 
 @pulumi.input_type
 class _AccountPrivilegeState:
     def __init__(__self__, *,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 privilege: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 privilege: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountPrivilege resources.
 
@@ -130,43 +130,43 @@ class _AccountPrivilegeState:
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A specified account name.
         """
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNames")
-    def db_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def db_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of specified database name.
         """
         return pulumi.get(self, "db_names")
 
     @db_names.setter
-    def db_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def db_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "db_names", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of instance in which account belongs.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def privilege(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def privilege(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The privilege of one account access database. Valid values: 
         - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
@@ -179,7 +179,7 @@ class _AccountPrivilegeState:
         return pulumi.get(self, "privilege")
 
     @privilege.setter
-    def privilege(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def privilege(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "privilege", value)
 
 
@@ -189,10 +189,10 @@ class AccountPrivilege(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 privilege: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 privilege: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account, see [What is DB Account Privilege](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-grantaccountprivilege).
@@ -205,6 +205,7 @@ class AccountPrivilege(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
@@ -228,7 +229,7 @@ class AccountPrivilege(pulumi.CustomResource):
             instance_storage=10,
             vswitch_id=default_switch.id,
             instance_name=name)
-        db = []
+        db: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             db.append(alicloud.rds.Database(f"db-{range['value']}",
                 instance_id=instance.id,
@@ -287,6 +288,7 @@ class AccountPrivilege(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
@@ -310,7 +312,7 @@ class AccountPrivilege(pulumi.CustomResource):
             instance_storage=10,
             vswitch_id=default_switch.id,
             instance_name=name)
-        db = []
+        db: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             db.append(alicloud.rds.Database(f"db-{range['value']}",
                 instance_id=instance.id,
@@ -354,10 +356,10 @@ class AccountPrivilege(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 privilege: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 privilege: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -387,10 +389,10 @@ class AccountPrivilege(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            db_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            privilege: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccountPrivilege':
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            db_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            privilege: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountPrivilege':
         """
         Get an existing AccountPrivilege resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

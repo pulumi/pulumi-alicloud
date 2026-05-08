@@ -21,34 +21,34 @@ class DBClusterArgs:
     def __init__(__self__, *,
                  db_cluster_category: pulumi.Input[_builtins.str],
                  mode: pulumi.Input[_builtins.str],
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 elastic_io_resource: Optional[pulumi.Input[_builtins.int]] = None,
-                 elastic_io_resource_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kernel_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 switch_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 elastic_io_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 elastic_io_resource_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kernel_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 switch_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DBCluster resource.
 
@@ -182,140 +182,140 @@ class DBClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="computeResource")
-    def compute_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         """
         return pulumi.get(self, "compute_resource")
 
     @compute_resource.setter
-    def compute_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterClass")
     @_utilities.deprecated("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
-    def db_cluster_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         """
         return pulumi.get(self, "db_cluster_class")
 
     @db_cluster_class.setter
-    def db_cluster_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_class", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterVersion")
-    def db_cluster_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         """
         return pulumi.get(self, "db_cluster_version")
 
     @db_cluster_version.setter
-    def db_cluster_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_version", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeClass")
-    def db_node_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_node_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         """
         return pulumi.get(self, "db_node_class")
 
     @db_node_class.setter
-    def db_node_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_node_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_node_class", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeCount")
-    def db_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def db_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The db node count.
         """
         return pulumi.get(self, "db_node_count")
 
     @db_node_count.setter
-    def db_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def db_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "db_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeStorage")
-    def db_node_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def db_node_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The db node storage.
         """
         return pulumi.get(self, "db_node_storage")
 
     @db_node_storage.setter
-    def db_node_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def db_node_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "db_node_storage", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of DBCluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
-    def disk_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disk_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "disk_encryption")
 
     @disk_encryption.setter
-    def disk_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disk_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="diskPerformanceLevel")
-    def disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
         """
         return pulumi.get(self, "disk_performance_level")
 
     @disk_performance_level.setter
-    def disk_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticIoResource")
-    def elastic_io_resource(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def elastic_io_resource(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The elastic io resource.
         """
         return pulumi.get(self, "elastic_io_resource")
 
     @elastic_io_resource.setter
-    def elastic_io_resource(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def elastic_io_resource(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "elastic_io_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticIoResourceSize")
-    def elastic_io_resource_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elastic_io_resource_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
         - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
@@ -325,97 +325,97 @@ class DBClusterArgs:
         return pulumi.get(self, "elastic_io_resource_size")
 
     @elastic_io_resource_size.setter
-    def elastic_io_resource_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elastic_io_resource_size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elastic_io_resource_size", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSsl")
-    def enable_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_ssl")
 
     @enable_ssl.setter
-    def enable_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="kernelVersion")
-    def kernel_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kernel_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minor version to which you want to update.
         """
         return pulumi.get(self, "kernel_version")
 
     @kernel_version.setter
-    def kernel_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kernel_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kernel_version", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsId")
-    def kms_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         """
         return pulumi.get(self, "kms_id")
 
     @kms_id.setter
-    def kms_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainTime")
-    def maintain_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         """
         return pulumi.get(self, "maintain_time")
 
     @maintain_time.setter
-    def maintain_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_time", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The modify type.
         """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter(name="payType")
     @_utilities.deprecated("""Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
-    def pay_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `pay_type` has been deprecated. New field `payment_type` instead.
         """
         return pulumi.get(self, "pay_type")
 
     @pay_type.setter
-    def pay_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
@@ -423,60 +423,60 @@ class DBClusterArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         """
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIps")
-    def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
         return pulumi.get(self, "security_ips")
 
     @security_ips.setter
-    def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="switchMode")
-    def switch_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def switch_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when to perform the update. Valid values:
         """
         return pulumi.get(self, "switch_mode")
 
     @switch_mode.setter
-    def switch_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def switch_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "switch_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -487,82 +487,82 @@ class DBClusterArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vpc ID of the resource.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vswitch id.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the resource.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _DBClusterState:
     def __init__(__self__, *,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 elastic_io_resource: Optional[pulumi.Input[_builtins.int]] = None,
-                 elastic_io_resource_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kernel_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 switch_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 elastic_io_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 elastic_io_resource_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kernel_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DBCluster resources.
 
@@ -683,164 +683,164 @@ class _DBClusterState:
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="computeResource")
-    def compute_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         """
         return pulumi.get(self, "compute_resource")
 
     @compute_resource.setter
-    def compute_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection string of the cluster.
         """
         return pulumi.get(self, "connection_string")
 
     @connection_string.setter
-    def connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterCategory")
-    def db_cluster_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         """
         return pulumi.get(self, "db_cluster_category")
 
     @db_cluster_category.setter
-    def db_cluster_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_category", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterClass")
     @_utilities.deprecated("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
-    def db_cluster_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         """
         return pulumi.get(self, "db_cluster_class")
 
     @db_cluster_class.setter
-    def db_cluster_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_class", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterVersion")
-    def db_cluster_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         """
         return pulumi.get(self, "db_cluster_version")
 
     @db_cluster_version.setter
-    def db_cluster_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_version", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeClass")
-    def db_node_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_node_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         """
         return pulumi.get(self, "db_node_class")
 
     @db_node_class.setter
-    def db_node_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_node_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_node_class", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeCount")
-    def db_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def db_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The db node count.
         """
         return pulumi.get(self, "db_node_count")
 
     @db_node_count.setter
-    def db_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def db_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "db_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeStorage")
-    def db_node_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def db_node_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The db node storage.
         """
         return pulumi.get(self, "db_node_storage")
 
     @db_node_storage.setter
-    def db_node_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def db_node_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "db_node_storage", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of DBCluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
-    def disk_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disk_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "disk_encryption")
 
     @disk_encryption.setter
-    def disk_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disk_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="diskPerformanceLevel")
-    def disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
         """
         return pulumi.get(self, "disk_performance_level")
 
     @disk_performance_level.setter
-    def disk_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticIoResource")
-    def elastic_io_resource(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def elastic_io_resource(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The elastic io resource.
         """
         return pulumi.get(self, "elastic_io_resource")
 
     @elastic_io_resource.setter
-    def elastic_io_resource(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def elastic_io_resource(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "elastic_io_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticIoResourceSize")
-    def elastic_io_resource_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elastic_io_resource_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
         - `8Core64GB`: If you set `elastic_io_resource_size` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
@@ -850,109 +850,109 @@ class _DBClusterState:
         return pulumi.get(self, "elastic_io_resource_size")
 
     @elastic_io_resource_size.setter
-    def elastic_io_resource_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elastic_io_resource_size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elastic_io_resource_size", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSsl")
-    def enable_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_ssl")
 
     @enable_ssl.setter
-    def enable_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="kernelVersion")
-    def kernel_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kernel_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minor version to which you want to update.
         """
         return pulumi.get(self, "kernel_version")
 
     @kernel_version.setter
-    def kernel_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kernel_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kernel_version", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsId")
-    def kms_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         """
         return pulumi.get(self, "kms_id")
 
     @kms_id.setter
-    def kms_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainTime")
-    def maintain_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         """
         return pulumi.get(self, "maintain_time")
 
     @maintain_time.setter
-    def maintain_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode of the cluster. Valid values: `reserver`, `flexible`.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The modify type.
         """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter(name="payType")
     @_utilities.deprecated("""Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
-    def pay_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `pay_type` has been deprecated. New field `payment_type` instead.
         """
         return pulumi.get(self, "pay_type")
 
     @pay_type.setter
-    def pay_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
@@ -960,84 +960,84 @@ class _DBClusterState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.196.0) The connection port of the ADB cluster.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         """
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIps")
-    def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
         return pulumi.get(self, "security_ips")
 
     @security_ips.setter
-    def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="switchMode")
-    def switch_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def switch_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when to perform the update. Valid values:
         """
         return pulumi.get(self, "switch_mode")
 
     @switch_mode.setter
-    def switch_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def switch_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "switch_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1048,43 +1048,43 @@ class _DBClusterState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vpc ID of the resource.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vswitch id.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the resource.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -1094,36 +1094,36 @@ class DBCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 elastic_io_resource: Optional[pulumi.Input[_builtins.int]] = None,
-                 elastic_io_resource_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kernel_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 switch_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 elastic_io_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 elastic_io_resource_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kernel_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 switch_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a AnalyticDB for MySQL (ADB) DBCluster resource.
@@ -1281,36 +1281,36 @@ class DBCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 elastic_io_resource: Optional[pulumi.Input[_builtins.int]] = None,
-                 elastic_io_resource_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kernel_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 switch_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 elastic_io_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 elastic_io_resource_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kernel_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 switch_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1367,39 +1367,39 @@ class DBCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_category: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_class: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-            db_node_class: Optional[pulumi.Input[_builtins.str]] = None,
-            db_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            db_node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-            disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-            elastic_io_resource: Optional[pulumi.Input[_builtins.int]] = None,
-            elastic_io_resource_size: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-            kernel_version: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_id: Optional[pulumi.Input[_builtins.str]] = None,
-            maintain_time: Optional[pulumi.Input[_builtins.str]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            port: Optional[pulumi.Input[_builtins.str]] = None,
-            renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            switch_mode: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DBCluster':
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_category: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_class: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+            db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+            db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            db_node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+            disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            elastic_io_resource: pulumi.Input[Optional[_builtins.int]] = None,
+            elastic_io_resource_size: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            kernel_version: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_id: pulumi.Input[Optional[_builtins.str]] = None,
+            maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            switch_mode: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DBCluster':
         """
         Get an existing DBCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

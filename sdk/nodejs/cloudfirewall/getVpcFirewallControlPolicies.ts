@@ -213,51 +213,51 @@ export interface GetVpcFirewallControlPoliciesOutputArgs {
     /**
      * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      */
-    aclAction?: pulumi.Input<string>;
+    aclAction?: pulumi.Input<string | undefined>;
     /**
      * Access control over VPC firewalls strategy unique identifier.
      */
-    aclUuid?: pulumi.Input<string>;
+    aclUuid?: pulumi.Input<string | undefined>;
     /**
      * Access control over VPC firewalls description of the strategy information.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Access control over VPC firewalls strategy the destination address in.
      */
-    destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * A list of Vpc Firewall Control Policy IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The UID of the member account of the current Alibaba cloud account.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Access control over VPC firewalls strategy access traffic of the protocol type.
      */
-    proto?: pulumi.Input<string>;
+    proto?: pulumi.Input<string | undefined>;
     /**
      * The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
      * - **true**: Enable access control policies
      * - **false**: does not enable access control policies.
      */
-    release?: pulumi.Input<boolean>;
+    release?: pulumi.Input<boolean | undefined>;
     /**
      * Access control over VPC firewalls strategy in the source address.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC firewall instance. Value:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.

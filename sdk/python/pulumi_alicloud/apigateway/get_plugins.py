@@ -200,14 +200,14 @@ def get_plugins(ids: Optional[Sequence[_builtins.str]] = None,
         plugin_type=pulumi.get(__ret__, 'plugin_type'),
         plugins=pulumi.get(__ret__, 'plugins'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_plugins_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                       name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                       page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                       plugin_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       plugin_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_plugins_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                       name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                       page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                       plugin_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       plugin_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPluginsResult]:
     """
     This data source provides the Api Gateway Plugins of the current Alibaba Cloud user.

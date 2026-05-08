@@ -296,97 +296,97 @@ export interface ControlPolicyState {
     /**
      * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      */
-    aclAction?: pulumi.Input<string>;
+    aclAction?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.148.0) The unique ID of the access control policy.
      */
-    aclUuid?: pulumi.Input<string>;
+    aclUuid?: pulumi.Input<string | undefined>;
     /**
      * The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
      * > **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
      */
-    applicationName?: pulumi.Input<string>;
+    applicationName?: pulumi.Input<string | undefined>;
     /**
      * The application types supported by the access control policy.
      * > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      */
-    applicationNameLists?: pulumi.Input<pulumi.Input<string>[]>;
+    applicationNameLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Available since v1.232.0) The time when the access control policy was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the access control policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify `destPort`.
      */
-    destPort?: pulumi.Input<string>;
+    destPort?: pulumi.Input<string | undefined>;
     /**
      * The name of the destination port address book in the access control policy. **Note:** If `destPortType` is set to `group`, you must specify `destPortGroup`.
      */
-    destPortGroup?: pulumi.Input<string>;
+    destPortGroup?: pulumi.Input<string | undefined>;
     /**
      * The type of the destination port in the access control policy. Valid values: `port`, `group`.
      */
-    destPortType?: pulumi.Input<string>;
+    destPortType?: pulumi.Input<string | undefined>;
     /**
      * The destination address in the access control policy.
      */
-    destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
      */
-    destinationType?: pulumi.Input<string>;
+    destinationType?: pulumi.Input<string | undefined>;
     /**
      * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The domain name resolution method of the access control policy. Valid values:
      * - `FQDN`: Fully qualified domain name (FQDN)-based resolution.
      * - `DNS`: DNS-based dynamic resolution.
      * - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
      */
-    domainResolveType?: pulumi.Input<string>;
+    domainResolveType?: pulumi.Input<string | undefined>;
     /**
      * The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
      * > **NOTE:** If `repeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `startTime` and `endTime` must be set.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * The IP version supported by the access control policy. Default value: `4`. Valid values:
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
      */
-    proto?: pulumi.Input<string>;
+    proto?: pulumi.Input<string | undefined>;
     /**
      * The status of the access control policy. Valid values: `true`, `false`.
      */
-    release?: pulumi.Input<string>;
+    release?: pulumi.Input<string | undefined>;
     /**
      * The days of a week or of a month on which the access control policy takes effect. Valid values:
      * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
      * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
      * > **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
      */
-    repeatDays?: pulumi.Input<pulumi.Input<number>[]>;
+    repeatDays?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
      * > **NOTE:** If `repeatType` is set to `Daily`, `Weekly`, or `Monthly`, `repeatStartTime` and `repeatEndTime` must be set.
      */
-    repeatEndTime?: pulumi.Input<string>;
+    repeatEndTime?: pulumi.Input<string | undefined>;
     /**
      * The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
      */
-    repeatStartTime?: pulumi.Input<string>;
+    repeatStartTime?: pulumi.Input<string | undefined>;
     /**
      * The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
      * - `Permanent`: The policy always takes effect.
@@ -395,23 +395,23 @@ export interface ControlPolicyState {
      * - `Weekly`: The policy takes effect on a weekly basis.
      * - `Monthly`: The policy takes effect on a monthly basis.
      */
-    repeatType?: pulumi.Input<string>;
+    repeatType?: pulumi.Input<string | undefined>;
     /**
      * The source address in the access control policy.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * The source IP address of the request.
      */
-    sourceIp?: pulumi.Input<string>;
+    sourceIp?: pulumi.Input<string | undefined>;
     /**
      * The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -426,12 +426,12 @@ export interface ControlPolicyArgs {
      * The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
      * > **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
      */
-    applicationName?: pulumi.Input<string>;
+    applicationName?: pulumi.Input<string | undefined>;
     /**
      * The application types supported by the access control policy.
      * > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      */
-    applicationNameLists?: pulumi.Input<pulumi.Input<string>[]>;
+    applicationNameLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the access control policy.
      */
@@ -439,15 +439,15 @@ export interface ControlPolicyArgs {
     /**
      * The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify `destPort`.
      */
-    destPort?: pulumi.Input<string>;
+    destPort?: pulumi.Input<string | undefined>;
     /**
      * The name of the destination port address book in the access control policy. **Note:** If `destPortType` is set to `group`, you must specify `destPortGroup`.
      */
-    destPortGroup?: pulumi.Input<string>;
+    destPortGroup?: pulumi.Input<string | undefined>;
     /**
      * The type of the destination port in the access control policy. Valid values: `port`, `group`.
      */
-    destPortType?: pulumi.Input<string>;
+    destPortType?: pulumi.Input<string | undefined>;
     /**
      * The destination address in the access control policy.
      */
@@ -466,20 +466,20 @@ export interface ControlPolicyArgs {
      * - `DNS`: DNS-based dynamic resolution.
      * - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
      */
-    domainResolveType?: pulumi.Input<string>;
+    domainResolveType?: pulumi.Input<string | undefined>;
     /**
      * The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
      * > **NOTE:** If `repeatType` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `startTime` and `endTime` must be set.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * The IP version supported by the access control policy. Default value: `4`. Valid values:
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
      */
@@ -487,23 +487,23 @@ export interface ControlPolicyArgs {
     /**
      * The status of the access control policy. Valid values: `true`, `false`.
      */
-    release?: pulumi.Input<string>;
+    release?: pulumi.Input<string | undefined>;
     /**
      * The days of a week or of a month on which the access control policy takes effect. Valid values:
      * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
      * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
      * > **NOTE:** If `repeatType` is set to `Weekly`, or `Monthly`, `repeatDays` must be set.
      */
-    repeatDays?: pulumi.Input<pulumi.Input<number>[]>;
+    repeatDays?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
      * > **NOTE:** If `repeatType` is set to `Daily`, `Weekly`, or `Monthly`, `repeatStartTime` and `repeatEndTime` must be set.
      */
-    repeatEndTime?: pulumi.Input<string>;
+    repeatEndTime?: pulumi.Input<string | undefined>;
     /**
      * The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
      */
-    repeatStartTime?: pulumi.Input<string>;
+    repeatStartTime?: pulumi.Input<string | undefined>;
     /**
      * The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
      * - `Permanent`: The policy always takes effect.
@@ -512,7 +512,7 @@ export interface ControlPolicyArgs {
      * - `Weekly`: The policy takes effect on a weekly basis.
      * - `Monthly`: The policy takes effect on a monthly basis.
      */
-    repeatType?: pulumi.Input<string>;
+    repeatType?: pulumi.Input<string | undefined>;
     /**
      * The source address in the access control policy.
      */
@@ -520,7 +520,7 @@ export interface ControlPolicyArgs {
     /**
      * The source IP address of the request.
      */
-    sourceIp?: pulumi.Input<string>;
+    sourceIp?: pulumi.Input<string | undefined>;
     /**
      * The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
      */
@@ -528,5 +528,5 @@ export interface ControlPolicyArgs {
     /**
      * The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
 }

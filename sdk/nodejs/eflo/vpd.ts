@@ -158,39 +158,39 @@ export interface VpdState {
     /**
      * The CIDR block of the VPD.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * The time when the activation code was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The time when the O&M task was modified.
      */
-    gmtModified?: pulumi.Input<string>;
+    gmtModified?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.263.0) The region ID.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The additional CIDR block.
      */
-    secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The current state of the instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the VPD instance.
      */
-    vpdName?: pulumi.Input<string>;
+    vpdName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -204,15 +204,15 @@ export interface VpdArgs {
     /**
      * The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The additional CIDR block.
      */
-    secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the VPD instance.
      */

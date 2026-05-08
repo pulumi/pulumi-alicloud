@@ -129,11 +129,11 @@ export interface ProjectState {
     /**
      * The name of Project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The service role authorized to the Intelligent Media Management service to access other cloud resources. Default value: `AliyunIMMDefaultRole`. You can also create authorization  roles through the `alicloud.ram.Role`.
      */
-    serviceRole?: pulumi.Input<string>;
+    serviceRole?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -147,5 +147,5 @@ export interface ProjectArgs {
     /**
      * The service role authorized to the Intelligent Media Management service to access other cloud resources. Default value: `AliyunIMMDefaultRole`. You can also create authorization  roles through the `alicloud.ram.Role`.
      */
-    serviceRole?: pulumi.Input<string>;
+    serviceRole?: pulumi.Input<string | undefined>;
 }

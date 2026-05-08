@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Hbr
     ///         Force = true,
     ///     });
     /// 
-    ///     var @default = AliCloud.Index.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
     ///     var example = new AliCloud.Hbr.OtsBackupPlan("example", new()
     ///     {

@@ -129,19 +129,19 @@ export interface AclEntryAttachmentState {
     /**
      * The ID of the Acl.
      */
-    aclId?: pulumi.Input<string>;
+    aclId?: pulumi.Input<string | undefined>;
     /**
      * The entry (IP address or CIDR block) that you want to add.
      */
-    entry?: pulumi.Input<string>;
+    entry?: pulumi.Input<string | undefined>;
     /**
      * The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
      */
-    entryDescription?: pulumi.Input<string>;
+    entryDescription?: pulumi.Input<string | undefined>;
     /**
      * The status of the Acl Entry Attachment.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -159,5 +159,5 @@ export interface AclEntryAttachmentArgs {
     /**
      * The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
      */
-    entryDescription?: pulumi.Input<string>;
+    entryDescription?: pulumi.Input<string | undefined>;
 }

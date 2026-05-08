@@ -21,21 +21,21 @@ class JobTemplateArgs:
     def __init__(__self__, *,
                  command_line: pulumi.Input[_builtins.str],
                  job_template_name: pulumi.Input[_builtins.str],
-                 array_request: Optional[pulumi.Input[_builtins.str]] = None,
-                 clock_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 mem: Optional[pulumi.Input[_builtins.str]] = None,
-                 node: Optional[pulumi.Input[_builtins.int]] = None,
-                 package_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 re_runable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 runas_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 stderr_redirect_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 stdout_redirect_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 task: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread: Optional[pulumi.Input[_builtins.int]] = None,
-                 variables: Optional[pulumi.Input[_builtins.str]] = None):
+                 array_request: pulumi.Input[Optional[_builtins.str]] = None,
+                 clock_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 mem: pulumi.Input[Optional[_builtins.str]] = None,
+                 node: pulumi.Input[Optional[_builtins.int]] = None,
+                 package_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 re_runable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 runas_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 stderr_redirect_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 stdout_redirect_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 task: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread: pulumi.Input[Optional[_builtins.int]] = None,
+                 variables: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a JobTemplate resource.
 
@@ -116,205 +116,205 @@ class JobTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="arrayRequest")
-    def array_request(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def array_request(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Queue Jobs, Is of the Form: 1-10:2.
         """
         return pulumi.get(self, "array_request")
 
     @array_request.setter
-    def array_request(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def array_request(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "array_request", value)
 
     @_builtins.property
     @pulumi.getter(name="clockTime")
-    def clock_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clock_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job Maximum Run Time.
         """
         return pulumi.get(self, "clock_time")
 
     @clock_time.setter
-    def clock_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clock_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clock_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def gpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A Single Compute Node Using the GPU Number.Possible Values: 1~20000.
         """
         return pulumi.get(self, "gpu")
 
     @gpu.setter
-    def gpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def mem(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mem(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Single Compute Node Maximum Memory.
         """
         return pulumi.get(self, "mem")
 
     @mem.setter
-    def mem(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mem(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mem", value)
 
     @_builtins.property
     @pulumi.getter
-    def node(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Submit a Task Is Required for Computing the Number of Data Nodes to Be. Possible Values: 1~5000 .
         """
         return pulumi.get(self, "node")
 
     @node.setter
-    def node(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node", value)
 
     @_builtins.property
     @pulumi.getter(name="packagePath")
-    def package_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job Commands the Directory.
         """
         return pulumi.get(self, "package_path")
 
     @package_path.setter
-    def package_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Job Priority.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def queue(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Job Queue.
         """
         return pulumi.get(self, "queue")
 
     @queue.setter
-    def queue(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue", value)
 
     @_builtins.property
     @pulumi.getter(name="reRunable")
-    def re_runable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def re_runable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If the Job Is Support for the Re-Run.
         """
         return pulumi.get(self, "re_runable")
 
     @re_runable.setter
-    def re_runable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def re_runable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "re_runable", value)
 
     @_builtins.property
     @pulumi.getter(name="runasUser")
-    def runas_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runas_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user who performed the job.
         """
         return pulumi.get(self, "runas_user")
 
     @runas_user.setter
-    def runas_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runas_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runas_user", value)
 
     @_builtins.property
     @pulumi.getter(name="stderrRedirectPath")
-    def stderr_redirect_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stderr_redirect_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Error Output Path.
         """
         return pulumi.get(self, "stderr_redirect_path")
 
     @stderr_redirect_path.setter
-    def stderr_redirect_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stderr_redirect_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stderr_redirect_path", value)
 
     @_builtins.property
     @pulumi.getter(name="stdoutRedirectPath")
-    def stdout_redirect_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stdout_redirect_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Standard Output Path and.
         """
         return pulumi.get(self, "stdout_redirect_path")
 
     @stdout_redirect_path.setter
-    def stdout_redirect_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stdout_redirect_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stdout_redirect_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def task(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def task(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A Single Compute Node Required Number of Tasks. Possible Values: 1~20000 .
         """
         return pulumi.get(self, "task")
 
     @task.setter
-    def task(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def task(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "task", value)
 
     @_builtins.property
     @pulumi.getter
-    def thread(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A Single Task and the Number of Required Threads.
         """
         return pulumi.get(self, "thread")
 
     @thread.setter
-    def thread(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread", value)
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def variables(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Job of the Environment Variable.
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def variables(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "variables", value)
 
 
 @pulumi.input_type
 class _JobTemplateState:
     def __init__(__self__, *,
-                 array_request: Optional[pulumi.Input[_builtins.str]] = None,
-                 clock_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_line: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 job_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 mem: Optional[pulumi.Input[_builtins.str]] = None,
-                 node: Optional[pulumi.Input[_builtins.int]] = None,
-                 package_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 re_runable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 runas_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 stderr_redirect_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 stdout_redirect_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 task: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread: Optional[pulumi.Input[_builtins.int]] = None,
-                 variables: Optional[pulumi.Input[_builtins.str]] = None):
+                 array_request: pulumi.Input[Optional[_builtins.str]] = None,
+                 clock_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_line: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 job_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 mem: pulumi.Input[Optional[_builtins.str]] = None,
+                 node: pulumi.Input[Optional[_builtins.int]] = None,
+                 package_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 re_runable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 runas_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 stderr_redirect_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 stdout_redirect_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 task: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread: pulumi.Input[Optional[_builtins.int]] = None,
+                 variables: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering JobTemplate resources.
 
@@ -373,206 +373,206 @@ class _JobTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="arrayRequest")
-    def array_request(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def array_request(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Queue Jobs, Is of the Form: 1-10:2.
         """
         return pulumi.get(self, "array_request")
 
     @array_request.setter
-    def array_request(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def array_request(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "array_request", value)
 
     @_builtins.property
     @pulumi.getter(name="clockTime")
-    def clock_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clock_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job Maximum Run Time.
         """
         return pulumi.get(self, "clock_time")
 
     @clock_time.setter
-    def clock_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clock_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clock_time", value)
 
     @_builtins.property
     @pulumi.getter(name="commandLine")
-    def command_line(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command_line(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job Commands.
         """
         return pulumi.get(self, "command_line")
 
     @command_line.setter
-    def command_line(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command_line(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command_line", value)
 
     @_builtins.property
     @pulumi.getter
-    def gpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A Single Compute Node Using the GPU Number.Possible Values: 1~20000.
         """
         return pulumi.get(self, "gpu")
 
     @gpu.setter
-    def gpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gpu", value)
 
     @_builtins.property
     @pulumi.getter(name="jobTemplateName")
-    def job_template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Job Template Name.
         """
         return pulumi.get(self, "job_template_name")
 
     @job_template_name.setter
-    def job_template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_template_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def mem(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mem(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Single Compute Node Maximum Memory.
         """
         return pulumi.get(self, "mem")
 
     @mem.setter
-    def mem(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mem(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mem", value)
 
     @_builtins.property
     @pulumi.getter
-    def node(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Submit a Task Is Required for Computing the Number of Data Nodes to Be. Possible Values: 1~5000 .
         """
         return pulumi.get(self, "node")
 
     @node.setter
-    def node(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node", value)
 
     @_builtins.property
     @pulumi.getter(name="packagePath")
-    def package_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job Commands the Directory.
         """
         return pulumi.get(self, "package_path")
 
     @package_path.setter
-    def package_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Job Priority.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def queue(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Job Queue.
         """
         return pulumi.get(self, "queue")
 
     @queue.setter
-    def queue(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue", value)
 
     @_builtins.property
     @pulumi.getter(name="reRunable")
-    def re_runable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def re_runable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If the Job Is Support for the Re-Run.
         """
         return pulumi.get(self, "re_runable")
 
     @re_runable.setter
-    def re_runable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def re_runable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "re_runable", value)
 
     @_builtins.property
     @pulumi.getter(name="runasUser")
-    def runas_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runas_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user who performed the job.
         """
         return pulumi.get(self, "runas_user")
 
     @runas_user.setter
-    def runas_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runas_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runas_user", value)
 
     @_builtins.property
     @pulumi.getter(name="stderrRedirectPath")
-    def stderr_redirect_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stderr_redirect_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Error Output Path.
         """
         return pulumi.get(self, "stderr_redirect_path")
 
     @stderr_redirect_path.setter
-    def stderr_redirect_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stderr_redirect_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stderr_redirect_path", value)
 
     @_builtins.property
     @pulumi.getter(name="stdoutRedirectPath")
-    def stdout_redirect_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stdout_redirect_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Standard Output Path and.
         """
         return pulumi.get(self, "stdout_redirect_path")
 
     @stdout_redirect_path.setter
-    def stdout_redirect_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stdout_redirect_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stdout_redirect_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def task(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def task(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A Single Compute Node Required Number of Tasks. Possible Values: 1~20000 .
         """
         return pulumi.get(self, "task")
 
     @task.setter
-    def task(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def task(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "task", value)
 
     @_builtins.property
     @pulumi.getter
-    def thread(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A Single Task and the Number of Required Threads.
         """
         return pulumi.get(self, "thread")
 
     @thread.setter
-    def thread(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread", value)
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def variables(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Job of the Environment Variable.
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def variables(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "variables", value)
 
 
@@ -582,23 +582,23 @@ class JobTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 array_request: Optional[pulumi.Input[_builtins.str]] = None,
-                 clock_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_line: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 job_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 mem: Optional[pulumi.Input[_builtins.str]] = None,
-                 node: Optional[pulumi.Input[_builtins.int]] = None,
-                 package_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 re_runable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 runas_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 stderr_redirect_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 stdout_redirect_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 task: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread: Optional[pulumi.Input[_builtins.int]] = None,
-                 variables: Optional[pulumi.Input[_builtins.str]] = None,
+                 array_request: pulumi.Input[Optional[_builtins.str]] = None,
+                 clock_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_line: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 job_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 mem: pulumi.Input[Optional[_builtins.str]] = None,
+                 node: pulumi.Input[Optional[_builtins.int]] = None,
+                 package_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 re_runable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 runas_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 stderr_redirect_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 stdout_redirect_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 task: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread: pulumi.Input[Optional[_builtins.int]] = None,
+                 variables: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Ehpc Job Template resource.
@@ -703,23 +703,23 @@ class JobTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 array_request: Optional[pulumi.Input[_builtins.str]] = None,
-                 clock_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_line: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 job_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 mem: Optional[pulumi.Input[_builtins.str]] = None,
-                 node: Optional[pulumi.Input[_builtins.int]] = None,
-                 package_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 re_runable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 runas_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 stderr_redirect_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 stdout_redirect_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 task: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread: Optional[pulumi.Input[_builtins.int]] = None,
-                 variables: Optional[pulumi.Input[_builtins.str]] = None,
+                 array_request: pulumi.Input[Optional[_builtins.str]] = None,
+                 clock_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_line: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 job_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 mem: pulumi.Input[Optional[_builtins.str]] = None,
+                 node: pulumi.Input[Optional[_builtins.int]] = None,
+                 package_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 re_runable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 runas_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 stderr_redirect_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 stdout_redirect_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 task: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread: pulumi.Input[Optional[_builtins.int]] = None,
+                 variables: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -760,23 +760,23 @@ class JobTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            array_request: Optional[pulumi.Input[_builtins.str]] = None,
-            clock_time: Optional[pulumi.Input[_builtins.str]] = None,
-            command_line: Optional[pulumi.Input[_builtins.str]] = None,
-            gpu: Optional[pulumi.Input[_builtins.int]] = None,
-            job_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-            mem: Optional[pulumi.Input[_builtins.str]] = None,
-            node: Optional[pulumi.Input[_builtins.int]] = None,
-            package_path: Optional[pulumi.Input[_builtins.str]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            queue: Optional[pulumi.Input[_builtins.str]] = None,
-            re_runable: Optional[pulumi.Input[_builtins.bool]] = None,
-            runas_user: Optional[pulumi.Input[_builtins.str]] = None,
-            stderr_redirect_path: Optional[pulumi.Input[_builtins.str]] = None,
-            stdout_redirect_path: Optional[pulumi.Input[_builtins.str]] = None,
-            task: Optional[pulumi.Input[_builtins.int]] = None,
-            thread: Optional[pulumi.Input[_builtins.int]] = None,
-            variables: Optional[pulumi.Input[_builtins.str]] = None) -> 'JobTemplate':
+            array_request: pulumi.Input[Optional[_builtins.str]] = None,
+            clock_time: pulumi.Input[Optional[_builtins.str]] = None,
+            command_line: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu: pulumi.Input[Optional[_builtins.int]] = None,
+            job_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            mem: pulumi.Input[Optional[_builtins.str]] = None,
+            node: pulumi.Input[Optional[_builtins.int]] = None,
+            package_path: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            queue: pulumi.Input[Optional[_builtins.str]] = None,
+            re_runable: pulumi.Input[Optional[_builtins.bool]] = None,
+            runas_user: pulumi.Input[Optional[_builtins.str]] = None,
+            stderr_redirect_path: pulumi.Input[Optional[_builtins.str]] = None,
+            stdout_redirect_path: pulumi.Input[Optional[_builtins.str]] = None,
+            task: pulumi.Input[Optional[_builtins.int]] = None,
+            thread: pulumi.Input[Optional[_builtins.int]] = None,
+            variables: pulumi.Input[Optional[_builtins.str]] = None) -> 'JobTemplate':
         """
         Get an existing JobTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

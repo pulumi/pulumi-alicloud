@@ -21,7 +21,7 @@ class HostGroupArgs:
     def __init__(__self__, *,
                  host_group_name: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostGroup resource.
 
@@ -60,24 +60,24 @@ class HostGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the New Host Group of Notes, Supports up to 500 Characters.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
 
 @pulumi.input_type
 class _HostGroupState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostGroup resources.
 
@@ -97,50 +97,50 @@ class _HostGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the New Host Group of Notes, Supports up to 500 Characters.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="hostGroupId")
-    def host_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host Group ID.
         """
         return pulumi.get(self, "host_group_id")
 
     @host_group_id.setter
-    def host_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hostGroupName")
-    def host_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the New Host Group Name, Supports up to 128 Characters.
         """
         return pulumi.get(self, "host_group_name")
 
     @host_group_name.setter
-    def host_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the New Host Group Where the Bastion Host ID of.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
 
@@ -150,9 +150,9 @@ class HostGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Bastion Host Host Group resource.
@@ -283,9 +283,9 @@ class HostGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -313,10 +313,10 @@ class HostGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            host_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'HostGroup':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'HostGroup':
         """
         Get an existing HostGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

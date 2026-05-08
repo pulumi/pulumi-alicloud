@@ -138,25 +138,25 @@ export interface GetTransitRouterPrefixListAssociationsOutputArgs {
     /**
      * A list of Cen Transit Router Prefix List Association IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Alibaba Cloud account to which the prefix list belongs.
      */
-    ownerUid?: pulumi.Input<number>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    ownerUid?: pulumi.Input<number | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The ID of the prefix list.
      */
-    prefixListId?: pulumi.Input<string>;
+    prefixListId?: pulumi.Input<string | undefined>;
     /**
      * The status of the prefix list. Valid Value: `Active`, `Updating`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the transit router.
      */

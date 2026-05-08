@@ -60,10 +60,10 @@ class StorageDomainRoutingRuleArgs:
 @pulumi.input_type
 class _StorageDomainRoutingRuleState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input['StorageDomainRoutingRuleRouteArgs']]]] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input['StorageDomainRoutingRuleRouteArgs']]]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageDomainRoutingRule resources.
 
@@ -83,50 +83,50 @@ class _StorageDomainRoutingRuleState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Container Registry Instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StorageDomainRoutingRuleRouteArgs']]]]:
+    def routes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StorageDomainRoutingRuleRouteArgs']]]]:
         """
         Domain name routing entry See `routes` below.
         """
         return pulumi.get(self, "routes")
 
     @routes.setter
-    def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StorageDomainRoutingRuleRouteArgs']]]]):
+    def routes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StorageDomainRoutingRuleRouteArgs']]]]):
         pulumi.set(self, "routes", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Rule.
         """
         return pulumi.get(self, "rule_id")
 
     @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_id", value)
 
 
@@ -136,8 +136,8 @@ class StorageDomainRoutingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict']]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a CR Storage Domain Routing Rule resource.
@@ -261,8 +261,8 @@ class StorageDomainRoutingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict']]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -290,10 +290,10 @@ class StorageDomainRoutingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict']]]]] = None,
-            rule_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'StorageDomainRoutingRule':
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StorageDomainRoutingRuleRouteArgs', 'StorageDomainRoutingRuleRouteArgsDict']]]]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'StorageDomainRoutingRule':
         """
         Get an existing StorageDomainRoutingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -110,7 +110,7 @@ export interface GetVpcEndpointServiceUsersOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The Id of Vpc Endpoint Service.
      */
@@ -118,5 +118,5 @@ export interface GetVpcEndpointServiceUsersOutputArgs {
     /**
      * The Id of Ram User.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }

@@ -153,27 +153,27 @@ export interface DiskState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    diskName?: pulumi.Input<string>;
+    diskName?: pulumi.Input<string | undefined>;
     /**
      * disk size
      */
-    diskSize?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number | undefined>;
     /**
      * instance id
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Note information.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -191,5 +191,5 @@ export interface DiskArgs {
     /**
      * Note information.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
 }

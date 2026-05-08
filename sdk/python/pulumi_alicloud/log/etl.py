@@ -27,24 +27,24 @@ class EtlArgs:
                  logstore: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  script: pulumi.Input[_builtins.str],
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 etl_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 kms_encrypted_access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 to_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 etl_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 kms_encrypted_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_access_key_id_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 kms_encryption_access_key_secret_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 to_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Etl resource.
 
@@ -190,248 +190,248 @@ class EtlArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessKeyId")
-    def access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source logstore access key id.
         """
         return pulumi.get(self, "access_key_id")
 
     @access_key_id.setter
-    def access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accessKeySecret")
-    def access_key_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source logstore access key secret.
         """
         return pulumi.get(self, "access_key_secret")
 
     @access_key_secret.setter
-    def access_key_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The etl job create time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the log etl job.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="etlType")
-    def etl_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etl_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log service etl type, the default value is `ETL`.
         """
         return pulumi.get(self, "etl_type")
 
     @etl_type.setter
-    def etl_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etl_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etl_type", value)
 
     @_builtins.property
     @pulumi.getter(name="fromTime")
-    def from_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def from_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         """
         return pulumi.get(self, "from_time")
 
     @from_time.setter
-    def from_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def from_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "from_time", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedAccessKeyId")
-    def kms_encrypted_access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_access_key_id")
 
     @kms_encrypted_access_key_id.setter
-    def kms_encrypted_access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_access_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedAccessKeySecret")
-    def kms_encrypted_access_key_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_access_key_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_access_key_secret")
 
     @kms_encrypted_access_key_secret.setter
-    def kms_encrypted_access_key_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_access_key_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_access_key_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionAccessKeyIdContext")
-    def kms_encryption_access_key_id_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_access_key_id_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "kms_encryption_access_key_id_context")
 
     @kms_encryption_access_key_id_context.setter
-    def kms_encryption_access_key_id_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_access_key_id_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_access_key_id_context", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionAccessKeySecretContext")
-    def kms_encryption_access_key_secret_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_access_key_secret_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "kms_encryption_access_key_secret_context")
 
     @kms_encryption_access_key_secret_context.setter
-    def kms_encryption_access_key_secret_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_access_key_secret_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_access_key_secret_context", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the etl job.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_modified_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ETL job last modified time.
         """
         return pulumi.get(self, "last_modified_time")
 
     @last_modified_time.setter
-    def last_modified_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_modified_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_modified_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Advanced parameter configuration of processing operations.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job scheduling type, the default value is Resident.
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="toTime")
-    def to_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def to_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
         """
         return pulumi.get(self, "to_time")
 
     @to_time.setter
-    def to_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def to_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "to_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Log etl job version. the default value is `2`.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
 class _EtlState:
     def __init__(__self__, *,
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 etl_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 etl_sinks: Optional[pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]]] = None,
-                 etl_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 kms_encrypted_access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 to_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 etl_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 etl_sinks: pulumi.Input[Optional[Sequence[pulumi.Input['EtlEtlSinkArgs']]]] = None,
+                 etl_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 kms_encrypted_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_access_key_id_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 kms_encryption_access_key_secret_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 to_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Etl resources.
 
@@ -511,290 +511,290 @@ class _EtlState:
 
     @_builtins.property
     @pulumi.getter(name="accessKeyId")
-    def access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source logstore access key id.
         """
         return pulumi.get(self, "access_key_id")
 
     @access_key_id.setter
-    def access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accessKeySecret")
-    def access_key_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source logstore access key secret.
         """
         return pulumi.get(self, "access_key_secret")
 
     @access_key_secret.setter
-    def access_key_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The etl job create time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the log etl job.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log service etl job alias.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="etlName")
-    def etl_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etl_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the log etl job.
         """
         return pulumi.get(self, "etl_name")
 
     @etl_name.setter
-    def etl_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etl_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etl_name", value)
 
     @_builtins.property
     @pulumi.getter(name="etlSinks")
-    def etl_sinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]]]:
+    def etl_sinks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EtlEtlSinkArgs']]]]:
         """
         Target logstore configuration for delivery after data processing. See `etl_sinks` below.
         """
         return pulumi.get(self, "etl_sinks")
 
     @etl_sinks.setter
-    def etl_sinks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]]]):
+    def etl_sinks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EtlEtlSinkArgs']]]]):
         pulumi.set(self, "etl_sinks", value)
 
     @_builtins.property
     @pulumi.getter(name="etlType")
-    def etl_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etl_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log service etl type, the default value is `ETL`.
         """
         return pulumi.get(self, "etl_type")
 
     @etl_type.setter
-    def etl_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etl_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etl_type", value)
 
     @_builtins.property
     @pulumi.getter(name="fromTime")
-    def from_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def from_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         """
         return pulumi.get(self, "from_time")
 
     @from_time.setter
-    def from_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def from_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "from_time", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedAccessKeyId")
-    def kms_encrypted_access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_access_key_id")
 
     @kms_encrypted_access_key_id.setter
-    def kms_encrypted_access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_access_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedAccessKeySecret")
-    def kms_encrypted_access_key_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_access_key_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_access_key_secret")
 
     @kms_encrypted_access_key_secret.setter
-    def kms_encrypted_access_key_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_access_key_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_access_key_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionAccessKeyIdContext")
-    def kms_encryption_access_key_id_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_access_key_id_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "kms_encryption_access_key_id_context")
 
     @kms_encryption_access_key_id_context.setter
-    def kms_encryption_access_key_id_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_access_key_id_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_access_key_id_context", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionAccessKeySecretContext")
-    def kms_encryption_access_key_secret_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_access_key_secret_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "kms_encryption_access_key_secret_context")
 
     @kms_encryption_access_key_secret_context.setter
-    def kms_encryption_access_key_secret_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_access_key_secret_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_access_key_secret_context", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the etl job.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_modified_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ETL job last modified time.
         """
         return pulumi.get(self, "last_modified_time")
 
     @last_modified_time.setter
-    def last_modified_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_modified_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_modified_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def logstore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logstore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source logstore of the processing job.
         """
         return pulumi.get(self, "logstore")
 
     @logstore.setter
-    def logstore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logstore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logstore", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Advanced parameter configuration of processing operations.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project where the etl job is located.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job scheduling type, the default value is Resident.
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Processing operation grammar.
         """
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="toTime")
-    def to_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def to_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
         """
         return pulumi.get(self, "to_time")
 
     @to_time.setter
-    def to_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def to_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "to_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Log etl job version. the default value is `2`.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
@@ -804,30 +804,30 @@ class Etl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 etl_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 etl_sinks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]]] = None,
-                 etl_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 kms_encrypted_access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 to_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None,
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 etl_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 etl_sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]]] = None,
+                 etl_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 kms_encrypted_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_access_key_id_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 kms_encryption_access_key_secret_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 to_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The data transformation of the log service is a hosted, highly available, and scalable data processing service,
@@ -1055,30 +1055,30 @@ class Etl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 etl_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 etl_sinks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]]] = None,
-                 etl_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 kms_encrypted_access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 to_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None,
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 etl_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 etl_sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]]] = None,
+                 etl_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 kms_encrypted_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_access_key_id_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 kms_encryption_access_key_secret_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 to_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1136,30 +1136,30 @@ class Etl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            etl_name: Optional[pulumi.Input[_builtins.str]] = None,
-            etl_sinks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]]] = None,
-            etl_type: Optional[pulumi.Input[_builtins.str]] = None,
-            from_time: Optional[pulumi.Input[_builtins.int]] = None,
-            kms_encrypted_access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_encrypted_access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified_time: Optional[pulumi.Input[_builtins.int]] = None,
-            logstore: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule: Optional[pulumi.Input[_builtins.str]] = None,
-            script: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            to_time: Optional[pulumi.Input[_builtins.int]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None) -> 'Etl':
+            access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            etl_name: pulumi.Input[Optional[_builtins.str]] = None,
+            etl_sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]]] = None,
+            etl_type: pulumi.Input[Optional[_builtins.str]] = None,
+            from_time: pulumi.Input[Optional[_builtins.int]] = None,
+            kms_encrypted_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encrypted_access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encryption_access_key_id_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            kms_encryption_access_key_secret_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.int]] = None,
+            logstore: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            script: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            to_time: pulumi.Input[Optional[_builtins.int]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> 'Etl':
         """
         Get an existing Etl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

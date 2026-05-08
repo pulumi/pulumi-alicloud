@@ -22,9 +22,9 @@ class BackupPolicyArgs:
                  db_instance_id: pulumi.Input[_builtins.str],
                  preferred_backup_period: pulumi.Input[_builtins.str],
                  preferred_backup_time: pulumi.Input[_builtins.str],
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_recovery_point: Optional[pulumi.Input[_builtins.bool]] = None,
-                 recovery_point_period: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_recovery_point: pulumi.Input[Optional[_builtins.bool]] = None,
+                 recovery_point_period: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
 
@@ -105,19 +105,19 @@ class BackupPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Data backup retention days.
         """
         return pulumi.get(self, "backup_retention_period")
 
     @backup_retention_period.setter
-    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="enableRecoveryPoint")
-    def enable_recovery_point(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_recovery_point(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic recovery points. Value Description:
         - **true**: enabled.
@@ -126,12 +126,12 @@ class BackupPolicyArgs:
         return pulumi.get(self, "enable_recovery_point")
 
     @enable_recovery_point.setter
-    def enable_recovery_point(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_recovery_point(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_recovery_point", value)
 
     @_builtins.property
     @pulumi.getter(name="recoveryPointPeriod")
-    def recovery_point_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recovery_point_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Recovery point frequency. Value Description:
         - **1**: Hourly.
@@ -142,19 +142,19 @@ class BackupPolicyArgs:
         return pulumi.get(self, "recovery_point_period")
 
     @recovery_point_period.setter
-    def recovery_point_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recovery_point_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recovery_point_period", value)
 
 
 @pulumi.input_type
 class _BackupPolicyState:
     def __init__(__self__, *,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_recovery_point: Optional[pulumi.Input[_builtins.bool]] = None,
-                 preferred_backup_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recovery_point_period: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_recovery_point: pulumi.Input[Optional[_builtins.bool]] = None,
+                 preferred_backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recovery_point_period: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
 
@@ -194,19 +194,19 @@ class _BackupPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Data backup retention days.
         """
         return pulumi.get(self, "backup_retention_period")
 
     @backup_retention_period.setter
-    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID.
         > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
@@ -214,12 +214,12 @@ class _BackupPolicyState:
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enableRecoveryPoint")
-    def enable_recovery_point(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_recovery_point(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic recovery points. Value Description:
         - **true**: enabled.
@@ -228,12 +228,12 @@ class _BackupPolicyState:
         return pulumi.get(self, "enable_recovery_point")
 
     @enable_recovery_point.setter
-    def enable_recovery_point(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_recovery_point(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_recovery_point", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredBackupPeriod")
-    def preferred_backup_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_backup_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data backup cycle. Separate multiple values with commas (,). Value Description:
         - **Monday**: Monday.
@@ -247,24 +247,24 @@ class _BackupPolicyState:
         return pulumi.get(self, "preferred_backup_period")
 
     @preferred_backup_period.setter
-    def preferred_backup_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_backup_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_backup_period", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredBackupTime")
-    def preferred_backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_backup_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data backup time. Format: HH:mmZ-HH:mmZ(UTC time).
         """
         return pulumi.get(self, "preferred_backup_time")
 
     @preferred_backup_time.setter
-    def preferred_backup_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_backup_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_backup_time", value)
 
     @_builtins.property
     @pulumi.getter(name="recoveryPointPeriod")
-    def recovery_point_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recovery_point_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Recovery point frequency. Value Description:
         - **1**: Hourly.
@@ -275,7 +275,7 @@ class _BackupPolicyState:
         return pulumi.get(self, "recovery_point_period")
 
     @recovery_point_period.setter
-    def recovery_point_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recovery_point_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recovery_point_period", value)
 
 
@@ -285,12 +285,12 @@ class BackupPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_recovery_point: Optional[pulumi.Input[_builtins.bool]] = None,
-                 preferred_backup_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recovery_point_period: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_recovery_point: pulumi.Input[Optional[_builtins.bool]] = None,
+                 preferred_backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recovery_point_period: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a GPDB Backup Policy resource. Describe the instance backup strategy.
@@ -305,6 +305,7 @@ class BackupPolicy(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -316,7 +317,7 @@ class BackupPolicy(pulumi.CustomResource):
         default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
             zone_id=default.ids[0])
-        vswitch = []
+        vswitch: list[Any] = []
         def create_vswitch(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
@@ -347,7 +348,7 @@ class BackupPolicy(pulumi.CustomResource):
             seg_node_num=4,
             storage_size=50,
             vpc_id=default_get_networks.ids[0],
-            vswitch_id=vswitch_id,
+            vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
             ip_whitelists=[{
                 "security_ip_list": "127.0.0.1",
             }],
@@ -421,6 +422,7 @@ class BackupPolicy(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -432,7 +434,7 @@ class BackupPolicy(pulumi.CustomResource):
         default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
             zone_id=default.ids[0])
-        vswitch = []
+        vswitch: list[Any] = []
         def create_vswitch(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
@@ -463,7 +465,7 @@ class BackupPolicy(pulumi.CustomResource):
             seg_node_num=4,
             storage_size=50,
             vpc_id=default_get_networks.ids[0],
-            vswitch_id=vswitch_id,
+            vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
             ip_whitelists=[{
                 "security_ip_list": "127.0.0.1",
             }],
@@ -510,12 +512,12 @@ class BackupPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_recovery_point: Optional[pulumi.Input[_builtins.bool]] = None,
-                 preferred_backup_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recovery_point_period: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_recovery_point: pulumi.Input[Optional[_builtins.bool]] = None,
+                 preferred_backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recovery_point_period: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -547,12 +549,12 @@ class BackupPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_recovery_point: Optional[pulumi.Input[_builtins.bool]] = None,
-            preferred_backup_period: Optional[pulumi.Input[_builtins.str]] = None,
-            preferred_backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-            recovery_point_period: Optional[pulumi.Input[_builtins.str]] = None) -> 'BackupPolicy':
+            backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_recovery_point: pulumi.Input[Optional[_builtins.bool]] = None,
+            preferred_backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+            preferred_backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+            recovery_point_period: pulumi.Input[Optional[_builtins.str]] = None) -> 'BackupPolicy':
         """
         Get an existing BackupPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -24,20 +24,20 @@ class AdConnectorOfficeSiteArgs:
                  cidr_block: pulumi.Input[_builtins.str],
                  dns_addresses: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  domain_name: pulumi.Input[_builtins.str],
-                 ad_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 specification: Optional[pulumi.Input[_builtins.int]] = None,
-                 sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sub_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_code: Optional[pulumi.Input[_builtins.str]] = None):
+                 ad_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 specification: pulumi.Input[Optional[_builtins.int]] = None,
+                 sub_domain_dns_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sub_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AdConnectorOfficeSite resource.
 
@@ -160,43 +160,43 @@ class AdConnectorOfficeSiteArgs:
 
     @_builtins.property
     @pulumi.getter(name="adHostname")
-    def ad_hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ad_hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ad hostname.
         """
         return pulumi.get(self, "ad_hostname")
 
     @ad_hostname.setter
-    def ad_hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ad_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ad_hostname", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum public bandwidth value. Valid values: 0 to 200. If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="cenOwnerId")
-    def cen_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cen owner id.
         """
         return pulumi.get(self, "cen_owner_id")
 
     @cen_owner_id.setter
-    def cen_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="desktopAccessType")
-    def desktop_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desktop_access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
         - `INTERNET`: connects clients to cloud desktops only over the Internet.
@@ -206,153 +206,153 @@ class AdConnectorOfficeSiteArgs:
         return pulumi.get(self, "desktop_access_type")
 
     @desktop_access_type.setter
-    def desktop_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desktop_access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desktop_access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="domainPassword")
-    def domain_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the domain administrator. The password can be up to 64 characters in length.
         """
         return pulumi.get(self, "domain_password")
 
     @domain_password.setter
-    def domain_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_password", value)
 
     @_builtins.property
     @pulumi.getter(name="domainUserName")
-    def domain_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of the domain administrator. The username can be up to 64 characters in length.
         """
         return pulumi.get(self, "domain_user_name")
 
     @domain_user_name.setter
-    def domain_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAdminAccess")
-    def enable_admin_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_admin_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to grant the permissions of the local administrator to the desktop users. Default value: true.
         """
         return pulumi.get(self, "enable_admin_access")
 
     @enable_admin_access.setter
-    def enable_admin_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_admin_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_admin_access", value)
 
     @_builtins.property
     @pulumi.getter(name="enableInternetAccess")
-    def enable_internet_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_internet_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable Internet access.
         """
         return pulumi.get(self, "enable_internet_access")
 
     @enable_internet_access.setter
-    def enable_internet_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_internet_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_internet_access", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaEnabled")
-    def mfa_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mfa_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable multi-factor authentication (MFA).
         """
         return pulumi.get(self, "mfa_enabled")
 
     @mfa_enabled.setter
-    def mfa_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mfa_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mfa_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolType")
-    def protocol_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type. Valid values: `ASP`, `HDX`.
         """
         return pulumi.get(self, "protocol_type")
 
     @protocol_type.setter
-    def protocol_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def specification(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def specification(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The AD Connector specifications. Valid values: `1`, `2`.
         """
         return pulumi.get(self, "specification")
 
     @specification.setter
-    def specification(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def specification(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "specification", value)
 
     @_builtins.property
     @pulumi.getter(name="subDomainDnsAddresses")
-    def sub_domain_dns_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sub_domain_dns_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The DNS address N of the enterprise AD subdomain. If you specify a value for the `sub_domain_name` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
         """
         return pulumi.get(self, "sub_domain_dns_addresses")
 
     @sub_domain_dns_addresses.setter
-    def sub_domain_dns_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sub_domain_dns_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sub_domain_dns_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="subDomainName")
-    def sub_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name of the enterprise AD subdomain.
         """
         return pulumi.get(self, "sub_domain_name")
 
     @sub_domain_name.setter
-    def sub_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="verifyCode")
-    def verify_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def verify_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
         """
         return pulumi.get(self, "verify_code")
 
     @verify_code.setter
-    def verify_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def verify_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "verify_code", value)
 
 
 @pulumi.input_type
 class _AdConnectorOfficeSiteState:
     def __init__(__self__, *,
-                 ad_connector_office_site_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ad_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 specification: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sub_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_code: Optional[pulumi.Input[_builtins.str]] = None):
+                 ad_connector_office_site_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ad_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 specification: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_domain_dns_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sub_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AdConnectorOfficeSite resources.
 
@@ -423,79 +423,79 @@ class _AdConnectorOfficeSiteState:
 
     @_builtins.property
     @pulumi.getter(name="adConnectorOfficeSiteName")
-    def ad_connector_office_site_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ad_connector_office_site_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "ad_connector_office_site_name")
 
     @ad_connector_office_site_name.setter
-    def ad_connector_office_site_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ad_connector_office_site_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ad_connector_office_site_name", value)
 
     @_builtins.property
     @pulumi.getter(name="adHostname")
-    def ad_hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ad_hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ad hostname.
         """
         return pulumi.get(self, "ad_hostname")
 
     @ad_hostname.setter
-    def ad_hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ad_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ad_hostname", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum public bandwidth value. Valid values: 0 to 200. If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CEN instance.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cenOwnerId")
-    def cen_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cen owner id.
         """
         return pulumi.get(self, "cen_owner_id")
 
     @cen_owner_id.setter
-    def cen_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workspace Corresponds to the Security Office Network of IPv4 Segment.
         """
         return pulumi.get(self, "cidr_block")
 
     @cidr_block.setter
-    def cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="desktopAccessType")
-    def desktop_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desktop_access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
         - `INTERNET`: connects clients to cloud desktops only over the Internet.
@@ -505,163 +505,163 @@ class _AdConnectorOfficeSiteState:
         return pulumi.get(self, "desktop_access_type")
 
     @desktop_access_type.setter
-    def desktop_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desktop_access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desktop_access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsAddresses")
-    def dns_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
         """
         return pulumi.get(self, "dns_addresses")
 
     @dns_addresses.setter
-    def dns_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name of the enterprise AD system. You can register each domain name only once.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="domainPassword")
-    def domain_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the domain administrator. The password can be up to 64 characters in length.
         """
         return pulumi.get(self, "domain_password")
 
     @domain_password.setter
-    def domain_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_password", value)
 
     @_builtins.property
     @pulumi.getter(name="domainUserName")
-    def domain_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of the domain administrator. The username can be up to 64 characters in length.
         """
         return pulumi.get(self, "domain_user_name")
 
     @domain_user_name.setter
-    def domain_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAdminAccess")
-    def enable_admin_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_admin_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to grant the permissions of the local administrator to the desktop users. Default value: true.
         """
         return pulumi.get(self, "enable_admin_access")
 
     @enable_admin_access.setter
-    def enable_admin_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_admin_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_admin_access", value)
 
     @_builtins.property
     @pulumi.getter(name="enableInternetAccess")
-    def enable_internet_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_internet_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable Internet access.
         """
         return pulumi.get(self, "enable_internet_access")
 
     @enable_internet_access.setter
-    def enable_internet_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_internet_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_internet_access", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaEnabled")
-    def mfa_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mfa_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable multi-factor authentication (MFA).
         """
         return pulumi.get(self, "mfa_enabled")
 
     @mfa_enabled.setter
-    def mfa_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mfa_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mfa_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolType")
-    def protocol_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type. Valid values: `ASP`, `HDX`.
         """
         return pulumi.get(self, "protocol_type")
 
     @protocol_type.setter
-    def protocol_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def specification(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def specification(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The AD Connector specifications. Valid values: `1`, `2`.
         """
         return pulumi.get(self, "specification")
 
     @specification.setter
-    def specification(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def specification(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "specification", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource State.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="subDomainDnsAddresses")
-    def sub_domain_dns_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sub_domain_dns_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The DNS address N of the enterprise AD subdomain. If you specify a value for the `sub_domain_name` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
         """
         return pulumi.get(self, "sub_domain_dns_addresses")
 
     @sub_domain_dns_addresses.setter
-    def sub_domain_dns_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sub_domain_dns_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sub_domain_dns_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="subDomainName")
-    def sub_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name of the enterprise AD subdomain.
         """
         return pulumi.get(self, "sub_domain_name")
 
     @sub_domain_name.setter
-    def sub_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="verifyCode")
-    def verify_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def verify_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
         """
         return pulumi.get(self, "verify_code")
 
     @verify_code.setter
-    def verify_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def verify_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "verify_code", value)
 
 
@@ -671,25 +671,25 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ad_connector_office_site_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ad_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 specification: Optional[pulumi.Input[_builtins.int]] = None,
-                 sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sub_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 ad_connector_office_site_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ad_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 specification: pulumi.Input[Optional[_builtins.int]] = None,
+                 sub_domain_dns_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sub_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_code: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECD Ad Connector Office Site resource.
@@ -837,25 +837,25 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ad_connector_office_site_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ad_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 specification: Optional[pulumi.Input[_builtins.int]] = None,
-                 sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sub_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 ad_connector_office_site_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ad_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 specification: pulumi.Input[Optional[_builtins.int]] = None,
+                 sub_domain_dns_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sub_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_code: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -907,26 +907,26 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ad_connector_office_site_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ad_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-            dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_password: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            mfa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-            specification: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            sub_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            verify_code: Optional[pulumi.Input[_builtins.str]] = None) -> 'AdConnectorOfficeSite':
+            ad_connector_office_site_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ad_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_password: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            mfa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+            specification: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_domain_dns_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            sub_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            verify_code: pulumi.Input[Optional[_builtins.str]] = None) -> 'AdConnectorOfficeSite':
         """
         Get an existing AdConnectorOfficeSite resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

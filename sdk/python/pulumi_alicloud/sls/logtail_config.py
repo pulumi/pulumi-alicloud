@@ -22,14 +22,14 @@ __all__ = ['LogtailConfigArgs', 'LogtailConfig']
 class LogtailConfigArgs:
     def __init__(__self__, *,
                  project_name: pulumi.Input[_builtins.str],
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modify_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_sample: Optional[pulumi.Input[_builtins.str]] = None,
-                 logtail_config_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_detail: Optional[pulumi.Input['LogtailConfigOutputDetailArgs']] = None,
-                 output_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modify_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_sample: pulumi.Input[Optional[_builtins.str]] = None,
+                 logtail_config_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_detail: pulumi.Input[Optional['LogtailConfigOutputDetailArgs']] = None,
+                 output_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LogtailConfig resource.
 
@@ -75,113 +75,113 @@ class LogtailConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="inputDetail")
-    def input_detail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input_detail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The detailed configuration entered by logtail.
         """
         return pulumi.get(self, "input_detail")
 
     @input_detail.setter
-    def input_detail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input_detail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input_detail", value)
 
     @_builtins.property
     @pulumi.getter(name="inputType")
-    def input_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Method of log entry
         """
         return pulumi.get(self, "input_type")
 
     @input_type.setter
-    def input_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input_type", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifyTime")
-    def last_modify_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_modify_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Last modification time, unix timestamp
         """
         return pulumi.get(self, "last_modify_time")
 
     @last_modify_time.setter
-    def last_modify_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_modify_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_modify_time", value)
 
     @_builtins.property
     @pulumi.getter(name="logSample")
-    def log_sample(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_sample(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sample log
         """
         return pulumi.get(self, "log_sample")
 
     @log_sample.setter
-    def log_sample(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_sample(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_sample", value)
 
     @_builtins.property
     @pulumi.getter(name="logtailConfigName")
-    def logtail_config_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logtail_config_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "logtail_config_name")
 
     @logtail_config_name.setter
-    def logtail_config_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logtail_config_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logtail_config_name", value)
 
     @_builtins.property
     @pulumi.getter(name="outputDetail")
-    def output_detail(self) -> Optional[pulumi.Input['LogtailConfigOutputDetailArgs']]:
+    def output_detail(self) -> pulumi.Input[Optional['LogtailConfigOutputDetailArgs']]:
         """
         Detailed configuration of logtail output See `output_detail` below.
         """
         return pulumi.get(self, "output_detail")
 
     @output_detail.setter
-    def output_detail(self, value: Optional[pulumi.Input['LogtailConfigOutputDetailArgs']]):
+    def output_detail(self, value: pulumi.Input[Optional['LogtailConfigOutputDetailArgs']]):
         pulumi.set(self, "output_detail", value)
 
     @_builtins.property
     @pulumi.getter(name="outputType")
-    def output_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log output mode. You can only upload data to log service.
         """
         return pulumi.get(self, "output_type")
 
     @output_type.setter
-    def output_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_type", value)
 
 
 @pulumi.input_type
 class _LogtailConfigState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modify_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_sample: Optional[pulumi.Input[_builtins.str]] = None,
-                 logtail_config_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_detail: Optional[pulumi.Input['LogtailConfigOutputDetailArgs']] = None,
-                 output_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modify_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_sample: pulumi.Input[Optional[_builtins.str]] = None,
+                 logtail_config_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_detail: pulumi.Input[Optional['LogtailConfigOutputDetailArgs']] = None,
+                 output_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogtailConfig resources.
 
@@ -216,110 +216,110 @@ class _LogtailConfigState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="inputDetail")
-    def input_detail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input_detail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The detailed configuration entered by logtail.
         """
         return pulumi.get(self, "input_detail")
 
     @input_detail.setter
-    def input_detail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input_detail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input_detail", value)
 
     @_builtins.property
     @pulumi.getter(name="inputType")
-    def input_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Method of log entry
         """
         return pulumi.get(self, "input_type")
 
     @input_type.setter
-    def input_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input_type", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifyTime")
-    def last_modify_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_modify_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Last modification time, unix timestamp
         """
         return pulumi.get(self, "last_modify_time")
 
     @last_modify_time.setter
-    def last_modify_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_modify_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_modify_time", value)
 
     @_builtins.property
     @pulumi.getter(name="logSample")
-    def log_sample(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_sample(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sample log
         """
         return pulumi.get(self, "log_sample")
 
     @log_sample.setter
-    def log_sample(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_sample(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_sample", value)
 
     @_builtins.property
     @pulumi.getter(name="logtailConfigName")
-    def logtail_config_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logtail_config_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "logtail_config_name")
 
     @logtail_config_name.setter
-    def logtail_config_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logtail_config_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logtail_config_name", value)
 
     @_builtins.property
     @pulumi.getter(name="outputDetail")
-    def output_detail(self) -> Optional[pulumi.Input['LogtailConfigOutputDetailArgs']]:
+    def output_detail(self) -> pulumi.Input[Optional['LogtailConfigOutputDetailArgs']]:
         """
         Detailed configuration of logtail output See `output_detail` below.
         """
         return pulumi.get(self, "output_detail")
 
     @output_detail.setter
-    def output_detail(self, value: Optional[pulumi.Input['LogtailConfigOutputDetailArgs']]):
+    def output_detail(self, value: pulumi.Input[Optional['LogtailConfigOutputDetailArgs']]):
         pulumi.set(self, "output_detail", value)
 
     @_builtins.property
     @pulumi.getter(name="outputType")
-    def output_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log output mode. You can only upload data to log service.
         """
         return pulumi.get(self, "output_type")
 
     @output_type.setter
-    def output_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_type", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project name
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
 
@@ -329,15 +329,15 @@ class LogtailConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modify_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_sample: Optional[pulumi.Input[_builtins.str]] = None,
-                 logtail_config_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_detail: Optional[pulumi.Input[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict']]] = None,
-                 output_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modify_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_sample: pulumi.Input[Optional[_builtins.str]] = None,
+                 logtail_config_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_detail: pulumi.Input[Optional[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict']]] = None,
+                 output_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Log Service (SLS) Logtail Config resource.
@@ -546,15 +546,15 @@ class LogtailConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modify_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_sample: Optional[pulumi.Input[_builtins.str]] = None,
-                 logtail_config_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_detail: Optional[pulumi.Input[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict']]] = None,
-                 output_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modify_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_sample: pulumi.Input[Optional[_builtins.str]] = None,
+                 logtail_config_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_detail: pulumi.Input[Optional[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict']]] = None,
+                 output_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -585,15 +585,15 @@ class LogtailConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            input_detail: Optional[pulumi.Input[_builtins.str]] = None,
-            input_type: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modify_time: Optional[pulumi.Input[_builtins.int]] = None,
-            log_sample: Optional[pulumi.Input[_builtins.str]] = None,
-            logtail_config_name: Optional[pulumi.Input[_builtins.str]] = None,
-            output_detail: Optional[pulumi.Input[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict']]] = None,
-            output_type: Optional[pulumi.Input[_builtins.str]] = None,
-            project_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'LogtailConfig':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            input_detail: pulumi.Input[Optional[_builtins.str]] = None,
+            input_type: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modify_time: pulumi.Input[Optional[_builtins.int]] = None,
+            log_sample: pulumi.Input[Optional[_builtins.str]] = None,
+            logtail_config_name: pulumi.Input[Optional[_builtins.str]] = None,
+            output_detail: pulumi.Input[Optional[Union['LogtailConfigOutputDetailArgs', 'LogtailConfigOutputDetailArgsDict']]] = None,
+            output_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'LogtailConfig':
         """
         Get an existing LogtailConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -154,15 +154,15 @@ export interface EcsKeyPairState {
     /**
      * (Available since v1.237.0) The time when the key pair was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The fingerprint of the key pair.
      */
-    fingerPrint?: pulumi.Input<string>;
+    fingerPrint?: pulumi.Input<string | undefined>;
     /**
      * The key file.
      */
-    keyFile?: pulumi.Input<string>;
+    keyFile?: pulumi.Input<string | undefined>;
     /**
      * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      *
@@ -170,27 +170,27 @@ export interface EcsKeyPairState {
      *
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The key pair name's prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
      */
-    keyNamePrefix?: pulumi.Input<string>;
+    keyNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The public key of the key pair.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which to add the key pair.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -200,7 +200,7 @@ export interface EcsKeyPairArgs {
     /**
      * The key file.
      */
-    keyFile?: pulumi.Input<string>;
+    keyFile?: pulumi.Input<string | undefined>;
     /**
      * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      *
@@ -208,25 +208,25 @@ export interface EcsKeyPairArgs {
      *
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The key pair name's prefix. It is conflict with `keyPairName`. If it is specified, terraform will using it to build the only key name.
      */
-    keyNamePrefix?: pulumi.Input<string>;
+    keyNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The public key of the key pair.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which to add the key pair.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

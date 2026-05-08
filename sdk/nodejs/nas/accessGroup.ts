@@ -160,19 +160,19 @@ export interface AccessGroupState {
     /**
      * The name of the permission group.
      */
-    accessGroupName?: pulumi.Input<string>;
+    accessGroupName?: pulumi.Input<string | undefined>;
     /**
      * Permission group types, including Vpc.
      */
-    accessGroupType?: pulumi.Input<string>;
+    accessGroupType?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.218.0) Creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Permission group description information.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * File system type.
      *
@@ -183,23 +183,23 @@ export interface AccessGroupState {
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    fileSystemType?: pulumi.Input<string>;
+    fileSystemType?: pulumi.Input<string | undefined>;
     /**
      * Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.256.0) The region ID.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
      *
      * @deprecated Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -209,15 +209,15 @@ export interface AccessGroupArgs {
     /**
      * The name of the permission group.
      */
-    accessGroupName?: pulumi.Input<string>;
+    accessGroupName?: pulumi.Input<string | undefined>;
     /**
      * Permission group types, including Vpc.
      */
-    accessGroupType?: pulumi.Input<string>;
+    accessGroupType?: pulumi.Input<string | undefined>;
     /**
      * Permission group description information.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * File system type.
      *
@@ -228,17 +228,17 @@ export interface AccessGroupArgs {
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    fileSystemType?: pulumi.Input<string>;
+    fileSystemType?: pulumi.Input<string | undefined>;
     /**
      * Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
      *
      * @deprecated Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

@@ -73,10 +73,10 @@ class TransitRouterMulticastDomainAssociationArgs:
 @pulumi.input_type
 class _TransitRouterMulticastDomainAssociationState:
     def __init__(__self__, *,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterMulticastDomainAssociation resources.
 
@@ -96,50 +96,50 @@ class _TransitRouterMulticastDomainAssociationState:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Transit Router Multicast Domain Association.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentId")
-    def transit_router_attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC connection.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
     @transit_router_attachment_id.setter
-    def transit_router_attachment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterMulticastDomainId")
-    def transit_router_multicast_domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_multicast_domain_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the multicast domain.
         """
         return pulumi.get(self, "transit_router_multicast_domain_id")
 
     @transit_router_multicast_domain_id.setter
-    def transit_router_multicast_domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_multicast_domain_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_multicast_domain_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -149,9 +149,9 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association resource.
@@ -304,9 +304,9 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -336,10 +336,10 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitRouterMulticastDomainAssociation':
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitRouterMulticastDomainAssociation':
         """
         Get an existing TransitRouterMulticastDomainAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

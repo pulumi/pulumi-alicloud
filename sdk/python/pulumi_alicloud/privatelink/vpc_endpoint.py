@@ -20,19 +20,19 @@ __all__ = ['VpcEndpointArgs', 'VpcEndpoint']
 class VpcEndpointArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[_builtins.str],
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 protected_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_private_ip_address_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_private_ip_address_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a VpcEndpoint resource.
 
@@ -99,7 +99,7 @@ class VpcEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
-    def address_ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address version. Valid values:
         - `IPv4` (default): IPv4.
@@ -108,36 +108,36 @@ class VpcEndpointArgs:
         return pulumi.get(self, "address_ip_version")
 
     @address_ip_version.setter
-    def address_ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointDescription")
-    def endpoint_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the endpoint.
         """
         return pulumi.get(self, "endpoint_description")
 
     @endpoint_description.setter
-    def endpoint_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_description", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint type.
 
@@ -146,48 +146,48 @@ class VpcEndpointArgs:
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter(name="policyDocument")
-    def policy_document(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_document(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         """
         return pulumi.get(self, "policy_document")
 
     @policy_document.setter
-    def policy_document(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_document(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_document", value)
 
     @_builtins.property
     @pulumi.getter(name="protectedEnabled")
-    def protected_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
         """
         return pulumi.get(self, "protected_enabled")
 
     @protected_enabled.setter
-    def protected_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
 
@@ -196,94 +196,94 @@ class VpcEndpointArgs:
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the endpoint service with which the endpoint is associated.
         """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the endpoint service with which the endpoint is associated.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcEndpointName")
-    def vpc_endpoint_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_endpoint_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the endpoint.
         """
         return pulumi.get(self, "vpc_endpoint_name")
 
     @vpc_endpoint_name.setter
-    def vpc_endpoint_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_endpoint_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_endpoint_name", value)
 
     @_builtins.property
     @pulumi.getter(name="zonePrivateIpAddressCount")
-    def zone_private_ip_address_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zone_private_ip_address_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
         """
         return pulumi.get(self, "zone_private_ip_address_count")
 
     @zone_private_ip_address_count.setter
-    def zone_private_ip_address_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zone_private_ip_address_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zone_private_ip_address_count", value)
 
 
 @pulumi.input_type
 class _VpcEndpointState:
     def __init__(__self__, *,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 connection_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_business_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 protected_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_private_ip_address_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 connection_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_business_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_private_ip_address_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering VpcEndpoint resources.
 
@@ -360,7 +360,7 @@ class _VpcEndpointState:
 
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
-    def address_ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address version. Valid values:
         - `IPv4` (default): IPv4.
@@ -369,96 +369,96 @@ class _VpcEndpointState:
         return pulumi.get(self, "address_ip_version")
 
     @address_ip_version.setter
-    def address_ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_ip_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionStatus")
-    def connection_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the endpoint connection.
         """
         return pulumi.get(self, "connection_status")
 
     @connection_status.setter
-    def connection_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_status", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the endpoint was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointBusinessStatus")
-    def endpoint_business_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_business_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service state of the endpoint.
         """
         return pulumi.get(self, "endpoint_business_status")
 
     @endpoint_business_status.setter
-    def endpoint_business_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_business_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_business_status", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointDescription")
-    def endpoint_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the endpoint.
         """
         return pulumi.get(self, "endpoint_description")
 
     @endpoint_description.setter
-    def endpoint_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_description", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointDomain")
-    def endpoint_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name of the endpoint.
         """
         return pulumi.get(self, "endpoint_domain")
 
     @endpoint_domain.setter
-    def endpoint_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint type.
 
@@ -467,60 +467,60 @@ class _VpcEndpointState:
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter(name="policyDocument")
-    def policy_document(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_document(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         """
         return pulumi.get(self, "policy_document")
 
     @policy_document.setter
-    def policy_document(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_document(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_document", value)
 
     @_builtins.property
     @pulumi.getter(name="protectedEnabled")
-    def protected_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
         """
         return pulumi.get(self, "protected_enabled")
 
     @protected_enabled.setter
-    def protected_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.239.0) The region ID of the endpoint.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
 
@@ -529,91 +529,91 @@ class _VpcEndpointState:
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the endpoint service with which the endpoint is associated.
         """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the endpoint service with which the endpoint is associated.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the endpoint.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcEndpointName")
-    def vpc_endpoint_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_endpoint_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the endpoint.
         """
         return pulumi.get(self, "vpc_endpoint_name")
 
     @vpc_endpoint_name.setter
-    def vpc_endpoint_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_endpoint_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_endpoint_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC to which the endpoint belongs.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zonePrivateIpAddressCount")
-    def zone_private_ip_address_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zone_private_ip_address_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
         """
         return pulumi.get(self, "zone_private_ip_address_count")
 
     @zone_private_ip_address_count.setter
-    def zone_private_ip_address_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zone_private_ip_address_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zone_private_ip_address_count", value)
 
 
@@ -623,20 +623,20 @@ class VpcEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 protected_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_private_ip_address_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_private_ip_address_count: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Private Link Vpc Endpoint resource.
@@ -812,20 +812,20 @@ class VpcEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 protected_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_private_ip_address_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_private_ip_address_count: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -868,27 +868,27 @@ class VpcEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            connection_status: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            endpoint_business_status: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-            protected_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_private_ip_address_count: Optional[pulumi.Input[_builtins.int]] = None) -> 'VpcEndpoint':
+            address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            connection_status: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint_business_status: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+            protected_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_private_ip_address_count: pulumi.Input[Optional[_builtins.int]] = None) -> 'VpcEndpoint':
         """
         Get an existing VpcEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

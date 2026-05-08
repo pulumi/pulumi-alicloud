@@ -43,9 +43,9 @@ class ReplicaPairDrillArgs:
 @pulumi.input_type
 class _ReplicaPairDrillState:
     def __init__(__self__, *,
-                 pair_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_pair_drill_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 pair_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_pair_drill_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReplicaPairDrill resources.
 
@@ -62,38 +62,38 @@ class _ReplicaPairDrillState:
 
     @_builtins.property
     @pulumi.getter(name="pairId")
-    def pair_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pair_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Copy the ID of the pair. You can call DescribeDiskReplicaPairs to query the list of asynchronous replication pairs to obtain the replication pair ID.
         """
         return pulumi.get(self, "pair_id")
 
     @pair_id.setter
-    def pair_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pair_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pair_id", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaPairDrillId")
-    def replica_pair_drill_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replica_pair_drill_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource.
         """
         return pulumi.get(self, "replica_pair_drill_id")
 
     @replica_pair_drill_id.setter
-    def replica_pair_drill_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replica_pair_drill_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replica_pair_drill_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Walkthrough status. _failed: Execution failed._failed: Cleanup failed.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -103,7 +103,7 @@ class ReplicaPairDrill(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 pair_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 pair_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a EBS Replica Pair Drill resource.
@@ -196,7 +196,7 @@ class ReplicaPairDrill(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 pair_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 pair_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -221,9 +221,9 @@ class ReplicaPairDrill(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            pair_id: Optional[pulumi.Input[_builtins.str]] = None,
-            replica_pair_drill_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ReplicaPairDrill':
+            pair_id: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_pair_drill_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ReplicaPairDrill':
         """
         Get an existing ReplicaPairDrill resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

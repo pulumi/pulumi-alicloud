@@ -132,15 +132,15 @@ export interface FaceConfigState {
     /**
      * Scene name.
      */
-    bizName?: pulumi.Input<string>;
+    bizName?: pulumi.Input<string | undefined>;
     /**
      * Scene type. **NOTE:** The bizType cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
      */
-    bizType?: pulumi.Input<string>;
+    bizType?: pulumi.Input<string | undefined>;
     /**
      * Last Modified Date.
      */
-    gmtModified?: pulumi.Input<string>;
+    gmtModified?: pulumi.Input<string | undefined>;
 }
 
 /**

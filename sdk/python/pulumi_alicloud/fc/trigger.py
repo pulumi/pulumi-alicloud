@@ -22,12 +22,12 @@ class TriggerArgs:
                  function: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_mns: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_mns: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_arn: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Trigger resource.
 
@@ -103,91 +103,91 @@ class TriggerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="configMns")
-    def config_mns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_mns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
         """
         return pulumi.get(self, "config_mns")
 
     @config_mns.setter
-    def config_mns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_mns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_mns", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Setting a prefix to get a only trigger name. It is conflict with "name".
         """
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
-    def name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceArn")
-    def source_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         """
         return pulumi.get(self, "source_arn")
 
     @source_arn.setter
-    def source_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_arn", value)
 
 
 @pulumi.input_type
 class _TriggerState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_mns: Optional[pulumi.Input[_builtins.str]] = None,
-                 function: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_mns: pulumi.Input[Optional[_builtins.str]] = None,
+                 function: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Trigger resources.
 
@@ -232,127 +232,127 @@ class _TriggerState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="configMns")
-    def config_mns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_mns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
         """
         return pulumi.get(self, "config_mns")
 
     @config_mns.setter
-    def config_mns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_mns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_mns", value)
 
     @_builtins.property
     @pulumi.getter
-    def function(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Function Compute function name.
         """
         return pulumi.get(self, "function")
 
     @function.setter
-    def function(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date this resource was last modified.
         """
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
-    def last_modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Setting a prefix to get a only trigger name. It is conflict with "name".
         """
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
-    def name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Function Compute service name.
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceArn")
-    def source_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         """
         return pulumi.get(self, "source_arn")
 
     @source_arn.setter
-    def source_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerId")
-    def trigger_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Function Compute trigger ID.
         """
         return pulumi.get(self, "trigger_id")
 
     @trigger_id.setter
-    def trigger_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
 
@@ -363,7 +363,7 @@ class _TriggerState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -373,15 +373,15 @@ class Trigger(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_mns: Optional[pulumi.Input[_builtins.str]] = None,
-                 function: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_mns: pulumi.Input[Optional[_builtins.str]] = None,
+                 function: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an Alicloud Function Compute Trigger resource. Based on trigger, execute your code in response to events in Alibaba Cloud.
@@ -1448,15 +1448,15 @@ class Trigger(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_mns: Optional[pulumi.Input[_builtins.str]] = None,
-                 function: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_mns: pulumi.Input[Optional[_builtins.str]] = None,
+                 function: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1493,17 +1493,17 @@ class Trigger(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[_builtins.str]] = None,
-            config_mns: Optional[pulumi.Input[_builtins.str]] = None,
-            function: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            service: Optional[pulumi.Input[_builtins.str]] = None,
-            source_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            trigger_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Trigger':
+            config: pulumi.Input[Optional[_builtins.str]] = None,
+            config_mns: pulumi.Input[Optional[_builtins.str]] = None,
+            function: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            source_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Trigger':
         """
         Get an existing Trigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

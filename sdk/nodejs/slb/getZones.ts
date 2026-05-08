@@ -140,30 +140,30 @@ export interface GetZonesOutputArgs {
     /**
      * Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
      */
-    availableSlbAddressIpVersion?: pulumi.Input<string>;
+    availableSlbAddressIpVersion?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by a slb instance network type. Valid values:
      * * vpc: an internal SLB instance that is deployed in a virtual private cloud (VPC).
      * * classic_internet: a public-facing SLB instance.
      * * classic_intranet: an internal SLB instance that is deployed in a classic network.
      */
-    availableSlbAddressType?: pulumi.Input<string>;
+    availableSlbAddressType?: pulumi.Input<string | undefined>;
     /**
      * Default to false and only output `id` in the `zones` block. Set it to true can output more details.
      *
      * @deprecated The parameter enableDetails has been deprecated from version v1.154.0+
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * The primary zone.
      */
-    masterZoneId?: pulumi.Input<string>;
+    masterZoneId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The secondary zone.
      */
-    slaveZoneId?: pulumi.Input<string>;
+    slaveZoneId?: pulumi.Input<string | undefined>;
 }

@@ -21,10 +21,10 @@ class AttachmentArgs:
     def __init__(__self__, *,
                  instance_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  scaling_group_id: pulumi.Input[_builtins.str],
-                 entrusted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lifecycle_hook: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_weights: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
+                 entrusted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lifecycle_hook: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer_weights: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         The set of arguments for constructing a Attachment resource.
 
@@ -82,43 +82,43 @@ class AttachmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def entrusted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def entrusted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
         """
         return pulumi.get(self, "entrusted")
 
     @entrusted.setter
-    def entrusted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def entrusted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "entrusted", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleHook")
-    def lifecycle_hook(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lifecycle_hook(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
         """
         return pulumi.get(self, "lifecycle_hook")
 
     @lifecycle_hook.setter
-    def lifecycle_hook(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lifecycle_hook(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lifecycle_hook", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerWeights")
-    def load_balancer_weights(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def load_balancer_weights(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
 
@@ -135,19 +135,19 @@ class AttachmentArgs:
         return pulumi.get(self, "load_balancer_weights")
 
     @load_balancer_weights.setter
-    def load_balancer_weights(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def load_balancer_weights(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "load_balancer_weights", value)
 
 
 @pulumi.input_type
 class _AttachmentState:
     def __init__(__self__, *,
-                 entrusted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lifecycle_hook: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_weights: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 entrusted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lifecycle_hook: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer_weights: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Attachment resources.
 
@@ -183,55 +183,55 @@ class _AttachmentState:
 
     @_builtins.property
     @pulumi.getter
-    def entrusted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def entrusted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
         """
         return pulumi.get(self, "entrusted")
 
     @entrusted.setter
-    def entrusted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def entrusted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "entrusted", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
         """
         return pulumi.get(self, "instance_ids")
 
     @instance_ids.setter
-    def instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleHook")
-    def lifecycle_hook(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lifecycle_hook(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
         """
         return pulumi.get(self, "lifecycle_hook")
 
     @lifecycle_hook.setter
-    def lifecycle_hook(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lifecycle_hook(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lifecycle_hook", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerWeights")
-    def load_balancer_weights(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def load_balancer_weights(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
 
@@ -248,19 +248,19 @@ class _AttachmentState:
         return pulumi.get(self, "load_balancer_weights")
 
     @load_balancer_weights.setter
-    def load_balancer_weights(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def load_balancer_weights(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "load_balancer_weights", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the scaling group of a scaling configuration.
         """
         return pulumi.get(self, "scaling_group_id")
 
     @scaling_group_id.setter
-    def scaling_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_group_id", value)
 
 
@@ -270,12 +270,12 @@ class Attachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entrusted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lifecycle_hook: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_weights: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 entrusted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lifecycle_hook: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer_weights: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Attaches several ECS instances to a specified scaling group or remove them from it.
@@ -290,6 +290,7 @@ class Attachment(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
@@ -305,7 +306,7 @@ class Attachment(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=8,
+            memory_size=float(8),
             instance_type_family="ecs.g9i")
         default_get_images = alicloud.ecs.get_images(instance_type=default_get_instance_types.instance_types[0].id,
             most_recent=True,
@@ -343,7 +344,7 @@ class Attachment(pulumi.CustomResource):
             force_delete=True,
             active=True,
             enable=True)
-        default_instance = []
+        default_instance: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_instance.append(alicloud.ecs.Instance(f"default-{range['value']}",
                 image_id=default_get_images.images[0].id,
@@ -413,6 +414,7 @@ class Attachment(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
@@ -428,7 +430,7 @@ class Attachment(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=8,
+            memory_size=float(8),
             instance_type_family="ecs.g9i")
         default_get_images = alicloud.ecs.get_images(instance_type=default_get_instance_types.instance_types[0].id,
             most_recent=True,
@@ -466,7 +468,7 @@ class Attachment(pulumi.CustomResource):
             force_delete=True,
             active=True,
             enable=True)
-        default_instance = []
+        default_instance: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_instance.append(alicloud.ecs.Instance(f"default-{range['value']}",
                 image_id=default_get_images.images[0].id,
@@ -513,12 +515,12 @@ class Attachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entrusted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lifecycle_hook: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_weights: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 entrusted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lifecycle_hook: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer_weights: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -548,12 +550,12 @@ class Attachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            entrusted: Optional[pulumi.Input[_builtins.bool]] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            lifecycle_hook: Optional[pulumi.Input[_builtins.bool]] = None,
-            load_balancer_weights: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Attachment':
+            entrusted: pulumi.Input[Optional[_builtins.bool]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            lifecycle_hook: pulumi.Input[Optional[_builtins.bool]] = None,
+            load_balancer_weights: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Attachment':
         """
         Get an existing Attachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

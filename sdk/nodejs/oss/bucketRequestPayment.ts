@@ -122,11 +122,11 @@ export interface BucketRequestPaymentState {
     /**
      * The name of the bucket.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The payer of the request and traffic fees.Valid values: BucketOwner: request and traffic fees are paid by the bucket owner. Requester: request and traffic fees are paid by the requester.
      */
-    payer?: pulumi.Input<string>;
+    payer?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -140,5 +140,5 @@ export interface BucketRequestPaymentArgs {
     /**
      * The payer of the request and traffic fees.Valid values: BucketOwner: request and traffic fees are paid by the bucket owner. Requester: request and traffic fees are paid by the requester.
      */
-    payer?: pulumi.Input<string>;
+    payer?: pulumi.Input<string | undefined>;
 }

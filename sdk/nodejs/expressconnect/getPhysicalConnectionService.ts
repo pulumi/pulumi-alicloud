@@ -91,5 +91,5 @@ export interface GetPhysicalConnectionServiceOutputArgs {
      *
      * > **NOTE:** Setting `enable = "On"` to enable outbound traffic for an Express Connect circuit that means you have read and agreed the [Express Connect Terms of Service](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud201803060947_16271.html). The service can not closed once it is opened.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
 }

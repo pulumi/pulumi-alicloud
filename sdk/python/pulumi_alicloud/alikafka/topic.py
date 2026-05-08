@@ -22,11 +22,11 @@ class TopicArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  remark: pulumi.Input[_builtins.str],
                  topic: pulumi.Input[_builtins.str],
-                 compact_topic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 configs: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_topic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 compact_topic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 configs: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_topic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Topic resource.
 
@@ -95,7 +95,7 @@ class TopicArgs:
 
     @_builtins.property
     @pulumi.getter(name="compactTopic")
-    def compact_topic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def compact_topic(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
         - false: The delete cleanup policy is used.
@@ -104,24 +104,24 @@ class TopicArgs:
         return pulumi.get(self, "compact_topic")
 
     @compact_topic.setter
-    def compact_topic(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def compact_topic(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "compact_topic", value)
 
     @_builtins.property
     @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def configs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The advanced configurations.
         """
         return pulumi.get(self, "configs")
 
     @configs.setter
-    def configs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def configs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "configs", value)
 
     @_builtins.property
     @pulumi.getter(name="localTopic")
-    def local_topic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def local_topic(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The storage engine of the topic. Valid values:
         - false: Cloud storage.
@@ -130,48 +130,48 @@ class TopicArgs:
         return pulumi.get(self, "local_topic")
 
     @local_topic.setter
-    def local_topic(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def local_topic(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "local_topic", value)
 
     @_builtins.property
     @pulumi.getter(name="partitionNum")
-    def partition_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def partition_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of partitions in the topic.
         """
         return pulumi.get(self, "partition_num")
 
     @partition_num.setter
-    def partition_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def partition_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "partition_num", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _TopicState:
     def __init__(__self__, *,
-                 compact_topic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 configs: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_topic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None):
+                 compact_topic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 configs: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_topic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
 
@@ -216,7 +216,7 @@ class _TopicState:
 
     @_builtins.property
     @pulumi.getter(name="compactTopic")
-    def compact_topic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def compact_topic(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
         - false: The delete cleanup policy is used.
@@ -225,48 +225,48 @@ class _TopicState:
         return pulumi.get(self, "compact_topic")
 
     @compact_topic.setter
-    def compact_topic(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def compact_topic(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "compact_topic", value)
 
     @_builtins.property
     @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def configs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The advanced configurations.
         """
         return pulumi.get(self, "configs")
 
     @configs.setter
-    def configs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def configs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "configs", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.262.1) The time when the topic was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="localTopic")
-    def local_topic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def local_topic(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The storage engine of the topic. Valid values:
         - false: Cloud storage.
@@ -275,79 +275,79 @@ class _TopicState:
         return pulumi.get(self, "local_topic")
 
     @local_topic.setter
-    def local_topic(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def local_topic(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "local_topic", value)
 
     @_builtins.property
     @pulumi.getter(name="partitionNum")
-    def partition_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def partition_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of partitions in the topic.
         """
         return pulumi.get(self, "partition_num")
 
     @partition_num.setter
-    def partition_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def partition_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "partition_num", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.262.1) The ID of the region where the instance resides.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the topic.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.262.1) The status of the service.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The topic name.
         """
         return pulumi.get(self, "topic")
 
     @topic.setter
-    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic", value)
 
 
@@ -357,14 +357,14 @@ class Topic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compact_topic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 configs: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_topic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None,
+                 compact_topic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 configs: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_topic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Alikafka Topic resource.
@@ -556,14 +556,14 @@ class Topic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compact_topic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 configs: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_topic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None,
+                 compact_topic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 configs: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_topic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -600,17 +600,17 @@ class Topic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            compact_topic: Optional[pulumi.Input[_builtins.bool]] = None,
-            configs: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            local_topic: Optional[pulumi.Input[_builtins.bool]] = None,
-            partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            topic: Optional[pulumi.Input[_builtins.str]] = None) -> 'Topic':
+            compact_topic: pulumi.Input[Optional[_builtins.bool]] = None,
+            configs: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            local_topic: pulumi.Input[Optional[_builtins.bool]] = None,
+            partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            topic: pulumi.Input[Optional[_builtins.str]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

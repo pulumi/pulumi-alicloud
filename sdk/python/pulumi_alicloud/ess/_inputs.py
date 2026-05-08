@@ -86,23 +86,23 @@ __all__ = [
 ]
 
 class AlarmExpressionArgsDict(TypedDict):
-    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
     """
-    metric_name: NotRequired[pulumi.Input[_builtins.str]]
+    metric_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name for the alarm's associated metric. See `dimensions` below for details.
     """
-    period: NotRequired[pulumi.Input[_builtins.int]]
+    period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
     """
-    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
     """
-    threshold: NotRequired[pulumi.Input[_builtins.float]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The value against which the specified statistics is compared.
     """
@@ -110,11 +110,11 @@ class AlarmExpressionArgsDict(TypedDict):
 @pulumi.input_type
 class AlarmExpressionArgs:
     def __init__(__self__, *,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.float]] = None):
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         :param pulumi.Input[_builtins.str] metric_name: The name for the alarm's associated metric. See `dimensions` below for details.
@@ -135,82 +135,82 @@ class AlarmExpressionArgs:
 
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
-    def comparison_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison_operator", value)
 
     @_builtins.property
     @pulumi.getter(name="metricName")
-    def metric_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the alarm's associated metric. See `dimensions` below for details.
         """
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
-    def metric_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistics", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The value against which the specified statistics is compared.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "threshold", value)
 
 
 class EciScalingConfigurationAcrRegistryInfoArgsDict(TypedDict):
-    domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
     when `acr_registry_info` is configured.
     """
-    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of Container Registry Enterprise Edition instance. It is required
     when `acr_registry_info` is configured.
     """
-    instance_name: NotRequired[pulumi.Input[_builtins.str]]
+    instance_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
     configured.
     """
-    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The region ID of Container Registry Enterprise Edition instance. It is required
     when `acr_registry_info` is configured.
@@ -219,10 +219,10 @@ class EciScalingConfigurationAcrRegistryInfoArgsDict(TypedDict):
 @pulumi.input_type
 class EciScalingConfigurationAcrRegistryInfoArgs:
     def __init__(__self__, *,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domains: Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
                when `acr_registry_info` is configured.
@@ -244,7 +244,7 @@ class EciScalingConfigurationAcrRegistryInfoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
         when `acr_registry_info` is configured.
@@ -252,12 +252,12 @@ class EciScalingConfigurationAcrRegistryInfoArgs:
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domains", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of Container Registry Enterprise Edition instance. It is required
         when `acr_registry_info` is configured.
@@ -265,12 +265,12 @@ class EciScalingConfigurationAcrRegistryInfoArgs:
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
         configured.
@@ -278,12 +278,12 @@ class EciScalingConfigurationAcrRegistryInfoArgs:
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of Container Registry Enterprise Edition instance. It is required
         when `acr_registry_info` is configured.
@@ -291,164 +291,164 @@ class EciScalingConfigurationAcrRegistryInfoArgs:
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
 
 class EciScalingConfigurationContainerArgsDict(TypedDict):
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The arguments passed to the commands.
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The commands run by the init container.
     """
-    cpu: NotRequired[pulumi.Input[_builtins.float]]
+    cpu: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The amount of CPU resources allocated to the container.
     """
-    environment_vars: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerEnvironmentVarArgsDict']]]]
+    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerEnvironmentVarArgs']]]]]
     """
     The structure of environmentVars.
     See `environment_vars` below for details.
     """
-    gpu: NotRequired[pulumi.Input[_builtins.int]]
+    gpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number GPUs.
     """
-    image: NotRequired[pulumi.Input[_builtins.str]]
+    image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The image of the container.
     """
-    image_pull_policy: NotRequired[pulumi.Input[_builtins.str]]
+    image_pull_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The restart policy of the image.
     """
-    lifecycle_pre_stop_handler_execs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    lifecycle_pre_stop_handler_execs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The commands to be executed in containers when you use the CLI to specify the preStop callback function.
     """
-    liveness_probe_exec_commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    liveness_probe_exec_commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Commands that you want to run in containers when you use the CLI to perform liveness probes.
     """
-    liveness_probe_failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    liveness_probe_failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
     """
-    liveness_probe_http_get_path: NotRequired[pulumi.Input[_builtins.str]]
+    liveness_probe_http_get_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
     """
-    liveness_probe_http_get_port: NotRequired[pulumi.Input[_builtins.int]]
+    liveness_probe_http_get_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The port to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
     """
-    liveness_probe_http_get_scheme: NotRequired[pulumi.Input[_builtins.str]]
+    liveness_probe_http_get_scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protocol type of HTTP GET requests when you use HTTP requests for liveness probes.Valid values:HTTP and HTTPS.
     """
-    liveness_probe_initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    liveness_probe_initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of seconds after container has started before liveness probes are initiated.
     """
-    liveness_probe_period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    liveness_probe_period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The interval at which the liveness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
     """
-    liveness_probe_success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    liveness_probe_success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
     """
-    liveness_probe_tcp_socket_port: NotRequired[pulumi.Input[_builtins.int]]
+    liveness_probe_tcp_socket_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
     """
-    liveness_probe_timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    liveness_probe_timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
     """
-    memory: NotRequired[pulumi.Input[_builtins.float]]
+    memory: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The amount of memory resources allocated to the container.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the mounted volume.
     """
-    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgsDict']]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgs']]]]]
     """
     The structure of port. See `ports` below for details.
     """
-    readiness_probe_exec_commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    readiness_probe_exec_commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Commands that you want to run in containers when you use the CLI to perform readiness probes.
     """
-    readiness_probe_failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    readiness_probe_failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
     """
-    readiness_probe_http_get_path: NotRequired[pulumi.Input[_builtins.str]]
+    readiness_probe_http_get_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
     """
-    readiness_probe_http_get_port: NotRequired[pulumi.Input[_builtins.int]]
+    readiness_probe_http_get_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The port to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
     """
-    readiness_probe_http_get_scheme: NotRequired[pulumi.Input[_builtins.str]]
+    readiness_probe_http_get_scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protocol type of HTTP GET requests when you use HTTP requests for readiness probes. Valid values: HTTP and HTTPS.
     """
-    readiness_probe_initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    readiness_probe_initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of seconds after container N has started before readiness probes are initiated.
     """
-    readiness_probe_period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    readiness_probe_period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The interval at which the readiness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
     """
-    readiness_probe_success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    readiness_probe_success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
     """
-    readiness_probe_tcp_socket_port: NotRequired[pulumi.Input[_builtins.int]]
+    readiness_probe_tcp_socket_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
     """
-    readiness_probe_timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    readiness_probe_timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
     """
-    security_context_capability_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    security_context_capability_adds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Grant certain permissions to processes within container. Optional values:
     - NET_ADMIN: Allow network management tasks to be performed.
     - NET_RAW: Allow raw sockets.
     """
-    security_context_read_only_root_file_system: NotRequired[pulumi.Input[_builtins.bool]]
+    security_context_read_only_root_file_system: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Mounts the container's root filesystem as read-only.
     """
-    security_context_run_as_user: NotRequired[pulumi.Input[_builtins.int]]
+    security_context_run_as_user: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies user ID  under which all processes run.
     """
-    stdin: NotRequired[pulumi.Input[_builtins.bool]]
+    stdin: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
     """
-    tty: NotRequired[pulumi.Input[_builtins.bool]]
+    tty: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to enable the Interaction feature. Valid values: true, false.
     """
-    volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgsDict']]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]]]
     """
     The structure of volumeMounts. 
     See `volume_mounts` below for details.
     """
-    working_dir: NotRequired[pulumi.Input[_builtins.str]]
+    working_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The working directory of the container.
     """
@@ -456,44 +456,44 @@ class EciScalingConfigurationContainerArgsDict(TypedDict):
 @pulumi.input_type
 class EciScalingConfigurationContainerArgs:
     def __init__(__self__, *,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerEnvironmentVarArgs']]]] = None,
-                 gpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_pull_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_pre_stop_handler_execs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 liveness_probe_exec_commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 liveness_probe_failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 liveness_probe_http_get_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 liveness_probe_http_get_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 liveness_probe_http_get_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 liveness_probe_initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 liveness_probe_period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 liveness_probe_success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 liveness_probe_tcp_socket_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 liveness_probe_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory: Optional[pulumi.Input[_builtins.float]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgs']]]] = None,
-                 readiness_probe_exec_commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 readiness_probe_failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 readiness_probe_http_get_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 readiness_probe_http_get_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 readiness_probe_http_get_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 readiness_probe_initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 readiness_probe_period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 readiness_probe_success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 readiness_probe_tcp_socket_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 readiness_probe_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_context_capability_adds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_context_read_only_root_file_system: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_context_run_as_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 stdin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tty: Optional[pulumi.Input[_builtins.bool]] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerEnvironmentVarArgs']]]] = None,
+                 gpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_pull_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_pre_stop_handler_execs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 liveness_probe_exec_commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 liveness_probe_failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 liveness_probe_http_get_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 liveness_probe_http_get_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 liveness_probe_http_get_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 liveness_probe_initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 liveness_probe_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 liveness_probe_success_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 liveness_probe_tcp_socket_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 liveness_probe_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory: pulumi.Input[Optional[_builtins.float]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgs']]]] = None,
+                 readiness_probe_exec_commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 readiness_probe_failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 readiness_probe_http_get_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 readiness_probe_http_get_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 readiness_probe_http_get_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 readiness_probe_initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 readiness_probe_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 readiness_probe_success_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 readiness_probe_tcp_socket_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 readiness_probe_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_context_capability_adds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_context_read_only_root_file_system: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_context_run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 stdin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tty: pulumi.Input[Optional[_builtins.bool]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: The arguments passed to the commands.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: The commands run by the init container.
@@ -617,43 +617,43 @@ class EciScalingConfigurationContainerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The arguments passed to the commands.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The commands run by the init container.
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of CPU resources allocated to the container.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVars")
-    def environment_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerEnvironmentVarArgs']]]]:
+    def environment_vars(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerEnvironmentVarArgs']]]]:
         """
         The structure of environmentVars.
         See `environment_vars` below for details.
@@ -661,336 +661,336 @@ class EciScalingConfigurationContainerArgs:
         return pulumi.get(self, "environment_vars")
 
     @environment_vars.setter
-    def environment_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerEnvironmentVarArgs']]]]):
+    def environment_vars(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerEnvironmentVarArgs']]]]):
         pulumi.set(self, "environment_vars", value)
 
     @_builtins.property
     @pulumi.getter
-    def gpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number GPUs.
         """
         return pulumi.get(self, "gpu")
 
     @gpu.setter
-    def gpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image of the container.
         """
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter(name="imagePullPolicy")
-    def image_pull_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_pull_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The restart policy of the image.
         """
         return pulumi.get(self, "image_pull_policy")
 
     @image_pull_policy.setter
-    def image_pull_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_pull_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_pull_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecyclePreStopHandlerExecs")
-    def lifecycle_pre_stop_handler_execs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def lifecycle_pre_stop_handler_execs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The commands to be executed in containers when you use the CLI to specify the preStop callback function.
         """
         return pulumi.get(self, "lifecycle_pre_stop_handler_execs")
 
     @lifecycle_pre_stop_handler_execs.setter
-    def lifecycle_pre_stop_handler_execs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def lifecycle_pre_stop_handler_execs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "lifecycle_pre_stop_handler_execs", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessProbeExecCommands")
-    def liveness_probe_exec_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def liveness_probe_exec_commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Commands that you want to run in containers when you use the CLI to perform liveness probes.
         """
         return pulumi.get(self, "liveness_probe_exec_commands")
 
     @liveness_probe_exec_commands.setter
-    def liveness_probe_exec_commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def liveness_probe_exec_commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "liveness_probe_exec_commands", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessProbeFailureThreshold")
-    def liveness_probe_failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def liveness_probe_failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
         """
         return pulumi.get(self, "liveness_probe_failure_threshold")
 
     @liveness_probe_failure_threshold.setter
-    def liveness_probe_failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def liveness_probe_failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "liveness_probe_failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessProbeHttpGetPath")
-    def liveness_probe_http_get_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def liveness_probe_http_get_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
         """
         return pulumi.get(self, "liveness_probe_http_get_path")
 
     @liveness_probe_http_get_path.setter
-    def liveness_probe_http_get_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def liveness_probe_http_get_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "liveness_probe_http_get_path", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessProbeHttpGetPort")
-    def liveness_probe_http_get_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def liveness_probe_http_get_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
         """
         return pulumi.get(self, "liveness_probe_http_get_port")
 
     @liveness_probe_http_get_port.setter
-    def liveness_probe_http_get_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def liveness_probe_http_get_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "liveness_probe_http_get_port", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessProbeHttpGetScheme")
-    def liveness_probe_http_get_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def liveness_probe_http_get_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type of HTTP GET requests when you use HTTP requests for liveness probes.Valid values:HTTP and HTTPS.
         """
         return pulumi.get(self, "liveness_probe_http_get_scheme")
 
     @liveness_probe_http_get_scheme.setter
-    def liveness_probe_http_get_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def liveness_probe_http_get_scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "liveness_probe_http_get_scheme", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessProbeInitialDelaySeconds")
-    def liveness_probe_initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def liveness_probe_initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of seconds after container has started before liveness probes are initiated.
         """
         return pulumi.get(self, "liveness_probe_initial_delay_seconds")
 
     @liveness_probe_initial_delay_seconds.setter
-    def liveness_probe_initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def liveness_probe_initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "liveness_probe_initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessProbePeriodSeconds")
-    def liveness_probe_period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def liveness_probe_period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval at which the liveness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
         """
         return pulumi.get(self, "liveness_probe_period_seconds")
 
     @liveness_probe_period_seconds.setter
-    def liveness_probe_period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def liveness_probe_period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "liveness_probe_period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessProbeSuccessThreshold")
-    def liveness_probe_success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def liveness_probe_success_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
         """
         return pulumi.get(self, "liveness_probe_success_threshold")
 
     @liveness_probe_success_threshold.setter
-    def liveness_probe_success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def liveness_probe_success_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "liveness_probe_success_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessProbeTcpSocketPort")
-    def liveness_probe_tcp_socket_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def liveness_probe_tcp_socket_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
         """
         return pulumi.get(self, "liveness_probe_tcp_socket_port")
 
     @liveness_probe_tcp_socket_port.setter
-    def liveness_probe_tcp_socket_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def liveness_probe_tcp_socket_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "liveness_probe_tcp_socket_port", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessProbeTimeoutSeconds")
-    def liveness_probe_timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def liveness_probe_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
         """
         return pulumi.get(self, "liveness_probe_timeout_seconds")
 
     @liveness_probe_timeout_seconds.setter
-    def liveness_probe_timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def liveness_probe_timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "liveness_probe_timeout_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of memory resources allocated to the container.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the mounted volume.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgs']]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgs']]]]:
         """
         The structure of port. See `ports` below for details.
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgs']]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgs']]]]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter(name="readinessProbeExecCommands")
-    def readiness_probe_exec_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def readiness_probe_exec_commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Commands that you want to run in containers when you use the CLI to perform readiness probes.
         """
         return pulumi.get(self, "readiness_probe_exec_commands")
 
     @readiness_probe_exec_commands.setter
-    def readiness_probe_exec_commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def readiness_probe_exec_commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "readiness_probe_exec_commands", value)
 
     @_builtins.property
     @pulumi.getter(name="readinessProbeFailureThreshold")
-    def readiness_probe_failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def readiness_probe_failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
         """
         return pulumi.get(self, "readiness_probe_failure_threshold")
 
     @readiness_probe_failure_threshold.setter
-    def readiness_probe_failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def readiness_probe_failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "readiness_probe_failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="readinessProbeHttpGetPath")
-    def readiness_probe_http_get_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def readiness_probe_http_get_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
         """
         return pulumi.get(self, "readiness_probe_http_get_path")
 
     @readiness_probe_http_get_path.setter
-    def readiness_probe_http_get_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def readiness_probe_http_get_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "readiness_probe_http_get_path", value)
 
     @_builtins.property
     @pulumi.getter(name="readinessProbeHttpGetPort")
-    def readiness_probe_http_get_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def readiness_probe_http_get_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
         """
         return pulumi.get(self, "readiness_probe_http_get_port")
 
     @readiness_probe_http_get_port.setter
-    def readiness_probe_http_get_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def readiness_probe_http_get_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "readiness_probe_http_get_port", value)
 
     @_builtins.property
     @pulumi.getter(name="readinessProbeHttpGetScheme")
-    def readiness_probe_http_get_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def readiness_probe_http_get_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type of HTTP GET requests when you use HTTP requests for readiness probes. Valid values: HTTP and HTTPS.
         """
         return pulumi.get(self, "readiness_probe_http_get_scheme")
 
     @readiness_probe_http_get_scheme.setter
-    def readiness_probe_http_get_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def readiness_probe_http_get_scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "readiness_probe_http_get_scheme", value)
 
     @_builtins.property
     @pulumi.getter(name="readinessProbeInitialDelaySeconds")
-    def readiness_probe_initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def readiness_probe_initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of seconds after container N has started before readiness probes are initiated.
         """
         return pulumi.get(self, "readiness_probe_initial_delay_seconds")
 
     @readiness_probe_initial_delay_seconds.setter
-    def readiness_probe_initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def readiness_probe_initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "readiness_probe_initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="readinessProbePeriodSeconds")
-    def readiness_probe_period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def readiness_probe_period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval at which the readiness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
         """
         return pulumi.get(self, "readiness_probe_period_seconds")
 
     @readiness_probe_period_seconds.setter
-    def readiness_probe_period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def readiness_probe_period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "readiness_probe_period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="readinessProbeSuccessThreshold")
-    def readiness_probe_success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def readiness_probe_success_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
         """
         return pulumi.get(self, "readiness_probe_success_threshold")
 
     @readiness_probe_success_threshold.setter
-    def readiness_probe_success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def readiness_probe_success_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "readiness_probe_success_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="readinessProbeTcpSocketPort")
-    def readiness_probe_tcp_socket_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def readiness_probe_tcp_socket_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
         """
         return pulumi.get(self, "readiness_probe_tcp_socket_port")
 
     @readiness_probe_tcp_socket_port.setter
-    def readiness_probe_tcp_socket_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def readiness_probe_tcp_socket_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "readiness_probe_tcp_socket_port", value)
 
     @_builtins.property
     @pulumi.getter(name="readinessProbeTimeoutSeconds")
-    def readiness_probe_timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def readiness_probe_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
         """
         return pulumi.get(self, "readiness_probe_timeout_seconds")
 
     @readiness_probe_timeout_seconds.setter
-    def readiness_probe_timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def readiness_probe_timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "readiness_probe_timeout_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="securityContextCapabilityAdds")
-    def security_context_capability_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_context_capability_adds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Grant certain permissions to processes within container. Optional values:
         - NET_ADMIN: Allow network management tasks to be performed.
@@ -999,60 +999,60 @@ class EciScalingConfigurationContainerArgs:
         return pulumi.get(self, "security_context_capability_adds")
 
     @security_context_capability_adds.setter
-    def security_context_capability_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_context_capability_adds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_context_capability_adds", value)
 
     @_builtins.property
     @pulumi.getter(name="securityContextReadOnlyRootFileSystem")
-    def security_context_read_only_root_file_system(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def security_context_read_only_root_file_system(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Mounts the container's root filesystem as read-only.
         """
         return pulumi.get(self, "security_context_read_only_root_file_system")
 
     @security_context_read_only_root_file_system.setter
-    def security_context_read_only_root_file_system(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def security_context_read_only_root_file_system(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "security_context_read_only_root_file_system", value)
 
     @_builtins.property
     @pulumi.getter(name="securityContextRunAsUser")
-    def security_context_run_as_user(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def security_context_run_as_user(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies user ID  under which all processes run.
         """
         return pulumi.get(self, "security_context_run_as_user")
 
     @security_context_run_as_user.setter
-    def security_context_run_as_user(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def security_context_run_as_user(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "security_context_run_as_user", value)
 
     @_builtins.property
     @pulumi.getter
-    def stdin(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stdin(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
         """
         return pulumi.get(self, "stdin")
 
     @stdin.setter
-    def stdin(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stdin(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stdin", value)
 
     @_builtins.property
     @pulumi.getter
-    def tty(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tty(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the Interaction feature. Valid values: true, false.
         """
         return pulumi.get(self, "tty")
 
     @tty.setter
-    def tty(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tty(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tty", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMounts")
-    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]]:
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]]:
         """
         The structure of volumeMounts. 
         See `volume_mounts` below for details.
@@ -1060,33 +1060,33 @@ class EciScalingConfigurationContainerArgs:
         return pulumi.get(self, "volume_mounts")
 
     @volume_mounts.setter
-    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]]):
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]]):
         pulumi.set(self, "volume_mounts", value)
 
     @_builtins.property
     @pulumi.getter(name="workingDir")
-    def working_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The working directory of the container.
         """
         return pulumi.get(self, "working_dir")
 
     @working_dir.setter
-    def working_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "working_dir", value)
 
 
 class EciScalingConfigurationContainerEnvironmentVarArgsDict(TypedDict):
-    field_ref_field_path: NotRequired[pulumi.Input[_builtins.str]]
-    key: NotRequired[pulumi.Input[_builtins.str]]
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    field_ref_field_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class EciScalingConfigurationContainerEnvironmentVarArgs:
     def __init__(__self__, *,
-                 field_ref_field_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 field_ref_field_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         if field_ref_field_path is not None:
             pulumi.set(__self__, "field_ref_field_path", field_ref_field_path)
         if key is not None:
@@ -1096,41 +1096,41 @@ class EciScalingConfigurationContainerEnvironmentVarArgs:
 
     @_builtins.property
     @pulumi.getter(name="fieldRefFieldPath")
-    def field_ref_field_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_ref_field_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "field_ref_field_path")
 
     @field_ref_field_path.setter
-    def field_ref_field_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_ref_field_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_ref_field_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class EciScalingConfigurationContainerPortArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class EciScalingConfigurationContainerPortArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
         if port is not None:
             pulumi.set(__self__, "port", port)
         if protocol is not None:
@@ -1138,38 +1138,38 @@ class EciScalingConfigurationContainerPortArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
 
 class EciScalingConfigurationContainerVolumeMountArgsDict(TypedDict):
-    mount_path: NotRequired[pulumi.Input[_builtins.str]]
-    mount_propagation: NotRequired[pulumi.Input[_builtins.str]]
-    name: NotRequired[pulumi.Input[_builtins.str]]
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
-    sub_path: NotRequired[pulumi.Input[_builtins.str]]
+    mount_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    mount_propagation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    sub_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class EciScalingConfigurationContainerVolumeMountArgs:
     def __init__(__self__, *,
-                 mount_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_propagation: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sub_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_propagation: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sub_path: pulumi.Input[Optional[_builtins.str]] = None):
         if mount_path is not None:
             pulumi.set(__self__, "mount_path", mount_path)
         if mount_propagation is not None:
@@ -1183,56 +1183,56 @@ class EciScalingConfigurationContainerVolumeMountArgs:
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
-    def mount_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "mount_path")
 
     @mount_path.setter
-    def mount_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_path", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPropagation")
-    def mount_propagation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_propagation(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "mount_propagation")
 
     @mount_propagation.setter
-    def mount_propagation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_propagation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_propagation", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="subPath")
-    def sub_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sub_path")
 
     @sub_path.setter
-    def sub_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_path", value)
 
 
 class EciScalingConfigurationDnsConfigOptionArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The option name.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The option value.
     """
@@ -1240,8 +1240,8 @@ class EciScalingConfigurationDnsConfigOptionArgsDict(TypedDict):
 @pulumi.input_type
 class EciScalingConfigurationDnsConfigOptionArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The option name.
         :param pulumi.Input[_builtins.str] value: The option value.
@@ -1253,35 +1253,35 @@ class EciScalingConfigurationDnsConfigOptionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The option name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The option value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class EciScalingConfigurationHostAliasArgsDict(TypedDict):
-    hostnames: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    hostnames: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Adds a host name.
     """
-    ip: NotRequired[pulumi.Input[_builtins.str]]
+    ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Adds an IP address.
     """
@@ -1289,8 +1289,8 @@ class EciScalingConfigurationHostAliasArgsDict(TypedDict):
 @pulumi.input_type
 class EciScalingConfigurationHostAliasArgs:
     def __init__(__self__, *,
-                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Adds a host name.
         :param pulumi.Input[_builtins.str] ip: Adds an IP address.
@@ -1302,41 +1302,41 @@ class EciScalingConfigurationHostAliasArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def hostnames(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Adds a host name.
         """
         return pulumi.get(self, "hostnames")
 
     @hostnames.setter
-    def hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def hostnames(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "hostnames", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Adds an IP address.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
 
 class EciScalingConfigurationImageRegistryCredentialArgsDict(TypedDict):
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The password used to log on to the image repository. It is required
     when `image_registry_credential` is configured.
     """
-    server: NotRequired[pulumi.Input[_builtins.str]]
+    server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The address of the image repository. It is required when `image_registry_credential` is
     configured.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The username used to log on to the image repository. It is required
     when `image_registry_credential` is configured.
@@ -1345,9 +1345,9 @@ class EciScalingConfigurationImageRegistryCredentialArgsDict(TypedDict):
 @pulumi.input_type
 class EciScalingConfigurationImageRegistryCredentialArgs:
     def __init__(__self__, *,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] password: The password used to log on to the image repository. It is required
                when `image_registry_credential` is configured.
@@ -1365,7 +1365,7 @@ class EciScalingConfigurationImageRegistryCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password used to log on to the image repository. It is required
         when `image_registry_credential` is configured.
@@ -1373,12 +1373,12 @@ class EciScalingConfigurationImageRegistryCredentialArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the image repository. It is required when `image_registry_credential` is
         configured.
@@ -1386,12 +1386,12 @@ class EciScalingConfigurationImageRegistryCredentialArgs:
         return pulumi.get(self, "server")
 
     @server.setter
-    def server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username used to log on to the image repository. It is required
         when `image_registry_credential` is configured.
@@ -1399,71 +1399,71 @@ class EciScalingConfigurationImageRegistryCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
 class EciScalingConfigurationInitContainerArgsDict(TypedDict):
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The arguments passed to the commands.
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The commands run by the init container.
     """
-    cpu: NotRequired[pulumi.Input[_builtins.float]]
+    cpu: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The amount of CPU resources allocated to the container.
     """
-    environment_vars: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgsDict']]]]
+    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgs']]]]]
     """
     The structure of environmentVars. 
     See `environment_vars` below for details.
     """
-    gpu: NotRequired[pulumi.Input[_builtins.int]]
+    gpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number GPUs.
     """
-    image: NotRequired[pulumi.Input[_builtins.str]]
+    image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The image of the container.
     """
-    image_pull_policy: NotRequired[pulumi.Input[_builtins.str]]
+    image_pull_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The restart policy of the image.
     """
-    memory: NotRequired[pulumi.Input[_builtins.float]]
+    memory: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The amount of memory resources allocated to the container.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the mounted volume.
     """
-    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgsDict']]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgs']]]]]
     """
     The structure of port. See `ports` below for details.
     """
-    security_context_capability_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    security_context_capability_adds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Grant certain permissions to processes within container. Optional values:
     - NET_ADMIN: Allow network management tasks to be performed.
     - NET_RAW: Allow raw sockets.
     """
-    security_context_read_only_root_file_system: NotRequired[pulumi.Input[_builtins.bool]]
+    security_context_read_only_root_file_system: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Mounts the container's root filesystem as read-only.
     """
-    security_context_run_as_user: NotRequired[pulumi.Input[_builtins.int]]
+    security_context_run_as_user: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies user ID  under which all processes run.
     """
-    volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgsDict']]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgs']]]]]
     """
     The structure of volumeMounts. See `volume_mounts` below for details.
     """
-    working_dir: NotRequired[pulumi.Input[_builtins.str]]
+    working_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The working directory of the container.
     """
@@ -1471,21 +1471,21 @@ class EciScalingConfigurationInitContainerArgsDict(TypedDict):
 @pulumi.input_type
 class EciScalingConfigurationInitContainerArgs:
     def __init__(__self__, *,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgs']]]] = None,
-                 gpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_pull_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.float]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgs']]]] = None,
-                 security_context_capability_adds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_context_read_only_root_file_system: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_context_run_as_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgs']]]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgs']]]] = None,
+                 gpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_pull_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.float]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgs']]]] = None,
+                 security_context_capability_adds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_context_read_only_root_file_system: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_context_run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgs']]]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: The arguments passed to the commands.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: The commands run by the init container.
@@ -1539,43 +1539,43 @@ class EciScalingConfigurationInitContainerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The arguments passed to the commands.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The commands run by the init container.
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of CPU resources allocated to the container.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVars")
-    def environment_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgs']]]]:
+    def environment_vars(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgs']]]]:
         """
         The structure of environmentVars. 
         See `environment_vars` below for details.
@@ -1583,84 +1583,84 @@ class EciScalingConfigurationInitContainerArgs:
         return pulumi.get(self, "environment_vars")
 
     @environment_vars.setter
-    def environment_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgs']]]]):
+    def environment_vars(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgs']]]]):
         pulumi.set(self, "environment_vars", value)
 
     @_builtins.property
     @pulumi.getter
-    def gpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number GPUs.
         """
         return pulumi.get(self, "gpu")
 
     @gpu.setter
-    def gpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image of the container.
         """
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter(name="imagePullPolicy")
-    def image_pull_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_pull_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The restart policy of the image.
         """
         return pulumi.get(self, "image_pull_policy")
 
     @image_pull_policy.setter
-    def image_pull_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_pull_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_pull_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of memory resources allocated to the container.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the mounted volume.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgs']]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgs']]]]:
         """
         The structure of port. See `ports` below for details.
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgs']]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgs']]]]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter(name="securityContextCapabilityAdds")
-    def security_context_capability_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_context_capability_adds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Grant certain permissions to processes within container. Optional values:
         - NET_ADMIN: Allow network management tasks to be performed.
@@ -1669,69 +1669,69 @@ class EciScalingConfigurationInitContainerArgs:
         return pulumi.get(self, "security_context_capability_adds")
 
     @security_context_capability_adds.setter
-    def security_context_capability_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_context_capability_adds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_context_capability_adds", value)
 
     @_builtins.property
     @pulumi.getter(name="securityContextReadOnlyRootFileSystem")
-    def security_context_read_only_root_file_system(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def security_context_read_only_root_file_system(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Mounts the container's root filesystem as read-only.
         """
         return pulumi.get(self, "security_context_read_only_root_file_system")
 
     @security_context_read_only_root_file_system.setter
-    def security_context_read_only_root_file_system(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def security_context_read_only_root_file_system(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "security_context_read_only_root_file_system", value)
 
     @_builtins.property
     @pulumi.getter(name="securityContextRunAsUser")
-    def security_context_run_as_user(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def security_context_run_as_user(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies user ID  under which all processes run.
         """
         return pulumi.get(self, "security_context_run_as_user")
 
     @security_context_run_as_user.setter
-    def security_context_run_as_user(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def security_context_run_as_user(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "security_context_run_as_user", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMounts")
-    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgs']]]]:
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgs']]]]:
         """
         The structure of volumeMounts. See `volume_mounts` below for details.
         """
         return pulumi.get(self, "volume_mounts")
 
     @volume_mounts.setter
-    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgs']]]]):
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgs']]]]):
         pulumi.set(self, "volume_mounts", value)
 
     @_builtins.property
     @pulumi.getter(name="workingDir")
-    def working_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The working directory of the container.
         """
         return pulumi.get(self, "working_dir")
 
     @working_dir.setter
-    def working_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "working_dir", value)
 
 
 class EciScalingConfigurationInitContainerEnvironmentVarArgsDict(TypedDict):
-    field_ref_field_path: NotRequired[pulumi.Input[_builtins.str]]
-    key: NotRequired[pulumi.Input[_builtins.str]]
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    field_ref_field_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class EciScalingConfigurationInitContainerEnvironmentVarArgs:
     def __init__(__self__, *,
-                 field_ref_field_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 field_ref_field_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         if field_ref_field_path is not None:
             pulumi.set(__self__, "field_ref_field_path", field_ref_field_path)
         if key is not None:
@@ -1741,41 +1741,41 @@ class EciScalingConfigurationInitContainerEnvironmentVarArgs:
 
     @_builtins.property
     @pulumi.getter(name="fieldRefFieldPath")
-    def field_ref_field_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_ref_field_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "field_ref_field_path")
 
     @field_ref_field_path.setter
-    def field_ref_field_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_ref_field_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_ref_field_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class EciScalingConfigurationInitContainerPortArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class EciScalingConfigurationInitContainerPortArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
         if port is not None:
             pulumi.set(__self__, "port", port)
         if protocol is not None:
@@ -1783,38 +1783,38 @@ class EciScalingConfigurationInitContainerPortArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
 
 class EciScalingConfigurationInitContainerVolumeMountArgsDict(TypedDict):
-    mount_path: NotRequired[pulumi.Input[_builtins.str]]
-    mount_propagation: NotRequired[pulumi.Input[_builtins.str]]
-    name: NotRequired[pulumi.Input[_builtins.str]]
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
-    sub_path: NotRequired[pulumi.Input[_builtins.str]]
+    mount_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    mount_propagation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    sub_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class EciScalingConfigurationInitContainerVolumeMountArgs:
     def __init__(__self__, *,
-                 mount_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_propagation: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sub_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_propagation: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sub_path: pulumi.Input[Optional[_builtins.str]] = None):
         if mount_path is not None:
             pulumi.set(__self__, "mount_path", mount_path)
         if mount_propagation is not None:
@@ -1828,56 +1828,56 @@ class EciScalingConfigurationInitContainerVolumeMountArgs:
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
-    def mount_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "mount_path")
 
     @mount_path.setter
-    def mount_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_path", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPropagation")
-    def mount_propagation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_propagation(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "mount_propagation")
 
     @mount_propagation.setter
-    def mount_propagation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_propagation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_propagation", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="subPath")
-    def sub_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sub_path")
 
     @sub_path.setter
-    def sub_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_path", value)
 
 
 class EciScalingConfigurationSecurityContextSysctlArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The system name of the security context in which the elastic container instance is run.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The system value of the security context in which the elastic container instance is run.
     """
@@ -1885,8 +1885,8 @@ class EciScalingConfigurationSecurityContextSysctlArgsDict(TypedDict):
 @pulumi.input_type
 class EciScalingConfigurationSecurityContextSysctlArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The system name of the security context in which the elastic container instance is run.
         :param pulumi.Input[_builtins.str] value: The system value of the security context in which the elastic container instance is run.
@@ -1898,100 +1898,100 @@ class EciScalingConfigurationSecurityContextSysctlArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The system name of the security context in which the elastic container instance is run.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The system value of the security context in which the elastic container instance is run.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class EciScalingConfigurationVolumeArgsDict(TypedDict):
-    config_file_volume_config_file_to_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgsDict']]]]
+    config_file_volume_config_file_to_paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs']]]]]
     """
     ConfigFileVolumeConfigFileToPaths.
     See `config_file_volume_config_file_to_paths` below for details.
     """
-    config_file_volume_default_mode: NotRequired[pulumi.Input[_builtins.int]]
+    config_file_volume_default_mode: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The default permissions on the ConfigFileVolume.
     """
-    disk_volume_disk_id: NotRequired[pulumi.Input[_builtins.str]]
+    disk_volume_disk_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of DiskVolume.
     """
-    disk_volume_disk_size: NotRequired[pulumi.Input[_builtins.int]]
+    disk_volume_disk_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The disk size of DiskVolume.
     """
-    disk_volume_fs_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_volume_fs_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The system type of DiskVolume.
     """
-    empty_dir_volume_medium: NotRequired[pulumi.Input[_builtins.str]]
+    empty_dir_volume_medium: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
     """
-    empty_dir_volume_size_limit: NotRequired[pulumi.Input[_builtins.str]]
+    empty_dir_volume_size_limit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The storage size of the EmptyDirVolume. Unit: GiB or MiB.
     """
-    flex_volume_driver: NotRequired[pulumi.Input[_builtins.str]]
+    flex_volume_driver: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the FlexVolume driver.
     """
-    flex_volume_fs_type: NotRequired[pulumi.Input[_builtins.str]]
+    flex_volume_fs_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the mounted file system. The default value is determined by the script
     of FlexVolume.
     """
-    flex_volume_options: NotRequired[pulumi.Input[_builtins.str]]
+    flex_volume_options: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
     string.
     """
-    host_path_volume_path: NotRequired[pulumi.Input[_builtins.str]]
+    host_path_volume_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The absolute path on the host.
     """
-    host_path_volume_type: NotRequired[pulumi.Input[_builtins.str]]
+    host_path_volume_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the host path. Examples: File, Directory, and Socket.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the volume.
     """
-    nfs_volume_path: NotRequired[pulumi.Input[_builtins.str]]
+    nfs_volume_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path to the NFS volume.
     """
-    nfs_volume_read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    nfs_volume_read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     The nfs volume read only. Default to `false`.
     """
-    nfs_volume_server: NotRequired[pulumi.Input[_builtins.str]]
+    nfs_volume_server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The address of the NFS server.
 
     > **NOTE:** Every volume mounted must have a name and type attributes.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the volume.
     """
@@ -1999,23 +1999,23 @@ class EciScalingConfigurationVolumeArgsDict(TypedDict):
 @pulumi.input_type
 class EciScalingConfigurationVolumeArgs:
     def __init__(__self__, *,
-                 config_file_volume_config_file_to_paths: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs']]]] = None,
-                 config_file_volume_default_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_volume_disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_volume_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_volume_fs_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 empty_dir_volume_medium: Optional[pulumi.Input[_builtins.str]] = None,
-                 empty_dir_volume_size_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 flex_volume_driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 flex_volume_fs_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 flex_volume_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_path_volume_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_path_volume_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nfs_volume_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 nfs_volume_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nfs_volume_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 config_file_volume_config_file_to_paths: pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs']]]] = None,
+                 config_file_volume_default_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_volume_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_volume_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_volume_fs_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 empty_dir_volume_medium: pulumi.Input[Optional[_builtins.str]] = None,
+                 empty_dir_volume_size_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 flex_volume_driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 flex_volume_fs_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 flex_volume_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_path_volume_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_path_volume_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_volume_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_volume_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nfs_volume_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs']]] config_file_volume_config_file_to_paths: ConfigFileVolumeConfigFileToPaths.
                See `config_file_volume_config_file_to_paths` below for details.
@@ -2077,7 +2077,7 @@ class EciScalingConfigurationVolumeArgs:
 
     @_builtins.property
     @pulumi.getter(name="configFileVolumeConfigFileToPaths")
-    def config_file_volume_config_file_to_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs']]]]:
+    def config_file_volume_config_file_to_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs']]]]:
         """
         ConfigFileVolumeConfigFileToPaths.
         See `config_file_volume_config_file_to_paths` below for details.
@@ -2085,96 +2085,96 @@ class EciScalingConfigurationVolumeArgs:
         return pulumi.get(self, "config_file_volume_config_file_to_paths")
 
     @config_file_volume_config_file_to_paths.setter
-    def config_file_volume_config_file_to_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs']]]]):
+    def config_file_volume_config_file_to_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs']]]]):
         pulumi.set(self, "config_file_volume_config_file_to_paths", value)
 
     @_builtins.property
     @pulumi.getter(name="configFileVolumeDefaultMode")
-    def config_file_volume_default_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def config_file_volume_default_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default permissions on the ConfigFileVolume.
         """
         return pulumi.get(self, "config_file_volume_default_mode")
 
     @config_file_volume_default_mode.setter
-    def config_file_volume_default_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def config_file_volume_default_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "config_file_volume_default_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="diskVolumeDiskId")
-    def disk_volume_disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_volume_disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of DiskVolume.
         """
         return pulumi.get(self, "disk_volume_disk_id")
 
     @disk_volume_disk_id.setter
-    def disk_volume_disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_volume_disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_volume_disk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="diskVolumeDiskSize")
-    def disk_volume_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_volume_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk size of DiskVolume.
         """
         return pulumi.get(self, "disk_volume_disk_size")
 
     @disk_volume_disk_size.setter
-    def disk_volume_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_volume_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_volume_disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="diskVolumeFsType")
-    def disk_volume_fs_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_volume_fs_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The system type of DiskVolume.
         """
         return pulumi.get(self, "disk_volume_fs_type")
 
     @disk_volume_fs_type.setter
-    def disk_volume_fs_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_volume_fs_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_volume_fs_type", value)
 
     @_builtins.property
     @pulumi.getter(name="emptyDirVolumeMedium")
-    def empty_dir_volume_medium(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def empty_dir_volume_medium(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
         """
         return pulumi.get(self, "empty_dir_volume_medium")
 
     @empty_dir_volume_medium.setter
-    def empty_dir_volume_medium(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def empty_dir_volume_medium(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "empty_dir_volume_medium", value)
 
     @_builtins.property
     @pulumi.getter(name="emptyDirVolumeSizeLimit")
-    def empty_dir_volume_size_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def empty_dir_volume_size_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage size of the EmptyDirVolume. Unit: GiB or MiB.
         """
         return pulumi.get(self, "empty_dir_volume_size_limit")
 
     @empty_dir_volume_size_limit.setter
-    def empty_dir_volume_size_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def empty_dir_volume_size_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "empty_dir_volume_size_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="flexVolumeDriver")
-    def flex_volume_driver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flex_volume_driver(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the FlexVolume driver.
         """
         return pulumi.get(self, "flex_volume_driver")
 
     @flex_volume_driver.setter
-    def flex_volume_driver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flex_volume_driver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flex_volume_driver", value)
 
     @_builtins.property
     @pulumi.getter(name="flexVolumeFsType")
-    def flex_volume_fs_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flex_volume_fs_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the mounted file system. The default value is determined by the script
         of FlexVolume.
@@ -2182,12 +2182,12 @@ class EciScalingConfigurationVolumeArgs:
         return pulumi.get(self, "flex_volume_fs_type")
 
     @flex_volume_fs_type.setter
-    def flex_volume_fs_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flex_volume_fs_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flex_volume_fs_type", value)
 
     @_builtins.property
     @pulumi.getter(name="flexVolumeOptions")
-    def flex_volume_options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flex_volume_options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
         string.
@@ -2195,72 +2195,72 @@ class EciScalingConfigurationVolumeArgs:
         return pulumi.get(self, "flex_volume_options")
 
     @flex_volume_options.setter
-    def flex_volume_options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flex_volume_options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flex_volume_options", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPathVolumePath")
-    def host_path_volume_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_path_volume_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The absolute path on the host.
         """
         return pulumi.get(self, "host_path_volume_path")
 
     @host_path_volume_path.setter
-    def host_path_volume_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_path_volume_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_path_volume_path", value)
 
     @_builtins.property
     @pulumi.getter(name="hostPathVolumeType")
-    def host_path_volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_path_volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the host path. Examples: File, Directory, and Socket.
         """
         return pulumi.get(self, "host_path_volume_type")
 
     @host_path_volume_type.setter
-    def host_path_volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_path_volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_path_volume_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the volume.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nfsVolumePath")
-    def nfs_volume_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nfs_volume_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the NFS volume.
         """
         return pulumi.get(self, "nfs_volume_path")
 
     @nfs_volume_path.setter
-    def nfs_volume_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nfs_volume_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nfs_volume_path", value)
 
     @_builtins.property
     @pulumi.getter(name="nfsVolumeReadOnly")
-    def nfs_volume_read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nfs_volume_read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The nfs volume read only. Default to `false`.
         """
         return pulumi.get(self, "nfs_volume_read_only")
 
     @nfs_volume_read_only.setter
-    def nfs_volume_read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nfs_volume_read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nfs_volume_read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="nfsVolumeServer")
-    def nfs_volume_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nfs_volume_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the NFS server.
 
@@ -2269,32 +2269,32 @@ class EciScalingConfigurationVolumeArgs:
         return pulumi.get(self, "nfs_volume_server")
 
     @nfs_volume_server.setter
-    def nfs_volume_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nfs_volume_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nfs_volume_server", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the volume.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgsDict(TypedDict):
-    content: NotRequired[pulumi.Input[_builtins.str]]
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The content of the configuration file. Maximum size: 32 KB.
     """
-    mode: NotRequired[pulumi.Input[_builtins.int]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The permissions on the ConfigFileVolume directory.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The relative file path.
     """
@@ -2302,9 +2302,9 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgsDict(Type
 @pulumi.input_type
 class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs:
     def __init__(__self__, *,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] content: The content of the configuration file. Maximum size: 32 KB.
         :param pulumi.Input[_builtins.int] mode: The permissions on the ConfigFileVolume directory.
@@ -2319,43 +2319,43 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the configuration file. Maximum size: 32 KB.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The permissions on the ConfigFileVolume directory.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative file path.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
 class InstanceRefreshCheckpointArgsDict(TypedDict):
-    percentage: NotRequired[pulumi.Input[_builtins.int]]
+    percentage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
     """
@@ -2363,7 +2363,7 @@ class InstanceRefreshCheckpointArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceRefreshCheckpointArgs:
     def __init__(__self__, *,
-                 percentage: Optional[pulumi.Input[_builtins.int]] = None):
+                 percentage: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] percentage: The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
         """
@@ -2372,35 +2372,35 @@ class InstanceRefreshCheckpointArgs:
 
     @_builtins.property
     @pulumi.getter
-    def percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
         """
         return pulumi.get(self, "percentage")
 
     @percentage.setter
-    def percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "percentage", value)
 
 
 class InstanceRefreshDesiredConfigurationContainerArgsDict(TypedDict):
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The arguments for the container startup command.
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The container startup command.
     """
-    environment_vars: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgsDict']]]]
+    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs']]]]]
     """
     Information about the environment variables. See `environment_vars` below for details.
     """
-    image: NotRequired[pulumi.Input[_builtins.str]]
+    image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The container image.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The custom name of the container.
     """
@@ -2408,11 +2408,11 @@ class InstanceRefreshDesiredConfigurationContainerArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceRefreshDesiredConfigurationContainerArgs:
     def __init__(__self__, *,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs']]]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs']]]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: The arguments for the container startup command.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: The container startup command.
@@ -2433,75 +2433,75 @@ class InstanceRefreshDesiredConfigurationContainerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The arguments for the container startup command.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The container startup command.
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVars")
-    def environment_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs']]]]:
+    def environment_vars(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs']]]]:
         """
         Information about the environment variables. See `environment_vars` below for details.
         """
         return pulumi.get(self, "environment_vars")
 
     @environment_vars.setter
-    def environment_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs']]]]):
+    def environment_vars(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs']]]]):
         pulumi.set(self, "environment_vars", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The container image.
         """
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The custom name of the container.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgsDict(TypedDict):
-    field_ref_field_path: NotRequired[pulumi.Input[_builtins.str]]
+    field_ref_field_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This parameter is not available for use.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the environment variable.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the environment variable.
     """
@@ -2509,9 +2509,9 @@ class InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgsDict(TypedDi
 @pulumi.input_type
 class InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs:
     def __init__(__self__, *,
-                 field_ref_field_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 field_ref_field_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] field_ref_field_path: This parameter is not available for use.
         :param pulumi.Input[_builtins.str] key: The name of the environment variable.
@@ -2526,43 +2526,43 @@ class InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs:
 
     @_builtins.property
     @pulumi.getter(name="fieldRefFieldPath")
-    def field_ref_field_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_ref_field_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This parameter is not available for use.
         """
         return pulumi.get(self, "field_ref_field_path")
 
     @field_ref_field_path.setter
-    def field_ref_field_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_ref_field_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_ref_field_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the environment variable.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the environment variable.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict(TypedDict):
-    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The specified instance type, which overwrites the instance type in the launch template.
     """
@@ -2570,7 +2570,7 @@ class InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict(TypedDic
 @pulumi.input_type
 class InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs:
     def __init__(__self__, *,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] instance_type: The specified instance type, which overwrites the instance type in the launch template.
         """
@@ -2579,23 +2579,23 @@ class InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specified instance type, which overwrites the instance type in the launch template.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
 
 class ScalingConfigurationCustomPriorityArgsDict(TypedDict):
-    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This parameter takes effect only if you set Scaling Policy to Priority Policy and the instance type specified by CustomPriorities.N.InstanceType is contained in the scaling configuration.
     """
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This parameter takes effect only if you set Scaling Policy to Priority Policy and the vSwitch specified by CustomPriorities.N.VswitchId is included in the vSwitch list of your scaling group.
     """
@@ -2603,8 +2603,8 @@ class ScalingConfigurationCustomPriorityArgsDict(TypedDict):
 @pulumi.input_type
 class ScalingConfigurationCustomPriorityArgs:
     def __init__(__self__, *,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] instance_type: This parameter takes effect only if you set Scaling Policy to Priority Policy and the instance type specified by CustomPriorities.N.InstanceType is contained in the scaling configuration.
         :param pulumi.Input[_builtins.str] vswitch_id: This parameter takes effect only if you set Scaling Policy to Priority Policy and the vSwitch specified by CustomPriorities.N.VswitchId is included in the vSwitch list of your scaling group.
@@ -2616,75 +2616,75 @@ class ScalingConfigurationCustomPriorityArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This parameter takes effect only if you set Scaling Policy to Priority Policy and the instance type specified by CustomPriorities.N.InstanceType is contained in the scaling configuration.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This parameter takes effect only if you set Scaling Policy to Priority Policy and the vSwitch specified by CustomPriorities.N.VswitchId is included in the vSwitch list of your scaling group.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 class ScalingConfigurationDataDiskArgsDict(TypedDict):
-    auto_snapshot_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    auto_snapshot_policy_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The id of auto snapshot policy for data disk.
     """
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
     """
-    delete_with_instance: NotRequired[pulumi.Input[_builtins.bool]]
+    delete_with_instance: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
     """
-    device: NotRequired[pulumi.Input[_builtins.str]]
+    device: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
     """
-    encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    encrypted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
     """
-    kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CMK ID for data disk N. Valid values of N: 1 to 16.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
     """
-    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The performance level of the ESSD used as data disk.
     """
-    provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
+    provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
     """
-    size: NotRequired[pulumi.Input[_builtins.int]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
     """
-    snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
+    snapshot_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
     """
@@ -2692,18 +2692,18 @@ class ScalingConfigurationDataDiskArgsDict(TypedDict):
 @pulumi.input_type
 class ScalingConfigurationDataDiskArgs:
     def __init__(__self__, *,
-                 auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_with_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 device: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 device: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auto_snapshot_policy_id: The id of auto snapshot policy for data disk.
         :param pulumi.Input[_builtins.str] category: Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
@@ -2748,240 +2748,240 @@ class ScalingConfigurationDataDiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyId")
-    def auto_snapshot_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_snapshot_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of auto snapshot policy for data disk.
         """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
     @auto_snapshot_policy_id.setter
-    def auto_snapshot_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_snapshot_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_snapshot_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteWithInstance")
-    def delete_with_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
         """
         return pulumi.get(self, "delete_with_instance")
 
     @delete_with_instance.setter
-    def delete_with_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_with_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_with_instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.""")
-    def device(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
         """
         return pulumi.get(self, "device")
 
     @device.setter
-    def device(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device", value)
 
     @_builtins.property
     @pulumi.getter
-    def encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
         """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
-    def encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CMK ID for data disk N. Valid values of N: 1 to 16.
         """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The performance level of the ESSD used as data disk.
         """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedIops")
-    def provisioned_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
         """
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
-    def provisioned_iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_iops", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
         """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
 
 class ScalingConfigurationInstancePatternInfoArgsDict(TypedDict):
-    architectures: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    architectures: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
     """
-    burstable_performance: NotRequired[pulumi.Input[_builtins.str]]
+    burstable_performance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
     """
-    cores: NotRequired[pulumi.Input[_builtins.int]]
+    cores: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of vCPUs that are specified for an instance type in instancePatternInfo.
     """
-    cpu_architectures: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    cpu_architectures: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     CPU architecture N of the instance types. Valid values: x86,Arm.
     """
-    excluded_instance_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    excluded_instance_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
     """
-    gpu_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    gpu_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The GPU model.
     """
-    instance_categories: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    instance_categories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
     """
-    instance_family_level: NotRequired[pulumi.Input[_builtins.str]]
+    instance_family_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The instance family level in instancePatternInfo.
     """
-    instance_type_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    instance_type_families: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Instance family N that is queried. Valid values of N: 1 to 10.
     """
-    max_price: NotRequired[pulumi.Input[_builtins.float]]
+    max_price: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
     """
-    maximum_cpu_core_count: NotRequired[pulumi.Input[_builtins.int]]
+    maximum_cpu_core_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of vCPUs per instance type.
     """
-    maximum_gpu_amount: NotRequired[pulumi.Input[_builtins.int]]
+    maximum_gpu_amount: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of GPUs per instance. The value must be a positive integer.
     """
-    maximum_memory_size: NotRequired[pulumi.Input[_builtins.float]]
+    maximum_memory_size: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The maximum memory size per instance. Unit: GiB.
     """
-    memory: NotRequired[pulumi.Input[_builtins.float]]
+    memory: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The memory size that is specified for an instance type in instancePatternInfo.
     """
-    minimum_baseline_credit: NotRequired[pulumi.Input[_builtins.int]]
+    minimum_baseline_credit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The minimum baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
     """
-    minimum_cpu_core_count: NotRequired[pulumi.Input[_builtins.int]]
+    minimum_cpu_core_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The minimum number of vCPUs per instance type.
     """
-    minimum_eni_ipv6_address_quantity: NotRequired[pulumi.Input[_builtins.int]]
+    minimum_eni_ipv6_address_quantity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The minimum number of IPv6 addresses per ENI.
     """
-    minimum_eni_private_ip_address_quantity: NotRequired[pulumi.Input[_builtins.int]]
+    minimum_eni_private_ip_address_quantity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The minimum number of IPv4 addresses per ENI.
     """
-    minimum_eni_quantity: NotRequired[pulumi.Input[_builtins.int]]
+    minimum_eni_quantity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The minimum number of elastic network interfaces (ENIs) per instance.
     """
-    minimum_gpu_amount: NotRequired[pulumi.Input[_builtins.int]]
+    minimum_gpu_amount: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The minimum number of GPUs per instance. The value must be a positive integer.
     """
-    minimum_initial_credit: NotRequired[pulumi.Input[_builtins.int]]
+    minimum_initial_credit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The initial vCPU credits per t5 or t6 burstable instance.
     """
-    minimum_memory_size: NotRequired[pulumi.Input[_builtins.float]]
+    minimum_memory_size: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The minimum memory size per instance. Unit: GiB.
     """
-    physical_processor_models: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    physical_processor_models: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Processor model N of the ECS instances. Valid values of N: 1 to 10.
     """
@@ -2989,29 +2989,29 @@ class ScalingConfigurationInstancePatternInfoArgsDict(TypedDict):
 @pulumi.input_type
 class ScalingConfigurationInstancePatternInfoArgs:
     def __init__(__self__, *,
-                 architectures: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 burstable_performance: Optional[pulumi.Input[_builtins.str]] = None,
-                 cores: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_architectures: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 excluded_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 gpu_specs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_family_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type_families: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_price: Optional[pulumi.Input[_builtins.float]] = None,
-                 maximum_cpu_core_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 maximum_gpu_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 maximum_memory_size: Optional[pulumi.Input[_builtins.float]] = None,
-                 memory: Optional[pulumi.Input[_builtins.float]] = None,
-                 minimum_baseline_credit: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_cpu_core_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_eni_ipv6_address_quantity: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_eni_private_ip_address_quantity: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_eni_quantity: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_gpu_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_initial_credit: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_memory_size: Optional[pulumi.Input[_builtins.float]] = None,
-                 physical_processor_models: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 architectures: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 burstable_performance: pulumi.Input[Optional[_builtins.str]] = None,
+                 cores: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_architectures: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 excluded_instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 gpu_specs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_family_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type_families: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_price: pulumi.Input[Optional[_builtins.float]] = None,
+                 maximum_cpu_core_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 maximum_gpu_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 maximum_memory_size: pulumi.Input[Optional[_builtins.float]] = None,
+                 memory: pulumi.Input[Optional[_builtins.float]] = None,
+                 minimum_baseline_credit: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_cpu_core_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_eni_ipv6_address_quantity: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_eni_private_ip_address_quantity: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_eni_quantity: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_gpu_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_initial_credit: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_memory_size: pulumi.Input[Optional[_builtins.float]] = None,
+                 physical_processor_models: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] architectures: Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
         :param pulumi.Input[_builtins.str] burstable_performance: Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
@@ -3086,287 +3086,287 @@ class ScalingConfigurationInstancePatternInfoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def architectures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def architectures(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
         """
         return pulumi.get(self, "architectures")
 
     @architectures.setter
-    def architectures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def architectures(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "architectures", value)
 
     @_builtins.property
     @pulumi.getter(name="burstablePerformance")
-    def burstable_performance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def burstable_performance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
         """
         return pulumi.get(self, "burstable_performance")
 
     @burstable_performance.setter
-    def burstable_performance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def burstable_performance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "burstable_performance", value)
 
     @_builtins.property
     @pulumi.getter
-    def cores(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cores(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of vCPUs that are specified for an instance type in instancePatternInfo.
         """
         return pulumi.get(self, "cores")
 
     @cores.setter
-    def cores(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cores(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cores", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuArchitectures")
-    def cpu_architectures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cpu_architectures(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         CPU architecture N of the instance types. Valid values: x86,Arm.
         """
         return pulumi.get(self, "cpu_architectures")
 
     @cpu_architectures.setter
-    def cpu_architectures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cpu_architectures(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cpu_architectures", value)
 
     @_builtins.property
     @pulumi.getter(name="excludedInstanceTypes")
-    def excluded_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def excluded_instance_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
         """
         return pulumi.get(self, "excluded_instance_types")
 
     @excluded_instance_types.setter
-    def excluded_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def excluded_instance_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "excluded_instance_types", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuSpecs")
-    def gpu_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def gpu_specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The GPU model.
         """
         return pulumi.get(self, "gpu_specs")
 
     @gpu_specs.setter
-    def gpu_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def gpu_specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "gpu_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceCategories")
-    def instance_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_categories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
         """
         return pulumi.get(self, "instance_categories")
 
     @instance_categories.setter
-    def instance_categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_categories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_categories", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceFamilyLevel")
-    def instance_family_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_family_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance family level in instancePatternInfo.
         """
         return pulumi.get(self, "instance_family_level")
 
     @instance_family_level.setter
-    def instance_family_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_family_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_family_level", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypeFamilies")
-    def instance_type_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_type_families(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Instance family N that is queried. Valid values of N: 1 to 10.
         """
         return pulumi.get(self, "instance_type_families")
 
     @instance_type_families.setter
-    def instance_type_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_type_families(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_type_families", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPrice")
-    def max_price(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def max_price(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
         """
         return pulumi.get(self, "max_price")
 
     @max_price.setter
-    def max_price(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def max_price(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "max_price", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumCpuCoreCount")
-    def maximum_cpu_core_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_cpu_core_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of vCPUs per instance type.
         """
         return pulumi.get(self, "maximum_cpu_core_count")
 
     @maximum_cpu_core_count.setter
-    def maximum_cpu_core_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_cpu_core_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_cpu_core_count", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumGpuAmount")
-    def maximum_gpu_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_gpu_amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of GPUs per instance. The value must be a positive integer.
         """
         return pulumi.get(self, "maximum_gpu_amount")
 
     @maximum_gpu_amount.setter
-    def maximum_gpu_amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_gpu_amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_gpu_amount", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumMemorySize")
-    def maximum_memory_size(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def maximum_memory_size(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The maximum memory size per instance. Unit: GiB.
         """
         return pulumi.get(self, "maximum_memory_size")
 
     @maximum_memory_size.setter
-    def maximum_memory_size(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def maximum_memory_size(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "maximum_memory_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The memory size that is specified for an instance type in instancePatternInfo.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumBaselineCredit")
-    def minimum_baseline_credit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_baseline_credit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
         """
         return pulumi.get(self, "minimum_baseline_credit")
 
     @minimum_baseline_credit.setter
-    def minimum_baseline_credit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_baseline_credit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_baseline_credit", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumCpuCoreCount")
-    def minimum_cpu_core_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_cpu_core_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of vCPUs per instance type.
         """
         return pulumi.get(self, "minimum_cpu_core_count")
 
     @minimum_cpu_core_count.setter
-    def minimum_cpu_core_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_cpu_core_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_cpu_core_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumEniIpv6AddressQuantity")
-    def minimum_eni_ipv6_address_quantity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_eni_ipv6_address_quantity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of IPv6 addresses per ENI.
         """
         return pulumi.get(self, "minimum_eni_ipv6_address_quantity")
 
     @minimum_eni_ipv6_address_quantity.setter
-    def minimum_eni_ipv6_address_quantity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_eni_ipv6_address_quantity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_eni_ipv6_address_quantity", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumEniPrivateIpAddressQuantity")
-    def minimum_eni_private_ip_address_quantity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_eni_private_ip_address_quantity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of IPv4 addresses per ENI.
         """
         return pulumi.get(self, "minimum_eni_private_ip_address_quantity")
 
     @minimum_eni_private_ip_address_quantity.setter
-    def minimum_eni_private_ip_address_quantity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_eni_private_ip_address_quantity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_eni_private_ip_address_quantity", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumEniQuantity")
-    def minimum_eni_quantity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_eni_quantity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of elastic network interfaces (ENIs) per instance.
         """
         return pulumi.get(self, "minimum_eni_quantity")
 
     @minimum_eni_quantity.setter
-    def minimum_eni_quantity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_eni_quantity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_eni_quantity", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumGpuAmount")
-    def minimum_gpu_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_gpu_amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of GPUs per instance. The value must be a positive integer.
         """
         return pulumi.get(self, "minimum_gpu_amount")
 
     @minimum_gpu_amount.setter
-    def minimum_gpu_amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_gpu_amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_gpu_amount", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumInitialCredit")
-    def minimum_initial_credit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_initial_credit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The initial vCPU credits per t5 or t6 burstable instance.
         """
         return pulumi.get(self, "minimum_initial_credit")
 
     @minimum_initial_credit.setter
-    def minimum_initial_credit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_initial_credit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_initial_credit", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumMemorySize")
-    def minimum_memory_size(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def minimum_memory_size(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The minimum memory size per instance. Unit: GiB.
         """
         return pulumi.get(self, "minimum_memory_size")
 
     @minimum_memory_size.setter
-    def minimum_memory_size(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def minimum_memory_size(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "minimum_memory_size", value)
 
     @_builtins.property
     @pulumi.getter(name="physicalProcessorModels")
-    def physical_processor_models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def physical_processor_models(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Processor model N of the ECS instances. Valid values of N: 1 to 10.
         """
         return pulumi.get(self, "physical_processor_models")
 
     @physical_processor_models.setter
-    def physical_processor_models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def physical_processor_models(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "physical_processor_models", value)
 
 
 class ScalingConfigurationInstanceTypeOverrideArgsDict(TypedDict):
-    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The is specified for an instance type in instanceTypeOverride.
     """
-    weighted_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    weighted_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The weight of instance type in instanceTypeOverride.
     """
@@ -3374,8 +3374,8 @@ class ScalingConfigurationInstanceTypeOverrideArgsDict(TypedDict):
 @pulumi.input_type
 class ScalingConfigurationInstanceTypeOverrideArgs:
     def __init__(__self__, *,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 weighted_capacity: Optional[pulumi.Input[_builtins.int]] = None):
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 weighted_capacity: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] instance_type: The is specified for an instance type in instanceTypeOverride.
         :param pulumi.Input[_builtins.int] weighted_capacity: The weight of instance type in instanceTypeOverride.
@@ -3387,43 +3387,43 @@ class ScalingConfigurationInstanceTypeOverrideArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The is specified for an instance type in instanceTypeOverride.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="weightedCapacity")
-    def weighted_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weighted_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight of instance type in instanceTypeOverride.
         """
         return pulumi.get(self, "weighted_capacity")
 
     @weighted_capacity.setter
-    def weighted_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weighted_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weighted_capacity", value)
 
 
 class ScalingConfigurationNetworkInterfaceArgsDict(TypedDict):
-    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
     """
-    ipv6_address_count: NotRequired[pulumi.Input[_builtins.int]]
+    ipv6_address_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
     """
-    network_interface_traffic_mode: NotRequired[pulumi.Input[_builtins.str]]
+    network_interface_traffic_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The communication mode of the ENI. Valid values: Standard, HighPerformance.
     """
-    security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    security_group_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The ID of security group N to which ENI N belongs.
     """
@@ -3431,10 +3431,10 @@ class ScalingConfigurationNetworkInterfaceArgsDict(TypedDict):
 @pulumi.input_type
 class ScalingConfigurationNetworkInterfaceArgs:
     def __init__(__self__, *,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_address_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 network_interface_traffic_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_address_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] instance_type: The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
         :param pulumi.Input[_builtins.int] ipv6_address_count: The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
@@ -3452,59 +3452,59 @@ class ScalingConfigurationNetworkInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6AddressCount")
-    def ipv6_address_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ipv6_address_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
         """
         return pulumi.get(self, "ipv6_address_count")
 
     @ipv6_address_count.setter
-    def ipv6_address_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ipv6_address_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ipv6_address_count", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceTrafficMode")
-    def network_interface_traffic_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_interface_traffic_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The communication mode of the ENI. Valid values: Standard, HighPerformance.
         """
         return pulumi.get(self, "network_interface_traffic_mode")
 
     @network_interface_traffic_mode.setter
-    def network_interface_traffic_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_interface_traffic_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_interface_traffic_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of security group N to which ENI N belongs.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
 
 class ScalingConfigurationSpotPriceLimitArgsDict(TypedDict):
-    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Resource type of an ECS instance.
     """
-    price_limit: NotRequired[pulumi.Input[_builtins.float]]
+    price_limit: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Price limit hourly of instance type, 2 decimals is allowed at most.
     """
@@ -3512,8 +3512,8 @@ class ScalingConfigurationSpotPriceLimitArgsDict(TypedDict):
 @pulumi.input_type
 class ScalingConfigurationSpotPriceLimitArgs:
     def __init__(__self__, *,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 price_limit: Optional[pulumi.Input[_builtins.float]] = None):
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 price_limit: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.str] instance_type: Resource type of an ECS instance.
         :param pulumi.Input[_builtins.float] price_limit: Price limit hourly of instance type, 2 decimals is allowed at most.
@@ -3525,39 +3525,39 @@ class ScalingConfigurationSpotPriceLimitArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource type of an ECS instance.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="priceLimit")
-    def price_limit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def price_limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Price limit hourly of instance type, 2 decimals is allowed at most.
         """
         return pulumi.get(self, "price_limit")
 
     @price_limit.setter
-    def price_limit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def price_limit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "price_limit", value)
 
 
 class ScalingGroupAlbServerGroupArgsDict(TypedDict):
-    alb_server_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    alb_server_group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of ALB server group.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The port number used by an ECS instance after Auto Scaling adds the ECS instance to ALB server group.
     """
-    weight: NotRequired[pulumi.Input[_builtins.int]]
+    weight: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to ALB server group.
     """
@@ -3565,9 +3565,9 @@ class ScalingGroupAlbServerGroupArgsDict(TypedDict):
 @pulumi.input_type
 class ScalingGroupAlbServerGroupArgs:
     def __init__(__self__, *,
-                 alb_server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 alb_server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] alb_server_group_id: The ID of ALB server group.
         :param pulumi.Input[_builtins.int] port: The port number used by an ECS instance after Auto Scaling adds the ECS instance to ALB server group.
@@ -3582,47 +3582,47 @@ class ScalingGroupAlbServerGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="albServerGroupId")
-    def alb_server_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alb_server_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of ALB server group.
         """
         return pulumi.get(self, "alb_server_group_id")
 
     @alb_server_group_id.setter
-    def alb_server_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alb_server_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alb_server_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port number used by an ECS instance after Auto Scaling adds the ECS instance to ALB server group.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to ALB server group.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
 class ScalingGroupLaunchTemplateOverrideArgsDict(TypedDict):
-    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The instance type in launchTemplateOverride.
     """
-    spot_price_limit: NotRequired[pulumi.Input[_builtins.float]]
+    spot_price_limit: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The maximum bid price of instance type in launchTemplateOverride.
 
@@ -3633,7 +3633,7 @@ class ScalingGroupLaunchTemplateOverrideArgsDict(TypedDict):
 
     > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
     """
-    weighted_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    weighted_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The weight of the instance type in launchTemplateOverride.
     """
@@ -3641,9 +3641,9 @@ class ScalingGroupLaunchTemplateOverrideArgsDict(TypedDict):
 @pulumi.input_type
 class ScalingGroupLaunchTemplateOverrideArgs:
     def __init__(__self__, *,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 weighted_capacity: Optional[pulumi.Input[_builtins.int]] = None):
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 weighted_capacity: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] instance_type: The instance type in launchTemplateOverride.
         :param pulumi.Input[_builtins.float] spot_price_limit: The maximum bid price of instance type in launchTemplateOverride.
@@ -3665,19 +3665,19 @@ class ScalingGroupLaunchTemplateOverrideArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type in launchTemplateOverride.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPriceLimit")
-    def spot_price_limit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def spot_price_limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The maximum bid price of instance type in launchTemplateOverride.
 
@@ -3691,19 +3691,19 @@ class ScalingGroupLaunchTemplateOverrideArgs:
         return pulumi.get(self, "spot_price_limit")
 
     @spot_price_limit.setter
-    def spot_price_limit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def spot_price_limit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "spot_price_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="weightedCapacity")
-    def weighted_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weighted_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight of the instance type in launchTemplateOverride.
         """
         return pulumi.get(self, "weighted_capacity")
 
     @weighted_capacity.setter
-    def weighted_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weighted_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weighted_capacity", value)
 
 
@@ -3821,11 +3821,11 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs:
 
 
 class ScalingRuleAlarmDimensionArgsDict(TypedDict):
-    dimension_key: NotRequired[pulumi.Input[_builtins.str]]
+    dimension_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The dimension key of the metric.
     """
-    dimension_value: NotRequired[pulumi.Input[_builtins.str]]
+    dimension_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The dimension value of the metric.
     """
@@ -3833,8 +3833,8 @@ class ScalingRuleAlarmDimensionArgsDict(TypedDict):
 @pulumi.input_type
 class ScalingRuleAlarmDimensionArgs:
     def __init__(__self__, *,
-                 dimension_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimension_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 dimension_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimension_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] dimension_key: The dimension key of the metric.
         :param pulumi.Input[_builtins.str] dimension_value: The dimension value of the metric.
@@ -3846,48 +3846,48 @@ class ScalingRuleAlarmDimensionArgs:
 
     @_builtins.property
     @pulumi.getter(name="dimensionKey")
-    def dimension_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dimension_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dimension key of the metric.
         """
         return pulumi.get(self, "dimension_key")
 
     @dimension_key.setter
-    def dimension_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dimension_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dimension_key", value)
 
     @_builtins.property
     @pulumi.getter(name="dimensionValue")
-    def dimension_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dimension_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dimension value of the metric.
         """
         return pulumi.get(self, "dimension_value")
 
     @dimension_value.setter
-    def dimension_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dimension_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dimension_value", value)
 
 
 class ScalingRuleHybridMetricArgsDict(TypedDict):
-    dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgsDict']]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgs']]]]]
     """
     The structure of volumeMounts.
     See `dimensions` below for details.
     """
-    expression: NotRequired[pulumi.Input[_builtins.str]]
+    expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression must comply with the Reverse Polish Notation (RPN) specification, and the operators can only be + - × /.
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The reference ID of the metric in the metric expression.
     """
-    metric_name: NotRequired[pulumi.Input[_builtins.str]]
+    metric_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the Hybrid Cloud Monitoring metric.
     """
-    statistic: NotRequired[pulumi.Input[_builtins.str]]
+    statistic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The statistical method of the metric value. Valid values: Average, Minimum, Maximum.
     """
@@ -3895,11 +3895,11 @@ class ScalingRuleHybridMetricArgsDict(TypedDict):
 @pulumi.input_type
 class ScalingRuleHybridMetricArgs:
     def __init__(__self__, *,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgs']]]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistic: Optional[pulumi.Input[_builtins.str]] = None):
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgs']]]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgs']]] dimensions: The structure of volumeMounts.
                See `dimensions` below for details.
@@ -3921,7 +3921,7 @@ class ScalingRuleHybridMetricArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgs']]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgs']]]]:
         """
         The structure of volumeMounts.
         See `dimensions` below for details.
@@ -3929,67 +3929,67 @@ class ScalingRuleHybridMetricArgs:
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgs']]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgs']]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression must comply with the Reverse Polish Notation (RPN) specification, and the operators can only be + - × /.
         """
         return pulumi.get(self, "expression")
 
     @expression.setter
-    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expression", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference ID of the metric in the metric expression.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="metricName")
-    def metric_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Hybrid Cloud Monitoring metric.
         """
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
-    def metric_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The statistical method of the metric value. Valid values: Average, Minimum, Maximum.
         """
         return pulumi.get(self, "statistic")
 
     @statistic.setter
-    def statistic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistic", value)
 
 
 class ScalingRuleHybridMetricDimensionArgsDict(TypedDict):
-    dimension_key: NotRequired[pulumi.Input[_builtins.str]]
-    dimension_value: NotRequired[pulumi.Input[_builtins.str]]
+    dimension_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    dimension_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ScalingRuleHybridMetricDimensionArgs:
     def __init__(__self__, *,
-                 dimension_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimension_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 dimension_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimension_value: pulumi.Input[Optional[_builtins.str]] = None):
         if dimension_key is not None:
             pulumi.set(__self__, "dimension_key", dimension_key)
         if dimension_value is not None:
@@ -3997,33 +3997,33 @@ class ScalingRuleHybridMetricDimensionArgs:
 
     @_builtins.property
     @pulumi.getter(name="dimensionKey")
-    def dimension_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dimension_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dimension_key")
 
     @dimension_key.setter
-    def dimension_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dimension_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dimension_key", value)
 
     @_builtins.property
     @pulumi.getter(name="dimensionValue")
-    def dimension_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dimension_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dimension_value")
 
     @dimension_value.setter
-    def dimension_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dimension_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dimension_value", value)
 
 
 class ScalingRuleStepAdjustmentArgsDict(TypedDict):
-    metric_interval_lower_bound: NotRequired[pulumi.Input[_builtins.str]]
+    metric_interval_lower_bound: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The lower bound of step.
     """
-    metric_interval_upper_bound: NotRequired[pulumi.Input[_builtins.str]]
+    metric_interval_upper_bound: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The upper bound of step.
     """
-    scaling_adjustment: NotRequired[pulumi.Input[_builtins.int]]
+    scaling_adjustment: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The adjust value of step.
     """
@@ -4031,9 +4031,9 @@ class ScalingRuleStepAdjustmentArgsDict(TypedDict):
 @pulumi.input_type
 class ScalingRuleStepAdjustmentArgs:
     def __init__(__self__, *,
-                 metric_interval_lower_bound: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_interval_upper_bound: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_adjustment: Optional[pulumi.Input[_builtins.int]] = None):
+                 metric_interval_lower_bound: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_interval_upper_bound: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_adjustment: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] metric_interval_lower_bound: The lower bound of step.
         :param pulumi.Input[_builtins.str] metric_interval_upper_bound: The upper bound of step.
@@ -4048,38 +4048,38 @@ class ScalingRuleStepAdjustmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="metricIntervalLowerBound")
-    def metric_interval_lower_bound(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_interval_lower_bound(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lower bound of step.
         """
         return pulumi.get(self, "metric_interval_lower_bound")
 
     @metric_interval_lower_bound.setter
-    def metric_interval_lower_bound(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_interval_lower_bound(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_interval_lower_bound", value)
 
     @_builtins.property
     @pulumi.getter(name="metricIntervalUpperBound")
-    def metric_interval_upper_bound(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_interval_upper_bound(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The upper bound of step.
         """
         return pulumi.get(self, "metric_interval_upper_bound")
 
     @metric_interval_upper_bound.setter
-    def metric_interval_upper_bound(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_interval_upper_bound(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_interval_upper_bound", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingAdjustment")
-    def scaling_adjustment(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scaling_adjustment(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The adjust value of step.
         """
         return pulumi.get(self, "scaling_adjustment")
 
     @scaling_adjustment.setter
-    def scaling_adjustment(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scaling_adjustment(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scaling_adjustment", value)
 
 

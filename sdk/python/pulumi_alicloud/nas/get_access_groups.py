@@ -232,14 +232,14 @@ def get_access_groups(access_group_name: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         type=pulumi.get(__ret__, 'type'),
         useutc_date_time=pulumi.get(__ret__, 'useutc_date_time'))
-def get_access_groups_output(access_group_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             access_group_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             file_system_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             useutc_date_time: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_access_groups_output(access_group_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             access_group_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             file_system_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             useutc_date_time: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessGroupsResult]:
     """
     This data source provides user-available access groups. Use when you can create mount points

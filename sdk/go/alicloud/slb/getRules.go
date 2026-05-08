@@ -93,12 +93,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			sampleDs := defaultApplicationLoadBalancer.ID().ApplyT(func(id string) (slb.GetRulesResult, error) {
-//				return slb.GetRulesResult(interface{}(slb.GetRules(ctx, &slb.GetRulesArgs{
-//					LoadBalancerId: id,
-//					FrontendPort:   22,
-//				}, nil))), nil
-//			}).(slb.GetRulesResultOutput)
+//			sampleDs := slb.GetRulesOutput(ctx, slb.GetRulesOutputArgs{
+//				LoadBalancerId: defaultApplicationLoadBalancer.ID(),
+//				FrontendPort:   pulumi.Int(22),
+//			}, nil)
 //			ctx.Export("firstSlbRuleId", sampleDs.ApplyT(func(sampleDs slb.GetRulesResult) (*string, error) {
 //				return &sampleDs.SlbRules[0].Id, nil
 //			}).(pulumi.StringPtrOutput))

@@ -290,94 +290,94 @@ export interface AlarmState {
     /**
      * The trigger conditions for multiple metrics. See `compositeExpression` below.
      */
-    compositeExpression?: pulumi.Input<inputs.cms.AlarmCompositeExpression>;
+    compositeExpression?: pulumi.Input<inputs.cms.AlarmCompositeExpression | undefined>;
     /**
      * List contact groups of the alarm rule, which must have been created on the console.
      */
-    contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    contactGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      *
      * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      */
-    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
      */
-    effectiveInterval?: pulumi.Input<string>;
+    effectiveInterval?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable alarm rule. Default value: `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
      * @deprecated Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * A configuration of critical alarm. See `escalationsCritical` below.
      */
-    escalationsCritical?: pulumi.Input<inputs.cms.AlarmEscalationsCritical>;
+    escalationsCritical?: pulumi.Input<inputs.cms.AlarmEscalationsCritical | undefined>;
     /**
      * A configuration of critical info. See `escalationsInfo` below.
      */
-    escalationsInfo?: pulumi.Input<inputs.cms.AlarmEscalationsInfo>;
+    escalationsInfo?: pulumi.Input<inputs.cms.AlarmEscalationsInfo | undefined>;
     /**
      * A configuration of critical warn. See `escalationsWarn` below.
      */
-    escalationsWarn?: pulumi.Input<inputs.cms.AlarmEscalationsWarn>;
+    escalationsWarn?: pulumi.Input<inputs.cms.AlarmEscalationsWarn | undefined>;
     /**
      * The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    metric?: pulumi.Input<string>;
+    metric?: pulumi.Input<string | undefined>;
     /**
      * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    metricDimensions?: pulumi.Input<string>;
+    metricDimensions?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The statistical period of the metric. Unit: seconds. Default value: `300`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
      */
-    prometheuses?: pulumi.Input<pulumi.Input<inputs.cms.AlarmPrometheus>[]>;
+    prometheuses?: pulumi.Input<pulumi.Input<inputs.cms.AlarmPrometheus>[] | undefined>;
     /**
      * Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
      */
-    silenceTime?: pulumi.Input<number>;
+    silenceTime?: pulumi.Input<number | undefined>;
     /**
      * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
      * @deprecated Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * The status of the Alarm.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Adds or modifies the push channels of an alert rule. See `targets` below.
      */
-    targets?: pulumi.Input<pulumi.Input<inputs.cms.AlarmTarget>[]>;
+    targets?: pulumi.Input<pulumi.Input<inputs.cms.AlarmTarget>[] | undefined>;
     /**
      * The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
-    webhook?: pulumi.Input<string>;
+    webhook?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -387,7 +387,7 @@ export interface AlarmArgs {
     /**
      * The trigger conditions for multiple metrics. See `compositeExpression` below.
      */
-    compositeExpression?: pulumi.Input<inputs.cms.AlarmCompositeExpression>;
+    compositeExpression?: pulumi.Input<inputs.cms.AlarmCompositeExpression | undefined>;
     /**
      * List contact groups of the alarm rule, which must have been created on the console.
      */
@@ -397,33 +397,33 @@ export interface AlarmArgs {
      *
      * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      */
-    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
      */
-    effectiveInterval?: pulumi.Input<string>;
+    effectiveInterval?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable alarm rule. Default value: `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
      * @deprecated Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * A configuration of critical alarm. See `escalationsCritical` below.
      */
-    escalationsCritical?: pulumi.Input<inputs.cms.AlarmEscalationsCritical>;
+    escalationsCritical?: pulumi.Input<inputs.cms.AlarmEscalationsCritical | undefined>;
     /**
      * A configuration of critical info. See `escalationsInfo` below.
      */
-    escalationsInfo?: pulumi.Input<inputs.cms.AlarmEscalationsInfo>;
+    escalationsInfo?: pulumi.Input<inputs.cms.AlarmEscalationsInfo | undefined>;
     /**
      * A configuration of critical warn. See `escalationsWarn` below.
      */
-    escalationsWarn?: pulumi.Input<inputs.cms.AlarmEscalationsWarn>;
+    escalationsWarn?: pulumi.Input<inputs.cms.AlarmEscalationsWarn | undefined>;
     /**
      * The name of the metric, such as `CPUUtilization` and `networkinRate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
@@ -431,15 +431,15 @@ export interface AlarmArgs {
     /**
      * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    metricDimensions?: pulumi.Input<string>;
+    metricDimensions?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The statistical period of the metric. Unit: seconds. Default value: `300`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The namespace of the cloud service, such as `acsEcsDashboard` and `acsRdsDashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * **NOTE:** The `dimensions` and `metricDimensions` must be empty when `project` is `acsPrometheus`, otherwise, one of them must be set.
@@ -448,27 +448,27 @@ export interface AlarmArgs {
     /**
      * The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
      */
-    prometheuses?: pulumi.Input<pulumi.Input<inputs.cms.AlarmPrometheus>[]>;
+    prometheuses?: pulumi.Input<pulumi.Input<inputs.cms.AlarmPrometheus>[] | undefined>;
     /**
      * Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
      */
-    silenceTime?: pulumi.Input<number>;
+    silenceTime?: pulumi.Input<number | undefined>;
     /**
      * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
      * @deprecated Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Adds or modifies the push channels of an alert rule. See `targets` below.
      */
-    targets?: pulumi.Input<pulumi.Input<inputs.cms.AlarmTarget>[]>;
+    targets?: pulumi.Input<pulumi.Input<inputs.cms.AlarmTarget>[] | undefined>;
     /**
      * The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
-    webhook?: pulumi.Input<string>;
+    webhook?: pulumi.Input<string | undefined>;
 }

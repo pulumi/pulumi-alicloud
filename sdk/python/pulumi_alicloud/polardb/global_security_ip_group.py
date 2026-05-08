@@ -70,9 +70,9 @@ class GlobalSecurityIpGroupArgs:
 @pulumi.input_type
 class _GlobalSecurityIpGroupState:
     def __init__(__self__, *,
-                 global_ip_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_ip_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 global_ip_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_ip_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalSecurityIpGroup resources.
 
@@ -95,7 +95,7 @@ class _GlobalSecurityIpGroupState:
 
     @_builtins.property
     @pulumi.getter(name="globalIpGroupName")
-    def global_ip_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def global_ip_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
 
@@ -106,12 +106,12 @@ class _GlobalSecurityIpGroupState:
         return pulumi.get(self, "global_ip_group_name")
 
     @global_ip_group_name.setter
-    def global_ip_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def global_ip_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "global_ip_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="globalIpList")
-    def global_ip_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def global_ip_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address in the whitelist template.
 
@@ -120,19 +120,19 @@ class _GlobalSecurityIpGroupState:
         return pulumi.get(self, "global_ip_list")
 
     @global_ip_list.setter
-    def global_ip_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def global_ip_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "global_ip_list", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the IP whitelist template.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
 
@@ -142,8 +142,8 @@ class GlobalSecurityIpGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 global_ip_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_ip_list: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_ip_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_ip_list: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Polardb Global Security Ip Group resource.
@@ -251,8 +251,8 @@ class GlobalSecurityIpGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 global_ip_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_ip_list: Optional[pulumi.Input[_builtins.str]] = None,
+                 global_ip_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_ip_list: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -279,9 +279,9 @@ class GlobalSecurityIpGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            global_ip_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            global_ip_list: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GlobalSecurityIpGroup':
+            global_ip_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            global_ip_list: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'GlobalSecurityIpGroup':
         """
         Get an existing GlobalSecurityIpGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

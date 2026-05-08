@@ -28,11 +28,11 @@ __all__ = [
 ]
 
 class JobJobMonitorInfoArgsDict(TypedDict):
-    contact_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['JobJobMonitorInfoContactInfoArgsDict']]]]
+    contact_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobJobMonitorInfoContactInfoArgs']]]]]
     """
     Contact information. See `contact_info` below.
     """
-    monitor_config: NotRequired[pulumi.Input['JobJobMonitorInfoMonitorConfigArgsDict']]
+    monitor_config: NotRequired[pulumi.Input[Optional['JobJobMonitorInfoMonitorConfigArgs']]]
     """
     Alarm switch and threshold configuration. See `monitor_config` below.
     """
@@ -40,8 +40,8 @@ class JobJobMonitorInfoArgsDict(TypedDict):
 @pulumi.input_type
 class JobJobMonitorInfoArgs:
     def __init__(__self__, *,
-                 contact_infos: Optional[pulumi.Input[Sequence[pulumi.Input['JobJobMonitorInfoContactInfoArgs']]]] = None,
-                 monitor_config: Optional[pulumi.Input['JobJobMonitorInfoMonitorConfigArgs']] = None):
+                 contact_infos: pulumi.Input[Optional[Sequence[pulumi.Input['JobJobMonitorInfoContactInfoArgs']]]] = None,
+                 monitor_config: pulumi.Input[Optional['JobJobMonitorInfoMonitorConfigArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobJobMonitorInfoContactInfoArgs']]] contact_infos: Contact information. See `contact_info` below.
         :param pulumi.Input['JobJobMonitorInfoMonitorConfigArgs'] monitor_config: Alarm switch and threshold configuration. See `monitor_config` below.
@@ -53,43 +53,43 @@ class JobJobMonitorInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="contactInfos")
-    def contact_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobJobMonitorInfoContactInfoArgs']]]]:
+    def contact_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobJobMonitorInfoContactInfoArgs']]]]:
         """
         Contact information. See `contact_info` below.
         """
         return pulumi.get(self, "contact_infos")
 
     @contact_infos.setter
-    def contact_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobJobMonitorInfoContactInfoArgs']]]]):
+    def contact_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobJobMonitorInfoContactInfoArgs']]]]):
         pulumi.set(self, "contact_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorConfig")
-    def monitor_config(self) -> Optional[pulumi.Input['JobJobMonitorInfoMonitorConfigArgs']]:
+    def monitor_config(self) -> pulumi.Input[Optional['JobJobMonitorInfoMonitorConfigArgs']]:
         """
         Alarm switch and threshold configuration. See `monitor_config` below.
         """
         return pulumi.get(self, "monitor_config")
 
     @monitor_config.setter
-    def monitor_config(self, value: Optional[pulumi.Input['JobJobMonitorInfoMonitorConfigArgs']]):
+    def monitor_config(self, value: pulumi.Input[Optional['JobJobMonitorInfoMonitorConfigArgs']]):
         pulumi.set(self, "monitor_config", value)
 
 
 class JobJobMonitorInfoContactInfoArgsDict(TypedDict):
-    ding: NotRequired[pulumi.Input[_builtins.str]]
+    ding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     DingTalk swarm robot webhook address
     """
-    user_mail: NotRequired[pulumi.Input[_builtins.str]]
+    user_mail: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     User Email Address
     """
-    user_name: NotRequired[pulumi.Input[_builtins.str]]
+    user_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user name
     """
-    user_phone: NotRequired[pulumi.Input[_builtins.str]]
+    user_phone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user's mobile phone number
     """
@@ -97,10 +97,10 @@ class JobJobMonitorInfoContactInfoArgsDict(TypedDict):
 @pulumi.input_type
 class JobJobMonitorInfoContactInfoArgs:
     def __init__(__self__, *,
-                 ding: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_mail: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_phone: Optional[pulumi.Input[_builtins.str]] = None):
+                 ding: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_mail: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_phone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ding: DingTalk swarm robot webhook address
         :param pulumi.Input[_builtins.str] user_mail: User Email Address
@@ -118,63 +118,63 @@ class JobJobMonitorInfoContactInfoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DingTalk swarm robot webhook address
         """
         return pulumi.get(self, "ding")
 
     @ding.setter
-    def ding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ding", value)
 
     @_builtins.property
     @pulumi.getter(name="userMail")
-    def user_mail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_mail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User Email Address
         """
         return pulumi.get(self, "user_mail")
 
     @user_mail.setter
-    def user_mail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_mail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_mail", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user name
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="userPhone")
-    def user_phone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_phone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user's mobile phone number
         """
         return pulumi.get(self, "user_phone")
 
     @user_phone.setter
-    def user_phone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_phone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_phone", value)
 
 
 class JobJobMonitorInfoMonitorConfigArgsDict(TypedDict):
-    fail_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    fail_enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable failure alarm
     """
-    miss_worker_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    miss_worker_enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether no available Machine alarm is on
     """
-    send_channel: NotRequired[pulumi.Input[_builtins.str]]
+    send_channel: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Alarm sending form
     - sms: sms alarm
@@ -182,15 +182,15 @@ class JobJobMonitorInfoMonitorConfigArgsDict(TypedDict):
     - mail: mail alarm
     - webhook:webhook alarm
     """
-    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Timeout threshold, unit s, default 7200.
     """
-    timeout_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    timeout_enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Time-out alarm switch. The values are as follows:
     """
-    timeout_kill_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    timeout_kill_enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     The trigger switch is terminated by timeout and is turned off by default.
     """
@@ -198,12 +198,12 @@ class JobJobMonitorInfoMonitorConfigArgsDict(TypedDict):
 @pulumi.input_type
 class JobJobMonitorInfoMonitorConfigArgs:
     def __init__(__self__, *,
-                 fail_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 miss_worker_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 send_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout_kill_enable: Optional[pulumi.Input[_builtins.bool]] = None):
+                 fail_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 miss_worker_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 send_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout_kill_enable: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] fail_enable: Enable failure alarm
         :param pulumi.Input[_builtins.bool] miss_worker_enable: Whether no available Machine alarm is on
@@ -231,31 +231,31 @@ class JobJobMonitorInfoMonitorConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="failEnable")
-    def fail_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fail_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable failure alarm
         """
         return pulumi.get(self, "fail_enable")
 
     @fail_enable.setter
-    def fail_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fail_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fail_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="missWorkerEnable")
-    def miss_worker_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def miss_worker_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether no available Machine alarm is on
         """
         return pulumi.get(self, "miss_worker_enable")
 
     @miss_worker_enable.setter
-    def miss_worker_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def miss_worker_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "miss_worker_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="sendChannel")
-    def send_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def send_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alarm sending form
         - sms: sms alarm
@@ -266,68 +266,68 @@ class JobJobMonitorInfoMonitorConfigArgs:
         return pulumi.get(self, "send_channel")
 
     @send_channel.setter
-    def send_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def send_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "send_channel", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout threshold, unit s, default 7200.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutEnable")
-    def timeout_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def timeout_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Time-out alarm switch. The values are as follows:
         """
         return pulumi.get(self, "timeout_enable")
 
     @timeout_enable.setter
-    def timeout_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def timeout_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "timeout_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutKillEnable")
-    def timeout_kill_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def timeout_kill_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The trigger switch is terminated by timeout and is turned off by default.
         """
         return pulumi.get(self, "timeout_kill_enable")
 
     @timeout_kill_enable.setter
-    def timeout_kill_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def timeout_kill_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "timeout_kill_enable", value)
 
 
 class JobMapTaskXattrsArgsDict(TypedDict):
-    consumer_size: NotRequired[pulumi.Input[_builtins.int]]
+    consumer_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of threads to execute a single trigger. The default value is 5.
     """
-    dispatcher_size: NotRequired[pulumi.Input[_builtins.int]]
+    dispatcher_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of subtask distribution threads. The default value is 5.
     """
-    page_size: NotRequired[pulumi.Input[_builtins.int]]
+    page_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of sub-tasks pulled by a parallel task at a time. The default value is 100.
     """
-    queue_size: NotRequired[pulumi.Input[_builtins.int]]
+    queue_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The upper limit of the sub-task queue cache. The default value is 10000.
     """
-    task_attempt_interval: NotRequired[pulumi.Input[_builtins.int]]
+    task_attempt_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Subtask failure retry interval.
     """
-    task_max_attempt: NotRequired[pulumi.Input[_builtins.int]]
+    task_max_attempt: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of failed sub-task retries.
     """
@@ -335,12 +335,12 @@ class JobMapTaskXattrsArgsDict(TypedDict):
 @pulumi.input_type
 class JobMapTaskXattrsArgs:
     def __init__(__self__, *,
-                 consumer_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 dispatcher_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 page_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 task_attempt_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 task_max_attempt: Optional[pulumi.Input[_builtins.int]] = None):
+                 consumer_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 dispatcher_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 page_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 task_attempt_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 task_max_attempt: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] consumer_size: The number of threads to execute a single trigger. The default value is 5.
         :param pulumi.Input[_builtins.int] dispatcher_size: The number of subtask distribution threads. The default value is 5.
@@ -364,74 +364,74 @@ class JobMapTaskXattrsArgs:
 
     @_builtins.property
     @pulumi.getter(name="consumerSize")
-    def consumer_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def consumer_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of threads to execute a single trigger. The default value is 5.
         """
         return pulumi.get(self, "consumer_size")
 
     @consumer_size.setter
-    def consumer_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def consumer_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "consumer_size", value)
 
     @_builtins.property
     @pulumi.getter(name="dispatcherSize")
-    def dispatcher_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dispatcher_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of subtask distribution threads. The default value is 5.
         """
         return pulumi.get(self, "dispatcher_size")
 
     @dispatcher_size.setter
-    def dispatcher_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dispatcher_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dispatcher_size", value)
 
     @_builtins.property
     @pulumi.getter(name="pageSize")
-    def page_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def page_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of sub-tasks pulled by a parallel task at a time. The default value is 100.
         """
         return pulumi.get(self, "page_size")
 
     @page_size.setter
-    def page_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def page_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "page_size", value)
 
     @_builtins.property
     @pulumi.getter(name="queueSize")
-    def queue_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def queue_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The upper limit of the sub-task queue cache. The default value is 10000.
         """
         return pulumi.get(self, "queue_size")
 
     @queue_size.setter
-    def queue_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def queue_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "queue_size", value)
 
     @_builtins.property
     @pulumi.getter(name="taskAttemptInterval")
-    def task_attempt_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def task_attempt_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Subtask failure retry interval.
         """
         return pulumi.get(self, "task_attempt_interval")
 
     @task_attempt_interval.setter
-    def task_attempt_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def task_attempt_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "task_attempt_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="taskMaxAttempt")
-    def task_max_attempt(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def task_max_attempt(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of failed sub-task retries.
         """
         return pulumi.get(self, "task_max_attempt")
 
     @task_max_attempt.setter
-    def task_max_attempt(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def task_max_attempt(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "task_max_attempt", value)
 
 
@@ -440,15 +440,15 @@ class JobTimeConfigArgsDict(TypedDict):
     """
     Time configuration type. Currently, the following time types are supported:
     """
-    calendar: NotRequired[pulumi.Input[_builtins.str]]
+    calendar: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cron type can optionally fill in a custom calendar.
     """
-    data_offset: NotRequired[pulumi.Input[_builtins.int]]
+    data_offset: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Cron type can choose time offset, unit s.
     """
-    time_expression: NotRequired[pulumi.Input[_builtins.str]]
+    time_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time expressions. Currently, the following types of time expressions are supported:
     """
@@ -457,9 +457,9 @@ class JobTimeConfigArgsDict(TypedDict):
 class JobTimeConfigArgs:
     def __init__(__self__, *,
                  time_type: pulumi.Input[_builtins.int],
-                 calendar: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_offset: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_expression: Optional[pulumi.Input[_builtins.str]] = None):
+                 calendar: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_offset: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_expression: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] time_type: Time configuration type. Currently, the following time types are supported:
         :param pulumi.Input[_builtins.str] calendar: The cron type can optionally fill in a custom calendar.
@@ -488,38 +488,38 @@ class JobTimeConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def calendar(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def calendar(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cron type can optionally fill in a custom calendar.
         """
         return pulumi.get(self, "calendar")
 
     @calendar.setter
-    def calendar(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def calendar(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "calendar", value)
 
     @_builtins.property
     @pulumi.getter(name="dataOffset")
-    def data_offset(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_offset(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Cron type can choose time offset, unit s.
         """
         return pulumi.get(self, "data_offset")
 
     @data_offset.setter
-    def data_offset(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_offset(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_offset", value)
 
     @_builtins.property
     @pulumi.getter(name="timeExpression")
-    def time_expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time expressions. Currently, the following types of time expressions are supported:
         """
         return pulumi.get(self, "time_expression")
 
     @time_expression.setter
-    def time_expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_expression", value)
 
 

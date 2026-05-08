@@ -45,7 +45,7 @@ class AttackPathSensitiveAssetConfigArgs:
 @pulumi.input_type
 class _AttackPathSensitiveAssetConfigState:
     def __init__(__self__, *,
-                 attack_path_asset_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AttackPathSensitiveAssetConfigAttackPathAssetListArgs']]]] = None):
+                 attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input['AttackPathSensitiveAssetConfigAttackPathAssetListArgs']]]] = None):
         """
         Input properties used for looking up and filtering AttackPathSensitiveAssetConfig resources.
 
@@ -56,14 +56,14 @@ class _AttackPathSensitiveAssetConfigState:
 
     @_builtins.property
     @pulumi.getter(name="attackPathAssetLists")
-    def attack_path_asset_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AttackPathSensitiveAssetConfigAttackPathAssetListArgs']]]]:
+    def attack_path_asset_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AttackPathSensitiveAssetConfigAttackPathAssetListArgs']]]]:
         """
         The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
         """
         return pulumi.get(self, "attack_path_asset_lists")
 
     @attack_path_asset_lists.setter
-    def attack_path_asset_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AttackPathSensitiveAssetConfigAttackPathAssetListArgs']]]]):
+    def attack_path_asset_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AttackPathSensitiveAssetConfigAttackPathAssetListArgs']]]]):
         pulumi.set(self, "attack_path_asset_lists", value)
 
 
@@ -73,7 +73,7 @@ class AttackPathSensitiveAssetConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attack_path_asset_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict']]]]] = None,
+                 attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Attack Path Sensitive Asset Config resource.
@@ -176,7 +176,7 @@ class AttackPathSensitiveAssetConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attack_path_asset_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict']]]]] = None,
+                 attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -199,7 +199,7 @@ class AttackPathSensitiveAssetConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attack_path_asset_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict']]]]] = None) -> 'AttackPathSensitiveAssetConfig':
+            attack_path_asset_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AttackPathSensitiveAssetConfigAttackPathAssetListArgs', 'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict']]]]] = None) -> 'AttackPathSensitiveAssetConfig':
         """
         Get an existing AttackPathSensitiveAssetConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

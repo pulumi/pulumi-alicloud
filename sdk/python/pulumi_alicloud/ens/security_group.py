@@ -19,8 +19,8 @@ __all__ = ['SecurityGroupArgs', 'SecurityGroup']
 @pulumi.input_type
 class SecurityGroupArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityGroup resource.
 
@@ -34,34 +34,34 @@ class SecurityGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupName")
-    def security_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
         """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
-    def security_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_name", value)
 
 
 @pulumi.input_type
 class _SecurityGroupState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityGroup resources.
 
@@ -75,26 +75,26 @@ class _SecurityGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupName")
-    def security_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
         """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
-    def security_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_name", value)
 
 
@@ -104,8 +104,8 @@ class SecurityGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ENS Security Group resource.
@@ -203,8 +203,8 @@ class SecurityGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -226,8 +226,8 @@ class SecurityGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecurityGroup':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityGroup':
         """
         Get an existing SecurityGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -151,7 +151,7 @@ export interface GetHostAccountsOutputArgs {
     /**
      * Specify the new hosting account's name, support the longest 128 characters.
      */
-    hostAccountName?: pulumi.Input<string>;
+    hostAccountName?: pulumi.Input<string | undefined>;
     /**
      * Specifies the database where you want to create your hosting account's host ID.
      */
@@ -159,7 +159,7 @@ export interface GetHostAccountsOutputArgs {
     /**
      * A list of Host Account IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies the database where you want to create your hosting account's host bastion host ID of.
      */
@@ -167,13 +167,13 @@ export interface GetHostAccountsOutputArgs {
     /**
      * A regex string to filter results by Host Account name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
      */
-    protocolName?: pulumi.Input<string>;
+    protocolName?: pulumi.Input<string | undefined>;
 }

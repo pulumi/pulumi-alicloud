@@ -109,7 +109,7 @@ export interface GetKeyVersionsOutputArgs {
     /**
      * A list of KMS KeyVersion IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The id of kms key.
      */
@@ -117,5 +117,5 @@ export interface GetKeyVersionsOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

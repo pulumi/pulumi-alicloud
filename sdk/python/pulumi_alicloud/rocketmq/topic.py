@@ -21,11 +21,11 @@ class TopicArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  message_type: pulumi.Input[_builtins.int],
-                 perm: Optional[pulumi.Input[_builtins.int]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 perm: pulumi.Input[Optional[_builtins.int]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Topic resource.
 
@@ -87,31 +87,31 @@ class TopicArgs:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Attribute perm has been deprecated and suggest removing it from your template.""")
-    def perm(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def perm(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This attribute has been deprecated.
         """
         return pulumi.get(self, "perm")
 
     @perm.setter
-    def perm(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def perm(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "perm", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This attribute is a concise description of topic. The length cannot exceed 128.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -122,45 +122,45 @@ class TopicArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""")
-    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Replaced by `topic_name` after version 1.97.0.
         """
         return pulumi.get(self, "topic")
 
     @topic.setter
-    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic", value)
 
     @_builtins.property
     @pulumi.getter(name="topicName")
-    def topic_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
         """
         return pulumi.get(self, "topic_name")
 
     @topic_name.setter
-    def topic_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic_name", value)
 
 
 @pulumi.input_type
 class _TopicState:
     def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 perm: Optional[pulumi.Input[_builtins.int]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 perm: pulumi.Input[Optional[_builtins.int]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
 
@@ -199,56 +199,56 @@ class _TopicState:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the ONS Instance that owns the topics.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="messageType")
-    def message_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def message_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
         """
         return pulumi.get(self, "message_type")
 
     @message_type.setter
-    def message_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def message_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "message_type", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Attribute perm has been deprecated and suggest removing it from your template.""")
-    def perm(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def perm(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This attribute has been deprecated.
         """
         return pulumi.get(self, "perm")
 
     @perm.setter
-    def perm(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def perm(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "perm", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This attribute is a concise description of topic. The length cannot exceed 128.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -259,32 +259,32 @@ class _TopicState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""")
-    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Replaced by `topic_name` after version 1.97.0.
         """
         return pulumi.get(self, "topic")
 
     @topic.setter
-    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic", value)
 
     @_builtins.property
     @pulumi.getter(name="topicName")
-    def topic_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
         """
         return pulumi.get(self, "topic_name")
 
     @topic_name.setter
-    def topic_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic_name", value)
 
 
@@ -294,13 +294,13 @@ class Topic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 perm: Optional[pulumi.Input[_builtins.int]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 perm: pulumi.Input[Optional[_builtins.int]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an ONS topic resource.
@@ -431,13 +431,13 @@ class Topic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 perm: Optional[pulumi.Input[_builtins.int]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 perm: pulumi.Input[Optional[_builtins.int]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -468,13 +468,13 @@ class Topic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            message_type: Optional[pulumi.Input[_builtins.int]] = None,
-            perm: Optional[pulumi.Input[_builtins.int]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            topic: Optional[pulumi.Input[_builtins.str]] = None,
-            topic_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Topic':
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            message_type: pulumi.Input[Optional[_builtins.int]] = None,
+            perm: pulumi.Input[Optional[_builtins.int]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            topic: pulumi.Input[Optional[_builtins.str]] = None,
+            topic_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

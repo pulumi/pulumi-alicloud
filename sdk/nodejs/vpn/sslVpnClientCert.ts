@@ -182,31 +182,31 @@ export interface SslVpnClientCertState {
     /**
      * The client ca cert.
      */
-    caCert?: pulumi.Input<string>;
+    caCert?: pulumi.Input<string | undefined>;
     /**
      * The client cert.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * The vpn client config.
      */
-    clientConfig?: pulumi.Input<string>;
+    clientConfig?: pulumi.Input<string | undefined>;
     /**
      * The client key.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the client certificate.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SSL-VPN server.
      */
-    sslVpnServerId?: pulumi.Input<string>;
+    sslVpnServerId?: pulumi.Input<string | undefined>;
     /**
      * The status of the client certificate.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -216,7 +216,7 @@ export interface SslVpnClientCertArgs {
     /**
      * The name of the client certificate.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SSL-VPN server.
      */

@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
     ///     var defaultRetBJw = new AliCloud.ServiceCatalog.Product("defaultRetBJw", new()
     ///     {
     ///         ProviderName = name,
-    ///         ProductName = Std.Index.Format.Invoke(new()
+    ///         ProductName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s1",
     ///             Args = new[]

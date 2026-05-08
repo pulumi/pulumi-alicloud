@@ -223,71 +223,71 @@ export interface CapacityReservationState {
     /**
      * Capacity reservation service name.
      */
-    capacityReservationName?: pulumi.Input<string>;
+    capacityReservationName?: pulumi.Input<string | undefined>;
     /**
      * description of the capacity reservation instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to pre-check the API request. Valid values: `true` and `false`.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
      */
-    endTimeType?: pulumi.Input<string>;
+    endTimeType?: pulumi.Input<string | undefined>;
     /**
      * The total number of instances that need to be reserved within the capacity reservation.
      */
-    instanceAmount?: pulumi.Input<number>;
+    instanceAmount?: pulumi.Input<number | undefined>;
     /**
      * Instance type. Currently, you can only set the capacity reservation service for one instance type.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
      */
-    matchCriteria?: pulumi.Input<string>;
+    matchCriteria?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * platform of the capacity reservation, value range `windows`, `linux`.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * The resource group id.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * time of the capacity reservation which become active.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
      */
-    startTimeType?: pulumi.Input<string>;
+    startTimeType?: pulumi.Input<string | undefined>;
     /**
      * The status of the capacity reservation.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * This parameter is under test and is not yet open for use.
      */
-    timeSlot?: pulumi.Input<string>;
+    timeSlot?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
      */
-    zoneIds?: pulumi.Input<pulumi.Input<string>[]>;
+    zoneIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -297,23 +297,23 @@ export interface CapacityReservationArgs {
     /**
      * Capacity reservation service name.
      */
-    capacityReservationName?: pulumi.Input<string>;
+    capacityReservationName?: pulumi.Input<string | undefined>;
     /**
      * description of the capacity reservation instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to pre-check the API request. Valid values: `true` and `false`.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
      */
-    endTimeType?: pulumi.Input<string>;
+    endTimeType?: pulumi.Input<string | undefined>;
     /**
      * The total number of instances that need to be reserved within the capacity reservation.
      */
@@ -325,19 +325,19 @@ export interface CapacityReservationArgs {
     /**
      * The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
      */
-    matchCriteria?: pulumi.Input<string>;
+    matchCriteria?: pulumi.Input<string | undefined>;
     /**
      * platform of the capacity reservation, value range `windows`, `linux`.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * The resource group id.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
      */

@@ -130,29 +130,29 @@ export interface GetDesktopTypesOutputArgs {
     /**
      * The CPU cores.
      */
-    cpuCount?: pulumi.Input<number>;
+    cpuCount?: pulumi.Input<number | undefined>;
     /**
      * The GPU cores.
      */
-    gpuCount?: pulumi.Input<number>;
+    gpuCount?: pulumi.Input<number | undefined>;
     /**
      * A list of Desktop Type IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
      */
-    instanceTypeFamily?: pulumi.Input<string>;
+    instanceTypeFamily?: pulumi.Input<string | undefined>;
     /**
      * The Memory size. Unit: MiB.
      */
-    memorySize?: pulumi.Input<number>;
+    memorySize?: pulumi.Input<number | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `SUFFICIENT`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

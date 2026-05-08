@@ -23,9 +23,9 @@ class ProductVersionArgs:
                  product_version_name: pulumi.Input[_builtins.str],
                  template_type: pulumi.Input[_builtins.str],
                  template_url: pulumi.Input[_builtins.str],
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 guidance: Optional[pulumi.Input[_builtins.str]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 guidance: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProductVersion resource.
 
@@ -98,52 +98,52 @@ class ProductVersionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the version is activated
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def guidance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def guidance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Administrator guidance
         """
         return pulumi.get(self, "guidance")
 
     @guidance.setter
-    def guidance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def guidance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "guidance", value)
 
 
 @pulumi.input_type
 class _ProductVersionState:
     def __init__(__self__, *,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 guidance: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_version_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 guidance: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_version_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProductVersion resources.
 
@@ -175,98 +175,98 @@ class _ProductVersionState:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the version is activated
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def guidance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def guidance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Administrator guidance
         """
         return pulumi.get(self, "guidance")
 
     @guidance.setter
-    def guidance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def guidance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "guidance", value)
 
     @_builtins.property
     @pulumi.getter(name="productId")
-    def product_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Product ID
         """
         return pulumi.get(self, "product_id")
 
     @product_id.setter
-    def product_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_id", value)
 
     @_builtins.property
     @pulumi.getter(name="productVersionName")
-    def product_version_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_version_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "product_version_name")
 
     @product_version_name.setter
-    def product_version_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_version_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_version_name", value)
 
     @_builtins.property
     @pulumi.getter(name="templateType")
-    def template_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template Type
         """
         return pulumi.get(self, "template_type")
 
     @template_type.setter
-    def template_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_type", value)
 
     @_builtins.property
     @pulumi.getter(name="templateUrl")
-    def template_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template URL
         """
         return pulumi.get(self, "template_url")
 
     @template_url.setter
-    def template_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_url", value)
 
 
@@ -276,13 +276,13 @@ class ProductVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 guidance: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_version_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 guidance: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_version_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Service Catalog Product Version resource.
@@ -407,13 +407,13 @@ class ProductVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 guidance: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_version_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 guidance: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_version_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -449,14 +449,14 @@ class ProductVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            guidance: Optional[pulumi.Input[_builtins.str]] = None,
-            product_id: Optional[pulumi.Input[_builtins.str]] = None,
-            product_version_name: Optional[pulumi.Input[_builtins.str]] = None,
-            template_type: Optional[pulumi.Input[_builtins.str]] = None,
-            template_url: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProductVersion':
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            guidance: pulumi.Input[Optional[_builtins.str]] = None,
+            product_id: pulumi.Input[Optional[_builtins.str]] = None,
+            product_version_name: pulumi.Input[Optional[_builtins.str]] = None,
+            template_type: pulumi.Input[Optional[_builtins.str]] = None,
+            template_url: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProductVersion':
         """
         Get an existing ProductVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

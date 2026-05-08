@@ -147,10 +147,10 @@ def get_route_entries(cidr_block: Optional[_builtins.str] = None,
         instance_id=pulumi.get(__ret__, 'instance_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         route_table_id=pulumi.get(__ret__, 'route_table_id'))
-def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_route_entries_output(cidr_block: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteEntriesResult]:
     """
     This data source provides CEN Route Entries available to the user.

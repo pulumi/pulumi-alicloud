@@ -129,11 +129,11 @@ export interface GetInstanceAttachmentsOutputArgs {
     /**
      * The region to which the network to be queried belongs.
      */
-    childInstanceRegionId?: pulumi.Input<string>;
+    childInstanceRegionId?: pulumi.Input<string | undefined>;
     /**
      * The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
      */
-    childInstanceType?: pulumi.Input<string>;
+    childInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the CEN instance.
      */
@@ -141,9 +141,9 @@ export interface GetInstanceAttachmentsOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

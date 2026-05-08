@@ -108,15 +108,15 @@ export interface GetControlPolicyAttachmentsOutputArgs {
     /**
      * The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The policy type of control policy. Valid values: `Custom` and `System`.
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * The Id of target.
      */

@@ -22,8 +22,8 @@ class DashboardArgs:
                  char_list: pulumi.Input[_builtins.str],
                  dashboard_name: pulumi.Input[_builtins.str],
                  project_name: pulumi.Input[_builtins.str],
-                 attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Dashboard resource.
 
@@ -81,37 +81,37 @@ class DashboardArgs:
 
     @_builtins.property
     @pulumi.getter
-    def attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dashboard attribute.
         """
         return pulumi.get(self, "attribute")
 
     @attribute.setter
-    def attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dashboard alias.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
 
 @pulumi.input_type
 class _DashboardState:
     def __init__(__self__, *,
-                 attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 char_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 char_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
 
@@ -135,19 +135,19 @@ class _DashboardState:
 
     @_builtins.property
     @pulumi.getter
-    def attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dashboard attribute.
         """
         return pulumi.get(self, "attribute")
 
     @attribute.setter
-    def attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="charList")
-    def char_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def char_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configuration of charts in the dashboard.
         **Note:** From version 1.164.0, `char_list` can set parameter "action".
@@ -155,43 +155,43 @@ class _DashboardState:
         return pulumi.get(self, "char_list")
 
     @char_list.setter
-    def char_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def char_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "char_list", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardName")
-    def dashboard_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Log Dashboard.
         """
         return pulumi.get(self, "dashboard_name")
 
     @dashboard_name.setter
-    def dashboard_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_name", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dashboard alias.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the log project. It is the only in one Alicloud account.
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
 
@@ -201,11 +201,11 @@ class Dashboard(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 char_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 char_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The dashboard is a real-time data analysis platform provided by the log service. You can display frequently used query and analysis statements in the form of charts and save statistical charts to the dashboard.
@@ -391,11 +391,11 @@ class Dashboard(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 char_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 char_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -426,11 +426,11 @@ class Dashboard(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attribute: Optional[pulumi.Input[_builtins.str]] = None,
-            char_list: Optional[pulumi.Input[_builtins.str]] = None,
-            dashboard_name: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Dashboard':
+            attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            char_list: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard_name: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Dashboard':
         """
         Get an existing Dashboard resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

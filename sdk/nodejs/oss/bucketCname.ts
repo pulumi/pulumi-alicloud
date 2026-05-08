@@ -164,31 +164,31 @@ export interface BucketCnameState {
     /**
      * The bucket to which the custom domain name belongs
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The container for the certificate configuration. See `certificate` below.
      */
-    certificate?: pulumi.Input<inputs.oss.BucketCnameCertificate>;
+    certificate?: pulumi.Input<inputs.oss.BucketCnameCertificate | undefined>;
     /**
      * Whether to delete the certificate.
      */
-    deleteCertificate?: pulumi.Input<boolean>;
+    deleteCertificate?: pulumi.Input<boolean | undefined>;
     /**
      * User-defined domain name
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Whether to force overwrite certificate.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The current certificate ID. If the Force value is not true, the OSS Server checks whether the value matches the current certificate ID. If the value does not match, an error is reported.
      */
-    previousCertId?: pulumi.Input<string>;
+    previousCertId?: pulumi.Input<string | undefined>;
     /**
      * Cname status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -202,11 +202,11 @@ export interface BucketCnameArgs {
     /**
      * The container for the certificate configuration. See `certificate` below.
      */
-    certificate?: pulumi.Input<inputs.oss.BucketCnameCertificate>;
+    certificate?: pulumi.Input<inputs.oss.BucketCnameCertificate | undefined>;
     /**
      * Whether to delete the certificate.
      */
-    deleteCertificate?: pulumi.Input<boolean>;
+    deleteCertificate?: pulumi.Input<boolean | undefined>;
     /**
      * User-defined domain name
      */
@@ -214,9 +214,9 @@ export interface BucketCnameArgs {
     /**
      * Whether to force overwrite certificate.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The current certificate ID. If the Force value is not true, the OSS Server checks whether the value matches the current certificate ID. If the value does not match, an error is reported.
      */
-    previousCertId?: pulumi.Input<string>;
+    previousCertId?: pulumi.Input<string | undefined>;
 }

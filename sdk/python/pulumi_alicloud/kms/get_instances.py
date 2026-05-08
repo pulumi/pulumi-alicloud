@@ -207,9 +207,9 @@ def get_instances(ids: Optional[Sequence[_builtins.str]] = None,
         instance_name=pulumi.get(__ret__, 'instance_name'),
         instances=pulumi.get(__ret__, 'instances'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         instance_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instances_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         instance_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)

@@ -32,7 +32,7 @@ __all__ = [
 ]
 
 class GatewayLogConfigArgsDict(TypedDict):
-    sls: NotRequired[pulumi.Input['GatewayLogConfigSlsArgsDict']]
+    sls: NotRequired[pulumi.Input[Optional['GatewayLogConfigSlsArgs']]]
     """
     Sls See `sls` below.
     """
@@ -40,7 +40,7 @@ class GatewayLogConfigArgsDict(TypedDict):
 @pulumi.input_type
 class GatewayLogConfigArgs:
     def __init__(__self__, *,
-                 sls: Optional[pulumi.Input['GatewayLogConfigSlsArgs']] = None):
+                 sls: pulumi.Input[Optional['GatewayLogConfigSlsArgs']] = None):
         """
         :param pulumi.Input['GatewayLogConfigSlsArgs'] sls: Sls See `sls` below.
         """
@@ -49,19 +49,19 @@ class GatewayLogConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def sls(self) -> Optional[pulumi.Input['GatewayLogConfigSlsArgs']]:
+    def sls(self) -> pulumi.Input[Optional['GatewayLogConfigSlsArgs']]:
         """
         Sls See `sls` below.
         """
         return pulumi.get(self, "sls")
 
     @sls.setter
-    def sls(self, value: Optional[pulumi.Input['GatewayLogConfigSlsArgs']]):
+    def sls(self, value: pulumi.Input[Optional['GatewayLogConfigSlsArgs']]):
         pulumi.set(self, "sls", value)
 
 
 class GatewayLogConfigSlsArgsDict(TypedDict):
-    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable Log Service
     """
@@ -69,7 +69,7 @@ class GatewayLogConfigSlsArgsDict(TypedDict):
 @pulumi.input_type
 class GatewayLogConfigSlsArgs:
     def __init__(__self__, *,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable: Enable Log Service
         """
@@ -78,19 +78,19 @@ class GatewayLogConfigSlsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Log Service
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
 
 class GatewayNetworkAccessConfigArgsDict(TypedDict):
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Network Access Type
     """
@@ -98,7 +98,7 @@ class GatewayNetworkAccessConfigArgsDict(TypedDict):
 @pulumi.input_type
 class GatewayNetworkAccessConfigArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: Network Access Type
         """
@@ -107,14 +107,14 @@ class GatewayNetworkAccessConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network Access Type
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -123,7 +123,7 @@ class GatewayVpcArgsDict(TypedDict):
     """
     The VPC network ID.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The zone name.
     """
@@ -132,7 +132,7 @@ class GatewayVpcArgsDict(TypedDict):
 class GatewayVpcArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] vpc_id: The VPC network ID.
         :param pulumi.Input[_builtins.str] name: The zone name.
@@ -155,23 +155,23 @@ class GatewayVpcArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class GatewayVswitchArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The zone name.
     """
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the virtual switch.
     """
@@ -179,8 +179,8 @@ class GatewayVswitchArgsDict(TypedDict):
 @pulumi.input_type
 class GatewayVswitchArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The zone name.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the virtual switch.
@@ -192,39 +192,39 @@ class GatewayVswitchArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual switch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 class GatewayZoneArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The zone name.
     """
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The vswitch ID.
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The zone ID.
     """
@@ -232,9 +232,9 @@ class GatewayZoneArgsDict(TypedDict):
 @pulumi.input_type
 class GatewayZoneArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The zone name.
         :param pulumi.Input[_builtins.str] vswitch_id: The vswitch ID.
@@ -249,38 +249,38 @@ class GatewayZoneArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vswitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 

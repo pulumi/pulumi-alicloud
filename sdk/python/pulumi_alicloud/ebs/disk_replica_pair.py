@@ -24,18 +24,18 @@ class DiskReplicaPairArgs:
                  destination_zone_id: pulumi.Input[_builtins.str],
                  disk_id: pulumi.Input[_builtins.str],
                  source_zone_id: pulumi.Input[_builtins.str],
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_replica_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 one_shot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_replicate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rpo: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_replica_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rpo: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DiskReplicaPair resource.
 
@@ -171,7 +171,7 @@ class DiskReplicaPairArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
         - 10240 Kbps: equal to 10 Mbps.
@@ -185,36 +185,36 @@ class DiskReplicaPairArgs:
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskReplicaPairName")
-    def disk_replica_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_replica_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
         """
         return pulumi.get(self, "disk_replica_pair_name")
 
     @disk_replica_pair_name.setter
-    def disk_replica_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_replica_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_replica_pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="oneShot")
-    def one_shot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def one_shot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to synchronize immediately. Value range:
         - true: Start data synchronization immediately.
@@ -225,37 +225,37 @@ class DiskReplicaPairArgs:
         return pulumi.get(self, "one_shot")
 
     @one_shot.setter
-    def one_shot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def one_shot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "one_shot", value)
 
     @_builtins.property
     @pulumi.getter(name="pairName")
     @_utilities.deprecated("""Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.""")
-    def pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
         """
         return pulumi.get(self, "pair_name")
 
     @pair_name.setter
-    def pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
         - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
@@ -264,12 +264,12 @@ class DiskReplicaPairArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the purchase time of the asynchronous replication relationship. Value range:
         - Week: Week.
@@ -280,48 +280,48 @@ class DiskReplicaPairArgs:
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="reverseReplicate")
-    def reverse_replicate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reverse_replicate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
         """
         return pulumi.get(self, "reverse_replicate")
 
     @reverse_replicate.setter
-    def reverse_replicate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reverse_replicate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reverse_replicate", value)
 
     @_builtins.property
     @pulumi.getter
-    def rpo(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rpo(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         """
         return pulumi.get(self, "rpo")
 
     @rpo.setter
-    def rpo(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rpo(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rpo", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
 
@@ -330,33 +330,33 @@ class DiskReplicaPairArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _DiskReplicaPairState:
     def __init__(__self__, *,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_replica_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 one_shot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_replicate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rpo: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_replica_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rpo: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DiskReplicaPair resources.
 
@@ -446,7 +446,7 @@ class _DiskReplicaPairState:
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
         - 10240 Kbps: equal to 10 Mbps.
@@ -460,96 +460,96 @@ class _DiskReplicaPairState:
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationDiskId")
-    def destination_disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the standby disk.
         """
         return pulumi.get(self, "destination_disk_id")
 
     @destination_disk_id.setter
-    def destination_disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_disk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationRegionId")
-    def destination_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region to which the disaster recovery site belongs.
         """
         return pulumi.get(self, "destination_region_id")
 
     @destination_region_id.setter
-    def destination_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationZoneId")
-    def destination_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone to which the disaster recovery site belongs.
         """
         return pulumi.get(self, "destination_zone_id")
 
     @destination_zone_id.setter
-    def destination_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the primary disk.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="diskReplicaPairName")
-    def disk_replica_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_replica_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
         """
         return pulumi.get(self, "disk_replica_pair_name")
 
     @disk_replica_pair_name.setter
-    def disk_replica_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_replica_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_replica_pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="oneShot")
-    def one_shot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def one_shot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to synchronize immediately. Value range:
         - true: Start data synchronization immediately.
@@ -560,37 +560,37 @@ class _DiskReplicaPairState:
         return pulumi.get(self, "one_shot")
 
     @one_shot.setter
-    def one_shot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def one_shot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "one_shot", value)
 
     @_builtins.property
     @pulumi.getter(name="pairName")
     @_utilities.deprecated("""Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.""")
-    def pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
         """
         return pulumi.get(self, "pair_name")
 
     @pair_name.setter
-    def pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
         - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
@@ -599,12 +599,12 @@ class _DiskReplicaPairState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the purchase time of the asynchronous replication relationship. Value range:
         - Week: Week.
@@ -615,84 +615,84 @@ class _DiskReplicaPairState:
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID  of the resource
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="reverseReplicate")
-    def reverse_replicate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reverse_replicate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
         """
         return pulumi.get(self, "reverse_replicate")
 
     @reverse_replicate.setter
-    def reverse_replicate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reverse_replicate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reverse_replicate", value)
 
     @_builtins.property
     @pulumi.getter
-    def rpo(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rpo(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         """
         return pulumi.get(self, "rpo")
 
     @rpo.setter
-    def rpo(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rpo(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rpo", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceZoneId")
-    def source_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone to which the production site belongs.
         """
         return pulumi.get(self, "source_zone_id")
 
     @source_zone_id.setter
-    def source_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_zone_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
 
@@ -701,7 +701,7 @@ class _DiskReplicaPairState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -711,23 +711,23 @@ class DiskReplicaPair(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_replica_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 one_shot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_replicate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rpo: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_replica_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rpo: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Elastic Block Storage(EBS) Disk Replica Pair resource.
@@ -937,23 +937,23 @@ class DiskReplicaPair(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_replica_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 one_shot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_replicate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rpo: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_replica_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rpo: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1003,26 +1003,26 @@ class DiskReplicaPair(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_replica_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-            one_shot: Optional[pulumi.Input[_builtins.bool]] = None,
-            pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            reverse_replicate: Optional[pulumi.Input[_builtins.bool]] = None,
-            rpo: Optional[pulumi.Input[_builtins.int]] = None,
-            source_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DiskReplicaPair':
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_replica_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            one_shot: pulumi.Input[Optional[_builtins.bool]] = None,
+            pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reverse_replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+            rpo: pulumi.Input[Optional[_builtins.int]] = None,
+            source_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DiskReplicaPair':
         """
         Get an existing DiskReplicaPair resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

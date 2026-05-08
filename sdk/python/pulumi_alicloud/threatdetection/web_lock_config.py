@@ -24,10 +24,10 @@ class WebLockConfigArgs:
                  local_backup_dir: pulumi.Input[_builtins.str],
                  mode: pulumi.Input[_builtins.str],
                  uuid: pulumi.Input[_builtins.str],
-                 exclusive_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_file_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 inclusive_file_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 exclusive_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclusive_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclusive_file_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 inclusive_file_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WebLockConfig resource.
 
@@ -117,65 +117,65 @@ class WebLockConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="exclusiveDir")
-    def exclusive_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclusive_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_dir")
 
     @exclusive_dir.setter
-    def exclusive_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclusive_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclusive_dir", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusiveFile")
-    def exclusive_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclusive_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_file")
 
     @exclusive_file.setter
-    def exclusive_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclusive_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclusive_file", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusiveFileType")
-    def exclusive_file_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclusive_file_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_file_type")
 
     @exclusive_file_type.setter
-    def exclusive_file_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclusive_file_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclusive_file_type", value)
 
     @_builtins.property
     @pulumi.getter(name="inclusiveFileType")
-    def inclusive_file_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inclusive_file_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
         """
         return pulumi.get(self, "inclusive_file_type")
 
     @inclusive_file_type.setter
-    def inclusive_file_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inclusive_file_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inclusive_file_type", value)
 
 
 @pulumi.input_type
 class _WebLockConfigState:
     def __init__(__self__, *,
-                 defence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_file_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 inclusive_file_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_backup_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 defence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclusive_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclusive_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclusive_file_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 inclusive_file_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_backup_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebLockConfig resources.
 
@@ -210,110 +210,110 @@ class _WebLockConfigState:
 
     @_builtins.property
     @pulumi.getter(name="defenceMode")
-    def defence_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def defence_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Protection mode. Value:-**block**: Intercept-**audit**: Alarm
         """
         return pulumi.get(self, "defence_mode")
 
     @defence_mode.setter
-    def defence_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def defence_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "defence_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the protection directory.
         """
         return pulumi.get(self, "dir")
 
     @dir.setter
-    def dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dir", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusiveDir")
-    def exclusive_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclusive_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_dir")
 
     @exclusive_dir.setter
-    def exclusive_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclusive_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclusive_dir", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusiveFile")
-    def exclusive_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclusive_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_file")
 
     @exclusive_file.setter
-    def exclusive_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclusive_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclusive_file", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusiveFileType")
-    def exclusive_file_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclusive_file_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_file_type")
 
     @exclusive_file_type.setter
-    def exclusive_file_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclusive_file_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclusive_file_type", value)
 
     @_builtins.property
     @pulumi.getter(name="inclusiveFileType")
-    def inclusive_file_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inclusive_file_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
         """
         return pulumi.get(self, "inclusive_file_type")
 
     @inclusive_file_type.setter
-    def inclusive_file_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inclusive_file_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inclusive_file_type", value)
 
     @_builtins.property
     @pulumi.getter(name="localBackupDir")
-    def local_backup_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_backup_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The local backup path is used to protect the safe backup of the Directory.
         """
         return pulumi.get(self, "local_backup_dir")
 
     @local_backup_dir.setter
-    def local_backup_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_backup_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_backup_dir", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the protected directory mode. Value:-**whitelist**: whitelist mode, which protects the added protected directories and file types.-**blacklist**: blacklist mode, which protects all unexcluded subdirectories, file types, and specified files under the added protection directory.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the UUID of the server to which you want to add a protection directory.> You can call the DescribeCloudCenterInstances interface to obtain the UUID of the server.
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
 
@@ -323,15 +323,15 @@ class WebLockConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 defence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_file_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 inclusive_file_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_backup_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 defence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclusive_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclusive_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclusive_file_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 inclusive_file_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_backup_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Web Lock Config resource.
@@ -438,15 +438,15 @@ class WebLockConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 defence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_file_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 inclusive_file_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_backup_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 defence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclusive_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclusive_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclusive_file_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 inclusive_file_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_backup_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -485,15 +485,15 @@ class WebLockConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            defence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            dir: Optional[pulumi.Input[_builtins.str]] = None,
-            exclusive_dir: Optional[pulumi.Input[_builtins.str]] = None,
-            exclusive_file: Optional[pulumi.Input[_builtins.str]] = None,
-            exclusive_file_type: Optional[pulumi.Input[_builtins.str]] = None,
-            inclusive_file_type: Optional[pulumi.Input[_builtins.str]] = None,
-            local_backup_dir: Optional[pulumi.Input[_builtins.str]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'WebLockConfig':
+            defence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            dir: pulumi.Input[Optional[_builtins.str]] = None,
+            exclusive_dir: pulumi.Input[Optional[_builtins.str]] = None,
+            exclusive_file: pulumi.Input[Optional[_builtins.str]] = None,
+            exclusive_file_type: pulumi.Input[Optional[_builtins.str]] = None,
+            inclusive_file_type: pulumi.Input[Optional[_builtins.str]] = None,
+            local_backup_dir: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'WebLockConfig':
         """
         Get an existing WebLockConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

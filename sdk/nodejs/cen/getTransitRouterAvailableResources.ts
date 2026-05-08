@@ -99,9 +99,9 @@ export interface GetTransitRouterAvailableResourcesOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to query only the zones in which the multicast feature is supported.
      */
-    supportMulticast?: pulumi.Input<boolean>;
+    supportMulticast?: pulumi.Input<boolean | undefined>;
 }

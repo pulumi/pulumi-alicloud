@@ -202,14 +202,14 @@ def get_quota_alarms(enable_details: Optional[_builtins.bool] = None,
         quota_action_code=pulumi.get(__ret__, 'quota_action_code'),
         quota_alarm_name=pulumi.get(__ret__, 'quota_alarm_name'),
         quota_dimensions=pulumi.get(__ret__, 'quota_dimensions'))
-def get_quota_alarms_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                            ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            product_code: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            quota_action_code: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            quota_alarm_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            quota_dimensions: Optional[pulumi.Input[Optional[Sequence[Union['GetQuotaAlarmsQuotaDimensionArgs', 'GetQuotaAlarmsQuotaDimensionArgsDict']]]]] = None,
+def get_quota_alarms_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                            ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            product_code: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            quota_action_code: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            quota_alarm_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            quota_dimensions: pulumi.Input[Optional[Optional[Sequence[Union['GetQuotaAlarmsQuotaDimensionArgs', 'GetQuotaAlarmsQuotaDimensionArgsDict']]]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQuotaAlarmsResult]:
     """
     This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.

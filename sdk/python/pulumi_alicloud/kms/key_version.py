@@ -47,8 +47,8 @@ class KeyVersionArgs:
 @pulumi.input_type
 class _KeyVersionState:
     def __init__(__self__, *,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_version_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_version_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyVersion resources.
 
@@ -64,7 +64,7 @@ class _KeyVersionState:
 
     @_builtins.property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the master key (CMK).
 
@@ -73,19 +73,19 @@ class _KeyVersionState:
         return pulumi.get(self, "key_id")
 
     @key_id.setter
-    def key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="keyVersionId")
-    def key_version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_version_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the Alikms key version.
         """
         return pulumi.get(self, "key_version_id")
 
     @key_version_id.setter
-    def key_version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_version_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_version_id", value)
 
 
@@ -95,7 +95,7 @@ class KeyVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Alikms Key Version resource. For information about Alikms Key Version and how to use it, see [What is Resource Alikms Key Version](https://www.alibabacloud.com/help/doc-detail/133838.htm).
@@ -180,7 +180,7 @@ class KeyVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -204,8 +204,8 @@ class KeyVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            key_version_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'KeyVersion':
+            key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            key_version_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'KeyVersion':
         """
         Get an existing KeyVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -25,7 +25,7 @@ class SecondaryIndexArgs:
                  instance_name: pulumi.Input[_builtins.str],
                  primary_keys: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  table_name: pulumi.Input[_builtins.str],
-                 defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecondaryIndex resource.
 
@@ -120,27 +120,27 @@ class SecondaryIndexArgs:
 
     @_builtins.property
     @pulumi.getter(name="definedColumns")
-    def defined_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def defined_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of defined column for index, referenced from Table's primary keys or predefined columns.
         """
         return pulumi.get(self, "defined_columns")
 
     @defined_columns.setter
-    def defined_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def defined_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "defined_columns", value)
 
 
 @pulumi.input_type
 class _SecondaryIndexState:
     def __init__(__self__, *,
-                 defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_base_data: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_base_data: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecondaryIndex resources.
 
@@ -169,86 +169,86 @@ class _SecondaryIndexState:
 
     @_builtins.property
     @pulumi.getter(name="definedColumns")
-    def defined_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def defined_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of defined column for index, referenced from Table's primary keys or predefined columns.
         """
         return pulumi.get(self, "defined_columns")
 
     @defined_columns.setter
-    def defined_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def defined_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "defined_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="includeBaseData")
-    def include_base_data(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_base_data(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
         """
         return pulumi.get(self, "include_base_data")
 
     @include_base_data.setter
-    def include_base_data(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_base_data(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_base_data", value)
 
     @_builtins.property
     @pulumi.getter(name="indexName")
-    def index_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The index name of the OTS Table. If changed, a new index would be created.
         """
         return pulumi.get(self, "index_name")
 
     @index_name.setter
-    def index_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index_name", value)
 
     @_builtins.property
     @pulumi.getter(name="indexType")
-    def index_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The index type of the OTS Table. If changed, a new index would be created, only `Global` or `Local` is allowed.
         """
         return pulumi.get(self, "index_type")
 
     @index_type.setter
-    def index_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OTS instance in which table will located.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKeys")
-    def primary_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def primary_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of primary keys for index, referenced from Table's primary keys or predefined columns.
         """
         return pulumi.get(self, "primary_keys")
 
     @primary_keys.setter
-    def primary_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def primary_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "primary_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="tableName")
-    def table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OTS table. If changed, a new table would be created.
         """
         return pulumi.get(self, "table_name")
 
     @table_name.setter
-    def table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_name", value)
 
 
@@ -258,13 +258,13 @@ class SecondaryIndex(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_base_data: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_base_data: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an OTS secondary index resource.
@@ -483,13 +483,13 @@ class SecondaryIndex(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_base_data: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_base_data: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -528,13 +528,13 @@ class SecondaryIndex(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            include_base_data: Optional[pulumi.Input[_builtins.bool]] = None,
-            index_name: Optional[pulumi.Input[_builtins.str]] = None,
-            index_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            table_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecondaryIndex':
+            defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            include_base_data: pulumi.Input[Optional[_builtins.bool]] = None,
+            index_name: pulumi.Input[Optional[_builtins.str]] = None,
+            index_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecondaryIndex':
         """
         Get an existing SecondaryIndex resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

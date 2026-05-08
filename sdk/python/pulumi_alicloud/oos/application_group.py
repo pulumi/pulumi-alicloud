@@ -22,9 +22,9 @@ class ApplicationGroupArgs:
                  application_group_name: pulumi.Input[_builtins.str],
                  application_name: pulumi.Input[_builtins.str],
                  deploy_region_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_tag_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_tag_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationGroup resource.
 
@@ -84,31 +84,31 @@ class ApplicationGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application group description information.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="importTagKey")
-    def import_tag_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def import_tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is app-{ApplicationName} (application name).
         """
         return pulumi.get(self, "import_tag_key")
 
     @import_tag_key.setter
-    def import_tag_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def import_tag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "import_tag_key", value)
 
     @_builtins.property
     @pulumi.getter(name="importTagValue")
-    def import_tag_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def import_tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is application group name.
         .
@@ -116,19 +116,19 @@ class ApplicationGroupArgs:
         return pulumi.get(self, "import_tag_value")
 
     @import_tag_value.setter
-    def import_tag_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def import_tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "import_tag_value", value)
 
 
 @pulumi.input_type
 class _ApplicationGroupState:
     def __init__(__self__, *,
-                 application_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deploy_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_tag_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_tag_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationGroup resources.
 
@@ -155,67 +155,67 @@ class _ApplicationGroupState:
 
     @_builtins.property
     @pulumi.getter(name="applicationGroupName")
-    def application_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Application group.
         """
         return pulumi.get(self, "application_group_name")
 
     @application_group_name.setter
-    def application_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationName")
-    def application_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Application.
         """
         return pulumi.get(self, "application_name")
 
     @application_name.setter
-    def application_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deployRegionId")
-    def deploy_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deploy_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the deployment.
         """
         return pulumi.get(self, "deploy_region_id")
 
     @deploy_region_id.setter
-    def deploy_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deploy_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deploy_region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application group description information.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="importTagKey")
-    def import_tag_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def import_tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is app-{ApplicationName} (application name).
         """
         return pulumi.get(self, "import_tag_key")
 
     @import_tag_key.setter
-    def import_tag_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def import_tag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "import_tag_key", value)
 
     @_builtins.property
     @pulumi.getter(name="importTagValue")
-    def import_tag_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def import_tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is application group name.
         .
@@ -223,7 +223,7 @@ class _ApplicationGroupState:
         return pulumi.get(self, "import_tag_value")
 
     @import_tag_value.setter
-    def import_tag_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def import_tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "import_tag_value", value)
 
 
@@ -233,12 +233,12 @@ class ApplicationGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deploy_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_tag_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a OOS Application Group resource.
@@ -375,12 +375,12 @@ class ApplicationGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deploy_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_tag_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -412,12 +412,12 @@ class ApplicationGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            application_name: Optional[pulumi.Input[_builtins.str]] = None,
-            deploy_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            import_tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-            import_tag_value: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApplicationGroup':
+            application_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            application_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deploy_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            import_tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+            import_tag_value: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApplicationGroup':
         """
         Get an existing ApplicationGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

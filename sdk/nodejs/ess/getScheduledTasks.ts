@@ -127,21 +127,21 @@ export interface GetScheduledTasksOutputArgs {
     /**
      * A list of scheduled task IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter resulting scheduled tasks by name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The operation to be performed when a scheduled task is triggered.
      */
-    scheduledAction?: pulumi.Input<string>;
+    scheduledAction?: pulumi.Input<string | undefined>;
     /**
      * The id of the scheduled task.
      */
-    scheduledTaskId?: pulumi.Input<string>;
+    scheduledTaskId?: pulumi.Input<string | undefined>;
 }

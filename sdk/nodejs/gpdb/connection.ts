@@ -155,23 +155,23 @@ export interface ConnectionState {
     /**
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + '-tf'.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * Connection instance string.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * The Id of instance that can run database.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The ip address of connection string.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * Internet connection port. Valid value: [3200-3999]. Default to 3306.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,7 +181,7 @@ export interface ConnectionArgs {
     /**
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + '-tf'.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * The Id of instance that can run database.
      */
@@ -189,5 +189,5 @@ export interface ConnectionArgs {
     /**
      * Internet connection port. Valid value: [3200-3999]. Default to 3306.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
 }

@@ -220,51 +220,51 @@ export interface ServiceCertificateState {
     /**
      * The content of a non-SM certificate in PEM format.
      */
-    cert?: pulumi.Input<string>;
+    cert?: pulumi.Input<string | undefined>;
     /**
      * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
      */
-    certificateName?: pulumi.Input<string>;
+    certificateName?: pulumi.Input<string | undefined>;
     /**
      * The content of an SM encryption certificate in PEM format.
      */
-    encryptCert?: pulumi.Input<string>;
+    encryptCert?: pulumi.Input<string | undefined>;
     /**
      * The private key of an SM encryption certificate in PEM format.
      */
-    encryptPrivateKey?: pulumi.Input<string>;
+    encryptPrivateKey?: pulumi.Input<string | undefined>;
     /**
      * The private key of a non-SM certificate in PEM format.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      *
      * @deprecated Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The content of an SM signing certificate in PEM format.
      */
-    signCert?: pulumi.Input<string>;
+    signCert?: pulumi.Input<string | undefined>;
     /**
      * The private key of an SM signing certificate in PEM format.
      */
-    signPrivateKey?: pulumi.Input<string>;
+    signPrivateKey?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -274,49 +274,49 @@ export interface ServiceCertificateArgs {
     /**
      * The content of a non-SM certificate in PEM format.
      */
-    cert?: pulumi.Input<string>;
+    cert?: pulumi.Input<string | undefined>;
     /**
      * A custom name for the certificate. The name can be up to 64 characters long and can contain any character type, such as letters, numbers, and underscores. **NOTE:** From version 1.260.1, `certificateName` can be modified.
      */
-    certificateName?: pulumi.Input<string>;
+    certificateName?: pulumi.Input<string | undefined>;
     /**
      * The content of an SM encryption certificate in PEM format.
      */
-    encryptCert?: pulumi.Input<string>;
+    encryptCert?: pulumi.Input<string | undefined>;
     /**
      * The private key of an SM encryption certificate in PEM format.
      */
-    encryptPrivateKey?: pulumi.Input<string>;
+    encryptPrivateKey?: pulumi.Input<string | undefined>;
     /**
      * The private key of a non-SM certificate in PEM format.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Field `lang` has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      *
      * @deprecated Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute `certificateName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The content of an SM signing certificate in PEM format.
      */
-    signCert?: pulumi.Input<string>;
+    signCert?: pulumi.Input<string | undefined>;
     /**
      * The private key of an SM signing certificate in PEM format.
      */
-    signPrivateKey?: pulumi.Input<string>;
+    signPrivateKey?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

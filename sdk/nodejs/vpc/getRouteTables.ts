@@ -221,47 +221,47 @@ export interface GetRouteTablesOutputArgs {
     /**
      * A list of Route Tables IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter route tables by name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The Id of resource group which route tables belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The route table name.
      */
-    routeTableName?: pulumi.Input<string>;
+    routeTableName?: pulumi.Input<string | undefined>;
     /**
      * The route table type.
      */
-    routeTableType?: pulumi.Input<string>;
+    routeTableType?: pulumi.Input<string | undefined>;
     /**
      * The router ID.
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
     /**
      * The route type of route table. Valid values: `VRouter` and `VBR`.
      */
-    routerType?: pulumi.Input<string>;
+    routerType?: pulumi.Input<string | undefined>;
     /**
      * The status of resource. Valid values: `Available` and `Pending`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Vpc id of the route table.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

@@ -108,7 +108,7 @@ export interface GetServerFirewallRulesOutputArgs {
     /**
      * A list of Firewall Rule IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Alibaba Cloud simple application server instance ID.
      */
@@ -116,5 +116,5 @@ export interface GetServerFirewallRulesOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

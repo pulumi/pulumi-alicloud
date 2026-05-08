@@ -153,23 +153,23 @@ export interface GetQuotasOutputArgs {
     /**
      * The dimensions.
      */
-    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetQuotasDimensionArgs>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetQuotasDimensionArgs>[] | undefined>;
     /**
      * The group code.
      */
-    groupCode?: pulumi.Input<string>;
+    groupCode?: pulumi.Input<string | undefined>;
     /**
      * The key word.
      */
-    keyWord?: pulumi.Input<string>;
+    keyWord?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Quota name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The product code.
      */
@@ -177,17 +177,17 @@ export interface GetQuotasOutputArgs {
     /**
      * The quota action code.
      */
-    quotaActionCode?: pulumi.Input<string>;
+    quotaActionCode?: pulumi.Input<string | undefined>;
     /**
      * The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
      */
-    quotaCategory?: pulumi.Input<string>;
+    quotaCategory?: pulumi.Input<string | undefined>;
     /**
      * Cloud service ECS specification quota supports setting sorting fields. Valid Values: `TIME`, `TOTAL` and `RESERVED`.
      */
-    sortField?: pulumi.Input<string>;
+    sortField?: pulumi.Input<string | undefined>;
     /**
      * Ranking of cloud service ECS specification quota support. Valid Values: `Ascending` and `Descending`.
      */
-    sortOrder?: pulumi.Input<string>;
+    sortOrder?: pulumi.Input<string | undefined>;
 }

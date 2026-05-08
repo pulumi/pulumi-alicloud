@@ -28,15 +28,15 @@ __all__ = [
 ]
 
 class ListenerProxyProtocolConfigArgsDict(TypedDict):
-    proxy_protocol_config_private_link_ep_id_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    proxy_protocol_config_private_link_ep_id_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
     """
-    proxy_protocol_config_private_link_eps_id_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    proxy_protocol_config_private_link_eps_id_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
     """
-    proxy_protocol_config_vpc_id_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    proxy_protocol_config_vpc_id_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable carrying VpcId to backend servers through Proxy Protocol.
     """
@@ -44,9 +44,9 @@ class ListenerProxyProtocolConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ListenerProxyProtocolConfigArgs:
     def __init__(__self__, *,
-                 proxy_protocol_config_private_link_ep_id_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proxy_protocol_config_private_link_eps_id_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proxy_protocol_config_vpc_id_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 proxy_protocol_config_private_link_ep_id_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proxy_protocol_config_private_link_eps_id_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proxy_protocol_config_vpc_id_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] proxy_protocol_config_private_link_ep_id_enabled: Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
         :param pulumi.Input[_builtins.bool] proxy_protocol_config_private_link_eps_id_enabled: Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
@@ -61,51 +61,51 @@ class ListenerProxyProtocolConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocolConfigPrivateLinkEpIdEnabled")
-    def proxy_protocol_config_private_link_ep_id_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxy_protocol_config_private_link_ep_id_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
         """
         return pulumi.get(self, "proxy_protocol_config_private_link_ep_id_enabled")
 
     @proxy_protocol_config_private_link_ep_id_enabled.setter
-    def proxy_protocol_config_private_link_ep_id_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxy_protocol_config_private_link_ep_id_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxy_protocol_config_private_link_ep_id_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocolConfigPrivateLinkEpsIdEnabled")
-    def proxy_protocol_config_private_link_eps_id_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxy_protocol_config_private_link_eps_id_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
         """
         return pulumi.get(self, "proxy_protocol_config_private_link_eps_id_enabled")
 
     @proxy_protocol_config_private_link_eps_id_enabled.setter
-    def proxy_protocol_config_private_link_eps_id_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxy_protocol_config_private_link_eps_id_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxy_protocol_config_private_link_eps_id_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocolConfigVpcIdEnabled")
-    def proxy_protocol_config_vpc_id_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxy_protocol_config_vpc_id_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable carrying VpcId to backend servers through Proxy Protocol.
         """
         return pulumi.get(self, "proxy_protocol_config_vpc_id_enabled")
 
     @proxy_protocol_config_vpc_id_enabled.setter
-    def proxy_protocol_config_vpc_id_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxy_protocol_config_vpc_id_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxy_protocol_config_vpc_id_enabled", value)
 
 
 class LoadBalancerDeletionProtectionConfigArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to enable deletion protection. Valid values:
     """
-    enabled_time: NotRequired[pulumi.Input[_builtins.str]]
+    enabled_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Opening time of the configuration read-only mode.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The reason must start with a letter.
 
@@ -116,9 +116,9 @@ class LoadBalancerDeletionProtectionConfigArgsDict(TypedDict):
 @pulumi.input_type
 class LoadBalancerDeletionProtectionConfigArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable deletion protection. Valid values:
         :param pulumi.Input[_builtins.str] enabled_time: Opening time of the configuration read-only mode.
@@ -136,31 +136,31 @@ class LoadBalancerDeletionProtectionConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable deletion protection. Valid values:
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledTime")
-    def enabled_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enabled_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Opening time of the configuration read-only mode.
         """
         return pulumi.get(self, "enabled_time")
 
     @enabled_time.setter
-    def enabled_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enabled_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enabled_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The reason must start with a letter.
 
@@ -170,22 +170,22 @@ class LoadBalancerDeletionProtectionConfigArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
 
 class LoadBalancerModificationProtectionConfigArgsDict(TypedDict):
-    enabled_time: NotRequired[pulumi.Input[_builtins.str]]
+    enabled_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Opening time of the configuration read-only mode.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The value must start with a letter.
 
     > **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies whether to enable the configuration read-only mode. Valid values:
     - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
@@ -197,9 +197,9 @@ class LoadBalancerModificationProtectionConfigArgsDict(TypedDict):
 @pulumi.input_type
 class LoadBalancerModificationProtectionConfigArgs:
     def __init__(__self__, *,
-                 enabled_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] enabled_time: Opening time of the configuration read-only mode.
         :param pulumi.Input[_builtins.str] reason: The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The value must start with a letter.
@@ -220,19 +220,19 @@ class LoadBalancerModificationProtectionConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enabledTime")
-    def enabled_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enabled_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Opening time of the configuration read-only mode.
         """
         return pulumi.get(self, "enabled_time")
 
     @enabled_time.setter
-    def enabled_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enabled_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enabled_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The value must start with a letter.
 
@@ -241,12 +241,12 @@ class LoadBalancerModificationProtectionConfigArgs:
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable the configuration read-only mode. Valid values:
         - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
@@ -257,7 +257,7 @@ class LoadBalancerModificationProtectionConfigArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -271,35 +271,35 @@ class LoadBalancerZoneMappingArgsDict(TypedDict):
     The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
     You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
     """
-    allocation_id: NotRequired[pulumi.Input[_builtins.str]]
+    allocation_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
     """
-    eni_id: NotRequired[pulumi.Input[_builtins.str]]
+    eni_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the elastic network interface (ENI).
     """
-    ipv4_local_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ipv4_local_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     IPv4 Local address list. The list of addresses that NLB interacts with backend services.
     """
-    ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
+    ipv6_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IPv6 address of the NLB instance.
     """
-    ipv6_local_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ipv6_local_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     IPv6 Local address list. The list of addresses that NLB interacts with backend services.
     """
-    private_ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
+    private_ipv4_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
     """
-    public_ipv4_address: NotRequired[pulumi.Input[_builtins.str]]
+    public_ipv4_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The public IPv4 address of the NLB instance.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Zone Status
     """
@@ -309,14 +309,14 @@ class LoadBalancerZoneMappingArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 allocation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 eni_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4_local_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_local_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_ipv4_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ipv4_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 allocation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 eni_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4_local_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_local_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] vswitch_id: The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
         :param pulumi.Input[_builtins.str] zone_id: The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
@@ -376,152 +376,152 @@ class LoadBalancerZoneMappingArgs:
 
     @_builtins.property
     @pulumi.getter(name="allocationId")
-    def allocation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allocation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
         """
         return pulumi.get(self, "allocation_id")
 
     @allocation_id.setter
-    def allocation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allocation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allocation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="eniId")
-    def eni_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eni_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the elastic network interface (ENI).
         """
         return pulumi.get(self, "eni_id")
 
     @eni_id.setter
-    def eni_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eni_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eni_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4LocalAddresses")
-    def ipv4_local_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ipv4_local_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         IPv4 Local address list. The list of addresses that NLB interacts with backend services.
         """
         return pulumi.get(self, "ipv4_local_addresses")
 
     @ipv4_local_addresses.setter
-    def ipv4_local_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ipv4_local_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipv4_local_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Address")
-    def ipv6_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 address of the NLB instance.
         """
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
-    def ipv6_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_address", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6LocalAddresses")
-    def ipv6_local_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ipv6_local_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         IPv6 Local address list. The list of addresses that NLB interacts with backend services.
         """
         return pulumi.get(self, "ipv6_local_addresses")
 
     @ipv6_local_addresses.setter
-    def ipv6_local_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ipv6_local_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipv6_local_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpv4Address")
-    def private_ipv4_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ipv4_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
         """
         return pulumi.get(self, "private_ipv4_address")
 
     @private_ipv4_address.setter
-    def private_ipv4_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ipv4_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ipv4_address", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpv4Address")
-    def public_ipv4_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ipv4_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public IPv4 address of the NLB instance.
         """
         return pulumi.get(self, "public_ipv4_address")
 
     @public_ipv4_address.setter
-    def public_ipv4_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ipv4_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ipv4_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone Status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 class ServerGroupHealthCheckArgsDict(TypedDict):
-    health_check_connect_port: NotRequired[pulumi.Input[_builtins.int]]
+    health_check_connect_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The port that you want to use for health checks on backend servers.
     Valid values: `0` to `65535`.
     Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
     """
-    health_check_connect_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    health_check_connect_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
     """
-    health_check_domain: NotRequired[pulumi.Input[_builtins.str]]
+    health_check_domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The domain name that you want to use for health checks. Valid values:
     - `$SERVER_IP`: the private IP address of a backend server.
     """
-    health_check_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    health_check_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to enable the health check feature. Valid values:
     """
-    health_check_exp: NotRequired[pulumi.Input[_builtins.str]]
+    health_check_exp: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     health check response character string. The value contains a maximum of 512 characters
     """
-    health_check_http_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    health_check_http_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\\_2xx` (default), `http\\_3xx`, `http\\_4xx`, and `http\\_5xx`.
 
     > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
     """
-    health_check_http_version: NotRequired[pulumi.Input[_builtins.str]]
+    health_check_http_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
 
     > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
     """
-    health_check_interval: NotRequired[pulumi.Input[_builtins.int]]
+    health_check_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The interval at which health checks are performed. Unit: seconds.
     Valid values: `5` to `50`.
     Default value: `10`.
     """
-    health_check_req: NotRequired[pulumi.Input[_builtins.str]]
+    health_check_req: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     UDP healthy check request string, the value is a character string of 512 characters
     """
-    health_check_type: NotRequired[pulumi.Input[_builtins.str]]
+    health_check_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
     """
-    health_check_url: NotRequired[pulumi.Input[_builtins.str]]
+    health_check_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path to which health check requests are sent.
 
@@ -529,19 +529,19 @@ class ServerGroupHealthCheckArgsDict(TypedDict):
 
     > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
     """
-    healthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    healthy_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
     Valid values: `2` to `10`.
     Default value: `2`.
     """
-    http_check_method: NotRequired[pulumi.Input[_builtins.str]]
+    http_check_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
 
     > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
     """
-    unhealthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    unhealthy_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
     Valid values: `2` to `10`.
@@ -551,20 +551,20 @@ class ServerGroupHealthCheckArgsDict(TypedDict):
 @pulumi.input_type
 class ServerGroupHealthCheckArgs:
     def __init__(__self__, *,
-                 health_check_connect_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_connect_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check_exp: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_http_codes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 health_check_http_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_req: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_check_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None):
+                 health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check_exp: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_http_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 health_check_http_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_req: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_check_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] health_check_connect_port: The port that you want to use for health checks on backend servers.
                Valid values: `0` to `65535`.
@@ -631,7 +631,7 @@ class ServerGroupHealthCheckArgs:
 
     @_builtins.property
     @pulumi.getter(name="healthCheckConnectPort")
-    def health_check_connect_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_connect_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port that you want to use for health checks on backend servers.
         Valid values: `0` to `65535`.
@@ -640,24 +640,24 @@ class ServerGroupHealthCheckArgs:
         return pulumi.get(self, "health_check_connect_port")
 
     @health_check_connect_port.setter
-    def health_check_connect_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_connect_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_connect_port", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckConnectTimeout")
-    def health_check_connect_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_connect_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
         """
         return pulumi.get(self, "health_check_connect_timeout")
 
     @health_check_connect_timeout.setter
-    def health_check_connect_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_connect_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_connect_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckDomain")
-    def health_check_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name that you want to use for health checks. Valid values:
         - `$SERVER_IP`: the private IP address of a backend server.
@@ -665,36 +665,36 @@ class ServerGroupHealthCheckArgs:
         return pulumi.get(self, "health_check_domain")
 
     @health_check_domain.setter
-    def health_check_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckEnabled")
-    def health_check_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def health_check_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the health check feature. Valid values:
         """
         return pulumi.get(self, "health_check_enabled")
 
     @health_check_enabled.setter
-    def health_check_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def health_check_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "health_check_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckExp")
-    def health_check_exp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_exp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         health check response character string. The value contains a maximum of 512 characters
         """
         return pulumi.get(self, "health_check_exp")
 
     @health_check_exp.setter
-    def health_check_exp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_exp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_exp", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckHttpCodes")
-    def health_check_http_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def health_check_http_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\\_2xx` (default), `http\\_3xx`, `http\\_4xx`, and `http\\_5xx`.
 
@@ -703,12 +703,12 @@ class ServerGroupHealthCheckArgs:
         return pulumi.get(self, "health_check_http_codes")
 
     @health_check_http_codes.setter
-    def health_check_http_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def health_check_http_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "health_check_http_codes", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckHttpVersion")
-    def health_check_http_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_http_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTP protocol version for health checks. Valid values: `HTTP1.0` (default) and `HTTP1.1`.
 
@@ -717,12 +717,12 @@ class ServerGroupHealthCheckArgs:
         return pulumi.get(self, "health_check_http_version")
 
     @health_check_http_version.setter
-    def health_check_http_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_http_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_http_version", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckInterval")
-    def health_check_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval at which health checks are performed. Unit: seconds.
         Valid values: `5` to `50`.
@@ -731,36 +731,36 @@ class ServerGroupHealthCheckArgs:
         return pulumi.get(self, "health_check_interval")
 
     @health_check_interval.setter
-    def health_check_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckReq")
-    def health_check_req(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_req(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UDP healthy check request string, the value is a character string of 512 characters
         """
         return pulumi.get(self, "health_check_req")
 
     @health_check_req.setter
-    def health_check_req(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_req(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_req", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
         """
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
-    def health_check_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_type", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckUrl")
-    def health_check_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to which health check requests are sent.
 
@@ -771,12 +771,12 @@ class ServerGroupHealthCheckArgs:
         return pulumi.get(self, "health_check_url")
 
     @health_check_url.setter
-    def health_check_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_url", value)
 
     @_builtins.property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def healthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
         Valid values: `2` to `10`.
@@ -785,12 +785,12 @@ class ServerGroupHealthCheckArgs:
         return pulumi.get(self, "healthy_threshold")
 
     @healthy_threshold.setter
-    def healthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def healthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "healthy_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="httpCheckMethod")
-    def http_check_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_check_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
 
@@ -799,12 +799,12 @@ class ServerGroupHealthCheckArgs:
         return pulumi.get(self, "http_check_method")
 
     @http_check_method.setter
-    def http_check_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_check_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_check_method", value)
 
     @_builtins.property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unhealthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
         Valid values: `2` to `10`.
@@ -813,7 +813,7 @@ class ServerGroupHealthCheckArgs:
         return pulumi.get(self, "unhealthy_threshold")
 
     @unhealthy_threshold.setter
-    def unhealthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unhealthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unhealthy_threshold", value)
 
 

@@ -33,8 +33,8 @@ public final class ImsFunctions {
      * import com.pulumi.alicloud.ims.OidcProviderArgs;
      * import com.pulumi.alicloud.ims.ImsFunctions;
      * import com.pulumi.alicloud.ims.inputs.GetOidcProvidersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -92,8 +92,8 @@ public final class ImsFunctions {
      * import com.pulumi.alicloud.ims.OidcProviderArgs;
      * import com.pulumi.alicloud.ims.ImsFunctions;
      * import com.pulumi.alicloud.ims.inputs.GetOidcProvidersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -151,8 +151,8 @@ public final class ImsFunctions {
      * import com.pulumi.alicloud.ims.OidcProviderArgs;
      * import com.pulumi.alicloud.ims.ImsFunctions;
      * import com.pulumi.alicloud.ims.inputs.GetOidcProvidersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -210,8 +210,8 @@ public final class ImsFunctions {
      * import com.pulumi.alicloud.ims.OidcProviderArgs;
      * import com.pulumi.alicloud.ims.ImsFunctions;
      * import com.pulumi.alicloud.ims.inputs.GetOidcProvidersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -269,8 +269,8 @@ public final class ImsFunctions {
      * import com.pulumi.alicloud.ims.OidcProviderArgs;
      * import com.pulumi.alicloud.ims.ImsFunctions;
      * import com.pulumi.alicloud.ims.inputs.GetOidcProvidersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -328,8 +328,8 @@ public final class ImsFunctions {
      * import com.pulumi.alicloud.ims.OidcProviderArgs;
      * import com.pulumi.alicloud.ims.ImsFunctions;
      * import com.pulumi.alicloud.ims.inputs.GetOidcProvidersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -387,8 +387,8 @@ public final class ImsFunctions {
      * import com.pulumi.alicloud.ims.OidcProviderArgs;
      * import com.pulumi.alicloud.ims.ImsFunctions;
      * import com.pulumi.alicloud.ims.inputs.GetOidcProvidersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

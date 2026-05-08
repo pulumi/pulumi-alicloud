@@ -20,14 +20,14 @@ __all__ = ['EnterpriseUserArgs', 'EnterpriseUser']
 class EnterpriseUserArgs:
     def __init__(__self__, *,
                  uid: pulumi.Input[_builtins.str],
-                 max_execute_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_result_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 mobile: Optional[pulumi.Input[_builtins.str]] = None,
-                 nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tid: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 max_execute_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_result_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 mobile: pulumi.Input[Optional[_builtins.str]] = None,
+                 nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tid: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnterpriseUser resource.
 
@@ -76,114 +76,114 @@ class EnterpriseUserArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxExecuteCount")
-    def max_execute_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_execute_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of inquiries on the day.
         """
         return pulumi.get(self, "max_execute_count")
 
     @max_execute_count.setter
-    def max_execute_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_execute_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_execute_count", value)
 
     @_builtins.property
     @pulumi.getter(name="maxResultCount")
-    def max_result_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_result_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Query the maximum number of rows on the day.
         """
         return pulumi.get(self, "max_result_count")
 
     @max_result_count.setter
-    def max_result_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_result_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_result_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def mobile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mobile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DingTalk number or mobile number of the user.
         """
         return pulumi.get(self, "mobile")
 
     @mobile.setter
-    def mobile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mobile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mobile", value)
 
     @_builtins.property
     @pulumi.getter(name="nickName")
     @_utilities.deprecated("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
-    def nick_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nick_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         It has been deprecated from 1.100.0 and use `user_name` instead.
         """
         return pulumi.get(self, "nick_name")
 
     @nick_name.setter
-    def nick_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nick_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nick_name", value)
 
     @_builtins.property
     @pulumi.getter(name="roleNames")
-    def role_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def role_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The roles that the user plays.
         """
         return pulumi.get(self, "role_names")
 
     @role_names.setter
-    def role_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def role_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "role_names", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The tenant ID.
         """
         return pulumi.get(self, "tid")
 
     @tid.setter
-    def tid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tid", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The nickname of the user.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
 @pulumi.input_type
 class _EnterpriseUserState:
     def __init__(__self__, *,
-                 max_execute_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_result_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 mobile: Optional[pulumi.Input[_builtins.str]] = None,
-                 nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tid: Optional[pulumi.Input[_builtins.int]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 max_execute_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_result_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 mobile: pulumi.Input[Optional[_builtins.str]] = None,
+                 nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tid: pulumi.Input[Optional[_builtins.int]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseUser resources.
 
@@ -221,111 +221,111 @@ class _EnterpriseUserState:
 
     @_builtins.property
     @pulumi.getter(name="maxExecuteCount")
-    def max_execute_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_execute_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of inquiries on the day.
         """
         return pulumi.get(self, "max_execute_count")
 
     @max_execute_count.setter
-    def max_execute_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_execute_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_execute_count", value)
 
     @_builtins.property
     @pulumi.getter(name="maxResultCount")
-    def max_result_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_result_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Query the maximum number of rows on the day.
         """
         return pulumi.get(self, "max_result_count")
 
     @max_result_count.setter
-    def max_result_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_result_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_result_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def mobile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mobile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DingTalk number or mobile number of the user.
         """
         return pulumi.get(self, "mobile")
 
     @mobile.setter
-    def mobile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mobile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mobile", value)
 
     @_builtins.property
     @pulumi.getter(name="nickName")
     @_utilities.deprecated("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
-    def nick_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nick_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         It has been deprecated from 1.100.0 and use `user_name` instead.
         """
         return pulumi.get(self, "nick_name")
 
     @nick_name.setter
-    def nick_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nick_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nick_name", value)
 
     @_builtins.property
     @pulumi.getter(name="roleNames")
-    def role_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def role_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The roles that the user plays.
         """
         return pulumi.get(self, "role_names")
 
     @role_names.setter
-    def role_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def role_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "role_names", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The tenant ID.
         """
         return pulumi.get(self, "tid")
 
     @tid.setter
-    def tid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tid", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud unique ID (UID) of the user to add.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The nickname of the user.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
@@ -335,15 +335,15 @@ class EnterpriseUser(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 max_execute_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_result_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 mobile: Optional[pulumi.Input[_builtins.str]] = None,
-                 nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tid: Optional[pulumi.Input[_builtins.int]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_execute_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_result_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 mobile: pulumi.Input[Optional[_builtins.str]] = None,
+                 nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tid: pulumi.Input[Optional[_builtins.int]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-registeruser).
@@ -456,15 +456,15 @@ class EnterpriseUser(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 max_execute_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_result_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 mobile: Optional[pulumi.Input[_builtins.str]] = None,
-                 nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tid: Optional[pulumi.Input[_builtins.int]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_execute_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_result_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 mobile: pulumi.Input[Optional[_builtins.str]] = None,
+                 nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tid: pulumi.Input[Optional[_builtins.int]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -495,15 +495,15 @@ class EnterpriseUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            max_execute_count: Optional[pulumi.Input[_builtins.int]] = None,
-            max_result_count: Optional[pulumi.Input[_builtins.int]] = None,
-            mobile: Optional[pulumi.Input[_builtins.str]] = None,
-            nick_name: Optional[pulumi.Input[_builtins.str]] = None,
-            role_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tid: Optional[pulumi.Input[_builtins.int]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            user_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnterpriseUser':
+            max_execute_count: pulumi.Input[Optional[_builtins.int]] = None,
+            max_result_count: pulumi.Input[Optional[_builtins.int]] = None,
+            mobile: pulumi.Input[Optional[_builtins.str]] = None,
+            nick_name: pulumi.Input[Optional[_builtins.str]] = None,
+            role_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tid: pulumi.Input[Optional[_builtins.int]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnterpriseUser':
         """
         Get an existing EnterpriseUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

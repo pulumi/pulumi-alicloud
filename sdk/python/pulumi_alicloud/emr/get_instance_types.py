@@ -217,14 +217,14 @@ def get_instance_types(cluster_type: Optional[_builtins.str] = None,
         support_node_types=pulumi.get(__ret__, 'support_node_types'),
         types=pulumi.get(__ret__, 'types'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_instance_types_output(cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                              destination_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                              instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                              instance_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              support_local_storage: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                              support_node_types: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                              zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_types_output(cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                              destination_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                              instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                              instance_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              support_local_storage: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                              support_node_types: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                              zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceTypesResult]:
     """
     The `emr_get_instance_types` data source provides a collection of ecs

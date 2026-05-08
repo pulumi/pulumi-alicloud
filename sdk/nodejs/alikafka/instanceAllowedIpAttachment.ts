@@ -165,15 +165,15 @@ export interface InstanceAllowedIpAttachmentState {
     /**
      * The IP address whitelist. It can be a CIDR block.
      */
-    allowedIp?: pulumi.Input<string>;
+    allowedIp?: pulumi.Input<string | undefined>;
     /**
      * The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
      */
-    allowedType?: pulumi.Input<string>;
+    allowedType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`. From version 1.219.0, `portRange` can be set to `9094/9094`, `9095/9095`.
      * - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
@@ -181,7 +181,7 @@ export interface InstanceAllowedIpAttachmentState {
      * - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
      * - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
      */
-    portRange?: pulumi.Input<string>;
+    portRange?: pulumi.Input<string | undefined>;
 }
 
 /**

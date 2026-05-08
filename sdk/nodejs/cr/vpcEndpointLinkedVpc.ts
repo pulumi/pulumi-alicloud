@@ -173,29 +173,29 @@ export interface VpcEndpointLinkedVpcState {
     /**
      * Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
      */
-    enableCreateDnsRecordInPvzt?: pulumi.Input<boolean>;
+    enableCreateDnsRecordInPvzt?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the module that you want to access. Valid Values:
      * - `Registry`: the image repository.
      * - `Chart`: a Helm chart.
      */
-    moduleName?: pulumi.Input<string>;
+    moduleName?: pulumi.Input<string | undefined>;
     /**
      * The status of the Vpc Endpoint Linked Vpc.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -205,7 +205,7 @@ export interface VpcEndpointLinkedVpcArgs {
     /**
      * Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
      */
-    enableCreateDnsRecordInPvzt?: pulumi.Input<boolean>;
+    enableCreateDnsRecordInPvzt?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the instance.
      */

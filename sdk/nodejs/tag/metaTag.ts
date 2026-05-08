@@ -113,11 +113,11 @@ export interface MetaTagState {
     /**
      * The key of the tag meta tag. key must be 1 to 128 characters in length.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The values of the tag meta tag.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

@@ -22,9 +22,9 @@ class AccountArgs:
                  account_name: pulumi.Input[_builtins.str],
                  account_password: pulumi.Input[_builtins.str],
                  db_instance_id: pulumi.Input[_builtins.str],
-                 account_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
 
@@ -90,19 +90,19 @@ class AccountArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountDescription")
-    def account_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the account.
         """
         return pulumi.get(self, "account_description")
 
     @account_description.setter
-    def account_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_description", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
-    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account type. The value range is as follows:
 
@@ -113,12 +113,12 @@ class AccountArgs:
         return pulumi.get(self, "account_type")
 
     @account_type.setter
-    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseName")
-    def database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database name, with the following restrictions:
         - Can only contain letters, numbers and underscores.
@@ -128,20 +128,20 @@ class AccountArgs:
         return pulumi.get(self, "database_name")
 
     @database_name.setter
-    def database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_name", value)
 
 
 @pulumi.input_type
 class _AccountState:
     def __init__(__self__, *,
-                 account_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
 
@@ -177,43 +177,43 @@ class _AccountState:
 
     @_builtins.property
     @pulumi.getter(name="accountDescription")
-    def account_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the account.
         """
         return pulumi.get(self, "account_description")
 
     @account_description.setter
-    def account_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_description", value)
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account name.
         """
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AccountPassword
         """
         return pulumi.get(self, "account_password")
 
     @account_password.setter
-    def account_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
-    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account type. The value range is as follows:
 
@@ -224,12 +224,12 @@ class _AccountState:
         return pulumi.get(self, "account_type")
 
     @account_type.setter
-    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseName")
-    def database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database name, with the following restrictions:
         - Can only contain letters, numbers and underscores.
@@ -239,31 +239,31 @@ class _AccountState:
         return pulumi.get(self, "database_name")
 
     @database_name.setter
-    def database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Adb pg instance ID.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -273,12 +273,12 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a GPDB Account resource.
@@ -437,12 +437,12 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -477,13 +477,13 @@ class Account(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_description: Optional[pulumi.Input[_builtins.str]] = None,
-            account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            account_password: Optional[pulumi.Input[_builtins.str]] = None,
-            account_type: Optional[pulumi.Input[_builtins.str]] = None,
-            database_name: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Account':
+            account_description: pulumi.Input[Optional[_builtins.str]] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

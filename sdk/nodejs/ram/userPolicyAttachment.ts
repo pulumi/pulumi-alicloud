@@ -156,17 +156,17 @@ export interface UserPolicyAttachmentState {
     /**
      * The name of the policy.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * Permission policy type.
      * - Custom: Custom policy.
      * - System: System policy.
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * The name of the RAM user.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -38,12 +38,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = defaultMscSubContract.ID().ApplyT(func(id string) (alicloud.GetMscSubContactVerificationMessageResult, error) {
-//				return alicloud.GetMscSubContactVerificationMessageResult(interface{}(alicloud.GetMscSubContactVerificationMessage(ctx, &alicloud.GetMscSubContactVerificationMessageArgs{
-//					ContactId: id,
-//					Type:      1,
-//				}, nil))), nil
-//			}).(alicloud.GetMscSubContactVerificationMessageResultOutput)
+//			_ = alicloud.GetMscSubContactVerificationMessageOutput(ctx, alicloud.GetMscSubContactVerificationMessageOutputArgs{
+//				ContactId: defaultMscSubContract.ID(),
+//				Type:      pulumi.Int(1),
+//			}, nil)
 //			return nil
 //		})
 //	}

@@ -123,9 +123,9 @@ def get_backend_servers(ids: Optional[Sequence[_builtins.str]] = None,
         ids=pulumi.get(__ret__, 'ids'),
         load_balancer_id=pulumi.get(__ret__, 'load_balancer_id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_backend_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_backend_servers_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackendServersResult]:
     """
     This data source provides the server load balancer backend servers related to a server load balancer..

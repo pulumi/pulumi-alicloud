@@ -148,27 +148,27 @@ export interface ClientKeyState {
     /**
      * ClientKey's parent Application Access Point name.
      */
-    aapName?: pulumi.Input<string>;
+    aapName?: pulumi.Input<string | undefined>;
     /**
      * Create timestamp, e.g. "2022-08-10T08:03:30Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ClientKey expiration time. Example: "2027-08-10 T08:03:30Z".
      */
-    notAfter?: pulumi.Input<string>;
+    notAfter?: pulumi.Input<string | undefined>;
     /**
      * The valid start time of the ClientKey. Example: "2022-08-10 T08:03:30Z".
      */
-    notBefore?: pulumi.Input<string>;
+    notBefore?: pulumi.Input<string | undefined>;
     /**
      * To enhance security, set a password for the downloaded Client Key,When an application accesses KMS, you must use the ClientKey content and this password to initialize the SDK client.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
      */
-    privateKeyDataFile?: pulumi.Input<string>;
+    privateKeyDataFile?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -182,11 +182,11 @@ export interface ClientKeyArgs {
     /**
      * The ClientKey expiration time. Example: "2027-08-10 T08:03:30Z".
      */
-    notAfter?: pulumi.Input<string>;
+    notAfter?: pulumi.Input<string | undefined>;
     /**
      * The valid start time of the ClientKey. Example: "2022-08-10 T08:03:30Z".
      */
-    notBefore?: pulumi.Input<string>;
+    notBefore?: pulumi.Input<string | undefined>;
     /**
      * To enhance security, set a password for the downloaded Client Key,When an application accesses KMS, you must use the ClientKey content and this password to initialize the SDK client.
      */
@@ -194,5 +194,5 @@ export interface ClientKeyArgs {
     /**
      * The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
      */
-    privateKeyDataFile?: pulumi.Input<string>;
+    privateKeyDataFile?: pulumi.Input<string | undefined>;
 }

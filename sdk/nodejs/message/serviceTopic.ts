@@ -138,31 +138,31 @@ export interface ServiceTopicState {
     /**
      * (Available since v1.241.0) The time when the topic was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      */
-    enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean | undefined>;
     /**
      * . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      *
      * @deprecated Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      */
-    loggingEnabled?: pulumi.Input<boolean>;
+    loggingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
      */
-    maxMessageSize?: pulumi.Input<number>;
+    maxMessageSize?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the topic.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    topicName?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -172,21 +172,21 @@ export interface ServiceTopicArgs {
     /**
      * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      */
-    enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean | undefined>;
     /**
      * . Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      *
      * @deprecated Field `loggingEnabled` has been deprecated from provider version 1.241.0. New field `enableLogging` instead.
      */
-    loggingEnabled?: pulumi.Input<boolean>;
+    loggingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
      */
-    maxMessageSize?: pulumi.Input<number>;
+    maxMessageSize?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the topic.
      *

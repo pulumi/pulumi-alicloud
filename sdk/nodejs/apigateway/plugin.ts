@@ -188,19 +188,19 @@ export interface PluginState {
     /**
      * Create time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the plug-in, which cannot exceed 200 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
      */
-    pluginData?: pulumi.Input<string>;
+    pluginData?: pulumi.Input<string | undefined>;
     /**
      * The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
      */
-    pluginName?: pulumi.Input<string>;
+    pluginName?: pulumi.Input<string | undefined>;
     /**
      * The type of the plug-in. Valid values:
      * - "trafficControl"
@@ -218,11 +218,11 @@ export interface PluginState {
      * - "logMask"
      * - "transformer".
      */
-    pluginType?: pulumi.Input<string>;
+    pluginType?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -232,7 +232,7 @@ export interface PluginArgs {
     /**
      * The description of the plug-in, which cannot exceed 200 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
      */
@@ -262,5 +262,5 @@ export interface PluginArgs {
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

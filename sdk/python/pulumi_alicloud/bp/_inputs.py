@@ -20,15 +20,15 @@ __all__ = [
 ]
 
 class StudioApplicationInstanceArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource ID in terraform of Application.
     """
-    node_name: NotRequired[pulumi.Input[_builtins.str]]
+    node_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the instance.
     """
-    node_type: NotRequired[pulumi.Input[_builtins.str]]
+    node_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the instance.
     """
@@ -36,9 +36,9 @@ class StudioApplicationInstanceArgsDict(TypedDict):
 @pulumi.input_type
 class StudioApplicationInstanceArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The resource ID in terraform of Application.
         :param pulumi.Input[_builtins.str] node_name: The name of the instance.
@@ -53,38 +53,38 @@ class StudioApplicationInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource ID in terraform of Application.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the instance.
         """
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
 

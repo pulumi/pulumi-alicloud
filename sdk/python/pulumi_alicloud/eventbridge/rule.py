@@ -25,8 +25,8 @@ class RuleArgs:
                  filter_pattern: pulumi.Input[_builtins.str],
                  rule_name: pulumi.Input[_builtins.str],
                  targets: pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Rule resource.
 
@@ -96,38 +96,38 @@ class RuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the event rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _RuleState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_bus_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input['RuleTargetArgs']]]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
 
@@ -153,74 +153,74 @@ class _RuleState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the event rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="eventBusName")
-    def event_bus_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_bus_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the event bus.
         """
         return pulumi.get(self, "event_bus_name")
 
     @event_bus_name.setter
-    def event_bus_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_bus_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_bus_name", value)
 
     @_builtins.property
     @pulumi.getter(name="filterPattern")
-    def filter_pattern(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
         """
         return pulumi.get(self, "filter_pattern")
 
     @filter_pattern.setter
-    def filter_pattern(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_pattern(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_pattern", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the event rule.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]]]:
+    def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleTargetArgs']]]]:
         """
         The targets of rule. See `targets` below.
         """
         return pulumi.get(self, "targets")
 
     @targets.setter
-    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]]]):
+    def targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleTargetArgs']]]]):
         pulumi.set(self, "targets", value)
 
 
@@ -230,12 +230,12 @@ class Rule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_bus_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Event Bridge Rule resource.
@@ -405,12 +405,12 @@ class Rule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_bus_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -444,12 +444,12 @@ class Rule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            event_bus_name: Optional[pulumi.Input[_builtins.str]] = None,
-            filter_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict']]]]] = None) -> 'Rule':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
+            filter_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleTargetArgs', 'RuleTargetArgsDict']]]]] = None) -> 'Rule':
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

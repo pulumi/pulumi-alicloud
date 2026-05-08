@@ -240,39 +240,39 @@ export interface AScriptState {
     /**
      * AScript name.
      */
-    ascriptName?: pulumi.Input<string>;
+    ascriptName?: pulumi.Input<string | undefined>;
     /**
      * Whether to PreCheck only this request
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Whether AScript is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
      */
-    extAttributeEnabled?: pulumi.Input<boolean>;
+    extAttributeEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
      */
-    extAttributes?: pulumi.Input<pulumi.Input<inputs.alb.AScriptExtAttribute>[]>;
+    extAttributes?: pulumi.Input<pulumi.Input<inputs.alb.AScriptExtAttribute>[] | undefined>;
     /**
      * Listener ID of script attribution
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * Script execution location.
      */
-    position?: pulumi.Input<string>;
+    position?: pulumi.Input<string | undefined>;
     /**
      * AScript script content.
      */
-    scriptContent?: pulumi.Input<string>;
+    scriptContent?: pulumi.Input<string | undefined>;
     /**
      * Script status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -286,19 +286,19 @@ export interface AScriptArgs {
     /**
      * Whether to PreCheck only this request
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Whether AScript is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
      */
-    extAttributeEnabled?: pulumi.Input<boolean>;
+    extAttributeEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `extAttributes` below.
      */
-    extAttributes?: pulumi.Input<pulumi.Input<inputs.alb.AScriptExtAttribute>[]>;
+    extAttributes?: pulumi.Input<pulumi.Input<inputs.alb.AScriptExtAttribute>[] | undefined>;
     /**
      * Listener ID of script attribution
      */

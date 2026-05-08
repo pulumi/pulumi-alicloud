@@ -23,7 +23,7 @@ class PolarDbExtensionArgs:
                  db_cluster_id: pulumi.Input[_builtins.str],
                  db_name: pulumi.Input[_builtins.str],
                  extension_name: pulumi.Input[_builtins.str],
-                 installed_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 installed_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PolarDbExtension resource.
 
@@ -90,26 +90,26 @@ class PolarDbExtensionArgs:
 
     @_builtins.property
     @pulumi.getter(name="installedVersion")
-    def installed_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def installed_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Installed version, only supports upgrading to the default version.
         """
         return pulumi.get(self, "installed_version")
 
     @installed_version.setter
-    def installed_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def installed_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "installed_version", value)
 
 
 @pulumi.input_type
 class _PolarDbExtensionState:
     def __init__(__self__, *,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 extension_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 installed_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 extension_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 installed_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolarDbExtension resources.
 
@@ -135,74 +135,74 @@ class _PolarDbExtensionState:
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database account name of the associated PolarDB cluster. Only support `Super` account.
         """
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterId")
-    def db_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cluster.
         """
         return pulumi.get(self, "db_cluster_id")
 
     @db_cluster_id.setter
-    def db_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbName")
-    def db_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PolarDB cluster database name.
         """
         return pulumi.get(self, "db_name")
 
     @db_name.setter
-    def db_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_name", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultVersion")
-    def default_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default version.
         """
         return pulumi.get(self, "default_version")
 
     @default_version.setter
-    def default_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_version", value)
 
     @_builtins.property
     @pulumi.getter(name="extensionName")
-    def extension_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def extension_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Information about the installed plug-ins under the specified database.
         """
         return pulumi.get(self, "extension_name")
 
     @extension_name.setter
-    def extension_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def extension_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "extension_name", value)
 
     @_builtins.property
     @pulumi.getter(name="installedVersion")
-    def installed_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def installed_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Installed version, only supports upgrading to the default version.
         """
         return pulumi.get(self, "installed_version")
 
     @installed_version.setter
-    def installed_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def installed_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "installed_version", value)
 
 
@@ -212,11 +212,11 @@ class PolarDbExtension(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 extension_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 installed_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 extension_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 installed_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Polar Db Extension resource.
@@ -385,11 +385,11 @@ class PolarDbExtension(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 extension_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 installed_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 extension_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 installed_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -423,12 +423,12 @@ class PolarDbExtension(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_name: Optional[pulumi.Input[_builtins.str]] = None,
-            default_version: Optional[pulumi.Input[_builtins.str]] = None,
-            extension_name: Optional[pulumi.Input[_builtins.str]] = None,
-            installed_version: Optional[pulumi.Input[_builtins.str]] = None) -> 'PolarDbExtension':
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_name: pulumi.Input[Optional[_builtins.str]] = None,
+            default_version: pulumi.Input[Optional[_builtins.str]] = None,
+            extension_name: pulumi.Input[Optional[_builtins.str]] = None,
+            installed_version: pulumi.Input[Optional[_builtins.str]] = None) -> 'PolarDbExtension':
         """
         Get an existing PolarDbExtension resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -77,7 +77,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //				VpcName:   pulumi.String(pulumi.String(name)),
 //			})
@@ -85,7 +85,7 @@ import (
 //				return err
 //			}
 //			vswitch1, err := vpc.NewSwitch(ctx, "vswitch_1", &vpc.SwitchArgs{
-//				VpcId:       vpc.ID(),
+//				VpcId:       vpc2.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
 //				ZoneId:      pulumi.String("cn-hangzhou-j"),
 //				VswitchName: pulumi.Sprintf("%v_1", name),
@@ -94,7 +94,7 @@ import (
 //				return err
 //			}
 //			vswitch2, err := vpc.NewSwitch(ctx, "vswitch_2", &vpc.SwitchArgs{
-//				VpcId:       vpc.ID(),
+//				VpcId:       vpc2.ID(),
 //				CidrBlock:   pulumi.String("172.17.0.0/16"),
 //				ZoneId:      pulumi.String("cn-hangzhou-k"),
 //				VswitchName: pulumi.Sprintf("%v_2", name),
@@ -103,7 +103,7 @@ import (
 //				return err
 //			}
 //			securityGroup, err := ecs.NewSecurityGroup(ctx, "security_group", &ecs.SecurityGroupArgs{
-//				VpcId:             vpc.ID(),
+//				VpcId:             vpc2.ID(),
 //				SecurityGroupName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
@@ -115,7 +115,7 @@ import (
 //				InstanceSpec: pulumi.String("api.s1.small"),
 //				InstanceType: pulumi.String("vpc_connect"),
 //				PaymentType:  pulumi.String("PayAsYouGo"),
-//				UserVpcId:    vpc.ID(),
+//				UserVpcId:    vpc2.ID(),
 //				InstanceCidr: pulumi.String("192.168.0.0/16"),
 //				ZoneVswitchSecurityGroups: apigateway.InstanceZoneVswitchSecurityGroupArray{
 //					&apigateway.InstanceZoneVswitchSecurityGroupArgs{

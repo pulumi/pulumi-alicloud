@@ -137,7 +137,7 @@ export interface GetQueuesOutputArgs {
     /**
      * A list of Queue IDs. Its element value is same as Queue Name.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the instance.
      */
@@ -145,11 +145,11 @@ export interface GetQueuesOutputArgs {
     /**
      * A regex string to filter results by Queue name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The name of the virtual host.
      */

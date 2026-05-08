@@ -28,11 +28,11 @@ class DbInstanceArgs:
                  db_node_storage: pulumi.Input[_builtins.int],
                  db_version: pulumi.Input[_builtins.str],
                  payment_type: pulumi.Input[_builtins.str],
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbInstance resource.
 
@@ -153,83 +153,83 @@ class DbInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceDescription")
-    def db_instance_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         According to the practical example or notes.
         """
         return pulumi.get(self, "db_instance_description")
 
     @db_instance_description.setter
-    def db_instance_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_description", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceIpArrays")
-    def db_instance_ip_arrays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]]:
+    def db_instance_ip_arrays(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]]:
         """
         IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         """
         return pulumi.get(self, "db_instance_ip_arrays")
 
     @db_instance_ip_arrays.setter
-    def db_instance_ip_arrays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]]):
+    def db_instance_ip_arrays(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]]):
         pulumi.set(self, "db_instance_ip_arrays", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of attaching vswitch to instance.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the resource.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _DbInstanceState:
     def __init__(__self__, *,
-                 connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]] = None,
-                 db_instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]] = None,
+                 db_instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbInstance resources.
 
@@ -282,182 +282,182 @@ class _DbInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available in 1.196.0+)  The connection string of the instance.
         """
         return pulumi.get(self, "connection_string")
 
     @connection_string.setter
-    def connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceCategory")
-    def db_instance_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
         """
         return pulumi.get(self, "db_instance_category")
 
     @db_instance_category.setter
-    def db_instance_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_category", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceDescription")
-    def db_instance_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         According to the practical example or notes.
         """
         return pulumi.get(self, "db_instance_description")
 
     @db_instance_description.setter
-    def db_instance_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_description", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceIpArrays")
-    def db_instance_ip_arrays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]]:
+    def db_instance_ip_arrays(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]]:
         """
         IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
         """
         return pulumi.get(self, "db_instance_ip_arrays")
 
     @db_instance_ip_arrays.setter
-    def db_instance_ip_arrays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]]):
+    def db_instance_ip_arrays(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceDbInstanceIpArrayArgs']]]]):
         pulumi.set(self, "db_instance_ip_arrays", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceNetworkType")
-    def db_instance_network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the db instance. Valid values: `vpc`.
         """
         return pulumi.get(self, "db_instance_network_type")
 
     @db_instance_network_type.setter
-    def db_instance_network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceStorageType")
-    def db_instance_storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
         """
         return pulumi.get(self, "db_instance_storage_type")
 
     @db_instance_storage_type.setter
-    def db_instance_storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_storage_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeClass")
-    def db_node_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_node_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
         """
         return pulumi.get(self, "db_node_class")
 
     @db_node_class.setter
-    def db_node_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_node_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_node_class", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeStorage")
-    def db_node_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def db_node_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance storage space, which is measured in GB.
         """
         return pulumi.get(self, "db_node_storage")
 
     @db_node_storage.setter
-    def db_node_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def db_node_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "db_node_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="dbVersion")
-    def db_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
         """
         return pulumi.get(self, "db_version")
 
     @db_version.setter
-    def db_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_version", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The paymen type of the resource. Valid values: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available in 1.196.0+) The connection port of the instance.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of attaching vswitch to instance.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the resource.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -467,18 +467,18 @@ class DbInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDbInstanceIpArrayArgs', 'DbInstanceDbInstanceIpArrayArgsDict']]]]] = None,
-                 db_instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceDbInstanceIpArrayArgs', 'DbInstanceDbInstanceIpArrayArgsDict']]]]] = None,
+                 db_instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Graph Database Db Instance resource.
@@ -598,18 +598,18 @@ class DbInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDbInstanceIpArrayArgs', 'DbInstanceDbInstanceIpArrayArgsDict']]]]] = None,
-                 db_instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceDbInstanceIpArrayArgs', 'DbInstanceDbInstanceIpArrayArgsDict']]]]] = None,
+                 db_instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -658,21 +658,21 @@ class DbInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_category: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceDbInstanceIpArrayArgs', 'DbInstanceDbInstanceIpArrayArgsDict']]]]] = None,
-            db_instance_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-            db_node_class: Optional[pulumi.Input[_builtins.str]] = None,
-            db_node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-            db_version: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DbInstance':
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstanceDbInstanceIpArrayArgs', 'DbInstanceDbInstanceIpArrayArgsDict']]]]] = None,
+            db_instance_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+            db_node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            db_version: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DbInstance':
         """
         Get an existing DbInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

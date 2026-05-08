@@ -75,9 +75,9 @@ class ControlPolicyOrderArgs:
 @pulumi.input_type
 class _ControlPolicyOrderState:
     def __init__(__self__, *,
-                 acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 order: Optional[pulumi.Input[_builtins.int]] = None):
+                 acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 order: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ControlPolicyOrder resources.
 
@@ -95,31 +95,31 @@ class _ControlPolicyOrderState:
 
     @_builtins.property
     @pulumi.getter(name="aclUuid")
-    def acl_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique ID of the access control policy.
         """
         return pulumi.get(self, "acl_uuid")
 
     @acl_uuid.setter
-    def acl_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         """
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
     @_builtins.property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def order(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
         > **NOTE:** From version 1.227.1, `order` must be set.
@@ -127,7 +127,7 @@ class _ControlPolicyOrderState:
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def order(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "order", value)
 
 
@@ -137,9 +137,9 @@ class ControlPolicyOrder(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 order: Optional[pulumi.Input[_builtins.int]] = None,
+                 acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 order: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Control Policy Order resource.
@@ -261,9 +261,9 @@ class ControlPolicyOrder(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 order: Optional[pulumi.Input[_builtins.int]] = None,
+                 acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 order: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -292,9 +292,9 @@ class ControlPolicyOrder(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            direction: Optional[pulumi.Input[_builtins.str]] = None,
-            order: Optional[pulumi.Input[_builtins.int]] = None) -> 'ControlPolicyOrder':
+            acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            order: pulumi.Input[Optional[_builtins.int]] = None) -> 'ControlPolicyOrder':
         """
         Get an existing ControlPolicyOrder resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

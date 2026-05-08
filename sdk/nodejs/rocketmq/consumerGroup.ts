@@ -218,39 +218,39 @@ export interface ConsumerGroupState {
     /**
      * Consumption retry strategy. See `consumeRetryPolicy` below.
      */
-    consumeRetryPolicy?: pulumi.Input<inputs.rocketmq.ConsumerGroupConsumeRetryPolicy>;
+    consumeRetryPolicy?: pulumi.Input<inputs.rocketmq.ConsumerGroupConsumeRetryPolicy | undefined>;
     /**
      * The first ID of the resource.
      */
-    consumerGroupId?: pulumi.Input<string>;
+    consumerGroupId?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Delivery order.
      */
-    deliveryOrderType?: pulumi.Input<string>;
+    deliveryOrderType?: pulumi.Input<string | undefined>;
     /**
      * Instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Maximum received message tps.
      */
-    maxReceiveTps?: pulumi.Input<number>;
+    maxReceiveTps?: pulumi.Input<number | undefined>;
     /**
      * (Available since v1.247.0) The ID of the region in which the instance resides.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Custom remarks.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -268,7 +268,7 @@ export interface ConsumerGroupArgs {
     /**
      * Delivery order.
      */
-    deliveryOrderType?: pulumi.Input<string>;
+    deliveryOrderType?: pulumi.Input<string | undefined>;
     /**
      * Instance ID.
      */
@@ -276,9 +276,9 @@ export interface ConsumerGroupArgs {
     /**
      * Maximum received message tps.
      */
-    maxReceiveTps?: pulumi.Input<number>;
+    maxReceiveTps?: pulumi.Input<number | undefined>;
     /**
      * Custom remarks.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
 }

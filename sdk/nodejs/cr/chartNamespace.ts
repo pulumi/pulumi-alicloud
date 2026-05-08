@@ -137,19 +137,19 @@ export interface ChartNamespaceState {
     /**
      * Specifies whether to automatically create repositories in the namespace. Valid values:
      */
-    autoCreateRepo?: pulumi.Input<boolean>;
+    autoCreateRepo?: pulumi.Input<boolean | undefined>;
     /**
      * DefaultRepoType. Valid values: `PRIVATE`, `PUBLIC`.
      */
-    defaultRepoType?: pulumi.Input<string>;
+    defaultRepoType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Container Registry instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the namespace that you want to create.
      */
-    namespaceName?: pulumi.Input<string>;
+    namespaceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -159,11 +159,11 @@ export interface ChartNamespaceArgs {
     /**
      * Specifies whether to automatically create repositories in the namespace. Valid values:
      */
-    autoCreateRepo?: pulumi.Input<boolean>;
+    autoCreateRepo?: pulumi.Input<boolean | undefined>;
     /**
      * DefaultRepoType. Valid values: `PRIVATE`, `PUBLIC`.
      */
-    defaultRepoType?: pulumi.Input<string>;
+    defaultRepoType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Container Registry instance.
      */

@@ -91,5 +91,5 @@ export interface GetTransitRouterServiceOutputArgs {
      *
      * > **NOTE:** Setting `enable = "On"` to open the CEN Transit Router Service that means you have read and agreed the [CEN Terms of Service](https://help.aliyun.com/document_detail/66667.html). The service can not closed once it is opened.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
 }

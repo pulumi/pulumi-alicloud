@@ -126,19 +126,19 @@ export interface PolicyState {
     /**
      * The document of the tag policy.
      */
-    policyContent?: pulumi.Input<string>;
+    policyContent?: pulumi.Input<string | undefined>;
     /**
      * The description of the policy. The description must be 1 to 512 characters in length.
      */
-    policyDesc?: pulumi.Input<string>;
+    policyDesc?: pulumi.Input<string | undefined>;
     /**
      * The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
      */
-    userType?: pulumi.Input<string>;
+    userType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -152,7 +152,7 @@ export interface PolicyArgs {
     /**
      * The description of the policy. The description must be 1 to 512 characters in length.
      */
-    policyDesc?: pulumi.Input<string>;
+    policyDesc?: pulumi.Input<string | undefined>;
     /**
      * The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
      */
@@ -160,5 +160,5 @@ export interface PolicyArgs {
     /**
      * The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
      */
-    userType?: pulumi.Input<string>;
+    userType?: pulumi.Input<string | undefined>;
 }

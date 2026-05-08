@@ -21,35 +21,35 @@ class K8sApplicationArgs:
     def __init__(__self__, *,
                  application_name: pulumi.Input[_builtins.str],
                  cluster_id: pulumi.Input[_builtins.str],
-                 application_descriotion: Optional[pulumi.Input[_builtins.str]] = None,
-                 command: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 edas_container_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 envs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_slb_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 internet_slb_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_target_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 jdk: Optional[pulumi.Input[_builtins.str]] = None,
-                 limit_m_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 limit_mem: Optional[pulumi.Input[_builtins.int]] = None,
-                 liveness: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_volume: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_descs: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_stop: Optional[pulumi.Input[_builtins.str]] = None,
-                 readiness: Optional[pulumi.Input[_builtins.str]] = None,
-                 replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 requests_m_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 requests_mem: Optional[pulumi.Input[_builtins.int]] = None,
-                 web_container: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_descriotion: pulumi.Input[Optional[_builtins.str]] = None,
+                 command: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 edas_container_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 envs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_slb_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 internet_slb_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_target_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 jdk: pulumi.Input[Optional[_builtins.str]] = None,
+                 limit_m_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 limit_mem: pulumi.Input[Optional[_builtins.int]] = None,
+                 liveness: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_volume: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_descs: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_stop: pulumi.Input[Optional[_builtins.str]] = None,
+                 readiness: pulumi.Input[Optional[_builtins.str]] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 requests_m_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 requests_mem: pulumi.Input[Optional[_builtins.int]] = None,
+                 web_container: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a K8sApplication resource.
 
@@ -186,80 +186,80 @@ class K8sApplicationArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationDescriotion")
-    def application_descriotion(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_descriotion(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the application
         """
         return pulumi.get(self, "application_descriotion")
 
     @application_descriotion.setter
-    def application_descriotion(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_descriotion(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_descriotion", value)
 
     @_builtins.property
     @pulumi.getter
-    def command(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The set command, if set, will replace the startup command in the mirror when the mirror is started.
         """
         return pulumi.get(self, "command")
 
     @command.setter
-    def command(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command", value)
 
     @_builtins.property
     @pulumi.getter(name="commandArgs")
-    def command_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def command_args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Used in combination with the command, the parameter of the command is a JsonArray string in the format: `[{"argument":"-c"},{"argument":"test"}]`. Among them, -c and test are two parameters that need to be set.
         """
         return pulumi.get(self, "command_args")
 
     @command_args.setter
-    def command_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def command_args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "command_args", value)
 
     @_builtins.property
     @pulumi.getter(name="edasContainerVersion")
-    def edas_container_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edas_container_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EDAS-Container version that the deployed package depends on. Image does not support this parameter.
         """
         return pulumi.get(self, "edas_container_version")
 
     @edas_container_version.setter
-    def edas_container_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edas_container_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edas_container_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def envs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Deployment environment variables, the format must conform to the JSON object array, such as: `{"name":"x","value":"y"},{"name":"x2","value":"y2"}`, If you want to cancel the configuration, you need to set an empty JSON array "" to indicate no configuration.
         """
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def envs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter(name="imageUrl")
-    def image_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mirror address. When the package_type is set to 'Image', this parameter item is required.
         """
         return pulumi.get(self, "image_url")
 
     @image_url.setter
-    def image_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_url", value)
 
     @_builtins.property
     @pulumi.getter(name="internetSlbId")
     @_utilities.deprecated("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-    def internet_slb_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_slb_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
         It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
@@ -267,39 +267,39 @@ class K8sApplicationArgs:
         return pulumi.get(self, "internet_slb_id")
 
     @internet_slb_id.setter
-    def internet_slb_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_slb_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_slb_id", value)
 
     @_builtins.property
     @pulumi.getter(name="internetSlbPort")
     @_utilities.deprecated("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-    def internet_slb_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internet_slb_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
         return pulumi.get(self, "internet_slb_port")
 
     @internet_slb_port.setter
-    def internet_slb_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internet_slb_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internet_slb_port", value)
 
     @_builtins.property
     @pulumi.getter(name="internetSlbProtocol")
     @_utilities.deprecated("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-    def internet_slb_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_slb_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
         return pulumi.get(self, "internet_slb_protocol")
 
     @internet_slb_protocol.setter
-    def internet_slb_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_slb_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_slb_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="internetTargetPort")
     @_utilities.deprecated("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-    def internet_target_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internet_target_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
         It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
@@ -307,272 +307,272 @@ class K8sApplicationArgs:
         return pulumi.get(self, "internet_target_port")
 
     @internet_target_port.setter
-    def internet_target_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internet_target_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internet_target_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def jdk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jdk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
         """
         return pulumi.get(self, "jdk")
 
     @jdk.setter
-    def jdk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jdk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jdk", value)
 
     @_builtins.property
     @pulumi.getter(name="limitMCpu")
-    def limit_m_cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def limit_m_cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The CPU quota of the application instance during application operation. Unit: Number of millcores, set to 0 means unlimited, similar to request_cpu.
         """
         return pulumi.get(self, "limit_m_cpu")
 
     @limit_m_cpu.setter
-    def limit_m_cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def limit_m_cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "limit_m_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="limitMem")
-    def limit_mem(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def limit_mem(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The memory limit of the application instance during application operation, unit: M.
         """
         return pulumi.get(self, "limit_mem")
 
     @limit_mem.setter
-    def limit_mem(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def limit_mem(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "limit_mem", value)
 
     @_builtins.property
     @pulumi.getter
-    def liveness(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def liveness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container survival status monitoring, format such as: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"tcpSocket":{"host":"", "port":8080} }`.
         """
         return pulumi.get(self, "liveness")
 
     @liveness.setter
-    def liveness(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def liveness(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "liveness", value)
 
     @_builtins.property
     @pulumi.getter(name="localVolume")
-    def local_volume(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_volume(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration of the host file mounted to the container. For example: `[{"type":"","nodePath":"/localfiles","mountPath":"/app/files"},{"type":"Directory","nodePath":"/mnt", "mountPath":"/app/storage"}]`. Among them, nodePath is the host path; mountPath is the path in the container; type is the mount type.
         """
         return pulumi.get(self, "local_volume")
 
     @local_volume.setter
-    def local_volume(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_volume(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_volume", value)
 
     @_builtins.property
     @pulumi.getter(name="logicalRegionId")
-    def logical_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logical_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID corresponding to the EDAS namespace, the non-default namespace must be filled in.
         """
         return pulumi.get(self, "logical_region_id")
 
     @logical_region_id.setter
-    def logical_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logical_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logical_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mountDescs")
-    def mount_descs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_descs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mount configuration description, as a serialized JSON. For example: `[{"nasPath": "/k8s","mountPath": "/mnt"},{"nasPath": "/files","mountPath": "/app/files"}]`. Among them, nasPath refers to the file storage path; mountPath refers to the path mounted in the container.
         """
         return pulumi.get(self, "mount_descs")
 
     @mount_descs.setter
-    def mount_descs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_descs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_descs", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace of the K8s cluster, it will determine which K8s namespace your application is deployed in. The default is 'default'.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="nasId")
-    def nas_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nas_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the mounted NAS must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field exists, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
         """
         return pulumi.get(self, "nas_id")
 
     @nas_id.setter
-    def nas_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nas_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nas_id", value)
 
     @_builtins.property
     @pulumi.getter(name="packageType")
-    def package_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application package type. Optional parameter values include: FatJar, WAR and Image.
         """
         return pulumi.get(self, "package_type")
 
     @package_type.setter
-    def package_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_type", value)
 
     @_builtins.property
     @pulumi.getter(name="packageUrl")
-    def package_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The url of the package to deploy.Applications deployed through FatJar or WAR packages need to configure it.
         """
         return pulumi.get(self, "package_url")
 
     @package_url.setter
-    def package_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_url", value)
 
     @_builtins.property
     @pulumi.getter(name="packageVersion")
-    def package_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the deployment package. WAR and FatJar types are required. Please customize its meaning.
         """
         return pulumi.get(self, "package_version")
 
     @package_version.setter
-    def package_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_version", value)
 
     @_builtins.property
     @pulumi.getter(name="postStart")
-    def post_start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Execute script after startup
         """
         return pulumi.get(self, "post_start")
 
     @post_start.setter
-    def post_start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_start", value)
 
     @_builtins.property
     @pulumi.getter(name="preStop")
-    def pre_stop(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pre_stop(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Execute script before stopping
         """
         return pulumi.get(self, "pre_stop")
 
     @pre_stop.setter
-    def pre_stop(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pre_stop(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pre_stop", value)
 
     @_builtins.property
     @pulumi.getter
-    def readiness(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def readiness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container service status check. If the check fails, the traffic passing through K8s Service will not be transferred to the container. The format is: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1, "httpGet": {"path": "/consumer","port": 8080,"scheme": "HTTP","httpHeaders": [{"name": "test","value": "testvalue"} ]}}`.
         """
         return pulumi.get(self, "readiness")
 
     @readiness.setter
-    def readiness(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def readiness(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "readiness", value)
 
     @_builtins.property
     @pulumi.getter
-    def replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of application instances.
         """
         return pulumi.get(self, "replicas")
 
     @replicas.setter
-    def replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replicas", value)
 
     @_builtins.property
     @pulumi.getter(name="requestsMCpu")
-    def requests_m_cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def requests_m_cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When the application is created, the CPU quota of the application instance, unit: number of millcores, similar to request_cpu
         """
         return pulumi.get(self, "requests_m_cpu")
 
     @requests_m_cpu.setter
-    def requests_m_cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def requests_m_cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "requests_m_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="requestsMem")
-    def requests_mem(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def requests_mem(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When the application is created, the memory limit of the application instance, unit: M. When set to 0, it means unlimited.
         """
         return pulumi.get(self, "requests_mem")
 
     @requests_mem.setter
-    def requests_mem(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def requests_mem(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "requests_mem", value)
 
     @_builtins.property
     @pulumi.getter(name="webContainer")
-    def web_container(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def web_container(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Tomcat version that the deployment package depends on. Applicable to Spring Cloud and Dubbo applications deployed through WAR packages. Image does not support this parameter.
         """
         return pulumi.get(self, "web_container")
 
     @web_container.setter
-    def web_container(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def web_container(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "web_container", value)
 
 
 @pulumi.input_type
 class _K8sApplicationState:
     def __init__(__self__, *,
-                 application_descriotion: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 command: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 edas_container_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 envs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_slb_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 internet_slb_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_target_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 jdk: Optional[pulumi.Input[_builtins.str]] = None,
-                 limit_m_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 limit_mem: Optional[pulumi.Input[_builtins.int]] = None,
-                 liveness: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_volume: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_descs: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_stop: Optional[pulumi.Input[_builtins.str]] = None,
-                 readiness: Optional[pulumi.Input[_builtins.str]] = None,
-                 replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 requests_m_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 requests_mem: Optional[pulumi.Input[_builtins.int]] = None,
-                 web_container: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_descriotion: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 command: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 edas_container_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 envs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_slb_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 internet_slb_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_target_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 jdk: pulumi.Input[Optional[_builtins.str]] = None,
+                 limit_m_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 limit_mem: pulumi.Input[Optional[_builtins.int]] = None,
+                 liveness: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_volume: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_descs: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_stop: pulumi.Input[Optional[_builtins.str]] = None,
+                 readiness: pulumi.Input[Optional[_builtins.str]] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 requests_m_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 requests_mem: pulumi.Input[Optional[_builtins.int]] = None,
+                 web_container: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering K8sApplication resources.
 
@@ -687,104 +687,104 @@ class _K8sApplicationState:
 
     @_builtins.property
     @pulumi.getter(name="applicationDescriotion")
-    def application_descriotion(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_descriotion(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the application
         """
         return pulumi.get(self, "application_descriotion")
 
     @application_descriotion.setter
-    def application_descriotion(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_descriotion(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_descriotion", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationName")
-    def application_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the application you want to create. Must start with character,supports numbers, letters and dashes (-), supports up to 36 characters
         """
         return pulumi.get(self, "application_name")
 
     @application_name.setter
-    def application_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the alicloud container service kubernetes cluster that you want to import to. You can call the ListCluster operation to query.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def command(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The set command, if set, will replace the startup command in the mirror when the mirror is started.
         """
         return pulumi.get(self, "command")
 
     @command.setter
-    def command(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command", value)
 
     @_builtins.property
     @pulumi.getter(name="commandArgs")
-    def command_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def command_args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Used in combination with the command, the parameter of the command is a JsonArray string in the format: `[{"argument":"-c"},{"argument":"test"}]`. Among them, -c and test are two parameters that need to be set.
         """
         return pulumi.get(self, "command_args")
 
     @command_args.setter
-    def command_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def command_args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "command_args", value)
 
     @_builtins.property
     @pulumi.getter(name="edasContainerVersion")
-    def edas_container_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edas_container_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EDAS-Container version that the deployed package depends on. Image does not support this parameter.
         """
         return pulumi.get(self, "edas_container_version")
 
     @edas_container_version.setter
-    def edas_container_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edas_container_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edas_container_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def envs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Deployment environment variables, the format must conform to the JSON object array, such as: `{"name":"x","value":"y"},{"name":"x2","value":"y2"}`, If you want to cancel the configuration, you need to set an empty JSON array "" to indicate no configuration.
         """
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def envs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter(name="imageUrl")
-    def image_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mirror address. When the package_type is set to 'Image', this parameter item is required.
         """
         return pulumi.get(self, "image_url")
 
     @image_url.setter
-    def image_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_url", value)
 
     @_builtins.property
     @pulumi.getter(name="internetSlbId")
     @_utilities.deprecated("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-    def internet_slb_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_slb_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
         It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
@@ -792,39 +792,39 @@ class _K8sApplicationState:
         return pulumi.get(self, "internet_slb_id")
 
     @internet_slb_id.setter
-    def internet_slb_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_slb_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_slb_id", value)
 
     @_builtins.property
     @pulumi.getter(name="internetSlbPort")
     @_utilities.deprecated("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-    def internet_slb_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internet_slb_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
         return pulumi.get(self, "internet_slb_port")
 
     @internet_slb_port.setter
-    def internet_slb_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internet_slb_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internet_slb_port", value)
 
     @_builtins.property
     @pulumi.getter(name="internetSlbProtocol")
     @_utilities.deprecated("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-    def internet_slb_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_slb_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
         return pulumi.get(self, "internet_slb_protocol")
 
     @internet_slb_protocol.setter
-    def internet_slb_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_slb_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_slb_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="internetTargetPort")
     @_utilities.deprecated("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-    def internet_target_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internet_target_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
         It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
@@ -832,235 +832,235 @@ class _K8sApplicationState:
         return pulumi.get(self, "internet_target_port")
 
     @internet_target_port.setter
-    def internet_target_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internet_target_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internet_target_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def jdk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jdk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
         """
         return pulumi.get(self, "jdk")
 
     @jdk.setter
-    def jdk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jdk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jdk", value)
 
     @_builtins.property
     @pulumi.getter(name="limitMCpu")
-    def limit_m_cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def limit_m_cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The CPU quota of the application instance during application operation. Unit: Number of millcores, set to 0 means unlimited, similar to request_cpu.
         """
         return pulumi.get(self, "limit_m_cpu")
 
     @limit_m_cpu.setter
-    def limit_m_cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def limit_m_cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "limit_m_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="limitMem")
-    def limit_mem(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def limit_mem(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The memory limit of the application instance during application operation, unit: M.
         """
         return pulumi.get(self, "limit_mem")
 
     @limit_mem.setter
-    def limit_mem(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def limit_mem(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "limit_mem", value)
 
     @_builtins.property
     @pulumi.getter
-    def liveness(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def liveness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container survival status monitoring, format such as: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1,"tcpSocket":{"host":"", "port":8080} }`.
         """
         return pulumi.get(self, "liveness")
 
     @liveness.setter
-    def liveness(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def liveness(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "liveness", value)
 
     @_builtins.property
     @pulumi.getter(name="localVolume")
-    def local_volume(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_volume(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration of the host file mounted to the container. For example: `[{"type":"","nodePath":"/localfiles","mountPath":"/app/files"},{"type":"Directory","nodePath":"/mnt", "mountPath":"/app/storage"}]`. Among them, nodePath is the host path; mountPath is the path in the container; type is the mount type.
         """
         return pulumi.get(self, "local_volume")
 
     @local_volume.setter
-    def local_volume(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_volume(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_volume", value)
 
     @_builtins.property
     @pulumi.getter(name="logicalRegionId")
-    def logical_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logical_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID corresponding to the EDAS namespace, the non-default namespace must be filled in.
         """
         return pulumi.get(self, "logical_region_id")
 
     @logical_region_id.setter
-    def logical_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logical_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logical_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mountDescs")
-    def mount_descs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_descs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mount configuration description, as a serialized JSON. For example: `[{"nasPath": "/k8s","mountPath": "/mnt"},{"nasPath": "/files","mountPath": "/app/files"}]`. Among them, nasPath refers to the file storage path; mountPath refers to the path mounted in the container.
         """
         return pulumi.get(self, "mount_descs")
 
     @mount_descs.setter
-    def mount_descs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_descs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_descs", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace of the K8s cluster, it will determine which K8s namespace your application is deployed in. The default is 'default'.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="nasId")
-    def nas_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nas_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the mounted NAS must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field exists, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
         """
         return pulumi.get(self, "nas_id")
 
     @nas_id.setter
-    def nas_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nas_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nas_id", value)
 
     @_builtins.property
     @pulumi.getter(name="packageType")
-    def package_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application package type. Optional parameter values include: FatJar, WAR and Image.
         """
         return pulumi.get(self, "package_type")
 
     @package_type.setter
-    def package_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_type", value)
 
     @_builtins.property
     @pulumi.getter(name="packageUrl")
-    def package_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The url of the package to deploy.Applications deployed through FatJar or WAR packages need to configure it.
         """
         return pulumi.get(self, "package_url")
 
     @package_url.setter
-    def package_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_url", value)
 
     @_builtins.property
     @pulumi.getter(name="packageVersion")
-    def package_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the deployment package. WAR and FatJar types are required. Please customize its meaning.
         """
         return pulumi.get(self, "package_version")
 
     @package_version.setter
-    def package_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_version", value)
 
     @_builtins.property
     @pulumi.getter(name="postStart")
-    def post_start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Execute script after startup
         """
         return pulumi.get(self, "post_start")
 
     @post_start.setter
-    def post_start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_start", value)
 
     @_builtins.property
     @pulumi.getter(name="preStop")
-    def pre_stop(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pre_stop(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Execute script before stopping
         """
         return pulumi.get(self, "pre_stop")
 
     @pre_stop.setter
-    def pre_stop(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pre_stop(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pre_stop", value)
 
     @_builtins.property
     @pulumi.getter
-    def readiness(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def readiness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container service status check. If the check fails, the traffic passing through K8s Service will not be transferred to the container. The format is: `{"failureThreshold": 3,"initialDelaySeconds": 5,"successThreshold": 1,"timeoutSeconds": 1, "httpGet": {"path": "/consumer","port": 8080,"scheme": "HTTP","httpHeaders": [{"name": "test","value": "testvalue"} ]}}`.
         """
         return pulumi.get(self, "readiness")
 
     @readiness.setter
-    def readiness(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def readiness(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "readiness", value)
 
     @_builtins.property
     @pulumi.getter
-    def replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of application instances.
         """
         return pulumi.get(self, "replicas")
 
     @replicas.setter
-    def replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replicas", value)
 
     @_builtins.property
     @pulumi.getter(name="requestsMCpu")
-    def requests_m_cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def requests_m_cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When the application is created, the CPU quota of the application instance, unit: number of millcores, similar to request_cpu
         """
         return pulumi.get(self, "requests_m_cpu")
 
     @requests_m_cpu.setter
-    def requests_m_cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def requests_m_cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "requests_m_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="requestsMem")
-    def requests_mem(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def requests_mem(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When the application is created, the memory limit of the application instance, unit: M. When set to 0, it means unlimited.
         """
         return pulumi.get(self, "requests_mem")
 
     @requests_mem.setter
-    def requests_mem(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def requests_mem(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "requests_mem", value)
 
     @_builtins.property
     @pulumi.getter(name="webContainer")
-    def web_container(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def web_container(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Tomcat version that the deployment package depends on. Applicable to Spring Cloud and Dubbo applications deployed through WAR packages. Image does not support this parameter.
         """
         return pulumi.get(self, "web_container")
 
     @web_container.setter
-    def web_container(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def web_container(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "web_container", value)
 
 
@@ -1070,37 +1070,37 @@ class K8sApplication(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_descriotion: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 command: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 edas_container_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 envs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_slb_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 internet_slb_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_target_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 jdk: Optional[pulumi.Input[_builtins.str]] = None,
-                 limit_m_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 limit_mem: Optional[pulumi.Input[_builtins.int]] = None,
-                 liveness: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_volume: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_descs: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_stop: Optional[pulumi.Input[_builtins.str]] = None,
-                 readiness: Optional[pulumi.Input[_builtins.str]] = None,
-                 replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 requests_m_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 requests_mem: Optional[pulumi.Input[_builtins.int]] = None,
-                 web_container: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_descriotion: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 command: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 edas_container_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 envs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_slb_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 internet_slb_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_target_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 jdk: pulumi.Input[Optional[_builtins.str]] = None,
+                 limit_m_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 limit_mem: pulumi.Input[Optional[_builtins.int]] = None,
+                 liveness: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_volume: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_descs: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_stop: pulumi.Input[Optional[_builtins.str]] = None,
+                 readiness: pulumi.Input[Optional[_builtins.str]] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 requests_m_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 requests_mem: pulumi.Input[Optional[_builtins.int]] = None,
+                 web_container: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create an EDAS k8s application.For information about EDAS K8s Application and how to use it, see [What is EDAS K8s Application](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertk8sapplication).
@@ -1126,7 +1126,7 @@ class K8sApplication(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=4,
-            memory_size=8,
+            memory_size=float(8),
             kubernetes_node_role="Worker")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -1246,7 +1246,7 @@ class K8sApplication(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=4,
-            memory_size=8,
+            memory_size=float(8),
             kubernetes_node_role="Worker")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -1315,37 +1315,37 @@ class K8sApplication(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_descriotion: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 command: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 edas_container_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 envs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_slb_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 internet_slb_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_target_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 jdk: Optional[pulumi.Input[_builtins.str]] = None,
-                 limit_m_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 limit_mem: Optional[pulumi.Input[_builtins.int]] = None,
-                 liveness: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_volume: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_descs: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_stop: Optional[pulumi.Input[_builtins.str]] = None,
-                 readiness: Optional[pulumi.Input[_builtins.str]] = None,
-                 replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 requests_m_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 requests_mem: Optional[pulumi.Input[_builtins.int]] = None,
-                 web_container: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_descriotion: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 command: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 edas_container_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 envs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_slb_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 internet_slb_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_target_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 jdk: pulumi.Input[Optional[_builtins.str]] = None,
+                 limit_m_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 limit_mem: pulumi.Input[Optional[_builtins.int]] = None,
+                 liveness: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_volume: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_descs: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_stop: pulumi.Input[Optional[_builtins.str]] = None,
+                 readiness: pulumi.Input[Optional[_builtins.str]] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 requests_m_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 requests_mem: pulumi.Input[Optional[_builtins.int]] = None,
+                 web_container: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1400,37 +1400,37 @@ class K8sApplication(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_descriotion: Optional[pulumi.Input[_builtins.str]] = None,
-            application_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            command: Optional[pulumi.Input[_builtins.str]] = None,
-            command_args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            edas_container_version: Optional[pulumi.Input[_builtins.str]] = None,
-            envs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            image_url: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_slb_port: Optional[pulumi.Input[_builtins.int]] = None,
-            internet_slb_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_target_port: Optional[pulumi.Input[_builtins.int]] = None,
-            jdk: Optional[pulumi.Input[_builtins.str]] = None,
-            limit_m_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-            limit_mem: Optional[pulumi.Input[_builtins.int]] = None,
-            liveness: Optional[pulumi.Input[_builtins.str]] = None,
-            local_volume: Optional[pulumi.Input[_builtins.str]] = None,
-            logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            mount_descs: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            nas_id: Optional[pulumi.Input[_builtins.str]] = None,
-            package_type: Optional[pulumi.Input[_builtins.str]] = None,
-            package_url: Optional[pulumi.Input[_builtins.str]] = None,
-            package_version: Optional[pulumi.Input[_builtins.str]] = None,
-            post_start: Optional[pulumi.Input[_builtins.str]] = None,
-            pre_stop: Optional[pulumi.Input[_builtins.str]] = None,
-            readiness: Optional[pulumi.Input[_builtins.str]] = None,
-            replicas: Optional[pulumi.Input[_builtins.int]] = None,
-            requests_m_cpu: Optional[pulumi.Input[_builtins.int]] = None,
-            requests_mem: Optional[pulumi.Input[_builtins.int]] = None,
-            web_container: Optional[pulumi.Input[_builtins.str]] = None) -> 'K8sApplication':
+            application_descriotion: pulumi.Input[Optional[_builtins.str]] = None,
+            application_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            command: pulumi.Input[Optional[_builtins.str]] = None,
+            command_args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            edas_container_version: pulumi.Input[Optional[_builtins.str]] = None,
+            envs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            image_url: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_slb_port: pulumi.Input[Optional[_builtins.int]] = None,
+            internet_slb_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_target_port: pulumi.Input[Optional[_builtins.int]] = None,
+            jdk: pulumi.Input[Optional[_builtins.str]] = None,
+            limit_m_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+            limit_mem: pulumi.Input[Optional[_builtins.int]] = None,
+            liveness: pulumi.Input[Optional[_builtins.str]] = None,
+            local_volume: pulumi.Input[Optional[_builtins.str]] = None,
+            logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mount_descs: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            nas_id: pulumi.Input[Optional[_builtins.str]] = None,
+            package_type: pulumi.Input[Optional[_builtins.str]] = None,
+            package_url: pulumi.Input[Optional[_builtins.str]] = None,
+            package_version: pulumi.Input[Optional[_builtins.str]] = None,
+            post_start: pulumi.Input[Optional[_builtins.str]] = None,
+            pre_stop: pulumi.Input[Optional[_builtins.str]] = None,
+            readiness: pulumi.Input[Optional[_builtins.str]] = None,
+            replicas: pulumi.Input[Optional[_builtins.int]] = None,
+            requests_m_cpu: pulumi.Input[Optional[_builtins.int]] = None,
+            requests_mem: pulumi.Input[Optional[_builtins.int]] = None,
+            web_container: pulumi.Input[Optional[_builtins.str]] = None) -> 'K8sApplication':
         """
         Get an existing K8sApplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -25,7 +25,7 @@ class IndustrialPidLoopArgs:
                  pid_loop_name: pulumi.Input[_builtins.str],
                  pid_loop_type: pulumi.Input[_builtins.str],
                  pid_project_id: pulumi.Input[_builtins.str],
-                 pid_loop_desc: Optional[pulumi.Input[_builtins.str]] = None):
+                 pid_loop_desc: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a IndustrialPidLoop resource.
 
@@ -120,28 +120,28 @@ class IndustrialPidLoopArgs:
 
     @_builtins.property
     @pulumi.getter(name="pidLoopDesc")
-    def pid_loop_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pid_loop_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desc of Pid Loop.
         """
         return pulumi.get(self, "pid_loop_desc")
 
     @pid_loop_desc.setter
-    def pid_loop_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pid_loop_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pid_loop_desc", value)
 
 
 @pulumi.input_type
 class _IndustrialPidLoopState:
     def __init__(__self__, *,
-                 pid_loop_configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_loop_dcs_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_loop_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_loop_is_crucial: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pid_loop_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_loop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 pid_loop_configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_loop_dcs_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_loop_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_loop_is_crucial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pid_loop_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_loop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IndustrialPidLoop resources.
 
@@ -173,98 +173,98 @@ class _IndustrialPidLoopState:
 
     @_builtins.property
     @pulumi.getter(name="pidLoopConfiguration")
-    def pid_loop_configuration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pid_loop_configuration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Pid Loop Configuration.
         """
         return pulumi.get(self, "pid_loop_configuration")
 
     @pid_loop_configuration.setter
-    def pid_loop_configuration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pid_loop_configuration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pid_loop_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="pidLoopDcsType")
-    def pid_loop_dcs_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pid_loop_dcs_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dcs type of Pid Loop. Valid values: `standard`.
         """
         return pulumi.get(self, "pid_loop_dcs_type")
 
     @pid_loop_dcs_type.setter
-    def pid_loop_dcs_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pid_loop_dcs_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pid_loop_dcs_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pidLoopDesc")
-    def pid_loop_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pid_loop_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desc of Pid Loop.
         """
         return pulumi.get(self, "pid_loop_desc")
 
     @pid_loop_desc.setter
-    def pid_loop_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pid_loop_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pid_loop_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="pidLoopIsCrucial")
-    def pid_loop_is_crucial(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pid_loop_is_crucial(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether is crucial Pid Loop.
         """
         return pulumi.get(self, "pid_loop_is_crucial")
 
     @pid_loop_is_crucial.setter
-    def pid_loop_is_crucial(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pid_loop_is_crucial(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pid_loop_is_crucial", value)
 
     @_builtins.property
     @pulumi.getter(name="pidLoopName")
-    def pid_loop_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pid_loop_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of Pid Loop.
         """
         return pulumi.get(self, "pid_loop_name")
 
     @pid_loop_name.setter
-    def pid_loop_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pid_loop_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pid_loop_name", value)
 
     @_builtins.property
     @pulumi.getter(name="pidLoopType")
-    def pid_loop_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pid_loop_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
         """
         return pulumi.get(self, "pid_loop_type")
 
     @pid_loop_type.setter
-    def pid_loop_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pid_loop_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pid_loop_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pidProjectId")
-    def pid_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pid_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pid project id.
         """
         return pulumi.get(self, "pid_project_id")
 
     @pid_project_id.setter
-    def pid_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pid_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pid_project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of Pid Loop.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -274,13 +274,13 @@ class IndustrialPidLoop(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 pid_loop_configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_loop_dcs_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_loop_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_loop_is_crucial: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pid_loop_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_loop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 pid_loop_configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_loop_dcs_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_loop_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_loop_is_crucial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pid_loop_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_loop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Brain Industrial Pid Loop resource.
@@ -383,13 +383,13 @@ class IndustrialPidLoop(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 pid_loop_configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_loop_dcs_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_loop_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_loop_is_crucial: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pid_loop_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_loop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 pid_loop_configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_loop_dcs_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_loop_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_loop_is_crucial: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pid_loop_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_loop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -429,14 +429,14 @@ class IndustrialPidLoop(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            pid_loop_configuration: Optional[pulumi.Input[_builtins.str]] = None,
-            pid_loop_dcs_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pid_loop_desc: Optional[pulumi.Input[_builtins.str]] = None,
-            pid_loop_is_crucial: Optional[pulumi.Input[_builtins.bool]] = None,
-            pid_loop_name: Optional[pulumi.Input[_builtins.str]] = None,
-            pid_loop_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pid_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'IndustrialPidLoop':
+            pid_loop_configuration: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_loop_dcs_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_loop_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_loop_is_crucial: pulumi.Input[Optional[_builtins.bool]] = None,
+            pid_loop_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_loop_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'IndustrialPidLoop':
         """
         Get an existing IndustrialPidLoop resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

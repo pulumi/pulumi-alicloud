@@ -248,77 +248,77 @@ export interface PolardbxInstanceState {
     /**
      * Compute node specifications.
      */
-    cnClass?: pulumi.Input<string>;
+    cnClass?: pulumi.Input<string | undefined>;
     /**
      * Number of computing nodes.
      */
-    cnNodeCount?: pulumi.Input<number>;
+    cnNodeCount?: pulumi.Input<number | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Instance remarks
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Storage node specifications.
      */
-    dnClass?: pulumi.Input<string>;
+    dnClass?: pulumi.Input<string | undefined>;
     /**
      * The number of storage nodes.
      */
-    dnNodeCount?: pulumi.Input<number>;
+    dnNodeCount?: pulumi.Input<number | undefined>;
     /**
      * Engine version, default 5.7
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * Whether the instance is read-only.
      */
-    isReadDbInstance?: pulumi.Input<boolean>;
+    isReadDbInstance?: pulumi.Input<boolean | undefined>;
     /**
      * If the instance is a read-only instance, you must specify the primary instance.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    primaryDbInstanceName?: pulumi.Input<string>;
+    primaryDbInstanceName?: pulumi.Input<string | undefined>;
     /**
      * Primary Availability Zone.
      */
-    primaryZone?: pulumi.Input<string>;
+    primaryZone?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The resource group ID can be empty. This parameter is not supported for the time being.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Secondary availability zone.
      */
-    secondaryZone?: pulumi.Input<string>;
+    secondaryZone?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Third Availability Zone.
      */
-    tertiaryZone?: pulumi.Input<string>;
+    tertiaryZone?: pulumi.Input<string | undefined>;
     /**
      * Topology type:
      */
-    topologyType?: pulumi.Input<string>;
+    topologyType?: pulumi.Input<string | undefined>;
     /**
      * The VPC ID.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the virtual switch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -336,7 +336,7 @@ export interface PolardbxInstanceArgs {
     /**
      * Instance remarks
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Storage node specifications.
      */
@@ -348,17 +348,17 @@ export interface PolardbxInstanceArgs {
     /**
      * Engine version, default 5.7
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * Whether the instance is read-only.
      */
-    isReadDbInstance?: pulumi.Input<boolean>;
+    isReadDbInstance?: pulumi.Input<boolean | undefined>;
     /**
      * If the instance is a read-only instance, you must specify the primary instance.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    primaryDbInstanceName?: pulumi.Input<string>;
+    primaryDbInstanceName?: pulumi.Input<string | undefined>;
     /**
      * Primary Availability Zone.
      */
@@ -366,15 +366,15 @@ export interface PolardbxInstanceArgs {
     /**
      * The resource group ID can be empty. This parameter is not supported for the time being.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Secondary availability zone.
      */
-    secondaryZone?: pulumi.Input<string>;
+    secondaryZone?: pulumi.Input<string | undefined>;
     /**
      * Third Availability Zone.
      */
-    tertiaryZone?: pulumi.Input<string>;
+    tertiaryZone?: pulumi.Input<string | undefined>;
     /**
      * Topology type:
      */

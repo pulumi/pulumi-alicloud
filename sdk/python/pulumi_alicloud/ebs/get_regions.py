@@ -112,8 +112,8 @@ def get_regions(output_file: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         region_id=pulumi.get(__ret__, 'region_id'),
         regions=pulumi.get(__ret__, 'regions'))
-def get_regions_output(output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       region_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_regions_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       region_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
     This data source provides the Ebs Regions of the current Alibaba Cloud user.

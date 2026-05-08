@@ -353,71 +353,71 @@ export interface NodeGroupState {
     /**
      * Az
      */
-    az?: pulumi.Input<string>;
+    az?: pulumi.Input<string | undefined>;
     /**
      * Cluster ID
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Create time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether to allow skipping failed nodes. Default value: False
      */
-    ignoreFailedNodeTasks?: pulumi.Input<boolean>;
+    ignoreFailedNodeTasks?: pulumi.Input<boolean | undefined>;
     /**
      * Image ID. You can modify the image ID since v1.252.0.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
      */
-    ipAllocationPolicies?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupIpAllocationPolicy>[]>;
+    ipAllocationPolicies?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupIpAllocationPolicy>[] | undefined>;
     /**
      * key pair name
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * Login Password
      */
-    loginPassword?: pulumi.Input<string>;
+    loginPassword?: pulumi.Input<string | undefined>;
     /**
      * Machine type
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * NodeGroupDescription
      */
-    nodeGroupDescription?: pulumi.Input<string>;
+    nodeGroupDescription?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
-    nodeGroupId?: pulumi.Input<string>;
+    nodeGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
-    nodeGroupName?: pulumi.Input<string>;
+    nodeGroupName?: pulumi.Input<string | undefined>;
     /**
      * Node List See `nodes` below.
      */
-    nodes?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupNode>[]>;
+    nodes?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupNode>[] | undefined>;
     /**
      * Custom Data
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * Cluster subnet list
      */
-    vpdSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+    vpdSubnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Zone ID of the switch
      */
-    vswitchZoneId?: pulumi.Input<string>;
+    vswitchZoneId?: pulumi.Input<string | undefined>;
     /**
      * Zone ID
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -435,7 +435,7 @@ export interface NodeGroupArgs {
     /**
      * Whether to allow skipping failed nodes. Default value: False
      */
-    ignoreFailedNodeTasks?: pulumi.Input<boolean>;
+    ignoreFailedNodeTasks?: pulumi.Input<boolean | undefined>;
     /**
      * Image ID. You can modify the image ID since v1.252.0.
      */
@@ -443,15 +443,15 @@ export interface NodeGroupArgs {
     /**
      * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
      */
-    ipAllocationPolicies?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupIpAllocationPolicy>[]>;
+    ipAllocationPolicies?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupIpAllocationPolicy>[] | undefined>;
     /**
      * key pair name
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * Login Password
      */
-    loginPassword?: pulumi.Input<string>;
+    loginPassword?: pulumi.Input<string | undefined>;
     /**
      * Machine type
      */
@@ -459,7 +459,7 @@ export interface NodeGroupArgs {
     /**
      * NodeGroupDescription
      */
-    nodeGroupDescription?: pulumi.Input<string>;
+    nodeGroupDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
@@ -467,21 +467,21 @@ export interface NodeGroupArgs {
     /**
      * Node List See `nodes` below.
      */
-    nodes?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupNode>[]>;
+    nodes?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupNode>[] | undefined>;
     /**
      * Custom Data
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * Cluster subnet list
      */
-    vpdSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+    vpdSubnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Zone ID of the switch
      */
-    vswitchZoneId?: pulumi.Input<string>;
+    vswitchZoneId?: pulumi.Input<string | undefined>;
     /**
      * Zone ID
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

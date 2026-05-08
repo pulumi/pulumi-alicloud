@@ -139,27 +139,27 @@ export interface InstanceMemberState {
     /**
      * When the cloud firewall member account was added.> use second-level timestamp format.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Remarks of cloud firewall member accounts.
      */
-    memberDesc?: pulumi.Input<string>;
+    memberDesc?: pulumi.Input<string | undefined>;
     /**
      * The name of the cloud firewall member account.
      */
-    memberDisplayName?: pulumi.Input<string>;
+    memberDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The UID of the cloud firewall member account.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * The last modification time of the cloud firewall member account.> use second-level timestamp format.
      */
-    modifyTime?: pulumi.Input<number>;
+    modifyTime?: pulumi.Input<number | undefined>;
     /**
      * The resource attribute field that represents the resource status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -169,7 +169,7 @@ export interface InstanceMemberArgs {
     /**
      * Remarks of cloud firewall member accounts.
      */
-    memberDesc?: pulumi.Input<string>;
+    memberDesc?: pulumi.Input<string | undefined>;
     /**
      * The UID of the cloud firewall member account.
      */

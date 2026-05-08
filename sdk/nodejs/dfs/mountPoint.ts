@@ -204,47 +204,47 @@ export interface MountPointState {
     /**
      * The id of the permission group associated with the Mount point, which is used to set the access permissions of the Mount point.
      */
-    accessGroupId?: pulumi.Input<string>;
+    accessGroupId?: pulumi.Input<string | undefined>;
     /**
      * The mount point alias prefix, which specifies the mount point alias prefix.
      */
-    aliasPrefix?: pulumi.Input<string>;
+    aliasPrefix?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the Mount point resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the Mount point.  No more than 32 characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique file system identifier, used to retrieve specified file system resources.
      */
-    fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the Mount point, which is used to retrieve the specified mount point resources.
      */
-    mountPointId?: pulumi.Input<string>;
+    mountPointId?: pulumi.Input<string | undefined>;
     /**
      * The network type of the Mount point.  Only VPC (VPC) is supported.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.242.0) The region ID of the Mount Point.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * VSwitch ID, which specifies the VSwitch resource used to create the mount point.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -258,11 +258,11 @@ export interface MountPointArgs {
     /**
      * The mount point alias prefix, which specifies the mount point alias prefix.
      */
-    aliasPrefix?: pulumi.Input<string>;
+    aliasPrefix?: pulumi.Input<string | undefined>;
     /**
      * The description of the Mount point.  No more than 32 characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique file system identifier, used to retrieve specified file system resources.
      */
@@ -274,7 +274,7 @@ export interface MountPointArgs {
     /**
      * Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
      */

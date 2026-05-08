@@ -27,13 +27,13 @@ class PolardbxInstanceArgs:
                  topology_type: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_read_db_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 primary_db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 tertiary_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_read_db_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 primary_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 tertiary_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PolardbxInstance resource.
 
@@ -176,43 +176,43 @@ class PolardbxInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance remarks
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Engine version, default 5.7
         """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="isReadDbInstance")
-    def is_read_db_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_read_db_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the instance is read-only.
         """
         return pulumi.get(self, "is_read_db_instance")
 
     @is_read_db_instance.setter
-    def is_read_db_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_read_db_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_read_db_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryDbInstanceName")
-    def primary_db_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_db_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If the instance is a read-only instance, you must specify the primary instance.
 
@@ -221,67 +221,67 @@ class PolardbxInstanceArgs:
         return pulumi.get(self, "primary_db_instance_name")
 
     @primary_db_instance_name.setter
-    def primary_db_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_db_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_db_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group ID can be empty. This parameter is not supported for the time being.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryZone")
-    def secondary_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secondary availability zone.
         """
         return pulumi.get(self, "secondary_zone")
 
     @secondary_zone.setter
-    def secondary_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="tertiaryZone")
-    def tertiary_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tertiary_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Third Availability Zone.
         """
         return pulumi.get(self, "tertiary_zone")
 
     @tertiary_zone.setter
-    def tertiary_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tertiary_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tertiary_zone", value)
 
 
 @pulumi.input_type
 class _PolardbxInstanceState:
     def __init__(__self__, *,
-                 cn_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 cn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dn_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 dn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_read_db_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 primary_db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tertiary_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 topology_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cn_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_read_db_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 primary_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tertiary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 topology_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolardbxInstance resources.
 
@@ -345,103 +345,103 @@ class _PolardbxInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="cnClass")
-    def cn_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cn_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Compute node specifications.
         """
         return pulumi.get(self, "cn_class")
 
     @cn_class.setter
-    def cn_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cn_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cn_class", value)
 
     @_builtins.property
     @pulumi.getter(name="cnNodeCount")
-    def cn_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cn_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of computing nodes.
         """
         return pulumi.get(self, "cn_node_count")
 
     @cn_node_count.setter
-    def cn_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cn_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cn_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance remarks
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dnClass")
-    def dn_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dn_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Storage node specifications.
         """
         return pulumi.get(self, "dn_class")
 
     @dn_class.setter
-    def dn_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dn_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dn_class", value)
 
     @_builtins.property
     @pulumi.getter(name="dnNodeCount")
-    def dn_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dn_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of storage nodes.
         """
         return pulumi.get(self, "dn_node_count")
 
     @dn_node_count.setter
-    def dn_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dn_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dn_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Engine version, default 5.7
         """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="isReadDbInstance")
-    def is_read_db_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_read_db_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the instance is read-only.
         """
         return pulumi.get(self, "is_read_db_instance")
 
     @is_read_db_instance.setter
-    def is_read_db_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_read_db_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_read_db_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryDbInstanceName")
-    def primary_db_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_db_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If the instance is a read-only instance, you must specify the primary instance.
 
@@ -450,115 +450,115 @@ class _PolardbxInstanceState:
         return pulumi.get(self, "primary_db_instance_name")
 
     @primary_db_instance_name.setter
-    def primary_db_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_db_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_db_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryZone")
-    def primary_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary Availability Zone.
         """
         return pulumi.get(self, "primary_zone")
 
     @primary_zone.setter
-    def primary_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group ID can be empty. This parameter is not supported for the time being.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryZone")
-    def secondary_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secondary availability zone.
         """
         return pulumi.get(self, "secondary_zone")
 
     @secondary_zone.setter
-    def secondary_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="tertiaryZone")
-    def tertiary_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tertiary_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Third Availability Zone.
         """
         return pulumi.get(self, "tertiary_zone")
 
     @tertiary_zone.setter
-    def tertiary_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tertiary_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tertiary_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="topologyType")
-    def topology_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topology_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Topology type:
         """
         return pulumi.get(self, "topology_type")
 
     @topology_type.setter
-    def topology_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topology_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topology_type", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual switch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -568,21 +568,21 @@ class PolardbxInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cn_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 cn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dn_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 dn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_read_db_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 primary_db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 tertiary_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 topology_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cn_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_read_db_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 primary_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 tertiary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 topology_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Distributed Relational Database Service (DRDS) Polardbx Instance resource.
@@ -729,21 +729,21 @@ class PolardbxInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cn_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 cn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dn_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 dn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_read_db_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 primary_db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 tertiary_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 topology_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cn_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 cn_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_read_db_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 primary_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 tertiary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 topology_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -797,24 +797,24 @@ class PolardbxInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cn_class: Optional[pulumi.Input[_builtins.str]] = None,
-            cn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dn_class: Optional[pulumi.Input[_builtins.str]] = None,
-            dn_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-            is_read_db_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-            primary_db_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tertiary_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            topology_type: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'PolardbxInstance':
+            cn_class: pulumi.Input[Optional[_builtins.str]] = None,
+            cn_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dn_class: pulumi.Input[Optional[_builtins.str]] = None,
+            dn_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            is_read_db_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+            primary_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tertiary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            topology_type: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'PolardbxInstance':
         """
         Get an existing PolardbxInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

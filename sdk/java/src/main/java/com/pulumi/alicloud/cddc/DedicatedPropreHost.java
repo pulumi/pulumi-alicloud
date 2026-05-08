@@ -64,8 +64,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cddc.DedicatedPropreHostArgs;
  * import com.pulumi.alicloud.cddc.inputs.DedicatedPropreHostEcsClassListArgs;
  * import com.pulumi.codegen.internal.KeyedValue;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  * 
  *         final var essd = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .cpuCoreCount(2)
- *             .memorySize(4)
+ *             .memorySize(4.0)
  *             .systemDiskCategory("cloud_essd")
  *             .build());
  * 

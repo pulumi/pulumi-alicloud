@@ -20,12 +20,12 @@ __all__ = ['SharedResourceArgs', 'SharedResource']
 class SharedResourceArgs:
     def __init__(__self__, *,
                  resource_share_id: pulumi.Input[_builtins.str],
-                 permission_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties_resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_property: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 permission_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties_resource_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_property: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SharedResource resource.
 
@@ -69,7 +69,7 @@ class SharedResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="permissionName")
-    def permission_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permission_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
 
@@ -78,24 +78,24 @@ class SharedResourceArgs:
         return pulumi.get(self, "permission_name")
 
     @permission_name.setter
-    def permission_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permission_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permission_name", value)
 
     @_builtins.property
     @pulumi.getter(name="propertiesResourceArn")
-    def properties_resource_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def properties_resource_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the resource.
         """
         return pulumi.get(self, "properties_resource_arn")
 
     @properties_resource_arn.setter
-    def properties_resource_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def properties_resource_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "properties_resource_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceArn")
-    def resource_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Associated resource ARN.
 
@@ -104,58 +104,58 @@ class SharedResourceArgs:
         return pulumi.get(self, "resource_arn")
 
     @resource_arn.setter
-    def resource_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the shared resource.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceProperty")
-    def resource_property(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_property(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The property of the resource.
         """
         return pulumi.get(self, "resource_property")
 
     @resource_property.setter
-    def resource_property(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_property(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_property", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the shared resource.
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
 
 @pulumi.input_type
 class _SharedResourceState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 permission_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties_resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_property: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 permission_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties_resource_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_property: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_share_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SharedResource resources.
 
@@ -194,19 +194,19 @@ class _SharedResourceState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the shared resource was associated with the resource share.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionName")
-    def permission_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permission_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share.
 
@@ -215,24 +215,24 @@ class _SharedResourceState:
         return pulumi.get(self, "permission_name")
 
     @permission_name.setter
-    def permission_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permission_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permission_name", value)
 
     @_builtins.property
     @pulumi.getter(name="propertiesResourceArn")
-    def properties_resource_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def properties_resource_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the resource.
         """
         return pulumi.get(self, "properties_resource_arn")
 
     @properties_resource_arn.setter
-    def properties_resource_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def properties_resource_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "properties_resource_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceArn")
-    def resource_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Associated resource ARN.
 
@@ -241,67 +241,67 @@ class _SharedResourceState:
         return pulumi.get(self, "resource_arn")
 
     @resource_arn.setter
-    def resource_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the shared resource.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceProperty")
-    def resource_property(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_property(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The property of the resource.
         """
         return pulumi.get(self, "resource_property")
 
     @resource_property.setter
-    def resource_property(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_property(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_property", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceShareId")
-    def resource_share_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_share_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource share.
         """
         return pulumi.get(self, "resource_share_id")
 
     @resource_share_id.setter
-    def resource_share_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_share_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_share_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the shared resource.
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The association status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -311,13 +311,13 @@ class SharedResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permission_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties_resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_property: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 permission_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties_resource_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_property: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_share_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Shared Resource resource.
@@ -454,13 +454,13 @@ class SharedResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permission_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties_resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_property: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 permission_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties_resource_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_property: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_share_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -491,15 +491,15 @@ class SharedResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            permission_name: Optional[pulumi.Input[_builtins.str]] = None,
-            properties_resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_property: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_share_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'SharedResource':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            permission_name: pulumi.Input[Optional[_builtins.str]] = None,
+            properties_resource_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_property: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_share_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'SharedResource':
         """
         Get an existing SharedResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -143,8 +143,8 @@ def get_namespaces(name_regex: Optional[_builtins.str] = None,
         names=pulumi.get(__ret__, 'names'),
         namespaces=pulumi.get(__ret__, 'namespaces'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_namespaces_output(name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_namespaces_output(name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNamespacesResult]:
     """
     > **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.

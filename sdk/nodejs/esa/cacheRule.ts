@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *     queryStringMode: "ignore_all",
  *     rule: "http.host eq \"video.example.com\"",
  *     cacheDeceptionArmor: "off",
- *     siteId: _default.then(_default => _default.sites?.[0]?.id),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.id)).apply(x =>String(x)),
  *     bypassCache: "cache_all",
  *     edgeCacheTtl: "300",
  *     ruleEnable: "off",
@@ -303,125 +303,125 @@ export interface CacheRuleState {
     /**
      * Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
      */
-    additionalCacheablePorts?: pulumi.Input<string>;
+    additionalCacheablePorts?: pulumi.Input<string | undefined>;
     /**
      * Browser cache mode. Possible values:
      */
-    browserCacheMode?: pulumi.Input<string>;
+    browserCacheMode?: pulumi.Input<string | undefined>;
     /**
      * Browser cache expiration time in seconds.
      */
-    browserCacheTtl?: pulumi.Input<string>;
+    browserCacheTtl?: pulumi.Input<string | undefined>;
     /**
      * Set the bypass cache mode. Possible values:
      */
-    bypassCache?: pulumi.Input<string>;
+    bypassCache?: pulumi.Input<string | undefined>;
     /**
      * Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
      */
-    cacheDeceptionArmor?: pulumi.Input<string>;
+    cacheDeceptionArmor?: pulumi.Input<string | undefined>;
     /**
      * Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
      */
-    cacheReserveEligibility?: pulumi.Input<string>;
+    cacheReserveEligibility?: pulumi.Input<string | undefined>;
     /**
      * Cache Rule Id.
      */
-    cacheRuleId?: pulumi.Input<number>;
+    cacheRuleId?: pulumi.Input<number | undefined>;
     /**
      * When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
      */
-    checkPresenceCookie?: pulumi.Input<string>;
+    checkPresenceCookie?: pulumi.Input<string | undefined>;
     /**
      * When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
      */
-    checkPresenceHeader?: pulumi.Input<string>;
+    checkPresenceHeader?: pulumi.Input<string | undefined>;
     /**
      * Edge cache mode. Possible values:
      */
-    edgeCacheMode?: pulumi.Input<string>;
+    edgeCacheMode?: pulumi.Input<string | undefined>;
     /**
      * Edge cache expiration time in seconds.
      */
-    edgeCacheTtl?: pulumi.Input<string>;
+    edgeCacheTtl?: pulumi.Input<string | undefined>;
     /**
      * Status code cache expiration time in seconds.
      */
-    edgeStatusCodeCacheTtl?: pulumi.Input<string>;
+    edgeStatusCodeCacheTtl?: pulumi.Input<string | undefined>;
     /**
      * When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
      */
-    includeCookie?: pulumi.Input<string>;
+    includeCookie?: pulumi.Input<string | undefined>;
     /**
      * When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
      */
-    includeHeader?: pulumi.Input<string>;
+    includeHeader?: pulumi.Input<string | undefined>;
     /**
      * Processing pattern for the cache key.
      */
-    postBodyCacheKey?: pulumi.Input<string>;
+    postBodyCacheKey?: pulumi.Input<string | undefined>;
     /**
      * Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
      */
-    postBodySizeLimit?: pulumi.Input<string>;
+    postBodySizeLimit?: pulumi.Input<string | undefined>;
     /**
      * Toggle for the Post cache feature.
      */
-    postCache?: pulumi.Input<string>;
+    postCache?: pulumi.Input<string | undefined>;
     /**
      * Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
      */
-    queryString?: pulumi.Input<string>;
+    queryString?: pulumi.Input<string | undefined>;
     /**
      * The processing mode for query strings when generating the cache key. Possible values:
      */
-    queryStringMode?: pulumi.Input<string>;
+    queryStringMode?: pulumi.Input<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true.
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\").
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
      */
-    serveStale?: pulumi.Input<string>;
+    serveStale?: pulumi.Input<string | undefined>;
     /**
      * The site ID, which can be obtained by calling the [ListSites] API.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
     /**
      * Query string sorting, disabled by default. Possible values:
      */
-    sortQueryStringForCache?: pulumi.Input<string>;
+    sortQueryStringForCache?: pulumi.Input<string | undefined>;
     /**
      * When generating the cache key, add the client device type. Possible values:
      */
-    userDeviceType?: pulumi.Input<string>;
+    userDeviceType?: pulumi.Input<string | undefined>;
     /**
      * When generating the cache key, add the client's geographic location. Possible values:
      */
-    userGeo?: pulumi.Input<string>;
+    userGeo?: pulumi.Input<string | undefined>;
     /**
      * When generating cache keys, include the client's language type. Possible values:
      */
-    userLanguage?: pulumi.Input<string>;
+    userLanguage?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -431,97 +431,97 @@ export interface CacheRuleArgs {
     /**
      * Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
      */
-    additionalCacheablePorts?: pulumi.Input<string>;
+    additionalCacheablePorts?: pulumi.Input<string | undefined>;
     /**
      * Browser cache mode. Possible values:
      */
-    browserCacheMode?: pulumi.Input<string>;
+    browserCacheMode?: pulumi.Input<string | undefined>;
     /**
      * Browser cache expiration time in seconds.
      */
-    browserCacheTtl?: pulumi.Input<string>;
+    browserCacheTtl?: pulumi.Input<string | undefined>;
     /**
      * Set the bypass cache mode. Possible values:
      */
-    bypassCache?: pulumi.Input<string>;
+    bypassCache?: pulumi.Input<string | undefined>;
     /**
      * Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
      */
-    cacheDeceptionArmor?: pulumi.Input<string>;
+    cacheDeceptionArmor?: pulumi.Input<string | undefined>;
     /**
      * Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
      */
-    cacheReserveEligibility?: pulumi.Input<string>;
+    cacheReserveEligibility?: pulumi.Input<string | undefined>;
     /**
      * When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
      */
-    checkPresenceCookie?: pulumi.Input<string>;
+    checkPresenceCookie?: pulumi.Input<string | undefined>;
     /**
      * When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
      */
-    checkPresenceHeader?: pulumi.Input<string>;
+    checkPresenceHeader?: pulumi.Input<string | undefined>;
     /**
      * Edge cache mode. Possible values:
      */
-    edgeCacheMode?: pulumi.Input<string>;
+    edgeCacheMode?: pulumi.Input<string | undefined>;
     /**
      * Edge cache expiration time in seconds.
      */
-    edgeCacheTtl?: pulumi.Input<string>;
+    edgeCacheTtl?: pulumi.Input<string | undefined>;
     /**
      * Status code cache expiration time in seconds.
      */
-    edgeStatusCodeCacheTtl?: pulumi.Input<string>;
+    edgeStatusCodeCacheTtl?: pulumi.Input<string | undefined>;
     /**
      * When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
      */
-    includeCookie?: pulumi.Input<string>;
+    includeCookie?: pulumi.Input<string | undefined>;
     /**
      * When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
      */
-    includeHeader?: pulumi.Input<string>;
+    includeHeader?: pulumi.Input<string | undefined>;
     /**
      * Processing pattern for the cache key.
      */
-    postBodyCacheKey?: pulumi.Input<string>;
+    postBodyCacheKey?: pulumi.Input<string | undefined>;
     /**
      * Body size limit. The value is a numeric value in KB. Body sizes from 1 KB to 8 KB are supported. If the value is empty, it defaults to 8 KB.
      */
-    postBodySizeLimit?: pulumi.Input<string>;
+    postBodySizeLimit?: pulumi.Input<string | undefined>;
     /**
      * Toggle for the Post cache feature.
      */
-    postCache?: pulumi.Input<string>;
+    postCache?: pulumi.Input<string | undefined>;
     /**
      * Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
      */
-    queryString?: pulumi.Input<string>;
+    queryString?: pulumi.Input<string | undefined>;
     /**
      * The processing mode for query strings when generating the cache key. Possible values:
      */
-    queryStringMode?: pulumi.Input<string>;
+    queryStringMode?: pulumi.Input<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true.
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\").
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
      */
-    serveStale?: pulumi.Input<string>;
+    serveStale?: pulumi.Input<string | undefined>;
     /**
      * The site ID, which can be obtained by calling the [ListSites] API.
      */
@@ -529,21 +529,21 @@ export interface CacheRuleArgs {
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
     /**
      * Query string sorting, disabled by default. Possible values:
      */
-    sortQueryStringForCache?: pulumi.Input<string>;
+    sortQueryStringForCache?: pulumi.Input<string | undefined>;
     /**
      * When generating the cache key, add the client device type. Possible values:
      */
-    userDeviceType?: pulumi.Input<string>;
+    userDeviceType?: pulumi.Input<string | undefined>;
     /**
      * When generating the cache key, add the client's geographic location. Possible values:
      */
-    userGeo?: pulumi.Input<string>;
+    userGeo?: pulumi.Input<string | undefined>;
     /**
      * When generating cache keys, include the client's language type. Possible values:
      */
-    userLanguage?: pulumi.Input<string>;
+    userLanguage?: pulumi.Input<string | undefined>;
 }

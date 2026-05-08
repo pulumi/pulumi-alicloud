@@ -185,19 +185,19 @@ export interface LoadBalancerZoneShiftedAttachmentState {
     /**
      * The ID of the load balancing instance.
      */
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
     /**
      * Availability zone status. Value:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The VSwitch corresponding to the zone. By default, each zone uses one VSwitch and one subnet.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**

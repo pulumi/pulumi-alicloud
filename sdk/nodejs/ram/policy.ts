@@ -223,73 +223,73 @@ export interface PolicyState {
     /**
      * Number of attachments of the policy.
      */
-    attachmentCount?: pulumi.Input<number>;
+    attachmentCount?: pulumi.Input<number | undefined>;
     /**
      * (Available since v1.246.0) The create time of the policy.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The default version ID of the policy.
      */
-    defaultVersion?: pulumi.Input<string>;
+    defaultVersion?: pulumi.Input<string | undefined>;
     /**
      * The description of the policy. It can be 1 to 1024 characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
      *
      * @deprecated Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
      */
-    document?: pulumi.Input<string>;
+    document?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to force delete the Policy. Default value: `false`. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The content of the policy. The maximum length is 6144 bytes.
      */
-    policyDocument?: pulumi.Input<string>;
+    policyDocument?: pulumi.Input<string | undefined>;
     /**
      * The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
      * - `None`: Turn off the rotation mechanism.
      * - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
      */
-    rotateStrategy?: pulumi.Input<string>;
+    rotateStrategy?: pulumi.Input<string | undefined>;
     /**
      * Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
      *
      * @deprecated Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
-    statements?: pulumi.Input<pulumi.Input<inputs.ram.PolicyStatement>[]>;
+    statements?: pulumi.Input<pulumi.Input<inputs.ram.PolicyStatement>[] | undefined>;
     /**
      * The list of tags on the policy.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of the policy.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      *
      * @deprecated Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The ID of the default policy version.
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -299,51 +299,51 @@ export interface PolicyArgs {
     /**
      * The description of the policy. It can be 1 to 1024 characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
      *
      * @deprecated Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
      */
-    document?: pulumi.Input<string>;
+    document?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to force delete the Policy. Default value: `false`. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The content of the policy. The maximum length is 6144 bytes.
      */
-    policyDocument?: pulumi.Input<string>;
+    policyDocument?: pulumi.Input<string | undefined>;
     /**
      * The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None. Valid values:
      * - `None`: Turn off the rotation mechanism.
      * - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
      */
-    rotateStrategy?: pulumi.Input<string>;
+    rotateStrategy?: pulumi.Input<string | undefined>;
     /**
      * Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
      *
      * @deprecated Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
-    statements?: pulumi.Input<pulumi.Input<inputs.ram.PolicyStatement>[]>;
+    statements?: pulumi.Input<pulumi.Input<inputs.ram.PolicyStatement>[] | undefined>;
     /**
      * The list of tags on the policy.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      *
      * @deprecated Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

@@ -23,19 +23,19 @@ class WorkspaceModelVersionArgs:
     def __init__(__self__, *,
                  model_id: pulumi.Input[_builtins.str],
                  uri: pulumi.Input[_builtins.str],
-                 approval_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 format_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 framework_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 inference_spec: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceModelVersionLabelArgs']]]] = None,
-                 metrics: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 training_spec: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 approval_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 format_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 framework_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 inference_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceModelVersionLabelArgs']]]] = None,
+                 metrics: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 training_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceModelVersion resource.
 
@@ -133,7 +133,7 @@ class WorkspaceModelVersionArgs:
 
     @_builtins.property
     @pulumi.getter(name="approvalStatus")
-    def approval_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def approval_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The approval status. Valid values:
         - Pending: To be determined.
@@ -143,24 +143,24 @@ class WorkspaceModelVersionArgs:
         return pulumi.get(self, "approval_status")
 
     @approval_status.setter
-    def approval_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def approval_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "approval_status", value)
 
     @_builtins.property
     @pulumi.getter(name="extraInfo")
-    def extra_info(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def extra_info(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Other information.
         """
         return pulumi.get(self, "extra_info")
 
     @extra_info.setter
-    def extra_info(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def extra_info(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extra_info", value)
 
     @_builtins.property
     @pulumi.getter(name="formatType")
-    def format_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def format_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The format of the model. Valid values:
         - OfflineModel
@@ -177,12 +177,12 @@ class WorkspaceModelVersionArgs:
         return pulumi.get(self, "format_type")
 
     @format_type.setter
-    def format_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def format_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "format_type", value)
 
     @_builtins.property
     @pulumi.getter(name="frameworkType")
-    def framework_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def framework_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The framework of the model. Valid values:
         - Pytorch
@@ -196,72 +196,72 @@ class WorkspaceModelVersionArgs:
         return pulumi.get(self, "framework_type")
 
     @framework_type.setter
-    def framework_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def framework_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "framework_type", value)
 
     @_builtins.property
     @pulumi.getter(name="inferenceSpec")
-    def inference_spec(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def inference_spec(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Describes how to apply to downstream inference services.
         """
         return pulumi.get(self, "inference_spec")
 
     @inference_spec.setter
-    def inference_spec(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def inference_spec(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "inference_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceModelVersionLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceModelVersionLabelArgs']]]]:
         """
         List of model version labels. See `labels` below.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceModelVersionLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceModelVersionLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def metrics(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metrics(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The metrics for the model. The serialized length is limited to 8192.
         """
         return pulumi.get(self, "metrics")
 
     @metrics.setter
-    def metrics(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metrics(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metrics", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extended field. This is a JSON string.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceId")
-    def source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source ID.
         """
         return pulumi.get(self, "source_id")
 
     @source_id.setter
-    def source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the model source. Valid values:
         - Custom: Custom.
@@ -271,64 +271,64 @@ class WorkspaceModelVersionArgs:
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="trainingSpec")
-    def training_spec(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def training_spec(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The training configurations. Used for fine-tuning and incremental training.
         """
         return pulumi.get(self, "training_spec")
 
     @training_spec.setter
-    def training_spec(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def training_spec(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "training_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="versionDescription")
-    def version_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version descriptions.
         """
         return pulumi.get(self, "version_description")
 
     @version_description.setter
-    def version_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_description", value)
 
     @_builtins.property
     @pulumi.getter(name="versionName")
-    def version_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Model version.
         """
         return pulumi.get(self, "version_name")
 
     @version_name.setter
-    def version_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_name", value)
 
 
 @pulumi.input_type
 class _WorkspaceModelVersionState:
     def __init__(__self__, *,
-                 approval_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 format_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 framework_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 inference_spec: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceModelVersionLabelArgs']]]] = None,
-                 metrics: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 training_spec: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 approval_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 format_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 framework_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 inference_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceModelVersionLabelArgs']]]] = None,
+                 metrics: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 training_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceModelVersion resources.
 
@@ -404,7 +404,7 @@ class _WorkspaceModelVersionState:
 
     @_builtins.property
     @pulumi.getter(name="approvalStatus")
-    def approval_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def approval_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The approval status. Valid values:
         - Pending: To be determined.
@@ -414,24 +414,24 @@ class _WorkspaceModelVersionState:
         return pulumi.get(self, "approval_status")
 
     @approval_status.setter
-    def approval_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def approval_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "approval_status", value)
 
     @_builtins.property
     @pulumi.getter(name="extraInfo")
-    def extra_info(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def extra_info(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Other information.
         """
         return pulumi.get(self, "extra_info")
 
     @extra_info.setter
-    def extra_info(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def extra_info(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extra_info", value)
 
     @_builtins.property
     @pulumi.getter(name="formatType")
-    def format_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def format_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The format of the model. Valid values:
         - OfflineModel
@@ -448,12 +448,12 @@ class _WorkspaceModelVersionState:
         return pulumi.get(self, "format_type")
 
     @format_type.setter
-    def format_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def format_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "format_type", value)
 
     @_builtins.property
     @pulumi.getter(name="frameworkType")
-    def framework_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def framework_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The framework of the model. Valid values:
         - Pytorch
@@ -467,84 +467,84 @@ class _WorkspaceModelVersionState:
         return pulumi.get(self, "framework_type")
 
     @framework_type.setter
-    def framework_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def framework_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "framework_type", value)
 
     @_builtins.property
     @pulumi.getter(name="inferenceSpec")
-    def inference_spec(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def inference_spec(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Describes how to apply to downstream inference services.
         """
         return pulumi.get(self, "inference_spec")
 
     @inference_spec.setter
-    def inference_spec(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def inference_spec(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "inference_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceModelVersionLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceModelVersionLabelArgs']]]]:
         """
         List of model version labels. See `labels` below.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceModelVersionLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceModelVersionLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def metrics(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metrics(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The metrics for the model. The serialized length is limited to 8192.
         """
         return pulumi.get(self, "metrics")
 
     @metrics.setter
-    def metrics(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metrics(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metrics", value)
 
     @_builtins.property
     @pulumi.getter(name="modelId")
-    def model_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The model ID.
         """
         return pulumi.get(self, "model_id")
 
     @model_id.setter
-    def model_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extended field. This is a JSON string.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceId")
-    def source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source ID.
         """
         return pulumi.get(self, "source_id")
 
     @source_id.setter
-    def source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the model source. Valid values:
         - Custom: Custom.
@@ -554,55 +554,55 @@ class _WorkspaceModelVersionState:
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="trainingSpec")
-    def training_spec(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def training_spec(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The training configurations. Used for fine-tuning and incremental training.
         """
         return pulumi.get(self, "training_spec")
 
     @training_spec.setter
-    def training_spec(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def training_spec(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "training_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the model version.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
     @_builtins.property
     @pulumi.getter(name="versionDescription")
-    def version_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version descriptions.
         """
         return pulumi.get(self, "version_description")
 
     @version_description.setter
-    def version_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_description", value)
 
     @_builtins.property
     @pulumi.getter(name="versionName")
-    def version_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Model version.
         """
         return pulumi.get(self, "version_name")
 
     @version_name.setter
-    def version_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_name", value)
 
 
@@ -612,21 +612,21 @@ class WorkspaceModelVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 format_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 framework_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 inference_spec: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict']]]]] = None,
-                 metrics: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 training_spec: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 approval_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 format_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 framework_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 inference_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict']]]]] = None,
+                 metrics: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 training_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a PAI Workspace Model Version resource.
@@ -856,21 +856,21 @@ class WorkspaceModelVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 format_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 framework_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 inference_spec: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict']]]]] = None,
-                 metrics: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 training_spec: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 approval_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 format_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 framework_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 inference_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict']]]]] = None,
+                 metrics: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 training_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -909,21 +909,21 @@ class WorkspaceModelVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            approval_status: Optional[pulumi.Input[_builtins.str]] = None,
-            extra_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            format_type: Optional[pulumi.Input[_builtins.str]] = None,
-            framework_type: Optional[pulumi.Input[_builtins.str]] = None,
-            inference_spec: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict']]]]] = None,
-            metrics: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            model_id: Optional[pulumi.Input[_builtins.str]] = None,
-            options: Optional[pulumi.Input[_builtins.str]] = None,
-            source_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            training_spec: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            uri: Optional[pulumi.Input[_builtins.str]] = None,
-            version_description: Optional[pulumi.Input[_builtins.str]] = None,
-            version_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkspaceModelVersion':
+            approval_status: pulumi.Input[Optional[_builtins.str]] = None,
+            extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            format_type: pulumi.Input[Optional[_builtins.str]] = None,
+            framework_type: pulumi.Input[Optional[_builtins.str]] = None,
+            inference_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelVersionLabelArgs', 'WorkspaceModelVersionLabelArgsDict']]]]] = None,
+            metrics: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            model_id: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[_builtins.str]] = None,
+            source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            training_spec: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None,
+            version_description: pulumi.Input[Optional[_builtins.str]] = None,
+            version_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceModelVersion':
         """
         Get an existing WorkspaceModelVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

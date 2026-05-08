@@ -199,23 +199,23 @@ export interface DbProxyPublicState {
     /**
      * The prefix for the new database proxy connection address can be customized.
      */
-    connectionStringPrefix?: pulumi.Input<string>;
+    connectionStringPrefix?: pulumi.Input<string | undefined>;
     /**
      * Instance ID.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The network type of the new database proxy connection address,This resource defaults to Public.
      */
-    dbProxyConnectionStringNetType?: pulumi.Input<string>;
+    dbProxyConnectionStringNetType?: pulumi.Input<string | undefined>;
     /**
      * Database proxy connection address ID.
      */
-    dbProxyEndpointId?: pulumi.Input<string>;
+    dbProxyEndpointId?: pulumi.Input<string | undefined>;
     /**
      * The port for the new database proxy connection address is 3306 by default for MySQL and 5432 by default for PostgreSQL, which can be customized.
      */
-    dbProxyNewConnectStringPort?: pulumi.Input<string>;
+    dbProxyNewConnectStringPort?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -241,5 +241,5 @@ export interface DbProxyPublicArgs {
     /**
      * The port for the new database proxy connection address is 3306 by default for MySQL and 5432 by default for PostgreSQL, which can be customized.
      */
-    dbProxyNewConnectStringPort?: pulumi.Input<string>;
+    dbProxyNewConnectStringPort?: pulumi.Input<string | undefined>;
 }

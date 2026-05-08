@@ -34,11 +34,11 @@ class AccountDmlAuthSettingArgsDict(TypedDict):
     """
     Whether to grant the DML permission to the database account. The values are as follows:
     """
-    allow_databases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allow_databases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of databases that require authorization. If there are more than one, separate them with commas (,).
     """
-    allow_dictionaries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allow_dictionaries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of dictionaries that require authorization. If there are more than one, separate them with commas (,).
     """
@@ -48,8 +48,8 @@ class AccountDmlAuthSettingArgs:
     def __init__(__self__, *,
                  ddl_authority: pulumi.Input[_builtins.bool],
                  dml_authority: pulumi.Input[_builtins.int],
-                 allow_databases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 allow_dictionaries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allow_databases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_dictionaries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] ddl_authority: Whether to grant the DDL permission to the database account. Value description:
         :param pulumi.Input[_builtins.int] dml_authority: Whether to grant the DML permission to the database account. The values are as follows:
@@ -89,67 +89,67 @@ class AccountDmlAuthSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowDatabases")
-    def allow_databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allow_databases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of databases that require authorization. If there are more than one, separate them with commas (,).
         """
         return pulumi.get(self, "allow_databases")
 
     @allow_databases.setter
-    def allow_databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allow_databases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allow_databases", value)
 
     @_builtins.property
     @pulumi.getter(name="allowDictionaries")
-    def allow_dictionaries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allow_dictionaries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of dictionaries that require authorization. If there are more than one, separate them with commas (,).
         """
         return pulumi.get(self, "allow_dictionaries")
 
     @allow_dictionaries.setter
-    def allow_dictionaries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allow_dictionaries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allow_dictionaries", value)
 
 
 class ClickHouseEnterpriseDbClusterEndpointArgsDict(TypedDict):
-    computing_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    computing_group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The computing group ID.
     """
-    connection_string: NotRequired[pulumi.Input[_builtins.str]]
+    connection_string: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The instance connection string.
     """
-    endpoint_name: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The endpoint name.
     """
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address.
     """
-    net_type: NotRequired[pulumi.Input[_builtins.str]]
+    net_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The network type of the connection string.
     """
-    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointPortArgsDict']]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointPortArgs']]]]]
     """
     A list of port details.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The instance status.
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VPC ID.
     """
-    vpc_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VPC instance ID.
     """
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     vSwitch ID.
     """
@@ -157,16 +157,16 @@ class ClickHouseEnterpriseDbClusterEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class ClickHouseEnterpriseDbClusterEndpointArgs:
     def __init__(__self__, *,
-                 computing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointPortArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 computing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointPortArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] computing_group_id: The computing group ID.
         :param pulumi.Input[_builtins.str] connection_string: The instance connection string.
@@ -202,131 +202,131 @@ class ClickHouseEnterpriseDbClusterEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="computingGroupId")
-    def computing_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def computing_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The computing group ID.
         """
         return pulumi.get(self, "computing_group_id")
 
     @computing_group_id.setter
-    def computing_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def computing_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "computing_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance connection string.
         """
         return pulumi.get(self, "connection_string")
 
     @connection_string.setter
-    def connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointName")
-    def endpoint_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint name.
         """
         return pulumi.get(self, "endpoint_name")
 
     @endpoint_name.setter
-    def endpoint_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="netType")
-    def net_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the connection string.
         """
         return pulumi.get(self, "net_type")
 
     @net_type.setter
-    def net_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointPortArgs']]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointPortArgs']]]]:
         """
         A list of port details.
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointPortArgs']]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointPortArgs']]]]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcInstanceId")
-    def vpc_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC instance ID.
         """
         return pulumi.get(self, "vpc_instance_id")
 
     @vpc_instance_id.setter
-    def vpc_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         vSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 class ClickHouseEnterpriseDbClusterEndpointPortArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The access port.
     """
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protocol type.
     """
@@ -334,8 +334,8 @@ class ClickHouseEnterpriseDbClusterEndpointPortArgsDict(TypedDict):
 @pulumi.input_type
 class ClickHouseEnterpriseDbClusterEndpointPortArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: The access port.
         :param pulumi.Input[_builtins.str] protocol: The protocol type.
@@ -347,35 +347,35 @@ class ClickHouseEnterpriseDbClusterEndpointPortArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The access port.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
 
 class ClickHouseEnterpriseDbClusterMultiZoneArgsDict(TypedDict):
-    vswitch_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    vswitch_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of vSwitch IDs.
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Zone ID.
     """
@@ -383,8 +383,8 @@ class ClickHouseEnterpriseDbClusterMultiZoneArgsDict(TypedDict):
 @pulumi.input_type
 class ClickHouseEnterpriseDbClusterMultiZoneArgs:
     def __init__(__self__, *,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: List of vSwitch IDs.
         :param pulumi.Input[_builtins.str] zone_id: Zone ID.
@@ -396,26 +396,26 @@ class ClickHouseEnterpriseDbClusterMultiZoneArgs:
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of vSwitch IDs.
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 

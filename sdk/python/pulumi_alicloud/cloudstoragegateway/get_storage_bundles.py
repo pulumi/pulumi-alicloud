@@ -162,12 +162,12 @@ def get_storage_bundles(backend_bucket_region_id: Optional[_builtins.str] = None
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'),
         total_count=pulumi.get(__ret__, 'total_count'))
-def get_storage_bundles_output(backend_bucket_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                               page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_storage_bundles_output(backend_bucket_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                               ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                               page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageBundlesResult]:
     """
     Use this data source to access information about an existing resource.

@@ -121,15 +121,15 @@ export interface GetTrafficMirrorFilterEgressRulesOutputArgs {
     /**
      * A list of Traffic Mirror Filter Egress Rule IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Traffic Mirror Filter.
      */

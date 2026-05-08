@@ -202,37 +202,37 @@ export interface KubernetesAddonState {
      *
      * @deprecated Field 'can_upgrade' has been deprecated from provider version 1.273.0. Please compare 'next_version' and 'current_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it
      */
-    canUpgrade?: pulumi.Input<boolean>;
+    canUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
      */
-    cleanupCloudResources?: pulumi.Input<boolean>;
+    cleanupCloudResources?: pulumi.Input<boolean | undefined>;
     /**
      * The id of kubernetes cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
      */
-    config?: pulumi.Input<string>;
+    config?: pulumi.Input<string | undefined>;
     /**
      * The name of addon.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Deprecated since v1.273.0) The version which addon can be upgraded to.
      *
      * @deprecated Field 'next_version' has been deprecated from provider version 1.273.0. Please use 'next_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it
      */
-    nextVersion?: pulumi.Input<string>;
+    nextVersion?: pulumi.Input<string | undefined>;
     /**
      * Is it a mandatory addon to be installed.
      */
-    required?: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean | undefined>;
     /**
      * The current version of addon.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -242,7 +242,7 @@ export interface KubernetesAddonArgs {
     /**
      * Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
      */
-    cleanupCloudResources?: pulumi.Input<boolean>;
+    cleanupCloudResources?: pulumi.Input<boolean | undefined>;
     /**
      * The id of kubernetes cluster.
      */
@@ -250,13 +250,13 @@ export interface KubernetesAddonArgs {
     /**
      * The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
      */
-    config?: pulumi.Input<string>;
+    config?: pulumi.Input<string | undefined>;
     /**
      * The name of addon.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The current version of addon.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

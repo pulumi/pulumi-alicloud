@@ -22,25 +22,25 @@ __all__ = ['DedicatedHostArgs', 'DedicatedHost']
 class DedicatedHostArgs:
     def __init__(__self__, *,
                  dedicated_host_type: pulumi.Input[_builtins.str],
-                 action_on_maintenance: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_placement: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_release_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_over_commit_ratio: Optional[pulumi.Input[_builtins.float]] = None,
-                 dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detail_fee: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expired_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_quantity: Optional[pulumi.Input[_builtins.int]] = None,
-                 network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sale_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 action_on_maintenance: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_placement: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_over_commit_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 dedicated_host_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detail_fee: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_quantity: pulumi.Input[Optional[_builtins.int]] = None,
+                 network_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sale_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DedicatedHost resource.
 
@@ -119,257 +119,257 @@ class DedicatedHostArgs:
 
     @_builtins.property
     @pulumi.getter(name="actionOnMaintenance")
-    def action_on_maintenance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action_on_maintenance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.
         """
         return pulumi.get(self, "action_on_maintenance")
 
     @action_on_maintenance.setter
-    def action_on_maintenance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action_on_maintenance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action_on_maintenance", value)
 
     @_builtins.property
     @pulumi.getter(name="autoPlacement")
-    def auto_placement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_placement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.
         """
         return pulumi.get(self, "auto_placement")
 
     @auto_placement.setter
-    def auto_placement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_placement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_placement", value)
 
     @_builtins.property
     @pulumi.getter(name="autoReleaseTime")
-    def auto_release_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_release_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         """
         return pulumi.get(self, "auto_release_time")
 
     @auto_release_time.setter
-    def auto_release_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_release_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_release_time", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically renew the subscription dedicated host.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuOverCommitRatio")
-    def cpu_over_commit_ratio(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu_over_commit_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
         """
         return pulumi.get(self, "cpu_over_commit_ratio")
 
     @cpu_over_commit_ratio.setter
-    def cpu_over_commit_ratio(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu_over_commit_ratio(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu_over_commit_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostClusterId")
-    def dedicated_host_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dedicated host cluster ID to which the dedicated host belongs.
         """
         return pulumi.get(self, "dedicated_host_cluster_id")
 
     @dedicated_host_cluster_id.setter
-    def dedicated_host_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostName")
-    def dedicated_host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "dedicated_host_name")
 
     @dedicated_host_name.setter
-    def dedicated_host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="detailFee")
-    def detail_fee(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def detail_fee(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.
         """
         return pulumi.get(self, "detail_fee")
 
     @detail_fee.setter
-    def detail_fee(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def detail_fee(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "detail_fee", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to only validate the request. Default: `false`.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="expiredTime")
-    def expired_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expired_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
         """
         return pulumi.get(self, "expired_time")
 
     @expired_time.setter
-    def expired_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expired_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expired_time", value)
 
     @_builtins.property
     @pulumi.getter(name="minQuantity")
-    def min_quantity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_quantity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specify the minimum purchase quantity of a dedicated host.
         """
         return pulumi.get(self, "min_quantity")
 
     @min_quantity.setter
-    def min_quantity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_quantity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_quantity", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAttributes")
-    def network_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]]:
+    def network_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]]:
         """
         dedicated host network parameters. contains the following attributes:
         """
         return pulumi.get(self, "network_attributes")
 
     @network_attributes.setter
-    def network_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]]):
+    def network_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]]):
         pulumi.set(self, "network_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the dedicated host belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="saleCycle")
-    def sale_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sale_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the subscription period of the dedicated host.
         """
         return pulumi.get(self, "sale_cycle")
 
     @sale_cycle.setter
-    def sale_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sale_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sale_cycle", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _DedicatedHostState:
     def __init__(__self__, *,
-                 action_on_maintenance: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_placement: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_release_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_over_commit_ratio: Optional[pulumi.Input[_builtins.float]] = None,
-                 dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_host_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detail_fee: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expired_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_quantity: Optional[pulumi.Input[_builtins.int]] = None,
-                 network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sale_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 action_on_maintenance: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_placement: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_over_commit_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 dedicated_host_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_host_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detail_fee: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_quantity: pulumi.Input[Optional[_builtins.int]] = None,
+                 network_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sale_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DedicatedHost resources.
 
@@ -440,254 +440,254 @@ class _DedicatedHostState:
 
     @_builtins.property
     @pulumi.getter(name="actionOnMaintenance")
-    def action_on_maintenance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action_on_maintenance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy used to migrate the instances from the dedicated host when the dedicated host fails or needs to be repaired online. Valid values: `Migrate`, `Stop`.
         """
         return pulumi.get(self, "action_on_maintenance")
 
     @action_on_maintenance.setter
-    def action_on_maintenance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action_on_maintenance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action_on_maintenance", value)
 
     @_builtins.property
     @pulumi.getter(name="autoPlacement")
-    def auto_placement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_placement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify the DedicatedHostId parameter when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values: `on`, `off`. Default: `on`.
         """
         return pulumi.get(self, "auto_placement")
 
     @auto_placement.setter
-    def auto_placement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_placement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_placement", value)
 
     @_builtins.property
     @pulumi.getter(name="autoReleaseTime")
-    def auto_release_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_release_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The automatic release time of the dedicated host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         """
         return pulumi.get(self, "auto_release_time")
 
     @auto_release_time.setter
-    def auto_release_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_release_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_release_time", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically renew the subscription dedicated host.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period of the dedicated host. Unit: months. Valid values: `1`, `2`, `3`, `6`, and `12`. takes effect and is required only when the AutoRenew parameter is set to true.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuOverCommitRatio")
-    def cpu_over_commit_ratio(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu_over_commit_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         CPU oversold ratio. Only custom specifications g6s, c6s, r6s support setting the CPU oversold ratio.
         """
         return pulumi.get(self, "cpu_over_commit_ratio")
 
     @cpu_over_commit_ratio.setter
-    def cpu_over_commit_ratio(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu_over_commit_ratio(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu_over_commit_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostClusterId")
-    def dedicated_host_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dedicated host cluster ID to which the dedicated host belongs.
         """
         return pulumi.get(self, "dedicated_host_cluster_id")
 
     @dedicated_host_cluster_id.setter
-    def dedicated_host_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostName")
-    def dedicated_host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the dedicated host. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "dedicated_host_name")
 
     @dedicated_host_name.setter
-    def dedicated_host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostType")
-    def dedicated_host_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://www.alibabacloud.com/help/doc-detail/134240.htm) operation to obtain the most recent list of dedicated host types.
         """
         return pulumi.get(self, "dedicated_host_type")
 
     @dedicated_host_type.setter
-    def dedicated_host_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="detailFee")
-    def detail_fee(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def detail_fee(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to return the billing details of the order when the billing method is changed from subscription to pay-as-you-go. Default: `false`.
         """
         return pulumi.get(self, "detail_fee")
 
     @detail_fee.setter
-    def detail_fee(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def detail_fee(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "detail_fee", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to only validate the request. Default: `false`.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="expiredTime")
-    def expired_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expired_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
         """
         return pulumi.get(self, "expired_time")
 
     @expired_time.setter
-    def expired_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expired_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expired_time", value)
 
     @_builtins.property
     @pulumi.getter(name="minQuantity")
-    def min_quantity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_quantity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specify the minimum purchase quantity of a dedicated host.
         """
         return pulumi.get(self, "min_quantity")
 
     @min_quantity.setter
-    def min_quantity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_quantity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_quantity", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAttributes")
-    def network_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]]:
+    def network_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]]:
         """
         dedicated host network parameters. contains the following attributes:
         """
         return pulumi.get(self, "network_attributes")
 
     @network_attributes.setter
-    def network_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]]):
+    def network_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DedicatedHostNetworkAttributeArgs']]]]):
         pulumi.set(self, "network_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the dedicated host belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="saleCycle")
-    def sale_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sale_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the subscription period of the dedicated host.
         """
         return pulumi.get(self, "sale_cycle")
 
     @sale_cycle.setter
-    def sale_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sale_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sale_cycle", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the dedicated host.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -697,26 +697,26 @@ class DedicatedHost(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_on_maintenance: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_placement: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_release_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_over_commit_ratio: Optional[pulumi.Input[_builtins.float]] = None,
-                 dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_host_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detail_fee: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expired_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_quantity: Optional[pulumi.Input[_builtins.int]] = None,
-                 network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict']]]]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sale_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action_on_maintenance: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_placement: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_over_commit_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 dedicated_host_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_host_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detail_fee: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_quantity: pulumi.Input[Optional[_builtins.int]] = None,
+                 network_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict']]]]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sale_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resouce used to create a dedicated host and store its initial version. For information about Aliecs Dedicated Host and how to use it, see [What is Resource Aliecs Dedicated Host](https://www.alibabacloud.com/help/doc-detail/134238.htm).
@@ -880,26 +880,26 @@ class DedicatedHost(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_on_maintenance: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_placement: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_release_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_over_commit_ratio: Optional[pulumi.Input[_builtins.float]] = None,
-                 dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_host_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 detail_fee: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expired_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_quantity: Optional[pulumi.Input[_builtins.int]] = None,
-                 network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict']]]]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sale_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action_on_maintenance: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_placement: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_over_commit_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+                 dedicated_host_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_host_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 detail_fee: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_quantity: pulumi.Input[Optional[_builtins.int]] = None,
+                 network_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict']]]]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sale_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -942,27 +942,27 @@ class DedicatedHost(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action_on_maintenance: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_placement: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_release_time: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            cpu_over_commit_ratio: Optional[pulumi.Input[_builtins.float]] = None,
-            dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dedicated_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-            dedicated_host_type: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            detail_fee: Optional[pulumi.Input[_builtins.bool]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            expired_time: Optional[pulumi.Input[_builtins.str]] = None,
-            min_quantity: Optional[pulumi.Input[_builtins.int]] = None,
-            network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict']]]]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sale_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DedicatedHost':
+            action_on_maintenance: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_placement: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_release_time: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_over_commit_ratio: pulumi.Input[Optional[_builtins.float]] = None,
+            dedicated_host_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_host_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            detail_fee: pulumi.Input[Optional[_builtins.bool]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+            min_quantity: pulumi.Input[Optional[_builtins.int]] = None,
+            network_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict']]]]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sale_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DedicatedHost':
         """
         Get an existing DedicatedHost resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

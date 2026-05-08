@@ -20,8 +20,8 @@ __all__ = ['SwitchDasProArgs', 'SwitchDasPro']
 class SwitchDasProArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
-                 sql_retention: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 sql_retention: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SwitchDasPro resource.
 
@@ -49,36 +49,36 @@ class SwitchDasProArgs:
 
     @_builtins.property
     @pulumi.getter(name="sqlRetention")
-    def sql_retention(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sql_retention(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The storage duration of SQL Explorer data. Valid values: `30`, `180`, `365`, `1095`, `1825`. Unit: days. Default value: `30`.
         """
         return pulumi.get(self, "sql_retention")
 
     @sql_retention.setter
-    def sql_retention(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sql_retention(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sql_retention", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud account that is used to create the database instance.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
 @pulumi.input_type
 class _SwitchDasProState:
     def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_retention: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_retention: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SwitchDasPro resources.
 
@@ -98,50 +98,50 @@ class _SwitchDasProState:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the database instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlRetention")
-    def sql_retention(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sql_retention(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The storage duration of SQL Explorer data. Valid values: `30`, `180`, `365`, `1095`, `1825`. Unit: days. Default value: `30`.
         """
         return pulumi.get(self, "sql_retention")
 
     @sql_retention.setter
-    def sql_retention(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sql_retention(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sql_retention", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the database instance has DAS professional.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud account that is used to create the database instance.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -151,9 +151,9 @@ class SwitchDasPro(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_retention: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_retention: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DAS Switch Das Pro resource.
@@ -310,9 +310,9 @@ class SwitchDasPro(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_retention: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_retention: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -338,10 +338,10 @@ class SwitchDasPro(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sql_retention: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.bool]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SwitchDasPro':
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_retention: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'SwitchDasPro':
         """
         Get an existing SwitchDasPro resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

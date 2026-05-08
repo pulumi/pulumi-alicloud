@@ -165,10 +165,10 @@ def get_organizations(ids: Optional[Sequence[_builtins.str]] = None,
         organizations=pulumi.get(__ret__, 'organizations'),
         output_file=pulumi.get(__ret__, 'output_file'),
         real_pk=pulumi.get(__ret__, 'real_pk'))
-def get_organizations_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             real_pk: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_organizations_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             real_pk: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationsResult]:
     """
     This data source provides the Rdc Organizations of the current Alibaba Cloud user.

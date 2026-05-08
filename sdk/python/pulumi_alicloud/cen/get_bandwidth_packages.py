@@ -186,12 +186,12 @@ def get_bandwidth_packages(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         packages=pulumi.get(__ret__, 'packages'),
         status=pulumi.get(__ret__, 'status'))
-def get_bandwidth_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                  include_reservation_data: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                  instance_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_bandwidth_packages_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                  include_reservation_data: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                  instance_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBandwidthPackagesResult]:
     """
     This data source provides CEN Bandwidth Packages available to the user.

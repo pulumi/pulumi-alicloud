@@ -153,7 +153,7 @@ def get_server_plans(bandwidth: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.simpleapplicationserver.get_server_plans(memory=1,
+    example = alicloud.simpleapplicationserver.get_server_plans(memory=float(1),
         bandwidth=3,
         disk_size=40,
         flow=6,
@@ -194,14 +194,14 @@ def get_server_plans(bandwidth: Optional[_builtins.int] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         plans=pulumi.get(__ret__, 'plans'),
         platform=pulumi.get(__ret__, 'platform'))
-def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                            core: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                            disk_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                            flow: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                            ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            memory: Optional[pulumi.Input[Optional[_builtins.float]]] = None,
-                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            platform: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_server_plans_output(bandwidth: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                            core: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                            disk_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                            flow: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                            ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            memory: pulumi.Input[Optional[Optional[_builtins.float]]] = None,
+                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            platform: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerPlansResult]:
     """
     This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
@@ -216,7 +216,7 @@ def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[_builtins.
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.simpleapplicationserver.get_server_plans(memory=1,
+    example = alicloud.simpleapplicationserver.get_server_plans(memory=float(1),
         bandwidth=3,
         disk_size=40,
         flow=6,

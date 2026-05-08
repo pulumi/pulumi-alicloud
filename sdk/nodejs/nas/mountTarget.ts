@@ -188,7 +188,7 @@ export interface MountTargetState {
     /**
      * The name of the permission group.
      */
-    accessGroupName?: pulumi.Input<string>;
+    accessGroupName?: pulumi.Input<string | undefined>;
     /**
      * Whether to create an IPv6 mount point.
      *
@@ -198,35 +198,35 @@ export interface MountTargetState {
      *
      * > **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
      */
-    dualStack?: pulumi.Input<boolean>;
+    dualStack?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the file system.
      */
-    fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string | undefined>;
     /**
      * The domain name of the Mount point.
      */
-    mountTargetDomain?: pulumi.Input<string>;
+    mountTargetDomain?: pulumi.Input<string | undefined>;
     /**
      * Network type.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * VPC ID.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the switch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -236,7 +236,7 @@ export interface MountTargetArgs {
     /**
      * The name of the permission group.
      */
-    accessGroupName?: pulumi.Input<string>;
+    accessGroupName?: pulumi.Input<string | undefined>;
     /**
      * Whether to create an IPv6 mount point.
      *
@@ -246,7 +246,7 @@ export interface MountTargetArgs {
      *
      * > **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
      */
-    dualStack?: pulumi.Input<boolean>;
+    dualStack?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the file system.
      */
@@ -254,21 +254,21 @@ export interface MountTargetArgs {
     /**
      * Network type.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * VPC ID.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the switch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

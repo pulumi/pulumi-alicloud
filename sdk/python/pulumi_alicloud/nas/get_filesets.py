@@ -142,10 +142,10 @@ def get_filesets(file_system_id: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-def get_filesets_output(file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_filesets_output(file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFilesetsResult]:
     """
     This data source provides the Nas Filesets of the current Alibaba Cloud user.

@@ -115,12 +115,12 @@ export interface ServiceEndpointState {
     /**
      * Specifies whether the endpoint is enabled. Valid values:
      */
-    endpointEnabled?: pulumi.Input<boolean>;
+    endpointEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Access point type. Value:
      * - public: indicates a public access point. (Currently only public is supported)
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
 }
 
 /**

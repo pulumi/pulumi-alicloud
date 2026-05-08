@@ -92,11 +92,11 @@ class PrivateZoneArgs:
 @pulumi.input_type
 class _PrivateZoneState:
     def __init__(__self__, *,
-                 access_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrivateZone resources.
 
@@ -121,31 +121,31 @@ class _PrivateZoneState:
 
     @_builtins.property
     @pulumi.getter(name="accessRegionId")
-    def access_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where PrivateZone is accessed. This region refers to the region in which PrivateZone is accessed by clients.
         """
         return pulumi.get(self, "access_region_id")
 
     @access_region_id.setter
-    def access_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CEN instance.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hostRegionId")
-    def host_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where PrivateZone is deployed.
 
@@ -154,31 +154,31 @@ class _PrivateZoneState:
         return pulumi.get(self, "host_region_id")
 
     @host_region_id.setter
-    def host_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hostVpcId")
-    def host_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC that is associated with PrivateZone.
         """
         return pulumi.get(self, "host_vpc_id")
 
     @host_vpc_id.setter
-    def host_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Private Zone.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -188,10 +188,10 @@ class PrivateZone(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Private Zone resource.
@@ -321,10 +321,10 @@ class PrivateZone(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -357,11 +357,11 @@ class PrivateZone(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            host_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            host_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'PrivateZone':
+            access_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'PrivateZone':
         """
         Get an existing PrivateZone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

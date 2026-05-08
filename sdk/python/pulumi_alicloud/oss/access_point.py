@@ -24,8 +24,8 @@ class AccessPointArgs:
                  access_point_name: pulumi.Input[_builtins.str],
                  bucket: pulumi.Input[_builtins.str],
                  network_origin: pulumi.Input[_builtins.str],
-                 public_access_block_configuration: Optional[pulumi.Input['AccessPointPublicAccessBlockConfigurationArgs']] = None,
-                 vpc_configuration: Optional[pulumi.Input['AccessPointVpcConfigurationArgs']] = None):
+                 public_access_block_configuration: pulumi.Input[Optional['AccessPointPublicAccessBlockConfigurationArgs']] = None,
+                 vpc_configuration: pulumi.Input[Optional['AccessPointVpcConfigurationArgs']] = None):
         """
         The set of arguments for constructing a AccessPoint resource.
 
@@ -85,38 +85,38 @@ class AccessPointArgs:
 
     @_builtins.property
     @pulumi.getter(name="publicAccessBlockConfiguration")
-    def public_access_block_configuration(self) -> Optional[pulumi.Input['AccessPointPublicAccessBlockConfigurationArgs']]:
+    def public_access_block_configuration(self) -> pulumi.Input[Optional['AccessPointPublicAccessBlockConfigurationArgs']]:
         """
         Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
         """
         return pulumi.get(self, "public_access_block_configuration")
 
     @public_access_block_configuration.setter
-    def public_access_block_configuration(self, value: Optional[pulumi.Input['AccessPointPublicAccessBlockConfigurationArgs']]):
+    def public_access_block_configuration(self, value: pulumi.Input[Optional['AccessPointPublicAccessBlockConfigurationArgs']]):
         pulumi.set(self, "public_access_block_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcConfiguration")
-    def vpc_configuration(self) -> Optional[pulumi.Input['AccessPointVpcConfigurationArgs']]:
+    def vpc_configuration(self) -> pulumi.Input[Optional['AccessPointVpcConfigurationArgs']]:
         """
         If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
         """
         return pulumi.get(self, "vpc_configuration")
 
     @vpc_configuration.setter
-    def vpc_configuration(self, value: Optional[pulumi.Input['AccessPointVpcConfigurationArgs']]):
+    def vpc_configuration(self, value: pulumi.Input[Optional['AccessPointVpcConfigurationArgs']]):
         pulumi.set(self, "vpc_configuration", value)
 
 
 @pulumi.input_type
 class _AccessPointState:
     def __init__(__self__, *,
-                 access_point_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_access_block_configuration: Optional[pulumi.Input['AccessPointPublicAccessBlockConfigurationArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_configuration: Optional[pulumi.Input['AccessPointVpcConfigurationArgs']] = None):
+                 access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_access_block_configuration: pulumi.Input[Optional['AccessPointPublicAccessBlockConfigurationArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_configuration: pulumi.Input[Optional['AccessPointVpcConfigurationArgs']] = None):
         """
         Input properties used for looking up and filtering AccessPoint resources.
 
@@ -144,31 +144,31 @@ class _AccessPointState:
 
     @_builtins.property
     @pulumi.getter(name="accessPointName")
-    def access_point_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_point_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the access point
         """
         return pulumi.get(self, "access_point_name")
 
     @access_point_name.setter
-    def access_point_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_point_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_point_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Bucket to which the current access point belongs.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="networkOrigin")
-    def network_origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access point network source. The valid values are as follows: 
         - vpc: only the specified VPC ID can be used to access the access point.
@@ -177,43 +177,43 @@ class _AccessPointState:
         return pulumi.get(self, "network_origin")
 
     @network_origin.setter
-    def network_origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_origin", value)
 
     @_builtins.property
     @pulumi.getter(name="publicAccessBlockConfiguration")
-    def public_access_block_configuration(self) -> Optional[pulumi.Input['AccessPointPublicAccessBlockConfigurationArgs']]:
+    def public_access_block_configuration(self) -> pulumi.Input[Optional['AccessPointPublicAccessBlockConfigurationArgs']]:
         """
         Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
         """
         return pulumi.get(self, "public_access_block_configuration")
 
     @public_access_block_configuration.setter
-    def public_access_block_configuration(self, value: Optional[pulumi.Input['AccessPointPublicAccessBlockConfigurationArgs']]):
+    def public_access_block_configuration(self, value: pulumi.Input[Optional['AccessPointPublicAccessBlockConfigurationArgs']]):
         pulumi.set(self, "public_access_block_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcConfiguration")
-    def vpc_configuration(self) -> Optional[pulumi.Input['AccessPointVpcConfigurationArgs']]:
+    def vpc_configuration(self) -> pulumi.Input[Optional['AccessPointVpcConfigurationArgs']]:
         """
         If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
         """
         return pulumi.get(self, "vpc_configuration")
 
     @vpc_configuration.setter
-    def vpc_configuration(self, value: Optional[pulumi.Input['AccessPointVpcConfigurationArgs']]):
+    def vpc_configuration(self, value: pulumi.Input[Optional['AccessPointVpcConfigurationArgs']]):
         pulumi.set(self, "vpc_configuration", value)
 
 
@@ -223,11 +223,11 @@ class AccessPoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_point_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_access_block_configuration: Optional[pulumi.Input[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict']]] = None,
-                 vpc_configuration: Optional[pulumi.Input[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict']]] = None,
+                 access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_access_block_configuration: pulumi.Input[Optional[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict']]] = None,
+                 vpc_configuration: pulumi.Input[Optional[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict']]] = None,
                  __props__=None):
         """
         Provides a OSS Access Point resource.
@@ -350,11 +350,11 @@ class AccessPoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_point_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_access_block_configuration: Optional[pulumi.Input[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict']]] = None,
-                 vpc_configuration: Optional[pulumi.Input[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict']]] = None,
+                 access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_access_block_configuration: pulumi.Input[Optional[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict']]] = None,
+                 vpc_configuration: pulumi.Input[Optional[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,12 +386,12 @@ class AccessPoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_point_name: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            network_origin: Optional[pulumi.Input[_builtins.str]] = None,
-            public_access_block_configuration: Optional[pulumi.Input[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_configuration: Optional[pulumi.Input[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict']]] = None) -> 'AccessPoint':
+            access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            network_origin: pulumi.Input[Optional[_builtins.str]] = None,
+            public_access_block_configuration: pulumi.Input[Optional[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_configuration: pulumi.Input[Optional[Union['AccessPointVpcConfigurationArgs', 'AccessPointVpcConfigurationArgsDict']]] = None) -> 'AccessPoint':
         """
         Get an existing AccessPoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

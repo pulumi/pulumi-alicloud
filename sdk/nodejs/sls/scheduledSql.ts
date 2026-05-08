@@ -201,23 +201,23 @@ export interface ScheduledSqlState {
     /**
      * Job description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Task display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * A short description of struct.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Schedule type. This field generally does not need to be specified. If you have strict scheduling requirements—for example, running an import job every Monday at 8:00 AM—you can use a cron expression. See `schedule` below.
      */
-    schedule?: pulumi.Input<inputs.sls.ScheduledSqlSchedule>;
+    schedule?: pulumi.Input<inputs.sls.ScheduledSqlSchedule | undefined>;
     /**
      * Task configuration. See `scheduledSqlConfiguration` below.
      */
-    scheduledSqlConfiguration?: pulumi.Input<inputs.sls.ScheduledSqlScheduledSqlConfiguration>;
+    scheduledSqlConfiguration?: pulumi.Input<inputs.sls.ScheduledSqlScheduledSqlConfiguration | undefined>;
     /**
      * The job name. The naming rules are as follows:
      * - Job names must be unique within the same project.
@@ -225,11 +225,11 @@ export interface ScheduledSqlState {
      * - The name must start and end with a lowercase letter or digit.
      * - The length must be between 2 and 64 characters.
      */
-    scheduledSqlName?: pulumi.Input<string>;
+    scheduledSqlName?: pulumi.Input<string | undefined>;
     /**
      * The status of the scheduled SQL job.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -239,7 +239,7 @@ export interface ScheduledSqlArgs {
     /**
      * Job description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Task display name.
      */
@@ -267,5 +267,5 @@ export interface ScheduledSqlArgs {
     /**
      * The status of the scheduled SQL job.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

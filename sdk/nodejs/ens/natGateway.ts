@@ -157,27 +157,27 @@ export interface NatGatewayState {
     /**
      * Creation time. UTC time, in the format of YYYY-MM-DDThh:mm:ssZ.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ENS node.
      */
-    ensRegionId?: pulumi.Input<string>;
+    ensRegionId?: pulumi.Input<string | undefined>;
     /**
      * NAT specifications. Value: `enat.default`.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The name of the NAT gateway. The length is 1 to 128 characters, but it cannot start with 'http:// 'or 'https.
      */
-    natName?: pulumi.Input<string>;
+    natName?: pulumi.Input<string | undefined>;
     /**
      * The network ID.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The vSwitch ID.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -191,11 +191,11 @@ export interface NatGatewayArgs {
     /**
      * NAT specifications. Value: `enat.default`.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The name of the NAT gateway. The length is 1 to 128 characters, but it cannot start with 'http:// 'or 'https.
      */
-    natName?: pulumi.Input<string>;
+    natName?: pulumi.Input<string | undefined>;
     /**
      * The network ID.
      */

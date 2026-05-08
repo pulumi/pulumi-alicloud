@@ -124,25 +124,25 @@ export interface GetAlertContactGroupsOutputArgs {
     /**
      * The name of the resource.
      */
-    alertContactGroupName?: pulumi.Input<string>;
+    alertContactGroupName?: pulumi.Input<string | undefined>;
     /**
      * The contact id.
      */
-    contactId?: pulumi.Input<string>;
+    contactId?: pulumi.Input<string | undefined>;
     /**
      * The contact name.
      */
-    contactName?: pulumi.Input<string>;
+    contactName?: pulumi.Input<string | undefined>;
     /**
      * A list of Alert Contact Group IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Alert Contact Group name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

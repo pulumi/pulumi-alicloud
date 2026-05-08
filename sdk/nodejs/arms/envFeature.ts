@@ -38,11 +38,11 @@ import * as utilities from "../utilities";
  *     vpcId: vpc.id,
  *     vswitchName: name,
  *     zoneId: enhanced.then(enhanced => enhanced.zones?.[0]?.zoneId),
- *     cidrBlock: vpc.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
- *         input: cidrBlock,
+ *     cidrBlock: std.cidrsubnetOutput({
+ *         input: vpc.cidrBlock,
  *         newbits: 8,
  *         netnum: 8,
- *     })).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  * });
  * const defaultSnapshotPolicy = new alicloud.ecs.SnapshotPolicy("default", {
  *     name: name,
@@ -58,13 +58,13 @@ import * as utilities from "../utilities";
  *         "23",
  *     ],
  * });
- * const _default = vswitch.zoneId.apply(zoneId => alicloud.ecs.getInstanceTypesOutput({
- *     availabilityZone: zoneId,
+ * const _default = alicloud.ecs.getInstanceTypesOutput({
+ *     availabilityZone: vswitch.zoneId,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
  *     kubernetesNodeRole: "Worker",
  *     instanceTypeFamily: "ecs.sn1ne",
- * }));
+ * });
  * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
  *     name: `terraform-example-${defaultInteger.result}`,
  *     clusterSpec: "ack.pro.small",
@@ -206,23 +206,23 @@ export interface EnvFeatureState {
     /**
      * The name of the resource.
      */
-    envFeatureName?: pulumi.Input<string>;
+    envFeatureName?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource.
      */
-    environmentId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<string | undefined>;
     /**
      * Version information of the Feature. You can query Feature information by using ListEnvironmentFeatures.
      */
-    featureVersion?: pulumi.Input<string>;
+    featureVersion?: pulumi.Input<string | undefined>;
     /**
      * Namespace.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

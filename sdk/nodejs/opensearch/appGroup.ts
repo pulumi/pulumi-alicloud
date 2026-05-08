@@ -180,47 +180,47 @@ export interface AppGroupState {
     /**
      * Application Group Name.
      */
-    appGroupName?: pulumi.Input<string>;
+    appGroupName?: pulumi.Input<string | undefined>;
     /**
      * Billing model. Valid values:`computeResource` and `qps`.
      */
-    chargeWay?: pulumi.Input<string>;
+    chargeWay?: pulumi.Input<string | undefined>;
     /**
      * The version of Application Group Name.
      */
-    currentVersion?: pulumi.Input<string>;
+    currentVersion?: pulumi.Input<string | undefined>;
     /**
      * The description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The instance id.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
      */
-    orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string | undefined>;
     /**
      * Order cycle information. The details see Block order.
      */
-    orders?: pulumi.Input<pulumi.Input<inputs.opensearch.AppGroupOrder>[]>;
+    orders?: pulumi.Input<pulumi.Input<inputs.opensearch.AppGroupOrder>[] | undefined>;
     /**
      * The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Quota information.  The details see Block quota.
      */
-    quota?: pulumi.Input<inputs.opensearch.AppGroupQuota>;
+    quota?: pulumi.Input<inputs.opensearch.AppGroupQuota | undefined>;
     /**
      * The status of the resource. Valid values: `producing`,`reviewPending`,`configPending`,`normal`,`frozen`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Application type. Valid Values: `standard`, `enhanced`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -234,23 +234,23 @@ export interface AppGroupArgs {
     /**
      * Billing model. Valid values:`computeResource` and `qps`.
      */
-    chargeWay?: pulumi.Input<string>;
+    chargeWay?: pulumi.Input<string | undefined>;
     /**
      * The version of Application Group Name.
      */
-    currentVersion?: pulumi.Input<string>;
+    currentVersion?: pulumi.Input<string | undefined>;
     /**
      * The description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
      */
-    orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string | undefined>;
     /**
      * Order cycle information. The details see Block order.
      */
-    orders?: pulumi.Input<pulumi.Input<inputs.opensearch.AppGroupOrder>[]>;
+    orders?: pulumi.Input<pulumi.Input<inputs.opensearch.AppGroupOrder>[] | undefined>;
     /**
      * The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
      */

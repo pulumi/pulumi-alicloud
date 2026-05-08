@@ -110,11 +110,11 @@ export interface EcsSessionManagerStatusState {
     /**
      * The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
      */
-    sessionManagerStatusName?: pulumi.Input<string>;
+    sessionManagerStatusName?: pulumi.Input<string | undefined>;
     /**
      * The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -313,7 +313,7 @@ export interface CertState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    afterTime?: pulumi.Input<number>;
+    afterTime?: pulumi.Input<number | undefined>;
     /**
      * The key algorithm of the client certificate. The key algorithm is specified in the format `_`. Valid values:
      * - `RSA_1024`: corresponds to the signature algorithm Sha256WithRSA.
@@ -328,30 +328,30 @@ export interface CertState {
      *
      * > **NOTE:** You can call [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) to query the key algorithm of the subordinate CA certificate.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * The name assigned to the issued certificate.
      */
-    aliasName?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string | undefined>;
     /**
      * The issuance time of the client certificate, in timestamp format. By default, it is set to the time when you call this API. Unit: seconds.
      *
      * > **NOTE:**  The `beforeTime` and `afterTime` parameters must either both be empty or both be specified.
      */
-    beforeTime?: pulumi.Input<number>;
+    beforeTime?: pulumi.Input<number | undefined>;
     /**
      * Name of the certificate subject. For a Client Authentication (ClientAuth) certificate, the subject is typically an individual, company, organization, or application. We recommend using the common name of the subject—for example, Zhang San, Alibaba, Alibaba Cloud KMS, or Tmall Genie.
      */
-    commonName?: pulumi.Input<string>;
+    commonName?: pulumi.Input<string | undefined>;
     /**
      * Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
      * For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
      */
-    countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string | undefined>;
     /**
      * A user-defined unique identifier.
      */
-    customIdentifier?: pulumi.Input<string>;
+    customIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Validity period of the client certificate, in days.  
      *
@@ -362,77 +362,77 @@ export interface CertState {
      * > **NOTE:** - If you set `days`, `beforeTime`, and `afterTime` simultaneously, the validity period of the client certificate is determined by the value of `days`.
      * - The validity period of the client certificate cannot exceed that of the issuing subordinate CA certificate. You can call [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) to check the validity period of the subordinate CA certificate.
      */
-    days?: pulumi.Input<number>;
+    days?: pulumi.Input<number | undefined>;
     /**
      * Whether to include the CRL URL. Valid values:
      */
-    enableCrl?: pulumi.Input<number>;
+    enableCrl?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to return the digital certificate immediately. Valid values:
      */
-    immediately?: pulumi.Input<number>;
+    immediately?: pulumi.Input<number | undefined>;
     /**
      * The name of the city where the organization associated with the certificate is located. Chinese characters, English letters, and other characters are supported.
      * By default, this value is the same as the city name of the organization associated with the issuing subordinate CA certificate.
      */
-    locality?: pulumi.Input<string>;
+    locality?: pulumi.Input<string | undefined>;
     /**
      * The duration for which the certificate is purchased, in months.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    months?: pulumi.Input<number>;
+    months?: pulumi.Input<number | undefined>;
     /**
      * Name of the organization associated with the subordinate CA certificate that issued this certificate.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * Department name. Default: Aliyun CDN.
      */
-    organizationUnit?: pulumi.Input<string>;
+    organizationUnit?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the subordinate CA certificate that issued this certificate.
      */
-    parentIdentifier?: pulumi.Input<string>;
+    parentIdentifier?: pulumi.Input<string | undefined>;
     /**
      * The resource group ID. You can obtain this ID by calling the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The Subject Alternative Name (SAN) type supported by the client certificate. Valid values:
      */
-    sanType?: pulumi.Input<string>;
+    sanType?: pulumi.Input<string | undefined>;
     /**
      * Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    sanValue?: pulumi.Input<string>;
+    sanValue?: pulumi.Input<string | undefined>;
     /**
      * The name of the province, municipality, or autonomous region where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the province, municipality, or autonomous region of the organization associated with the subordinate CA certificate that issued this certificate.
      * The name of the state or province where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the state or province of the organization associated with the subordinate CA certificate that issued this certificate.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
      * > **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Information about the queried instances and their associated tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates whether the certificate has been uploaded to the SSL certificate management platform.
      */
-    uploadFlag?: pulumi.Input<number>;
+    uploadFlag?: pulumi.Input<number | undefined>;
     /**
      * The duration for which the certificate is purchased, in years.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    years?: pulumi.Input<number>;
+    years?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -447,7 +447,7 @@ export interface CertArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    afterTime?: pulumi.Input<number>;
+    afterTime?: pulumi.Input<number | undefined>;
     /**
      * The key algorithm of the client certificate. The key algorithm is specified in the format `_`. Valid values:
      * - `RSA_1024`: corresponds to the signature algorithm Sha256WithRSA.
@@ -462,30 +462,30 @@ export interface CertArgs {
      *
      * > **NOTE:** You can call [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) to query the key algorithm of the subordinate CA certificate.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * The name assigned to the issued certificate.
      */
-    aliasName?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string | undefined>;
     /**
      * The issuance time of the client certificate, in timestamp format. By default, it is set to the time when you call this API. Unit: seconds.
      *
      * > **NOTE:**  The `beforeTime` and `afterTime` parameters must either both be empty or both be specified.
      */
-    beforeTime?: pulumi.Input<number>;
+    beforeTime?: pulumi.Input<number | undefined>;
     /**
      * Name of the certificate subject. For a Client Authentication (ClientAuth) certificate, the subject is typically an individual, company, organization, or application. We recommend using the common name of the subject—for example, Zhang San, Alibaba, Alibaba Cloud KMS, or Tmall Genie.
      */
-    commonName?: pulumi.Input<string>;
+    commonName?: pulumi.Input<string | undefined>;
     /**
      * Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
      * For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
      */
-    countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string | undefined>;
     /**
      * A user-defined unique identifier.
      */
-    customIdentifier?: pulumi.Input<string>;
+    customIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Validity period of the client certificate, in days.  
      *
@@ -496,34 +496,34 @@ export interface CertArgs {
      * > **NOTE:** - If you set `days`, `beforeTime`, and `afterTime` simultaneously, the validity period of the client certificate is determined by the value of `days`.
      * - The validity period of the client certificate cannot exceed that of the issuing subordinate CA certificate. You can call [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) to check the validity period of the subordinate CA certificate.
      */
-    days?: pulumi.Input<number>;
+    days?: pulumi.Input<number | undefined>;
     /**
      * Whether to include the CRL URL. Valid values:
      */
-    enableCrl?: pulumi.Input<number>;
+    enableCrl?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to return the digital certificate immediately. Valid values:
      */
-    immediately?: pulumi.Input<number>;
+    immediately?: pulumi.Input<number | undefined>;
     /**
      * The name of the city where the organization associated with the certificate is located. Chinese characters, English letters, and other characters are supported.
      * By default, this value is the same as the city name of the organization associated with the issuing subordinate CA certificate.
      */
-    locality?: pulumi.Input<string>;
+    locality?: pulumi.Input<string | undefined>;
     /**
      * The duration for which the certificate is purchased, in months.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    months?: pulumi.Input<number>;
+    months?: pulumi.Input<number | undefined>;
     /**
      * Name of the organization associated with the subordinate CA certificate that issued this certificate.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * Department name. Default: Aliyun CDN.
      */
-    organizationUnit?: pulumi.Input<string>;
+    organizationUnit?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the subordinate CA certificate that issued this certificate.
      */
@@ -531,40 +531,40 @@ export interface CertArgs {
     /**
      * The resource group ID. You can obtain this ID by calling the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The Subject Alternative Name (SAN) type supported by the client certificate. Valid values:
      */
-    sanType?: pulumi.Input<string>;
+    sanType?: pulumi.Input<string | undefined>;
     /**
      * Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    sanValue?: pulumi.Input<string>;
+    sanValue?: pulumi.Input<string | undefined>;
     /**
      * The name of the province, municipality, or autonomous region where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the province, municipality, or autonomous region of the organization associated with the subordinate CA certificate that issued this certificate.
      * The name of the state or province where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the state or province of the organization associated with the subordinate CA certificate that issued this certificate.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The status of the certificate. Valid values:
      * - `REVOKE`: indicates that the certificate has been revoked.
      * > **NOTE:** If you want to destroy `alicloud.sslcertificatesservicepca.Cert`, `status` must be set to `REVOKE`
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Information about the queried instances and their associated tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates whether the certificate has been uploaded to the SSL certificate management platform.
      */
-    uploadFlag?: pulumi.Input<number>;
+    uploadFlag?: pulumi.Input<number | undefined>;
     /**
      * The duration for which the certificate is purchased, in years.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    years?: pulumi.Input<number>;
+    years?: pulumi.Input<number | undefined>;
 }

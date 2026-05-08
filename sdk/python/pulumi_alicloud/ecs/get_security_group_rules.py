@@ -215,12 +215,12 @@ def get_security_group_rules(direction: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         policy=pulumi.get(__ret__, 'policy'),
         rules=pulumi.get(__ret__, 'rules'))
-def get_security_group_rules_output(direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    ip_protocol: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    nic_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    policy: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_security_group_rules_output(direction: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    ip_protocol: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    nic_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    policy: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityGroupRulesResult]:
     """
     The `ecs_get_security_group_rules` data source provides a collection of security permissions of a specific security group.

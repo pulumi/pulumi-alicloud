@@ -168,11 +168,11 @@ def get_accounts(db_instance_id: Optional[_builtins.str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-def get_accounts_output(db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                        name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_accounts_output(db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                        name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountsResult]:
     """
     This data source provides the Gpdb Accounts of the current Alibaba Cloud user.

@@ -58,8 +58,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ess.Attachment;
  * import com.pulumi.alicloud.ess.AttachmentArgs;
  * import com.pulumi.codegen.internal.KeyedValue;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .cpuCoreCount(2)
- *             .memorySize(8)
+ *             .memorySize(8.0)
  *             .instanceTypeFamily("ecs.g9i")
  *             .build());
  * 

@@ -38,18 +38,18 @@ __all__ = [
 ]
 
 class DomainAuthConfigArgsDict(TypedDict):
-    auth_type: NotRequired[pulumi.Input[_builtins.str]]
-    master_key: NotRequired[pulumi.Input[_builtins.str]]
-    slave_key: NotRequired[pulumi.Input[_builtins.str]]
-    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    auth_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    master_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    slave_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class DomainAuthConfigArgs:
     def __init__(__self__, *,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 slave_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 slave_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         if auth_type is not None:
             pulumi.set(__self__, "auth_type", auth_type)
         if master_key is not None:
@@ -61,38 +61,38 @@ class DomainAuthConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="authType")
-    def auth_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "auth_type")
 
     @auth_type.setter
-    def auth_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_type", value)
 
     @_builtins.property
     @pulumi.getter(name="masterKey")
-    def master_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "master_key")
 
     @master_key.setter
-    def master_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_key", value)
 
     @_builtins.property
     @pulumi.getter(name="slaveKey")
-    def slave_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slave_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "slave_key")
 
     @slave_key.setter
-    def slave_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slave_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slave_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
@@ -100,8 +100,8 @@ class DomainCacheConfigArgsDict(TypedDict):
     cache_content: pulumi.Input[_builtins.str]
     cache_type: pulumi.Input[_builtins.str]
     ttl: pulumi.Input[_builtins.int]
-    cache_id: NotRequired[pulumi.Input[_builtins.str]]
-    weight: NotRequired[pulumi.Input[_builtins.int]]
+    cache_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    weight: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class DomainCacheConfigArgs:
@@ -109,8 +109,8 @@ class DomainCacheConfigArgs:
                  cache_content: pulumi.Input[_builtins.str],
                  cache_type: pulumi.Input[_builtins.str],
                  ttl: pulumi.Input[_builtins.int],
-                 cache_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 cache_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         pulumi.set(__self__, "cache_content", cache_content)
         pulumi.set(__self__, "cache_type", cache_type)
         pulumi.set(__self__, "ttl", ttl)
@@ -148,34 +148,34 @@ class DomainCacheConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="cacheId")
-    def cache_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cache_id")
 
     @cache_id.setter
-    def cache_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
 class DomainCertificateConfigArgsDict(TypedDict):
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
-    server_certificate: NotRequired[pulumi.Input[_builtins.str]]
-    server_certificate_status: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    server_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    server_certificate_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DomainCertificateConfigArgs:
     def __init__(__self__, *,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_certificate_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_certificate_status: pulumi.Input[Optional[_builtins.str]] = None):
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if server_certificate is not None:
@@ -185,29 +185,29 @@ class DomainCertificateConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCertificate")
-    def server_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "server_certificate")
 
     @server_certificate.setter
-    def server_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCertificateStatus")
-    def server_certificate_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_certificate_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "server_certificate_status")
 
     @server_certificate_status.setter
-    def server_certificate_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_certificate_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_certificate_status", value)
 
 
@@ -261,14 +261,14 @@ class DomainConfigFunctionArgArgs:
 class DomainHttpHeaderConfigArgsDict(TypedDict):
     header_key: pulumi.Input[_builtins.str]
     header_value: pulumi.Input[_builtins.str]
-    header_id: NotRequired[pulumi.Input[_builtins.str]]
+    header_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DomainHttpHeaderConfigArgs:
     def __init__(__self__, *,
                  header_key: pulumi.Input[_builtins.str],
                  header_value: pulumi.Input[_builtins.str],
-                 header_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 header_id: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "header_key", header_key)
         pulumi.set(__self__, "header_value", header_value)
         if header_id is not None:
@@ -294,28 +294,28 @@ class DomainHttpHeaderConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerId")
-    def header_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def header_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "header_id")
 
     @header_id.setter
-    def header_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def header_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "header_id", value)
 
 
 class DomainNewCertificateConfigArgsDict(TypedDict):
-    cert_id: NotRequired[pulumi.Input[_builtins.str]]
+    cert_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the certificate. It takes effect only when CertType = cas.
     """
-    cert_name: NotRequired[pulumi.Input[_builtins.str]]
+    cert_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Certificate name, only flyer names are supported.
     """
-    cert_region: NotRequired[pulumi.Input[_builtins.str]]
+    cert_region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
     """
-    cert_type: NotRequired[pulumi.Input[_builtins.str]]
+    cert_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Certificate type. Value:
     - **upload**: upload certificate.
@@ -323,15 +323,15 @@ class DomainNewCertificateConfigArgsDict(TypedDict):
     - **free**: free certificate.
     > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
     """
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
     """
-    server_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    server_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
     """
-    server_certificate_status: NotRequired[pulumi.Input[_builtins.str]]
+    server_certificate_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether the HTTPS certificate is enabled. Value:
     - **on**(default): enabled.
@@ -341,13 +341,13 @@ class DomainNewCertificateConfigArgsDict(TypedDict):
 @pulumi.input_type
 class DomainNewCertificateConfigArgs:
     def __init__(__self__, *,
-                 cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_certificate_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_certificate_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cert_id: The ID of the certificate. It takes effect only when CertType = cas.
         :param pulumi.Input[_builtins.str] cert_name: Certificate name, only flyer names are supported.
@@ -380,43 +380,43 @@ class DomainNewCertificateConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="certId")
-    def cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the certificate. It takes effect only when CertType = cas.
         """
         return pulumi.get(self, "cert_id")
 
     @cert_id.setter
-    def cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_id", value)
 
     @_builtins.property
     @pulumi.getter(name="certName")
-    def cert_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Certificate name, only flyer names are supported.
         """
         return pulumi.get(self, "cert_name")
 
     @cert_name.setter
-    def cert_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_name", value)
 
     @_builtins.property
     @pulumi.getter(name="certRegion")
-    def cert_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
         """
         return pulumi.get(self, "cert_region")
 
     @cert_region.setter
-    def cert_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_region", value)
 
     @_builtins.property
     @pulumi.getter(name="certType")
-    def cert_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Certificate type. Value:
         - **upload**: upload certificate.
@@ -427,36 +427,36 @@ class DomainNewCertificateConfigArgs:
         return pulumi.get(self, "cert_type")
 
     @cert_type.setter
-    def cert_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_type", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
         """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCertificate")
-    def server_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
         """
         return pulumi.get(self, "server_certificate")
 
     @server_certificate.setter
-    def server_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCertificateStatus")
-    def server_certificate_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_certificate_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the HTTPS certificate is enabled. Value:
         - **on**(default): enabled.
@@ -465,28 +465,28 @@ class DomainNewCertificateConfigArgs:
         return pulumi.get(self, "server_certificate_status")
 
     @server_certificate_status.setter
-    def server_certificate_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_certificate_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_certificate_status", value)
 
 
 class DomainNewSourceArgsDict(TypedDict):
-    content: NotRequired[pulumi.Input[_builtins.str]]
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The port of source. Valid values are `443` and `80`. Default value is `80`.
     """
-    priority: NotRequired[pulumi.Input[_builtins.int]]
+    priority: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Priority of the source. Valid values are `0` and `100`. Default value is `20`.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
     """
-    weight: NotRequired[pulumi.Input[_builtins.int]]
+    weight: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
     """
@@ -494,11 +494,11 @@ class DomainNewSourceArgsDict(TypedDict):
 @pulumi.input_type
 class DomainNewSourceArgs:
     def __init__(__self__, *,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] content: The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
         :param pulumi.Input[_builtins.int] port: The port of source. Valid values are `443` and `80`. Default value is `80`.
@@ -519,76 +519,76 @@ class DomainNewSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port of source. Valid values are `443` and `80`. Default value is `80`.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Priority of the source. Valid values are `0` and `100`. Default value is `20`.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
 class DomainPage404ConfigArgsDict(TypedDict):
-    custom_page_url: NotRequired[pulumi.Input[_builtins.str]]
-    error_code: NotRequired[pulumi.Input[_builtins.str]]
-    page_type: NotRequired[pulumi.Input[_builtins.str]]
+    custom_page_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    error_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    page_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DomainPage404ConfigArgs:
     def __init__(__self__, *,
-                 custom_page_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 page_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_page_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 page_type: pulumi.Input[Optional[_builtins.str]] = None):
         if custom_page_url is not None:
             pulumi.set(__self__, "custom_page_url", custom_page_url)
         if error_code is not None:
@@ -598,41 +598,41 @@ class DomainPage404ConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="customPageUrl")
-    def custom_page_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_page_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "custom_page_url")
 
     @custom_page_url.setter
-    def custom_page_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_page_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_page_url", value)
 
     @_builtins.property
     @pulumi.getter(name="errorCode")
-    def error_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "error_code")
 
     @error_code.setter
-    def error_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_code", value)
 
     @_builtins.property
     @pulumi.getter(name="pageType")
-    def page_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def page_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "page_type")
 
     @page_type.setter
-    def page_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def page_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "page_type", value)
 
 
 class DomainParameterFilterConfigArgsDict(TypedDict):
-    enable: NotRequired[pulumi.Input[_builtins.str]]
-    hash_key_args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    enable: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    hash_key_args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class DomainParameterFilterConfigArgs:
     def __init__(__self__, *,
-                 enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 hash_key_args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 hash_key_args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if hash_key_args is not None:
@@ -640,34 +640,34 @@ class DomainParameterFilterConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="hashKeyArgs")
-    def hash_key_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def hash_key_args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "hash_key_args")
 
     @hash_key_args.setter
-    def hash_key_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def hash_key_args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "hash_key_args", value)
 
 
 class DomainReferConfigArgsDict(TypedDict):
     refer_lists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-    allow_empty: NotRequired[pulumi.Input[_builtins.str]]
-    refer_type: NotRequired[pulumi.Input[_builtins.str]]
+    allow_empty: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    refer_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DomainReferConfigArgs:
     def __init__(__self__, *,
                  refer_lists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 allow_empty: Optional[pulumi.Input[_builtins.str]] = None,
-                 refer_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_empty: pulumi.Input[Optional[_builtins.str]] = None,
+                 refer_type: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "refer_lists", refer_lists)
         if allow_empty is not None:
             pulumi.set(__self__, "allow_empty", allow_empty)
@@ -685,20 +685,20 @@ class DomainReferConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowEmpty")
-    def allow_empty(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allow_empty(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "allow_empty")
 
     @allow_empty.setter
-    def allow_empty(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allow_empty(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allow_empty", value)
 
     @_builtins.property
     @pulumi.getter(name="referType")
-    def refer_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def refer_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "refer_type")
 
     @refer_type.setter
-    def refer_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def refer_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "refer_type", value)
 
 

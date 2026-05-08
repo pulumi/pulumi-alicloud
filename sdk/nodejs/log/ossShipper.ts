@@ -253,21 +253,21 @@ export interface OssShipperState {
     /**
      * How often is it delivered every interval.
      */
-    bufferInterval?: pulumi.Input<number>;
+    bufferInterval?: pulumi.Input<number | undefined>;
     /**
      * Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
      */
-    bufferSize?: pulumi.Input<number>;
+    bufferSize?: pulumi.Input<number | undefined>;
     /**
      * OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
      */
-    compressType?: pulumi.Input<string>;
-    csvConfigColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    csvConfigDelimiter?: pulumi.Input<string>;
-    csvConfigHeader?: pulumi.Input<boolean>;
-    csvConfigLinefeed?: pulumi.Input<string>;
-    csvConfigNullidentifier?: pulumi.Input<string>;
-    csvConfigQuote?: pulumi.Input<string>;
+    compressType?: pulumi.Input<string | undefined>;
+    csvConfigColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    csvConfigDelimiter?: pulumi.Input<string | undefined>;
+    csvConfigHeader?: pulumi.Input<boolean | undefined>;
+    csvConfigLinefeed?: pulumi.Input<string | undefined>;
+    csvConfigNullidentifier?: pulumi.Input<string | undefined>;
+    csvConfigQuote?: pulumi.Input<string | undefined>;
     /**
      * Storage format, only supports three types: `json`, `parquet`, `csv`.
      * **According to the different format, please select the following parameters**
@@ -285,37 +285,37 @@ export interface OssShipperState {
      * `name` - (Required) The name of the key.
      * `type` - (Required) Type of configuration name.
      */
-    format?: pulumi.Input<string>;
-    jsonEnableTag?: pulumi.Input<boolean>;
+    format?: pulumi.Input<string | undefined>;
+    jsonEnableTag?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the log logstore.
      */
-    logstoreName?: pulumi.Input<string>;
+    logstoreName?: pulumi.Input<string | undefined>;
     /**
      * The name of the oss bucket.
      */
-    ossBucket?: pulumi.Input<string>;
+    ossBucket?: pulumi.Input<string | undefined>;
     /**
      * The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
      */
-    ossPrefix?: pulumi.Input<string>;
-    parquetConfigs?: pulumi.Input<pulumi.Input<inputs.log.OssShipperParquetConfig>[]>;
+    ossPrefix?: pulumi.Input<string | undefined>;
+    parquetConfigs?: pulumi.Input<pulumi.Input<inputs.log.OssShipperParquetConfig>[] | undefined>;
     /**
      * The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
      */
-    pathFormat?: pulumi.Input<string>;
+    pathFormat?: pulumi.Input<string | undefined>;
     /**
      * The name of the log project. It is the only in one Alicloud account.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
      */
-    shipperName?: pulumi.Input<string>;
+    shipperName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -333,13 +333,13 @@ export interface OssShipperArgs {
     /**
      * OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
      */
-    compressType?: pulumi.Input<string>;
-    csvConfigColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    csvConfigDelimiter?: pulumi.Input<string>;
-    csvConfigHeader?: pulumi.Input<boolean>;
-    csvConfigLinefeed?: pulumi.Input<string>;
-    csvConfigNullidentifier?: pulumi.Input<string>;
-    csvConfigQuote?: pulumi.Input<string>;
+    compressType?: pulumi.Input<string | undefined>;
+    csvConfigColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    csvConfigDelimiter?: pulumi.Input<string | undefined>;
+    csvConfigHeader?: pulumi.Input<boolean | undefined>;
+    csvConfigLinefeed?: pulumi.Input<string | undefined>;
+    csvConfigNullidentifier?: pulumi.Input<string | undefined>;
+    csvConfigQuote?: pulumi.Input<string | undefined>;
     /**
      * Storage format, only supports three types: `json`, `parquet`, `csv`.
      * **According to the different format, please select the following parameters**
@@ -358,7 +358,7 @@ export interface OssShipperArgs {
      * `type` - (Required) Type of configuration name.
      */
     format: pulumi.Input<string>;
-    jsonEnableTag?: pulumi.Input<boolean>;
+    jsonEnableTag?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the log logstore.
      */
@@ -370,8 +370,8 @@ export interface OssShipperArgs {
     /**
      * The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
      */
-    ossPrefix?: pulumi.Input<string>;
-    parquetConfigs?: pulumi.Input<pulumi.Input<inputs.log.OssShipperParquetConfig>[]>;
+    ossPrefix?: pulumi.Input<string | undefined>;
+    parquetConfigs?: pulumi.Input<pulumi.Input<inputs.log.OssShipperParquetConfig>[] | undefined>;
     /**
      * The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
      */
@@ -383,7 +383,7 @@ export interface OssShipperArgs {
     /**
      * Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
      */

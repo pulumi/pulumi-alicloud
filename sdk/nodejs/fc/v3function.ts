@@ -419,171 +419,171 @@ export interface V3FunctionState {
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    code?: pulumi.Input<inputs.fc.V3FunctionCode>;
+    code?: pulumi.Input<inputs.fc.V3FunctionCode | undefined>;
     /**
      * The code package size of the function returned by the system, in byte Example : 1024
      */
-    codeSize?: pulumi.Input<number>;
+    codeSize?: pulumi.Input<number | undefined>;
     /**
      * The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * The creation time of the function.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `customContainerConfig` below.
      */
-    customContainerConfig?: pulumi.Input<inputs.fc.V3FunctionCustomContainerConfig>;
+    customContainerConfig?: pulumi.Input<inputs.fc.V3FunctionCustomContainerConfig | undefined>;
     /**
      * Function custom DNS configuration See `customDns` below.
      */
-    customDns?: pulumi.Input<inputs.fc.V3FunctionCustomDns>;
+    customDns?: pulumi.Input<inputs.fc.V3FunctionCustomDns | undefined>;
     /**
      * Customize the runtime configuration. See `customRuntimeConfig` below.
      */
-    customRuntimeConfig?: pulumi.Input<inputs.fc.V3FunctionCustomRuntimeConfig>;
+    customRuntimeConfig?: pulumi.Input<inputs.fc.V3FunctionCustomRuntimeConfig | undefined>;
     /**
      * The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
      */
-    diskSize?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number | undefined>;
     /**
      * The environment variable set for the function, you can get the value of the environment variable in the function.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ARN of function
      */
-    functionArn?: pulumi.Input<string>;
+    functionArn?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
-    functionId?: pulumi.Input<string>;
+    functionId?: pulumi.Input<string | undefined>;
     /**
      * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * Function GPU configuration. See `gpuConfig` below.
      */
-    gpuConfig?: pulumi.Input<inputs.fc.V3FunctionGpuConfig>;
+    gpuConfig?: pulumi.Input<inputs.fc.V3FunctionGpuConfig | undefined>;
     /**
      * Function Handler: the call entry for the function compute system to run your function.
      */
-    handler?: pulumi.Input<string>;
+    handler?: pulumi.Input<string | undefined>;
     /**
      * Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
      */
-    idleTimeout?: pulumi.Input<number>;
+    idleTimeout?: pulumi.Input<number | undefined>;
     /**
      * Maximum instance concurrency.
      */
-    instanceConcurrency?: pulumi.Input<number>;
+    instanceConcurrency?: pulumi.Input<number | undefined>;
     /**
      * Instance isolation mode
      */
-    instanceIsolationMode?: pulumi.Input<string>;
+    instanceIsolationMode?: pulumi.Input<string | undefined>;
     /**
      * Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
      */
-    instanceLifecycleConfig?: pulumi.Input<inputs.fc.V3FunctionInstanceLifecycleConfig>;
+    instanceLifecycleConfig?: pulumi.Input<inputs.fc.V3FunctionInstanceLifecycleConfig | undefined>;
     /**
      * Allow function to access public network
      */
-    internetAccess?: pulumi.Input<boolean>;
+    internetAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Invocation Restriction Detail See `invocationRestriction` below.
      */
-    invocationRestriction?: pulumi.Input<inputs.fc.V3FunctionInvocationRestriction>;
+    invocationRestriction?: pulumi.Input<inputs.fc.V3FunctionInvocationRestriction | undefined>;
     /**
      * Last time the function was Updated
      */
-    lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string | undefined>;
     /**
      * The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
      */
-    lastUpdateStatus?: pulumi.Input<string>;
+    lastUpdateStatus?: pulumi.Input<string | undefined>;
     /**
      * The reason that caused the last function to update the Operation State to the current value
      */
-    lastUpdateStatusReason?: pulumi.Input<string>;
+    lastUpdateStatusReason?: pulumi.Input<string | undefined>;
     /**
      * Status code of the reason that caused the last function update operation status to the current value
      */
-    lastUpdateStatusReasonCode?: pulumi.Input<string>;
+    lastUpdateStatusReasonCode?: pulumi.Input<string | undefined>;
     /**
      * The list of layers.
      */
-    layers?: pulumi.Input<pulumi.Input<string>[]>;
+    layers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The logs generated by the function are written to the configured Logstore. See `logConfig` below.
      */
-    logConfig?: pulumi.Input<inputs.fc.V3FunctionLogConfig>;
+    logConfig?: pulumi.Input<inputs.fc.V3FunctionLogConfig | undefined>;
     /**
      * The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
      */
-    memorySize?: pulumi.Input<number>;
+    memorySize?: pulumi.Input<number | undefined>;
     /**
      * NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nasConfig` below.
      */
-    nasConfig?: pulumi.Input<inputs.fc.V3FunctionNasConfig>;
+    nasConfig?: pulumi.Input<inputs.fc.V3FunctionNasConfig | undefined>;
     /**
      * OSS mount configuration See `ossMountConfig` below.
      */
-    ossMountConfig?: pulumi.Input<inputs.fc.V3FunctionOssMountConfig>;
+    ossMountConfig?: pulumi.Input<inputs.fc.V3FunctionOssMountConfig | undefined>;
     /**
      * Resource Group ID
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Function runtime type
      */
-    runtime?: pulumi.Input<string>;
+    runtime?: pulumi.Input<string | undefined>;
     /**
      * The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
      */
-    sessionAffinity?: pulumi.Input<string>;
+    sessionAffinity?: pulumi.Input<string | undefined>;
     /**
      * When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
      */
-    sessionAffinityConfig?: pulumi.Input<string>;
+    sessionAffinityConfig?: pulumi.Input<string | undefined>;
     /**
      * Function Status
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The reason why the function is in the current state
      */
-    stateReason?: pulumi.Input<string>;
+    stateReason?: pulumi.Input<string | undefined>;
     /**
      * The status code of the reason the function is in the current state.
      */
-    stateReasonCode?: pulumi.Input<string>;
+    stateReasonCode?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The maximum running time of the function, in seconds.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * Tracing configuration
      */
-    tracingConfig?: pulumi.Input<inputs.fc.V3FunctionTracingConfig>;
+    tracingConfig?: pulumi.Input<inputs.fc.V3FunctionTracingConfig | undefined>;
     /**
      * VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpcConfig` below.
      */
-    vpcConfig?: pulumi.Input<inputs.fc.V3FunctionVpcConfig>;
+    vpcConfig?: pulumi.Input<inputs.fc.V3FunctionVpcConfig | undefined>;
 }
 
 /**
@@ -595,43 +595,43 @@ export interface V3FunctionArgs {
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    code?: pulumi.Input<inputs.fc.V3FunctionCode>;
+    code?: pulumi.Input<inputs.fc.V3FunctionCode | undefined>;
     /**
      * The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `customContainerConfig` below.
      */
-    customContainerConfig?: pulumi.Input<inputs.fc.V3FunctionCustomContainerConfig>;
+    customContainerConfig?: pulumi.Input<inputs.fc.V3FunctionCustomContainerConfig | undefined>;
     /**
      * Function custom DNS configuration See `customDns` below.
      */
-    customDns?: pulumi.Input<inputs.fc.V3FunctionCustomDns>;
+    customDns?: pulumi.Input<inputs.fc.V3FunctionCustomDns | undefined>;
     /**
      * Customize the runtime configuration. See `customRuntimeConfig` below.
      */
-    customRuntimeConfig?: pulumi.Input<inputs.fc.V3FunctionCustomRuntimeConfig>;
+    customRuntimeConfig?: pulumi.Input<inputs.fc.V3FunctionCustomRuntimeConfig | undefined>;
     /**
      * The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
      */
-    diskSize?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number | undefined>;
     /**
      * The environment variable set for the function, you can get the value of the environment variable in the function.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * Function GPU configuration. See `gpuConfig` below.
      */
-    gpuConfig?: pulumi.Input<inputs.fc.V3FunctionGpuConfig>;
+    gpuConfig?: pulumi.Input<inputs.fc.V3FunctionGpuConfig | undefined>;
     /**
      * Function Handler: the call entry for the function compute system to run your function.
      */
@@ -639,55 +639,55 @@ export interface V3FunctionArgs {
     /**
      * Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
      */
-    idleTimeout?: pulumi.Input<number>;
+    idleTimeout?: pulumi.Input<number | undefined>;
     /**
      * Maximum instance concurrency.
      */
-    instanceConcurrency?: pulumi.Input<number>;
+    instanceConcurrency?: pulumi.Input<number | undefined>;
     /**
      * Instance isolation mode
      */
-    instanceIsolationMode?: pulumi.Input<string>;
+    instanceIsolationMode?: pulumi.Input<string | undefined>;
     /**
      * Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
      */
-    instanceLifecycleConfig?: pulumi.Input<inputs.fc.V3FunctionInstanceLifecycleConfig>;
+    instanceLifecycleConfig?: pulumi.Input<inputs.fc.V3FunctionInstanceLifecycleConfig | undefined>;
     /**
      * Allow function to access public network
      */
-    internetAccess?: pulumi.Input<boolean>;
+    internetAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Invocation Restriction Detail See `invocationRestriction` below.
      */
-    invocationRestriction?: pulumi.Input<inputs.fc.V3FunctionInvocationRestriction>;
+    invocationRestriction?: pulumi.Input<inputs.fc.V3FunctionInvocationRestriction | undefined>;
     /**
      * The list of layers.
      */
-    layers?: pulumi.Input<pulumi.Input<string>[]>;
+    layers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The logs generated by the function are written to the configured Logstore. See `logConfig` below.
      */
-    logConfig?: pulumi.Input<inputs.fc.V3FunctionLogConfig>;
+    logConfig?: pulumi.Input<inputs.fc.V3FunctionLogConfig | undefined>;
     /**
      * The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
      */
-    memorySize?: pulumi.Input<number>;
+    memorySize?: pulumi.Input<number | undefined>;
     /**
      * NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nasConfig` below.
      */
-    nasConfig?: pulumi.Input<inputs.fc.V3FunctionNasConfig>;
+    nasConfig?: pulumi.Input<inputs.fc.V3FunctionNasConfig | undefined>;
     /**
      * OSS mount configuration See `ossMountConfig` below.
      */
-    ossMountConfig?: pulumi.Input<inputs.fc.V3FunctionOssMountConfig>;
+    ossMountConfig?: pulumi.Input<inputs.fc.V3FunctionOssMountConfig | undefined>;
     /**
      * Resource Group ID
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Function runtime type
      */
@@ -695,21 +695,21 @@ export interface V3FunctionArgs {
     /**
      * The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
      */
-    sessionAffinity?: pulumi.Input<string>;
+    sessionAffinity?: pulumi.Input<string | undefined>;
     /**
      * When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
      */
-    sessionAffinityConfig?: pulumi.Input<string>;
+    sessionAffinityConfig?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The maximum running time of the function, in seconds.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpcConfig` below.
      */
-    vpcConfig?: pulumi.Input<inputs.fc.V3FunctionVpcConfig>;
+    vpcConfig?: pulumi.Input<inputs.fc.V3FunctionVpcConfig | undefined>;
 }

@@ -208,55 +208,55 @@ export interface AccountState {
     /**
      * In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
      */
-    accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string | undefined>;
     /**
      * Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * The list of databases to which you want to grant permissions. Separate databases with commas (,).
      */
-    allowDatabases?: pulumi.Input<string>;
+    allowDatabases?: pulumi.Input<string | undefined>;
     /**
      * The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
      */
-    allowDictionaries?: pulumi.Input<string>;
+    allowDictionaries?: pulumi.Input<string | undefined>;
     /**
      * The db cluster id.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
      */
-    ddlAuthority?: pulumi.Input<boolean>;
+    ddlAuthority?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
      */
-    dmlAuthority?: pulumi.Input<string>;
+    dmlAuthority?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
      *
      * @deprecated Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.
      */
-    totalDatabases?: pulumi.Input<string>;
+    totalDatabases?: pulumi.Input<string | undefined>;
     /**
      * The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
      *
      * @deprecated Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.
      */
-    totalDictionaries?: pulumi.Input<string>;
+    totalDictionaries?: pulumi.Input<string | undefined>;
     /**
      * The type of the database account. Valid values: `Normal` or `Super`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -266,7 +266,7 @@ export interface AccountArgs {
     /**
      * In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
      */
-    accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string | undefined>;
     /**
      * Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
      */
@@ -278,11 +278,11 @@ export interface AccountArgs {
     /**
      * The list of databases to which you want to grant permissions. Separate databases with commas (,).
      */
-    allowDatabases?: pulumi.Input<string>;
+    allowDatabases?: pulumi.Input<string | undefined>;
     /**
      * The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
      */
-    allowDictionaries?: pulumi.Input<string>;
+    allowDictionaries?: pulumi.Input<string | undefined>;
     /**
      * The db cluster id.
      */
@@ -290,25 +290,25 @@ export interface AccountArgs {
     /**
      * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
      */
-    ddlAuthority?: pulumi.Input<boolean>;
+    ddlAuthority?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
      */
-    dmlAuthority?: pulumi.Input<string>;
+    dmlAuthority?: pulumi.Input<string | undefined>;
     /**
      * The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
      *
      * @deprecated Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.
      */
-    totalDatabases?: pulumi.Input<string>;
+    totalDatabases?: pulumi.Input<string | undefined>;
     /**
      * The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
      *
      * @deprecated Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.
      */
-    totalDictionaries?: pulumi.Input<string>;
+    totalDictionaries?: pulumi.Input<string | undefined>;
     /**
      * The type of the database account. Valid values: `Normal` or `Super`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

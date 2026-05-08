@@ -20,7 +20,7 @@ __all__ = ['BackupArgs', 'Backup']
 class BackupArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None):
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Backup resource.
 
@@ -47,7 +47,7 @@ class BackupArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The expiration period for this manual backup ranges from 7 to 730 days. When you pass in -1, it indicates that this manual backup will not expire (during the instance's lifecycle). If you do not pass any value (default case), it means the expiration policy will be consistent with the current automatic backup strategy.
 
@@ -56,17 +56,17 @@ class BackupArgs:
         return pulumi.get(self, "backup_retention_period")
 
     @backup_retention_period.setter
-    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retention_period", value)
 
 
 @pulumi.input_type
 class _BackupState:
     def __init__(__self__, *,
-                 backup_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Backup resources.
 
@@ -88,19 +88,19 @@ class _BackupState:
 
     @_builtins.property
     @pulumi.getter(name="backupId")
-    def backup_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Backup ID.
         """
         return pulumi.get(self, "backup_id")
 
     @backup_id.setter
-    def backup_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_id", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPeriod")
-    def backup_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The expiration period for this manual backup ranges from 7 to 730 days. When you pass in -1, it indicates that this manual backup will not expire (during the instance's lifecycle). If you do not pass any value (default case), it means the expiration policy will be consistent with the current automatic backup strategy.
 
@@ -109,31 +109,31 @@ class _BackupState:
         return pulumi.get(self, "backup_retention_period")
 
     @backup_retention_period.setter
-    def backup_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         InstanceId
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -143,8 +143,8 @@ class Backup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Tair (Redis OSS-Compatible) And Memcache (KVStore) Backup resource.
@@ -161,6 +161,7 @@ class Backup(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -174,7 +175,7 @@ class Backup(pulumi.CustomResource):
         default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(zone_id=zone_id,
             vpc_id=default.ids[0])
-        vswitch = []
+        vswitch: list[Any] = []
         def create_vswitch(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
@@ -197,7 +198,7 @@ class Backup(pulumi.CustomResource):
             password="123456_tf",
             engine_version="5.0",
             zone_id=zone_id,
-            vswitch_id=vswitch_id,
+            vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
             period="1",
             instance_class="redis.shard.small.2.ce")
         default_backup = alicloud.redis.Backup("default",
@@ -244,6 +245,7 @@ class Backup(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -257,7 +259,7 @@ class Backup(pulumi.CustomResource):
         default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(zone_id=zone_id,
             vpc_id=default.ids[0])
-        vswitch = []
+        vswitch: list[Any] = []
         def create_vswitch(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
@@ -280,7 +282,7 @@ class Backup(pulumi.CustomResource):
             password="123456_tf",
             engine_version="5.0",
             zone_id=zone_id,
-            vswitch_id=vswitch_id,
+            vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
             period="1",
             instance_class="redis.shard.small.2.ce")
         default_backup = alicloud.redis.Backup("default",
@@ -314,8 +316,8 @@ class Backup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -341,10 +343,10 @@ class Backup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_id: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Backup':
+            backup_id: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Backup':
         """
         Get an existing Backup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

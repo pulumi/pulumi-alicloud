@@ -20,15 +20,15 @@ __all__ = ['RewriteUrlRuleArgs', 'RewriteUrlRule']
 class RewriteUrlRuleArgs:
     def __init__(__self__, *,
                  site_id: pulumi.Input[_builtins.str],
-                 query_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 rewrite_query_string_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 rewrite_uri_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 rewrite_query_string_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 rewrite_uri_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RewriteUrlRule resource.
 
@@ -79,55 +79,55 @@ class RewriteUrlRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="queryString")
-    def query_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired query string to which you want to rewrite the query string in the original request.
         """
         return pulumi.get(self, "query_string")
 
     @query_string.setter
-    def query_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_string", value)
 
     @_builtins.property
     @pulumi.getter(name="rewriteQueryStringType")
-    def rewrite_query_string_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rewrite_query_string_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query string rewrite type. Value range:
         """
         return pulumi.get(self, "rewrite_query_string_type")
 
     @rewrite_query_string_type.setter
-    def rewrite_query_string_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rewrite_query_string_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rewrite_query_string_type", value)
 
     @_builtins.property
     @pulumi.getter(name="rewriteUriType")
-    def rewrite_uri_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rewrite_uri_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI rewrite type. Value range:
         """
         return pulumi.get(self, "rewrite_uri_type")
 
     @rewrite_uri_type.setter
-    def rewrite_uri_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rewrite_uri_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rewrite_uri_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleEnable")
-    def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         ‒ on: open.
@@ -136,72 +136,72 @@ class RewriteUrlRuleArgs:
         return pulumi.get(self, "rule_enable")
 
     @rule_enable.setter
-    def rule_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sequence(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "sequence")
 
     @sequence.setter
-    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sequence(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
-    def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
-    def site_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "site_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired URI to which you want to rewrite the path in the original request.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 @pulumi.input_type
 class _RewriteUrlRuleState:
     def __init__(__self__, *,
-                 config_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 query_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 rewrite_query_string_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 rewrite_uri_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 config_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 rewrite_query_string_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 rewrite_uri_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RewriteUrlRule resources.
 
@@ -244,67 +244,67 @@ class _RewriteUrlRuleState:
 
     @_builtins.property
     @pulumi.getter(name="configId")
-    def config_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def config_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ConfigId
         """
         return pulumi.get(self, "config_id")
 
     @config_id.setter
-    def config_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def config_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="queryString")
-    def query_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired query string to which you want to rewrite the query string in the original request.
         """
         return pulumi.get(self, "query_string")
 
     @query_string.setter
-    def query_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_string", value)
 
     @_builtins.property
     @pulumi.getter(name="rewriteQueryStringType")
-    def rewrite_query_string_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rewrite_query_string_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query string rewrite type. Value range:
         """
         return pulumi.get(self, "rewrite_query_string_type")
 
     @rewrite_query_string_type.setter
-    def rewrite_query_string_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rewrite_query_string_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rewrite_query_string_type", value)
 
     @_builtins.property
     @pulumi.getter(name="rewriteUriType")
-    def rewrite_uri_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rewrite_uri_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI rewrite type. Value range:
         """
         return pulumi.get(self, "rewrite_uri_type")
 
     @rewrite_uri_type.setter
-    def rewrite_uri_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rewrite_uri_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rewrite_uri_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleEnable")
-    def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         ‒ on: open.
@@ -313,67 +313,67 @@ class _RewriteUrlRuleState:
         return pulumi.get(self, "rule_enable")
 
     @rule_enable.setter
-    def rule_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sequence(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "sequence")
 
     @sequence.setter
-    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sequence(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
-    def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
-    def site_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "site_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired URI to which you want to rewrite the path in the original request.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
@@ -383,16 +383,16 @@ class RewriteUrlRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 query_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 rewrite_query_string_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 rewrite_uri_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 rewrite_query_string_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 rewrite_uri_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Rewrite Url Rule resource.
@@ -548,16 +548,16 @@ class RewriteUrlRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 query_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 rewrite_query_string_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 rewrite_uri_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 rewrite_query_string_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 rewrite_uri_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -590,17 +590,17 @@ class RewriteUrlRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config_id: Optional[pulumi.Input[_builtins.int]] = None,
-            query_string: Optional[pulumi.Input[_builtins.str]] = None,
-            rewrite_query_string_type: Optional[pulumi.Input[_builtins.str]] = None,
-            rewrite_uri_type: Optional[pulumi.Input[_builtins.str]] = None,
-            rule: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sequence: Optional[pulumi.Input[_builtins.int]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            site_version: Optional[pulumi.Input[_builtins.int]] = None,
-            uri: Optional[pulumi.Input[_builtins.str]] = None) -> 'RewriteUrlRule':
+            config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            query_string: pulumi.Input[Optional[_builtins.str]] = None,
+            rewrite_query_string_type: pulumi.Input[Optional[_builtins.str]] = None,
+            rewrite_uri_type: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None) -> 'RewriteUrlRule':
         """
         Get an existing RewriteUrlRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

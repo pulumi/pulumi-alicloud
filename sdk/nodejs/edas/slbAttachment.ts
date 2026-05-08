@@ -206,35 +206,35 @@ export interface SlbAttachmentState {
     /**
      * The ID of the application to which you want to bind an SLB instance.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The listening port for the bound SLB instance.
      */
-    listenerPort?: pulumi.Input<number>;
+    listenerPort?: pulumi.Input<number | undefined>;
     /**
      * The ID of the SLB instance that is going to be bound.
      */
-    slbId?: pulumi.Input<string>;
+    slbId?: pulumi.Input<string | undefined>;
     /**
      * The IP address that is allocated to the bound SLB instance.
      */
-    slbIp?: pulumi.Input<string>;
+    slbIp?: pulumi.Input<string | undefined>;
     /**
      * Running Status of SLB instance. Inactive：The instance is stopped, and listener will not monitor and forward traffic. Active：The instance is running. After the instance is created, the default state is active. Locked：The instance is locked, the instance has been owed or locked by Alibaba Cloud. Expired: The instance has expired.
      */
-    slbStatus?: pulumi.Input<string>;
+    slbStatus?: pulumi.Input<string | undefined>;
     /**
      * The type of the bound SLB instance.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The ID of the virtual server (VServer) group associated with the intranet SLB instance.
      */
-    vserverGroupId?: pulumi.Input<string>;
+    vserverGroupId?: pulumi.Input<string | undefined>;
     /**
      * VPC related vswitch ID.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -248,7 +248,7 @@ export interface SlbAttachmentArgs {
     /**
      * The listening port for the bound SLB instance.
      */
-    listenerPort?: pulumi.Input<number>;
+    listenerPort?: pulumi.Input<number | undefined>;
     /**
      * The ID of the SLB instance that is going to be bound.
      */
@@ -264,5 +264,5 @@ export interface SlbAttachmentArgs {
     /**
      * The ID of the virtual server (VServer) group associated with the intranet SLB instance.
      */
-    vserverGroupId?: pulumi.Input<string>;
+    vserverGroupId?: pulumi.Input<string | undefined>;
 }

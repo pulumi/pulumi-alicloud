@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.DataWorks
     ///     var config = new Config();
     ///     var adminCode = config.Get("adminCode") ?? "role_project_admin";
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var randint = new Random.Index.Integer("randint", new()
+    ///     var randint = new Random.Integer("randint", new()
     ///     {
     ///         Max = 999,
     ///         Min = 1,

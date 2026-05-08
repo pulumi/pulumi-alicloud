@@ -23,7 +23,7 @@ class CallbackArgs:
                  callback_suggestions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  callback_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  callback_url: pulumi.Input[_builtins.str],
-                 crypt_type: Optional[pulumi.Input[_builtins.int]] = None):
+                 crypt_type: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Callback resource.
 
@@ -90,26 +90,26 @@ class CallbackArgs:
 
     @_builtins.property
     @pulumi.getter(name="cryptType")
-    def crypt_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def crypt_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The encryption algorithm is used to verify that the callback request is sent by the Aliyun Green Service to your business service. Value: 0:SHA256,1: SM3.
         """
         return pulumi.get(self, "crypt_type")
 
     @crypt_type.setter
-    def crypt_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def crypt_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "crypt_type", value)
 
 
 @pulumi.input_type
 class _CallbackState:
     def __init__(__self__, *,
-                 callback_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 callback_suggestions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 callback_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 callback_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 crypt_type: Optional[pulumi.Input[_builtins.int]] = None):
+                 callback_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 callback_suggestions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 callback_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 crypt_type: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Callback resources.
 
@@ -135,74 +135,74 @@ class _CallbackState:
 
     @_builtins.property
     @pulumi.getter(name="callbackName")
-    def callback_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def callback_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Callback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
         """
         return pulumi.get(self, "callback_name")
 
     @callback_name.setter
-    def callback_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def callback_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "callback_name", value)
 
     @_builtins.property
     @pulumi.getter(name="callbackSuggestions")
-    def callback_suggestions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def callback_suggestions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of audit results supported by message notification. Value: block: confirmed violation, review: Suspected violation, review: normal.
         """
         return pulumi.get(self, "callback_suggestions")
 
     @callback_suggestions.setter
-    def callback_suggestions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def callback_suggestions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "callback_suggestions", value)
 
     @_builtins.property
     @pulumi.getter(name="callbackTypes")
-    def callback_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def callback_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Callback types. Value: machineScan: Machine audit result notification, selfAudit: self-service audit notification.
         """
         return pulumi.get(self, "callback_types")
 
     @callback_types.setter
-    def callback_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def callback_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "callback_types", value)
 
     @_builtins.property
     @pulumi.getter(name="callbackUrl")
-    def callback_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def callback_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The detection result will be called back to the url.
         """
         return pulumi.get(self, "callback_url")
 
     @callback_url.setter
-    def callback_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def callback_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "callback_url", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the Callback.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="cryptType")
-    def crypt_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def crypt_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The encryption algorithm is used to verify that the callback request is sent by the Aliyun Green Service to your business service. Value: 0:SHA256,1: SM3.
         """
         return pulumi.get(self, "crypt_type")
 
     @crypt_type.setter
-    def crypt_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def crypt_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "crypt_type", value)
 
 
@@ -212,11 +212,11 @@ class Callback(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 callback_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 callback_suggestions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 callback_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 callback_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 crypt_type: Optional[pulumi.Input[_builtins.int]] = None,
+                 callback_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 callback_suggestions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 callback_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 crypt_type: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Aligreen Callback resource.
@@ -343,11 +343,11 @@ class Callback(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 callback_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 callback_suggestions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 callback_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 callback_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 crypt_type: Optional[pulumi.Input[_builtins.int]] = None,
+                 callback_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 callback_suggestions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 callback_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 crypt_type: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -381,12 +381,12 @@ class Callback(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            callback_name: Optional[pulumi.Input[_builtins.str]] = None,
-            callback_suggestions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            callback_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            callback_url: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            crypt_type: Optional[pulumi.Input[_builtins.int]] = None) -> 'Callback':
+            callback_name: pulumi.Input[Optional[_builtins.str]] = None,
+            callback_suggestions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            callback_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            crypt_type: pulumi.Input[Optional[_builtins.int]] = None) -> 'Callback':
         """
         Get an existing Callback resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

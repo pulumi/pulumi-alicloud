@@ -318,42 +318,42 @@ export interface CollectionPolicyState {
     /**
      * Centralized forwarding configuration. See `centralizeConfig` below.
      */
-    centralizeConfig?: pulumi.Input<inputs.sls.CollectionPolicyCentralizeConfig>;
+    centralizeConfig?: pulumi.Input<inputs.sls.CollectionPolicyCentralizeConfig | undefined>;
     /**
      * Specifies whether to enable centralized forwarding. Default value: false.
      */
-    centralizeEnabled?: pulumi.Input<boolean>;
+    centralizeEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Log type code.
      */
-    dataCode?: pulumi.Input<string>;
+    dataCode?: pulumi.Input<string | undefined>;
     /**
      * This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
      */
-    dataConfig?: pulumi.Input<inputs.sls.CollectionPolicyDataConfig>;
+    dataConfig?: pulumi.Input<inputs.sls.CollectionPolicyDataConfig | undefined>;
     /**
      * Whether enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Collection rule configuration. See `policyConfig` below.
      */
-    policyConfig?: pulumi.Input<inputs.sls.CollectionPolicyPolicyConfig>;
+    policyConfig?: pulumi.Input<inputs.sls.CollectionPolicyPolicyConfig | undefined>;
     /**
      * The naming rules are as follows:
      * - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
      * - It must start with a letter.
      * - Its length must be between 3 and 63 characters.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * Product code.
      */
-    productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string | undefined>;
     /**
      * Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
      */
-    resourceDirectory?: pulumi.Input<inputs.sls.CollectionPolicyResourceDirectory>;
+    resourceDirectory?: pulumi.Input<inputs.sls.CollectionPolicyResourceDirectory | undefined>;
 }
 
 /**
@@ -363,11 +363,11 @@ export interface CollectionPolicyArgs {
     /**
      * Centralized forwarding configuration. See `centralizeConfig` below.
      */
-    centralizeConfig?: pulumi.Input<inputs.sls.CollectionPolicyCentralizeConfig>;
+    centralizeConfig?: pulumi.Input<inputs.sls.CollectionPolicyCentralizeConfig | undefined>;
     /**
      * Specifies whether to enable centralized forwarding. Default value: false.
      */
-    centralizeEnabled?: pulumi.Input<boolean>;
+    centralizeEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Log type code.
      */
@@ -375,7 +375,7 @@ export interface CollectionPolicyArgs {
     /**
      * This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `dataConfig` below.
      */
-    dataConfig?: pulumi.Input<inputs.sls.CollectionPolicyDataConfig>;
+    dataConfig?: pulumi.Input<inputs.sls.CollectionPolicyDataConfig | undefined>;
     /**
      * Whether enabled.
      */
@@ -398,5 +398,5 @@ export interface CollectionPolicyArgs {
     /**
      * Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resourceDirectory` below.
      */
-    resourceDirectory?: pulumi.Input<inputs.sls.CollectionPolicyResourceDirectory>;
+    resourceDirectory?: pulumi.Input<inputs.sls.CollectionPolicyResourceDirectory | undefined>;
 }

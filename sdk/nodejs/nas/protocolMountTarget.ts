@@ -245,11 +245,11 @@ export interface ProtocolMountTargetState {
      * The permission group name.
      * Default value: DEFAULT_VPC_GROUP_NAME
      */
-    accessGroupName?: pulumi.Input<string>;
+    accessGroupName?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the protocol service mount target. Display as the export directory name in the console.
      *
@@ -258,21 +258,21 @@ export interface ProtocolMountTargetState {
      * - It must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * DryRun
      *
      * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Protocol Service Mount Target ID
      */
-    exportId?: pulumi.Input<string>;
+    exportId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the file system.
      */
-    fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Fileset to be mounted.
      *
@@ -281,7 +281,7 @@ export interface ProtocolMountTargetState {
      * - A Fileset allows only one export directory to be created.
      * - Fileset and Path can and must specify only one.
      */
-    fsetId?: pulumi.Input<string>;
+    fsetId?: pulumi.Input<string | undefined>;
     /**
      * The path of the CPFS directory to be mounted.
      *
@@ -295,28 +295,28 @@ export interface ProtocolMountTargetState {
      * - Use UTF-8 encoding.
      * - Must start and end with a forward slash (/) and root directory is/.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Protocol Service ID
      */
-    protocolServiceId?: pulumi.Input<string>;
+    protocolServiceId?: pulumi.Input<string | undefined>;
     /**
      * Status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The VPC ID of the protocol service mount point.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vSwitch ID of the protocol service mount target.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The vSwitch IDs of the protocol service mount target.
      * When the storage redundancy type of the file system is ZRS, if VpcId is set, the vSwitch ID of three different zones under the Vpc must be set in this field.
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -327,7 +327,7 @@ export interface ProtocolMountTargetArgs {
      * The permission group name.
      * Default value: DEFAULT_VPC_GROUP_NAME
      */
-    accessGroupName?: pulumi.Input<string>;
+    accessGroupName?: pulumi.Input<string | undefined>;
     /**
      * Description of the protocol service mount target. Display as the export directory name in the console.
      *
@@ -336,13 +336,13 @@ export interface ProtocolMountTargetArgs {
      * - It must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * DryRun
      *
      * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the file system.
      */
@@ -355,7 +355,7 @@ export interface ProtocolMountTargetArgs {
      * - A Fileset allows only one export directory to be created.
      * - Fileset and Path can and must specify only one.
      */
-    fsetId?: pulumi.Input<string>;
+    fsetId?: pulumi.Input<string | undefined>;
     /**
      * The path of the CPFS directory to be mounted.
      *
@@ -369,7 +369,7 @@ export interface ProtocolMountTargetArgs {
      * - Use UTF-8 encoding.
      * - Must start and end with a forward slash (/) and root directory is/.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Protocol Service ID
      */
@@ -377,14 +377,14 @@ export interface ProtocolMountTargetArgs {
     /**
      * The VPC ID of the protocol service mount point.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vSwitch ID of the protocol service mount target.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The vSwitch IDs of the protocol service mount target.
      * When the storage redundancy type of the file system is ZRS, if VpcId is set, the vSwitch ID of three different zones under the Vpc must be set in this field.
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

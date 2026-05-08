@@ -22,25 +22,25 @@ class RuleArgs:
                  frontend_port: pulumi.Input[_builtins.int],
                  load_balancer_id: pulumi.Input[_builtins.str],
                  server_group_id: pulumi.Input[_builtins.str],
-                 cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 cookie_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_connect_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_sync: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 cookie_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_sync: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Rule resource.
 
@@ -150,43 +150,43 @@ class RuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cookie(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cookie(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
         """
         return pulumi.get(self, "cookie")
 
     @cookie.setter
-    def cookie(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cookie(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cookie", value)
 
     @_builtins.property
     @pulumi.getter(name="cookieTimeout")
-    def cookie_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cookie_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
         """
         return pulumi.get(self, "cookie_timeout")
 
     @cookie_timeout.setter
-    def cookie_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cookie_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cookie_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_protection_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         """
         return pulumi.get(self, "delete_protection_validation")
 
     @delete_protection_validation.setter
-    def delete_protection_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_protection_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_protection_validation", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
         and wildcard characters. The following two domain name formats are supported:
@@ -196,215 +196,215 @@ class RuleArgs:
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheck")
-    def health_check(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "health_check")
 
     @health_check.setter
-    def health_check(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckConnectPort")
-    def health_check_connect_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_connect_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port used for health check. Valid values: [1-65535]. Default value: `None` means the backend server port is used.
         """
         return pulumi.get(self, "health_check_connect_port")
 
     @health_check_connect_port.setter
-    def health_check_connect_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_connect_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_connect_port", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckDomain")
-    def health_check_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
         """
         return pulumi.get(self, "health_check_domain")
 
     @health_check_domain.setter
-    def health_check_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckHttpCode")
-    def health_check_http_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_http_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
         """
         return pulumi.get(self, "health_check_http_code")
 
     @health_check_http_code.setter
-    def health_check_http_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_http_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_http_code", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckInterval")
-    def health_check_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
         """
         return pulumi.get(self, "health_check_interval")
 
     @health_check_interval.setter
-    def health_check_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckTimeout")
-    def health_check_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         """
         return pulumi.get(self, "health_check_timeout")
 
     @health_check_timeout.setter
-    def health_check_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckUri")
-    def health_check_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
         """
         return pulumi.get(self, "health_check_uri")
 
     @health_check_uri.setter
-    def health_check_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def healthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
         """
         return pulumi.get(self, "healthy_threshold")
 
     @healthy_threshold.setter
-    def healthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def healthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "healthy_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerSync")
-    def listener_sync(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_sync(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default value: `on`. Valid values: `on` and `off`.
         """
         return pulumi.get(self, "listener_sync")
 
     @listener_sync.setter
-    def listener_sync(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_sync(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_sync", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheduler(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduler(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "scheduler")
 
     @scheduler.setter
-    def scheduler(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduler(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduler", value)
 
     @_builtins.property
     @pulumi.getter(name="stickySession")
-    def sticky_session(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sticky_session(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "sticky_session")
 
     @sticky_session.setter
-    def sticky_session(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sticky_session(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sticky_session", value)
 
     @_builtins.property
     @pulumi.getter(name="stickySessionType")
-    def sticky_session_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sticky_session_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         """
         return pulumi.get(self, "sticky_session_type")
 
     @sticky_session_type.setter
-    def sticky_session_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sticky_session_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sticky_session_type", value)
 
     @_builtins.property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unhealthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
     @unhealthy_threshold.setter
-    def unhealthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unhealthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unhealthy_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
 @pulumi.input_type
 class _RuleState:
     def __init__(__self__, *,
-                 cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 cookie_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 frontend_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_connect_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_sync: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 cookie_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_sync: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
 
@@ -481,43 +481,43 @@ class _RuleState:
 
     @_builtins.property
     @pulumi.getter
-    def cookie(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cookie(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
         """
         return pulumi.get(self, "cookie")
 
     @cookie.setter
-    def cookie(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cookie(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cookie", value)
 
     @_builtins.property
     @pulumi.getter(name="cookieTimeout")
-    def cookie_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cookie_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
         """
         return pulumi.get(self, "cookie_timeout")
 
     @cookie_timeout.setter
-    def cookie_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cookie_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cookie_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_protection_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         """
         return pulumi.get(self, "delete_protection_validation")
 
     @delete_protection_validation.setter
-    def delete_protection_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_protection_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_protection_validation", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
         and wildcard characters. The following two domain name formats are supported:
@@ -527,223 +527,223 @@ class _RuleState:
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="frontendPort")
-    def frontend_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def frontend_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
         """
         return pulumi.get(self, "frontend_port")
 
     @frontend_port.setter
-    def frontend_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def frontend_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "frontend_port", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheck")
-    def health_check(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "health_check")
 
     @health_check.setter
-    def health_check(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckConnectPort")
-    def health_check_connect_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_connect_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port used for health check. Valid values: [1-65535]. Default value: `None` means the backend server port is used.
         """
         return pulumi.get(self, "health_check_connect_port")
 
     @health_check_connect_port.setter
-    def health_check_connect_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_connect_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_connect_port", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckDomain")
-    def health_check_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
         """
         return pulumi.get(self, "health_check_domain")
 
     @health_check_domain.setter
-    def health_check_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckHttpCode")
-    def health_check_http_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_http_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
         """
         return pulumi.get(self, "health_check_http_code")
 
     @health_check_http_code.setter
-    def health_check_http_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_http_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_http_code", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckInterval")
-    def health_check_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
         """
         return pulumi.get(self, "health_check_interval")
 
     @health_check_interval.setter
-    def health_check_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckTimeout")
-    def health_check_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         """
         return pulumi.get(self, "health_check_timeout")
 
     @health_check_timeout.setter
-    def health_check_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckUri")
-    def health_check_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
         """
         return pulumi.get(self, "health_check_uri")
 
     @health_check_uri.setter
-    def health_check_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def healthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
         """
         return pulumi.get(self, "healthy_threshold")
 
     @healthy_threshold.setter
-    def healthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def healthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "healthy_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerSync")
-    def listener_sync(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_sync(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default value: `on`. Valid values: `on` and `off`.
         """
         return pulumi.get(self, "listener_sync")
 
     @listener_sync.setter
-    def listener_sync(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_sync(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_sync", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Load Balancer ID which is used to launch the new forwarding rule.
         """
         return pulumi.get(self, "load_balancer_id")
 
     @load_balancer_id.setter
-    def load_balancer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheduler(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduler(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "scheduler")
 
     @scheduler.setter
-    def scheduler(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduler(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduler", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroupId")
-    def server_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of a virtual server group that will be forwarded.
         """
         return pulumi.get(self, "server_group_id")
 
     @server_group_id.setter
-    def server_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stickySession")
-    def sticky_session(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sticky_session(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "sticky_session")
 
     @sticky_session.setter
-    def sticky_session(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sticky_session(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sticky_session", value)
 
     @_builtins.property
     @pulumi.getter(name="stickySessionType")
-    def sticky_session_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sticky_session_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         """
         return pulumi.get(self, "sticky_session_type")
 
     @sticky_session_type.setter
-    def sticky_session_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sticky_session_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sticky_session_type", value)
 
     @_builtins.property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unhealthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
     @unhealthy_threshold.setter
-    def unhealthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unhealthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unhealthy_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -753,28 +753,28 @@ class Rule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 cookie_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 frontend_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_connect_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_sync: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 cookie_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_sync: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Lindorm Instance resource.
@@ -810,7 +810,7 @@ class Rule(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         rule_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=rule.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         rule_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -953,7 +953,7 @@ class Rule(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         rule_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=rule.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         rule_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -1043,28 +1043,28 @@ class Rule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 cookie_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 frontend_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_connect_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_sync: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 cookie_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_sync: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1112,28 +1112,28 @@ class Rule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cookie: Optional[pulumi.Input[_builtins.str]] = None,
-            cookie_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            frontend_port: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_connect_port: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            listener_sync: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-            server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sticky_session: Optional[pulumi.Input[_builtins.str]] = None,
-            sticky_session_type: Optional[pulumi.Input[_builtins.str]] = None,
-            unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'Rule':
+            cookie: pulumi.Input[Optional[_builtins.str]] = None,
+            cookie_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_sync: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sticky_session: pulumi.Input[Optional[_builtins.str]] = None,
+            sticky_session_type: pulumi.Input[Optional[_builtins.str]] = None,
+            unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'Rule':
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

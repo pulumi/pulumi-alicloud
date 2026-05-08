@@ -28,9 +28,9 @@ class MonitorTemplateArgs:
                  isp_city_nodes: pulumi.Input[Sequence[pulumi.Input['MonitorTemplateIspCityNodeArgs']]],
                  protocol: pulumi.Input[_builtins.str],
                  timeout: pulumi.Input[_builtins.str],
-                 extend_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None):
+                 extend_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MonitorTemplate resource.
 
@@ -145,54 +145,54 @@ class MonitorTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="extendInfo")
-    def extend_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def extend_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON string containing protocol-specific probe configuration. The supported keys depend on `protocol`. See `extend_info` below.
         """
         return pulumi.get(self, "extend_info")
 
     @extend_info.setter
-    def extend_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def extend_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "extend_info", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the monitor template. It is recommended to use a name that reflects the health-check protocol for easier identification.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remark of the monitor template. Passing an empty value clears the existing remark.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
 
 @pulumi.input_type
 class _MonitorTemplateState:
     def __init__(__self__, *,
-                 evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 extend_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 failure_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTemplateIspCityNodeArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None):
+                 evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 extend_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 failure_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input['MonitorTemplateIspCityNodeArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MonitorTemplate resources.
 
@@ -230,122 +230,122 @@ class _MonitorTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="evaluationCount")
-    def evaluation_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def evaluation_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
         """
         return pulumi.get(self, "evaluation_count")
 
     @evaluation_count.setter
-    def evaluation_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def evaluation_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "evaluation_count", value)
 
     @_builtins.property
     @pulumi.getter(name="extendInfo")
-    def extend_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def extend_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON string containing protocol-specific probe configuration. The supported keys depend on `protocol`. See `extend_info` below.
         """
         return pulumi.get(self, "extend_info")
 
     @extend_info.setter
-    def extend_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def extend_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "extend_info", value)
 
     @_builtins.property
     @pulumi.getter(name="failureRate")
-    def failure_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_rate(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The failure-rate threshold (%) among selected probe nodes. If the percentage of failing nodes exceeds this value, the service address is marked as abnormal. Valid values: `0`, `20`, `50`, `80`, `100`.
         """
         return pulumi.get(self, "failure_rate")
 
     @failure_rate.setter
-    def failure_rate(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_rate(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_rate", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interval between consecutive probes, in seconds. Valid values: `15`, `60`, `300`, `900`, `1800`, `3600`. The `15` seconds interval is only available for Flagship Edition instances.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP version of the probing node. Valid values: `IPv4`, `IPv6`.
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="ispCityNodes")
-    def isp_city_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTemplateIspCityNodeArgs']]]]:
+    def isp_city_nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MonitorTemplateIspCityNodeArgs']]]]:
         """
         The set of monitoring nodes that this template will probe from. Use the [ListCloudGtmMonitorNodes](https://help.aliyun.com/document_detail/2797349.html) API to look up available `city_code` / `isp_code` combinations. See `isp_city_nodes` below.
         """
         return pulumi.get(self, "isp_city_nodes")
 
     @isp_city_nodes.setter
-    def isp_city_nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTemplateIspCityNodeArgs']]]]):
+    def isp_city_nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MonitorTemplateIspCityNodeArgs']]]]):
         pulumi.set(self, "isp_city_nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the monitor template. It is recommended to use a name that reflects the health-check protocol for easier identification.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The probing protocol of the template. Valid values: `ping`, `tcp`, `http`, `https`.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remark of the monitor template. Passing an empty value clears the existing remark.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Probe request timeout, in milliseconds. Probe packets that do not return within this duration are treated as timeouts. Valid values: `2000`, `3000`, `5000`, `10000`.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout", value)
 
 
@@ -355,16 +355,16 @@ class MonitorTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 extend_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 failure_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
+                 evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 extend_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 failure_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Alidns Cloud Gtm Monitor Template resource.
@@ -518,16 +518,16 @@ class MonitorTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 extend_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 failure_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
+                 evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 extend_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 failure_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -571,16 +571,16 @@ class MonitorTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-            extend_info: Optional[pulumi.Input[_builtins.str]] = None,
-            failure_rate: Optional[pulumi.Input[_builtins.int]] = None,
-            interval: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-            isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None,
-            timeout: Optional[pulumi.Input[_builtins.str]] = None) -> 'MonitorTemplate':
+            evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+            extend_info: pulumi.Input[Optional[_builtins.str]] = None,
+            failure_rate: pulumi.Input[Optional[_builtins.int]] = None,
+            interval: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorTemplateIspCityNodeArgs', 'MonitorTemplateIspCityNodeArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.str]] = None) -> 'MonitorTemplate':
         """
         Get an existing MonitorTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

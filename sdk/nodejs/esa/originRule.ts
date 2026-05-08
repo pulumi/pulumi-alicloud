@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultOriginRule = new alicloud.esa.OriginRule("default", {
  *     originSni: "origin.example.com",
- *     siteId: _default.then(_default => _default.sites?.[0]?.id),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.id)).apply(x =>String(x)),
  *     originHost: "origin.example.com",
  *     dnsRecord: "tf.example.com",
  *     siteVersion: 0,
@@ -248,97 +248,97 @@ export interface OriginRuleState {
     /**
      * Back-to-source rule configuration ID
      */
-    configId?: pulumi.Input<number>;
+    configId?: pulumi.Input<number | undefined>;
     /**
      * Overwrite the DNS resolution record of the origin request.
      */
-    dnsRecord?: pulumi.Input<string>;
+    dnsRecord?: pulumi.Input<string | undefined>;
     /**
      * Return Source 302 follow switch. Value range:
      */
-    follow302Enable?: pulumi.Input<string>;
+    follow302Enable?: pulumi.Input<string | undefined>;
     /**
      * 302 follows the upper limit of the number of times, with a value range of [1-5].
      */
-    follow302MaxTries?: pulumi.Input<string>;
+    follow302MaxTries?: pulumi.Input<string | undefined>;
     /**
      * Retain the original request parameter switch. Value range:
      */
-    follow302RetainArgs?: pulumi.Input<string>;
+    follow302RetainArgs?: pulumi.Input<string | undefined>;
     /**
      * Retain the original request header switch. Value range:
      */
-    follow302RetainHeader?: pulumi.Input<string>;
+    follow302RetainHeader?: pulumi.Input<string | undefined>;
     /**
      * Modify the source host after 302.
      */
-    follow302TargetHost?: pulumi.Input<string>;
+    follow302TargetHost?: pulumi.Input<string | undefined>;
     /**
      * The HOST carried in the back-to-origin request.
      */
-    originHost?: pulumi.Input<string>;
+    originHost?: pulumi.Input<string | undefined>;
     /**
      * The port of the origin station accessed when the HTTP protocol is used to return to the origin.
      */
-    originHttpPort?: pulumi.Input<string>;
+    originHttpPort?: pulumi.Input<string | undefined>;
     /**
      * The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
      */
-    originHttpsPort?: pulumi.Input<string>;
+    originHttpsPort?: pulumi.Input<string | undefined>;
     /**
      * The mtls switch. Value range:
      */
-    originMtls?: pulumi.Input<string>;
+    originMtls?: pulumi.Input<string | undefined>;
     /**
      * Read timeout interval of the source station (s).
      */
-    originReadTimeout?: pulumi.Input<string>;
+    originReadTimeout?: pulumi.Input<string | undefined>;
     /**
      * The protocol used by the back-to-origin request. Value range:
      */
-    originScheme?: pulumi.Input<string>;
+    originScheme?: pulumi.Input<string | undefined>;
     /**
      * SNI carried in the back-to-origin request.
      */
-    originSni?: pulumi.Input<string>;
+    originSni?: pulumi.Input<string | undefined>;
     /**
      * Source station certificate verification switch. Value range:
      */
-    originVerify?: pulumi.Input<string>;
+    originVerify?: pulumi.Input<string | undefined>;
     /**
      * Use the range sharding method to download the file from the source. Value range:
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
     /**
      * range shard size.
      */
-    rangeChunkSize?: pulumi.Input<string>;
+    rangeChunkSize?: pulumi.Input<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * The site ID.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -348,85 +348,85 @@ export interface OriginRuleArgs {
     /**
      * Overwrite the DNS resolution record of the origin request.
      */
-    dnsRecord?: pulumi.Input<string>;
+    dnsRecord?: pulumi.Input<string | undefined>;
     /**
      * Return Source 302 follow switch. Value range:
      */
-    follow302Enable?: pulumi.Input<string>;
+    follow302Enable?: pulumi.Input<string | undefined>;
     /**
      * 302 follows the upper limit of the number of times, with a value range of [1-5].
      */
-    follow302MaxTries?: pulumi.Input<string>;
+    follow302MaxTries?: pulumi.Input<string | undefined>;
     /**
      * Retain the original request parameter switch. Value range:
      */
-    follow302RetainArgs?: pulumi.Input<string>;
+    follow302RetainArgs?: pulumi.Input<string | undefined>;
     /**
      * Retain the original request header switch. Value range:
      */
-    follow302RetainHeader?: pulumi.Input<string>;
+    follow302RetainHeader?: pulumi.Input<string | undefined>;
     /**
      * Modify the source host after 302.
      */
-    follow302TargetHost?: pulumi.Input<string>;
+    follow302TargetHost?: pulumi.Input<string | undefined>;
     /**
      * The HOST carried in the back-to-origin request.
      */
-    originHost?: pulumi.Input<string>;
+    originHost?: pulumi.Input<string | undefined>;
     /**
      * The port of the origin station accessed when the HTTP protocol is used to return to the origin.
      */
-    originHttpPort?: pulumi.Input<string>;
+    originHttpPort?: pulumi.Input<string | undefined>;
     /**
      * The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
      */
-    originHttpsPort?: pulumi.Input<string>;
+    originHttpsPort?: pulumi.Input<string | undefined>;
     /**
      * The mtls switch. Value range:
      */
-    originMtls?: pulumi.Input<string>;
+    originMtls?: pulumi.Input<string | undefined>;
     /**
      * Read timeout interval of the source station (s).
      */
-    originReadTimeout?: pulumi.Input<string>;
+    originReadTimeout?: pulumi.Input<string | undefined>;
     /**
      * The protocol used by the back-to-origin request. Value range:
      */
-    originScheme?: pulumi.Input<string>;
+    originScheme?: pulumi.Input<string | undefined>;
     /**
      * SNI carried in the back-to-origin request.
      */
-    originSni?: pulumi.Input<string>;
+    originSni?: pulumi.Input<string | undefined>;
     /**
      * Source station certificate verification switch. Value range:
      */
-    originVerify?: pulumi.Input<string>;
+    originVerify?: pulumi.Input<string | undefined>;
     /**
      * Use the range sharding method to download the file from the source. Value range:
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
     /**
      * range shard size.
      */
-    rangeChunkSize?: pulumi.Input<string>;
+    rangeChunkSize?: pulumi.Input<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * The site ID.
      */
@@ -434,5 +434,5 @@ export interface OriginRuleArgs {
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
 }

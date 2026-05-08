@@ -180,12 +180,12 @@ def get_access_rules(access_group_name: Optional[_builtins.str] = None,
         rw_access=pulumi.get(__ret__, 'rw_access'),
         source_cidr_ip=pulumi.get(__ret__, 'source_cidr_ip'),
         user_access=pulumi.get(__ret__, 'user_access'))
-def get_access_rules_output(access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                            ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            rw_access: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            source_cidr_ip: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            user_access: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_access_rules_output(access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                            ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            rw_access: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            source_cidr_ip: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            user_access: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessRulesResult]:
     """
     This data source provides AccessRule available to the user.

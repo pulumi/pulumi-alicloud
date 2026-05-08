@@ -154,35 +154,35 @@ export interface OrderState {
     /**
      * Service providers customize additional components.
      */
-    components?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    components?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The coupon id of the market product.
      */
-    couponId?: pulumi.Input<string>;
+    couponId?: pulumi.Input<string | undefined>;
     /**
      * The number of purchase cycles.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * The package version of the market product.
      */
-    packageVersion?: pulumi.Input<string>;
+    packageVersion?: pulumi.Input<string | undefined>;
     /**
      * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
      */
-    payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string | undefined>;
     /**
      * The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * The productCode of market place product.
      */
-    productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string | undefined>;
     /**
      * The quantity of the market product will be purchased.
      */
-    quantity?: pulumi.Input<number>;
+    quantity?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -192,15 +192,15 @@ export interface OrderArgs {
     /**
      * Service providers customize additional components.
      */
-    components?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    components?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The coupon id of the market product.
      */
-    couponId?: pulumi.Input<string>;
+    couponId?: pulumi.Input<string | undefined>;
     /**
      * The number of purchase cycles.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * The package version of the market product.
      */
@@ -208,7 +208,7 @@ export interface OrderArgs {
     /**
      * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
      */
-    payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string | undefined>;
     /**
      * The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
      */
@@ -220,5 +220,5 @@ export interface OrderArgs {
     /**
      * The quantity of the market product will be purchased.
      */
-    quantity?: pulumi.Input<number>;
+    quantity?: pulumi.Input<number | undefined>;
 }

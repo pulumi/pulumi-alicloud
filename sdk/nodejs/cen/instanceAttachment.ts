@@ -161,31 +161,31 @@ export interface InstanceAttachmentState {
      *
      * ->**NOTE:** Ensure that the child instance is not used in Express Connect.
      */
-    cenOwnerId?: pulumi.Input<number>;
+    cenOwnerId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the child instance to attach.
      */
-    childInstanceId?: pulumi.Input<string>;
+    childInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The uid of the child instance. Only used when attach a child instance of other account.
      */
-    childInstanceOwnerId?: pulumi.Input<number>;
+    childInstanceOwnerId?: pulumi.Input<number | undefined>;
     /**
      * The region ID of the child instance to attach.
      */
-    childInstanceRegionId?: pulumi.Input<string>;
+    childInstanceRegionId?: pulumi.Input<string | undefined>;
     /**
      * The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
      */
-    childInstanceType?: pulumi.Input<string>;
+    childInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the CEN.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The associating status of the network.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -197,7 +197,7 @@ export interface InstanceAttachmentArgs {
      *
      * ->**NOTE:** Ensure that the child instance is not used in Express Connect.
      */
-    cenOwnerId?: pulumi.Input<number>;
+    cenOwnerId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the child instance to attach.
      */
@@ -205,7 +205,7 @@ export interface InstanceAttachmentArgs {
     /**
      * The uid of the child instance. Only used when attach a child instance of other account.
      */
-    childInstanceOwnerId?: pulumi.Input<number>;
+    childInstanceOwnerId?: pulumi.Input<number | undefined>;
     /**
      * The region ID of the child instance to attach.
      */

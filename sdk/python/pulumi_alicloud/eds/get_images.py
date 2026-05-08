@@ -220,13 +220,13 @@ def get_images(desktop_instance_type: Optional[_builtins.str] = None,
         os_type=pulumi.get(__ret__, 'os_type'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-def get_images_output(desktop_instance_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                      image_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      os_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_images_output(desktop_instance_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                      image_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      os_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImagesResult]:
     """
     This data source provides the Ecd Images of the current Alibaba Cloud user.

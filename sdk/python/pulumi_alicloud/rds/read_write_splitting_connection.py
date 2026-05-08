@@ -21,10 +21,10 @@ class ReadWriteSplittingConnectionArgs:
     def __init__(__self__, *,
                  distribution_type: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_delay_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 weight: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_delay_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 weight: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ReadWriteSplittingConnection resource.
 
@@ -72,63 +72,63 @@ class ReadWriteSplittingConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionPrefix")
-    def connection_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
         """
         return pulumi.get(self, "connection_prefix")
 
     @connection_prefix.setter
-    def connection_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDelayTime")
-    def max_delay_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_delay_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
         """
         return pulumi.get(self, "max_delay_time")
 
     @max_delay_time.setter
-    def max_delay_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_delay_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_delay_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Intranet connection port. Valid value: [3001-3999]. Default to 3306.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def weight(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def weight(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "weight", value)
 
 
 @pulumi.input_type
 class _ReadWriteSplittingConnectionState:
     def __init__(__self__, *,
-                 connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 distribution_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_delay_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 weight: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 distribution_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_delay_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 weight: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ReadWriteSplittingConnection resources.
 
@@ -157,86 +157,86 @@ class _ReadWriteSplittingConnectionState:
 
     @_builtins.property
     @pulumi.getter(name="connectionPrefix")
-    def connection_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
         """
         return pulumi.get(self, "connection_prefix")
 
     @connection_prefix.setter
-    def connection_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Connection instance string.
         """
         return pulumi.get(self, "connection_string")
 
     @connection_string.setter
-    def connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="distributionType")
-    def distribution_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def distribution_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
         """
         return pulumi.get(self, "distribution_type")
 
     @distribution_type.setter
-    def distribution_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def distribution_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "distribution_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of instance that can run database.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDelayTime")
-    def max_delay_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_delay_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
         """
         return pulumi.get(self, "max_delay_time")
 
     @max_delay_time.setter
-    def max_delay_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_delay_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_delay_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Intranet connection port. Valid value: [3001-3999]. Default to 3306.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def weight(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def weight(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "weight", value)
 
 
@@ -246,12 +246,12 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 distribution_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_delay_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 weight: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 distribution_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_delay_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 weight: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance, see [What is DB Read Write Splitting Connection](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-allocatereadwritesplittingconnection).
@@ -433,12 +433,12 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 distribution_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_delay_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 weight: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 distribution_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_delay_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 weight: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -469,13 +469,13 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-            distribution_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            max_delay_time: Optional[pulumi.Input[_builtins.int]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            weight: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ReadWriteSplittingConnection':
+            connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            distribution_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            max_delay_time: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            weight: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ReadWriteSplittingConnection':
         """
         Get an existing ReadWriteSplittingConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

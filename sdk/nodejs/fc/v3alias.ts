@@ -147,31 +147,31 @@ export interface V3AliasState {
     /**
      * Grayscale version
      */
-    additionalVersionWeight?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    additionalVersionWeight?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
     /**
      * Function Alias
      */
-    aliasName?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Function Name
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.234.0) Last modification time
      */
-    lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string | undefined>;
     /**
      * The version that the alias points
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,15 +181,15 @@ export interface V3AliasArgs {
     /**
      * Grayscale version
      */
-    additionalVersionWeight?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    additionalVersionWeight?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
     /**
      * Function Alias
      */
-    aliasName?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string | undefined>;
     /**
      * Description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Function Name
      */
@@ -197,5 +197,5 @@ export interface V3AliasArgs {
     /**
      * The version that the alias points
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }

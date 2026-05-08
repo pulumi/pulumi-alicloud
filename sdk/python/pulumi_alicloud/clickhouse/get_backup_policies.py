@@ -112,8 +112,8 @@ def get_backup_policies(db_cluster_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         policies=pulumi.get(__ret__, 'policies'))
-def get_backup_policies_output(db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_backup_policies_output(db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPoliciesResult]:
     """
     This data source provides the Click House Backup Policies of the current Alibaba Cloud user.

@@ -178,15 +178,15 @@ export interface CooWebCcRuleState {
      *
      * > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Rule name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Rule details.   See `ruleDetail` below.
      */
-    ruleDetail?: pulumi.Input<inputs.ddos.CooWebCcRuleRuleDetail>;
+    ruleDetail?: pulumi.Input<inputs.ddos.CooWebCcRuleRuleDetail | undefined>;
 }
 
 /**
@@ -202,7 +202,7 @@ export interface CooWebCcRuleArgs {
     /**
      * Rule name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Rule details.   See `ruleDetail` below.
      */

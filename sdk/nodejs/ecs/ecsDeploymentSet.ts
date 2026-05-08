@@ -137,33 +137,33 @@ export interface EcsDeploymentSetState {
     /**
      * The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      */
-    deploymentSetName?: pulumi.Input<string>;
+    deploymentSetName?: pulumi.Input<string | undefined>;
     /**
      * The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Field `domain` has been deprecated from provider version 1.243.0.
      *
      * @deprecated Field `domain` has been deprecated from provider version 1.243.0.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Field `granularity` has been deprecated from provider version 1.243.0.
      *
      * @deprecated Field `granularity` has been deprecated from provider version 1.243.0.
      */
-    granularity?: pulumi.Input<string>;
+    granularity?: pulumi.Input<string | undefined>;
     /**
      * The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
      * - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
      * - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
      */
-    onUnableToRedeployFailedInstance?: pulumi.Input<string>;
+    onUnableToRedeployFailedInstance?: pulumi.Input<string | undefined>;
     /**
      * The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
      */
-    strategy?: pulumi.Input<string>;
+    strategy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,31 +173,31 @@ export interface EcsDeploymentSetArgs {
     /**
      * The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      */
-    deploymentSetName?: pulumi.Input<string>;
+    deploymentSetName?: pulumi.Input<string | undefined>;
     /**
      * The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Field `domain` has been deprecated from provider version 1.243.0.
      *
      * @deprecated Field `domain` has been deprecated from provider version 1.243.0.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Field `granularity` has been deprecated from provider version 1.243.0.
      *
      * @deprecated Field `granularity` has been deprecated from provider version 1.243.0.
      */
-    granularity?: pulumi.Input<string>;
+    granularity?: pulumi.Input<string | undefined>;
     /**
      * The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
      * - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
      * - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
      */
-    onUnableToRedeployFailedInstance?: pulumi.Input<string>;
+    onUnableToRedeployFailedInstance?: pulumi.Input<string | undefined>;
     /**
      * The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
      */
-    strategy?: pulumi.Input<string>;
+    strategy?: pulumi.Input<string | undefined>;
 }

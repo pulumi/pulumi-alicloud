@@ -151,27 +151,27 @@ export interface InterRegionTrafficQosPolicyState {
     /**
      * Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
      */
-    bandwidthGuaranteeMode?: pulumi.Input<string>;
+    bandwidthGuaranteeMode?: pulumi.Input<string | undefined>;
     /**
      * The description information of the traffic scheduling policy.
      */
-    interRegionTrafficQosPolicyDescription?: pulumi.Input<string>;
+    interRegionTrafficQosPolicyDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the traffic scheduling policy.
      */
-    interRegionTrafficQosPolicyName?: pulumi.Input<string>;
+    interRegionTrafficQosPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The status of the traffic scheduling policy.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Peer Attachment ID.
      */
-    transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the forwarding router instance.
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,15 +181,15 @@ export interface InterRegionTrafficQosPolicyArgs {
     /**
      * Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
      */
-    bandwidthGuaranteeMode?: pulumi.Input<string>;
+    bandwidthGuaranteeMode?: pulumi.Input<string | undefined>;
     /**
      * The description information of the traffic scheduling policy.
      */
-    interRegionTrafficQosPolicyDescription?: pulumi.Input<string>;
+    interRegionTrafficQosPolicyDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the traffic scheduling policy.
      */
-    interRegionTrafficQosPolicyName?: pulumi.Input<string>;
+    interRegionTrafficQosPolicyName?: pulumi.Input<string | undefined>;
     /**
      * Peer Attachment ID.
      */

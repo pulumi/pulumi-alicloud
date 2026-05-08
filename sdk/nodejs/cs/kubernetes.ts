@@ -151,11 +151,11 @@ import * as utilities from "../utilities";
  * })));
  * const defaultKubernetes = new alicloud.cs.Kubernetes("default", {
  *     addons: clusterAddons.map((v, k) => ({key: k, value: v})).map(entry => ({
- *         name: std.lookup({
+ *         name: output(std.lookup({
  *             map: entry.value,
  *             key: "name",
  *             "default": clusterAddons,
- *         }).then(invoke => invoke.result),
+ *         }).then(invoke => invoke.result)).apply(x =>String(x)),
  *         config: JSON.stringify(std.lookup({
  *             map: entry.value,
  *             key: "config",
@@ -674,29 +674,29 @@ export interface KubernetesState {
     /**
      * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      */
-    addons?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAddon>[]>;
+    addons?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAddon>[] | undefined>;
     /**
      * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `serviceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      */
-    apiAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    apiAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    certificateAuthority?: pulumi.Input<inputs.cs.KubernetesCertificateAuthority>;
+    certificateAuthority?: pulumi.Input<inputs.cs.KubernetesCertificateAuthority | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
      * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      *
      * @deprecated Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
@@ -704,203 +704,203 @@ export interface KubernetesState {
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
-    clusterCaCert?: pulumi.Input<string>;
+    clusterCaCert?: pulumi.Input<string | undefined>;
     /**
      * Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
      */
-    clusterDomain?: pulumi.Input<string>;
+    clusterDomain?: pulumi.Input<string | undefined>;
     /**
      * (Map) Map of kubernetes cluster connection information.
      */
-    connections?: pulumi.Input<inputs.cs.KubernetesConnections>;
+    connections?: pulumi.Input<inputs.cs.KubernetesConnections | undefined>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      */
-    customSan?: pulumi.Input<string>;
+    customSan?: pulumi.Input<string | undefined>;
     /**
      * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      */
-    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesDeleteOption>[]>;
+    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesDeleteOption>[] | undefined>;
     /**
      * Whether to enable cluster deletion protection.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Enable login to the node through SSH. Default to `false`.
      */
-    enableSsh?: pulumi.Input<boolean>;
+    enableSsh?: pulumi.Input<boolean | undefined>;
     /**
      * Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Install cloud monitor agent on ECS. Default to `true`.
      */
-    installCloudMonitor?: pulumi.Input<boolean>;
+    installCloudMonitor?: pulumi.Input<boolean | undefined>;
     /**
      * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm). Only works for **Create** Operation.
      */
-    isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
+    isEnterpriseSecurityGroup?: pulumi.Input<boolean | undefined>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      *
      * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
      */
-    loadBalancerSpec?: pulumi.Input<string>;
+    loadBalancerSpec?: pulumi.Input<string | undefined>;
     /**
      * Enable master payment auto-renew, defaults to false.
      */
-    masterAutoRenew?: pulumi.Input<boolean>;
+    masterAutoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      */
-    masterAutoRenewPeriod?: pulumi.Input<number>;
+    masterAutoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The system disk category of master node. Its valid value are `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
-    masterDiskCategory?: pulumi.Input<string>;
+    masterDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * Master node system disk performance level. When `masterDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      */
-    masterDiskPerformanceLevel?: pulumi.Input<string>;
+    masterDiskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
      */
-    masterDiskSize?: pulumi.Input<number>;
+    masterDiskSize?: pulumi.Input<number | undefined>;
     /**
      * Master node system disk auto snapshot policy.
      *
      * *Computed params*
      */
-    masterDiskSnapshotPolicyId?: pulumi.Input<string>;
+    masterDiskSnapshotPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
      */
-    masterInstanceChargeType?: pulumi.Input<string>;
+    masterInstanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
      */
-    masterInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    masterInstanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Optional) The master nodes. See `masterNodes` below.
      */
-    masterNodes?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesMasterNode>[]>;
+    masterNodes?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesMasterNode>[] | undefined>;
     /**
      * Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
      */
-    masterPeriod?: pulumi.Input<number>;
+    masterPeriod?: pulumi.Input<number | undefined>;
     /**
      * Master payment period unit, the valid value is `Month`.
      */
-    masterPeriodUnit?: pulumi.Input<string>;
+    masterPeriodUnit?: pulumi.Input<string | undefined>;
     /**
      * The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
      */
-    masterVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    masterVswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
      *
      * @deprecated Field 'name_prefix' has been deprecated from provider version 1.75.0.
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * The ID of nat gateway used to launch kubernetes cluster.
      */
-    natGatewayId?: pulumi.Input<string>;
+    natGatewayId?: pulumi.Input<string | undefined>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules. Only works for **Create** Operation.
      */
-    newNatGateway?: pulumi.Input<boolean>;
+    newNatGateway?: pulumi.Input<boolean | undefined>;
     /**
      * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      */
-    nodeCidrMask?: pulumi.Input<number>;
+    nodeCidrMask?: pulumi.Input<number | undefined>;
     /**
      * Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
      */
-    nodeNameMode?: pulumi.Input<string>;
+    nodeNameMode?: pulumi.Input<string | undefined>;
     /**
      * The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
      */
-    osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string | undefined>;
     /**
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
-    podCidr?: pulumi.Input<string>;
+    podCidr?: pulumi.Input<string | undefined>;
     /**
      * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
-    podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    podVswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
      */
-    proxyMode?: pulumi.Input<string>;
+    proxyMode?: pulumi.Input<string | undefined>;
     /**
      * RDS instance list, You can choose which RDS instances whitelist to add instances to.
      */
-    rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
+    rdsInstances?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
      */
-    retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    retainResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      */
-    runtime?: pulumi.Input<inputs.cs.KubernetesRuntime>;
+    runtime?: pulumi.Input<inputs.cs.KubernetesRuntime | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      */
-    serviceAccountIssuer?: pulumi.Input<string>;
+    serviceAccountIssuer?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
-    serviceCidr?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string | undefined>;
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      *
      * *Network params*
      */
-    skipSetCertificateAuthority?: pulumi.Input<boolean>;
+    skipSetCertificateAuthority?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of APIServer load balancer.
      */
-    slbId?: pulumi.Input<string>;
+    slbId?: pulumi.Input<string | undefined>;
     /**
      * The public ip of load balancer.
      */
-    slbInternet?: pulumi.Input<string>;
+    slbInternet?: pulumi.Input<string | undefined>;
     /**
      * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
      *
@@ -909,35 +909,35 @@ export interface KubernetesState {
      *
      * *Master params*
      */
-    slbInternetEnabled?: pulumi.Input<boolean>;
+    slbInternetEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of private load balancer where the current cluster master node is located.
      */
-    slbIntranet?: pulumi.Input<string>;
+    slbIntranet?: pulumi.Input<string | undefined>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */
-    userCa?: pulumi.Input<string>;
+    userCa?: pulumi.Input<string | undefined>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The ID of VPC where the current cluster is located.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The RamRole Name attached to worker node.
      */
-    workerRamRoleName?: pulumi.Input<string>;
+    workerRamRoleName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -947,23 +947,23 @@ export interface KubernetesArgs {
     /**
      * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      */
-    addons?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAddon>[]>;
+    addons?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAddon>[] | undefined>;
     /**
      * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature requires specifying `serviceAccountIssuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      */
-    apiAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    apiAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
      * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      *
      * @deprecated Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
@@ -971,87 +971,87 @@ export interface KubernetesArgs {
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
-    clusterCaCert?: pulumi.Input<string>;
+    clusterCaCert?: pulumi.Input<string | undefined>;
     /**
      * Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
      */
-    clusterDomain?: pulumi.Input<string>;
+    clusterDomain?: pulumi.Input<string | undefined>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      */
-    customSan?: pulumi.Input<string>;
+    customSan?: pulumi.Input<string | undefined>;
     /**
      * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      */
-    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesDeleteOption>[]>;
+    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesDeleteOption>[] | undefined>;
     /**
      * Whether to enable cluster deletion protection.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Enable login to the node through SSH. Default to `false`.
      */
-    enableSsh?: pulumi.Input<boolean>;
+    enableSsh?: pulumi.Input<boolean | undefined>;
     /**
      * Custom Image support. Must be based on AliyunLinux or AliyunLinux3.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Install cloud monitor agent on ECS. Default to `true`.
      */
-    installCloudMonitor?: pulumi.Input<boolean>;
+    installCloudMonitor?: pulumi.Input<boolean | undefined>;
     /**
      * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm). Only works for **Create** Operation.
      */
-    isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
+    isEnterpriseSecurityGroup?: pulumi.Input<boolean | undefined>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      *
      * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
      */
-    loadBalancerSpec?: pulumi.Input<string>;
+    loadBalancerSpec?: pulumi.Input<string | undefined>;
     /**
      * Enable master payment auto-renew, defaults to false.
      */
-    masterAutoRenew?: pulumi.Input<boolean>;
+    masterAutoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Master payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      */
-    masterAutoRenewPeriod?: pulumi.Input<number>;
+    masterAutoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The system disk category of master node. Its valid value are `cloudSsd`, `cloudEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
-    masterDiskCategory?: pulumi.Input<string>;
+    masterDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * Master node system disk performance level. When `masterDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      */
-    masterDiskPerformanceLevel?: pulumi.Input<string>;
+    masterDiskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
      */
-    masterDiskSize?: pulumi.Input<number>;
+    masterDiskSize?: pulumi.Input<number | undefined>;
     /**
      * Master node system disk auto snapshot policy.
      *
      * *Computed params*
      */
-    masterDiskSnapshotPolicyId?: pulumi.Input<string>;
+    masterDiskSnapshotPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Master payment type. or `PostPaid` or `PrePaid`, defaults to `PostPaid`. If value is `PrePaid`, the files `masterPeriod`, `masterPeriodUnit`, `masterAutoRenew` and `masterAutoRenewPeriod` are required.
      */
-    masterInstanceChargeType?: pulumi.Input<string>;
+    masterInstanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
      */
@@ -1059,11 +1059,11 @@ export interface KubernetesArgs {
     /**
      * Master payment period.Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
      */
-    masterPeriod?: pulumi.Input<number>;
+    masterPeriod?: pulumi.Input<number | undefined>;
     /**
      * Master payment period unit, the valid value is `Month`.
      */
-    masterPeriodUnit?: pulumi.Input<string>;
+    masterPeriodUnit?: pulumi.Input<string | undefined>;
     /**
      * The vswitches used by master, you can specific 3 or 5 vswitches because of the amount of masters. Detailed below.
      */
@@ -1071,83 +1071,83 @@ export interface KubernetesArgs {
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
      *
      * @deprecated Field 'name_prefix' has been deprecated from provider version 1.75.0.
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules. Only works for **Create** Operation.
      */
-    newNatGateway?: pulumi.Input<boolean>;
+    newNatGateway?: pulumi.Input<boolean | undefined>;
     /**
      * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      */
-    nodeCidrMask?: pulumi.Input<number>;
+    nodeCidrMask?: pulumi.Input<number | undefined>;
     /**
      * Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,<prefix>,IPSubStringLen,<suffix>`. For example "customized,aliyun.com-,5,-test", if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
      */
-    nodeNameMode?: pulumi.Input<string>;
+    nodeNameMode?: pulumi.Input<string | undefined>;
     /**
      * The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
      */
-    osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string | undefined>;
     /**
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
-    podCidr?: pulumi.Input<string>;
+    podCidr?: pulumi.Input<string | undefined>;
     /**
      * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
-    podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    podVswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
      */
-    proxyMode?: pulumi.Input<string>;
+    proxyMode?: pulumi.Input<string | undefined>;
     /**
      * RDS instance list, You can choose which RDS instances whitelist to add instances to.
      */
-    rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
+    rdsInstances?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
      */
-    retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    retainResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      */
-    runtime?: pulumi.Input<inputs.cs.KubernetesRuntime>;
+    runtime?: pulumi.Input<inputs.cs.KubernetesRuntime | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
      */
-    serviceAccountIssuer?: pulumi.Input<string>;
+    serviceAccountIssuer?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
-    serviceCidr?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string | undefined>;
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      *
      * *Network params*
      */
-    skipSetCertificateAuthority?: pulumi.Input<boolean>;
+    skipSetCertificateAuthority?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
      *
@@ -1156,21 +1156,21 @@ export interface KubernetesArgs {
      *
      * *Master params*
      */
-    slbInternetEnabled?: pulumi.Input<boolean>;
+    slbInternetEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */
-    userCa?: pulumi.Input<string>;
+    userCa?: pulumi.Input<string | undefined>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

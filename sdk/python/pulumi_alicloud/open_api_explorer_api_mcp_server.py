@@ -22,21 +22,21 @@ __all__ = ['OpenApiExplorerApiMcpServerArgs', 'OpenApiExplorerApiMcpServer']
 class OpenApiExplorerApiMcpServerArgs:
     def __init__(__self__, *,
                  apis: pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerApiArgs']]],
-                 additional_api_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs']]]] = None,
-                 assume_role_extra_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 assume_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_assume_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_custom_vpc_whitelist: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instructions: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 prompts: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgs']]]] = None,
-                 public_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_tools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_tools: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]]] = None,
-                 vpc_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 additional_api_descriptions: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs']]]] = None,
+                 assume_role_extra_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 assume_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_assume_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_custom_vpc_whitelist: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompts: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgs']]]] = None,
+                 public_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 terraform_tools: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]]] = None,
+                 vpc_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a OpenApiExplorerApiMcpServer resource.
 
@@ -112,7 +112,7 @@ class OpenApiExplorerApiMcpServerArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalApiDescriptions")
-    def additional_api_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs']]]]:
+    def additional_api_descriptions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs']]]]:
         """
         Additional OpenAPI description information that can override the default behavior of APIs, including:
         - API name
@@ -124,108 +124,108 @@ class OpenApiExplorerApiMcpServerArgs:
         return pulumi.get(self, "additional_api_descriptions")
 
     @additional_api_descriptions.setter
-    def additional_api_descriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs']]]]):
+    def additional_api_descriptions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs']]]]):
         pulumi.set(self, "additional_api_descriptions", value)
 
     @_builtins.property
     @pulumi.getter(name="assumeRoleExtraPolicy")
-    def assume_role_extra_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assume_role_extra_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When multi-account access is enabled, this field defines an additional policy for role assumption. If specified, this policy overrides the original permissions defined for the role, and the assumed role’s permissions are determined solely by this policy.
         """
         return pulumi.get(self, "assume_role_extra_policy")
 
     @assume_role_extra_policy.setter
-    def assume_role_extra_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assume_role_extra_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assume_role_extra_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="assumeRoleName")
-    def assume_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assume_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the RAM role in the target account to assume when enabling multi-account access for cross-account operations.
         """
         return pulumi.get(self, "assume_role_name")
 
     @assume_role_name.setter
-    def assume_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assume_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assume_role_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the API MCP service.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAssumeRole")
-    def enable_assume_role(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_assume_role(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable multi-account access. When enabled, the MCP Server exposes the x_assume_account_id parameter by default. When this parameter is provided, the MCP Server switches to the specified account to perform operations.
         """
         return pulumi.get(self, "enable_assume_role")
 
     @enable_assume_role.setter
-    def enable_assume_role(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_assume_role(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_assume_role", value)
 
     @_builtins.property
     @pulumi.getter(name="enableCustomVpcWhitelist")
-    def enable_custom_vpc_whitelist(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_custom_vpc_whitelist(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable a custom VPC whitelist. If disabled, the configuration follows the account-level setting.
         """
         return pulumi.get(self, "enable_custom_vpc_whitelist")
 
     @enable_custom_vpc_whitelist.setter
-    def enable_custom_vpc_whitelist(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_custom_vpc_whitelist(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_custom_vpc_whitelist", value)
 
     @_builtins.property
     @pulumi.getter
-    def instructions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instructions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MCP instructions that guide the large language model on how to use this MCP. The client must support the Instructions field defined in the MCP standard protocol.
         """
         return pulumi.get(self, "instructions")
 
     @instructions.setter
-    def instructions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instructions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instructions", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Documentation language for the API MCP service. You can select either Chinese or English API documentation. The choice of language may affect the AI's response quality due to differences in prompt wording. Supported values are EN_US and ZH_CN.
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthClientId")
-    def oauth_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The custom OAuth Client ID when selecting a custom OAuth configuration.
         `Supported only for Web/Native applications, and the OAuth scope must include /acs/mcp-server.`
@@ -233,24 +233,24 @@ class OpenApiExplorerApiMcpServerArgs:
         return pulumi.get(self, "oauth_client_id")
 
     @oauth_client_id.setter
-    def oauth_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_client_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def prompts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgs']]]]:
+    def prompts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgs']]]]:
         """
         List of prompts supported by the MCP Server. For the MCP protocol, clients retrieve this list through the prompts/list RPC call. See `prompts` below.
         """
         return pulumi.get(self, "prompts")
 
     @prompts.setter
-    def prompts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgs']]]]):
+    def prompts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgs']]]]):
         pulumi.set(self, "prompts", value)
 
     @_builtins.property
     @pulumi.getter(name="publicAccess")
-    def public_access(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable public network access. This setting takes precedence over the account-level configuration and supports the following options:
         - on: enables public network access;
@@ -260,66 +260,66 @@ class OpenApiExplorerApiMcpServerArgs:
         return pulumi.get(self, "public_access")
 
     @public_access.setter
-    def public_access(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_access(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_access", value)
 
     @_builtins.property
     @pulumi.getter(name="systemTools")
-    def system_tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def system_tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Enabled system services.
         """
         return pulumi.get(self, "system_tools")
 
     @system_tools.setter
-    def system_tools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def system_tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "system_tools", value)
 
     @_builtins.property
     @pulumi.getter(name="terraformTools")
-    def terraform_tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]]]:
+    def terraform_tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]]]:
         """
         A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraform_tools` below.
         """
         return pulumi.get(self, "terraform_tools")
 
     @terraform_tools.setter
-    def terraform_tools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]]]):
+    def terraform_tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]]]):
         pulumi.set(self, "terraform_tools", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcWhitelists")
-    def vpc_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vpc_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
         """
         return pulumi.get(self, "vpc_whitelists")
 
     @vpc_whitelists.setter
-    def vpc_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vpc_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vpc_whitelists", value)
 
 
 @pulumi.input_type
 class _OpenApiExplorerApiMcpServerState:
     def __init__(__self__, *,
-                 additional_api_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs']]]] = None,
-                 apis: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerApiArgs']]]] = None,
-                 assume_role_extra_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 assume_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_assume_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_custom_vpc_whitelist: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instructions: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 prompts: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgs']]]] = None,
-                 public_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_tools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_tools: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]]] = None,
-                 vpc_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 additional_api_descriptions: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs']]]] = None,
+                 apis: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerApiArgs']]]] = None,
+                 assume_role_extra_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 assume_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_assume_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_custom_vpc_whitelist: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompts: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgs']]]] = None,
+                 public_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 terraform_tools: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]]] = None,
+                 vpc_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering OpenApiExplorerApiMcpServer resources.
 
@@ -387,7 +387,7 @@ class _OpenApiExplorerApiMcpServerState:
 
     @_builtins.property
     @pulumi.getter(name="additionalApiDescriptions")
-    def additional_api_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs']]]]:
+    def additional_api_descriptions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs']]]]:
         """
         Additional OpenAPI description information that can override the default behavior of APIs, including:
         - API name
@@ -399,132 +399,132 @@ class _OpenApiExplorerApiMcpServerState:
         return pulumi.get(self, "additional_api_descriptions")
 
     @additional_api_descriptions.setter
-    def additional_api_descriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs']]]]):
+    def additional_api_descriptions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs']]]]):
         pulumi.set(self, "additional_api_descriptions", value)
 
     @_builtins.property
     @pulumi.getter
-    def apis(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerApiArgs']]]]:
+    def apis(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerApiArgs']]]]:
         """
         The list of APIs to be included in the API MCP Server. See `apis` below.
         """
         return pulumi.get(self, "apis")
 
     @apis.setter
-    def apis(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerApiArgs']]]]):
+    def apis(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerApiArgs']]]]):
         pulumi.set(self, "apis", value)
 
     @_builtins.property
     @pulumi.getter(name="assumeRoleExtraPolicy")
-    def assume_role_extra_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assume_role_extra_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When multi-account access is enabled, this field defines an additional policy for role assumption. If specified, this policy overrides the original permissions defined for the role, and the assumed role’s permissions are determined solely by this policy.
         """
         return pulumi.get(self, "assume_role_extra_policy")
 
     @assume_role_extra_policy.setter
-    def assume_role_extra_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assume_role_extra_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assume_role_extra_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="assumeRoleName")
-    def assume_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assume_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the RAM role in the target account to assume when enabling multi-account access for cross-account operations.
         """
         return pulumi.get(self, "assume_role_name")
 
     @assume_role_name.setter
-    def assume_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assume_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assume_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MCP Server creation time in China Standard Time (CST), for example, 2025-12-04 19:46:52.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the API MCP service.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAssumeRole")
-    def enable_assume_role(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_assume_role(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable multi-account access. When enabled, the MCP Server exposes the x_assume_account_id parameter by default. When this parameter is provided, the MCP Server switches to the specified account to perform operations.
         """
         return pulumi.get(self, "enable_assume_role")
 
     @enable_assume_role.setter
-    def enable_assume_role(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_assume_role(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_assume_role", value)
 
     @_builtins.property
     @pulumi.getter(name="enableCustomVpcWhitelist")
-    def enable_custom_vpc_whitelist(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_custom_vpc_whitelist(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable a custom VPC whitelist. If disabled, the configuration follows the account-level setting.
         """
         return pulumi.get(self, "enable_custom_vpc_whitelist")
 
     @enable_custom_vpc_whitelist.setter
-    def enable_custom_vpc_whitelist(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_custom_vpc_whitelist(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_custom_vpc_whitelist", value)
 
     @_builtins.property
     @pulumi.getter
-    def instructions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instructions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MCP instructions that guide the large language model on how to use this MCP. The client must support the Instructions field defined in the MCP standard protocol.
         """
         return pulumi.get(self, "instructions")
 
     @instructions.setter
-    def instructions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instructions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instructions", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Documentation language for the API MCP service. You can select either Chinese or English API documentation. The choice of language may affect the AI's response quality due to differences in prompt wording. Supported values are EN_US and ZH_CN.
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthClientId")
-    def oauth_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The custom OAuth Client ID when selecting a custom OAuth configuration.
         `Supported only for Web/Native applications, and the OAuth scope must include /acs/mcp-server.`
@@ -532,24 +532,24 @@ class _OpenApiExplorerApiMcpServerState:
         return pulumi.get(self, "oauth_client_id")
 
     @oauth_client_id.setter
-    def oauth_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_client_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def prompts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgs']]]]:
+    def prompts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgs']]]]:
         """
         List of prompts supported by the MCP Server. For the MCP protocol, clients retrieve this list through the prompts/list RPC call. See `prompts` below.
         """
         return pulumi.get(self, "prompts")
 
     @prompts.setter
-    def prompts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgs']]]]):
+    def prompts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgs']]]]):
         pulumi.set(self, "prompts", value)
 
     @_builtins.property
     @pulumi.getter(name="publicAccess")
-    def public_access(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable public network access. This setting takes precedence over the account-level configuration and supports the following options:
         - on: enables public network access;
@@ -559,43 +559,43 @@ class _OpenApiExplorerApiMcpServerState:
         return pulumi.get(self, "public_access")
 
     @public_access.setter
-    def public_access(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_access(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_access", value)
 
     @_builtins.property
     @pulumi.getter(name="systemTools")
-    def system_tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def system_tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Enabled system services.
         """
         return pulumi.get(self, "system_tools")
 
     @system_tools.setter
-    def system_tools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def system_tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "system_tools", value)
 
     @_builtins.property
     @pulumi.getter(name="terraformTools")
-    def terraform_tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]]]:
+    def terraform_tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]]]:
         """
         A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraform_tools` below.
         """
         return pulumi.get(self, "terraform_tools")
 
     @terraform_tools.setter
-    def terraform_tools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]]]):
+    def terraform_tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerTerraformToolArgs']]]]):
         pulumi.set(self, "terraform_tools", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcWhitelists")
-    def vpc_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vpc_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
         """
         return pulumi.get(self, "vpc_whitelists")
 
     @vpc_whitelists.setter
-    def vpc_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vpc_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vpc_whitelists", value)
 
 
@@ -605,22 +605,22 @@ class OpenApiExplorerApiMcpServer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_api_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs', 'OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict']]]]] = None,
-                 apis: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerApiArgs', 'OpenApiExplorerApiMcpServerApiArgsDict']]]]] = None,
-                 assume_role_extra_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 assume_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_assume_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_custom_vpc_whitelist: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instructions: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 prompts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerPromptArgs', 'OpenApiExplorerApiMcpServerPromptArgsDict']]]]] = None,
-                 public_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_tools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_tools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerTerraformToolArgs', 'OpenApiExplorerApiMcpServerTerraformToolArgsDict']]]]] = None,
-                 vpc_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 additional_api_descriptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs', 'OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict']]]]] = None,
+                 apis: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerApiArgs', 'OpenApiExplorerApiMcpServerApiArgsDict']]]]] = None,
+                 assume_role_extra_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 assume_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_assume_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_custom_vpc_whitelist: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerPromptArgs', 'OpenApiExplorerApiMcpServerPromptArgsDict']]]]] = None,
+                 public_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 terraform_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerTerraformToolArgs', 'OpenApiExplorerApiMcpServerTerraformToolArgsDict']]]]] = None,
+                 vpc_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Open Api Explorer Api Mcp Server resource.
@@ -1123,22 +1123,22 @@ class OpenApiExplorerApiMcpServer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_api_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs', 'OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict']]]]] = None,
-                 apis: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerApiArgs', 'OpenApiExplorerApiMcpServerApiArgsDict']]]]] = None,
-                 assume_role_extra_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 assume_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_assume_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_custom_vpc_whitelist: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instructions: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 prompts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerPromptArgs', 'OpenApiExplorerApiMcpServerPromptArgsDict']]]]] = None,
-                 public_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_tools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_tools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerTerraformToolArgs', 'OpenApiExplorerApiMcpServerTerraformToolArgsDict']]]]] = None,
-                 vpc_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 additional_api_descriptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs', 'OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict']]]]] = None,
+                 apis: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerApiArgs', 'OpenApiExplorerApiMcpServerApiArgsDict']]]]] = None,
+                 assume_role_extra_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 assume_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_assume_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_custom_vpc_whitelist: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerPromptArgs', 'OpenApiExplorerApiMcpServerPromptArgsDict']]]]] = None,
+                 public_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 terraform_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerTerraformToolArgs', 'OpenApiExplorerApiMcpServerTerraformToolArgsDict']]]]] = None,
+                 vpc_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1177,23 +1177,23 @@ class OpenApiExplorerApiMcpServer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_api_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs', 'OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict']]]]] = None,
-            apis: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerApiArgs', 'OpenApiExplorerApiMcpServerApiArgsDict']]]]] = None,
-            assume_role_extra_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            assume_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_assume_role: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_custom_vpc_whitelist: Optional[pulumi.Input[_builtins.bool]] = None,
-            instructions: Optional[pulumi.Input[_builtins.str]] = None,
-            language: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            prompts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerPromptArgs', 'OpenApiExplorerApiMcpServerPromptArgsDict']]]]] = None,
-            public_access: Optional[pulumi.Input[_builtins.str]] = None,
-            system_tools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            terraform_tools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerTerraformToolArgs', 'OpenApiExplorerApiMcpServerTerraformToolArgsDict']]]]] = None,
-            vpc_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'OpenApiExplorerApiMcpServer':
+            additional_api_descriptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs', 'OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict']]]]] = None,
+            apis: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerApiArgs', 'OpenApiExplorerApiMcpServerApiArgsDict']]]]] = None,
+            assume_role_extra_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            assume_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_assume_role: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_custom_vpc_whitelist: pulumi.Input[Optional[_builtins.bool]] = None,
+            instructions: pulumi.Input[Optional[_builtins.str]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            prompts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerPromptArgs', 'OpenApiExplorerApiMcpServerPromptArgsDict']]]]] = None,
+            public_access: pulumi.Input[Optional[_builtins.str]] = None,
+            system_tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            terraform_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenApiExplorerApiMcpServerTerraformToolArgs', 'OpenApiExplorerApiMcpServerTerraformToolArgsDict']]]]] = None,
+            vpc_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'OpenApiExplorerApiMcpServer':
         """
         Get an existing OpenApiExplorerApiMcpServer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

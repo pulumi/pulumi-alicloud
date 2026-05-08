@@ -263,91 +263,91 @@ export interface VpcEndpointState {
      * - `IPv4` (default): IPv4.
      * - `DualStack`: dual-stack.
      */
-    addressIpVersion?: pulumi.Input<string>;
+    addressIpVersion?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The state of the endpoint connection.
      */
-    connectionStatus?: pulumi.Input<string>;
+    connectionStatus?: pulumi.Input<string | undefined>;
     /**
      * The time when the endpoint was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The service state of the endpoint.
      */
-    endpointBusinessStatus?: pulumi.Input<string>;
+    endpointBusinessStatus?: pulumi.Input<string | undefined>;
     /**
      * The description of the endpoint.
      */
-    endpointDescription?: pulumi.Input<string>;
+    endpointDescription?: pulumi.Input<string | undefined>;
     /**
      * The domain name of the endpoint.
      */
-    endpointDomain?: pulumi.Input<string>;
+    endpointDomain?: pulumi.Input<string | undefined>;
     /**
      * The endpoint type.
      *
      * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
      */
-    policyDocument?: pulumi.Input<string>;
+    policyDocument?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
      */
-    protectedEnabled?: pulumi.Input<boolean>;
+    protectedEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * (Available since v1.239.0) The region ID of the endpoint.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
      *
      * The endpoint can be associated with up to 10 security groups.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the endpoint service with which the endpoint is associated.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the endpoint service with which the endpoint is associated.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The state of the endpoint.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The list of tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the endpoint.
      */
-    vpcEndpointName?: pulumi.Input<string>;
+    vpcEndpointName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC to which the endpoint belongs.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
      */
-    zonePrivateIpAddressCount?: pulumi.Input<number>;
+    zonePrivateIpAddressCount?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -359,55 +359,55 @@ export interface VpcEndpointArgs {
      * - `IPv4` (default): IPv4.
      * - `DualStack`: dual-stack.
      */
-    addressIpVersion?: pulumi.Input<string>;
+    addressIpVersion?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the endpoint.
      */
-    endpointDescription?: pulumi.Input<string>;
+    endpointDescription?: pulumi.Input<string | undefined>;
     /**
      * The endpoint type.
      *
      * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
      */
-    policyDocument?: pulumi.Input<string>;
+    policyDocument?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
      */
-    protectedEnabled?: pulumi.Input<boolean>;
+    protectedEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.
      *
      * The endpoint can be associated with up to 10 security groups.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the endpoint service with which the endpoint is associated.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the endpoint service with which the endpoint is associated.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The list of tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the endpoint.
      */
-    vpcEndpointName?: pulumi.Input<string>;
+    vpcEndpointName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC to which the endpoint belongs.
      */
@@ -415,5 +415,5 @@ export interface VpcEndpointArgs {
     /**
      * The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
      */
-    zonePrivateIpAddressCount?: pulumi.Input<number>;
+    zonePrivateIpAddressCount?: pulumi.Input<number | undefined>;
 }

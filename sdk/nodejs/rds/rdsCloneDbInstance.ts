@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     engine: "PostgreSQL",
  *     engineVersion: "13.0",
  *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceStorage: output(exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *     instanceChargeType: "Postpaid",
  *     instanceName: "terraform-example",
  *     vswitchId: exampleSwitch.id,
@@ -594,31 +594,31 @@ export interface RdsCloneDbInstanceState {
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * How to upgrade the minor version of the instance. Valid values:
      * * **Auto**: automatically upgrade the minor version.
      * * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
      */
-    autoUpgradeMinorVersion?: pulumi.Input<string>;
+    autoUpgradeMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
      *
      * > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
      */
-    backupId?: pulumi.Input<string>;
+    backupId?: pulumi.Input<string | undefined>;
     /**
      * The type of backup that is used to restore the data of the original instance. Valid values:
      * * **FullBackup**: full backup
      * * **IncrementalBackup**: incremental backup
      */
-    backupType?: pulumi.Input<string>;
+    backupType?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of sslAction is Open, the default value of this parameter is aliyun. Value range:
      * * **aliyun**: using cloud certificates
      * * **custom**: use a custom certificate. Valid values: `aliyun`, `custom`.
      */
-    caType?: pulumi.Input<string>;
+    caType?: pulumi.Input<string | undefined>;
     /**
      * Instance series. Valid values:
      * * **Basic**: Basic Edition
@@ -630,49 +630,49 @@ export interface RdsCloneDbInstanceState {
      * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
      * * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The file that contains the certificate used for TDE.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of clientCaEnabled is 1, this parameter must be configured.
      */
-    clientCaCert?: pulumi.Input<string>;
+    clientCaCert?: pulumi.Input<string | undefined>;
     /**
      * The client ca enabled.
      */
-    clientCaEnabled?: pulumi.Input<number>;
+    clientCaEnabled?: pulumi.Input<number | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of clientCrlEnabled is 1, this parameter must be configured.
      */
-    clientCertRevocationList?: pulumi.Input<string>;
+    clientCertRevocationList?: pulumi.Input<string | undefined>;
     /**
      * The client crl enabled.
      */
-    clientCrlEnabled?: pulumi.Input<number>;
+    clientCrlEnabled?: pulumi.Input<number | undefined>;
     /**
      * The database connection address.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * The connection string prefix.
      */
-    connectionStringPrefix?: pulumi.Input<string>;
+    connectionStringPrefix?: pulumi.Input<string | undefined>;
     /**
      * The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      */
-    dbInstanceClass?: pulumi.Input<string>;
+    dbInstanceClass?: pulumi.Input<string | undefined>;
     /**
      * The db instance description.
      */
-    dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string | undefined>;
     /**
      * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      *
      * > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
      */
-    dbInstanceStorage?: pulumi.Input<number>;
+    dbInstanceStorage?: pulumi.Input<number | undefined>;
     /**
      * The type of storage media that is used for the new instance. Valid values:
      * * **local_ssd**: local SSDs
@@ -682,21 +682,21 @@ export interface RdsCloneDbInstanceState {
      * * **cloud_essd3**: ESSDs of PL3
      * * **general_essd**: general ESSDS Available since v1.258.0
      */
-    dbInstanceStorageType?: pulumi.Input<string>;
+    dbInstanceStorageType?: pulumi.Input<string | undefined>;
     /**
      * The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
      *
      * > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
-    dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string | undefined>;
     /**
      * The names of the databases that you want to create on the new instance.
      */
-    dbNames?: pulumi.Input<string>;
+    dbNames?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
      */
-    dedicatedHostGroupId?: pulumi.Input<string>;
+    dedicatedHostGroupId?: pulumi.Input<string | undefined>;
     /**
      * The switch of delete protection. Valid values:
      * - true: delete protect.
@@ -704,25 +704,25 @@ export interface RdsCloneDbInstanceState {
      *
      * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The effective time.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the private key.
      *
      * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * Database version. Value:
      * * MySQL:**5.5/5.6/5.7/8.0**
@@ -730,89 +730,89 @@ export interface RdsCloneDbInstanceState {
      * * PostgreSQL:**9.4/10.0/11.0/12.0/13.0**
      * * MariaDB:**10.3**.
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
-    forceRestart?: pulumi.Input<boolean>;
+    forceRestart?: pulumi.Input<boolean | undefined>;
     /**
      * The high availability mode. Valid values:
      * * **RPO**: Data persistence is preferred. The instance preferentially ensures data reliability to minimize data loss. Use this mode if you have higher requirements on data consistency.
      * * **RTO**: Instance availability is preferred. The instance restores services as soon as possible to ensure availability. Use this mode if you have higher requirements on service availability.
      */
-    haMode?: pulumi.Input<string>;
+    haMode?: pulumi.Input<string | undefined>;
     /**
      * The network type of the instance. Valid values:
      * * **Classic**: Classic Network
      * * **VPC**: VPC.
      */
-    instanceNetworkType?: pulumi.Input<string>;
+    instanceNetworkType?: pulumi.Input<string | undefined>;
     /**
      * The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
      */
-    maintainTime?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string | undefined>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstanceParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstanceParameter>[] | undefined>;
     /**
      * The password of the certificate. 
      *
      * > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The period. Valid values: `Month`, `Year`.
      *
      * > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The details of the AD domain.See `pgHbaConf` below.
      */
-    pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstancePgHbaConf>[]>;
+    pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstancePgHbaConf>[] | undefined>;
     /**
      * The port.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The file that contains the private key used for TDE.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The released keep policy.
      */
-    releasedKeepPolicy?: pulumi.Input<string>;
+    releasedKeepPolicy?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
      */
-    replicationAcl?: pulumi.Input<string>;
+    replicationAcl?: pulumi.Input<string | undefined>;
     /**
      * The resource group id.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to restore only the databases and tables that you specify. The value 1 specifies to restore only the specified databases and tables. If you do not want to restore only the specified databases or tables, you can choose not to specify this parameter.
      */
-    restoreTable?: pulumi.Input<string>;
+    restoreTable?: pulumi.Input<string | undefined>;
     /**
      * The point in time to which you want to restore the data of the original instance. The point in time must fall within the specified log backup retention period. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    restoreTime?: pulumi.Input<string>;
+    restoreTime?: pulumi.Input<string | undefined>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account.
      *
      * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
      * * IP address form, for example: 10.23.12.24.
@@ -820,35 +820,35 @@ export interface RdsCloneDbInstanceState {
      *
      * > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
      */
-    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
      */
-    serverCert?: pulumi.Input<string>;
+    serverCert?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
      */
-    serverKey?: pulumi.Input<string>;
+    serverKey?: pulumi.Input<string | undefined>;
     /**
      * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverlessConfig` below.
      */
-    serverlessConfigs?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstanceServerlessConfig>[]>;
+    serverlessConfigs?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstanceServerlessConfig>[] | undefined>;
     /**
      * The source biz.
      */
-    sourceBiz?: pulumi.Input<string>;
+    sourceBiz?: pulumi.Input<string | undefined>;
     /**
      * The source db instance id.
      */
-    sourceDbInstanceId?: pulumi.Input<string>;
+    sourceDbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable SSL. Valid values: `0` and `1`.
      */
-    sslEnabled?: pulumi.Input<number>;
+    sslEnabled?: pulumi.Input<number | undefined>;
     /**
      * The time at which you want to apply the specification changes. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    switchTime?: pulumi.Input<string>;
+    switchTime?: pulumi.Input<string | undefined>;
     /**
      * [The data replication mode](https://www.alibabacloud.com/help/doc-detail/96055.htm). Valid values:
      * * **Sync**: strong synchronization
@@ -857,30 +857,30 @@ export interface RdsCloneDbInstanceState {
      *
      * > **NOTE:** SQL Server 2017 cluster version is currently not supported.
      */
-    syncMode?: pulumi.Input<string>;
+    syncMode?: pulumi.Input<string | undefined>;
     /**
      * The information about the databases and tables that you want to restore. Format:
      * [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
      */
-    tableMeta?: pulumi.Input<string>;
+    tableMeta?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The availability check method of the instance. Valid values:
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
      */
-    tcpConnectionType?: pulumi.Input<string>;
+    tcpConnectionType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable TDE. Valid values:
      * * Enabled
      * * Disabled
      */
-    tdeStatus?: pulumi.Input<string>;
+    tdeStatus?: pulumi.Input<string | undefined>;
     /**
      * The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
      * * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
@@ -888,33 +888,33 @@ export interface RdsCloneDbInstanceState {
      *
      * > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the usedTime parameter.
      */
-    usedTime?: pulumi.Input<number>;
+    usedTime?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VPC to which the new instance belongs.
      *
      * > **NOTE:** Make sure that the VPC resides in the specified region.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitchId` check.
      *
      * > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
-    zoneIdSlaveA?: pulumi.Input<string>;
+    zoneIdSlaveA?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      *
      * > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
      */
-    zoneIdSlaveB?: pulumi.Input<string>;
+    zoneIdSlaveB?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -924,31 +924,31 @@ export interface RdsCloneDbInstanceArgs {
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * How to upgrade the minor version of the instance. Valid values:
      * * **Auto**: automatically upgrade the minor version.
      * * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
      */
-    autoUpgradeMinorVersion?: pulumi.Input<string>;
+    autoUpgradeMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
      *
      * > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
      */
-    backupId?: pulumi.Input<string>;
+    backupId?: pulumi.Input<string | undefined>;
     /**
      * The type of backup that is used to restore the data of the original instance. Valid values:
      * * **FullBackup**: full backup
      * * **IncrementalBackup**: incremental backup
      */
-    backupType?: pulumi.Input<string>;
+    backupType?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of sslAction is Open, the default value of this parameter is aliyun. Value range:
      * * **aliyun**: using cloud certificates
      * * **custom**: use a custom certificate. Valid values: `aliyun`, `custom`.
      */
-    caType?: pulumi.Input<string>;
+    caType?: pulumi.Input<string | undefined>;
     /**
      * Instance series. Valid values:
      * * **Basic**: Basic Edition
@@ -960,45 +960,45 @@ export interface RdsCloneDbInstanceArgs {
      * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available since v1.207.0)
      * * **cluster**: MySQL Cluster Edition. (Available since v1.207.0)
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The file that contains the certificate used for TDE.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of clientCaEnabled is 1, this parameter must be configured.
      */
-    clientCaCert?: pulumi.Input<string>;
+    clientCaCert?: pulumi.Input<string | undefined>;
     /**
      * The client ca enabled.
      */
-    clientCaEnabled?: pulumi.Input<number>;
+    clientCaEnabled?: pulumi.Input<number | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of clientCrlEnabled is 1, this parameter must be configured.
      */
-    clientCertRevocationList?: pulumi.Input<string>;
+    clientCertRevocationList?: pulumi.Input<string | undefined>;
     /**
      * The client crl enabled.
      */
-    clientCrlEnabled?: pulumi.Input<number>;
+    clientCrlEnabled?: pulumi.Input<number | undefined>;
     /**
      * The connection string prefix.
      */
-    connectionStringPrefix?: pulumi.Input<string>;
+    connectionStringPrefix?: pulumi.Input<string | undefined>;
     /**
      * The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      */
-    dbInstanceClass?: pulumi.Input<string>;
+    dbInstanceClass?: pulumi.Input<string | undefined>;
     /**
      * The db instance description.
      */
-    dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string | undefined>;
     /**
      * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      *
      * > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
      */
-    dbInstanceStorage?: pulumi.Input<number>;
+    dbInstanceStorage?: pulumi.Input<number | undefined>;
     /**
      * The type of storage media that is used for the new instance. Valid values:
      * * **local_ssd**: local SSDs
@@ -1014,15 +1014,15 @@ export interface RdsCloneDbInstanceArgs {
      *
      * > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
-    dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string | undefined>;
     /**
      * The names of the databases that you want to create on the new instance.
      */
-    dbNames?: pulumi.Input<string>;
+    dbNames?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
      */
-    dedicatedHostGroupId?: pulumi.Input<string>;
+    dedicatedHostGroupId?: pulumi.Input<string | undefined>;
     /**
      * The switch of delete protection. Valid values:
      * - true: delete protect.
@@ -1030,25 +1030,25 @@ export interface RdsCloneDbInstanceArgs {
      *
      * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The effective time.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the private key.
      *
      * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * Database version. Value:
      * * MySQL:**5.5/5.6/5.7/8.0**
@@ -1056,37 +1056,37 @@ export interface RdsCloneDbInstanceArgs {
      * * PostgreSQL:**9.4/10.0/11.0/12.0/13.0**
      * * MariaDB:**10.3**.
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
-    forceRestart?: pulumi.Input<boolean>;
+    forceRestart?: pulumi.Input<boolean | undefined>;
     /**
      * The high availability mode. Valid values:
      * * **RPO**: Data persistence is preferred. The instance preferentially ensures data reliability to minimize data loss. Use this mode if you have higher requirements on data consistency.
      * * **RTO**: Instance availability is preferred. The instance restores services as soon as possible to ensure availability. Use this mode if you have higher requirements on service availability.
      */
-    haMode?: pulumi.Input<string>;
+    haMode?: pulumi.Input<string | undefined>;
     /**
      * The network type of the instance. Valid values:
      * * **Classic**: Classic Network
      * * **VPC**: VPC.
      */
-    instanceNetworkType?: pulumi.Input<string>;
+    instanceNetworkType?: pulumi.Input<string | undefined>;
     /**
      * The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
      */
-    maintainTime?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string | undefined>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstanceParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstanceParameter>[] | undefined>;
     /**
      * The password of the certificate. 
      *
      * > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
      */
@@ -1096,49 +1096,49 @@ export interface RdsCloneDbInstanceArgs {
      *
      * > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The details of the AD domain.See `pgHbaConf` below.
      */
-    pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstancePgHbaConf>[]>;
+    pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstancePgHbaConf>[] | undefined>;
     /**
      * The port.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The file that contains the private key used for TDE.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The released keep policy.
      */
-    releasedKeepPolicy?: pulumi.Input<string>;
+    releasedKeepPolicy?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
      */
-    replicationAcl?: pulumi.Input<string>;
+    replicationAcl?: pulumi.Input<string | undefined>;
     /**
      * The resource group id.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to restore only the databases and tables that you specify. The value 1 specifies to restore only the specified databases and tables. If you do not want to restore only the specified databases or tables, you can choose not to specify this parameter.
      */
-    restoreTable?: pulumi.Input<string>;
+    restoreTable?: pulumi.Input<string | undefined>;
     /**
      * The point in time to which you want to restore the data of the original instance. The point in time must fall within the specified log backup retention period. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    restoreTime?: pulumi.Input<string>;
+    restoreTime?: pulumi.Input<string | undefined>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account.
      *
      * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
      * * IP address form, for example: 10.23.12.24.
@@ -1146,23 +1146,23 @@ export interface RdsCloneDbInstanceArgs {
      *
      * > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
      */
-    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
      */
-    serverCert?: pulumi.Input<string>;
+    serverCert?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
      */
-    serverKey?: pulumi.Input<string>;
+    serverKey?: pulumi.Input<string | undefined>;
     /**
      * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverlessConfig` below.
      */
-    serverlessConfigs?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstanceServerlessConfig>[]>;
+    serverlessConfigs?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstanceServerlessConfig>[] | undefined>;
     /**
      * The source biz.
      */
-    sourceBiz?: pulumi.Input<string>;
+    sourceBiz?: pulumi.Input<string | undefined>;
     /**
      * The source db instance id.
      */
@@ -1170,11 +1170,11 @@ export interface RdsCloneDbInstanceArgs {
     /**
      * Enable or disable SSL. Valid values: `0` and `1`.
      */
-    sslEnabled?: pulumi.Input<number>;
+    sslEnabled?: pulumi.Input<number | undefined>;
     /**
      * The time at which you want to apply the specification changes. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    switchTime?: pulumi.Input<string>;
+    switchTime?: pulumi.Input<string | undefined>;
     /**
      * [The data replication mode](https://www.alibabacloud.com/help/doc-detail/96055.htm). Valid values:
      * * **Sync**: strong synchronization
@@ -1183,30 +1183,30 @@ export interface RdsCloneDbInstanceArgs {
      *
      * > **NOTE:** SQL Server 2017 cluster version is currently not supported.
      */
-    syncMode?: pulumi.Input<string>;
+    syncMode?: pulumi.Input<string | undefined>;
     /**
      * The information about the databases and tables that you want to restore. Format:
      * [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
      */
-    tableMeta?: pulumi.Input<string>;
+    tableMeta?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The availability check method of the instance. Valid values:
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
      */
-    tcpConnectionType?: pulumi.Input<string>;
+    tcpConnectionType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable TDE. Valid values:
      * * Enabled
      * * Disabled
      */
-    tdeStatus?: pulumi.Input<string>;
+    tdeStatus?: pulumi.Input<string | undefined>;
     /**
      * The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
      * * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
@@ -1214,31 +1214,31 @@ export interface RdsCloneDbInstanceArgs {
      *
      * > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the usedTime parameter.
      */
-    usedTime?: pulumi.Input<number>;
+    usedTime?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VPC to which the new instance belongs.
      *
      * > **NOTE:** Make sure that the VPC resides in the specified region.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitchId` check.
      *
      * > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
-    zoneIdSlaveA?: pulumi.Input<string>;
+    zoneIdSlaveA?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      *
      * > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
      */
-    zoneIdSlaveB?: pulumi.Input<string>;
+    zoneIdSlaveB?: pulumi.Input<string | undefined>;
 }

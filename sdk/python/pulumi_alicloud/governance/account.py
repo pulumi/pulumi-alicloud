@@ -22,13 +22,13 @@ __all__ = ['AccountArgs', 'Account']
 class AccountArgs:
     def __init__(__self__, *,
                  baseline_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 account_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_tags: Optional[pulumi.Input[Sequence[pulumi.Input['AccountAccountTagArgs']]]] = None,
-                 default_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payer_account_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_tags: pulumi.Input[Optional[Sequence[pulumi.Input['AccountAccountTagArgs']]]] = None,
+                 default_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payer_account_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Account resource.
 
@@ -85,7 +85,7 @@ class AccountArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the enrolled account.
         - If you are creating a new resource account, this parameter is not required.
@@ -94,12 +94,12 @@ class AccountArgs:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accountNamePrefix")
-    def account_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account name prefix.
         - This parameter is required if you are creating a new resource account.
@@ -108,36 +108,36 @@ class AccountArgs:
         return pulumi.get(self, "account_name_prefix")
 
     @account_name_prefix.setter
-    def account_name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="accountTags")
-    def account_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccountAccountTagArgs']]]]:
+    def account_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccountAccountTagArgs']]]]:
         """
         The tags of the account See `account_tags` below.
         """
         return pulumi.get(self, "account_tags")
 
     @account_tags.setter
-    def account_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccountAccountTagArgs']]]]):
+    def account_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccountAccountTagArgs']]]]):
         pulumi.set(self, "account_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultDomainName")
-    def default_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name is used to qualify the login name of RAM users and RAM roles.
         """
         return pulumi.get(self, "default_domain_name")
 
     @default_domain_name.setter
-    def default_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account display name.
         - This parameter is required if you are creating a new resource account.
@@ -146,12 +146,12 @@ class AccountArgs:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="folderId")
-    def folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the parent resource folder.
 
@@ -162,34 +162,34 @@ class AccountArgs:
         return pulumi.get(self, "folder_id")
 
     @folder_id.setter
-    def folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder_id", value)
 
     @_builtins.property
     @pulumi.getter(name="payerAccountId")
-    def payer_account_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def payer_account_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         """
         return pulumi.get(self, "payer_account_id")
 
     @payer_account_id.setter
-    def payer_account_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def payer_account_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "payer_account_id", value)
 
 
 @pulumi.input_type
 class _AccountState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 account_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_tags: Optional[pulumi.Input[Sequence[pulumi.Input['AccountAccountTagArgs']]]] = None,
-                 baseline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payer_account_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_tags: pulumi.Input[Optional[Sequence[pulumi.Input['AccountAccountTagArgs']]]] = None,
+                 baseline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payer_account_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
 
@@ -236,7 +236,7 @@ class _AccountState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the enrolled account.
         - If you are creating a new resource account, this parameter is not required.
@@ -245,12 +245,12 @@ class _AccountState:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accountNamePrefix")
-    def account_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account name prefix.
         - This parameter is required if you are creating a new resource account.
@@ -259,24 +259,24 @@ class _AccountState:
         return pulumi.get(self, "account_name_prefix")
 
     @account_name_prefix.setter
-    def account_name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="accountTags")
-    def account_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccountAccountTagArgs']]]]:
+    def account_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccountAccountTagArgs']]]]:
         """
         The tags of the account See `account_tags` below.
         """
         return pulumi.get(self, "account_tags")
 
     @account_tags.setter
-    def account_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccountAccountTagArgs']]]]):
+    def account_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccountAccountTagArgs']]]]):
         pulumi.set(self, "account_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="baselineId")
-    def baseline_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def baseline_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The baseline ID.
 
@@ -285,24 +285,24 @@ class _AccountState:
         return pulumi.get(self, "baseline_id")
 
     @baseline_id.setter
-    def baseline_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def baseline_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "baseline_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultDomainName")
-    def default_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name is used to qualify the login name of RAM users and RAM roles.
         """
         return pulumi.get(self, "default_domain_name")
 
     @default_domain_name.setter
-    def default_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account display name.
         - This parameter is required if you are creating a new resource account.
@@ -311,12 +311,12 @@ class _AccountState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="folderId")
-    def folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the parent resource folder.
 
@@ -327,31 +327,31 @@ class _AccountState:
         return pulumi.get(self, "folder_id")
 
     @folder_id.setter
-    def folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder_id", value)
 
     @_builtins.property
     @pulumi.getter(name="payerAccountId")
-    def payer_account_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def payer_account_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
         """
         return pulumi.get(self, "payer_account_id")
 
     @payer_account_id.setter
-    def payer_account_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def payer_account_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "payer_account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account registration status. Value:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -361,14 +361,14 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 account_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict']]]]] = None,
-                 baseline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payer_account_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict']]]]] = None,
+                 baseline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payer_account_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Governance Account resource.
@@ -402,7 +402,7 @@ class Account(pulumi.CustomResource):
             account_name_prefix=f"{name}-{default_integer['result']}",
             folder_id=default_get_folders.ids[0],
             baseline_id=default_get_baselines.ids[0],
-            payer_account_id=default.id,
+            payer_account_id=output(default.id).apply(lambda x: int(x)),
             display_name=f"{name}-{default_integer['result']}")
         ```
 
@@ -482,7 +482,7 @@ class Account(pulumi.CustomResource):
             account_name_prefix=f"{name}-{default_integer['result']}",
             folder_id=default_get_folders.ids[0],
             baseline_id=default_get_baselines.ids[0],
-            payer_account_id=default.id,
+            payer_account_id=output(default.id).apply(lambda x: int(x)),
             display_name=f"{name}-{default_integer['result']}")
         ```
 
@@ -516,14 +516,14 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 account_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict']]]]] = None,
-                 baseline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payer_account_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict']]]]] = None,
+                 baseline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payer_account_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -554,15 +554,15 @@ class Account(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.int]] = None,
-            account_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            account_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict']]]]] = None,
-            baseline_id: Optional[pulumi.Input[_builtins.str]] = None,
-            default_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-            payer_account_id: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Account':
+            account_id: pulumi.Input[Optional[_builtins.int]] = None,
+            account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            account_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccountAccountTagArgs', 'AccountAccountTagArgsDict']]]]] = None,
+            baseline_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payer_account_id: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

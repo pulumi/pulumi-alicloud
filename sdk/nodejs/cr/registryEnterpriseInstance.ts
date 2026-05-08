@@ -284,27 +284,27 @@ export interface RegistryEnterpriseInstanceState {
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
      *
      * @deprecated Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.
      */
-    createdTime?: pulumi.Input<string>;
+    createdTime?: pulumi.Input<string | undefined>;
     /**
      * Custom OSS Bucket name
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    customOssBucket?: pulumi.Input<string>;
+    customOssBucket?: pulumi.Input<string | undefined>;
     /**
      * Whether to use the default OSS Bucket. Value:
      */
-    defaultOssBucket?: pulumi.Input<string>;
+    defaultOssBucket?: pulumi.Input<string | undefined>;
     /**
      * Expiration Time
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The security scan engine used by the Enterprise Edition of Container Image Service. Value:
      * - `ACR`: Uses the Trivy scan engine provided by default.
@@ -312,15 +312,15 @@ export interface RegistryEnterpriseInstanceState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    imageScanner?: pulumi.Input<string>;
+    imageScanner?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.240.0) Instance Network Access Endpoint List
      */
-    instanceEndpoints?: pulumi.Input<pulumi.Input<inputs.cr.RegistryEnterpriseInstanceInstanceEndpoint>[]>;
+    instanceEndpoints?: pulumi.Input<pulumi.Input<inputs.cr.RegistryEnterpriseInstanceInstanceEndpoint>[] | undefined>;
     /**
      * InstanceName
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
      * - `Basic`: Basic instance
@@ -329,30 +329,30 @@ export interface RegistryEnterpriseInstanceState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The number of additional namespaces to purchase. The value is an integral multiple of `5`.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    namespaceQuota?: pulumi.Input<number>;
+    namespaceQuota?: pulumi.Input<number | undefined>;
     /**
      * Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Payment type, value:
      * - Subscription: Prepaid.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
      *
@@ -361,17 +361,17 @@ export interface RegistryEnterpriseInstanceState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * RegionId
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Automatic renewal cycle, in months.
      *
      * > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal status, value:
      * - AutoRenewal: automatic renewal.
@@ -379,21 +379,21 @@ export interface RegistryEnterpriseInstanceState {
      *
      * Default ManualRenewal.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The number of additional repositories to purchase. The value is an integral multiple of `1000`.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    repoQuota?: pulumi.Input<number>;
+    repoQuota?: pulumi.Input<number | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Instance Status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The number of VPC access controls.
      *
@@ -402,7 +402,7 @@ export interface RegistryEnterpriseInstanceState {
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    vpcQuota?: pulumi.Input<number>;
+    vpcQuota?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -414,11 +414,11 @@ export interface RegistryEnterpriseInstanceArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    customOssBucket?: pulumi.Input<string>;
+    customOssBucket?: pulumi.Input<string | undefined>;
     /**
      * Whether to use the default OSS Bucket. Value:
      */
-    defaultOssBucket?: pulumi.Input<string>;
+    defaultOssBucket?: pulumi.Input<string | undefined>;
     /**
      * The security scan engine used by the Enterprise Edition of Container Image Service. Value:
      * - `ACR`: Uses the Trivy scan engine provided by default.
@@ -426,7 +426,7 @@ export interface RegistryEnterpriseInstanceArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    imageScanner?: pulumi.Input<string>;
+    imageScanner?: pulumi.Input<string | undefined>;
     /**
      * InstanceName
      */
@@ -443,21 +443,21 @@ export interface RegistryEnterpriseInstanceArgs {
     /**
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The number of additional namespaces to purchase. The value is an integral multiple of `5`.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    namespaceQuota?: pulumi.Input<number>;
+    namespaceQuota?: pulumi.Input<number | undefined>;
     /**
      * Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Payment type, value:
      * - Subscription: Prepaid.
@@ -471,13 +471,13 @@ export interface RegistryEnterpriseInstanceArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal cycle, in months.
      *
      * > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal status, value:
      * - AutoRenewal: automatic renewal.
@@ -485,17 +485,17 @@ export interface RegistryEnterpriseInstanceArgs {
      *
      * Default ManualRenewal.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The number of additional repositories to purchase. The value is an integral multiple of `1000`.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    repoQuota?: pulumi.Input<number>;
+    repoQuota?: pulumi.Input<number | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The number of VPC access controls.
      *
@@ -504,5 +504,5 @@ export interface RegistryEnterpriseInstanceArgs {
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    vpcQuota?: pulumi.Input<number>;
+    vpcQuota?: pulumi.Input<number | undefined>;
 }

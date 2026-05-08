@@ -249,51 +249,51 @@ export interface BucketReplicationState {
     /**
      * The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * The name of the bucket.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Specifies the destination for the rule. See `destination` below.
      */
-    destination?: pulumi.Input<inputs.oss.BucketReplicationDestination>;
+    destination?: pulumi.Input<inputs.oss.BucketReplicationDestination | undefined>;
     /**
      * Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
      */
-    encryptionConfiguration?: pulumi.Input<inputs.oss.BucketReplicationEncryptionConfiguration>;
+    encryptionConfiguration?: pulumi.Input<inputs.oss.BucketReplicationEncryptionConfiguration | undefined>;
     /**
      * Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
      */
-    historicalObjectReplication?: pulumi.Input<string>;
+    historicalObjectReplication?: pulumi.Input<string | undefined>;
     /**
      * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
      */
-    prefixSet?: pulumi.Input<inputs.oss.BucketReplicationPrefixSet>;
+    prefixSet?: pulumi.Input<inputs.oss.BucketReplicationPrefixSet | undefined>;
     /**
      * Specifies the progress for querying the progress of a data replication task of a bucket.
      */
-    progress?: pulumi.Input<inputs.oss.BucketReplicationProgress>;
+    progress?: pulumi.Input<inputs.oss.BucketReplicationProgress | undefined>;
     /**
      * Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
      */
-    rtc?: pulumi.Input<inputs.oss.BucketReplicationRtc>;
+    rtc?: pulumi.Input<inputs.oss.BucketReplicationRtc | undefined>;
     /**
      * The ID of the data replication rule.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
      */
-    sourceSelectionCriteria?: pulumi.Input<inputs.oss.BucketReplicationSourceSelectionCriteria>;
+    sourceSelectionCriteria?: pulumi.Input<inputs.oss.BucketReplicationSourceSelectionCriteria | undefined>;
     /**
      * The status of the data replication task. Can be starting, doing and closing.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
      */
-    syncRole?: pulumi.Input<string>;
+    syncRole?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -303,7 +303,7 @@ export interface BucketReplicationArgs {
     /**
      * The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * The name of the bucket.
      */
@@ -315,29 +315,29 @@ export interface BucketReplicationArgs {
     /**
      * Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
      */
-    encryptionConfiguration?: pulumi.Input<inputs.oss.BucketReplicationEncryptionConfiguration>;
+    encryptionConfiguration?: pulumi.Input<inputs.oss.BucketReplicationEncryptionConfiguration | undefined>;
     /**
      * Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
      */
-    historicalObjectReplication?: pulumi.Input<string>;
+    historicalObjectReplication?: pulumi.Input<string | undefined>;
     /**
      * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
      */
-    prefixSet?: pulumi.Input<inputs.oss.BucketReplicationPrefixSet>;
+    prefixSet?: pulumi.Input<inputs.oss.BucketReplicationPrefixSet | undefined>;
     /**
      * Specifies the progress for querying the progress of a data replication task of a bucket.
      */
-    progress?: pulumi.Input<inputs.oss.BucketReplicationProgress>;
+    progress?: pulumi.Input<inputs.oss.BucketReplicationProgress | undefined>;
     /**
      * Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
      */
-    rtc?: pulumi.Input<inputs.oss.BucketReplicationRtc>;
+    rtc?: pulumi.Input<inputs.oss.BucketReplicationRtc | undefined>;
     /**
      * Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
      */
-    sourceSelectionCriteria?: pulumi.Input<inputs.oss.BucketReplicationSourceSelectionCriteria>;
+    sourceSelectionCriteria?: pulumi.Input<inputs.oss.BucketReplicationSourceSelectionCriteria | undefined>;
     /**
      * Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
      */
-    syncRole?: pulumi.Input<string>;
+    syncRole?: pulumi.Input<string | undefined>;
 }

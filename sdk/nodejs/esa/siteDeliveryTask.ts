@@ -234,65 +234,65 @@ export interface SiteDeliveryTaskState {
      * Real-time log type. Valid values:
      * - `dcdnLogAccessL1 (default)`: access log.
      */
-    businessType?: pulumi.Input<string>;
+    businessType?: pulumi.Input<string | undefined>;
     /**
      * Data Center. Values:
      */
-    dataCenter?: pulumi.Input<string>;
+    dataCenter?: pulumi.Input<string | undefined>;
     /**
      * Delivery Type:
      */
-    deliveryType?: pulumi.Input<string>;
+    deliveryType?: pulumi.Input<string | undefined>;
     /**
      * If the discard rate is not filled, the default value is 0.
      */
-    discardRate?: pulumi.Input<number>;
+    discardRate?: pulumi.Input<number | undefined>;
     /**
      * The list of delivery fields to be modified, separated by commas.
      */
-    fieldName?: pulumi.Input<string>;
+    fieldName?: pulumi.Input<string | undefined>;
     /**
      * HTTP delivery configuration parameters. See `httpDelivery` below.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    httpDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskHttpDelivery>;
+    httpDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskHttpDelivery | undefined>;
     /**
      * Kafka delivery configuration parameters. See `kafkaDelivery` below.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    kafkaDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskKafkaDelivery>;
+    kafkaDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskKafkaDelivery | undefined>;
     /**
      * OSS delivery configuration. See `ossDelivery` below.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    ossDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskOssDelivery>;
+    ossDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskOssDelivery | undefined>;
     /**
      * S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    s3Delivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskS3Delivery>;
+    s3Delivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskS3Delivery | undefined>;
     /**
      * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * SLS delivery configuration. See `slsDelivery` below.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    slsDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskSlsDelivery>;
+    slsDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskSlsDelivery | undefined>;
     /**
      * Task status, value:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The task name.
      */
-    taskName?: pulumi.Input<string>;
+    taskName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -315,7 +315,7 @@ export interface SiteDeliveryTaskArgs {
     /**
      * If the discard rate is not filled, the default value is 0.
      */
-    discardRate?: pulumi.Input<number>;
+    discardRate?: pulumi.Input<number | undefined>;
     /**
      * The list of delivery fields to be modified, separated by commas.
      */
@@ -325,25 +325,25 @@ export interface SiteDeliveryTaskArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    httpDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskHttpDelivery>;
+    httpDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskHttpDelivery | undefined>;
     /**
      * Kafka delivery configuration parameters. See `kafkaDelivery` below.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    kafkaDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskKafkaDelivery>;
+    kafkaDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskKafkaDelivery | undefined>;
     /**
      * OSS delivery configuration. See `ossDelivery` below.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    ossDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskOssDelivery>;
+    ossDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskOssDelivery | undefined>;
     /**
      * S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    s3Delivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskS3Delivery>;
+    s3Delivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskS3Delivery | undefined>;
     /**
      * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
      */
@@ -353,11 +353,11 @@ export interface SiteDeliveryTaskArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    slsDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskSlsDelivery>;
+    slsDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskSlsDelivery | undefined>;
     /**
      * Task status, value:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The task name.
      */

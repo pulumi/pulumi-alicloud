@@ -139,25 +139,25 @@ export interface GetDomainsOutputArgs {
     /**
      * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Domain IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The domain name. It must be 1 to 50 characters in length and can contain digits, letters, periods (.), and hyphens (-).
      */
-    keyWord?: pulumi.Input<string>;
+    keyWord?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Domain name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the domain name. Valid values:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

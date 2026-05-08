@@ -151,36 +151,36 @@ export interface RouterExpressConnectRouterState {
     /**
      * ASN representing resources.
      */
-    alibabaSideAsn?: pulumi.Input<number>;
+    alibabaSideAsn?: pulumi.Input<number | undefined>;
     /**
      * Represents the creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Represents the description of the leased line gateway.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the Gateway representing the leased line.
      */
-    ecrName?: pulumi.Input<string>;
+    ecrName?: pulumi.Input<string | undefined>;
     /**
      * List of regions representing leased line gateways. See `regions` below.
      */
-    regions?: pulumi.Input<pulumi.Input<inputs.expressconnect.RouterExpressConnectRouterRegion>[]>;
+    regions?: pulumi.Input<pulumi.Input<inputs.expressconnect.RouterExpressConnectRouterRegion>[] | undefined>;
     /**
      * The ID of the resource group to which the ECR instance belongs.
      * - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -194,22 +194,22 @@ export interface RouterExpressConnectRouterArgs {
     /**
      * Represents the description of the leased line gateway.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the Gateway representing the leased line.
      */
-    ecrName?: pulumi.Input<string>;
+    ecrName?: pulumi.Input<string | undefined>;
     /**
      * List of regions representing leased line gateways. See `regions` below.
      */
-    regions?: pulumi.Input<pulumi.Input<inputs.expressconnect.RouterExpressConnectRouterRegion>[]>;
+    regions?: pulumi.Input<pulumi.Input<inputs.expressconnect.RouterExpressConnectRouterRegion>[] | undefined>;
     /**
      * The ID of the resource group to which the ECR instance belongs.
      * - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -22,15 +22,15 @@ __all__ = ['MetricRuleTemplateArgs', 'MetricRuleTemplate']
 class MetricRuleTemplateArgs:
     def __init__(__self__, *,
                  metric_rule_template_name: pulumi.Input[_builtins.str],
-                 alert_templates: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]] = None,
-                 apply_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None):
+                 alert_templates: pulumi.Input[Optional[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]] = None,
+                 apply_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MetricRuleTemplate resource.
 
@@ -81,19 +81,19 @@ class MetricRuleTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="alertTemplates")
-    def alert_templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]]:
+    def alert_templates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]]:
         """
         The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         """
         return pulumi.get(self, "alert_templates")
 
     @alert_templates.setter
-    def alert_templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]]):
+    def alert_templates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]]):
         pulumi.set(self, "alert_templates", value)
 
     @_builtins.property
     @pulumi.getter(name="applyMode")
-    def apply_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def apply_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode in which the alert template is applied. Valid values:
         - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
@@ -102,108 +102,108 @@ class MetricRuleTemplateArgs:
         return pulumi.get(self, "apply_mode")
 
     @apply_mode.setter
-    def apply_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def apply_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "apply_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the alert template.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableEndTime")
-    def enable_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
         """
         return pulumi.get(self, "enable_end_time")
 
     @enable_end_time.setter
-    def enable_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStartTime")
-    def enable_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
         """
         return pulumi.get(self, "enable_start_time")
 
     @enable_start_time.setter
-    def enable_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the application group.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyLevel")
-    def notify_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alert notification method. Valid values:
         """
         return pulumi.get(self, "notify_level")
 
     @notify_level.setter
-    def notify_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_level", value)
 
     @_builtins.property
     @pulumi.getter(name="silenceTime")
-    def silence_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def silence_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
         """
         return pulumi.get(self, "silence_time")
 
     @silence_time.setter
-    def silence_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def silence_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "silence_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def webhook(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
         return pulumi.get(self, "webhook")
 
     @webhook.setter
-    def webhook(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook", value)
 
 
 @pulumi.input_type
 class _MetricRuleTemplateState:
     def __init__(__self__, *,
-                 alert_templates: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]] = None,
-                 apply_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_rule_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 rest_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None):
+                 alert_templates: pulumi.Input[Optional[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]] = None,
+                 apply_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_rule_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 rest_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetricRuleTemplate resources.
 
@@ -246,19 +246,19 @@ class _MetricRuleTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="alertTemplates")
-    def alert_templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]]:
+    def alert_templates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]]:
         """
         The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         """
         return pulumi.get(self, "alert_templates")
 
     @alert_templates.setter
-    def alert_templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]]):
+    def alert_templates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]]]):
         pulumi.set(self, "alert_templates", value)
 
     @_builtins.property
     @pulumi.getter(name="applyMode")
-    def apply_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def apply_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode in which the alert template is applied. Valid values:
         - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
@@ -267,115 +267,115 @@ class _MetricRuleTemplateState:
         return pulumi.get(self, "apply_mode")
 
     @apply_mode.setter
-    def apply_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def apply_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "apply_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the alert template.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableEndTime")
-    def enable_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
         """
         return pulumi.get(self, "enable_end_time")
 
     @enable_end_time.setter
-    def enable_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStartTime")
-    def enable_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
         """
         return pulumi.get(self, "enable_start_time")
 
     @enable_start_time.setter
-    def enable_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the application group.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="metricRuleTemplateName")
-    def metric_rule_template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_rule_template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the alert template.
         """
         return pulumi.get(self, "metric_rule_template_name")
 
     @metric_rule_template_name.setter
-    def metric_rule_template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_rule_template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_rule_template_name", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyLevel")
-    def notify_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alert notification method. Valid values:
         """
         return pulumi.get(self, "notify_level")
 
     @notify_level.setter
-    def notify_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_level", value)
 
     @_builtins.property
     @pulumi.getter(name="restVersion")
-    def rest_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rest_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the alert template.
         """
         return pulumi.get(self, "rest_version")
 
     @rest_version.setter
-    def rest_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rest_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rest_version", value)
 
     @_builtins.property
     @pulumi.getter(name="silenceTime")
-    def silence_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def silence_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
         """
         return pulumi.get(self, "silence_time")
 
     @silence_time.setter
-    def silence_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def silence_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "silence_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def webhook(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
         return pulumi.get(self, "webhook")
 
     @webhook.setter
-    def webhook(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook", value)
 
 
@@ -385,16 +385,16 @@ class MetricRuleTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_templates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict']]]]] = None,
-                 apply_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_rule_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None,
+                 alert_templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict']]]]] = None,
+                 apply_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_rule_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Metric Rule Template resource.
@@ -528,16 +528,16 @@ class MetricRuleTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_templates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict']]]]] = None,
-                 apply_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_rule_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None,
+                 alert_templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict']]]]] = None,
+                 apply_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_rule_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -570,17 +570,17 @@ class MetricRuleTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_templates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict']]]]] = None,
-            apply_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            metric_rule_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-            notify_level: Optional[pulumi.Input[_builtins.str]] = None,
-            rest_version: Optional[pulumi.Input[_builtins.str]] = None,
-            silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-            webhook: Optional[pulumi.Input[_builtins.str]] = None) -> 'MetricRuleTemplate':
+            alert_templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict']]]]] = None,
+            apply_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_rule_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_level: pulumi.Input[Optional[_builtins.str]] = None,
+            rest_version: pulumi.Input[Optional[_builtins.str]] = None,
+            silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+            webhook: pulumi.Input[Optional[_builtins.str]] = None) -> 'MetricRuleTemplate':
         """
         Get an existing MetricRuleTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

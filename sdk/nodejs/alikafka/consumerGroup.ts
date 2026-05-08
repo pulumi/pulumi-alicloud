@@ -147,33 +147,33 @@ export interface ConsumerGroupState {
     /**
      * ID of the consumer group.
      */
-    consumerId?: pulumi.Input<string>;
+    consumerId?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.268.0) The timestamp of when the group was created.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
      *
      * @deprecated Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.268.0) The region ID.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The remark of the resource.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -189,7 +189,7 @@ export interface ConsumerGroupArgs {
      *
      * @deprecated Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * ID of the ALIKAFKA Instance that owns the groups.
      */
@@ -197,9 +197,9 @@ export interface ConsumerGroupArgs {
     /**
      * The remark of the resource.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

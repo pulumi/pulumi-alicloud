@@ -110,11 +110,11 @@ export interface KeyPairState {
     /**
      * The Key Name.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The public key body.
      */
-    publicKeyBody?: pulumi.Input<string>;
+    publicKeyBody?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -20,7 +20,7 @@ __all__ = ['EventBusArgs', 'EventBus']
 class EventBusArgs:
     def __init__(__self__, *,
                  event_bus_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EventBus resource.
 
@@ -45,22 +45,22 @@ class EventBusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of event bus.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _EventBusState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_bus_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_bus_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EventBus resources.
 
@@ -74,26 +74,26 @@ class _EventBusState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of event bus.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="eventBusName")
-    def event_bus_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_bus_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
         """
         return pulumi.get(self, "event_bus_name")
 
     @event_bus_name.setter
-    def event_bus_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_bus_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_bus_name", value)
 
 
@@ -103,8 +103,8 @@ class EventBus(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_bus_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Event Bridge Event Bus resource.
@@ -198,8 +198,8 @@ class EventBus(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_bus_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_bus_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -223,8 +223,8 @@ class EventBus(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            event_bus_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'EventBus':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_bus_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'EventBus':
         """
         Get an existing EventBus resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

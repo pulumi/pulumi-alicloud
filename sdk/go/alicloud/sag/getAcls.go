@@ -30,26 +30,28 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := sag.GetAcls(ctx, &sag.GetAclsArgs{
-// Ids: interface{}{
-// defaultAlicloudSagAcls.Id,
-// },
-// NameRegex: pulumi.StringRef("^tf-testAcc.*"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// _, err = sag.NewAcl(ctx, "default", &sag.AclArgs{
-// Name: pulumi.String("tf-testAccSagAclName"),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sag.GetAcls(ctx, &sag.GetAclsArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudSagAcls.Id,
+//				},
+//				NameRegex: pulumi.StringRef("^tf-testAcc.*"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sag.NewAcl(ctx, "default", &sag.AclArgs{
+//				Name: pulumi.String("tf-testAccSagAclName"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetAcls(ctx *pulumi.Context, args *GetAclsArgs, opts ...pulumi.InvokeOption) (*GetAclsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

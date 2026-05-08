@@ -98,8 +98,8 @@ def get_msc_sub_contact_verification_message(contact_id: Optional[_builtins.str]
         position="CEO",
         email="123@163.com",
         mobile="153xxxxx906")
-    default = default_msc_sub_contract.id.apply(lambda id: alicloud.get_msc_sub_contact_verification_message_output(contact_id=id,
-        type=1))
+    default = alicloud.get_msc_sub_contact_verification_message_output(contact_id=default_msc_sub_contract.id,
+        type=1)
     ```
 
 
@@ -117,8 +117,8 @@ def get_msc_sub_contact_verification_message(contact_id: Optional[_builtins.str]
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'))
-def get_msc_sub_contact_verification_message_output(contact_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                    type: Optional[pulumi.Input[_builtins.int]] = None,
+def get_msc_sub_contact_verification_message_output(contact_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                    type: pulumi.Input[Optional[_builtins.int]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMscSubContactVerificationMessageResult]:
     """
     > **NOTE:** Available since v1.156.0.
@@ -136,8 +136,8 @@ def get_msc_sub_contact_verification_message_output(contact_id: Optional[pulumi.
         position="CEO",
         email="123@163.com",
         mobile="153xxxxx906")
-    default = default_msc_sub_contract.id.apply(lambda id: alicloud.get_msc_sub_contact_verification_message_output(contact_id=id,
-        type=1))
+    default = alicloud.get_msc_sub_contact_verification_message_output(contact_id=default_msc_sub_contract.id,
+        type=1)
     ```
 
 

@@ -95,5 +95,5 @@ export interface GetTrafficMirrorServiceOutputArgs {
      *
      * > **NOTE:** Setting `enable = "On"` to open the VPC Traffic Mirror service that means you have read and agreed the [VPC Traffic Mirror Terms of Service](https://help.aliyun.com/zh/vpc/support/vpc-terms-of-service). The service can not closed once it is opened.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
 }

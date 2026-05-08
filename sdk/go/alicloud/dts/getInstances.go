@@ -26,21 +26,23 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := dts.GetInstances(ctx, &dts.GetInstancesArgs{
-// Ids: interface{}{
-// defaultAlicloudDtsInstance.Id,
-// },
-// ResourceGroupId: pulumi.StringRef("example_value"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudDtsInstanceExampleId", _default.Instances[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := dts.GetInstances(ctx, &dts.GetInstancesArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudDtsInstance.Id,
+//				},
+//				ResourceGroupId: pulumi.StringRef("example_value"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudDtsInstanceExampleId", _default.Instances[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

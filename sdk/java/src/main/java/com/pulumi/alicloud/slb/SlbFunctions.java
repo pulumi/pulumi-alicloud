@@ -68,8 +68,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -124,8 +124,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -180,8 +180,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -236,8 +236,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -292,8 +292,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -348,8 +348,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -404,8 +404,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetAclsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -462,8 +462,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetApplicationLoadBalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -509,8 +509,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetApplicationLoadBalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -556,8 +556,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetApplicationLoadBalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -603,8 +603,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetApplicationLoadBalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -650,8 +650,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetApplicationLoadBalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -697,8 +697,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetApplicationLoadBalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -744,8 +744,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetApplicationLoadBalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -789,8 +789,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -830,8 +830,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -871,8 +871,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -912,8 +912,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -953,8 +953,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -996,8 +996,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetBackendServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1039,8 +1039,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetBackendServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1082,8 +1082,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetBackendServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1125,8 +1125,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetBackendServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1168,8 +1168,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetBackendServersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1209,8 +1209,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetCaCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1249,8 +1249,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetCaCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1289,8 +1289,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetCaCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1329,8 +1329,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetCaCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1369,8 +1369,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetCaCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1409,8 +1409,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetCaCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1449,8 +1449,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetCaCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1491,8 +1491,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetDomainExtensionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1535,8 +1535,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetDomainExtensionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1579,8 +1579,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetDomainExtensionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1623,8 +1623,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetDomainExtensionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1667,8 +1667,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetDomainExtensionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1713,8 +1713,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.ListenerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetListenersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1780,8 +1780,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.ListenerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetListenersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1847,8 +1847,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.ListenerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetListenersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1914,8 +1914,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.ListenerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetListenersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1981,8 +1981,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.ListenerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetListenersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2048,8 +2048,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2097,8 +2097,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2146,8 +2146,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2195,8 +2195,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2244,8 +2244,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2293,8 +2293,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2342,8 +2342,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2446,8 +2446,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.RuleArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2505,10 +2505,10 @@ public final class SlbFunctions {
      *             .serverGroupId(defaultServerGroup.id())
      *             .build());
      * 
-     *         final var sampleDs = defaultApplicationLoadBalancer.id().applyValue(_id -> SlbFunctions.getRules(GetRulesArgs.builder()
-     *             .loadBalancerId(_id)
+     *         final var sampleDs = SlbFunctions.getRules(GetRulesArgs.builder()
+     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(22)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("firstSlbRuleId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbRules()[0].id()));
      *     }
@@ -2548,8 +2548,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.RuleArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2607,10 +2607,10 @@ public final class SlbFunctions {
      *             .serverGroupId(defaultServerGroup.id())
      *             .build());
      * 
-     *         final var sampleDs = defaultApplicationLoadBalancer.id().applyValue(_id -> SlbFunctions.getRules(GetRulesArgs.builder()
-     *             .loadBalancerId(_id)
+     *         final var sampleDs = SlbFunctions.getRules(GetRulesArgs.builder()
+     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(22)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("firstSlbRuleId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbRules()[0].id()));
      *     }
@@ -2650,8 +2650,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.RuleArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2709,10 +2709,10 @@ public final class SlbFunctions {
      *             .serverGroupId(defaultServerGroup.id())
      *             .build());
      * 
-     *         final var sampleDs = defaultApplicationLoadBalancer.id().applyValue(_id -> SlbFunctions.getRules(GetRulesArgs.builder()
-     *             .loadBalancerId(_id)
+     *         final var sampleDs = SlbFunctions.getRules(GetRulesArgs.builder()
+     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(22)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("firstSlbRuleId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbRules()[0].id()));
      *     }
@@ -2752,8 +2752,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.RuleArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2811,10 +2811,10 @@ public final class SlbFunctions {
      *             .serverGroupId(defaultServerGroup.id())
      *             .build());
      * 
-     *         final var sampleDs = defaultApplicationLoadBalancer.id().applyValue(_id -> SlbFunctions.getRules(GetRulesArgs.builder()
-     *             .loadBalancerId(_id)
+     *         final var sampleDs = SlbFunctions.getRules(GetRulesArgs.builder()
+     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(22)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("firstSlbRuleId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbRules()[0].id()));
      *     }
@@ -2854,8 +2854,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.RuleArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2913,10 +2913,10 @@ public final class SlbFunctions {
      *             .serverGroupId(defaultServerGroup.id())
      *             .build());
      * 
-     *         final var sampleDs = defaultApplicationLoadBalancer.id().applyValue(_id -> SlbFunctions.getRules(GetRulesArgs.builder()
-     *             .loadBalancerId(_id)
+     *         final var sampleDs = SlbFunctions.getRules(GetRulesArgs.builder()
+     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(22)
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("firstSlbRuleId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbRules()[0].id()));
      *     }
@@ -2942,8 +2942,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetServerCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2982,8 +2982,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetServerCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3022,8 +3022,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetServerCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3062,8 +3062,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetServerCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3102,8 +3102,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetServerCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3142,8 +3142,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetServerCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3182,8 +3182,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetServerCertificatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3232,8 +3232,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.ServerGroupArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetServerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3311,8 +3311,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.ServerGroupArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetServerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3390,8 +3390,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.ServerGroupArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetServerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3469,8 +3469,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.ServerGroupArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetServerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3548,8 +3548,8 @@ public final class SlbFunctions {
      * import com.pulumi.alicloud.slb.ServerGroupArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetServerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3621,8 +3621,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetTlsCipherPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3673,8 +3673,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetTlsCipherPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3725,8 +3725,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetTlsCipherPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3777,8 +3777,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetTlsCipherPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3829,8 +3829,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetTlsCipherPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3881,8 +3881,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetTlsCipherPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3933,8 +3933,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetTlsCipherPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3983,8 +3983,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4026,8 +4026,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4069,8 +4069,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4112,8 +4112,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4155,8 +4155,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4198,8 +4198,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4241,8 +4241,8 @@ public final class SlbFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

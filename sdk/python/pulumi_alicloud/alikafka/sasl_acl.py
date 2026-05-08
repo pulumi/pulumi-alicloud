@@ -25,9 +25,9 @@ class SaslAclArgs:
                  acl_resource_type: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 acl_operation_types: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_permission_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl_operation_types: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_permission_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SaslAcl resource.
 
@@ -167,7 +167,7 @@ class SaslAclArgs:
 
     @_builtins.property
     @pulumi.getter(name="aclOperationTypes")
-    def acl_operation_types(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_operation_types(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
         - `Write`: write
@@ -181,12 +181,12 @@ class SaslAclArgs:
         return pulumi.get(self, "acl_operation_types")
 
     @acl_operation_types.setter
-    def acl_operation_types(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_operation_types(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_operation_types", value)
 
     @_builtins.property
     @pulumi.getter(name="aclPermissionType")
-    def acl_permission_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_permission_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authorization method. Value:
         - `DENY`: deny.
@@ -196,12 +196,12 @@ class SaslAclArgs:
         return pulumi.get(self, "acl_permission_type")
 
     @acl_permission_type.setter
-    def acl_permission_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_permission_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_permission_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The host of the acl.
         > **NOTE:** From version 1.270.0, `host` can be set.
@@ -209,22 +209,22 @@ class SaslAclArgs:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
 
 @pulumi.input_type
 class _SaslAclState:
     def __init__(__self__, *,
-                 acl_operation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_operation_types: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_permission_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_pattern_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl_operation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_operation_types: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_permission_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_pattern_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SaslAcl resources.
 
@@ -284,7 +284,7 @@ class _SaslAclState:
 
     @_builtins.property
     @pulumi.getter(name="aclOperationType")
-    def acl_operation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_operation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Operation type. Valid values:
         - `Write`: write
@@ -297,12 +297,12 @@ class _SaslAclState:
         return pulumi.get(self, "acl_operation_type")
 
     @acl_operation_type.setter
-    def acl_operation_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_operation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_operation_type", value)
 
     @_builtins.property
     @pulumi.getter(name="aclOperationTypes")
-    def acl_operation_types(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_operation_types(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
         - `Write`: write
@@ -316,12 +316,12 @@ class _SaslAclState:
         return pulumi.get(self, "acl_operation_types")
 
     @acl_operation_types.setter
-    def acl_operation_types(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_operation_types(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_operation_types", value)
 
     @_builtins.property
     @pulumi.getter(name="aclPermissionType")
-    def acl_permission_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_permission_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authorization method. Value:
         - `DENY`: deny.
@@ -331,12 +331,12 @@ class _SaslAclState:
         return pulumi.get(self, "acl_permission_type")
 
     @acl_permission_type.setter
-    def acl_permission_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_permission_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_permission_type", value)
 
     @_builtins.property
     @pulumi.getter(name="aclResourceName")
-    def acl_resource_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_resource_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name.
         - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
@@ -345,12 +345,12 @@ class _SaslAclState:
         return pulumi.get(self, "acl_resource_name")
 
     @acl_resource_name.setter
-    def acl_resource_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_resource_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_resource_name", value)
 
     @_builtins.property
     @pulumi.getter(name="aclResourcePatternType")
-    def acl_resource_pattern_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_resource_pattern_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Match the pattern. Valid values:
         - `LITERAL`: exact match
@@ -359,12 +359,12 @@ class _SaslAclState:
         return pulumi.get(self, "acl_resource_pattern_type")
 
     @acl_resource_pattern_type.setter
-    def acl_resource_pattern_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_resource_pattern_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_resource_pattern_type", value)
 
     @_builtins.property
     @pulumi.getter(name="aclResourceType")
-    def acl_resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource type. Valid values:
         - `Topic`: the message Topic.
@@ -375,12 +375,12 @@ class _SaslAclState:
         return pulumi.get(self, "acl_resource_type")
 
     @acl_resource_type.setter
-    def acl_resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_resource_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The host of the acl.
         > **NOTE:** From version 1.270.0, `host` can be set.
@@ -388,31 +388,31 @@ class _SaslAclState:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user name.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -422,15 +422,15 @@ class SaslAcl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_operation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_operation_types: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_permission_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_pattern_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_operation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_operation_types: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_permission_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_pattern_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Alikafka Sasl Acl resource.
@@ -640,15 +640,15 @@ class SaslAcl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_operation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_operation_types: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_permission_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_pattern_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_operation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_operation_types: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_permission_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_pattern_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -689,15 +689,15 @@ class SaslAcl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_operation_type: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_operation_types: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_permission_type: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_resource_name: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_resource_pattern_type: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'SaslAcl':
+            acl_operation_type: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_operation_types: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_permission_type: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_resource_pattern_type: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'SaslAcl':
         """
         Get an existing SaslAcl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

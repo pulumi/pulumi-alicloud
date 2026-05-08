@@ -153,23 +153,23 @@ export interface DomainConfigState {
     /**
      * The SCDN domain config id.
      */
-    configId?: pulumi.Input<string>;
+    configId?: pulumi.Input<string | undefined>;
     /**
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * The args of the domain config.
      */
-    functionArgs?: pulumi.Input<pulumi.Input<inputs.scdn.DomainConfigFunctionArg>[]>;
+    functionArgs?: pulumi.Input<pulumi.Input<inputs.scdn.DomainConfigFunctionArg>[] | undefined>;
     /**
      * The name of the domain config.
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * The status of this resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

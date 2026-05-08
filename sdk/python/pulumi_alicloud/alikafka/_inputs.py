@@ -22,75 +22,75 @@ __all__ = [
 ]
 
 class InstanceConfluentConfigArgsDict(TypedDict):
-    connect_cu: NotRequired[pulumi.Input[_builtins.int]]
+    connect_cu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPU cores of Connect.
     """
-    connect_replica: NotRequired[pulumi.Input[_builtins.int]]
+    connect_replica: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of replicas of Connect.
     """
-    control_center_cu: NotRequired[pulumi.Input[_builtins.int]]
+    control_center_cu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPU cores of Control Center.
     """
-    control_center_replica: NotRequired[pulumi.Input[_builtins.int]]
+    control_center_replica: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of replicas of Control Center.
     """
-    control_center_storage: NotRequired[pulumi.Input[_builtins.int]]
+    control_center_storage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The disk capacity of Control Center.
     """
-    kafka_cu: NotRequired[pulumi.Input[_builtins.int]]
+    kafka_cu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPU cores of the Kafka broker.
     """
-    kafka_replica: NotRequired[pulumi.Input[_builtins.int]]
+    kafka_replica: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of replicas of the Kafka broker.
     """
-    kafka_rest_proxy_cu: NotRequired[pulumi.Input[_builtins.int]]
+    kafka_rest_proxy_cu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPU cores of Kafka Rest Proxy.
     """
-    kafka_rest_proxy_replica: NotRequired[pulumi.Input[_builtins.int]]
+    kafka_rest_proxy_replica: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of replicas of Kafka Rest Proxy.
     """
-    kafka_storage: NotRequired[pulumi.Input[_builtins.int]]
+    kafka_storage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The disk capacity of the Kafka broker.
     """
-    ksql_cu: NotRequired[pulumi.Input[_builtins.int]]
+    ksql_cu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPU cores of ksqlDB.
     """
-    ksql_replica: NotRequired[pulumi.Input[_builtins.int]]
+    ksql_replica: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of replicas of ksqlDB.
     """
-    ksql_storage: NotRequired[pulumi.Input[_builtins.int]]
+    ksql_storage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The disk capacity of ksqlDB.
     """
-    schema_registry_cu: NotRequired[pulumi.Input[_builtins.int]]
+    schema_registry_cu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPU cores of Schema Registry.
     """
-    schema_registry_replica: NotRequired[pulumi.Input[_builtins.int]]
+    schema_registry_replica: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of replicas of Schema Registry.
     """
-    zookeeper_cu: NotRequired[pulumi.Input[_builtins.int]]
+    zookeeper_cu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPU cores of ZooKeeper.
     """
-    zookeeper_replica: NotRequired[pulumi.Input[_builtins.int]]
+    zookeeper_replica: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of replicas of ZooKeeper.
     """
-    zookeeper_storage: NotRequired[pulumi.Input[_builtins.int]]
+    zookeeper_storage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The disk capacity of ZooKeeper.
     """
@@ -98,24 +98,24 @@ class InstanceConfluentConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceConfluentConfigArgs:
     def __init__(__self__, *,
-                 connect_cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 connect_replica: Optional[pulumi.Input[_builtins.int]] = None,
-                 control_center_cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 control_center_replica: Optional[pulumi.Input[_builtins.int]] = None,
-                 control_center_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 kafka_cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 kafka_replica: Optional[pulumi.Input[_builtins.int]] = None,
-                 kafka_rest_proxy_cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 kafka_rest_proxy_replica: Optional[pulumi.Input[_builtins.int]] = None,
-                 kafka_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 ksql_cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 ksql_replica: Optional[pulumi.Input[_builtins.int]] = None,
-                 ksql_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 schema_registry_cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 schema_registry_replica: Optional[pulumi.Input[_builtins.int]] = None,
-                 zookeeper_cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 zookeeper_replica: Optional[pulumi.Input[_builtins.int]] = None,
-                 zookeeper_storage: Optional[pulumi.Input[_builtins.int]] = None):
+                 connect_cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 connect_replica: pulumi.Input[Optional[_builtins.int]] = None,
+                 control_center_cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 control_center_replica: pulumi.Input[Optional[_builtins.int]] = None,
+                 control_center_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 kafka_cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 kafka_replica: pulumi.Input[Optional[_builtins.int]] = None,
+                 kafka_rest_proxy_cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 kafka_rest_proxy_replica: pulumi.Input[Optional[_builtins.int]] = None,
+                 kafka_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 ksql_cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 ksql_replica: pulumi.Input[Optional[_builtins.int]] = None,
+                 ksql_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 schema_registry_cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 schema_registry_replica: pulumi.Input[Optional[_builtins.int]] = None,
+                 zookeeper_cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 zookeeper_replica: pulumi.Input[Optional[_builtins.int]] = None,
+                 zookeeper_storage: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] connect_cu: The number of CPU cores of Connect.
         :param pulumi.Input[_builtins.int] connect_replica: The number of replicas of Connect.
@@ -175,227 +175,227 @@ class InstanceConfluentConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectCu")
-    def connect_cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connect_cu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU cores of Connect.
         """
         return pulumi.get(self, "connect_cu")
 
     @connect_cu.setter
-    def connect_cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connect_cu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connect_cu", value)
 
     @_builtins.property
     @pulumi.getter(name="connectReplica")
-    def connect_replica(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connect_replica(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of replicas of Connect.
         """
         return pulumi.get(self, "connect_replica")
 
     @connect_replica.setter
-    def connect_replica(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connect_replica(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connect_replica", value)
 
     @_builtins.property
     @pulumi.getter(name="controlCenterCu")
-    def control_center_cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def control_center_cu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU cores of Control Center.
         """
         return pulumi.get(self, "control_center_cu")
 
     @control_center_cu.setter
-    def control_center_cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def control_center_cu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "control_center_cu", value)
 
     @_builtins.property
     @pulumi.getter(name="controlCenterReplica")
-    def control_center_replica(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def control_center_replica(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of replicas of Control Center.
         """
         return pulumi.get(self, "control_center_replica")
 
     @control_center_replica.setter
-    def control_center_replica(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def control_center_replica(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "control_center_replica", value)
 
     @_builtins.property
     @pulumi.getter(name="controlCenterStorage")
-    def control_center_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def control_center_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk capacity of Control Center.
         """
         return pulumi.get(self, "control_center_storage")
 
     @control_center_storage.setter
-    def control_center_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def control_center_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "control_center_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaCu")
-    def kafka_cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def kafka_cu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU cores of the Kafka broker.
         """
         return pulumi.get(self, "kafka_cu")
 
     @kafka_cu.setter
-    def kafka_cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def kafka_cu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "kafka_cu", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaReplica")
-    def kafka_replica(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def kafka_replica(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of replicas of the Kafka broker.
         """
         return pulumi.get(self, "kafka_replica")
 
     @kafka_replica.setter
-    def kafka_replica(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def kafka_replica(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "kafka_replica", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaRestProxyCu")
-    def kafka_rest_proxy_cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def kafka_rest_proxy_cu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU cores of Kafka Rest Proxy.
         """
         return pulumi.get(self, "kafka_rest_proxy_cu")
 
     @kafka_rest_proxy_cu.setter
-    def kafka_rest_proxy_cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def kafka_rest_proxy_cu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "kafka_rest_proxy_cu", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaRestProxyReplica")
-    def kafka_rest_proxy_replica(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def kafka_rest_proxy_replica(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of replicas of Kafka Rest Proxy.
         """
         return pulumi.get(self, "kafka_rest_proxy_replica")
 
     @kafka_rest_proxy_replica.setter
-    def kafka_rest_proxy_replica(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def kafka_rest_proxy_replica(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "kafka_rest_proxy_replica", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaStorage")
-    def kafka_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def kafka_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk capacity of the Kafka broker.
         """
         return pulumi.get(self, "kafka_storage")
 
     @kafka_storage.setter
-    def kafka_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def kafka_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "kafka_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="ksqlCu")
-    def ksql_cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ksql_cu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU cores of ksqlDB.
         """
         return pulumi.get(self, "ksql_cu")
 
     @ksql_cu.setter
-    def ksql_cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ksql_cu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ksql_cu", value)
 
     @_builtins.property
     @pulumi.getter(name="ksqlReplica")
-    def ksql_replica(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ksql_replica(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of replicas of ksqlDB.
         """
         return pulumi.get(self, "ksql_replica")
 
     @ksql_replica.setter
-    def ksql_replica(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ksql_replica(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ksql_replica", value)
 
     @_builtins.property
     @pulumi.getter(name="ksqlStorage")
-    def ksql_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ksql_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk capacity of ksqlDB.
         """
         return pulumi.get(self, "ksql_storage")
 
     @ksql_storage.setter
-    def ksql_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ksql_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ksql_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaRegistryCu")
-    def schema_registry_cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def schema_registry_cu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU cores of Schema Registry.
         """
         return pulumi.get(self, "schema_registry_cu")
 
     @schema_registry_cu.setter
-    def schema_registry_cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def schema_registry_cu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "schema_registry_cu", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaRegistryReplica")
-    def schema_registry_replica(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def schema_registry_replica(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of replicas of Schema Registry.
         """
         return pulumi.get(self, "schema_registry_replica")
 
     @schema_registry_replica.setter
-    def schema_registry_replica(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def schema_registry_replica(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "schema_registry_replica", value)
 
     @_builtins.property
     @pulumi.getter(name="zookeeperCu")
-    def zookeeper_cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zookeeper_cu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU cores of ZooKeeper.
         """
         return pulumi.get(self, "zookeeper_cu")
 
     @zookeeper_cu.setter
-    def zookeeper_cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zookeeper_cu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zookeeper_cu", value)
 
     @_builtins.property
     @pulumi.getter(name="zookeeperReplica")
-    def zookeeper_replica(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zookeeper_replica(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of replicas of ZooKeeper.
         """
         return pulumi.get(self, "zookeeper_replica")
 
     @zookeeper_replica.setter
-    def zookeeper_replica(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zookeeper_replica(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zookeeper_replica", value)
 
     @_builtins.property
     @pulumi.getter(name="zookeeperStorage")
-    def zookeeper_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zookeeper_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk capacity of ZooKeeper.
         """
         return pulumi.get(self, "zookeeper_storage")
 
     @zookeeper_storage.setter
-    def zookeeper_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zookeeper_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zookeeper_storage", value)
 
 
 class InstanceServerlessConfigArgsDict(TypedDict):
-    reserved_publish_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    reserved_publish_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The reserved capacity for publishing messages.
     """
-    reserved_subscribe_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    reserved_subscribe_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The reserved capacity for subscribing to message.
     """
@@ -403,8 +403,8 @@ class InstanceServerlessConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceServerlessConfigArgs:
     def __init__(__self__, *,
-                 reserved_publish_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 reserved_subscribe_capacity: Optional[pulumi.Input[_builtins.int]] = None):
+                 reserved_publish_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 reserved_subscribe_capacity: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] reserved_publish_capacity: The reserved capacity for publishing messages.
         :param pulumi.Input[_builtins.int] reserved_subscribe_capacity: The reserved capacity for subscribing to message.
@@ -416,26 +416,26 @@ class InstanceServerlessConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="reservedPublishCapacity")
-    def reserved_publish_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reserved_publish_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The reserved capacity for publishing messages.
         """
         return pulumi.get(self, "reserved_publish_capacity")
 
     @reserved_publish_capacity.setter
-    def reserved_publish_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reserved_publish_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reserved_publish_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedSubscribeCapacity")
-    def reserved_subscribe_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reserved_subscribe_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The reserved capacity for subscribing to message.
         """
         return pulumi.get(self, "reserved_subscribe_capacity")
 
     @reserved_subscribe_capacity.setter
-    def reserved_subscribe_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reserved_subscribe_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reserved_subscribe_capacity", value)
 
 

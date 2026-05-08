@@ -22,10 +22,10 @@ class ReplicationVaultArgs:
                  replication_source_region_id: pulumi.Input[_builtins.str],
                  replication_source_vault_id: pulumi.Input[_builtins.str],
                  vault_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_storage_class: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_storage_class: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReplicationVault resource.
 
@@ -87,65 +87,65 @@ class ReplicationVaultArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the backup vault.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptType")
-    def encrypt_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypt_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption type of the backup vault.
         """
         return pulumi.get(self, "encrypt_type")
 
     @encrypt_type.setter
-    def encrypt_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypt_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypt_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
         """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultStorageClass")
-    def vault_storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup Vault Storage Class
         """
         return pulumi.get(self, "vault_storage_class")
 
     @vault_storage_class.setter
-    def vault_storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_storage_class", value)
 
 
 @pulumi.input_type
 class _ReplicationVaultState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_source_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_source_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_storage_class: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_source_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_source_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_storage_class: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReplicationVault resources.
 
@@ -180,110 +180,110 @@ class _ReplicationVaultState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the backup vault.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptType")
-    def encrypt_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypt_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption type of the backup vault.
         """
         return pulumi.get(self, "encrypt_type")
 
     @encrypt_type.setter
-    def encrypt_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypt_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypt_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
         """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RegionId
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationSourceRegionId")
-    def replication_source_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replication_source_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the source backup vault.
         """
         return pulumi.get(self, "replication_source_region_id")
 
     @replication_source_region_id.setter
-    def replication_source_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replication_source_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replication_source_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationSourceVaultId")
-    def replication_source_vault_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replication_source_vault_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vault ID of the source backup vault.
         """
         return pulumi.get(self, "replication_source_vault_id")
 
     @replication_source_vault_id.setter
-    def replication_source_vault_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replication_source_vault_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replication_source_vault_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the mirror backup vault.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultName")
-    def vault_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the backup vault.
         """
         return pulumi.get(self, "vault_name")
 
     @vault_name.setter
-    def vault_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultStorageClass")
-    def vault_storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup Vault Storage Class
         """
         return pulumi.get(self, "vault_storage_class")
 
     @vault_storage_class.setter
-    def vault_storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_storage_class", value)
 
 
@@ -293,13 +293,13 @@ class ReplicationVault(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_source_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_source_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_storage_class: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_source_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_source_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_storage_class: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Hybrid Backup Recovery (HBR) Replication Vault resource.
@@ -424,13 +424,13 @@ class ReplicationVault(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_source_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_source_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_storage_class: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_source_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_source_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_storage_class: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -465,15 +465,15 @@ class ReplicationVault(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            encrypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            replication_source_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            replication_source_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vault_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vault_storage_class: Optional[pulumi.Input[_builtins.str]] = None) -> 'ReplicationVault':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            replication_source_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            replication_source_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_storage_class: pulumi.Input[Optional[_builtins.str]] = None) -> 'ReplicationVault':
         """
         Get an existing ReplicationVault resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

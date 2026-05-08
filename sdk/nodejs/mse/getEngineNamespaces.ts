@@ -189,23 +189,23 @@ export interface GetEngineNamespacesOutputArgs {
     /**
      * The language type of the returned information. Valid values: `zh`, `en`.
      */
-    acceptLanguage?: pulumi.Input<string>;
+    acceptLanguage?: pulumi.Input<string | undefined>;
     /**
      * The ID of the cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * A list of Engine Namespace IDs. It is formatted to `<instance_id>:<namespace_id>`.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the MSE Cluster Instance.It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      *
      * **NOTE:** You must set `clusterId` or `instanceId` or both.
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

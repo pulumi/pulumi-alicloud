@@ -172,11 +172,11 @@ def get_instance_class_infos(commodity_code: Optional[_builtins.str] = None,
         infos=pulumi.get(__ret__, 'infos'),
         order_type=pulumi.get(__ret__, 'order_type'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_instance_class_infos_output(commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-                                    db_instance_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    infos: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceClassInfosInfoArgs', 'GetInstanceClassInfosInfoArgsDict']]]]] = None,
-                                    order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                    output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_class_infos_output(commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+                                    db_instance_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    infos: pulumi.Input[Optional[Optional[Sequence[Union['GetInstanceClassInfosInfoArgs', 'GetInstanceClassInfosInfoArgsDict']]]]] = None,
+                                    order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceClassInfosResult]:
     """
     This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.

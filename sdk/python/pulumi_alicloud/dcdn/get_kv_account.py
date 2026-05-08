@@ -88,7 +88,7 @@ def get_kv_account(status: Optional[_builtins.str] = None,
     return AwaitableGetKvAccountResult(
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
-def get_kv_account_output(status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_kv_account_output(status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKvAccountResult]:
     """
     This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)

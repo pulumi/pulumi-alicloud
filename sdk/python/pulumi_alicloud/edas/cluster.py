@@ -22,8 +22,8 @@ class ClusterArgs:
                  cluster_name: pulumi.Input[_builtins.str],
                  cluster_type: pulumi.Input[_builtins.int],
                  network_mode: pulumi.Input[_builtins.int],
-                 logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -79,37 +79,37 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="logicalRegionId")
-    def logical_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logical_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
         """
         return pulumi.get(self, "logical_region_id")
 
     @logical_region_id.setter
-    def logical_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logical_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logical_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Virtual Private Cloud (VPC) for the cluster.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -132,62 +132,62 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster that you want to create.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cluster_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
         """
         return pulumi.get(self, "cluster_type")
 
     @cluster_type.setter
-    def cluster_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cluster_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cluster_type", value)
 
     @_builtins.property
     @pulumi.getter(name="logicalRegionId")
-    def logical_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logical_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
         """
         return pulumi.get(self, "logical_region_id")
 
     @logical_region_id.setter
-    def logical_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logical_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logical_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkMode")
-    def network_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def network_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
         """
         return pulumi.get(self, "network_mode")
 
     @network_mode.setter
-    def network_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def network_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "network_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Virtual Private Cloud (VPC) for the cluster.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -197,11 +197,11 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an EDAS cluster resource, see [What is EDAS Cluster](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertcluster).
@@ -312,11 +312,11 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -347,11 +347,11 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_type: Optional[pulumi.Input[_builtins.int]] = None,
-            logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            network_mode: Optional[pulumi.Input[_builtins.int]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cluster':
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_type: pulumi.Input[Optional[_builtins.int]] = None,
+            logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_mode: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

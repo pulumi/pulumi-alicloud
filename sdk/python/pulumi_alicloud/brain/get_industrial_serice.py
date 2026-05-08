@@ -104,7 +104,7 @@ def get_industrial_serice(enable: Optional[_builtins.str] = None,
         enable=pulumi.get(__ret__, 'enable'),
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
-def get_industrial_serice_output(enable: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_industrial_serice_output(enable: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIndustrialSericeResult]:
     """
     Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.

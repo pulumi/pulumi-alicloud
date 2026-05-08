@@ -24,23 +24,23 @@ class LoadBalancerArgs:
                  address_type: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
                  zone_mappings: pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]],
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cps: Optional[pulumi.Input[_builtins.int]] = None,
-                 cross_zone_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection_config: Optional[pulumi.Input['LoadBalancerDeletionProtectionConfigArgs']] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 modification_protection_config: Optional[pulumi.Input['LoadBalancerModificationProtectionConfigArgs']] = None,
-                 modification_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 modification_protection_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cps: pulumi.Input[Optional[_builtins.int]] = None,
+                 cross_zone_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection_config: pulumi.Input[Optional['LoadBalancerDeletionProtectionConfigArgs']] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 modification_protection_config: pulumi.Input[Optional['LoadBalancerModificationProtectionConfigArgs']] = None,
+                 modification_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 modification_protection_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
 
@@ -160,7 +160,7 @@ class LoadBalancerArgs:
 
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
-    def address_ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol version. Valid values:
 
@@ -170,24 +170,24 @@ class LoadBalancerArgs:
         return pulumi.get(self, "address_ip_version")
 
     @address_ip_version.setter
-    def address_ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthPackageId")
-    def bandwidth_package_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_package_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
         """
         return pulumi.get(self, "bandwidth_package_id")
 
     @bandwidth_package_id.setter
-    def bandwidth_package_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_package_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_package_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def cps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The speed limit of new connections per second processed by NLB instances in each VIP. Value range: `0` to `1000000`.
 
@@ -196,60 +196,60 @@ class LoadBalancerArgs:
         return pulumi.get(self, "cps")
 
     @cps.setter
-    def cps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cps", value)
 
     @_builtins.property
     @pulumi.getter(name="crossZoneEnabled")
-    def cross_zone_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cross_zone_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
         """
         return pulumi.get(self, "cross_zone_enabled")
 
     @cross_zone_enabled.setter
-    def cross_zone_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cross_zone_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cross_zone_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionConfig")
-    def deletion_protection_config(self) -> Optional[pulumi.Input['LoadBalancerDeletionProtectionConfigArgs']]:
+    def deletion_protection_config(self) -> pulumi.Input[Optional['LoadBalancerDeletionProtectionConfigArgs']]:
         """
         Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
         """
         return pulumi.get(self, "deletion_protection_config")
 
     @deletion_protection_config.setter
-    def deletion_protection_config(self, value: Optional[pulumi.Input['LoadBalancerDeletionProtectionConfigArgs']]):
+    def deletion_protection_config(self, value: pulumi.Input[Optional['LoadBalancerDeletionProtectionConfigArgs']]):
         pulumi.set(self, "deletion_protection_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
-    def deletion_protection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "deletion_protection_enabled")
 
     @deletion_protection_enabled.setter
-    def deletion_protection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionReason")
-    def deletion_protection_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_protection_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
         """
         return pulumi.get(self, "deletion_protection_reason")
 
     @deletion_protection_reason.setter
-    def deletion_protection_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_protection_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_protection_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6AddressType")
-    def ipv6_address_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_address_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of IPv6 address used by the NLB instance. Valid values:
         - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
@@ -258,12 +258,12 @@ class LoadBalancerArgs:
         return pulumi.get(self, "ipv6_address_type")
 
     @ipv6_address_type.setter
-    def ipv6_address_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_address_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_address_type", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
-    def load_balancer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the NLB instance.
         The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The value must start with a letter.
@@ -271,48 +271,48 @@ class LoadBalancerArgs:
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
-    def load_balancer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_name", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerType")
-    def load_balancer_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
         """
         return pulumi.get(self, "load_balancer_type")
 
     @load_balancer_type.setter
-    def load_balancer_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_type", value)
 
     @_builtins.property
     @pulumi.getter(name="modificationProtectionConfig")
-    def modification_protection_config(self) -> Optional[pulumi.Input['LoadBalancerModificationProtectionConfigArgs']]:
+    def modification_protection_config(self) -> pulumi.Input[Optional['LoadBalancerModificationProtectionConfigArgs']]:
         """
         Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
         """
         return pulumi.get(self, "modification_protection_config")
 
     @modification_protection_config.setter
-    def modification_protection_config(self, value: Optional[pulumi.Input['LoadBalancerModificationProtectionConfigArgs']]):
+    def modification_protection_config(self, value: pulumi.Input[Optional['LoadBalancerModificationProtectionConfigArgs']]):
         pulumi.set(self, "modification_protection_config", value)
 
     @_builtins.property
     @pulumi.getter(name="modificationProtectionReason")
-    def modification_protection_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modification_protection_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
         """
         return pulumi.get(self, "modification_protection_reason")
 
     @modification_protection_reason.setter
-    def modification_protection_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modification_protection_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modification_protection_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="modificationProtectionStatus")
-    def modification_protection_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modification_protection_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
         - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
@@ -321,24 +321,24 @@ class LoadBalancerArgs:
         return pulumi.get(self, "modification_protection_status")
 
     @modification_protection_status.setter
-    def modification_protection_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modification_protection_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modification_protection_status", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the new resource group.
         You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
@@ -346,62 +346,62 @@ class LoadBalancerArgs:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The security group to which the network-based SLB instance belongs.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         List of labels.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _LoadBalancerState:
     def __init__(__self__, *,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cps: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_zone_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection_config: Optional[pulumi.Input['LoadBalancerDeletionProtectionConfigArgs']] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_business_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 modification_protection_config: Optional[pulumi.Input['LoadBalancerModificationProtectionConfigArgs']] = None,
-                 modification_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 modification_protection_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]] = None):
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cps: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_zone_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection_config: pulumi.Input[Optional['LoadBalancerDeletionProtectionConfigArgs']] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_business_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 modification_protection_config: pulumi.Input[Optional['LoadBalancerModificationProtectionConfigArgs']] = None,
+                 modification_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 modification_protection_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
 
@@ -499,7 +499,7 @@ class _LoadBalancerState:
 
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
-    def address_ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol version. Valid values:
 
@@ -509,12 +509,12 @@ class _LoadBalancerState:
         return pulumi.get(self, "address_ip_version")
 
     @address_ip_version.setter
-    def address_ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="addressType")
-    def address_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of IPv4 address used by the NLB instance. Valid values:
         - `Internet`: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
@@ -525,24 +525,24 @@ class _LoadBalancerState:
         return pulumi.get(self, "address_type")
 
     @address_type.setter
-    def address_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_type", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthPackageId")
-    def bandwidth_package_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_package_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
         """
         return pulumi.get(self, "bandwidth_package_id")
 
     @bandwidth_package_id.setter
-    def bandwidth_package_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_package_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_package_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def cps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The speed limit of new connections per second processed by NLB instances in each VIP. Value range: `0` to `1000000`.
 
@@ -551,84 +551,84 @@ class _LoadBalancerState:
         return pulumi.get(self, "cps")
 
     @cps.setter
-    def cps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cps", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource creation time, using Greenwich Mean Time, formating' yyyy-MM-ddTHH:mm:ssZ '.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="crossZoneEnabled")
-    def cross_zone_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cross_zone_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
         """
         return pulumi.get(self, "cross_zone_enabled")
 
     @cross_zone_enabled.setter
-    def cross_zone_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cross_zone_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cross_zone_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionConfig")
-    def deletion_protection_config(self) -> Optional[pulumi.Input['LoadBalancerDeletionProtectionConfigArgs']]:
+    def deletion_protection_config(self) -> pulumi.Input[Optional['LoadBalancerDeletionProtectionConfigArgs']]:
         """
         Specifies whether to enable deletion protection. Default value: `false`. See `deletion_protection_config` below.
         """
         return pulumi.get(self, "deletion_protection_config")
 
     @deletion_protection_config.setter
-    def deletion_protection_config(self, value: Optional[pulumi.Input['LoadBalancerDeletionProtectionConfigArgs']]):
+    def deletion_protection_config(self, value: pulumi.Input[Optional['LoadBalancerDeletionProtectionConfigArgs']]):
         pulumi.set(self, "deletion_protection_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
-    def deletion_protection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "deletion_protection_enabled")
 
     @deletion_protection_enabled.setter
-    def deletion_protection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionReason")
-    def deletion_protection_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_protection_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
         """
         return pulumi.get(self, "deletion_protection_reason")
 
     @deletion_protection_reason.setter
-    def deletion_protection_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_protection_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_protection_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsName")
-    def dns_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name of the NLB instance.
         """
         return pulumi.get(self, "dns_name")
 
     @dns_name.setter
-    def dns_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6AddressType")
-    def ipv6_address_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_address_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of IPv6 address used by the NLB instance. Valid values:
         - `Internet`: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
@@ -637,24 +637,24 @@ class _LoadBalancerState:
         return pulumi.get(self, "ipv6_address_type")
 
     @ipv6_address_type.setter
-    def ipv6_address_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_address_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_address_type", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerBusinessStatus")
-    def load_balancer_business_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_business_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The business status of the NLB instance.
         """
         return pulumi.get(self, "load_balancer_business_status")
 
     @load_balancer_business_status.setter
-    def load_balancer_business_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_business_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_business_status", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
-    def load_balancer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the NLB instance.
         The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The value must start with a letter.
@@ -662,48 +662,48 @@ class _LoadBalancerState:
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
-    def load_balancer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_name", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerType")
-    def load_balancer_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Server Load Balancer (SLB) instance. Set the value to `network`, which specifies NLB.
         """
         return pulumi.get(self, "load_balancer_type")
 
     @load_balancer_type.setter
-    def load_balancer_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_type", value)
 
     @_builtins.property
     @pulumi.getter(name="modificationProtectionConfig")
-    def modification_protection_config(self) -> Optional[pulumi.Input['LoadBalancerModificationProtectionConfigArgs']]:
+    def modification_protection_config(self) -> pulumi.Input[Optional['LoadBalancerModificationProtectionConfigArgs']]:
         """
         Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modification_protection_config` below.
         """
         return pulumi.get(self, "modification_protection_config")
 
     @modification_protection_config.setter
-    def modification_protection_config(self, value: Optional[pulumi.Input['LoadBalancerModificationProtectionConfigArgs']]):
+    def modification_protection_config(self, value: pulumi.Input[Optional['LoadBalancerModificationProtectionConfigArgs']]):
         pulumi.set(self, "modification_protection_config", value)
 
     @_builtins.property
     @pulumi.getter(name="modificationProtectionReason")
-    def modification_protection_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modification_protection_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
         """
         return pulumi.get(self, "modification_protection_reason")
 
     @modification_protection_reason.setter
-    def modification_protection_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modification_protection_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modification_protection_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="modificationProtectionStatus")
-    def modification_protection_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modification_protection_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
         - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
@@ -712,36 +712,36 @@ class _LoadBalancerState:
         return pulumi.get(self, "modification_protection_status")
 
     @modification_protection_status.setter
-    def modification_protection_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modification_protection_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modification_protection_status", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where the NLB instance is deployed.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the new resource group.
         You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
@@ -749,67 +749,67 @@ class _LoadBalancerState:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The security group to which the network-based SLB instance belongs.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone Status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         List of labels.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC where the NLB instance is deployed.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneMappings")
-    def zone_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]]:
+    def zone_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]]:
         """
         Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
         """
         return pulumi.get(self, "zone_mappings")
 
     @zone_mappings.setter
-    def zone_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]]):
+    def zone_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]]):
         pulumi.set(self, "zone_mappings", value)
 
 
@@ -819,26 +819,26 @@ class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cps: Optional[pulumi.Input[_builtins.int]] = None,
-                 cross_zone_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection_config: Optional[pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']]] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 modification_protection_config: Optional[pulumi.Input[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']]] = None,
-                 modification_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 modification_protection_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]]] = None,
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cps: pulumi.Input[Optional[_builtins.int]] = None,
+                 cross_zone_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection_config: pulumi.Input[Optional[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']]] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 modification_protection_config: pulumi.Input[Optional[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']]] = None,
+                 modification_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 modification_protection_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Network Load Balancer (NLB) Load Balancer resource.
@@ -901,6 +901,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
@@ -918,11 +919,11 @@ class LoadBalancer(pulumi.CustomResource):
             vpc_name=name,
             cidr_block="10.2.0.0/16",
             enable_ipv6=True)
-        vsw = []
+        vsw: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             vsw.append(alicloud.vpc.Switch(f"vsw-{range['value']}",
                 enable_ipv6=True,
-                ipv6_cidr_block_mask=f"1{range['value']}",
+                ipv6_cidr_block_mask=int(f"1{range['value']}"),
                 vswitch_name=f"vsw-{range['value']}-for-nlb",
                 vpc_id=vpc.id,
                 cidr_block=f"10.2.1{range['value']}.0/24",
@@ -1071,6 +1072,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
@@ -1088,11 +1090,11 @@ class LoadBalancer(pulumi.CustomResource):
             vpc_name=name,
             cidr_block="10.2.0.0/16",
             enable_ipv6=True)
-        vsw = []
+        vsw: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             vsw.append(alicloud.vpc.Switch(f"vsw-{range['value']}",
                 enable_ipv6=True,
-                ipv6_cidr_block_mask=f"1{range['value']}",
+                ipv6_cidr_block_mask=int(f"1{range['value']}"),
                 vswitch_name=f"vsw-{range['value']}-for-nlb",
                 vpc_id=vpc.id,
                 cidr_block=f"10.2.1{range['value']}.0/24",
@@ -1151,26 +1153,26 @@ class LoadBalancer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cps: Optional[pulumi.Input[_builtins.int]] = None,
-                 cross_zone_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection_config: Optional[pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']]] = None,
-                 deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 modification_protection_config: Optional[pulumi.Input[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']]] = None,
-                 modification_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 modification_protection_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]]] = None,
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cps: pulumi.Input[Optional[_builtins.int]] = None,
+                 cross_zone_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection_config: pulumi.Input[Optional[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']]] = None,
+                 deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 modification_protection_config: pulumi.Input[Optional[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']]] = None,
+                 modification_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 modification_protection_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1221,31 +1223,31 @@ class LoadBalancer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-            address_type: Optional[pulumi.Input[_builtins.str]] = None,
-            bandwidth_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cps: Optional[pulumi.Input[_builtins.int]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_zone_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            deletion_protection_config: Optional[pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']]] = None,
-            deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            deletion_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_address_type: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer_business_status: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer_type: Optional[pulumi.Input[_builtins.str]] = None,
-            modification_protection_config: Optional[pulumi.Input[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']]] = None,
-            modification_protection_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            modification_protection_status: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]]] = None) -> 'LoadBalancer':
+            address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            address_type: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cps: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_zone_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_protection_config: pulumi.Input[Optional[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']]] = None,
+            deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_business_status: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_type: pulumi.Input[Optional[_builtins.str]] = None,
+            modification_protection_config: pulumi.Input[Optional[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']]] = None,
+            modification_protection_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            modification_protection_status: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]]] = None) -> 'LoadBalancer':
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

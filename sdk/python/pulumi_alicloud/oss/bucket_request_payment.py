@@ -20,7 +20,7 @@ __all__ = ['BucketRequestPaymentArgs', 'BucketRequestPayment']
 class BucketRequestPaymentArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 payer: Optional[pulumi.Input[_builtins.str]] = None):
+                 payer: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketRequestPayment resource.
 
@@ -45,22 +45,22 @@ class BucketRequestPaymentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def payer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payer of the request and traffic fees.Valid values: BucketOwner: request and traffic fees are paid by the bucket owner. Requester: request and traffic fees are paid by the requester.
         """
         return pulumi.get(self, "payer")
 
     @payer.setter
-    def payer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payer", value)
 
 
 @pulumi.input_type
 class _BucketRequestPaymentState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 payer: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 payer: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketRequestPayment resources.
 
@@ -74,26 +74,26 @@ class _BucketRequestPaymentState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def payer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payer of the request and traffic fees.Valid values: BucketOwner: request and traffic fees are paid by the bucket owner. Requester: request and traffic fees are paid by the requester.
         """
         return pulumi.get(self, "payer")
 
     @payer.setter
-    def payer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payer", value)
 
 
@@ -103,8 +103,8 @@ class BucketRequestPayment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 payer: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 payer: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a OSS Bucket Request Payment resource. Whether to enable pay-by-requester for a bucket.
@@ -224,8 +224,8 @@ class BucketRequestPayment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 payer: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 payer: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -249,8 +249,8 @@ class BucketRequestPayment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            payer: Optional[pulumi.Input[_builtins.str]] = None) -> 'BucketRequestPayment':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            payer: pulumi.Input[Optional[_builtins.str]] = None) -> 'BucketRequestPayment':
         """
         Get an existing BucketRequestPayment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

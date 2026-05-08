@@ -238,55 +238,55 @@ export interface OssScanConfigState {
     /**
      * Specifies whether to match the prefixes of all objects.
      */
-    allKeyPrefix?: pulumi.Input<boolean>;
+    allKeyPrefix?: pulumi.Input<boolean | undefined>;
     /**
      * The names of the buckets.
      */
-    bucketNameLists?: pulumi.Input<pulumi.Input<string>[]>;
+    bucketNameLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
      */
-    decompressMaxFileCount?: pulumi.Input<number>;
+    decompressMaxFileCount?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
      */
-    decompressMaxLayer?: pulumi.Input<number>;
+    decompressMaxLayer?: pulumi.Input<number | undefined>;
     /**
      * The decryption methods.
      */
-    decryptionLists?: pulumi.Input<pulumi.Input<string>[]>;
+    decryptionLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether the check policy is enabled. Valid values:
      */
-    enable?: pulumi.Input<number>;
+    enable?: pulumi.Input<number | undefined>;
     /**
      * The end time of the check. The time is in the HH:mm:ss format.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The prefixes of the objects.
      */
-    keyPrefixLists?: pulumi.Input<pulumi.Input<string>[]>;
+    keyPrefixLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The suffixes of the objects that are checked.
      */
-    keySuffixLists?: pulumi.Input<pulumi.Input<string>[]>;
+    keySuffixLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
      */
-    lastModifiedStartTime?: pulumi.Input<number>;
+    lastModifiedStartTime?: pulumi.Input<number | undefined>;
     /**
      * The policy name.
      */
-    ossScanConfigName?: pulumi.Input<string>;
+    ossScanConfigName?: pulumi.Input<string | undefined>;
     /**
      * The days when the check is performed. The value indicates the days of the week.
      */
-    scanDayLists?: pulumi.Input<pulumi.Input<number>[]>;
+    scanDayLists?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The start time of the check. The time is in the HH:mm:ss format.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -296,7 +296,7 @@ export interface OssScanConfigArgs {
     /**
      * Specifies whether to match the prefixes of all objects.
      */
-    allKeyPrefix?: pulumi.Input<boolean>;
+    allKeyPrefix?: pulumi.Input<boolean | undefined>;
     /**
      * The names of the buckets.
      */
@@ -304,15 +304,15 @@ export interface OssScanConfigArgs {
     /**
      * The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
      */
-    decompressMaxFileCount?: pulumi.Input<number>;
+    decompressMaxFileCount?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
      */
-    decompressMaxLayer?: pulumi.Input<number>;
+    decompressMaxLayer?: pulumi.Input<number | undefined>;
     /**
      * The decryption methods.
      */
-    decryptionLists?: pulumi.Input<pulumi.Input<string>[]>;
+    decryptionLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether the check policy is enabled. Valid values:
      */
@@ -324,7 +324,7 @@ export interface OssScanConfigArgs {
     /**
      * The prefixes of the objects.
      */
-    keyPrefixLists?: pulumi.Input<pulumi.Input<string>[]>;
+    keyPrefixLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The suffixes of the objects that are checked.
      */
@@ -332,11 +332,11 @@ export interface OssScanConfigArgs {
     /**
      * The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
      */
-    lastModifiedStartTime?: pulumi.Input<number>;
+    lastModifiedStartTime?: pulumi.Input<number | undefined>;
     /**
      * The policy name.
      */
-    ossScanConfigName?: pulumi.Input<string>;
+    ossScanConfigName?: pulumi.Input<string | undefined>;
     /**
      * The days when the check is performed. The value indicates the days of the week.
      */

@@ -245,63 +245,63 @@ export interface DeploymentState {
     /**
      * Content of the deployment job See `artifact` below.
      */
-    artifact?: pulumi.Input<inputs.realtimecompute.DeploymentArtifact>;
+    artifact?: pulumi.Input<inputs.realtimecompute.DeploymentArtifact | undefined>;
     /**
      * Batch job resource settings See `batchResourceSetting` below.
      */
-    batchResourceSetting?: pulumi.Input<inputs.realtimecompute.DeploymentBatchResourceSetting>;
+    batchResourceSetting?: pulumi.Input<inputs.realtimecompute.DeploymentBatchResourceSetting | undefined>;
     /**
      * Resource property field representing the primary resource ID
      */
-    deploymentId?: pulumi.Input<string>;
+    deploymentId?: pulumi.Input<string | undefined>;
     /**
      * Name of the deployment
      */
-    deploymentName?: pulumi.Input<string>;
+    deploymentName?: pulumi.Input<string | undefined>;
     /**
      * Deployment target See `deploymentTarget` below.
      */
-    deploymentTarget?: pulumi.Input<inputs.realtimecompute.DeploymentDeploymentTarget>;
+    deploymentTarget?: pulumi.Input<inputs.realtimecompute.DeploymentDeploymentTarget | undefined>;
     /**
      * Description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Engine version of the deployment instance
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * Execution mode. Valid values: STREAMING or BATCH.
      */
-    executionMode?: pulumi.Input<string>;
+    executionMode?: pulumi.Input<string | undefined>;
     /**
      * Flink configuration
      */
-    flinkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    flinkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Deployment labels
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Job variables See `localVariables` below.
      */
-    localVariables?: pulumi.Input<pulumi.Input<inputs.realtimecompute.DeploymentLocalVariable>[]>;
+    localVariables?: pulumi.Input<pulumi.Input<inputs.realtimecompute.DeploymentLocalVariable>[] | undefined>;
     /**
      * Job log configuration   See `logging` below.
      */
-    logging?: pulumi.Input<inputs.realtimecompute.DeploymentLogging>;
+    logging?: pulumi.Input<inputs.realtimecompute.DeploymentLogging | undefined>;
     /**
      * Namespace name
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Workspace resource ID
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Resource settings for streaming mode See `streamingResourceSetting` below.
      */
-    streamingResourceSetting?: pulumi.Input<inputs.realtimecompute.DeploymentStreamingResourceSetting>;
+    streamingResourceSetting?: pulumi.Input<inputs.realtimecompute.DeploymentStreamingResourceSetting | undefined>;
 }
 
 /**
@@ -315,7 +315,7 @@ export interface DeploymentArgs {
     /**
      * Batch job resource settings See `batchResourceSetting` below.
      */
-    batchResourceSetting?: pulumi.Input<inputs.realtimecompute.DeploymentBatchResourceSetting>;
+    batchResourceSetting?: pulumi.Input<inputs.realtimecompute.DeploymentBatchResourceSetting | undefined>;
     /**
      * Name of the deployment
      */
@@ -327,11 +327,11 @@ export interface DeploymentArgs {
     /**
      * Description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Engine version of the deployment instance
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * Execution mode. Valid values: STREAMING or BATCH.
      */
@@ -339,19 +339,19 @@ export interface DeploymentArgs {
     /**
      * Flink configuration
      */
-    flinkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    flinkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Deployment labels
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Job variables See `localVariables` below.
      */
-    localVariables?: pulumi.Input<pulumi.Input<inputs.realtimecompute.DeploymentLocalVariable>[]>;
+    localVariables?: pulumi.Input<pulumi.Input<inputs.realtimecompute.DeploymentLocalVariable>[] | undefined>;
     /**
      * Job log configuration   See `logging` below.
      */
-    logging?: pulumi.Input<inputs.realtimecompute.DeploymentLogging>;
+    logging?: pulumi.Input<inputs.realtimecompute.DeploymentLogging | undefined>;
     /**
      * Namespace name
      */
@@ -359,9 +359,9 @@ export interface DeploymentArgs {
     /**
      * Workspace resource ID
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Resource settings for streaming mode See `streamingResourceSetting` below.
      */
-    streamingResourceSetting?: pulumi.Input<inputs.realtimecompute.DeploymentStreamingResourceSetting>;
+    streamingResourceSetting?: pulumi.Input<inputs.realtimecompute.DeploymentStreamingResourceSetting | undefined>;
 }

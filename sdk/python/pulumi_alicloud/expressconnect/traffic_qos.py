@@ -19,10 +19,10 @@ __all__ = ['TrafficQosArgs', 'TrafficQos']
 @pulumi.input_type
 class TrafficQosArgs:
     def __init__(__self__, *,
-                 qos_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 qos_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TrafficQos resource.
 
@@ -44,7 +44,7 @@ class TrafficQosArgs:
 
     @_builtins.property
     @pulumi.getter(name="qosDescription")
-    def qos_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the QoS policy.
         The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
@@ -52,12 +52,12 @@ class TrafficQosArgs:
         return pulumi.get(self, "qos_description")
 
     @qos_description.setter
-    def qos_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_description", value)
 
     @_builtins.property
     @pulumi.getter(name="qosName")
-    def qos_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the QoS policy.
         The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
@@ -65,42 +65,42 @@ class TrafficQosArgs:
         return pulumi.get(self, "qos_name")
 
     @qos_name.setter
-    def qos_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _TrafficQosState:
     def __init__(__self__, *,
-                 qos_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 qos_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering TrafficQos resources.
 
@@ -125,7 +125,7 @@ class _TrafficQosState:
 
     @_builtins.property
     @pulumi.getter(name="qosDescription")
-    def qos_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the QoS policy.
         The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
@@ -133,12 +133,12 @@ class _TrafficQosState:
         return pulumi.get(self, "qos_description")
 
     @qos_description.setter
-    def qos_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_description", value)
 
     @_builtins.property
     @pulumi.getter(name="qosName")
-    def qos_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the QoS policy.
         The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
@@ -146,43 +146,43 @@ class _TrafficQosState:
         return pulumi.get(self, "qos_name")
 
     @qos_name.setter
-    def qos_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the QoS policy.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -192,10 +192,10 @@ class TrafficQos(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 qos_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 qos_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Express Connect Traffic Qos resource.
@@ -301,10 +301,10 @@ class TrafficQos(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 qos_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 qos_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -329,11 +329,11 @@ class TrafficQos(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            qos_description: Optional[pulumi.Input[_builtins.str]] = None,
-            qos_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'TrafficQos':
+            qos_description: pulumi.Input[Optional[_builtins.str]] = None,
+            qos_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'TrafficQos':
         """
         Get an existing TrafficQos resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

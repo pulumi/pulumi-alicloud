@@ -209,72 +209,72 @@ export interface InstanceV2State {
     /**
      * Whether to use log audit. Valid values:
      */
-    cfwLog?: pulumi.Input<boolean>;
+    cfwLog?: pulumi.Input<boolean | undefined>;
     /**
      * The creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The end time.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
      */
-    modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The prepaid period. **NOTE:** If `paymentType` is set to `Subscription`, `period` is required.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The product code. Valid values: `cfw`.
      */
-    productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string | undefined>;
     /**
      * The product type. Valid values: `cfwElasticityPublicCn`, `cfwElasticityPublicIntl`, `cfwSubPublicCn`, `cfwSubPublicIntl`.
      */
-    productType?: pulumi.Input<string>;
+    productType?: pulumi.Input<string | undefined>;
     /**
      * The release time.
      */
-    releaseTime?: pulumi.Input<string>;
+    releaseTime?: pulumi.Input<string | undefined>;
     /**
      * The auto-renewal duration. **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
      */
-    renewalDuration?: pulumi.Input<number>;
+    renewalDuration?: pulumi.Input<number | undefined>;
     /**
      * The unit of the auto-renewal period. Valid values:
      * - `M`: Month.
      * - `Y`: Year.
      */
-    renewalDurationUnit?: pulumi.Input<string>;
+    renewalDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * Whether to renew an instance automatically or not.
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * Data leakage protection status. Valid values: `true`, `false`.
      */
-    sdl?: pulumi.Input<boolean>;
+    sdl?: pulumi.Input<boolean | undefined>;
     /**
      * The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
      */
-    spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string | undefined>;
     /**
      * The status of Cloud Firewall Instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The user status of Cloud Firewall Instance.
      */
-    userStatus?: pulumi.Input<string>;
+    userStatus?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -284,11 +284,11 @@ export interface InstanceV2Args {
     /**
      * Whether to use log audit. Valid values:
      */
-    cfwLog?: pulumi.Input<boolean>;
+    cfwLog?: pulumi.Input<boolean | undefined>;
     /**
      * The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
      */
-    modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
      */
@@ -296,7 +296,7 @@ export interface InstanceV2Args {
     /**
      * The prepaid period. **NOTE:** If `paymentType` is set to `Subscription`, `period` is required.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The product code. Valid values: `cfw`.
      */
@@ -308,24 +308,24 @@ export interface InstanceV2Args {
     /**
      * The auto-renewal duration. **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
      */
-    renewalDuration?: pulumi.Input<number>;
+    renewalDuration?: pulumi.Input<number | undefined>;
     /**
      * The unit of the auto-renewal period. Valid values:
      * - `M`: Month.
      * - `Y`: Year.
      */
-    renewalDurationUnit?: pulumi.Input<string>;
+    renewalDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * Whether to renew an instance automatically or not.
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * Data leakage protection status. Valid values: `true`, `false`.
      */
-    sdl?: pulumi.Input<boolean>;
+    sdl?: pulumi.Input<boolean | undefined>;
     /**
      * The edition of the Cloud Firewall instance. Valid values: `paygVersion`, `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
      */

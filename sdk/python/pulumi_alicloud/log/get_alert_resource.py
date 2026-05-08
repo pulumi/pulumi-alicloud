@@ -116,9 +116,9 @@ def get_alert_resource(lang: Optional[_builtins.str] = None,
         lang=pulumi.get(__ret__, 'lang'),
         project=pulumi.get(__ret__, 'project'),
         type=pulumi.get(__ret__, 'type'))
-def get_alert_resource_output(lang: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              type: Optional[pulumi.Input[_builtins.str]] = None,
+def get_alert_resource_output(lang: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              type: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertResourceResult]:
     """
     Using this data source can init SLS Alert resources automatically.

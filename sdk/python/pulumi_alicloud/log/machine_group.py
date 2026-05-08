@@ -21,9 +21,9 @@ class MachineGroupArgs:
     def __init__(__self__, *,
                  identify_lists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  project: pulumi.Input[_builtins.str],
-                 identify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None):
+                 identify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MachineGroup resource.
 
@@ -68,49 +68,49 @@ class MachineGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="identifyType")
-    def identify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
         """
         return pulumi.get(self, "identify_type")
 
     @identify_type.setter
-    def identify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identify_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The machine group name, which is unique in the same project.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The topic of a machine group.
         """
         return pulumi.get(self, "topic")
 
     @topic.setter
-    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic", value)
 
 
 @pulumi.input_type
 class _MachineGroupState:
     def __init__(__self__, *,
-                 identify_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None):
+                 identify_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MachineGroup resources.
 
@@ -133,62 +133,62 @@ class _MachineGroupState:
 
     @_builtins.property
     @pulumi.getter(name="identifyLists")
-    def identify_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def identify_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The specific machine identification, which can be an IP address or user-defined identity.
         """
         return pulumi.get(self, "identify_lists")
 
     @identify_lists.setter
-    def identify_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def identify_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "identify_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="identifyType")
-    def identify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
         """
         return pulumi.get(self, "identify_type")
 
     @identify_type.setter
-    def identify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identify_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The machine group name, which is unique in the same project.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project name to the machine group belongs.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The topic of a machine group.
         """
         return pulumi.get(self, "topic")
 
     @topic.setter
-    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic", value)
 
 
@@ -198,11 +198,11 @@ class MachineGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 identify_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None,
+                 identify_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
@@ -325,11 +325,11 @@ class MachineGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 identify_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None,
+                 identify_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -358,11 +358,11 @@ class MachineGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            identify_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            identify_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            topic: Optional[pulumi.Input[_builtins.str]] = None) -> 'MachineGroup':
+            identify_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            identify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            topic: pulumi.Input[Optional[_builtins.str]] = None) -> 'MachineGroup':
         """
         Get an existing MachineGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

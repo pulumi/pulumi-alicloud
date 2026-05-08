@@ -20,10 +20,10 @@ __all__ = ['KubernetesAddonInitArgs', 'KubernetesAddon']
 class KubernetesAddonInitArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 cleanup_cloud_resources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 cleanup_cloud_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a KubernetesAddon resource.
 
@@ -57,64 +57,64 @@ class KubernetesAddonInitArgs:
 
     @_builtins.property
     @pulumi.getter(name="cleanupCloudResources")
-    def cleanup_cloud_resources(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cleanup_cloud_resources(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
         """
         return pulumi.get(self, "cleanup_cloud_resources")
 
     @cleanup_cloud_resources.setter
-    def cleanup_cloud_resources(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cleanup_cloud_resources(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cleanup_cloud_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `cs_get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs_get_kubernetes_addons`.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of addon.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current version of addon.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
 class _KubernetesAddonState:
     def __init__(__self__, *,
-                 can_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cleanup_cloud_resources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 can_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cleanup_cloud_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KubernetesAddon resources.
 
@@ -153,99 +153,99 @@ class _KubernetesAddonState:
     @_builtins.property
     @pulumi.getter(name="canUpgrade")
     @_utilities.deprecated("""Field 'can_upgrade' has been deprecated from provider version 1.273.0. Please compare 'next_version' and 'current_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it""")
-    def can_upgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_upgrade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Deprecated since v1.273.0) Is the addon ready for upgrade.
         """
         return pulumi.get(self, "can_upgrade")
 
     @can_upgrade.setter
-    def can_upgrade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_upgrade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_upgrade", value)
 
     @_builtins.property
     @pulumi.getter(name="cleanupCloudResources")
-    def cleanup_cloud_resources(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cleanup_cloud_resources(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
         """
         return pulumi.get(self, "cleanup_cloud_resources")
 
     @cleanup_cloud_resources.setter
-    def cleanup_cloud_resources(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cleanup_cloud_resources(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cleanup_cloud_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of kubernetes cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `cs_get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs_get_kubernetes_addons`.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of addon.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nextVersion")
     @_utilities.deprecated("""Field 'next_version' has been deprecated from provider version 1.273.0. Please use 'next_version' of DataSource 'alicloud_cs_kubernetes_addons' to replace it""")
-    def next_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Deprecated since v1.273.0) The version which addon can be upgraded to.
         """
         return pulumi.get(self, "next_version")
 
     @next_version.setter
-    def next_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is it a mandatory addon to be installed.
         """
         return pulumi.get(self, "required")
 
     @required.setter
-    def required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "required", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current version of addon.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -255,11 +255,11 @@ class KubernetesAddon(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cleanup_cloud_resources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 cleanup_cloud_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource will help you to manage addon in Kubernetes Cluster, see [What is kubernetes addon](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-install-a-component-in-an-ack-cluster). For more usage information, see Use Terraform to manage addons.
@@ -442,11 +442,11 @@ class KubernetesAddon(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cleanup_cloud_resources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 cleanup_cloud_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -476,14 +476,14 @@ class KubernetesAddon(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            can_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-            cleanup_cloud_resources: Optional[pulumi.Input[_builtins.bool]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            config: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            next_version: Optional[pulumi.Input[_builtins.str]] = None,
-            required: Optional[pulumi.Input[_builtins.bool]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'KubernetesAddon':
+            can_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+            cleanup_cloud_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            next_version: pulumi.Input[Optional[_builtins.str]] = None,
+            required: pulumi.Input[Optional[_builtins.bool]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'KubernetesAddon':
         """
         Get an existing KubernetesAddon resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

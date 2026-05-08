@@ -19,17 +19,17 @@ __all__ = ['VpcEndpointServiceArgs', 'VpcEndpointService']
 @pulumi.input_type
 class VpcEndpointServiceArgs:
     def __init__(__self__, *,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_accept_connection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connect_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payer: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_support_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_affinity_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_accept_connection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connect_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payer: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_affinity_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a VpcEndpointService resource.
 
@@ -72,55 +72,55 @@ class VpcEndpointServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
-    def address_ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address version.
         """
         return pulumi.get(self, "address_ip_version")
 
     @address_ip_version.setter
-    def address_ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="autoAcceptConnection")
-    def auto_accept_connection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_accept_connection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
         """
         return pulumi.get(self, "auto_accept_connection")
 
     @auto_accept_connection.setter
-    def auto_accept_connection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_accept_connection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_accept_connection", value)
 
     @_builtins.property
     @pulumi.getter(name="connectBandwidth")
-    def connect_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connect_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
         """
         return pulumi.get(self, "connect_bandwidth")
 
     @connect_bandwidth.setter
-    def connect_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connect_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connect_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to perform only a dry run, without performing the actual request.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def payer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payer of the endpoint service. Valid values:
         - `Endpoint`: the service consumer.
@@ -129,102 +129,102 @@ class VpcEndpointServiceArgs:
         return pulumi.get(self, "payer")
 
     @payer.setter
-    def payer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payer", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDescription")
-    def service_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the endpoint service.
         """
         return pulumi.get(self, "service_description")
 
     @service_description.setter
-    def service_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_description", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceResourceType")
-    def service_resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service resource type. Value:
         """
         return pulumi.get(self, "service_resource_type")
 
     @service_resource_type.setter
-    def service_resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_resource_type", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceSupportIpv6")
-    def service_support_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def service_support_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable IPv6 for the endpoint service. Valid values:
         """
         return pulumi.get(self, "service_support_ipv6")
 
     @service_support_ipv6.setter
-    def service_support_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def service_support_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "service_support_ipv6", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneAffinityEnabled")
-    def zone_affinity_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def zone_affinity_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
         """
         return pulumi.get(self, "zone_affinity_enabled")
 
     @zone_affinity_enabled.setter
-    def zone_affinity_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def zone_affinity_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "zone_affinity_enabled", value)
 
 
 @pulumi.input_type
 class _VpcEndpointServiceState:
     def __init__(__self__, *,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_accept_connection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connect_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payer: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_business_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_support_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_endpoint_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_affinity_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_accept_connection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connect_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payer: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_business_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_endpoint_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_affinity_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointService resources.
 
@@ -285,67 +285,67 @@ class _VpcEndpointServiceState:
 
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
-    def address_ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address version.
         """
         return pulumi.get(self, "address_ip_version")
 
     @address_ip_version.setter
-    def address_ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="autoAcceptConnection")
-    def auto_accept_connection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_accept_connection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
         """
         return pulumi.get(self, "auto_accept_connection")
 
     @auto_accept_connection.setter
-    def auto_accept_connection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_accept_connection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_accept_connection", value)
 
     @_builtins.property
     @pulumi.getter(name="connectBandwidth")
-    def connect_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connect_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
         """
         return pulumi.get(self, "connect_bandwidth")
 
     @connect_bandwidth.setter
-    def connect_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connect_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connect_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the endpoint service was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to perform only a dry run, without performing the actual request.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def payer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payer of the endpoint service. Valid values:
         - `Endpoint`: the service consumer.
@@ -354,139 +354,139 @@ class _VpcEndpointServiceState:
         return pulumi.get(self, "payer")
 
     @payer.setter
-    def payer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payer", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region to which the endpoint service belongs.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceBusinessStatus")
-    def service_business_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_business_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service state of the endpoint service.
         """
         return pulumi.get(self, "service_business_status")
 
     @service_business_status.setter
-    def service_business_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_business_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_business_status", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDescription")
-    def service_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the endpoint service.
         """
         return pulumi.get(self, "service_description")
 
     @service_description.setter
-    def service_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_description", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDomain")
-    def service_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name of the endpoint service.
         """
         return pulumi.get(self, "service_domain")
 
     @service_domain.setter
-    def service_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceResourceType")
-    def service_resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service resource type. Value:
         """
         return pulumi.get(self, "service_resource_type")
 
     @service_resource_type.setter
-    def service_resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_resource_type", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceSupportIpv6")
-    def service_support_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def service_support_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable IPv6 for the endpoint service. Valid values:
         """
         return pulumi.get(self, "service_support_ipv6")
 
     @service_support_ipv6.setter
-    def service_support_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def service_support_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "service_support_ipv6", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the endpoint service.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcEndpointServiceName")
-    def vpc_endpoint_service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_endpoint_service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the endpoint service.
         """
         return pulumi.get(self, "vpc_endpoint_service_name")
 
     @vpc_endpoint_service_name.setter
-    def vpc_endpoint_service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_endpoint_service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_endpoint_service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneAffinityEnabled")
-    def zone_affinity_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def zone_affinity_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
         """
         return pulumi.get(self, "zone_affinity_enabled")
 
     @zone_affinity_enabled.setter
-    def zone_affinity_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def zone_affinity_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "zone_affinity_enabled", value)
 
 
@@ -496,17 +496,17 @@ class VpcEndpointService(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_accept_connection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connect_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payer: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_support_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_affinity_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_accept_connection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connect_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payer: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_affinity_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Private Link Vpc Endpoint Service resource.
@@ -617,17 +617,17 @@ class VpcEndpointService(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_accept_connection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connect_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payer: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_support_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_affinity_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_accept_connection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connect_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payer: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_affinity_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -664,23 +664,23 @@ class VpcEndpointService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_accept_connection: Optional[pulumi.Input[_builtins.bool]] = None,
-            connect_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            payer: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_business_status: Optional[pulumi.Input[_builtins.str]] = None,
-            service_description: Optional[pulumi.Input[_builtins.str]] = None,
-            service_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            service_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-            service_support_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_endpoint_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_affinity_enabled: Optional[pulumi.Input[_builtins.bool]] = None) -> 'VpcEndpointService':
+            address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_accept_connection: pulumi.Input[Optional[_builtins.bool]] = None,
+            connect_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            payer: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_business_status: pulumi.Input[Optional[_builtins.str]] = None,
+            service_description: pulumi.Input[Optional[_builtins.str]] = None,
+            service_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_endpoint_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_affinity_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'VpcEndpointService':
         """
         Get an existing VpcEndpointService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

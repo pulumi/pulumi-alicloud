@@ -201,38 +201,38 @@ export interface CustomRoutingEndpointState {
     /**
      * The ID of the GA instance with which the endpoint is associated.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Custom Routing Endpoint.
      */
-    customRoutingEndpointId?: pulumi.Input<string>;
+    customRoutingEndpointId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the endpoint (vSwitch).
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The ID of the endpoint group in which to create endpoints.
      */
-    endpointGroupId?: pulumi.Input<string>;
+    endpointGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the listener with which the endpoint is associated.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Custom Routing Endpoint.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
      * - `DenyAll`: denies all traffic to the endpoint.
      * - `AllowAll`: allows all traffic to the endpoint.
      * - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
      */
-    trafficToEndpointPolicy?: pulumi.Input<string>;
+    trafficToEndpointPolicy?: pulumi.Input<string | undefined>;
     /**
      * The backend service type of the endpoint. Valid values: `PrivateSubNet`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -253,7 +253,7 @@ export interface CustomRoutingEndpointArgs {
      * - `AllowAll`: allows all traffic to the endpoint.
      * - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
      */
-    trafficToEndpointPolicy?: pulumi.Input<string>;
+    trafficToEndpointPolicy?: pulumi.Input<string | undefined>;
     /**
      * The backend service type of the endpoint. Valid values: `PrivateSubNet`.
      */

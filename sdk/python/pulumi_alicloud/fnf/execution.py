@@ -21,8 +21,8 @@ class ExecutionArgs:
     def __init__(__self__, *,
                  execution_name: pulumi.Input[_builtins.str],
                  flow_name: pulumi.Input[_builtins.str],
-                 input: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 input: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Execution resource.
 
@@ -64,36 +64,36 @@ class ExecutionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def input(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Input information for this execution.
         """
         return pulumi.get(self, "input")
 
     @input.setter
-    def input(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `Stopped`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _ExecutionState:
     def __init__(__self__, *,
-                 execution_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 flow_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 input: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 execution_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 flow_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 input: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Execution resources.
 
@@ -113,50 +113,50 @@ class _ExecutionState:
 
     @_builtins.property
     @pulumi.getter(name="executionName")
-    def execution_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the execution.
         """
         return pulumi.get(self, "execution_name")
 
     @execution_name.setter
-    def execution_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_name", value)
 
     @_builtins.property
     @pulumi.getter(name="flowName")
-    def flow_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flow_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the flow.
         """
         return pulumi.get(self, "flow_name")
 
     @flow_name.setter
-    def flow_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flow_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flow_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def input(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Input information for this execution.
         """
         return pulumi.get(self, "input")
 
     @input.setter
-    def input(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `Stopped`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -166,10 +166,10 @@ class Execution(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 execution_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 flow_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 input: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 execution_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 flow_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 input: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Serverless Workflow Execution resource.
@@ -329,10 +329,10 @@ class Execution(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 execution_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 flow_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 input: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 execution_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 flow_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 input: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -360,10 +360,10 @@ class Execution(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            execution_name: Optional[pulumi.Input[_builtins.str]] = None,
-            flow_name: Optional[pulumi.Input[_builtins.str]] = None,
-            input: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Execution':
+            execution_name: pulumi.Input[Optional[_builtins.str]] = None,
+            flow_name: pulumi.Input[Optional[_builtins.str]] = None,
+            input: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Execution':
         """
         Get an existing Execution resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

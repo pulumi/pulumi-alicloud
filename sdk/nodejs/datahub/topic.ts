@@ -181,27 +181,27 @@ export interface TopicState {
      *
      * **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Create time of the datahub topic. It is a human-readable string rather than 64-bits UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Last modify time of the datahub topic. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
      */
-    lastModifyTime?: pulumi.Input<string>;
+    lastModifyTime?: pulumi.Input<string | undefined>;
     /**
      * How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
      */
-    lifeCycle?: pulumi.Input<number>;
+    lifeCycle?: pulumi.Input<number | undefined>;
     /**
      * The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the datahub project that this topic belongs to. It is case-insensitive.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
      * - BIGINT
@@ -210,15 +210,15 @@ export interface TopicState {
      * - DOUBLE
      * - TIMESTAMP
      */
-    recordSchema?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    recordSchema?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
      */
-    recordType?: pulumi.Input<string>;
+    recordType?: pulumi.Input<string | undefined>;
     /**
      * The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
      */
-    shardCount?: pulumi.Input<number>;
+    shardCount?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -230,15 +230,15 @@ export interface TopicArgs {
      *
      * **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
      */
-    lifeCycle?: pulumi.Input<number>;
+    lifeCycle?: pulumi.Input<number | undefined>;
     /**
      * The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the datahub project that this topic belongs to. It is case-insensitive.
      */
@@ -251,13 +251,13 @@ export interface TopicArgs {
      * - DOUBLE
      * - TIMESTAMP
      */
-    recordSchema?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    recordSchema?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
      */
-    recordType?: pulumi.Input<string>;
+    recordType?: pulumi.Input<string | undefined>;
     /**
      * The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
      */
-    shardCount?: pulumi.Input<number>;
+    shardCount?: pulumi.Input<number | undefined>;
 }

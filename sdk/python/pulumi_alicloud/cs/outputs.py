@@ -1224,19 +1224,19 @@ class ManagedKubernetesAddon(dict):
                import pulumi_std as std
                
                k8s = alicloud.cs.ManagedKubernetes("k8s", addons=[{
-                   "name": std.lookup(map=entry["value"],
+                   "name": output(std.lookup(map=entry["value"],
                        key="name",
-                       default=cluster_addons).result,
-                   "config": std.lookup(map=entry["value"],
+                       default=cluster_addons).result).apply(lambda x: str(x)),
+                   "config": output(std.lookup(map=entry["value"],
                        key="config",
-                       default=cluster_addons).result,
-                   "version": std.lookup(map=entry["value"],
+                       default=cluster_addons).result).apply(lambda x: str(x)),
+                   "version": output(std.lookup(map=entry["value"],
                        key="version",
-                       default=cluster_addons).result,
-                   "disabled": std.lookup(map=entry["value"],
+                       default=cluster_addons).result).apply(lambda x: str(x)),
+                   "disabled": output(std.lookup(map=entry["value"],
                        key="disabled",
-                       default=cluster_addons).result,
-               } for entry in [{"key": k, "value": v} for k, v in cluster_addons.items()]])
+                       default=cluster_addons).result).apply(lambda x: x == "true"),
+               } for entry in [{"key": k, "value": v} for k, v in sorted(cluster_addons.items())]])
                ```
                
                The `varibales.tf`:
@@ -1436,19 +1436,19 @@ class ManagedKubernetesAddon(dict):
         import pulumi_std as std
 
         k8s = alicloud.cs.ManagedKubernetes("k8s", addons=[{
-            "name": std.lookup(map=entry["value"],
+            "name": output(std.lookup(map=entry["value"],
                 key="name",
-                default=cluster_addons).result,
-            "config": std.lookup(map=entry["value"],
+                default=cluster_addons).result).apply(lambda x: str(x)),
+            "config": output(std.lookup(map=entry["value"],
                 key="config",
-                default=cluster_addons).result,
-            "version": std.lookup(map=entry["value"],
+                default=cluster_addons).result).apply(lambda x: str(x)),
+            "version": output(std.lookup(map=entry["value"],
                 key="version",
-                default=cluster_addons).result,
-            "disabled": std.lookup(map=entry["value"],
+                default=cluster_addons).result).apply(lambda x: str(x)),
+            "disabled": output(std.lookup(map=entry["value"],
                 key="disabled",
-                default=cluster_addons).result,
-        } for entry in [{"key": k, "value": v} for k, v in cluster_addons.items()]])
+                default=cluster_addons).result).apply(lambda x: x == "true"),
+        } for entry in [{"key": k, "value": v} for k, v in sorted(cluster_addons.items())]])
         ```
 
         The `varibales.tf`:

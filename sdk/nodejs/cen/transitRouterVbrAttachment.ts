@@ -228,78 +228,78 @@ export interface TransitRouterVbrAttachmentState {
     /**
      * AutoPublishRouteEnabled
      */
-    autoPublishRouteEnabled?: pulumi.Input<boolean>;
+    autoPublishRouteEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * CenId
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The entity that pays the fees of the network instance. Valid values:
      *
      * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
      * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
      */
-    orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string | undefined>;
     /**
      * RegionId.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * Whether to enabled route table association. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
      *
      * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
      */
-    routeTableAssociationEnabled?: pulumi.Input<boolean>;
+    routeTableAssociationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
      *
      * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      */
-    routeTablePropagationEnabled?: pulumi.Input<boolean>;
+    routeTablePropagationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * TransitRouterAttachmentDescription
      */
-    transitRouterAttachmentDescription?: pulumi.Input<string>;
+    transitRouterAttachmentDescription?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource.
      */
-    transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * TransitRouterAttachmentName
      */
-    transitRouterAttachmentName?: pulumi.Input<string>;
+    transitRouterAttachmentName?: pulumi.Input<string | undefined>;
     /**
      * TransitRouterId
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
     /**
      * VbrId
      */
-    vbrId?: pulumi.Input<string>;
+    vbrId?: pulumi.Input<string | undefined>;
     /**
      * VbrOwnerId
      */
-    vbrOwnerId?: pulumi.Input<string>;
+    vbrOwnerId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -309,54 +309,54 @@ export interface TransitRouterVbrAttachmentArgs {
     /**
      * AutoPublishRouteEnabled
      */
-    autoPublishRouteEnabled?: pulumi.Input<boolean>;
+    autoPublishRouteEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * CenId
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The entity that pays the fees of the network instance. Valid values:
      *
      * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
      * - `PayByResourceOwner`: the Alibaba Cloud account that owns the network instance.
      */
-    orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string | undefined>;
     /**
      * The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * Whether to enabled route table association. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
      *
      * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
      */
-    routeTableAssociationEnabled?: pulumi.Input<boolean>;
+    routeTableAssociationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
      *
      * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      */
-    routeTablePropagationEnabled?: pulumi.Input<boolean>;
+    routeTablePropagationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * TransitRouterAttachmentDescription
      */
-    transitRouterAttachmentDescription?: pulumi.Input<string>;
+    transitRouterAttachmentDescription?: pulumi.Input<string | undefined>;
     /**
      * TransitRouterAttachmentName
      */
-    transitRouterAttachmentName?: pulumi.Input<string>;
+    transitRouterAttachmentName?: pulumi.Input<string | undefined>;
     /**
      * TransitRouterId
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
     /**
      * VbrId
      */
@@ -364,5 +364,5 @@ export interface TransitRouterVbrAttachmentArgs {
     /**
      * VbrOwnerId
      */
-    vbrOwnerId?: pulumi.Input<string>;
+    vbrOwnerId?: pulumi.Input<string | undefined>;
 }

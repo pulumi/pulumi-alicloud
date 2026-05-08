@@ -137,19 +137,19 @@ export interface WafPolicyState {
     /**
      * The type of protection policy. Valid values: `wafGroup`, `customAcl`, `whitelist`, `ipBlacklist`, `regionBlock`.
      */
-    defenseScene?: pulumi.Input<string>;
+    defenseScene?: pulumi.Input<string | undefined>;
     /**
      * The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * The type of the protection policy. Valid values: `default`, `custom`.
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `on`, `off`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

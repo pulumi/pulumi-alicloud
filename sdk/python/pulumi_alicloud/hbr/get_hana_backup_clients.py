@@ -204,14 +204,14 @@ def get_hana_backup_clients(client_id: Optional[_builtins.str] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         status=pulumi.get(__ret__, 'status'),
         vault_id=pulumi.get(__ret__, 'vault_id'))
-def get_hana_backup_clients_output(client_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   cluster_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                   output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                   page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                   status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   vault_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_hana_backup_clients_output(client_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   cluster_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                   output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                   page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                   status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHanaBackupClientsResult]:
     """
     This data source provides the Hybrid Backup Recovery (HBR) Hana Backup Clients of the current Alibaba Cloud user.

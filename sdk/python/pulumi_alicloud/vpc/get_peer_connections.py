@@ -191,12 +191,12 @@ def get_peer_connections(ids: Optional[Sequence[_builtins.str]] = None,
         peer_connection_name=pulumi.get(__ret__, 'peer_connection_name'),
         status=pulumi.get(__ret__, 'status'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-def get_peer_connections_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                peer_connection_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_peer_connections_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                peer_connection_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPeerConnectionsResult]:
     """
     This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.

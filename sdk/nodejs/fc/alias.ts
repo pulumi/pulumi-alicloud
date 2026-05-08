@@ -146,23 +146,23 @@ export interface AliasState {
     /**
      * Name for the alias you are creating.
      */
-    aliasName?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string | undefined>;
     /**
      * Description of the alias.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Function Compute alias' route configuration settings. See `routingConfig` below.
      */
-    routingConfig?: pulumi.Input<inputs.fc.AliasRoutingConfig>;
+    routingConfig?: pulumi.Input<inputs.fc.AliasRoutingConfig | undefined>;
     /**
      * The Function Compute service name.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
      */
-    serviceVersion?: pulumi.Input<string>;
+    serviceVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -176,11 +176,11 @@ export interface AliasArgs {
     /**
      * Description of the alias.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Function Compute alias' route configuration settings. See `routingConfig` below.
      */
-    routingConfig?: pulumi.Input<inputs.fc.AliasRoutingConfig>;
+    routingConfig?: pulumi.Input<inputs.fc.AliasRoutingConfig | undefined>;
     /**
      * The Function Compute service name.
      */

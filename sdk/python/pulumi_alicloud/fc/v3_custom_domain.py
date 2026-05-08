@@ -21,14 +21,14 @@ __all__ = ['V3CustomDomainArgs', 'V3CustomDomain']
 @pulumi.input_type
 class V3CustomDomainArgs:
     def __init__(__self__, *,
-                 auth_config: Optional[pulumi.Input['V3CustomDomainAuthConfigArgs']] = None,
-                 cert_config: Optional[pulumi.Input['V3CustomDomainCertConfigArgs']] = None,
-                 cors_config: Optional[pulumi.Input['V3CustomDomainCorsConfigArgs']] = None,
-                 custom_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_config: Optional[pulumi.Input['V3CustomDomainRouteConfigArgs']] = None,
-                 tls_config: Optional[pulumi.Input['V3CustomDomainTlsConfigArgs']] = None,
-                 waf_config: Optional[pulumi.Input['V3CustomDomainWafConfigArgs']] = None):
+                 auth_config: pulumi.Input[Optional['V3CustomDomainAuthConfigArgs']] = None,
+                 cert_config: pulumi.Input[Optional['V3CustomDomainCertConfigArgs']] = None,
+                 cors_config: pulumi.Input[Optional['V3CustomDomainCorsConfigArgs']] = None,
+                 custom_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_config: pulumi.Input[Optional['V3CustomDomainRouteConfigArgs']] = None,
+                 tls_config: pulumi.Input[Optional['V3CustomDomainTlsConfigArgs']] = None,
+                 waf_config: pulumi.Input[Optional['V3CustomDomainWafConfigArgs']] = None):
         """
         The set of arguments for constructing a V3CustomDomain resource.
 
@@ -60,117 +60,117 @@ class V3CustomDomainArgs:
 
     @_builtins.property
     @pulumi.getter(name="authConfig")
-    def auth_config(self) -> Optional[pulumi.Input['V3CustomDomainAuthConfigArgs']]:
+    def auth_config(self) -> pulumi.Input[Optional['V3CustomDomainAuthConfigArgs']]:
         """
         Permission authentication configuration See `auth_config` below.
         """
         return pulumi.get(self, "auth_config")
 
     @auth_config.setter
-    def auth_config(self, value: Optional[pulumi.Input['V3CustomDomainAuthConfigArgs']]):
+    def auth_config(self, value: pulumi.Input[Optional['V3CustomDomainAuthConfigArgs']]):
         pulumi.set(self, "auth_config", value)
 
     @_builtins.property
     @pulumi.getter(name="certConfig")
-    def cert_config(self) -> Optional[pulumi.Input['V3CustomDomainCertConfigArgs']]:
+    def cert_config(self) -> pulumi.Input[Optional['V3CustomDomainCertConfigArgs']]:
         """
         HTTPS certificate information See `cert_config` below.
         """
         return pulumi.get(self, "cert_config")
 
     @cert_config.setter
-    def cert_config(self, value: Optional[pulumi.Input['V3CustomDomainCertConfigArgs']]):
+    def cert_config(self, value: pulumi.Input[Optional['V3CustomDomainCertConfigArgs']]):
         pulumi.set(self, "cert_config", value)
 
     @_builtins.property
     @pulumi.getter(name="corsConfig")
-    def cors_config(self) -> Optional[pulumi.Input['V3CustomDomainCorsConfigArgs']]:
+    def cors_config(self) -> pulumi.Input[Optional['V3CustomDomainCorsConfigArgs']]:
         """
         Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
         """
         return pulumi.get(self, "cors_config")
 
     @cors_config.setter
-    def cors_config(self, value: Optional[pulumi.Input['V3CustomDomainCorsConfigArgs']]):
+    def cors_config(self, value: pulumi.Input[Optional['V3CustomDomainCorsConfigArgs']]):
         pulumi.set(self, "cors_config", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomainName")
-    def custom_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "custom_domain_name")
 
     @custom_domain_name.setter
-    def custom_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="routeConfig")
-    def route_config(self) -> Optional[pulumi.Input['V3CustomDomainRouteConfigArgs']]:
+    def route_config(self) -> pulumi.Input[Optional['V3CustomDomainRouteConfigArgs']]:
         """
         Route matching rule configuration See `route_config` below.
         """
         return pulumi.get(self, "route_config")
 
     @route_config.setter
-    def route_config(self, value: Optional[pulumi.Input['V3CustomDomainRouteConfigArgs']]):
+    def route_config(self, value: pulumi.Input[Optional['V3CustomDomainRouteConfigArgs']]):
         pulumi.set(self, "route_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsConfig")
-    def tls_config(self) -> Optional[pulumi.Input['V3CustomDomainTlsConfigArgs']]:
+    def tls_config(self) -> pulumi.Input[Optional['V3CustomDomainTlsConfigArgs']]:
         """
         TLS configuration information See `tls_config` below.
         """
         return pulumi.get(self, "tls_config")
 
     @tls_config.setter
-    def tls_config(self, value: Optional[pulumi.Input['V3CustomDomainTlsConfigArgs']]):
+    def tls_config(self, value: pulumi.Input[Optional['V3CustomDomainTlsConfigArgs']]):
         pulumi.set(self, "tls_config", value)
 
     @_builtins.property
     @pulumi.getter(name="wafConfig")
-    def waf_config(self) -> Optional[pulumi.Input['V3CustomDomainWafConfigArgs']]:
+    def waf_config(self) -> pulumi.Input[Optional['V3CustomDomainWafConfigArgs']]:
         """
         Web application firewall configuration information See `waf_config` below.
         """
         return pulumi.get(self, "waf_config")
 
     @waf_config.setter
-    def waf_config(self, value: Optional[pulumi.Input['V3CustomDomainWafConfigArgs']]):
+    def waf_config(self, value: pulumi.Input[Optional['V3CustomDomainWafConfigArgs']]):
         pulumi.set(self, "waf_config", value)
 
 
 @pulumi.input_type
 class _V3CustomDomainState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_config: Optional[pulumi.Input['V3CustomDomainAuthConfigArgs']] = None,
-                 cert_config: Optional[pulumi.Input['V3CustomDomainCertConfigArgs']] = None,
-                 cors_config: Optional[pulumi.Input['V3CustomDomainCorsConfigArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_config: Optional[pulumi.Input['V3CustomDomainRouteConfigArgs']] = None,
-                 subdomain_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_config: Optional[pulumi.Input['V3CustomDomainTlsConfigArgs']] = None,
-                 waf_config: Optional[pulumi.Input['V3CustomDomainWafConfigArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_config: pulumi.Input[Optional['V3CustomDomainAuthConfigArgs']] = None,
+                 cert_config: pulumi.Input[Optional['V3CustomDomainCertConfigArgs']] = None,
+                 cors_config: pulumi.Input[Optional['V3CustomDomainCorsConfigArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_config: pulumi.Input[Optional['V3CustomDomainRouteConfigArgs']] = None,
+                 subdomain_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_config: pulumi.Input[Optional['V3CustomDomainTlsConfigArgs']] = None,
+                 waf_config: pulumi.Input[Optional['V3CustomDomainWafConfigArgs']] = None):
         """
         Input properties used for looking up and filtering V3CustomDomain resources.
 
@@ -217,158 +217,158 @@ class _V3CustomDomainState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of your Alibaba Cloud account (primary account).
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="apiVersion")
-    def api_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API version of Function Compute.
         """
         return pulumi.get(self, "api_version")
 
     @api_version.setter
-    def api_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_version", value)
 
     @_builtins.property
     @pulumi.getter(name="authConfig")
-    def auth_config(self) -> Optional[pulumi.Input['V3CustomDomainAuthConfigArgs']]:
+    def auth_config(self) -> pulumi.Input[Optional['V3CustomDomainAuthConfigArgs']]:
         """
         Permission authentication configuration See `auth_config` below.
         """
         return pulumi.get(self, "auth_config")
 
     @auth_config.setter
-    def auth_config(self, value: Optional[pulumi.Input['V3CustomDomainAuthConfigArgs']]):
+    def auth_config(self, value: pulumi.Input[Optional['V3CustomDomainAuthConfigArgs']]):
         pulumi.set(self, "auth_config", value)
 
     @_builtins.property
     @pulumi.getter(name="certConfig")
-    def cert_config(self) -> Optional[pulumi.Input['V3CustomDomainCertConfigArgs']]:
+    def cert_config(self) -> pulumi.Input[Optional['V3CustomDomainCertConfigArgs']]:
         """
         HTTPS certificate information See `cert_config` below.
         """
         return pulumi.get(self, "cert_config")
 
     @cert_config.setter
-    def cert_config(self, value: Optional[pulumi.Input['V3CustomDomainCertConfigArgs']]):
+    def cert_config(self, value: pulumi.Input[Optional['V3CustomDomainCertConfigArgs']]):
         pulumi.set(self, "cert_config", value)
 
     @_builtins.property
     @pulumi.getter(name="corsConfig")
-    def cors_config(self) -> Optional[pulumi.Input['V3CustomDomainCorsConfigArgs']]:
+    def cors_config(self) -> pulumi.Input[Optional['V3CustomDomainCorsConfigArgs']]:
         """
         Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `cors_config` below.
         """
         return pulumi.get(self, "cors_config")
 
     @cors_config.setter
-    def cors_config(self, value: Optional[pulumi.Input['V3CustomDomainCorsConfigArgs']]):
+    def cors_config(self, value: pulumi.Input[Optional['V3CustomDomainCorsConfigArgs']]):
         pulumi.set(self, "cors_config", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomainName")
-    def custom_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "custom_domain_name")
 
     @custom_domain_name.setter
-    def custom_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last time the custom domain name was Updated.
         """
         return pulumi.get(self, "last_modified_time")
 
     @last_modified_time.setter
-    def last_modified_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="routeConfig")
-    def route_config(self) -> Optional[pulumi.Input['V3CustomDomainRouteConfigArgs']]:
+    def route_config(self) -> pulumi.Input[Optional['V3CustomDomainRouteConfigArgs']]:
         """
         Route matching rule configuration See `route_config` below.
         """
         return pulumi.get(self, "route_config")
 
     @route_config.setter
-    def route_config(self, value: Optional[pulumi.Input['V3CustomDomainRouteConfigArgs']]):
+    def route_config(self, value: pulumi.Input[Optional['V3CustomDomainRouteConfigArgs']]):
         pulumi.set(self, "route_config", value)
 
     @_builtins.property
     @pulumi.getter(name="subdomainCount")
-    def subdomain_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subdomain_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of subdomains.
         """
         return pulumi.get(self, "subdomain_count")
 
     @subdomain_count.setter
-    def subdomain_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subdomain_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subdomain_count", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsConfig")
-    def tls_config(self) -> Optional[pulumi.Input['V3CustomDomainTlsConfigArgs']]:
+    def tls_config(self) -> pulumi.Input[Optional['V3CustomDomainTlsConfigArgs']]:
         """
         TLS configuration information See `tls_config` below.
         """
         return pulumi.get(self, "tls_config")
 
     @tls_config.setter
-    def tls_config(self, value: Optional[pulumi.Input['V3CustomDomainTlsConfigArgs']]):
+    def tls_config(self, value: pulumi.Input[Optional['V3CustomDomainTlsConfigArgs']]):
         pulumi.set(self, "tls_config", value)
 
     @_builtins.property
     @pulumi.getter(name="wafConfig")
-    def waf_config(self) -> Optional[pulumi.Input['V3CustomDomainWafConfigArgs']]:
+    def waf_config(self) -> pulumi.Input[Optional['V3CustomDomainWafConfigArgs']]:
         """
         Web application firewall configuration information See `waf_config` below.
         """
         return pulumi.get(self, "waf_config")
 
     @waf_config.setter
-    def waf_config(self, value: Optional[pulumi.Input['V3CustomDomainWafConfigArgs']]):
+    def waf_config(self, value: pulumi.Input[Optional['V3CustomDomainWafConfigArgs']]):
         pulumi.set(self, "waf_config", value)
 
 
@@ -378,14 +378,14 @@ class V3CustomDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_config: Optional[pulumi.Input[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']]] = None,
-                 cert_config: Optional[pulumi.Input[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']]] = None,
-                 cors_config: Optional[pulumi.Input[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']]] = None,
-                 custom_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_config: Optional[pulumi.Input[Union['V3CustomDomainRouteConfigArgs', 'V3CustomDomainRouteConfigArgsDict']]] = None,
-                 tls_config: Optional[pulumi.Input[Union['V3CustomDomainTlsConfigArgs', 'V3CustomDomainTlsConfigArgsDict']]] = None,
-                 waf_config: Optional[pulumi.Input[Union['V3CustomDomainWafConfigArgs', 'V3CustomDomainWafConfigArgsDict']]] = None,
+                 auth_config: pulumi.Input[Optional[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']]] = None,
+                 cert_config: pulumi.Input[Optional[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']]] = None,
+                 cors_config: pulumi.Input[Optional[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']]] = None,
+                 custom_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_config: pulumi.Input[Optional[Union['V3CustomDomainRouteConfigArgs', 'V3CustomDomainRouteConfigArgsDict']]] = None,
+                 tls_config: pulumi.Input[Optional[Union['V3CustomDomainTlsConfigArgs', 'V3CustomDomainTlsConfigArgsDict']]] = None,
+                 waf_config: pulumi.Input[Optional[Union['V3CustomDomainWafConfigArgs', 'V3CustomDomainWafConfigArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Function Compute Service V3 (FCV3) Custom Domain resource.
@@ -817,14 +817,14 @@ class V3CustomDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_config: Optional[pulumi.Input[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']]] = None,
-                 cert_config: Optional[pulumi.Input[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']]] = None,
-                 cors_config: Optional[pulumi.Input[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']]] = None,
-                 custom_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_config: Optional[pulumi.Input[Union['V3CustomDomainRouteConfigArgs', 'V3CustomDomainRouteConfigArgsDict']]] = None,
-                 tls_config: Optional[pulumi.Input[Union['V3CustomDomainTlsConfigArgs', 'V3CustomDomainTlsConfigArgsDict']]] = None,
-                 waf_config: Optional[pulumi.Input[Union['V3CustomDomainWafConfigArgs', 'V3CustomDomainWafConfigArgsDict']]] = None,
+                 auth_config: pulumi.Input[Optional[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']]] = None,
+                 cert_config: pulumi.Input[Optional[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']]] = None,
+                 cors_config: pulumi.Input[Optional[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']]] = None,
+                 custom_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_config: pulumi.Input[Optional[Union['V3CustomDomainRouteConfigArgs', 'V3CustomDomainRouteConfigArgsDict']]] = None,
+                 tls_config: pulumi.Input[Optional[Union['V3CustomDomainTlsConfigArgs', 'V3CustomDomainTlsConfigArgsDict']]] = None,
+                 waf_config: pulumi.Input[Optional[Union['V3CustomDomainWafConfigArgs', 'V3CustomDomainWafConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -857,19 +857,19 @@ class V3CustomDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            api_version: Optional[pulumi.Input[_builtins.str]] = None,
-            auth_config: Optional[pulumi.Input[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']]] = None,
-            cert_config: Optional[pulumi.Input[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']]] = None,
-            cors_config: Optional[pulumi.Input[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            route_config: Optional[pulumi.Input[Union['V3CustomDomainRouteConfigArgs', 'V3CustomDomainRouteConfigArgsDict']]] = None,
-            subdomain_count: Optional[pulumi.Input[_builtins.str]] = None,
-            tls_config: Optional[pulumi.Input[Union['V3CustomDomainTlsConfigArgs', 'V3CustomDomainTlsConfigArgsDict']]] = None,
-            waf_config: Optional[pulumi.Input[Union['V3CustomDomainWafConfigArgs', 'V3CustomDomainWafConfigArgsDict']]] = None) -> 'V3CustomDomain':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            api_version: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_config: pulumi.Input[Optional[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']]] = None,
+            cert_config: pulumi.Input[Optional[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']]] = None,
+            cors_config: pulumi.Input[Optional[Union['V3CustomDomainCorsConfigArgs', 'V3CustomDomainCorsConfigArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            route_config: pulumi.Input[Optional[Union['V3CustomDomainRouteConfigArgs', 'V3CustomDomainRouteConfigArgsDict']]] = None,
+            subdomain_count: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_config: pulumi.Input[Optional[Union['V3CustomDomainTlsConfigArgs', 'V3CustomDomainTlsConfigArgsDict']]] = None,
+            waf_config: pulumi.Input[Optional[Union['V3CustomDomainWafConfigArgs', 'V3CustomDomainWafConfigArgsDict']]] = None) -> 'V3CustomDomain':
         """
         Get an existing V3CustomDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

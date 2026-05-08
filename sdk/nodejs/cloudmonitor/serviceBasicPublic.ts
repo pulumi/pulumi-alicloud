@@ -97,7 +97,7 @@ export interface ServiceBasicPublicState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
 }
 
 /**

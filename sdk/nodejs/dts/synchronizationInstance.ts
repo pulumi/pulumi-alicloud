@@ -205,63 +205,63 @@ export interface SynchronizationInstanceState {
     /**
      * Whether to automatically renew when it expires. Valid values: `true`, `false`.
      */
-    autoPay?: pulumi.Input<string>;
+    autoPay?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
      */
-    autoStart?: pulumi.Input<string>;
+    autoStart?: pulumi.Input<string | undefined>;
     /**
      * [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
      */
-    computeUnit?: pulumi.Input<number>;
+    computeUnit?: pulumi.Input<number | undefined>;
     /**
      * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
      */
-    databaseCount?: pulumi.Input<number>;
+    databaseCount?: pulumi.Input<number | undefined>;
     /**
      * The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
      */
-    destinationEndpointEngineName?: pulumi.Input<string>;
+    destinationEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
      * The region of destination instance. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
      */
-    destinationEndpointRegion?: pulumi.Input<string>;
+    destinationEndpointRegion?: pulumi.Input<string | undefined>;
     /**
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
      */
-    instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string | undefined>;
     /**
      * The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
      */
-    paymentDuration?: pulumi.Input<number>;
+    paymentDuration?: pulumi.Input<number | undefined>;
     /**
      * The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      */
-    paymentDurationUnit?: pulumi.Input<string>;
+    paymentDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The number of instances purchased.
      */
-    quantity?: pulumi.Input<number>;
+    quantity?: pulumi.Input<number | undefined>;
     /**
      * The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
      */
-    sourceEndpointEngineName?: pulumi.Input<string>;
+    sourceEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
      * The region of source instance.
      */
-    sourceEndpointRegion?: pulumi.Input<string>;
+    sourceEndpointRegion?: pulumi.Input<string | undefined>;
     /**
      * The status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The sync architecture. Valid values: `oneway`, `bidirectional`.
      */
-    syncArchitecture?: pulumi.Input<string>;
+    syncArchitecture?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -271,19 +271,19 @@ export interface SynchronizationInstanceArgs {
     /**
      * Whether to automatically renew when it expires. Valid values: `true`, `false`.
      */
-    autoPay?: pulumi.Input<string>;
+    autoPay?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically start the task after the purchase completed. Valid values: `true`, `false`.
      */
-    autoStart?: pulumi.Input<string>;
+    autoStart?: pulumi.Input<string | undefined>;
     /**
      * [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
      */
-    computeUnit?: pulumi.Input<number>;
+    computeUnit?: pulumi.Input<number | undefined>;
     /**
      * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `sourceEndpointEngineName` equals `drds`.
      */
-    databaseCount?: pulumi.Input<number>;
+    databaseCount?: pulumi.Input<number | undefined>;
     /**
      * The type of destination engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
      */
@@ -295,15 +295,15 @@ export interface SynchronizationInstanceArgs {
     /**
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
      */
-    instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string | undefined>;
     /**
      * The duration of prepaid instance purchase. this parameter is required When `paymentType` equals `Subscription`.
      */
-    paymentDuration?: pulumi.Input<number>;
+    paymentDuration?: pulumi.Input<number | undefined>;
     /**
      * The payment duration unit. Valid values: `Month`, `Year`. When `paymentType` is `Subscription`, this parameter is valid and must be passed in.
      */
-    paymentDurationUnit?: pulumi.Input<string>;
+    paymentDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
      */
@@ -311,7 +311,7 @@ export interface SynchronizationInstanceArgs {
     /**
      * The number of instances purchased.
      */
-    quantity?: pulumi.Input<number>;
+    quantity?: pulumi.Input<number | undefined>;
     /**
      * The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardbO`, `polardbPg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
      */
@@ -323,5 +323,5 @@ export interface SynchronizationInstanceArgs {
     /**
      * The sync architecture. Valid values: `oneway`, `bidirectional`.
      */
-    syncArchitecture?: pulumi.Input<string>;
+    syncArchitecture?: pulumi.Input<string | undefined>;
 }

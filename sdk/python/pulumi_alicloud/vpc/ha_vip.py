@@ -20,12 +20,12 @@ __all__ = ['HAVipArgs', 'HAVip']
 class HAVipArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vip_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 havip_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vip_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 havip_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a HAVip resource.
 
@@ -68,96 +68,96 @@ class HAVipArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the HaVip instance.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="haVipName")
-    def ha_vip_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vip_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the HAVIP.
         """
         return pulumi.get(self, "ha_vip_name")
 
     @ha_vip_name.setter
-    def ha_vip_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vip_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vip_name", value)
 
     @_builtins.property
     @pulumi.getter(name="havipName")
     @_utilities.deprecated("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
-    def havip_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def havip_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the HaVip instance.
         """
         return pulumi.get(self, "havip_name")
 
     @havip_name.setter
-    def havip_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def havip_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "havip_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the HAVIP belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _HAVipState:
     def __init__(__self__, *,
-                 associated_eip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 associated_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 associated_instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vip_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 havip_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 associated_eip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 associated_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 associated_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vip_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 havip_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HAVip resources.
 
@@ -215,19 +215,19 @@ class _HAVipState:
 
     @_builtins.property
     @pulumi.getter(name="associatedEipAddresses")
-    def associated_eip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def associated_eip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The elastic IP address (EIP) associated with the HAVIP.
         """
         return pulumi.get(self, "associated_eip_addresses")
 
     @associated_eip_addresses.setter
-    def associated_eip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def associated_eip_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "associated_eip_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="associatedInstanceType")
-    def associated_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def associated_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the instance with which the HAVIP is associated. Valid values:
         - `EcsInstance`: an ECS instance.
@@ -236,164 +236,164 @@ class _HAVipState:
         return pulumi.get(self, "associated_instance_type")
 
     @associated_instance_type.setter
-    def associated_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def associated_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "associated_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="associatedInstances")
-    def associated_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def associated_instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of the instance with which the HAVIP is associated.
         """
         return pulumi.get(self, "associated_instances")
 
     @associated_instances.setter
-    def associated_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def associated_instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "associated_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the HAVIP was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the HaVip instance.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="haVipId")
-    def ha_vip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vip_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the HAVIP.
         """
         return pulumi.get(self, "ha_vip_id")
 
     @ha_vip_id.setter
-    def ha_vip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vip_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vip_id", value)
 
     @_builtins.property
     @pulumi.getter(name="haVipName")
-    def ha_vip_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vip_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the HAVIP.
         """
         return pulumi.get(self, "ha_vip_name")
 
     @ha_vip_name.setter
-    def ha_vip_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vip_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vip_name", value)
 
     @_builtins.property
     @pulumi.getter(name="havipName")
     @_utilities.deprecated("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
-    def havip_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def havip_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the HaVip instance.
         """
         return pulumi.get(self, "havip_name")
 
     @havip_name.setter
-    def havip_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def havip_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "havip_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="masterInstanceId")
-    def master_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the active instance that is associated with the HAVIP.
         """
         return pulumi.get(self, "master_instance_id")
 
     @master_instance_id.setter
-    def master_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the HAVIP belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.120.0) The status of the HaVip instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC to which the HAVIP belongs.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vswitch_id of the HaVip, the field can't be changed.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -403,13 +403,13 @@ class HAVip(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vip_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 havip_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vip_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 havip_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a HaVip resource, see [What is HAVIP](https://www.alibabacloud.com/help/zh/vpc/developer-reference/api-createhavip).
@@ -534,13 +534,13 @@ class HAVip(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_vip_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 havip_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_vip_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 havip_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -577,21 +577,21 @@ class HAVip(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            associated_eip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            associated_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            associated_instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_vip_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_vip_name: Optional[pulumi.Input[_builtins.str]] = None,
-            havip_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            master_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'HAVip':
+            associated_eip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            associated_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            associated_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_vip_name: pulumi.Input[Optional[_builtins.str]] = None,
+            havip_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            master_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'HAVip':
         """
         Get an existing HAVip resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

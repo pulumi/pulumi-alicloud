@@ -221,49 +221,49 @@ export interface TopicState {
      * - false: The delete cleanup policy is used.
      * - true: The compact cleanup policy is used.
      */
-    compactTopic?: pulumi.Input<boolean>;
+    compactTopic?: pulumi.Input<boolean | undefined>;
     /**
      * The advanced configurations.
      */
-    configs?: pulumi.Input<string>;
+    configs?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.262.1) The time when the topic was created.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The storage engine of the topic. Valid values:
      * - false: Cloud storage.
      * - true: Local storage.
      */
-    localTopic?: pulumi.Input<boolean>;
+    localTopic?: pulumi.Input<boolean | undefined>;
     /**
      * The number of partitions in the topic.
      */
-    partitionNum?: pulumi.Input<number>;
+    partitionNum?: pulumi.Input<number | undefined>;
     /**
      * (Available since v1.262.1) The ID of the region where the instance resides.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The description of the topic.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.262.1) The status of the service.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The topic name.
      */
-    topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -275,11 +275,11 @@ export interface TopicArgs {
      * - false: The delete cleanup policy is used.
      * - true: The compact cleanup policy is used.
      */
-    compactTopic?: pulumi.Input<boolean>;
+    compactTopic?: pulumi.Input<boolean | undefined>;
     /**
      * The advanced configurations.
      */
-    configs?: pulumi.Input<string>;
+    configs?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */
@@ -289,11 +289,11 @@ export interface TopicArgs {
      * - false: Cloud storage.
      * - true: Local storage.
      */
-    localTopic?: pulumi.Input<boolean>;
+    localTopic?: pulumi.Input<boolean | undefined>;
     /**
      * The number of partitions in the topic.
      */
-    partitionNum?: pulumi.Input<number>;
+    partitionNum?: pulumi.Input<number | undefined>;
     /**
      * The description of the topic.
      */
@@ -301,7 +301,7 @@ export interface TopicArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The topic name.
      */

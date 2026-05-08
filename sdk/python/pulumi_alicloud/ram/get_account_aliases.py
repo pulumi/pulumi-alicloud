@@ -81,7 +81,7 @@ def get_account_aliases(output_file: Optional[_builtins.str] = None,
         account_alias=pulumi.get(__ret__, 'account_alias'),
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_account_aliases_output(output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_account_aliases_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountAliasesResult]:
     """
     Use this data source to access information about an existing resource.

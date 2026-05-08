@@ -188,49 +188,49 @@ export interface LayerVersionState {
     /**
      * The access mode of Layer Version.
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * The arn of Layer Version.
      */
-    arn?: pulumi.Input<string>;
+    arn?: pulumi.Input<string | undefined>;
     /**
      * The checksum of the layer code package.
      */
-    codeCheckSum?: pulumi.Input<string>;
+    codeCheckSum?: pulumi.Input<string | undefined>;
     /**
      * The list of runtime environments that are supported by the layer. Valid values: `nodejs14`, `nodejs12`, `nodejs10`, `nodejs8`, `nodejs6`, `python3.9`, `python3`, `python2.7`, `java11`, `java8`, `php7.2`, `go1`,`dotnetcore2.1`, `custom`.
      */
-    compatibleRuntimes?: pulumi.Input<pulumi.Input<string>[]>;
+    compatibleRuntimes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the layer version.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the layer.
      */
-    layerName?: pulumi.Input<string>;
+    layerName?: pulumi.Input<string | undefined>;
     /**
      * The name of the OSS bucket that stores the ZIP package of the function code.
      */
-    ossBucketName?: pulumi.Input<string>;
+    ossBucketName?: pulumi.Input<string | undefined>;
     /**
      * The name of the OSS object (ZIP package) that contains the function code.
      */
-    ossObjectName?: pulumi.Input<string>;
+    ossObjectName?: pulumi.Input<string | undefined>;
     /**
      * Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatibleRuntimes`, `description`, `layerName`, `ossBucketName`,  `ossObjectName`, or `zipFile` forces deletion of the existing layer version and creation of a new layer version.
      */
-    skipDestroy?: pulumi.Input<boolean>;
+    skipDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The version of Layer Version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The ZIP package of the function code that is encoded in the Base64 format.
      *
      * > **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
      */
-    zipFile?: pulumi.Input<string>;
+    zipFile?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -244,7 +244,7 @@ export interface LayerVersionArgs {
     /**
      * The description of the layer version.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the layer.
      */
@@ -252,19 +252,19 @@ export interface LayerVersionArgs {
     /**
      * The name of the OSS bucket that stores the ZIP package of the function code.
      */
-    ossBucketName?: pulumi.Input<string>;
+    ossBucketName?: pulumi.Input<string | undefined>;
     /**
      * The name of the OSS object (ZIP package) that contains the function code.
      */
-    ossObjectName?: pulumi.Input<string>;
+    ossObjectName?: pulumi.Input<string | undefined>;
     /**
      * Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatibleRuntimes`, `description`, `layerName`, `ossBucketName`,  `ossObjectName`, or `zipFile` forces deletion of the existing layer version and creation of a new layer version.
      */
-    skipDestroy?: pulumi.Input<boolean>;
+    skipDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The ZIP package of the function code that is encoded in the Base64 format.
      *
      * > **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
      */
-    zipFile?: pulumi.Input<string>;
+    zipFile?: pulumi.Input<string | undefined>;
 }

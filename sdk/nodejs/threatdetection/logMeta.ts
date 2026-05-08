@@ -158,11 +158,11 @@ export interface LogMetaState {
      * - sas-filedetect-log: file detection log
      * - sas-net-block: Network Defense Log
      */
-    logMetaName?: pulumi.Input<string>;
+    logMetaName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -353,154 +353,154 @@ export interface ServerlessKubernetesState {
     /**
      * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      */
-    addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
+    addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[] | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
      * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      *
      * @deprecated Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
-    clusterCaCert?: pulumi.Input<string>;
+    clusterCaCert?: pulumi.Input<string | undefined>;
     /**
      * The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
      * - ack.standard: Standard serverless clusters.
      * - ack.pro.small: Professional serverless clusters.
      */
-    clusterSpec?: pulumi.Input<string>;
+    clusterSpec?: pulumi.Input<string | undefined>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      */
-    customSan?: pulumi.Input<string>;
+    customSan?: pulumi.Input<string | undefined>;
     /**
      * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      */
-    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesDeleteOption>[]>;
+    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesDeleteOption>[] | undefined>;
     /**
      * Whether enable the deletion protection or not.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
-    enableRrsa?: pulumi.Input<boolean>;
+    enableRrsa?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
      */
-    endpointPublicAccessEnabled?: pulumi.Input<boolean>;
+    endpointPublicAccessEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    kubeConfig?: pulumi.Input<string>;
+    kubeConfig?: pulumi.Input<string | undefined>;
     /**
      * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
      *
      * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      */
-    loadBalancerSpec?: pulumi.Input<string>;
+    loadBalancerSpec?: pulumi.Input<string | undefined>;
     /**
      * Enable log service, Valid value `SLS`. Only works for **Create** Operation.
      *
      * @deprecated Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
      */
-    loggingType?: pulumi.Input<string>;
+    loggingType?: pulumi.Input<string | undefined>;
     /**
      * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
      */
-    maintenanceWindow?: pulumi.Input<inputs.cs.ServerlessKubernetesMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.cs.ServerlessKubernetesMaintenanceWindow | undefined>;
     /**
      * The kubernetes cluster's name. It is the only in one Alicloud account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
      */
-    newNatGateway?: pulumi.Input<boolean>;
+    newNatGateway?: pulumi.Input<boolean | undefined>;
     /**
      * The cluster automatic operation policy. See `operationPolicy` below.
      *
      * *Removed params*
      */
-    operationPolicy?: pulumi.Input<inputs.cs.ServerlessKubernetesOperationPolicy>;
+    operationPolicy?: pulumi.Input<inputs.cs.ServerlessKubernetesOperationPolicy | undefined>;
     /**
      * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      *
      * @deprecated Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
      */
-    privateZone?: pulumi.Input<boolean>;
+    privateZone?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
      */
-    retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    retainResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Nested attribute containing RRSA related data for your cluster.
      */
-    rrsaMetadata?: pulumi.Input<inputs.cs.ServerlessKubernetesRrsaMetadata>;
+    rrsaMetadata?: pulumi.Input<inputs.cs.ServerlessKubernetesRrsaMetadata | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
      */
-    serviceCidr?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string | undefined>;
     /**
      * Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
      */
-    serviceDiscoveryTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceDiscoveryTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
      *
      * @deprecated Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
      */
-    slsProjectName?: pulumi.Input<string>;
+    slsProjectName?: pulumi.Input<string | undefined>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The time zone of the cluster.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vswitches where new kubernetes cluster will be located.
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -510,148 +510,148 @@ export interface ServerlessKubernetesArgs {
     /**
      * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      */
-    addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
+    addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[] | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
      * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      *
      * @deprecated Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
-    clusterCaCert?: pulumi.Input<string>;
+    clusterCaCert?: pulumi.Input<string | undefined>;
     /**
      * The cluster specifications of serverless kubernetes cluster, which can be empty. Valid values:
      * - ack.standard: Standard serverless clusters.
      * - ack.pro.small: Professional serverless clusters.
      */
-    clusterSpec?: pulumi.Input<string>;
+    clusterSpec?: pulumi.Input<string | undefined>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      */
-    customSan?: pulumi.Input<string>;
+    customSan?: pulumi.Input<string | undefined>;
     /**
      * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      */
-    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesDeleteOption>[]>;
+    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesDeleteOption>[] | undefined>;
     /**
      * Whether enable the deletion protection or not.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
-    enableRrsa?: pulumi.Input<boolean>;
+    enableRrsa?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
      */
-    endpointPublicAccessEnabled?: pulumi.Input<boolean>;
+    endpointPublicAccessEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    kubeConfig?: pulumi.Input<string>;
+    kubeConfig?: pulumi.Input<string | undefined>;
     /**
      * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
      *
      * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      */
-    loadBalancerSpec?: pulumi.Input<string>;
+    loadBalancerSpec?: pulumi.Input<string | undefined>;
     /**
      * Enable log service, Valid value `SLS`. Only works for **Create** Operation.
      *
      * @deprecated Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
      */
-    loggingType?: pulumi.Input<string>;
+    loggingType?: pulumi.Input<string | undefined>;
     /**
      * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
      */
-    maintenanceWindow?: pulumi.Input<inputs.cs.ServerlessKubernetesMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.cs.ServerlessKubernetesMaintenanceWindow | undefined>;
     /**
      * The kubernetes cluster's name. It is the only in one Alicloud account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
      */
-    newNatGateway?: pulumi.Input<boolean>;
+    newNatGateway?: pulumi.Input<boolean | undefined>;
     /**
      * The cluster automatic operation policy. See `operationPolicy` below.
      *
      * *Removed params*
      */
-    operationPolicy?: pulumi.Input<inputs.cs.ServerlessKubernetesOperationPolicy>;
+    operationPolicy?: pulumi.Input<inputs.cs.ServerlessKubernetesOperationPolicy | undefined>;
     /**
      * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      *
      * @deprecated Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
      */
-    privateZone?: pulumi.Input<boolean>;
+    privateZone?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
      */
-    retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    retainResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
      */
-    serviceCidr?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string | undefined>;
     /**
      * Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
      */
-    serviceDiscoveryTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceDiscoveryTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
      *
      * @deprecated Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
      */
-    slsProjectName?: pulumi.Input<string>;
+    slsProjectName?: pulumi.Input<string | undefined>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The time zone of the cluster.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vswitches where new kubernetes cluster will be located.
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

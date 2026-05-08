@@ -26,20 +26,22 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := dcdn.GetWafRules(ctx, &dcdn.GetWafRulesArgs{
-// Ids: interface{}{
-// defaultAlicloudDcdnWafRule.Id,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudDcdnWafRuleExampleId", _default.WafRules[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := dcdn.GetWafRules(ctx, &dcdn.GetWafRulesArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudDcdnWafRule.Id,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudDcdnWafRuleExampleId", _default.WafRules[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetWafRules(ctx *pulumi.Context, args *GetWafRulesArgs, opts ...pulumi.InvokeOption) (*GetWafRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

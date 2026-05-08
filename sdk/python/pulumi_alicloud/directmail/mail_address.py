@@ -21,8 +21,8 @@ class MailAddressArgs:
     def __init__(__self__, *,
                  account_name: pulumi.Input[_builtins.str],
                  sendtype: pulumi.Input[_builtins.str],
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 reply_address: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 reply_address: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MailAddress resource.
 
@@ -64,37 +64,37 @@ class MailAddressArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account password. The password must be length 10-20 string, contains numbers, uppercase letters, lowercase letters at the same time.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="replyAddress")
-    def reply_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reply_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Return address.
         """
         return pulumi.get(self, "reply_address")
 
     @reply_address.setter
-    def reply_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reply_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reply_address", value)
 
 
 @pulumi.input_type
 class _MailAddressState:
     def __init__(__self__, *,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 reply_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 sendtype: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 reply_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 sendtype: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MailAddress resources.
 
@@ -117,62 +117,62 @@ class _MailAddressState:
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
         """
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account password. The password must be length 10-20 string, contains numbers, uppercase letters, lowercase letters at the same time.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="replyAddress")
-    def reply_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reply_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Return address.
         """
         return pulumi.get(self, "reply_address")
 
     @reply_address.setter
-    def reply_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reply_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reply_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def sendtype(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sendtype(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account type. Valid values: `batch`, `trigger`.
         """
         return pulumi.get(self, "sendtype")
 
     @sendtype.setter
-    def sendtype(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sendtype(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sendtype", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Status freeze: 1, normal: 0.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -182,10 +182,10 @@ class MailAddress(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 reply_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 sendtype: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 reply_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 sendtype: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Direct Mail Mail Address resource.
@@ -313,10 +313,10 @@ class MailAddress(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 reply_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 sendtype: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 reply_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 sendtype: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -345,11 +345,11 @@ class MailAddress(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            reply_address: Optional[pulumi.Input[_builtins.str]] = None,
-            sendtype: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'MailAddress':
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            reply_address: pulumi.Input[Optional[_builtins.str]] = None,
+            sendtype: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'MailAddress':
         """
         Get an existing MailAddress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -217,45 +217,45 @@ export interface EcsInvocationState {
     /**
      * The ID of the command.
      */
-    commandId?: pulumi.Input<string>;
+    commandId?: pulumi.Input<string | undefined>;
     /**
      * The schedule on which the recurring execution of the command takes place. Take note of the following items:
      * * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
      * * When you set Timed to true, you must specify Frequency.
      * * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
      */
-    frequency?: pulumi.Input<string>;
+    frequency?: pulumi.Input<string | undefined>;
     /**
      * The list of instances to execute the command. You can specify up to 50 instance IDs.
      */
-    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeatMode` is specified.
      */
-    repeatMode?: pulumi.Input<string>;
+    repeatMode?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to periodically run the command. Default value: `false`.
      */
-    timed?: pulumi.Input<boolean>;
+    timed?: pulumi.Input<boolean | undefined>;
     /**
      * The username that is used to run the command on the ECS instance. 
      * * For Linux instances, the root username is used.
      * * For Windows instances, the System username is used.
      * * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * The name of the password used to run the command on a Windows instance.
      */
-    windowsPasswordName?: pulumi.Input<string>;
+    windowsPasswordName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -272,7 +272,7 @@ export interface EcsInvocationArgs {
      * * When you set Timed to true, you must specify Frequency.
      * * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
      */
-    frequency?: pulumi.Input<string>;
+    frequency?: pulumi.Input<string | undefined>;
     /**
      * The list of instances to execute the command. You can specify up to 50 instance IDs.
      */
@@ -280,24 +280,24 @@ export interface EcsInvocationArgs {
     /**
      * The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeatMode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeatMode` is specified.
      */
-    repeatMode?: pulumi.Input<string>;
+    repeatMode?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to periodically run the command. Default value: `false`.
      */
-    timed?: pulumi.Input<boolean>;
+    timed?: pulumi.Input<boolean | undefined>;
     /**
      * The username that is used to run the command on the ECS instance. 
      * * For Linux instances, the root username is used.
      * * For Windows instances, the System username is used.
      * * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * The name of the password used to run the command on a Windows instance.
      */
-    windowsPasswordName?: pulumi.Input<string>;
+    windowsPasswordName?: pulumi.Input<string | undefined>;
 }

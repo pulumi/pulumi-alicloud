@@ -114,25 +114,25 @@ export interface GetTransitRouterRouteEntriesOutputArgs {
     /**
      * A list of CEN Transit Router Route Entry IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    nameRegex?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A list of ID of the cen transit router route entry.
      */
-    transitRouterRouteEntryIds?: pulumi.Input<pulumi.Input<string>[]>;
+    transitRouterRouteEntryIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of name of the cen transit router route entry.
      */
-    transitRouterRouteEntryNames?: pulumi.Input<pulumi.Input<string>[]>;
+    transitRouterRouteEntryNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the resource.Valid values `Creating`, `Active` and `Deleting`.
      */
-    transitRouterRouteEntryStatus?: pulumi.Input<string>;
+    transitRouterRouteEntryStatus?: pulumi.Input<string | undefined>;
     /**
      * ID of the CEN Transit Router Route Table.
      */

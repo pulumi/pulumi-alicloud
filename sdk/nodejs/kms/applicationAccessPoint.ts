@@ -123,15 +123,15 @@ export interface ApplicationAccessPointState {
     /**
      * Application Access Point Name.
      */
-    applicationAccessPointName?: pulumi.Input<string>;
+    applicationAccessPointName?: pulumi.Input<string | undefined>;
     /**
      * Description .
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The policies that have bound to the Application Access Point (AAP).
      */
-    policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -145,7 +145,7 @@ export interface ApplicationAccessPointArgs {
     /**
      * Description .
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The policies that have bound to the Application Access Point (AAP).
      */

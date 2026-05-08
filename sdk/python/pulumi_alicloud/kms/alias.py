@@ -70,8 +70,8 @@ class AliasArgs:
 @pulumi.input_type
 class _AliasState:
     def __init__(__self__, *,
-                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Alias resources.
 
@@ -91,19 +91,19 @@ class _AliasState:
 
     @_builtins.property
     @pulumi.getter(name="aliasName")
-    def alias_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
         """
         return pulumi.get(self, "alias_name")
 
     @alias_name.setter
-    def alias_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias_name", value)
 
     @_builtins.property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the key.
 
@@ -116,7 +116,7 @@ class _AliasState:
         return pulumi.get(self, "key_id")
 
     @key_id.setter
-    def key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_id", value)
 
 
@@ -126,8 +126,8 @@ class Alias(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create an alias for the master key (CMK).
@@ -221,8 +221,8 @@ class Alias(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -248,8 +248,8 @@ class Alias(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-            key_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Alias':
+            alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+            key_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Alias':
         """
         Get an existing Alias resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

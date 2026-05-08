@@ -21,28 +21,28 @@ __all__ = ['NetworkArgs', 'Network']
 @pulumi.input_type
 class NetworkArgs:
     def __init__(__self__, *,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 classic_link_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_hostname_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv4_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv4_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secondary_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_route_table_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_route_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_route_table_route_propagation_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 classic_link_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_hostname_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv4_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv4_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secondary_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_route_table_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_route_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_route_table_route_propagation_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Network resource.
 
@@ -146,7 +146,7 @@ class NetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block of the VPC.
 
@@ -156,24 +156,24 @@ class NetworkArgs:
         return pulumi.get(self, "cidr_block")
 
     @cidr_block.setter
-    def cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="classicLinkEnabled")
-    def classic_link_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def classic_link_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The status of ClassicLink function.
         """
         return pulumi.get(self, "classic_link_enabled")
 
     @classic_link_enabled.setter
-    def classic_link_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def classic_link_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "classic_link_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new description of the VPC.
         The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
@@ -181,60 +181,60 @@ class NetworkArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsHostnameStatus")
-    def dns_hostname_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_hostname_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of VPC DNS Hostname
         """
         return pulumi.get(self, "dns_hostname_status")
 
     @dns_hostname_status.setter
-    def dns_hostname_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_hostname_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_hostname_status", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request. Value:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIpv6")
-    def enable_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the IPv6 network segment. Value:
         """
         return pulumi.get(self, "enable_ipv6")
 
     @enable_ipv6.setter
-    def enable_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Force delete vpc or not.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4CidrMask")
-    def ipv4_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ipv4_cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Allocate VPC from The IPAM address pool by entering a mask.
 
@@ -243,24 +243,24 @@ class NetworkArgs:
         return pulumi.get(self, "ipv4_cidr_mask")
 
     @ipv4_cidr_mask.setter
-    def ipv4_cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ipv4_cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ipv4_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4IpamPoolId")
-    def ipv4_ipam_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv4_ipam_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
         """
         return pulumi.get(self, "ipv4_ipam_pool_id")
 
     @ipv4_ipam_pool_id.setter
-    def ipv4_ipam_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv4_ipam_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv4_ipam_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6CidrBlock")
-    def ipv6_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 CIDR block of the default VPC.
 
@@ -269,12 +269,12 @@ class NetworkArgs:
         return pulumi.get(self, "ipv6_cidr_block")
 
     @ipv6_cidr_block.setter
-    def ipv6_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Isp")
-    def ipv6_isp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 address segment type of the VPC. Value:
         - `BGP` (default): Alibaba Cloud BGP IPv6.
@@ -287,37 +287,37 @@ class NetworkArgs:
         return pulumi.get(self, "ipv6_isp")
 
     @ipv6_isp.setter
-    def ipv6_isp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_isp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_isp", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to create the default VPC in the specified region. Valid values:
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which you want to move the resource.
 
@@ -326,38 +326,38 @@ class NetworkArgs:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryCidrBlocks")
     @_utilities.deprecated("""Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""")
-    def secondary_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def secondary_cidr_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         """
         return pulumi.get(self, "secondary_cidr_blocks")
 
     @secondary_cidr_blocks.setter
-    def secondary_cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def secondary_cidr_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "secondary_cidr_blocks", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryCidrMask")
     @_utilities.deprecated("""Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_mask` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""")
-    def secondary_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secondary_cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
         """
         return pulumi.get(self, "secondary_cidr_mask")
 
     @secondary_cidr_mask.setter
-    def secondary_cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secondary_cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secondary_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="systemRouteTableDescription")
-    def system_route_table_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_route_table_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the route table.
         The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
@@ -365,12 +365,12 @@ class NetworkArgs:
         return pulumi.get(self, "system_route_table_description")
 
     @system_route_table_description.setter
-    def system_route_table_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_route_table_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_route_table_description", value)
 
     @_builtins.property
     @pulumi.getter(name="systemRouteTableName")
-    def system_route_table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_route_table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the route table.
         The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -378,48 +378,48 @@ class NetworkArgs:
         return pulumi.get(self, "system_route_table_name")
 
     @system_route_table_name.setter
-    def system_route_table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_route_table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_route_table_name", value)
 
     @_builtins.property
     @pulumi.getter(name="systemRouteTableRoutePropagationEnable")
-    def system_route_table_route_propagation_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def system_route_table_route_propagation_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the system route table receives propagation routes.
         """
         return pulumi.get(self, "system_route_table_route_propagation_enable")
 
     @system_route_table_route_propagation_enable.setter
-    def system_route_table_route_propagation_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def system_route_table_route_propagation_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "system_route_table_route_propagation_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags of Vpc.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userCidrs")
-    def user_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of user CIDRs.
         """
         return pulumi.get(self, "user_cidrs")
 
     @user_cidrs.setter
-    def user_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_cidrs", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcName")
-    def vpc_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new name of the VPC.
         The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -429,42 +429,42 @@ class NetworkArgs:
         return pulumi.get(self, "vpc_name")
 
     @vpc_name.setter
-    def vpc_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_name", value)
 
 
 @pulumi.input_type
 class _NetworkState:
     def __init__(__self__, *,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 classic_link_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_hostname_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv4_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv4_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkIpv6CidrBlockArgs']]]] = None,
-                 ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secondary_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_route_table_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_route_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_route_table_route_propagation_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 classic_link_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_hostname_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv4_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv4_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkIpv6CidrBlockArgs']]]] = None,
+                 ipv6_isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secondary_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_route_table_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_route_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_route_table_route_propagation_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Network resources.
 
@@ -592,7 +592,7 @@ class _NetworkState:
 
     @_builtins.property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block of the VPC.
 
@@ -602,36 +602,36 @@ class _NetworkState:
         return pulumi.get(self, "cidr_block")
 
     @cidr_block.setter
-    def cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="classicLinkEnabled")
-    def classic_link_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def classic_link_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The status of ClassicLink function.
         """
         return pulumi.get(self, "classic_link_enabled")
 
     @classic_link_enabled.setter
-    def classic_link_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def classic_link_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "classic_link_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the VPC.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new description of the VPC.
         The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
@@ -639,60 +639,60 @@ class _NetworkState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsHostnameStatus")
-    def dns_hostname_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_hostname_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of VPC DNS Hostname
         """
         return pulumi.get(self, "dns_hostname_status")
 
     @dns_hostname_status.setter
-    def dns_hostname_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_hostname_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_hostname_status", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request. Value:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIpv6")
-    def enable_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the IPv6 network segment. Value:
         """
         return pulumi.get(self, "enable_ipv6")
 
     @enable_ipv6.setter
-    def enable_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Force delete vpc or not.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4CidrMask")
-    def ipv4_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ipv4_cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Allocate VPC from The IPAM address pool by entering a mask.
 
@@ -701,24 +701,24 @@ class _NetworkState:
         return pulumi.get(self, "ipv4_cidr_mask")
 
     @ipv4_cidr_mask.setter
-    def ipv4_cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ipv4_cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ipv4_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4IpamPoolId")
-    def ipv4_ipam_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv4_ipam_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
         """
         return pulumi.get(self, "ipv4_ipam_pool_id")
 
     @ipv4_ipam_pool_id.setter
-    def ipv4_ipam_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv4_ipam_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv4_ipam_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6CidrBlock")
-    def ipv6_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 CIDR block of the default VPC.
 
@@ -727,24 +727,24 @@ class _NetworkState:
         return pulumi.get(self, "ipv6_cidr_block")
 
     @ipv6_cidr_block.setter
-    def ipv6_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6CidrBlocks")
-    def ipv6_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkIpv6CidrBlockArgs']]]]:
+    def ipv6_cidr_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkIpv6CidrBlockArgs']]]]:
         """
         The IPv6 CIDR block information of the VPC.
         """
         return pulumi.get(self, "ipv6_cidr_blocks")
 
     @ipv6_cidr_blocks.setter
-    def ipv6_cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkIpv6CidrBlockArgs']]]]):
+    def ipv6_cidr_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkIpv6CidrBlockArgs']]]]):
         pulumi.set(self, "ipv6_cidr_blocks", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Isp")
-    def ipv6_isp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 address segment type of the VPC. Value:
         - `BGP` (default): Alibaba Cloud BGP IPv6.
@@ -757,49 +757,49 @@ class _NetworkState:
         return pulumi.get(self, "ipv6_isp")
 
     @ipv6_isp.setter
-    def ipv6_isp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_isp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_isp", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to create the default VPC in the specified region. Valid values:
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where the VPC is located.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which you want to move the resource.
 
@@ -808,87 +808,87 @@ class _NetworkState:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the system route table.
         """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
-    def route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_table_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the VPC to which the route table belongs.
         """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
-    def router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routerTableId")
     @_utilities.deprecated("""Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead.""")
-    def router_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
         """
         return pulumi.get(self, "router_table_id")
 
     @router_table_id.setter
-    def router_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_table_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryCidrBlocks")
     @_utilities.deprecated("""Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""")
-    def secondary_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def secondary_cidr_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         """
         return pulumi.get(self, "secondary_cidr_blocks")
 
     @secondary_cidr_blocks.setter
-    def secondary_cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def secondary_cidr_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "secondary_cidr_blocks", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryCidrMask")
     @_utilities.deprecated("""Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.248.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_mask` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""")
-    def secondary_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secondary_cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Field 'secondary_cidr_mask' has been deprecated from provider version 1.248.0. New resource 'alicloud_vpc_ipv4_cidr_block' instead.
         """
         return pulumi.get(self, "secondary_cidr_mask")
 
     @secondary_cidr_mask.setter
-    def secondary_cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secondary_cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secondary_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="systemRouteTableDescription")
-    def system_route_table_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_route_table_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the route table.
         The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
@@ -896,12 +896,12 @@ class _NetworkState:
         return pulumi.get(self, "system_route_table_description")
 
     @system_route_table_description.setter
-    def system_route_table_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_route_table_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_route_table_description", value)
 
     @_builtins.property
     @pulumi.getter(name="systemRouteTableName")
-    def system_route_table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_route_table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the route table.
         The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -909,48 +909,48 @@ class _NetworkState:
         return pulumi.get(self, "system_route_table_name")
 
     @system_route_table_name.setter
-    def system_route_table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_route_table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_route_table_name", value)
 
     @_builtins.property
     @pulumi.getter(name="systemRouteTableRoutePropagationEnable")
-    def system_route_table_route_propagation_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def system_route_table_route_propagation_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the system route table receives propagation routes.
         """
         return pulumi.get(self, "system_route_table_route_propagation_enable")
 
     @system_route_table_route_propagation_enable.setter
-    def system_route_table_route_propagation_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def system_route_table_route_propagation_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "system_route_table_route_propagation_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags of Vpc.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userCidrs")
-    def user_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of user CIDRs.
         """
         return pulumi.get(self, "user_cidrs")
 
     @user_cidrs.setter
-    def user_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_cidrs", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcName")
-    def vpc_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new name of the VPC.
         The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -960,7 +960,7 @@ class _NetworkState:
         return pulumi.get(self, "vpc_name")
 
     @vpc_name.setter
-    def vpc_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_name", value)
 
 
@@ -970,28 +970,28 @@ class Network(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 classic_link_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_hostname_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv4_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv4_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secondary_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_route_table_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_route_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_route_table_route_propagation_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 classic_link_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_hostname_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv4_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv4_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secondary_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_route_table_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_route_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_route_table_route_propagation_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPC VPC resource.
@@ -1154,28 +1154,28 @@ class Network(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 classic_link_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_hostname_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv4_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv4_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secondary_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_route_table_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_route_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_route_table_route_propagation_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 classic_link_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_hostname_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv4_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv4_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secondary_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_route_table_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_route_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_route_table_route_propagation_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1224,35 +1224,35 @@ class Network(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            classic_link_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dns_hostname_status: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            ipv4_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-            ipv4_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkIpv6CidrBlockArgs', 'NetworkIpv6CidrBlockArgsDict']]]]] = None,
-            ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
-            is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            router_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            secondary_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            system_route_table_description: Optional[pulumi.Input[_builtins.str]] = None,
-            system_route_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-            system_route_table_route_propagation_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vpc_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Network':
+            cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            classic_link_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_hostname_status: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            ipv4_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            ipv4_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkIpv6CidrBlockArgs', 'NetworkIpv6CidrBlockArgsDict']]]]] = None,
+            ipv6_isp: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            router_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            secondary_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            system_route_table_description: pulumi.Input[Optional[_builtins.str]] = None,
+            system_route_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            system_route_table_route_propagation_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

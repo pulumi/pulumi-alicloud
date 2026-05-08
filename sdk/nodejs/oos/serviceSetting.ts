@@ -133,23 +133,23 @@ export interface ServiceSettingState {
     /**
      * The name of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
      */
-    deliveryOssBucketName?: pulumi.Input<string>;
+    deliveryOssBucketName?: pulumi.Input<string | undefined>;
     /**
      * Is the recording function for the OSS delivery template enabled.
      */
-    deliveryOssEnabled?: pulumi.Input<boolean>;
+    deliveryOssEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Directory of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
      */
-    deliveryOssKeyPrefix?: pulumi.Input<string>;
+    deliveryOssKeyPrefix?: pulumi.Input<string | undefined>;
     /**
      * Is the execution record function to SLS delivery Template turned on.
      */
-    deliverySlsEnabled?: pulumi.Input<boolean>;
+    deliverySlsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of SLS  Project. **NOTE:** When the `deliverySlsEnabled` is `true`, The `deliverySlsProjectName` is valid.
      */
-    deliverySlsProjectName?: pulumi.Input<string>;
+    deliverySlsProjectName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -159,21 +159,21 @@ export interface ServiceSettingArgs {
     /**
      * The name of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
      */
-    deliveryOssBucketName?: pulumi.Input<string>;
+    deliveryOssBucketName?: pulumi.Input<string | undefined>;
     /**
      * Is the recording function for the OSS delivery template enabled.
      */
-    deliveryOssEnabled?: pulumi.Input<boolean>;
+    deliveryOssEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Directory of the OSS bucket. **NOTE:** When the `deliveryOssEnabled` is `true`, The `deliveryOssBucketName` is valid.
      */
-    deliveryOssKeyPrefix?: pulumi.Input<string>;
+    deliveryOssKeyPrefix?: pulumi.Input<string | undefined>;
     /**
      * Is the execution record function to SLS delivery Template turned on.
      */
-    deliverySlsEnabled?: pulumi.Input<boolean>;
+    deliverySlsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of SLS  Project. **NOTE:** When the `deliverySlsEnabled` is `true`, The `deliverySlsProjectName` is valid.
      */
-    deliverySlsProjectName?: pulumi.Input<string>;
+    deliverySlsProjectName?: pulumi.Input<string | undefined>;
 }

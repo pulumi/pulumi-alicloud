@@ -32,7 +32,7 @@ class DomainSourceArgsDict(TypedDict):
     """
     The type of the origin server. Valid values:
     """
-    source_priority: NotRequired[pulumi.Input[_builtins.str]]
+    source_priority: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
     """
@@ -43,7 +43,7 @@ class DomainSourceArgs:
                  source_content: pulumi.Input[_builtins.str],
                  source_port: pulumi.Input[_builtins.str],
                  source_type: pulumi.Input[_builtins.str],
-                 source_priority: Optional[pulumi.Input[_builtins.str]] = None):
+                 source_priority: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] source_content: The address of the origin server. You can specify an IP address or a domain name.
         :param pulumi.Input[_builtins.str] source_port: The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
@@ -94,14 +94,14 @@ class DomainSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="sourcePriority")
-    def source_priority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_priority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
         """
         return pulumi.get(self, "source_priority")
 
     @source_priority.setter
-    def source_priority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_priority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_priority", value)
 
 

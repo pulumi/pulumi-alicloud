@@ -146,35 +146,35 @@ export interface TransitRouterRouteTableState {
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The associating status of the Transit Router.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the transit router.
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
     /**
      * The description of the transit router route table.
      */
-    transitRouterRouteTableDescription?: pulumi.Input<string>;
+    transitRouterRouteTableDescription?: pulumi.Input<string | undefined>;
     /**
      * The id of the transit router route table.
      */
-    transitRouterRouteTableId?: pulumi.Input<string>;
+    transitRouterRouteTableId?: pulumi.Input<string | undefined>;
     /**
      * The name of the transit router route table.
      */
-    transitRouterRouteTableName?: pulumi.Input<string>;
+    transitRouterRouteTableName?: pulumi.Input<string | undefined>;
     /**
      * The type of the transit router route table. Valid values: `Custom`, `System`.
      */
-    transitRouterRouteTableType?: pulumi.Input<string>;
+    transitRouterRouteTableType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -184,11 +184,11 @@ export interface TransitRouterRouteTableArgs {
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the transit router.
      */
@@ -196,9 +196,9 @@ export interface TransitRouterRouteTableArgs {
     /**
      * The description of the transit router route table.
      */
-    transitRouterRouteTableDescription?: pulumi.Input<string>;
+    transitRouterRouteTableDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the transit router route table.
      */
-    transitRouterRouteTableName?: pulumi.Input<string>;
+    transitRouterRouteTableName?: pulumi.Input<string | undefined>;
 }

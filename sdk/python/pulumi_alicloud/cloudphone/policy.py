@@ -21,13 +21,13 @@ __all__ = ['PolicyArgs', 'Policy']
 @pulumi.input_type
 class PolicyArgs:
     def __init__(__self__, *,
-                 camera_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 clipboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 lock_resolution: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_redirect_policy: Optional[pulumi.Input['PolicyNetRedirectPolicyArgs']] = None,
-                 policy_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resolution_height: Optional[pulumi.Input[_builtins.int]] = None,
-                 resolution_width: Optional[pulumi.Input[_builtins.int]] = None):
+                 camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 lock_resolution: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_redirect_policy: pulumi.Input[Optional['PolicyNetRedirectPolicyArgs']] = None,
+                 policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resolution_height: pulumi.Input[Optional[_builtins.int]] = None,
+                 resolution_width: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Policy resource.
 
@@ -56,99 +56,99 @@ class PolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="cameraRedirect")
-    def camera_redirect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def camera_redirect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to turn on local camera redirection.
         """
         return pulumi.get(self, "camera_redirect")
 
     @camera_redirect.setter
-    def camera_redirect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def camera_redirect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "camera_redirect", value)
 
     @_builtins.property
     @pulumi.getter
-    def clipboard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clipboard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Clipboard permissions.
         """
         return pulumi.get(self, "clipboard")
 
     @clipboard.setter
-    def clipboard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clipboard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clipboard", value)
 
     @_builtins.property
     @pulumi.getter(name="lockResolution")
-    def lock_resolution(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lock_resolution(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to lock the resolution.
         """
         return pulumi.get(self, "lock_resolution")
 
     @lock_resolution.setter
-    def lock_resolution(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lock_resolution(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lock_resolution", value)
 
     @_builtins.property
     @pulumi.getter(name="netRedirectPolicy")
-    def net_redirect_policy(self) -> Optional[pulumi.Input['PolicyNetRedirectPolicyArgs']]:
+    def net_redirect_policy(self) -> pulumi.Input[Optional['PolicyNetRedirectPolicyArgs']]:
         """
         Network redirection. See `net_redirect_policy` below.
         """
         return pulumi.get(self, "net_redirect_policy")
 
     @net_redirect_policy.setter
-    def net_redirect_policy(self, value: Optional[pulumi.Input['PolicyNetRedirectPolicyArgs']]):
+    def net_redirect_policy(self, value: pulumi.Input[Optional['PolicyNetRedirectPolicyArgs']]):
         pulumi.set(self, "net_redirect_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="policyGroupName")
-    def policy_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy name.
         """
         return pulumi.get(self, "policy_group_name")
 
     @policy_group_name.setter
-    def policy_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resolutionHeight")
-    def resolution_height(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def resolution_height(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The height of the resolution. Unit: Pixels.
         """
         return pulumi.get(self, "resolution_height")
 
     @resolution_height.setter
-    def resolution_height(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def resolution_height(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "resolution_height", value)
 
     @_builtins.property
     @pulumi.getter(name="resolutionWidth")
-    def resolution_width(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def resolution_width(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The width of the resolution. Unit: Pixels.
         """
         return pulumi.get(self, "resolution_width")
 
     @resolution_width.setter
-    def resolution_width(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def resolution_width(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "resolution_width", value)
 
 
 @pulumi.input_type
 class _PolicyState:
     def __init__(__self__, *,
-                 camera_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 clipboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 lock_resolution: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_redirect_policy: Optional[pulumi.Input['PolicyNetRedirectPolicyArgs']] = None,
-                 policy_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resolution_height: Optional[pulumi.Input[_builtins.int]] = None,
-                 resolution_width: Optional[pulumi.Input[_builtins.int]] = None):
+                 camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 lock_resolution: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_redirect_policy: pulumi.Input[Optional['PolicyNetRedirectPolicyArgs']] = None,
+                 policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resolution_height: pulumi.Input[Optional[_builtins.int]] = None,
+                 resolution_width: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
 
@@ -177,86 +177,86 @@ class _PolicyState:
 
     @_builtins.property
     @pulumi.getter(name="cameraRedirect")
-    def camera_redirect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def camera_redirect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to turn on local camera redirection.
         """
         return pulumi.get(self, "camera_redirect")
 
     @camera_redirect.setter
-    def camera_redirect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def camera_redirect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "camera_redirect", value)
 
     @_builtins.property
     @pulumi.getter
-    def clipboard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clipboard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Clipboard permissions.
         """
         return pulumi.get(self, "clipboard")
 
     @clipboard.setter
-    def clipboard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clipboard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clipboard", value)
 
     @_builtins.property
     @pulumi.getter(name="lockResolution")
-    def lock_resolution(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lock_resolution(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to lock the resolution.
         """
         return pulumi.get(self, "lock_resolution")
 
     @lock_resolution.setter
-    def lock_resolution(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lock_resolution(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lock_resolution", value)
 
     @_builtins.property
     @pulumi.getter(name="netRedirectPolicy")
-    def net_redirect_policy(self) -> Optional[pulumi.Input['PolicyNetRedirectPolicyArgs']]:
+    def net_redirect_policy(self) -> pulumi.Input[Optional['PolicyNetRedirectPolicyArgs']]:
         """
         Network redirection. See `net_redirect_policy` below.
         """
         return pulumi.get(self, "net_redirect_policy")
 
     @net_redirect_policy.setter
-    def net_redirect_policy(self, value: Optional[pulumi.Input['PolicyNetRedirectPolicyArgs']]):
+    def net_redirect_policy(self, value: pulumi.Input[Optional['PolicyNetRedirectPolicyArgs']]):
         pulumi.set(self, "net_redirect_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="policyGroupName")
-    def policy_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy name.
         """
         return pulumi.get(self, "policy_group_name")
 
     @policy_group_name.setter
-    def policy_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resolutionHeight")
-    def resolution_height(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def resolution_height(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The height of the resolution. Unit: Pixels.
         """
         return pulumi.get(self, "resolution_height")
 
     @resolution_height.setter
-    def resolution_height(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def resolution_height(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "resolution_height", value)
 
     @_builtins.property
     @pulumi.getter(name="resolutionWidth")
-    def resolution_width(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def resolution_width(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The width of the resolution. Unit: Pixels.
         """
         return pulumi.get(self, "resolution_width")
 
     @resolution_width.setter
-    def resolution_width(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def resolution_width(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "resolution_width", value)
 
 
@@ -266,13 +266,13 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 camera_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 clipboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 lock_resolution: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_redirect_policy: Optional[pulumi.Input[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict']]] = None,
-                 policy_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resolution_height: Optional[pulumi.Input[_builtins.int]] = None,
-                 resolution_width: Optional[pulumi.Input[_builtins.int]] = None,
+                 camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 lock_resolution: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_redirect_policy: pulumi.Input[Optional[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict']]] = None,
+                 policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resolution_height: pulumi.Input[Optional[_builtins.int]] = None,
+                 resolution_width: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Cloud Phone Policy resource.
@@ -405,13 +405,13 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 camera_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 clipboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 lock_resolution: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_redirect_policy: Optional[pulumi.Input[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict']]] = None,
-                 policy_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resolution_height: Optional[pulumi.Input[_builtins.int]] = None,
-                 resolution_width: Optional[pulumi.Input[_builtins.int]] = None,
+                 camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 lock_resolution: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_redirect_policy: pulumi.Input[Optional[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict']]] = None,
+                 policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resolution_height: pulumi.Input[Optional[_builtins.int]] = None,
+                 resolution_width: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -438,13 +438,13 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            camera_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-            clipboard: Optional[pulumi.Input[_builtins.str]] = None,
-            lock_resolution: Optional[pulumi.Input[_builtins.str]] = None,
-            net_redirect_policy: Optional[pulumi.Input[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict']]] = None,
-            policy_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resolution_height: Optional[pulumi.Input[_builtins.int]] = None,
-            resolution_width: Optional[pulumi.Input[_builtins.int]] = None) -> 'Policy':
+            camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+            clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+            lock_resolution: pulumi.Input[Optional[_builtins.str]] = None,
+            net_redirect_policy: pulumi.Input[Optional[Union['PolicyNetRedirectPolicyArgs', 'PolicyNetRedirectPolicyArgsDict']]] = None,
+            policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resolution_height: pulumi.Input[Optional[_builtins.int]] = None,
+            resolution_width: pulumi.Input[Optional[_builtins.int]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

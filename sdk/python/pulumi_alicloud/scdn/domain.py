@@ -23,12 +23,12 @@ class DomainArgs:
     def __init__(__self__, *,
                  domain_name: pulumi.Input[_builtins.str],
                  sources: pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]],
-                 biz_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input['DomainCertInfoArgs']]]] = None,
-                 check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_set: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_infos: pulumi.Input[Optional[Sequence[pulumi.Input['DomainCertInfoArgs']]]] = None,
+                 check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Domain resource.
 
@@ -86,88 +86,88 @@ class DomainArgs:
     @_builtins.property
     @pulumi.getter(name="bizName")
     @_utilities.deprecated("""Attribute biz_name has been deprecated and suggest removing it from your template.""")
-    def biz_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biz_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Attribute perm has been deprecated and suggest removing it from your template.
         """
         return pulumi.get(self, "biz_name")
 
     @biz_name.setter
-    def biz_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biz_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biz_name", value)
 
     @_builtins.property
     @pulumi.getter(name="certInfos")
-    def cert_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainCertInfoArgs']]]]:
+    def cert_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainCertInfoArgs']]]]:
         """
         Certificate Information. See the following `Block cert_infos`.
         """
         return pulumi.get(self, "cert_infos")
 
     @cert_infos.setter
-    def cert_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainCertInfoArgs']]]]):
+    def cert_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainCertInfoArgs']]]]):
         pulumi.set(self, "cert_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="checkUrl")
-    def check_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The health check url.
         """
         return pulumi.get(self, "check_url")
 
     @check_url.setter
-    def check_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_url", value)
 
     @_builtins.property
     @pulumi.getter(name="forceSet")
-    def force_set(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def force_set(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to set certificate forcibly.
         """
         return pulumi.get(self, "force_set")
 
     @force_set.setter
-    def force_set(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def force_set(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "force_set", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group id.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `offline`, `online`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _DomainState:
     def __init__(__self__, *,
-                 biz_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input['DomainCertInfoArgs']]]] = None,
-                 check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_set: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_infos: pulumi.Input[Optional[Sequence[pulumi.Input['DomainCertInfoArgs']]]] = None,
+                 check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
 
@@ -203,98 +203,98 @@ class _DomainState:
     @_builtins.property
     @pulumi.getter(name="bizName")
     @_utilities.deprecated("""Attribute biz_name has been deprecated and suggest removing it from your template.""")
-    def biz_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biz_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Attribute perm has been deprecated and suggest removing it from your template.
         """
         return pulumi.get(self, "biz_name")
 
     @biz_name.setter
-    def biz_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biz_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biz_name", value)
 
     @_builtins.property
     @pulumi.getter(name="certInfos")
-    def cert_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainCertInfoArgs']]]]:
+    def cert_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainCertInfoArgs']]]]:
         """
         Certificate Information. See the following `Block cert_infos`.
         """
         return pulumi.get(self, "cert_infos")
 
     @cert_infos.setter
-    def cert_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainCertInfoArgs']]]]):
+    def cert_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainCertInfoArgs']]]]):
         pulumi.set(self, "cert_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="checkUrl")
-    def check_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The health check url.
         """
         return pulumi.get(self, "check_url")
 
     @check_url.setter
-    def check_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_url", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of domain.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="forceSet")
-    def force_set(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def force_set(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to set certificate forcibly.
         """
         return pulumi.get(self, "force_set")
 
     @force_set.setter
-    def force_set(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def force_set(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "force_set", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group id.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainSourceArgs']]]]:
         """
         the Origin Server Information. See the following `Block sources`.
         """
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainSourceArgs']]]]):
         pulumi.set(self, "sources", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `offline`, `online`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -304,14 +304,14 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biz_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict']]]]] = None,
-                 check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_set: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict']]]]] = None,
+                 check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a SCDN Domain resource.
@@ -427,14 +427,14 @@ class Domain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biz_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict']]]]] = None,
-                 check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_set: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict']]]]] = None,
+                 check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -466,14 +466,14 @@ class Domain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            biz_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict']]]]] = None,
-            check_url: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            force_set: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Domain':
+            biz_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainCertInfoArgs', 'DomainCertInfoArgsDict']]]]] = None,
+            check_url: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            force_set: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

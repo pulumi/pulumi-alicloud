@@ -21,17 +21,17 @@ class ResourceGroupArgs:
     def __init__(__self__, *,
                  db_cluster_id: pulumi.Input[_builtins.str],
                  group_name: pulumi.Input[_builtins.str],
-                 cluster_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_size_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_cluster_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_cluster_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_size_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_cluster_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_cluster_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ResourceGroup resource.
 
@@ -100,159 +100,159 @@ class ResourceGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterMode")
-    def cluster_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
         """
         return pulumi.get(self, "cluster_mode")
 
     @cluster_mode.setter
-    def cluster_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterSizeResource")
-    def cluster_size_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_size_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource specifications of a single compute cluster. Unit: ACU.
         """
         return pulumi.get(self, "cluster_size_resource")
 
     @cluster_size_resource.setter
-    def cluster_size_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_size_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_size_resource", value)
 
     @_builtins.property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
         """
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter(name="engineParams")
-    def engine_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def engine_params(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
         """
         return pulumi.get(self, "engine_params")
 
     @engine_params.setter
-    def engine_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def engine_params(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "engine_params", value)
 
     @_builtins.property
     @pulumi.getter(name="groupType")
-    def group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
         """
         return pulumi.get(self, "group_type")
 
     @group_type.setter
-    def group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_type", value)
 
     @_builtins.property
     @pulumi.getter(name="maxClusterCount")
-    def max_cluster_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_cluster_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of compute clusters that are allowed in the resource group.
         """
         return pulumi.get(self, "max_cluster_count")
 
     @max_cluster_count.setter
-    def max_cluster_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_cluster_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_cluster_count", value)
 
     @_builtins.property
     @pulumi.getter(name="maxComputeResource")
-    def max_compute_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_compute_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
         """
         return pulumi.get(self, "max_compute_resource")
 
     @max_compute_resource.setter
-    def max_compute_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_compute_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_compute_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="minClusterCount")
-    def min_cluster_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_cluster_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of compute clusters that are required in the resource group.
         """
         return pulumi.get(self, "min_cluster_count")
 
     @min_cluster_count.setter
-    def min_cluster_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_cluster_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_cluster_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minComputeResource")
-    def min_compute_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_compute_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
         """
         return pulumi.get(self, "min_compute_resource")
 
     @min_compute_resource.setter
-    def min_compute_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_compute_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_compute_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeNum")
-    def node_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes.
         """
         return pulumi.get(self, "node_num")
 
     @node_num.setter
-    def node_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_num", value)
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The database accounts with which to associate the resource group.
         """
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "users", value)
 
 
 @pulumi.input_type
 class _ResourceGroupState:
     def __init__(__self__, *,
-                 cluster_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_size_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_cluster_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_cluster_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_size_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_cluster_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_cluster_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ResourceGroup resources.
 
@@ -317,230 +317,230 @@ class _ResourceGroupState:
 
     @_builtins.property
     @pulumi.getter(name="clusterMode")
-    def cluster_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
         """
         return pulumi.get(self, "cluster_mode")
 
     @cluster_mode.setter
-    def cluster_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterSizeResource")
-    def cluster_size_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_size_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource specifications of a single compute cluster. Unit: ACU.
         """
         return pulumi.get(self, "cluster_size_resource")
 
     @cluster_size_resource.setter
-    def cluster_size_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_size_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_size_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.261.0) The endpoint of the resource group.
         """
         return pulumi.get(self, "connection_string")
 
     @connection_string.setter
-    def connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the resource group was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterId")
-    def db_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the DBCluster.
         """
         return pulumi.get(self, "db_cluster_id")
 
     @db_cluster_id.setter
-    def db_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
         """
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter(name="engineParams")
-    def engine_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def engine_params(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
         """
         return pulumi.get(self, "engine_params")
 
     @engine_params.setter
-    def engine_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def engine_params(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "engine_params", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupType")
-    def group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
         """
         return pulumi.get(self, "group_type")
 
     @group_type.setter
-    def group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_type", value)
 
     @_builtins.property
     @pulumi.getter(name="maxClusterCount")
-    def max_cluster_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_cluster_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of compute clusters that are allowed in the resource group.
         """
         return pulumi.get(self, "max_cluster_count")
 
     @max_cluster_count.setter
-    def max_cluster_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_cluster_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_cluster_count", value)
 
     @_builtins.property
     @pulumi.getter(name="maxComputeResource")
-    def max_compute_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_compute_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
         """
         return pulumi.get(self, "max_compute_resource")
 
     @max_compute_resource.setter
-    def max_compute_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_compute_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_compute_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="minClusterCount")
-    def min_cluster_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_cluster_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of compute clusters that are required in the resource group.
         """
         return pulumi.get(self, "min_cluster_count")
 
     @min_cluster_count.setter
-    def min_cluster_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_cluster_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_cluster_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minComputeResource")
-    def min_compute_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_compute_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
         """
         return pulumi.get(self, "min_compute_resource")
 
     @min_compute_resource.setter
-    def min_compute_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_compute_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_compute_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeNum")
-    def node_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes.
         """
         return pulumi.get(self, "node_num")
 
     @node_num.setter
-    def node_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_num", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.261.0) The port number of the resource group.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.261.0) The status of the resource group.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the resource group was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database accounts that are associated with the resource group.
         """
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The database accounts with which to associate the resource group.
         """
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "users", value)
 
 
@@ -550,19 +550,19 @@ class ResourceGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_size_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_cluster_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_cluster_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_size_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_cluster_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_cluster_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a AnalyticDB for MySQL (ADB) Resource Group resource.
@@ -741,19 +741,19 @@ class ResourceGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_size_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_cluster_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_cluster_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_size_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_cluster_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_cluster_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -796,25 +796,25 @@ class ResourceGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_size_resource: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            engine: Optional[pulumi.Input[_builtins.str]] = None,
-            engine_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            group_type: Optional[pulumi.Input[_builtins.str]] = None,
-            max_cluster_count: Optional[pulumi.Input[_builtins.int]] = None,
-            max_compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-            min_cluster_count: Optional[pulumi.Input[_builtins.int]] = None,
-            min_compute_resource: Optional[pulumi.Input[_builtins.str]] = None,
-            node_num: Optional[pulumi.Input[_builtins.int]] = None,
-            port: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            user: Optional[pulumi.Input[_builtins.str]] = None,
-            users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ResourceGroup':
+            cluster_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_size_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            max_cluster_count: pulumi.Input[Optional[_builtins.int]] = None,
+            max_compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            min_cluster_count: pulumi.Input[Optional[_builtins.int]] = None,
+            min_compute_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            node_num: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None,
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ResourceGroup':
         """
         Get an existing ResourceGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -22,8 +22,8 @@ __all__ = ['AccessControlListArgs', 'AccessControlList']
 class AccessControlListArgs:
     def __init__(__self__, *,
                  access_control_list_name: pulumi.Input[_builtins.str],
-                 acl_entrys: Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]]] = None,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl_entrys: pulumi.Input[Optional[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]]] = None,
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessControlList resource.
 
@@ -56,7 +56,7 @@ class AccessControlListArgs:
     @_builtins.property
     @pulumi.getter(name="aclEntrys")
     @_utilities.deprecated("""Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.""")
-    def acl_entrys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]]]:
+    def acl_entrys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]]]:
         """
         Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
         **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
@@ -64,28 +64,28 @@ class AccessControlListArgs:
         return pulumi.get(self, "acl_entrys")
 
     @acl_entrys.setter
-    def acl_entrys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]]]):
+    def acl_entrys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]]]):
         pulumi.set(self, "acl_entrys", value)
 
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
-    def address_ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP version. Valid values: ipv4 and ipv6.
         """
         return pulumi.get(self, "address_ip_version")
 
     @address_ip_version.setter
-    def address_ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_ip_version", value)
 
 
 @pulumi.input_type
 class _AccessControlListState:
     def __init__(__self__, *,
-                 access_control_list_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_entrys: Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]]] = None,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_control_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_entrys: pulumi.Input[Optional[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]]] = None,
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessControlList resources.
 
@@ -106,20 +106,20 @@ class _AccessControlListState:
 
     @_builtins.property
     @pulumi.getter(name="accessControlListName")
-    def access_control_list_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_control_list_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access control list name.
         """
         return pulumi.get(self, "access_control_list_name")
 
     @access_control_list_name.setter
-    def access_control_list_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_control_list_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_control_list_name", value)
 
     @_builtins.property
     @pulumi.getter(name="aclEntrys")
     @_utilities.deprecated("""Field 'acl_entrys' has been deprecated from provider version v1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.""")
-    def acl_entrys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]]]:
+    def acl_entrys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]]]:
         """
         Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
         **NOTE:** Field 'acl_entrys' has been deprecated from provider version 1.228.0, and it will be removed in the future version. Please use the new resource 'alicloud_api_gateway_acl_entry_attachment'.
@@ -127,19 +127,19 @@ class _AccessControlListState:
         return pulumi.get(self, "acl_entrys")
 
     @acl_entrys.setter
-    def acl_entrys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]]]):
+    def acl_entrys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccessControlListAclEntryArgs']]]]):
         pulumi.set(self, "acl_entrys", value)
 
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
-    def address_ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP version. Valid values: ipv4 and ipv6.
         """
         return pulumi.get(self, "address_ip_version")
 
     @address_ip_version.setter
-    def address_ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_ip_version", value)
 
 
@@ -149,9 +149,9 @@ class AccessControlList(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_control_list_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_entrys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessControlListAclEntryArgs', 'AccessControlListAclEntryArgsDict']]]]] = None,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_control_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_entrys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessControlListAclEntryArgs', 'AccessControlListAclEntryArgsDict']]]]] = None,
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Api Gateway Access Control List resource. Access control list.
@@ -263,9 +263,9 @@ class AccessControlList(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_control_list_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_entrys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessControlListAclEntryArgs', 'AccessControlListAclEntryArgsDict']]]]] = None,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_control_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_entrys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessControlListAclEntryArgs', 'AccessControlListAclEntryArgsDict']]]]] = None,
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -292,9 +292,9 @@ class AccessControlList(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_control_list_name: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_entrys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessControlListAclEntryArgs', 'AccessControlListAclEntryArgsDict']]]]] = None,
-            address_ip_version: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessControlList':
+            access_control_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_entrys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessControlListAclEntryArgs', 'AccessControlListAclEntryArgsDict']]]]] = None,
+            address_ip_version: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessControlList':
         """
         Get an existing AccessControlList resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

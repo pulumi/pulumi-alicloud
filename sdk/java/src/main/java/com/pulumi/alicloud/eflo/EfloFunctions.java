@@ -34,8 +34,8 @@ public final class EfloFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eflo.EfloFunctions;
      * import com.pulumi.alicloud.eflo.inputs.GetSubnetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -80,8 +80,8 @@ public final class EfloFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eflo.EfloFunctions;
      * import com.pulumi.alicloud.eflo.inputs.GetSubnetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -126,8 +126,8 @@ public final class EfloFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eflo.EfloFunctions;
      * import com.pulumi.alicloud.eflo.inputs.GetSubnetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -172,8 +172,8 @@ public final class EfloFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eflo.EfloFunctions;
      * import com.pulumi.alicloud.eflo.inputs.GetSubnetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -218,8 +218,8 @@ public final class EfloFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eflo.EfloFunctions;
      * import com.pulumi.alicloud.eflo.inputs.GetSubnetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -264,8 +264,8 @@ public final class EfloFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eflo.EfloFunctions;
      * import com.pulumi.alicloud.eflo.inputs.GetSubnetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -310,8 +310,8 @@ public final class EfloFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eflo.EfloFunctions;
      * import com.pulumi.alicloud.eflo.inputs.GetSubnetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -356,8 +356,8 @@ public final class EfloFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eflo.EfloFunctions;
      * import com.pulumi.alicloud.eflo.inputs.GetVpdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -401,8 +401,8 @@ public final class EfloFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eflo.EfloFunctions;
      * import com.pulumi.alicloud.eflo.inputs.GetVpdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -446,8 +446,8 @@ public final class EfloFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eflo.EfloFunctions;
      * import com.pulumi.alicloud.eflo.inputs.GetVpdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -491,8 +491,8 @@ public final class EfloFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eflo.EfloFunctions;
      * import com.pulumi.alicloud.eflo.inputs.GetVpdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -536,8 +536,8 @@ public final class EfloFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eflo.EfloFunctions;
      * import com.pulumi.alicloud.eflo.inputs.GetVpdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -581,8 +581,8 @@ public final class EfloFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eflo.EfloFunctions;
      * import com.pulumi.alicloud.eflo.inputs.GetVpdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -626,8 +626,8 @@ public final class EfloFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eflo.EfloFunctions;
      * import com.pulumi.alicloud.eflo.inputs.GetVpdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

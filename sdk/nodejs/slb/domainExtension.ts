@@ -224,23 +224,23 @@ export interface DomainExtensionState {
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean | undefined>;
     /**
      * The domain name.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
      */
-    frontendPort?: pulumi.Input<number>;
+    frontendPort?: pulumi.Input<number | undefined>;
     /**
      * The ID of the SLB instance.
      */
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the certificate used by the domain name.
      */
-    serverCertificateId?: pulumi.Input<string>;
+    serverCertificateId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -250,7 +250,7 @@ export interface DomainExtensionArgs {
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean | undefined>;
     /**
      * The domain name.
      */

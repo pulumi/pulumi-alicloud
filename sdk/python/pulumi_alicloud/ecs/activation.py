@@ -19,11 +19,11 @@ __all__ = ['ActivationArgs', 'Activation']
 @pulumi.input_type
 class ActivationArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_to_live_in_hours: Optional[pulumi.Input[_builtins.int]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_to_live_in_hours: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Activation resource.
 
@@ -48,31 +48,31 @@ class ActivationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the activation code. The description can be 1 to 100 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of times that the activation code can be used to register managed instances. Valid values: `1` to `1000`. Default value: `10`.
         """
         return pulumi.get(self, "instance_count")
 
     @instance_count.setter
-    def instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default instance name prefix. The instance name prefix must be 1 to 50 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The instance name prefix can contain only letters, digits, periods (.), underscores (_), hyphens (-), and colons (:).
         - If you use the activation code created by the CreateActivation operation to register managed instances, the instances are assigned sequential names that are prefixed by the value of this parameter. You can also specify a new instance name to override the assigned sequential name when you register a managed instance.
@@ -81,42 +81,42 @@ class ActivationArgs:
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddressRange")
-    def ip_address_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP addresses of hosts that are allowed to use the activation code. The value can be IPv4 addresses, IPv6 addresses, or CIDR blocks.
         """
         return pulumi.get(self, "ip_address_range")
 
     @ip_address_range.setter
-    def ip_address_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address_range", value)
 
     @_builtins.property
     @pulumi.getter(name="timeToLiveInHours")
-    def time_to_live_in_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_to_live_in_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The validity period of the activation code. The activation code cannot be used to register new instances after the validity period expires. Unit: hours. Valid values: `1` to `24`. Default value: `4`.
         """
         return pulumi.get(self, "time_to_live_in_hours")
 
     @time_to_live_in_hours.setter
-    def time_to_live_in_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_to_live_in_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_to_live_in_hours", value)
 
 
 @pulumi.input_type
 class _ActivationState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_to_live_in_hours: Optional[pulumi.Input[_builtins.int]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_to_live_in_hours: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Activation resources.
 
@@ -141,31 +141,31 @@ class _ActivationState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the activation code. The description can be 1 to 100 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of times that the activation code can be used to register managed instances. Valid values: `1` to `1000`. Default value: `10`.
         """
         return pulumi.get(self, "instance_count")
 
     @instance_count.setter
-    def instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default instance name prefix. The instance name prefix must be 1 to 50 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The instance name prefix can contain only letters, digits, periods (.), underscores (_), hyphens (-), and colons (:).
         - If you use the activation code created by the CreateActivation operation to register managed instances, the instances are assigned sequential names that are prefixed by the value of this parameter. You can also specify a new instance name to override the assigned sequential name when you register a managed instance.
@@ -174,31 +174,31 @@ class _ActivationState:
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddressRange")
-    def ip_address_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP addresses of hosts that are allowed to use the activation code. The value can be IPv4 addresses, IPv6 addresses, or CIDR blocks.
         """
         return pulumi.get(self, "ip_address_range")
 
     @ip_address_range.setter
-    def ip_address_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address_range", value)
 
     @_builtins.property
     @pulumi.getter(name="timeToLiveInHours")
-    def time_to_live_in_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_to_live_in_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The validity period of the activation code. The activation code cannot be used to register new instances after the validity period expires. Unit: hours. Valid values: `1` to `24`. Default value: `4`.
         """
         return pulumi.get(self, "time_to_live_in_hours")
 
     @time_to_live_in_hours.setter
-    def time_to_live_in_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_to_live_in_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_to_live_in_hours", value)
 
 
@@ -208,11 +208,11 @@ class Activation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_to_live_in_hours: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_to_live_in_hours: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a ECS Activation resource.
@@ -313,11 +313,11 @@ class Activation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_to_live_in_hours: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_to_live_in_hours: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -342,11 +342,11 @@ class Activation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_address_range: Optional[pulumi.Input[_builtins.str]] = None,
-            time_to_live_in_hours: Optional[pulumi.Input[_builtins.int]] = None) -> 'Activation':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address_range: pulumi.Input[Optional[_builtins.str]] = None,
+            time_to_live_in_hours: pulumi.Input[Optional[_builtins.int]] = None) -> 'Activation':
         """
         Get an existing Activation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

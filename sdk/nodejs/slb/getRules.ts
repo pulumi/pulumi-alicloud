@@ -52,10 +52,10 @@ import * as utilities from "../utilities";
  *     url: "/image",
  *     serverGroupId: defaultServerGroup.id,
  * });
- * const sampleDs = defaultApplicationLoadBalancer.id.apply(id => alicloud.slb.getRulesOutput({
- *     loadBalancerId: id,
+ * const sampleDs = alicloud.slb.getRulesOutput({
+ *     loadBalancerId: defaultApplicationLoadBalancer.id,
  *     frontendPort: 22,
- * }));
+ * });
  * export const firstSlbRuleId = sampleDs.apply(sampleDs => sampleDs.slbRules?.[0]?.id);
  * ```
  */
@@ -167,10 +167,10 @@ export interface GetRulesResult {
  *     url: "/image",
  *     serverGroupId: defaultServerGroup.id,
  * });
- * const sampleDs = defaultApplicationLoadBalancer.id.apply(id => alicloud.slb.getRulesOutput({
- *     loadBalancerId: id,
+ * const sampleDs = alicloud.slb.getRulesOutput({
+ *     loadBalancerId: defaultApplicationLoadBalancer.id,
  *     frontendPort: 22,
- * }));
+ * });
  * export const firstSlbRuleId = sampleDs.apply(sampleDs => sampleDs.slbRules?.[0]?.id);
  * ```
  */
@@ -196,7 +196,7 @@ export interface GetRulesOutputArgs {
     /**
      * A list of rules IDs to filter results.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the SLB with listener rules.
      */
@@ -204,9 +204,9 @@ export interface GetRulesOutputArgs {
     /**
      * A regex string to filter results by rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

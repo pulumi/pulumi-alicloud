@@ -20,7 +20,7 @@ __all__ = ['K8sClusterArgs', 'K8sCluster']
 class K8sClusterArgs:
     def __init__(__self__, *,
                  cs_cluster_id: pulumi.Input[_builtins.str],
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a K8sCluster resource.
 
@@ -45,27 +45,27 @@ class K8sClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
         """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
-    def namespace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_id", value)
 
 
 @pulumi.input_type
 class _K8sClusterState:
     def __init__(__self__, *,
-                 cluster_import_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 cs_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_import_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 cs_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering K8sCluster resources.
 
@@ -98,7 +98,7 @@ class _K8sClusterState:
 
     @_builtins.property
     @pulumi.getter(name="clusterImportStatus")
-    def cluster_import_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cluster_import_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The import status of cluster: 
         `1`: success.
@@ -109,79 +109,79 @@ class _K8sClusterState:
         return pulumi.get(self, "cluster_import_status")
 
     @cluster_import_status.setter
-    def cluster_import_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cluster_import_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cluster_import_status", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster that you want to create.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cluster_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
         """
         return pulumi.get(self, "cluster_type")
 
     @cluster_type.setter
-    def cluster_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cluster_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cluster_type", value)
 
     @_builtins.property
     @pulumi.getter(name="csClusterId")
-    def cs_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cs_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the alicloud container service kubernetes cluster that you want to import.
         """
         return pulumi.get(self, "cs_cluster_id")
 
     @cs_cluster_id.setter
-    def cs_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cs_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cs_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
         """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
-    def namespace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkMode")
-    def network_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def network_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
         """
         return pulumi.get(self, "network_mode")
 
     @network_mode.setter
-    def network_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def network_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "network_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Virtual Private Cloud (VPC) for the cluster.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -191,8 +191,8 @@ class K8sCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cs_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cs_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an EDAS K8s cluster resource. For information about EDAS K8s Cluster and how to use it, see[What is EDAS K8s Cluster](https://www.alibabacloud.com/help/en/doc-detail/85108.htm).
@@ -218,7 +218,7 @@ class K8sCluster(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=4,
-            memory_size=8,
+            memory_size=float(8),
             kubernetes_node_role="Worker")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -297,7 +297,7 @@ class K8sCluster(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=4,
-            memory_size=8,
+            memory_size=float(8),
             kubernetes_node_role="Worker")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -356,8 +356,8 @@ class K8sCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cs_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cs_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,13 +386,13 @@ class K8sCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_import_status: Optional[pulumi.Input[_builtins.int]] = None,
-            cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_type: Optional[pulumi.Input[_builtins.int]] = None,
-            cs_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-            network_mode: Optional[pulumi.Input[_builtins.int]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'K8sCluster':
+            cluster_import_status: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_type: pulumi.Input[Optional[_builtins.int]] = None,
+            cs_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_mode: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'K8sCluster':
         """
         Get an existing K8sCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

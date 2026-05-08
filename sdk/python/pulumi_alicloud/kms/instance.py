@@ -24,23 +24,23 @@ class InstanceArgs:
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  zone_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete_without_backup: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 log: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 spec: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_num: Optional[pulumi.Input[_builtins.int]] = None):
+                 bind_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBindVpcArgs']]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete_without_backup: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 log: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 spec: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_num: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -161,31 +161,31 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="bindVpcs")
-    def bind_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]]:
+    def bind_vpcs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBindVpcArgs']]]]:
         """
         Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         """
         return pulumi.get(self, "bind_vpcs")
 
     @bind_vpcs.setter
-    def bind_vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]]):
+    def bind_vpcs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBindVpcArgs']]]]):
         pulumi.set(self, "bind_vpcs", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDeleteWithoutBackup")
-    def force_delete_without_backup(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def force_delete_without_backup(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to force deletion even without backup.
 
@@ -194,60 +194,60 @@ class InstanceArgs:
         return pulumi.get(self, "force_delete_without_backup")
 
     @force_delete_without_backup.setter
-    def force_delete_without_backup(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def force_delete_without_backup(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "force_delete_without_backup", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="keyNum")
-    def key_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def key_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
         """
         return pulumi.get(self, "key_num")
 
     @key_num.setter
-    def key_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def key_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "key_num", value)
 
     @_builtins.property
     @pulumi.getter
-    def log(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         """
         return pulumi.get(self, "log")
 
     @log.setter
-    def log(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log", value)
 
     @_builtins.property
     @pulumi.getter(name="logStorage")
-    def log_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         """
         return pulumi.get(self, "log_storage")
 
     @log_storage.setter
-    def log_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method. Valid values:
 
@@ -257,12 +257,12 @@ class InstanceArgs:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The subscription duration. Unit: month. The value must be an integral multiple of 12.
 
@@ -274,24 +274,24 @@ class InstanceArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="productVersion")
-    def product_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KMS Instance commodity type (software/hardware)
         """
         return pulumi.get(self, "product_version")
 
     @product_version.setter
-    def product_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_version", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period. Unit: month.
 
@@ -300,12 +300,12 @@ class InstanceArgs:
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewStatus")
-    def renew_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renew_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The renewal status of the specified instance. Valid values:
 
@@ -316,12 +316,12 @@ class InstanceArgs:
         return pulumi.get(self, "renew_status")
 
     @renew_status.setter
-    def renew_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renew_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renew_status", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
-    def renewal_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal period unit, value:
         - M: Month.
@@ -332,85 +332,85 @@ class InstanceArgs:
         return pulumi.get(self, "renewal_period_unit")
 
     @renewal_period_unit.setter
-    def renewal_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="secretNum")
-    def secret_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secret_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         """
         return pulumi.get(self, "secret_num")
 
     @secret_num.setter
-    def secret_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secret_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secret_num", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcNum")
-    def vpc_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vpc_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         """
         return pulumi.get(self, "vpc_num")
 
     @vpc_num.setter
-    def vpc_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vpc_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vpc_num", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]] = None,
-                 ca_certificate_chain_pem: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete_without_backup: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 log: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 spec: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 bind_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBindVpcArgs']]]] = None,
+                 ca_certificate_chain_pem: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete_without_backup: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 log: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 spec: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -510,67 +510,67 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="bindVpcs")
-    def bind_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]]:
+    def bind_vpcs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBindVpcArgs']]]]:
         """
         Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         """
         return pulumi.get(self, "bind_vpcs")
 
     @bind_vpcs.setter
-    def bind_vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]]):
+    def bind_vpcs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBindVpcArgs']]]]):
         pulumi.set(self, "bind_vpcs", value)
 
     @_builtins.property
     @pulumi.getter(name="caCertificateChainPem")
-    def ca_certificate_chain_pem(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_certificate_chain_pem(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KMS instance certificate chain in PEM format.
         """
         return pulumi.get(self, "ca_certificate_chain_pem")
 
     @ca_certificate_chain_pem.setter
-    def ca_certificate_chain_pem(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_certificate_chain_pem(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_certificate_chain_pem", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="endDate")
-    def end_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.233.1) Instance expiration time.
         """
         return pulumi.get(self, "end_date")
 
     @end_date.setter
-    def end_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_date", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDeleteWithoutBackup")
-    def force_delete_without_backup(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def force_delete_without_backup(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to force deletion even without backup.
 
@@ -579,60 +579,60 @@ class _InstanceState:
         return pulumi.get(self, "force_delete_without_backup")
 
     @force_delete_without_backup.setter
-    def force_delete_without_backup(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def force_delete_without_backup(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "force_delete_without_backup", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="keyNum")
-    def key_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def key_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
         """
         return pulumi.get(self, "key_num")
 
     @key_num.setter
-    def key_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def key_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "key_num", value)
 
     @_builtins.property
     @pulumi.getter
-    def log(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         """
         return pulumi.get(self, "log")
 
     @log.setter
-    def log(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log", value)
 
     @_builtins.property
     @pulumi.getter(name="logStorage")
-    def log_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         """
         return pulumi.get(self, "log_storage")
 
     @log_storage.setter
-    def log_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method. Valid values:
 
@@ -642,12 +642,12 @@ class _InstanceState:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The subscription duration. Unit: month. The value must be an integral multiple of 12.
 
@@ -659,24 +659,24 @@ class _InstanceState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="productVersion")
-    def product_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KMS Instance commodity type (software/hardware)
         """
         return pulumi.get(self, "product_version")
 
     @product_version.setter
-    def product_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_version", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period. Unit: month.
 
@@ -685,12 +685,12 @@ class _InstanceState:
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewStatus")
-    def renew_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renew_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The renewal status of the specified instance. Valid values:
 
@@ -701,12 +701,12 @@ class _InstanceState:
         return pulumi.get(self, "renew_status")
 
     @renew_status.setter
-    def renew_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renew_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renew_status", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
-    def renewal_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal period unit, value:
         - M: Month.
@@ -717,103 +717,103 @@ class _InstanceState:
         return pulumi.get(self, "renewal_period_unit")
 
     @renewal_period_unit.setter
-    def renewal_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="secretNum")
-    def secret_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secret_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         """
         return pulumi.get(self, "secret_num")
 
     @secret_num.setter
-    def secret_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secret_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secret_num", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcNum")
-    def vpc_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vpc_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         """
         return pulumi.get(self, "vpc_num")
 
     @vpc_num.setter
-    def vpc_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vpc_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vpc_num", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Instance bind vswitches
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneIds")
-    def zone_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def zone_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         zone id
         """
         return pulumi.get(self, "zone_ids")
 
     @zone_ids.setter
-    def zone_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def zone_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "zone_ids", value)
 
 
@@ -823,26 +823,26 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete_without_backup: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 log: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 spec: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bind_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete_without_backup: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 log: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 spec: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a KMS Instance resource.
@@ -1290,26 +1290,26 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete_without_backup: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 log: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 spec: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bind_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete_without_backup: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 log: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 spec: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1359,30 +1359,30 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
-            ca_certificate_chain_pem: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            end_date: Optional[pulumi.Input[_builtins.str]] = None,
-            force_delete_without_backup: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            key_num: Optional[pulumi.Input[_builtins.int]] = None,
-            log: Optional[pulumi.Input[_builtins.str]] = None,
-            log_storage: Optional[pulumi.Input[_builtins.int]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            product_version: Optional[pulumi.Input[_builtins.str]] = None,
-            renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-            renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_num: Optional[pulumi.Input[_builtins.int]] = None,
-            spec: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_num: Optional[pulumi.Input[_builtins.int]] = None,
-            vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Instance':
+            bind_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
+            ca_certificate_chain_pem: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_date: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete_without_backup: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            key_num: pulumi.Input[Optional[_builtins.int]] = None,
+            log: pulumi.Input[Optional[_builtins.str]] = None,
+            log_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            product_version: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_num: pulumi.Input[Optional[_builtins.int]] = None,
+            spec: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_num: pulumi.Input[Optional[_builtins.int]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

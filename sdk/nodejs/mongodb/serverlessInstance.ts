@@ -266,79 +266,79 @@ export interface ServerlessInstanceState {
      * * The password length is `8` to `32` bits.
      * * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * Set whether the instance is automatically renewed.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The I/O throughput consumed by the instance. Valid values: `100` to `8000`.
      */
-    capacityUnit?: pulumi.Input<number>;
+    capacityUnit?: pulumi.Input<number | undefined>;
     /**
      * The db instance description.
      */
-    dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string | undefined>;
     /**
      * The db instance storage. Valid values: `1` to `100`.
      */
-    dbInstanceStorage?: pulumi.Input<number>;
+    dbInstanceStorage?: pulumi.Input<number | undefined>;
     /**
      * The database engine of the instance. Valid values: `MongoDB`.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * The database version number. Valid values: `4.2`.
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintainStartTime` is `01:00Z`, `maintainEndTime` must be `02:00Z`.
      */
-    maintainEndTime?: pulumi.Input<string>;
+    maintainEndTime?: pulumi.Input<string | undefined>;
     /**
      * The start time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC.
      */
-    maintainStartTime?: pulumi.Input<string>;
+    maintainStartTime?: pulumi.Input<string | undefined>;
     /**
      * The purchase duration of the instance, in months. Valid values: `1` to `9`, `12`, `24`, `36`, `60`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The period price type. Valid values: `Day`, `Month`.
      */
-    periodPriceType?: pulumi.Input<string>;
+    periodPriceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * An array that consists of the information of IP whitelists.
      */
-    securityIpGroups?: pulumi.Input<pulumi.Input<inputs.mongodb.ServerlessInstanceSecurityIpGroup>[]>;
+    securityIpGroups?: pulumi.Input<pulumi.Input<inputs.mongodb.ServerlessInstanceSecurityIpGroup>[] | undefined>;
     /**
      * The instance status. For more information, see the instance Status Table.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The storage engine used by the instance. Valid values: `WiredTiger`.
      */
-    storageEngine?: pulumi.Input<string>;
+    storageEngine?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the VPC network.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The of the vswitch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone. Use this parameter to specify the zone created by the instance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -354,7 +354,7 @@ export interface ServerlessInstanceArgs {
     /**
      * Set whether the instance is automatically renewed.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The I/O throughput consumed by the instance. Valid values: `100` to `8000`.
      */
@@ -362,7 +362,7 @@ export interface ServerlessInstanceArgs {
     /**
      * The db instance description.
      */
-    dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string | undefined>;
     /**
      * The db instance storage. Valid values: `1` to `100`.
      */
@@ -370,7 +370,7 @@ export interface ServerlessInstanceArgs {
     /**
      * The database engine of the instance. Valid values: `MongoDB`.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * The database version number. Valid values: `4.2`.
      */
@@ -378,35 +378,35 @@ export interface ServerlessInstanceArgs {
     /**
      * The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintainStartTime` is `01:00Z`, `maintainEndTime` must be `02:00Z`.
      */
-    maintainEndTime?: pulumi.Input<string>;
+    maintainEndTime?: pulumi.Input<string | undefined>;
     /**
      * The start time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC.
      */
-    maintainStartTime?: pulumi.Input<string>;
+    maintainStartTime?: pulumi.Input<string | undefined>;
     /**
      * The purchase duration of the instance, in months. Valid values: `1` to `9`, `12`, `24`, `36`, `60`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The period price type. Valid values: `Day`, `Month`.
      */
-    periodPriceType?: pulumi.Input<string>;
+    periodPriceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * An array that consists of the information of IP whitelists.
      */
-    securityIpGroups?: pulumi.Input<pulumi.Input<inputs.mongodb.ServerlessInstanceSecurityIpGroup>[]>;
+    securityIpGroups?: pulumi.Input<pulumi.Input<inputs.mongodb.ServerlessInstanceSecurityIpGroup>[] | undefined>;
     /**
      * The storage engine used by the instance. Valid values: `WiredTiger`.
      */
-    storageEngine?: pulumi.Input<string>;
+    storageEngine?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the VPC network.
      */

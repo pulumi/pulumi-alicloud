@@ -22,14 +22,14 @@ class DwResourceGroupArgs:
                  default_vpc_id: pulumi.Input[_builtins.str],
                  default_vswitch_id: pulumi.Input[_builtins.str],
                  remark: pulumi.Input[_builtins.str],
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 specification: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 specification: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DwResourceGroup resource.
 
@@ -103,117 +103,117 @@ class DwResourceGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically renew. The default value is false.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDuration")
-    def payment_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def payment_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When the payment method is Prepaid, the unit is PaymentDurationUnit.
         """
         return pulumi.get(self, "payment_duration")
 
     @payment_duration.setter
-    def payment_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def payment_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "payment_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDurationUnit")
-    def payment_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the payment method is Prepaid, the payment duration unit, Month is Month, Year is Year, and there is no other optional value.
         """
         return pulumi.get(self, "payment_duration_unit")
 
     @payment_duration_unit.setter
-    def payment_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing type of the resource group. PrePaid is Subscription, and PostPaid is Pay-As-You-Go.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource group name
         """
         return pulumi.get(self, "resource_group_name")
 
     @resource_group_name.setter
-    def resource_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def specification(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def specification(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Package year and package month resource group specifications, unit CU
         """
         return pulumi.get(self, "specification")
 
     @specification.setter
-    def specification(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def specification(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "specification", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _DwResourceGroupState:
     def __init__(__self__, *,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 specification: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 specification: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DwResourceGroup resources.
 
@@ -260,158 +260,158 @@ class _DwResourceGroupState:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically renew. The default value is false.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Resource group creation time
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultVpcId")
-    def default_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ID of the default network resource.
         """
         return pulumi.get(self, "default_vpc_id")
 
     @default_vpc_id.setter
-    def default_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultVswitchId")
-    def default_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vswitch bound to the network resource by default.
         """
         return pulumi.get(self, "default_vswitch_id")
 
     @default_vswitch_id.setter
-    def default_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDuration")
-    def payment_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def payment_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When the payment method is Prepaid, the unit is PaymentDurationUnit.
         """
         return pulumi.get(self, "payment_duration")
 
     @payment_duration.setter
-    def payment_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def payment_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "payment_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDurationUnit")
-    def payment_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the payment method is Prepaid, the payment duration unit, Month is Month, Year is Year, and there is no other optional value.
         """
         return pulumi.get(self, "payment_duration_unit")
 
     @payment_duration_unit.setter
-    def payment_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing type of the resource group. PrePaid is Subscription, and PostPaid is Pay-As-You-Go.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Group Comments
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupName")
-    def resource_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource group name
         """
         return pulumi.get(self, "resource_group_name")
 
     @resource_group_name.setter
-    def resource_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def specification(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def specification(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Package year and package month resource group specifications, unit CU
         """
         return pulumi.get(self, "specification")
 
     @specification.setter
-    def specification(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def specification(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "specification", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource group status:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -421,17 +421,17 @@ class DwResourceGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 specification: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 specification: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Data Works Dw Resource Group resource.
@@ -586,17 +586,17 @@ class DwResourceGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 specification: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 specification: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -635,19 +635,19 @@ class DwResourceGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            default_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            default_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            specification: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DwResourceGroup':
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            default_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            specification: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DwResourceGroup':
         """
         Get an existing DwResourceGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

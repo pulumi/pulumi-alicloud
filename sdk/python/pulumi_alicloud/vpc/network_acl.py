@@ -22,14 +22,14 @@ __all__ = ['NetworkAclArgs', 'NetworkAcl']
 class NetworkAclArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]] = None,
-                 ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_acl_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]] = None,
-                 source_network_acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]] = None,
+                 ingress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_acl_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclResourceArgs']]]] = None,
+                 source_network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a NetworkAcl resource.
 
@@ -83,56 +83,56 @@ class NetworkAclArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="egressAclEntries")
-    def egress_acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]]:
+    def egress_acl_entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]]:
         """
         Out direction rule information. See `egress_acl_entries` below.
         """
         return pulumi.get(self, "egress_acl_entries")
 
     @egress_acl_entries.setter
-    def egress_acl_entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]]):
+    def egress_acl_entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]]):
         pulumi.set(self, "egress_acl_entries", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressAclEntries")
-    def ingress_acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]]:
+    def ingress_acl_entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]]:
         """
         Inward direction rule information. See `ingress_acl_entries` below.
         """
         return pulumi.get(self, "ingress_acl_entries")
 
     @ingress_acl_entries.setter
-    def ingress_acl_entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]]):
+    def ingress_acl_entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]]):
         pulumi.set(self, "ingress_acl_entries", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAclName")
-    def network_acl_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_acl_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the network ACL.
         The name must be 1 to 128 characters in length and cannot start with http:// or https.
@@ -140,60 +140,60 @@ class NetworkAclArgs:
         return pulumi.get(self, "network_acl_name")
 
     @network_acl_name.setter
-    def network_acl_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_acl_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_acl_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclResourceArgs']]]]:
         """
         The associated resource. See `resources` below.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceNetworkAclId")
-    def source_network_acl_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_network_acl_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SOURCE NetworkAcl specified by CopyNetworkAclEntries
         """
         return pulumi.get(self, "source_network_acl_id")
 
     @source_network_acl_id.setter
-    def source_network_acl_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_network_acl_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_network_acl_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags of this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _NetworkAclState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]] = None,
-                 ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_acl_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]] = None,
-                 source_network_acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]] = None,
+                 ingress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_acl_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclResourceArgs']]]] = None,
+                 source_network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkAcl resources.
 
@@ -240,68 +240,68 @@ class _NetworkAclState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="egressAclEntries")
-    def egress_acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]]:
+    def egress_acl_entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]]:
         """
         Out direction rule information. See `egress_acl_entries` below.
         """
         return pulumi.get(self, "egress_acl_entries")
 
     @egress_acl_entries.setter
-    def egress_acl_entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]]):
+    def egress_acl_entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]]]):
         pulumi.set(self, "egress_acl_entries", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressAclEntries")
-    def ingress_acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]]:
+    def ingress_acl_entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]]:
         """
         Inward direction rule information. See `ingress_acl_entries` below.
         """
         return pulumi.get(self, "ingress_acl_entries")
 
     @ingress_acl_entries.setter
-    def ingress_acl_entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]]):
+    def ingress_acl_entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]]]):
         pulumi.set(self, "ingress_acl_entries", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAclName")
-    def network_acl_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_acl_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the network ACL.
         The name must be 1 to 128 characters in length and cannot start with http:// or https.
@@ -309,60 +309,60 @@ class _NetworkAclState:
         return pulumi.get(self, "network_acl_name")
 
     @network_acl_name.setter
-    def network_acl_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_acl_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_acl_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclResourceArgs']]]]:
         """
         The associated resource. See `resources` below.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceNetworkAclId")
-    def source_network_acl_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_network_acl_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SOURCE NetworkAcl specified by CopyNetworkAclEntries
         """
         return pulumi.get(self, "source_network_acl_id")
 
     @source_network_acl_id.setter
-    def source_network_acl_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_network_acl_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_network_acl_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the network ACL.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags of this resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the associated VPC.
 
@@ -371,7 +371,7 @@ class _NetworkAclState:
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -381,15 +381,15 @@ class NetworkAcl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]]] = None,
-                 ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_acl_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
-                 source_network_acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]]] = None,
+                 ingress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_acl_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
+                 source_network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPC Network Acl resource.
@@ -565,15 +565,15 @@ class NetworkAcl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]]] = None,
-                 ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_acl_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
-                 source_network_acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]]] = None,
+                 ingress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_acl_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
+                 source_network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -606,17 +606,17 @@ class NetworkAcl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]]] = None,
-            ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_acl_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
-            source_network_acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'NetworkAcl':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            egress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]]] = None,
+            ingress_acl_entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_acl_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
+            source_network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkAcl':
         """
         Get an existing NetworkAcl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

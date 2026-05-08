@@ -23,7 +23,7 @@ class GatewayVcoRouteArgs:
                  route_dest: pulumi.Input[_builtins.str],
                  vpn_connection_id: pulumi.Input[_builtins.str],
                  weight: pulumi.Input[_builtins.int],
-                 overlay_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 overlay_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GatewayVcoRoute resource.
 
@@ -90,26 +90,26 @@ class GatewayVcoRouteArgs:
 
     @_builtins.property
     @pulumi.getter(name="overlayMode")
-    def overlay_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def overlay_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
         """
         return pulumi.get(self, "overlay_mode")
 
     @overlay_mode.setter
-    def overlay_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def overlay_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "overlay_mode", value)
 
 
 @pulumi.input_type
 class _GatewayVcoRouteState:
     def __init__(__self__, *,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-                 overlay_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_dest: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 overlay_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_dest: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering GatewayVcoRoute resources.
 
@@ -135,74 +135,74 @@ class _GatewayVcoRouteState:
 
     @_builtins.property
     @pulumi.getter(name="nextHop")
-    def next_hop(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The next hop of the destination route.
         """
         return pulumi.get(self, "next_hop")
 
     @next_hop.setter
-    def next_hop(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop", value)
 
     @_builtins.property
     @pulumi.getter(name="overlayMode")
-    def overlay_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def overlay_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
         """
         return pulumi.get(self, "overlay_mode")
 
     @overlay_mode.setter
-    def overlay_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def overlay_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "overlay_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="routeDest")
-    def route_dest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_dest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination network segment of the destination route.
         """
         return pulumi.get(self, "route_dest")
 
     @route_dest.setter
-    def route_dest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_dest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_dest", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the vpn route entry.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnConnectionId")
-    def vpn_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the vpn attachment.
         """
         return pulumi.get(self, "vpn_connection_id")
 
     @vpn_connection_id.setter
-    def vpn_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight value of the destination route. Valid values: `0`, `100`.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
@@ -212,11 +212,11 @@ class GatewayVcoRoute(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-                 overlay_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_dest: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 overlay_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_dest: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a VPN Gateway Vco Route resource.
@@ -455,11 +455,11 @@ class GatewayVcoRoute(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-                 overlay_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_dest: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 overlay_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_dest: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -493,12 +493,12 @@ class GatewayVcoRoute(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-            overlay_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            route_dest: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpn_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            weight: Optional[pulumi.Input[_builtins.int]] = None) -> 'GatewayVcoRoute':
+            next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+            overlay_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            route_dest: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> 'GatewayVcoRoute':
         """
         Get an existing GatewayVcoRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

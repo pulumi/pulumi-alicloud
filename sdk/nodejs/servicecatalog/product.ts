@@ -137,23 +137,23 @@ export interface ProductState {
     /**
      * The creation time of the product
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the product
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the product
      */
-    productName?: pulumi.Input<string>;
+    productName?: pulumi.Input<string | undefined>;
     /**
      * The type of the product
      */
-    productType?: pulumi.Input<string>;
+    productType?: pulumi.Input<string | undefined>;
     /**
      * The provider name of the product
      */
-    providerName?: pulumi.Input<string>;
+    providerName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -163,7 +163,7 @@ export interface ProductArgs {
     /**
      * The description of the product
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the product
      */

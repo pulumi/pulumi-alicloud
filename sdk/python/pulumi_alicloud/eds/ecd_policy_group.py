@@ -21,25 +21,25 @@ __all__ = ['EcdPolicyGroupArgs', 'EcdPolicyGroup']
 @pulumi.input_type
 class EcdPolicyGroupArgs:
     def __init__(__self__, *,
-                 authorize_access_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] = None,
-                 authorize_security_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] = None,
-                 camera_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 clipboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 html_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 html_file_transfer: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_drive: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording_expires: Optional[pulumi.Input[_builtins.int]] = None,
-                 recording_fps: Optional[pulumi.Input[_builtins.int]] = None,
-                 recording_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 usb_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 visual_quality: Optional[pulumi.Input[_builtins.str]] = None,
-                 watermark: Optional[pulumi.Input[_builtins.str]] = None,
-                 watermark_transparency: Optional[pulumi.Input[_builtins.str]] = None,
-                 watermark_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] = None,
+                 authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] = None,
+                 camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 html_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 html_file_transfer: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_drive: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording_expires: pulumi.Input[Optional[_builtins.int]] = None,
+                 recording_fps: pulumi.Input[Optional[_builtins.int]] = None,
+                 recording_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 usb_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 visual_quality: pulumi.Input[Optional[_builtins.str]] = None,
+                 watermark: pulumi.Input[Optional[_builtins.str]] = None,
+                 watermark_transparency: pulumi.Input[Optional[_builtins.str]] = None,
+                 watermark_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcdPolicyGroup resource.
 
@@ -104,256 +104,256 @@ class EcdPolicyGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorizeAccessPolicyRules")
-    def authorize_access_policy_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]]:
+    def authorize_access_policy_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]]:
         """
         The rule of authorize access rule. See `authorize_access_policy_rules` below.
         """
         return pulumi.get(self, "authorize_access_policy_rules")
 
     @authorize_access_policy_rules.setter
-    def authorize_access_policy_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]]):
+    def authorize_access_policy_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]]):
         pulumi.set(self, "authorize_access_policy_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizeSecurityPolicyRules")
-    def authorize_security_policy_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]:
+    def authorize_security_policy_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]:
         """
         The policy rule. See `authorize_security_policy_rules` below.
         """
         return pulumi.get(self, "authorize_security_policy_rules")
 
     @authorize_security_policy_rules.setter
-    def authorize_security_policy_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]):
+    def authorize_security_policy_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]):
         pulumi.set(self, "authorize_security_policy_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="cameraRedirect")
-    def camera_redirect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def camera_redirect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable local camera redirection. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "camera_redirect")
 
     @camera_redirect.setter
-    def camera_redirect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def camera_redirect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "camera_redirect", value)
 
     @_builtins.property
     @pulumi.getter
-    def clipboard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clipboard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         """
         return pulumi.get(self, "clipboard")
 
     @clipboard.setter
-    def clipboard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clipboard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clipboard", value)
 
     @_builtins.property
     @pulumi.getter(name="domainList")
-    def domain_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of domain.
         """
         return pulumi.get(self, "domain_list")
 
     @domain_list.setter
-    def domain_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_list", value)
 
     @_builtins.property
     @pulumi.getter(name="htmlAccess")
-    def html_access(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def html_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access of html5. Valid values: `off`, `on`.
         """
         return pulumi.get(self, "html_access")
 
     @html_access.setter
-    def html_access(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def html_access(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "html_access", value)
 
     @_builtins.property
     @pulumi.getter(name="htmlFileTransfer")
-    def html_file_transfer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def html_file_transfer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
         """
         return pulumi.get(self, "html_file_transfer")
 
     @html_file_transfer.setter
-    def html_file_transfer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def html_file_transfer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "html_file_transfer", value)
 
     @_builtins.property
     @pulumi.getter(name="localDrive")
-    def local_drive(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_drive(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
         """
         return pulumi.get(self, "local_drive")
 
     @local_drive.setter
-    def local_drive(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_drive(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_drive", value)
 
     @_builtins.property
     @pulumi.getter(name="policyGroupName")
-    def policy_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of policy group.
         """
         return pulumi.get(self, "policy_group_name")
 
     @policy_group_name.setter
-    def policy_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def recording(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recording(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         """
         return pulumi.get(self, "recording")
 
     @recording.setter
-    def recording(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recording(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recording", value)
 
     @_builtins.property
     @pulumi.getter(name="recordingEndTime")
-    def recording_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recording_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         """
         return pulumi.get(self, "recording_end_time")
 
     @recording_end_time.setter
-    def recording_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recording_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recording_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="recordingExpires")
-    def recording_expires(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def recording_expires(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         """
         return pulumi.get(self, "recording_expires")
 
     @recording_expires.setter
-    def recording_expires(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def recording_expires(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "recording_expires", value)
 
     @_builtins.property
     @pulumi.getter(name="recordingFps")
-    def recording_fps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def recording_fps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         """
         return pulumi.get(self, "recording_fps")
 
     @recording_fps.setter
-    def recording_fps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def recording_fps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "recording_fps", value)
 
     @_builtins.property
     @pulumi.getter(name="recordingStartTime")
-    def recording_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recording_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         """
         return pulumi.get(self, "recording_start_time")
 
     @recording_start_time.setter
-    def recording_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recording_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recording_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="usbRedirect")
-    def usb_redirect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usb_redirect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The usb redirect policy. Valid values: `off`, `on`.
         """
         return pulumi.get(self, "usb_redirect")
 
     @usb_redirect.setter
-    def usb_redirect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usb_redirect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usb_redirect", value)
 
     @_builtins.property
     @pulumi.getter(name="visualQuality")
-    def visual_quality(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visual_quality(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
         """
         return pulumi.get(self, "visual_quality")
 
     @visual_quality.setter
-    def visual_quality(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visual_quality(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visual_quality", value)
 
     @_builtins.property
     @pulumi.getter
-    def watermark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def watermark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The watermark policy. Valid values: `off`, `on`.
         """
         return pulumi.get(self, "watermark")
 
     @watermark.setter
-    def watermark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def watermark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "watermark", value)
 
     @_builtins.property
     @pulumi.getter(name="watermarkTransparency")
-    def watermark_transparency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def watermark_transparency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The watermark transparency. Valid values: `DARK`, `LIGHT`, `MIDDLE`.
         """
         return pulumi.get(self, "watermark_transparency")
 
     @watermark_transparency.setter
-    def watermark_transparency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def watermark_transparency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "watermark_transparency", value)
 
     @_builtins.property
     @pulumi.getter(name="watermarkType")
-    def watermark_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def watermark_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of watemark. Valid values: `EndUserId`, `HostName`.
         """
         return pulumi.get(self, "watermark_type")
 
     @watermark_type.setter
-    def watermark_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def watermark_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "watermark_type", value)
 
 
 @pulumi.input_type
 class _EcdPolicyGroupState:
     def __init__(__self__, *,
-                 authorize_access_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] = None,
-                 authorize_security_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] = None,
-                 camera_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 clipboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 html_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 html_file_transfer: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_drive: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording_expires: Optional[pulumi.Input[_builtins.int]] = None,
-                 recording_fps: Optional[pulumi.Input[_builtins.int]] = None,
-                 recording_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 usb_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 visual_quality: Optional[pulumi.Input[_builtins.str]] = None,
-                 watermark: Optional[pulumi.Input[_builtins.str]] = None,
-                 watermark_transparency: Optional[pulumi.Input[_builtins.str]] = None,
-                 watermark_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] = None,
+                 authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] = None,
+                 camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 html_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 html_file_transfer: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_drive: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording_expires: pulumi.Input[Optional[_builtins.int]] = None,
+                 recording_fps: pulumi.Input[Optional[_builtins.int]] = None,
+                 recording_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 usb_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 visual_quality: pulumi.Input[Optional[_builtins.str]] = None,
+                 watermark: pulumi.Input[Optional[_builtins.str]] = None,
+                 watermark_transparency: pulumi.Input[Optional[_builtins.str]] = None,
+                 watermark_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcdPolicyGroup resources.
 
@@ -421,242 +421,242 @@ class _EcdPolicyGroupState:
 
     @_builtins.property
     @pulumi.getter(name="authorizeAccessPolicyRules")
-    def authorize_access_policy_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]]:
+    def authorize_access_policy_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]]:
         """
         The rule of authorize access rule. See `authorize_access_policy_rules` below.
         """
         return pulumi.get(self, "authorize_access_policy_rules")
 
     @authorize_access_policy_rules.setter
-    def authorize_access_policy_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]]):
+    def authorize_access_policy_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]]):
         pulumi.set(self, "authorize_access_policy_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizeSecurityPolicyRules")
-    def authorize_security_policy_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]:
+    def authorize_security_policy_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]:
         """
         The policy rule. See `authorize_security_policy_rules` below.
         """
         return pulumi.get(self, "authorize_security_policy_rules")
 
     @authorize_security_policy_rules.setter
-    def authorize_security_policy_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]):
+    def authorize_security_policy_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]):
         pulumi.set(self, "authorize_security_policy_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="cameraRedirect")
-    def camera_redirect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def camera_redirect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable local camera redirection. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "camera_redirect")
 
     @camera_redirect.setter
-    def camera_redirect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def camera_redirect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "camera_redirect", value)
 
     @_builtins.property
     @pulumi.getter
-    def clipboard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clipboard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         """
         return pulumi.get(self, "clipboard")
 
     @clipboard.setter
-    def clipboard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clipboard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clipboard", value)
 
     @_builtins.property
     @pulumi.getter(name="domainList")
-    def domain_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of domain.
         """
         return pulumi.get(self, "domain_list")
 
     @domain_list.setter
-    def domain_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_list", value)
 
     @_builtins.property
     @pulumi.getter(name="htmlAccess")
-    def html_access(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def html_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access of html5. Valid values: `off`, `on`.
         """
         return pulumi.get(self, "html_access")
 
     @html_access.setter
-    def html_access(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def html_access(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "html_access", value)
 
     @_builtins.property
     @pulumi.getter(name="htmlFileTransfer")
-    def html_file_transfer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def html_file_transfer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
         """
         return pulumi.get(self, "html_file_transfer")
 
     @html_file_transfer.setter
-    def html_file_transfer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def html_file_transfer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "html_file_transfer", value)
 
     @_builtins.property
     @pulumi.getter(name="localDrive")
-    def local_drive(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_drive(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
         """
         return pulumi.get(self, "local_drive")
 
     @local_drive.setter
-    def local_drive(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_drive(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_drive", value)
 
     @_builtins.property
     @pulumi.getter(name="policyGroupName")
-    def policy_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of policy group.
         """
         return pulumi.get(self, "policy_group_name")
 
     @policy_group_name.setter
-    def policy_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def recording(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recording(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         """
         return pulumi.get(self, "recording")
 
     @recording.setter
-    def recording(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recording(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recording", value)
 
     @_builtins.property
     @pulumi.getter(name="recordingEndTime")
-    def recording_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recording_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         """
         return pulumi.get(self, "recording_end_time")
 
     @recording_end_time.setter
-    def recording_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recording_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recording_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="recordingExpires")
-    def recording_expires(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def recording_expires(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         """
         return pulumi.get(self, "recording_expires")
 
     @recording_expires.setter
-    def recording_expires(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def recording_expires(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "recording_expires", value)
 
     @_builtins.property
     @pulumi.getter(name="recordingFps")
-    def recording_fps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def recording_fps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         """
         return pulumi.get(self, "recording_fps")
 
     @recording_fps.setter
-    def recording_fps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def recording_fps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "recording_fps", value)
 
     @_builtins.property
     @pulumi.getter(name="recordingStartTime")
-    def recording_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recording_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         """
         return pulumi.get(self, "recording_start_time")
 
     @recording_start_time.setter
-    def recording_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recording_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recording_start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of policy.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="usbRedirect")
-    def usb_redirect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usb_redirect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The usb redirect policy. Valid values: `off`, `on`.
         """
         return pulumi.get(self, "usb_redirect")
 
     @usb_redirect.setter
-    def usb_redirect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usb_redirect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usb_redirect", value)
 
     @_builtins.property
     @pulumi.getter(name="visualQuality")
-    def visual_quality(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visual_quality(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The quality of visual. Valid values: `high`, `lossless`, `low`, `medium`.
         """
         return pulumi.get(self, "visual_quality")
 
     @visual_quality.setter
-    def visual_quality(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visual_quality(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visual_quality", value)
 
     @_builtins.property
     @pulumi.getter
-    def watermark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def watermark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The watermark policy. Valid values: `off`, `on`.
         """
         return pulumi.get(self, "watermark")
 
     @watermark.setter
-    def watermark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def watermark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "watermark", value)
 
     @_builtins.property
     @pulumi.getter(name="watermarkTransparency")
-    def watermark_transparency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def watermark_transparency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The watermark transparency. Valid values: `DARK`, `LIGHT`, `MIDDLE`.
         """
         return pulumi.get(self, "watermark_transparency")
 
     @watermark_transparency.setter
-    def watermark_transparency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def watermark_transparency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "watermark_transparency", value)
 
     @_builtins.property
     @pulumi.getter(name="watermarkType")
-    def watermark_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def watermark_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of watemark. Valid values: `EndUserId`, `HostName`.
         """
         return pulumi.get(self, "watermark_type")
 
     @watermark_type.setter
-    def watermark_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def watermark_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "watermark_type", value)
 
 
@@ -666,25 +666,25 @@ class EcdPolicyGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorize_access_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict']]]]] = None,
-                 authorize_security_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict']]]]] = None,
-                 camera_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 clipboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 html_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 html_file_transfer: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_drive: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording_expires: Optional[pulumi.Input[_builtins.int]] = None,
-                 recording_fps: Optional[pulumi.Input[_builtins.int]] = None,
-                 recording_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 usb_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 visual_quality: Optional[pulumi.Input[_builtins.str]] = None,
-                 watermark: Optional[pulumi.Input[_builtins.str]] = None,
-                 watermark_transparency: Optional[pulumi.Input[_builtins.str]] = None,
-                 watermark_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict']]]]] = None,
+                 authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict']]]]] = None,
+                 camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 html_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 html_file_transfer: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_drive: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording_expires: pulumi.Input[Optional[_builtins.int]] = None,
+                 recording_fps: pulumi.Input[Optional[_builtins.int]] = None,
+                 recording_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 usb_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 visual_quality: pulumi.Input[Optional[_builtins.str]] = None,
+                 watermark: pulumi.Input[Optional[_builtins.str]] = None,
+                 watermark_transparency: pulumi.Input[Optional[_builtins.str]] = None,
+                 watermark_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Elastic Desktop Service (ECD) Policy Group resource.
@@ -823,25 +823,25 @@ class EcdPolicyGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorize_access_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict']]]]] = None,
-                 authorize_security_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict']]]]] = None,
-                 camera_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 clipboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 html_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 html_file_transfer: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_drive: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 recording_expires: Optional[pulumi.Input[_builtins.int]] = None,
-                 recording_fps: Optional[pulumi.Input[_builtins.int]] = None,
-                 recording_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 usb_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-                 visual_quality: Optional[pulumi.Input[_builtins.str]] = None,
-                 watermark: Optional[pulumi.Input[_builtins.str]] = None,
-                 watermark_transparency: Optional[pulumi.Input[_builtins.str]] = None,
-                 watermark_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict']]]]] = None,
+                 authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict']]]]] = None,
+                 camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 html_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 html_file_transfer: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_drive: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 recording_expires: pulumi.Input[Optional[_builtins.int]] = None,
+                 recording_fps: pulumi.Input[Optional[_builtins.int]] = None,
+                 recording_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 usb_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+                 visual_quality: pulumi.Input[Optional[_builtins.str]] = None,
+                 watermark: pulumi.Input[Optional[_builtins.str]] = None,
+                 watermark_transparency: pulumi.Input[Optional[_builtins.str]] = None,
+                 watermark_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -881,26 +881,26 @@ class EcdPolicyGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authorize_access_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict']]]]] = None,
-            authorize_security_policy_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict']]]]] = None,
-            camera_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-            clipboard: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_list: Optional[pulumi.Input[_builtins.str]] = None,
-            html_access: Optional[pulumi.Input[_builtins.str]] = None,
-            html_file_transfer: Optional[pulumi.Input[_builtins.str]] = None,
-            local_drive: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            recording: Optional[pulumi.Input[_builtins.str]] = None,
-            recording_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            recording_expires: Optional[pulumi.Input[_builtins.int]] = None,
-            recording_fps: Optional[pulumi.Input[_builtins.int]] = None,
-            recording_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            usb_redirect: Optional[pulumi.Input[_builtins.str]] = None,
-            visual_quality: Optional[pulumi.Input[_builtins.str]] = None,
-            watermark: Optional[pulumi.Input[_builtins.str]] = None,
-            watermark_transparency: Optional[pulumi.Input[_builtins.str]] = None,
-            watermark_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'EcdPolicyGroup':
+            authorize_access_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs', 'EcdPolicyGroupAuthorizeAccessPolicyRuleArgsDict']]]]] = None,
+            authorize_security_policy_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs', 'EcdPolicyGroupAuthorizeSecurityPolicyRuleArgsDict']]]]] = None,
+            camera_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+            clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_list: pulumi.Input[Optional[_builtins.str]] = None,
+            html_access: pulumi.Input[Optional[_builtins.str]] = None,
+            html_file_transfer: pulumi.Input[Optional[_builtins.str]] = None,
+            local_drive: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            recording: pulumi.Input[Optional[_builtins.str]] = None,
+            recording_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            recording_expires: pulumi.Input[Optional[_builtins.int]] = None,
+            recording_fps: pulumi.Input[Optional[_builtins.int]] = None,
+            recording_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            usb_redirect: pulumi.Input[Optional[_builtins.str]] = None,
+            visual_quality: pulumi.Input[Optional[_builtins.str]] = None,
+            watermark: pulumi.Input[Optional[_builtins.str]] = None,
+            watermark_transparency: pulumi.Input[Optional[_builtins.str]] = None,
+            watermark_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'EcdPolicyGroup':
         """
         Get an existing EcdPolicyGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

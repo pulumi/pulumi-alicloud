@@ -159,34 +159,34 @@ export interface AggregatorState {
      * The member accounts of the account group. See `aggregatorAccounts` below.
      * > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
      */
-    aggregatorAccounts?: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[]>;
+    aggregatorAccounts?: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[] | undefined>;
     /**
      * The name of the account group.
      */
-    aggregatorName?: pulumi.Input<string>;
+    aggregatorName?: pulumi.Input<string | undefined>;
     /**
      * The type of the account group. Default value: `CUSTOM`. Valid values:
      * - `RD`: Global account group.
      * - `FOLDER`: Folder account group.
      * - `CUSTOM`: Custom account group.
      */
-    aggregatorType?: pulumi.Input<string>;
+    aggregatorType?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.262.0) The timestamp when the account group was created.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The description of the account group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregatorType` is set to `FOLDER`, `folderId` is required.
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * The status of the account group.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -197,7 +197,7 @@ export interface AggregatorArgs {
      * The member accounts of the account group. See `aggregatorAccounts` below.
      * > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
      */
-    aggregatorAccounts?: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[]>;
+    aggregatorAccounts?: pulumi.Input<pulumi.Input<inputs.cfg.AggregatorAggregatorAccount>[] | undefined>;
     /**
      * The name of the account group.
      */
@@ -208,7 +208,7 @@ export interface AggregatorArgs {
      * - `FOLDER`: Folder account group.
      * - `CUSTOM`: Custom account group.
      */
-    aggregatorType?: pulumi.Input<string>;
+    aggregatorType?: pulumi.Input<string | undefined>;
     /**
      * The description of the account group.
      */
@@ -216,5 +216,5 @@ export interface AggregatorArgs {
     /**
      * The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregatorType` is set to `FOLDER`, `folderId` is required.
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
 }

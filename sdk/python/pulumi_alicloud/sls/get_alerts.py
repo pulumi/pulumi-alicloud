@@ -287,10 +287,10 @@ def get_alerts(ids: Optional[Sequence[_builtins.str]] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         project_name=pulumi.get(__ret__, 'project_name'))
-def get_alerts_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                      name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      project_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_alerts_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                      name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      project_name: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertsResult]:
     """
     This data source provides Sls Alert available to the user.[What is Alert](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateAlert)

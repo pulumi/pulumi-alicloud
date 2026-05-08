@@ -22,8 +22,8 @@ __all__ = ['VscMountPointArgs', 'VscMountPoint']
 class VscMountPointArgs:
     def __init__(__self__, *,
                  file_system_id: pulumi.Input[_builtins.str],
-                 alias_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VscMountPoint resource.
 
@@ -51,37 +51,37 @@ class VscMountPointArgs:
 
     @_builtins.property
     @pulumi.getter(name="aliasPrefix")
-    def alias_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mount point alias prefix, which is used as the prefix for generating VSC mount point aliases.
         """
         return pulumi.get(self, "alias_prefix")
 
     @alias_prefix.setter
-    def alias_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Mount point.  The length is 0 to 100 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _VscMountPointState:
     def __init__(__self__, *,
-                 alias_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input['VscMountPointInstanceArgs']]]] = None,
-                 mount_point_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input['VscMountPointInstanceArgs']]]] = None,
+                 mount_point_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VscMountPoint resources.
 
@@ -104,62 +104,62 @@ class _VscMountPointState:
 
     @_builtins.property
     @pulumi.getter(name="aliasPrefix")
-    def alias_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mount point alias prefix, which is used as the prefix for generating VSC mount point aliases.
         """
         return pulumi.get(self, "alias_prefix")
 
     @alias_prefix.setter
-    def alias_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Mount point.  The length is 0 to 100 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the HDFS file system resource associated with the VSC mount point.
         """
         return pulumi.get(self, "file_system_id")
 
     @file_system_id.setter
-    def file_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VscMountPointInstanceArgs']]]]:
+    def instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VscMountPointInstanceArgs']]]]:
         """
         The collection of ECS instances on which the HDFS file system is mounted. **The current property is not available**.
         """
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VscMountPointInstanceArgs']]]]):
+    def instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VscMountPointInstanceArgs']]]]):
         pulumi.set(self, "instances", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPointId")
-    def mount_point_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_point_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VSC mount point ID, which is the unique identifier of the vsc mount point and is used to access the associated HDFS file system.
         """
         return pulumi.get(self, "mount_point_id")
 
     @mount_point_id.setter
-    def mount_point_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_point_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_point_id", value)
 
 
@@ -169,9 +169,9 @@ class VscMountPoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alias_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Apsara File Storage for HDFS (DFS) Vsc Mount Point resource.
@@ -296,9 +296,9 @@ class VscMountPoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alias_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -325,11 +325,11 @@ class VscMountPoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alias_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VscMountPointInstanceArgs', 'VscMountPointInstanceArgsDict']]]]] = None,
-            mount_point_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VscMountPoint':
+            alias_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VscMountPointInstanceArgs', 'VscMountPointInstanceArgsDict']]]]] = None,
+            mount_point_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VscMountPoint':
         """
         Get an existing VscMountPoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

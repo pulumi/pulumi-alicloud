@@ -144,19 +144,19 @@ export interface BucketServerSideEncryptionState {
     /**
      * The name of the bucket.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The algorithm used to encrypt objects. If this element is not specified, objects are encrypted by using AES256. This element is valid only when the value of SSEAlgorithm is set to KMS.
      */
-    kmsDataEncryption?: pulumi.Input<string>;
+    kmsDataEncryption?: pulumi.Input<string | undefined>;
     /**
      * The CMK ID that must be specified when SSEAlgorithm is set to KMS and a specified CMK is used for encryption. In other cases, this element must be set to null.
      */
-    kmsMasterKeyId?: pulumi.Input<string>;
+    kmsMasterKeyId?: pulumi.Input<string | undefined>;
     /**
      * The server-side encryption method. Valid Values: KMS, AES256.
      */
-    sseAlgorithm?: pulumi.Input<string>;
+    sseAlgorithm?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -170,11 +170,11 @@ export interface BucketServerSideEncryptionArgs {
     /**
      * The algorithm used to encrypt objects. If this element is not specified, objects are encrypted by using AES256. This element is valid only when the value of SSEAlgorithm is set to KMS.
      */
-    kmsDataEncryption?: pulumi.Input<string>;
+    kmsDataEncryption?: pulumi.Input<string | undefined>;
     /**
      * The CMK ID that must be specified when SSEAlgorithm is set to KMS and a specified CMK is used for encryption. In other cases, this element must be set to null.
      */
-    kmsMasterKeyId?: pulumi.Input<string>;
+    kmsMasterKeyId?: pulumi.Input<string | undefined>;
     /**
      * The server-side encryption method. Valid Values: KMS, AES256.
      */

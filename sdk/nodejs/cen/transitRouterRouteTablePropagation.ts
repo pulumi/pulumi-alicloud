@@ -171,19 +171,19 @@ export interface TransitRouterRouteTablePropagationState {
      *
      * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The associating status of the network.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID the transit router attachment.
      */
-    transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the transit router route table.
      */
-    transitRouterRouteTableId?: pulumi.Input<string>;
+    transitRouterRouteTableId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -195,7 +195,7 @@ export interface TransitRouterRouteTablePropagationArgs {
      *
      * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID the transit router attachment.
      */

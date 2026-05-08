@@ -23,11 +23,11 @@ class LogtailPipelineConfigArgs:
                  flushers: pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]],
                  inputs: pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]],
                  project: pulumi.Input[_builtins.str],
-                 aggregators: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 globals: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 log_sample: Optional[pulumi.Input[_builtins.str]] = None,
-                 processors: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 task: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 aggregators: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 globals: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 log_sample: pulumi.Input[Optional[_builtins.str]] = None,
+                 processors: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 task: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a LogtailPipelineConfig resource.
 
@@ -106,77 +106,77 @@ class LogtailPipelineConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def aggregators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def aggregators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         This property does not have a description in the spec, please add it before generating code. See `aggregators` below.
         """
         return pulumi.get(self, "aggregators")
 
     @aggregators.setter
-    def aggregators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def aggregators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "aggregators", value)
 
     @_builtins.property
     @pulumi.getter
-    def globals(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def globals(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         This property does not have a description in the spec, please add it before generating code.
         """
         return pulumi.get(self, "globals")
 
     @globals.setter
-    def globals(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def globals(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "globals", value)
 
     @_builtins.property
     @pulumi.getter(name="logSample")
-    def log_sample(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_sample(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This property does not have a description in the spec, please add it before generating code.
         """
         return pulumi.get(self, "log_sample")
 
     @log_sample.setter
-    def log_sample(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_sample(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_sample", value)
 
     @_builtins.property
     @pulumi.getter
-    def processors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def processors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         This property does not have a description in the spec, please add it before generating code. See `processors` below.
         """
         return pulumi.get(self, "processors")
 
     @processors.setter
-    def processors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def processors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "processors", value)
 
     @_builtins.property
     @pulumi.getter
-    def task(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def task(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         This property does not have a description in the spec, please add it before generating code.
         """
         return pulumi.get(self, "task")
 
     @task.setter
-    def task(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def task(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "task", value)
 
 
 @pulumi.input_type
 class _LogtailPipelineConfigState:
     def __init__(__self__, *,
-                 aggregators: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 config_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 flushers: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 globals: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 log_sample: Optional[pulumi.Input[_builtins.str]] = None,
-                 processors: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 task: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 aggregators: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 config_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 flushers: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 globals: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 log_sample: pulumi.Input[Optional[_builtins.str]] = None,
+                 processors: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 task: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering LogtailPipelineConfig resources.
 
@@ -211,110 +211,110 @@ class _LogtailPipelineConfigState:
 
     @_builtins.property
     @pulumi.getter
-    def aggregators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def aggregators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         This property does not have a description in the spec, please add it before generating code. See `aggregators` below.
         """
         return pulumi.get(self, "aggregators")
 
     @aggregators.setter
-    def aggregators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def aggregators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "aggregators", value)
 
     @_builtins.property
     @pulumi.getter(name="configName")
-    def config_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "config_name")
 
     @config_name.setter
-    def config_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def flushers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def flushers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         This property does not have a description in the spec, please add it before generating code. See `flushers` below.
         """
         return pulumi.get(self, "flushers")
 
     @flushers.setter
-    def flushers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def flushers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "flushers", value)
 
     @_builtins.property
     @pulumi.getter
-    def globals(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def globals(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         This property does not have a description in the spec, please add it before generating code.
         """
         return pulumi.get(self, "globals")
 
     @globals.setter
-    def globals(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def globals(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "globals", value)
 
     @_builtins.property
     @pulumi.getter
-    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def inputs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         The creation time of the resource See `inputs` below.
         """
         return pulumi.get(self, "inputs")
 
     @inputs.setter
-    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def inputs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "inputs", value)
 
     @_builtins.property
     @pulumi.getter(name="logSample")
-    def log_sample(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_sample(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This property does not have a description in the spec, please add it before generating code.
         """
         return pulumi.get(self, "log_sample")
 
     @log_sample.setter
-    def log_sample(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_sample(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_sample", value)
 
     @_builtins.property
     @pulumi.getter
-    def processors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def processors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         This property does not have a description in the spec, please add it before generating code. See `processors` below.
         """
         return pulumi.get(self, "processors")
 
     @processors.setter
-    def processors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def processors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "processors", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def task(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def task(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         This property does not have a description in the spec, please add it before generating code.
         """
         return pulumi.get(self, "task")
 
     @task.setter
-    def task(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def task(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "task", value)
 
 
@@ -324,15 +324,15 @@ class LogtailPipelineConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregators: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 config_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 flushers: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 globals: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 log_sample: Optional[pulumi.Input[_builtins.str]] = None,
-                 processors: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 task: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 aggregators: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 config_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 flushers: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 globals: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 log_sample: pulumi.Input[Optional[_builtins.str]] = None,
+                 processors: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 task: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Log Service (SLS) Logtail Pipeline Config resource.
@@ -517,15 +517,15 @@ class LogtailPipelineConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregators: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 config_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 flushers: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 globals: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 log_sample: Optional[pulumi.Input[_builtins.str]] = None,
-                 processors: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 task: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 aggregators: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 config_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 flushers: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 globals: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 log_sample: pulumi.Input[Optional[_builtins.str]] = None,
+                 processors: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 task: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -562,15 +562,15 @@ class LogtailPipelineConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aggregators: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-            config_name: Optional[pulumi.Input[_builtins.str]] = None,
-            flushers: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-            globals: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-            log_sample: Optional[pulumi.Input[_builtins.str]] = None,
-            processors: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            task: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'LogtailPipelineConfig':
+            aggregators: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            config_name: pulumi.Input[Optional[_builtins.str]] = None,
+            flushers: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            globals: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            log_sample: pulumi.Input[Optional[_builtins.str]] = None,
+            processors: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            task: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'LogtailPipelineConfig':
         """
         Get an existing LogtailPipelineConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

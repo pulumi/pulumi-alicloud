@@ -203,39 +203,39 @@ export interface LogtailConfigState {
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The detailed configuration entered by logtail.
      */
-    inputDetail?: pulumi.Input<string>;
+    inputDetail?: pulumi.Input<string | undefined>;
     /**
      * Method of log entry
      */
-    inputType?: pulumi.Input<string>;
+    inputType?: pulumi.Input<string | undefined>;
     /**
      * Last modification time, unix timestamp
      */
-    lastModifyTime?: pulumi.Input<number>;
+    lastModifyTime?: pulumi.Input<number | undefined>;
     /**
      * Sample log
      */
-    logSample?: pulumi.Input<string>;
+    logSample?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
-    logtailConfigName?: pulumi.Input<string>;
+    logtailConfigName?: pulumi.Input<string | undefined>;
     /**
      * Detailed configuration of logtail output See `outputDetail` below.
      */
-    outputDetail?: pulumi.Input<inputs.sls.LogtailConfigOutputDetail>;
+    outputDetail?: pulumi.Input<inputs.sls.LogtailConfigOutputDetail | undefined>;
     /**
      * Log output mode. You can only upload data to log service.
      */
-    outputType?: pulumi.Input<string>;
+    outputType?: pulumi.Input<string | undefined>;
     /**
      * Project name
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -245,35 +245,35 @@ export interface LogtailConfigArgs {
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The detailed configuration entered by logtail.
      */
-    inputDetail?: pulumi.Input<string>;
+    inputDetail?: pulumi.Input<string | undefined>;
     /**
      * Method of log entry
      */
-    inputType?: pulumi.Input<string>;
+    inputType?: pulumi.Input<string | undefined>;
     /**
      * Last modification time, unix timestamp
      */
-    lastModifyTime?: pulumi.Input<number>;
+    lastModifyTime?: pulumi.Input<number | undefined>;
     /**
      * Sample log
      */
-    logSample?: pulumi.Input<string>;
+    logSample?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
-    logtailConfigName?: pulumi.Input<string>;
+    logtailConfigName?: pulumi.Input<string | undefined>;
     /**
      * Detailed configuration of logtail output See `outputDetail` below.
      */
-    outputDetail?: pulumi.Input<inputs.sls.LogtailConfigOutputDetail>;
+    outputDetail?: pulumi.Input<inputs.sls.LogtailConfigOutputDetail | undefined>;
     /**
      * Log output mode. You can only upload data to log service.
      */
-    outputType?: pulumi.Input<string>;
+    outputType?: pulumi.Input<string | undefined>;
     /**
      * Project name
      */

@@ -173,41 +173,41 @@ export interface QuotaAlarmState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The Product Code.
      */
-    productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string | undefined>;
     /**
      * The Quota Action Code.
      */
-    quotaActionCode?: pulumi.Input<string>;
+    quotaActionCode?: pulumi.Input<string | undefined>;
     /**
      * The name of Quota Alarm.
      */
-    quotaAlarmName?: pulumi.Input<string>;
+    quotaAlarmName?: pulumi.Input<string | undefined>;
     /**
      * The Quota Dimensions. See `quotaDimensions` below.
      */
-    quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaAlarmQuotaDimension>[]>;
+    quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaAlarmQuotaDimension>[] | undefined>;
     /**
      * The threshold of Quota Alarm.
      */
-    threshold?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number | undefined>;
     /**
      * The threshold percent of Quota Alarm.
      */
-    thresholdPercent?: pulumi.Input<number>;
+    thresholdPercent?: pulumi.Input<number | undefined>;
     /**
      * Quota alarm type. Value:
      * - used: Quota used alarm.
      * - usable: alarm for the remaining available quota.
      */
-    thresholdType?: pulumi.Input<string>;
+    thresholdType?: pulumi.Input<string | undefined>;
     /**
      * The WebHook of Quota Alarm.
      */
-    webHook?: pulumi.Input<string>;
+    webHook?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -229,23 +229,23 @@ export interface QuotaAlarmArgs {
     /**
      * The Quota Dimensions. See `quotaDimensions` below.
      */
-    quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaAlarmQuotaDimension>[]>;
+    quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaAlarmQuotaDimension>[] | undefined>;
     /**
      * The threshold of Quota Alarm.
      */
-    threshold?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number | undefined>;
     /**
      * The threshold percent of Quota Alarm.
      */
-    thresholdPercent?: pulumi.Input<number>;
+    thresholdPercent?: pulumi.Input<number | undefined>;
     /**
      * Quota alarm type. Value:
      * - used: Quota used alarm.
      * - usable: alarm for the remaining available quota.
      */
-    thresholdType?: pulumi.Input<string>;
+    thresholdType?: pulumi.Input<string | undefined>;
     /**
      * The WebHook of Quota Alarm.
      */
-    webHook?: pulumi.Input<string>;
+    webHook?: pulumi.Input<string | undefined>;
 }

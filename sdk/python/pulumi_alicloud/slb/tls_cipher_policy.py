@@ -73,10 +73,10 @@ class TlsCipherPolicyArgs:
 @pulumi.input_type
 class _TlsCipherPolicyState:
     def __init__(__self__, *,
-                 ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_cipher_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_cipher_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering TlsCipherPolicy resources.
 
@@ -96,50 +96,50 @@ class _TlsCipherPolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def ciphers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ciphers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The encryption algorithms supported. It depends on the value of `tls_versions`.
         """
         return pulumi.get(self, "ciphers")
 
     @ciphers.setter
-    def ciphers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ciphers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ciphers", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TLS policy instance state.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsCipherPolicyName")
-    def tls_cipher_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_cipher_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
         """
         return pulumi.get(self, "tls_cipher_policy_name")
 
     @tls_cipher_policy_name.setter
-    def tls_cipher_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_cipher_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_cipher_policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsVersions")
-    def tls_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tls_versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The version of TLS protocol. You can find the corresponding value description in the document center [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
         """
         return pulumi.get(self, "tls_versions")
 
     @tls_versions.setter
-    def tls_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tls_versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tls_versions", value)
 
 
@@ -149,9 +149,9 @@ class TlsCipherPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tls_cipher_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tls_cipher_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a SLB Tls Cipher Policy resource.
@@ -250,9 +250,9 @@ class TlsCipherPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tls_cipher_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tls_cipher_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -282,10 +282,10 @@ class TlsCipherPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tls_cipher_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'TlsCipherPolicy':
+            ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_cipher_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'TlsCipherPolicy':
         """
         Get an existing TlsCipherPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

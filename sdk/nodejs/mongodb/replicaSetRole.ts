@@ -181,33 +181,33 @@ export interface ReplicaSetRoleState {
     /**
      * The connection address of the role.
      */
-    connectionDomain?: pulumi.Input<string>;
+    connectionDomain?: pulumi.Input<string | undefined>;
     /**
      * The port of the connection string, will be computed if not specified.`
      */
-    connectionPort?: pulumi.Input<number>;
+    connectionPort?: pulumi.Input<number | undefined>;
     /**
      * The prefix of the connection string, will be computed if not specified.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The network type of the connection string. Valid values:
      * - `VPC`: private network address.
      * - `Public`: public network address.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * The role of the related connection string.
      */
-    replicaSetRole?: pulumi.Input<string>;
+    replicaSetRole?: pulumi.Input<string | undefined>;
     /**
      * The role ID in the replica set.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -217,11 +217,11 @@ export interface ReplicaSetRoleArgs {
     /**
      * The port of the connection string, will be computed if not specified.`
      */
-    connectionPort?: pulumi.Input<number>;
+    connectionPort?: pulumi.Input<number | undefined>;
     /**
      * The prefix of the connection string, will be computed if not specified.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */

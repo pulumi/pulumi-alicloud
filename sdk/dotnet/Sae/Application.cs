@@ -32,18 +32,18 @@ namespace Pulumi.AliCloud.Sae
     ///     var config = new Config();
     ///     var region = config.Get("region") ?? "cn-hangzhou";
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultGetZones = AliCloud.Index.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });

@@ -259,43 +259,43 @@ export interface V3ProvisionConfigState {
     /**
      * Whether the CPU is always allocated. The default value is true.
      */
-    alwaysAllocateCpu?: pulumi.Input<boolean>;
+    alwaysAllocateCpu?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to always assign GPU to function instance
      */
-    alwaysAllocateGpu?: pulumi.Input<boolean>;
+    alwaysAllocateGpu?: pulumi.Input<boolean | undefined>;
     /**
      * (Available since v1.234.0) Number of actual resources
      */
-    current?: pulumi.Input<number>;
+    current?: pulumi.Input<number | undefined>;
     /**
      * (Available since v1.234.0) Error message when a Reserved Instance creation fails
      */
-    currentError?: pulumi.Input<string>;
+    currentError?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.234.0) Resource Description of the function
      */
-    functionArn?: pulumi.Input<string>;
+    functionArn?: pulumi.Input<string | undefined>;
     /**
      * The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * The function alias or LATEST.
      */
-    qualifier?: pulumi.Input<string>;
+    qualifier?: pulumi.Input<string | undefined>;
     /**
      * Timing policy configuration See `scheduledActions` below.
      */
-    scheduledActions?: pulumi.Input<pulumi.Input<inputs.fc.V3ProvisionConfigScheduledAction>[]>;
+    scheduledActions?: pulumi.Input<pulumi.Input<inputs.fc.V3ProvisionConfigScheduledAction>[] | undefined>;
     /**
      * Number of reserved target resources. The value range is [0,10000].
      */
-    target?: pulumi.Input<number>;
+    target?: pulumi.Input<number | undefined>;
     /**
      * Metric tracking scaling policy configuration See `targetTrackingPolicies` below.
      */
-    targetTrackingPolicies?: pulumi.Input<pulumi.Input<inputs.fc.V3ProvisionConfigTargetTrackingPolicy>[]>;
+    targetTrackingPolicies?: pulumi.Input<pulumi.Input<inputs.fc.V3ProvisionConfigTargetTrackingPolicy>[] | undefined>;
 }
 
 /**
@@ -305,11 +305,11 @@ export interface V3ProvisionConfigArgs {
     /**
      * Whether the CPU is always allocated. The default value is true.
      */
-    alwaysAllocateCpu?: pulumi.Input<boolean>;
+    alwaysAllocateCpu?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to always assign GPU to function instance
      */
-    alwaysAllocateGpu?: pulumi.Input<boolean>;
+    alwaysAllocateGpu?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
      */
@@ -317,17 +317,17 @@ export interface V3ProvisionConfigArgs {
     /**
      * The function alias or LATEST.
      */
-    qualifier?: pulumi.Input<string>;
+    qualifier?: pulumi.Input<string | undefined>;
     /**
      * Timing policy configuration See `scheduledActions` below.
      */
-    scheduledActions?: pulumi.Input<pulumi.Input<inputs.fc.V3ProvisionConfigScheduledAction>[]>;
+    scheduledActions?: pulumi.Input<pulumi.Input<inputs.fc.V3ProvisionConfigScheduledAction>[] | undefined>;
     /**
      * Number of reserved target resources. The value range is [0,10000].
      */
-    target?: pulumi.Input<number>;
+    target?: pulumi.Input<number | undefined>;
     /**
      * Metric tracking scaling policy configuration See `targetTrackingPolicies` below.
      */
-    targetTrackingPolicies?: pulumi.Input<pulumi.Input<inputs.fc.V3ProvisionConfigTargetTrackingPolicy>[]>;
+    targetTrackingPolicies?: pulumi.Input<pulumi.Input<inputs.fc.V3ProvisionConfigTargetTrackingPolicy>[] | undefined>;
 }

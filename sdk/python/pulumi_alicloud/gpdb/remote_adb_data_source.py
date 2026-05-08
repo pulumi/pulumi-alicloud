@@ -27,7 +27,7 @@ class RemoteAdbDataSourceArgs:
                  remote_db_instance_id: pulumi.Input[_builtins.str],
                  user_name: pulumi.Input[_builtins.str],
                  user_password: pulumi.Input[_builtins.str],
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RemoteAdbDataSource resource.
 
@@ -150,31 +150,31 @@ class RemoteAdbDataSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataSourceName")
-    def data_source_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Name
         """
         return pulumi.get(self, "data_source_name")
 
     @data_source_name.setter
-    def data_source_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_name", value)
 
 
 @pulumi.input_type
 class _RemoteAdbDataSourceState:
     def __init__(__self__, *,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_database: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 manager_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 manager_user_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_adb_data_source_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 remote_database: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_password: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_database: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 manager_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 manager_user_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_adb_data_source_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 remote_database: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_password: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RemoteAdbDataSource resources.
 
@@ -215,134 +215,134 @@ class _RemoteAdbDataSourceState:
 
     @_builtins.property
     @pulumi.getter(name="dataSourceName")
-    def data_source_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Name
         """
         return pulumi.get(self, "data_source_name")
 
     @data_source_name.setter
-    def data_source_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_name", value)
 
     @_builtins.property
     @pulumi.getter(name="localDatabase")
-    def local_database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database of the local instance which connection data.
         """
         return pulumi.get(self, "local_database")
 
     @local_database.setter
-    def local_database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_database", value)
 
     @_builtins.property
     @pulumi.getter(name="localDbInstanceId")
-    def local_db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instanceId of the local instance which connection data.
         """
         return pulumi.get(self, "local_db_instance_id")
 
     @local_db_instance_id.setter
-    def local_db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="managerUserName")
-    def manager_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def manager_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Management user name of the local instance.
         """
         return pulumi.get(self, "manager_user_name")
 
     @manager_user_name.setter
-    def manager_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def manager_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "manager_user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="managerUserPassword")
-    def manager_user_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def manager_user_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password of the Manager user of the local instance
         """
         return pulumi.get(self, "manager_user_password")
 
     @manager_user_password.setter
-    def manager_user_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def manager_user_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "manager_user_password", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteAdbDataSourceId")
-    def remote_adb_data_source_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def remote_adb_data_source_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "remote_adb_data_source_id")
 
     @remote_adb_data_source_id.setter
-    def remote_adb_data_source_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def remote_adb_data_source_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "remote_adb_data_source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteDatabase")
-    def remote_database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database of the remote instance which provide data.
         """
         return pulumi.get(self, "remote_database")
 
     @remote_database.setter
-    def remote_database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_database", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteDbInstanceId")
-    def remote_db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instanceId of the remote instance which provide data.
         """
         return pulumi.get(self, "remote_db_instance_id")
 
     @remote_db_instance_id.setter
-    def remote_db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user name used to connect to the remote instance
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="userPassword")
-    def user_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user password used to connect to the remote instance
         """
         return pulumi.get(self, "user_password")
 
     @user_password.setter
-    def user_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_password", value)
 
 
@@ -352,15 +352,15 @@ class RemoteAdbDataSource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_database: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 manager_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 manager_user_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_database: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_database: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 manager_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 manager_user_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_database: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_password: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a GPDB Remote ADB Data Source resource.
@@ -583,15 +583,15 @@ class RemoteAdbDataSource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_database: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 manager_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 manager_user_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_database: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_database: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 manager_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 manager_user_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_database: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_password: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -640,17 +640,17 @@ class RemoteAdbDataSource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-            local_database: Optional[pulumi.Input[_builtins.str]] = None,
-            local_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            manager_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            manager_user_password: Optional[pulumi.Input[_builtins.str]] = None,
-            remote_adb_data_source_id: Optional[pulumi.Input[_builtins.int]] = None,
-            remote_database: Optional[pulumi.Input[_builtins.str]] = None,
-            remote_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            user_password: Optional[pulumi.Input[_builtins.str]] = None) -> 'RemoteAdbDataSource':
+            data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            local_database: pulumi.Input[Optional[_builtins.str]] = None,
+            local_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            manager_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            manager_user_password: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_adb_data_source_id: pulumi.Input[Optional[_builtins.int]] = None,
+            remote_database: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_password: pulumi.Input[Optional[_builtins.str]] = None) -> 'RemoteAdbDataSource':
         """
         Get an existing RemoteAdbDataSource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *     engineVersion: "13.0",
  *     dbInstanceStorageType: "cloud_essd",
  *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceStorage: output(exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *     instanceChargeType: "Postpaid",
  *     instanceName: "terraform-example",
  *     vswitchId: exampleSwitch.id,
@@ -560,39 +560,39 @@ export interface RdsUpgradeDbInstanceState {
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * How to upgrade the minor version of the instance. Valid values:
      * * **Auto**: automatically upgrade the minor version.
      * * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
      */
-    autoUpgradeMinorVersion?: pulumi.Input<string>;
+    autoUpgradeMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of sslAction is Open, the default value of this parameter is aliyun. Value range:
      * * **aliyun**: using cloud certificates.
      * * **custom**: use a custom certificate. Valid values: `aliyun`, `custom`.
      */
-    caType?: pulumi.Input<string>;
+    caType?: pulumi.Input<string | undefined>;
     /**
      * The file that contains the certificate used for TDE.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of clientCaEnabled is 1, this parameter must be configured.
      */
-    clientCaCert?: pulumi.Input<string>;
+    clientCaCert?: pulumi.Input<string | undefined>;
     /**
      * The client ca enabled.
      */
-    clientCaEnabled?: pulumi.Input<number>;
+    clientCaEnabled?: pulumi.Input<number | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of clientCrlEnabled is 1, this parameter must be configured.
      */
-    clientCertRevocationList?: pulumi.Input<string>;
+    clientCertRevocationList?: pulumi.Input<string | undefined>;
     /**
      * The client crl enabled.
      */
-    clientCrlEnabled?: pulumi.Input<number>;
+    clientCrlEnabled?: pulumi.Input<number | undefined>;
     /**
      * The time at which ApsaraDB RDS collects the statistics of the new instance.
      * * **Before**: ApsaraDB RDS collects the statistics of the new instance before the switchover to ensure service stability. If the original instance contains a large amount of data, the upgrade may require a long period of time.
@@ -600,29 +600,29 @@ export interface RdsUpgradeDbInstanceState {
      *
      * > **NOTE** If you set the SwitchOver parameter to false, the value Before specifies that ApsaraDB RDS collects the statistics of the new instance before the new instance starts to process read and write requests, and the value After specifies that ApsaraDB RDS collects the statistics of the new instance after the new instance starts to process read and write requests.
      */
-    collectStatMode?: pulumi.Input<string>;
+    collectStatMode?: pulumi.Input<string | undefined>;
     /**
      * The database connection address.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * The connection string prefix.
      */
-    connectionStringPrefix?: pulumi.Input<string>;
+    connectionStringPrefix?: pulumi.Input<string | undefined>;
     /**
      * The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      */
-    dbInstanceClass?: pulumi.Input<string>;
+    dbInstanceClass?: pulumi.Input<string | undefined>;
     /**
      * The db instance description.
      */
-    dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string | undefined>;
     /**
      * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      *
      * > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
      */
-    dbInstanceStorage?: pulumi.Input<number>;
+    dbInstanceStorage?: pulumi.Input<number | undefined>;
     /**
      * The type of storage media that is used for the new instance. Valid values:
      * * **local_ssd**: local SSDs.
@@ -631,17 +631,17 @@ export interface RdsUpgradeDbInstanceState {
      * * **cloud_essd2**: ESSDs of PL2.
      * * **cloud_essd3**: ESSDs of PL3.
      */
-    dbInstanceStorageType?: pulumi.Input<string>;
+    dbInstanceStorageType?: pulumi.Input<string | undefined>;
     /**
      * The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
      *
      * > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
-    dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
      */
-    dedicatedHostGroupId?: pulumi.Input<string>;
+    dedicatedHostGroupId?: pulumi.Input<string | undefined>;
     /**
      * The switch of delete protection. Valid values:
      * - true: delete protect.
@@ -649,25 +649,25 @@ export interface RdsUpgradeDbInstanceState {
      *
      * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The effective time.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the private key.
      *
      * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * Database version. Value:
      * * MySQL: **5.5/5.6/5.7/8.0**.
@@ -675,75 +675,75 @@ export interface RdsUpgradeDbInstanceState {
      * * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
      * * MariaDB: **10.3**.
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
-    forceRestart?: pulumi.Input<boolean>;
+    forceRestart?: pulumi.Input<boolean | undefined>;
     /**
      * The high availability mode. Valid values:
      * * **RPO**: Data persistence is preferred. The instance preferentially ensures data reliability to minimize data loss. Use this mode if you have higher requirements on data consistency.
      * * **RTO**: Instance availability is preferred. The instance restores services as soon as possible to ensure availability. Use this mode if you have higher requirements on service availability.
      */
-    haMode?: pulumi.Input<string>;
+    haMode?: pulumi.Input<string | undefined>;
     /**
      * The network type of the instance. Valid values:
      * * **Classic**: Classic Network.
      * * **VPC**: VPC.
      */
-    instanceNetworkType?: pulumi.Input<string>;
+    instanceNetworkType?: pulumi.Input<string | undefined>;
     /**
      * The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
      */
-    maintainTime?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string | undefined>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.rds.RdsUpgradeDbInstanceParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.rds.RdsUpgradeDbInstanceParameter>[] | undefined>;
     /**
      * The password of the certificate. 
      *
      * > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      */
-    pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.RdsUpgradeDbInstancePgHbaConf>[]>;
+    pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.RdsUpgradeDbInstancePgHbaConf>[] | undefined>;
     /**
      * The port.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The file that contains the private key used for TDE.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The released keep policy.
      */
-    releasedKeepPolicy?: pulumi.Input<string>;
+    releasedKeepPolicy?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
      */
-    replicationAcl?: pulumi.Input<string>;
+    replicationAcl?: pulumi.Input<string | undefined>;
     /**
      * The resource group id.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
      *
      * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
      * * IP address form, for example: 10.23.12.24.
@@ -751,27 +751,27 @@ export interface RdsUpgradeDbInstanceState {
      *
      * > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
      */
-    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
      */
-    serverCert?: pulumi.Input<string>;
+    serverCert?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
      */
-    serverKey?: pulumi.Input<string>;
+    serverKey?: pulumi.Input<string | undefined>;
     /**
      * The source biz.
      */
-    sourceBiz?: pulumi.Input<string>;
+    sourceBiz?: pulumi.Input<string | undefined>;
     /**
      * The source db instance id.
      */
-    sourceDbInstanceId?: pulumi.Input<string>;
+    sourceDbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable SSL. Valid values: `0` and `1`.
      */
-    sslEnabled?: pulumi.Input<number>;
+    sslEnabled?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether ApsaraDB RDS automatically switches your workloads over to the new instance after data is migrated to the new instance. Valid values:
      * * **true**: ApsaraDB RDS automatically switches workloads over to the new instance. If you set this parameter to true, you must take note of the following information:
@@ -782,17 +782,17 @@ export interface RdsUpgradeDbInstanceState {
      * * The data migration does not interrupt your workloads on the original instance.
      * * After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/doc-detail/96788.htm).
      */
-    switchOver?: pulumi.Input<string>;
+    switchOver?: pulumi.Input<string | undefined>;
     /**
      * The time at which you want to apply the specification changes. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    switchTime?: pulumi.Input<string>;
+    switchTime?: pulumi.Input<string | undefined>;
     /**
      * The time at which ApsaraDB RDS switches your workloads over to the new instance. This parameter is used together with the SwitchOver parameter and takes effect only when you set the SwitchOver parameter to true. Valid values:
      * * **Immediate**: After data is migrated to the new instance, ApsaraDB RDS immediately switches your workloads over to the new instance.
      * * **MaintainTime**: After data is migrated to the new instance, ApsaraDB RDS switches your workloads over to the new instance during the maintenance window that you specify. You can call the [ModifyDBInstanceMaintainTime](https://www.alibabacloud.com/help/doc-detail/26249.htm) operation to change the maintenance window of an instance.
      */
-    switchTimeMode?: pulumi.Input<string>;
+    switchTimeMode?: pulumi.Input<string | undefined>;
     /**
      * [The data replication mode](https://www.alibabacloud.com/help/doc-detail/96055.htm). Valid values:
      * * **Sync**: strong synchronization.
@@ -801,45 +801,45 @@ export interface RdsUpgradeDbInstanceState {
      *
      * > **NOTE:** SQL Server 2017 cluster version is currently not supported.
      */
-    syncMode?: pulumi.Input<string>;
+    syncMode?: pulumi.Input<string | undefined>;
     /**
      * The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
      *
      * > **NOTE** You can call the [UpgradeDBInstanceMajorVersionPrecheck](https://www.alibabacloud.com/help/doc-detail/330050.htm) operation to perform an upgrade check on a major engine version.
      */
-    targetMajorVersion?: pulumi.Input<string>;
+    targetMajorVersion?: pulumi.Input<string | undefined>;
     /**
      * The availability check method of the instance. Valid values:
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
      */
-    tcpConnectionType?: pulumi.Input<string>;
+    tcpConnectionType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
      */
-    tdeStatus?: pulumi.Input<string>;
+    tdeStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC to which the new instance belongs.
      *
      * > **NOTE:** Make sure that the VPC resides in the specified region.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch associated with the specified VPC.
      *
      * > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
      *
      * > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
      */
-    zoneIdSlave1?: pulumi.Input<string>;
+    zoneIdSlave1?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -849,39 +849,39 @@ export interface RdsUpgradeDbInstanceArgs {
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * How to upgrade the minor version of the instance. Valid values:
      * * **Auto**: automatically upgrade the minor version.
      * * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
      */
-    autoUpgradeMinorVersion?: pulumi.Input<string>;
+    autoUpgradeMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the certificate type. When the value of sslAction is Open, the default value of this parameter is aliyun. Value range:
      * * **aliyun**: using cloud certificates.
      * * **custom**: use a custom certificate. Valid values: `aliyun`, `custom`.
      */
-    caType?: pulumi.Input<string>;
+    caType?: pulumi.Input<string | undefined>;
     /**
      * The file that contains the certificate used for TDE.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of clientCaEnabled is 1, this parameter must be configured.
      */
-    clientCaCert?: pulumi.Input<string>;
+    clientCaCert?: pulumi.Input<string | undefined>;
     /**
      * The client ca enabled.
      */
-    clientCaEnabled?: pulumi.Input<number>;
+    clientCaEnabled?: pulumi.Input<number | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of clientCrlEnabled is 1, this parameter must be configured.
      */
-    clientCertRevocationList?: pulumi.Input<string>;
+    clientCertRevocationList?: pulumi.Input<string | undefined>;
     /**
      * The client crl enabled.
      */
-    clientCrlEnabled?: pulumi.Input<number>;
+    clientCrlEnabled?: pulumi.Input<number | undefined>;
     /**
      * The time at which ApsaraDB RDS collects the statistics of the new instance.
      * * **Before**: ApsaraDB RDS collects the statistics of the new instance before the switchover to ensure service stability. If the original instance contains a large amount of data, the upgrade may require a long period of time.
@@ -893,7 +893,7 @@ export interface RdsUpgradeDbInstanceArgs {
     /**
      * The connection string prefix.
      */
-    connectionStringPrefix?: pulumi.Input<string>;
+    connectionStringPrefix?: pulumi.Input<string | undefined>;
     /**
      * The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      */
@@ -901,7 +901,7 @@ export interface RdsUpgradeDbInstanceArgs {
     /**
      * The db instance description.
      */
-    dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string | undefined>;
     /**
      * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      *
@@ -922,11 +922,11 @@ export interface RdsUpgradeDbInstanceArgs {
      *
      * > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
-    dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
      */
-    dedicatedHostGroupId?: pulumi.Input<string>;
+    dedicatedHostGroupId?: pulumi.Input<string | undefined>;
     /**
      * The switch of delete protection. Valid values:
      * - true: delete protect.
@@ -934,25 +934,25 @@ export interface RdsUpgradeDbInstanceArgs {
      *
      * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The effective time.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the private key.
      *
      * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * Database version. Value:
      * * MySQL: **5.5/5.6/5.7/8.0**.
@@ -960,17 +960,17 @@ export interface RdsUpgradeDbInstanceArgs {
      * * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
      * * MariaDB: **10.3**.
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      */
-    forceRestart?: pulumi.Input<boolean>;
+    forceRestart?: pulumi.Input<boolean | undefined>;
     /**
      * The high availability mode. Valid values:
      * * **RPO**: Data persistence is preferred. The instance preferentially ensures data reliability to minimize data loss. Use this mode if you have higher requirements on data consistency.
      * * **RTO**: Instance availability is preferred. The instance restores services as soon as possible to ensure availability. Use this mode if you have higher requirements on service availability.
      */
-    haMode?: pulumi.Input<string>;
+    haMode?: pulumi.Input<string | undefined>;
     /**
      * The network type of the instance. Valid values:
      * * **Classic**: Classic Network.
@@ -980,17 +980,17 @@ export interface RdsUpgradeDbInstanceArgs {
     /**
      * The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
      */
-    maintainTime?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string | undefined>;
     /**
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.rds.RdsUpgradeDbInstanceParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.rds.RdsUpgradeDbInstanceParameter>[] | undefined>;
     /**
      * The password of the certificate. 
      *
      * > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription`.
      */
@@ -998,37 +998,37 @@ export interface RdsUpgradeDbInstanceArgs {
     /**
      * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      */
-    pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.RdsUpgradeDbInstancePgHbaConf>[]>;
+    pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.RdsUpgradeDbInstancePgHbaConf>[] | undefined>;
     /**
      * The port.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The file that contains the private key used for TDE.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The released keep policy.
      */
-    releasedKeepPolicy?: pulumi.Input<string>;
+    releasedKeepPolicy?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
      */
-    replicationAcl?: pulumi.Input<string>;
+    replicationAcl?: pulumi.Input<string | undefined>;
     /**
      * The resource group id.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
      *
      * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
      * * IP address form, for example: 10.23.12.24.
@@ -1036,19 +1036,19 @@ export interface RdsUpgradeDbInstanceArgs {
      *
      * > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
      */
-    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
      */
-    serverCert?: pulumi.Input<string>;
+    serverCert?: pulumi.Input<string | undefined>;
     /**
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
      */
-    serverKey?: pulumi.Input<string>;
+    serverKey?: pulumi.Input<string | undefined>;
     /**
      * The source biz.
      */
-    sourceBiz?: pulumi.Input<string>;
+    sourceBiz?: pulumi.Input<string | undefined>;
     /**
      * The source db instance id.
      */
@@ -1056,7 +1056,7 @@ export interface RdsUpgradeDbInstanceArgs {
     /**
      * Enable or disable SSL. Valid values: `0` and `1`.
      */
-    sslEnabled?: pulumi.Input<number>;
+    sslEnabled?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether ApsaraDB RDS automatically switches your workloads over to the new instance after data is migrated to the new instance. Valid values:
      * * **true**: ApsaraDB RDS automatically switches workloads over to the new instance. If you set this parameter to true, you must take note of the following information:
@@ -1071,13 +1071,13 @@ export interface RdsUpgradeDbInstanceArgs {
     /**
      * The time at which you want to apply the specification changes. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    switchTime?: pulumi.Input<string>;
+    switchTime?: pulumi.Input<string | undefined>;
     /**
      * The time at which ApsaraDB RDS switches your workloads over to the new instance. This parameter is used together with the SwitchOver parameter and takes effect only when you set the SwitchOver parameter to true. Valid values:
      * * **Immediate**: After data is migrated to the new instance, ApsaraDB RDS immediately switches your workloads over to the new instance.
      * * **MaintainTime**: After data is migrated to the new instance, ApsaraDB RDS switches your workloads over to the new instance during the maintenance window that you specify. You can call the [ModifyDBInstanceMaintainTime](https://www.alibabacloud.com/help/doc-detail/26249.htm) operation to change the maintenance window of an instance.
      */
-    switchTimeMode?: pulumi.Input<string>;
+    switchTimeMode?: pulumi.Input<string | undefined>;
     /**
      * [The data replication mode](https://www.alibabacloud.com/help/doc-detail/96055.htm). Valid values:
      * * **Sync**: strong synchronization.
@@ -1086,7 +1086,7 @@ export interface RdsUpgradeDbInstanceArgs {
      *
      * > **NOTE:** SQL Server 2017 cluster version is currently not supported.
      */
-    syncMode?: pulumi.Input<string>;
+    syncMode?: pulumi.Input<string | undefined>;
     /**
      * The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
      *
@@ -1098,31 +1098,31 @@ export interface RdsUpgradeDbInstanceArgs {
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
      */
-    tcpConnectionType?: pulumi.Input<string>;
+    tcpConnectionType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled` and `Disabled`.
      */
-    tdeStatus?: pulumi.Input<string>;
+    tdeStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC to which the new instance belongs.
      *
      * > **NOTE:** Make sure that the VPC resides in the specified region.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch associated with the specified VPC.
      *
      * > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
      *
      * > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
      */
-    zoneIdSlave1?: pulumi.Input<string>;
+    zoneIdSlave1?: pulumi.Input<string | undefined>;
 }

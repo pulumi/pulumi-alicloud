@@ -149,19 +149,19 @@ export interface GetDomainsOutputArgs {
     /**
      * The address type of the origin server. The address can be an IP address or a domain name. You can specify only one type of address.
      */
-    backend?: pulumi.Input<string>;
+    backend?: pulumi.Input<string | undefined>;
     /**
      * The name of the domain name to query.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of domain IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The WAF instance ID.
      */
@@ -169,7 +169,7 @@ export interface GetDomainsOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
 }

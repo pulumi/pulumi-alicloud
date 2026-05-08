@@ -187,31 +187,31 @@ export interface InterRegionTrafficQosQueueState {
     /**
      * The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
      */
-    bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string | undefined>;
     /**
      * The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      */
-    dscps?: pulumi.Input<pulumi.Input<number>[]>;
+    dscps?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The description information of the traffic scheduling policy.
      */
-    interRegionTrafficQosQueueDescription?: pulumi.Input<string>;
+    interRegionTrafficQosQueueDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the traffic scheduling policy.
      */
-    interRegionTrafficQosQueueName?: pulumi.Input<string>;
+    interRegionTrafficQosQueueName?: pulumi.Input<string | undefined>;
     /**
      * The percentage of cross-region bandwidth that the current queue can use.
      */
-    remainBandwidthPercent?: pulumi.Input<number>;
+    remainBandwidthPercent?: pulumi.Input<number | undefined>;
     /**
      * The status of the traffic scheduling policy.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the traffic scheduling policy.
      */
-    trafficQosPolicyId?: pulumi.Input<string>;
+    trafficQosPolicyId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -221,7 +221,7 @@ export interface InterRegionTrafficQosQueueArgs {
     /**
      * The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
      */
-    bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string | undefined>;
     /**
      * The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      */
@@ -229,15 +229,15 @@ export interface InterRegionTrafficQosQueueArgs {
     /**
      * The description information of the traffic scheduling policy.
      */
-    interRegionTrafficQosQueueDescription?: pulumi.Input<string>;
+    interRegionTrafficQosQueueDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the traffic scheduling policy.
      */
-    interRegionTrafficQosQueueName?: pulumi.Input<string>;
+    interRegionTrafficQosQueueName?: pulumi.Input<string | undefined>;
     /**
      * The percentage of cross-region bandwidth that the current queue can use.
      */
-    remainBandwidthPercent?: pulumi.Input<number>;
+    remainBandwidthPercent?: pulumi.Input<number | undefined>;
     /**
      * The ID of the traffic scheduling policy.
      */

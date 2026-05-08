@@ -108,7 +108,7 @@ export interface TemplateServiceState {
      * Status of the quota template. Valid values:
      * - `-1`: disabled.
      */
-    serviceStatus?: pulumi.Input<number>;
+    serviceStatus?: pulumi.Input<number | undefined>;
 }
 
 /**

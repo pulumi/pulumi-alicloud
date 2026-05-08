@@ -313,15 +313,15 @@ export interface InstanceState {
     /**
      * (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
      */
-    connectCidrBlocks?: pulumi.Input<string>;
+    connectCidrBlocks?: pulumi.Input<string | undefined>;
     /**
      * Creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
      */
-    deleteVpcIpBlock?: pulumi.Input<string>;
+    deleteVpcIpBlock?: pulumi.Input<string | undefined>;
     /**
      * The time of the instance package. Valid values:
      * - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
@@ -329,89 +329,89 @@ export interface InstanceState {
      *
      * When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether IPv6 egress capability is enabled.
      */
-    egressIpv6Enable?: pulumi.Input<boolean>;
+    egressIpv6Enable?: pulumi.Input<boolean | undefined>;
     /**
      * Https policy.
      */
-    httpsPolicy?: pulumi.Input<string>;
+    httpsPolicy?: pulumi.Input<string | undefined>;
     /**
      * The VpcID which the client at.
      */
-    ingressVpcId?: pulumi.Input<string>;
+    ingressVpcId?: pulumi.Input<string | undefined>;
     /**
      * The user ID that the VpcID of `ingressVpcId` belongs to.
      */
-    ingressVpcOwnerId?: pulumi.Input<string>;
+    ingressVpcOwnerId?: pulumi.Input<string | undefined>;
     /**
      * The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
      */
-    ingressVswitchId?: pulumi.Input<string>;
+    ingressVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block for the instance deployment. Valid values are:
      * - `192.168.0.0/16`.
      * - `172.16.0.0/12`.
      */
-    instanceCidr?: pulumi.Input<string>;
+    instanceCidr?: pulumi.Input<string | undefined>;
     /**
      * Instance name.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Instance spec.
      */
-    instanceSpec?: pulumi.Input<string>;
+    instanceSpec?: pulumi.Input<string | undefined>;
     /**
      * The type of the instance. Valid values are:
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether IPv6 ingress capability is enabled.
      */
-    ipv6Enabled?: pulumi.Input<boolean>;
+    ipv6Enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The payment type of the resource.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
      */
-    skipWaitSwitch?: pulumi.Input<boolean>;
+    skipWaitSwitch?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Does ipv6 support.
      */
-    supportIpv6?: pulumi.Input<boolean>;
+    supportIpv6?: pulumi.Input<boolean | undefined>;
     /**
      * The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      */
-    toConnectVpcIpBlock?: pulumi.Input<inputs.apigateway.InstanceToConnectVpcIpBlock>;
+    toConnectVpcIpBlock?: pulumi.Input<inputs.apigateway.InstanceToConnectVpcIpBlock | undefined>;
     /**
      * User's VpcID.
      */
-    userVpcId?: pulumi.Input<string>;
+    userVpcId?: pulumi.Input<string | undefined>;
     /**
      * Whether the slb of the Vpc supports.
      */
-    vpcSlbIntranetEnable?: pulumi.Input<boolean>;
+    vpcSlbIntranetEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The zone where the instance is deployed.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
     /**
      * Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
      */
-    zoneVswitchSecurityGroups?: pulumi.Input<pulumi.Input<inputs.apigateway.InstanceZoneVswitchSecurityGroup>[]>;
+    zoneVswitchSecurityGroups?: pulumi.Input<pulumi.Input<inputs.apigateway.InstanceZoneVswitchSecurityGroup>[] | undefined>;
 }
 
 /**
@@ -421,7 +421,7 @@ export interface InstanceArgs {
     /**
      * Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
      */
-    deleteVpcIpBlock?: pulumi.Input<string>;
+    deleteVpcIpBlock?: pulumi.Input<string | undefined>;
     /**
      * The time of the instance package. Valid values:
      * - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
@@ -429,11 +429,11 @@ export interface InstanceArgs {
      *
      * When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether IPv6 egress capability is enabled.
      */
-    egressIpv6Enable?: pulumi.Input<boolean>;
+    egressIpv6Enable?: pulumi.Input<boolean | undefined>;
     /**
      * Https policy.
      */
@@ -441,21 +441,21 @@ export interface InstanceArgs {
     /**
      * The VpcID which the client at.
      */
-    ingressVpcId?: pulumi.Input<string>;
+    ingressVpcId?: pulumi.Input<string | undefined>;
     /**
      * The user ID that the VpcID of `ingressVpcId` belongs to.
      */
-    ingressVpcOwnerId?: pulumi.Input<string>;
+    ingressVpcOwnerId?: pulumi.Input<string | undefined>;
     /**
      * The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
      */
-    ingressVswitchId?: pulumi.Input<string>;
+    ingressVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block for the instance deployment. Valid values are:
      * - `192.168.0.0/16`.
      * - `172.16.0.0/12`.
      */
-    instanceCidr?: pulumi.Input<string>;
+    instanceCidr?: pulumi.Input<string | undefined>;
     /**
      * Instance name.
      */
@@ -467,11 +467,11 @@ export interface InstanceArgs {
     /**
      * The type of the instance. Valid values are:
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether IPv6 ingress capability is enabled.
      */
-    ipv6Enabled?: pulumi.Input<boolean>;
+    ipv6Enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The payment type of the resource.
      */
@@ -479,29 +479,29 @@ export interface InstanceArgs {
     /**
      * The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
      */
-    skipWaitSwitch?: pulumi.Input<boolean>;
+    skipWaitSwitch?: pulumi.Input<boolean | undefined>;
     /**
      * The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      */
-    toConnectVpcIpBlock?: pulumi.Input<inputs.apigateway.InstanceToConnectVpcIpBlock>;
+    toConnectVpcIpBlock?: pulumi.Input<inputs.apigateway.InstanceToConnectVpcIpBlock | undefined>;
     /**
      * User's VpcID.
      */
-    userVpcId?: pulumi.Input<string>;
+    userVpcId?: pulumi.Input<string | undefined>;
     /**
      * Whether the slb of the Vpc supports.
      */
-    vpcSlbIntranetEnable?: pulumi.Input<boolean>;
+    vpcSlbIntranetEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The zone where the instance is deployed.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
     /**
      * Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
      */
-    zoneVswitchSecurityGroups?: pulumi.Input<pulumi.Input<inputs.apigateway.InstanceZoneVswitchSecurityGroup>[]>;
+    zoneVswitchSecurityGroups?: pulumi.Input<pulumi.Input<inputs.apigateway.InstanceZoneVswitchSecurityGroup>[] | undefined>;
 }

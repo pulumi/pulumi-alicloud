@@ -139,17 +139,17 @@ export interface GetDynamicTagGroupsOutputArgs {
     /**
      * A list of Dynamic Tag Group IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `RUNNING`, `FINISH`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag key of the tag.
      */
-    tagKey?: pulumi.Input<string>;
+    tagKey?: pulumi.Input<string | undefined>;
 }

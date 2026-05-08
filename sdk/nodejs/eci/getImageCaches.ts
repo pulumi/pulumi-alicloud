@@ -145,29 +145,29 @@ export interface GetImageCachesOutputArgs {
     /**
      * A list ids of ECI Image Cache.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Find the mirror cache containing it according to the image name.
      */
-    image?: pulumi.Input<string>;
+    image?: pulumi.Input<string | undefined>;
     /**
      * The name of ECI Image Cache.
      */
-    imageCacheName?: pulumi.Input<string>;
+    imageCacheName?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by the image cache name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The id of snapshot.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The status of ECI Image Cache.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

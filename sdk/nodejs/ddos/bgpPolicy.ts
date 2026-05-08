@@ -139,15 +139,15 @@ export interface BgpPolicyState {
     /**
      * Configuration Content See `content` below.
      */
-    content?: pulumi.Input<inputs.ddos.BgpPolicyContent>;
+    content?: pulumi.Input<inputs.ddos.BgpPolicyContent | undefined>;
     /**
      * The name of the resource
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * Type
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,7 +157,7 @@ export interface BgpPolicyArgs {
     /**
      * Configuration Content See `content` below.
      */
-    content?: pulumi.Input<inputs.ddos.BgpPolicyContent>;
+    content?: pulumi.Input<inputs.ddos.BgpPolicyContent | undefined>;
     /**
      * The name of the resource
      */

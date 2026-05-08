@@ -263,7 +263,7 @@ export interface ElasticityAssuranceState {
     /**
      * The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
      */
-    assuranceTimes?: pulumi.Input<string>;
+    assuranceTimes?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
      * - true
@@ -271,7 +271,7 @@ export interface ElasticityAssuranceState {
      *
      * Default value: `false`.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
      * - Default value when `PeriodUnit` is set to Month: 1.
@@ -279,7 +279,7 @@ export interface ElasticityAssuranceState {
      *
      * > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Unit of duration. Value range:
      * - Month: Month
@@ -287,81 +287,81 @@ export interface ElasticityAssuranceState {
      *
      * Default value: Year
      */
-    autoRenewPeriodUnit?: pulumi.Input<string>;
+    autoRenewPeriodUnit?: pulumi.Input<string | undefined>;
     /**
      * Description of flexible guarantee service.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
-    elasticityAssuranceId?: pulumi.Input<string>;
+    elasticityAssuranceId?: pulumi.Input<string | undefined>;
     /**
      * Flexible guarantee service failure time.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
      */
-    instanceAmount?: pulumi.Input<number>;
+    instanceAmount?: pulumi.Input<number | undefined>;
     /**
      * The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * Instance type. Currently, only one instance type is supported.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
      * - When the `periodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
      * - When the `periodUnit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
      */
-    privatePoolOptionsMatchCriteria?: pulumi.Input<string>;
+    privatePoolOptionsMatchCriteria?: pulumi.Input<string | undefined>;
     /**
      * The name of the flexible protection service.
      */
-    privatePoolOptionsName?: pulumi.Input<string>;
+    privatePoolOptionsName?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.261.0) The region ID of the elasticity assurance.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Flexible guarantee service effective time.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
      */
-    startTimeType?: pulumi.Input<string>;
+    startTimeType?: pulumi.Input<string | undefined>;
     /**
      * The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag key-value pair information bound by the elastic guarantee service.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * This parameter is not yet available.
      */
-    usedAssuranceTimes?: pulumi.Input<number>;
+    usedAssuranceTimes?: pulumi.Input<number | undefined>;
     /**
      * The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
      */
-    zoneIds?: pulumi.Input<pulumi.Input<string>[]>;
+    zoneIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -371,7 +371,7 @@ export interface ElasticityAssuranceArgs {
     /**
      * The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
      */
-    assuranceTimes?: pulumi.Input<string>;
+    assuranceTimes?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
      * - true
@@ -379,7 +379,7 @@ export interface ElasticityAssuranceArgs {
      *
      * Default value: `false`.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
      * - Default value when `PeriodUnit` is set to Month: 1.
@@ -387,7 +387,7 @@ export interface ElasticityAssuranceArgs {
      *
      * > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Unit of duration. Value range:
      * - Month: Month
@@ -395,11 +395,11 @@ export interface ElasticityAssuranceArgs {
      *
      * Default value: Year
      */
-    autoRenewPeriodUnit?: pulumi.Input<string>;
+    autoRenewPeriodUnit?: pulumi.Input<string | undefined>;
     /**
      * Description of flexible guarantee service.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
      */
@@ -413,31 +413,31 @@ export interface ElasticityAssuranceArgs {
      * - When the `periodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
      * - When the `periodUnit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
      */
-    privatePoolOptionsMatchCriteria?: pulumi.Input<string>;
+    privatePoolOptionsMatchCriteria?: pulumi.Input<string | undefined>;
     /**
      * The name of the flexible protection service.
      */
-    privatePoolOptionsName?: pulumi.Input<string>;
+    privatePoolOptionsName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Flexible guarantee service effective time.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * The tag key-value pair information bound by the elastic guarantee service.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
      */

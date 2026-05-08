@@ -112,8 +112,8 @@ def get_instance_specifications(ids: Optional[Sequence[_builtins.str]] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         specifications=pulumi.get(__ret__, 'specifications'))
-def get_instance_specifications_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                       output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_specifications_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceSpecificationsResult]:
     """
     This data source provides the Sae Instance Specifications of the current Alibaba Cloud user.

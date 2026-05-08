@@ -162,7 +162,7 @@ export interface GetUdmSnapshotsOutputArgs {
     /**
      * Cloud disk ID. This field is valid only when SourceType = UDM_ECS_DISK.
      */
-    diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string | undefined>;
     /**
      * End Time
      */
@@ -170,7 +170,7 @@ export interface GetUdmSnapshotsOutputArgs {
     /**
      * A list of Udm Snapshot IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ECS instance ID
      */
@@ -178,11 +178,11 @@ export interface GetUdmSnapshotsOutputArgs {
     /**
      * The ID of the backup job that creates the snapshot.
      */
-    jobId?: pulumi.Input<string>;
+    jobId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Data source type. Only UDM_ECS and UDM_ECS_DISK are supported.
      */

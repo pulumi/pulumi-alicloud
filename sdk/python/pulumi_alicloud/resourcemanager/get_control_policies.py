@@ -175,12 +175,12 @@ def get_control_policies(enable_details: Optional[_builtins.bool] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         policies=pulumi.get(__ret__, 'policies'),
         policy_type=pulumi.get(__ret__, 'policy_type'))
-def get_control_policies_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                language: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                policy_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_control_policies_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                language: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                policy_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetControlPoliciesResult]:
     """
     This data source provides the Resource Manager Control Policies of the current Alibaba Cloud user.

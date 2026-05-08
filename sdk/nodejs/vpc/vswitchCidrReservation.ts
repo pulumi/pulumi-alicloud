@@ -180,47 +180,47 @@ export interface VswitchCidrReservationState {
     /**
      * Reserved network segment CIdrBlock.
      */
-    cidrReservationCidr?: pulumi.Input<string>;
+    cidrReservationCidr?: pulumi.Input<string | undefined>;
     /**
      * The description of the reserved CIDR block.
      */
-    cidrReservationDescription?: pulumi.Input<string>;
+    cidrReservationDescription?: pulumi.Input<string | undefined>;
     /**
      * Reserved segment mask.
      */
-    cidrReservationMask?: pulumi.Input<string>;
+    cidrReservationMask?: pulumi.Input<string | undefined>;
     /**
      * Reserved CIDR Block Type.Valid values: `Prefix`. Default value: Prefix.
      */
-    cidrReservationType?: pulumi.Input<string>;
+    cidrReservationType?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Reserved ip version of network segment, valid values: `IPv4`, `IPv6`, default IPv4.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The id of the vpc instance to which the reserved CIDR block belongs.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The resource attribute field of the resource ID.
      */
-    vswitchCidrReservationId?: pulumi.Input<string>;
+    vswitchCidrReservationId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    vswitchCidrReservationName?: pulumi.Input<string>;
+    vswitchCidrReservationName?: pulumi.Input<string | undefined>;
     /**
      * The Id of the switch instance.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -230,27 +230,27 @@ export interface VswitchCidrReservationArgs {
     /**
      * Reserved network segment CIdrBlock.
      */
-    cidrReservationCidr?: pulumi.Input<string>;
+    cidrReservationCidr?: pulumi.Input<string | undefined>;
     /**
      * The description of the reserved CIDR block.
      */
-    cidrReservationDescription?: pulumi.Input<string>;
+    cidrReservationDescription?: pulumi.Input<string | undefined>;
     /**
      * Reserved segment mask.
      */
-    cidrReservationMask?: pulumi.Input<string>;
+    cidrReservationMask?: pulumi.Input<string | undefined>;
     /**
      * Reserved CIDR Block Type.Valid values: `Prefix`. Default value: Prefix.
      */
-    cidrReservationType?: pulumi.Input<string>;
+    cidrReservationType?: pulumi.Input<string | undefined>;
     /**
      * Reserved ip version of network segment, valid values: `IPv4`, `IPv6`, default IPv4.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    vswitchCidrReservationName?: pulumi.Input<string>;
+    vswitchCidrReservationName?: pulumi.Input<string | undefined>;
     /**
      * The Id of the switch instance.
      */

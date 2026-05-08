@@ -159,31 +159,31 @@ export interface StaticAccountState {
     /**
      * Access key.
      */
-    accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string | undefined>;
     /**
      * The timestamp that indicates when the pair of static username and password was created.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Amqp instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user's primary account.
      */
-    masterUid?: pulumi.Input<string>;
+    masterUid?: pulumi.Input<string | undefined>;
     /**
      * The static password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Secret key.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * The static username.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**

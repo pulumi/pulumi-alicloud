@@ -135,21 +135,21 @@ export interface GetIndustrialPidProjectsOutputArgs {
     /**
      * A list of Pid Project IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Pid Project name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of Pid Organization.
      */
-    pidOrganizationId?: pulumi.Input<string>;
+    pidOrganizationId?: pulumi.Input<string | undefined>;
     /**
      * The name of Pid Project.
      */
-    pidProjectName?: pulumi.Input<string>;
+    pidProjectName?: pulumi.Input<string | undefined>;
 }

@@ -254,83 +254,83 @@ export interface V2FunctionState {
     /**
      * The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
      */
-    caPort?: pulumi.Input<number>;
+    caPort?: pulumi.Input<number | undefined>;
     /**
      * Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
      */
-    code?: pulumi.Input<inputs.fc.V2FunctionCode>;
+    code?: pulumi.Input<inputs.fc.V2FunctionCode | undefined>;
     /**
      * crc64 of function code.
      */
-    codeChecksum?: pulumi.Input<string>;
+    codeChecksum?: pulumi.Input<string | undefined>;
     /**
      * The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * create time of function.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Custom-container runtime related function configuration. See `customContainerConfig` below.
      */
-    customContainerConfig?: pulumi.Input<inputs.fc.V2FunctionCustomContainerConfig>;
+    customContainerConfig?: pulumi.Input<inputs.fc.V2FunctionCustomContainerConfig | undefined>;
     /**
      * Function custom DNS configuration. See `customDns` below.
      */
-    customDns?: pulumi.Input<inputs.fc.V2FunctionCustomDns>;
+    customDns?: pulumi.Input<inputs.fc.V2FunctionCustomDns | undefined>;
     /**
      * Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
      */
-    customHealthCheckConfig?: pulumi.Input<inputs.fc.V2FunctionCustomHealthCheckConfig>;
+    customHealthCheckConfig?: pulumi.Input<inputs.fc.V2FunctionCustomHealthCheckConfig | undefined>;
     /**
      * Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
      */
-    customRuntimeConfig?: pulumi.Input<inputs.fc.V2FunctionCustomRuntimeConfig>;
+    customRuntimeConfig?: pulumi.Input<inputs.fc.V2FunctionCustomRuntimeConfig | undefined>;
     /**
      * description of function.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
      */
-    diskSize?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number | undefined>;
     /**
      * The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Function Compute service function arn. It formats as `acs:fc:<region>:<uid>:services/<serviceName>.LATEST/functions/<functionName>`.
      */
-    functionArn?: pulumi.Input<string>;
+    functionArn?: pulumi.Input<string | undefined>;
     /**
      * function name.
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * The GPU memory specification of the function, in MB, is a multiple of 1024MB.
      */
-    gpuMemorySize?: pulumi.Input<number>;
+    gpuMemorySize?: pulumi.Input<number | undefined>;
     /**
      * entry point of function.
      */
-    handler?: pulumi.Input<string>;
+    handler?: pulumi.Input<string | undefined>;
     /**
      * max running time of initializer.
      */
-    initializationTimeout?: pulumi.Input<number>;
+    initializationTimeout?: pulumi.Input<number | undefined>;
     /**
      * initializer entry point of function.
      */
-    initializer?: pulumi.Input<string>;
+    initializer?: pulumi.Input<string | undefined>;
     /**
      * The maximum concurrency allowed for a single function instance.
      */
-    instanceConcurrency?: pulumi.Input<number>;
+    instanceConcurrency?: pulumi.Input<number | undefined>;
     /**
      * Instance lifecycle configuration. See `instanceLifecycleConfig` below.
      */
-    instanceLifecycleConfig?: pulumi.Input<inputs.fc.V2FunctionInstanceLifecycleConfig>;
+    instanceLifecycleConfig?: pulumi.Input<inputs.fc.V2FunctionInstanceLifecycleConfig | undefined>;
     /**
      * The instance type of the function. Valid values:
      * - **e1**: Elastic instance.
@@ -339,28 +339,28 @@ export interface V2FunctionState {
      * - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
      * - **g1**: Same as **fc.gpu.tesla.1**.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * List of layers.
      * > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
      */
-    layers?: pulumi.Input<pulumi.Input<string>[]>;
+    layers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * memory size needed by function.
      */
-    memorySize?: pulumi.Input<number>;
+    memorySize?: pulumi.Input<number | undefined>;
     /**
      * runtime of function code.
      */
-    runtime?: pulumi.Input<string>;
+    runtime?: pulumi.Input<string | undefined>;
     /**
      * The name of the function Service.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * max running time of function.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -370,47 +370,47 @@ export interface V2FunctionArgs {
     /**
      * The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
      */
-    caPort?: pulumi.Input<number>;
+    caPort?: pulumi.Input<number | undefined>;
     /**
      * Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
      */
-    code?: pulumi.Input<inputs.fc.V2FunctionCode>;
+    code?: pulumi.Input<inputs.fc.V2FunctionCode | undefined>;
     /**
      * crc64 of function code.
      */
-    codeChecksum?: pulumi.Input<string>;
+    codeChecksum?: pulumi.Input<string | undefined>;
     /**
      * The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * Custom-container runtime related function configuration. See `customContainerConfig` below.
      */
-    customContainerConfig?: pulumi.Input<inputs.fc.V2FunctionCustomContainerConfig>;
+    customContainerConfig?: pulumi.Input<inputs.fc.V2FunctionCustomContainerConfig | undefined>;
     /**
      * Function custom DNS configuration. See `customDns` below.
      */
-    customDns?: pulumi.Input<inputs.fc.V2FunctionCustomDns>;
+    customDns?: pulumi.Input<inputs.fc.V2FunctionCustomDns | undefined>;
     /**
      * Custom runtime/container Custom health check configuration. See `customHealthCheckConfig` below.
      */
-    customHealthCheckConfig?: pulumi.Input<inputs.fc.V2FunctionCustomHealthCheckConfig>;
+    customHealthCheckConfig?: pulumi.Input<inputs.fc.V2FunctionCustomHealthCheckConfig | undefined>;
     /**
      * Detailed configuration of Custom Runtime function. See `customRuntimeConfig` below.
      */
-    customRuntimeConfig?: pulumi.Input<inputs.fc.V2FunctionCustomRuntimeConfig>;
+    customRuntimeConfig?: pulumi.Input<inputs.fc.V2FunctionCustomRuntimeConfig | undefined>;
     /**
      * description of function.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
      */
-    diskSize?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number | undefined>;
     /**
      * The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * function name.
      */
@@ -418,7 +418,7 @@ export interface V2FunctionArgs {
     /**
      * The GPU memory specification of the function, in MB, is a multiple of 1024MB.
      */
-    gpuMemorySize?: pulumi.Input<number>;
+    gpuMemorySize?: pulumi.Input<number | undefined>;
     /**
      * entry point of function.
      */
@@ -426,19 +426,19 @@ export interface V2FunctionArgs {
     /**
      * max running time of initializer.
      */
-    initializationTimeout?: pulumi.Input<number>;
+    initializationTimeout?: pulumi.Input<number | undefined>;
     /**
      * initializer entry point of function.
      */
-    initializer?: pulumi.Input<string>;
+    initializer?: pulumi.Input<string | undefined>;
     /**
      * The maximum concurrency allowed for a single function instance.
      */
-    instanceConcurrency?: pulumi.Input<number>;
+    instanceConcurrency?: pulumi.Input<number | undefined>;
     /**
      * Instance lifecycle configuration. See `instanceLifecycleConfig` below.
      */
-    instanceLifecycleConfig?: pulumi.Input<inputs.fc.V2FunctionInstanceLifecycleConfig>;
+    instanceLifecycleConfig?: pulumi.Input<inputs.fc.V2FunctionInstanceLifecycleConfig | undefined>;
     /**
      * The instance type of the function. Valid values:
      * - **e1**: Elastic instance.
@@ -447,16 +447,16 @@ export interface V2FunctionArgs {
      * - **fc.gpu.ampere.1**: The Ampere series A10 card type of the GPU instance.
      * - **g1**: Same as **fc.gpu.tesla.1**.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * List of layers.
      * > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
      */
-    layers?: pulumi.Input<pulumi.Input<string>[]>;
+    layers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * memory size needed by function.
      */
-    memorySize?: pulumi.Input<number>;
+    memorySize?: pulumi.Input<number | undefined>;
     /**
      * runtime of function code.
      */
@@ -468,5 +468,5 @@ export interface V2FunctionArgs {
     /**
      * max running time of function.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
 }

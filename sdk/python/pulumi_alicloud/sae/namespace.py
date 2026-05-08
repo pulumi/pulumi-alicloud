@@ -20,10 +20,10 @@ __all__ = ['NamespaceArgs', 'Namespace']
 class NamespaceArgs:
     def __init__(__self__, *,
                  namespace_name: pulumi.Input[_builtins.str],
-                 enable_micro_registration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 namespace_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_short_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_micro_registration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 namespace_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_short_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
 
@@ -57,61 +57,61 @@ class NamespaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableMicroRegistration")
-    def enable_micro_registration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_micro_registration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
         """
         return pulumi.get(self, "enable_micro_registration")
 
     @enable_micro_registration.setter
-    def enable_micro_registration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_micro_registration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_micro_registration", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceDescription")
-    def namespace_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Description of Namespace.
         """
         return pulumi.get(self, "namespace_description")
 
     @namespace_description.setter
-    def namespace_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_description", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
         """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
-    def namespace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_id", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceShortId")
-    def namespace_short_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_short_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
         """
         return pulumi.get(self, "namespace_short_id")
 
     @namespace_short_id.setter
-    def namespace_short_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_short_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_short_id", value)
 
 
 @pulumi.input_type
 class _NamespaceState:
     def __init__(__self__, *,
-                 enable_micro_registration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 namespace_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_short_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_micro_registration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 namespace_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_short_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
 
@@ -134,62 +134,62 @@ class _NamespaceState:
 
     @_builtins.property
     @pulumi.getter(name="enableMicroRegistration")
-    def enable_micro_registration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_micro_registration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
         """
         return pulumi.get(self, "enable_micro_registration")
 
     @enable_micro_registration.setter
-    def enable_micro_registration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_micro_registration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_micro_registration", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceDescription")
-    def namespace_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Description of Namespace.
         """
         return pulumi.get(self, "namespace_description")
 
     @namespace_description.setter
-    def namespace_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_description", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
         """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
-    def namespace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_id", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceName")
-    def namespace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Name of Namespace.
         """
         return pulumi.get(self, "namespace_name")
 
     @namespace_name.setter
-    def namespace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_name", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceShortId")
-    def namespace_short_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_short_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
         """
         return pulumi.get(self, "namespace_short_id")
 
     @namespace_short_id.setter
-    def namespace_short_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_short_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_short_id", value)
 
 
@@ -199,11 +199,11 @@ class Namespace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_micro_registration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 namespace_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_short_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_micro_registration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 namespace_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_short_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Serverless App Engine (SAE) Namespace resource.
@@ -318,11 +318,11 @@ class Namespace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_micro_registration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 namespace_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_short_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_micro_registration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 namespace_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_short_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -349,11 +349,11 @@ class Namespace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enable_micro_registration: Optional[pulumi.Input[_builtins.bool]] = None,
-            namespace_description: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_short_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Namespace':
+            enable_micro_registration: pulumi.Input[Optional[_builtins.bool]] = None,
+            namespace_description: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_short_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Namespace':
         """
         Get an existing Namespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

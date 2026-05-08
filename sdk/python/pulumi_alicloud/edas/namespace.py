@@ -21,8 +21,8 @@ class NamespaceArgs:
     def __init__(__self__, *,
                  namespace_logical_id: pulumi.Input[_builtins.str],
                  namespace_name: pulumi.Input[_builtins.str],
-                 debug_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 debug_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
 
@@ -68,36 +68,36 @@ class NamespaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="debugEnable")
-    def debug_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def debug_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable remote debugging.
         """
         return pulumi.get(self, "debug_enable")
 
     @debug_enable.setter
-    def debug_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def debug_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "debug_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the namespace, The description can be up to `128` characters in length.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _NamespaceState:
     def __init__(__self__, *,
-                 debug_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_logical_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 debug_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_logical_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
 
@@ -119,31 +119,31 @@ class _NamespaceState:
 
     @_builtins.property
     @pulumi.getter(name="debugEnable")
-    def debug_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def debug_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable remote debugging.
         """
         return pulumi.get(self, "debug_enable")
 
     @debug_enable.setter
-    def debug_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def debug_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "debug_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the namespace, The description can be up to `128` characters in length.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceLogicalId")
-    def namespace_logical_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_logical_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the namespace.
         - The ID of a custom namespace is in the `region ID:namespace identifier` format. An example is `cn-beijing:tdy218`.
@@ -152,19 +152,19 @@ class _NamespaceState:
         return pulumi.get(self, "namespace_logical_id")
 
     @namespace_logical_id.setter
-    def namespace_logical_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_logical_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_logical_id", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceName")
-    def namespace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the namespace, The name can be up to `63` characters in length.
         """
         return pulumi.get(self, "namespace_name")
 
     @namespace_name.setter
-    def namespace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_name", value)
 
 
@@ -174,10 +174,10 @@ class Namespace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 debug_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_logical_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 debug_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_logical_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a EDAS Namespace resource.
@@ -289,10 +289,10 @@ class Namespace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 debug_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_logical_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 debug_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_logical_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -320,10 +320,10 @@ class Namespace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            debug_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_logical_id: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Namespace':
+            debug_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_logical_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Namespace':
         """
         Get an existing Namespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

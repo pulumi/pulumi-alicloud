@@ -219,33 +219,33 @@ export interface ListenerState {
     /**
      * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the listener.
      *
      * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
      */
-    listenerDescription?: pulumi.Input<string>;
+    listenerDescription?: pulumi.Input<string | undefined>;
     /**
      * The GWLB instance ID.
      */
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
     /**
      * The region ID.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The server group ID.
      */
-    serverGroupId?: pulumi.Input<string>;
+    serverGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the listener.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags. You can specify at most 20 tags in each call.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -255,13 +255,13 @@ export interface ListenerArgs {
     /**
      * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the listener.
      *
      * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
      */
-    listenerDescription?: pulumi.Input<string>;
+    listenerDescription?: pulumi.Input<string | undefined>;
     /**
      * The GWLB instance ID.
      */
@@ -273,5 +273,5 @@ export interface ListenerArgs {
     /**
      * The tags. You can specify at most 20 tags in each call.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

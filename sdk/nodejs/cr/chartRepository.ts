@@ -151,23 +151,23 @@ export interface ChartRepositoryState {
     /**
      * The ID of the Container Registry instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the repository that you want to create.
      */
-    repoName?: pulumi.Input<string>;
+    repoName?: pulumi.Input<string | undefined>;
     /**
      * The namespace to which the repository belongs.
      */
-    repoNamespaceName?: pulumi.Input<string>;
+    repoNamespaceName?: pulumi.Input<string | undefined>;
     /**
      * The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
      */
-    repoType?: pulumi.Input<string>;
+    repoType?: pulumi.Input<string | undefined>;
     /**
      * The summary about the repository.
      */
-    summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -189,9 +189,9 @@ export interface ChartRepositoryArgs {
     /**
      * The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
      */
-    repoType?: pulumi.Input<string>;
+    repoType?: pulumi.Input<string | undefined>;
     /**
      * The summary about the repository.
      */
-    summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string | undefined>;
 }

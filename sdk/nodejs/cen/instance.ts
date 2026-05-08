@@ -146,39 +146,39 @@ export interface InstanceState {
     /**
      * The name of the CEN instance.
      */
-    cenInstanceName?: pulumi.Input<string>;
+    cenInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The time when the CEN instance was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the CEN instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
      */
-    protectionLevel?: pulumi.Input<string>;
+    protectionLevel?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags of the CEN instance.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -188,29 +188,29 @@ export interface InstanceArgs {
     /**
      * The name of the CEN instance.
      */
-    cenInstanceName?: pulumi.Input<string>;
+    cenInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The description of the CEN instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
      */
-    protectionLevel?: pulumi.Input<string>;
+    protectionLevel?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tags of the CEN instance.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

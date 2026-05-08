@@ -116,19 +116,19 @@ export interface AlarmContactGroupState {
     /**
      * The name of the alarm group.
      */
-    alarmContactGroupName?: pulumi.Input<string>;
+    alarmContactGroupName?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert contact.
      */
-    contacts?: pulumi.Input<pulumi.Input<string>[]>;
+    contacts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the alert group.
      */
-    describe?: pulumi.Input<string>;
+    describe?: pulumi.Input<string | undefined>;
     /**
      * Whether to open weekly subscription.
      */
-    enableSubscribed?: pulumi.Input<boolean>;
+    enableSubscribed?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -142,13 +142,13 @@ export interface AlarmContactGroupArgs {
     /**
      * The name of the alert contact.
      */
-    contacts?: pulumi.Input<pulumi.Input<string>[]>;
+    contacts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the alert group.
      */
-    describe?: pulumi.Input<string>;
+    describe?: pulumi.Input<string | undefined>;
     /**
      * Whether to open weekly subscription.
      */
-    enableSubscribed?: pulumi.Input<boolean>;
+    enableSubscribed?: pulumi.Input<boolean | undefined>;
 }

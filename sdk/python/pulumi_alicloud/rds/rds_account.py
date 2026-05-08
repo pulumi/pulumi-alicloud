@@ -19,21 +19,21 @@ __all__ = ['RdsAccountArgs', 'RdsAccount']
 @pulumi.input_type
 class RdsAccountArgs:
     def __init__(__self__, *,
-                 account_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 reset_permission_flag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 reset_permission_flag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RdsAccount resource.
 
@@ -125,7 +125,7 @@ class RdsAccountArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountDescription")
-    def account_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
 
@@ -134,12 +134,12 @@ class RdsAccountArgs:
         return pulumi.get(self, "account_description")
 
     @account_description.setter
-    def account_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_description", value)
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database account.
         * The name must be unique.
@@ -158,12 +158,12 @@ class RdsAccountArgs:
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the account.
         * The value must be 8 to 32 characters in length.
@@ -173,12 +173,12 @@ class RdsAccountArgs:
         return pulumi.get(self, "account_password")
 
     @account_password.setter
-    def account_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
-    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account type. Valid values:
         * Normal: standard account (default).
@@ -190,137 +190,137 @@ class RdsAccountArgs:
         return pulumi.get(self, "account_type")
 
     @account_type.setter
-    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="checkPolicy")
-    def check_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def check_policy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to apply password policy
         """
         return pulumi.get(self, "check_policy")
 
     @check_policy.setter
-    def check_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def check_policy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "check_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     @_utilities.deprecated("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
-    def kms_encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="resetPermissionFlag")
-    def reset_permission_flag(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reset_permission_flag(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
         """
         return pulumi.get(self, "reset_permission_flag")
 
     @reset_permission_flag.setter
-    def reset_permission_flag(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reset_permission_flag(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reset_permission_flag", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute has been deprecated from 1.120.0 and using `account_type` instead.
 
@@ -329,28 +329,28 @@ class RdsAccountArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _RdsAccountState:
     def __init__(__self__, *,
-                 account_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 reset_permission_flag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 reset_permission_flag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RdsAccount resources.
 
@@ -442,7 +442,7 @@ class _RdsAccountState:
 
     @_builtins.property
     @pulumi.getter(name="accountDescription")
-    def account_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
 
@@ -451,12 +451,12 @@ class _RdsAccountState:
         return pulumi.get(self, "account_description")
 
     @account_description.setter
-    def account_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_description", value)
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database account.
         * The name must be unique.
@@ -475,12 +475,12 @@ class _RdsAccountState:
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the account.
         * The value must be 8 to 32 characters in length.
@@ -490,12 +490,12 @@ class _RdsAccountState:
         return pulumi.get(self, "account_password")
 
     @account_password.setter
-    def account_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
-    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account type. Valid values:
         * Normal: standard account (default).
@@ -507,137 +507,137 @@ class _RdsAccountState:
         return pulumi.get(self, "account_type")
 
     @account_type.setter
-    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="checkPolicy")
-    def check_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def check_policy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to apply password policy
         """
         return pulumi.get(self, "check_policy")
 
     @check_policy.setter
-    def check_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def check_policy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "check_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     @_utilities.deprecated("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
-    def kms_encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="resetPermissionFlag")
-    def reset_permission_flag(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reset_permission_flag(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
         """
         return pulumi.get(self, "reset_permission_flag")
 
     @reset_permission_flag.setter
-    def reset_permission_flag(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reset_permission_flag(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reset_permission_flag", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute has been deprecated from 1.120.0 and using `account_type` instead.
 
@@ -646,7 +646,7 @@ class _RdsAccountState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -656,21 +656,21 @@ class RdsAccount(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 reset_permission_flag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 reset_permission_flag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RDS Account resource.
@@ -714,7 +714,7 @@ class RdsAccount(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             vswitch_id=default_switch.id,
             instance_name=name,
             instance_charge_type="Postpaid",
@@ -828,7 +828,7 @@ class RdsAccount(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             vswitch_id=default_switch.id,
             instance_name=name,
             instance_charge_type="Postpaid",
@@ -867,21 +867,21 @@ class RdsAccount(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 reset_permission_flag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 reset_permission_flag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -918,21 +918,21 @@ class RdsAccount(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_description: Optional[pulumi.Input[_builtins.str]] = None,
-            account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            account_password: Optional[pulumi.Input[_builtins.str]] = None,
-            account_type: Optional[pulumi.Input[_builtins.str]] = None,
-            check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            reset_permission_flag: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'RdsAccount':
+            account_description: pulumi.Input[Optional[_builtins.str]] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            check_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            reset_permission_flag: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'RdsAccount':
         """
         Get an existing RdsAccount resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

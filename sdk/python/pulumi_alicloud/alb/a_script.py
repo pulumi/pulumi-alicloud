@@ -25,10 +25,10 @@ class AScriptArgs:
                  listener_id: pulumi.Input[_builtins.str],
                  position: pulumi.Input[_builtins.str],
                  script_content: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ext_attribute_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ext_attribute_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ext_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]] = None):
         """
         The set of arguments for constructing a AScript resource.
 
@@ -104,65 +104,65 @@ class AScriptArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether AScript is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="extAttributeEnabled")
-    def ext_attribute_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ext_attribute_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
         """
         return pulumi.get(self, "ext_attribute_enabled")
 
     @ext_attribute_enabled.setter
-    def ext_attribute_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ext_attribute_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ext_attribute_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="extAttributes")
-    def ext_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]]:
+    def ext_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]]:
         """
         Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
         """
         return pulumi.get(self, "ext_attributes")
 
     @ext_attributes.setter
-    def ext_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]]):
+    def ext_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]]):
         pulumi.set(self, "ext_attributes", value)
 
 
 @pulumi.input_type
 class _AScriptState:
     def __init__(__self__, *,
-                 ascript_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ext_attribute_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input[_builtins.str]] = None,
-                 script_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 ascript_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ext_attribute_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ext_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional[_builtins.str]] = None,
+                 script_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AScript resources.
 
@@ -197,110 +197,110 @@ class _AScriptState:
 
     @_builtins.property
     @pulumi.getter(name="ascriptName")
-    def ascript_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ascript_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AScript name.
         """
         return pulumi.get(self, "ascript_name")
 
     @ascript_name.setter
-    def ascript_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ascript_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ascript_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether AScript is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="extAttributeEnabled")
-    def ext_attribute_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ext_attribute_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether extension parameters are enabled. When ExtAttributeEnabled is true, ExtAttributes must be set.
         """
         return pulumi.get(self, "ext_attribute_enabled")
 
     @ext_attribute_enabled.setter
-    def ext_attribute_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ext_attribute_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ext_attribute_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="extAttributes")
-    def ext_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]]:
+    def ext_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]]:
         """
         Expand the list of attributes. When ExtAttributeEnabled is true, ExtAttributes must be set. See `ext_attributes` below.
         """
         return pulumi.get(self, "ext_attributes")
 
     @ext_attributes.setter
-    def ext_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]]):
+    def ext_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]]):
         pulumi.set(self, "ext_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Listener ID of script attribution
         """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
-    def listener_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def position(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Script execution location.
         """
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def position(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "position", value)
 
     @_builtins.property
     @pulumi.getter(name="scriptContent")
-    def script_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AScript script content.
         """
         return pulumi.get(self, "script_content")
 
     @script_content.setter
-    def script_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script_content", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Script status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -310,14 +310,14 @@ class AScript(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ascript_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ext_attribute_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input[_builtins.str]] = None,
-                 script_content: Optional[pulumi.Input[_builtins.str]] = None,
+                 ascript_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ext_attribute_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ext_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional[_builtins.str]] = None,
+                 script_content: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Application Load Balancer (ALB) A Script resource.
@@ -332,6 +332,7 @@ class AScript(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -344,7 +345,7 @@ class AScript(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=default_network.id,
@@ -452,6 +453,7 @@ class AScript(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -464,7 +466,7 @@ class AScript(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=default_network.id,
@@ -557,14 +559,14 @@ class AScript(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ascript_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ext_attribute_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input[_builtins.str]] = None,
-                 script_content: Optional[pulumi.Input[_builtins.str]] = None,
+                 ascript_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ext_attribute_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ext_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional[_builtins.str]] = None,
+                 script_content: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -601,15 +603,15 @@ class AScript(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ascript_name: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ext_attribute_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]]] = None,
-            listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-            position: Optional[pulumi.Input[_builtins.str]] = None,
-            script_content: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'AScript':
+            ascript_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ext_attribute_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ext_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            position: pulumi.Input[Optional[_builtins.str]] = None,
+            script_content: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'AScript':
         """
         Get an existing AScript resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

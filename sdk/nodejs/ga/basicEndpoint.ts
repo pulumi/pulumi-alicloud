@@ -207,43 +207,43 @@ export interface BasicEndpointState {
     /**
      * The ID of the Basic GA instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Basic Endpoint.
      */
-    basicEndpointName?: pulumi.Input<string>;
+    basicEndpointName?: pulumi.Input<string | undefined>;
     /**
      * The address of the Basic Endpoint.
      */
-    endpointAddress?: pulumi.Input<string>;
+    endpointAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Basic Endpoint Group.
      */
-    endpointGroupId?: pulumi.Input<string>;
+    endpointGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Basic Endpoint.
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * The sub address of the Basic Endpoint.
      */
-    endpointSubAddress?: pulumi.Input<string>;
+    endpointSubAddress?: pulumi.Input<string | undefined>;
     /**
      * The sub address type of the Basic Endpoint. Valid values: `primary`, `secondary`.
      */
-    endpointSubAddressType?: pulumi.Input<string>;
+    endpointSubAddressType?: pulumi.Input<string | undefined>;
     /**
      * The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * The zone id of the Basic Endpoint.
      */
-    endpointZoneId?: pulumi.Input<string>;
+    endpointZoneId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Basic Endpoint.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -257,7 +257,7 @@ export interface BasicEndpointArgs {
     /**
      * The name of the Basic Endpoint.
      */
-    basicEndpointName?: pulumi.Input<string>;
+    basicEndpointName?: pulumi.Input<string | undefined>;
     /**
      * The address of the Basic Endpoint.
      */
@@ -269,11 +269,11 @@ export interface BasicEndpointArgs {
     /**
      * The sub address of the Basic Endpoint.
      */
-    endpointSubAddress?: pulumi.Input<string>;
+    endpointSubAddress?: pulumi.Input<string | undefined>;
     /**
      * The sub address type of the Basic Endpoint. Valid values: `primary`, `secondary`.
      */
-    endpointSubAddressType?: pulumi.Input<string>;
+    endpointSubAddressType?: pulumi.Input<string | undefined>;
     /**
      * The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
      */
@@ -281,5 +281,5 @@ export interface BasicEndpointArgs {
     /**
      * The zone id of the Basic Endpoint.
      */
-    endpointZoneId?: pulumi.Input<string>;
+    endpointZoneId?: pulumi.Input<string | undefined>;
 }

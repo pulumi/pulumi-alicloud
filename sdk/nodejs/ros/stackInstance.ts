@@ -196,7 +196,7 @@ export interface StackInstanceState {
     /**
      * The operation description.
      */
-    operationDescription?: pulumi.Input<string>;
+    operationDescription?: pulumi.Input<string | undefined>;
     /**
      * The operation preferences. The operation settings. The following fields are supported:
      * * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
@@ -204,27 +204,27 @@ export interface StackInstanceState {
      * * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
      * * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
      */
-    operationPreferences?: pulumi.Input<string>;
+    operationPreferences?: pulumi.Input<string | undefined>;
     /**
      * ParameterOverrides. See the following `Block parameterOverrides`.
      */
-    parameterOverrides?: pulumi.Input<pulumi.Input<inputs.ros.StackInstanceParameterOverride>[]>;
+    parameterOverrides?: pulumi.Input<pulumi.Input<inputs.ros.StackInstanceParameterOverride>[] | undefined>;
     /**
      * Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
      */
-    retainStacks?: pulumi.Input<boolean>;
+    retainStacks?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the stack group.
      */
-    stackGroupName?: pulumi.Input<string>;
+    stackGroupName?: pulumi.Input<string | undefined>;
     /**
      * The account to which the stack instance belongs.
      */
-    stackInstanceAccountId?: pulumi.Input<string>;
+    stackInstanceAccountId?: pulumi.Input<string | undefined>;
     /**
      * The region of the stack instance.
      */
-    stackInstanceRegionId?: pulumi.Input<string>;
+    stackInstanceRegionId?: pulumi.Input<string | undefined>;
     /**
      * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
      * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
@@ -233,11 +233,11 @@ export interface StackInstanceState {
      * * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
      * * The create or update operation is not complete.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
      */
-    timeoutInMinutes?: pulumi.Input<string>;
+    timeoutInMinutes?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -247,7 +247,7 @@ export interface StackInstanceArgs {
     /**
      * The operation description.
      */
-    operationDescription?: pulumi.Input<string>;
+    operationDescription?: pulumi.Input<string | undefined>;
     /**
      * The operation preferences. The operation settings. The following fields are supported:
      * * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
@@ -255,15 +255,15 @@ export interface StackInstanceArgs {
      * * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
      * * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
      */
-    operationPreferences?: pulumi.Input<string>;
+    operationPreferences?: pulumi.Input<string | undefined>;
     /**
      * ParameterOverrides. See the following `Block parameterOverrides`.
      */
-    parameterOverrides?: pulumi.Input<pulumi.Input<inputs.ros.StackInstanceParameterOverride>[]>;
+    parameterOverrides?: pulumi.Input<pulumi.Input<inputs.ros.StackInstanceParameterOverride>[] | undefined>;
     /**
      * Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retainStacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
      */
-    retainStacks?: pulumi.Input<boolean>;
+    retainStacks?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the stack group.
      */
@@ -279,5 +279,5 @@ export interface StackInstanceArgs {
     /**
      * The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
      */
-    timeoutInMinutes?: pulumi.Input<string>;
+    timeoutInMinutes?: pulumi.Input<string | undefined>;
 }

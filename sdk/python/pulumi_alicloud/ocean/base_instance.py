@@ -24,20 +24,20 @@ class BaseInstanceArgs:
                  payment_type: pulumi.Input[_builtins.str],
                  series: pulumi.Input[_builtins.str],
                  zones: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retain_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_arch: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 ob_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_spec_native: Optional[pulumi.Input[_builtins.bool]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retain_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_arch: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 ob_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_spec_native: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BaseInstance resource.
 
@@ -250,7 +250,7 @@ class BaseInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically renew.
 
@@ -261,12 +261,12 @@ class BaseInstanceArgs:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
         - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
@@ -275,12 +275,12 @@ class BaseInstanceArgs:
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetainMode")
-    def backup_retain_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_retain_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup retention policy after the cluster is deleted. The values are as follows:
         - receive_all: Keep all backup sets;
@@ -292,24 +292,24 @@ class BaseInstanceArgs:
         return pulumi.get(self, "backup_retain_mode")
 
     @backup_retain_mode.setter
-    def backup_retain_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_retain_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_retain_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuArch")
-    def cpu_arch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu_arch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cpu architecture, x86, arm. If no, the default value is x86
         """
         return pulumi.get(self, "cpu_arch")
 
     @cpu_arch.setter
-    def cpu_arch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu_arch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_arch", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
 
@@ -320,12 +320,12 @@ class BaseInstanceArgs:
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OceanBase cluster name.
 
@@ -336,48 +336,48 @@ class BaseInstanceArgs:
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeNum")
-    def node_num(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_num(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
         """
         return pulumi.get(self, "node_num")
 
     @node_num.setter
-    def node_num(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_num(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_num", value)
 
     @_builtins.property
     @pulumi.getter(name="obVersion")
-    def ob_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ob_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OceanBase Server version number.
         """
         return pulumi.get(self, "ob_version")
 
     @ob_version.setter
-    def ob_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ob_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ob_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The duration of the purchase of resources.
 
@@ -388,48 +388,48 @@ class BaseInstanceArgs:
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryInstance")
-    def primary_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the primary instance.
         """
         return pulumi.get(self, "primary_instance")
 
     @primary_instance.setter
-    def primary_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryRegion")
-    def primary_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The primary instance Region.
         """
         return pulumi.get(self, "primary_region")
 
     @primary_region.setter
-    def primary_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_region", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the enterprise resource group to which the instance resides.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeSpecNative")
-    def upgrade_spec_native(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upgrade_spec_native(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Valid values:
         - false: migration and configuration change.
@@ -438,36 +438,36 @@ class BaseInstanceArgs:
         return pulumi.get(self, "upgrade_spec_native")
 
     @upgrade_spec_native.setter
-    def upgrade_spec_native(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upgrade_spec_native(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upgrade_spec_native", value)
 
 
 @pulumi.input_type
 class _BaseInstanceState:
     def __init__(__self__, *,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retain_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu_arch: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 ob_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 series: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_spec_native: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retain_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu_arch: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 ob_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 series: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_spec_native: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering BaseInstance resources.
 
@@ -603,7 +603,7 @@ class _BaseInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically renew.
 
@@ -614,12 +614,12 @@ class _BaseInstanceState:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration of each auto-renewal. When the value of the AutoRenew parameter is True, this parameter is required.
         - PeriodUnit is Week, AutoRenewPeriod is {"1", "2", "3"}.
@@ -628,12 +628,12 @@ class _BaseInstanceState:
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetainMode")
-    def backup_retain_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_retain_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup retention policy after the cluster is deleted. The values are as follows:
         - receive_all: Keep all backup sets;
@@ -645,60 +645,60 @@ class _BaseInstanceState:
         return pulumi.get(self, "backup_retain_mode")
 
     @backup_retain_mode.setter
-    def backup_retain_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_retain_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_retain_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="commodityCode")
-    def commodity_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commodity_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
         """
         return pulumi.get(self, "commodity_code")
 
     @commodity_code.setter
-    def commodity_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commodity_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commodity_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU cores of the cluster.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuArch")
-    def cpu_arch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu_arch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cpu architecture, x86, arm. If no, the default value is x86
         """
         return pulumi.get(self, "cpu_arch")
 
     @cpu_arch.setter
-    def cpu_arch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu_arch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_arch", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the storage space, in GB.
 
@@ -713,12 +713,12 @@ class _BaseInstanceState:
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
-    def disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
 
@@ -729,12 +729,12 @@ class _BaseInstanceState:
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster specification information. Note Please enter the shape as xCxxG, not xCxxGB
 
@@ -765,12 +765,12 @@ class _BaseInstanceState:
         return pulumi.get(self, "instance_class")
 
     @instance_class.setter
-    def instance_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_class", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OceanBase cluster name.
 
@@ -781,36 +781,36 @@ class _BaseInstanceState:
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeNum")
-    def node_num(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_num(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3
         """
         return pulumi.get(self, "node_num")
 
     @node_num.setter
-    def node_num(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_num(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_num", value)
 
     @_builtins.property
     @pulumi.getter(name="obVersion")
-    def ob_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ob_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OceanBase Server version number.
         """
         return pulumi.get(self, "ob_version")
 
     @ob_version.setter
-    def ob_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ob_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ob_version", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment method of the instance. Value range:
         - Subscription: Package year and month. When you select this type of payment method, you must make sure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error message will be returned.
@@ -819,24 +819,24 @@ class _BaseInstanceState:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {"1", "2", "3", "4"}. When PeriodUnit = Month, Period values: {"1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "24", "36", "48", "60"}.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The duration of the purchase of resources.
 
@@ -847,72 +847,72 @@ class _BaseInstanceState:
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryInstance")
-    def primary_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the primary instance.
         """
         return pulumi.get(self, "primary_instance")
 
     @primary_instance.setter
-    def primary_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryRegion")
-    def primary_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The primary instance Region.
         """
         return pulumi.get(self, "primary_region")
 
     @primary_region.setter
-    def primary_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_region", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the enterprise resource group to which the instance resides.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def series(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def series(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
         """
         return pulumi.get(self, "series")
 
     @series.setter
-    def series(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def series(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "series", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeSpecNative")
-    def upgrade_spec_native(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upgrade_spec_native(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Valid values:
         - false: migration and configuration change.
@@ -921,19 +921,19 @@ class _BaseInstanceState:
         return pulumi.get(self, "upgrade_spec_native")
 
     @upgrade_spec_native.setter
-    def upgrade_spec_native(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upgrade_spec_native(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upgrade_spec_native", value)
 
     @_builtins.property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Information about the zone where the cluster is deployed.
         """
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "zones", value)
 
 
@@ -943,25 +943,25 @@ class BaseInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retain_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_arch: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 ob_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 series: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_spec_native: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retain_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_arch: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 ob_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 series: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_spec_native: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Ocean Base Instance resource.
@@ -987,9 +987,9 @@ class BaseInstance(pulumi.CustomResource):
         default_base_instance = alicloud.ocean.BaseInstance("default",
             resource_group_id=default_get_resource_groups.ids[0],
             zones=[
-                len(default.ids).apply(lambda length: default.ids[length - 2]),
-                len(default.ids).apply(lambda length: default.ids[length - 3]),
-                len(default.ids).apply(lambda length: default.ids[length - 4]),
+                len(default.ids).apply(lambda length: default.ids[int(length - 2)]),
+                len(default.ids).apply(lambda length: default.ids[int(length - 3)]),
+                len(default.ids).apply(lambda length: default.ids[int(length - 4)]),
             ],
             auto_renew=False,
             disk_size=100,
@@ -1122,9 +1122,9 @@ class BaseInstance(pulumi.CustomResource):
         default_base_instance = alicloud.ocean.BaseInstance("default",
             resource_group_id=default_get_resource_groups.ids[0],
             zones=[
-                len(default.ids).apply(lambda length: default.ids[length - 2]),
-                len(default.ids).apply(lambda length: default.ids[length - 3]),
-                len(default.ids).apply(lambda length: default.ids[length - 4]),
+                len(default.ids).apply(lambda length: default.ids[int(length - 2)]),
+                len(default.ids).apply(lambda length: default.ids[int(length - 3)]),
+                len(default.ids).apply(lambda length: default.ids[int(length - 4)]),
             ],
             auto_renew=False,
             disk_size=100,
@@ -1161,25 +1161,25 @@ class BaseInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retain_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_arch: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 ob_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 series: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_spec_native: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retain_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_arch: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 ob_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 series: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_spec_native: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1232,29 +1232,29 @@ class BaseInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_retain_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-            cpu: Optional[pulumi.Input[_builtins.int]] = None,
-            cpu_arch: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_num: Optional[pulumi.Input[_builtins.str]] = None,
-            ob_version: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_instance: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_region: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            series: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            upgrade_spec_native: Optional[pulumi.Input[_builtins.bool]] = None,
-            zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'BaseInstance':
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_retain_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+            cpu: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu_arch: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_num: pulumi.Input[Optional[_builtins.str]] = None,
+            ob_version: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_instance: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            series: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_spec_native: pulumi.Input[Optional[_builtins.bool]] = None,
+            zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'BaseInstance':
         """
         Get an existing BaseInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

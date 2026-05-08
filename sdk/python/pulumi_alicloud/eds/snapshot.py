@@ -22,7 +22,7 @@ class SnapshotArgs:
                  desktop_id: pulumi.Input[_builtins.str],
                  snapshot_name: pulumi.Input[_builtins.str],
                  source_disk_type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
 
@@ -75,25 +75,25 @@ class SnapshotArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Snapshot.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _SnapshotState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
 
@@ -116,62 +116,62 @@ class _SnapshotState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Snapshot.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desktopId")
-    def desktop_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desktop_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Desktop.
         """
         return pulumi.get(self, "desktop_id")
 
     @desktop_id.setter
-    def desktop_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desktop_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desktop_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotName")
-    def snapshot_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Snapshot.
         """
         return pulumi.get(self, "snapshot_name")
 
     @snapshot_name.setter
-    def snapshot_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDiskType")
-    def source_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
         """
         return pulumi.get(self, "source_disk_type")
 
     @source_disk_type.setter
-    def source_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_disk_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the snapshot.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -181,10 +181,10 @@ class Snapshot(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECD Snapshot resource.
@@ -356,10 +356,10 @@ class Snapshot(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -390,11 +390,11 @@ class Snapshot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            desktop_id: Optional[pulumi.Input[_builtins.str]] = None,
-            snapshot_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Snapshot':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Snapshot':
         """
         Get an existing Snapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

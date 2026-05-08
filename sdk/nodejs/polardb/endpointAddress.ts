@@ -166,31 +166,31 @@ export interface EndpointAddressState {
     /**
      * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * Connection cluster or endpoint string.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster that can run database.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * The Id of endpoint that can run database.
      */
-    dbEndpointId?: pulumi.Input<string>;
+    dbEndpointId?: pulumi.Input<string | undefined>;
     /**
      * The ip address of connection string.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
      */
-    netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string | undefined>;
     /**
      * Port of the specified endpoint. Valid values: 3000 to 5999.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,7 +200,7 @@ export interface EndpointAddressArgs {
     /**
      * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster that can run database.
      */
@@ -212,9 +212,9 @@ export interface EndpointAddressArgs {
     /**
      * Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
      */
-    netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string | undefined>;
     /**
      * Port of the specified endpoint. Valid values: 3000 to 5999.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
 }

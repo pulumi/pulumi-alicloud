@@ -48,8 +48,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetBindingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -93,8 +93,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetBindingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -138,8 +138,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetBindingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -183,8 +183,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetBindingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -228,8 +228,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetBindingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -273,8 +273,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetExchangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -329,8 +329,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetExchangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -385,8 +385,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetExchangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -441,8 +441,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetExchangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -497,8 +497,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetExchangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -555,8 +555,8 @@ public final class AmqpFunctions {
      * import com.pulumi.alicloud.amqp.InstanceArgs;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -617,8 +617,8 @@ public final class AmqpFunctions {
      * import com.pulumi.alicloud.amqp.InstanceArgs;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -679,8 +679,8 @@ public final class AmqpFunctions {
      * import com.pulumi.alicloud.amqp.InstanceArgs;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -741,8 +741,8 @@ public final class AmqpFunctions {
      * import com.pulumi.alicloud.amqp.InstanceArgs;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -803,8 +803,8 @@ public final class AmqpFunctions {
      * import com.pulumi.alicloud.amqp.InstanceArgs;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -865,8 +865,8 @@ public final class AmqpFunctions {
      * import com.pulumi.alicloud.amqp.InstanceArgs;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -927,8 +927,8 @@ public final class AmqpFunctions {
      * import com.pulumi.alicloud.amqp.InstanceArgs;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -987,8 +987,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1043,8 +1043,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1099,8 +1099,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1155,8 +1155,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1211,8 +1211,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1265,8 +1265,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1308,8 +1308,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1351,8 +1351,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1394,8 +1394,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1437,8 +1437,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1480,8 +1480,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1523,8 +1523,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1568,8 +1568,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetVirtualHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1622,8 +1622,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetVirtualHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1676,8 +1676,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetVirtualHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1730,8 +1730,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetVirtualHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1784,8 +1784,8 @@ public final class AmqpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.amqp.AmqpFunctions;
      * import com.pulumi.alicloud.amqp.inputs.GetVirtualHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

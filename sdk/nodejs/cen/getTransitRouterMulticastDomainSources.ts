@@ -102,11 +102,11 @@ export interface GetTransitRouterMulticastDomainSourcesOutputArgs {
     /**
      * A list of the multicast domain IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the multicast domain to which the multicast source belongs.
      */

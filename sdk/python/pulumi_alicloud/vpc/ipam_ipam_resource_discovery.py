@@ -20,10 +20,10 @@ __all__ = ['IpamIpamResourceDiscoveryArgs', 'IpamIpamResourceDiscovery']
 class IpamIpamResourceDiscoveryArgs:
     def __init__(__self__, *,
                  operating_region_lists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 ipam_resource_discovery_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_resource_discovery_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 ipam_resource_discovery_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_resource_discovery_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a IpamIpamResourceDiscovery resource.
 
@@ -57,64 +57,64 @@ class IpamIpamResourceDiscoveryArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipamResourceDiscoveryDescription")
-    def ipam_resource_discovery_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_resource_discovery_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of resource discovery.
         """
         return pulumi.get(self, "ipam_resource_discovery_description")
 
     @ipam_resource_discovery_description.setter
-    def ipam_resource_discovery_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_resource_discovery_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_resource_discovery_description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamResourceDiscoveryName")
-    def ipam_resource_discovery_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_resource_discovery_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "ipam_resource_discovery_name")
 
     @ipam_resource_discovery_name.setter
-    def ipam_resource_discovery_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_resource_discovery_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_resource_discovery_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Label list information.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _IpamIpamResourceDiscoveryState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_resource_discovery_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_resource_discovery_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operating_region_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_resource_discovery_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_resource_discovery_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operating_region_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering IpamIpamResourceDiscovery resources.
 
@@ -146,98 +146,98 @@ class _IpamIpamResourceDiscoveryState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the resource discovery was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamResourceDiscoveryDescription")
-    def ipam_resource_discovery_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_resource_discovery_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of resource discovery.
         """
         return pulumi.get(self, "ipam_resource_discovery_description")
 
     @ipam_resource_discovery_description.setter
-    def ipam_resource_discovery_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_resource_discovery_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_resource_discovery_description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamResourceDiscoveryName")
-    def ipam_resource_discovery_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_resource_discovery_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "ipam_resource_discovery_name")
 
     @ipam_resource_discovery_name.setter
-    def ipam_resource_discovery_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_resource_discovery_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_resource_discovery_name", value)
 
     @_builtins.property
     @pulumi.getter(name="operatingRegionLists")
-    def operating_region_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def operating_region_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of operating regions for resource discovery.
         """
         return pulumi.get(self, "operating_region_lists")
 
     @operating_region_lists.setter
-    def operating_region_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def operating_region_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "operating_region_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource discovery instance. Value:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Label list information.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -247,11 +247,11 @@ class IpamIpamResourceDiscovery(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ipam_resource_discovery_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_resource_discovery_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operating_region_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ipam_resource_discovery_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_resource_discovery_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operating_region_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Vpc Ipam Ipam Resource Discovery resource.
@@ -360,11 +360,11 @@ class IpamIpamResourceDiscovery(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ipam_resource_discovery_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_resource_discovery_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operating_region_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ipam_resource_discovery_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_resource_discovery_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operating_region_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -394,14 +394,14 @@ class IpamIpamResourceDiscovery(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            ipam_resource_discovery_description: Optional[pulumi.Input[_builtins.str]] = None,
-            ipam_resource_discovery_name: Optional[pulumi.Input[_builtins.str]] = None,
-            operating_region_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'IpamIpamResourceDiscovery':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_resource_discovery_description: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_resource_discovery_name: pulumi.Input[Optional[_builtins.str]] = None,
+            operating_region_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'IpamIpamResourceDiscovery':
         """
         Get an existing IpamIpamResourceDiscovery resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

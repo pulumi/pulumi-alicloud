@@ -167,19 +167,19 @@ export interface AppAttachmentState {
     /**
      * The apiId that app apply to access.
      */
-    apiId?: pulumi.Input<string>;
+    apiId?: pulumi.Input<string | undefined>;
     /**
      * The app that apply to the authorization.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The group that the api belongs to.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Stage that the app apply to access.
      */
-    stageName?: pulumi.Input<string>;
+    stageName?: pulumi.Input<string | undefined>;
 }
 
 /**

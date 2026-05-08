@@ -435,45 +435,45 @@ export interface GetClustersOutputArgs {
     /**
      * The cluster name.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * The cluster states.
      */
-    clusterStates?: pulumi.Input<pulumi.Input<string>[]>;
+    clusterStates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The cluster types.
      */
-    clusterTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    clusterTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of Cluster IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The max results is used to list clusters for next page.
      */
-    maxResults?: pulumi.Input<number>;
+    maxResults?: pulumi.Input<number | undefined>;
     /**
      * A regex string to filter results by Cluster name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The next token is used to list clusters for next page.
      */
-    nextToken?: pulumi.Input<string>;
+    nextToken?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The cluster payment types.
      */
-    paymentTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    paymentTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Resource Group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

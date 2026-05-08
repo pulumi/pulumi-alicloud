@@ -166,39 +166,39 @@ export interface AccessRuleState {
     /**
      * AccessGroupName.
      */
-    accessGroupName?: pulumi.Input<string>;
+    accessGroupName?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource.
      */
-    accessRuleId?: pulumi.Input<string>;
+    accessRuleId?: pulumi.Input<string | undefined>;
     /**
      * filesystem type. include standard, extreme.
      */
-    fileSystemType?: pulumi.Input<string>;
+    fileSystemType?: pulumi.Input<string | undefined>;
     /**
      * Ipv6SourceCidrIp.
      */
-    ipv6SourceCidrIp?: pulumi.Input<string>;
+    ipv6SourceCidrIp?: pulumi.Input<string | undefined>;
     /**
      * Priority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * (Available since v1.256.0) The region ID.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * RWAccess.
      */
-    rwAccessType?: pulumi.Input<string>;
+    rwAccessType?: pulumi.Input<string | undefined>;
     /**
      * SourceCidrIp.
      */
-    sourceCidrIp?: pulumi.Input<string>;
+    sourceCidrIp?: pulumi.Input<string | undefined>;
     /**
      * UserAccess.
      */
-    userAccessType?: pulumi.Input<string>;
+    userAccessType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -212,25 +212,25 @@ export interface AccessRuleArgs {
     /**
      * filesystem type. include standard, extreme.
      */
-    fileSystemType?: pulumi.Input<string>;
+    fileSystemType?: pulumi.Input<string | undefined>;
     /**
      * Ipv6SourceCidrIp.
      */
-    ipv6SourceCidrIp?: pulumi.Input<string>;
+    ipv6SourceCidrIp?: pulumi.Input<string | undefined>;
     /**
      * Priority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * RWAccess.
      */
-    rwAccessType?: pulumi.Input<string>;
+    rwAccessType?: pulumi.Input<string | undefined>;
     /**
      * SourceCidrIp.
      */
-    sourceCidrIp?: pulumi.Input<string>;
+    sourceCidrIp?: pulumi.Input<string | undefined>;
     /**
      * UserAccess.
      */
-    userAccessType?: pulumi.Input<string>;
+    userAccessType?: pulumi.Input<string | undefined>;
 }

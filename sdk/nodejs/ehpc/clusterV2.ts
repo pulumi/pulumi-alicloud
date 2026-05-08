@@ -309,25 +309,25 @@ export interface ClusterV2State {
     /**
      * The cluster custom service component configuration. Only one component is supported. See `addons` below.
      */
-    addons?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterV2Addon>[]>;
+    addons?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterV2Addon>[] | undefined>;
     /**
      * Specifies whether to enable auto scale-out for the cluster. Valid values:
      *
      * - true
      * - false
      */
-    clientVersion?: pulumi.Input<string>;
+    clientVersion?: pulumi.Input<string | undefined>;
     /**
      * The cluster type. Valid values:
      *
      * - Standard
      * - Serverless
      */
-    clusterCategory?: pulumi.Input<string>;
+    clusterCategory?: pulumi.Input<string | undefined>;
     /**
      * Security credentials for the cluster. See `clusterCredentials` below.
      */
-    clusterCredentials?: pulumi.Input<inputs.ehpc.ClusterV2ClusterCredentials>;
+    clusterCredentials?: pulumi.Input<inputs.ehpc.ClusterV2ClusterCredentials | undefined>;
     /**
      * The deployment mode of the cluster. Valid values:
      *
@@ -335,45 +335,45 @@ export interface ClusterV2State {
      * - Hybrid
      * - Custom
      */
-    clusterMode?: pulumi.Input<string>;
+    clusterMode?: pulumi.Input<string | undefined>;
     /**
      * The post-processing script of the cluster.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) in which the cluster resides.
      */
-    clusterVpcId?: pulumi.Input<string>;
+    clusterVpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
      * You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
      */
-    clusterVswitchId?: pulumi.Input<string>;
+    clusterVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The time when the cluster was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The idle duration of the compute nodes allowed by the cluster.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The configurations of the cluster management node. See `manager` below.
      */
-    manager?: pulumi.Input<inputs.ehpc.ClusterV2Manager>;
+    manager?: pulumi.Input<inputs.ehpc.ClusterV2Manager | undefined>;
     /**
      * The ID of the resource group to which the cluster belongs.
      * You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The security group ID.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * List of cluster shared storage configurations. See `sharedStorages` below.
      */
-    sharedStorages?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterV2SharedStorage>[]>;
+    sharedStorages?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterV2SharedStorage>[] | undefined>;
 }
 
 /**
@@ -383,21 +383,21 @@ export interface ClusterV2Args {
     /**
      * The cluster custom service component configuration. Only one component is supported. See `addons` below.
      */
-    addons?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterV2Addon>[]>;
+    addons?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterV2Addon>[] | undefined>;
     /**
      * Specifies whether to enable auto scale-out for the cluster. Valid values:
      *
      * - true
      * - false
      */
-    clientVersion?: pulumi.Input<string>;
+    clientVersion?: pulumi.Input<string | undefined>;
     /**
      * The cluster type. Valid values:
      *
      * - Standard
      * - Serverless
      */
-    clusterCategory?: pulumi.Input<string>;
+    clusterCategory?: pulumi.Input<string | undefined>;
     /**
      * Security credentials for the cluster. See `clusterCredentials` below.
      */
@@ -409,37 +409,37 @@ export interface ClusterV2Args {
      * - Hybrid
      * - Custom
      */
-    clusterMode?: pulumi.Input<string>;
+    clusterMode?: pulumi.Input<string | undefined>;
     /**
      * The post-processing script of the cluster.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) in which the cluster resides.
      */
-    clusterVpcId?: pulumi.Input<string>;
+    clusterVpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
      * You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
      */
-    clusterVswitchId?: pulumi.Input<string>;
+    clusterVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The idle duration of the compute nodes allowed by the cluster.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The configurations of the cluster management node. See `manager` below.
      */
-    manager?: pulumi.Input<inputs.ehpc.ClusterV2Manager>;
+    manager?: pulumi.Input<inputs.ehpc.ClusterV2Manager | undefined>;
     /**
      * The ID of the resource group to which the cluster belongs.
      * You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The security group ID.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * List of cluster shared storage configurations. See `sharedStorages` below.
      */

@@ -189,65 +189,65 @@ export interface BasicAcceleratorState {
     /**
      * Specifies whether to enable automatic payment. Default value: `false`. Valid values:
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
      */
-    autoRenewDuration?: pulumi.Input<number>;
+    autoRenewDuration?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `autoPay` is set to `true`.
      */
-    autoUseCoupon?: pulumi.Input<string>;
+    autoUseCoupon?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
      */
-    bandwidthBillingType?: pulumi.Input<string>;
+    bandwidthBillingType?: pulumi.Input<string | undefined>;
     /**
      * The name of the Global Accelerator Basic Accelerator instance.
      */
-    basicAcceleratorName?: pulumi.Input<string>;
+    basicAcceleratorName?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
      */
-    crossBorderStatus?: pulumi.Input<boolean>;
+    crossBorderStatus?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the Global Accelerator Basic Accelerator instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The subscription duration. Default value: `1`.
      * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
      * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      */
-    promotionOptionNo?: pulumi.Input<string>;
+    promotionOptionNo?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Basic Accelerator instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -257,59 +257,59 @@ export interface BasicAcceleratorArgs {
     /**
      * Specifies whether to enable automatic payment. Default value: `false`. Valid values:
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
      */
-    autoRenewDuration?: pulumi.Input<number>;
+    autoRenewDuration?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `autoPay` is set to `true`.
      */
-    autoUseCoupon?: pulumi.Input<string>;
+    autoUseCoupon?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
      */
-    bandwidthBillingType?: pulumi.Input<string>;
+    bandwidthBillingType?: pulumi.Input<string | undefined>;
     /**
      * The name of the Global Accelerator Basic Accelerator instance.
      */
-    basicAcceleratorName?: pulumi.Input<string>;
+    basicAcceleratorName?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
      */
-    crossBorderStatus?: pulumi.Input<boolean>;
+    crossBorderStatus?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the Global Accelerator Basic Accelerator instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The subscription duration. Default value: `1`.
      * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
      * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      */
-    promotionOptionNo?: pulumi.Input<string>;
+    promotionOptionNo?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

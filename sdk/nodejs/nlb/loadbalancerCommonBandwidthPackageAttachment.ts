@@ -170,15 +170,15 @@ export interface LoadbalancerCommonBandwidthPackageAttachmentState {
     /**
      * Specifies whether only to precheck the request. Valid values:
      */
-    bandwidthPackageId?: pulumi.Input<string>;
+    bandwidthPackageId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the EIP bandwidth plan.
      */
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
     /**
      * Network-based load balancing instance status. Value:, indicating that the instance listener will no longer forward traffic.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -133,7 +133,7 @@ export interface GetUserGroupsOutputArgs {
     /**
      * A list of User Group self IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specify the New Group of the Bastion Host of Instance Id.
      */
@@ -141,13 +141,13 @@ export interface GetUserGroupsOutputArgs {
     /**
      * A regex string to filter results by User Group name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Specify the New Group Name. Supports up to 128 Characters.
      */
-    userGroupName?: pulumi.Input<string>;
+    userGroupName?: pulumi.Input<string | undefined>;
 }

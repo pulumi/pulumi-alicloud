@@ -186,21 +186,21 @@ export interface EipSegmentAddressState {
      *
      * Default value: `5`. Unit: Mbit/s.
      */
-    bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string | undefined>;
     /**
      * The time when the contiguous Elastic IP address group was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The subnet mask of the contiguous EIP group. Valid values:
      */
-    eipMask?: pulumi.Input<string>;
+    eipMask?: pulumi.Input<string | undefined>;
     /**
      * The metering method of the contiguous EIP group. Valid values:
      * - `PayByBandwidth` (default)
      * - `PayByTraffic`
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The line type. Valid values:
      * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
@@ -218,27 +218,27 @@ export interface EipSegmentAddressState {
      *
      * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      */
-    isp?: pulumi.Input<string>;
+    isp?: pulumi.Input<string | undefined>;
     /**
      * The network type. Set the value to `public`, which specifies the public network type.
      */
-    netmode?: pulumi.Input<string>;
+    netmode?: pulumi.Input<string | undefined>;
     /**
      * The resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the contiguous Elastic IP address group.
      */
-    segmentAddressName?: pulumi.Input<string>;
+    segmentAddressName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The zone of the contiguous EIP group.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -253,7 +253,7 @@ export interface EipSegmentAddressArgs {
      *
      * Default value: `5`. Unit: Mbit/s.
      */
-    bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string | undefined>;
     /**
      * The subnet mask of the contiguous EIP group. Valid values:
      */
@@ -263,7 +263,7 @@ export interface EipSegmentAddressArgs {
      * - `PayByBandwidth` (default)
      * - `PayByTraffic`
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The line type. Valid values:
      * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
@@ -281,17 +281,17 @@ export interface EipSegmentAddressArgs {
      *
      * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      */
-    isp?: pulumi.Input<string>;
+    isp?: pulumi.Input<string | undefined>;
     /**
      * The network type. Set the value to `public`, which specifies the public network type.
      */
-    netmode?: pulumi.Input<string>;
+    netmode?: pulumi.Input<string | undefined>;
     /**
      * The resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The zone of the contiguous EIP group.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

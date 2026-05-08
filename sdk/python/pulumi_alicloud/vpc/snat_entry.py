@@ -21,10 +21,10 @@ class SnatEntryArgs:
     def __init__(__self__, *,
                  snat_ip: pulumi.Input[_builtins.str],
                  snat_table_id: pulumi.Input[_builtins.str],
-                 eip_affinity: Optional[pulumi.Input[_builtins.int]] = None,
-                 snat_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 eip_affinity: pulumi.Input[Optional[_builtins.int]] = None,
+                 snat_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SnatEntry resource.
 
@@ -72,64 +72,64 @@ class SnatEntryArgs:
 
     @_builtins.property
     @pulumi.getter(name="eipAffinity")
-    def eip_affinity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def eip_affinity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
         """
         return pulumi.get(self, "eip_affinity")
 
     @eip_affinity.setter
-    def eip_affinity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def eip_affinity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "eip_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="snatEntryName")
-    def snat_entry_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snat_entry_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "snat_entry_name")
 
     @snat_entry_name.setter
-    def snat_entry_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snat_entry_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snat_entry_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceCidr")
-    def source_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source CIDR block specified in the SNAT entry.
         """
         return pulumi.get(self, "source_cidr")
 
     @source_cidr.setter
-    def source_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceVswitchId")
-    def source_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch.
         """
         return pulumi.get(self, "source_vswitch_id")
 
     @source_vswitch_id.setter
-    def source_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_vswitch_id", value)
 
 
 @pulumi.input_type
 class _SnatEntryState:
     def __init__(__self__, *,
-                 eip_affinity: Optional[pulumi.Input[_builtins.int]] = None,
-                 snat_entry_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 eip_affinity: pulumi.Input[Optional[_builtins.int]] = None,
+                 snat_entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SnatEntry resources.
 
@@ -161,98 +161,98 @@ class _SnatEntryState:
 
     @_builtins.property
     @pulumi.getter(name="eipAffinity")
-    def eip_affinity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def eip_affinity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to enable EIP affinity. Default value: `0`. Valid values:
         """
         return pulumi.get(self, "eip_affinity")
 
     @eip_affinity.setter
-    def eip_affinity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def eip_affinity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "eip_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="snatEntryId")
-    def snat_entry_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snat_entry_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the snat entry on the server.
         """
         return pulumi.get(self, "snat_entry_id")
 
     @snat_entry_id.setter
-    def snat_entry_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snat_entry_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snat_entry_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snatEntryName")
-    def snat_entry_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snat_entry_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the SNAT entry. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "snat_entry_name")
 
     @snat_entry_name.setter
-    def snat_entry_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snat_entry_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snat_entry_name", value)
 
     @_builtins.property
     @pulumi.getter(name="snatIp")
-    def snat_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snat_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP of a SNAT entry. Separate multiple EIP or NAT IP addresses with commas (,). **NOTE:** From version 1.241.0, `snat_ip` can be modified.
         """
         return pulumi.get(self, "snat_ip")
 
     @snat_ip.setter
-    def snat_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snat_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snat_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="snatTableId")
-    def snat_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snat_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the SNAT table.
         """
         return pulumi.get(self, "snat_table_id")
 
     @snat_table_id.setter
-    def snat_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snat_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snat_table_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceCidr")
-    def source_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source CIDR block specified in the SNAT entry.
         """
         return pulumi.get(self, "source_cidr")
 
     @source_cidr.setter
-    def source_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceVswitchId")
-    def source_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch.
         """
         return pulumi.get(self, "source_vswitch_id")
 
     @source_vswitch_id.setter
-    def source_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.119.1) The ID of the SNAT entry.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -262,12 +262,12 @@ class SnatEntry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 eip_affinity: Optional[pulumi.Input[_builtins.int]] = None,
-                 snat_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 eip_affinity: pulumi.Input[Optional[_builtins.int]] = None,
+                 snat_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a NAT Gateway Snat Entry resource.
@@ -421,12 +421,12 @@ class SnatEntry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 eip_affinity: Optional[pulumi.Input[_builtins.int]] = None,
-                 snat_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 eip_affinity: pulumi.Input[Optional[_builtins.int]] = None,
+                 snat_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -458,14 +458,14 @@ class SnatEntry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            eip_affinity: Optional[pulumi.Input[_builtins.int]] = None,
-            snat_entry_id: Optional[pulumi.Input[_builtins.str]] = None,
-            snat_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-            snat_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            snat_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            source_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'SnatEntry':
+            eip_affinity: pulumi.Input[Optional[_builtins.int]] = None,
+            snat_entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snat_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+            snat_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            snat_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            source_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'SnatEntry':
         """
         Get an existing SnatEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

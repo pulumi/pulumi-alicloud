@@ -73,9 +73,9 @@ class NetworkGrantArgs:
 @pulumi.input_type
 class _NetworkGrantState:
     def __init__(__self__, *,
-                 ccn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 ccn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkGrant resources.
 
@@ -92,38 +92,38 @@ class _NetworkGrantState:
 
     @_builtins.property
     @pulumi.getter(name="ccnId")
-    def ccn_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ccn_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CCN instance.
         """
         return pulumi.get(self, "ccn_id")
 
     @ccn_id.setter
-    def ccn_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ccn_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ccn_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CEN instance.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cenUid")
-    def cen_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the account to which the CEN instance belongs.
         """
         return pulumi.get(self, "cen_uid")
 
     @cen_uid.setter
-    def cen_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_uid", value)
 
 
@@ -133,9 +133,9 @@ class NetworkGrant(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ccn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 ccn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_uid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Connect Network Grant resource. If the CEN instance to be attached belongs to another account, authorization by the CEN instance is required.
@@ -177,7 +177,7 @@ class NetworkGrant(pulumi.CustomResource):
         default_network_grant = alicloud.cloudconnect.NetworkGrant("default",
             ccn_id=default.id,
             cen_id=cen.id,
-            cen_uid=another_uid)
+            cen_uid=str(another_uid))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -243,7 +243,7 @@ class NetworkGrant(pulumi.CustomResource):
         default_network_grant = alicloud.cloudconnect.NetworkGrant("default",
             ccn_id=default.id,
             cen_id=cen.id,
-            cen_uid=another_uid)
+            cen_uid=str(another_uid))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -272,9 +272,9 @@ class NetworkGrant(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ccn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 ccn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_uid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -303,9 +303,9 @@ class NetworkGrant(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ccn_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cen_uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'NetworkGrant':
+            ccn_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkGrant':
         """
         Get an existing NetworkGrant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

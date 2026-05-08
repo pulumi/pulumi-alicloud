@@ -236,13 +236,13 @@ def get_service_metric_alarm_rules(dimensions: Optional[_builtins.str] = None,
         rule_name=pulumi.get(__ret__, 'rule_name'),
         rules=pulumi.get(__ret__, 'rules'),
         status=pulumi.get(__ret__, 'status'))
-def get_service_metric_alarm_rules_output(dimensions: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                          metric_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          rule_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          status: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_service_metric_alarm_rules_output(dimensions: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                          metric_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          rule_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          status: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceMetricAlarmRulesResult]:
     """
     This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.

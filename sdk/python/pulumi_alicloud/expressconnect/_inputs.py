@@ -24,11 +24,11 @@ __all__ = [
 ]
 
 class RouterExpressConnectRouterRegionArgsDict(TypedDict):
-    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Representative region ID.
     """
-    transit_mode: NotRequired[pulumi.Input[_builtins.str]]
+    transit_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represents the forwarding mode of the current region.
     """
@@ -36,8 +36,8 @@ class RouterExpressConnectRouterRegionArgsDict(TypedDict):
 @pulumi.input_type
 class RouterExpressConnectRouterRegionArgs:
     def __init__(__self__, *,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] region_id: Representative region ID.
         :param pulumi.Input[_builtins.str] transit_mode: Represents the forwarding mode of the current region.
@@ -49,26 +49,26 @@ class RouterExpressConnectRouterRegionArgs:
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Representative region ID.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitMode")
-    def transit_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents the forwarding mode of the current region.
         """
         return pulumi.get(self, "transit_mode")
 
     @transit_mode.setter
-    def transit_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_mode", value)
 
 

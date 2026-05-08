@@ -176,27 +176,27 @@ export interface AttachmentState {
     /**
      * The backend servers of the load balancer.
      */
-    backendServers?: pulumi.Input<string>;
+    backendServers?: pulumi.Input<string | undefined>;
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean | undefined>;
     /**
      * A list of instance ids to added backend server in the SLB.
      */
-    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the load balancer.
      */
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
     /**
      * Type of the instances. Valid value ecs, eni. Default to ecs.
      */
-    serverType?: pulumi.Input<string>;
+    serverType?: pulumi.Input<string | undefined>;
     /**
      * Weight of the instances. Valid value range: [0-100]. Default to 100.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -206,11 +206,11 @@ export interface AttachmentArgs {
     /**
      * The backend servers of the load balancer.
      */
-    backendServers?: pulumi.Input<string>;
+    backendServers?: pulumi.Input<string | undefined>;
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean | undefined>;
     /**
      * A list of instance ids to added backend server in the SLB.
      */
@@ -222,9 +222,9 @@ export interface AttachmentArgs {
     /**
      * Type of the instances. Valid value ecs, eni. Default to ecs.
      */
-    serverType?: pulumi.Input<string>;
+    serverType?: pulumi.Input<string | undefined>;
     /**
      * Weight of the instances. Valid value range: [0-100]. Default to 100.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }

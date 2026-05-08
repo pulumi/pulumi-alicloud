@@ -112,11 +112,11 @@ export interface WhitelistTemplateState {
      * - IP address format, for example: 10.23.XX.XX.
      * - CIDR format, for example: 10.23.XX.XX/24 (no inter domain routing, 24 represents the length of the prefix in the address, ranging from 1 to 32).
      */
-    ipWhiteList?: pulumi.Input<string>;
+    ipWhiteList?: pulumi.Input<string | undefined>;
     /**
      * Whitelist template name. Passed in when creating a template, and cannot have the same name under the same account, starting with a letter.
      */
-    templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string | undefined>;
 }
 
 /**

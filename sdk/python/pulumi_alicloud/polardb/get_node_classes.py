@@ -200,14 +200,14 @@ def get_node_classes(category: Optional[_builtins.str] = None,
         pay_type=pulumi.get(__ret__, 'pay_type'),
         region_id=pulumi.get(__ret__, 'region_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_node_classes_output(category: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            db_node_class: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            db_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            db_version: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                            region_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_node_classes_output(category: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            db_node_class: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            db_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            db_version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                            region_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeClassesResult]:
     """
     This data source provides the PolarDB node classes resource available info of Alibaba Cloud.

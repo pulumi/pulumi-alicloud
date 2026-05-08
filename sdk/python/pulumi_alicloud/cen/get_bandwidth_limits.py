@@ -111,8 +111,8 @@ def get_bandwidth_limits(instance_ids: Optional[Sequence[_builtins.str]] = None,
         instance_ids=pulumi.get(__ret__, 'instance_ids'),
         limits=pulumi.get(__ret__, 'limits'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_bandwidth_limits_output(instance_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_bandwidth_limits_output(instance_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBandwidthLimitsResult]:
     """
     This data source provides CEN Bandwidth Limits available to the user.

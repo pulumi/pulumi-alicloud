@@ -200,63 +200,63 @@ export interface SystemGroupState {
     /**
      * The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
      */
-    callback?: pulumi.Input<string>;
+    callback?: pulumi.Input<string | undefined>;
     /**
      * The capture image.
      */
-    captureImage?: pulumi.Input<number>;
+    captureImage?: pulumi.Input<number | undefined>;
     /**
      * The capture interval.
      */
-    captureInterval?: pulumi.Input<number>;
+    captureInterval?: pulumi.Input<number | undefined>;
     /**
      * The capture oss bucket.
      */
-    captureOssBucket?: pulumi.Input<string>;
+    captureOssBucket?: pulumi.Input<string | undefined>;
     /**
      * The capture oss path.
      */
-    captureOssPath?: pulumi.Input<string>;
+    captureOssPath?: pulumi.Input<string | undefined>;
     /**
      * The capture video.
      */
-    captureVideo?: pulumi.Input<number>;
+    captureVideo?: pulumi.Input<number | undefined>;
     /**
      * The description of Group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to open Group.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Group Name.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
      */
-    inProtocol?: pulumi.Input<string>;
+    inProtocol?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable on-demand streaming. Default value:`false`.
      */
-    lazyPull?: pulumi.Input<boolean>;
+    lazyPull?: pulumi.Input<boolean | undefined>;
     /**
      * The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
      */
-    outProtocol?: pulumi.Input<string>;
+    outProtocol?: pulumi.Input<string | undefined>;
     /**
      * The domain name of plan streaming used by the group.
      */
-    playDomain?: pulumi.Input<string>;
+    playDomain?: pulumi.Input<string | undefined>;
     /**
      * The domain name of push streaming used by the group.
      */
-    pushDomain?: pulumi.Input<string>;
+    pushDomain?: pulumi.Input<string | undefined>;
     /**
      * Whether to open Group. Valid values: `on`,`off`.
      */
-    status?: pulumi.Input<boolean>;
+    status?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -266,15 +266,15 @@ export interface SystemGroupArgs {
     /**
      * The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
      */
-    callback?: pulumi.Input<string>;
+    callback?: pulumi.Input<string | undefined>;
     /**
      * The description of Group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to open Group.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Group Name.
      */

@@ -185,54 +185,54 @@ export interface GetLoadBalancersOutputArgs {
     /**
      * The IP version. Valid values: `ipv4`, `DualStack`.
      */
-    addressIpVersion?: pulumi.Input<string>;
+    addressIpVersion?: pulumi.Input<string | undefined>;
     /**
      * The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
      */
-    addressType?: pulumi.Input<string>;
+    addressType?: pulumi.Input<string | undefined>;
     /**
      * The domain name of the NLB instance.
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * A list of Load Balancer IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
      */
-    ipv6AddressType?: pulumi.Input<string>;
+    ipv6AddressType?: pulumi.Input<string | undefined>;
     /**
      * The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
      */
-    loadBalancerBusinessStatus?: pulumi.Input<string>;
+    loadBalancerBusinessStatus?: pulumi.Input<string | undefined>;
     /**
      * The name of the NLB instance. You can specify at most 10 names.
      */
-    loadBalancerNames?: pulumi.Input<pulumi.Input<string>[]>;
+    loadBalancerNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Load Balancer name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
      */
-    status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    status?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
      */
-    vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vpcIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

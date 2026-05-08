@@ -176,15 +176,15 @@ export interface NatIpCidrState {
     /**
      * (Available since v1.273.0) The time when the NAT IP CIDR block was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to only precheck this request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the VPC NAT gateway instance to which the NAT IP address block belongs.
      */
-    natGatewayId?: pulumi.Input<string>;
+    natGatewayId?: pulumi.Input<string | undefined>;
     /**
      * The NAT IP CIDR block to create.
      *
@@ -194,21 +194,21 @@ export interface NatIpCidrState {
      * - It must not overlap with the private CIDR block of the VPC to which the VPC NAT gateway belongs. If you need to translate a private IP address to another address within the VPC's private CIDR block, create a vSwitch in the corresponding VPC private CIDR block and then create a new VPC NAT gateway in that vSwitch to provide private address translation.
      * - If you want to use a public CIDR block as the NAT IP CIDR block, the CIDR block must belong to the customer CIDR block of the VPC to which the VPC NAT gateway belongs. For more information about customer CIDR blocks, see [What is a customer CIDR block?](https://help.aliyun.com/document_detail/185311.html).
      */
-    natIpCidr?: pulumi.Input<string>;
+    natIpCidr?: pulumi.Input<string | undefined>;
     /**
      * The description of the NAT IP CIDR block to modify.
      * The description must be 2 to 256 characters in length, start with a letter or Chinese character, and cannot start with `http://` or `https://`.
      */
-    natIpCidrDescription?: pulumi.Input<string>;
+    natIpCidrDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the NAT IP address block.
      * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
      */
-    natIpCidrName?: pulumi.Input<string>;
+    natIpCidrName?: pulumi.Input<string | undefined>;
     /**
      * The status of the NAT IP CIDR block to query.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -218,7 +218,7 @@ export interface NatIpCidrArgs {
     /**
      * Specifies whether to only precheck this request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the VPC NAT gateway instance to which the NAT IP address block belongs.
      */
@@ -237,7 +237,7 @@ export interface NatIpCidrArgs {
      * The description of the NAT IP CIDR block to modify.
      * The description must be 2 to 256 characters in length, start with a letter or Chinese character, and cannot start with `http://` or `https://`.
      */
-    natIpCidrDescription?: pulumi.Input<string>;
+    natIpCidrDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the NAT IP address block.
      * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.

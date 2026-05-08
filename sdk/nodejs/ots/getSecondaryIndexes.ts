@@ -136,7 +136,7 @@ export interface GetSecondaryIndexesOutputArgs {
     /**
      * A list of secondary index IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of OTS instance.
      */
@@ -144,11 +144,11 @@ export interface GetSecondaryIndexesOutputArgs {
     /**
      * A regex string to filter results by secondary index name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The name of OTS table.
      */

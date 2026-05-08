@@ -20,11 +20,11 @@ __all__ = ['CacheReserveInstanceArgs', 'CacheReserveInstance']
 class CacheReserveInstanceArgs:
     def __init__(__self__, *,
                  payment_type: pulumi.Input[_builtins.str],
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cr_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 quota_gb: Optional[pulumi.Input[_builtins.int]] = None):
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cr_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 quota_gb: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a CacheReserveInstance resource.
 
@@ -63,31 +63,31 @@ class CacheReserveInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatic payment.
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to auto-renew:
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="crRegion")
-    def cr_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cr_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cache holding area
         - `HK`: Hong Kong, China
@@ -96,45 +96,45 @@ class CacheReserveInstanceArgs:
         return pulumi.get(self, "cr_region")
 
     @cr_region.setter
-    def cr_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cr_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cr_region", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Purchase period (unit: month).
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaGb")
-    def quota_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def quota_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Cache retention specification (unit: GB).
         """
         return pulumi.get(self, "quota_gb")
 
     @quota_gb.setter
-    def quota_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def quota_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "quota_gb", value)
 
 
 @pulumi.input_type
 class _CacheReserveInstanceState:
     def __init__(__self__, *,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cr_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 quota_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cr_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 quota_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CacheReserveInstance resources.
 
@@ -168,31 +168,31 @@ class _CacheReserveInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatic payment.
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to auto-renew:
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="crRegion")
-    def cr_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cr_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cache holding area
         - `HK`: Hong Kong, China
@@ -201,67 +201,67 @@ class _CacheReserveInstanceState:
         return pulumi.get(self, "cr_region")
 
     @cr_region.setter
-    def cr_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cr_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cr_region", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance purchase time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable auto payment.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Purchase period (unit: month).
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaGb")
-    def quota_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def quota_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Cache retention specification (unit: GB).
         """
         return pulumi.get(self, "quota_gb")
 
     @quota_gb.setter
-    def quota_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def quota_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "quota_gb", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the cache reserve instance. , it is unavailable.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -271,12 +271,12 @@ class CacheReserveInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cr_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 quota_gb: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cr_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 quota_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a ESA Cache Reserve Instance resource.
@@ -388,12 +388,12 @@ class CacheReserveInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cr_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 quota_gb: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cr_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 quota_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -423,14 +423,14 @@ class CacheReserveInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            cr_region: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            quota_gb: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'CacheReserveInstance':
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            cr_region: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            quota_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'CacheReserveInstance':
         """
         Get an existing CacheReserveInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
